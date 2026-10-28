@@ -23,6 +23,21 @@ test("未知值預設保留，但不冒充已確認兼領",()=>{
  assert.deepEqual(core.filterItems(demo,{compatibility:"allowed",includeUnknown:false}).map(x=>x.id),["SYNTH-B"]);
  assert.equal(broad.find(x=>x.id==="SYNTH-D").compatibility,"unknown");
 });
+test("尚未勾選時，第二三頁共用第一頁的篩選結果",()=>{
+ const filtered=core.filterItems(demo,{source:"government"});
+ assert.deepEqual(core.workspaceItems(demo,filtered,new Set()).map(x=>x.id),["SYNTH-A","SYNTH-E"]);
+ assert.deepEqual(core.workspaceItems(demo,[],new Set()),[]);
+});
+test("勾選後改篩選不刪選項；清除勾選才回到目前結果",()=>{
+ const selected=new Set(["SYNTH-B","SYNTH-F"]),filtered=core.filterItems(demo,{source:"government"});
+ assert.deepEqual(core.workspaceItems(demo,filtered,selected).map(x=>x.id),["SYNTH-B","SYNTH-F"]);
+ assert.deepEqual(core.workspaceItems(demo,[],selected).map(x=>x.id),["SYNTH-B","SYNTH-F"]);
+ selected.clear();
+ assert.deepEqual(core.workspaceItems(demo,filtered,selected).map(x=>x.id),["SYNTH-A","SYNTH-E"]);
+});
+test("選項在資料集中消失時，不默默以其他方案替代",()=>{
+ assert.deepEqual(core.workspaceItems(demo,demo,new Set(["removed-program"])),[]);
+});
 test("篩選改變時近90天的尺度與今天位置保持穩定",()=>{
  const before=core.domain(demo,today), after=core.domain(demo.slice(0,1),today);
  assert.deepEqual(before,after);
