@@ -1,0 +1,22 @@
+# Private data, local tooling and generated artifacts
+work/
+outputs/
+tmp/
+private/
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+.astro/
+__pycache__/
+*.log
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.xlsx
+*.docx
+*.zip
+.DS_Store
+Thumbs.db
