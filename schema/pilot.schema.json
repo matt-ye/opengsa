@@ -1,0 +1,984 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/matt-ye/opengsa/blob/main/schema/pilot.schema.json",
+  "title": "OpenGSA 階段A資料契約草案",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0-draft"
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "publication_status": {
+      "const": "draft_not_for_recommendation"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      },
+      "minItems": 1
+    },
+    "opportunities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/opportunity"
+      },
+      "minItems": 1
+    },
+    "policy_versions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/policy"
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "as_of",
+    "publication_status",
+    "sources",
+    "opportunities",
+    "policy_versions"
+  ],
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "source",
+        "locator"
+      ]
+    },
+    "fact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "text",
+        "refs"
+      ]
+    },
+    "deadline": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "date",
+            "datetime",
+            "relative",
+            "unknown"
+          ]
+        },
+        "value": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "timezone": {
+          "const": "Asia/Taipei"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value",
+        "timezone",
+        "note"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "date"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "string",
+                "format": "date"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "datetime"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "\\+08:00$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "enum": [
+                  "relative",
+                  "unknown"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "null"
+              },
+              "note": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "enum": [
+            "student",
+            "student_or_representative",
+            "institution",
+            "college",
+            "unit",
+            "university"
+          ]
+        },
+        "action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "deadline": {
+          "$ref": "#/$defs/deadline"
+        },
+        "refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "actor",
+        "action",
+        "deadline",
+        "refs"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "authority": {
+          "enum": [
+            "official_page",
+            "official_document",
+            "official_search_excerpt"
+          ]
+        },
+        "access": {
+          "enum": [
+            "public",
+            "login_required"
+          ]
+        },
+        "checked_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ownership_status": {
+          "enum": [
+            "unassigned",
+            "assigned"
+          ]
+        },
+        "proposed_review_frequency": {
+          "type": "string",
+          "minLength": 1
+        },
+        "automation": {
+          "enum": [
+            "not_enabled"
+          ]
+        },
+        "crawl_permission": {
+          "enum": [
+            "not_reviewed",
+            "permitted",
+            "prohibited"
+          ]
+        },
+        "next_action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "redistribution": {
+          "const": "link_and_original_summary_only"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "url",
+        "authority",
+        "access",
+        "checked_on",
+        "locator",
+        "owner",
+        "ownership_status",
+        "proposed_review_frequency",
+        "automation",
+        "crawl_permission",
+        "next_action",
+        "redistribution"
+      ]
+    },
+    "year": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "unlimited",
+            "range",
+            "unknown"
+          ]
+        },
+        "min": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "max": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "assessed_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "mode",
+        "min",
+        "max",
+        "assessed_at",
+        "refs"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "range"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "min": {
+                "type": "integer"
+              },
+              "max": {
+                "type": "integer"
+              },
+              "assessed_at": {
+                "type": "string",
+                "format": "date"
+              },
+              "refs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/evidence"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "enum": [
+                  "unlimited",
+                  "unknown"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "min": {
+                "type": "null"
+              },
+              "max": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "unlimited"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "refs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/evidence"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "required",
+            "not_required",
+            "unknown"
+          ]
+        },
+        "refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "mode",
+        "refs"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "not": {
+                  "const": "unknown"
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "refs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/evidence"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "allowed",
+            "conditional",
+            "prohibited",
+            "unknown"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "mode",
+        "note",
+        "refs"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "not": {
+                  "const": "unknown"
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "refs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/evidence"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "hardship": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "required",
+            "not_exclusive",
+            "unknown"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "mode",
+        "note",
+        "refs"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "not": {
+                  "const": "unknown"
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "refs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/evidence"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "draft",
+            "reviewed"
+          ]
+        },
+        "editor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "independent_reviewer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reviewed_on": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "editor",
+        "independent_reviewer",
+        "reviewed_on"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "reviewed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "independent_reviewer": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reviewed_on": {
+                "type": "string",
+                "format": "date"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "opportunity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "program_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "enum": [
+            "living_tuition",
+            "living_emergency",
+            "phd_research",
+            "outcome_award",
+            "international_conference",
+            "overseas_research",
+            "indirect_support"
+          ]
+        },
+        "resource_kind": {
+          "enum": [
+            "scholarship",
+            "award",
+            "tuition_remission",
+            "emergency_aid",
+            "travel_grant",
+            "employment_support"
+          ]
+        },
+        "scope": {
+          "enum": [
+            "ntu",
+            "nationwide",
+            "nationwide_ntu_route"
+          ]
+        },
+        "cycle": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "enum": [
+                "academic_year",
+                "academic_term",
+                "calendar_year",
+                "policy_snapshot",
+                "event_relative"
+              ]
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "kind",
+            "label"
+          ]
+        },
+        "participants": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "applicant": {
+              "enum": [
+                "student",
+                "institution",
+                "unit"
+              ]
+            },
+            "beneficiary": {
+              "const": "student"
+            },
+            "awardee": {
+              "enum": [
+                "unknown",
+                "student",
+                "institution",
+                "unit"
+              ]
+            },
+            "payee": {
+              "enum": [
+                "unknown",
+                "student",
+                "institution",
+                "unit",
+                "employed_student"
+              ]
+            }
+          },
+          "required": [
+            "applicant",
+            "beneficiary",
+            "awardee",
+            "payee"
+          ]
+        },
+        "organizations": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "funder": {
+              "$ref": "#/$defs/fact"
+            },
+            "announcer": {
+              "$ref": "#/$defs/fact"
+            },
+            "receiver": {
+              "$ref": "#/$defs/fact"
+            }
+          },
+          "required": [
+            "funder",
+            "announcer",
+            "receiver"
+          ]
+        },
+        "eligibility": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "degrees": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "master",
+                  "phd"
+                ]
+              },
+              "minItems": 1
+            },
+            "institution": {
+              "enum": [
+                "NTU",
+                "domestic_eligible_institution"
+              ]
+            },
+            "identity": {
+              "$ref": "#/$defs/fact"
+            },
+            "year_limit": {
+              "$ref": "#/$defs/year"
+            },
+            "candidate": {
+              "$ref": "#/$defs/candidate"
+            },
+            "other_conditions": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/fact"
+              },
+              "minItems": 0
+            }
+          },
+          "required": [
+            "degrees",
+            "institution",
+            "identity",
+            "year_limit",
+            "candidate",
+            "other_conditions"
+          ]
+        },
+        "compatibility": {
+          "$ref": "#/$defs/compatibility"
+        },
+        "hardship": {
+          "$ref": "#/$defs/hardship"
+        },
+        "benefit": {
+          "$ref": "#/$defs/fact"
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/step"
+          },
+          "minItems": 1
+        },
+        "application": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "state": {
+              "enum": [
+                "open",
+                "closed",
+                "unknown",
+                "not_yet_open"
+              ]
+            },
+            "as_of": {
+              "type": "string",
+              "format": "date"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            },
+            "refs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/evidence"
+              },
+              "minItems": 0
+            }
+          },
+          "required": [
+            "state",
+            "as_of",
+            "reason",
+            "refs"
+          ]
+        },
+        "evidence_status": {
+          "enum": [
+            "sufficient_for_draft",
+            "incomplete"
+          ]
+        },
+        "review": {
+          "$ref": "#/$defs/review"
+        },
+        "open_questions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "id",
+        "program_key",
+        "title",
+        "category",
+        "resource_kind",
+        "scope",
+        "cycle",
+        "participants",
+        "organizations",
+        "eligibility",
+        "compatibility",
+        "hardship",
+        "benefit",
+        "steps",
+        "application",
+        "evidence_status",
+        "review",
+        "open_questions"
+      ]
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "promulgated_on": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "amended_on": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "effective_from": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "effective_to": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "source",
+        "promulgated_on",
+        "amended_on",
+        "effective_from",
+        "effective_to",
+        "note"
+      ]
+    }
+  }
+}
