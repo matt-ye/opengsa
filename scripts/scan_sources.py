@@ -16,6 +16,8 @@ from urllib.parse import quote, unquote, urljoin, urlsplit, urlunsplit
 from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 VERSION = "scanner-1"
 AGENT = "OpenGSA/0.1 (+https://github.com/matt-ye/opengsa)"
 SKIP = re.compile(r"名冊|名單|獲獎|得獎|姓名|學號|身分證|jsessionid|password|token=|login|登入", re.I)
@@ -106,6 +108,7 @@ class Fetcher:
         self.config, self.transport, self.clock, self.sleeper = config, transport, clock, sleeper
         self.started, self.count = clock(), 0
         self.last, self.robots, self.blocked, self.delays, self.robots_checks = {}, {}, {}, {}, {}
+        self.in_memory_blocks = {}
 
     def request(self, url, headers, limit):
         url = safe_url(url, self.config["allowed_hosts"])
@@ -284,6 +287,8 @@ def scan(config, previous=None, fetcher=None, resolved=None):
                     blocks, attachments = pdf_document(response["body"]), []
                 else:
                     blocks, attachments = html_document(response["body"], source, response["url"], config["allowed_hosts"])
+                if hasattr(fetcher, "in_memory_blocks"):
+                    fetcher.in_memory_blocks[original_url] = blocks
                 semantic = digest([[normalized(b["text"]) for b in blocks], attachments])
                 document = {"raw_sha256": digest(response["body"]), "semantic_sha256": semantic,
                             "etag": response["headers"].get("etag"), "last_modified": response["headers"].get("last-modified"),
@@ -350,13 +355,15 @@ def run():
     if old and old.get("version") != VERSION:
         parser.error("State version differs; preserve it and select a new state path")
     resolved = set()
-    for review in json.loads(args.reviews.read_text(encoding="utf-8"))["reviews"]:
+    reviews_payload = json.loads(args.reviews.read_text(encoding="utf-8"))
+    for review in reviews_payload["reviews"]:
         if not all(review.get(key) for key in ["revision_id", "reviewer", "reason", "reviewed_on"]) or review.get("action") not in ["noted", "applied", "dismissed"]:
             parser.error("Incomplete review ledger entry")
         resolved.add(review["revision_id"])
         if old:
             old.get("pending", {}).pop(review["revision_id"], None)
-    state, report = scan(config, old, resolved=resolved)
+    fetcher = Fetcher(config)
+    state, report = scan(config, old, fetcher=fetcher, resolved=resolved)
     args.state.parent.mkdir(parents=True, exist_ok=True)
     temp = args.state.with_suffix(".new.json")
     temp.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -365,6 +372,27 @@ def run():
     (args.output / "scan-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     (args.output / "candidates.json").write_text(json.dumps(list(state["pending"].values()), ensure_ascii=False, indent=2), encoding="utf-8")
     (args.output / "summary.md").write_text(markdown_report(state, report), encoding="utf-8")
+    from scripts.extract_candidates import refetch_and_extract_candidates
+    from scripts.review_candidates import build_review_report
+    pilot_data = json.loads((ROOT / "data/pilot.json").read_text(encoding="utf-8"))
+    bundle, refetch_statuses = refetch_and_extract_candidates(
+        list(state["pending"].values()),
+        config,
+        fetcher=fetcher,
+        as_of=report["observed_at"][:10],
+        in_memory_blocks_by_url=fetcher.in_memory_blocks,
+        allow_network_refetch=False,
+    )
+    verified_bundle, review_summary, review_md = build_review_report(
+        bundle,
+        pilot_data,
+        scan_report=report,
+        reviews_data=reviews_payload,
+        refetch_statuses=refetch_statuses,
+    )
+    (args.output / "structured-candidates.json").write_text(json.dumps(verified_bundle, ensure_ascii=False, indent=2), encoding="utf-8")
+    (args.output / "review-diff.json").write_text(json.dumps(review_summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    (args.output / "review-summary.md").write_text(review_md, encoding="utf-8")
     print(json.dumps({key: report[key] for key in ["http_requests", "changed_documents", "pending_candidates", "model_calls", "official_data_modified"]}))
     return report
 

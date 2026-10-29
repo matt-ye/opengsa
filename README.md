@@ -12,7 +12,7 @@
 
 ## 目前狀態
 
-本專案處於**公開預覽、資料基礎待覆核階段**。已有四分頁、清單／甘特圖、研討會多方案規劃、獨立權益入口、10筆草稿、17筆引用來源，以及低頻公開來源差異掃描；尚無完整資格引擎或已覆核正式資料集。正式資料契約及發布門檻仍待完成，原型及草稿不代表任何人已符合資格。
+本專案處於**公開預覽、結構化候選萃取與檢核管線已建立、正式資料仍待人工獨立覆核階段**。已有四分頁、清單／甘特圖、研討會多方案規劃、獨立權益入口、10筆草稿、17筆引用來源、低頻公開來源差異掃描，以及「爬取結果 → 有版本候選 Schema → 結構化萃取（規則優先＋可替換模型 Adapter）→ 獨立檢核 → 申請時間與資格判斷 → 候選差異覆核報告」管線；正式資料契約簽核及發布門檻仍待完成，結構驗證通過、模型輸出或原型試算均不代表官方資格已核定。
 
 **[開啟公開預覽](https://matt-ye.github.io/opengsa/)** · [提供試用回饋](https://github.com/matt-ye/opengsa/issues/new?template=preview-feedback.yml)
 
@@ -22,7 +22,7 @@ v0.8研討會可選國科會、臺大醫學院、傑出人才發展基金會或�
 
 第一階段先做「全國性方案＋臺大試點」，再依資料維護量能逐步擴校。海外方案先保留少數來源占位。
 
-來源掃描採臺北時間週二、週五09:17，另可手動執行；目前六個正文目標及允許的文字PDF只產生待覆核報告，不直接改網站。每次檢查robots，PDF不長期存放；教務處因轉載條款只保留雜湊與定位。模型呼叫0次。[看掃描狀態](https://github.com/matt-ye/opengsa/actions/workflows/scan-sources.yml) · [操作與限制](docs/SCANNER.md)。
+來源掃描採臺北時間週二、週五09:17，另可手動執行；目前六個正文目標及允許的文字PDF在記憶體完成結構化萃取、六項獨立檢核、學生窗口時間判斷與 `data/pilot.json` 差異比對，只產生待覆核報告，不直接改寫網站正式資料。每次檢查robots，PDF不長期存放；教務處因轉載條款只保留雜湊與定位，且絕不送往外部模型。模型 Adapter 預設關閉（呼叫0次）。[看掃描狀態](https://github.com/matt-ye/opengsa/actions/workflows/scan-sources.yml) · [操作與限制](docs/SCANNER.md)。
 
 ## 規劃中的功能
 
@@ -35,19 +35,20 @@ v0.8研討會可選國科會、臺大醫學院、傑出人才發展基金會或�
 
 ## 資料如何成為學生可用的資訊
 
-以下兩圖呈現整體資料流程。有限公開HTML／文字PDF掃描與候選報告已實作；Agent、完整資格結構化、自動資料PR、RSS／ICS與D1尚未啟用。API只在確認官方端點及存取規則後納入，Agent依需要使用，D1為可選查詢副本。
+以下兩圖呈現整體資料流程。有限公開HTML／文字PDF掃描、有版本候選 Schema (`schema/candidate.schema.json`)、結構化規則萃取與可替換模型 Adapter (`scripts/extract_candidates.py`)、獨立檢核 (`scripts/verify_candidates.py`)、申請時間與 P1 資格判斷 (`scripts/evaluate_deadlines.py`) 及候選差異覆核報告 (`scripts/review_candidates.py`) 已實作；外部模型預設關閉，自動資料PR、RSS／ICS與D1尚未啟用。API只在確認官方端點及存取規則後納入，D1為可選查詢副本。
 
 ### 萃取與覆核流程
 
-先確認每個欄位的來源證據，再由人工獨立覆核；未通過的候選內容不直接進入正式資料。
+先確認每個欄位的來源證據，再經獨立檢核與人工獨立覆核；未通過的候選內容維持 `pending`，不直接進入正式資料。
 
 ```mermaid
 flowchart LR
  A[公開HTML／PDF] --> B[變更偵測]
  B --> C[規則萃取與逐欄證據]
  C --> D[必要時Agent補查]
- D --> E[人工獨立覆核]
- E --> F[資料PR與Git總表]
+ D --> E[獨立檢核＋申請時間判斷]
+ E --> F[人工獨立覆核]
+ F --> G[資料PR與Git總表]
 ```
 
 ### 掃描、版本與發布全貌
@@ -58,8 +59,8 @@ flowchart LR
 flowchart TD
  A[來源台帳：URL／API／格式／頻率] --> B[Actions 增量掃描]
  B --> C{內容或附件變更？}
- C -->|有| D[依 HTML／API／PDF 等格式擷取]
- D --> E[萃取 Agent＋獨立檢核＋規則檢查]
+ C -->|有| D[依 HTML／API／PDF 等格式於記憶體擷取]
+ D --> E[結構化萃取＋獨立檢核＋申請時間判斷]
  E --> F[候選差異與人工覆核]
  F --> G[GitHub 正式資料版本]
  G --> H[網站：當期／歷史／甘特圖]
@@ -78,21 +79,21 @@ flowchart TD
 |---|---|
 | [目前計畫](docs/PLAN.md) | 已核可範圍、階段、下一步與驗收 |
 | [公開預覽與部署](docs/DEPLOYMENT.md) | GitHub Pages發布、公開回饋、成品邊界、測試與回復 |
-| [長期維運與訂閱提案](docs/OPERATIONS-PLAN.md) | GitHub／D1分工、來源擷取、Agent檢核、成本、RSS與ICS；尚未啟用 |
-| [首批來源及Actions設計](docs/INGESTION-POC.md) | 原始管線提案；完整資格結構化、Agent與自動資料PR仍待完成 |
-| [自動來源掃描](docs/SCANNER.md) | 已實作的六頁試點、低頻排程、robots／版權限制、文字PDF、待覆核報告與故障保留 |
+| [長期維運與訂閱提案](docs/OPERATIONS-PLAN.md) | GitHub／D1分工、來源擷取、Agent檢核、成本、RSS與ICS；D1與訂閱尚未啟用 |
+| [首批來源及Actions設計](docs/INGESTION-POC.md) | 管線設計與已落地之結構化萃取、獨立檢核及差異覆核模組對照 |
+| [自動來源掃描](docs/SCANNER.md) | 已實作的六頁試點、低頻排程、結構化候選萃取、獨立檢核與故障保留 |
 | [專案縮圖原始設計](docs/design/social-preview.html) | 已核可圖稿的可修改HTML；GitHub Social preview由使用者自行上傳 |
 | [四頁線框與流程](docs/design/README.md) | 搜尋、詳情、時間軸、權益入口；可開啟HTML審閱稿 |
-| [資料契約草案](docs/DATA-CONTRACT.md) | 欄位、狀態、日期、引用及檢查方式 |
+| [資料契約草案](docs/DATA-CONTRACT.md) | 正式草稿與候選資料 Schema、欄位、狀態、日期、引用及檢查方式 |
 | [10筆樣本查核表](docs/PILOT-REVIEW.md) | 草稿差異、來源台帳與未完成覆核 |
-| [合成資格情境](docs/ELIGIBILITY-CASES.md) | 博士五年級候選人、碩士生與外籍博士的預期行為 |
+| [合成資格情境](docs/ELIGIBILITY-CASES.md) | 博士五年級候選人（P1）、碩士生（P2）與外籍博士（P3）的規則比對與時間視窗驗收 |
 | [分類、標籤及來源](docs/TAXONOMY-AND-SOURCES.md) | 資源類別、關鍵字、來源種子、PDF 發現、五組 tag |
 | [理念與 FAO 參考](docs/MISSION-AND-FAO.md) | Slogan、學生權益原則與參考網站觀察 |
 | [權益依據與學校補充](docs/RIGHTS-SOURCES.md) | 國科會研究人力保障、勞動法規底線、臺大及實踐大學來源與版本 |
 | [資料政策](docs/DATA-POLICY.md) | 來源、覆核、版本、存取限制與隱私 |
 | [歷史完整 handoff](docs/reference/HANDOFF.md) | 完整規格參考；舊階段與數量目標以目前計畫為準 |
 
-執行資料檢查與10個防誤判測試的方法見[資料契約](docs/DATA-CONTRACT.md#可執行檢查)。它們只檢查資料結構與引用，不是資格引擎或官方內容正確性的驗證。
+執行資料檢查、49項Python測試與23項Node測試的方法見[資料契約](docs/DATA-CONTRACT.md#可執行檢查)。結構檢查與自動檢核通過不取代人工獨立覆核，亦不代表官方資格已核定。
 
 ## 貢獻與授權
 
