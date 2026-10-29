@@ -6,6 +6,7 @@
 - 真實個資、登入內容、原始私人附件與本機路徑不得入庫；合成測試案例須明示。
 - 重大資料變更需獨立覆核；未覆核保留待審，不假稱通過驗收。
 - 不建立高於目前需求的服務、資料庫或 AI 推薦；技術選型在開始實作前再核對。
-- docs/OPERATIONS-PLAN.md是維運討論提案，未核可來源掃描排程、建立D1、推論呼叫或Secrets變更；公開預覽部署依docs/DEPLOYMENT.md，本機API資產評估不得加入公開repo。
+- docs/OPERATIONS-PLAN.md是整體維運提案，有限來源掃描依SCANNER.md已獲後續核可；D1、推論呼叫與Secrets變更仍未核可。公開預覽部署依docs/DEPLOYMENT.md，本機API資產評估不得加入公開repo。
 - docs/INGESTION-POC.md及docs/examples/ingestion-sources.proposed.json是首批來源／Actions設計，不是已實作的爬蟲；不得把提案直接當啟用資料掃描workflow的授權。pages.yml只驗證並部署公開成品。
 - v0.8研討會個人列可加入甘特圖並跨頁共用，資料僅本次記憶體；conference-programs.json為待覆核方案／來源台帳，不含個人輸入，不把機構期限、準備建議或接受通知當作官方學生起訖／補助結果。
+- 2026-10-29使用者另要求實作自動爬取；已核可範圍擴至SCANNER.md的有限公開GET、每週二／五09:17（臺北）低頻掃描及待覆核報告。此決策取代前述掃描未啟用的歷史描述；仍不啟用模型、D1、私人API、通知或自動改寫正式資料。每次檢查robots，教務處依轉載條款只存雜湊／定位，研發處/WebUPD/不下載。

@@ -1,2 +1,3 @@
 # 僅用於資料契約檢查，非產品依賴。
 jsonschema==4.26.0
+-r requirements-ingestion.txt
