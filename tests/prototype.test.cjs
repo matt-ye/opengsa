@@ -185,3 +185,43 @@ test("醫學院與FAOS可從來源清單檢索，缺日期的制度入口不製�
  assert.ok(entries.every(x=>!x.synthetic && !x.personal && x.start.value===null && x.end.value===null && x.result.value===null));
  assert.ok(!entries.some(x=>x.id.includes("nstc")));
 });
+
+test("探索島情境快速篩選可一鍵套用並再次點擊還原，保留搜尋字詞與待確認設定",()=>{
+ const base={query:"臺大",category:"all",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all",includeUnknown:false};
+ const phd=core.applyPersona(base,"phd_research");
+ assert.equal(phd.category,"phd_research");
+ assert.equal(phd.degree,"phd");
+ assert.equal(phd.query,"臺大");
+ assert.equal(phd.includeUnknown,false);
+ assert.equal(core.activePersona(phd),"phd_research");
+ const reset=core.applyPersona(phd,"phd_research");
+ assert.equal(reset.category,"all");
+ assert.equal(reset.degree,"all");
+ assert.equal(core.activePersona(reset),null);
+});
+
+test("權益島從屬性自測依勾選指標整理爭點與對應救濟層級，不冒充正式法律裁決",()=>{
+ const none=core.evaluateSubordination({});
+ assert.equal(none.score,0);assert.equal(none.level,"none");
+ const single=core.evaluateSubordination({schedule:true});
+ assert.equal(single.score,1);assert.equal(single.level,"review_needed");
+ assert.deepEqual(single.recommendedTiers,["TIER 01","TIER 02"]);
+ const high=core.evaluateSubordination({schedule:true,consideration:true,supervision:true});
+ assert.equal(high.score,3);assert.equal(high.level,"high_subordination");
+ assert.deepEqual(high.recommendedTiers,["TIER 02","TIER 04","TIER 05"]);
+ assert.ok(high.summary.includes("不構成正式法律裁決"));
+});
+
+test("權益島雙軌視角、五級救濟地圖與RWD觸控優化已嵌入線框且維持四頁籤結構",()=>{
+ const html=fs.readFileSync(path.join(__dirname,"../docs/design/wireframes.html"),"utf8");
+ assert.equal((html.match(/role="tabpanel"/g)||[]).length,4);
+ assert.equal((html.match(/role="tab"/g)||[]).length,4);
+ assert.ok(html.includes('id="persona-bar"'));
+ assert.ok(html.includes('id="rights-view-switch"'));
+ assert.ok(html.includes('id="rights-standards-group"'));
+ assert.ok(html.includes('id="rights-grievance-group"'));
+ assert.ok(html.includes('id="subordination-wizard"'));
+ assert.ok(html.includes('id="grievance-map"'));
+ assert.ok(html.includes("font-size:16px"));
+ assert.ok(html.includes(".gantt-marker::after"));
+});

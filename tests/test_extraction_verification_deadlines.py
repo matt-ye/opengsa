@@ -6,6 +6,7 @@ from pathlib import Path
 import os
 import tempfile
 import unittest
+import unittest.mock
 
 from jsonschema import Draft202012Validator
 

@@ -181,7 +181,38 @@ function conferenceEntries(programs){
   url:program.refs[0]?.url||null,note:program.scope+" "+program.requirements+" "+program.compatibility
  }));
 }
-const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,filterItems,workspaceItems,domain,position,centerScroll,geometry,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries};
+const personaPresets={
+ phd_research:{category:"phd_research",source:"all",degree:"phd",year:"all",compatibility:"all",hardship:"all"},
+ living_support:{category:"living_tuition",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
+ abroad_conf:{category:"international_conference",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
+ overseas_study:{category:"overseas_research",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
+ outcome_award:{category:"outcome_award",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"}
+};
+function activePersona(currentState){
+ if(!currentState) return null;
+ for(const [id,preset] of Object.entries(personaPresets)){
+  if(Object.entries(preset).every(([k,v])=>currentState[k]===v)) return id;
+ }
+ return null;
+}
+function applyPersona(currentState,personaId){
+ const preset=personaPresets[personaId];
+ if(!preset) return {...currentState};
+ if(activePersona(currentState)===personaId){
+  return {...currentState,category:"all",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"};
+ }
+ return {...currentState,...preset};
+}
+function evaluateSubordination(checks={}){
+ const keys=["schedule","consideration","supervision","unrelated_admin"];
+ const matched=keys.filter(k=>Boolean(checks[k]));
+ const score=matched.length;
+ const disclaimer="僅供依公開原則整理爭點，不構成正式法律裁決。";
+ if(score===0) return {score:0,level:"none",recommendedTiers:[],disclaimer,summary:"尚未勾選項目。勾選上方任一實際情況後，將顯示對應的法規判準與救濟建議。"};
+ if(score===1) return {score:1,level:"review_needed",recommendedTiers:["TIER 01","TIER 02"],disclaimer,summary:"已勾選 1 項指標：具部分從屬或學習分流爭點。建議核對勞動部指導原則第 2～4 點及書面協議，確認工時與給付是否相符（2026 最低時薪 196 元）；必要時洽 TIER 01 系院或 TIER 02 校級窗口釐清。"+disclaimer};
+ return {score,level:"high_subordination",recommendedTiers:["TIER 02","TIER 04","TIER 05"],disclaimer,summary:"已勾選 "+score+" 項指標：高度呈現人格、經濟或組織從屬性（常見「假學習真勞動」爭點）。依勞動部指導原則實質認定原則，若受指揮監督並提供勞務獲取對價，學校不得僅以「獎助生」名義排除勞基法、最低工資（196元／時）與雇主外加 6% 勞退提繳義務。建議參考下方 TIER 02 校內申訴、TIER 04（1955 勞檢保密申訴／勞工局調解）或 TIER 05 高教工會。"+disclaimer};
+}
+const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,filterItems,workspaceItems,domain,position,centerScroll,geometry,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination};
 if(typeof module!=="undefined" && module.exports) module.exports=api;
 if(typeof document==="undefined") return;
 
@@ -195,7 +226,8 @@ const rawById=new Map(pilot.opportunities.map(item=>[item.id,item]));
 const sourceById=new Map(pilot.sources.map(source=>[source.id,source]));
 const picked={demo:new Set(),draft:new Set()}, completed={demo:new Set(),draft:new Set()}, activeDetail={demo:null,draft:null};
 let sharedItems=[], personalRangeMode="recent", lastPersonalRange=null;
-let today=taipeiToday(), mode="demo", view="gantt", rangeMode="recent", offset=0, inspectedId=null, lastRange=null, centerPending=true;
+let today=taipeiToday(), mode="demo", view="gantt", rangeMode="recent", offset=0, inspectedId=null, lastRange=null, centerPending=true, rightsView="all", activePanelId="search";
+const scrollPositions={search:0,detail:0,timeline:0,rights:0};
 const state={query:"",category:"all",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all",includeUnknown:true};
 function el(tag, cls, text) {
  const node=document.createElement(tag);
@@ -255,6 +287,7 @@ function selectedButtons(container,attribute,value) {
 }
 function activatePanel(id, focus=false) {
  if(!["search","detail","timeline","rights"].includes(id)) id="search";
+ if(activePanelId && byId(activePanelId) && !byId(activePanelId).hidden) scrollPositions[activePanelId]=window.scrollY;
  document.querySelectorAll('[role="tab"]').forEach(tab=>{
   const active=tab.dataset.panel===id;
   tab.setAttribute("aria-selected",String(active));
@@ -263,7 +296,8 @@ function activatePanel(id, focus=false) {
  });
  document.querySelectorAll("main > .screen").forEach(panel=>{panel.hidden=panel.id!==id;});
  if(location.hash!=="#"+id) history.replaceState(null,"","#"+id);
- window.scrollTo(0,0);
+ activePanelId=id;
+ window.scrollTo(0,scrollPositions[id]||0);
  if(id==="search" && lastRange) requestAnimationFrame(()=>centerToday(lastRange));
  if(id==="timeline" && lastPersonalRange) requestAnimationFrame(()=>centerToday(lastPersonalRange,"personal-gantt-grid"));
 }
@@ -299,7 +333,12 @@ function inspect(item) {
  if(item.url) {const link=el("a","small","核對官方來源 ↗");link.href=item.url;box.append(link);}
  const more=el("button","secondary",picked[mode].has(item.id)?"查看詳情":"勾選並看詳情");more.type="button";more.dataset.openDetail=item.id;
  more.addEventListener("click",()=>chooseAndOpen(item));box.append(more);
+ const wasHidden=box.hidden;
  box.hidden=false;
+ if(wasHidden && typeof box.getBoundingClientRect==="function"){
+  const rect=box.getBoundingClientRect();
+  if(rect.top>window.innerHeight || rect.bottom<0) box.scrollIntoView({behavior:"smooth",block:"nearest"});
+ }
 }
 function pickControl(item,slot) {
  const label=el("label",slot==="gantt"?"row-pick":"item-pick");
@@ -539,6 +578,7 @@ function render() {
  byId("list-view").hidden=view!=="list" || !found.length;
  byId("dates-table").hidden=!found.length;
  selectedButtons("#mode-switch","mode",mode);selectedButtons("#view-switch","view",view);
+ selectedButtons("#persona-bar","persona",activePersona(state));
  drawCards(found);drawGantt(found,range);drawTable(found);
  renderWorkspace();
  if(centerPending && view==="gantt" && found.length && !byId("search").hidden){requestAnimationFrame(()=>centerToday(range));centerPending=false;}
@@ -591,5 +631,46 @@ byId("conference-show").addEventListener("click",()=>{view="gantt";resetFilters(
 byId("conference-clear").addEventListener("click",()=>{for(const id of ["conference-name","conference-start","conference-notice","conference-unit","conference-deadline"]) byId(id).value="";byId("conference-buffer").value="14";byId("conference-status").textContent="已清空輸入，已加入的規劃保留，可逐筆移除。";renderConferencePlan();});
 renderConferencePlan();
 setInterval(refreshToday,60000);
+if(byId("persona-bar")){
+ byId("persona-bar").addEventListener("click",event=>{
+  const button=event.target.closest("[data-persona]");
+  if(!button) return;
+  Object.assign(state,applyPersona(state,button.dataset.persona));
+  document.querySelectorAll("[data-filter]").forEach(input=>{if(input.type==="checkbox") input.checked=state[input.dataset.filter];else input.value=state[input.dataset.filter];});
+  centerPending=true;render();
+ });
+}
+function setRightsView(nextView){
+ if(!["all","standards","grievance"].includes(nextView)) nextView="all";
+ rightsView=nextView;
+ selectedButtons("#rights-view-switch","rightsView",rightsView);
+ if(byId("rights-standards-group")) byId("rights-standards-group").hidden=(rightsView==="grievance");
+ if(byId("rights-grievance-group")) byId("rights-grievance-group").hidden=(rightsView==="standards");
+}
+if(byId("rights-view-switch")){
+ byId("rights-view-switch").addEventListener("click",event=>{
+  const button=event.target.closest("[data-rights-view]");
+  if(button) setRightsView(button.dataset.rightsView);
+ });
+}
+if(byId("jump-to-grievance")){
+ byId("jump-to-grievance").addEventListener("click",()=>{
+  setRightsView("grievance");
+  if(byId("subordination-wizard")) byId("subordination-wizard").scrollIntoView({behavior:"smooth",block:"start"});
+ });
+}
+function updateSubordinationWizard(){
+ const checks={};
+ document.querySelectorAll("[data-subordination-check]").forEach(input=>{checks[input.dataset.subordinationCheck]=input.checked;});
+ const res=evaluateSubordination(checks);
+ if(byId("subordination-result")) byId("subordination-result").textContent=res.summary;
+}
+document.querySelectorAll("[data-subordination-check]").forEach(input=>input.addEventListener("change",updateSubordinationWizard));
+if(byId("subordination-reset")){
+ byId("subordination-reset").addEventListener("click",()=>{
+  document.querySelectorAll("[data-subordination-check]").forEach(input=>{input.checked=false;});
+  updateSubordinationWizard();
+ });
+}
 activatePanel(location.hash.slice(1));render();
 }());
