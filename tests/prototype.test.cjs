@@ -172,18 +172,36 @@ test("未知院系期限不畫補助期間，自填日期只作待核節點",()=
 test("來源登錄與離線嵌入同源；醫學院研發處維持角色待核的參考入口",()=>{
  const html=fs.readFileSync(path.join(__dirname,"../docs/design/wireframes.html"),"utf8");
  assert.deepEqual(JSON.parse(html.match(/<script id="conference-data" type="application\/json">([\s\S]*?)<\/script>/)[1]),conferenceData);
- assert.equal(new Set(conferenceData.programs.map(p=>p.id)).size,4);
+ assert.equal(new Set(conferenceData.programs.map(p=>p.id)).size,5);
  assert.ok(conferenceData.reference_sources.some(x=>x.url.includes("rd.mc.ntu.edu.tw")));
  for(const p of conferenceData.programs) for(const ref of p.refs) assert.equal(new URL(ref.url).protocol,"https:");
 });
 
-test("醫學院與FAOS可從來源清單檢索，缺日期的制度入口不製造時間或受理狀態",()=>{
+test("醫學院、FAOS與千里馬可從來源清單檢索，缺日期的制度入口不製造時間或受理狀態",()=>{
  const entries=core.conferenceEntries(conferenceData.programs);
- assert.equal(entries.length,2);
+ assert.equal(entries.length,3);
  const faos=core.filterItems(entries,{source:"foundation",query:"傑出人才",includeUnknown:false});
  assert.equal(faos.length,1);assert.equal(faos[0].id,"PROGRAM-faos-student");
+ const dragon=entries.find(x=>x.id==="PROGRAM-nstc-abroad-dragon");
+ assert.ok(dragon);
+ assert.equal(dragon.category,"overseas_research");
+ assert.deepEqual(dragon.degrees,["phd"]);
  assert.ok(entries.every(x=>!x.synthetic && !x.personal && x.start.value===null && x.end.value===null && x.result.value===null));
- assert.ok(!entries.some(x=>x.id.includes("nstc")));
+});
+
+test("國科會千里馬赴國外研究依預計出國年份推算前一年申請窗與校內收件基準",()=>{
+ const dragonProg=conferenceData.programs.find(x=>x.id==="nstc-abroad-dragon");
+ assert.ok(dragonProg);
+ const item=core.makeConferenceItem({name:"德國馬克斯普朗克訪問",start:"2027-03-01",buffer:14},dragonProg);
+ assert.ok(item);
+ assert.equal(item.category,"overseas_research");
+ assert.deepEqual(item.degrees,["phd"]);
+ assert.equal(item.end.value,"2026-07-28"); // 國科會 7/31 提前 3 天校內基準
+ assert.equal(item.result.value,"2026-10-31"); // 預計核定結果
+ assert.ok(item.milestones.some(m=>m.label==="國科會受理截止（試算）" && m.value==="2026-07-31"));
+ assert.ok(item.milestones.some(m=>m.label==="國科會申請起日（試算）" && m.value==="2026-06-01"));
+ assert.ok(item.milestones.some(m=>m.label==="赴外首日（自填）" && m.value==="2027-03-01"));
+ assert.equal(item.preparation.start,"2026-07-14"); // 2026-07-28 前 14 天
 });
 
 test("探索島情境快速篩選可一鍵套用並再次點擊還原，保留搜尋字詞與待確認設定",()=>{

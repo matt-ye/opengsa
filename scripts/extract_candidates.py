@@ -1922,12 +1922,12 @@ def _extract_faos_conference(source, blocks, revision_id, observed_at, url, as_o
 
 
 def _extract_nstc_abroad_dragon(source, blocks, revision_id, observed_at, url, as_of, evidence_mode):
-    """國科會補助博士生赴國外研究作業要點（千里馬計畫）：每年6/1至7/31申請，期程7-12個月，每年90萬元。"""
+    """國科會補助博士生赴國外研究作業要點（千里馬計畫）：每年6/1至7/31申請，核定7-12個月，每年90萬元。"""
     first_block = blocks[0]
     first_ref = {"source": source["id"], "locator": first_block["locator"]}
-    dl_block = next((b for b in blocks if any(k in b["text"] for k in ("六月一日", "七月三十一日", "申請期間", "期限"))), first_block)
+    dl_block = next((b for b in blocks if any(k in b["text"] for k in ("七月", "七月三十一日", "申請期間", "截止"))), first_block)
     dl_ref = {"source": source["id"], "locator": dl_block["locator"]}
-    money_block = next((b for b in blocks if any(k in b["text"] for k in ("九十萬元", "900,000", "補助費用", "經費"))), first_block)
+    money_block = next((b for b in blocks if any(k in b["text"] for k in ("九十萬元", "900,000", "補助費用", "研究費"))), first_block)
     money_ref = {"source": source["id"], "locator": money_block["locator"]}
 
     cand_id = f"cand-nstc-abroad-dragon-{revision_id[:8]}"
@@ -1941,11 +1941,11 @@ def _extract_nstc_abroad_dragon(source, blocks, revision_id, observed_at, url, a
         scope="nationwide",
         cycle={
             "kind": "calendar_year",
-            "label": "年度常態申請梯次（每年6/1至7/31）",
+            "label": "年度常態受理批次（每年6/1至7/31）",
             "year_system": "none",
             "year": None,
-            "term_or_round": "年度梯次",
-            "branch": "千里馬計畫",
+            "term_or_round": "年度批次",
+            "branch": "千里馬",
         },
         source_id=source["id"],
         revision_id=revision_id,
@@ -1982,8 +1982,8 @@ def _extract_nstc_abroad_dragon(source, blocks, revision_id, observed_at, url, a
         "amount_min": 525000,
         "amount_max": 900000,
         "currency": "TWD",
-        "unit": "total",
-        "basis": "以一年新臺幣九十萬元按規定研究日數核算（7至12個月）",
+        "unit": "total_range",
+        "basis": "range",
         "duration_months_min": 7,
         "duration_months_max": 12,
         "tax_note": "依所得稅法規定辦理",
@@ -2023,7 +2023,16 @@ def _extract_nstc_abroad_dragon(source, blocks, revision_id, observed_at, url, a
         },
     ]
     cand["field_evidence"].append(
+        make_field_evidence("eligibility.nationality", source["id"], revision_id, first_block, evidence_mode)
+    )
+    cand["field_evidence"].append(
+        make_field_evidence("eligibility.candidate", source["id"], revision_id, first_block, evidence_mode)
+    )
+    cand["field_evidence"].append(
         make_field_evidence("benefit.items/0", source["id"], revision_id, money_block, evidence_mode)
+    )
+    cand["field_evidence"].append(
+        make_field_evidence("compatibility", source["id"], revision_id, first_block, evidence_mode)
     )
     cand["field_evidence"].append(
         make_field_evidence("schedule.steps/1/deadline", source["id"], revision_id, dl_block, evidence_mode)
@@ -2067,9 +2076,9 @@ def _extract_nstc_assistant_rule(source, blocks, revision_id, observed_at, url, 
         as_of=as_of,
     )
     cand["participants"]["applicant"] = "unit"
-    cand["participants"]["beneficiary"] = "employed_student"
-    cand["participants"]["payee"] = "employed_student"
-    cand["eligibility"]["degrees"] = ["bachelor", "master", "phd"]
+    cand["participants"]["beneficiary"] = "student"
+    cand["participants"]["payee"] = "student"
+    cand["eligibility"]["degrees"] = ["master", "phd"]
     id_block = _find_identity_block(blocks, first_block)
     _set_identity_with_evidence(
         cand,
@@ -2090,7 +2099,7 @@ def _extract_nstc_assistant_rule(source, blocks, revision_id, observed_at, url, 
         "amount_max": None,
         "currency": "TWD",
         "unit": "per_month",
-        "basis": "第四點規定兼任人員工作酬金或研究津貼每月至少6,000元",
+        "basis": "minimum",
         "duration_months_min": None,
         "duration_months_max": None,
         "tax_note": "依稅法與所得性質核處",
@@ -2102,7 +2111,7 @@ def _extract_nstc_assistant_rule(source, blocks, revision_id, observed_at, url, 
         "amount_max": None,
         "currency": "TWD",
         "unit": "per_month",
-        "basis": "一般底線6,000元＋國科會增核費用10,000元，每月總額至少16,000元",
+        "basis": "minimum",
         "duration_months_min": None,
         "duration_months_max": None,
         "tax_note": "專款專用",
@@ -2132,6 +2141,18 @@ def _extract_nstc_assistant_rule(source, blocks, revision_id, observed_at, url, 
     ]
     cand["field_evidence"].append(
         make_field_evidence("benefit.items/0", source["id"], revision_id, money_block, evidence_mode)
+    )
+    cand["field_evidence"].append(
+        make_field_evidence("benefit.items/1", source["id"], revision_id, money_block, evidence_mode)
+    )
+    cand["field_evidence"].append(
+        make_field_evidence("compatibility", source["id"], revision_id, first_block, evidence_mode)
+    )
+    cand["field_evidence"].append(
+        make_field_evidence("benefit.items/2", source["id"], revision_id, money_block, evidence_mode)
+    )
+    cand["field_evidence"].append(
+        make_field_evidence("benefit.items/1", source["id"], revision_id, money_block, evidence_mode)
     )
     cand["gaps_and_conflicts"]["missing_fields"] = [
         "individual_project_appointment_dates",
@@ -2171,8 +2192,8 @@ def _extract_ntu_ta_policy(source, blocks, revision_id, observed_at, url, as_of,
         as_of=as_of,
     )
     cand["participants"]["applicant"] = "unit"
-    cand["participants"]["beneficiary"] = "employed_student"
-    cand["participants"]["payee"] = "employed_student"
+    cand["participants"]["beneficiary"] = "student"
+    cand["participants"]["payee"] = "student"
     cand["eligibility"]["degrees"] = ["master", "phd"]
     cand["eligibility"]["other_conditions"] = [
         {"text": "在校學生通過教學助理認證訓練，每學期原則最多兼任兩門課，不得兼任修讀課程助理", "refs": [first_ref]}
@@ -2197,7 +2218,7 @@ def _extract_ntu_ta_policy(source, blocks, revision_id, observed_at, url, as_of,
         "amount_max": 10000,
         "currency": "TWD",
         "unit": "per_month",
-        "basis": "第四點規定博士班一般課程TA範圍",
+        "basis": "range",
         "duration_months_min": None,
         "duration_months_max": None,
         "tax_note": "依聘任契約與所得性質核定",
@@ -2209,7 +2230,7 @@ def _extract_ntu_ta_policy(source, blocks, revision_id, observed_at, url, as_of,
         "amount_max": 7500,
         "currency": "TWD",
         "unit": "per_month",
-        "basis": "依課程型態與教務處核定點數支給",
+        "basis": "range",
         "duration_months_min": None,
         "duration_months_max": None,
         "tax_note": "依聘任契約與所得性質核定",
@@ -2251,6 +2272,12 @@ def _extract_ntu_ta_policy(source, blocks, revision_id, observed_at, url, as_of,
     cand["field_evidence"].append(
         make_field_evidence("benefit.items/0", source["id"], revision_id, money_block, "hash_only")
     )
+    cand["field_evidence"].append(
+        make_field_evidence("benefit.items/1", source["id"], revision_id, money_block, "hash_only")
+    )
+    cand["field_evidence"].append(
+        make_field_evidence("compatibility", source["id"], revision_id, first_block, "hash_only")
+    )
     cand["gaps_and_conflicts"]["missing_fields"] = [
         "semester_specific_ta_application_deadlines",
     ]
@@ -2289,8 +2316,8 @@ def _extract_ntu_ord_assistant_limit(source, blocks, revision_id, observed_at, u
         as_of=as_of,
     )
     cand["participants"]["applicant"] = "unit"
-    cand["participants"]["beneficiary"] = "employed_student"
-    cand["participants"]["payee"] = "employed_student"
+    cand["participants"]["beneficiary"] = "student"
+    cand["participants"]["payee"] = "student"
     cand["eligibility"]["degrees"] = ["master", "phd"]
     id_block = _find_identity_block(blocks, first_block)
     _set_identity_with_evidence(
@@ -2312,7 +2339,7 @@ def _extract_ntu_ord_assistant_limit(source, blocks, revision_id, observed_at, u
         "amount_max": 20000,
         "currency": "TWD",
         "unit": "per_month",
-        "basis": "每月支給上限20,000元，同一委補助單位合計",
+        "basis": "maximum",
         "duration_months_min": None,
         "duration_months_max": None,
         "tax_note": "上限標準",
@@ -2324,7 +2351,7 @@ def _extract_ntu_ord_assistant_limit(source, blocks, revision_id, observed_at, u
         "amount_max": 42000,
         "currency": "TWD",
         "unit": "per_month",
-        "basis": "每月支給上限42,000元，同一委補助單位合計",
+        "basis": "maximum",
         "duration_months_min": None,
         "duration_months_max": None,
         "tax_note": "上限標準",
@@ -2336,7 +2363,7 @@ def _extract_ntu_ord_assistant_limit(source, blocks, revision_id, observed_at, u
         "amount_max": 50000,
         "currency": "TWD",
         "unit": "per_month",
-        "basis": "已取得候選人資格者每月上限50,000元，同一委補助單位合計",
+        "basis": "maximum",
         "duration_months_min": None,
         "duration_months_max": None,
         "tax_note": "上限標準",
@@ -2366,6 +2393,15 @@ def _extract_ntu_ord_assistant_limit(source, blocks, revision_id, observed_at, u
     ]
     cand["field_evidence"].append(
         make_field_evidence("benefit.items/0", source["id"], revision_id, money_block, evidence_mode)
+    )
+    cand["field_evidence"].append(
+        make_field_evidence("benefit.items/1", source["id"], revision_id, money_block, evidence_mode)
+    )
+    cand["field_evidence"].append(
+        make_field_evidence("benefit.items/2", source["id"], revision_id, money_block, evidence_mode)
+    )
+    cand["field_evidence"].append(
+        make_field_evidence("compatibility", source["id"], revision_id, first_block, evidence_mode)
     )
     cand["gaps_and_conflicts"]["missing_fields"] = [
         "individual_project_appointment_dates",
