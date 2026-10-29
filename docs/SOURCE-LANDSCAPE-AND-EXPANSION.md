@@ -473,6 +473,7 @@ flowchart TD
 
 - [x] **全域來源拓撲規格確立**：建立全校級、11 院＋3 跨領域學院、代表性系所架構與階層化 Schema。
 - [x] **全方位資助管道盤點**：涵蓋國科會、中研院、教育部、民間基金會、科技企業、創業補助 (FITI/U-start)、AI算力 (TWCC/公有雲)、國際交流 (Fulbright/DAAD) 與青年百億海外圓夢基金平台 (`twpathfinder.org`)。
+- [x] **學術生涯進階與校園助教工讀深度盤點**：研討會出國五層補助網絡、千里馬/雙聯學位、碩博候選人博士後身分專屬獎助、斐陶斐榮譽學會、優秀青年、助教（TA）多軌聘任（EMITA）與 4k–50k 薪資級距已完整獨立建檔於 [學術生涯與助教工讀深度盤點](ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md)。
 - [x] **核心詞庫與否定語法收錄**：提煉 7 大主題關鍵字、排斥條款過濾詞與檢索語法。
 - [x] **GitHub Actions 免費 API 備援容錯設計**：完成 Gemini（Primary）+ Groq（Secondary）+ Mistral（Tertiary）三級瀑布斷路器機制規劃。
 - [ ] **下一階段待辦**：
