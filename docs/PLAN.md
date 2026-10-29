@@ -21,6 +21,7 @@
 - 2026-10-29使用者進一步要求完成「爬取結果 → 結構化獎助資料 → 檢核 → 申請時間判斷」主要開發，並接受雙軌「確定性規則 + LLM API (`extract` 補缺 + `audit` 交叉盤查)」規劃：已建立有版本之候選 Schema (`schema/candidate.schema.json`, `1.1.0-candidate`)、結構化萃取 (`scripts/extract_candidates.py`, `extractor-1.1.0`，確定性規則優先＋雙軌可替換模型 Adapter)、七面向獨立檢核 (`scripts/verify_candidates.py`, `verifier-1.1.0`，含 `coverage_ok` 與 `passed_with_gaps`)、多層期限分流與 P1 資格比對 (`scripts/evaluate_deadlines.py`)、候選覆核與差異報告 (`scripts/review_candidates.py`)，以及三軌對照基準測試 (`scripts/evaluate_extraction_benchmark.py`)。爬蟲或模型仍不直接覆寫 `data/pilot.json`，未經非原編輯者獨立覆核一律維持 `pending`。
 - 2026-10-30使用者另要求完成全域來源盤點與擴展架構：以臺大為例規劃全校 5 大處室、11 傳統學院＋3 跨領域學院、代表性系所（電資/工/理/醫等）之獎助拓撲，並建立向全臺大專院校擴展之四層標準階層規範 (`Institutional Hierarchy Schema`)；全面盤點國科會、中研院、教育部等政府機關，民間非營利基金會與企業獎學金；擴界納入創業補助（FITI/U-start/TEC）、AI工具與算力補助（國網TWCC/公有雲研究點數）、國外交流（Fulbright/DAAD/法德英歐）與青年百億海外圓夢基金（`twpathfinder.org`）；提煉 7 大主題關鍵字庫與排斥條款語法；並規劃 GitHub Actions 儲存 3 把核心免費 API（Gemini/Groq/Mistral）之瀑布容錯與斷路器降級架構，見[全域來源藍圖與擴展規劃](SOURCE-LANDSCAPE-AND-EXPANSION.md)。
 - 2026-10-30使用者進一步要求深度展開學術生涯與校園支持體系：盤點研討會五層補助網絡、千里馬深化與雙聯學位；碩士、博士、博士候選人（中研院/蔣經國/Fulbright）、博士後研究學者（國科會/中研院院長特聘/遠學分支）四大階梯專屬身分獎助；斐陶斐榮譽學會（博士10%、碩士3%、學士1%）、校級與大專優秀青年遴選；助教（TA）多軌聘任（學務處獎勵金、教務處通識、雙語教育中心 EMITA、學院聘、系聘）、4,000 至 50,000 元薪資級距與校內勞僱工讀保障，見[學術生涯與助教工讀深度盤點](ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md)。
+- 2026-10-30使用者另要求全方位補強「權益與求助 (#rights)」法規體系與救濟支援：全面盤點國科會、教育部、中研院、勞動法規及大學規章之完整母法依據與授權條文；深入剖析「學生與勞工雙重身分」、「假學習真勞動」、著作權與論文歸屬、僑外生工作證與兵役衝突等法律爭議樣態；建立勞僱型、學習型、計畫專任與校內工讀四維度比對矩陣；繪製從系所、學院、校級申評會與性平會、中央部會（教育部訴願/勞動部1955勞檢/行政院/內政部移民署/國家人權委員會）至國會立委與高教工會之「五級求助救濟地圖」；並於結構化萃取器擴充 NVIDIA NIM、SambaNova、Cerebras、OpenRouter 與 SiliconFlow 等大額度免費 API 預設端點支援，見[獎助學金完整法源庫、學生勞動權益、身分爭議與五級申訴救濟地圖](RIGHTS-AND-LEGAL-FRAMEWORK.md)。
 
 ## 現況
 
@@ -34,7 +35,7 @@
 4. **申請時間與資格判斷 (`scripts/evaluate_deadlines.py`)**：嚴格以學生適用窗口判斷 `open`、`not_yet_open`、`closed`、`unknown`；支援固定日期、確切時分、事件相對規則（國科會／臺大前月首日與前一日17:00＋四週補送、醫學院會前四週送件、FAOS會前兩個曆月學校提出且學生校內期限留 `unknown`）、缺起日、例假日待核與來源過期檢查。內建 P1（臺大職能治療所博士班五年級、已取得候選人資格）及 P1-A～P3 邊界測試情境。
 5. **候選覆核、差異報告與三軌基準測試 (`scripts/review_candidates.py`, `scripts/evaluate_extraction_benchmark.py`)**：輸出 `structured-candidates.json`、`review-diff.json`、`review-summary.md` 與 `model-usage.json`，將法規快照 PDF 歸類為 `policy_regulation_snapshot` 避免假性狀態差異；並透過 Corpus A（8 份真實公開文件＝10 筆候選）＋ Corpus B（20 組合成邊界與對抗測試）完成 `rules_only`、`llm_only` 與 `rules_plus_llm` 三軌 3 輪可重現評估。
 
-目前 **51 項 Python 測試＋23 項 Node 原型測試** 全部通過。
+目前 **52 項 Python 測試＋23 項 Node 原型測試** 全部通過。
 
 ## 階段 A：規劃與資料基礎
 
