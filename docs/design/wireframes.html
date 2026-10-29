@@ -193,16 +193,16 @@ html{scroll-behavior:smooth}
  </div>
  <div class="layout">
   <aside class="panel filter" aria-label="篩選條件" tabindex="0">
-   <details open><summary>篩選條件</summary><div class="filter-fields">
-    <label>用途<select id="filter-category" data-filter="category"><option value="all">全部用途</option><option value="phd_research">博士研究</option><option value="living_tuition">生活／學費</option><option value="living_emergency">急難支持</option><option value="outcome_award">成果獎</option><option value="international_conference">國際會議</option><option value="overseas_research">境外研究</option><option value="indirect_support">聘任入口</option></select></label>
-    <label>① 資助來源<select id="filter-source" data-filter="source"><option value="all">全部來源</option><option value="government">政府</option><option value="university">學校</option><option value="foundation">基金會</option><option value="unknown">待確認</option></select></label>
-    <label>② 學位身分<select id="filter-degree" data-filter="degree"><option value="all">碩士與博士</option><option value="master">碩士</option><option value="phd">博士</option></select></label>
-    <label>③ 年級限制<select id="filter-year" data-filter="year"><option value="all">全部</option><option value="unlimited">明示不限年級</option><option value="range">限定年級</option><option value="unknown">待確認</option></select></label>
-    <label>④ 是否可兼領<select id="filter-compatibility" data-filter="compatibility"><option value="all">全部</option><option value="allowed">可兼領（已查範圍）</option><option value="conditional">有條件</option><option value="prohibited">不可兼領</option><option value="unknown">待確認</option></select></label>
-    <label>⑤ 是否清寒限定<select id="filter-hardship" data-filter="hardship"><option value="all">全部</option><option value="required">清寒限定</option><option value="not_exclusive">非僅清寒</option><option value="unknown">待確認</option></select></label>
-    <label class="checkbox-label"><input type="checkbox" id="filter-unknown" data-filter="includeUnknown" checked><span>保留標籤待確認項目</span></label>
-   </div><button type="button" class="reset-button" id="reset-filters">清除條件</button></details>
-
+    <details open><summary>篩選條件</summary><div class="filter-fields">
+     <label>用途<select id="filter-category" data-filter="category"><option value="all">全部用途</option><option value="phd_research">博士研究</option><option value="living_tuition">生活／學費</option><option value="living_emergency">急難支持</option><option value="outcome_award">成果獎</option><option value="international_conference">國際會議</option><option value="overseas_research">境外研究</option><option value="indirect_support">聘任入口</option></select></label>
+     <label>① 資助來源<select id="filter-source" data-filter="source"><option value="all">全部來源</option><option value="government">政府</option><option value="university">學校</option><option value="foundation">基金會</option><option value="enterprise">企業／產學</option><option value="research_institute">研究法人／中研院</option><option value="unknown">待確認</option></select></label>
+     <label>② 學位身分<select id="filter-degree" data-filter="degree"><option value="all">碩士與博士</option><option value="master">碩士</option><option value="phd">博士</option><option value="candidate">博士候選人限定</option></select></label>
+     <label>③ 年級限制<select id="filter-year" data-filter="year"><option value="all">全部</option><option value="unlimited">明示不限年級</option><option value="range">限定年級</option><option value="freshman">新生入學限定</option><option value="graduating">畢業／論文期限定</option><option value="unknown">待確認</option></select></label>
+     <label>④ 是否可兼領<select id="filter-compatibility" data-filter="compatibility"><option value="all">全部</option><option value="allowed">可兼領（已查範圍）</option><option value="conditional">有條件</option><option value="prohibited">不可兼領</option><option value="unknown">待確認</option></select></label>
+     <label>⑤ 是否清寒限定<select id="filter-hardship" data-filter="hardship"><option value="all">全部</option><option value="required">清寒限定</option><option value="not_exclusive">非僅清寒</option><option value="unknown">待確認</option></select></label>
+     <label>⑥ 受理狀態<select id="filter-application" data-filter="application"><option value="all">全部狀態</option><option value="open">受理中</option><option value="upcoming">尚未開放／即將開放</option><option value="closed">本期已截止</option><option value="unknown">受理待確認</option></select></label>
+     <label class="checkbox-label"><input type="checkbox" id="filter-unknown" data-filter="includeUnknown" checked><span>保留標籤待確認項目</span></label>
+    </div><button type="button" class="reset-button" id="reset-filters">清除條件</button></details>
   </aside>
   <div style="min-width:0">
    <div class="searchbar"><label for="search-query">搜尋名稱或資料 ID</label><input type="search" id="search-query" data-filter="query" placeholder="搜尋名稱或資料 ID…" autocomplete="off"></div>

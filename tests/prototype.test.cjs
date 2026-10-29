@@ -256,3 +256,53 @@ test("法源位階地圖按鈕導向正確表格ID，不觸發未定義hash跳�
  assert.ok(js.includes("scrollToInternalTarget"));
  assert.ok(js.includes('["search","detail","timeline","rights"].includes(targetId)'));
 });
+
+
+test("擴充篩選器支援博士候選人資格、受理狀態與多來源維度",()=>{
+ const sampleItems = [
+  {id:"P-1",title:"博士候選人培育",degrees:["phd"],candidateMode:"required",source:"research_institute",category:"phd_research",cycle:"2026",rawState:"open",application:"受理中",compatibility:"allowed",hardship:"not_exclusive",year:"unlimited"},
+  {id:"P-2",title:"碩士兼任助理",degrees:["master"],candidateMode:"not_required",source:"enterprise",category:"indirect_support",cycle:"2026",rawState:"not_yet_open",application:"尚未開放",compatibility:"conditional",hardship:"unknown",year:"range"},
+  {id:"P-3",title:"一般清寒獎助",degrees:["master","phd"],candidateMode:"unknown",source:"foundation",category:"living_tuition",cycle:"2026",rawState:"closed",application:"已截止",compatibility:"prohibited",hardship:"required",year:"freshman"}
+ ];
+
+ const candOnly = core.filterItems(sampleItems,{degree:"candidate"});
+ assert.deepEqual(candOnly.map(x=>x.id),["P-1"]);
+
+ const openOnly = core.filterItems(sampleItems,{application:"open"});
+ assert.deepEqual(openOnly.map(x=>x.id),["P-1"]);
+
+ const closedOnly = core.filterItems(sampleItems,{application:"closed"});
+ assert.deepEqual(closedOnly.map(x=>x.id),["P-3"]);
+
+ const enterpriseOnly = core.filterItems(sampleItems,{source:"enterprise",includeUnknown:false});
+ assert.deepEqual(enterpriseOnly.map(x=>x.id),["P-2"]);
+
+ const researchInstOnly = core.filterItems(sampleItems,{source:"research_institute",includeUnknown:false});
+ assert.deepEqual(researchInstOnly.map(x=>x.id),["P-1"]);
+});
+
+test("makeDrafts保留候選人屬性、受理狀態並支援結構化起訖甘特圖色帶",()=>{
+ const drafts = core.makeDrafts(pilot);
+ assert.ok(drafts.length >= 10);
+ for(const d of drafts) {
+  assert.ok("candidateMode" in d);
+  assert.ok("rawState" in d);
+  assert.ok("source" in d);
+  assert.ok(["government","university","foundation","enterprise","research_institute","unknown"].includes(d.source));
+ }
+
+ // 模擬帶有結構化起訖日之草稿，驗證甘特圖色帶能正常生成
+ const mockWithStart = {
+  ...drafts[0],
+  start: {value:"2026-08-01",certainty:"confirmed",note:"官方起日"},
+  end: {value:"2026-08-15",certainty:"confirmed",note:"官方截止"},
+  result: {value:"2026-09-01",certainty:"confirmed",note:"官方結果"}
+ };
+ const range = {start: core.dayNumber("2026-07-20"), end: core.dayNumber("2026-09-20")};
+ const geom = core.geometry(mockWithStart, range);
+ assert.ok(geom.bar !== null);
+ assert.ok(geom.bar.width > 0);
+ assert.ok(geom.wait !== null);
+ assert.ok(geom.wait.width > 0);
+ assert.ok(geom.result !== null);
+});
