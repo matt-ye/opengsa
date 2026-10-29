@@ -1,6 +1,6 @@
 # 首批來源與 Actions／資料萃取設計
 
-設計版0.1，2026-10-29。使用者已接受v0.6作為MVP介面基礎；v0.7補上固定篩選卡及研討會日期試算。本文件只設計資料管線，尚未建立爬蟲、Actions工作流程、排程、推論服務或D1。
+設計版0.1，2026-10-29。使用者已接受v0.6作為MVP介面基礎；v0.7補上固定篩選卡及研討會日期試算。本文件只設計資料管線，尚未建立爬蟲、資料掃描Actions、排程、推論服務或D1。另核可的pages.yml僅做靜態預覽檢查與發布，詳見[部署說明](DEPLOYMENT.md)。
 
 ## 先選四組公開來源
 
@@ -90,7 +90,7 @@ flowchart TD
 | C：候選PR | 受信任維護者明確啟用；與擷取隔離 | 最小contents:write、pull-requests:write；僅候選分支，禁止自動合併 | 分支保護、人工獨立覆核及來源白名單測試 |
 | D：排程 | 後續核可schedule；每日批次依來源next_check_at挑選 | 同一來源不得並行；無變更不產生PR | 連續四週評估漏報、誤報、人工時間及免費額度 |
 
-不在此文件放假裝可執行的runner指令。目前也不新增`.github/workflows`檔案，以免設計稿被GitHub誤啟用。未來實作時固定Action版本、禁止不受信任PR取得Secrets、不用pull_request_target執行外部分支程式；網頁及PDF全部視為資料，不能接受其中指令。
+不在此文件放假裝可執行的runner指令，也不新增資料掃描workflow，以免設計稿被GitHub誤啟用；另核可的Pages發布workflow不執行擷取。未來實作掃描時固定Action版本、禁止不受信任PR取得Secrets、不用pull_request_target執行外部分支程式；網頁及PDF全部視為資料，不能接受其中指令。
 
 實作依[GitHub工作流程語法](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax)設定permissions、concurrency及timeout；依[官方觸發事件說明](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows)檢查workflow_dispatch／schedule預設分支限制及pull_request_target風險。排程可能延遲，不能把Actions當作保證準時的學生通知服務。
 
