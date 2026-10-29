@@ -36,6 +36,7 @@
 | [合成資格情境](docs/ELIGIBILITY-CASES.md) | 博士五年級候選人、碩士生與外籍博士的預期行為 |
 | [分類、標籤及來源](docs/TAXONOMY-AND-SOURCES.md) | 資源類別、關鍵字、來源種子、PDF 發現、五組 tag |
 | [理念與 FAO 參考](docs/MISSION-AND-FAO.md) | Slogan、學生權益原則與參考網站觀察 |
+| [權益依據與學校補充](docs/RIGHTS-SOURCES.md) | 國科會研究人力保障、勞動法規底線、臺大及實踐大學來源與版本 |
 | [資料政策](docs/DATA-POLICY.md) | 來源、覆核、版本、存取限制與隱私 |
 | [歷史完整 handoff](docs/reference/HANDOFF.md) | 完整規格參考；舊階段與數量目標以目前計畫為準 |
 
