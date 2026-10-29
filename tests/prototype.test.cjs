@@ -85,3 +85,39 @@ test("線框嵌入快照與正式草稿同源，避免維護兩份不同資料",
  assert.equal((html.match(/role="tabpanel"/g)||[]).length,4);
  assert.equal((html.match(/role="tab"/g)||[]).length,4);
 });
+
+test("研討會以月份首日倒推，跨年不誤當會前30天",()=>{
+ const plan=core.conferencePlan("2027-01-15");
+ assert.equal(plan.agencyBase,"2026-12-01");
+ assert.equal(plan.studentBase,"2026-11-30");
+ assert.equal(plan.studentTime,"17:00");
+ assert.equal(plan.supplement,"2026-12-18");
+ assert.equal(plan.prepare,"2026-11-16");
+ assert.equal(core.conferencePlan("2027-01-31").agencyBase,plan.agencyBase);
+});
+
+test("接受函四週補送跨閏月；例假日未核不升級正式期限",()=>{
+ const plan=core.conferencePlan("2028-03-01");
+ assert.equal(plan.supplement,"2028-02-02");
+ assert.equal(plan.calendarStatus,"unverified");
+ assert.equal(plan.deadlineStatus,"estimate_pending_calendar");
+ assert.equal(plan.noticeRisk,"unknown");
+});
+
+test("接受通知晚於送件與晚於補送分別提醒，補送當日不誤當已逾期",()=>{
+ assert.equal(core.conferencePlan("2026-07-20","2026-05-30").noticeRisk,"before_submission");
+ assert.equal(core.conferencePlan("2026-07-20","2026-06-10").noticeRisk,"after_submission");
+ assert.equal(core.conferencePlan("2026-07-20","2026-06-22").noticeRisk,"after_submission");
+ assert.equal(core.conferencePlan("2026-07-20","2026-06-23").noticeRisk,"after_supplement");
+});
+
+test("無效會議日期及緩衝不產生試算，0天緩衝仍有效",()=>{
+ assert.equal(core.conferencePlan("2026-02-30"),null);
+ assert.equal(core.conferencePlan(null),null);
+ assert.equal(core.conferencePlan("2026-07-20T08:00:00+08:00"),null);
+ assert.equal(core.conferencePlan("2026-07-20","2026-05-30T18:00"),null);
+ assert.equal(core.conferencePlan("2026-07-20","bad"),null);
+ for(const buffer of [-1,91,1.5,NaN]) assert.equal(core.conferencePlan("2026-07-20",null,buffer),null);
+ const plan=core.conferencePlan("2026-07-20",null,0);
+ assert.equal(plan.prepare,plan.studentBase);
+});

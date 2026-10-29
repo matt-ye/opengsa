@@ -126,7 +126,16 @@ function geometry(item, range) {
  };
 }
 function dateText(value) { return value ? value.slice(0,10).replaceAll("-","/")+(value.length>10?" "+value.slice(11,16):"") : "待確認"; }
-const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,filterItems,workspaceItems,domain,position,centerScroll,geometry};
+function conferencePlan(start,notice=null,buffer=14) {
+ const validDate=value=>typeof value==="string" && /^\d{4}-\d{2}-\d{2}$/.test(value) && dayNumber(value)!==null;
+ if(!validDate(start) || (notice && !validDate(notice)) || !Number.isInteger(buffer) || buffer<0 || buffer>90) return null;
+ const agencyBase=addDays(start.slice(0,7)+"-01",-1).slice(0,7)+"-01";
+ const studentBase=addDays(agencyBase,-1), supplement=addDays(start,-28);
+ return {agencyBase,studentBase,studentTime:"17:00",supplement,prepare:addDays(studentBase,-buffer),buffer,
+  noticeRisk:!notice?"unknown":notice>supplement?"after_supplement":notice>studentBase?"after_submission":"before_submission",
+  calendarStatus:"unverified",deadlineStatus:"estimate_pending_calendar"};
+}
+const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,filterItems,workspaceItems,domain,position,centerScroll,geometry,conferencePlan};
 if(typeof module!=="undefined" && module.exports) module.exports=api;
 if(typeof document==="undefined") return;
 
@@ -146,6 +155,28 @@ function el(tag, cls, text) {
  return node;
 }
 function axis(text,kind="") { return el("span","axis "+kind,text); }
+function updateNavHeight() {
+ const height=Math.ceil(document.querySelector(".nav-wrap").getBoundingClientRect().height);
+ document.documentElement.style.setProperty("--nav-height",height+"px");
+}
+updateNavHeight();
+if(typeof ResizeObserver!=="undefined") new ResizeObserver(updateNavHeight).observe(document.querySelector(".nav-wrap"));
+function renderConferencePlan() {
+ const output=byId("conference-output"), start=byId("conference-start").value, notice=byId("conference-notice").value;
+ output.replaceChildren();
+ if(!start) {output.append(el("p","small","填入會議首日後，試算臺大／國科會這個申請路徑。"));return;}
+ const buffer=byId("conference-buffer").value;
+ const plan=conferencePlan(start,notice,buffer===""?NaN:Number(buffer));
+ if(!plan) {output.append(el("p","small","請確認日期，準備緩衝需為0至90的整數天數。"));return;}
+ output.append(el("h4","",byId("conference-name").value.trim()||"我的研討會"),el("p","tiny quiet","條文基準試算 · 未核例假日順延與院系所更早期限；以下不是已確認的正式截止。"));
+ const facts=el("dl","facts");
+ for(const [label,value] of [["會議首日",dateText(start)],["校方彙送基準",dateText(plan.agencyBase)+"（前一個月首日；待核例假日順延）"],["臺大送出基準",dateText(plan.studentBase)+" 17:00（按未順延基準倒推；正式日期待核）"],["接受函補送",dateText(plan.supplement)+"（會議首日前四週；須依程序註明補送）"],["建議開始準備",dateText(plan.prepare)+"（自訂提前"+plan.buffer+"天，非官方期限）"]]) facts.append(el("dt","",label),el("dd","",value));
+ output.append(facts);
+ const messages={unknown:"尚未填接受通知日。若接受函未取得，條文允許註明補送；先查申請程序，不必等接受函才開始準備。",after_supplement:"接受通知日可能晚於接受函補送規定。請提早洽承辦確認可行程序；平台不保證例外或核定。",after_submission:"接受通知日在未順延的申請基準後、補送日內。可先查註明補送程序，避免等接受函才開始申請。",before_submission:"接受通知日未晚於試算基準；仍須核例假日、文件及院系所期限，不能據此保證來得及申請。"};
+ output.append(el("p","callout",messages[plan.noticeRisk]));
+ if(start<=today) output.append(el("p","small","會議已開始或首日已過，以上僅作回顧試算。"));
+ else if(plan.studentBase<today) output.append(el("p","small","未順延的學生送出基準已過；請先確認實際順延日期與校內公告，不把估算當成已確認逾期。"));
+}
 function selectedButtons(container,attribute,value) {
  document.querySelectorAll(container+" button").forEach(button=>{
   const active=button.dataset[attribute]===value;
@@ -455,10 +486,13 @@ byId("range-mode").addEventListener("change",event=>{rangeMode=event.target.valu
 byId("previous-range").addEventListener("click",()=>{rangeMode="recent";byId("range-mode").value="recent";offset-=30;render();});
 byId("next-range").addEventListener("click",()=>{rangeMode="recent";byId("range-mode").value="recent";offset+=30;render();});
 byId("return-today").addEventListener("click",()=>{rangeMode="recent";byId("range-mode").value="recent";offset=0;centerPending=true;render();});
-function refreshToday(){const value=taipeiToday();if(value!==today){today=value;render();}}
+function refreshToday(){const value=taipeiToday();if(value!==today){today=value;render();renderConferencePlan();}}
 document.addEventListener("visibilitychange",()=>{if(!document.hidden) refreshToday();});
 window.addEventListener("focus",refreshToday);
-window.addEventListener("resize",()=>{if(lastRange && view==="gantt" && !byId("search").hidden) requestAnimationFrame(()=>centerToday(lastRange));if(lastPersonalRange && !byId("timeline").hidden) requestAnimationFrame(()=>centerToday(lastPersonalRange,"personal-gantt-grid"));});
+window.addEventListener("resize",()=>{updateNavHeight();if(lastRange && view==="gantt" && !byId("search").hidden) requestAnimationFrame(()=>centerToday(lastRange));if(lastPersonalRange && !byId("timeline").hidden) requestAnimationFrame(()=>centerToday(lastPersonalRange,"personal-gantt-grid"));});
+byId("conference-planner").addEventListener("input",renderConferencePlan);
+byId("conference-clear").addEventListener("click",()=>{byId("conference-name").value="";byId("conference-start").value="";byId("conference-notice").value="";byId("conference-buffer").value="14";renderConferencePlan();});
+renderConferencePlan();
 setInterval(refreshToday,60000);
 activatePanel(location.hash.slice(1));render();
 }());
