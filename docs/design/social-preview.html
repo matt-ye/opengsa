@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OpenGSA｜學生支持風格 Social preview 提案</title>
+<style>
+:root{--paper:#fffaf0;--ink:#244d40;--mint:#e4efdf;--peach:#f5d7c2;--sun:#f3ce70;--soft:#62766b;--line:#cbdcc9}
+*{box-sizing:border-box}body{margin:0;padding:24px;background:#f0eee7;color:var(--ink);font-family:"Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif}
+.notes{max-width:1280px;margin:0 auto 20px;font-size:14px;line-height:1.8}.notes h1{margin:0 0 7px;font-size:22px}.notes p{margin:0}
+.stage{overflow:auto;padding:12px 0 24px}
+.cover{position:relative;width:1280px;height:640px;overflow:hidden;background:var(--paper);border-radius:0;margin:0 auto;box-shadow:0 12px 38px #244d4012}
+.cover:before{content:"";position:absolute;right:-52px;top:-145px;width:560px;height:820px;border-radius:52% 0 0 50%;background:var(--mint);transform:rotate(-8deg)}
+.logo-row{position:absolute;top:61px;left:72px;display:flex;gap:14px;align-items:center}
+.logo-mark{width:47px;height:45px;position:relative}
+.logo-mark:before,.logo-mark:after{content:"";position:absolute;top:7px;width:22px;height:31px;border:3px solid var(--ink);border-radius:3px 9px 3px 3px;background:var(--mint)}
+.logo-mark:before{left:0;transform:skewY(10deg)}.logo-mark:after{left:23px;border-radius:9px 3px 3px 3px;transform:skewY(-10deg)}
+.logo-row strong{font-size:70px;letter-spacing:-3px;line-height:1;font-weight:800}
+.full-name{position:absolute;left:74px;top:151px;font-size:15px;letter-spacing:2.4px;color:var(--soft)}
+.headline{position:absolute;left:72px;top:226px;margin:0;font-size:43px;line-height:1.55;font-weight:700;letter-spacing:-.6px}
+.headline span{display:block}
+.subtitle{position:absolute;left:75px;top:389px;font-size:21px;letter-spacing:.6px;color:var(--soft);margin:0}
+.topics{position:absolute;left:72px;top:453px;display:flex;gap:12px}
+.topic{font-size:17px;padding:10px 17px;border:1px solid #b8ceba;border-radius:999px;background:#fffefa}
+.foot{position:absolute;left:75px;bottom:44px;display:flex;gap:16px;align-items:center;font-size:13px;color:var(--soft);letter-spacing:.5px}
+.dot{width:6px;height:6px;border-radius:50%;background:#8eac87}
+.scene{position:absolute;right:34px;top:86px;width:386px;height:474px}
+.sun{position:absolute;top:4px;right:13px;width:172px;height:172px;border-radius:50%;background:var(--sun)}
+.sun:after{content:"";position:absolute;inset:-19px;border:1px solid #ddbc69;border-radius:50%;opacity:.6}
+.shelf{position:absolute;bottom:12px;left:21px;width:342px;height:26px;border-radius:50%;background:#c9d9c2;opacity:.7}
+.person{position:absolute;left:135px;top:117px;width:141px;height:246px}
+.head{position:absolute;left:39px;top:0;width:70px;height:80px;border-radius:47% 47% 45% 45%;background:var(--peach);transform:rotate(-8deg)}
+.hair{position:absolute;left:32px;top:-2px;width:79px;height:43px;border-radius:52% 48% 33% 10%;background:#43685a;transform:rotate(-10deg)}
+.neck{position:absolute;left:62px;top:68px;width:29px;height:36px;background:var(--peach);border-radius:8px}
+.body{position:absolute;left:7px;top:92px;width:134px;height:136px;border-radius:53px 53px 12px 12px;background:#6c9582}
+.arm{position:absolute;left:15px;top:154px;width:125px;height:25px;background:var(--peach);border-radius:30px;transform:rotate(12deg)}
+.desk{position:absolute;left:62px;top:341px;width:293px;height:14px;background:#c99f73;border-radius:7px}
+.desk-leg{position:absolute;left:93px;top:352px;width:10px;height:87px;background:#c99f73;border-radius:5px}
+.desk-leg.right{left:314px}
+.book{position:absolute;left:126px;top:284px;width:158px;height:69px}
+.page{position:absolute;width:78px;height:58px;top:4px;background:#fffefa;border:2px solid #9ab19a;border-radius:5px}
+.page.left{left:0;transform:skewY(11deg)}.page.right{left:77px;transform:skewY(-11deg)}
+.page:before,.page:after{content:"";position:absolute;left:15px;right:13px;height:2px;background:#d3ddcc;top:18px}
+.page:after{top:29px}
+.plant{position:absolute;left:9px;top:237px;width:68px;height:119px}
+.pot{position:absolute;left:13px;bottom:0;width:48px;height:46px;background:#dfa987;border-radius:5px 5px 16px 16px}
+.stem{position:absolute;left:36px;top:12px;width:3px;height:70px;background:#6c9582;transform:rotate(-7deg)}
+.leaf{position:absolute;width:28px;height:14px;background:#7ba07f;border-radius:100% 0 100% 0;left:9px;top:27px;transform:rotate(15deg)}
+.leaf.two{left:35px;top:7px;transform:rotate(-21deg)}.leaf.three{left:36px;top:44px;transform:rotate(-18deg)}
+.note{position:absolute;padding:12px 17px;background:#fffefa;border:1px solid #c9d9c2;border-radius:14px;font-size:18px;font-weight:700;box-shadow:0 5px 0 #d2e0ca}
+.note.one{left:7px;top:54px;transform:rotate(-6deg)}.note.two{right:1px;top:224px;transform:rotate(5deg)}
+.note small{display:block;font-size:11px;font-weight:400;color:var(--soft);letter-spacing:1px;margin-top:3px}
+.spark{position:absolute;left:113px;top:5px;width:13px;height:13px;border-radius:4px;background:#d9ac73;transform:rotate(45deg)}
+.after{max-width:1280px;margin:14px auto 0;font-size:13px;line-height:1.8;color:var(--soft)}
+/* 以#social-card開啟時，只顯示1280×640圖稿，方便直接輸出。 */
+body:has(#social-card:target){padding:0;background:var(--paper)}
+body:has(#social-card:target) .notes,body:has(#social-card:target) .after{display:none}
+body:has(#social-card:target) .stage{padding:0;overflow:visible}
+body:has(#social-card:target) .cover{margin:0;box-shadow:none}
+@media print{body{padding:0;background:white}.notes,.after{display:none}.stage{padding:0;overflow:visible}.cover{box-shadow:none}}
+</style>
+</head>
+<body>
+<header class="notes"><h1>OpenGSA · Social preview 設計提案</h1><p>方向：學生支持／明亮柔和／研究與安心生活。下方固定1280 × 640，可修改HTML文字與CSS色票。尚未上傳GitHub設定。</p></header>
+<main class="stage">
+<article class="cover" id="social-card" aria-label="OpenGSA專案縮圖：柔和綠色與米白底，研究者閱讀書本，搭配獎助與權益資訊">
+ <div class="logo-row"><span class="logo-mark" aria-hidden="true"></span><strong>OpenGSA</strong></div>
+ <div class="full-name">Grant Scholarships Award</div>
+ <h2 class="headline"><span>把時間留給研究，</span><span>把獎助檢索交給 OpenGSA。</span></h2>
+ <p class="subtitle">先有安心研究的生活，才有探索與成長的可能。</p>
+ <div class="topics"><span class="topic">獎學金與補助</span><span class="topic">研究獎勵</span><span class="topic">學生權益</span></div>
+ <div class="foot"><span>開源共建</span><i class="dot" aria-hidden="true"></i><span>資訊透明</span><i class="dot" aria-hidden="true"></i><span>安心研究</span></div>
+ <div class="scene" aria-hidden="true"><div class="sun"></div><div class="spark"></div><div class="shelf"></div><div class="person"><div class="neck"></div><div class="body"></div><div class="head"></div><div class="hair"></div><div class="arm"></div></div><div class="plant"><div class="stem"></div><div class="leaf"></div><div class="leaf two"></div><div class="leaf three"></div><div class="pot"></div></div><div class="desk"></div><div class="desk-leg"></div><div class="desk-leg right"></div><div class="book"><div class="page left"></div><div class="page right"></div></div><div class="note one">獎助<small>OPPORTUNITY</small></div><div class="note two">權益<small>SUPPORT</small></div></div>
+</article>
+</main>
+<footer class="after">以專案識別取代個人照片；人物為CSS幾何插畫，無外部圖片、字型或追蹤。可討論主標、副標與圖像比例後再定稿。確認後輸出小於1MB的PNG設定repo Social preview；帳號頭像是另一個設定。</footer>
+</body>
+</html>
