@@ -40,6 +40,21 @@ CHINESE_AMOUNTS = {
     900000: ["900,000", "900000", "玖拾萬", "玖拾萬", "九十萬", "90萬"],
 }
 
+def _to_chinese_num(n):
+    digits = ['', '一', '二', '三', '四', '五', '六', '七', '八', '九']
+    if n < 10:
+        return digits[n]
+    elif n == 10:
+        return '十'
+    elif n < 20:
+        return '十' + digits[n % 10]
+    elif n % 10 == 0:
+        return digits[n // 10] + '十'
+    elif n < 100:
+        return digits[n // 10] + '十' + digits[n % 10]
+    return str(n)
+
+
 ROC_CHINESE_YEARS = {
     111: "一一一",
     112: "一一二",
@@ -91,10 +106,20 @@ def _date_tokens(iso_date_str):
         f"{d.month}月{d.day}日",
         f"{d.month}/{d.day}",
     ]
+    cm = _to_chinese_num(d.month)
+    cd = _to_chinese_num(d.day)
+    tokens.extend([
+        f"{cm}月{cd}日",
+        f"{cm}月{cd}號",
+        f"{d.month}月{cd}日",
+        f"{cm}月{d.day}日",
+    ])
     if roc_year in ROC_CHINESE_YEARS:
         cy = ROC_CHINESE_YEARS[roc_year]
         tokens.append(f"{cy}年")
-    return tokens
+        tokens.append(f"{cy}年{cm}月{cd}日")
+        tokens.append(f"{cy}年{d.month}月{d.day}日")
+    return list(dict.fromkeys(tokens))
 
 
 def _amount_tokens(amount):
@@ -107,10 +132,11 @@ def _amount_tokens(amount):
     if amt_int % 10000 == 0:
         wan = amt_int // 10000
         tokens.append(f"{wan}萬")
-        wan_map = {1: "一", 2: "二", 3: "三", 4: "四", 5: "五", 6: "六", 7: "七", 8: "八", 9: "九", 10: "十"}
-        if wan in wan_map:
-            tokens.append(f"{wan_map[wan]}萬")
-    return tokens
+        c_wan = _to_chinese_num(wan)
+        tokens.append(f"{c_wan}萬")
+        if wan == 2:
+            tokens.append("兩萬")
+    return list(dict.fromkeys(tokens))
 
 
 def strip_model_self_claims(candidate):

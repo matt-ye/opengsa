@@ -1124,5 +1124,89 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
         self.assertIn("ntu-ord-assistant-limit", md)
 
 
+
+
+    def test_phase_3_deterministic_extractors_for_colleges_sinica_and_tsmc(self):
+        """測試 Phase 3 學院級（電資、工學院）與代表性機構（中研院、台積電）確定性萃取與檢核。"""
+        # 1. 中研院博士候選人培育計畫
+        sinica_src = next((s for s in CONFIG["sources"] if s["id"] == "sinica-phd-fellowship"), None)
+        self.assertIsNotNone(sinica_src)
+        sinica_blocks = [
+            {"locator": "DAAS-1", "text": "中央研究院博士候選人培育計畫作業要點。國內在學博士生已獲候選人資格且非全時有給職。"},
+            {"locator": "DAAS-2", "text": "人文及社會科學組每月獎助金新臺幣四萬元整，數理與生命科學組每月五萬元整。"},
+            {"locator": "DAAS-3", "text": "申請期間為每年三月一日至四月十日止，線上完成申請並由學校備函送達。"},
+        ]
+        cands_sinica = extract_from_in_memory_blocks(
+            sinica_src, sinica_blocks, revision_id="s"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
+        )
+        self.assertEqual(len(cands_sinica), 1)
+        cs = cands_sinica[0]
+        self.assertEqual(cs["opportunity_id"], "sinica-phd-fellowship-policy")
+        self.assertEqual(cs["category"], "phd_research")
+        self.assertEqual(cs["scope"], "nationwide")
+        self.assertEqual(cs["eligibility"]["degrees"], ["phd"])
+        self.assertEqual(cs["eligibility"]["candidate"]["mode"], "required")
+        self.assertEqual(cs["eligibility"]["employment_status"], "non_in_service_only")
+        self.assertEqual(cs["benefit"]["items"][0]["amount_min"], 40000)
+        self.assertEqual(cs["benefit"]["items"][1]["amount_min"], 50000)
+        self.assertEqual(cs["schedule"]["steps"][0]["deadline"]["value"], "2026-04-10")
+
+        # 2. 台積電博士獎學金專案
+        tsmc_src = next((s for s in CONFIG["sources"] if s["id"] == "tsmc-phd-fellowship"), None)
+        self.assertIsNotNone(tsmc_src)
+        tsmc_blocks = [
+            {"locator": "TSMC-1", "text": "台積電博士獎學金專案。國內大學半導體、電機資訊及物理化學相關在學博士生。"},
+            {"locator": "TSMC-2", "text": "每年新臺幣五十萬元，最長獎助四年，並享業師指導與實習。"},
+        ]
+        cands_tsmc = extract_from_in_memory_blocks(
+            tsmc_src, tsmc_blocks, revision_id="m"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
+        )
+        self.assertEqual(len(cands_tsmc), 1)
+        cm = cands_tsmc[0]
+        self.assertEqual(cm["opportunity_id"], "tsmc-phd-fellowship-policy")
+        self.assertEqual(cm["benefit"]["items"][0]["amount_min"], 500000)
+        self.assertEqual(cm["benefit"]["items"][0]["unit"], "per_year")
+
+        # 3. 臺大電資學院優秀研究生獎助學金
+        eecs_src = next((s for s in CONFIG["sources"] if s["id"] == "ntu-eecs-scholarship"), None)
+        self.assertIsNotNone(eecs_src)
+        eecs_blocks = [
+            {"locator": "EECS-1", "text": "臺大電資學院優秀研究生獎助學金評選要點。電資學院在學研究生（碩士生與博士生）。"},
+            {"locator": "EECS-2", "text": "優秀博士生每月一萬至兩萬元，依各期院務會議審定金額發給。"},
+        ]
+        cands_eecs = extract_from_in_memory_blocks(
+            eecs_src, eecs_blocks, revision_id="e"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
+        )
+        self.assertEqual(len(cands_eecs), 1)
+        ce = cands_eecs[0]
+        self.assertEqual(ce["opportunity_id"], "ntu-eecs-scholarship-policy")
+        self.assertEqual(ce["scope"], "ntu")
+        self.assertEqual(ce["benefit"]["items"][0]["amount_min"], 10000)
+        self.assertEqual(ce["benefit"]["items"][0]["amount_max"], 20000)
+
+        # 4. 臺大工學院研究生獎助學金專區
+        coe_src = next((s for s in CONFIG["sources"] if s["id"] == "ntu-coe-scholarship"), None)
+        self.assertIsNotNone(coe_src)
+        coe_blocks = [
+            {"locator": "COE-1", "text": "國立臺灣大學工學院研究生獎助學金專區。工學院各學系所研究生。"},
+            {"locator": "COE-2", "text": "每學年五萬至十萬元，依各類獎學金辦法核給。"},
+        ]
+        cands_coe = extract_from_in_memory_blocks(
+            coe_src, coe_blocks, revision_id="c"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
+        )
+        self.assertEqual(len(cands_coe), 1)
+        cc = cands_coe[0]
+        self.assertEqual(cc["opportunity_id"], "ntu-coe-scholarship-policy")
+        self.assertEqual(cc["scope"], "ntu")
+        self.assertEqual(cc["benefit"]["items"][0]["amount_min"], 50000)
+        self.assertEqual(cc["benefit"]["items"][0]["amount_max"], 100000)
+
+        # 5. 驗證 4 筆候選項目皆通過 verify_candidate 守門條件
+        for cand, blocks in [(cs, sinica_blocks), (cm, tsmc_blocks), (ce, eecs_blocks), (cc, coe_blocks)]:
+            verified = verify_candidate(cand, in_memory_blocks=blocks)
+            self.assertEqual(verified["verification"]["errors"], [], f"Errors in {cand['candidate_id']}: {verified['verification']['errors']}")
+            self.assertIn(verified["verification"]["status"], ("passed_automated_checks", "passed_with_gaps"))
+
+
 if __name__ == "__main__":
     unittest.main()

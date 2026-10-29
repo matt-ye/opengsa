@@ -7,7 +7,11 @@
     "www.aca.ntu.edu.tw",
     "ord.ntu.edu.tw",
     "law.nstc.gov.tw",
-    "www.faos.org.tw"
+    "www.faos.org.tw",
+    "daas.sinica.edu.tw",
+    "www.tsmc.com",
+    "eecs.ntu.edu.tw",
+    "www.eng.ntu.edu.tw"
   ],
   "max_requests": 25,
   "max_changed_documents": 5,
@@ -174,6 +178,65 @@
       "max_pdfs": 0,
       "review_note": "碩士兼任上限20,000元；博士未獲資格42,000元；博士候選人上限50,000元。注意此為支給上限非保底，同一補助單位合計。robots禁止/WebUPD/。",
       "evidence_mode": "short_excerpt"
+    },
+    {
+      "id": "sinica-phd-fellowship",
+      "title": "中研院博士候選人培育計畫",
+      "url": "https://daas.sinica.edu.tw/pages/2798",
+      "body_selector": ".page-content",
+      "required_markers": [
+        "博士候選人培育計畫",
+        "獎助金"
+      ],
+      "pdf_include": [
+        "作業要點",
+        "申請須知"
+      ],
+      "evidence_mode": "short_excerpt"
+    },
+    {
+      "id": "tsmc-phd-fellowship",
+      "title": "台積電博士獎學金專案",
+      "url": "https://www.tsmc.com/chinese/careers/phd_fellowship",
+      "body_selector": ".fellowship-detail",
+      "required_markers": [
+        "博士獎學金",
+        "台積電"
+      ],
+      "pdf_include": [
+        "申請辦法"
+      ],
+      "evidence_mode": "short_excerpt"
+    },
+    {
+      "id": "ntu-eecs-scholarship",
+      "title": "臺大電資學院優秀研究生獎助學金",
+      "url": "https://eecs.ntu.edu.tw/w/eecsntu/scholarship_list",
+      "body_selector": ".main-content",
+      "required_markers": [
+        "優秀研究生",
+        "電資學院"
+      ],
+      "pdf_include": [
+        "實施辦法",
+        "評選標準"
+      ],
+      "evidence_mode": "short_excerpt"
+    },
+    {
+      "id": "ntu-coe-scholarship",
+      "title": "臺大工學院研究生獎助學金專區",
+      "url": "https://www.eng.ntu.edu.tw/tc/scholarship.aspx",
+      "body_selector": ".content-area",
+      "required_markers": [
+        "工學院",
+        "研究生獎助學金"
+      ],
+      "pdf_include": [
+        "作業細則",
+        "推薦表"
+      ],
+      "evidence_mode": "short_excerpt"
     }
   ],
   "deferred_sources": [
@@ -196,10 +259,6 @@
     {
       "url": "https://oia.ntu.edu.tw/",
       "reason": "國際處雙聯學位與海外獎助多層動態清單，列為下一梯次主機與 robots 審查。"
-    },
-    {
-      "url": "https://daais.sinica.edu.tw/",
-      "reason": "中研院博士候選人培育計畫，列為下一梯次主機與 robots 審查。"
     }
   ],
   "terms_notes": [
