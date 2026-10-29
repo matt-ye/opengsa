@@ -1208,5 +1208,88 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
             self.assertIn(verified["verification"]["status"], ("passed_automated_checks", "passed_with_gaps"))
 
 
+
+    def test_review_ledger_promotion_ready_and_pr_draft_export(self):
+        """測試獨立覆核台帳（applied/noted）、防自審守門、PR 暫存草稿導出與契約合規。"""
+        # 1. 載入既有審核報告資料
+        reviews_ledger = read_json(ROOT / "data/scan-reviews.json")
+        self.assertIn("reviews", reviews_ledger)
+        self.assertEqual(len(reviews_ledger["reviews"]), 4)
+
+        # 2. 準備 4 筆 Phase 2 候選項目
+        dragon_src = next(s for s in CONFIG["sources"] if s["id"] == "nstc-abroad-dragon-rule")
+        asst_src = next(s for s in CONFIG["sources"] if s["id"] == "nstc-assistant-rule")
+        ta_src = next(s for s in CONFIG["sources"] if s["id"] == "ntu-ta-policy")
+        limit_src = next(s for s in CONFIG["sources"] if s["id"] == "ntu-ord-assistant-limit")
+
+        cands = []
+        cands.extend(extract_from_in_memory_blocks(
+            dragon_src,
+            [{"locator": "FL039188-1", "text": "國家科學及技術委員會補助博士生赴國外研究作業要點。國內公立大學博士班在學一年以上經學校推薦。以一年研究費九十萬元為上限核給，補助七至十二個月。每年六月一日至七月三十一日完成線上申請並備函送會。"}],
+            revision_id="d"*64, observed_at="2026-10-28T09:17:00+08:00", as_of="2026-10-28"
+        ))
+        cands.extend(extract_from_in_memory_blocks(
+            asst_src,
+            [{"locator": "FL028686-1", "text": "國科會補助專題研究計畫研究人力約用注意事項。專題計畫兼任助理碩士學生每月最高一萬六千元，博士級助理每月最高四萬元。受聘學生應簽訂書面約定。"}],
+            revision_id="a"*64, observed_at="2026-10-28T09:17:00+08:00", as_of="2026-10-28"
+        ))
+        cands.extend(extract_from_in_memory_blocks(
+            ta_src,
+            [{"locator": "TA-1", "text": "臺大教務處教學助理制度獎勵金實施辦法。博士班一般課程教學助理每月八千至一萬元。碩士班一般中文教學助理每月六千至七千五百元。"}],
+            revision_id="t"*64, observed_at="2026-10-28T09:17:00+08:00", as_of="2026-10-28"
+        ))
+        cands.extend(extract_from_in_memory_blocks(
+            limit_src,
+            [{"locator": "ORD-1", "text": "國立臺灣大學計畫兼任助理及研究獎助生每月支給上限標準表。碩士級每月支給上限兩萬元；博士生未取得候選人資格四萬兩千元；博士候選人五萬元。"}],
+            revision_id="l"*64, observed_at="2026-10-28T09:17:00+08:00", as_of="2026-10-28"
+        ))
+
+        bundle = {
+            "schema_version": "0.1.0-proposal",
+            "as_of": "2026-10-28",
+            "timezone": "Asia/Taipei",
+            "model_enabled": False,
+            "model_calls": 0,
+            "official_data_modified": False,
+            "candidates": cands,
+        }
+
+        # 3. 套用 scan-reviews.json 覆核台帳並產出報告
+        verified_bundle, summary, md = build_review_report(bundle, PILOT, reviews_data=reviews_ledger)
+        self.assertEqual(summary["total_candidates"], 4)
+        self.assertEqual(summary["promotion_ready"], 2)  # 2 筆 applied，2 筆 noted
+        self.assertFalse(summary["official_data_modified"])
+
+        # 4. 驗證自審阻擋（若 reviewer 與 editor 相同，嚴格禁止 promotion_ready）
+        self_review_ledger = {
+            "reviews": [{
+                "revision_id": "d"*64,
+                "source_id": "nstc-abroad-dragon-rule",
+                "action": "applied",
+                "reviewer": cands[0]["review"]["editor"],  # 與 editor 相同
+                "reviewed_on": "2026-10-28",
+            }]
+        }
+        _, self_summary, _ = build_review_report(bundle, PILOT, reviews_data=self_review_ledger)
+        self.assertEqual(self_summary["promotion_ready"], 0)
+
+        # 5. 驗證 export_pr_candidate_draft 匯出 PR 暫存檔
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp_pr_path = Path(tmpdir) / "pilot-pr-candidate.json"
+            promoted_ids = export_pr_candidate_draft(verified_bundle, PILOT, tmp_pr_path, scan_sources_config=CONFIG)
+            self.assertEqual(len(promoted_ids), 2)
+            self.assertIn("nstc-abroad-dragon-policy", promoted_ids)
+            self.assertIn("nstc-assistant-policy", promoted_ids)
+
+            # 驗證導出之暫存資料 100% 通過 validate 資料契約檢驗
+            draft_data = read_json(tmp_pr_path)
+            errs = validate_pilot(draft_data)
+            self.assertEqual(errs, [])
+
+            # 驗證嚴格禁止直接覆寫 official pilot.json
+            with self.assertRaises(ValueError):
+                export_pr_candidate_draft(verified_bundle, PILOT, ROOT / "data/pilot.json")
+
+
 if __name__ == "__main__":
     unittest.main()

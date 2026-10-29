@@ -427,9 +427,9 @@ def candidate_to_pilot_opportunity(cand):
     }
 
 
-def export_pr_candidate_draft(verified_bundle, pilot_data, output_path):
-    """僅將 promotion_ready == True（通過獨立檢核且完成非原編輯者人工覆核）之候選匯出至 PR 暫存檔。
-    嚴格禁止覆寫 data/pilot.json！
+def export_pr_candidate_draft(verified_bundle, pilot_data, output_path, scan_sources_config=None):
+    """僅將 promotion_ready == True（通過獨立檢核且經非編輯者人工覆核）之候選項目匯出至 PR 暫存檔。
+    嚴禁覆寫 data/pilot.json！
     """
     output_path = Path(output_path)
     official_pilot_path = (ROOT / "data/pilot.json").resolve()
@@ -438,6 +438,16 @@ def export_pr_candidate_draft(verified_bundle, pilot_data, output_path):
 
     draft_pilot = deepcopy(pilot_data)
     opp_index = {item["id"]: idx for idx, item in enumerate(draft_pilot["opportunities"])}
+    scan_by_id = {}
+    if scan_sources_config and "sources" in scan_sources_config:
+        scan_by_id = {s["id"]: s for s in scan_sources_config["sources"]}
+    elif (ROOT / "data/scan-sources.json").exists():
+        try:
+            cfg = json.loads((ROOT / "data/scan-sources.json").read_text(encoding="utf-8"))
+            scan_by_id = {s["id"]: s for s in cfg.get("sources", [])}
+        except Exception:
+            pass
+
     promoted_ids = []
 
     for cand in verified_bundle.get("candidates", []):
@@ -452,6 +462,28 @@ def export_pr_candidate_draft(verified_bundle, pilot_data, output_path):
 
         opp = candidate_to_pilot_opportunity(cand)
         opp["application"]["as_of"] = draft_pilot["as_of"]
+
+        # 同步登錄來源台帳至草稿 sources，維持 pilot.schema.json 與 check_data 資料契約完整性
+        src_id = cand.get("source_metadata", {}).get("source_id")
+        if src_id and not any(s["id"] == src_id for s in draft_pilot.get("sources", [])):
+            scan_src = scan_by_id.get(src_id, {})
+            draft_pilot["sources"].append({
+                "id": src_id,
+                "title": scan_src.get("title", cand.get("title")),
+                "url": cand.get("source_metadata", {}).get("url"),
+                "authority": "official_page",
+                "access": "public",
+                "checked_on": draft_pilot["as_of"],
+                "locator": "候選來源觀察記錄",
+                "owner": None,
+                "ownership_status": "unassigned",
+                "proposed_review_frequency": "每週二/五低頻掃描；人工獨立覆核",
+                "automation": "not_enabled",
+                "crawl_permission": "not_reviewed",
+                "next_action": "獨立覆核後納入公開候選台帳",
+                "redistribution": "link_and_original_summary_only",
+            })
+
         if opp["id"] in opp_index:
             draft_pilot["opportunities"][opp_index[opp["id"]]] = opp
         else:
@@ -476,19 +508,25 @@ def main():
     parser.add_argument("--output-dir", type=Path, default=ROOT / "work/scanner/report")
     parser.add_argument("--as-of", default="2026-10-29")
     parser.add_argument("--no-refetch", action="store_true")
+    parser.add_argument("--export-pr-draft", type=Path, default=None, help="Path to export promoted PR draft")
     args = parser.parse_args()
 
     config = json.loads(args.config.read_text(encoding="utf-8"))
     pilot_data = json.loads(args.pilot.read_text(encoding="utf-8"))
     reviews_data = json.loads(args.reviews.read_text(encoding="utf-8")) if args.reviews.exists() else {"reviews": []}
-    pending = json.loads(args.candidates.read_text(encoding="utf-8")) if args.candidates.exists() else []
+    raw_input = json.loads(args.candidates.read_text(encoding="utf-8")) if args.candidates.exists() else []
 
-    bundle, refetch_statuses = refetch_and_extract_candidates(
-        pending,
-        config,
-        as_of=args.as_of,
-        allow_network_refetch=not args.no_refetch,
-    )
+    if isinstance(raw_input, dict) and "candidates" in raw_input and (not raw_input["candidates"] or "candidate_id" in raw_input["candidates"][0]):
+        bundle = raw_input
+        refetch_statuses = {c.get("source_metadata", {}).get("url"): "in_memory" for c in bundle.get("candidates", [])}
+    else:
+        pending = raw_input if isinstance(raw_input, list) else (raw_input.get("pending") or [])
+        bundle, refetch_statuses = refetch_and_extract_candidates(
+            pending,
+            config,
+            as_of=args.as_of,
+            allow_network_refetch=not args.no_refetch,
+        )
     verified_bundle, summary, md = build_review_report(
         bundle,
         pilot_data,
@@ -506,6 +544,15 @@ def main():
         json.dumps(summary.get("model_usage", {}), ensure_ascii=False, indent=2), encoding="utf-8"
     )
     (args.output_dir / "review-summary.md").write_text(md, encoding="utf-8")
+    if args.export_pr_draft and summary["promotion_ready"] > 0:
+        promoted = export_pr_candidate_draft(
+            verified_bundle,
+            pilot_data,
+            args.export_pr_draft,
+            scan_sources_config=config,
+        )
+        print(f"Exported {len(promoted)} promoted opportunities to {args.export_pr_draft}: {promoted}")
+
     print(
         json.dumps(
             {
