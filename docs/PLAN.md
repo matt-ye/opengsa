@@ -19,6 +19,7 @@
 - 不註冊網域、不使用付費服務、不啟用通知、不爬取登入限定內容，也不聯絡第三人。
 - 使用者後續要求處理自動爬取，啟用[有限來源掃描](SCANNER.md)：六個正文目標、可允許文字PDF、週二／五09:17（臺北）與手動試跑。此新決策取代早期來源掃描未啟用限制；D1与通知仍未啟用。先低頻觀察四週，再評估是否提高頻率。
 - 2026-10-29使用者進一步要求完成「爬取結果 → 結構化獎助資料 → 檢核 → 申請時間判斷」主要開發，並接受雙軌「確定性規則 + LLM API (`extract` 補缺 + `audit` 交叉盤查)」規劃：已建立有版本之候選 Schema (`schema/candidate.schema.json`, `1.1.0-candidate`)、結構化萃取 (`scripts/extract_candidates.py`, `extractor-1.1.0`，確定性規則優先＋雙軌可替換模型 Adapter)、七面向獨立檢核 (`scripts/verify_candidates.py`, `verifier-1.1.0`，含 `coverage_ok` 與 `passed_with_gaps`)、多層期限分流與 P1 資格比對 (`scripts/evaluate_deadlines.py`)、候選覆核與差異報告 (`scripts/review_candidates.py`)，以及三軌對照基準測試 (`scripts/evaluate_extraction_benchmark.py`)。爬蟲或模型仍不直接覆寫 `data/pilot.json`，未經非原編輯者獨立覆核一律維持 `pending`。
+- 2026-10-30使用者另要求完成全域來源盤點與擴展架構：以臺大為例規劃全校 5 大處室、11 傳統學院＋3 跨領域學院、代表性系所（電資/工/理/醫等）之獎助拓撲，並建立向全臺大專院校擴展之四層標準階層規範 (`Institutional Hierarchy Schema`)；全面盤點國科會、中研院、教育部等政府機關，民間非營利基金會與企業獎學金；擴界納入創業補助（FITI/U-start/TEC）、AI工具與算力補助（國網TWCC/公有雲研究點數）、國外交流（Fulbright/DAAD/法德英歐）與青年百億海外圓夢基金（`twpathfinder.org`）；提煉 7 大主題關鍵字庫與排斥條款語法；並規劃 GitHub Actions 儲存 3 把核心免費 API（Gemini/Groq/Mistral）之瀑布容錯與斷路器降級架構，見[全域來源藍圖與擴展規劃](SOURCE-LANDSCAPE-AND-EXPANSION.md)。
 
 ## 現況
 
@@ -91,6 +92,7 @@ flowchart TD
 - [x] 使用者接受v0.6作MVP介面基礎；v0.7／v0.8補固定篩選卡及多方案研討會規劃。
 - [x] 有版本候選 Schema (`1.1.0-candidate`)、雙軌結構化萃取與盤查 (`extract` + `audit`)、獨立檢核 (`coverage_ok` / `passed_with_gaps`)、申請時間與 P1 資格判斷、候選差異覆核報告完成，51項Python測試通過。
 - [ ] 由非原編輯者對候選報告與 10 筆草稿完成人工獨立覆核，再經資料 PR 更新正式資料。
+- [x] 完成臺大全院系拓撲、全國院校階層化擴展模型、政府/民間/企業/創業/算力/海外/圓夢基金全方位盤點、關鍵字矩陣，以及 GitHub Actions 3 把免費 API 備援規劃 (`docs/SOURCE-LANDSCAPE-AND-EXPANSION.md`)。
 - [ ] 確認資料契約、範圍與公開版本驗收。
 
 資料結構檢查或自動檢核通過不代表官方內容或個人資格已核定；目前所有正式草稿仍為 `draft`，所有掃描萃取候選仍為 `pending`。
