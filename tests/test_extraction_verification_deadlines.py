@@ -1003,5 +1003,75 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
             self.assertEqual(ad_gh.api_key_env, "GITHUB_TOKEN")
 
 
+    def test_phase_2_deterministic_extractors_for_dragon_assistant_and_ta(self):
+        # 1. 測試千里馬作業要點萃取
+        dragon_src = next((s for s in CONFIG["sources"] if s["id"] == "nstc-abroad-dragon-rule"), None)
+        self.assertIsNotNone(dragon_src)
+        dragon_blocks = [
+            {"locator": "FL039188-1", "text": "國家科學及技術委員會補助博士生赴國外研究作業要點。國內設籍中華民國國民，博士班在學一年以上經學校推薦。"},
+            {"locator": "FL039188-2", "text": "以一年新臺幣九十萬元按研究日數核算，補助期間七至十二個月。"},
+            {"locator": "FL039188-3", "text": "申請機構應於每年六月一日至七月三十一日完成線上申請並備函檢送名冊。"},
+        ]
+        cands_dragon = extract_from_in_memory_blocks(
+            dragon_src, dragon_blocks, revision_id="d"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
+        )
+        self.assertEqual(len(cands_dragon), 1)
+        cd = cands_dragon[0]
+        self.assertEqual(cd["category"], "overseas_research")
+        self.assertEqual(cd["eligibility"]["degrees"], ["phd"])
+        self.assertEqual(cd["eligibility"]["nationality"], "roc_only")
+        self.assertEqual(cd["benefit"]["items"][0]["amount_max"], 900000)
+        self.assertEqual(cd["benefit"]["items"][0]["amount_min"], 525000)
+        self.assertEqual(cd["schedule"]["steps"][1]["deadline"]["value"], "2026-07-31")
+
+        # 2. 測試國科會研究人力約用注意事項萃取
+        asst_src = next((s for s in CONFIG["sources"] if s["id"] == "nstc-assistant-rule"), None)
+        self.assertIsNotNone(asst_src)
+        asst_blocks = [
+            {"locator": "FL028686-1", "text": "國家科學及技術委員會補助專題研究計畫研究人力約用注意事項。學生兼任人員含兼任助理與研究獎助生。"},
+            {"locator": "FL028686-2", "text": "兼任人員每月工作酬金或研究津貼至少六千元；博士生費用增核每月一萬元，每月總額至少一萬六千元。"},
+        ]
+        cands_asst = extract_from_in_memory_blocks(
+            asst_src, asst_blocks, revision_id="a"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
+        )
+        self.assertEqual(len(cands_asst), 1)
+        ca = cands_asst[0]
+        self.assertEqual(ca["category"], "indirect_support")
+        self.assertEqual(ca["benefit"]["items"][0]["amount_min"], 6000)
+        self.assertEqual(ca["benefit"]["items"][1]["amount_min"], 16000)
+
+        # 3. 測試臺大教務處 TA 獎勵金辦法萃取
+        ta_src = next((s for s in CONFIG["sources"] if s["id"] == "ntu-ta-policy"), None)
+        self.assertIsNotNone(ta_src)
+        ta_blocks = [
+            {"locator": "TA-1", "text": "臺大教務處教學助理制度獎勵金實施辦法。博士班一般課程教學助理每月八千至一萬元。"},
+            {"locator": "TA-2", "text": "碩士班一般中文教學助理每月六千至七千五百元；每學期最多擔任兩門課。"},
+        ]
+        cands_ta = extract_from_in_memory_blocks(
+            ta_src, ta_blocks, revision_id="t"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
+        )
+        self.assertEqual(len(cands_ta), 1)
+        cta = cands_ta[0]
+        self.assertEqual(cta["source_metadata"]["evidence_mode"], "hash_only")
+        self.assertEqual(cta["benefit"]["items"][0]["amount_min"], 8000)
+        self.assertEqual(cta["benefit"]["items"][0]["amount_max"], 10000)
+
+        # 4. 測試臺大專題計畫兼任上限標準萃取
+        limit_src = next((s for s in CONFIG["sources"] if s["id"] == "ntu-ord-assistant-limit"), None)
+        self.assertIsNotNone(limit_src)
+        limit_blocks = [
+            {"locator": "ORD-1", "text": "國立臺灣大學計畫兼任助理及研究獎助生每月支給上限標準表。"},
+            {"locator": "ORD-2", "text": "碩士級每月支給上限兩萬元；博士生未取得候選人資格四萬兩千元；博士候選人五萬元。"},
+        ]
+        cands_limit = extract_from_in_memory_blocks(
+            limit_src, limit_blocks, revision_id="l"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
+        )
+        self.assertEqual(len(cands_limit), 1)
+        cl = cands_limit[0]
+        self.assertEqual(cl["benefit"]["items"][0]["amount_max"], 20000)
+        self.assertEqual(cl["benefit"]["items"][1]["amount_max"], 42000)
+        self.assertEqual(cl["benefit"]["items"][2]["amount_max"], 50000)
+
+
 if __name__ == "__main__":
     unittest.main()
