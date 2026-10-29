@@ -186,7 +186,8 @@ const personaPresets={
  living_support:{category:"living_tuition",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
  abroad_conf:{category:"international_conference",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
  overseas_study:{category:"overseas_research",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
- outcome_award:{category:"outcome_award",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"}
+ outcome_award:{category:"outcome_award",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
+ ta_assistant:{category:"indirect_support",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"}
 };
 function activePersona(currentState){
  if(!currentState) return null;
@@ -566,8 +567,8 @@ function render() {
  lastRange=range;
  byId("result-count").textContent="顯示 "+found.length+" / "+items.length+" 項";
  byId("mode-note").textContent=mode==="demo"
-  ? "合成排程示範：名稱、身分標籤、起訖與結果日全部虛構，只用於確認互動。"
-  : "來源草稿：10筆既有候選資料＋醫學院、傑出人才發展基金會2筆會議方案入口，全部待獨立覆核；制度入口不視為已確認受理機會。";
+  ? "合成示範模式：日期與標籤僅供介面體驗，非正式公告。"
+  : "收錄臺大與全國代表性獎助草稿及會議補助制度；申請前請以主辦單位當期公告為準。";
  byId("mode-note").classList.toggle("synthetic-note",mode==="demo");
  if(personalConferences.size) byId("mode-note").textContent+=" 另含本次研討會規劃"+personalConferences.size+"項，為自填／試算待核，非合成方案。";
  byId("chart-range").textContent=iso(range.start).replaceAll("-","/")+" — "+iso(range.end).replaceAll("-","/")+" · 臺北時間";
