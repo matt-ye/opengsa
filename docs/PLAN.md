@@ -22,7 +22,7 @@
 
 本機API資產僅作私人評估，未呼叫推論、未搬動或設定Secrets。Jev第一方文件已查核，屬可選的結構化判斷元件，不預設為永久免費或整套爬蟲替代品。
 
-縮圖已選「學生支持、明亮柔和、研究與安心生活」方向，使用專案識別與HTML插畫，不用個人照片；[HTML草稿](design/social-preview.html)尚未上傳repo Social preview。以上規劃不等於核可部署、DB建立、排程或通知。
+縮圖已核可「學生支持、明亮柔和、研究與安心生活」圖稿，使用專案識別與HTML插畫，不用個人照片；[HTML來源](design/social-preview.html)保留可修改版本，[JPG](assets/opengsa-social-preview.jpg)已嵌入README。GitHub Social preview由使用者自行上傳，尚未核實套用狀態。以上不等於核可部署、DB建立、排程或通知。
 
 已整理使命、七類資金支持與兩類資訊入口、五組 tag、來源種子、三份 PDF 摘要、FAO 有限範圍觀察、資料模型草案與測試情境。
 

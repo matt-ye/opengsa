@@ -2,6 +2,8 @@
 
 **Grant Scholarships Award**
 
+![OpenGSA 專案主視覺：研究與安心生活](docs/assets/opengsa-social-preview.jpg)
+
 **把時間留給研究，把獎助檢索交給 OpenGSA。**
 
 整理臺灣碩博士生的獎學金、研究獎勵、出國補助、就學與生活支持，以及 RA／TA 權益與求助入口，讓學生看懂資格、掌握期限並查到正式依據。
@@ -29,7 +31,7 @@
 |---|---|
 | [目前計畫](docs/PLAN.md) | 已核可範圍、階段、下一步與驗收 |
 | [長期維運與訂閱提案](docs/OPERATIONS-PLAN.md) | GitHub／D1分工、來源擷取、Agent檢核、成本、RSS與ICS；尚未啟用 |
-| [專案縮圖提案](docs/design/social-preview.html) | 可修改HTML的明亮柔和學生支持風格；尚未設定GitHub縮圖 |
+| [專案縮圖原始設計](docs/design/social-preview.html) | 已核可圖稿的可修改HTML；GitHub Social preview由使用者自行上傳 |
 | [四頁線框與流程](docs/design/README.md) | 搜尋、詳情、時間軸、權益入口；可開啟HTML審閱稿 |
 | [資料契約草案](docs/DATA-CONTRACT.md) | 欄位、狀態、日期、引用及檢查方式 |
 | [10筆樣本查核表](docs/PILOT-REVIEW.md) | 草稿差異、來源台帳與未完成覆核 |
