@@ -540,14 +540,69 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
         return self.run_dual_track(source, blocks, draft_candidate, mode=self.mode)
 
 
+PROVIDER_DEFAULTS = {
+    "nvidia": {
+        "base_url": "https://integrate.api.nvidia.com/v1",
+        "default_model": "meta/llama-3.3-70b-instruct",
+        "api_key_envs": ["NVIDIA_API_KEY", "OPENGSA_NVIDIA_API_KEY"],
+    },
+    "groq": {
+        "base_url": "https://api.groq.com/openai/v1",
+        "default_model": "llama-3.3-70b-versatile",
+        "api_key_envs": ["GROQ_API_KEY", "OPENGSA_GROQ_API_KEY"],
+    },
+    "sambanova": {
+        "base_url": "https://api.sambanova.ai/v1",
+        "default_model": "Meta-Llama-3.3-70B-Instruct",
+        "api_key_envs": ["SAMBANOVA_API_KEY", "OPENGSA_SAMBANOVA_API_KEY"],
+    },
+    "cerebras": {
+        "base_url": "https://api.cerebras.ai/v1",
+        "default_model": "llama-3.3-70b",
+        "api_key_envs": ["CEREBRAS_API_KEY", "OPENGSA_CEREBRAS_API_KEY"],
+    },
+    "openrouter": {
+        "base_url": "https://openrouter.ai/api/v1",
+        "default_model": "meta-llama/llama-3.3-70b-instruct:free",
+        "api_key_envs": ["OPENROUTER_API_KEY", "OPENGSA_OPENROUTER_API_KEY"],
+    },
+    "siliconflow": {
+        "base_url": "https://api.siliconflow.cn/v1",
+        "default_model": "Qwen/Qwen2.5-7B-Instruct",
+        "api_key_envs": ["SILICONFLOW_API_KEY", "OPENGSA_SILICONFLOW_API_KEY"],
+    },
+    "mistral": {
+        "base_url": "https://api.mistral.ai/v1",
+        "default_model": "mistral-small-latest",
+        "api_key_envs": ["MISTRAL_API_KEY", "OPENGSA_MISTRAL_API_KEY"],
+    },
+    "github": {
+        "base_url": "https://models.inference.ai.azure.com",
+        "default_model": "gpt-4o-mini",
+        "api_key_envs": ["GITHUB_TOKEN", "OPENGSA_GH_MODELS_PAT"],
+    },
+}
+
+
 def create_model_adapter_from_env():
     """從環境變數建立模型 Adapter；預設 OPENGSA_MODEL_MODE='off' 回傳 DisabledModelAdapter。"""
     mode = os.environ.get("OPENGSA_MODEL_MODE", "off").strip().lower()
     if mode not in ("extract", "audit", "both"):
         return DisabledModelAdapter()
-    base_url = os.environ.get("OPENGSA_MODEL_BASE_URL", "").strip()
-    model_name = os.environ.get("OPENGSA_MODEL_NAME", "").strip()
-    api_key_env = os.environ.get("OPENGSA_MODEL_API_KEY_ENV", "OPENGSA_MODEL_API_KEY").strip()
+    provider = os.environ.get("OPENGSA_MODEL_PROVIDER", "").strip().lower()
+    p_info = PROVIDER_DEFAULTS.get(provider, {})
+
+    base_url = os.environ.get("OPENGSA_MODEL_BASE_URL", "").strip() or p_info.get("base_url", "")
+    model_name = os.environ.get("OPENGSA_MODEL_NAME", "").strip() or p_info.get("default_model", "")
+    api_key_env = os.environ.get("OPENGSA_MODEL_API_KEY_ENV", "").strip()
+    if not api_key_env:
+        candidate_envs = p_info.get("api_key_envs", ["OPENGSA_MODEL_API_KEY", "OPENAI_API_KEY"])
+        for candidate in candidate_envs:
+            if candidate in os.environ and os.environ[candidate].strip():
+                api_key_env = candidate
+                break
+        if not api_key_env:
+            api_key_env = candidate_envs[0]
     if not base_url or not model_name:
         return DisabledModelAdapter()
     return OpenAICompatibleAdapter(
