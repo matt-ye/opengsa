@@ -17,6 +17,9 @@ def read_json(path):
 def validate(data):
     schema = read_json(ROOT / "schema/pilot.schema.json")
     Draft202012Validator.check_schema(schema)
+    candidate_schema_path = ROOT / "schema/candidate.schema.json"
+    if candidate_schema_path.exists():
+        Draft202012Validator.check_schema(read_json(candidate_schema_path))
     errors = [
         f"{'/'.join(map(str, error.absolute_path))}: {error.message}"
         for error in Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(data)

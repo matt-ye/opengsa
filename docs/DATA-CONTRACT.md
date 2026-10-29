@@ -1,35 +1,37 @@
-# 資料契約 0.1.0-draft
+# 資料契約 0.1.0-draft 與候選契約 1.0.0-candidate
 
-狀態：待使用者確認的階段 A 契約。機器規格為 [JSON Schema](../schema/pilot.schema.json)，樣本為 [pilot.json](../data/pilot.json)。此版本不宣告產品引擎或正式資料庫已完成。
+狀態：正式草稿快照採 [`schema/pilot.schema.json`](../schema/pilot.schema.json) (`0.1.0-draft`)，樣本為 [`data/pilot.json`](../data/pilot.json)；爬取與結構化萃取之待覆核候選採 [`schema/candidate.schema.json`](../schema/candidate.schema.json) (`1.0.0-candidate`)。兩份 Schema 均由 `scripts/check_data.py` 與 `scripts/verify_candidates.py` 驗證，未完成人工獨立覆核之候選不得自動覆寫 `data/pilot.json`。
 
-## 最小模型
+## 最小模型與候選擴充
 
 ```mermaid
 erDiagram
   SOURCE ||--o{ EVIDENCE_REF : "來源與定位"
-  PROGRAM ||--o{ OPPORTUNITY : "制度與年度梯次"
+  SOURCE ||--o{ FIELD_EVIDENCE : "逐欄雜湊與定位"
+  PROGRAM ||--o{ OPPORTUNITY : "制度與年度梯次分支"
   OPPORTUNITY ||--|{ PROCEDURE_STEP : "誰何時送件"
+  OPPORTUNITY ||--o{ BENEFIT_ITEM : "金額幣別與單位"
   EVIDENCE_REF }o--o{ OPPORTUNITY : "逐欄引用"
   SOURCE ||--o{ POLICY_VERSION : "公布修正與生效"
 ```
 
-目前用一個 JSON 檔管理；Program 僅用穩定 program_key 表示，不另建資料表。ProcedureStep 內嵌於機會，證據是 source ID＋定位；先不用 API、帳號或資料庫。四個既有文件中的長期實體仍屬後續提案。
+1. **正式草稿契約 (`schema/pilot.schema.json`, `0.1.0-draft`)**：管理網站預覽讀取之 10 筆代表草稿與 17 筆去重來源。
+2. **結構化候選契約 (`schema/candidate.schema.json`, `1.0.0-candidate`)**：沿用 `pilot.schema.json` 核心概念，並針對結構化萃取、獨立檢核與申請時間判斷擴充版本化欄位：
 
 | 區塊 | 必填內容 | 用途與限制 |
 |---|---|---|
-| 根層 | schema_version、as_of、publication_status | 快照日期不是每筆的申請年度；本版固定為草稿 |
-| sources | ID、官方 URL、來源層級、存取、觀察日、定位、維護者、檢查頻率、下一步 | checked_on 代表本輪查看，不代表獨立覆核；owner 未指派可為 null |
-| opportunities | 穩定 ID、program_key、類型、scope、cycle | 每個年度／梯次／分支分筆；同一制度不重複算成不同全國方案 |
-| participants | applicant、beneficiary、awardee、payee | 學生、學校、單位分開；未知不猜學生就是收款人 |
-| organizations | funder、announcer、receiver | 每欄為原創摘要及證據；不同層級收件放 steps |
-| eligibility | 學位、學校範圍、身分、年級、候選人、其他條件 | 不是完整可執行規則語言；複合條件保留可追溯文字，之後再做引擎 |
-| compatibility／hardship | 狀態、說明、證據 | 五組標籤的必要來源，不允許省略或以空字串代表不限 |
-| benefit | 原創摘要及證據 | 本輪不拆成可計算金額；幣別、頻率與限制先保留文字，禁止拿來自動算月收入 |
-| steps | 行為主體、動作、期限、證據 | 校內學生期限、學院推薦、機關系統、備函分開 |
-| application | state、as_of、reason、refs | 可知狀態須有證據，不能由制度仍存在推論正在受理 |
-| evidence_status／review | 可建草稿或不完整、編輯者、獨立覆核 | 來源完整度與覆核完成度分開 |
-| open_questions | 至少一項具體查核任務 | 缺欄位不靠舊年度、猜測或登入摘要補齊 |
-| policy_versions | source、公布日、修正日、生效起迄、說明 | null 表示未知，不等於無期限；此版僅示範三筆版本紀錄，並非完整法規庫 |
+| 根層 | `schema_version` (`1.0.0-candidate`)、`as_of`、`timezone` (`Asia/Taipei`)、`official_data_modified` (`false`) | 確保候選輸出絕不直接改寫正式網站資料 |
+| `cycle` | `kind`、`label`、`year_system`、`year`、`term_or_round`、`branch` | 嚴格區分學年度／曆年、梯次與方案分支，禁止將新舊年度或互斥分支混成一筆 |
+| `participants` | `applicant`、`beneficiary`、`awardee`、`payee` | 區分學生申請 (`student`) 與學校／單位申請 (`institution` / `unit`) |
+| `eligibility` | `degrees`、`institution`（學校、學院、系所）、`year_limit`、`candidate`、`nationality`、`employment_status`、`negated_conditions` | 明示否定條件（如排除在職生、不得重複請領），未知維持 `unknown` |
+| `benefit` | `summary`、`items`（`amount_min`、`amount_max`、`currency`、`unit`、`basis`、`duration_months_min/max`）、`refs` | 金額必須具備幣別與發放單位（`per_month`、`lump_sum`、`total_range` 等），拒絕無單位裸數字 |
+| `compatibility`／`hardship` | `mode`、`prohibited_schemes`、`overlap_period_rule`、`note`、`refs` | 未明示可兼領時一律保留 `unknown` 或 `conditional`，不得當作 `allowed` |
+| `schedule` | `application_start`、`steps`（區分 `student`、`department`、`college`、`university`、`institution`、`supplement`）、`result_date`、`relative_rule` | 學生截止與學院／學校／機關期限分層，支援固定日期與事件相對規則 |
+| `policy_version` | `promulgated_on`、`amended_on`、`effective_from`、`effective_to`、`note`、`refs` | 公布日、修正日與生效日分開；修正日不得自動複製為生效日 |
+| `field_evidence` | `field_path`、`source`、`revision_id`、`locator`、`evidence_mode`、`excerpt`、`excerpt_sha256`、`extraction_method` | 每個萃取欄位可回查原文段落／PDF頁碼；`hash_only` 來源強制 `excerpt: null` |
+| `gaps_and_conflicts` | `missing_fields`、`conflicts`、`open_questions` | 來源內部或跨來源衝突自動攔截，不靜默擇一覆蓋 |
+| `verification` | `status`、`checks`（6項布林指標）、`errors`、`warnings`、`model_self_claim_ignored` (`true`) | 獨立檢核結果；忽略 Agent 自信宣告 |
+| `review` | `status` (`pending` / `reviewed` / `rejected`)、`editor`、`independent_reviewer`、`promotion_ready` | 未經非原編輯者獨立覆核，強制維持 `pending` 且 `promotion_ready=false` |
 
 ## 五組 tag 從資料產生，不維護第二套規則
 
@@ -41,72 +43,41 @@ erDiagram
 | 是否可兼領 | compatibility | allowed／conditional／prohibited／unknown；allowed 也只對已查範圍生效 |
 | 是否清寒限定 | hardship | required／not_exclusive／unknown；清寒優先而非限定須在 note 說明 |
 
-原始來源沒寫限制時，不自動轉成「不限年級」「可兼領」「非清寒限定」。身分資料暫存文字，不能用關鍵字命中當成資格通過。分類代碼是階段 A 的代表樣本子集，總分類仍以 [分類文件](TAXONOMY-AND-SOURCES.md) 為準。
+原始來源沒寫限制時，不自動轉成「不限年級」「可兼領」「非清寒限定」。
 
-## 三軸狀態
+## 三軸狀態與獨立檢核
 
-資格結果由未來的比對程序產生，不寫死在機會資料：
+資格與時間結果由 [`scripts/evaluate_deadlines.py`](../scripts/evaluate_deadlines.py) 依規則與觀察日計算，結構與證據由 [`scripts/verify_candidates.py`](../scripts/verify_candidates.py) 獨立檢核：
 
-- criteria：meets_recorded_rules／not_met／needs_information／needs_manual_review。符合已記錄條件不等於核定得獎；規則不完整不得產生前者。
-- application：open／closed／not_yet_open／unknown。關閉的機會仍可探索、收藏歷史，但不進「現在可申請」清單。
-- evidence：sufficient_for_draft／incomplete，另顯示 review.status。sufficient_for_draft 不等於完成獨立覆核。
+- `criteria`：`meets_recorded_rules`／`not_met`／`needs_information`／`needs_manual_review`。符合已記錄條件不等於官方核定得獎；只要缺個人條件或來源尚未完成獨立覆核，即不會產生無保留的肯定推薦。
+- `application`：`open`／`closed`／`not_yet_open`／`unknown`。僅以**學生適用收件窗口**判斷；機關彙送日、學院送校日或備函日不得冒充學生截止日。
+- `verification` & `evidence`：`passed_automated_checks`／`needs_context`／`conflict_detected`／`failed_automated_checks`，並與 `review.status` 分開顯示。
 
-例：醫學院優秀著作獎可顯示「公告摘要顯示受理中／資格待人工核對／資料不完整」。不因 open 抹去後兩項。所有 draft 候選只能在清楚標示的預覽資料中出現，不能用於正式肯定推薦。
+## 日期與程序規則（`Asia/Taipei`）
 
-## 日期與程序
+`deadline.kind` 僅有 `date`、`datetime`、`relative`、`unknown`。日期是 ISO 8601；時區固定 `Asia/Taipei` (`+08:00`)。
 
-deadline.kind 僅有 date、datetime、relative、unknown。日期是 ISO 8601；時區固定 Asia/Taipei；datetime 必須含 +08:00。來源只有日期時不得補 23:59。
+- `date`：只有年月日；當日提示「當日截止，收件時間待核」（`same_day_time_unconfirmed=true`），**嚴禁自造 `23:59` 午夜截止**。
+- `datetime`：依來源明示的確切時分（如 `17:00`、`08:00`、`12:00`）；原文無時間字樣時不得捏造時分。
+- `relative`：`value=null`，搭配 `schedule.relative_rule` 記錄條文算法；無會議日期時維持 `unknown` (`missing_conference_start`)。
+- `unknown`：`value=null`，說明待查內容；制度快照或過期公告不得自動推算下一期日期 (`next_cycle_inferred=false`)。
+- 缺起日處理：已知未來學生截止日但缺申請起日 (`application_start`) 時，預設回傳 `unknown` (`missing_application_start`)，不從公告發布日臆測已開始受理。
+- 來源過期檢查：若引用來源之 `checked_on` 距評估日超過設定鮮度天數，標記 `source_stale=true` 並退回 `unknown`。
 
-- date：只有日期；未確認確切收件時間，當日不得宣稱仍開放至午夜。
-- datetime：依來源的確切時分；不能把機關期限當學生期限。
-- relative：value=null，note 保留條文算法；沒事件日期不能生成截止日。
-- unknown：value=null，note 解釋待查內容；制度快照不能自動做成「全年開放」。
+## 可執行檢查與測試
 
-closed／open 是本快照人工編輯的觀察值，尚無自動時鐘判定。產品版應由明確學生窗口計算並保留當日不確定性；本輪檢查不聲稱能核實狀態正確性。
-
-國科會會議案以「會議首日所屬月份的前一個月1日」為機關最遲彙送日，遇例假日依條文順延；不是減30天。學生仍須查校內更早期限。受理日期和證明補件日期也要分開。
-
-## 甘特圖所需的契約補充提案
-
-互動原型版本0.2與資料契約版本0.1是不同版號。本節記錄使用者新增的時程需求，尚未加入現有JSON Schema；正式實作前補齊欄位與來源覆核。
-
-| 時程欄位 | 需要記錄的事實 | 顯示規則 |
-|---|---|---|
-| 申請開始 | 所屬年度／梯次／收件程序、開始日期與精度、證據 | 未知不從公告發布日推算；沒有起日不畫完整色帶 |
-| 申請截止 | 引用既有steps的特定學生程序，不另維護第二個日期 | 學生、學院、機關及備函各自呈現，不能任取最晚一天 |
-| 結果公布 | 預定日／實際公布日／待確認、對應梯次及來源 | 預定日用不同圖例；過了預定日不自動轉為實際公布 |
-| 其他程序 | 校內推薦、機關送件等事件及行為主體 | 獨立節點，不回填為學生截止 |
-
-每一個時間陳述仍須有source＋locator、date／datetime／未知的精度、時區、適用範圍及覆核狀態。結果可能只有預計月份或區間，後續schema應可保留區間而非補成某一天；本輪互動原型只示範明確日期與未知值。
-
-今天線採裝置的Asia/Taipei日期，與資料查核日、年度及學生個人準備日分開。甘特圖以日為單位，不能因此抹掉正式截止的確切時分。日期缺漏或相對事件未知時仍保留清單列與文字說明。
-
-本輪正式樣本沒有新增猜測日期。真實草稿模式只讀既有steps中的學生截止與其他程序，起日和結果日皆保留待確認；完整色帶及結果日關係用明示合成資料演示。
-
-## 法規版本及更新
-
-修正日不自動等於生效日；部分條款可有自己的有效期間。例：TA 辦法第四點另載111年8月1日起實施，不能套給整份辦法。
-
-Git 保存本輪原創摘要的差異，policy_versions 保存已明示的日期。下一步要補個別條款定位、適用事件與版本關係，才做工資或救濟時限運算。暫不把整份第三方法規複製進庫，也不以本輪三筆紀錄宣稱完成版本追蹤。
-
-來源排程欄位只記建議頻率；automation=not_enabled，crawl_permission=not_reviewed。待條款／robots／授權檢查、維護者指派後才另行實作公開來源差異偵測。401／403／429 或登入頁不得繞過；可讀不等於可全文再散布。
-
-## 可執行檢查
-
-需Python 3.10以上；以標準venv安裝資料驗證與離線掃描測試依賴。jsonschema版本依[官方套件資訊](https://pypi.org/project/jsonschema/4.26.0/)核對，Beautiful Soup與pypdf另列requirements-ingestion.txt；皆非網站執行依賴。來源掃描還需Node，見[操作說明](SCANNER.md)。
+需 Python 3.10 以上及 Node：
 
 ```powershell
-python -m venv work/venv
-work/venv/Scripts/python -m pip install -r requirements-dev.txt
-work/venv/Scripts/python scripts/check_data.py
-work/venv/Scripts/python -m unittest discover -s tests -v
+python -m pip install -r requirements-dev.txt
+python scripts/check_data.py
+python -m unittest discover -s tests -v
+node --test tests/prototype.test.cjs
+python scripts/build_site.py dist/handoff-check
 ```
 
-檢查欄位形狀、日期格式、重複 ID、引用、五組 tag 必要欄、未知年級表示、摘要來源不得升級完整、獨立覆核及單位申請分流。**檢查通過不證明外站內容、個人資格或法律結論正確，也不取代獨立覆核。** 未來網站、資格引擎、日曆匯出、WCAG 檢查須在產品版另測。
+- `python scripts/check_data.py`：驗證 `schema/pilot.schema.json`、`schema/candidate.schema.json` 與 `data/pilot.json` 結構、引用、日期精度與獨立覆核規則。
+- `python -m unittest discover -s tests -v`：執行 **49 項 Python 測試**（含資料契約 10 項、建置邊界 3 項、掃描器 24 項，以及結構化萃取／獨立檢核／申請時間／P1 資格／覆核流程 12 項綜合測試）。
+- `node --test tests/prototype.test.cjs`：執行 **23 項 Node 原型互動與研討會時程測試**。
 
-## 確認重點
-
-1. 接受這個最小欄位集合與明確未知值。
-2. 接受目前金額與複合資格只作摘要，不自動計算收入或肯定推薦。
-3. 接受三軸狀態與單位申請分流，確認後再把高頻條件轉成可執行規則。
-4. 確認四頁線框；正式資料仍需獨立覆核及維護者。
+**重要限制**：結構檢查、規則萃取與自動檢核通過不證明外站內容、個人資格或法律結論已獲官方核定，亦不取代人工獨立覆核。

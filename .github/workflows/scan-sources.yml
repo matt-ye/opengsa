@@ -45,6 +45,10 @@ jobs:
           if [ -f work/scanner/report/summary.md ]; then
             cat work/scanner/report/summary.md >> "$GITHUB_STEP_SUMMARY"
           fi
+          if [ -f work/scanner/report/review-summary.md ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            cat work/scanner/report/review-summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
       - name: Upload candidate report only
         if: always()
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
