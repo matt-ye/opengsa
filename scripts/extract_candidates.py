@@ -1919,6 +1919,460 @@ def _extract_faos_conference(source, blocks, revision_id, observed_at, url, as_o
     return [cand]
 
 
+
+
+def _extract_nstc_abroad_dragon(source, blocks, revision_id, observed_at, url, as_of, evidence_mode):
+    """國科會補助博士生赴國外研究作業要點（千里馬計畫）：每年6/1至7/31申請，期程7-12個月，每年90萬元。"""
+    first_block = blocks[0]
+    first_ref = {"source": source["id"], "locator": first_block["locator"]}
+    dl_block = next((b for b in blocks if any(k in b["text"] for k in ("六月一日", "七月三十一日", "申請期間", "期限"))), first_block)
+    dl_ref = {"source": source["id"], "locator": dl_block["locator"]}
+    money_block = next((b for b in blocks if any(k in b["text"] for k in ("九十萬元", "900,000", "補助費用", "經費"))), first_block)
+    money_ref = {"source": source["id"], "locator": money_block["locator"]}
+
+    cand_id = f"cand-nstc-abroad-dragon-{revision_id[:8]}"
+    cand = _base_candidate_template(
+        candidate_id=cand_id,
+        opportunity_id="nstc-abroad-dragon-policy",
+        program_key="nstc-abroad-dragon",
+        title="國科會補助博士生赴國外研究作業要點（千里馬計畫）",
+        category="overseas_research",
+        resource_kind="travel_grant",
+        scope="nationwide",
+        cycle={
+            "kind": "calendar_year",
+            "label": "年度常態申請梯次（每年6/1至7/31）",
+            "year_system": "none",
+            "year": None,
+            "term_or_round": "年度梯次",
+            "branch": "千里馬計畫",
+        },
+        source_id=source["id"],
+        revision_id=revision_id,
+        url=url,
+        observed_at=observed_at,
+        evidence_mode=evidence_mode,
+        as_of=as_of,
+    )
+    cand["participants"]["applicant"] = "institution"
+    cand["participants"]["beneficiary"] = "student"
+    cand["eligibility"]["degrees"] = ["phd"]
+    cand["eligibility"]["nationality"] = "roc_only"
+    cand["eligibility"]["candidate"] = {"mode": "not_required", "assessed_at": None, "refs": [first_ref]}
+    cand["eligibility"]["negated_conditions"] = [
+        {"field": "nationality", "operator": "exclude", "text": "排除非中華民國國民", "refs": [first_ref]},
+        {"field": "prior_funding", "operator": "exclude", "text": "曾領取本補助者不得再申請", "refs": [first_ref]},
+    ]
+    id_block = _find_identity_block(blocks, first_block)
+    _set_identity_with_evidence(
+        cand,
+        "國內設籍中華民國國民，博士班在學一年以上；須經申請機構推薦並於畢業前完成研究，曾受領本補助者不得再申請",
+        id_block,
+        source["id"],
+        revision_id,
+        evidence_mode,
+    )
+    cand["organizations"] = {
+        "funder": {"text": "國家科學及技術委員會", "refs": [first_ref]},
+        "announcer": {"text": "國家科學及技術委員會", "refs": [first_ref]},
+        "receiver": {"text": "由申請機構彙整後於每年七月三十一日前向國科會提出", "refs": [dl_ref]},
+    }
+    b_item = {
+        "branch_or_tier": "千里馬赴外研究補助",
+        "amount_min": 525000,
+        "amount_max": 900000,
+        "currency": "TWD",
+        "unit": "total",
+        "basis": "以一年新臺幣九十萬元按規定研究日數核算（7至12個月）",
+        "duration_months_min": 7,
+        "duration_months_max": 12,
+        "tax_note": "依所得稅法規定辦理",
+        "refs": [money_ref],
+    }
+    cand["benefit"]["items"] = [b_item]
+    cand["benefit"]["summary"] = "以一年新臺幣900,000元按規定研究日數核算（7至12個月，約52.5萬至90萬元），非一律領足一年。"
+    cand["benefit"]["refs"] = [money_ref]
+    _populate_common_extractions(cand, blocks, source["id"], revision_id, evidence_mode)
+
+    cand["compatibility"]["mode"] = "conditional"
+    cand["compatibility"]["note"] = "補助期間不得重複支領政府其他赴國外研修公費、相關獎助或出席國際學術會議費用；須揭露其他資助。"
+    cand["compatibility"]["refs"] = [first_ref]
+
+    cand["schedule"]["steps"] = [
+        {
+            "actor": "student",
+            "action": "於國科會線上系統填寫申請書並上傳國外機構邀請函、研修計畫等文件",
+            "deadline": {
+                "kind": "unknown",
+                "value": None,
+                "timezone": "Asia/Taipei",
+                "note": "每年6/1至7/31開放；個別學校學生校內收件截止通常早於7/31，須依校內公告核對。",
+            },
+            "refs": [dl_ref],
+        },
+        {
+            "actor": "institution",
+            "action": "申請機構確認線上送出並備函檢送名冊至國科會",
+            "deadline": {
+                "kind": "date",
+                "value": "2026-07-31",
+                "timezone": "Asia/Taipei",
+                "note": "每年7/31為機構線上申請截止日，名冊至遲8/10備函送達；遇例假日順延。",
+            },
+            "refs": [dl_ref],
+        },
+    ]
+    cand["field_evidence"].append(
+        make_field_evidence("benefit.items/0", source["id"], revision_id, money_block, evidence_mode)
+    )
+    cand["field_evidence"].append(
+        make_field_evidence("schedule.steps/1/deadline", source["id"], revision_id, dl_block, evidence_mode)
+    )
+    cand["gaps_and_conflicts"]["missing_fields"] = [
+        "schedule.steps/0/deadline",
+        "institution_internal_deadline",
+    ]
+    return [cand]
+
+
+def _extract_nstc_assistant_rule(source, blocks, revision_id, observed_at, url, as_of, evidence_mode):
+    """國科會專題研究計畫研究人力約用注意事項：兼任助理底線6,000元，博士增核10,000元（至少16,000元）。"""
+    first_block = blocks[0]
+    first_ref = {"source": source["id"], "locator": first_block["locator"]}
+    money_block = next((b for b in blocks if any(k in b["text"] for k in ("六千元", "6,000", "一萬六千元", "增核費用", "研究獎助生"))), first_block)
+    money_ref = {"source": source["id"], "locator": money_block["locator"]}
+
+    cand_id = f"cand-nstc-assistant-policy-{revision_id[:8]}"
+    cand = _base_candidate_template(
+        candidate_id=cand_id,
+        opportunity_id="nstc-assistant-policy",
+        program_key="nstc-assistant-policy",
+        title="國科會專題研究計畫研究人力給付標準與約用規範",
+        category="indirect_support",
+        resource_kind="employment_support",
+        scope="nationwide",
+        cycle={
+            "kind": "policy_snapshot",
+            "label": "現行研究人力約用規範快照",
+            "year_system": "none",
+            "year": None,
+            "term_or_round": None,
+            "branch": "研究人力給付標準",
+        },
+        source_id=source["id"],
+        revision_id=revision_id,
+        url=url,
+        observed_at=observed_at,
+        evidence_mode=evidence_mode,
+        as_of=as_of,
+    )
+    cand["participants"]["applicant"] = "unit"
+    cand["participants"]["beneficiary"] = "employed_student"
+    cand["participants"]["payee"] = "employed_student"
+    cand["eligibility"]["degrees"] = ["bachelor", "master", "phd"]
+    id_block = _find_identity_block(blocks, first_block)
+    _set_identity_with_evidence(
+        cand,
+        "專題研究計畫之專任人員、博士後研究人員、學生兼任人員（含研究助理與研究獎助生）；依身分與計畫性質約用",
+        id_block,
+        source["id"],
+        revision_id,
+        evidence_mode,
+    )
+    cand["organizations"] = {
+        "funder": {"text": "國家科學及技術委員會專題研究計畫經費", "refs": [first_ref]},
+        "announcer": {"text": "國家科學及技術委員會", "refs": [first_ref]},
+        "receiver": {"text": "由計畫執行機構與計畫主持人依規定約用並支給", "refs": [first_ref]},
+    }
+    b1 = {
+        "branch_or_tier": "學生兼任人員一般保底",
+        "amount_min": 6000,
+        "amount_max": None,
+        "currency": "TWD",
+        "unit": "per_month",
+        "basis": "第四點規定兼任人員工作酬金或研究津貼每月至少6,000元",
+        "duration_months_min": None,
+        "duration_months_max": None,
+        "tax_note": "依稅法與所得性質核處",
+        "refs": [money_ref],
+    }
+    b2 = {
+        "branch_or_tier": "領有增核費用之博士生兼任助理",
+        "amount_min": 16000,
+        "amount_max": None,
+        "currency": "TWD",
+        "unit": "per_month",
+        "basis": "一般底線6,000元＋國科會增核費用10,000元，每月總額至少16,000元",
+        "duration_months_min": None,
+        "duration_months_max": None,
+        "tax_note": "專款專用",
+        "refs": [money_ref],
+    }
+    cand["benefit"]["items"] = [b1, b2]
+    cand["benefit"]["summary"] = "兼任助理與獎助生每月至少6,000元；領有增核費用之博士生兼任助理每月至少16,000元；專任助理依學歷最低30,400至41,500元起。"
+    cand["benefit"]["refs"] = [money_ref]
+    _populate_common_extractions(cand, blocks, source["id"], revision_id, evidence_mode)
+
+    cand["compatibility"]["mode"] = "conditional"
+    cand["compatibility"]["note"] = "學生兼任人員得兼任不同計畫但須核對工時與各校上限；領有博士增核者不得在校外從事專職全時有給工作。"
+    cand["compatibility"]["refs"] = [first_ref]
+
+    cand["schedule"]["steps"] = [
+        {
+            "actor": "unit",
+            "action": "執行機構與計畫主持人依核定清單及聘約於計畫執行期間約用並按月支給",
+            "deadline": {
+                "kind": "unknown",
+                "value": None,
+                "timezone": "Asia/Taipei",
+                "note": "隨個別專題計畫期程執行，非全方案單一截止日。",
+            },
+            "refs": [first_ref],
+        }
+    ]
+    cand["field_evidence"].append(
+        make_field_evidence("benefit.items/0", source["id"], revision_id, money_block, evidence_mode)
+    )
+    cand["gaps_and_conflicts"]["missing_fields"] = [
+        "individual_project_appointment_dates",
+    ]
+    return [cand]
+
+
+def _extract_ntu_ta_policy(source, blocks, revision_id, observed_at, url, as_of, evidence_mode):
+    """臺大教務處教學助理（TA）制度獎勵金實施辦法：博8k-10k，碩6k-7.5k，採 hash_only 模式。"""
+    first_block = blocks[0]
+    first_ref = {"source": source["id"], "locator": first_block["locator"]}
+    money_block = next((b for b in blocks if any(k in b["text"] for k in ("八千", "8,000", "獎勵金", "教學助理"))), first_block)
+    money_ref = {"source": source["id"], "locator": money_block["locator"]}
+
+    cand_id = f"cand-ntu-ta-policy-{revision_id[:8]}"
+    cand = _base_candidate_template(
+        candidate_id=cand_id,
+        opportunity_id="ntu-ta-policy",
+        program_key="ntu-ta-policy",
+        title="臺大教務處教學助理（TA）制度獎勵金實施辦法",
+        category="indirect_support",
+        resource_kind="employment_support",
+        scope="ntu",
+        cycle={
+            "kind": "policy_snapshot",
+            "label": "教務處TA制度辦法快照",
+            "year_system": "none",
+            "year": None,
+            "term_or_round": None,
+            "branch": "教學助理獎勵金",
+        },
+        source_id=source["id"],
+        revision_id=revision_id,
+        url=url,
+        observed_at=observed_at,
+        evidence_mode="hash_only",
+        as_of=as_of,
+    )
+    cand["participants"]["applicant"] = "unit"
+    cand["participants"]["beneficiary"] = "employed_student"
+    cand["participants"]["payee"] = "employed_student"
+    cand["eligibility"]["degrees"] = ["master", "phd"]
+    cand["eligibility"]["other_conditions"] = [
+        {"text": "在校學生通過教學助理認證訓練，每學期原則最多兼任兩門課，不得兼任修讀課程助理", "refs": [first_ref]}
+    ]
+    id_block = _find_identity_block(blocks, first_block)
+    _set_identity_with_evidence(
+        cand,
+        "國立臺灣大學在學學生，符合教學助理資格與訓練，不得同時修讀其擔任助理之課程",
+        id_block,
+        source["id"],
+        revision_id,
+        "hash_only",
+    )
+    cand["organizations"] = {
+        "funder": {"text": "臺大教務處相關課程補助經費", "refs": [first_ref]},
+        "announcer": {"text": "國立臺灣大學教務處", "refs": [first_ref]},
+        "receiver": {"text": "開課單位於規定時程以單位帳號申請，經審核核定後聘用助理", "refs": [first_ref]},
+    }
+    b1 = {
+        "branch_or_tier": "博士班一般課程教學助理",
+        "amount_min": 8000,
+        "amount_max": 10000,
+        "currency": "TWD",
+        "unit": "per_month",
+        "basis": "第四點規定博士班一般課程TA範圍",
+        "duration_months_min": None,
+        "duration_months_max": None,
+        "tax_note": "依聘任契約與所得性質核定",
+        "refs": [money_ref],
+    }
+    b2 = {
+        "branch_or_tier": "碩士班一般中文教學助理",
+        "amount_min": 6000,
+        "amount_max": 7500,
+        "currency": "TWD",
+        "unit": "per_month",
+        "basis": "依課程型態與教務處核定點數支給",
+        "duration_months_min": None,
+        "duration_months_max": None,
+        "tax_note": "依聘任契約與所得性質核定",
+        "refs": [money_ref],
+    }
+    cand["benefit"]["items"] = [b1, b2]
+    cand["benefit"]["summary"] = "博士生每月8,000–10,000元為一般課程規定範圍；碩士生中文TA每月6,000–7,500元；須依實際聘約核定。"
+    cand["benefit"]["refs"] = [money_ref]
+    _populate_common_extractions(cand, blocks, source["id"], revision_id, "hash_only")
+
+    cand["compatibility"]["mode"] = "conditional"
+    cand["compatibility"]["note"] = "每學期最多擔任兩門課並依規定支領；其他獎助兼領及工時須核雙方規定。"
+    cand["compatibility"]["refs"] = [first_ref]
+
+    cand["schedule"]["steps"] = [
+        {
+            "actor": "unit",
+            "action": "課程開設單位通常於每學期結束前（6月／12月）申請次學期TA員額",
+            "deadline": {
+                "kind": "unknown",
+                "value": None,
+                "timezone": "Asia/Taipei",
+                "note": "月份為制度節奏，各學期確切申請收件時程依教務處公告。",
+            },
+            "refs": [first_ref],
+        },
+        {
+            "actor": "student",
+            "action": "學生依各開課單位公開招募公告接洽並簽署聘約",
+            "deadline": {
+                "kind": "unknown",
+                "value": None,
+                "timezone": "Asia/Taipei",
+                "note": "學生不在此制度入口直接領取一筆固定獎學金。",
+            },
+            "refs": [first_ref],
+        },
+    ]
+    cand["field_evidence"].append(
+        make_field_evidence("benefit.items/0", source["id"], revision_id, money_block, "hash_only")
+    )
+    cand["gaps_and_conflicts"]["missing_fields"] = [
+        "semester_specific_ta_application_deadlines",
+    ]
+    return [cand]
+
+
+def _extract_ntu_ord_assistant_limit(source, blocks, revision_id, observed_at, url, as_of, evidence_mode):
+    """臺大專題計畫兼任助理與獎助生每月支給上限規定：碩20k/博42k/博候50k，此為天花板非保底。"""
+    first_block = blocks[0]
+    first_ref = {"source": source["id"], "locator": first_block["locator"]}
+    money_block = next((b for b in blocks if any(k in b["text"] for k in ("支給上限", "50,000", "五萬元", "42,000", "補助費用"))), first_block)
+    money_ref = {"source": source["id"], "locator": money_block["locator"]}
+
+    cand_id = f"cand-ntu-ord-assistant-limit-{revision_id[:8]}"
+    cand = _base_candidate_template(
+        candidate_id=cand_id,
+        opportunity_id="ntu-ord-assistant-limit",
+        program_key="ntu-ord-assistant-limit",
+        title="臺大計畫兼任助理及研究獎助生每月支給上限標準",
+        category="indirect_support",
+        resource_kind="employment_support",
+        scope="ntu",
+        cycle={
+            "kind": "policy_snapshot",
+            "label": "研發處支給上限標準快照",
+            "year_system": "none",
+            "year": None,
+            "term_or_round": None,
+            "branch": "兼任助理與獎助生上限",
+        },
+        source_id=source["id"],
+        revision_id=revision_id,
+        url=url,
+        observed_at=observed_at,
+        evidence_mode=evidence_mode,
+        as_of=as_of,
+    )
+    cand["participants"]["applicant"] = "unit"
+    cand["participants"]["beneficiary"] = "employed_student"
+    cand["participants"]["payee"] = "employed_student"
+    cand["eligibility"]["degrees"] = ["master", "phd"]
+    id_block = _find_identity_block(blocks, first_block)
+    _set_identity_with_evidence(
+        cand,
+        "國立臺灣大學執行委託及補助計畫之兼任助理與研究獎助生；依碩士生、博士生未獲候選人及已獲候選人資格分列支給上限",
+        id_block,
+        source["id"],
+        revision_id,
+        evidence_mode,
+    )
+    cand["organizations"] = {
+        "funder": {"text": "委託／補助單位計畫經費", "refs": [first_ref]},
+        "announcer": {"text": "國立臺灣大學研究發展處", "refs": [first_ref]},
+        "receiver": {"text": "計畫執行單位與主持人依上限標準編列及支領", "refs": [first_ref]},
+    }
+    b1 = {
+        "branch_or_tier": "碩士生兼任助理及獎助生每月上限",
+        "amount_min": None,
+        "amount_max": 20000,
+        "currency": "TWD",
+        "unit": "per_month",
+        "basis": "每月支給上限20,000元，同一委補助單位合計",
+        "duration_months_min": None,
+        "duration_months_max": None,
+        "tax_note": "上限標準",
+        "refs": [money_ref],
+    }
+    b2 = {
+        "branch_or_tier": "博士生未取得候選人資格每月上限",
+        "amount_min": None,
+        "amount_max": 42000,
+        "currency": "TWD",
+        "unit": "per_month",
+        "basis": "每月支給上限42,000元，同一委補助單位合計",
+        "duration_months_min": None,
+        "duration_months_max": None,
+        "tax_note": "上限標準",
+        "refs": [money_ref],
+    }
+    b3 = {
+        "branch_or_tier": "博士候選人每月支給上限",
+        "amount_min": None,
+        "amount_max": 50000,
+        "currency": "TWD",
+        "unit": "per_month",
+        "basis": "已取得候選人資格者每月上限50,000元，同一委補助單位合計",
+        "duration_months_min": None,
+        "duration_months_max": None,
+        "tax_note": "上限標準",
+        "refs": [money_ref],
+    }
+    cand["benefit"]["items"] = [b1, b2, b3]
+    cand["benefit"]["summary"] = "每月支給上限：碩士20,000元、博士未具候選資格42,000元、博士候選人50,000元。此為天花板而非保底。"
+    cand["benefit"]["refs"] = [money_ref]
+    _populate_common_extractions(cand, blocks, source["id"], revision_id, evidence_mode)
+
+    cand["compatibility"]["mode"] = "conditional"
+    cand["compatibility"]["note"] = "同一委補助單位計畫兼任支給合計不得逾此上限標準；兼領其他單位給付依各單位規章辦理。"
+    cand["compatibility"]["refs"] = [first_ref]
+
+    cand["schedule"]["steps"] = [
+        {
+            "actor": "unit",
+            "action": "計畫執行機構依委補助合約及上限標準按月撥發",
+            "deadline": {
+                "kind": "unknown",
+                "value": None,
+                "timezone": "Asia/Taipei",
+                "note": "法規快照，112年12月15日起實施，非年度單次徵件。",
+            },
+            "refs": [first_ref],
+        }
+    ]
+    cand["field_evidence"].append(
+        make_field_evidence("benefit.items/0", source["id"], revision_id, money_block, evidence_mode)
+    )
+    cand["gaps_and_conflicts"]["missing_fields"] = [
+        "individual_project_appointment_dates",
+    ]
+    return [cand]
+
+
 def _verify_quote_and_reparse(field_path, claimed_val, unit, currency, locator, quote, block_map, is_audit=False):
     """檢驗模型輸出的引文是否為原文區塊的逐字子字串，並對日期與金額執行規則二次解析比對。
     回傳 (ok: bool, error_code: str|None, matched_block: dict|None, normalized_val: any)
@@ -2299,6 +2753,14 @@ def extract_from_in_memory_blocks(
         candidates = _extract_nstc_conference(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
     elif sid == "faos-student-conference":
         candidates = _extract_faos_conference(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
+    elif sid == "nstc-abroad-dragon-rule":
+        candidates = _extract_nstc_abroad_dragon(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
+    elif sid == "nstc-assistant-rule":
+        candidates = _extract_nstc_assistant_rule(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
+    elif sid == "ntu-ta-policy":
+        candidates = _extract_ntu_ta_policy(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
+    elif sid == "ntu-ord-assistant-limit":
+        candidates = _extract_ntu_ord_assistant_limit(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
     else:
         first_ref = {"source": sid, "locator": blocks[0]["locator"]}
         id_block = _find_identity_block(blocks, blocks[0])
