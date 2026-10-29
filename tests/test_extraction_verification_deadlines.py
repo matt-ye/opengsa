@@ -3,8 +3,10 @@
 """
 from copy import deepcopy
 from pathlib import Path
+import os
 import tempfile
 import unittest
+import unittest.mock
 
 from jsonschema import Draft202012Validator
 
@@ -925,6 +927,80 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
         self.assertEqual(cands_good_ext[0]["eligibility"]["nationality"], "roc_only")
         self.assertEqual(cands_good_ext[0]["source_metadata"]["adapter_used"], "rules_plus_llm_both")
         self.assertIn("needs_human_review_for_model_supplement", cands_good_ext[0]["verification"]["warnings"])
+
+    def test_provider_presets_and_nvidia_nim_adapter_configuration(self):
+        """測試預設提供商 (NVIDIA NIM, SambaNova, Cerebras, OpenRouter, SiliconFlow, GitHub Models) 的自動解析。"""
+        from scripts.extract_candidates import create_model_adapter_from_env, DisabledModelAdapter, OpenAICompatibleAdapter
+
+        # 預設模式 off -> DisabledModelAdapter
+        with unittest.mock.patch.dict(os.environ, {"OPENGSA_MODEL_MODE": "off"}, clear=False):
+            ad_off = create_model_adapter_from_env()
+            self.assertIsInstance(ad_off, DisabledModelAdapter)
+            self.assertFalse(ad_off.enabled)
+
+        # 測試 NVIDIA NIM 提供商預設
+        env_nvidia = {
+            "OPENGSA_MODEL_MODE": "extract",
+            "OPENGSA_MODEL_PROVIDER": "nvidia",
+            "NVIDIA_API_KEY": "nvapi-test-token-key-12345",
+        }
+        with unittest.mock.patch.dict(os.environ, env_nvidia, clear=False):
+            ad_nv = create_model_adapter_from_env()
+            self.assertIsInstance(ad_nv, OpenAICompatibleAdapter)
+            self.assertEqual(ad_nv.base_url, "https://integrate.api.nvidia.com/v1")
+            self.assertEqual(ad_nv.model, "meta/llama-3.3-70b-instruct")
+            self.assertEqual(ad_nv.api_key_env, "NVIDIA_API_KEY")
+            self.assertTrue(ad_nv.enabled)
+
+        # 測試 SambaNova 提供商預設
+        env_sambanova = {
+            "OPENGSA_MODEL_MODE": "extract",
+            "OPENGSA_MODEL_PROVIDER": "sambanova",
+            "SAMBANOVA_API_KEY": "samba-key-999",
+        }
+        with unittest.mock.patch.dict(os.environ, env_sambanova, clear=False):
+            ad_samba = create_model_adapter_from_env()
+            self.assertIsInstance(ad_samba, OpenAICompatibleAdapter)
+            self.assertEqual(ad_samba.base_url, "https://api.sambanova.ai/v1")
+            self.assertEqual(ad_samba.model, "Meta-Llama-3.3-70B-Instruct")
+            self.assertEqual(ad_samba.api_key_env, "SAMBANOVA_API_KEY")
+
+        # 測試 Cerebras 提供商預設
+        env_cerebras = {
+            "OPENGSA_MODEL_MODE": "both",
+            "OPENGSA_MODEL_PROVIDER": "cerebras",
+            "CEREBRAS_API_KEY": "cerebras-key-888",
+        }
+        with unittest.mock.patch.dict(os.environ, env_cerebras, clear=False):
+            ad_cer = create_model_adapter_from_env()
+            self.assertIsInstance(ad_cer, OpenAICompatibleAdapter)
+            self.assertEqual(ad_cer.base_url, "https://api.cerebras.ai/v1")
+            self.assertEqual(ad_cer.model, "llama-3.3-70b")
+
+        # 測試 OpenRouter 提供商預設
+        env_or = {
+            "OPENGSA_MODEL_MODE": "audit",
+            "OPENGSA_MODEL_PROVIDER": "openrouter",
+            "OPENROUTER_API_KEY": "sk-or-key-777",
+        }
+        with unittest.mock.patch.dict(os.environ, env_or, clear=False):
+            ad_or = create_model_adapter_from_env()
+            self.assertIsInstance(ad_or, OpenAICompatibleAdapter)
+            self.assertEqual(ad_or.base_url, "https://openrouter.ai/api/v1")
+            self.assertEqual(ad_or.model, "meta-llama/llama-3.3-70b-instruct:free")
+
+        # 測試 GitHub Models 提供商預設
+        env_gh = {
+            "OPENGSA_MODEL_MODE": "extract",
+            "OPENGSA_MODEL_PROVIDER": "github",
+            "GITHUB_TOKEN": "ghp_mock_token_for_models",
+        }
+        with unittest.mock.patch.dict(os.environ, env_gh, clear=False):
+            ad_gh = create_model_adapter_from_env()
+            self.assertIsInstance(ad_gh, OpenAICompatibleAdapter)
+            self.assertEqual(ad_gh.base_url, "https://models.inference.ai.azure.com")
+            self.assertEqual(ad_gh.model, "gpt-4o-mini")
+            self.assertEqual(ad_gh.api_key_env, "GITHUB_TOKEN")
 
 
 if __name__ == "__main__":

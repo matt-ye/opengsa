@@ -139,7 +139,32 @@ th{background:#eaf0e8}
 .conference-fields input,.conference-fields select{display:block;width:100%;min-width:0;margin-top:5px;padding:9px 8px;border:1px solid #a9b9ae;border-radius:6px;background:var(--white);color:var(--ink);font:inherit}
 .conference-planner h4{font-size:18px;margin:16px 0 8px}
 .conference-planner .facts{grid-template-columns:110px minmax(0,1fr);margin:16px 0}
-@media(max-width:500px){.conference-fields{grid-template-columns:1fr}.conference-planner .facts{grid-template-columns:80px minmax(0,1fr);gap:10px}}
+@media(max-width:500px){.conference-fields{grid-template-columns:1fr}.conference-planner .facts{grid-template-columns:80px minmax(0,1fr);gap:10px}.gantt-grid{--label-width:138px}.gantt-label{padding:10px 8px}}
+button:active:not(:disabled),.segmented button:active,.pill:active,.nav-links [role=tab]:active,.persona-tile:active{transform:scale(.97);opacity:.88;transition:transform .08s ease}
+.gantt-marker::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);min-width:44px;min-height:44px}
+.nav-links [role=tab]{min-height:40px;display:inline-flex;align-items:center;justify-content:center}
+.gantt-scroll{-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.gantt-label{box-shadow:3px 0 6px -2px rgba(32,63,55,.12)}
+@media(max-width:800px){.filter select,.searchbar input,.range-controls select,.option-picker select,.conference-fields input,.conference-fields select{font-size:16px}}
+@media(max-width:800px) and (min-width:501px){.nav-links{max-width:none;flex-wrap:nowrap;justify-content:flex-end}.nav{padding:8px 18px}}
+@media(max-height:500px){.review-strip{display:none}.nav{padding:6px 16px}.nav-links [role=tab]{padding:6px 10px;min-height:34px;font-size:12px}}
+.persona-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:0 0 18px}
+.persona-tile{display:flex;align-items:center;gap:10px;background:var(--white);color:var(--ink);border:1px solid var(--line);border-radius:11px;padding:10px 13px;text-align:left;font-size:13px;line-height:1.4;white-space:normal;transition:border-color .15s,background .15s,transform .12s}
+.persona-tile:hover{border-color:var(--ink);background:#f0f4ee;transform:translateY(-2px)}
+.persona-tile[aria-pressed=true]{border-color:var(--ink);background:var(--green);font-weight:700;box-shadow:0 2px 6px rgba(32,63,55,.1)}
+.hex-badge{width:28px;height:28px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:white;clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0% 50%);font-size:12px;font-weight:700}
+.persona-tile small{display:block;font-size:11px;color:var(--muted);font-weight:400;margin-top:2px}
+.rights-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin:0 0 22px}
+.tier-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:16px 0}
+.tier-card{background:var(--white);border:1px solid var(--line);border-top:4px solid var(--ink);border-radius:12px;padding:18px;position:relative}
+.tier-card.warn{border-top-color:var(--rust)}
+.tier-step{font-size:11px;font-weight:700;color:var(--rust);letter-spacing:.8px}
+.tier-card h4{margin:6px 0 8px;font-size:16px;line-height:1.4}
+.tier-card p{margin:6px 0;font-size:13px;color:var(--muted)}
+.wizard-box{background:#f0f4ee;border:1px solid #b8c9bc;border-radius:14px;padding:20px 24px;margin:0 0 24px}
+.wizard-checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;margin:14px 0}
+.wizard-check{display:flex;align-items:start;gap:9px;background:var(--white);border:1px solid var(--line);border-radius:9px;padding:11px 14px;font-size:13px;cursor:pointer}
+.wizard-check input{accent-color:var(--ink);width:17px;height:17px;margin-top:3px;flex-shrink:0}
 </style>
 </head>
 <body>
@@ -154,6 +179,13 @@ th{background:#eaf0e8}
  <div class="headline"><div><div class="screen-label">01 / DISCOVER · 找獎助</div><h1 id="search-title">把時間留給研究。</h1><p>先篩選值得了解的機會，再用清單或甘特圖看申請期間與結果公布日。</p></div><div class="status-note">互動原型 · 不進行個人資格核定</div></div>
  <div class="mode-row"><div class="segmented" id="mode-switch" role="group" aria-label="資料模式"><button type="button" data-mode="demo" aria-pressed="true">合成排程示範</button><button type="button" data-mode="draft" aria-pressed="false">來源草稿＋會議方案</button></div><span class="result-meta">同一組篩選，同步更新兩種檢視</span></div>
  <p id="mode-note" class="synthetic-note">合成資料，僅供互動設計。</p>
+ <div class="persona-grid" id="persona-bar" role="group" aria-label="探索島情境快速篩選">
+  <button type="button" class="persona-tile" data-persona="phd_research" aria-pressed="false"><span class="hex-badge" aria-hidden="true">博</span><span>博士研究專注<small>國科會／教育部博獎</small></span></button>
+  <button type="button" class="persona-tile" data-persona="living_support" aria-pressed="false"><span class="hex-badge" aria-hidden="true">生</span><span>生活與學費減免<small>碩博減免與生活支持</small></span></button>
+  <button type="button" class="persona-tile" data-persona="abroad_conf" aria-pressed="false"><span class="hex-badge" aria-hidden="true">會</span><span>國際會議出國<small>國科會／院系／FAOS</small></span></button>
+  <button type="button" class="persona-tile" data-persona="overseas_study" aria-pressed="false"><span class="hex-badge" aria-hidden="true">外</span><span>境外移地研究<small>千里馬／遠學計畫</small></span></button>
+  <button type="button" class="persona-tile" data-persona="outcome_award" aria-pressed="false"><span class="hex-badge" aria-hidden="true">獎</span><span>學術成果與榮譽<small>校長獎／優秀著作</small></span></button>
+ </div>
  <div class="layout">
   <aside class="panel filter" aria-label="篩選條件" aria-describedby="filter-scroll-hint" tabindex="0">
    <details open><summary>篩選條件</summary><div class="filter-fields">
@@ -238,6 +270,15 @@ th{background:#eaf0e8}
  <div class="headline"><div><div class="screen-label">04 / KNOW YOUR RIGHTS · 權益與求助</div><h2 id="rights-title">安心研究，從看懂依據開始。</h2><p>先依教育部、勞動部原則釐清學習與僱傭關係，再分別查國科會計畫、臺大校務基金獎勵金與學校補充。經費來源、給付性質與適用法源一起看。</p></div></div>
  <p class="independent-note">獨立資源頁 · 不受第一頁篩選或勾選影響。來源初查：2026-10-29；內容待獨立覆核。法規版本、生效日或學校公告變更時修訂。</p>
  <div class="callout"><p><strong>國科會計畫保障、法定工資與學校給付表分開看。</strong>學校補充不取代適用法令與國科會要求；上限、參考額及最低額分別標示。這裡不要求上傳私人契約，也不代替正式個案認定。</p></div>
+ <div class="rights-toolbar">
+  <div class="segmented" id="rights-view-switch" role="group" aria-label="權益島檢視切換">
+   <button type="button" data-rights-view="all" aria-pressed="true">全部總覽</button>
+   <button type="button" data-rights-view="standards" aria-pressed="false">📜 法規與給付標準</button>
+   <button type="button" data-rights-view="grievance" aria-pressed="false">🗺️ 五級救濟與從屬性自測</button>
+  </div>
+  <span class="result-meta">可切換聚焦「法源與型態比對」或「從屬性自測與五級救濟地圖」</span>
+ </div>
+ <div id="rights-standards-group">
  <article class="panel" style="margin-bottom:24px" aria-labelledby="nstc-rights-title">
   <div class="category">主要依據 / 國科會補助專題研究計畫</div><h3 id="nstc-rights-title">先看國科會給付要求，再看學校怎麼訂。</h3>
   <p class="small"><a href="https://law.nstc.gov.tw/LawContent.aspx?id=FL028686">研究人力約用注意事項 ↗</a> · 修正：113年10月22日；依<a href="https://law.nstc.gov.tw/LawContentSource.aspx?id=FL028686">官方沿革</a>，第四點本次修正自114年1月1日生效。以下依約用身分分列，博士生還須查增核分支。</p>
@@ -257,6 +298,48 @@ th{background:#eaf0e8}
   <article class="panel"><div class="category">04 正式求助</div><h3>選擇適合問題的窗口。</h3><p>校內詢問、學生申訴、勞動諮詢、勞檢與調解分開。適用範圍與救濟期限須依正式程序查核。</p><ul class="link-list"><li><a href="https://advisory.ntu.edu.tw/CMS/Page/252">臺大學生申訴專區 ↗</a></li><li><a href="https://www.mol.gov.tw/1607/28690/89680/">勞動部勞資爭議資源與分流 ↗</a></li></ul></article>
  </div>
  <article class="panel" style="margin-top:24px" aria-labelledby="ntu-award-rights-title"><div class="category">臺大校級 / 校務基金研究生獎勵金</div><h3 id="ntu-award-rights-title">獎助金與勞僱型津貼，先分清楚再查系所規則。</h3><p class="small"><a href="https://advisory.ntu.edu.tw/CMS/Page/211">生輔組相關辦法入口 ↗</a>目前連至<a href="https://sec.ntu.edu.tw/001/Upload/18/relfile/9760/24895/71247f3a-7b42-474b-962d-02481279dfef.pdf">研究生獎勵金實施辦法 ↗</a>（109年9月29日修正通過版）。這是校級辦法，與國科會計畫及博士生增核分開。</p><ul class="muted-list"><li><strong>第1、2條：經費與兩類給付。</strong>由校務基金編列預算，分獎助金與勞僱型兼任助理津貼，兩類得兼領；獎助金不附勞務負擔。系所得在校方年度額度內訂比例、金額、名額與條件，不代表可排除適用勞動法規。</li><li><strong>第5、8條：兼領與資訊公開。</strong>其他獎助兼領仍須核系所總額上限及另一方案限制；生輔組依作業期程公告年度額度、基數、各系所員額、分配與餘額。</li><li><strong>第9、10條：契約與學生參與。</strong>勞僱型須訂明工作、工時、工資等契約事項；系所與院方協調後，視需求邀學生代表訂細則，包含審查、申訴並送生輔組備查。</li></ul><p class="source-note">版本提醒：生輔組目前連結為109年版，舊秘書室PDF仍載106年版。修正通過日不直接當生效日；個別可領額度仍須查當年度系所細則及聘任。</p></article>
+  <article class="panel" style="margin-top:24px" aria-labelledby="work-matrix-title">
+   <div class="category">全維度比對 / 四種校園工作與獎助型態</div><h3 id="work-matrix-title">勞僱型、學習型、專任與工讀：法源與保障一次核對。</h3>
+   <p class="small">依《大學法》、教育部《專科以上學校獎助生權益保障指導原則》（GL001889）及勞動部《專科以上學校兼任助理勞動權益保障指導原則》（FL077250）整理。實務認定依<strong>實質從屬性（人格、經濟、組織從屬）</strong>，不因名義為「獎助金」而當然排除勞動法令。</p>
+   <div class="table-scroll" role="region" aria-label="四種工作型態法規比對矩陣，可水平捲動" tabindex="0"><table><caption>校園四種工作與獎助型態比對表</caption><thead><tr><th scope="col">比對維度</th><th scope="col">勞僱型兼任助理 (RA/TA)</th><th scope="col">學習型研究獎助生</th><th scope="col">計畫專任研究助理</th><th scope="col">校內短期工讀生</th></tr></thead><tbody>
+    <tr><th scope="row">主要法源</th><td>勞動基準法、勞動部指導原則、最低工資法</td><td>教育部獎助生權益保障指導原則、各校辦法</td><td>勞動基準法、國科會約用注意事項（FL028686）</td><td>勞動基準法、最低工資法、各校工讀要點</td></tr>
+    <tr><th scope="row">核心性質</th><td>具勞務對價與指揮監督之研究／教學／行政工作</td><td>以學習或論文研究為主要目的之課程／畢業訓練</td><td>全時從事專題計畫執行（在學原則不得兼任，進修部等除外）</td><td>庶務行政、圖書館輪值、活動支援勞務</td></tr>
+    <tr><th scope="row">最低工資與勞退</th><td>適用（2026時薪 ≥196元；雇主外加提繳 6% 勞退，禁內扣）</td><td>不適用最低工資法；國科會計畫兼任要求至少 6,000元／月（博士增核至少 16,000元）</td><td>適用（國科會最低：專科 30,400、學士 36,300、碩士以上 41,500元／月＋6% 勞退）</td><td>適用（2026時薪 ≥196元、全時月薪 ≥29,500元＋6% 勞退）</td></tr>
+    <tr><th scope="row">保險與智財權</th><td>強制投保勞保、就保、災保；職務著作依《著作權法》第11條契約約定</td><td>學校團保及職災保障；<strong>學位論文著作權專屬於學生本人</strong>（《著作權法》第10、15條）</td><td>全額勞健保、災保；計畫產出依聘約與國科會規定歸屬</td><td>強制投保勞保、災保（部分工時投保級距）</td></tr>
+    <tr><th scope="row">爭議救濟管轄</th><td>地方勞工局調解、1955 勞檢申訴或民事法院</td><td>校內學生申訴評議委員會（30日內）→ 教育部訴願</td><td>地方勞工局勞資爭議調解、1955 勞檢或法院</td><td>地方勞工局調解、1955 勞檢申訴</td></tr>
+   </tbody></table></div>
+   <p class="source-note">僑外生特別提醒：依《就業服務法》第 50 條，外籍生與僑生須先取得勞動部工作許可，學期中每週工作時數上限 <strong>20 小時</strong>（寒暑假除外）。博士班役男赴外研究（如千里馬）須依《兵役法施行法》及出境就學規定先由學校造冊核准緩徵出境。</p>
+   <div class="card-actions"><button type="button" id="jump-to-grievance" class="secondary">遇到欠薪、超時或「假學習真勞動」爭議？前往五級救濟與自測 →</button></div>
+  </article>
+ </div>
+ <div id="rights-grievance-group" style="margin-top:24px">
+  <section class="wizard-box" id="subordination-wizard" aria-labelledby="wizard-title">
+   <div class="category">權益島互動工具 / 僅留存本次記憶體</div>
+   <h3 id="wizard-title" style="margin:6px 0 8px">3 分鐘「從屬性與工作型態」爭點自我檢核</h3>
+   <p class="small">依勞動部《專科以上學校兼任助理勞動權益保障指導原則》第 2～4 點及教育部指導原則，勾選你目前遇到的實際情況，整理可能涉及的法規爭點與對應救濟窗口（勾選結果重整即清除，不傳送伺服器）：</p>
+   <div class="wizard-checks">
+    <label class="wizard-check"><input type="checkbox" data-subordination-check="schedule"><span><strong>1. 固定排班與差勤管制：</strong>被要求於固定時間地點打卡、值班待命，未到班須請假。</span></label>
+    <label class="wizard-check"><input type="checkbox" data-subordination-check="consideration"><span><strong>2. 勞務與報酬對價性：</strong>給付隨工作時數或業務量增減，請假或未完成交辦事項會被扣錢。</span></label>
+    <label class="wizard-check"><input type="checkbox" data-subordination-check="supervision"><span><strong>3. 人格與組織指揮監督：</strong>主持人或單位對工作執行方式有具體指揮考核權，無法自由決定參與。</span></label>
+    <label class="wizard-check"><input type="checkbox" data-subordination-check="unrelated_admin"><span><strong>4. 無關畢業論文之庶務：</strong>被指派處理報帳、採購、行政輪值或私人事務等與自身修業無關之工作。</span></label>
+   </div>
+   <div id="subordination-result" class="callout" role="status" aria-live="polite" style="margin:12px 0">尚未勾選項目。勾選上方任一實際情況後，將顯示對應的法規判準與救濟建議。</div>
+   <div class="range-buttons"><button type="button" class="secondary" id="subordination-reset">清除自測勾選</button></div>
+  </section>
+  <article class="panel" id="grievance-map" aria-labelledby="grievance-map-title">
+   <div class="category">救濟地圖 / 系、院、校、中央部會、國會與工會</div>
+   <h3 id="grievance-map-title">五級申訴救濟階梯地圖：不需要把「先找指導教授」當唯一管道。</h3>
+   <p class="small">面對扣薪、超時工讀、「假學習真勞動」、扣留畢業論文或不當處分，可依事件性質直接選擇對應層級求助，注意法定時效與保密保障：</p>
+   <div class="tier-grid">
+    <div class="tier-card"><div class="tier-step">TIER 01 · 系所與學院基層</div><h4>系主任／所長／學院院長</h4><p>適用：實驗室分工協調、更換指導教授（依學位授予法及系所規定）、獎勵金排班爭端。</p><p class="tiny quiet"><strong>實戰建議：</strong>全程以 Email 或書面通訊保留紀錄；若涉扣發獎助或懲處，要求提供書面處分原因。</p></div>
+    <div class="tier-card warn"><div class="tier-step">TIER 02 · 校級法定申訴與性平</div><h4>學生申評會／性平會／人事室</h4><p><strong>申評會（大學法 §33）：</strong>知悉處分次日起 <strong>30 日內</strong>書面提出；學生代表比例 ≥1/5。<br><strong>性平會（性平法）：</strong>知悉後 <strong>24 小時內</strong>依法通報並啟動課業隔離保護。</p><p class="tiny"><a href="https://advisory.ntu.edu.tw/CMS/Page/252">臺大學生申訴專區 ↗</a></p></div>
+    <div class="tier-card"><div class="tier-step">TIER 03 · 教育部訴願與司法</div><h4>教育部訴願會／高等行政法院</h4><p><strong>行政訴願（訴願法 §14）：</strong>不服校內申評決定，於決定書送達次日起 <strong>30 日內</strong>向教育部提起訴願。<br><strong>行政訴訟：</strong>訴願駁回後 <strong>2 個月內</strong>向高等行政法院起訴。</p><p class="tiny"><a href="https://www.edu.tw/News_Content.aspx?n=9E7AC85F1954DDA8&s=2A13B93B4E23F5B9">教育部訴願與法制入口 ↗</a></p></div>
+    <div class="tier-card warn"><div class="tier-step">TIER 04 · 勞動檢查、行政院與內政部</div><h4>地方勞工局／1955專線／移民署</h4><p><strong>勞資調解與勞檢：</strong>撥打 <strong>1955</strong> 或向縣市勞檢處檢舉欠薪、未投保、未提繳 6% 勞退。<strong>依《勞基法》第 74 條，勞檢對申訴人身分負絕對保密義務，禁止校方不利處分。</strong><br><strong>內政部移民署：</strong>僑外生居留與工作證救濟。</p><p class="tiny"><a href="https://www.mol.gov.tw/1607/28690/89680/">勞動部勞資爭議資源 ↗</a></p></div>
+    <div class="tier-card"><div class="tier-step">TIER 05 · 國會立委與高教工會</div><h4>高教工會／立法院委員會</h4><p><strong>臺灣高等教育產業工會（THE Union）：</strong>提供兼任助理專案法諮、陪同出席勞資調解。<br><strong>立法院教育及文化／衛環委員會立委辦公室：</strong>針對部會或校方體制性違法，要求調閱公文、召開協調會監督。</p><p class="tiny"><a href="https://www.theunion.org.tw/">高教工會官網 ↗</a></p></div>
+   </div>
+   <p class="source-note">蒐證必備四要件：① 排班表或簽到退紀錄、② 交辦業務之 Email／通訊軟體截圖（含時間戳記）、③ 薪資／獎助入帳明細與契約副本、④ 課程大綱（證明工作與修業無關）。完整法條對照請見專案文件 <code>docs/RIGHTS-AND-LEGAL-FRAMEWORK.md</code>。</p>
+  </article>
+ </div>
  <div class="panel" style="margin-top:24px"><h3>資訊更正與個人求助，是不同入口。</h3><p class="small">OpenGSA 公開資料更正只需資料 ID、欄位與公開來源。私人契約、薪資單、學號、所得或申訴經過應循正式管道；本專案目前沒有接收私人附件的服務。</p><p class="tiny quiet">窗口與法規卡片在發布前逐項覆核；本輪沒有聯絡第三人或代送任何申請。</p></div>
  <div class="design-note"><strong>設計註：</strong>權益入口不設「先找指導教授」為唯一必經關卡。文字以適用事實與正式依據為主，提供可直接查閱的替代窗口；不以問答結果自動裁決法律關係。</div>
 </section>
