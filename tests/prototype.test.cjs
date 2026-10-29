@@ -225,3 +225,16 @@ test("權益島雙軌視角、五級救濟地圖與RWD觸控優化已嵌入線�
  assert.ok(html.includes("font-size:16px"));
  assert.ok(html.includes(".gantt-marker::after"));
 });
+
+test("法源位階地圖按鈕導向正確表格ID，不觸發未定義hash跳轉回甘特圖",()=>{
+ const html=fs.readFileSync(path.join(__dirname,"../docs/design/wireframes.html"),"utf8");
+ const js=fs.readFileSync(path.join(__dirname,"../docs/design/prototype.js"),"utf8");
+ assert.ok(html.includes('href="#work-matrix-title"'));
+ assert.ok(html.includes('href="#nstc-rights-title"'));
+ assert.ok(html.includes('href="#ta-salary-title"'));
+ assert.ok(html.includes('id="work-matrix-title"'));
+ assert.ok(html.includes('id="nstc-rights-title"'));
+ assert.ok(html.includes('id="ta-salary-title"'));
+ assert.ok(js.includes("scrollToInternalTarget"));
+ assert.ok(js.includes('["search","detail","timeline","rights"].includes(targetId)'));
+});

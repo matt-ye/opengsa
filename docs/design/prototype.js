@@ -314,13 +314,47 @@ document.querySelector('[role="tablist"]').addEventListener("keydown",event=>{
  const next=event.key==="Home"?0:event.key==="End"?tabs.length-1:(index+(event.key==="ArrowRight"?1:-1)+tabs.length)%tabs.length;
  activatePanel(tabs[next].dataset.panel,true);
 });
+function scrollToInternalTarget(targetId) {
+ const target=byId(targetId);
+ if(!target) return false;
+ const parentScreen=target.closest("main > .screen");
+ if(parentScreen && parentScreen.id) {
+  activatePanel(parentScreen.id);
+ }
+ if(parentScreen && parentScreen.id==="rights") {
+  if(byId("rights-standards-group") && byId("rights-standards-group").contains(target)) {
+   if(rightsView==="grievance") setRightsView("all");
+  } else if(byId("rights-grievance-group") && byId("rights-grievance-group").contains(target)) {
+   if(rightsView==="standards") setRightsView("all");
+  }
+ }
+ target.scrollIntoView({behavior:"smooth",block:"start"});
+ if(target.tabIndex<0) target.tabIndex=-1;
+ target.focus({preventScroll:true});
+ return true;
+}
 document.addEventListener("click",event=>{
  const link=event.target.closest('a[href^="#"]');
- if(link && ["#search","#detail","#timeline","#rights"].includes(link.getAttribute("href"))) {
-  event.preventDefault();activatePanel(link.getAttribute("href").slice(1));
+ if(link) {
+  const href=link.getAttribute("href");
+  if(href && href!=="#") {
+   const targetId=href.slice(1);
+   if(["search","detail","timeline","rights"].includes(targetId)) {
+    event.preventDefault();activatePanel(targetId);
+   } else if(byId(targetId)) {
+    event.preventDefault();scrollToInternalTarget(targetId);
+   }
+  }
  }
 });
-window.addEventListener("hashchange",()=>activatePanel(location.hash.slice(1)));
+window.addEventListener("hashchange",()=>{
+ const id=location.hash.slice(1);
+ if(["search","detail","timeline","rights"].includes(id)) {
+  activatePanel(id);
+ } else if(byId(id)) {
+  scrollToInternalTarget(id);
+ }
+});
 function itemTags(item) {
  return [labels.source[item.source],item.degrees.map(x=>labels.degree[x]).join("／"),labels.year[item.year],labels.compatibility[item.compatibility],labels.hardship[item.hardship]];
 }
