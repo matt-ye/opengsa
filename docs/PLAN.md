@@ -18,21 +18,21 @@
 - 2026-10-29使用者另核可先合併PR #1，再由PR #2發布GitHub Pages公開預覽，位置為https://matt-ye.github.io/opengsa/，供自行分享收回饋；不修改個人網站或DNS。部署依[公開預覽說明](DEPLOYMENT.md)，正式服務與資料覆核門檻不因預覽上線而免除。
 - 不註冊網域、不使用付費服務、不啟用通知、不爬取登入限定內容，也不聯絡第三人。
 - 使用者後續要求處理自動爬取，啟用[有限來源掃描](SCANNER.md)：六個正文目標、可允許文字PDF、週二／五09:17（臺北）與手動試跑。此新決策取代早期來源掃描未啟用限制；D1与通知仍未啟用。先低頻觀察四週，再評估是否提高頻率。
-- 2026-10-29使用者進一步要求完成「爬取結果 → 結構化獎助資料 → 檢核 → 申請時間判斷」主要開發：已建立有版本之候選 Schema (`schema/candidate.schema.json`)、結構化萃取 (`scripts/extract_candidates.py`，確定性規則優先＋預設關閉的可替換模型 Adapter)、六面向獨立檢核 (`scripts/verify_candidates.py`)、多層期限分流與 P1 資格比對 (`scripts/evaluate_deadlines.py`)，以及候選覆核與差異報告 (`scripts/review_candidates.py`)。爬蟲或模型仍不直接覆寫 `data/pilot.json`，未經非原編輯者獨立覆核一律維持 `pending`。
+- 2026-10-29使用者進一步要求完成「爬取結果 → 結構化獎助資料 → 檢核 → 申請時間判斷」主要開發，並接受雙軌「確定性規則 + LLM API (`extract` 補缺 + `audit` 交叉盤查)」規劃：已建立有版本之候選 Schema (`schema/candidate.schema.json`, `1.1.0-candidate`)、結構化萃取 (`scripts/extract_candidates.py`, `extractor-1.1.0`，確定性規則優先＋雙軌可替換模型 Adapter)、七面向獨立檢核 (`scripts/verify_candidates.py`, `verifier-1.1.0`，含 `coverage_ok` 與 `passed_with_gaps`)、多層期限分流與 P1 資格比對 (`scripts/evaluate_deadlines.py`)、候選覆核與差異報告 (`scripts/review_candidates.py`)，以及三軌對照基準測試 (`scripts/evaluate_extraction_benchmark.py`)。爬蟲或模型仍不直接覆寫 `data/pilot.json`，未經非原編輯者獨立覆核一律維持 `pending`。
 
 ## 現況
 
-### 結構化萃取、獨立檢核、申請時間判斷與候選覆核流程（2026-10-29）
+### 結構化萃取、雙軌規則+LLM盤查、獨立檢核、申請時間判斷與候選覆核流程（2026-10-29）
 
-已完成五大核心模組並與既有掃描管線串接：
+已完成五大核心模組與三軌基準測試，並與既有掃描管線串接：
 
-1. **有版本的候選資料 Schema (`schema/candidate.schema.json`, `1.0.0-candidate`)**：涵蓋制度／學年度／梯次／分支 (`cycle`)、申請與受益角色 (`participants`)、學校院系範圍 (`eligibility.institution` / `scope`)、結構化資格與否定條件 (`eligibility.negated_conditions`)、金額／幣別／發放單位 (`benefit.items`)、兼領規則 (`compatibility`)、各層程序與期限 (`schedule.steps` 分流 `student`、`department`、`college`、`university`、`institution`、`supplement`)、結果公布日 (`schedule.result_date`)、法規修正與生效版本 (`policy_version`)、逐欄證據 (`field_evidence`)、缺漏與衝突 (`gaps_and_conflicts`)、獨立檢核結果 (`verification`) 及人工覆核門檻 (`review`)。
-2. **結構化萃取 (`scripts/extract_candidates.py`)**：先執行確定性規則解析（自動拆分臺大博獎國科會／教育部分支、遠學一般補助分支、各研討會方案與新舊學年度），再提供可替換之模型 Adapter（預設 `DisabledModelAdapter` 零呼叫；無金鑰時支援 `MockModelAdapter` 離線測試；外部 `OpenAICompatibleAdapter` 嚴格禁止傳送 `hash_only` 原文）。當僅有短證據或雜湊時，於來源允許範圍內重新取回完整上下文至記憶體處理，絕不從雜湊或殘句猜測欄位值。
-3. **獨立檢核 (`scripts/verify_candidates.py`)**：執行 Schema、逐欄證據與防模型捏造、日期精度（`Asia/Taipei`、僅日期不自造 `23:59`、修正日不自動當生效日）與金額單位、年度／分支不混用、否定條件與申請角色分流、來源衝突攔截等六大檢查。完全忽略模型或 Agent 自稱通過之標記，未經獨立覆核者維持 `pending` 且 `promotion_ready=false`。
+1. **有版本的候選資料 Schema (`schema/candidate.schema.json`, `1.1.0-candidate`，向下相容 `1.0.0-candidate`)**：涵蓋制度／學年度／梯次／分支／法規快照 (`cycle.kind` 含 `policy_snapshot`)、申請與受益角色 (`participants`)、學校院系範圍 (`eligibility.institution` / `scope`)、結構化資格與否定條件 (`eligibility.negated_conditions`)、金額／幣別／發放單位 (`benefit.items`)、兼領規則 (`compatibility`)、各層程序與期限 (`schedule.steps` 分流 `student`、`department`、`college`、`university`、`institution`、`supplement`)、結果公布日 (`schedule.result_date`)、法規修正與生效版本 (`policy_version`)、逐欄證據 (`field_evidence`，含 `source_block_sha256`、`rule_and_model_agreed`、`prompt_version`)、缺漏與衝突 (`gaps_and_conflicts`)、獨立檢核結果 (`verification`，含第 7 項 `coverage_ok`、`passed_with_gaps` 與 `audit_findings`) 及人工覆核門檻 (`review`)。
+2. **雙軌結構化萃取與盤查 (`scripts/extract_candidates.py`, `extractor-1.1.0`)**：先執行通用確定性規則解析（支援中文大／小寫金額如『四萬元』／『伍拾貳萬伍仟至玖拾萬元』、中文數字民國年如『一一五年九月』、拆分臺大博獎國科會／教育部分支、區分設置辦法 PDF `policy_snapshot` 與當期公告、遠學一般補助分支、各研討會方案），再提供雙軌模型 Adapter（預設 `OPENGSA_MODEL_MODE=off` 零呼叫；支援 `extract` 補缺、`audit` 交叉盤查與 `both` 雙軌模式；無金鑰時支援 `MockModelAdapter` 離線測試；外部 `OpenAICompatibleAdapter` 具硬體級 `_guard_hash_only` 防護，確保 `hash_only` 來源 `0 bytes` 外送，並內建 `<untrusted_source_data>` 防提示詞注入、逐字引文子字串檢驗與規則二次解析）。
+3. **獨立檢核 (`scripts/verify_candidates.py`, `verifier-1.1.0`)**：執行 Schema、逐欄證據（強制所有非 `unknown` 欄位皆須具備 `field_evidence` 並核對 `source_block_sha256`）與防模型捏造、日期精度（`Asia/Taipei`、僅日期不自造 `23:59`、修正日不自動當生效日）與金額單位、年度／分支不混用、否定條件與申請角色分流、來源衝突攔截，以及第 7 項 `coverage_ok`（對未抓取關鍵附件或缺漏金額標為 `passed_with_gaps`）等七大檢查。完全忽略模型或 Agent 自稱通過之標記，未經獨立覆核者維持 `pending` 且 `promotion_ready=false`。
 4. **申請時間與資格判斷 (`scripts/evaluate_deadlines.py`)**：嚴格以學生適用窗口判斷 `open`、`not_yet_open`、`closed`、`unknown`；支援固定日期、確切時分、事件相對規則（國科會／臺大前月首日與前一日17:00＋四週補送、醫學院會前四週送件、FAOS會前兩個曆月學校提出且學生校內期限留 `unknown`）、缺起日、例假日待核與來源過期檢查。內建 P1（臺大職能治療所博士班五年級、已取得候選人資格）及 P1-A～P3 邊界測試情境。
-5. **候選覆核與差異報告 (`scripts/review_candidates.py`)**：輸出 `structured-candidates.json`、`review-diff.json` 與 `review-summary.md`，清楚分列來源變更、萃取結果、檢核與學生窗口判斷，以及與 `data/pilot.json` 的欄位差異及 `data/scan-reviews.json` 人工處置狀態。
+5. **候選覆核、差異報告與三軌基準測試 (`scripts/review_candidates.py`, `scripts/evaluate_extraction_benchmark.py`)**：輸出 `structured-candidates.json`、`review-diff.json`、`review-summary.md` 與 `model-usage.json`，將法規快照 PDF 歸類為 `policy_regulation_snapshot` 避免假性狀態差異；並透過 Corpus A（8 份真實公開文件＝10 筆候選）＋ Corpus B（20 組合成邊界與對抗測試）完成 `rules_only`、`llm_only` 與 `rules_plus_llm` 三軌 3 輪可重現評估。
 
-目前 **49 項 Python 測試＋23 項 Node 原型測試** 全部通過。
+目前 **51 項 Python 測試＋23 項 Node 原型測試** 全部通過。
 
 ## 階段 A：規劃與資料基礎
 
@@ -89,7 +89,7 @@ flowchart TD
 - [x] 四分頁互動線框與維護流程完成審閱稿；找獎助清單／甘特圖共用篩選。
 - [x] 今天線、申請起訖、結果日、程序節點、共用選項及研討會多方案試算完成，23項原型測試通過。
 - [x] 使用者接受v0.6作MVP介面基礎；v0.7／v0.8補固定篩選卡及多方案研討會規劃。
-- [x] 有版本候選 Schema (`1.0.0-candidate`)、結構化萃取、獨立檢核、申請時間與 P1 資格判斷、候選差異覆核報告完成，49項Python測試通過。
+- [x] 有版本候選 Schema (`1.1.0-candidate`)、雙軌結構化萃取與盤查 (`extract` + `audit`)、獨立檢核 (`coverage_ok` / `passed_with_gaps`)、申請時間與 P1 資格判斷、候選差異覆核報告完成，51項Python測試通過。
 - [ ] 由非原編輯者對候選報告與 10 筆草稿完成人工獨立覆核，再經資料 PR 更新正式資料。
 - [ ] 確認資料契約、範圍與公開版本驗收。
 

@@ -22,7 +22,7 @@ v0.8研討會可選國科會、臺大醫學院、傑出人才發展基金會或�
 
 第一階段先做「全國性方案＋臺大試點」，再依資料維護量能逐步擴校。海外方案先保留少數來源占位。
 
-來源掃描採臺北時間週二、週五09:17，另可手動執行；目前六個正文目標及允許的文字PDF在記憶體完成結構化萃取、六項獨立檢核、學生窗口時間判斷與 `data/pilot.json` 差異比對，只產生待覆核報告，不直接改寫網站正式資料。每次檢查robots，PDF不長期存放；教務處因轉載條款只保留雜湊與定位，且絕不送往外部模型。模型 Adapter 預設關閉（呼叫0次）。[看掃描狀態](https://github.com/matt-ye/opengsa/actions/workflows/scan-sources.yml) · [操作與限制](docs/SCANNER.md)。
+來源掃描採臺北時間週二、週五09:17，另可手動執行；目前六個正文目標及允許的文字PDF在記憶體完成結構化萃取、七項獨立檢核（含 `coverage_ok` 與 `passed_with_gaps`）、學生窗口時間判斷與 `data/pilot.json` 差異比對，只產生待覆核報告，不直接改寫網站正式資料。每次檢查robots，PDF不長期存放；教務處因轉載條款只保留雜湊與定位，且絕不送往外部模型（`hash_only_bytes_sent = 0`）。雙軌模型 Adapter（`extract` 補缺＋`audit` 交叉盤查）於排程預設關閉（`model_mode=off`、呼叫0次），僅支援手動觸發或本機評估。[看掃描狀態](https://github.com/matt-ye/opengsa/actions/workflows/scan-sources.yml) · [操作與限制](docs/SCANNER.md)。
 
 ## 規劃中的功能
 
@@ -93,7 +93,7 @@ flowchart TD
 | [資料政策](docs/DATA-POLICY.md) | 來源、覆核、版本、存取限制與隱私 |
 | [歷史完整 handoff](docs/reference/HANDOFF.md) | 完整規格參考；舊階段與數量目標以目前計畫為準 |
 
-執行資料檢查、49項Python測試與23項Node測試的方法見[資料契約](docs/DATA-CONTRACT.md#可執行檢查)。結構檢查與自動檢核通過不取代人工獨立覆核，亦不代表官方資格已核定。
+執行資料檢查、51項Python測試與23項Node測試的方法見[資料契約](docs/DATA-CONTRACT.md#可執行檢查與測試)。結構檢查與自動檢核通過不取代人工獨立覆核，亦不代表官方資格已核定。
 
 ## 貢獻與授權
 

@@ -139,7 +139,8 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
     def test_candidate_schema_is_valid_and_enforces_version_and_review_gates(self):
         schema = load_candidate_schema()
         Draft202012Validator.check_schema(schema)
-        self.assertEqual(schema["properties"]["schema_version"]["const"], "1.0.0-candidate")
+        self.assertIn("1.0.0-candidate", schema["properties"]["schema_version"]["enum"])
+        self.assertIn("1.1.0-candidate", schema["properties"]["schema_version"]["enum"])
 
         source = CONFIG["sources"][0]  # ntu-doctoral-funding (hash_only)
         extracted = extract_from_in_memory_blocks(
@@ -718,6 +719,212 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
         p3_nstc = evaluate_eligibility(opp_by_id["ntu-nstc-phd-115"], p3)
         self.assertEqual(p3_nstc["criteria"], "needs_information")
         self.assertIn("admission_route", p3_nstc["missing_information"])
+
+    def test_r1_r2_r3_r4_r5_r6_r7_fixes_and_policy_snapshot_diff(self):
+        from scripts.extract_candidates import (
+            parse_amount_from_text,
+            parse_baseline_year_month,
+            parse_chinese_or_arabic_int,
+        )
+        from scripts.verify_candidates import evidence_digest
+
+        # R1 & R2：小寫中文數字金額與中文民國年基準月解析
+        self.assertEqual(parse_chinese_or_arabic_int("四萬"), 40000)
+        self.assertEqual(parse_chinese_or_arabic_int("伍拾貳萬伍仟"), 525000)
+        self.assertEqual(parse_chinese_or_arabic_int("玖拾萬"), 900000)
+        self.assertEqual(parse_chinese_or_arabic_int("一一五"), 115)
+        self.assertEqual(parse_chinese_or_arabic_int("2.5萬"), 25000)
+        self.assertEqual(parse_baseline_year_month("以一一五年九月博士班一至三年級在學學生為基準"), "2026-09-01")
+
+        amt_40k = parse_amount_from_text("每名每月四萬元，自一學年至多獎勵四學年。")
+        self.assertIsNotNone(amt_40k)
+        self.assertEqual(amt_40k["amount_min"], 40000)
+        self.assertEqual(amt_40k["unit"], "per_month")
+
+        # R3：設置辦法 PDF (policy_snapshot) 與當期公告分離，不與 pilot.json 當期機會產生假 application.state 差異
+        pdf_blocks = [
+            {"locator": "P1", "text": "國立臺灣大學博士生獎學金設置辦法（114年4月23日修正通過）。"},
+            {"locator": "P2", "text": "國科會核配博士生獎學金：博士班在學學生，非在職生，每名每月四萬元，不得重複支領。"},
+            {"locator": "P3", "text": "教育部博士生獎學金：本國籍非在職生，博士班一至三年級在學學生，每名每月四萬元，不得重複支領。"},
+        ]
+        pdf_cands = extract_from_in_memory_blocks(
+            CONFIG["sources"][0],
+            pdf_blocks,
+            revision_id="8" * 64,
+            observed_at="2026-10-29T09:17:00+08:00",
+            url="https://www.aca.ntu.edu.tw/w/aca/國立臺灣大學博士生獎學金設置辦法1140423.pdf",
+            as_of="2026-10-29",
+        )
+        for pc in pdf_cands:
+            self.assertEqual(pc["cycle"]["kind"], "policy_snapshot")
+            self.assertEqual(pc["benefit"]["items"][0]["amount_min"], 40000)
+            diff_res = compute_candidate_diff(pc, PILOT)
+            self.assertEqual(diff_res["diff_status"], "policy_regulation_snapshot")
+            self.assertFalse(any(d["field"] == "application.state" for d in diff_res["field_diffs"]))
+
+        # R5：提及未抓取第二份申請說明附件或對照 pilot.json 欄位退步時，標記 passed_with_gaps 與 coverage_ok=False
+        gap_blocks = [
+            {"locator": "H1", "text": "教育部博士生獎學金（115學年度）：本國籍非在職之博士班在學學生，以一一五年九月一至三年級為基準，每名每月四萬元，不得重複支領。"},
+            {"locator": "H2", "text": "115學年度第2梯次教育部博士生獎學金申請說明詳見附件。"},
+        ]
+        gap_cands = extract_from_in_memory_blocks(
+            CONFIG["sources"][0],
+            gap_blocks,
+            revision_id="9" * 64,
+            observed_at="2026-10-29T09:17:00+08:00",
+            as_of="2026-10-29",
+        )
+        moe_gap = next(c for c in gap_cands if c["program_key"] == "ntu-moe-phd")
+        self.assertEqual(moe_gap["eligibility"]["year_limit"]["assessed_at"], "2026-09-01")
+        self.assertEqual(moe_gap["verification"]["status"], "passed_with_gaps")
+        self.assertFalse(moe_gap["verification"]["checks"]["coverage_ok"])
+
+        # R6 & R7：所有非 unknown 欄位（含 eligibility.identity）皆須具備 field_evidence 與正確 source_block_sha256
+        for ev in moe_gap["field_evidence"]:
+            self.assertIn("source_block_sha256", ev)
+        self.assertTrue(any(ev["field_path"] == "eligibility.identity" for ev in moe_gap["field_evidence"]))
+
+        bad_identity_cand = deepcopy(moe_gap)
+        bad_identity_cand["field_evidence"] = [
+            ev for ev in bad_identity_cand["field_evidence"] if ev["field_path"] != "eligibility.identity"
+        ]
+        ver_bad = verify_candidate(bad_identity_cand, in_memory_blocks=gap_blocks)
+        self.assertEqual(ver_bad["verification"]["status"], "failed_automated_checks")
+        self.assertIn("missing_evidence:eligibility.identity", ver_bad["verification"]["errors"])
+
+        self.assertEqual(evidence_digest("  測試  空白\n正規化 "), evidence_digest("測試 空白 正規化"))
+
+    def test_dual_track_llm_extract_audit_merge_cache_and_injection_defense(self):
+        # 1. Audit 模式：agree 標記 rule_and_model_agreed=True；disagree 寫入 conflicts 觸發 conflict_detected
+        yx_blocks = make_yuanxue_blocks()
+        audit_agree_resp = {
+            "extracted_fields": [],
+            "audit_findings": [
+                {
+                    "field_path": "benefit.items/0",
+                    "verdict": "agree",
+                    "llm_value": 525000,
+                    "locator": yx_blocks[2]["locator"],
+                    "quote": "伍拾貳萬伍仟元以上、玖拾萬元以下",
+                    "note": "金額區間與原文一致",
+                }
+            ],
+        }
+        mock_audit_ok = MockModelAdapter({"*": audit_agree_resp}, mode="audit")
+        cands_ok = extract_from_in_memory_blocks(
+            CONFIG["sources"][2],
+            yx_blocks,
+            revision_id="a" * 64,
+            observed_at="2026-10-29T09:17:00+08:00",
+            model_adapter=mock_audit_ok,
+        )
+        ev_b0 = next(e for e in cands_ok[0]["field_evidence"] if e["field_path"] == "benefit.items/0")
+        self.assertTrue(ev_b0.get("rule_and_model_agreed"))
+        self.assertEqual(cands_ok[0]["source_metadata"]["adapter_used"], "rules_plus_llm_audit")
+
+        audit_disagree_resp = {
+            "extracted_fields": [],
+            "audit_findings": [
+                {
+                    "field_path": "eligibility.candidate",
+                    "verdict": "disagree",
+                    "llm_value": "not_required",
+                    "locator": yx_blocks[1]["locator"],
+                    "quote": "通過博士學位候選人資格考核",
+                    "note": "模型認為有例外條款",
+                }
+            ],
+        }
+        mock_audit_disagree = MockModelAdapter({"*": audit_disagree_resp}, mode="audit")
+        cands_dis = extract_from_in_memory_blocks(
+            CONFIG["sources"][2],
+            yx_blocks,
+            revision_id="b" * 64,
+            observed_at="2026-10-29T09:17:00+08:00",
+            model_adapter=mock_audit_disagree,
+        )
+        self.assertEqual(cands_dis[0]["verification"]["status"], "conflict_detected")
+        self.assertFalse(cands_dis[0]["verification"]["checks"]["no_unresolved_conflicts"])
+        # 規則原值 required 絕不被靜默覆蓋
+        self.assertEqual(cands_dis[0]["eligibility"]["candidate"]["mode"], "required")
+
+        # 2. Extract 補缺模式：攔截非原文子字串引文、攔截數值與引文二次解析不符、攔截上層期限誤填學生截止日
+        bad_extract_resp = {
+            "extracted_fields": [
+                {
+                    "field_path": "eligibility.nationality",
+                    "value": "roc_only",
+                    "unit": None,
+                    "currency": None,
+                    "actor": None,
+                    "locator": yx_blocks[0]["locator"],
+                    "quote": "原文完全不存在的引文字串",
+                },
+                {
+                    "field_path": "schedule.student_deadline",
+                    "value": "2026-01-30",
+                    "unit": None,
+                    "currency": None,
+                    "actor": "student",
+                    "locator": yx_blocks[3]["locator"],
+                    "quote": "請學院於115年1月30日前彙整送達研究發展處",
+                },
+                {
+                    "field_path": "policy_version.amended_on",
+                    "value": "2099-12-31",
+                    "unit": None,
+                    "currency": None,
+                    "actor": None,
+                    "locator": yx_blocks[3]["locator"],
+                    "quote": "115年1月30日",
+                },
+            ],
+            "audit_findings": [],
+        }
+        mock_bad_ext = MockModelAdapter({"*": bad_extract_resp}, mode="extract")
+        cands_bad_ext = extract_from_in_memory_blocks(
+            CONFIG["sources"][2],
+            yx_blocks,
+            revision_id="c" * 64,
+            observed_at="2026-10-29T09:17:00+08:00",
+            model_adapter=mock_bad_ext,
+        )
+        self.assertEqual(mock_bad_ext.rejected_claims, 3)
+        self.assertEqual(cands_bad_ext[0]["eligibility"]["nationality"], "unknown")
+        self.assertIsNone(cands_bad_ext[0]["schedule"]["steps"][0]["deadline"]["value"])
+        self.assertIsNone(cands_bad_ext[0]["policy_version"]["amended_on"])
+
+        # 3. 合法的 Extract 補缺（引文存在於區塊且通過二次解析）與本地磁碟快取驗證
+        blocks_with_nat = deepcopy(yx_blocks)
+        blocks_with_nat[0]["text"] += "（申請人須具本國籍身分）。"
+        good_extract_resp = {
+            "extracted_fields": [
+                {
+                    "field_path": "eligibility.nationality",
+                    "value": "roc_only",
+                    "unit": None,
+                    "currency": None,
+                    "actor": None,
+                    "locator": blocks_with_nat[0]["locator"],
+                    "quote": "申請人須具本國籍身分",
+                }
+            ],
+            "audit_findings": [],
+        }
+        # 移除規則直接觸發之關鍵字以測試純模型補缺
+        blocks_with_nat[0]["text"] = blocks_with_nat[0]["text"].replace("本國籍", "臺灣地區戶籍")
+        good_extract_resp["extracted_fields"][0]["quote"] = "申請人須具臺灣地區戶籍身分"
+        mock_good_ext = MockModelAdapter({"*": good_extract_resp}, mode="both")
+        cands_good_ext = extract_from_in_memory_blocks(
+            CONFIG["sources"][2],
+            blocks_with_nat,
+            revision_id="d" * 64,
+            observed_at="2026-10-29T09:17:00+08:00",
+            model_adapter=mock_good_ext,
+        )
+        self.assertEqual(cands_good_ext[0]["eligibility"]["nationality"], "roc_only")
+        self.assertEqual(cands_good_ext[0]["source_metadata"]["adapter_used"], "rules_plus_llm_both")
+        self.assertIn("needs_human_review_for_model_supplement", cands_good_ext[0]["verification"]["warnings"])
 
 
 if __name__ == "__main__":

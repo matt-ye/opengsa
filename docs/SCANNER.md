@@ -1,6 +1,6 @@
 # 公開來源自動掃描與結構化候選管線
 
-2026-10-29使用者要求開始處理自動爬取，並進一步要求完成「爬取結果 → 結構化獎助資料 → 檢核 → 申請時間判斷 → 候選差異覆核報告」管線。本版實作公開GET、正文／文字PDF萃取、增量雜湊、記憶體內結構化萃取 (`scripts/extract_candidates.py`)、六面向獨立檢核 (`scripts/verify_candidates.py`)、學生窗口申請時間與 P1 資格判斷 (`scripts/evaluate_deadlines.py`)，以及候選差異覆核報告 (`scripts/review_candidates.py`)。模型 Adapter 預設關閉，且爬蟲或模型絕不直接覆寫 `data/pilot.json`。
+2026-10-29使用者要求開始處理自動爬取，並進一步要求完成「爬取結果 → 結構化獎助資料 → 檢核 → 申請時間判斷 → 候選差異覆核報告」管線及雙軌「確定性規則 + LLM API (`extract` 補缺 + `audit` 交叉盤查)」架構。本版實作公開GET、正文／文字PDF萃取、增量雜湊、記憶體內雙軌結構化萃取與盤查 (`scripts/extract_candidates.py`, `extractor-1.1.0`)、七面向獨立檢核 (`scripts/verify_candidates.py`, `verifier-1.1.0`，含 `coverage_ok` 與 `passed_with_gaps`)、學生窗口申請時間與 P1 資格判斷 (`scripts/evaluate_deadlines.py`)、候選差異覆核報告 (`scripts/review_candidates.py`)，以及三軌對照基準測試 (`scripts/evaluate_extraction_benchmark.py`)。模型 Adapter 預設關閉 (`OPENGSA_MODEL_MODE=off`)，排程自動掃描強制維持 `off`，僅手動觸發 (`workflow_dispatch`) 可選配 `audit`／`extract`／`both`，且爬蟲或模型絕不直接覆寫 `data/pilot.json`。
 
 ## 已實作範圍
 
@@ -26,22 +26,25 @@ python scripts/review_candidates.py --candidates work/scanner/report/candidates.
 - 本機觀察狀態：`work/scanner/state.json`，只含雜湊、HTTP驗證資訊、附件清單與未覆核候選。它是上次觀察值，**不是上次核准資料**。
 - 掃描與結構化覆核報告（位於 `work/scanner/report/`）：
   - `summary.md`、`scan-report.json`、`candidates.json`：每頁狀態、版權／robots限制、短證據或雜湊、正文區塊／PDF頁碼定位。
-  - `structured-candidates.json`：依 [`schema/candidate.schema.json`](../schema/candidate.schema.json) (`1.0.0-candidate`) 產生的結構化候選（已拆分制度分支與學年度、附帶逐欄證據、獨立檢核結果與學生窗口時間狀態）。
-  - `review-diff.json` 與 `review-summary.md`：分列（一）來源變更與上下文狀態、（二）結構化萃取結果、（三）獨立檢核與學生申請時間／P1資格判斷、（四）與 `data/pilot.json` 的欄位差異及 `data/scan-reviews.json` 人工處置狀態。
-- GitHub：[Scan public sources](https://github.com/matt-ye/opengsa/actions/workflows/scan-sources.yml)可手動執行，也排定**臺北時間週二、週五09:17**低頻掃描。排程可能延遲或被平台停用，不保證即時通知。
+  - `structured-candidates.json`：依 [`schema/candidate.schema.json`](../schema/candidate.schema.json) (`1.1.0-candidate`) 產生的結構化候選（已拆分制度分支、學年度與法規快照 `policy_snapshot`，附帶逐欄證據 `source_block_sha256`、獨立檢核結果與學生窗口時間狀態）。
+  - `review-diff.json`、`review-summary.md` 與 `model-usage.json`：分列（一）來源變更與上下文狀態、（二）結構化萃取結果、（三）獨立檢核與學生申請時間／P1資格判斷、（四）與 `data/pilot.json` 的欄位差異（法規快照 PDF 單獨歸類為 `policy_regulation_snapshot`，避免假性 `application.state` 差異）及 `data/scan-reviews.json` 人工處置狀態，並記錄模型呼叫與 `hash_only_bytes_sent=0` 統計。
+- GitHub：[Scan public sources](https://github.com/matt-ye/opengsa/actions/workflows/scan-sources.yml)可手動執行（支援 `model_mode`: `off` 預設、`audit`、`extract`、`both`），也排定**臺北時間週二、週五09:17**低頻掃描（排程強制 `OPENGSA_MODEL_MODE=off`）。排程可能延遲或被平台停用，不保證即時通知。
 - 每次執行的Summary可直接看掃描與候選覆核表，報告artifact保留14天；下載artifact需GitHub登入。沒有發Email、建立Issue、代送申請或自動合併資料PR。
 
 首次建立基準會出現多份changed，單輪最多五份，因此可能需要再執行一次處理延後項目。這是首次觀察，不代表官方今天修改。未變更時仍檢查母頁的已知PDF（可用ETag／Last-Modified），同URL附件更新不會只因母頁未改就漏掉。
 
-## 結構化候選欄位、獨立檢核與人工覆核
+## 結構化候選欄位、雙軌模型盤查、獨立檢核與人工覆核
 
 1. **記憶體內完整上下文 vs 無上下文退回 (`needs_context`)**：
    - `candidates.json` 僅保存短證據（每段 `<=50` 字、每份合計 `<=120` 字）或雜湊 (`hash_only`)，不足以單獨推導完整結構化欄位。
-   - 因此 `scan_sources.py` 與 `review_candidates.py` 會在單輪允許範圍內使用記憶體中的完整區塊 (`in_memory_full_blocks`) 執行確定性規則解析；若在 `--no-refetch` 或來源失敗時無記憶體全文，萃取器會建立 `needs_context` 候選骨架，將未知欄位保留為 `null`／`unknown`，**絕不從雜湊或殘句猜測答案**。
-2. **六面向獨立檢核 (`scripts/verify_candidates.py`)**：
-   - 自動檢查：（1）`schema/candidate.schema.json` 格式、（2）逐欄證據支持与防模型捏造（且 `hash_only` 強制 `excerpt: null`）、（3）日期精度（`Asia/Taipei`、純日期不自造 `23:59`、法規修正日不自動當生效日）與金額單位完整性、（4）不同學年度或互斥分支（教育部 vs 國科會博獎、遠學一般 vs 配合補助）不混成單筆、（5）否定條件（非在職、不得重複請領）與申請角色分流（機關彙送日、學院推薦日不當學生截止日）、（6）來源衝突攔截。
+   - 因此 `scan_sources.py` 與 `review_candidates.py` 會在單輪允許範圍內使用記憶體中的完整區塊 (`in_memory_full_blocks`) 執行通用確定性規則解析；若在 `--no-refetch` 或來源失敗時無記憶體全文，萃取器會建立 `needs_context` 候選骨架，將未知欄位保留為 `null`／`unknown`，**絕不從雜湊或殘句猜測答案**。
+2. **雙軌模型 Adapter (`extract` 補缺 + `audit` 交叉盤查)**：
+   - 預設 `OPENGSA_MODEL_MODE=off`（零外部呼叫）；啟用時硬性攔截 `hash_only` 來源（`www.aca.ntu.edu.tw` `hash_only_bytes_sent == 0`）。
+   - 對允許 `short_excerpt` 之來源，以 `<untrusted_source_data>` 隔離並過濾提示詞注入；模型回傳的每一項宣告都必須通過 JSON Schema 驗證、原文逐字引文子字串核對（`<=80` 字）及確定性規則二次解析（日期與金額數值／單位一致），否則標記 `model_value_mismatch` 或 `model_quote_not_substring_of_block` 予以剔除。
+3. **七面向獨立檢核 (`scripts/verify_candidates.py`, `verifier-1.1.0`)**：
+   - 自動檢查：（1）`schema/candidate.schema.json` 格式、（2）逐欄證據強制性（所有非 `unknown` 欄位皆須具備 `field_evidence` 並核對 `source_block_sha256`，且 `hash_only` 強制 `excerpt: null`）、（3）日期精度（`Asia/Taipei`、純日期不自造 `23:59`、法規修正日不自動當生效日）與金額單位完整性、（4）不同學年度或互斥分支（教育部 vs 國科會博獎、遠學一般 vs 配合補助）不混成單筆、（5）否定條件（非在職、不得重複請領）與申請角色分流（機關彙送日、學院推薦日不當學生截止日）、（6）來源衝突與雙軌 `disagree` 攔截 (`conflict_detected`)、（7）`coverage_ok` 關鍵欄位與附件覆蓋率檢核（若有未抓取之申請說明附件或缺漏結構化金額，降級為 `passed_with_gaps`）。
    - **忽略 Agent 自信宣告**：即使模型 Adapter 注入 `self_verified=true` 或 `confidence=1.0`，檢核器一律忽略並強制剔除；未經非原編輯者 (`independent_reviewer != editor`) 人工覆核前，一律維持 `review.status = "pending"` 且 `promotion_ready = false`。
-3. **人工覆核與處置台帳 (`data/scan-reviews.json`)**：
+4. **人工覆核與處置台帳 (`data/scan-reviews.json`)**：
    - 處理完候選後，維護者在[scan-reviews.json](../data/scan-reviews.json)提交紀錄：`revision_id`、`action`（`noted`／`applied`／`dismissed`）、`reviewer`、`reason`、`reviewed_on`。
    - 只有通過自動檢核且完成非原編輯者獨立覆核的候選，才會由維護者另開資料 PR 更新 `data/pilot.json`。
 
@@ -54,10 +57,10 @@ python scripts/review_candidates.py --candidates work/scanner/report/candidates.
 - HTML上限2MB；PDF最多10MB／50頁，純記憶體抽字，子程序最長20秒。Linux子程序另限CPU與768MB記憶體；Windows沒有同等記憶體硬上限。加密、空文字、超限、掃描圖與解析問題轉人工，不做OCR。
 - 新請求啟動預算180秒，每次請求另有23秒外部逾時；工作流程10分鐘上限。故障保留該文件先前狀態與未覆核候選，不當成下架或停辦。
 - 不存原始HTML／PDF、不上傳原檔、無大量全文cache；raw資料只在處理記憶體。短證據跳過聯絡資料並限制長度，教務處只存雜湊且禁止送往外部模型。Cache及artifact不含學生個人條件。
-- 模型 Adapter 預設關閉（呼叫0次），不使用私人API、Secrets、D1或付費擷取備援；無金鑰時以 `MockModelAdapter` 離線驗證。
+- 模型 Adapter 預設關閉（呼叫0次），不使用D1或付費擷取備援；無金鑰時以 `MockModelAdapter` 離線驗證；本機或手動啟用時具磁碟快取 (`work/model-cache/`) 與 429／402 自動降級保護。
 
 ## 驗證與維護
 
-離線測試涵蓋四組各五種合成情境、正文範圍、下載區、文字PDF、附件同URL變更、條款／robots、304、白名單、限流、預算、故障保留、設定改版、cache遺失、處置去重，以及新增之候選 Schema、年度／梯次／分支拆分、學生與機關期限分流、否定資格、未知兼領、金額單位、事件相對日期（跨年／閏月／例假日待核）、證據不足不猜測、來源衝突、模型捏造攔截與 P1 博士五年級候選人情境。目前 **49 項 Python 測試與 23 項 Node 原型測試** 全部通過。
+離線測試涵蓋四組各五種合成情境、正文範圍、下載區、文字PDF、附件同URL變更、條款／robots、304、白名單、限流、預算、故障保留、設定改版、cache遺失、處置去重，以及新增之候選 Schema (`1.1.0-candidate`)、R1～R7 規則修復、雙軌 `extract`／`audit` 模型檢驗、防提示詞注入、年度／梯次／分支拆分、學生與機關期限分流、否定資格、未知兼領、金額單位、事件相對日期（跨年／閏月／例假日待核）、證據不足不猜測、來源衝突、模型捏造攔截與 P1 博士五年級候選人情境。目前 **51 項 Python 測試與 23 項 Node 原型測試** 全部通過。
 
 依據：[GitHub排程事件](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows)、[Robots協定RFC 9309](https://www.rfc-editor.org/rfc/rfc9309.html)、[教務處隱私與版權聲明](https://www.aca.ntu.edu.tw/w/aca/Privacy)、[pypdf抽字及記憶體說明](https://pypdf.readthedocs.io/en/stable/user/extract-text.html)。
