@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "owner": "repository-maintainers",
-  "policy_checked_on": "2026-10-29",
+  "policy_checked_on": "2026-10-30",
   "policy": "public_bounded_get_short_evidence_only",
   "allowed_hosts": [
     "www.aca.ntu.edu.tw",
@@ -9,7 +9,7 @@
     "law.nstc.gov.tw",
     "www.faos.org.tw"
   ],
-  "max_requests": 20,
+  "max_requests": 25,
   "max_changed_documents": 5,
   "max_pending_candidates": 24,
   "minimum_host_interval_seconds": 3,
@@ -109,6 +109,71 @@
       "max_pdfs": 0,
       "review_note": "機構期限不代替學生期限；個別學位與兼領須覆核。",
       "evidence_mode": "short_excerpt"
+    },
+    {
+      "id": "nstc-abroad-dragon-rule",
+      "title": "國科會博士生赴國外研究（千里馬）作業要點原文",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039188",
+      "body_selector": "#ctl00_cp_content_divLawContent08",
+      "start_marker": "國家科學及技術委員會補助博士生赴國外研究作業要點",
+      "required_markers": [
+        "國內設籍中華民國國民",
+        "博士班在學一年以上",
+        "新臺幣九十萬元"
+      ],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "千里馬作業要點：每年6/1-7/31機關送件，補助期程7-12個月，每年90萬元；須國內博士生在學一年以上經學校推薦，不得重複領取其他政府公費赴外獎助。",
+      "evidence_mode": "short_excerpt"
+    },
+    {
+      "id": "nstc-assistant-rule",
+      "title": "國科會專題研究計畫研究人力約用注意事項原文",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686",
+      "body_selector": "#ctl00_cp_content_divLawContent08",
+      "start_marker": "國家科學及技術委員會補助專題研究計畫研究人力約用注意事項",
+      "required_markers": [
+        "學生兼任人員",
+        "兼任助理",
+        "研究獎助生"
+      ],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "學生兼任人員（含勞僱型兼任助理與學習型獎助生）每月至少6,000元；博士生費用增核每月10,000元（至少16,000元）；專任助理依學歷底線（專科30.4k/學士36.3k/碩士41.5k）。",
+      "evidence_mode": "short_excerpt"
+    },
+    {
+      "id": "ntu-ta-policy",
+      "title": "臺大教務處教學助理制度獎勵金實施辦法",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514",
+      "body_selector": ".article-center",
+      "required_markers": [
+        "教學助理制度",
+        "獎勵金",
+        "教務處"
+      ],
+      "pdf_include": [
+        "實施辦法條文",
+        "TA申請須知"
+      ],
+      "max_pdfs": 1,
+      "review_note": "博士生一般課程TA每月8,000-10,000元；碩士生中文TA每月6,000-7,500元；每學期原則最多擔任兩門課。依轉載條款採hash_only。",
+      "evidence_mode": "hash_only"
+    },
+    {
+      "id": "ntu-ord-assistant-limit",
+      "title": "臺大計畫兼任助理與獎助生每月支給上限規定",
+      "url": "https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260",
+      "body_selector": ".card-text-info",
+      "required_markers": [
+        "博士班學生",
+        "配合",
+        "補助費用"
+      ],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "碩士兼任上限20,000元；博士未獲資格42,000元；博士候選人上限50,000元。注意此為支給上限非保底，同一補助單位合計。robots禁止/WebUPD/。",
+      "evidence_mode": "short_excerpt"
     }
   ],
   "deferred_sources": [
@@ -119,6 +184,22 @@
     {
       "url": "https://my.ntu.edu.tw/fao/search.aspx",
       "reason": "登入限定，維持人工查閱，不擷取登入狀態。"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/CMS/Page/174",
+      "reason": "學務處生輔組學雜費減免系統，維持人工查對，不啟用未審批之爬蟲。"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/CMS/HTML/118",
+      "reason": "學務處生輔組急難救助入口，維持人工查對。"
+    },
+    {
+      "url": "https://oia.ntu.edu.tw/",
+      "reason": "國際處雙聯學位與海外獎助多層動態清單，列為下一梯次主機與 robots 審查。"
+    },
+    {
+      "url": "https://daais.sinica.edu.tw/",
+      "reason": "中研院博士候選人培育計畫，列為下一梯次主機與 robots 審查。"
     }
   ],
   "terms_notes": [
