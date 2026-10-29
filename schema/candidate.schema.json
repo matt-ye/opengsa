@@ -1,13 +1,17 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/matt-ye/opengsa/blob/main/schema/candidate.schema.json",
-  "title": "OpenGSA 結構化候選獎助資料契約 1.0.0-candidate",
-  "description": "爬取結果經記憶體規則／可替換模型萃取後的待覆核候選Schema。不直接覆寫data/pilot.json，未通過獨立檢核與非原編輯者覆核前保持pending。",
+  "title": "OpenGSA 結構化候選獎助資料契約 1.1.0-candidate",
+  "description": "爬取結果經記憶體規則＋可選LLM雙軌（補漏extract與盤查audit）處理後的待覆核候選Schema。不直接覆寫data/pilot.json，未通過獨立檢核與非原編輯者覆核前保持pending。",
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "schema_version": {
-      "const": "1.0.0-candidate"
+      "enum": [
+        "1.0.0-candidate",
+        "1.1.0-candidate"
+      ],
+      "default": "1.1.0-candidate"
     },
     "generated_at": {
       "type": "string",
@@ -149,7 +153,7 @@
               "value": {
                 "type": "string",
                 "format": "date-time",
-                "pattern": "\\+08:00$"
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(:\\d{2})?\\+08:00$"
               }
             }
           }
@@ -897,10 +901,23 @@
           "type": "string",
           "pattern": "^[0-9a-f]{64}$"
         },
+        "source_block_sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "extraction_method": {
           "enum": [
             "deterministic_rule",
-            "model_adapter"
+            "model_adapter",
+            "rule_and_model_agreed",
+            "manual_review"
           ]
         }
       },
@@ -985,6 +1002,71 @@
         "refs"
       ]
     },
+    "audit_finding_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "field_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verdict": {
+          "enum": [
+            "agree",
+            "disagree",
+            "uncertain",
+            "not_found",
+            "supplemented",
+            "rejected"
+          ]
+        },
+        "llm_value": {
+          "type": [
+            "string",
+            "number",
+            "integer",
+            "boolean",
+            "null"
+          ]
+        },
+        "locator": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "quote": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "quote_sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "field_path",
+        "verdict",
+        "locator",
+        "quote_sha256",
+        "note"
+      ]
+    },
     "verification": {
       "type": "object",
       "additionalProperties": false,
@@ -992,6 +1074,7 @@
         "status": {
           "enum": [
             "passed_automated_checks",
+            "passed_with_gaps",
             "failed_automated_checks",
             "needs_context",
             "conflict_detected"
@@ -1029,6 +1112,9 @@
             },
             "no_unresolved_conflicts": {
               "type": "boolean"
+            },
+            "coverage_ok": {
+              "type": "boolean"
             }
           },
           "required": [
@@ -1037,8 +1123,15 @@
             "date_and_amount_units_valid",
             "no_year_or_branch_mixing",
             "negation_and_roles_valid",
-            "no_unresolved_conflicts"
+            "no_unresolved_conflicts",
+            "coverage_ok"
           ]
+        },
+        "audit_findings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/audit_finding_entry"
+          }
         },
         "errors": {
           "type": "array",
@@ -1589,7 +1682,17 @@
                 "deterministic_rule",
                 "mock_model_adapter",
                 "external_model_adapter",
+                "local_model_adapter",
+                "rules_plus_llm_extract",
+                "rules_plus_llm_audit",
+                "rules_plus_llm_both",
                 "none_insufficient_context"
+              ]
+            },
+            "prompt_version": {
+              "type": [
+                "string",
+                "null"
               ]
             }
           },

@@ -1,6 +1,6 @@
-# 資料契約 0.1.0-draft 與候選契約 1.0.0-candidate
+# 資料契約 0.1.0-draft 與候選契約 1.1.0-candidate
 
-狀態：正式草稿快照採 [`schema/pilot.schema.json`](../schema/pilot.schema.json) (`0.1.0-draft`)，樣本為 [`data/pilot.json`](../data/pilot.json)；爬取與結構化萃取之待覆核候選採 [`schema/candidate.schema.json`](../schema/candidate.schema.json) (`1.0.0-candidate`)。兩份 Schema 均由 `scripts/check_data.py` 與 `scripts/verify_candidates.py` 驗證，未完成人工獨立覆核之候選不得自動覆寫 `data/pilot.json`。
+狀態：正式草稿快照採 [`schema/pilot.schema.json`](../schema/pilot.schema.json) (`0.1.0-draft`)，樣本為 [`data/pilot.json`](../data/pilot.json)；爬取與結構化萃取之待覆核候選採 [`schema/candidate.schema.json`](../schema/candidate.schema.json) (`1.1.0-candidate`，向下相容 `1.0.0-candidate`)。兩份 Schema 均由 `scripts/check_data.py` 與 `scripts/verify_candidates.py` 驗證，未完成人工獨立覆核之候選不得自動覆寫 `data/pilot.json`。
 
 ## 最小模型與候選擴充
 
@@ -16,21 +16,21 @@ erDiagram
 ```
 
 1. **正式草稿契約 (`schema/pilot.schema.json`, `0.1.0-draft`)**：管理網站預覽讀取之 10 筆代表草稿與 17 筆去重來源。
-2. **結構化候選契約 (`schema/candidate.schema.json`, `1.0.0-candidate`)**：沿用 `pilot.schema.json` 核心概念，並針對結構化萃取、獨立檢核與申請時間判斷擴充版本化欄位：
+2. **結構化候選契約 (`schema/candidate.schema.json`, `1.1.0-candidate`)**：沿用 `pilot.schema.json` 核心概念，並針對雙軌結構化萃取 (`extract` + `audit`)、獨立檢核與申請時間判斷擴充版本化欄位：
 
 | 區塊 | 必填內容 | 用途與限制 |
 |---|---|---|
-| 根層 | `schema_version` (`1.0.0-candidate`)、`as_of`、`timezone` (`Asia/Taipei`)、`official_data_modified` (`false`) | 確保候選輸出絕不直接改寫正式網站資料 |
-| `cycle` | `kind`、`label`、`year_system`、`year`、`term_or_round`、`branch` | 嚴格區分學年度／曆年、梯次與方案分支，禁止將新舊年度或互斥分支混成一筆 |
+| 根層 | `schema_version` (`1.1.0-candidate`)、`as_of`、`timezone` (`Asia/Taipei`)、`official_data_modified` (`false`) | 確保候選輸出絕不直接改寫正式網站資料 |
+| `cycle` | `kind`（含 `policy_snapshot`）、`label`、`year_system`、`year`、`term_or_round`、`branch` | 嚴格區分學年度／曆年、梯次、方案分支與法規條文快照 (`policy_snapshot`)，禁止將新舊年度或互斥分支混成一筆 |
 | `participants` | `applicant`、`beneficiary`、`awardee`、`payee` | 區分學生申請 (`student`) 與學校／單位申請 (`institution` / `unit`) |
-| `eligibility` | `degrees`、`institution`（學校、學院、系所）、`year_limit`、`candidate`、`nationality`、`employment_status`、`negated_conditions` | 明示否定條件（如排除在職生、不得重複請領），未知維持 `unknown` |
-| `benefit` | `summary`、`items`（`amount_min`、`amount_max`、`currency`、`unit`、`basis`、`duration_months_min/max`）、`refs` | 金額必須具備幣別與發放單位（`per_month`、`lump_sum`、`total_range` 等），拒絕無單位裸數字 |
+| `eligibility` | `degrees`、`institution`（學校、學院、系所）、`year_limit`、`candidate`、`nationality`、`employment_status`、`negated_conditions`、`identity` | 明示否定條件（如排除在職生、不得重複請領），未知維持 `unknown`；`identity` 綁定含學制關鍵字區塊並附 `field_evidence` |
+| `benefit` | `summary`、`items`（`amount_min`、`amount_max`、`currency`、`unit`、`basis`、`duration_months_min/max`）、`refs` | 金額必須具備幣別與發放單位（`per_month`、`lump_sum`、`total_range` 等），拒絕無單位裸數字；摘要依實際金額動態產生 |
 | `compatibility`／`hardship` | `mode`、`prohibited_schemes`、`overlap_period_rule`、`note`、`refs` | 未明示可兼領時一律保留 `unknown` 或 `conditional`，不得當作 `allowed` |
 | `schedule` | `application_start`、`steps`（區分 `student`、`department`、`college`、`university`、`institution`、`supplement`）、`result_date`、`relative_rule` | 學生截止與學院／學校／機關期限分層，支援固定日期與事件相對規則 |
 | `policy_version` | `promulgated_on`、`amended_on`、`effective_from`、`effective_to`、`note`、`refs` | 公布日、修正日與生效日分開；修正日不得自動複製為生效日 |
-| `field_evidence` | `field_path`、`source`、`revision_id`、`locator`、`evidence_mode`、`excerpt`、`excerpt_sha256`、`extraction_method` | 每個萃取欄位可回查原文段落／PDF頁碼；`hash_only` 來源強制 `excerpt: null` |
-| `gaps_and_conflicts` | `missing_fields`、`conflicts`、`open_questions` | 來源內部或跨來源衝突自動攔截，不靜默擇一覆蓋 |
-| `verification` | `status`、`checks`（6項布林指標）、`errors`、`warnings`、`model_self_claim_ignored` (`true`) | 獨立檢核結果；忽略 Agent 自信宣告 |
+| `field_evidence` | `field_path`、`source`、`revision_id`、`locator`、`evidence_mode`、`excerpt`、`excerpt_sha256`、`source_block_sha256`、`extraction_method`、`rule_and_model_agreed` | 每個非 `unknown` 萃取欄位強制具備 `field_evidence`，可回查原文段落／PDF頁碼雜湊；`hash_only` 來源強制 `excerpt: null` |
+| `gaps_and_conflicts` | `missing_fields`、`conflicts`、`open_questions` | 來源內部衝突或雙軌 `disagree` 自動攔截，不靜默擇一覆蓋 |
+| `verification` | `status`（含 `passed_with_gaps`）、`checks`（7項布林指標，含 `coverage_ok`）、`errors`、`warnings`、`audit_findings`、`model_self_claim_ignored` (`true`) | 七面向獨立檢核結果；忽略 Agent 自信宣告，缺關鍵附件或金額時標示 `passed_with_gaps` |
 | `review` | `status` (`pending` / `reviewed` / `rejected`)、`editor`、`independent_reviewer`、`promotion_ready` | 未經非原編輯者獨立覆核，強制維持 `pending` 且 `promotion_ready=false` |
 
 ## 五組 tag 從資料產生，不維護第二套規則
@@ -51,7 +51,7 @@ erDiagram
 
 - `criteria`：`meets_recorded_rules`／`not_met`／`needs_information`／`needs_manual_review`。符合已記錄條件不等於官方核定得獎；只要缺個人條件或來源尚未完成獨立覆核，即不會產生無保留的肯定推薦。
 - `application`：`open`／`closed`／`not_yet_open`／`unknown`。僅以**學生適用收件窗口**判斷；機關彙送日、學院送校日或備函日不得冒充學生截止日。
-- `verification` & `evidence`：`passed_automated_checks`／`needs_context`／`conflict_detected`／`failed_automated_checks`，並與 `review.status` 分開顯示。
+- `verification` & `evidence`：`passed_automated_checks`／`passed_with_gaps`／`needs_context`／`conflict_detected`／`failed_automated_checks`，並與 `review.status` 分開顯示。
 
 ## 日期與程序規則（`Asia/Taipei`）
 
@@ -77,7 +77,7 @@ python scripts/build_site.py dist/handoff-check
 ```
 
 - `python scripts/check_data.py`：驗證 `schema/pilot.schema.json`、`schema/candidate.schema.json` 與 `data/pilot.json` 結構、引用、日期精度與獨立覆核規則。
-- `python -m unittest discover -s tests -v`：執行 **49 項 Python 測試**（含資料契約 10 項、建置邊界 3 項、掃描器 24 項，以及結構化萃取／獨立檢核／申請時間／P1 資格／覆核流程 12 項綜合測試）。
+- `python -m unittest discover -s tests -v`：執行 **51 項 Python 測試**（含資料契約 10 項、建置邊界 3 項、掃描器 24 項，以及結構化萃取／雙軌 LLM 盤查／獨立檢核／申請時間／P1 資格／覆核流程 14 項綜合測試）。
 - `node --test tests/prototype.test.cjs`：執行 **23 項 Node 原型互動與研討會時程測試**。
 
 **重要限制**：結構檢查、規則萃取與自動檢核通過不證明外站內容、個人資格或法律結論已獲官方核定，亦不取代人工獨立覆核。

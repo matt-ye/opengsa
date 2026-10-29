@@ -1,6 +1,6 @@
 # 首批來源與 Actions／資料萃取設計
 
-2026-10-29後續實作更新：使用者已核可並完成「公開來源低頻掃描 → 有版本候選 Schema (`schema/candidate.schema.json`) → 結構化萃取 (`scripts/extract_candidates.py`) → 獨立檢核 (`scripts/verify_candidates.py`) → 申請時間與資格判斷 (`scripts/evaluate_deadlines.py`) → 候選差異覆核報告 (`scripts/review_candidates.py`)」。現況與操作方式以[SCANNER.md](SCANNER.md)與[DATA-CONTRACT.md](DATA-CONTRACT.md)為準；模型 Adapter 預設關閉，自動開立資料 PR 與 D1 仍維持未啟用，且結構驗證通過或模型輸出不等於官方資格已核定。
+2026-10-29後續實作更新：使用者已核可並完成「公開來源低頻掃描 → 有版本候選 Schema (`schema/candidate.schema.json`, `1.1.0-candidate`) → 雙軌結構化萃取與盤查 (`scripts/extract_candidates.py`, `extractor-1.1.0`) → 七面向獨立檢核 (`scripts/verify_candidates.py`, `verifier-1.1.0`) → 申請時間與資格判斷 (`scripts/evaluate_deadlines.py`) → 候選差異覆核報告 (`scripts/review_candidates.py`)」。現況與操作方式以[SCANNER.md](SCANNER.md)與[DATA-CONTRACT.md](DATA-CONTRACT.md)為準；模型 Adapter 預設關閉 (`OPENGSA_MODEL_MODE=off`)，自動開立資料 PR 與 D1 仍維持未啟用，且結構驗證通過或模型輸出不等於官方資格已核定。
 
 設計初版0.1，2026-10-29。使用者已接受v0.6作為MVP介面基礎；v0.7／v0.8補上固定篩選卡及多方案研討會日期試算。另核可的pages.yml僅做靜態預覽檢查與發布，詳見[部署說明](DEPLOYMENT.md)。
 
@@ -23,16 +23,16 @@ flowchart TD
  B --> C[正文／相關附件：各自計算雜湊與檢查 robots]
  C --> D{內容有實質變更或待覆核？}
  D -->|無| E[記錄查核時間，不呼叫模型]
- D -->|有| F[記憶體規則擷取 scripts/extract_candidates.py：拆年度／分支、逐欄證據]
- F --> G{啟用可選模型 Adapter？}
- G -->|預設關閉／hash_only禁止外送| I[獨立檢核 scripts/verify_candidates.py]
- G -->|僅非受限來源且明示啟用| H[可替換模型 Adapter 補充欄位]
+ D -->|有| F[記憶體規則擷取 scripts/extract_candidates.py：拆年度／分支／法規快照、逐欄證據]
+ F --> G{啟用雙軌模型 Adapter (extract / audit / both)？}
+ G -->|預設關閉／hash_only禁止外送| I[七面向獨立檢核 scripts/verify_candidates.py]
+ G -->|僅非受限來源且明示啟用| H[雙軌模型 Adapter 補缺與交叉盤查＋引文二次解析]
  H --> I
  I --> J[申請時間與資格判斷 scripts/evaluate_deadlines.py]
  J --> K[候選差異報告 scripts/review_candidates.py]
  K --> L[人工獨立覆核資格、期限、金額與法源]
  L -->|通過並登記 scan-reviews.json| M[人工建立資料 PR 更新 data/pilot.json]
- L -->|衝突或上下文不足| N[保留舊版並標示 needs_context / conflict_detected]
+ L -->|衝突或上下文不足| N[保留舊版並標示 needs_context / conflict_detected / passed_with_gaps]
 ```
 
 每次變更在記憶體完成規則萃取與獨立檢核；模型 Adapter 預設關閉 (`DisabledModelAdapter`)。模型不能寫正式資料、變更來源白名單、決定付費備援或自行核定法律適用；檢核器強制忽略模型自稱通過之標記，且第二輪檢核不能取代人工獨立覆核。
@@ -43,9 +43,9 @@ flowchart TD
 |---|---|---|
 | source | `data/scan-sources.json` | 穩定ID、機關、URL、選擇器、必要標記、附件策略、`evidence_mode` (`hash_only` / `short_excerpt`) |
 | source_revision | `work/scanner/state.json`、`work/scanner/report/candidates.json` | 最終URL、查核時間、HTTP驗證資訊、原始與語義雜湊、欄位線索定位 |
-| candidate | `schema/candidate.schema.json`、`work/scanner/report/structured-candidates.json` | `1.0.0-candidate`：分支、年度、梯次、申請／受益角色、資格與否定條件、金額／幣別／單位、各層期限、結果日、兼領限制、法規版本 |
-| field_evidence | 內嵌於 `structured-candidates.json` | 欄位路徑、來源修訂ID、段落／PDF頁碼、`evidence_mode`、短摘錄（`hash_only` 恆為 `null`）、SHA-256 雜湊、擷取方式 |
-| verification & review | `work/scanner/report/review-diff.json`、`review-summary.md`、`data/scan-reviews.json` | 六項獨立檢核結果、學生窗口狀態、P1 比對、與 `pilot.json` 欄位差異、非原編輯者覆核門檻 |
+| candidate | `schema/candidate.schema.json`、`work/scanner/report/structured-candidates.json` | `1.1.0-candidate`：分支、年度、梯次、法規快照 (`policy_snapshot`)、申請／受益角色、資格與否定條件、金額／幣別／單位、各層期限、結果日、兼領限制、法規版本 |
+| field_evidence | 內嵌於 `structured-candidates.json` | 欄位路徑、來源修訂ID、段落／PDF頁碼、`evidence_mode`、短摘錄（`hash_only` 恆為 `null`）、`excerpt_sha256`、`source_block_sha256`、擷取方式、`rule_and_model_agreed` |
+| verification & review | `work/scanner/report/review-diff.json`、`review-summary.md`、`model-usage.json`、`data/scan-reviews.json` | 七項獨立檢核結果（含 `coverage_ok` 與 `passed_with_gaps`）、雙軌 `audit_findings`、學生窗口狀態、P1 比對、與 `pilot.json` 欄位差異、非原編輯者覆核門檻 |
 
 未知用`null`或`unknown`狀態，不填`false`、不限或`0`；金額需明示幣別與單位（`per_month`、`lump_sum`、`total_range` 等）。官方未公告結果日就留 `unknown`；不能把審查需時或論文接受通知日當成補助結果日。
 

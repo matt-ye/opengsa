@@ -1,13 +1,10 @@
-"""候選覆核與差異比對流程 (Candidate Review & Diff Workflow)。
+"""候選覆核與差異比對流程 (Candidate Review & Diff Workflow v1.1)。
 
 功能：
-1. 串接「來源變更 → 結構化萃取 → 獨立檢核 → 申請時間與 P1 資格試算 → 與 data/pilot.json 差異比對 → 人工處置狀態」。
-2. 輸出易讀之 Markdown 覆核報告與 JSON 差異表，清楚區分四層資訊：
-   - 來源變更（HTTP 狀態、雜湊、robots／版權模式）
-   - 結構化萃取結果（年度／梯次／分支、條件、金額單位、各層期限、逐欄證據定位）
-   - 獨立檢核與申請時間判斷（六項檢核指標、學生窗口狀態、P1 博士五年級候選人比對結果）
-   - 與既有正式草稿差異及人工處置（pilot.json 欄位 diff、scan-reviews.json 狀態、是否可轉資料 PR）
-3. 嚴格保護正式資料：禁止爬蟲或模型直接覆寫 data/pilot.json，未完成非原編輯者獨立覆核與檢核通過者一律維持 pending。
+1. 串接「來源變更 → 結構化萃取（規則 + 可選模型）→ 獨立檢核（7項指標含 coverage_ok）→ 申請時間與 P1 資格試算 → 與 data/pilot.json 差異比對 → 人工處置狀態」。
+2. 區分「法規快照 (policy_snapshot)」與「年度／梯次申請公告 (academic_year / calendar_year / event_relative)」，避免將設置辦法 PDF 誤與當期申請步驟比對產生假差異 (R3)。
+3. 輸出易讀之 Markdown 覆核報告、JSON 差異表與 model-usage.json。
+4. 嚴格保護正式資料：禁止爬蟲或模型直接覆寫 data/pilot.json，未完成非原編輯者獨立覆核與檢核通過者一律維持 pending。
 """
 import argparse
 from copy import deepcopy
@@ -38,7 +35,29 @@ def _escape_md(value):
 
 
 def compute_candidate_diff(candidate, pilot_data):
-    """比對單筆結構化候選與 data/pilot.json 現有機會之差異，絕不修改 pilot_data。"""
+    """比對單筆結構化候選與 data/pilot.json 現有機會或法規版本之差異，絕不修改 pilot_data。
+    若 cycle.kind == 'policy_snapshot'（如設置辦法 PDF），與法規基準比對，不與當期申請機會比對 steps / application.state (R3)。
+    """
+    cycle_kind = candidate.get("cycle", {}).get("kind")
+    prog_key = candidate.get("program_key")
+
+    if cycle_kind == "policy_snapshot":
+        # 尋找對應 program_key 之既有學習／法規設定做條文層級比對，不比對當期申請狀態與梯次截止日
+        matching_opps = [o for o in pilot_data.get("opportunities", []) if o.get("program_key") == prog_key]
+        diffs = []
+        if matching_opps:
+            ref_opp = matching_opps[0]
+            for field_path, old_val, new_val in [
+                ("compatibility.mode", ref_opp.get("compatibility", {}).get("mode"), candidate.get("compatibility", {}).get("mode")),
+            ]:
+                if old_val != new_val and new_val not in (None, "unknown"):
+                    diffs.append({"field": field_path, "pilot_value": old_val, "candidate_value": new_val})
+        return {
+            "diff_status": "policy_regulation_snapshot",
+            "matched_opportunity_id": f"policy:{prog_key}",
+            "field_diffs": diffs,
+        }
+
     opp_by_id = {item["id"]: item for item in pilot_data.get("opportunities", [])}
     opp_by_prog_cycle = {
         (item["program_key"], item["cycle"]["label"]): item
@@ -48,7 +67,7 @@ def compute_candidate_diff(candidate, pilot_data):
     opp_id = candidate.get("opportunity_id")
     matched = opp_by_id.get(opp_id) if opp_id else None
     if matched is None:
-        matched = opp_by_prog_cycle.get((candidate.get("program_key"), candidate.get("cycle", {}).get("label")))
+        matched = opp_by_prog_cycle.get((prog_key, candidate.get("cycle", {}).get("label")))
 
     if matched is None:
         return {
@@ -119,10 +138,11 @@ def apply_review_ledger(candidate, reviews_by_revision):
         cand["review"]["promotion_ready"] = False
     elif action == "applied":
         editor = cand["review"].get("editor", "extractor")
+        ver_status = cand.get("verification", {}).get("status")
         if (
             reviewer
             and reviewer != editor
-            and cand.get("verification", {}).get("status") == "passed_automated_checks"
+            and ver_status in ("passed_automated_checks", "passed_with_gaps")
         ):
             cand["review"]["status"] = "reviewed"
             cand["review"]["independent_reviewer"] = reviewer
@@ -156,7 +176,7 @@ def build_review_report(
     as_of = candidate_bundle.get("as_of", "2026-10-29")
     p1_profile = make_p1_profile()
 
-    verified_bundle, bundle_errors = verify_bundle(candidate_bundle)
+    verified_bundle, bundle_errors = verify_bundle(candidate_bundle, pilot_data=pilot_data)
     enriched_candidates = []
     review_rows = []
 
@@ -194,15 +214,27 @@ def build_review_report(
         )
 
     verified_bundle["candidates"] = enriched_candidates
+    model_usage = verified_bundle.get(
+        "model_usage",
+        {
+            "adapter_kind": "deterministic_rule",
+            "mode": "off",
+            "enabled": bool(verified_bundle.get("model_enabled", False)),
+            "calls": verified_bundle.get("model_calls", 0),
+            "hash_only_bytes_sent": 0,
+        },
+    )
     summary = {
         "as_of": as_of,
         "total_candidates": len(enriched_candidates),
         "passed_automated_checks": sum(1 for c in enriched_candidates if c["verification"]["status"] == "passed_automated_checks"),
+        "passed_with_gaps": sum(1 for c in enriched_candidates if c["verification"]["status"] == "passed_with_gaps"),
         "failed_automated_checks": sum(1 for c in enriched_candidates if c["verification"]["status"] == "failed_automated_checks"),
         "needs_context": sum(1 for c in enriched_candidates if c["verification"]["status"] == "needs_context"),
         "conflict_detected": sum(1 for c in enriched_candidates if c["verification"]["status"] == "conflict_detected"),
         "promotion_ready": sum(1 for c in enriched_candidates if c["review"]["promotion_ready"]),
         "model_calls": verified_bundle.get("model_calls", 0),
+        "model_usage": model_usage,
         "official_data_modified": False,
         "bundle_schema_errors": bundle_errors,
         "rows": review_rows,
@@ -213,20 +245,22 @@ def build_review_report(
 
 def render_review_markdown(summary, verified_bundle, scan_report=None):
     """產生區分『來源變更、萃取結果、檢核與時間判斷、與正式資料差異及人工處置』四層之 Markdown 覆核報告。"""
+    m_usage = summary.get("model_usage") or {}
     lines = [
         "# OpenGSA 候選結構化萃取、獨立檢核與差異覆核報告",
         "",
         "> **重要聲明**：本報告為自動化萃取與獨立檢核之待覆核候選結果，**不會自動覆寫 `data/pilot.json`，亦不代表官方資格已核定**。",
-        "> 教務處等 `hash_only` 來源僅輸出雜湊與區塊定位，零原文摘錄外流，且未將受限原文送往任何外部模型。",
+        "> 教務處等 `hash_only` 來源僅輸出雜湊與區塊定位，零原文摘錄外流，且未將受限原文送往任何外部模型 (`hash_only_bytes_sent = 0`)。",
         "",
         (
             f"- 評估基準日 (`Asia/Taipei`)：`{summary['as_of']}`｜"
             f"候選筆數：`{summary['total_candidates']}`｜"
-            f"通過自動檢核：`{summary['passed_automated_checks']}`｜"
+            f"完整通過 (`passed_automated_checks`)：`{summary['passed_automated_checks']}`｜"
+            f"結構通過但待補欄位 (`passed_with_gaps`)：`{summary.get('passed_with_gaps', 0)}`｜"
             f"待補上下文：`{summary['needs_context']}`｜"
             f"檢核攔截／衝突：`{summary['failed_automated_checks'] + summary['conflict_detected']}`｜"
             f"可轉資料 PR (`promotion_ready`)：`{summary['promotion_ready']}`｜"
-            f"模型呼叫：`{summary['model_calls']}` 次｜"
+            f"模型模式：`{m_usage.get('mode', 'off')}`（呼叫 `{summary['model_calls']}` 次，`hash_only` 外送 `{m_usage.get('hash_only_bytes_sent', 0)}` bytes）｜"
             f"正式資料已修改：`{summary['official_data_modified']}`"
         ),
         "",
@@ -281,8 +315,9 @@ def render_review_markdown(summary, verified_bundle, scan_report=None):
         else:
             amt_str = cand["benefit"]["summary"][:28]
         ev_cnt = len(cand["field_evidence"])
+        agreed_cnt = sum(1 for e in cand["field_evidence"] if e.get("rule_and_model_agreed") is True)
         has_non_null_excerpt = any(e.get("excerpt") is not None for e in cand["field_evidence"])
-        ev_note = f"{ev_cnt} 筆（hash_only 零原文）" if cand["source_metadata"]["evidence_mode"] == "hash_only" and not has_non_null_excerpt else f"{ev_cnt} 筆（短摘錄）"
+        ev_note = f"{ev_cnt} 筆（hash_only 零原文）" if cand["source_metadata"]["evidence_mode"] == "hash_only" and not has_non_null_excerpt else f"{ev_cnt} 筆（短摘錄，雙軌一致:{agreed_cnt}）"
         lines.append(
             f"| `{_escape_md(cand['candidate_id'])}` | {_escape_md(branch_str)} | {_escape_md(role_str)} | "
             f"{_escape_md(cond_str)} | {_escape_md(amt_str)} | {_escape_md(ev_note)} |"
@@ -408,7 +443,7 @@ def export_pr_candidate_draft(verified_bundle, pilot_data, output_path):
     for cand in verified_bundle.get("candidates", []):
         if not cand.get("review", {}).get("promotion_ready"):
             continue
-        if cand.get("verification", {}).get("status") != "passed_automated_checks":
+        if cand.get("verification", {}).get("status") not in ("passed_automated_checks", "passed_with_gaps"):
             continue
         if cand.get("review", {}).get("status") != "reviewed":
             continue
@@ -467,14 +502,19 @@ def main():
     (args.output_dir / "review-diff.json").write_text(
         json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8"
     )
+    (args.output_dir / "model-usage.json").write_text(
+        json.dumps(summary.get("model_usage", {}), ensure_ascii=False, indent=2), encoding="utf-8"
+    )
     (args.output_dir / "review-summary.md").write_text(md, encoding="utf-8")
     print(
         json.dumps(
             {
                 "total_candidates": summary["total_candidates"],
                 "passed_automated_checks": summary["passed_automated_checks"],
+                "passed_with_gaps": summary["passed_with_gaps"],
                 "needs_context": summary["needs_context"],
                 "promotion_ready": summary["promotion_ready"],
+                "model_calls": summary["model_calls"],
                 "official_data_modified": summary["official_data_modified"],
             },
             ensure_ascii=False,

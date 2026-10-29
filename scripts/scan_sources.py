@@ -240,11 +240,11 @@ def evidence_mentions(blocks, mode="short_excerpt"):
             if not re.search(pattern, text) or SKIP.search(text) or CONTACT.search(text):
                 continue
             match = re.search(pattern, text)
-            excerpt = text[max(0, match.start() - 15):max(0, match.start() - 15) + min(50, remaining)]
+            excerpt = normalized(text[max(0, match.start() - 15):max(0, match.start() - 15) + min(50, remaining)])
             if len(excerpt) < 8 or (kind, excerpt) in seen:
                 continue
             facts.append({"field": kind, "normalized_value": None, "evidence": excerpt if mode=="short_excerpt" else None,
-                          "evidence_sha256": digest(excerpt),
+                          "evidence_sha256": digest(excerpt), "source_block_sha256": digest(text),
                           "locator": block["locator"], "status": "candidate_requires_human_review"})
             remaining -= len(excerpt)
             seen.add((kind, excerpt))
@@ -392,7 +392,10 @@ def run():
     )
     (args.output / "structured-candidates.json").write_text(json.dumps(verified_bundle, ensure_ascii=False, indent=2), encoding="utf-8")
     (args.output / "review-diff.json").write_text(json.dumps(review_summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    (args.output / "model-usage.json").write_text(json.dumps(review_summary.get("model_usage", {}), ensure_ascii=False, indent=2), encoding="utf-8")
     (args.output / "review-summary.md").write_text(review_md, encoding="utf-8")
+    report["model_calls"] = review_summary.get("model_calls", 0)
+    (args.output / "scan-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({key: report[key] for key in ["http_requests", "changed_documents", "pending_candidates", "model_calls", "official_data_modified"]}))
     return report
 

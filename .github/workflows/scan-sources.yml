@@ -2,8 +2,19 @@ name: Scan public sources
 
 on:
   workflow_dispatch:
+    inputs:
+      model_mode:
+        description: 'Model mode for short_excerpt sources (off / audit / extract / both; schedule always uses off)'
+        required: false
+        default: 'off'
+        type: choice
+        options:
+          - 'off'
+          - 'audit'
+          - 'extract'
+          - 'both'
   schedule:
-    # Asia/Taipei 週二、週五09:17；避開整點，GitHub排程不保證準時。
+    # Asia/Taipei 週二、週五09:17；避開整點，GitHub排程不保證準時。排程強制使用 model_mode=off。
     - cron: '17 1 * * 2,5'
 
 permissions:
@@ -37,7 +48,20 @@ jobs:
       - name: Install extraction dependencies
         run: python -m pip install -r requirements-ingestion.txt
       - name: Bounded public scan
-        run: python scripts/scan_sources.py
+        env:
+          REQUESTED_MODEL_MODE: ${{ github.event_name == 'schedule' && 'off' || inputs.model_mode || 'off' }}
+          HAS_MODEL_KEY: ${{ secrets.OPENGSA_MODEL_API_KEY != '' }}
+          OPENGSA_MODEL_BASE_URL: ${{ vars.OPENGSA_MODEL_BASE_URL }}
+          OPENGSA_MODEL_NAME: ${{ vars.OPENGSA_MODEL_NAME }}
+          OPENGSA_MODEL_API_KEY: ${{ secrets.OPENGSA_MODEL_API_KEY }}
+        shell: bash
+        run: |
+          if [ "$HAS_MODEL_KEY" = "true" ] && [ -n "$OPENGSA_MODEL_BASE_URL" ] && [ -n "$OPENGSA_MODEL_NAME" ]; then
+            export OPENGSA_MODEL_MODE="$REQUESTED_MODEL_MODE"
+          else
+            export OPENGSA_MODEL_MODE="off"
+          fi
+          python scripts/scan_sources.py
       - name: Publish review summary
         if: always()
         shell: bash
@@ -48,6 +72,13 @@ jobs:
           if [ -f work/scanner/report/review-summary.md ]; then
             echo "" >> "$GITHUB_STEP_SUMMARY"
             cat work/scanner/report/review-summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f work/scanner/report/model-usage.json ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "### 模型使用與邊界統計 (model-usage.json)" >> "$GITHUB_STEP_SUMMARY"
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            cat work/scanner/report/model-usage.json >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
           fi
       - name: Upload candidate report only
         if: always()
