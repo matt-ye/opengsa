@@ -202,6 +202,10 @@ TypeSafe主站直接連到docs.typesafe.ai，其[官方簡介](https://docs.type
 
 RSS事件分新機會、重要更正、截止提醒及撤回。使用穩定事件ID；更正要描述哪個欄位改動。只修改last_checked不新增通知，避免每次掃描都洗版。7／3／1日前提醒是獨立提醒事件，不偽裝成新公告，且只對已確認適用的期限產生。
 
+即使來源沒有變更，也要在日期跨日或提醒到期時，以同一正式資料版本重新計算狀態與feed；這一步不呼叫模型、不變更原公告事實。data_commit保持原值，built_at更新；用事件ID避免重複提醒。前台依臺北時間更新當期／歷史檢視，讓頁面開著跨日也能正確顯示。
+
+Feed只保留近期事件，完整歷史由網站提供；發布前量測壓縮後大小，以「feed大小×預估輪詢次數」估算流量，避免把完整總表重複塞入每個分類feed。
+
 ICS依[iCalendar規格](https://www.rfc-editor.org/rfc/rfc5545)產生，保留事件識別與修訂，區分日期與確切時分。未確認日期不生成假的午夜事件；只有預計結果日則清楚標示預定。
 
 不要把清寒、所得、國籍或個人選項編入公開feed網址；有特殊偏好可在自己的閱讀器／裝置過濾。第三方閱讀器或日曆可能處理使用者資料，需讓使用者自行選擇。
@@ -239,4 +243,4 @@ ICS依[iCalendar規格](https://www.rfc-editor.org/rfc/rfc5545)產生，保留�
 
 已選方向：**學生支持、明亮柔和、研究與安心生活**。使用專案名稱、既有slogan、柔和紙張／書本／陽光意象，不用個人照片。可編輯HTML見[Social preview設計](design/social-preview.html)。
 
-[GitHub官方建議](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/customizing-your-repositorys-social-media-preview)最佳顯示1280×640，PNG／JPG／GIF小於1MB。HTML保留版面及色彩，確認後輸出PNG再設定repo Social preview；這是分享卡片，帳號頭像屬不同設定。本輪只產生提案與預覽，不上傳或替換設定。
+[GitHub官方建議](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/customizing-your-repositorys-social-media-preview)最佳顯示1280×640，PNG／JPG／GIF小於1MB。HTML保留版面及色彩，確認後輸出PNG或JPG再設定repo Social preview；這是分享卡片，帳號頭像屬不同設定。本輪只產生提案與預覽，不上傳或替換設定。
