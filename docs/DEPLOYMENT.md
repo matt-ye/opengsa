@@ -25,11 +25,11 @@ python -m http.server 8771 --bind 127.0.0.1 --directory dist/site
 
 ## 工作流程
 
-`.github/workflows/pages.yml`在PR中只執行資料檢查、13項Python測試、23項Node測試及建置；不部署PR或取用部署權限。推送main或在main手動執行時，檢查通過才上傳`dist/site`並由另一個job部署。
+`.github/workflows/pages.yml`在PR中只執行資料檢查、37項Python測試、23項Node測試及建置；來源掃描測試全用合成離線資料，不部署PR或取用部署權限。推送main或在main手動執行時，檢查通過才上傳`dist/site`並由另一個job部署。
 
 部署job採GitHub Pages官方OIDC流程，只取得`pages:write`與`id-token:write`；不需新增私人API key或PAT。Action固定完整commit SHA，checkout不留存憑證，部署使用github-pages環境並避免同時發布。
 
-首次將repo的Pages來源設為GitHub Actions。官方依據：[自訂Pages工作流程](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。這是網站建置及發布流程；沒有schedule，也不會抓取獎學金來源、呼叫模型、建立D1或送出訂閱通知。
+首次將repo的Pages來源設為GitHub Actions。官方依據：[自訂Pages工作流程](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。這是網站建置及發布流程；pages.yml沒有schedule，不抓取獎學金來源。另核可的[scan-sources.yml](SCANNER.md)獨立低頻掃描，不呼叫模型、建立D1或送出訂閱通知。
 
 ## 分享與回饋
 

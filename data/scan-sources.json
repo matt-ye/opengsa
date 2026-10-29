@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.0.0",
+  "owner": "repository-maintainers",
+  "policy_checked_on": "2026-10-29",
+  "policy": "public_bounded_get_short_evidence_only",
+  "allowed_hosts": [
+    "www.aca.ntu.edu.tw",
+    "ord.ntu.edu.tw",
+    "law.nstc.gov.tw",
+    "www.faos.org.tw"
+  ],
+  "max_requests": 20,
+  "max_changed_documents": 5,
+  "max_pending_candidates": 24,
+  "minimum_host_interval_seconds": 3,
+  "max_run_seconds": 180,
+  "sources": [
+    {
+      "id": "ntu-doctoral-funding",
+      "title": "臺大校級博士生獎學金",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+      "body_selector": ".article-center",
+      "required_markers": [
+        "教育部博士生獎學金",
+        "國科會核配"
+      ],
+      "pdf_include": [
+        "設置辦法",
+        "第二梯申請"
+      ],
+      "max_pdfs": 1,
+      "review_note": "須人工拆教育部／國科會、年度與梯次；圖片及名冊不擷取。",
+      "evidence_mode": "hash_only"
+    },
+    {
+      "id": "ntu-president-award",
+      "title": "臺大研究生校長獎",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368",
+      "body_selector": ".article-center",
+      "required_markers": [
+        "研究生校長獎",
+        "申請時間"
+      ],
+      "pdf_include": [
+        "設置辦法"
+      ],
+      "max_pdfs": 1,
+      "review_note": "制度與年度受理分開；畢業及院系條件須人工覆核。",
+      "evidence_mode": "hash_only"
+    },
+    {
+      "id": "ntu-yuanxue",
+      "title": "臺大遠學計畫",
+      "url": "https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260",
+      "body_selector": ".card-text-info",
+      "required_markers": [
+        "博士班學生",
+        "配合",
+        "補助費用"
+      ],
+      "pdf_include": [
+        "補助作業要點"
+      ],
+      "max_pdfs": 1,
+      "review_note": "一般／配合款／博士後分支須人工拆分；robots禁止/WebUPD/，附件保留受限狀態。",
+      "evidence_mode": "short_excerpt",
+      "attachment_selector": ".document-download"
+    },
+    {
+      "id": "nstc-ntu-conference",
+      "title": "國科會國際會議補助：臺大學生程序",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383",
+      "body_selector": ".article-center",
+      "required_markers": [
+        "之前一日17:00",
+        "四週前"
+      ],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "校方／學生／補送期限分開；不自動回填個人會議日期。",
+      "evidence_mode": "hash_only"
+    },
+    {
+      "id": "nstc-conference-rule",
+      "title": "國科會國際會議作業要點原文",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260",
+      "body_selector": "#ctl00_cp_content_divLawContent08",
+      "start_marker": "國家科學及技術委員會補助國內研究生出席國際學術會議作業要點",
+      "required_markers": [
+        "會議舉行首日四週前",
+        "之前一個月之首日"
+      ],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "修正日與生效日分開；正文選擇器／必要標記失效轉人工，不自動套新法。",
+      "evidence_mode": "short_excerpt"
+    },
+    {
+      "id": "faos-student-conference",
+      "title": "傑出人才發展基金會：優秀學生出國開會補助",
+      "url": "https://www.faos.org.tw/Application/ApplicatStud.html",
+      "body_selector": "body",
+      "start_marker": "優秀學生出國開會申請補助辦法",
+      "required_markers": [
+        "申請單位",
+        "會議開始日前兩個月"
+      ],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "機構期限不代替學生期限；個別學位與兼領須覆核。",
+      "evidence_mode": "short_excerpt"
+    }
+  ],
+  "deferred_sources": [
+    {
+      "url": "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296",
+      "reason": "HTML僅導覽，正文需動態渲染；本版不啟用瀏覽器爬蟲。"
+    },
+    {
+      "url": "https://my.ntu.edu.tw/fao/search.aspx",
+      "reason": "登入限定，維持人工查閱，不擷取登入狀態。"
+    }
+  ],
+  "terms_notes": [
+    {
+      "url": "https://www.aca.ntu.edu.tw/w/aca/Privacy",
+      "checked_on": "2026-10-29",
+      "decision": "教務處要求轉載先聯繫；本版不輸出原文摘錄，僅雜湊、欄位類型、URL及定位，不自動改寫網站。"
+    },
+    {
+      "url": "https://ord.ntu.edu.tw/robots.txt",
+      "checked_on": "2026-10-29",
+      "decision": "禁止/WebUPD/，不下載該路徑附件；每次重新檢查。"
+    }
+  ]
+}

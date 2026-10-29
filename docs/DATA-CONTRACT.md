@@ -93,7 +93,7 @@ Git 保存本輪原創摘要的差異，policy_versions 保存已明示的日期
 
 ## 可執行檢查
 
-需 Python 3.10 以上；以標準 venv 安裝唯一開發驗證依賴。版本依 [jsonschema 官方套件資訊](https://pypi.org/project/jsonschema/4.26.0/) 核對；不安裝網站套件。
+需Python 3.10以上；以標準venv安裝資料驗證與離線掃描測試依賴。jsonschema版本依[官方套件資訊](https://pypi.org/project/jsonschema/4.26.0/)核對，Beautiful Soup與pypdf另列requirements-ingestion.txt；皆非網站執行依賴。來源掃描還需Node，見[操作說明](SCANNER.md)。
 
 ```powershell
 python -m venv work/venv
