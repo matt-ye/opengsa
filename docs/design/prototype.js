@@ -126,6 +126,7 @@ function geometry(item, range) {
  };
 }
 function dateText(value) { return value ? value.slice(0,10).replaceAll("-","/")+(value.length>10?" "+value.slice(11,16):"") : "待確認"; }
+function deadlineText(item){return (item.personal&&item.end.value?"試算／自填 ":"")+dateText(item.end.value);}
 function conferencePlan(start,notice=null,buffer=14) {
  const validDate=value=>typeof value==="string" && /^\d{4}-\d{2}-\d{2}$/.test(value) && dayNumber(value)!==null;
  if(!validDate(start) || (notice && !validDate(notice)) || !Number.isInteger(buffer) || buffer<0 || buffer>90) return null;
@@ -135,13 +136,61 @@ function conferencePlan(start,notice=null,buffer=14) {
   noticeRisk:!notice?"unknown":notice>supplement?"after_supplement":notice>studentBase?"after_submission":"before_submission",
   calendarStatus:"unverified",deadlineStatus:"estimate_pending_calendar"};
 }
-const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,filterItems,workspaceItems,domain,position,centerScroll,geometry,conferencePlan};
+function monthsBefore(value,amount) {
+ const date=new Date(value+"T00:00:00Z"), day=date.getUTCDate();
+ date.setUTCDate(1);date.setUTCMonth(date.getUTCMonth()-amount);
+ const last=new Date(Date.UTC(date.getUTCFullYear(),date.getUTCMonth()+1,0)).getUTCDate();
+ date.setUTCDate(Math.min(day,last));return date.toISOString().slice(0,10);
+}
+function makeConferenceItem(input,program) {
+ const base=conferencePlan(input.start,input.notice||null,input.buffer);
+ const type=program?.rule?.type;
+ if(!base || !["nstc_ntu","days_before","months_before","manual"].includes(type)) return null;
+ if(type==="days_before" && (!Number.isInteger(program.rule.days)||program.rule.days<0)) return null;
+ if(type==="months_before" && (!Number.isInteger(program.rule.months)||program.rule.months<1)) return null;
+ if(input.manualDeadline && !/^\d{4}-\d{2}-\d{2}$/.test(input.manualDeadline)) return null;
+ if(input.manualDeadline && dayNumber(input.manualDeadline)===null) return null;
+ const name=(input.name||"").trim()||"我的研討會";
+ const unit=(input.unit||"").trim(), title=type==="manual" && unit?unit:program.title;
+ const student=type==="nstc_ntu"?base.studentBase:type==="days_before"?addDays(input.start,-program.rule.days):type==="manual"?input.manualDeadline||null:null;
+ const agency=type==="nstc_ntu"?base.agencyBase:type==="months_before"?monthsBefore(input.start,program.rule.months):null;
+ const reference=student||agency, prepare=reference?addDays(reference,-input.buffer):null;
+ const milestones=[{label:"會議首日（自填）",...event(input.start,"estimated","個人填寫會議日期")}];
+ if(agency) milestones.push({label:"機構彙送基準（試算）",...event(agency,"estimated","非已確認學生截止；例假日／校內日期待核")});
+ if(type==="nstc_ntu") milestones.push({label:"接受函補送基準（試算）",...event(base.supplement,"estimated","四週前；不替代原申請")});
+ if(input.notice) milestones.push({label:"預計接受通知（自填）",...event(input.notice,"estimated","個人預計，非官方公布結果")});
+ if(prepare) milestones.push({label:"建議開始準備",...event(prepare,"estimated","個人緩衝，非官方申請起日")});
+ return {id:"PERSONAL-"+encodeURIComponent(JSON.stringify([name,input.start,program.id,type==="manual"?unit:""])),
+  title:name+"｜"+title+"（個人規劃）",conferenceName:name,program,category:"international_conference",source:program.source,
+  degrees:["master","phd"],year:"unknown",compatibility:program.id==="faos-student"||type==="manual"?"unknown":"conditional",hardship:"unknown",
+  cycle:"本次個人規劃 · 試算／自填待核",personal:true,synthetic:false,
+  start:event(null,"unknown","未確認官方申請起日；準備建議不當作申請起日"),
+  end:event(student,student?"estimated":"unknown",type==="nstc_ntu"?"未校正例假日的臺大17:00送出基準":student?"試算／自填日期，尚待核對院系及當期公告":"機構期限不代替學生期限；校內收件待查"),
+  result:event(null,"unknown","沒有官方結果日；接受通知不是補助結果"),milestones,
+  preparation:prepare?{start:prepare,end:reference}:null,
+  application:"個人規劃／受理待確認",evidence:"來源初查，待獨立覆核；個人輸入未核",url:program.refs[0]?.url||null,
+  note:"此列是個人試算，非已確認資格或正式截止。"+program.scope+" "+program.requirements+" "+program.compatibility,
+  noticeRisk:type==="nstc_ntu"?base.noticeRisk:!input.notice||!reference?"unknown":input.notice>reference?"after_deadline":"before_submission"};
+}
+function conferenceEntries(programs){
+ return programs.filter(p=>!["nstc-ntu","custom-unit"].includes(p.id)).map(program=>({
+  id:"PROGRAM-"+program.id,title:program.title,program,category:"international_conference",source:program.source,
+  degrees:["master","phd"],year:"unknown",compatibility:program.id==="ntu-med-oia"?"conditional":"unknown",hardship:"unknown",
+  cycle:"制度入口 · 當期受理待查",synthetic:false,
+  start:event(),end:event(),result:event(),milestones:[],application:"事件相對期限／受理待確認",evidence:"來源初查，待獨立覆核",
+  url:program.refs[0]?.url||null,note:program.scope+" "+program.requirements+" "+program.compatibility
+ }));
+}
+const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,filterItems,workspaceItems,domain,position,centerScroll,geometry,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries};
 if(typeof module!=="undefined" && module.exports) module.exports=api;
 if(typeof document==="undefined") return;
 
 const byId=id=>document.getElementById(id);
 const pilot=JSON.parse(byId("pilot-data").textContent);
-const drafts=makeDrafts(pilot);
+const conferenceData=JSON.parse(byId("conference-data").textContent);
+const personalConferences=new Map();
+function currentItems(){return [...(mode==="demo"?makeDemo(today):drafts),...personalConferences.values()];}
+const drafts=[...makeDrafts(pilot),...conferenceEntries(conferenceData.programs)];
 const rawById=new Map(pilot.opportunities.map(item=>[item.id,item]));
 const sourceById=new Map(pilot.sources.map(source=>[source.id,source]));
 const picked={demo:new Set(),draft:new Set()}, completed={demo:new Set(),draft:new Set()}, activeDetail={demo:null,draft:null};
@@ -164,18 +213,39 @@ if(typeof ResizeObserver!=="undefined") new ResizeObserver(updateNavHeight).obse
 function renderConferencePlan() {
  const output=byId("conference-output"), start=byId("conference-start").value, notice=byId("conference-notice").value;
  output.replaceChildren();
- if(!start) {output.append(el("p","small","填入會議首日後，試算臺大／國科會這個申請路徑。"));return;}
+ const program=conferenceData.programs.find(x=>x.id===byId("conference-program").value);
+ const manual=program?.rule.type==="manual";
+ byId("conference-manual").hidden=!manual;
+ byId("conference-program-info").replaceChildren();
+ const info=byId("conference-program-info");
+ if(program) {
+  info.append(el("p","small",program.scope),el("p","small",program.requirements),el("p","small","兼領："+program.compatibility));
+  for(const ref of program.refs){const link=el("a","small",ref.title+" ↗");link.href=ref.url;info.append(link,el("span","","　"));}
+ }
+ byId("conference-add").disabled=true;
+ if(!start) {output.append(el("p","small","填入會議首日後試算，再按「加入／更新甘特圖」。"));return;}
  const buffer=byId("conference-buffer").value;
- const plan=conferencePlan(start,notice,buffer===""?NaN:Number(buffer));
- if(!plan) {output.append(el("p","small","請確認日期，準備緩衝需為0至90的整數天數。"));return;}
- output.append(el("h4","",byId("conference-name").value.trim()||"我的研討會"),el("p","tiny quiet","條文基準試算 · 未核例假日順延與院系所更早期限；以下不是已確認的正式截止。"));
+ const item=makeConferenceItem({name:byId("conference-name").value,start,notice,buffer:buffer===""?NaN:Number(buffer),unit:byId("conference-unit").value,manualDeadline:manual?byId("conference-deadline").value:null},program);
+ if(!item) {output.append(el("p","small","請確認日期，準備緩衝需為0至90的整數天數。"));return;}
+ byId("conference-add").disabled=false;
+ output.append(el("h4","",item.title),el("p","tiny quiet","條文基準試算 · 例假日、月底換算與院系所更早期限待核，以下不是已確認的正式截止。"));
  const facts=el("dl","facts");
- for(const [label,value] of [["會議首日",dateText(start)],["校方彙送基準",dateText(plan.agencyBase)+"（前一個月首日；待核例假日順延）"],["臺大送出基準",dateText(plan.studentBase)+" 17:00（按未順延基準倒推；正式日期待核）"],["接受函補送",dateText(plan.supplement)+"（會議首日前四週；須依程序註明補送）"],["建議開始準備",dateText(plan.prepare)+"（自訂提前"+plan.buffer+"天，非官方期限）"]]) facts.append(el("dt","",label),el("dd","",value));
+ facts.append(el("dt","","學生送件基準"),el("dd","",dateText(item.end.value)+(program.id==="nstc-ntu"?" 17:00（未校正例假日）":"（試算／自填待核）")));
+ for(const point of item.milestones) facts.append(el("dt","",point.label),el("dd","",dateText(point.value)));
  output.append(facts);
- const messages={unknown:"尚未填接受通知日。若接受函未取得，條文允許註明補送；先查申請程序，不必等接受函才開始準備。",after_supplement:"接受通知日可能晚於接受函補送規定。請提早洽承辦確認可行程序；平台不保證例外或核定。",after_submission:"接受通知日在未順延的申請基準後、補送日內。可先查註明補送程序，避免等接受函才開始申請。",before_submission:"接受通知日未晚於試算基準；仍須核例假日、文件及院系所期限，不能據此保證來得及申請。"};
- output.append(el("p","callout",messages[plan.noticeRisk]));
+ const messages={unknown:"接受通知或學生期限尚未確認，請先核對此方案的必要文件及收件程序。",after_supplement:"接受通知日可能晚於國科會接受函補送規定，請提早洽承辦確認。",after_submission:"接受通知日在申請基準後；國科會允許註明補送，仍須遵守補送程序與日期。",after_deadline:"接受通知日可能晚於本方案送件基準；此方案未查得接受函可補送條款，請洽承辦確認，勿套用國科會補送規則。",before_submission:"通知未晚於試算基準，仍須核對資格、文件、院系期限與當期公告，不能據此保證來得及申請。"};
+ output.append(el("p","callout",messages[item.noticeRisk]));
  if(start<=today) output.append(el("p","small","會議已開始或首日已過，以上僅作回顧試算。"));
- else if(plan.studentBase<today) output.append(el("p","small","未順延的學生送出基準已過；請先確認實際順延日期與校內公告，不把估算當成已確認逾期。"));
+ else if(item.end.value && item.end.value<today) output.append(el("p","small","學生送件試算基準已過，請核對實際公告，不把估算當成已確認逾期。"));
+ return item;
+}
+function renderConferenceList(){
+ const list=byId("conference-saved");list.replaceChildren();
+ for(const item of personalConferences.values()){
+  const row=el("div","source-note"), remove=el("button","secondary","移除");remove.type="button";remove.setAttribute("aria-label","移除 "+item.title);
+  remove.addEventListener("click",()=>{personalConferences.delete(item.id);for(const key of ["demo","draft"]){picked[key].delete(item.id);for(const task of completed[key]) if(task.startsWith(item.id+":")) completed[key].delete(task);}renderConferenceList();render();byId("conference-status").textContent="已移除這筆個人規劃。";});
+  row.append(el("p","small",item.title),remove);list.append(row);
+ }
 }
 function selectedButtons(container,attribute,value) {
  document.querySelectorAll(container+" button").forEach(button=>{
@@ -223,7 +293,7 @@ function inspect(item) {
  inspectedId=item.id;
  const box=byId("schedule-inspect");box.replaceChildren();
  box.append(el("strong","",item.title));
- box.append(el("p","small","申請開始："+dateText(item.start.value)+"　→　學生截止："+dateText(item.end.value)+"　→　"+(item.result.certainty==="expected"?"預定":"")+"結果公布："+dateText(item.result.value)));
+ box.append(el("p","small","申請開始："+dateText(item.start.value)+"　→　學生截止："+deadlineText(item)+"　→　"+(item.result.certainty==="expected"?"預定":"")+"結果公布："+dateText(item.result.value)));
  item.milestones.forEach(m=>box.append(el("p","small",m.label+"："+dateText(m.value))));
  box.append(el("p","tiny quiet",item.synthetic?"合成排程，全部為虛構日期。":item.note));
  if(item.url) {const link=el("a","small","核對官方來源 ↗");link.href=item.url;box.append(link);}
@@ -253,7 +323,7 @@ function drawCards(items) {
   const axes=el("div","axes");
   axes.append(axis("資格："+(item.synthetic?"未進行比對":"待補資料／人工核對"),"warn"),axis("受理："+item.application),axis("證據："+item.evidence,"info"));card.append(axes);
   const tags=el("div","pills");itemTags(item).forEach(tag=>tags.append(el("span","pill",tag)));card.append(tags);
-  card.append(el("p","small","申請開始 "+dateText(item.start.value)+" → 學生截止 "+dateText(item.end.value)+" → "+(item.result.certainty==="expected"?"預定":"")+"結果 "+dateText(item.result.value)));
+  card.append(el("p","small","申請開始 "+dateText(item.start.value)+" → 學生截止 "+deadlineText(item)+" → "+(item.result.certainty==="expected"?"預定":"")+"結果 "+dateText(item.result.value)));
   const actions=el("div","card-actions");actions.append(pickControl(item,"list"));
   const button=el("button","secondary",picked[mode].has(item.id)?"查看詳情":"勾選並看詳情");button.type="button";button.dataset.openDetail=item.id;button.addEventListener("click",()=>chooseAndOpen(item));actions.append(button);card.append(actions);
   list.append(card);
@@ -298,9 +368,13 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
   if(gridId==="gantt-grid") label.append(pickControl(item,"gantt"));
   const button=el("button","row-title",item.title);button.type="button";button.addEventListener("click",()=>onInspect(item));
   label.append(button,el("div","tiny quiet",labels.category[item.category]+" · "+labels.source[item.source]));
-  label.append(el("div","tiny quiet",dateText(item.start.value)+" → "+dateText(item.end.value)));
+  label.append(el("div","tiny quiet",item.personal?"學生期限："+deadlineText(item):dateText(item.start.value)+" → "+dateText(item.end.value)));
   row.append(label);
   const plot=el("div","gantt-plot");todayLine(plot,range);
+  if(item.preparation){
+   const prep=geometry({start:event(item.preparation.start),end:event(item.preparation.end),result:event(),milestones:[]},range).bar;
+   if(prep){const bar=el("button","gantt-bar preparation");bar.type="button";bar.style.left=prep.left+"%";bar.style.width=prep.width+"%";bar.title="個人準備建議（非官方申請期）："+dateText(item.preparation.start)+" 至 "+dateText(item.preparation.end);bar.setAttribute("aria-label",item.title+"："+bar.title);bar.addEventListener("click",()=>onInspect(item));plot.append(bar);}
+  }
   if(g.wait) {const wait=el("span","gantt-wait");wait.style.left=g.wait.left+"%";wait.style.width=g.wait.width+"%";wait.setAttribute("aria-hidden","true");plot.append(wait);}
   if(g.bar) {
    const bar=el("button","gantt-bar");
@@ -309,11 +383,12 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
    bar.setAttribute("aria-label",item.title+"，"+bar.title);bar.addEventListener("click",()=>onInspect(item));plot.append(bar);
   }
   marker(plot,g.start,"start","申請開始："+dateText(item.start.value),item,onInspect);
-  marker(plot,g.end,"end","學生截止："+dateText(item.end.value),item,onInspect);
+  marker(plot,g.end,"end"+(item.personal?" estimated":""),"學生截止："+deadlineText(item),item,onInspect);
   marker(plot,g.result,"result "+(item.result.certainty==="expected"?"expected":""),(item.result.certainty==="expected"?"預定":"")+"結果公布："+dateText(item.result.value),item,onInspect);
-  item.milestones.forEach(m=>{const p=position(m.value,range);if(p!==null&&p>=0&&p<100) marker(plot,p,"milestone",m.label+"："+dateText(m.value),item,onInspect);});
+  item.milestones.forEach(m=>{const p=position(m.value,range);if(p!==null&&p>=0&&p<100) marker(plot,p,"milestone"+(item.personal?" estimated":""),m.label+"："+dateText(m.value),item,onInspect);});
   const notes=[];
-  if(!item.start.value) notes.push("起日待確認");
+  if(item.personal) notes.push("個人規劃：虛線為準備建議，空心節點待核");
+  if(!item.start.value && !item.personal) notes.push("起日待確認");
   if(!item.end.value) notes.push("學生截止待確認");
   if(!item.result.value) notes.push("結果日未確認");
   if(g.invalid) notes.push("起訖衝突，暫不畫期間");
@@ -326,12 +401,12 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
 function drawTable(items) {
  const body=byId("date-rows");body.replaceChildren();
  items.forEach(item=>{
-  const row=el("tr");[item.title,dateText(item.start.value),dateText(item.end.value),(item.result.certainty==="expected"?"預定 ":"")+dateText(item.result.value),item.milestones.map(m=>m.label+" "+dateText(m.value)).join("；")||"—"].forEach(text=>row.append(el("td","",text)));body.append(row);
+  const row=el("tr");[item.title,dateText(item.start.value),deadlineText(item),(item.result.certainty==="expected"?"預定 ":"")+dateText(item.result.value),item.milestones.map(m=>m.label+" "+dateText(m.value)).join("；")||"—"].forEach(text=>row.append(el("td","",text)));body.append(row);
  });
 }
-function centerToday(range,gridId="gantt-grid") {
+function centerToday(range,gridId="gantt-grid",value=today) {
  const grid=byId(gridId), scroll=grid.closest(".gantt-scroll");
- const percent=position(today,range);
+ const percent=position(value,range);
  if(!grid.offsetWidth || percent===null || percent<0 || percent>=100) return;
  const label=grid.querySelector(".gantt-label").offsetWidth;
  scroll.scrollLeft=centerScroll(percent,grid.clientWidth,scroll.clientWidth,label);
@@ -368,7 +443,7 @@ function drawDetail() {
  const columns=el("div","two-col"), left=el("div"), right=el("aside");
  const timing=factSection("申請與結果時程",[
   "申請開始："+dateText(item.start.value)+"；"+item.start.note,
-  "學生截止："+dateText(item.end.value)+"；"+item.end.note,
+  "學生截止："+deadlineText(item)+"；"+item.end.note,
   (item.result.certainty==="expected"?"預定":"")+"結果公布："+dateText(item.result.value)+"；"+item.result.note
  ]);left.append(timing);
  if(raw) {
@@ -397,8 +472,15 @@ function drawDetail() {
    row.append(link,el("p","tiny quiet",[...locators].join("；")));links.append(row);
   });evidence.append(links);right.append(evidence);
   left.append(factSection("下一步待查",raw.open_questions));
+ } else if(item.program) {
+  left.append(factSection(item.personal?"個人規劃與申請限制":"方案條件與待確認",[item.program.scope,item.program.requirements,"兼領："+item.program.compatibility]));
+  if(item.milestones.length) left.append(factSection("會議、準備與程序節點",item.milestones.map(point=>point.label+"："+dateText(point.value))));
+  const plan=el("button","secondary","用此方案規劃研討會");plan.type="button";
+  plan.addEventListener("click",()=>{byId("conference-program").value=item.program.id;byId("conference-planner").open=true;renderConferencePlan();activatePanel("search");byId("conference-start").focus();});left.append(plan);
+  const evidence=factSection("來源初查與版本",["查核日："+conferenceData.checked_on+"；待獨立覆核。",item.program.version]);
+  for(const ref of item.program.refs){const link=el("a","",ref.title+" ↗");link.href=ref.url;evidence.append(link,el("p","small",ref.locator));}right.append(evidence);
  } else {
-  left.append(factSection("合成資料的使用範圍",["這個方案與所有日期、標籤都是虛構，沒有正式資格辦法或金額。","切換第一頁的「10筆來源草稿」，可查看對應真實方案的條件、程序與公開依據。"]));
+  left.append(factSection("合成資料的使用範圍",["這個方案與所有日期、標籤都是虛構，沒有正式資格辦法或金額。","切換第一頁的「來源草稿＋會議方案」，可查看對應真實方案的條件、程序與公開依據。"]));
   if(item.milestones.length) left.append(factSection("其他程序節點",item.milestones.map(point=>point.label+"："+dateText(point.value))));
   right.append(factSection("與第一頁同步",["目前查看的是同一批選項中的一項。用上方選單或前後按鈕切換，第三頁也會保留這批選項。"]));
  }
@@ -413,7 +495,7 @@ function drawPlan() {
  const cards=byId("plan-options");cards.replaceChildren();
  sharedItems.forEach(item=>{
   const card=el("article","card"), button=el("button","plan-title",item.title);button.type="button";button.addEventListener("click",()=>openSharedDetail(item));card.append(button);
-  card.append(el("p","small","學生截止："+dateText(item.end.value)+"　／　"+(item.result.certainty==="expected"?"預定":"")+"結果："+dateText(item.result.value)));
+  card.append(el("p","small","學生截止："+deadlineText(item)+"　／　"+(item.result.certainty==="expected"?"預定":"")+"結果："+dateText(item.result.value)));
   card.append(el("p","tiny quiet",item.synthetic?"合成資料，僅供規劃示範。":item.evidence+"；缺日期保留待確認。"));
   const tasks=el("div","plan-tasks");
   ["核對申請資格","確認學生收件時間","整理申請文件"].forEach((text,index)=>{
@@ -425,11 +507,11 @@ function drawPlan() {
  if(!byId("timeline").hidden && sharedItems.length) requestAnimationFrame(()=>centerToday(range,"personal-gantt-grid"));
 }
 function renderWorkspace() {
- const items=mode==="demo"?makeDemo(today):drafts,filtered=filterItems(items,state),selected=picked[mode];
+ const items=currentItems(),filtered=filterItems(items,state),selected=picked[mode];
  sharedItems=workspaceItems(items,filtered,selected);
  const hiddenCount=sharedItems.filter(item=>!filtered.some(found=>found.id===item.id)).length;
  const basis=selected.size?"第一頁已勾選的 "+sharedItems.length+" 項":"第一頁目前篩選的 "+sharedItems.length+" 項（尚未勾選）";
- const text=(mode==="demo"?"合成資料 · ":"來源草稿 · ")+basis+(hiddenCount?"；其中 "+hiddenCount+" 項不在目前篩選結果":"");
+ const text=(mode==="demo"?"合成資料":"來源草稿")+(personalConferences.size?"＋本次個人規劃":"")+" · "+basis+(hiddenCount?"；其中 "+hiddenCount+" 項不在目前篩選結果":"");
  for(const id of ["detail-context","timeline-context"]){byId(id).textContent=text;byId(id).classList.toggle("synthetic-note",mode==="demo");}
  byId("selection-count").textContent="已勾選 "+selected.size+" 項；第二、三頁使用 "+sharedItems.length+" 項"+(selected.size?"已選內容":"篩選結果");
  byId("select-filtered").disabled=!filtered.length;byId("clear-selection").disabled=!selected.size;
@@ -439,15 +521,16 @@ function renderWorkspace() {
  drawDetail();drawPlan();
 }
 function render() {
- const items=mode==="demo"?makeDemo(today):drafts;
+ const items=currentItems();
  const found=filterItems(items,state), range=domain(found,today,rangeMode,offset);
  if(lastRange && rangeMode==="fit" && (lastRange.start!==range.start || lastRange.end!==range.end)) centerPending=true;
  lastRange=range;
  byId("result-count").textContent="顯示 "+found.length+" / "+items.length+" 項";
  byId("mode-note").textContent=mode==="demo"
   ? "合成排程示範：名稱、身分標籤、起訖與結果日全部虛構，只用於確認互動。"
-  : "來源草稿：10筆既有候選資料，全部待獨立覆核；尚無結構化起日與結果日，僅標示已記錄期限。";
+  : "來源草稿：10筆既有候選資料＋醫學院、傑出人才發展基金會2筆會議方案入口，全部待獨立覆核；制度入口不視為已確認受理機會。";
  byId("mode-note").classList.toggle("synthetic-note",mode==="demo");
+ if(personalConferences.size) byId("mode-note").textContent+=" 另含本次研討會規劃"+personalConferences.size+"項，為自填／試算待核，非合成方案。";
  byId("chart-range").textContent=iso(range.start).replaceAll("-","/")+" — "+iso(range.end).replaceAll("-","/")+" · 臺北時間";
  byId("today-label").textContent="今天 "+today.replaceAll("-","/");
  byId("outside-today").hidden=!(dayNumber(today)<range.start || dayNumber(today)>range.end);
@@ -472,7 +555,7 @@ function resetFilters() {
 }
 byId("reset-filters").addEventListener("click",resetFilters);
 byId("empty-reset").addEventListener("click",resetFilters);
-byId("select-filtered").addEventListener("click",()=>{const items=mode==="demo"?makeDemo(today):drafts;filterItems(items,state).forEach(item=>picked[mode].add(item.id));renderWorkspace();});
+byId("select-filtered").addEventListener("click",()=>{filterItems(currentItems(),state).forEach(item=>picked[mode].add(item.id));renderWorkspace();});
 byId("clear-selection").addEventListener("click",()=>{picked[mode].clear();renderWorkspace();});
 byId("detail-option").addEventListener("change",event=>{activeDetail[mode]=event.target.value;drawDetail();});
 function moveDetail(amount){const index=sharedItems.findIndex(item=>item.id===activeDetail[mode]);const next=sharedItems[index+amount];if(next){activeDetail[mode]=next.id;drawDetail();}}
@@ -490,8 +573,22 @@ function refreshToday(){const value=taipeiToday();if(value!==today){today=value;
 document.addEventListener("visibilitychange",()=>{if(!document.hidden) refreshToday();});
 window.addEventListener("focus",refreshToday);
 window.addEventListener("resize",()=>{updateNavHeight();if(lastRange && view==="gantt" && !byId("search").hidden) requestAnimationFrame(()=>centerToday(lastRange));if(lastPersonalRange && !byId("timeline").hidden) requestAnimationFrame(()=>centerToday(lastPersonalRange,"personal-gantt-grid"));});
-byId("conference-planner").addEventListener("input",renderConferencePlan);
-byId("conference-clear").addEventListener("click",()=>{byId("conference-name").value="";byId("conference-start").value="";byId("conference-notice").value="";byId("conference-buffer").value="14";renderConferencePlan();});
+for(const program of conferenceData.programs){const option=el("option","",program.title);option.value=program.id;byId("conference-program").append(option);}
+for(const ref of conferenceData.reference_sources){const row=el("p","small"),link=el("a","",ref.title+" ↗");link.href=ref.url;row.append(link,el("span","","："+ref.note));byId("conference-references").append(row);}
+byId("conference-planner").addEventListener("input",()=>{byId("conference-status").textContent="";renderConferencePlan();});
+byId("conference-program").addEventListener("change",renderConferencePlan);
+byId("conference-add").addEventListener("click",()=>{
+ const item=renderConferencePlan();if(!item) return;
+ const existed=personalConferences.has(item.id);personalConferences.set(item.id,item);
+ for(const key of ["demo","draft"]) picked[key].add(item.id);
+ rangeMode="fit";personalRangeMode="fit";offset=0;view="gantt";centerPending=true;
+ byId("range-mode").value="fit";byId("personal-range-mode").value="fit";
+ renderConferenceList();render();
+ requestAnimationFrame(()=>centerToday(lastRange,"gantt-grid",item.end.value||item.milestones[0].value));
+ byId("conference-status").textContent=(existed?"已更新":"已加入")+"甘特圖與我的時間軸。"+(!filterItems([item],state).length?"目前篩選隱藏此項，可按「清除篩選並查看甘特圖」。":"時間範圍已調整為涵蓋所有日期。")+" 本次瀏覽有效，重整即清除。";
+});
+byId("conference-show").addEventListener("click",()=>{view="gantt";resetFilters();byId("gantt-view").scrollIntoView({block:"start"});});
+byId("conference-clear").addEventListener("click",()=>{for(const id of ["conference-name","conference-start","conference-notice","conference-unit","conference-deadline"]) byId(id).value="";byId("conference-buffer").value="14";byId("conference-status").textContent="已清空輸入，已加入的規劃保留，可逐筆移除。";renderConferencePlan();});
 renderConferencePlan();
 setInterval(refreshToday,60000);
 activatePanel(location.hash.slice(1));render();

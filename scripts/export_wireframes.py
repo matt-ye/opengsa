@@ -10,15 +10,15 @@ ROOT = Path(__file__).resolve().parents[1]
 def export(output):
     source = ROOT / "docs/design/wireframes.html"
     html = source.read_text(encoding="utf-8")
-    data = json.loads((ROOT / "data/pilot.json").read_text(encoding="utf-8"))
-    encoded = json.dumps(data, ensure_ascii=False).replace("<", "\\u003c")
-    html, count = re.subn(
-        r'(<script id="pilot-data" type="application/json">).*?(</script>)',
-        lambda match: match[1] + encoded + match[2],
-        html, flags=re.S,
-    )
-    if count != 1:
-        raise ValueError("Expected one pilot-data block")
+    for block, filename in [("pilot-data", "pilot.json"), ("conference-data", "conference-programs.json")]:
+        data = json.loads((ROOT / "data" / filename).read_text(encoding="utf-8"))
+        encoded = json.dumps(data, ensure_ascii=False).replace("<", "\\u003c")
+        html, count = re.subn(
+            rf'(<script id="{block}" type="application/json">).*?(</script>)',
+            lambda match: match[1] + encoded + match[2], html, flags=re.S,
+        )
+        if count != 1:
+            raise ValueError(f"Expected one {block} block")
     code = (ROOT / "docs/design/prototype.js").read_text(encoding="utf-8")
     if "</script" in code.lower():
         raise ValueError("Inline script delimiter must be escaped")

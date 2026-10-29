@@ -6,6 +6,8 @@ const core = require("../docs/design/prototype.js");
 const today = "2026-10-28";
 const demo = core.makeDemo(today);
 const pilot = JSON.parse(fs.readFileSync(path.join(__dirname,"../data/pilot.json"),"utf8"));
+const conferenceData=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/conference-programs.json"),"utf8"));
+const conference=(id,changes={})=>core.makeConferenceItem({name:"合成測試會議",start:"2027-07-20",buffer:14,...changes},conferenceData.programs.find(p=>p.id===id));
 
 test("今天以臺北時區跨日，不取執行電腦的日期",()=>{
  assert.equal(core.taipeiToday(new Date("2026-10-28T16:05:00Z")),"2026-10-29");
@@ -120,4 +122,66 @@ test("無效會議日期及緩衝不產生試算，0天緩衝仍有效",()=>{
  for(const buffer of [-1,91,1.5,NaN]) assert.equal(core.conferencePlan("2026-07-20",null,buffer),null);
  const plan=core.conferencePlan("2026-07-20",null,0);
  assert.equal(plan.prepare,plan.studentBase);
+});
+
+test("個人會議轉為可篩選、可選取的時程，但不捏造官方起日或補助結果",()=>{
+ const item=conference("nstc-ntu");
+ assert.equal(item.personal,true);assert.equal(item.synthetic,false);
+ assert.equal(item.end.value,"2027-05-31");assert.equal(item.end.certainty,"estimated");
+ assert.equal(item.start.value,null);assert.equal(item.result.value,null);
+ assert.equal(item.preparation.start,"2027-05-17");
+ assert.equal(core.geometry(item,core.domain([item],today,"fit")).bar,null);
+ assert.deepEqual(core.workspaceItems([item],[],new Set([item.id])),[item]);
+ assert.equal(core.filterItems([item],{source:"government",includeUnknown:false}).length,1);
+ assert.ok(item.milestones.some(x=>x.label.includes("接受函補送")));
+});
+
+test("同場同方案更新同ID，不同方案及院系分列；個人資料不混入正式快照",()=>{
+ const a=conference("nstc-ntu"),b=conference("nstc-ntu",{buffer:7,notice:"2027-06-10"}),c=conference("faos-student");
+ assert.equal(a.id,b.id);assert.notEqual(a.preparation.start,b.preparation.start);assert.notEqual(a.id,c.id);
+ assert.notEqual(conference("custom-unit",{unit:"A系"}).id,conference("custom-unit",{unit:"B系"}).id);
+ assert.ok(!pilot.opportunities.some(x=>x.id===a.id));
+});
+
+test("醫學院四週前送件與國科會四週補送不混為同一程序",()=>{
+ const item=conference("ntu-med-oia",{notice:"2027-06-25"});
+ assert.equal(item.end.value,"2027-06-22");assert.equal(item.noticeRisk,"after_deadline");
+ assert.ok(!item.milestones.some(x=>x.label.includes("補送")));
+ assert.equal(item.source,"university");assert.equal(item.compatibility,"conditional");
+});
+
+test("FAOS以兩個曆月計機構基準，校內學生截止留未知，不套用國科會補送",()=>{
+ const item=conference("faos-student",{notice:"2027-05-25"});
+ assert.equal(item.end.value,null);assert.equal(item.end.certainty,"unknown");
+ assert.equal(item.preparation.end,"2027-05-20");assert.equal(item.noticeRisk,"after_deadline");
+ assert.ok(!item.milestones.some(x=>x.label.includes("補送")));
+ assert.equal(core.monthsBefore("2028-04-30",2),"2028-02-29");
+ assert.equal(core.monthsBefore("2027-08-31",2),"2027-06-30");
+ assert.equal(core.monthsBefore("2027-01-15",2),"2026-11-15");
+});
+
+test("未知院系期限不畫補助期間，自填日期只作待核節點",()=>{
+ const unknown=conference("custom-unit"),manual=conference("custom-unit",{manualDeadline:"2027-06-15"});
+ assert.equal(unknown.end.value,null);assert.equal(unknown.preparation,null);
+ assert.equal(unknown.milestones.length,1);assert.equal(manual.end.value,"2027-06-15");
+ assert.equal(manual.end.certainty,"estimated");
+ assert.equal(conference("custom-unit",{manualDeadline:"2027-02-30"}),null);
+ assert.equal(core.makeConferenceItem({start:"2027-07-20",buffer:14},{}),null);
+});
+
+test("來源登錄與離線嵌入同源；醫學院研發處維持角色待核的參考入口",()=>{
+ const html=fs.readFileSync(path.join(__dirname,"../docs/design/wireframes.html"),"utf8");
+ assert.deepEqual(JSON.parse(html.match(/<script id="conference-data" type="application\/json">([\s\S]*?)<\/script>/)[1]),conferenceData);
+ assert.equal(new Set(conferenceData.programs.map(p=>p.id)).size,4);
+ assert.ok(conferenceData.reference_sources.some(x=>x.url.includes("rd.mc.ntu.edu.tw")));
+ for(const p of conferenceData.programs) for(const ref of p.refs) assert.equal(new URL(ref.url).protocol,"https:");
+});
+
+test("醫學院與FAOS可從來源清單檢索，缺日期的制度入口不製造時間或受理狀態",()=>{
+ const entries=core.conferenceEntries(conferenceData.programs);
+ assert.equal(entries.length,2);
+ const faos=core.filterItems(entries,{source:"foundation",query:"傑出人才",includeUnknown:false});
+ assert.equal(faos.length,1);assert.equal(faos[0].id,"PROGRAM-faos-student");
+ assert.ok(entries.every(x=>!x.synthetic && !x.personal && x.start.value===null && x.end.value===null && x.result.value===null));
+ assert.ok(!entries.some(x=>x.id.includes("nstc")));
 });

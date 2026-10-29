@@ -25,7 +25,7 @@ python -m http.server 8771 --bind 127.0.0.1 --directory dist/site
 
 ## 工作流程
 
-`.github/workflows/pages.yml`在PR中只執行資料檢查、13項Python測試、16項Node測試及建置；不部署PR或取用部署權限。推送main或在main手動執行時，檢查通過才上傳`dist/site`並由另一個job部署。
+`.github/workflows/pages.yml`在PR中只執行資料檢查、13項Python測試、23項Node測試及建置；不部署PR或取用部署權限。推送main或在main手動執行時，檢查通過才上傳`dist/site`並由另一個job部署。
 
 部署job採GitHub Pages官方OIDC流程，只取得`pages:write`與`id-token:write`；不需新增私人API key或PAT。Action固定完整commit SHA，checkout不留存憑證，部署使用github-pages環境並避免同時發布。
 
