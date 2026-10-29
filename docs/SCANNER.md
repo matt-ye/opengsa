@@ -56,6 +56,8 @@ python scripts/scan_sources.py
 
 離線測試涵蓋四組各五種合成情境，以及正文範圍、下載區、文字PDF、附件同URL變更、條款／robots、304、白名單、限流、預算、故障保留、設定改版、cache遺失及處置去重。37項Python測試與23項原型測試通過；live試跑結果另見PR及Actions紀錄。
 
+2026-10-29實測：[第一輪GitHub掃描](https://github.com/matt-ye/opengsa/actions/runs/40883603081)以8次HTTP建立五份基準，其餘因變更上限延後；[第二輪](https://github.com/matt-ye/opengsa/actions/runs/40883779956)成功還原Cache（baseline_missing=false），以12次HTTP補齊FAOS與兩份文字PDF，合計八份待覆核文件。遠學PDF為robots_denied，教務處候選原文摘錄數為0；全程模型呼叫0次、正式資料未改寫。本機第三輪也已驗證零變更。
+
 每次新增來源先調整白名單、選擇器、必要標記、附件規則與權利模式，再加離線測試及小量實測。選擇器／設定雜湊改變會強制重取並產生新版候選，不沿用304繞過新檢查。
 
 要停止排程，停用此workflow或刪除schedule；公開預覽的`pages.yml`保持獨立。恢復時先人工檢查來源條款與實測。請勿為了讓檢查全綠而刪除必要標記或放寬robots。
