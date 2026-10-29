@@ -4,11 +4,12 @@
 const DAY = 86400000;
 const labels = {
  category: {living_tuition:"生活／學費",living_emergency:"急難支持",phd_research:"博士研究",outcome_award:"成果獎",international_conference:"國際會議",overseas_research:"境外研究",indirect_support:"聘任入口"},
- source: {government:"政府",university:"學校",foundation:"基金會",unknown:"來源待查"},
- degree: {master:"碩士",phd:"博士"},
- year: {unlimited:"明示不限年級",range:"限定年級",unknown:"年級待確認"},
+ source: {government:"政府",university:"學校",foundation:"基金會",enterprise:"企業／產學",research_institute:"研究法人／中研院",unknown:"來源待查"},
+ degree: {master:"碩士",phd:"博士",candidate:"博士候選人"},
+ year: {unlimited:"明示不限年級",range:"限定年級",freshman:"新生入學",graduating:"畢業／論文期",unknown:"年級待確認"},
  compatibility: {allowed:"可兼領（限已查範圍）",conditional:"兼領有條件",prohibited:"不可兼領",unknown:"兼領待確認"},
- hardship: {required:"清寒限定",not_exclusive:"非僅清寒",unknown:"清寒限定待確認"}
+ hardship: {required:"清寒限定",not_exclusive:"非僅清寒",unknown:"清寒限定待確認"},
+ application: {open:"受理中",upcoming:"尚未開放",closed:"本期已截止",unknown:"受理待確認"}
 };
 function dayNumber(value) {
  if (!value) return null;
@@ -56,23 +57,43 @@ function makeDrafts(pilot) {
  };
  const sourceMap = new Map(pilot.sources.map(s=>[s.id,s]));
  return pilot.opportunities.map(item => {
-  const student = item.steps.find(s=>s.actor==="student" && ["date","datetime"].includes(s.deadline.kind));
-  const milestones = item.steps.filter(s=>s.actor!=="student" && ["date","datetime"].includes(s.deadline.kind)).map(s=>({
+  const student = item.steps.find(s=>s.actor==="student" && ["date","datetime"].includes(s.deadline?.kind));
+  const milestones = item.steps.filter(s=>s.actor!=="student" && ["date","datetime"].includes(s.deadline?.kind)).map(s=>({
    label:{college:"學院送件",institution:"機關送件",university:"校級程序",unit:"單位程序"}[s.actor] || "其他程序",
    ...event(s.deadline.value,"confirmed",s.action+"；"+s.deadline.note)
   }));
+
+  let resolvedSource = funding[item.id];
+  if(!resolvedSource) {
+   const funder = (item.organizations?.funder?.text || "").toLowerCase();
+   const announcer = (item.organizations?.announcer?.text || "").toLowerCase();
+   const title = (item.title || "").toLowerCase();
+   const combined = funder + " " + announcer + " " + title;
+   if (combined.includes("國科會") || combined.includes("教育部") || combined.includes("國家科學") || combined.includes("衛福部") || combined.includes("政府")) resolvedSource = "government";
+   else if (combined.includes("大學") || combined.includes("臺大") || combined.includes("教務處") || combined.includes("研發處") || combined.includes("學院") || combined.includes("系所")) resolvedSource = "university";
+   else if (combined.includes("基金會") || combined.includes("財團法人") || combined.includes("學會") || combined.includes("傑出人才")) resolvedSource = "foundation";
+   else if (combined.includes("公司") || combined.includes("企業") || combined.includes("台積電") || combined.includes("聯發科")) resolvedSource = "enterprise";
+   else if (combined.includes("研究院") || combined.includes("中研院") || combined.includes("國研院") || combined.includes("工研院")) resolvedSource = "research_institute";
+   else resolvedSource = "unknown";
+  }
+
+  const structuredStart = item.start?.value ? item.start : event(null,"unknown","現有契約尚無結構化申請起日；不從敘述推算");
+  const structuredResult = item.result?.value ? item.result : event(null,"unknown","結果公布日尚無結構化證據");
+
   const sources = [...item.application.refs,...item.steps.flatMap(s=>s.refs)];
   const source = sources.map(r=>sourceMap.get(r.source)).find(Boolean);
   return {
-   id:item.id,title:item.title,category:item.category,source:funding[item.id]||"unknown",
+   id:item.id,title:item.title,category:item.category,source:resolvedSource,
    degrees:item.eligibility.degrees,year:item.eligibility.year_limit.mode,
+   candidateMode:item.eligibility?.candidate?.mode || "unknown",
    compatibility:item.compatibility.mode,hardship:item.hardship.mode,
    cycle:item.cycle.label,synthetic:false,
-   start:event(null,"unknown","現有契約尚無結構化申請起日；不從敘述推算"),
-   end:event(student?.deadline.value||null,student?"confirmed":"unknown",student?.deadline.note||"學生截止尚未確認"),
-   result:event(null,"unknown","結果公布日尚無結構化證據"),
+   start:structuredStart,
+   end:event(student?.deadline?.value||null,student?"confirmed":"unknown",student?.deadline?.note||"學生截止尚未確認"),
+   result:structuredResult,
    milestones,
    application:({open:"摘要顯示受理中",closed:"本期已截止",unknown:"受理待確認",not_yet_open:"尚未開放"})[item.application.state],
+   rawState:item.application.state,
    evidence:item.evidence_status==="incomplete"?"資料不完整／草稿":"草稿待獨立覆核",
    url:source?.url||null,note:item.application.reason+"；所有資料皆待獨立覆核。"
   };
@@ -82,10 +103,21 @@ function filterItems(items, filters) {
  const query = (filters.query||"").trim().toLocaleLowerCase();
  return items.filter(item=>{
   if(query && !(item.title+" "+item.id+" "+item.cycle).toLocaleLowerCase().includes(query)) return false;
-  return ["category","source","degree","year","compatibility","hardship"].every(key=>{
+  return ["category","source","degree","year","compatibility","hardship","application"].every(key=>{
    const wanted=filters[key];
    if(!wanted || wanted==="all") return true;
-   const value=key==="degree"?item.degrees:item[key];
+   if(key==="degree") {
+    if(wanted==="candidate") return item.candidateMode==="required" || item.degrees?.includes("candidate");
+    return Array.isArray(item.degrees) && item.degrees.includes(wanted);
+   }
+   if(key==="application") {
+    if(wanted==="open") return item.rawState==="open" || item.application?.includes("受理");
+    if(wanted==="upcoming") return item.rawState==="not_yet_open" || item.application?.includes("尚未");
+    if(wanted==="closed") return item.rawState==="closed" || item.application?.includes("截止");
+    if(wanted==="unknown") return item.rawState==="unknown" || item.application?.includes("待確認");
+    return true;
+   }
+   const value=item[key];
    if(Array.isArray(value)) return value.includes(wanted);
    return value===wanted || (filters.includeUnknown && value==="unknown");
   });
@@ -253,7 +285,7 @@ const picked={demo:new Set(),draft:new Set()}, completed={demo:new Set(),draft:n
 let sharedItems=[], personalRangeMode="recent", lastPersonalRange=null;
 let today=taipeiToday(), mode="demo", view="gantt", rangeMode="recent", offset=0, inspectedId=null, lastRange=null, centerPending=true, rightsView="all", activePanelId="search";
 const scrollPositions={search:0,detail:0,timeline:0,rights:0};
-const state={query:"",category:"all",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all",includeUnknown:true};
+const state={query:"",category:"all",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all",application:"all",includeUnknown:true};
 function el(tag, cls, text) {
  const node=document.createElement(tag);
  if(cls) node.className=cls;
@@ -380,7 +412,9 @@ window.addEventListener("hashchange",()=>{
  }
 });
 function itemTags(item) {
- return [labels.source[item.source],item.degrees.map(x=>labels.degree[x]).join("／"),labels.year[item.year],labels.compatibility[item.compatibility],labels.hardship[item.hardship]];
+ const tags = [labels.source[item.source]||item.source, item.degrees.map(x=>labels.degree[x]||x).join("／"), labels.year[item.year]||item.year, labels.compatibility[item.compatibility]||item.compatibility, labels.hardship[item.hardship]||item.hardship];
+ if(item.candidateMode==="required") tags.push("須博士候選人");
+ return tags;
 }
 function inspect(item) {
  inspectedId=item.id;
@@ -674,7 +708,7 @@ document.querySelectorAll("[data-filter]").forEach(input=>{
  input.addEventListener(input.type==="search"?"input":"change",update);
 });
 function resetFilters() {
- Object.assign(state,{query:"",category:"all",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all",includeUnknown:true});
+ Object.assign(state,{query:"",category:"all",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all",application:"all",includeUnknown:true});
  document.querySelectorAll("[data-filter]").forEach(input=>{if(input.type==="checkbox") input.checked=true;else input.value=state[input.dataset.filter];});
  render();
 }
