@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.1.0-proposal",
+  "checked_on": "2026-10-29",
+  "review_status": "draft_pending_independent_review",
+  "programs": [
+    {
+      "id": "nstc-ntu",
+      "title": "國科會研究生國際會議補助（臺大路徑）",
+      "source": "government",
+      "rule": {"type": "nstc_ntu"},
+      "scope": "非在職專班碩、博士在學研究生；其他條件仍須逐項核對。",
+      "requirements": "接受函未取得可註明補送，至遲會議首日前四週送達；不可等接受函才開始準備。",
+      "compatibility": "須揭露其他補助及分攤項目，不能據此推定所有費用均可兼領。",
+      "version": "國科會作業要點112/03/16修正；臺大程序於查核日讀取，生效日未核。",
+      "refs": [
+        {"url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260", "title": "國科會作業要點", "locator": "第4點申請程序及第8點經費分攤"},
+        {"url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383", "title": "臺大研教組申請程序", "locator": "申請程序第3項，學生前一日17:00送出"}
+      ]
+    },
+    {
+      "id": "ntu-med-oia",
+      "title": "臺大醫學院國際會議獎學金",
+      "source": "university",
+      "rule": {"type": "days_before", "days": 28},
+      "scope": "醫學院在學學生之出國國際會議分支；同年度未獲本項補助，論文未由其他合著人申請本項經費。",
+      "requirements": "會議前四週送達國際事務中心，備正式邀請或接受證明；另核首次發表、摘要第一作者、指導教授列名及全文署名等要求。未查得接受函可補送條款。",
+      "compatibility": "領到本項最高額度者，不得重複領取教育部或其他機關同性質獎助；未達最高額度也不代表當然可兼領。",
+      "version": "瀏覽器正文最後更新2026/08/20；生效日未核，勿採頁尾2025/12/24當正文版本。",
+      "refs": [
+        {"url": "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296", "title": "醫學生出席國際會議及海外實習服務交換獎學金", "locator": "第三點（一）國際會議分支及第六點；瀏覽器渲染正文，非僅導覽HTML"}
+      ]
+    },
+    {
+      "id": "faos-student",
+      "title": "傑出人才發展基金會：優秀學生出國開會補助",
+      "source": "foundation",
+      "rule": {"type": "months_before", "months": 2},
+      "scope": "公私立大學三年級以上、中華民國國籍、成績優良並受教授指導研究；個別學位適用仍需承辦核對。",
+      "requirements": "學校負責人提出，會議開始日前兩個月申請；論文已正式接受且將發表，須接受函、三封推薦函等文件。校內送件日期另查，未查得接受函補送條款。",
+      "compatibility": "已獲本會補助者不得再申請同年度其他會議經費；跨機關兼領仍待雙方規定核對。",
+      "version": "頁示113/05/29修訂，另列註冊費適用114/01/01後申請並通過審查者。",
+      "refs": [
+        {"url": "https://www.faos.org.tw/Application/ApplicatStud.html", "title": "優秀學生出國開會申請補助辦法", "locator": "第三點資格、第四點程序及第五點補助；本列未推定金額"}
+      ]
+    },
+    {
+      "id": "custom-unit",
+      "title": "其他院系所／學會補助（自填待核）",
+      "source": "unknown",
+      "rule": {"type": "manual"},
+      "scope": "請自行核對所屬院系所、身分、年度與正式辦法；平台不套用國科會期限。",
+      "requirements": "可填已查得的學生送件日期；未填時只加入會議與通知節點，期限保持未知。",
+      "compatibility": "兼領、同費用重複報支及計畫經費限制待確認。",
+      "version": "使用者自填，未覆核。",
+      "refs": []
+    }
+  ],
+  "reference_sources": [
+    {
+      "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/form0.asp?pno=25&LTPno=47",
+      "title": "臺大醫學院研發分處：參與學術會議／補助與報銷申請",
+      "note": "正文含專家學者、團隊、舉辦會議及國衛院計畫主持人等路徑。須先辨別申請角色；不能直接當成學生個人獎學金，也不套用研究生送件公式。",
+      "version": "正文負責人日期2025/11/14；查核2026/10/29，生效日未核。"
+    }
+  ]
+}

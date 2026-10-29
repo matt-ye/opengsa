@@ -31,6 +31,8 @@ class SiteBuildTests(unittest.TestCase):
         self.assertNotIn('<script src=', self.html)
         embedded = re.search(r'<script id="pilot-data" type="application/json">(.*?)</script>', self.html, re.S)
         self.assertEqual(json.loads(embedded[1]), json.loads((ROOT / "data/pilot.json").read_text(encoding="utf-8")))
+        conferences = re.search(r'<script id="conference-data" type="application/json">(.*?)</script>', self.html, re.S)
+        self.assertEqual(json.loads(conferences[1]), json.loads((ROOT / "data/conference-programs.json").read_text(encoding="utf-8")))
         self.assertIn('name="robots" content="noindex, nofollow"', self.html)
         self.assertIn('property="og:image" content="https://matt-ye.github.io/opengsa/assets/opengsa-social-preview.jpg"', self.html)
         self.assertIn('href="https://matt-ye.github.io/opengsa/"', self.html)
