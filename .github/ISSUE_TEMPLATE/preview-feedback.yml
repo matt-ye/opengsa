@@ -1,0 +1,27 @@
+name: 公開預覽回饋
+description: 回報 OpenGSA 操作問題、資訊呈現或功能建議
+title: "[預覽回饋] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感謝試用！此回饋會公開顯示，請勿填寫學號、所得、證件、私人申訴或未遮蔽的個資。
+        預覽中的合成示範及來源草稿不是即時可申請清單，資格請以正式公告為準。
+  - type: dropdown
+    id: category
+    attributes:
+      label: 回饋類型
+      options:
+        - 操作問題
+        - 版面／無障礙
+        - 公開來源資料更正
+        - 功能建議
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 發生什麼事，或希望改善什麼？
+      description: 可提供操作步驟、所在分頁、螢幕尺寸；資料更正請附年度、公開連結及原文定位。
+    validations:
+      required: true
