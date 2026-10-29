@@ -1073,5 +1073,56 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
         self.assertEqual(cl["benefit"]["items"][2]["amount_max"], 50000)
 
 
+    def test_phase_2_candidates_end_to_end_review_and_diff_generation(self):
+        # 1. 取得四大 Phase 2 來源
+        dragon_src = next((s for s in CONFIG["sources"] if s["id"] == "nstc-abroad-dragon-rule"), None)
+        asst_src = next((s for s in CONFIG["sources"] if s["id"] == "nstc-assistant-rule"), None)
+        ta_src = next((s for s in CONFIG["sources"] if s["id"] == "ntu-ta-policy"), None)
+        limit_src = next((s for s in CONFIG["sources"] if s["id"] == "ntu-ord-assistant-limit"), None)
+
+        cands = []
+        cands.extend(extract_from_in_memory_blocks(
+            dragon_src,
+            [{"locator": "FL039188-1", "text": "國家科學及技術委員會補助博士生赴國外研究作業要點。國內公立大學博士班在學一年以上經學校推薦。以一年研究費九十萬元為上限核給，補助七至十二個月。每年六月一日至七月三十一日完成線上申請並備函送會。"}],
+            revision_id="d"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
+        ))
+        cands.extend(extract_from_in_memory_blocks(
+            asst_src,
+            [{"locator": "FL028686-1", "text": "國科會補助專題研究計畫研究人力約用注意事項。專題計畫兼任助理碩士學生每月最高一萬六千元，博士級助理每月最高四萬元。受聘學生應簽訂書面約定。"}],
+            revision_id="a"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
+        ))
+        cands.extend(extract_from_in_memory_blocks(
+            ta_src,
+            [{"locator": "TA-1", "text": "臺大教務處教學助理制度獎勵金實施辦法。博士班一般課程教學助理每月八千至一萬元。碩士班一般中文教學助理每月六千至七千五百元。"}],
+            revision_id="t"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
+        ))
+        cands.extend(extract_from_in_memory_blocks(
+            limit_src,
+            [{"locator": "ORD-1", "text": "國立臺灣大學計畫兼任助理及研究獎助生每月支給上限標準表。碩士級每月支給上限兩萬元；博士生未取得候選人資格四萬兩千元；博士候選人五萬元。"}],
+            revision_id="l"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
+        ))
+
+        self.assertEqual(len(cands), 4)
+        bundle = {
+            "schema_version": "0.1.0-proposal",
+            "as_of": "2026-10-28",
+            "timezone": "Asia/Taipei",
+            "model_enabled": False,
+            "model_calls": 0,
+            "official_data_modified": False,
+            "candidates": cands,
+        }
+        verified_bundle, summary, md = build_review_report(bundle, PILOT)
+        self.assertEqual(summary["total_candidates"], 4)
+        self.assertEqual(summary["promotion_ready"], 0)  # 尚未人工獨立覆核，維持 pending
+        self.assertEqual(summary["model_calls"], 0)
+        self.assertEqual(summary["model_usage"]["hash_only_bytes_sent"], 0)
+        self.assertFalse(summary["official_data_modified"])
+        self.assertIn("nstc-abroad-dragon", md)
+        self.assertIn("nstc-assistant-rule", md)
+        self.assertIn("ntu-ta-policy", md)
+        self.assertIn("ntu-ord-assistant-limit", md)
+
+
 if __name__ == "__main__":
     unittest.main()

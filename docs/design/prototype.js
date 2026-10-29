@@ -145,28 +145,47 @@ function monthsBefore(value,amount) {
 function makeConferenceItem(input,program) {
  const base=conferencePlan(input.start,input.notice||null,input.buffer);
  const type=program?.rule?.type;
- if(!base || !["nstc_ntu","days_before","months_before","manual"].includes(type)) return null;
+ if(!base || !["nstc_ntu","days_before","months_before","manual","fixed_window"].includes(type)) return null;
  if(type==="days_before" && (!Number.isInteger(program.rule.days)||program.rule.days<0)) return null;
  if(type==="months_before" && (!Number.isInteger(program.rule.months)||program.rule.months<1)) return null;
  if(input.manualDeadline && !/^\d{4}-\d{2}-\d{2}$/.test(input.manualDeadline)) return null;
  if(input.manualDeadline && dayNumber(input.manualDeadline)===null) return null;
- const name=(input.name||"").trim()||"我的研討會";
+ const name=(input.name||"").trim()||(type==="fixed_window"?"我的出國研究規劃":"我的研討會");
  const unit=(input.unit||"").trim(), title=type==="manual" && unit?unit:program.title;
- const student=type==="nstc_ntu"?base.studentBase:type==="days_before"?addDays(input.start,-program.rule.days):type==="manual"?input.manualDeadline||null:null;
- const agency=type==="nstc_ntu"?base.agencyBase:type==="months_before"?monthsBefore(input.start,program.rule.months):null;
+ let student=null, agency=null;
+ if(type==="nstc_ntu") { student=base.studentBase; agency=base.agencyBase; }
+ else if(type==="days_before") { student=addDays(input.start,-program.rule.days); }
+ else if(type==="months_before") { agency=monthsBefore(input.start,program.rule.months); }
+ else if(type==="fixed_window") {
+  const startYear=parseInt(input.start.slice(0,4),10);
+  const appYear=startYear-1;
+  const endMonth=String(program.rule.end_month||7).padStart(2,"0");
+  const endDay=String(program.rule.end_day||31).padStart(2,"0");
+  const schoolBuf=program.rule.school_buffer_days||3;
+  agency=`${appYear}-${endMonth}-${endDay}`;
+  student=addDays(agency,-schoolBuf);
+ } else if(type==="manual") { student=input.manualDeadline||null; }
  const reference=student||agency, prepare=reference?addDays(reference,-input.buffer):null;
- const milestones=[{label:"會議首日（自填）",...event(input.start,"estimated","個人填寫會議日期")}];
- if(agency) milestones.push({label:"機構彙送基準（試算）",...event(agency,"estimated","非已確認學生截止；例假日／校內日期待核")});
+ const milestones=[{label:type==="fixed_window"?"赴外首日（自填）":"會議首日（自填）",...event(input.start,"estimated",type==="fixed_window"?"個人填寫預計赴外研究首日":"個人填寫會議日期")}];
+ if(agency) milestones.push({label:type==="fixed_window"?"國科會受理截止（試算）":"機構彙送基準（試算）",...event(agency,"estimated",type==="fixed_window"?"每年 7/31 中午 12:00 國科會線上系統截止":"非已確認學生截止；例假日／校內日期待核")});
+ if(type==="fixed_window") {
+  const startMonth=String(program.rule.start_month||6).padStart(2,"0");
+  const startDay=String(program.rule.start_day||1).padStart(2,"0");
+  const appYear=parseInt(input.start.slice(0,4),10)-1;
+  milestones.push({label:"國科會申請起日（試算）",...event(`${appYear}-${startMonth}-${startDay}`,"estimated","每年 6/1 開放線上申請")});
+  milestones.push({label:"預計核定結果區間（試算）",...event(`${appYear}-10-31`,"estimated","預定 10 月底至 11 月初公告審查結果")});
+ }
  if(type==="nstc_ntu") milestones.push({label:"接受函補送基準（試算）",...event(base.supplement,"estimated","四週前；不替代原申請")});
  if(input.notice) milestones.push({label:"預計接受通知（自填）",...event(input.notice,"estimated","個人預計，非官方公布結果")});
- if(prepare) milestones.push({label:"建議開始準備",...event(prepare,"estimated","個人緩衝，非官方申請起日")});
+ if(prepare) milestones.push({label:type==="fixed_window"?"建議備件起日（試算）":"建議開始準備",...event(prepare,"estimated",type==="fixed_window"?"備妥指導教授推薦函、外語檢定與國外同意函":"個人緩衝，非官方申請起日")});
+ const category=type==="fixed_window"?"overseas_research":"international_conference";
  return {id:"PERSONAL-"+encodeURIComponent(JSON.stringify([name,input.start,program.id,type==="manual"?unit:""])),
-  title:name+"｜"+title+"（個人規劃）",conferenceName:name,program,category:"international_conference",source:program.source,
-  degrees:["master","phd"],year:"unknown",compatibility:program.id==="faos-student"||type==="manual"?"unknown":"conditional",hardship:"unknown",
+  title:name+"｜"+title+"（個人規劃）",conferenceName:name,program,category,source:program.source,
+  degrees:type==="fixed_window"?["phd"]:["master","phd"],year:"unknown",compatibility:program.id==="faos-student"||type==="manual"?"unknown":"conditional",hardship:"unknown",
   cycle:"本次個人規劃 · 試算／自填待核",personal:true,synthetic:false,
   start:event(null,"unknown","未確認官方申請起日；準備建議不當作申請起日"),
-  end:event(student,student?"estimated":"unknown",type==="nstc_ntu"?"未校正例假日的臺大17:00送出基準":student?"試算／自填日期，尚待核對院系及當期公告":"機構期限不代替學生期限；校內收件待查"),
-  result:event(null,"unknown","沒有官方結果日；接受通知不是補助結果"),milestones,
+  end:event(student,student?"estimated":"unknown",type==="nstc_ntu"?"未校正例假日的臺大17:00送出基準":type==="fixed_window"?"預估校內送件截止（國科會前 3 天）；當期各校公文待核":student?"試算／自填日期，尚待核對院系及當期公告":"機構期限不代替學生期限；校內收件待查"),
+  result:event(type==="fixed_window"?`${parseInt(input.start.slice(0,4),10)-1}-10-31`:null,type==="fixed_window"?"expected":"unknown",type==="fixed_window"?"每年預計 10 月底公布審查結果":"沒有官方結果日；接受通知不是補助結果"),milestones,
   preparation:prepare?{start:prepare,end:reference}:null,
   application:"個人規劃／受理待確認",evidence:"來源初查，待獨立覆核；個人輸入未核",url:program.refs[0]?.url||null,
   note:"此列是個人試算，非已確認資格或正式截止。"+program.scope+" "+program.requirements+" "+program.compatibility,
@@ -174,8 +193,13 @@ function makeConferenceItem(input,program) {
 }
 function conferenceEntries(programs){
  return programs.filter(p=>!["nstc-ntu","custom-unit"].includes(p.id)).map(program=>({
-  id:"PROGRAM-"+program.id,title:program.title,program,category:"international_conference",source:program.source,
-  degrees:["master","phd"],year:"unknown",compatibility:program.id==="ntu-med-oia"?"conditional":"unknown",hardship:"unknown",
+  id:"PROGRAM-"+program.id,title:program.title,program,
+  category:program.rule.type==="fixed_window"?"overseas_research":"international_conference",
+  source:program.source,
+  degrees:program.rule.type==="fixed_window"?["phd"]:["master","phd"],
+  year:"unknown",
+  compatibility:program.id==="ntu-med-oia"||program.rule.type==="fixed_window"?"conditional":"unknown",
+  hardship:"unknown",
   cycle:"制度入口 · 當期受理待查",synthetic:false,
   start:event(),end:event(),result:event(),milestones:[],application:"事件相對期限／受理待確認",evidence:"來源初查，待獨立覆核",
   url:program.refs[0]?.url||null,note:program.scope+" "+program.requirements+" "+program.compatibility
@@ -546,7 +570,33 @@ function drawDetail() {
    row.append(link,el("p","tiny quiet",[...locators].join("；")));links.append(row);
   });evidence.append(links);right.append(evidence);
   left.append(factSection("下一步待查",raw.open_questions));
+  if(item.category==="indirect_support" || item.title.includes("助教") || item.title.includes("助理")) {
+   const rightsCard=el("section","panel detail-section");
+   rightsCard.append(el("h3","","⚖️ 法源位階與勞動權益參照"));
+   rightsCard.append(el("p","small","本項兼任或助理職務受勞動基準法、教育部指導原則及校內兼任上限規範。具指揮監督與勞務對價者，學校不得僅以獎助生名義排除雇主責任。"));
+   const linksDiv=el("div","range-buttons");
+   const linkMap=el("a","pill","三層法源位階地圖 ↗");linkMap.href="#legal-hierarchy-map";
+   const linkSal=el("a","pill","助教與兼任薪資總表 ↗");linkSal.href="#ta-salary-title";
+   const linkGriev=el("a","pill","從屬性自測與救濟地圖 ↗");linkGriev.href="#grievance-title";
+   linksDiv.append(linkMap,linkSal,linkGriev);rightsCard.append(linksDiv);left.append(rightsCard);
+  } else if(item.source==="government" || item.title.includes("國科會") || item.title.includes("千里馬")) {
+   const rightsCard=el("section","panel detail-section");
+   rightsCard.append(el("h3","","📜 國科會作業要點上位法參照"));
+   rightsCard.append(el("p","small","本項依國家科學及技術委員會相關作業要點規範。依上位法優於下位法原則，各校校內送件與給付基準不得牴觸中央主管機關辦法。"));
+   const linksDiv=el("div","range-buttons");
+   const linkNstc=el("a","pill","國科會要點與法源位階 ↗");linkNstc.href="#nstc-rights-title";
+   const linkMap=el("a","pill","三層法源位階地圖 ↗");linkMap.href="#legal-hierarchy-map";
+   linksDiv.append(linkNstc,linkMap);rightsCard.append(linksDiv);left.append(rightsCard);
+  }
  } else if(item.program) {
+  if(item.program.id==="nstc-abroad-dragon") {
+   const rightsCard=el("section","panel detail-section");
+   rightsCard.append(el("h3","","📜 國科會千里馬要點法源參照"));
+   rightsCard.append(el("p","small","依國科會補助博士生赴國外研究作業要點（FL039188），每年 6/1 至 7/31 受理，各校校內申請基準得提前截止。"));
+   const linksDiv=el("div","range-buttons");
+   const linkNstc=el("a","pill","國科會要點與法源位階 ↗");linkNstc.href="#nstc-rights-title";
+   linksDiv.append(linkNstc);rightsCard.append(linksDiv);left.append(rightsCard);
+  }
   left.append(factSection(item.personal?"個人規劃與申請限制":"方案條件與待確認",[item.program.scope,item.program.requirements,"兼領："+item.program.compatibility]));
   if(item.milestones.length) left.append(factSection("會議、準備與程序節點",item.milestones.map(point=>point.label+"："+dateText(point.value))));
   const plan=el("button","secondary","用此方案規劃研討會");plan.type="button";
