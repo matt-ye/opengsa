@@ -10,7 +10,7 @@ import re
 import subprocess
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from urllib.parse import quote, unquote, urljoin, urlsplit, urlunsplit
 
 from bs4 import BeautifulSoup
@@ -109,6 +109,7 @@ class Fetcher:
         self.started, self.count = clock(), 0
         self.last, self.robots, self.blocked, self.delays, self.robots_checks = {}, {}, {}, {}, {}
         self.in_memory_blocks = {}
+        self.in_memory_raw_sha256 = {}
 
     def request(self, url, headers, limit):
         url = safe_url(url, self.config["allowed_hosts"])
@@ -260,7 +261,11 @@ def scan(config, previous=None, fetcher=None, resolved=None):
     resolved = resolved or set()
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
     reports, changed = [], 0
-    queue = [(source, source["url"], "html") for source in config["sources"]]
+    sources = [s for s in config["sources"] if s.get("enabled", True)]
+    start = state.get("next_source_index", 0) % max(1, len(sources))
+    ordered = sources[start:] + sources[:start]
+    queue = [(source, source["url"], "html") for source in ordered]
+    deferred_index = None
     while queue:
         source, original_url, kind = queue.pop(0)
         old = previous["documents"].get(original_url, {})
@@ -289,6 +294,7 @@ def scan(config, previous=None, fetcher=None, resolved=None):
                     blocks, attachments = html_document(response["body"], source, response["url"], config["allowed_hosts"])
                 if hasattr(fetcher, "in_memory_blocks"):
                     fetcher.in_memory_blocks[original_url] = blocks
+                    fetcher.in_memory_raw_sha256[original_url] = digest(response["body"])
                 semantic = digest([[normalized(b["text"]) for b in blocks], attachments])
                 document = {"raw_sha256": digest(response["body"]), "semantic_sha256": semantic,
                             "etag": response["headers"].get("etag"), "last_modified": response["headers"].get("last-modified"),
@@ -313,11 +319,14 @@ def scan(config, previous=None, fetcher=None, resolved=None):
         except (ScanError, subprocess.TimeoutExpired) as error:
             report["status"] = str(error) if isinstance(error, ScanError) else "parser_or_request_timeout"
             report["retained_previous"] = bool(old)
+            if kind == "html" and deferred_index is None and report["status"] in ("run_budget_exhausted", "changed_document_budget_deferred"):
+                deferred_index = sources.index(source)
         except Exception as error:
             report["status"] = "unexpected_" + type(error).__name__
             report["retained_previous"] = bool(old)
         reports.append(report)
     state["last_run_at"] = now
+    state["next_source_index"] = deferred_index if deferred_index is not None else (start + 1) % max(1, len(sources))
     report = {"version": VERSION, "observed_at": now, "baseline_missing": not bool(previous["documents"]),
               "http_requests": fetcher.count, "changed_documents": changed, "documents": reports,
               "pending_candidates": len(state["pending"]), "model_calls": 0, "official_data_modified": False,
@@ -339,26 +348,51 @@ def markdown_report(state, report):
     return "\n".join(lines) + "\n"
 
 
+def validate_config(config):
+    if not (0 < config["max_requests"] <= 20 and 0 < config["max_changed_documents"] <= 5
+            and 0 < config["max_pending_candidates"] <= 24 and config["minimum_host_interval_seconds"] >= 3
+            and 0 < config["max_run_seconds"] <= 180):
+        raise ValueError("Configuration exceeds the bounded scan policy")
+    active = [s for s in config["sources"] if s.get("enabled", True)]
+    if len({s["id"] for s in active}) != len(active) or len({s["url"] for s in active}) != len(active):
+        raise ValueError("Duplicate active source ID or URL")
+    for source in active:
+        safe_url(source["url"], config["allowed_hosts"])
+        required = ("title", "body_selector", "required_markers", "pdf_include", "max_pdfs", "review_note", "evidence_mode")
+        if any(key not in source for key in required):
+            raise ValueError(f"Incomplete source profile: {source['id']}")
+        if not isinstance(source["max_pdfs"], int) or not 0 <= source["max_pdfs"] <= 3:
+            raise ValueError(f"Invalid attachment budget: {source['id']}")
+        if source["evidence_mode"] not in ("hash_only", "short_excerpt"):
+            raise ValueError(f"Invalid evidence policy: {source['id']}")
+
+
 def run():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=ROOT / "data/scan-sources.json")
     parser.add_argument("--state", type=Path, default=ROOT / "work/scanner/state.json")
     parser.add_argument("--output", type=Path, default=ROOT / "work/scanner/report")
     parser.add_argument("--reviews", type=Path, default=ROOT / "data/scan-reviews.json")
+    parser.add_argument("--check-config", action="store_true", help="Offline validation; no requests or files written")
     args = parser.parse_args()
     config = json.loads(args.config.read_text(encoding="utf-8"))
-    if not (0 < config["max_requests"] <= 20 and 0 < config["max_changed_documents"] <= 5
-            and 0 < config["max_pending_candidates"] <= 24 and config["minimum_host_interval_seconds"] >= 3
-            and 0 < config["max_run_seconds"] <= 180):
-        parser.error("Configuration exceeds the bounded scan policy")
+    from scripts.review_candidates import validate_review_ledger
+    try:
+        validate_config(config)
+        reviews_payload = json.loads(args.reviews.read_text(encoding="utf-8"))
+        validate_review_ledger(reviews_payload)
+    except (ValueError, KeyError) as error:
+        parser.error(str(error))
+    if args.check_config:
+        print("PASS: source configuration and review ledger (offline)")
+        return None
     old = json.loads(args.state.read_text(encoding="utf-8")) if args.state.exists() else None
     if old and old.get("version") != VERSION:
         parser.error("State version differs; preserve it and select a new state path")
     resolved = set()
-    reviews_payload = json.loads(args.reviews.read_text(encoding="utf-8"))
     for review in reviews_payload["reviews"]:
-        if not all(review.get(key) for key in ["revision_id", "reviewer", "reason", "reviewed_on"]) or review.get("action") not in ["noted", "applied", "dismissed"]:
-            parser.error("Incomplete review ledger entry")
+        if review["action"] == "applied" or review.get("candidate_id"):
+            continue  # Per-candidate approval does not resolve every branch of a document.
         resolved.add(review["revision_id"])
         if old:
             old.get("pending", {}).pop(review["revision_id"], None)
@@ -379,7 +413,7 @@ def run():
         list(state["pending"].values()),
         config,
         fetcher=fetcher,
-        as_of=report["observed_at"][:10],
+        as_of=datetime.fromisoformat(report["observed_at"]).astimezone(timezone(timedelta(hours=8))).date().isoformat(),
         in_memory_blocks_by_url=fetcher.in_memory_blocks,
         allow_network_refetch=False,
     )
@@ -389,6 +423,7 @@ def run():
         scan_report=report,
         reviews_data=reviews_payload,
         refetch_statuses=refetch_statuses,
+        in_memory_blocks_by_source=fetcher.in_memory_blocks,
     )
     (args.output / "structured-candidates.json").write_text(json.dumps(verified_bundle, ensure_ascii=False, indent=2), encoding="utf-8")
     (args.output / "review-diff.json").write_text(json.dumps(review_summary, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -402,5 +437,5 @@ def run():
 
 if __name__ == "__main__":
     report = run()
-    if not any(d["status"] in ["changed", "unchanged", "unchanged_304"] for d in report["documents"]):
+    if report is not None and not any(d["status"] in ["changed", "unchanged", "unchanged_304"] for d in report["documents"]):
         sys.exit(1)

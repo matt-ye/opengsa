@@ -1,6 +1,7 @@
 """離線檢查資料形狀與引用；不判定個人資格或外站正確性。"""
 import argparse
 import json
+import sys
 from collections import Counter
 from datetime import date
 from pathlib import Path
@@ -8,6 +9,9 @@ from pathlib import Path
 from jsonschema import Draft202012Validator, FormatChecker
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0,str(ROOT))
+from scripts.application_process import process_errors
 
 
 def read_json(path):
@@ -53,6 +57,7 @@ def validate(data):
     source_map = {source["id"]: source for source in data["sources"]}
     for item in data["opportunities"]:
         key = item["id"]
+        errors.extend(f"{key}: {e}" for e in process_errors(item))
         review = item["review"]
         if review["status"] == "reviewed":
             if review["editor"] == review["independent_reviewer"]:

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "taipei-paper",
+    "kind": "source_excerpt",
+    "url": "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796",
+    "texts": [
+      "本計畫申請文件應以書面方式提出。",
+      "申請日以送達本局之日為準。"
+    ],
+    "mode": "paper",
+    "paper": "required",
+    "basis": "received"
+  },
+  {
+    "id": "hsinchu-upload",
+    "kind": "source_excerpt",
+    "url": "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
+    "texts": [
+      "至新竹市數位申辦平台進行線上申請。",
+      "申請人應親筆簽名切結書後上傳至數位申辦平台。"
+    ],
+    "mode": "electronic",
+    "paper": "unknown",
+    "signature": "required"
+  },
+  {
+    "id": "aws-education",
+    "kind": "source_excerpt",
+    "url": "https://aws.amazon.com/education/awseducate/",
+    "texts": [
+      "AWS Educate is open to any individual, regardless of where they are in their education, technical experience, or career journey."
+    ],
+    "mode": "unknown",
+    "paper": "unknown",
+    "na": [
+      "year_limit",
+      "candidate_qualification"
+    ]
+  },
+  {
+    "id": "synthetic-online-only",
+    "kind": "synthetic",
+    "texts": [
+      "全程線上申請，無須遞交紙本。"
+    ],
+    "mode": "electronic",
+    "paper": "not_required"
+  },
+  {
+    "id": "synthetic-auto",
+    "kind": "synthetic",
+    "texts": [
+      "所有錄取者自動列為候選，無須額外申請，不另公告結果。"
+    ],
+    "mode": "automatic",
+    "paper": "not_applicable",
+    "na": [
+      "application_start",
+      "student_deadline",
+      "result_date"
+    ]
+  },
+  {
+    "id": "synthetic-missing",
+    "kind": "synthetic",
+    "texts": [
+      "申請資格依當期公告；可下載PDF表格。"
+    ],
+    "mode": "unknown",
+    "paper": "unknown",
+    "na": []
+  },
+  {
+    "id": "synthetic-hybrid",
+    "kind": "synthetic",
+    "texts": [
+      "請線上申請後列印紙本郵寄。"
+    ],
+    "mode": "hybrid",
+    "paper": "required"
+  }
+]

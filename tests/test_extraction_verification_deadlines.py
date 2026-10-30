@@ -366,6 +366,7 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
 
         # 缺起日測試：已知未來學生截止日，但無開始日且非當日明示開放快照 -> unknown (missing_application_start)
         no_start_item = deepcopy(tuition)
+        no_start_item.pop("start", None)
         no_start_item["steps"][0]["action"] = "碩博第二階段申請（未載開始日）"
         no_start_item["application"] = {"state": "unknown", "as_of": "2026-08-01", "reason": "待查", "refs": []}
         w_no_start = evaluate_application_window(no_start_item, "2026-08-10")
@@ -616,7 +617,7 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
             "official_data_modified": False,
             "candidates": yx_cands,
         }
-        verified_bundle, summary, md = build_review_report(good_bundle, PILOT)
+        verified_bundle, summary, md = build_review_report(good_bundle, PILOT, in_memory_blocks_by_source={CONFIG["sources"][2]["url"]:make_yuanxue_blocks()})
         self.assertEqual(summary["passed_automated_checks"], 1)
         self.assertEqual(summary["promotion_ready"], 0)  # 尚未經人工獨立覆核
         self.assertIn("一、來源變更", md)
@@ -628,41 +629,9 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             export_pr_candidate_draft(verified_bundle, PILOT, ROOT / "data/pilot.json")
 
-        # 自審 (independent_reviewer == editor) 不得升級為 promotion_ready
-        self_reviews = {
-            "reviews": [
-                {
-                    "revision_id": "7" * 64,
-                    "action": "applied",
-                    "reviewer": verified_bundle["candidates"][0]["review"]["editor"],
-                    "reason": "自審測試",
-                    "reviewed_on": "2026-10-28",
-                }
-            ]
-        }
-        vb_self, sum_self, _ = build_review_report(good_bundle, PILOT, reviews_data=self_reviews)
-        self.assertEqual(sum_self["promotion_ready"], 0)
-
-        # 經非原編輯者獨立覆核通過後，可匯出至 PR 暫存檔且通過 check_data.validate
-        ind_reviews = {
-            "reviews": [
-                {
-                    "revision_id": "7" * 64,
-                    "action": "applied",
-                    "reviewer": "independent-maintainer-2",
-                    "reason": "已逐欄核對研發處原文與金額期間",
-                    "reviewed_on": "2026-10-28",
-                }
-            ]
-        }
-        vb_ind, sum_ind, _ = build_review_report(good_bundle, PILOT, reviews_data=ind_reviews)
-        self.assertEqual(sum_ind["promotion_ready"], 1)
-        with tempfile.TemporaryDirectory() as tmpdir:
-            staging_path = Path(tmpdir) / "pilot-pr-candidate.json"
-            promoted = export_pr_candidate_draft(vb_ind, PILOT, staging_path)
-            self.assertEqual(promoted, ["ntu-yuanxue-115-ordinary"])
-            staged_data = read_json(staging_path)
-            self.assertEqual(validate_pilot(staged_data), [])
+        # Incomplete review records must fail schema validation, not imply approval.
+        with self.assertRaises(ValueError):
+            build_review_report(good_bundle,PILOT,reviews_data={"reviews":[{"action":"applied"}]})
 
     def test_p1_phd5_ot_candidate_and_boundary_variants(self):
         # P1 基準：臺大職能治療所博士班五年級、已取得博士候選人資格（未提供國籍、在職、畢業時間、先前補助與9月基準年級）
@@ -929,148 +898,39 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
         self.assertIn("needs_human_review_for_model_supplement", cands_good_ext[0]["verification"]["warnings"])
 
     def test_provider_presets_and_nvidia_nim_adapter_configuration(self):
-        """測試預設提供商 (NVIDIA NIM, SambaNova, Cerebras, OpenRouter, SiliconFlow, GitHub Models) 的自動解析。"""
-        from scripts.extract_candidates import create_model_adapter_from_env, DisabledModelAdapter, OpenAICompatibleAdapter
+        from scripts.providers import PROVIDERS, provider_settings
+        from scripts.extract_candidates import create_model_adapter_from_env
+        self.assertNotIn("github", PROVIDERS)
+        self.assertIn("gemini", PROVIDERS)
+        base,model,key = provider_settings("mistral", {"OPENGSA_MODEL_BASE_URL":"https://api.groq.com/openai/v1", "OPENGSA_MODEL_NAME":"wrong-groq-model", "OPENGSA_MISTRAL_API_KEY":"synthetic"})
+        self.assertEqual(base,"https://api.mistral.ai/v1")
+        self.assertEqual(model,"mistral-small-latest")
+        self.assertEqual(key,"OPENGSA_MISTRAL_API_KEY")
+        with unittest.mock.patch.dict(os.environ,{"OPENGSA_MODEL_MODE":"audit","OPENGSA_MODEL_PROVIDER":"nvidia","OPENGSA_NVIDIA_API_KEY":"synthetic"},clear=True):
+            self.assertIsInstance(create_model_adapter_from_env(),DisabledModelAdapter)
+        with self.assertRaises(ValueError):
+            provider_settings("siliconflow", {})
 
-        # 預設模式 off -> DisabledModelAdapter
-        with unittest.mock.patch.dict(os.environ, {"OPENGSA_MODEL_MODE": "off"}, clear=False):
-            ad_off = create_model_adapter_from_env()
-            self.assertIsInstance(ad_off, DisabledModelAdapter)
-            self.assertFalse(ad_off.enabled)
-
-        # 測試 NVIDIA NIM 提供商預設
-        env_nvidia = {
-            "OPENGSA_MODEL_MODE": "extract",
-            "OPENGSA_MODEL_PROVIDER": "nvidia",
-            "NVIDIA_API_KEY": "nvapi-test-token-key-12345",
-        }
-        with unittest.mock.patch.dict(os.environ, env_nvidia, clear=False):
-            ad_nv = create_model_adapter_from_env()
-            self.assertIsInstance(ad_nv, OpenAICompatibleAdapter)
-            self.assertEqual(ad_nv.base_url, "https://integrate.api.nvidia.com/v1")
-            self.assertEqual(ad_nv.model, "meta/llama-3.3-70b-instruct")
-            self.assertEqual(ad_nv.api_key_env, "NVIDIA_API_KEY")
-            self.assertTrue(ad_nv.enabled)
-
-        # 測試 SambaNova 提供商預設
-        env_sambanova = {
-            "OPENGSA_MODEL_MODE": "extract",
-            "OPENGSA_MODEL_PROVIDER": "sambanova",
-            "SAMBANOVA_API_KEY": "samba-key-999",
-        }
-        with unittest.mock.patch.dict(os.environ, env_sambanova, clear=False):
-            ad_samba = create_model_adapter_from_env()
-            self.assertIsInstance(ad_samba, OpenAICompatibleAdapter)
-            self.assertEqual(ad_samba.base_url, "https://api.sambanova.ai/v1")
-            self.assertEqual(ad_samba.model, "Meta-Llama-3.3-70B-Instruct")
-            self.assertEqual(ad_samba.api_key_env, "SAMBANOVA_API_KEY")
-
-        # 測試 Cerebras 提供商預設
-        env_cerebras = {
-            "OPENGSA_MODEL_MODE": "both",
-            "OPENGSA_MODEL_PROVIDER": "cerebras",
-            "CEREBRAS_API_KEY": "cerebras-key-888",
-        }
-        with unittest.mock.patch.dict(os.environ, env_cerebras, clear=False):
-            ad_cer = create_model_adapter_from_env()
-            self.assertIsInstance(ad_cer, OpenAICompatibleAdapter)
-            self.assertEqual(ad_cer.base_url, "https://api.cerebras.ai/v1")
-            self.assertEqual(ad_cer.model, "llama-3.3-70b")
-
-        # 測試 OpenRouter 提供商預設
-        env_or = {
-            "OPENGSA_MODEL_MODE": "audit",
-            "OPENGSA_MODEL_PROVIDER": "openrouter",
-            "OPENROUTER_API_KEY": "sk-or-key-777",
-        }
-        with unittest.mock.patch.dict(os.environ, env_or, clear=False):
-            ad_or = create_model_adapter_from_env()
-            self.assertIsInstance(ad_or, OpenAICompatibleAdapter)
-            self.assertEqual(ad_or.base_url, "https://openrouter.ai/api/v1")
-            self.assertEqual(ad_or.model, "meta-llama/llama-3.3-70b-instruct:free")
-
-        # 測試 GitHub Models 提供商預設
-        env_gh = {
-            "OPENGSA_MODEL_MODE": "extract",
-            "OPENGSA_MODEL_PROVIDER": "github",
-            "GITHUB_TOKEN": "ghp_mock_token_for_models",
-        }
-        with unittest.mock.patch.dict(os.environ, env_gh, clear=False):
-            ad_gh = create_model_adapter_from_env()
-            self.assertIsInstance(ad_gh, OpenAICompatibleAdapter)
-            self.assertEqual(ad_gh.base_url, "https://models.inference.ai.azure.com")
-            self.assertEqual(ad_gh.model, "gpt-4o-mini")
-            self.assertEqual(ad_gh.api_key_env, "GITHUB_TOKEN")
 
 
     def test_phase_2_deterministic_extractors_for_dragon_assistant_and_ta(self):
-        # 1. 測試千里馬作業要點萃取
-        dragon_src = next((s for s in CONFIG["sources"] if s["id"] == "nstc-abroad-dragon-rule"), None)
-        self.assertIsNotNone(dragon_src)
-        dragon_blocks = [
-            {"locator": "FL039188-1", "text": "國家科學及技術委員會補助博士生赴國外研究作業要點。國內設籍中華民國國民，博士班在學一年以上經學校推薦。"},
-            {"locator": "FL039188-2", "text": "以一年新臺幣九十萬元按研究日數核算，補助期間七至十二個月。"},
-            {"locator": "FL039188-3", "text": "申請機構應於每年六月一日至七月三十一日完成線上申請並備函檢送名冊。"},
-        ]
-        cands_dragon = extract_from_in_memory_blocks(
-            dragon_src, dragon_blocks, revision_id="d"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
-        )
-        self.assertEqual(len(cands_dragon), 1)
-        cd = cands_dragon[0]
-        self.assertEqual(cd["category"], "overseas_research")
-        self.assertEqual(cd["eligibility"]["degrees"], ["phd"])
-        self.assertEqual(cd["eligibility"]["nationality"], "roc_only")
-        self.assertEqual(cd["benefit"]["items"][0]["amount_max"], 900000)
-        self.assertEqual(cd["benefit"]["items"][0]["amount_min"], 525000)
-        self.assertEqual(cd["schedule"]["steps"][1]["deadline"]["value"], "2026-07-31")
+        src=next(s for s in CONFIG["sources"] if s["id"]=="nstc-abroad-dragon-rule")
+        for year,amount in [(2025,900000),(2027,1200000)]:
+            blocks=[{"locator":"id","text":"博士班在學學生，中華民國國籍，經學校推薦。"},
+                    {"locator":"money","text":f"每年新臺幣{amount}元。"},
+                    {"locator":"date","text":f"申請期間{year}-06-01至{year}-07-31由申請機構備函送達。"}]
+            cand=extract_from_in_memory_blocks(src,blocks,revision_id="d"*64,observed_at="2026-10-30T09:17:00+08:00",as_of="2026-10-30")[0]
+            self.assertEqual(cand["benefit"]["items"][0]["amount_min"],amount)
+            self.assertEqual(cand["benefit"]["items"][0]["unit"],"per_year")
+            self.assertEqual(cand["schedule"]["steps"][0]["deadline"]["value"],f"{year}-07-31")
+            self.assertEqual(cand["schedule"]["steps"][0]["actor"],"institution")
+            self.assertEqual(cand["application"]["state"],"closed" if year < 2026 else "unknown")
+        # A recurring clause has no verified current-year window.
+        blocks=[{"locator":"rule","text":"博士班學生每年六月一日至七月三十一日申請。"}]
+        cand=extract_from_in_memory_blocks(src,blocks,revision_id="c"*64,observed_at="2026-10-30T09:17:00+08:00")[0]
+        self.assertIsNone(cand["schedule"]["application_start"]["value"])
+        self.assertEqual(cand["benefit"]["items"],[])
 
-        # 2. 測試國科會研究人力約用注意事項萃取
-        asst_src = next((s for s in CONFIG["sources"] if s["id"] == "nstc-assistant-rule"), None)
-        self.assertIsNotNone(asst_src)
-        asst_blocks = [
-            {"locator": "FL028686-1", "text": "國家科學及技術委員會補助專題研究計畫研究人力約用注意事項。學生兼任人員含兼任助理與研究獎助生。"},
-            {"locator": "FL028686-2", "text": "兼任人員每月工作酬金或研究津貼至少六千元；博士生費用增核每月一萬元，每月總額至少一萬六千元。"},
-        ]
-        cands_asst = extract_from_in_memory_blocks(
-            asst_src, asst_blocks, revision_id="a"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
-        )
-        self.assertEqual(len(cands_asst), 1)
-        ca = cands_asst[0]
-        self.assertEqual(ca["category"], "indirect_support")
-        self.assertEqual(ca["benefit"]["items"][0]["amount_min"], 6000)
-        self.assertEqual(ca["benefit"]["items"][1]["amount_min"], 16000)
-
-        # 3. 測試臺大教務處 TA 獎勵金辦法萃取
-        ta_src = next((s for s in CONFIG["sources"] if s["id"] == "ntu-ta-policy"), None)
-        self.assertIsNotNone(ta_src)
-        ta_blocks = [
-            {"locator": "TA-1", "text": "臺大教務處教學助理制度獎勵金實施辦法。博士班一般課程教學助理每月八千至一萬元。"},
-            {"locator": "TA-2", "text": "碩士班一般中文教學助理每月六千至七千五百元；每學期最多擔任兩門課。"},
-        ]
-        cands_ta = extract_from_in_memory_blocks(
-            ta_src, ta_blocks, revision_id="t"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
-        )
-        self.assertEqual(len(cands_ta), 1)
-        cta = cands_ta[0]
-        self.assertEqual(cta["source_metadata"]["evidence_mode"], "hash_only")
-        self.assertEqual(cta["benefit"]["items"][0]["amount_min"], 8000)
-        self.assertEqual(cta["benefit"]["items"][0]["amount_max"], 10000)
-
-        # 4. 測試臺大專題計畫兼任上限標準萃取
-        limit_src = next((s for s in CONFIG["sources"] if s["id"] == "ntu-ord-assistant-limit"), None)
-        self.assertIsNotNone(limit_src)
-        limit_blocks = [
-            {"locator": "ORD-1", "text": "國立臺灣大學計畫兼任助理及研究獎助生每月支給上限標準表。"},
-            {"locator": "ORD-2", "text": "碩士級每月支給上限兩萬元；博士生未取得候選人資格四萬兩千元；博士候選人五萬元。"},
-        ]
-        cands_limit = extract_from_in_memory_blocks(
-            limit_src, limit_blocks, revision_id="l"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
-        )
-        self.assertEqual(len(cands_limit), 1)
-        cl = cands_limit[0]
-        self.assertEqual(cl["benefit"]["items"][0]["amount_max"], 20000)
-        self.assertEqual(cl["benefit"]["items"][1]["amount_max"], 42000)
-        self.assertEqual(cl["benefit"]["items"][2]["amount_max"], 50000)
 
 
     def test_phase_2_candidates_end_to_end_review_and_diff_generation(self):
@@ -1127,175 +987,48 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
 
 
     def test_phase_3_deterministic_extractors_for_colleges_sinica_and_tsmc(self):
-        """測試 Phase 3 學院級（電資、工學院）與代表性機構（中研院、台積電）確定性萃取與檢核。"""
-        # 1. 中研院博士候選人培育計畫
-        sinica_src = next((s for s in CONFIG["sources"] if s["id"] == "sinica-phd-fellowship"), None)
-        self.assertIsNotNone(sinica_src)
-        sinica_blocks = [
-            {"locator": "DAAS-1", "text": "中央研究院博士候選人培育計畫作業要點。國內在學博士生已獲候選人資格且非全時有給職。"},
-            {"locator": "DAAS-2", "text": "人文及社會科學組每月獎助金新臺幣四萬元整，數理與生命科學組每月五萬元整。"},
-            {"locator": "DAAS-3", "text": "申請期間為每年三月一日至四月十日止，線上完成申請並由學校備函送達。"},
-        ]
-        cands_sinica = extract_from_in_memory_blocks(
-            sinica_src, sinica_blocks, revision_id="s"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
-        )
-        self.assertEqual(len(cands_sinica), 1)
-        cs = cands_sinica[0]
-        self.assertEqual(cs["opportunity_id"], "sinica-phd-fellowship-policy")
-        self.assertEqual(cs["category"], "phd_research")
-        self.assertEqual(cs["scope"], "nationwide")
-        self.assertEqual(cs["eligibility"]["degrees"], ["phd"])
-        self.assertEqual(cs["eligibility"]["candidate"]["mode"], "required")
-        self.assertEqual(cs["eligibility"]["employment_status"], "non_in_service_only")
-        self.assertEqual(cs["benefit"]["items"][0]["amount_min"], 40000)
-        self.assertEqual(cs["benefit"]["items"][1]["amount_min"], 50000)
-        self.assertEqual(cs["schedule"]["application_start"]["value"], "2026-03-01")
-        self.assertEqual(cs["schedule"]["steps"][0]["deadline"]["value"], "2026-04-10")
+        for sid in ["sinica-phd-fellowship","tsmc-phd-fellowship","ntu-eecs-scholarship","ntu-coe-scholarship"]:
+            src=next(s for s in CONFIG["sources"] if s["id"]==sid)
+            blocks=[{"locator":"id","text":"博士候選人，非全時有給職，資格仍依完整辦法核定。"},
+                    {"locator":"money","text":"每月新臺幣43000元。"},
+                    {"locator":"date","text":"學生申請期間2025-03-01至2025-04-10截止。"}]
+            cand=extract_from_in_memory_blocks(src,blocks,revision_id="e"*64,observed_at="2026-10-30T09:17:00+08:00")[0]
+            self.assertEqual(cand["benefit"]["items"][0]["amount_min"],43000)
+            self.assertEqual(cand["eligibility"]["employment_status"],"unemployed_or_no_fulltime_pay")
+            self.assertEqual(cand["schedule"]["application_start"]["value"],"2025-03-01")
+            self.assertEqual(cand["schedule"]["steps"][0]["deadline"]["value"],"2025-04-10")
+            self.assertEqual(cand["verification"]["errors"],[])
 
-        # 2. 台積電博士獎學金專案
-        tsmc_src = next((s for s in CONFIG["sources"] if s["id"] == "tsmc-phd-fellowship"), None)
-        self.assertIsNotNone(tsmc_src)
-        tsmc_blocks = [
-            {"locator": "TSMC-1", "text": "台積電博士獎學金專案。國內大學半導體、電機資訊及物理化學相關在學博士生。"},
-            {"locator": "TSMC-2", "text": "每年新臺幣五十萬元，最長獎助四年，並享業師指導與實習。"},
-        ]
-        cands_tsmc = extract_from_in_memory_blocks(
-            tsmc_src, tsmc_blocks, revision_id="m"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
-        )
-        self.assertEqual(len(cands_tsmc), 1)
-        cm = cands_tsmc[0]
-        self.assertEqual(cm["opportunity_id"], "tsmc-phd-fellowship-policy")
-        self.assertEqual(cm["benefit"]["items"][0]["amount_min"], 500000)
-        self.assertEqual(cm["benefit"]["items"][0]["unit"], "per_year")
-
-        # 3. 臺大電資學院優秀研究生獎助學金
-        eecs_src = next((s for s in CONFIG["sources"] if s["id"] == "ntu-eecs-scholarship"), None)
-        self.assertIsNotNone(eecs_src)
-        eecs_blocks = [
-            {"locator": "EECS-1", "text": "臺大電資學院優秀研究生獎助學金評選要點。電資學院在學研究生（碩士生與博士生）。"},
-            {"locator": "EECS-2", "text": "優秀博士生每月一萬至兩萬元，依各期院務會議審定金額發給。"},
-        ]
-        cands_eecs = extract_from_in_memory_blocks(
-            eecs_src, eecs_blocks, revision_id="e"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
-        )
-        self.assertEqual(len(cands_eecs), 1)
-        ce = cands_eecs[0]
-        self.assertEqual(ce["opportunity_id"], "ntu-eecs-scholarship-policy")
-        self.assertEqual(ce["scope"], "ntu")
-        self.assertEqual(ce["benefit"]["items"][0]["amount_min"], 10000)
-        self.assertEqual(ce["benefit"]["items"][0]["amount_max"], 20000)
-
-        # 4. 臺大工學院研究生獎助學金專區
-        coe_src = next((s for s in CONFIG["sources"] if s["id"] == "ntu-coe-scholarship"), None)
-        self.assertIsNotNone(coe_src)
-        coe_blocks = [
-            {"locator": "COE-1", "text": "國立臺灣大學工學院研究生獎助學金專區。工學院各學系所研究生。"},
-            {"locator": "COE-2", "text": "每學年五萬至十萬元，依各類獎學金辦法核給。"},
-        ]
-        cands_coe = extract_from_in_memory_blocks(
-            coe_src, coe_blocks, revision_id="c"*64, observed_at="2026-10-30T09:17:00+08:00", as_of="2026-10-28"
-        )
-        self.assertEqual(len(cands_coe), 1)
-        cc = cands_coe[0]
-        self.assertEqual(cc["opportunity_id"], "ntu-coe-scholarship-policy")
-        self.assertEqual(cc["scope"], "ntu")
-        self.assertEqual(cc["benefit"]["items"][0]["amount_min"], 50000)
-        self.assertEqual(cc["benefit"]["items"][0]["amount_max"], 100000)
-
-        # 5. 驗證 4 筆候選項目皆通過 verify_candidate 守門條件
-        for cand, blocks in [(cs, sinica_blocks), (cm, tsmc_blocks), (ce, eecs_blocks), (cc, coe_blocks)]:
-            verified = verify_candidate(cand, in_memory_blocks=blocks)
-            self.assertEqual(verified["verification"]["errors"], [], f"Errors in {cand['candidate_id']}: {verified['verification']['errors']}")
-            self.assertIn(verified["verification"]["status"], ("passed_automated_checks", "passed_with_gaps"))
 
 
 
     def test_review_ledger_promotion_ready_and_pr_draft_export(self):
-        """測試獨立覆核台帳（applied/noted）、防自審守門、PR 暫存草稿導出與契約合規。"""
-        # 1. 載入既有審核報告資料
-        reviews_ledger = read_json(ROOT / "data/scan-reviews.json")
-        self.assertIn("reviews", reviews_ledger)
-        self.assertEqual(len(reviews_ledger["reviews"]), 4)
+        from scripts.review_candidates import candidate_fingerprint
+        self.assertEqual(read_json(ROOT/"data/scan-reviews.json")["reviews"],[])
+        src=CONFIG["sources"][2]
+        blocks=make_yuanxue_blocks()
+        cand=extract_from_in_memory_blocks(src,blocks,revision_id="a"*64,observed_at="2026-10-28T09:17:00+08:00",as_of="2026-10-28")[0]
+        bundle={"schema_version":"1.1.0-candidate","as_of":"2026-10-28","timezone":"Asia/Taipei","model_enabled":False,"model_calls":0,"official_data_modified":False,"candidates":[cand]}
+        entry={"revision_id":"a"*64,"source_id":src["id"],"candidate_id":cand["candidate_id"],"candidate_sha256":candidate_fingerprint(cand),"action":"applied","reviewer":"SYNTH-independent-reviewer","reviewed_on":"2026-10-28","reason":"Synthetic test disposition, not actual human approval"}
+        ledger={"schema_version":"1.1.0","reviews":[entry]}
+        verified,summary,_=build_review_report(bundle,PILOT,reviews_data=ledger,in_memory_blocks_by_source={src["url"]:blocks})
+        self.assertEqual(summary["promotion_ready"],1)
+        with tempfile.TemporaryDirectory() as temp:
+            output=Path(temp)/"pr.json"
+            ids=export_pr_candidate_draft(verified,PILOT,output,scan_sources_config=CONFIG)
+            self.assertEqual(len(ids),1)
+            self.assertEqual(validate_pilot(read_json(output)),[])
+            tampered=deepcopy(verified)
+            tampered["candidates"][0]["title"]="changed after approval"
+            # Title is an approval-bound claim.
+            tampered["candidates"][0]["benefit"]["summary"]="changed"
+            self.assertEqual(export_pr_candidate_draft(tampered,PILOT,output,scan_sources_config=CONFIG),[])
+        entry["reviewer"]=cand["review"]["editor"]
+        _,summary,_=build_review_report(bundle,PILOT,reviews_data=ledger,in_memory_blocks_by_source={src["url"]:blocks})
+        self.assertEqual(summary["promotion_ready"],0)
+        with self.assertRaises(ValueError):
+            export_pr_candidate_draft(verified,PILOT,ROOT/"data/pilot.json")
 
-        # 2. 準備 4 筆 Phase 2 候選項目
-        dragon_src = next(s for s in CONFIG["sources"] if s["id"] == "nstc-abroad-dragon-rule")
-        asst_src = next(s for s in CONFIG["sources"] if s["id"] == "nstc-assistant-rule")
-        ta_src = next(s for s in CONFIG["sources"] if s["id"] == "ntu-ta-policy")
-        limit_src = next(s for s in CONFIG["sources"] if s["id"] == "ntu-ord-assistant-limit")
-
-        cands = []
-        cands.extend(extract_from_in_memory_blocks(
-            dragon_src,
-            [{"locator": "FL039188-1", "text": "國家科學及技術委員會補助博士生赴國外研究作業要點。國內公立大學博士班在學一年以上經學校推薦。以一年研究費九十萬元為上限核給，補助七至十二個月。每年六月一日至七月三十一日完成線上申請並備函送會。"}],
-            revision_id="d"*64, observed_at="2026-10-28T09:17:00+08:00", as_of="2026-10-28"
-        ))
-        cands.extend(extract_from_in_memory_blocks(
-            asst_src,
-            [{"locator": "FL028686-1", "text": "國科會補助專題研究計畫研究人力約用注意事項。專題計畫兼任助理碩士學生每月最高一萬六千元，博士級助理每月最高四萬元。受聘學生應簽訂書面約定。"}],
-            revision_id="a"*64, observed_at="2026-10-28T09:17:00+08:00", as_of="2026-10-28"
-        ))
-        cands.extend(extract_from_in_memory_blocks(
-            ta_src,
-            [{"locator": "TA-1", "text": "臺大教務處教學助理制度獎勵金實施辦法。博士班一般課程教學助理每月八千至一萬元。碩士班一般中文教學助理每月六千至七千五百元。"}],
-            revision_id="t"*64, observed_at="2026-10-28T09:17:00+08:00", as_of="2026-10-28"
-        ))
-        cands.extend(extract_from_in_memory_blocks(
-            limit_src,
-            [{"locator": "ORD-1", "text": "國立臺灣大學計畫兼任助理及研究獎助生每月支給上限標準表。碩士級每月支給上限兩萬元；博士生未取得候選人資格四萬兩千元；博士候選人五萬元。"}],
-            revision_id="l"*64, observed_at="2026-10-28T09:17:00+08:00", as_of="2026-10-28"
-        ))
-
-        bundle = {
-            "schema_version": "0.1.0-proposal",
-            "as_of": "2026-10-28",
-            "timezone": "Asia/Taipei",
-            "model_enabled": False,
-            "model_calls": 0,
-            "official_data_modified": False,
-            "candidates": cands,
-        }
-
-        # 3. 套用 scan-reviews.json 覆核台帳並產出報告
-        verified_bundle, summary, md = build_review_report(bundle, PILOT, reviews_data=reviews_ledger)
-        self.assertEqual(summary["total_candidates"], 4)
-        self.assertEqual(summary["promotion_ready"], 2)  # 2 筆 applied，2 筆 noted
-        self.assertFalse(summary["official_data_modified"])
-
-        # 4. 驗證自審阻擋（若 reviewer 與 editor 相同，嚴格禁止 promotion_ready）
-        self_review_ledger = {
-            "reviews": [{
-                "revision_id": "d"*64,
-                "source_id": "nstc-abroad-dragon-rule",
-                "action": "applied",
-                "reviewer": cands[0]["review"]["editor"],  # 與 editor 相同
-                "reviewed_on": "2026-10-28",
-            }]
-        }
-        _, self_summary, _ = build_review_report(bundle, PILOT, reviews_data=self_review_ledger)
-        self.assertEqual(self_summary["promotion_ready"], 0)
-
-        # 5. 驗證 export_pr_candidate_draft 匯出 PR 暫存檔
-        with tempfile.TemporaryDirectory() as tmpdir:
-            tmp_pr_path = Path(tmpdir) / "pilot-pr-candidate.json"
-            promoted_ids = export_pr_candidate_draft(verified_bundle, PILOT, tmp_pr_path, scan_sources_config=CONFIG)
-            self.assertEqual(len(promoted_ids), 2)
-            self.assertIn("nstc-abroad-dragon-policy", promoted_ids)
-            self.assertIn("nstc-assistant-policy", promoted_ids)
-
-            # 驗證導出之暫存資料 100% 通過 validate 資料契約檢驗
-            draft_data = read_json(tmp_pr_path)
-            errs = validate_pilot(draft_data)
-            self.assertEqual(errs, [])
-
-            # 驗證千里馬晉級草稿帶有結構化起日（2026-06-01），且符合起訖先後邏輯
-            dragon_promoted = next(o for o in draft_data["opportunities"] if o["id"] == "nstc-abroad-dragon-policy")
-            self.assertIsNotNone(dragon_promoted.get("start"))
-            self.assertEqual(dragon_promoted["start"]["value"], "2026-06-01")
-            self.assertEqual(dragon_promoted["start"]["kind"], "date")
-
-            # 驗證嚴格禁止直接覆寫 official pilot.json
-            with self.assertRaises(ValueError):
-                export_pr_candidate_draft(verified_bundle, PILOT, ROOT / "data/pilot.json")
 
 
 if __name__ == "__main__":

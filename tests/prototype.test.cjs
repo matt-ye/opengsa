@@ -347,7 +347,7 @@ test("方向C：官方未載起日但有截止日之方案，保留start為null�
  // 驗證 prototype.js 包含 notice-window 繪製邏輯
  const js = fs.readFileSync(path.join(__dirname,"../docs/design/prototype.js"),"utf8");
  assert.ok(js.includes('gantt-bar notice-window'));
- assert.ok(js.includes('官方未載起日（已標示截止前30天準備提醒帶）'));
+ assert.ok(core.noticeWindow(medPub));
 });
 
 test("方向B：依官方公告發布日推定起日之方案，標註certainty為inferred且具備專屬甘特圖樣式",()=>{
@@ -386,3 +386,44 @@ test("方向B：依官方公告發布日推定起日之方案，標註certainty�
  assert.ok(js.includes('起日依官方公告推定'));
 });
 
+
+test("受理狀態只比對狀態碼，待確認不得混入受理中",()=>{
+ const items=[{id:"unknown",rawState:"unknown",application:"受理待確認"},{id:"open",rawState:"open",application:"受理中"}];
+ assert.deepEqual(core.filterItems(items,{application:"open"}).map(x=>x.id),["open"]);
+});
+test("涵蓋所有日期包含準備建議，未知起日仍未寫入資料",()=>{
+ const item={start:{value:null},end:{value:"2026-12-01"},result:{value:null},milestones:[]};
+ const range=core.domain([item],"2026-12-01","fit");
+ assert.ok(range.start<=core.dayNumber("2026-11-01"));
+ assert.strictEqual(item.start.value,null);
+});
+test("公告快照過期或推定起日不宣稱今天已開放",()=>{
+ const item={application:{state:"open",as_of:"2026-10-01"},start:{kind:"date",value:"2026-10-01",certainty:"inferred"},steps:[{actor:"student",deadline:{kind:"date",value:"2026-12-01"}}]};
+ assert.strictEqual(core.windowState(item,"2026-10-30"),"unknown");
+ item.start.certainty="confirmed";
+ assert.strictEqual(core.windowState(item,"2026-10-30"),"open");
+ assert.strictEqual(core.windowState(item,"2026-12-02"),"closed");
+});
+
+
+test("申請方式與給付由同一資料列更新，N/A不冒充待確認或受理中",()=>{
+ const data=structuredClone(pilot),raw=data.opportunities[0];
+ raw.application_method={mode:"electronic",paper_delivery:"not_required",handwritten_signature:"required",deadline_basis:"online_submission"};
+ raw.benefit.text="SYNTH 更新後給付";
+ raw.start={kind:"unknown",value:null,note:"SYNTH免申請"};
+ raw.steps=[];raw.result={kind:"unknown",value:null,note:"SYNTH無審查"};
+ raw.field_applicability=Object.fromEntries(["application_start","student_deadline","result_date"].map(k=>[k,{status:"not_applicable",reason:"合成案例：來源明示免申請／無審查",refs:[]} ]));
+ const item=core.makeDrafts(data,"2026-10-30")[0];
+ assert.equal(item.benefit,"SYNTH 更新後給付");
+ assert.match(core.methodText(item.method),/免遞交紙本/);
+ assert.match(core.methodText(item.method),/親筆簽名/);
+ assert.match(core.startLabel(item),/N\/A 不適用/);
+ assert.match(core.deadlineText(item),/N\/A 不適用/);
+ assert.match(core.resultText(item),/N\/A 不適用/);
+ assert.equal(core.noticeWindow(item),null);
+ assert.equal(core.filterItems([item],{application:"unknown"}).length,0);
+ assert.equal(core.filterItems([item],{application:"not_applicable"}).length,1);
+ const unknown=core.makeDrafts(pilot,"2026-10-30").find(x=>!x.end.value);
+ assert.match(core.deadlineText(unknown),/待確認/);
+ assert.doesNotMatch(core.deadlineText(unknown),/N\/A/);
+});

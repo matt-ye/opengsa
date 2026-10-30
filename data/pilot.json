@@ -424,7 +424,14 @@
         "kind": "date",
         "value": "2026-08-05",
         "timezone": "Asia/Taipei",
-        "note": "博士生第二階段申請開始日"
+        "note": "博士生第二階段申請開始日",
+        "refs": [
+          {
+            "source": "ntu-tuition",
+            "locator": "第二階段碩博士生115/8/5至8/13"
+          }
+        ],
+        "certainty": "confirmed"
       }
     },
     {
@@ -1130,7 +1137,13 @@
         "value": "2026-07-08",
         "timezone": "Asia/Taipei",
         "certainty": "inferred",
-        "note": "依校方公文公告發布日（2026-07-08）推定即日起受理"
+        "note": "依校方公文公告發布日（2026-07-08）推定即日起受理",
+        "refs": [
+          {
+            "source": "ntu-president",
+            "locator": "院系所程序"
+          }
+        ]
       }
     },
     {
@@ -1473,7 +1486,14 @@
         "kind": "date",
         "value": "2026-06-01",
         "timezone": "Asia/Taipei",
-        "note": "國科會線上系統開放受理申請開始日"
+        "note": "國科會線上系統開放受理申請開始日",
+        "refs": [
+          {
+            "source": "ntu-abroad-call",
+            "locator": "標題及申請截止時間"
+          }
+        ],
+        "certainty": "confirmed"
       }
     },
     {

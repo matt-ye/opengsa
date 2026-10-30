@@ -1,5 +1,8 @@
 # OpenGSA 全國獎助來源藍圖、院校階層擴展與跨界補助檢索規劃
 
+> 本文件是擴展搜尋種子與歷史規劃；未逐項查證的連結、金額、資格及免費額度不當作當期可用資源。執行設定以SCANNER.md及API-AUDIT.md為準。
+
+
 > 文件性質：全域檢索規劃與架構藍圖（2026-10-30 規劃版）。
 > 本文件以國立臺灣大學（NTU）作為示範藍本，規劃全校級、學院級、系所級之獎助資訊拓撲；確立未來向全臺大專院校（清大、交大、成大、政大等）擴展之標準階層模型；全面盤點政府計畫、民間基金會、企業獎助、創業補助、AI算力折抵、國際交流與青年百億海外圓夢基金之檢索範圍；並規劃 GitHub Actions 免費 tier LLM API 備援容錯架構。
 
@@ -394,104 +397,11 @@ flowchart TD
 
 ---
 
-## 7. GitHub Actions 免費 API 備援容錯規劃與大用量提供商推薦
+## 7. API與成本限制（2026-10-30更新）
 
-### 7.1 免費與大用量 LLM API 供應商全域評估與配額對照
+舊版的固定免費額度、Llama 3.3跨平台預設與三把金鑰瀑布備援提案已撤換。正式對照由[data/model-providers.json](../data/model-providers.json)維護，官方依據、8組Secret對應及本次Actions結果見[API查核](API-AUDIT.md)。
 
-在零預算（$0/month）、不建立付費帳戶、不綁定信用卡的開源維運前提下，適合配置於 GitHub Actions runner 或本機自動化之免費／大用量 API 服務完整分析：
-
-| 供應商 (Provider) | 模型名稱 (Model) | 官方 Endpoint 規範 | 免費層 API 配額限制 | 輸出品質與繁體中文適應性 | 建議階層地位 |
-|---|---|---|---|---|---|
-| **Google Gemini API**<br/>(AI Studio) | `gemini-2.0-flash`<br/>`gemini-1.5-flash` | 原生 REST / OpenAI 相容<br/>`generativelanguage.googleapis.com` | **15 RPM**<br/>**1,000,000 TPM**<br/>**1,500 RPD** | **極佳**。百萬 TPM 吞吐完整法規與長文公告，繁中理解力頂尖，JSON Schema 結構化最嚴謹 | **Tier 1<br/>(Primary 主要首選)** |
-| **Groq Cloud** | `llama-3.3-70b-versatile`<br/>`qwen/qwen3.8-27b` | OpenAI 相容<br/>`https://api.groq.com/openai/v1` | **30 RPM**<br/>**6,000–14,400 TPM**<br/>**14,400 RPD** | **極速**（>300 token/s）。Llama-3.3-70B 短文（<4k tokens）解析極快，每日請求量高達 1.4 萬次 | **Tier 2<br/>(Fast Secondary)** |
-| **NVIDIA NIM**<br/>(build.nvidia.com) | `meta/llama-3.3-70b-instruct`<br/>`meta/llama-3.1-405b-instruct`<br/>`deepseek-ai/deepseek-r1` | OpenAI 相容<br/>`https://integrate.api.nvidia.com/v1` | **40 RPM**<br/>**1,000 免費 Credits**<br/>(Developer Preview 可申請加額) | **頂規**。跑在 NVIDIA DGX/H100 頂級算力叢集，提供旗艦 405B 與 DeepSeek-R1 深度推理 | **Tier 3<br/>(GPU High-End Tier)** |
-| **SambaNova Cloud**<br/>(cloud.sambanova.ai) | `Meta-Llama-3.3-70B-Instruct`<br/>`Meta-Llama-3.1-405B-Instruct`<br/>`DeepSeek-R1` | OpenAI 相容<br/>`https://api.sambanova.ai/v1` | **20 RPM**<br/>每日充沛 Token 額度 (TPD)<br/>**免綁信用卡直接開箱** | **大用量**。SambaNova SN40L 自研 RDU 晶片，速度達 200–400 t/s，免費提供 405B 與 R1 推論 | **Tier 4<br/>(High-Volume RDU)** |
-| **OpenRouter**<br/>(openrouter.ai) | 標記 `:free` 之模型群<br/>(Llama-3.3-70B, DeepSeek-R1, Qwen-2.5-72B) | OpenAI 相容<br/>`https://openrouter.ai/api/v1` | **20 RPM**<br/>**50–1,000 RPD**<br/>(單一金鑰聚合多節點) | **彈性聚合**。聚合各開源主機之免費節點；曾有 10 美元終身儲值者可享每日 1,000 次免費請求 | **Tier 5<br/>(Multi-Model Aggregator)** |
-| **SiliconFlow 硅基流動**<br/>(siliconflow.cn / .com) | `Qwen/Qwen2.5-7B-Instruct`<br/>`deepseek-ai/DeepSeek-V3/R1` (免費規格) | OpenAI 相容<br/>`https://api.siliconflow.cn/v1`<br/>`https://api.siliconflow.com/v1` | 平台常設多款**完全免費模型**；新註冊贈送額外額度 | **亞洲低延遲**。繁簡中文適應極佳，國內外雙節點，免信用卡即可調用指定免費開源模型 | **Tier 6<br/>(Asia Latency-Optimized)** |
-| **Mistral AI** | `ministral-8b-latest`<br/>`mistral-small-latest` | OpenAI 相容<br/>`https://api.mistral.ai/v1` | **30 RPM**<br/>**500,000 TPM**<br/>**1,000 RPD** | **穩定**。歐洲節點獨立基礎設施，JSON Mode 語法遵守度高，適合備用驗證 | **Tier 7<br/>(EU Infrastructure)** |
-| **GitHub Models**<br/>(Azure AI) | `gpt-4o-mini`<br/>`phi-4`<br/>`llama-3.3-70b` | OpenAI 相容<br/>`https://models.inference.ai.azure.com` | **15 RPM**<br/>**150 RPD** (輕量模型)<br/>**50 RPD** (旗艦模型) | **原生零註冊**。直接以 GitHub 個人 PAT 授權調用，免註冊第三方外站， Actions 終極兜底首選 | **Tier 8<br/>(Native GitHub Fallback)** |
-| **Cloudflare Workers AI** | `@cf/meta/llama-3.3-70b-instruct`<br/>`@cf/qwen/qwen2.5-7b-instruct` | Cloudflare REST API | **每日 10,000 Neurons 免費**<br/>(可支應數百次抽取) | **全球邊緣**。全球 300+ 城市節點就近返回，免綁卡支援 Serverless 呼叫 | **Tier 9<br/>(Edge Serverless)** |
-
----
-
-### 7.2 建議 GitHub Secrets 儲存矩陣與命名規範
-
-在 GitHub Repository Settings -> Secrets and variables -> Actions 中，建議配置之核心金鑰清單：
-
-```
-1. OPENGSA_GEMINI_API_KEY      (主要首選：Google AI Studio 百萬 TPM 免費金鑰)
-2. OPENGSA_GROQ_API_KEY        (快速備援：Groq Cloud 高 RPD 極速金鑰)
-3. OPENGSA_NVIDIA_API_KEY      (GPU 叢集：NVIDIA NIM 頂規算力金鑰，可調用 70B/405B/R1)
-4. OPENGSA_SAMBANOVA_API_KEY   (大用量備援：SambaNova Cloud 高 TPD 免費金鑰)
-5. OPENGSA_OPENROUTER_API_KEY  (聚合備援：OpenRouter :free 路由金鑰)
-6. OPENGSA_MISTRAL_API_KEY     (歐陸備援：Mistral AI 穩定 JSON 金鑰)
-```
-
-*(註：不硬編碼任何金鑰至原始碼、測試腳本或 PR；本機既有之 `NVIDIA_API_KEY`、`OPENAI_API_KEY` 等環境變數在本地優先沿用。)*
-
----
-
-### 7.3 多級瀑布串接與彈性斷路器降級機制 (Cascading Circuit Breaker)
-
-```mermaid
-flowchart TD
-    START["待萃取/盤查文本區塊<br/>(非 hash_only, < 4,000 字)"] --> RULES["階段 0：確定性規則引擎解析 (Rules-First)"]
-    
-    RULES --> CHK_COMPLETE{"規則是否已完整萃取<br/>且無爭議衝突？"}
-    CHK_COMPLETE -->|是| RET_RULE["以確定性規則直接產出 candidate<br/>(零 API 消耗，節省配額)"]
-    CHK_COMPLETE -->|否 / 需審計| CALL_P1["階段 1：嘗試呼叫 Primary API<br/>(Google Gemini 2.0 Flash)"]
-    
-    CALL_P1 --> CHK_P1{"Gemini 呼叫結果"}
-    CHK_P1 -->|HTTP 200 且 JSON 合法| SUC_P1["寫入 candidate<br/>標記 provider: gemini"]
-    CHK_P1 -->|429 Rate Limit / 5xx / Timeout| CB_1["斷路器觸發<br/>記錄 Gemini 失敗一次"]
-    
-    CB_1 --> CALL_P2["階段 2：容錯切換至 Fast Secondary<br/>(Groq Cloud Llama-3.3-70B)"]
-    
-    CALL_P2 --> CHK_P2{"Groq 呼叫結果"}
-    CHK_P2 -->|HTTP 200 且 JSON 合法| SUC_P2["寫入 candidate<br/>標記 provider: groq"]
-    CHK_P2 -->|429 / 失敗| CB_2["斷路器觸發<br/>記錄 Groq 失敗一次"]
-    
-    CB_2 --> CALL_P3["階段 3：容錯切換至 GPU High-End Tier<br/>(NVIDIA NIM Llama-3.3-70B / DeepSeek-R1)"]
-    
-    CALL_P3 --> CHK_P3{"NVIDIA NIM 呼叫結果"}
-    CHK_P3 -->|HTTP 200 且 JSON 合法| SUC_P3["寫入 candidate<br/>標記 provider: nvidia_nim"]
-    CHK_P3 -->|429 / 點數耗盡| CB_3["斷路器觸發<br/>記錄 NIM 失敗一次"]
-    
-    CB_3 --> CALL_P4["階段 4：容錯切換至 High-Volume Tier<br/>(SambaNova Cloud / OpenRouter :free)"]
-    
-    CALL_P4 --> CHK_P4{"SambaNova / OpenRouter 結果"}
-    CHK_P4 -->|HTTP 200 且 JSON 合法| SUC_P4["寫入 candidate<br/>標記 provider: sambanova"]
-    CHK_P4 -->|失敗| CB_4["外部 API 全數無法回應"]
-    
-    CB_4 --> CALL_P5["階段 5：原生保底 Native Fallback<br/>(GitHub Models PAT - gpt-4o-mini / phi-4)"]
-    
-    CALL_P5 --> CHK_P5{"GitHub Models 結果"}
-    CHK_P5 -->|HTTP 200 且 JSON 合法| SUC_P5["寫入 candidate<br/>標記 provider: github_models"]
-    CHK_P5 -->|失敗| CB_FINAL["全線斷路器熔斷"]
-    
-    CB_FINAL --> GRACEFUL["階段 6：優雅降級 (Graceful Fallback)<br/>切回純規則解析 (Rules-Only)"]
-    GRACEFUL --> FILL_GAPS["缺失欄位補 null/unknown<br/>標記 verification.coverage_ok = false<br/>標記 review_status = pending<br/>寫入 review-summary.md 待辦清單"]
-    FILL_GAPS --> RET_SAFE["正常返回，CI 測試與掃描工作流絕不崩潰"]
-    
-    CB_3 --> GRACEFUL["階段 4：優雅降級 (Graceful Fallback)<br/>切回純規則解析 (Rules-Only)"]
-    GRACEFUL --> FILL_GAPS["缺失欄位補 null/unknown<br/>標記 verification.coverage_ok = false<br/>標記 review_status = pending<br/>寫入 review-summary.md 待辦清單"]
-    FILL_GAPS --> RET_SAFE["正常返回，CI 測試與掃描工作流絕不崩潰"]
-```
-
----
-
-### 7.4 安全合規與出境防護邊界 (Security Boundaries)
-
-1. **排程執行恆為零模型 (`model_mode=off`)**：
-   `.github/workflows/scan-sources.yml`（臺北週二、五 09:17 定期排程）必須維持 `OPENGSA_MODEL_MODE=off`。定期掃描器僅負責正文雜湊比對與關鍵字句分類，完全不呼叫任何外部模型，杜絕排程被動消耗配額。
-2. **手動觸發權限受控 (`workflow_dispatch`)**：
-   僅有在維護者手動觸發 GitHub Actions 且明確勾選 `model_mode=extract` 或 `audit` 時，才將 Secrets 傳入 runner 執行進階盤查。
-3. **`hash_only` 硬體級零字元出境保證**：
-   延續 `scripts/extract_candidates.py` 中之 `_guard_hash_only` 機制：凡標記為 `hash_only`（如臺大教務處轉載受限來源）之來源資料，送往任何 LLM 的請求本文一律強制為空字串，嚴禁將受限原文外送。
-4. **提示詞注入防禦 (Prompt Injection Defense)**：
-   所有未經審查之外部網頁正文均封裝於 XML 隔離標籤 `<untrusted_source_data>` 內部，並嚴格驗證模型回傳引文之子字串存在性，拒絕任何模型捏造之幻覺內容。
-
----
+每次手動選一個Provider；額度不足、401／402／403或429時停止外部推論並保留規則結果，不自動改用付費模型。目錄可讀、帳戶通過驗證、模型能輸出JSON、帳戶免費額度及key效期分別記錄，未知不填零或永久有效。hash_only永不外送；排程模型關閉。
 
 ## 8. 驗收與後續實作路徑 (Roadmap & Next Steps)
 

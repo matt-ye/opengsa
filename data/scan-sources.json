@@ -13,7 +13,7 @@
     "eecs.ntu.edu.tw",
     "www.eng.ntu.edu.tw"
   ],
-  "max_requests": 25,
+  "max_requests": 20,
   "max_changed_documents": 5,
   "max_pending_candidates": 24,
   "minimum_host_interval_seconds": 3,
@@ -121,13 +121,13 @@
       "body_selector": "#ctl00_cp_content_divLawContent08",
       "start_marker": "國家科學及技術委員會補助博士生赴國外研究作業要點",
       "required_markers": [
-        "國內設籍中華民國國民",
-        "博士班在學一年以上",
+        "戶籍設於國內之中華民國國民",
+        "在學一年以上",
         "新臺幣九十萬元"
       ],
       "pdf_include": [],
       "max_pdfs": 0,
-      "review_note": "千里馬作業要點：每年6/1-7/31機關送件，補助期程7-12個月，每年90萬元；須國內博士生在學一年以上經學校推薦，不得重複領取其他政府公費赴外獎助。",
+      "review_note": "法規快照；不得把每年受理月日推定為當年開放窗口。補助期間、分支及當期徵件須另覆核。",
       "evidence_mode": "short_excerpt"
     },
     {
@@ -137,13 +137,13 @@
       "body_selector": "#ctl00_cp_content_divLawContent08",
       "start_marker": "國家科學及技術委員會補助專題研究計畫研究人力約用注意事項",
       "required_markers": [
-        "學生兼任人員",
-        "兼任助理",
-        "研究獎助生"
+        "兼任人員",
+        "研究生",
+        "獎助生權益保障指導原則"
       ],
       "pdf_include": [],
       "max_pdfs": 0,
-      "review_note": "學生兼任人員（含勞僱型兼任助理與學習型獎助生）每月至少6,000元；博士生費用增核每月10,000元（至少16,000元）；專任助理依學歷底線（專科30.4k/學士36.3k/碩士41.5k）。",
+      "review_note": "約用規則快照；專任、兼任、學習範疇分開。金額下限與增核措施須另核對適用文件，不由本頁標題推定。",
       "evidence_mode": "short_excerpt"
     },
     {
@@ -161,7 +161,7 @@
         "TA申請須知"
       ],
       "max_pdfs": 1,
-      "review_note": "博士生一般課程TA每月8,000-10,000元；碩士生中文TA每月6,000-7,500元；每學期原則最多擔任兩門課。依轉載條款採hash_only。",
+      "review_note": "依轉載條款採hash_only；實際給付、工作型態、學位與學期須至附件核對。",
       "evidence_mode": "hash_only"
     },
     {
@@ -176,8 +176,9 @@
       ],
       "pdf_include": [],
       "max_pdfs": 0,
-      "review_note": "碩士兼任上限20,000元；博士未獲資格42,000元；博士候選人上限50,000元。注意此為支給上限非保底，同一補助單位合計。robots禁止/WebUPD/。",
-      "evidence_mode": "short_excerpt"
+      "review_note": "人工查核：原設定誤指向遠學頁。正確上限表位於 robots 禁止的 /WebUPD/，不自動下載；待確認合規公開來源。",
+      "evidence_mode": "short_excerpt",
+      "enabled": false
     },
     {
       "id": "sinica-phd-fellowship",
@@ -192,7 +193,10 @@
         "作業要點",
         "申請須知"
       ],
-      "evidence_mode": "short_excerpt"
+      "evidence_mode": "short_excerpt",
+      "enabled": false,
+      "max_pdfs": 0,
+      "review_note": "2026-10-30實測未取得合規可解析正文（連線失敗、404或robots無有效規則）；URL及選擇器未驗證，暫停自動掃描。保留為搜尋種子，修正後須重新驗證。"
     },
     {
       "id": "tsmc-phd-fellowship",
@@ -206,7 +210,10 @@
       "pdf_include": [
         "申請辦法"
       ],
-      "evidence_mode": "short_excerpt"
+      "evidence_mode": "short_excerpt",
+      "enabled": false,
+      "max_pdfs": 0,
+      "review_note": "2026-10-30實測未取得合規可解析正文（連線失敗、404或robots無有效規則）；URL及選擇器未驗證，暫停自動掃描。保留為搜尋種子，修正後須重新驗證。"
     },
     {
       "id": "ntu-eecs-scholarship",
@@ -221,7 +228,10 @@
         "實施辦法",
         "評選標準"
       ],
-      "evidence_mode": "short_excerpt"
+      "evidence_mode": "short_excerpt",
+      "enabled": false,
+      "max_pdfs": 0,
+      "review_note": "2026-10-30實測未取得合規可解析正文（連線失敗、404或robots無有效規則）；URL及選擇器未驗證，暫停自動掃描。保留為搜尋種子，修正後須重新驗證。"
     },
     {
       "id": "ntu-coe-scholarship",
@@ -236,7 +246,10 @@
         "作業細則",
         "推薦表"
       ],
-      "evidence_mode": "short_excerpt"
+      "evidence_mode": "short_excerpt",
+      "enabled": false,
+      "max_pdfs": 0,
+      "review_note": "2026-10-30實測未取得合規可解析正文（連線失敗、404或robots無有效規則）；URL及選擇器未驗證，暫停自動掃描。保留為搜尋種子，修正後須重新驗證。"
     }
   ],
   "deferred_sources": [

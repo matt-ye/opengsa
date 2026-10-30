@@ -3,6 +3,25 @@ name: Scan public sources
 on:
   workflow_dispatch:
     inputs:
+      operation:
+        description: 'scan or manual provider metadata / synthetic audit'
+        type: choice
+        default: scan
+        options: [scan, provider_audit]
+      audit_scope:
+        description: 'Provider audit scope (avoids repeating successful probes)'
+        type: choice
+        default: all
+        options: [all, groq, gemini, nvidia, sambanova, cerebras, openrouter, siliconflow, mistral]
+      model_provider:
+        description: 'One provider; quota failures fall back to rules, never a paid model'
+        type: choice
+        default: groq
+        options: [groq, gemini, nvidia, sambanova, cerebras, openrouter, siliconflow, mistral]
+      probe:
+        description: 'At most one synthetic inference per eligible provider; others metadata only'
+        type: boolean
+        default: false
       model_mode:
         description: 'Model mode for short_excerpt sources (off / audit / extract / both; schedule always uses off)'
         required: false
@@ -26,7 +45,7 @@ concurrency:
 
 jobs:
   scan:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && inputs.operation != 'provider_audit'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -50,13 +69,14 @@ jobs:
       - name: Bounded public scan
         env:
           REQUESTED_MODEL_MODE: ${{ github.event_name == 'schedule' && 'off' || inputs.model_mode || 'off' }}
-          HAS_MODEL_KEY: ${{ secrets.OPENGSA_MODEL_API_KEY != '' }}
+          OPENGSA_MODEL_PROVIDER: ${{ inputs.model_provider || 'groq' }}
           OPENGSA_MODEL_BASE_URL: ${{ vars.OPENGSA_MODEL_BASE_URL }}
           OPENGSA_MODEL_NAME: ${{ vars.OPENGSA_MODEL_NAME }}
-          OPENGSA_MODEL_API_KEY: ${{ secrets.OPENGSA_MODEL_API_KEY }}
+          OPENGSA_SILICONFLOW_REGION: ${{ vars.OPENGSA_SILICONFLOW_REGION }}
+          OPENGSA_SELECTED_API_KEY: ${{ secrets[fromJSON('{"groq":"OPENGSA_MODEL_API_KEY","gemini":"OPENGSA_GEMINI_API_KEY","nvidia":"OPENGSA_NVIDIA_API_KEY","sambanova":"OPENGSA_SAMBANOVA_API_KEY","cerebras":"OPENGSA_CEREBRAS_API_KEY","openrouter":"OPENGSA_OPENROUTER_API_KEY","siliconflow":"OPENGSA_SILICONFLOW_API_KEY","mistral":"OPENGSA_MISTRAL_API_KEY"}')[inputs.model_provider || 'groq']] }}
         shell: bash
         run: |
-          if [ "$HAS_MODEL_KEY" = "true" ] && [ -n "$OPENGSA_MODEL_BASE_URL" ] && [ -n "$OPENGSA_MODEL_NAME" ]; then
+          if [ -n "$OPENGSA_SELECTED_API_KEY" ]; then
             export OPENGSA_MODEL_MODE="$REQUESTED_MODEL_MODE"
           else
             export OPENGSA_MODEL_MODE="off"
@@ -88,3 +108,41 @@ jobs:
           path: work/scanner/report/
           retention-days: 14
           if-no-files-found: warn
+
+  provider-audit:
+    if: github.event_name == 'workflow_dispatch' && inputs.operation == 'provider_audit'
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
+      - name: Catalog and bounded synthetic audit (no source data)
+        env:
+          PROBE: ${{ inputs.probe }}
+          AUDIT_SCOPE: ${{ inputs.audit_scope || 'all' }}
+          OPENGSA_MODEL_BASE_URL: ${{ vars.OPENGSA_MODEL_BASE_URL }}
+          OPENGSA_MODEL_NAME: ${{ vars.OPENGSA_MODEL_NAME }}
+          OPENGSA_SILICONFLOW_REGION: ${{ vars.OPENGSA_SILICONFLOW_REGION }}
+          OPENGSA_MODEL_API_KEY: ${{ secrets.OPENGSA_MODEL_API_KEY }}
+          OPENGSA_GEMINI_API_KEY: ${{ secrets.OPENGSA_GEMINI_API_KEY }}
+          OPENGSA_NVIDIA_API_KEY: ${{ secrets.OPENGSA_NVIDIA_API_KEY }}
+          OPENGSA_SAMBANOVA_API_KEY: ${{ secrets.OPENGSA_SAMBANOVA_API_KEY }}
+          OPENGSA_CEREBRAS_API_KEY: ${{ secrets.OPENGSA_CEREBRAS_API_KEY }}
+          OPENGSA_OPENROUTER_API_KEY: ${{ secrets.OPENGSA_OPENROUTER_API_KEY }}
+          OPENGSA_SILICONFLOW_API_KEY: ${{ secrets.OPENGSA_SILICONFLOW_API_KEY }}
+          OPENGSA_MISTRAL_API_KEY: ${{ secrets.OPENGSA_MISTRAL_API_KEY }}
+        run: |
+          args=()
+          if [ "$AUDIT_SCOPE" != "all" ]; then args+=(--provider "$AUDIT_SCOPE"); fi
+          if [ "$PROBE" = "true" ]; then args+=(--probe); fi
+          python scripts/audit_providers.py "${args[@]}"
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        if: always()
+        with:
+          name: provider-audit-${{ github.run_id }}
+          path: work/provider-audit/report.json
+          retention-days: 14

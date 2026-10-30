@@ -15,21 +15,22 @@
 ```powershell
 python -m pip install -r requirements-dev.txt
 python scripts/check_data.py
+python scripts/scan_sources.py --check-config
 python -m unittest discover -s tests -v
 node --test tests/prototype.test.cjs
 python scripts/build_site.py dist/site
 python -m http.server 8771 --bind 127.0.0.1 --directory dist/site
 ```
 
-瀏覽 http://127.0.0.1:8771/ 。Python 3.10以上、Node內建test runner；CI固定Python 3.13／Node 24。只需現有jsonschema驗證依賴，不新增網站框架。
+瀏覽 http://127.0.0.1:8771/ 。Python 3.10以上、Node內建test runner；CI固定Python 3.13／Node 24。建置與測試依requirements-dev.txt安裝；網站無新增框架或外部字型。
 
 ## 工作流程
 
-`.github/workflows/pages.yml`在PR中只執行資料檢查、37項Python測試、23項Node測試及建置；來源掃描測試全用合成離線資料，不部署PR或取用部署權限。推送main或在main手動執行時，檢查通過才上傳`dist/site`並由另一個job部署。
+`.github/workflows/pages.yml`在PR中只執行資料檢查、全部Python測試、Node測試及建置；來源掃描測試全用合成離線資料，不部署PR或取用部署權限。推送main或在main手動執行時，檢查通過才上傳`dist/site`並由另一個job部署。
 
 部署job採GitHub Pages官方OIDC流程，只取得`pages:write`與`id-token:write`；不需新增私人API key或PAT。Action固定完整commit SHA，checkout不留存憑證，部署使用github-pages環境並避免同時發布。
 
-首次將repo的Pages來源設為GitHub Actions。官方依據：[自訂Pages工作流程](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。這是網站建置及發布流程；pages.yml沒有schedule，不抓取獎學金來源。另核可的[scan-sources.yml](SCANNER.md)獨立低頻掃描，不呼叫模型、建立D1或送出訂閱通知。
+首次將repo的Pages來源設為GitHub Actions。官方依據：[自訂Pages工作流程](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。這是網站建置及發布流程；pages.yml沒有schedule，不抓取獎學金來源。另核可的[scan-sources.yml](SCANNER.md)獨立低頻掃描，排程不呼叫模型；另提供受成本限制的手動模型／provider audit，不建立D1或送出訂閱通知。
 
 ## 分享與回饋
 
