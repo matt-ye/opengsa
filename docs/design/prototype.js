@@ -3,7 +3,7 @@
 "use strict";
 const DAY = 86400000;
 const labels = {
- category: {living_tuition:"生活／學費",living_emergency:"急難支持",phd_research:"博士研究",outcome_award:"成果獎",international_conference:"國際會議",overseas_research:"境外研究",indirect_support:"聘任入口"},
+ category: {living_tuition:"生活／學費",living_emergency:"急難支持",phd_research:"博士研究",outcome_award:"成果獎",international_conference:"國際會議",overseas_research:"境外研究",indirect_support:"聘任入口",research_tools:"研究工具／算力"},
  source: {government:"政府",university:"學校",foundation:"基金會",enterprise:"企業／產學",research_institute:"研究法人／中研院",unknown:"來源待查"},
  degree: {master:"碩士",phd:"博士",candidate:"博士候選人"},
  year: {unlimited:"明示不限年級",range:"限定年級",freshman:"新生入學",graduating:"畢業／論文期",unknown:"年級待確認"},
@@ -49,6 +49,7 @@ function makeDemo(today) {
  }));
 }
 function windowState(item,today) {
+ if(item.resource_kind==="tool_subscription") {const cap=item.steps?.filter(s=>s.actor==="student").map(s=>s.deadline?.value).filter(Boolean).sort()[0];return cap&&cap.slice(0,10)<today?"closed":"unknown";}
  if(["application_start","student_deadline"].every(k=>item.field_applicability?.[k]?.status==="not_applicable")) return "not_applicable";
  const steps=item.steps || [], end=steps.find(s=>s.actor==="student" && ["date","datetime"].includes(s.deadline?.kind))?.deadline;
  if(end?.value && end.value.slice(0,10)<today) return "closed";

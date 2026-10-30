@@ -1,0 +1,1386 @@
+{
+  "schema_version": "1.1.0-candidate",
+  "generated_at": "2026-10-30T14:48:17+00:00",
+  "as_of": "2026-10-30",
+  "timezone": "Asia/Taipei",
+  "model_enabled": false,
+  "model_calls": 0,
+  "model_usage": {
+    "adapter_kind": "deterministic_rule",
+    "mode": "off",
+    "enabled": false,
+    "calls": 0,
+    "cache_hits": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "avg_latency_ms": 0.0,
+    "p95_latency_ms": 0.0,
+    "rejected_claims": 0,
+    "hash_only_bytes_sent": 0,
+    "rate_limited_429": false,
+    "prompt_version": "prompt-1.1.0"
+  },
+  "official_data_modified": false,
+  "candidates": [
+    {
+      "candidate_id": "cand-taipei-ai-tools-52289fdc",
+      "opportunity_id": "taipei-ai-tools-115",
+      "program_key": "taipei-ai-tools",
+      "title": "臺北市青年AI工具補助",
+      "category": "research_tools",
+      "resource_kind": "tool_subscription",
+      "scope": "local",
+      "cycle": {
+        "kind": "calendar_year",
+        "label": "115年度",
+        "year_system": "roc",
+        "year": 115,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "student",
+        "beneficiary": "student",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "domestic_eligible_institution",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "臺北市政府青年局",
+          "refs": [
+            {
+              "source": "taipei-ai-tools",
+              "locator": ".wysiwyg .content / text-block 3"
+            }
+          ]
+        },
+        "announcer": {
+          "text": "臺北市政府青年局",
+          "refs": [
+            {
+              "source": "taipei-ai-tools",
+              "locator": ".wysiwyg .content / text-block 3"
+            }
+          ]
+        },
+        "receiver": {
+          "text": "臺北市政府青年局",
+          "refs": [
+            {
+              "source": "taipei-ai-tools",
+              "locator": ".wysiwyg .content / text-block 3"
+            }
+          ]
+        }
+      },
+      "eligibility": {
+        "degrees": [
+          "master",
+          "phd"
+        ],
+        "institution": "unknown",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "once_per_year",
+        "negated_conditions": [],
+        "identity": {
+          "text": "地方青年訂閱費補助；年齡、設籍、購買與個別資格須依各條件核對",
+          "refs": [
+            {
+              "source": "taipei-ai-tools",
+              "locator": ".wysiwyg .content / text-block 3"
+            }
+          ]
+        },
+        "other_conditions": [
+          {
+            "text": "年齡18–35歲，須符合本市設籍條件至少6個月；採認日須覆核",
+            "refs": [
+              {
+                "source": "taipei-ai-tools",
+                "locator": ".wysiwyg .content / text-block 3"
+              }
+            ]
+          },
+          {
+            "text": "須有符合規定的學籍或當年度畢業資格；認可學校範圍另核",
+            "refs": [
+              {
+                "source": "taipei-ai-tools",
+                "locator": ".wysiwyg .content / text-block 4"
+              }
+            ]
+          },
+          {
+            "text": "課程／訓練證明須符合來源所列採認方式",
+            "refs": [
+              {
+                "source": "taipei-ai-tools",
+                "locator": ".wysiwyg .content / text-block 5"
+              }
+            ]
+          },
+          {
+            "text": "須同時符合條件最後達成日之後的相對申請期限及年度最晚收件日",
+            "refs": [
+              {
+                "source": "taipei-ai-tools",
+                "locator": ".wysiwyg .content / text-block 15"
+              }
+            ]
+          },
+          {
+            "text": "工具來源、購買管道、版本或計費方式有排除限制，須逐條核對",
+            "refs": [
+              {
+                "source": "taipei-ai-tools",
+                "locator": ".wysiwyg .content / text-block 19"
+              }
+            ]
+          },
+          {
+            "text": "工具來源、購買管道、版本或計費方式有排除限制，須逐條核對",
+            "refs": [
+              {
+                "source": "taipei-ai-tools",
+                "locator": ".wysiwyg .content / text-block 24"
+              }
+            ]
+          },
+          {
+            "text": "課程／訓練證明須符合來源所列採認方式",
+            "refs": [
+              {
+                "source": "taipei-ai-tools",
+                "locator": ".wysiwyg .content / text-block 29"
+              }
+            ]
+          },
+          {
+            "text": "可能因經費用罄或額滿提前停止；本次未核准任何人的受理狀態",
+            "refs": [
+              {
+                "source": "taipei-ai-tools",
+                "locator": ".wysiwyg .content / text-block 41"
+              }
+            ]
+          }
+        ]
+      },
+      "benefit": {
+        "summary": "一般對象實支補助上限4,000元；低收／中低收加額實支補助上限8,000元",
+        "items": [
+          {
+            "branch_or_tier": "一般對象",
+            "amount_min": null,
+            "amount_max": 4000,
+            "currency": "TWD",
+            "unit": "partial_reimbursement",
+            "basis": "maximum",
+            "duration_months_min": null,
+            "duration_months_max": null,
+            "tax_note": null,
+            "refs": [
+              {
+                "source": "taipei-ai-tools",
+                "locator": ".wysiwyg .content / text-block 18"
+              }
+            ]
+          },
+          {
+            "branch_or_tier": "低收／中低收加額",
+            "amount_min": null,
+            "amount_max": 8000,
+            "currency": "TWD",
+            "unit": "partial_reimbursement",
+            "basis": "maximum",
+            "duration_months_min": null,
+            "duration_months_max": null,
+            "tax_note": null,
+            "refs": [
+              {
+                "source": "taipei-ai-tools",
+                "locator": ".wysiwyg .content / text-block 18"
+              }
+            ]
+          }
+        ],
+        "refs": [
+          {
+            "source": "taipei-ai-tools",
+            "locator": ".wysiwyg .content / text-block 18"
+          },
+          {
+            "source": "taipei-ai-tools",
+            "locator": ".wysiwyg .content / text-block 18"
+          }
+        ]
+      },
+      "compatibility": {
+        "mode": "conditional",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "同一事由／同類費用或重複補助有限制；不推定所有其他補助均可兼領",
+        "refs": [
+          {
+            "source": "taipei-ai-tools",
+            "locator": ".wysiwyg .content / text-block 39"
+          }
+        ]
+      },
+      "hardship": {
+        "mode": "not_exclusive",
+        "note": "有一般對象及加額分支；不是僅限清寒，特定資格仍須逐項證明",
+        "refs": [
+          {
+            "source": "taipei-ai-tools",
+            "locator": ".wysiwyg .content / text-block 18"
+          },
+          {
+            "source": "taipei-ai-tools",
+            "locator": ".wysiwyg .content / text-block 18"
+          }
+        ]
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "未記錄明確申請起日"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "送交補助申請（須同時符合購買後相對期限、年度最晚日及經費條件）",
+            "deadline": {
+              "kind": "date",
+              "value": "2026-11-10",
+              "timezone": "Asia/Taipei",
+              "note": "年度最晚申請上限；個人相對期限可能更早，未填購買／達成條件日不當作目前受理"
+            },
+            "refs": [
+              {
+                "source": "taipei-ai-tools",
+                "locator": ".wysiwyg .content / text-block 15"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "官方未公告明確結果公布日",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-10-30",
+        "reason": "年度期限是最晚上限；購買／達成條件後的相對期限及經費餘額仍須確認，不推定目前受理。",
+        "refs": []
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "法規版本與生效日待覆核；修正日不自動當作生效日。",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "taipei-ai-tools",
+        "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+        "url": "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796",
+        "observed_at": "2026-10-30T14:48:08+00:00",
+        "evidence_mode": "short_excerpt",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.1.0",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null
+      },
+      "field_evidence": [
+        {
+          "field_path": "eligibility.identity",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 3",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "(一)18歲以上至35歲（以申請日計算）設籍臺北市（以下簡稱本市）6個月以上青年。",
+          "excerpt_sha256": "d6be82a9593806b59ee468e452eba847eb4749409909fde4eb514a08ef4bf96b",
+          "source_block_sha256": "d6be82a9593806b59ee468e452eba847eb4749409909fde4eb514a08ef4bf96b",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/0",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 3",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "(一)18歲以上至35歲（以申請日計算）設籍臺北市（以下簡稱本市）6個月以上青年。",
+          "excerpt_sha256": "d6be82a9593806b59ee468e452eba847eb4749409909fde4eb514a08ef4bf96b",
+          "source_block_sha256": "d6be82a9593806b59ee468e452eba847eb4749409909fde4eb514a08ef4bf96b",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/1",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 4",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "(二)具經教育部承認之大專院校、研究所學籍或本年度應屆畢業生。",
+          "excerpt_sha256": "44120af0e349d1171282ae63b3822bf1111682b6b940a81c631716dfcee5cb24",
+          "source_block_sha256": "44120af0e349d1171282ae63b3822bf1111682b6b940a81c631716dfcee5cb24",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/2",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 5",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "da8975b8e65d6ebd2991d532417daf407d65507d6f8f41a1d8d813ff09bdf161",
+          "source_block_sha256": "da8975b8e65d6ebd2991d532417daf407d65507d6f8f41a1d8d813ff09bdf161",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.prior_funding_rule",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 14",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "9f909d863a46483d023cda7df586d49b3f91229f7e2f28e775df9f780b424bd2",
+          "source_block_sha256": "9f909d863a46483d023cda7df586d49b3f91229f7e2f28e775df9f780b424bd2",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/3",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 15",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "06084f462ebac1f817e1c216d1747290e204d39bbc03c62b051107b1d19fb97e",
+          "source_block_sha256": "06084f462ebac1f817e1c216d1747290e204d39bbc03c62b051107b1d19fb97e",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/4",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 19",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "f3d3908189e1cac48ab52fb03021da2745df91804471e0b0f93566c5f8d79e72",
+          "source_block_sha256": "f3d3908189e1cac48ab52fb03021da2745df91804471e0b0f93566c5f8d79e72",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/5",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 24",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "a6de73d929d4da559834892bf982f3f80a862385ece8607f30a14479c8b8abff",
+          "source_block_sha256": "a6de73d929d4da559834892bf982f3f80a862385ece8607f30a14479c8b8abff",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/6",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 29",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "facfecb69bbeefc9041713e7c48ab4cae85fddc38a2f6e43d801aee9b9605851",
+          "source_block_sha256": "facfecb69bbeefc9041713e7c48ab4cae85fddc38a2f6e43d801aee9b9605851",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "compatibility",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 39",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "15d20a1a62a44ea9ff92cda2e37850698eaa8b1ba502f6cc17319644e91cb493",
+          "source_block_sha256": "15d20a1a62a44ea9ff92cda2e37850698eaa8b1ba502f6cc17319644e91cb493",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/7",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 41",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "85e2759630fc334611de05f3fd403564ef443a4866f94728889016e22ee15e5c",
+          "source_block_sha256": "85e2759630fc334611de05f3fd403564ef443a4866f94728889016e22ee15e5c",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "expense_period",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 7",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "655aa52fc42695a6fafa8969efe99b41568f52b09b2be037b8f8b3014c8bbcb6",
+          "source_block_sha256": "655aa52fc42695a6fafa8969efe99b41568f52b09b2be037b8f8b3014c8bbcb6",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "benefit.items/0",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 18",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "213ac54b8f77cc6a5a8a228c4f535721e29d461e687576501d6bddbff7ec2ba0",
+          "source_block_sha256": "213ac54b8f77cc6a5a8a228c4f535721e29d461e687576501d6bddbff7ec2ba0",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "benefit.items/1",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 18",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "213ac54b8f77cc6a5a8a228c4f535721e29d461e687576501d6bddbff7ec2ba0",
+          "source_block_sha256": "213ac54b8f77cc6a5a8a228c4f535721e29d461e687576501d6bddbff7ec2ba0",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "hardship",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 18",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "213ac54b8f77cc6a5a8a228c4f535721e29d461e687576501d6bddbff7ec2ba0",
+          "source_block_sha256": "213ac54b8f77cc6a5a8a228c4f535721e29d461e687576501d6bddbff7ec2ba0",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "schedule.steps/0/deadline",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 15",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "06084f462ebac1f817e1c216d1747290e204d39bbc03c62b051107b1d19fb97e",
+          "source_block_sha256": "06084f462ebac1f817e1c216d1747290e204d39bbc03c62b051107b1d19fb97e",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "schedule.steps/0/deadline",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 7",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "655aa52fc42695a6fafa8969efe99b41568f52b09b2be037b8f8b3014c8bbcb6",
+          "source_block_sha256": "655aa52fc42695a6fafa8969efe99b41568f52b09b2be037b8f8b3014c8bbcb6",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "application_method/15",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 16",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "44d30df79c107f3e1fa1b22284da44269137bb5b61249cc1ba9d854c27fdf923",
+          "source_block_sha256": "44d30df79c107f3e1fa1b22284da44269137bb5b61249cc1ba9d854c27fdf923",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "application_method/43",
+          "source": "taipei-ai-tools",
+          "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+          "locator": ".wysiwyg .content / text-block 44",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "4b6be584711886a63cc881819753583ce12de8584a2f1d618aeb1815496dc4ad",
+          "source_block_sha256": "4b6be584711886a63cc881819753583ce12de8584a2f1d618aeb1815496dc4ad",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [
+          "ai_tools:personal_purchase_or_completion_date",
+          "ai_tools:budget_exhaustion_status"
+        ],
+        "conflicts": [],
+        "open_questions": [
+          "年齡、設籍、購買／訂閱期間與排除項目須依原文逐項核對；不以博士候選人身分推定符合。",
+          "臺北僅確認書面提出，郵寄／親送另核；新竹線上申請及親簽不等同已確認免紙本遞交。"
+        ]
+      },
+      "evidence_status": "sufficient_for_draft",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.1.0",
+        "checked_at": "2026-10-30T14:48:17+00:00",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [
+          "coverage_gap:ai_tools:personal_purchase_or_completion_date",
+          "coverage_gap:ai_tools:budget_exhaustion_status"
+        ],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.1.0",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "expense_period": {
+        "starts_on": "2026-08-01",
+        "ends_on": "2026-10-31",
+        "note": "可認列支出期間，不是申請受理期間",
+        "refs": [
+          {
+            "source": "taipei-ai-tools",
+            "locator": ".wysiwyg .content / text-block 7"
+          }
+        ]
+      },
+      "application_method": {
+        "mode": "paper",
+        "channels": [
+          "paper"
+        ],
+        "paper_delivery": "required",
+        "handwritten_signature": "unknown",
+        "deadline_basis": "received",
+        "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
+        "refs": [
+          {
+            "source": "taipei-ai-tools",
+            "locator": ".wysiwyg .content / text-block 16"
+          },
+          {
+            "source": "taipei-ai-tools",
+            "locator": ".wysiwyg .content / text-block 44"
+          }
+        ]
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-hsinchu-ai-tools-a5cde54c",
+      "opportunity_id": "hsinchu-ai-tools-115",
+      "program_key": "hsinchu-ai-tools",
+      "title": "新竹市AI領航青年數位工具補助",
+      "category": "research_tools",
+      "resource_kind": "tool_subscription",
+      "scope": "local",
+      "cycle": {
+        "kind": "calendar_year",
+        "label": "115年度",
+        "year_system": "roc",
+        "year": 115,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "student",
+        "beneficiary": "student",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "domestic_eligible_institution",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "新竹市青年發展中心",
+          "refs": [
+            {
+              "source": "hsinchu-ai-tools",
+              "locator": "#mainContainer / text-block 9"
+            }
+          ]
+        },
+        "announcer": {
+          "text": "新竹市青年發展中心",
+          "refs": [
+            {
+              "source": "hsinchu-ai-tools",
+              "locator": "#mainContainer / text-block 9"
+            }
+          ]
+        },
+        "receiver": {
+          "text": "新竹市青年發展中心",
+          "refs": [
+            {
+              "source": "hsinchu-ai-tools",
+              "locator": "#mainContainer / text-block 9"
+            }
+          ]
+        }
+      },
+      "eligibility": {
+        "degrees": [
+          "master",
+          "phd"
+        ],
+        "institution": "unknown",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "once_per_year",
+        "negated_conditions": [],
+        "identity": {
+          "text": "地方青年訂閱費補助；年齡、設籍、購買與個別資格須依各條件核對",
+          "refs": [
+            {
+              "source": "hsinchu-ai-tools",
+              "locator": "#mainContainer / text-block 9"
+            }
+          ]
+        },
+        "other_conditions": [
+          {
+            "text": "可能因經費用罄或額滿提前停止；本次未核准任何人的受理狀態",
+            "refs": [
+              {
+                "source": "hsinchu-ai-tools",
+                "locator": "#mainContainer / text-block 7"
+              }
+            ]
+          },
+          {
+            "text": "年齡16–40歲，須符合本市設籍條件；採認日須覆核",
+            "refs": [
+              {
+                "source": "hsinchu-ai-tools",
+                "locator": "#mainContainer / text-block 9"
+              }
+            ]
+          },
+          {
+            "text": "購買後另有月費制／年費制的相對申請期限，不只看年度最晚日",
+            "refs": [
+              {
+                "source": "hsinchu-ai-tools",
+                "locator": "#mainContainer / text-block 16"
+              }
+            ]
+          },
+          {
+            "text": "工具來源、購買管道、版本或計費方式有排除限制，須逐條核對",
+            "refs": [
+              {
+                "source": "hsinchu-ai-tools",
+                "locator": "#mainContainer / text-block 22"
+              }
+            ]
+          },
+          {
+            "text": "工具來源、購買管道、版本或計費方式有排除限制，須逐條核對",
+            "refs": [
+              {
+                "source": "hsinchu-ai-tools",
+                "locator": "#mainContainer / text-block 23"
+              }
+            ]
+          },
+          {
+            "text": "工具來源、購買管道、版本或計費方式有排除限制，須逐條核對",
+            "refs": [
+              {
+                "source": "hsinchu-ai-tools",
+                "locator": "#mainContainer / text-block 30"
+              }
+            ]
+          },
+          {
+            "text": "工具來源、購買管道、版本或計費方式有排除限制，須逐條核對",
+            "refs": [
+              {
+                "source": "hsinchu-ai-tools",
+                "locator": "#mainContainer / text-block 31"
+              }
+            ]
+          },
+          {
+            "text": "工具來源、購買管道、版本或計費方式有排除限制，須逐條核對",
+            "refs": [
+              {
+                "source": "hsinchu-ai-tools",
+                "locator": "#mainContainer / text-block 32"
+              }
+            ]
+          },
+          {
+            "text": "購買後另有月費制／年費制的相對申請期限，不只看年度最晚日",
+            "refs": [
+              {
+                "source": "hsinchu-ai-tools",
+                "locator": "#mainContainer / text-block 43"
+              }
+            ]
+          },
+          {
+            "text": "工具來源、購買管道、版本或計費方式有排除限制，須逐條核對",
+            "refs": [
+              {
+                "source": "hsinchu-ai-tools",
+                "locator": "#mainContainer / text-block 47"
+              }
+            ]
+          }
+        ]
+      },
+      "benefit": {
+        "summary": "一般對象（補助比例50%）實支補助上限3,000元；特定對象（補助比例90%）實支補助上限6,000元；文化語言保存者（補助比例90%）實支補助上限6,000元",
+        "items": [
+          {
+            "branch_or_tier": "一般對象（補助比例50%）",
+            "amount_min": null,
+            "amount_max": 3000,
+            "currency": "TWD",
+            "unit": "partial_reimbursement",
+            "basis": "maximum",
+            "duration_months_min": null,
+            "duration_months_max": null,
+            "tax_note": null,
+            "refs": [
+              {
+                "source": "hsinchu-ai-tools",
+                "locator": "#mainContainer / text-block 11"
+              }
+            ]
+          },
+          {
+            "branch_or_tier": "特定對象（補助比例90%）",
+            "amount_min": null,
+            "amount_max": 6000,
+            "currency": "TWD",
+            "unit": "partial_reimbursement",
+            "basis": "maximum",
+            "duration_months_min": null,
+            "duration_months_max": null,
+            "tax_note": null,
+            "refs": [
+              {
+                "source": "hsinchu-ai-tools",
+                "locator": "#mainContainer / text-block 13"
+              }
+            ]
+          },
+          {
+            "branch_or_tier": "文化語言保存者（補助比例90%）",
+            "amount_min": null,
+            "amount_max": 6000,
+            "currency": "TWD",
+            "unit": "partial_reimbursement",
+            "basis": "maximum",
+            "duration_months_min": null,
+            "duration_months_max": null,
+            "tax_note": null,
+            "refs": [
+              {
+                "source": "hsinchu-ai-tools",
+                "locator": "#mainContainer / text-block 14"
+              }
+            ]
+          }
+        ],
+        "refs": [
+          {
+            "source": "hsinchu-ai-tools",
+            "locator": "#mainContainer / text-block 11"
+          },
+          {
+            "source": "hsinchu-ai-tools",
+            "locator": "#mainContainer / text-block 13"
+          },
+          {
+            "source": "hsinchu-ai-tools",
+            "locator": "#mainContainer / text-block 14"
+          }
+        ]
+      },
+      "compatibility": {
+        "mode": "conditional",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "同一事由／同類費用或重複補助有限制；不推定所有其他補助均可兼領",
+        "refs": [
+          {
+            "source": "hsinchu-ai-tools",
+            "locator": "#mainContainer / text-block 51"
+          }
+        ]
+      },
+      "hardship": {
+        "mode": "not_exclusive",
+        "note": "有一般對象及加額分支；不是僅限清寒，特定資格仍須逐項證明",
+        "refs": [
+          {
+            "source": "hsinchu-ai-tools",
+            "locator": "#mainContainer / text-block 11"
+          },
+          {
+            "source": "hsinchu-ai-tools",
+            "locator": "#mainContainer / text-block 13"
+          },
+          {
+            "source": "hsinchu-ai-tools",
+            "locator": "#mainContainer / text-block 14"
+          }
+        ]
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "date",
+          "value": "2026-04-02",
+          "timezone": "Asia/Taipei",
+          "note": "受理期間所載起日，不是購買期間或電子申辦修訂日"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "送交補助申請（須同時符合購買後相對期限、年度最晚日及經費條件）",
+            "deadline": {
+              "kind": "date",
+              "value": "2026-11-30",
+              "timezone": "Asia/Taipei",
+              "note": "年度最晚申請上限；個人相對期限可能更早，未填購買／達成條件日不當作目前受理"
+            },
+            "refs": [
+              {
+                "source": "hsinchu-ai-tools",
+                "locator": "#mainContainer / text-block 7"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "官方未公告明確結果公布日",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-10-30",
+        "reason": "年度期限是最晚上限；購買／達成條件後的相對期限及經費餘額仍須確認，不推定目前受理。",
+        "refs": []
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "法規版本與生效日待覆核；修正日不自動當作生效日。",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "hsinchu-ai-tools",
+        "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+        "url": "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
+        "observed_at": "2026-10-30T14:48:08+00:00",
+        "evidence_mode": "short_excerpt",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.1.0",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null
+      },
+      "field_evidence": [
+        {
+          "field_path": "eligibility.identity",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 9",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "自115年8月14日起，設籍新竹市16歲(含)至40歲(含)以下新竹市青年(民國74年4月3日（含）至民國99年4月2日（含）之新竹市青年)",
+          "excerpt_sha256": "51db152c9f1990fa1d0fcaf90d8fc6b1ec694f31447d55929ada5b60e78079a0",
+          "source_block_sha256": "51db152c9f1990fa1d0fcaf90d8fc6b1ec694f31447d55929ada5b60e78079a0",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/0",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 7",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "115年4月2日起至115年11月30日、申請額滿或經費用罄止。",
+          "excerpt_sha256": "1bd26bbcb92eb1af6a6985b55469374e74e655e4dd0f3498318045eef211e5b3",
+          "source_block_sha256": "1bd26bbcb92eb1af6a6985b55469374e74e655e4dd0f3498318045eef211e5b3",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/1",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 9",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "51db152c9f1990fa1d0fcaf90d8fc6b1ec694f31447d55929ada5b60e78079a0",
+          "source_block_sha256": "51db152c9f1990fa1d0fcaf90d8fc6b1ec694f31447d55929ada5b60e78079a0",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/2",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 16",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "3735debc3be6287f6e79d9b9d58201dc1b24741e3f78fe5578014a301f2beda5",
+          "source_block_sha256": "3735debc3be6287f6e79d9b9d58201dc1b24741e3f78fe5578014a301f2beda5",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/3",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 22",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "2aa184bf195bfc5eff24d1019182a1408d1286be7cb791a3d64a9dc252426adb",
+          "source_block_sha256": "2aa184bf195bfc5eff24d1019182a1408d1286be7cb791a3d64a9dc252426adb",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/4",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 23",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "4f10d582cb1224c8b6809b94bb1b6245f8f73e81185f00ff762346b11dd23bd5",
+          "source_block_sha256": "4f10d582cb1224c8b6809b94bb1b6245f8f73e81185f00ff762346b11dd23bd5",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/5",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 30",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "d3e8c9ca70a3c8931f93c92d7ff6f2b2ac10fbe20af9888141cc975673679ab0",
+          "source_block_sha256": "d3e8c9ca70a3c8931f93c92d7ff6f2b2ac10fbe20af9888141cc975673679ab0",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/6",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 31",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "1cf612ae19afc8ddfa7e9fe0c4666e505c85963ca96ae418dfea086af1912857",
+          "source_block_sha256": "1cf612ae19afc8ddfa7e9fe0c4666e505c85963ca96ae418dfea086af1912857",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/7",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 32",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "961af438790884982b16ce5c598f17b9c522822e77c13c17a3c6699e87178e41",
+          "source_block_sha256": "961af438790884982b16ce5c598f17b9c522822e77c13c17a3c6699e87178e41",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/8",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 43",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "6d3c5d809c2c6f7c7e4a28625d3dc0b8ba9c82182e6ff4f0990f86dbd8ac3e03",
+          "source_block_sha256": "6d3c5d809c2c6f7c7e4a28625d3dc0b8ba9c82182e6ff4f0990f86dbd8ac3e03",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.prior_funding_rule",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 45",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "57e7210d22da549c4b8c4257c9dcdac9c7ec55224c69779f84821d760563f8e4",
+          "source_block_sha256": "57e7210d22da549c4b8c4257c9dcdac9c7ec55224c69779f84821d760563f8e4",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.other_conditions/9",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 47",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "c5991440cc78e661cae3241ae5e0373ed8d1f4cf73f741753bb6ce5e431f85ff",
+          "source_block_sha256": "c5991440cc78e661cae3241ae5e0373ed8d1f4cf73f741753bb6ce5e431f85ff",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "compatibility",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 51",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "09f5f5b2f93aba845917141e715b522f0d2923948c7da9186323709dd09c3e8b",
+          "source_block_sha256": "09f5f5b2f93aba845917141e715b522f0d2923948c7da9186323709dd09c3e8b",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "expense_period",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 17",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "2137d4b381b11b32105155c72d547df049ef2257669393fafe515b5aa5998d74",
+          "source_block_sha256": "2137d4b381b11b32105155c72d547df049ef2257669393fafe515b5aa5998d74",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "benefit.items/0",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 11",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "5b9406091c1c8d354a1f0ece527a70127ed901727d2b2fa4a9539f246d0b3985",
+          "source_block_sha256": "5b9406091c1c8d354a1f0ece527a70127ed901727d2b2fa4a9539f246d0b3985",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "benefit.items/1",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 13",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "0b7856198e9288c8b97240e60990d016a9a5387742b44684dfcfe962efb3f918",
+          "source_block_sha256": "0b7856198e9288c8b97240e60990d016a9a5387742b44684dfcfe962efb3f918",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "benefit.items/2",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 14",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "af0a725ce3aaef943ceb2278327bdf8eba74e637b5baa14895c3e4c47ae995f3",
+          "source_block_sha256": "af0a725ce3aaef943ceb2278327bdf8eba74e637b5baa14895c3e4c47ae995f3",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "hardship",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 11",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "5b9406091c1c8d354a1f0ece527a70127ed901727d2b2fa4a9539f246d0b3985",
+          "source_block_sha256": "5b9406091c1c8d354a1f0ece527a70127ed901727d2b2fa4a9539f246d0b3985",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "hardship",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 13",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "0b7856198e9288c8b97240e60990d016a9a5387742b44684dfcfe962efb3f918",
+          "source_block_sha256": "0b7856198e9288c8b97240e60990d016a9a5387742b44684dfcfe962efb3f918",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "hardship",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 14",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "af0a725ce3aaef943ceb2278327bdf8eba74e637b5baa14895c3e4c47ae995f3",
+          "source_block_sha256": "af0a725ce3aaef943ceb2278327bdf8eba74e637b5baa14895c3e4c47ae995f3",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "schedule.application_start",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 7",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "1bd26bbcb92eb1af6a6985b55469374e74e655e4dd0f3498318045eef211e5b3",
+          "source_block_sha256": "1bd26bbcb92eb1af6a6985b55469374e74e655e4dd0f3498318045eef211e5b3",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "schedule.steps/0/deadline",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 7",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "1bd26bbcb92eb1af6a6985b55469374e74e655e4dd0f3498318045eef211e5b3",
+          "source_block_sha256": "1bd26bbcb92eb1af6a6985b55469374e74e655e4dd0f3498318045eef211e5b3",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "application_method/39",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 40",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "6eddd981ef7e802447b3635707b3585635c393cafe1242cfc214a43c63cb880c",
+          "source_block_sha256": "6eddd981ef7e802447b3635707b3585635c393cafe1242cfc214a43c63cb880c",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "application_method/42",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 43",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "6d3c5d809c2c6f7c7e4a28625d3dc0b8ba9c82182e6ff4f0990f86dbd8ac3e03",
+          "source_block_sha256": "6d3c5d809c2c6f7c7e4a28625d3dc0b8ba9c82182e6ff4f0990f86dbd8ac3e03",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "application_method/54",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 55",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "941e75feffa90c14501ea8e0c5f5bab52f0e7403a160c45a6d963f28a40a7c10",
+          "source_block_sha256": "941e75feffa90c14501ea8e0c5f5bab52f0e7403a160c45a6d963f28a40a7c10",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "application_method/89",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 93",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "f8f9c6c65a66cbad1635d2ec6741ec08ed3b0a97c843ee49e2d6e273482b879a",
+          "source_block_sha256": "f8f9c6c65a66cbad1635d2ec6741ec08ed3b0a97c843ee49e2d6e273482b879a",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "application_method/93",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 97",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "fdb6780eee6e64116f3fbf8a9413afa76a1213f1e8c014ebdbf5e32dad615fd0",
+          "source_block_sha256": "fdb6780eee6e64116f3fbf8a9413afa76a1213f1e8c014ebdbf5e32dad615fd0",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "application_method/96",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 100",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "線上申辦",
+          "excerpt_sha256": "2245eca29e1ab85731c83e2663dad5c3cd9eb8db7dbe2dbc1d5be61b6b8abcde",
+          "source_block_sha256": "2245eca29e1ab85731c83e2663dad5c3cd9eb8db7dbe2dbc1d5be61b6b8abcde",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "application_method/97",
+          "source": "hsinchu-ai-tools",
+          "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+          "locator": "#mainContainer / text-block 101",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "線上申辦",
+          "excerpt_sha256": "2245eca29e1ab85731c83e2663dad5c3cd9eb8db7dbe2dbc1d5be61b6b8abcde",
+          "source_block_sha256": "2245eca29e1ab85731c83e2663dad5c3cd9eb8db7dbe2dbc1d5be61b6b8abcde",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [
+          "ai_tools:personal_purchase_or_completion_date",
+          "ai_tools:budget_exhaustion_status",
+          "ai_tools:age_reference_date"
+        ],
+        "conflicts": [],
+        "open_questions": [
+          "年齡、設籍、購買／訂閱期間與排除項目須依原文逐項核對；不以博士候選人身分推定符合。",
+          "臺北僅確認書面提出，郵寄／親送另核；新竹線上申請及親簽不等同已確認免紙本遞交。"
+        ]
+      },
+      "evidence_status": "sufficient_for_draft",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.1.0",
+        "checked_at": "2026-10-30T14:48:17+00:00",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [
+          "coverage_gap:ai_tools:personal_purchase_or_completion_date",
+          "coverage_gap:ai_tools:budget_exhaustion_status",
+          "coverage_gap:ai_tools:age_reference_date"
+        ],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.1.0",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "expense_period": {
+        "starts_on": "2026-04-02",
+        "ends_on": "2026-10-31",
+        "note": "可認列支出期間，不是申請受理期間",
+        "refs": [
+          {
+            "source": "hsinchu-ai-tools",
+            "locator": "#mainContainer / text-block 17"
+          }
+        ]
+      },
+      "application_method": {
+        "mode": "electronic",
+        "channels": [
+          "portal"
+        ],
+        "paper_delivery": "unknown",
+        "handwritten_signature": "required",
+        "deadline_basis": "unknown",
+        "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
+        "refs": [
+          {
+            "source": "hsinchu-ai-tools",
+            "locator": "#mainContainer / text-block 40"
+          },
+          {
+            "source": "hsinchu-ai-tools",
+            "locator": "#mainContainer / text-block 43"
+          },
+          {
+            "source": "hsinchu-ai-tools",
+            "locator": "#mainContainer / text-block 55"
+          },
+          {
+            "source": "hsinchu-ai-tools",
+            "locator": "#mainContainer / text-block 93"
+          },
+          {
+            "source": "hsinchu-ai-tools",
+            "locator": "#mainContainer / text-block 97"
+          },
+          {
+            "source": "hsinchu-ai-tools",
+            "locator": "#mainContainer / text-block 100"
+          },
+          {
+            "source": "hsinchu-ai-tools",
+            "locator": "#mainContainer / text-block 101"
+          }
+        ]
+      },
+      "field_applicability": {}
+    }
+  ]
+}

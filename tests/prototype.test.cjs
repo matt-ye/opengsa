@@ -427,3 +427,14 @@ test("申請方式與給付由同一資料列更新，N/A不冒充待確認或�
  assert.match(core.deadlineText(unknown),/待確認/);
  assert.doesNotMatch(core.deadlineText(unknown),/N\/A/);
 });
+
+
+test("地方工具補助須檢查個人相對期限，不以年度上限宣稱開放",()=>{
+ const candidates=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/candidates/ai-tools-115.json"),"utf8"));
+ for(const c of candidates.candidates) {
+  const row={...c,steps:c.schedule.steps,start:c.schedule.application_start};
+  assert.equal(core.windowState(row,"2026-10-30"),"unknown");
+  assert.equal(core.windowState(row,"2026-12-01"),"closed");
+  assert.equal(c.category,"research_tools");
+ }
+});

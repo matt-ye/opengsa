@@ -97,18 +97,42 @@ def validate(data):
     return errors
 
 
+def validate_candidate_snapshot(bundle, config):
+    """Offline contract and retention checks; never reassert full-source verification."""
+    schema=read_json(ROOT/"schema/candidate.schema.json")
+    errors=[f"candidate/{'/'.join(map(str,e.absolute_path))}: {e.message}" for e in Draft202012Validator(schema,format_checker=FormatChecker()).iter_errors(bundle)]
+    if errors:return errors
+    sources={s["id"]:s for s in config["sources"]}
+    totals={};ids=set()
+    for cand in bundle["candidates"]:
+        meta=cand["source_metadata"];sid=meta["source_id"]
+        if sid not in sources or meta["url"]!=sources[sid]["url"]:errors.append("candidate source profile mismatch")
+        if cand["candidate_id"] in ids:errors.append("duplicate candidate id")
+        ids.add(cand["candidate_id"])
+        revision=(sid,meta["revision_id"])
+        totals[revision]=totals.get(revision,0)+sum(len(e.get("excerpt") or "") for e in cand["field_evidence"])+sum(len(e.get("quote") or "") for e in cand["verification"].get("audit_findings",[]))
+        if cand["review"].get("promotion_ready"):errors.append("pending candidate pool cannot claim publication approval")
+        errors.extend(process_errors(cand))
+    if any(n>120 for n in totals.values()):errors.append("candidate document excerpt budget exceeded")
+    return errors
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("path", nargs="?", type=Path, default=ROOT / "data/pilot.json")
     args = parser.parse_args()
     data = read_json(args.path)
     errors = validate(data)
+    candidate_paths=list((ROOT/"data/candidates").glob("*.json"))
+    for path in candidate_paths:
+        errors.extend(f"{path.name}: {e}" for e in validate_candidate_snapshot(read_json(path),read_json(ROOT/"data/scan-sources.json")))
     if errors:
         for error in errors:
             print(error)
         raise SystemExit(1)
     counts = Counter(item["review"]["status"] for item in data["opportunities"])
     print(f"PASS: {len(data['opportunities'])} samples, {len(data['sources'])} sources; reviews={dict(counts)}")
+    if candidate_paths:print(f"PASS: {len(candidate_paths)} pending candidate bundle(s), schema/source/excerpt bounds only")
     print("Shape/reference checks only. No eligibility engine, external-link check, or publication approval.")
 
 
