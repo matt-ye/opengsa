@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0.0",
+  "providers": {
+    "groq": {
+      "base_url": "https://api.groq.com/openai/v1",
+      "model": "qwen/qwen3.8-27b",
+      "key_envs": [
+        "OPENGSA_MODEL_API_KEY",
+        "OPENGSA_GROQ_API_KEY",
+        "GROQ_API_KEY"
+      ],
+      "inference_policy": "user_reported_free",
+      "documentation": "https://console.groq.com/docs/rate-limits",
+      "checked_on": "2026-10-30",
+      "account_quota_verified": false,
+      "key_expires_on": null,
+      "expiry_note": "使用者回報未設固定期限；不保證服務或額度永久有效"
+    },
+    "gemini": {
+      "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
+      "model": "gemini-3.5-flash-lite",
+      "key_envs": [
+        "OPENGSA_GEMINI_API_KEY"
+      ],
+      "inference_policy": "catalog_only_billing_unconfirmed",
+      "documentation": "https://ai.google.dev/gemini-api/docs/rate-limits",
+      "checked_on": "2026-10-30",
+      "account_quota_verified": false,
+      "key_expires_on": null,
+      "expiry_note": "使用者回報未設固定期限；不保證服務或額度永久有效"
+    },
+    "nvidia": {
+      "base_url": "https://integrate.api.nvidia.com/v1",
+      "model": "meta/llama-3.3-70b-instruct",
+      "key_envs": [
+        "OPENGSA_NVIDIA_API_KEY",
+        "NVIDIA_API_KEY"
+      ],
+      "inference_policy": "catalog_only_credits_unconfirmed",
+      "documentation": "https://docs.api.nvidia.com/nim/re/docs/api-quickstart",
+      "checked_on": "2026-10-30",
+      "account_quota_verified": false,
+      "key_expires_on": null,
+      "expiry_note": "使用者回報未設固定期限；不保證服務或額度永久有效"
+    },
+    "sambanova": {
+      "base_url": "https://api.sambanova.ai/v1",
+      "model": "Meta-Llama-3.3-70B-Instruct",
+      "key_envs": [
+        "OPENGSA_SAMBANOVA_API_KEY",
+        "SAMBANOVA_API_KEY"
+      ],
+      "inference_policy": "catalog_only_tier_unconfirmed",
+      "documentation": "https://docs.sambanova.ai/docs/en/get-started/api-keys-urls",
+      "checked_on": "2026-10-30",
+      "account_quota_verified": false,
+      "key_expires_on": null,
+      "expiry_note": "使用者回報一年到期；實際日期未提供，不從 Secret 更新時間推算"
+    },
+    "cerebras": {
+      "base_url": "https://api.cerebras.ai/v1",
+      "model": "gpt-oss-120b",
+      "key_envs": [
+        "OPENGSA_CEREBRAS_API_KEY",
+        "CEREBRAS_API_KEY"
+      ],
+      "inference_policy": "catalog_only_previous_402",
+      "documentation": "https://inference-docs.cerebras.ai/support/deprecation",
+      "checked_on": "2026-10-30",
+      "account_quota_verified": false,
+      "key_expires_on": null,
+      "expiry_note": "使用者回報未設固定期限；不保證服務或額度永久有效"
+    },
+    "openrouter": {
+      "base_url": "https://openrouter.ai/api/v1",
+      "model": "nvidia/nemotron-3.5-lightning:free",
+      "key_envs": [
+        "OPENGSA_OPENROUTER_API_KEY",
+        "OPENROUTER_API_KEY"
+      ],
+      "inference_policy": "zero_price_free_only",
+      "documentation": "https://openrouter.ai/docs/api_reference/limits",
+      "checked_on": "2026-10-30",
+      "account_quota_verified": false,
+      "key_expires_on": null,
+      "expiry_note": "使用者回報未設固定期限；不保證服務或額度永久有效"
+    },
+    "siliconflow": {
+      "base_url": "https://api.siliconflow.com/v1",
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "key_envs": [
+        "OPENGSA_SILICONFLOW_API_KEY",
+        "SILICONFLOW_API_KEY"
+      ],
+      "inference_policy": "catalog_only_region_unconfirmed",
+      "documentation": "https://docs.siliconflow.com/en/userguide/quickstart",
+      "checked_on": "2026-10-30",
+      "account_quota_verified": false,
+      "key_expires_on": null,
+      "expiry_note": "使用者回報未設固定期限；不保證服務或額度永久有效",
+      "allowed_base_urls": [
+        "https://api.siliconflow.com/v1",
+        "https://api.siliconflow.cn/v1"
+      ]
+    },
+    "mistral": {
+      "base_url": "https://api.mistral.ai/v1",
+      "model": "mistral-small-latest",
+      "key_envs": [
+        "OPENGSA_MISTRAL_API_KEY",
+        "MISTRAL_API_KEY"
+      ],
+      "inference_policy": "catalog_only_tier_unconfirmed",
+      "documentation": "https://docs.mistral.ai/admin/identity-access/api-keys",
+      "checked_on": "2026-10-30",
+      "account_quota_verified": false,
+      "key_expires_on": null,
+      "expiry_note": "使用者回報未設固定期限；不保證服務或額度永久有效"
+    }
+  }
+}
