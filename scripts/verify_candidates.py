@@ -326,6 +326,16 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
         if "compatibility" not in ev_by_path or not cand["compatibility"].get("refs"):
             ev_errors.append("missing_evidence:compatibility")
 
+    app_start_field = cand.get("schedule", {}).get("application_start", {})
+    if app_start_field.get("kind") in ("date", "datetime") and app_start_field.get("value"):
+        matching_app_ev = ev_by_path.get("schedule.application_start") or []
+        if matching_app_ev and in_memory_blocks is not None:
+            locs = [e["locator"] for e in matching_app_ev]
+            combined = " ".join(block_map.get(loc, "") for loc in locs)
+            dtokens = _date_tokens(app_start_field["value"])
+            if not any(tok in combined.replace(" ", "") for tok in dtokens):
+                ev_errors.append(f"hallucinated_date_not_in_source:schedule.application_start:{app_start_field['value']}")
+
     for idx, step in enumerate(steps):
         dl = step.get("deadline", {})
         if dl.get("kind") in ("date", "datetime", "relative"):

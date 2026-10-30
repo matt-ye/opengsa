@@ -63,6 +63,13 @@ def validate(data):
             errors.append(f"{key}: application snapshot differs from dataset")
         if item["application"]["state"] != "unknown" and not item["application"]["refs"]:
             errors.append(f"{key}: known application state needs evidence")
+        if item.get("start") and item["start"].get("value"):
+            s_val = item["start"]["value"][:10]
+            for step in item.get("steps", []):
+                if step.get("actor") == "student" and step.get("deadline", {}).get("value"):
+                    d_val = step["deadline"]["value"][:10]
+                    if s_val > d_val:
+                        errors.append(f"{key}: inverted start and deadline ({s_val} > {d_val})")
         year = item["eligibility"]["year_limit"]
         if year["mode"] == "range" and year["min"] > year["max"]:
             errors.append(f"{key}: inverted year range")

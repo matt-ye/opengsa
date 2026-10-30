@@ -419,7 +419,13 @@
       "open_questions": [
         "指定非原編輯者覆核重大欄位。",
         "補核本期注意事項附件及個別身分類別；查下學期公告，不沿用本期日期。"
-      ]
+      ],
+      "start": {
+        "kind": "date",
+        "value": "2026-08-05",
+        "timezone": "Asia/Taipei",
+        "note": "博士生第二階段申請開始日"
+      }
     },
     {
       "id": "ntu-emergency-policy",
@@ -1118,7 +1124,13 @@
       "open_questions": [
         "指定非原編輯者覆核重大欄位。",
         "查下一學年度及醫學院收件辦法；合成案例是否應屆畢業未知。"
-      ]
+      ],
+      "start": {
+        "kind": "date",
+        "value": "2026-07-08",
+        "timezone": "Asia/Taipei",
+        "note": "校方公告受理申請開始日"
+      }
     },
     {
       "id": "nstc-grad-conference-policy",
@@ -1455,7 +1467,13 @@
       "open_questions": [
         "指定非原編輯者覆核重大欄位。",
         "完整覆核116年度附件、外語與領取條件；下一期不能自動沿用日期。"
-      ]
+      ],
+      "start": {
+        "kind": "date",
+        "value": "2026-06-01",
+        "timezone": "Asia/Taipei",
+        "note": "國科會線上系統開放受理申請開始日"
+      }
     },
     {
       "id": "ntu-yuanxue-115-ordinary",
