@@ -703,7 +703,8 @@
             "outcome_award",
             "international_conference",
             "overseas_research",
-            "indirect_support"
+            "indirect_support",
+            "research_tools"
           ]
         },
         "resource_kind": {
@@ -713,14 +714,16 @@
             "tuition_remission",
             "emergency_aid",
             "travel_grant",
-            "employment_support"
+            "employment_support",
+            "tool_subscription"
           ]
         },
         "scope": {
           "enum": [
             "ntu",
             "nationwide",
-            "nationwide_ntu_route"
+            "nationwide_ntu_route",
+            "local"
           ]
         },
         "cycle": {
@@ -1002,6 +1005,37 @@
         },
         "field_applicability": {
           "$ref": "#/$defs/field_applicability"
+        },
+        "expense_period": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "starts_on": {
+              "type": "string",
+              "format": "date"
+            },
+            "ends_on": {
+              "type": "string",
+              "format": "date"
+            },
+            "note": {
+              "type": "string",
+              "minLength": 1
+            },
+            "refs": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/evidence_ref"
+              }
+            }
+          },
+          "required": [
+            "starts_on",
+            "ends_on",
+            "note",
+            "refs"
+          ]
         }
       },
       "required": [

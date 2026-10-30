@@ -11,7 +11,9 @@
     "daas.sinica.edu.tw",
     "www.tsmc.com",
     "eecs.ntu.edu.tw",
-    "www.eng.ntu.edu.tw"
+    "www.eng.ntu.edu.tw",
+    "youth.gov.taipei",
+    "dgservice.hccg.gov.tw"
   ],
   "max_requests": 20,
   "max_changed_documents": 5,
@@ -250,6 +252,37 @@
       "enabled": false,
       "max_pdfs": 0,
       "review_note": "2026-10-30實測未取得合規可解析正文（連線失敗、404或robots無有效規則）；URL及選擇器未驗證，暫停自動掃描。保留為搜尋種子，修正後須重新驗證。"
+    },
+    {
+      "id": "taipei-ai-tools",
+      "title": "臺北市青年AI工具補助",
+      "url": "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796",
+      "body_selector": ".wysiwyg .content",
+      "required_markers": [
+        "AI工具",
+        "書面方式提出",
+        "申請日以送達"
+      ],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "只依正文判斷書面提出；郵寄／親送未逐一證實。訂閱支出期間與申請窗口分開，相對一個月與11/10上限均須覆核。",
+      "evidence_mode": "short_excerpt"
+    },
+    {
+      "id": "hsinchu-ai-tools",
+      "title": "新竹市AI領航青年數位工具補助",
+      "url": "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
+      "body_selector": "#mainContainer",
+      "required_markers": [
+        "AI領航青年",
+        "線上申請",
+        "購買金額",
+        "親筆簽名"
+      ],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "線上送件、親簽上傳與紙本遞交分開；購買期限、月／年費相對期限、生日區間與額滿條件保留。只取公開說明，不登入、不取附件或申請表個資。",
+      "evidence_mode": "short_excerpt"
     }
   ],
   "deferred_sources": [

@@ -26,6 +26,7 @@ if str(ROOT) not in sys.path:
 
 from scripts.evaluate_deadlines import parse_iso_date, parse_taipei_datetime
 from scripts.application_process import infer_process, process_errors
+from scripts.ai_tool_rules import benefit_tiers
 
 VERIFIER_VERSION = "verifier-1.1.0"
 
@@ -405,6 +406,19 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
 
     ev_errors.extend(process_errors(cand))
     if in_memory_blocks is not None:
+        if cand.get("resource_kind")=="tool_subscription":
+            expected_tiers=benefit_tiers(in_memory_blocks)
+            expected_pairs={(t["label"],t["amount_max"]) for t in expected_tiers}
+            for item in benefit_items:
+                if (item.get("branch_or_tier"),item.get("amount_max")) not in expected_pairs:
+                    ev_errors.append("ai_tools:benefit_tier_or_amount_not_supported")
+            period=cand.get("expense_period")
+            if period:
+                period_ev=ev_by_path.get("expense_period",[])
+                period_text=" ".join(block_map.get(e["locator"],"") for e in period_ev)
+                if not period_ev or not all(date_supported(period[k],period_text) for k in ("starts_on","ends_on")):
+                    ev_errors.append("ai_tools:unsupported_expense_period")
+                if period["starts_on"]>period["ends_on"]:ev_errors.append("ai_tools:inverted_expense_period")
         expected_method, expected_applicability, _ = infer_process(in_memory_blocks)
         method=cand.get("application_method",{})
         for key in ("mode","paper_delivery","handwritten_signature","deadline_basis"):
@@ -584,6 +598,20 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
     # 7. R5：欄位涵蓋率與對照 pilot.json 退步檢查 (Coverage & Regression Check)
     coverage_warnings = []
     if not is_stub:
+        if cand.get("resource_kind")=="tool_subscription":
+            if not cand.get("expense_period"):coverage_warnings.append("coverage_gap:ai_tools:expense_period")
+            if in_memory_blocks is not None:
+                expected={(t["label"],t["amount_max"]) for t in benefit_tiers(in_memory_blocks)}
+                actual={(t.get("branch_or_tier"),t.get("amount_max")) for t in benefit_items}
+                if not expected.issubset(actual):coverage_warnings.append("coverage_gap:ai_tools:omitted_benefit_tier")
+            if len(benefit_items)<2:coverage_warnings.append("coverage_gap:ai_tools:benefit_tiers")
+            if len(elig.get("other_conditions",[]))<3:coverage_warnings.append("coverage_gap:ai_tools:local_and_purchase_conditions")
+            if not any(s.get("actor")=="student" and s.get("deadline",{}).get("kind")=="date" for s in steps):
+                coverage_warnings.append("coverage_gap:ai_tools:annual_deadline")
+            for missing in cand.get("gaps_and_conflicts",{}).get("missing_fields",[]):
+                if missing.startswith("ai_tools:"):coverage_warnings.append("coverage_gap:"+missing)
+            if cand.get("application_method",{}).get("mode","unknown")=="unknown":
+                coverage_warnings.append("coverage_gap:ai_tools:delivery_method")
         if len(field_ev) < 2:
             coverage_warnings.append("coverage_gap:fewer_than_2_field_evidence_entries")
         if cand.get("resource_kind") in ("scholarship", "award") and len(benefit_items) == 0:

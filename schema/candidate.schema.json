@@ -39,6 +39,68 @@
       "items": {
         "$ref": "#/$defs/candidate_record"
       }
+    },
+    "model_usage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "adapter_kind": {
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "off",
+            "extract",
+            "audit",
+            "both"
+          ]
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "rate_limited_429": {
+          "type": "boolean"
+        },
+        "prompt_version": {
+          "type": "string"
+        },
+        "calls": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cache_hits": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "prompt_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "completion_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rejected_claims": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hash_only_bytes_sent": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "avg_latency_ms": {
+          "type": "number",
+          "minimum": 0
+        },
+        "p95_latency_ms": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
     }
   },
   "required": [
@@ -1373,7 +1435,8 @@
             "outcome_award",
             "international_conference",
             "overseas_research",
-            "indirect_support"
+            "indirect_support",
+            "research_tools"
           ]
         },
         "resource_kind": {
@@ -1383,14 +1446,16 @@
             "tuition_remission",
             "emergency_aid",
             "travel_grant",
-            "employment_support"
+            "employment_support",
+            "tool_subscription"
           ]
         },
         "scope": {
           "enum": [
             "ntu",
             "nationwide",
-            "nationwide_ntu_route"
+            "nationwide_ntu_route",
+            "local"
           ]
         },
         "cycle": {
@@ -1852,6 +1917,37 @@
         },
         "field_applicability": {
           "$ref": "#/$defs/field_applicability"
+        },
+        "expense_period": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "starts_on": {
+              "type": "string",
+              "format": "date"
+            },
+            "ends_on": {
+              "type": "string",
+              "format": "date"
+            },
+            "note": {
+              "type": "string",
+              "minLength": 1
+            },
+            "refs": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/evidence_ref"
+              }
+            }
+          },
+          "required": [
+            "starts_on",
+            "ends_on",
+            "note",
+            "refs"
+          ]
         }
       },
       "required": [

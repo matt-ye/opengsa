@@ -466,6 +466,17 @@ def evaluate_application_window(
         }
 
     # 3. 檢查學生步驟是否有明確固定日期或日時
+    if item.get("resource_kind")=="tool_subscription":
+        caps=[parse_iso_date(s.get("deadline",{}).get("value")) for s in student_steps]
+        caps=[d for d in caps if d is not None]
+        if not caps or now_d<=min(caps):
+            return {"state":"unknown","as_of":now_d.isoformat(),"reason_code":"purchase_relative_deadline_requires_context",
+                    "reason":"年度期限是最晚上限；購買／達成條件後的相對期限及經費餘額仍須確認，不推定目前受理。",
+                    "student_deadline":min(caps).isoformat() if caps else None,"application_start":start_dl.get("value"),
+                    "upper_layer_deadlines":upper_layer_deadlines,"supplement_deadlines":supplement_steps,
+                    "same_day_time_unconfirmed":bool(caps and now_d==min(caps)),"source_stale":source_stale,
+                    "stale_sources":stale_sources,"next_cycle_inferred":False}
+
     known_student = [
         s for s in student_steps if s.get("deadline", {}).get("kind") in ("date", "datetime") and s["deadline"].get("value")
     ]

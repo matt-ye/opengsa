@@ -96,3 +96,7 @@ scan-reviews採獨立1.1.0 Schema，required reason不接受舊note；applied須
 ## 申辦方式與欄位適用性更新（2026-10-30）
 
 候選及pilot新增application_method與field_applicability，紙本遞交、親簽上傳及截止判準分開。N/A須有理由、引用及完整上下文；缺來源仍待確認，不以N/A隱藏日期或必要資格。第二頁顯示整體與各步驟方式，第三頁同步給付摘要及申辦方式；覆核與資料PR部署後才更新公開內容。詳見[判斷與更新流程](APPLICATION-PROCESS.md)。
+
+## AI工具候選補充
+
+新增research_tools類別、tool_subscription種類、local範圍；expense_period（starts_on／ends_on／note／refs）保留可認列支出期間，不作學生收件窗口。兩份契約與候選轉pilot均保留此欄位，納入核准雜湊。候選根層model_usage依實際用量摘要提供選填型別，未知屬性仍拒絕。check_data.py另檢查data/candidates的來源綁定及120字摘錄預算；完整原文不在CI取回。

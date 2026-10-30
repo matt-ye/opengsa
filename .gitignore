@@ -8,6 +8,7 @@ private/
 !.env.example
 node_modules/
 dist/
+_site/
 .astro/
 __pycache__/
 *.log

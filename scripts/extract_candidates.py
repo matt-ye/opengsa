@@ -31,6 +31,7 @@ from scripts.evaluate_deadlines import evaluate_application_window, parse_iso_da
 from scripts.scan_sources import CONTACT, SKIP, Fetcher, ScanError, digest, html_document, normalized, pdf_document
 from scripts.verify_candidates import digest_text, evidence_digest, verify_candidate
 from scripts.application_process import infer_process
+from scripts.ai_tool_rules import benefit_tiers
 
 EXTRACTOR_VERSION = "extractor-1.1.0"
 PROMPT_VERSION = "prompt-1.1.0"
@@ -1981,6 +1982,108 @@ def _extract_policy(source, blocks, revision_id, observed_at, url, as_of, eviden
     return [cand]
 
 
+def _extract_ai_tools(source, blocks, revision_id, observed_at, url, as_of, evidence_mode):
+    """Two named municipal schemes. Expense dates are never student application dates."""
+    sid=source["id"]
+    compact=[_normalize_chinese_roc_years(re.sub(r"\s+","",b["text"])) for b in blocks]
+    years={int(m)+1911 for t in compact for m in re.findall(r"(?<!\d)(1\d{2})年(?:\d{1,2}月|（以下同）)",t)}
+    year=next(iter(years)) if len(years)==1 else None
+    cand=_base_candidate_template(
+        candidate_id=f"cand-{sid}-{revision_id[:8]}",opportunity_id=f"{sid}-{year-1911 if year else 'unknown'}",
+        program_key=sid,title=source["title"],category="research_tools",resource_kind="tool_subscription",scope="local",
+        cycle={"kind":"calendar_year","label":f"{year-1911}年度" if year else "年度待核","year_system":"roc" if year else "unknown","year":year-1911 if year else None,"term_or_round":None,"branch":None},
+        source_id=sid,revision_id=revision_id,url=url,observed_at=observed_at,evidence_mode=evidence_mode,as_of=as_of)
+    cand["eligibility"]["degrees"]=["master","phd"]  # Service subset; the scheme may also cover other identities.
+    cand["eligibility"]["institution"]="unknown"
+    def ref(block):return {"source":sid,"locator":block["locator"]}
+    def evidence(path,block):cand["field_evidence"].append(make_field_evidence(path,sid,revision_id,block,evidence_mode))
+    identity=next((b for b in blocks if "設籍" in b["text"] and "歲" in b["text"]),blocks[0])
+    _set_identity_with_evidence(cand,"地方青年訂閱費補助；年齡、設籍、購買與個別資格須依各條件核對",identity,sid,revision_id,evidence_mode)
+    cand["organizations"]={k:{"text":("臺北市政府青年局" if sid=="taipei-ai-tools" else "新竹市青年發展中心"),"refs":[ref(identity)]} for k in ("funder","announcer","receiver")}
+    conditions=[]
+    for block,text in zip(blocks,compact):
+        summary=None
+        age=re.search(r"(\d{1,2})歲(?:以上至|\(含\)至|（含）至|至)(\d{1,2})歲",text)
+        if age and "設籍" in text:
+            months=re.search(r"(\d+)個月以上",text)
+            summary=f"年齡{age[1]}–{age[2]}歲，須符合本市設籍條件"+(f"至少{months[1]}個月" if months else "")+"；採認日須覆核"
+        elif "學籍" in text and "畢業" in text:summary="須有符合規定的學籍或當年度畢業資格；認可學校範圍另核"
+        elif "AI" in text and ("課程" in text or "結業證明" in text) and "對象" not in text:summary="課程／訓練證明須符合來源所列採認方式"
+        elif "購買後" in text and ("月費" in text or "年費" in text):summary="購買後另有月費制／年費制的相對申請期限，不只看年度最晚日"
+        elif "最後達成日" in text:summary="須同時符合條件最後達成日之後的相對申請期限及年度最晚收件日"
+        elif "經費用罄" in text:summary="可能因經費用罄或額滿提前停止；本次未核准任何人的受理狀態"
+        elif "生日" in text or "民國74年" in text:summary="頁面另列出生日期區間，年齡修訂與基準日需人工覆核"
+        elif re.search(r"中國|港澳|代購|集合式|Token|API|多人共用|家庭版本",text,re.I):summary="工具來源、購買管道、版本或計費方式有排除限制，須逐條核對"
+        if summary:
+            conditions.append({"text":summary,"refs":[ref(block)]})
+            evidence(f"eligibility.other_conditions/{len(conditions)-1}",block)
+        if re.search(r"每年度以申請1次|每年最多以補助一次",text):
+            cand["eligibility"]["prior_funding_rule"]="once_per_year"
+            evidence("eligibility.prior_funding_rule",block)
+        if re.search(r"相同性質|相同補助|重複申請",text):
+            cand["compatibility"].update(mode="conditional",note="同一事由／同類費用或重複補助有限制；不推定所有其他補助均可兼領",refs=[ref(block)])
+            evidence("compatibility",block)
+    cand["eligibility"]["other_conditions"]=conditions
+    period_heading="補助期間" if sid=="taipei-ai-tools" else "購買日期"
+    for index,text in enumerate(compact):
+        if period_heading not in text:continue
+        for block,following in zip(blocks[index:index+3],compact[index:index+3]):
+            cleaned=following.replace("（以下同）","").replace("(以下同)","").replace("日起至","日至")
+            start,end=parse_date_range_from_text(cleaned)
+            if start and end:
+                cand["expense_period"]={"starts_on":start,"ends_on":end,"note":"可認列支出期間，不是申請受理期間","refs":[ref(block)]}
+                evidence("expense_period",block)
+                break
+        if "expense_period" in cand:break
+    cand["benefit"]={"summary":"補助分支與金額待完整核對","items":[],"refs":[]}
+    general_seen=False;enhanced_seen=False
+    for tier in benefit_tiers(blocks):
+        label=tier["label"]
+        cand["benefit"]["items"].append({"branch_or_tier":label,"amount_min":None,"amount_max":tier["amount_max"],"currency":"TWD","unit":"partial_reimbursement","basis":"maximum","duration_months_min":None,"duration_months_max":None,"tax_note":None,"refs":[ref(b) for b in tier["blocks"]]})
+        for block in tier["blocks"]:
+            evidence(f"benefit.items/{len(cand['benefit']['items'])-1}",block)
+            cand["benefit"]["refs"].append(ref(block))
+        general_seen |= label.startswith("一般")
+        enhanced_seen |= any(w in label for w in ("低收","特定","文化語言"))
+    if cand["benefit"]["items"]:
+        cand["benefit"]["summary"]="；".join(f"{i['branch_or_tier']}實支補助上限{i['amount_max']:,}元" for i in cand["benefit"]["items"])
+    if general_seen and enhanced_seen:
+        cand["hardship"].update(mode="not_exclusive",note="有一般對象及加額分支；不是僅限清寒，特定資格仍須逐項證明",refs=deepcopy(cand["benefit"]["refs"]))
+        for block in blocks:
+            if ref(block) in cand["benefit"]["refs"]:evidence("hardship",block)
+    deadline_block=None;deadline=None
+    for block,text in zip(blocks,compact):
+        if sid=="taipei-ai-tools" and "最遲" in text and "提出申請" in text:
+            m=re.search(r"最遲.*?(\d{1,2})月(\d{1,2})日",text)
+            if m and year:
+                deadline=f"{year:04d}-{int(m[1]):02d}-{int(m[2]):02d}";deadline_block=block
+    if sid=="hsinchu-ai-tools":
+        for index,text in enumerate(compact):
+            if "受理申請期間" not in text:continue
+            for block,following in zip(blocks[index:index+3],compact[index:index+3]):
+                dates=re.findall(r"(1\d{2})年(\d{1,2})月(\d{1,2})日",following)
+                if len(dates)==2:
+                    first,last=dates
+                    start_value=f"{int(first[0])+1911:04d}-{int(first[1]):02d}-{int(first[2]):02d}"
+                    deadline=f"{int(last[0])+1911:04d}-{int(last[1]):02d}-{int(last[2]):02d}";deadline_block=block
+                    cand["schedule"]["application_start"]={"kind":"date","value":start_value,"timezone":"Asia/Taipei","note":"受理期間所載起日，不是購買期間或電子申辦修訂日"}
+                    evidence("schedule.application_start",block)
+                    break
+    cand["schedule"]["steps"]=[{"actor":"student","action":"送交補助申請（須同時符合購買後相對期限、年度最晚日及經費條件）","deadline":{"kind":"date" if deadline else "unknown","value":deadline,"timezone":"Asia/Taipei","note":"年度最晚申請上限；個人相對期限可能更早，未填購買／達成條件日不當作目前受理"},"refs":[ref(deadline_block or identity)]}]
+    if deadline_block:evidence("schedule.steps/0/deadline",deadline_block)
+    # The Taipei deadline omits the year, explicitly anchored by its own expense-period clause.
+    if deadline_block and sid=="taipei-ai-tools":
+        for block,text in zip(blocks,compact):
+            if "補助期間" in text and re.search(r"1\d{2}年",text):evidence("schedule.steps/0/deadline",block)
+    cand["gaps_and_conflicts"]["missing_fields"]=["ai_tools:personal_purchase_or_completion_date","ai_tools:budget_exhaustion_status"]
+    if "expense_period" not in cand:cand["gaps_and_conflicts"]["missing_fields"].append("ai_tools:expense_period")
+    if sid=="hsinchu-ai-tools" and any("民國" in t and "歲" in t for t in compact):cand["gaps_and_conflicts"]["missing_fields"].append("ai_tools:age_reference_date")
+    if not year:cand["gaps_and_conflicts"]["missing_fields"].append("ai_tools:unambiguous_cycle_year")
+    if not general_seen or not enhanced_seen:cand["gaps_and_conflicts"]["missing_fields"].append("ai_tools:benefit_tiers")
+    cand["gaps_and_conflicts"]["open_questions"]=["年齡、設籍、購買／訂閱期間與排除項目須依原文逐項核對；不以博士候選人身分推定符合。","臺北僅確認書面提出，郵寄／親送另核；新竹線上申請及親簽不等同已確認免紙本遞交。"]
+    return [cand]
+
+
 def _verify_quote_and_reparse(field_path, claimed_val, unit, currency, locator, quote, block_map, is_audit=False):
     """檢驗模型輸出的引文是否為原文區塊的逐字子字串，並對日期與金額執行規則二次解析比對。
     回傳 (ok: bool, error_code: str|None, matched_block: dict|None, normalized_val: any)
@@ -2362,6 +2465,8 @@ def extract_from_in_memory_blocks(
         candidates = _extract_nstc_conference(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
     elif sid == "faos-student-conference":
         candidates = _extract_faos_conference(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
+    elif sid in ("taipei-ai-tools","hsinchu-ai-tools"):
+        candidates = _extract_ai_tools(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
     elif sid in POLICY_SOURCES:
         candidates = _extract_policy(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
     else:

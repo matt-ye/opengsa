@@ -4,7 +4,7 @@
 
 ## 來源台帳與最近實測
 
-執行設定：[scan-sources.json](../data/scan-sources.json)，共14筆、9筆啟用、5筆停用。disabled仍保留為搜尋種子，不由scanner或候選重新擷取器下載；啟用不代表可擷取或已人工核准。
+執行設定：[scan-sources.json](../data/scan-sources.json)，共16筆、11筆啟用、5筆停用。disabled仍保留為搜尋種子，不由scanner或候選重新擷取器下載；啟用不代表可擷取或已人工核准。
 
 | 群組 | 狀態與限制 |
 |---|---|
@@ -75,3 +75,7 @@ noted／dismissed是文件層級佇列處置；帶candidate_id的處置只影響
 ## 申辦方式與欄位適用性更新（2026-10-30）
 
 候選及pilot新增application_method與field_applicability，紙本遞交、親簽上傳及截止判準分開。N/A須有理由、引用及完整上下文；缺來源仍待確認，不以N/A隱藏日期或必要資格。第二頁顯示整體與各步驟方式，第三頁同步給付摘要及申辦方式；覆核與資料PR部署後才更新公開內容。詳見[判斷與更新流程](APPLICATION-PROCESS.md)。
+
+## 地方AI工具補助候選
+
+臺北／新竹兩個公開正文profile及具名候選已接入，僅規則萃取、不修改pilot。購買／訂閱支出期間與申請期限分開，年度上限不代表個人仍可申請；分支與缺漏需覆核。細節見[候選推進](AI-TOOLS-CANDIDATES.md)。

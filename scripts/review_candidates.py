@@ -38,7 +38,7 @@ def validate_review_ledger(payload):
 
 def candidate_fingerprint(candidate):
     """Bind approval to the actual claims; exclude changing evaluation timestamps."""
-    fields = {k: candidate.get(k) for k in ("candidate_id", "title", "category", "resource_kind", "scope", "evidence_status", "program_key", "cycle", "source_metadata", "participants", "organizations", "eligibility", "benefit", "compatibility", "hardship", "schedule", "policy_version", "field_evidence", "application_method", "field_applicability")}
+    fields = {k: candidate.get(k) for k in ("candidate_id", "title", "category", "resource_kind", "scope", "evidence_status", "program_key", "cycle", "source_metadata", "participants", "organizations", "eligibility", "benefit", "compatibility", "hardship", "schedule", "policy_version", "field_evidence", "application_method", "field_applicability", "expense_period")}
     return hashlib.sha256(json.dumps(fields, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
 
@@ -66,7 +66,7 @@ def compute_candidate_diff(candidate, pilot_data):
         diffs = []
         if matching_opps:
             ref_opp = matching_opps[0]
-            for field in ("application_method","field_applicability"):
+            for field in ("application_method","field_applicability","expense_period"):
                 if candidate.get(field) and candidate[field] != ref_opp.get(field):
                     diffs.append({"field":field,"pilot_value":ref_opp.get(field),"candidate_value":candidate[field]})
             for field_path, old_val, new_val in [
@@ -120,7 +120,7 @@ def compute_candidate_diff(candidate, pilot_data):
     for field_path, old_val, new_val in comparisons:
         if old_val != new_val:
             diffs.append({"field": field_path, "pilot_value": old_val, "candidate_value": new_val})
-    for field in ("application_method","field_applicability"):
+    for field in ("application_method","field_applicability","expense_period"):
         if matched.get(field) != candidate.get(field):
             diffs.append({"field":field,"pilot_value":matched.get(field),"candidate_value":candidate.get(field)})
 
@@ -452,7 +452,7 @@ def candidate_to_pilot_opportunity(cand):
             "items": deepcopy(cand["benefit"]["items"]),
             "refs": deepcopy(cand["benefit"]["refs"]),
         },
-        **{k:deepcopy(cand[k]) for k in ("application_method","field_applicability") if k in cand},
+        **{k:deepcopy(cand[k]) for k in ("application_method","field_applicability","expense_period") if k in cand},
         "start": deepcopy(cand["schedule"]["application_start"]) if cand.get("schedule", {}).get("application_start") else None,
         "result": deepcopy(cand["schedule"]["result_date"]) if cand.get("schedule", {}).get("result_date") else None,
         "steps": steps,
