@@ -77,7 +77,8 @@ function makeDrafts(pilot) {
    else resolvedSource = "unknown";
   }
 
-  const structuredStart = (item.start && item.start.value) ? event(item.start.value, ["date","datetime"].includes(item.start.kind) ? "confirmed" : "unknown", item.start.note || "官方受理申請起始日") : event(null, "unknown", "目前無結構化申請起日；依內文敘述");
+  const startCertainty = item.start?.certainty || (["date","datetime"].includes(item.start?.kind) ? "confirmed" : "unknown");
+  const structuredStart = (item.start && item.start.value) ? event(item.start.value, startCertainty, item.start.note || (startCertainty==="inferred"?"依官方公告發布日推定即日起受理":"官方受理申請起始日")) : event(null, "unknown", "目前無結構化申請起日；依內文敘述");
   const structuredResult = (item.result && item.result.value) ? event(item.result.value, ["date","datetime"].includes(item.result.kind) ? "confirmed" : "unknown", item.result.note || "結果公告日") : event(null, "unknown", "結果尚無結構證據");
 
   const sources = [...item.application.refs,...item.steps.flatMap(s=>s.refs)];
@@ -420,7 +421,10 @@ function inspect(item) {
  inspectedId=item.id;
  const box=byId("schedule-inspect");box.replaceChildren();
  box.append(el("strong","",item.title));
- box.append(el("p","small","申請開始："+dateText(item.start.value)+"　→　學生截止："+deadlineText(item)+"　→　"+(item.result.certainty==="expected"?"預定":"")+"結果公布："+dateText(item.result.value)));
+  const startDesc = item.start.certainty === "inferred"
+   ? "推定開始：" + dateText(item.start.value) + "（" + (item.start.note || "依官方公告發布日推定") + "）"
+   : (item.start.value ? "申請開始：" + dateText(item.start.value) : (item.end.value && !item.personal ? "申請開始：待確認（甘特圖已標示截止前 30 天準備提醒帶）" : "申請開始：待確認"));
+  box.append(el("p","small",startDesc+"\u3000→\u3000學生截止："+deadlineText(item)+"\u3000→\u3000"+(item.result.certainty==="expected"?"預定":"")+"結果公布："+dateText(item.result.value)));
  item.milestones.forEach(m=>box.append(el("p","small",m.label+"："+dateText(m.value))));
  box.append(el("p","tiny quiet",item.synthetic?"合成排程，全部為虛構日期。":item.note));
  if(item.url) {const link=el("a","small","核對官方來源 ↗");link.href=item.url;box.append(link);}
@@ -500,32 +504,48 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
   if(gridId==="gantt-grid") label.append(pickControl(item,"gantt"));
   const button=el("button","row-title",item.title);button.type="button";button.addEventListener("click",()=>onInspect(item));
   label.append(button,el("div","tiny quiet",labels.category[item.category]+" · "+labels.source[item.source]));
-  label.append(el("div","tiny quiet",item.personal?"學生期限："+deadlineText(item):dateText(item.start.value)+" → "+dateText(item.end.value)));
+  const labelDateDesc = item.personal ? "學生期限："+deadlineText(item) : (item.start.certainty==="inferred"?"推定起訖：":"")+dateText(item.start.value)+" → "+dateText(item.end.value);
+  label.append(el("div","tiny quiet",labelDateDesc));
   row.append(label);
   const plot=el("div","gantt-plot");todayLine(plot,range);
   if(item.preparation){
    const prep=geometry({start:event(item.preparation.start),end:event(item.preparation.end),result:event(),milestones:[]},range).bar;
    if(prep){const bar=el("button","gantt-bar preparation");bar.type="button";bar.style.left=prep.left+"%";bar.style.width=prep.width+"%";bar.title="個人準備建議（非官方申請期）："+dateText(item.preparation.start)+" 至 "+dateText(item.preparation.end);bar.setAttribute("aria-label",item.title+"："+bar.title);bar.addEventListener("click",()=>onInspect(item));plot.append(bar);}
   }
+  let prepNoticeGeom=null;
+  if(!item.start.value && item.end.value && !item.personal){
+   const prepNoticeStart=addDays(item.end.value.slice(0,10),-30);
+   prepNoticeGeom=geometry({start:event(prepNoticeStart),end:event(item.end.value.slice(0,10)),result:event(),milestones:[]},range).bar;
+   if(prepNoticeGeom){
+    const bar=el("button","gantt-bar notice-window");
+    bar.type="button";bar.style.left=prepNoticeGeom.left+"%";bar.style.width=prepNoticeGeom.width+"%";
+    bar.title="準備提醒期（官方未載明受理起日）："+dateText(prepNoticeStart)+" 至 "+dateText(item.end.value)+"（截止前 30 天準備提醒帶，非官方受理開放日）";
+    bar.setAttribute("aria-label",item.title+"："+bar.title);bar.addEventListener("click",()=>onInspect(item));plot.append(bar);
+   }
+  }
   if(g.wait) {const wait=el("span","gantt-wait");wait.style.left=g.wait.left+"%";wait.style.width=g.wait.width+"%";wait.setAttribute("aria-hidden","true");plot.append(wait);}
   if(g.bar) {
-   const bar=el("button","gantt-bar");
+   const isInferred=item.start.certainty==="inferred";
+   const bar=el("button","gantt-bar"+(isInferred?" inferred":""));
    bar.type="button";bar.style.left=g.bar.left+"%";bar.style.width=g.bar.width+"%";
-   bar.title="申請期間："+dateText(item.start.value)+" 至 "+dateText(item.end.value);
+   bar.title=(isInferred?"推定受理期（依官方公告日推定）：":"申請期間：")+dateText(item.start.value)+" 至 "+dateText(item.end.value)+(isInferred?"（"+(item.start.note||"依官方公告發布日推定即日起受理")+"）":"");
    bar.setAttribute("aria-label",item.title+"，"+bar.title);bar.addEventListener("click",()=>onInspect(item));plot.append(bar);
   }
-  marker(plot,g.start,"start","申請開始："+dateText(item.start.value),item,onInspect);
+  const isStartInferred=item.start.certainty==="inferred";
+  marker(plot,g.start,"start"+(isStartInferred?" inferred":""),(isStartInferred?"推定申請開始（依官方公告日）：":"申請開始：")+dateText(item.start.value)+(isStartInferred?"（"+(item.start.note||"")+"）":""),item,onInspect);
   marker(plot,g.end,"end"+(item.personal?" estimated":""),"學生截止："+deadlineText(item),item,onInspect);
   marker(plot,g.result,"result "+(item.result.certainty==="expected"?"expected":""),(item.result.certainty==="expected"?"預定":"")+"結果公布："+dateText(item.result.value),item,onInspect);
   item.milestones.forEach(m=>{const p=position(m.value,range);if(p!==null&&p>=0&&p<100) marker(plot,p,"milestone"+(item.personal?" estimated":""),m.label+"："+dateText(m.value),item,onInspect);});
   const notes=[];
   if(item.personal) notes.push("個人規劃：虛線為準備建議，空心節點待核");
-  if(!item.start.value && !item.personal) notes.push("起日待確認");
+  if(!item.start.value && item.end.value && !item.personal) notes.push("官方未載起日（已標示截止前30天準備提醒帶）");
+  else if(!item.start.value && !item.personal) notes.push("起日待確認");
+  if(item.start.certainty === "inferred") notes.push("起日依官方公告推定");
   if(!item.end.value) notes.push("學生截止待確認");
   if(!item.result.value) notes.push("結果日未確認");
   if(g.invalid) notes.push("起訖衝突，暫不畫期間");
   const hasKnown=[item.start.value,item.end.value,item.result.value,...item.milestones.map(m=>m.value)].some(Boolean);
-  if(hasKnown && !g.bar && g.start===null && g.end===null && g.result===null && !item.milestones.some(m=>{const p=position(m.value,range);return p!==null&&p>=0&&p<100;})) notes.push("已知日期在視窗外");
+  if(hasKnown && !g.bar && !prepNoticeGeom && g.start===null && g.end===null && g.result===null && !item.milestones.some(m=>{const p=position(m.value,range);return p!==null&&p>=0&&p<100;})) notes.push("已知日期在視窗外");
   plot.append(el("div","gantt-notes",notes.join(" · ")));
   row.append(plot);grid.append(row);
  });
@@ -533,7 +553,8 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
 function drawTable(items) {
  const body=byId("date-rows");body.replaceChildren();
  items.forEach(item=>{
-  const row=el("tr");[item.title,dateText(item.start.value),deadlineText(item),(item.result.certainty==="expected"?"預定 ":"")+dateText(item.result.value),item.milestones.map(m=>m.label+" "+dateText(m.value)).join("；")||"—"].forEach(text=>row.append(el("td","",text)));body.append(row);
+  const startLabel=dateText(item.start.value)+(item.start.certainty==="inferred"?" (推定)":"")+(!item.start.value&&item.end.value&&!item.personal?" (標示截止前30天準備帶)":"");
+  const row=el("tr");[item.title,startLabel,deadlineText(item),(item.result.certainty==="expected"?"預定 ":"")+dateText(item.result.value),item.milestones.map(m=>m.label+" "+dateText(m.value)).join("；")||"—"].forEach(text=>row.append(el("td","",text)));body.append(row);
  });
 }
 function centerToday(range,gridId="gantt-grid",value=today) {
@@ -573,11 +594,12 @@ function drawDetail() {
  const tags=el("div","pills");itemTags(item).forEach(tag=>tags.append(el("span","pill",tag)));top.append(tags);
  top.append(el("p","small",item.note));content.append(top);
  const columns=el("div","two-col"), left=el("div"), right=el("aside");
- const timing=factSection("申請與結果時程",[
-  "申請開始："+dateText(item.start.value)+"；"+item.start.note,
-  "學生截止："+deadlineText(item)+"；"+item.end.note,
-  (item.result.certainty==="expected"?"預定":"")+"結果公布："+dateText(item.result.value)+"；"+item.result.note
- ]);left.append(timing);
+  const startDetailText="申請開始："+dateText(item.start.value)+(item.start.certainty==="inferred"?"（依官方公告日推定）":"")+(!item.start.value&&item.end.value&&!item.personal?"（官方未載起日，甘特圖標示截止前 30 天準備提醒帶）":"")+"；"+item.start.note;
+  const timing=factSection("申請與結果時程",[
+   startDetailText,
+   "學生截止："+deadlineText(item)+"；"+item.end.note,
+   (item.result.certainty==="expected"?"預定":"")+"結果："+dateText(item.result.value)+"；"+item.result.note
+  ]);left.append(timing);
  if(raw) {
   const year=raw.eligibility.year_limit;
   const grade=year.mode==="range"?year.min+"–"+year.max+"年級，基準日"+dateText(year.assessed_at):labels.year[year.mode];
