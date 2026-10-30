@@ -64,7 +64,7 @@
         "OPENGSA_CEREBRAS_API_KEY",
         "CEREBRAS_API_KEY"
       ],
-      "inference_policy": "catalog_only_previous_402",
+      "inference_policy": "catalog_only_billing_unconfirmed",
       "documentation": "https://inference-docs.cerebras.ai/support/deprecation",
       "checked_on": "2026-10-30",
       "account_quota_verified": false,

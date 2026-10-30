@@ -338,6 +338,8 @@ def _extract_start_deadline(item):
     """從 candidate.schedule.application_start 或 pilot step action 擷取結構化申請起日；未知時回傳 unknown。"""
     if "schedule" in item and isinstance(item["schedule"].get("application_start"), dict):
         return item["schedule"]["application_start"]
+    if isinstance(item.get("start"), dict):
+        return item["start"]
     steps = item.get("steps", [])
     for step in steps:
         if step.get("actor") in STUDENT_ACTORS:
@@ -370,6 +372,8 @@ def evaluate_application_window(
     now_d, now_dt = parse_clock(now_taipei)
     steps = _extract_steps(item)
     start_dl = _extract_start_deadline(item)
+    if start_dl.get("certainty") in ("inferred", "tentative", "unknown"):
+        start_dl = {**start_dl, "kind":"unknown", "value":None, "note":"推定或暫定起日不可升級為已確認受理狀態"}
 
     student_steps = [s for s in steps if s.get("actor") in STUDENT_ACTORS]
     upper_steps = [s for s in steps if s.get("actor") in UPPER_LAYER_ACTORS]
@@ -821,10 +825,16 @@ def evaluate_eligibility(item, profile, as_of="2026-10-28"):
         }
     if student_degree == "unknown":
         missing.append("degree")
+    if not allowed_degrees:
+        missing.append("scheme_degree_rule")
 
     # 2. 學校檢查
     req_inst = elig.get("institution", "unknown")
     student_inst = profile.get("institution", "unknown")
+    if req_inst in ("NTU", "domestic_eligible_institution") and student_inst == "unknown":
+        missing.append("institution")
+    if req_inst == "unknown":
+        missing.append("scheme_institution_rule")
     if req_inst == "NTU" and student_inst not in ("NTU", "unknown"):
         return {
             "opportunity_id": item.get("id") or item.get("opportunity_id") or item.get("candidate_id"),
@@ -878,6 +888,8 @@ def evaluate_eligibility(item, profile, as_of="2026-10-28"):
     # 4. 博士候選人資格與取得時點檢查（如遠學要求截止日前通過候選人資格）
     cand_rule = elig.get("candidate", {"mode": "unknown"})
     if cand_rule.get("mode") == "required":
+        if profile.get("is_candidate") not in (True, False):
+            missing.append("is_candidate")
         if profile.get("is_candidate") is False:
             return {
                 "opportunity_id": item.get("id") or item.get("opportunity_id") or item.get("candidate_id"),
@@ -923,6 +935,11 @@ def evaluate_eligibility(item, profile, as_of="2026-10-28"):
     # 5. 國籍、在職與其他特定條件檢查（不補猜未知條件）
     identity_text = elig.get("identity", {}).get("text", "")
     nat_rule = elig.get("nationality", "unknown")
+    if nat_rule == "international_only":
+        if profile.get("nationality") == "roc":
+            return {"criteria":"not_met", "reasons":["本方案限外籍身分，須核對申請管道。"], "missing_information":[], "official_qualification_approved":False}
+        if profile.get("nationality", "unknown") == "unknown":
+            missing.append("nationality")
     requires_roc = nat_rule == "roc_only" or any(k in identity_text for k in ("本國籍", "中華民國國民", "中華民國國籍"))
     if requires_roc:
         if profile.get("nationality") in ("non_roc", "international"):
@@ -943,6 +960,11 @@ def evaluate_eligibility(item, profile, as_of="2026-10-28"):
             reasons.append("外籍博士生需確認是否為逕博生或依國際處管道分流，不一律排除。")
 
     emp_rule = elig.get("employment_status", "unknown")
+    if emp_rule == "unemployed_or_no_fulltime_pay":
+        if profile.get("has_fulltime_pay") is True:
+            return {"criteria":"not_met", "reasons":["不符未具專職全時有給工作條件。"], "missing_information":[], "official_qualification_approved":False}
+        if profile.get("has_fulltime_pay", "unknown") == "unknown":
+            missing.append("has_fulltime_pay")
     excludes_in_service = emp_rule in ("non_in_service_only", "unemployed_or_no_fulltime_pay") or any(
         k in identity_text for k in ("非在職", "不含在職", "在職、工作")
     )
@@ -997,6 +1019,8 @@ def evaluate_eligibility(item, profile, as_of="2026-10-28"):
             missing.append("existing_grants_for_compatibility")
 
     # 6. 若證據本身為 incomplete（如搜尋摘要），強制為 needs_manual_review
+    if elig.get("other_conditions") or elig.get("negated_conditions"):
+        missing.append("additional_conditions_manual_check")
     if item.get("evidence_status") == "incomplete":
         return {
             "opportunity_id": item.get("id") or item.get("opportunity_id") or item.get("candidate_id"),

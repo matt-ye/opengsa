@@ -89,7 +89,7 @@ def audit_provider(name, environ, probe=False, requester=request_json):
             daily = q.get("free_model_daily_requests") or {}
             row["quota"] = {k:daily[k] for k in ("used","limit","remaining") if isinstance(daily.get(k),(int,float))}
             row["observed_usage_usd"] = {k:q[k] for k in ("usage","usage_daily","usage_monthly") if isinstance(q.get(k),(int,float))}
-        row["account_free_entitlement_verified"] = bool(selected)
+        row["zero_price_model_verified"] = bool(selected)
     row["selected_model"] = selected
     if not probe:
         return row

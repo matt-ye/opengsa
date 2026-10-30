@@ -41,6 +41,8 @@ CHINESE_AMOUNTS = {
 }
 
 def _to_chinese_num(n):
+    if n == 0:
+        return '零'
     digits = ['', '一', '二', '三', '四', '五', '六', '七', '八', '九']
     if n < 10:
         return digits[n]
@@ -48,10 +50,17 @@ def _to_chinese_num(n):
         return '十'
     elif n < 20:
         return '十' + digits[n % 10]
-    elif n % 10 == 0:
+    elif n < 100 and n % 10 == 0:
         return digits[n // 10] + '十'
     elif n < 100:
         return digits[n // 10] + '十' + digits[n % 10]
+    elif n < 10000:
+        unit = 1000 if n >= 1000 else 100
+        left, right = divmod(n, unit)
+        return digits[left] + ('千' if unit == 1000 else '百') + (('零' if right < unit // 10 else '') + _to_chinese_num(right) if right else '')
+    if n < 100000000:
+        left, right = divmod(n, 10000)
+        return _to_chinese_num(left) + '萬' + (('零' if right < 1000 else '') + _to_chinese_num(right) if right else '')
     return str(n)
 
 
@@ -127,6 +136,9 @@ def _amount_tokens(amount):
         return []
     amt_int = int(amount)
     tokens = [str(amt_int), f"{amt_int:,}"]
+    chinese = _to_chinese_num(amt_int)
+    financial = chinese.translate(str.maketrans('一二三四五六七八九十百千','壹貳參肆伍陸柒捌玖拾佰仟'))
+    tokens.extend([chinese, chinese.replace('零',''), financial, financial.replace('零','')])
     if amt_int in CHINESE_AMOUNTS:
         tokens.extend(CHINESE_AMOUNTS[amt_int])
     if amt_int % 10000 == 0:
@@ -137,6 +149,27 @@ def _amount_tokens(amount):
         if wan == 2:
             tokens.append("兩萬")
     return list(dict.fromkeys(tokens))
+
+
+def date_supported(value, text):
+    """Require a year anchor as well as month/day; a recurring rule is not this year's call."""
+    d = parse_iso_date((value or "")[:10])
+    if d is None:
+        return False
+    compact = re.sub(r"\s+", "", text)
+    full = [t for t in _date_tokens(value) if str(d.year) in t or str(d.year - 1911) in t or (ROC_CHINESE_YEARS.get(d.year - 1911, "!") + "年") in t]
+    if any(re.search(r"(?<!\d)" + re.escape(t) + r"(?!\d)", compact) for t in full if not t.endswith("年")):
+        return True
+    years = {int(y) if len(y) == 4 else int(y) + 1911 for y in re.findall(r"(?<!\d)(20\d{2}|1\d{2})(?=年|[/.-]\d)", compact)}
+    for y, cy in ROC_CHINESE_YEARS.items():
+        if cy + "年" in compact:
+            years.add(y + 1911)
+    return years == {d.year} and any(re.search(r"(?<!\d)" + re.escape(t) + r"(?!\d)", compact) for t in _date_tokens(value) if "年" not in t)
+
+
+def amount_supported(amount, text):
+    numerals = "0-9,一二兩三四五六七八九零〇十百千萬壹貳參肆伍陸柒捌玖拾佰仟拾"
+    return any(re.search(f"(?<![{numerals}])" + re.escape(token) + f"(?![{numerals}])", text) for token in _amount_tokens(amount) if token)
 
 
 def strip_model_self_claims(candidate):
@@ -156,7 +189,7 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
     cand = strip_model_self_claims(candidate)
     schema = schema or load_candidate_schema()
     now_iso = now_iso or datetime.now(timezone.utc).isoformat(timespec="seconds")
-    errors = []
+    errors = list(cand.get("verification", {}).get("errors", [])) if in_memory_blocks is None else []
     warnings = []
 
     if "verification" not in cand or not isinstance(cand["verification"], dict):
@@ -206,11 +239,14 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
     ev_by_path = {}
     for entry in field_ev:
         ev_by_path.setdefault(entry.get("field_path", ""), []).append(entry)
-        if entry.get("evidence_mode") != ev_mode:
+        if entry.get("source") != meta.get("source_id") or entry.get("revision_id") != meta.get("revision_id"):
+            ev_errors.append(f"evidence_source_or_revision_mismatch:{entry.get('field_path')}")
+        entry_mode = entry.get("evidence_mode")
+        if entry_mode != ev_mode and not (ev_mode == "short_excerpt" and entry_mode == "hash_only"):
             ev_errors.append(f"evidence_mode_mismatch:{entry.get('field_path')}")
         if ev_mode == "hash_only" and entry.get("excerpt") is not None:
             ev_errors.append(f"hash_only_excerpt_leak:{entry.get('field_path')}")
-        if ev_mode == "short_excerpt":
+        if entry_mode == "short_excerpt":
             exc = entry.get("excerpt")
             if not exc:
                 ev_errors.append(f"missing_short_excerpt:{entry.get('field_path')}")
@@ -238,10 +274,10 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
             blk_sha = entry.get("source_block_sha256")
             if blk_sha and blk_sha not in valid_hashes and evidence_digest(block_text) != blk_sha:
                 ev_errors.append(f"source_block_sha256_mismatch:{entry.get('field_path')}")
-            if ev_mode == "short_excerpt" and entry.get("excerpt"):
+            if entry.get("evidence_mode") == "short_excerpt" and entry.get("excerpt"):
                 if normalized(entry["excerpt"]) not in block_text:
                     ev_errors.append(f"hallucinated_excerpt_not_in_block:{entry.get('field_path')}")
-            elif ev_mode == "hash_only":
+            elif entry.get("evidence_mode") == "hash_only":
                 sha = entry.get("excerpt_sha256")
                 if sha not in valid_hashes and evidence_digest(block_text) != sha and not entry.get("_verified_in_memory_span"):
                     matched = any(
@@ -318,8 +354,7 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
             for amt_field in ("amount_min", "amount_max"):
                 amt = b_item.get(amt_field)
                 if amt is not None:
-                    tokens = _amount_tokens(amt)
-                    if not any(tok in combined for tok in tokens):
+                    if not amount_supported(amt, combined):
                         ev_errors.append(f"hallucinated_amount_not_in_source:{path_key}:{amt}")
 
     if cand.get("compatibility", {}).get("mode") not in (None, "unknown"):
@@ -329,11 +364,12 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
     app_start_field = cand.get("schedule", {}).get("application_start", {})
     if app_start_field.get("kind") in ("date", "datetime") and app_start_field.get("value"):
         matching_app_ev = ev_by_path.get("schedule.application_start") or []
-        if matching_app_ev and in_memory_blocks is not None:
+        if not matching_app_ev:
+            ev_errors.append("missing_evidence:schedule.application_start")
+        elif in_memory_blocks is not None:
             locs = [e["locator"] for e in matching_app_ev]
             combined = " ".join(block_map.get(loc, "") for loc in locs)
-            dtokens = _date_tokens(app_start_field["value"])
-            if not any(tok in combined.replace(" ", "") for tok in dtokens):
+            if not date_supported(app_start_field["value"], combined):
                 ev_errors.append(f"hallucinated_date_not_in_source:schedule.application_start:{app_start_field['value']}")
 
     for idx, step in enumerate(steps):
@@ -346,11 +382,20 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
             elif in_memory_blocks is not None and dl.get("kind") in ("date", "datetime") and dl.get("value"):
                 locs = [e["locator"] for e in matching_ev]
                 combined = " ".join(block_map.get(l, "") for l in locs)
-                dtokens = _date_tokens(dl["value"])
-                if not any(tok in combined.replace(" ", "") for tok in dtokens):
+                if not date_supported(dl["value"], combined):
                     ev_errors.append(f"hallucinated_date_not_in_source:{path_key}:{dl['value']}")
                 if dl.get("kind") == "datetime" and not TIME_EVIDENCE_RE.search(combined):
                     ev_errors.append(f"invented_time_for_date_only_source:{path_key}:{dl['value']}")
+
+    result_date = cand.get("schedule", {}).get("result_date", {})
+    if result_date.get("value"):
+        result_ev = ev_by_path.get("schedule.result_date", [])
+        if not result_ev or not result_date.get("refs"):
+            ev_errors.append("missing_evidence:schedule.result_date")
+        elif in_memory_blocks is not None:
+            result_text = " ".join(block_map.get(e["locator"], "") for e in result_ev)
+            if result_date.get("kind") in ("date", "datetime") and not date_supported(result_date["value"], result_text):
+                ev_errors.append("unsupported_result_date")
 
     pver = cand.get("policy_version", {})
     if any(pver.get(k) for k in ("promulgated_on", "amended_on", "effective_from")):
@@ -563,7 +608,7 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
     cand["verification"]["errors"] = errors
     cand["verification"]["warnings"] = warnings
 
-    if is_stub and not errors:
+    if (is_stub or in_memory_blocks is None) and not errors:
         cand["verification"]["status"] = "needs_context"
     elif errors:
         cand["verification"]["status"] = "failed_automated_checks"
@@ -607,11 +652,20 @@ def verify_bundle(bundle, in_memory_blocks_by_source=None, pilot_data=None):
         pilot_by_id = {opp["id"]: opp for opp in pilot_data["opportunities"]}
 
     verified_list = []
+    excerpt_totals = {}
     for cand in result.get("candidates", []):
         sid = cand.get("source_metadata", {}).get("source_id")
         url = cand.get("source_metadata", {}).get("url")
         blocks = in_memory_blocks_by_source.get(url) or in_memory_blocks_by_source.get(sid)
         verified_list.append(verify_candidate(cand, in_memory_blocks=blocks, pilot_by_id=pilot_by_id))
+        revision = (sid, cand.get("source_metadata", {}).get("revision_id"))
+        excerpt_totals[revision] = excerpt_totals.get(revision, 0) + sum(len(e.get("excerpt") or "") for e in cand.get("field_evidence", [])) + sum(len(e.get("quote") or "") for e in cand.get("verification", {}).get("audit_findings", []))
+    for cand in verified_list:
+        meta = cand.get("source_metadata", {})
+        if excerpt_totals[(meta.get("source_id"), meta.get("revision_id"))] > 120:
+            cand["verification"]["errors"].append("document_excerpt_budget_exceeded")
+            cand["verification"]["status"] = "failed_automated_checks"
+            cand["review"]["promotion_ready"] = False
     result["candidates"] = verified_list
 
     schema = load_candidate_schema()

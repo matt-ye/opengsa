@@ -27,8 +27,8 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from scripts.evaluate_deadlines import evaluate_application_window, parse_iso_date, parse_taipei_datetime
-from scripts.scan_sources import CONTACT, SKIP, Fetcher, ScanError, html_document, normalized, pdf_document
+from scripts.evaluate_deadlines import evaluate_application_window, parse_iso_date, parse_taipei_datetime, taipei_today
+from scripts.scan_sources import CONTACT, SKIP, Fetcher, ScanError, digest, html_document, normalized, pdf_document
 from scripts.verify_candidates import digest_text, evidence_digest, verify_candidate
 
 EXTRACTOR_VERSION = "extractor-1.1.0"
@@ -88,7 +88,7 @@ _LLM_SCHEMA_VALIDATOR = Draft202012Validator(LLM_RESPONSE_SCHEMA)
 _CHINESE_DIGITS = {
     "零": 0, "〇": 0,
     "一": 1, "壹": 1,
-    "二": 2, "貳": 2, "兩": 2,
+    "二": 2, "貳": 2, "兩": 2, "兩": 2,
     "三": 3, "參": 3, "叁": 3,
     "四": 4, "肆": 4,
     "五": 5, "伍": 5,
@@ -428,7 +428,7 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
 
         blocks_hash = hashlib.sha256(json.dumps(sanitized, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
         cache_key = hashlib.sha256(
-            f"{self.model}|{PROMPT_VERSION}|{active_mode}|{draft_candidate.get('program_key')}|{blocks_hash}".encode("utf-8")
+            f"{self.base_url}|{self.model}|{PROMPT_VERSION}|{active_mode}|{draft_candidate.get('program_key')}|{blocks_hash}".encode("utf-8")
         ).hexdigest()
 
         if self.use_cache and self.cache_dir:
@@ -457,10 +457,15 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
         }
         if "mistral.ai" in self.base_url:
             payload["response_format"] = {"type": "json_object"}
+        if "groq.com" in self.base_url:
+            payload["reasoning_effort"] = "none"
+        if "openrouter.ai" in self.base_url:
+            payload["reasoning"] = {"effort":"none","exclude":True}
+            payload["response_format"] = {"type":"json_object"}
 
         headers = {
             "Content-Type": "application/json",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) OpenGSA-Extractor/1.1",
+            "User-Agent": "OpenGSA/0.2 (+https://github.com/matt-ye/opengsa)",
         }
         if api_key:
             headers["Authorization"] = f"Bearer {api_key}"
@@ -483,15 +488,8 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
             elapsed_ms = round((time.perf_counter() - t0) * 1000, 2)
             self.latencies_ms.append(elapsed_ms)
             if err.code == 429:
-                time.sleep(2.5)
-                try:
-                    t1 = time.perf_counter()
-                    with urllib.request.urlopen(req, timeout=self.timeout) as resp:
-                        body = json.loads(resp.read().decode("utf-8"))
-                    self.latencies_ms.append(round((time.perf_counter() - t1) * 1000, 2))
-                except Exception:
-                    self.rate_limited_429 = True
-                    return {"_skipped_reason": "http_429_rate_limited"}
+                self.rate_limited_429 = True
+                return {"_skipped_reason":"http_429_deferred_no_retry"}
             elif err.code in (401, 402, 403):
                 self.rate_limited_429 = True
                 return {"_skipped_reason": f"http_{err.code}_rate_limited"}
@@ -540,48 +538,9 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
         return self.run_dual_track(source, blocks, draft_candidate, mode=self.mode)
 
 
-PROVIDER_DEFAULTS = {
-    "nvidia": {
-        "base_url": "https://integrate.api.nvidia.com/v1",
-        "default_model": "meta/llama-3.3-70b-instruct",
-        "api_key_envs": ["NVIDIA_API_KEY", "OPENGSA_NVIDIA_API_KEY"],
-    },
-    "groq": {
-        "base_url": "https://api.groq.com/openai/v1",
-        "default_model": "llama-3.3-70b-versatile",
-        "api_key_envs": ["GROQ_API_KEY", "OPENGSA_GROQ_API_KEY"],
-    },
-    "sambanova": {
-        "base_url": "https://api.sambanova.ai/v1",
-        "default_model": "Meta-Llama-3.3-70B-Instruct",
-        "api_key_envs": ["SAMBANOVA_API_KEY", "OPENGSA_SAMBANOVA_API_KEY"],
-    },
-    "cerebras": {
-        "base_url": "https://api.cerebras.ai/v1",
-        "default_model": "llama-3.3-70b",
-        "api_key_envs": ["CEREBRAS_API_KEY", "OPENGSA_CEREBRAS_API_KEY"],
-    },
-    "openrouter": {
-        "base_url": "https://openrouter.ai/api/v1",
-        "default_model": "meta-llama/llama-3.3-70b-instruct:free",
-        "api_key_envs": ["OPENROUTER_API_KEY", "OPENGSA_OPENROUTER_API_KEY"],
-    },
-    "siliconflow": {
-        "base_url": "https://api.siliconflow.cn/v1",
-        "default_model": "Qwen/Qwen2.5-7B-Instruct",
-        "api_key_envs": ["SILICONFLOW_API_KEY", "OPENGSA_SILICONFLOW_API_KEY"],
-    },
-    "mistral": {
-        "base_url": "https://api.mistral.ai/v1",
-        "default_model": "mistral-small-latest",
-        "api_key_envs": ["MISTRAL_API_KEY", "OPENGSA_MISTRAL_API_KEY"],
-    },
-    "github": {
-        "base_url": "https://models.inference.ai.azure.com",
-        "default_model": "gpt-4o-mini",
-        "api_key_envs": ["GITHUB_TOKEN", "OPENGSA_GH_MODELS_PAT"],
-    },
-}
+from scripts.providers import PROVIDERS, provider_settings
+
+PROVIDER_DEFAULTS = {name: {"base_url":p["base_url"], "default_model":p["model"], "api_key_envs":p["key_envs"]} for name,p in PROVIDERS.items()}
 
 
 def create_model_adapter_from_env():
@@ -589,22 +548,19 @@ def create_model_adapter_from_env():
     mode = os.environ.get("OPENGSA_MODEL_MODE", "off").strip().lower()
     if mode not in ("extract", "audit", "both"):
         return DisabledModelAdapter()
-    provider = os.environ.get("OPENGSA_MODEL_PROVIDER", "").strip().lower()
-    p_info = PROVIDER_DEFAULTS.get(provider, {})
-
-    base_url = os.environ.get("OPENGSA_MODEL_BASE_URL", "").strip() or p_info.get("base_url", "")
-    model_name = os.environ.get("OPENGSA_MODEL_NAME", "").strip() or p_info.get("default_model", "")
-    api_key_env = os.environ.get("OPENGSA_MODEL_API_KEY_ENV", "").strip()
-    if not api_key_env:
-        candidate_envs = p_info.get("api_key_envs", ["OPENGSA_MODEL_API_KEY", "OPENAI_API_KEY"])
-        for candidate in candidate_envs:
-            if candidate in os.environ and os.environ[candidate].strip():
-                api_key_env = candidate
-                break
-        if not api_key_env:
-            api_key_env = candidate_envs[0]
-    if not base_url or not model_name:
+    provider = os.environ.get("OPENGSA_MODEL_PROVIDER", "groq").strip().lower()
+    try:
+        base_url, model_name, api_key_env = provider_settings(provider, os.environ)
+    except ValueError:
         return DisabledModelAdapter()
+    # Metadata availability is not proof of a free inference entitlement.
+    if PROVIDERS[provider]["inference_policy"] not in ("user_reported_free", "zero_price_free_only"):
+        return DisabledModelAdapter()
+    if provider == "openrouter":
+        from scripts.audit_providers import request_json, model_catalog, zero_price
+        status, catalog, _ = request_json(base_url + "/models", os.environ.get(api_key_env, ""))
+        if status != 200 or not any(m.get("id") == model_name and zero_price(m) for m in model_catalog(catalog)):
+            return DisabledModelAdapter()
     return OpenAICompatibleAdapter(
         base_url=base_url,
         model=model_name,
@@ -658,6 +614,24 @@ def make_field_evidence(
     if prompt_version is not None:
         ev["prompt_version"] = prompt_version
     return ev
+
+
+def limit_evidence_excerpts(cand, remaining):
+    """One 120-character quote budget per source revision, shared across branches."""
+    for entry in cand.get("field_evidence", []):
+        quote = entry.get("excerpt") or ""
+        if quote and len(quote) <= remaining:
+            remaining -= len(quote)
+        elif entry.get("evidence_mode") == "short_excerpt":
+            entry.update(evidence_mode="hash_only", excerpt=None,
+                         excerpt_sha256=entry["source_block_sha256"])
+    for entry in cand.get("verification", {}).get("audit_findings", []):
+        quote = entry.get("quote") or ""
+        if len(quote) <= remaining and not CONTACT.search(quote) and not SKIP.search(quote):
+            remaining -= len(quote)
+        else:
+            entry["quote"] = None
+    return remaining
 
 
 def parse_roc_or_iso_date_from_text(text, default_roc_year=None):
@@ -761,7 +735,7 @@ def parse_amount_from_text(text):
 
     # 1. 期間區間總額（如：補助七至十二個月，金額為新臺幣伍拾貳萬伍仟至玖拾萬元，或 伍拾貳萬伍仟元以上、玖拾萬元以下）
     m_range = re.search(
-        r"(?:新[臺台]幣(?:（下同）|\(下同\))?)?\s*([0-9,，]+|[一二三四五六七八九零〇壹貳參肆伍陸柒捌玖十拾拾百佰千仟萬]+)\s*(?:元)?\s*(?:至|～|~|-|到|以上[、，,\s]*(?:新[臺台]幣)?)\s*([0-9,，]+|[一二三四五六七八九零〇壹貳參肆伍陸柒捌玖十拾拾百佰千仟萬]+)\s*元(?:以下)?",
+        r"(?:新[臺台]幣(?:（下同）|\(下同\))?)?\s*([0-9,，]+|[一二兩三四五六七八九零〇壹貳參肆伍陸柒捌玖十拾拾百佰千仟萬]+)\s*(?:元)?\s*(?:至|～|~|-|到|以上[、，,\s]*(?:新[臺台]幣)?)\s*([0-9,，]+|[一二兩三四五六七八九零〇壹貳參肆伍陸柒捌玖十拾拾百佰千仟萬]+)\s*元(?:以下)?",
         clean,
     )
     if m_range:
@@ -790,7 +764,7 @@ def parse_amount_from_text(text):
 
     # 2. 每月固定金額（如：每名每月四萬元、每月頒予獲獎學生獎學金新臺幣（下同）四萬元、每月新臺幣40,000元、每月肆萬元、至少2萬元）
     m_monthly = re.search(
-        r"每月(?:頒\s*予\s*獲\s*獎\s*學\s*生|頒\s*發|核\s*給|發\s*給|支\s*領|獎\s*助|獎\s*勵|獎\s*學\s*金|新\s*[臺台]\s*幣|（下同）|\(下同\)|至少|至多|\s)*([0-9,，]+(?:\.\d+)?\s*萬?|[一二三四五六七八九零〇壹貳參肆伍陸柒捌玖十拾拾百佰千仟萬]+)\s*元",
+        r"每月(?:頒\s*予\s*獲\s*獎\s*學\s*生|頒\s*發|核\s*給|發\s*給|支\s*領|獎\s*助|獎\s*勵|獎\s*學\s*金|新\s*[臺台]\s*幣|（下同）|\(下同\)|至少|至多|\s)*([0-9,，]+(?:\.\d+)?\s*萬?|[一二兩三四五六七八九零〇壹貳參肆伍陸柒捌玖十拾拾百佰千仟萬]+)\s*元",
         clean,
     )
     if m_monthly:
@@ -809,7 +783,7 @@ def parse_amount_from_text(text):
 
     # 3. 單次／每名固定獎助金額（如：獎學金10萬元、新臺幣100,000元、每名壹拾萬元）
     m_lump = re.search(
-        r"(?:獎學金|獎勵金|補助|每名|新[臺台]幣)\s*([0-9,，]+(?:\.\d+)?\s*萬?|[一二三四五六七八九零〇壹貳參肆伍陸柒捌玖十拾拾百佰千仟萬]+)\s*元",
+        r"(?:獎學金|獎勵金|補助|每名|新[臺台]幣)\s*([0-9,，]+(?:\.\d+)?\s*萬?|[一二兩三四五六七八九零〇壹貳參肆伍陸柒捌玖十拾拾百佰千仟萬]+)\s*元",
         clean,
     )
     if m_lump and "每月" not in clean:
@@ -826,6 +800,13 @@ def parse_amount_from_text(text):
                 "tax_note": "免稅" if "免稅" in clean else None,
             }
 
+    # Visible monetary clause, including headings between 每月 and the number.
+    money = re.search(r"([0-9,]+|[一二兩三四五六七八九零〇壹貳參肆伍陸柒捌玖十拾拾百佰千仟萬]+)元", clean)
+    if money:
+        amount = parse_chinese_or_arabic_int(money.group(1).replace("兩", "二"))
+        if amount and amount >= 1000:
+            unit = "per_month" if "每月" in clean else ("per_year" if any(w in clean for w in ("每年", "每學年", "一年")) else "unknown")
+            return {"amount_min":amount,"amount_max":amount,"currency":"TWD","unit":unit,"basis":"fixed","duration_months_min":None,"duration_months_max":None,"tax_note":None}
     return None
 
 
@@ -837,6 +818,10 @@ def _format_benefit_summary(item):
     dmin = item.get("duration_months_min")
     dmax = item.get("duration_months_max")
     branch = item.get("branch_or_tier")
+
+    if amin is None or amax is None:
+        value = amin if amin is not None else amax
+        return f"{'至少' if amax is None else '至多'}新臺幣{value:,}元（{unit}）；適用身分與期間待核。"
 
     if unit == "total_range" or amin != amax:
         dur_prefix = f"{branch or '補助'}{dmin}–{dmax}個月，" if (dmin and dmax) else (f"{branch}：" if branch else "")
@@ -1080,8 +1065,8 @@ def _populate_common_extractions(cand, blocks, source_id, revision_id, evidence_
     # 1. 否定條件與在職狀態
     for b in blocks:
         txt = normalized(b["text"])
-        if any(k in txt for k in ("非在職", "不含在職", "在職生不得", "專職工作", "專職全時", "以在職生身分")) or ("不含" in txt and "在職" in txt):
-            elig["employment_status"] = "non_in_service_only"
+        if any(k in txt for k in ("非在職", "不含在職", "在職生不得", "專職工作", "專職全時", "非全時有給職", "以在職生身分")) or ("不含" in txt and "在職" in txt):
+            elig["employment_status"] = "unemployed_or_no_fulltime_pay" if any(w in txt for w in ("專職全時", "非全時有給職")) else "non_in_service_only"
             ref = {"source": source_id, "locator": b["locator"]}
             if not any(nc["field"] == "employment_status" for nc in elig["negated_conditions"]):
                 elig["negated_conditions"].append(
@@ -1150,7 +1135,8 @@ def _populate_common_extractions(cand, blocks, source_id, revision_id, evidence_
     # 4. 博士候選人資格
     for b in blocks:
         txt = normalized(b["text"])
-        if "候選人" in txt:
+        if (re.search(r"博士候選人|通過.{0,8}資格考|取得.{0,8}候選人資格", txt)
+                and not re.search(r"不(?:需|須|限)|無(?:需|須)|未(?:通過|取得)|(?:給付|上限|津貼|支給)", txt)):
             ref = {"source": source_id, "locator": b["locator"]}
             elig["candidate"] = {
                 "mode": "required",
@@ -1922,926 +1908,75 @@ def _extract_faos_conference(source, blocks, revision_id, observed_at, url, as_o
 
 
 
-def _extract_nstc_abroad_dragon(source, blocks, revision_id, observed_at, url, as_of, evidence_mode):
-    """國科會補助博士生赴國外研究作業要點（千里馬計畫）：每年6/1至7/31申請，核定7-12個月，每年90萬元。"""
-    first_block = blocks[0]
-    first_ref = {"source": source["id"], "locator": first_block["locator"]}
-    dl_block = next((b for b in blocks if any(k in b["text"] for k in ("七月", "七月三十一日", "申請期間", "截止"))), first_block)
-    dl_ref = {"source": source["id"], "locator": dl_block["locator"]}
-    money_block = next((b for b in blocks if any(k in b["text"] for k in ("九十萬元", "900,000", "補助費用", "研究費"))), first_block)
-    money_ref = {"source": source["id"], "locator": money_block["locator"]}
+POLICY_SOURCES = {
+    "nstc-abroad-dragon-rule": ("nstc-abroad-dragon", "nstc-abroad-dragon-policy", "overseas_research", "travel_grant", "nationwide", "institution"),
+    "nstc-assistant-rule": ("nstc-assistant-rule", "nstc-assistant-policy", "indirect_support", "employment_support", "nationwide", "institution"),
+    "ntu-ta-policy": ("ntu-ta-policy", "ntu-ta-policy", "indirect_support", "employment_support", "ntu", "unit"),
+    "ntu-ord-assistant-limit": ("ntu-ord-assistant-limit", "ntu-ord-assistant-limit-policy", "indirect_support", "employment_support", "ntu", "unit"),
+    "sinica-phd-fellowship": ("sinica-phd-fellowship", "sinica-phd-fellowship-policy", "phd_research", "scholarship", "nationwide", "student"),
+    "tsmc-phd-fellowship": ("tsmc-phd-fellowship", "tsmc-phd-fellowship-policy", "phd_research", "scholarship", "nationwide", "student"),
+    "ntu-eecs-scholarship": ("ntu-eecs-scholarship", "ntu-eecs-scholarship-policy", "phd_research", "scholarship", "ntu", "student"),
+    "ntu-coe-scholarship": ("ntu-coe-scholarship", "ntu-coe-scholarship-policy", "phd_research", "scholarship", "ntu", "student"),
+}
 
-    cand_id = f"cand-nstc-abroad-dragon-{revision_id[:8]}"
+
+def _extract_policy(source, blocks, revision_id, observed_at, url, as_of, evidence_mode):
+    """Extract only visible claims. Registry identity is not evidence for a date or award amount."""
+    program, opportunity, category, resource, scope, actor = POLICY_SOURCES[source["id"]]
     cand = _base_candidate_template(
-        candidate_id=cand_id,
-        opportunity_id="nstc-abroad-dragon-policy",
-        program_key="nstc-abroad-dragon",
-        title="國科會補助博士生赴國外研究作業要點（千里馬計畫）",
-        category="overseas_research",
-        resource_kind="travel_grant",
-        scope="nationwide",
-        cycle={
-            "kind": "calendar_year",
-            "label": "年度常態受理批次（每年6/1至7/31）",
-            "year_system": "none",
-            "year": None,
-            "term_or_round": "年度批次",
-            "branch": "千里馬",
-        },
-        source_id=source["id"],
-        revision_id=revision_id,
-        url=url,
-        observed_at=observed_at,
-        evidence_mode=evidence_mode,
-        as_of=as_of,
+        candidate_id=f"cand-{source['id']}-{revision_id[:8]}", opportunity_id=opportunity,
+        program_key=program, title=source.get("title", source["id"]), category=category,
+        resource_kind=resource, scope=scope,
+        cycle={"kind":"policy_snapshot", "label":"制度快照／當期年度待核", "year_system":"none", "year":None, "term_or_round":None, "branch":None},
+        source_id=source["id"], revision_id=revision_id, url=url, observed_at=observed_at,
+        evidence_mode=evidence_mode, as_of=as_of,
     )
-    cand["participants"]["applicant"] = "institution"
-    cand["participants"]["beneficiary"] = "student"
-    cand["eligibility"]["degrees"] = ["phd"]
-    cand["eligibility"]["nationality"] = "roc_only"
-    cand["eligibility"]["candidate"] = {"mode": "not_required", "assessed_at": None, "refs": [first_ref]}
-    cand["eligibility"]["negated_conditions"] = [
-        {"field": "nationality", "operator": "exclude", "text": "排除非中華民國國民", "refs": [first_ref]},
-        {"field": "prior_funding", "operator": "exclude", "text": "曾領取本補助者不得再申請", "refs": [first_ref]},
-    ]
-    id_block = _find_identity_block(blocks, first_block)
-    _set_identity_with_evidence(
-        cand,
-        "國內設籍中華民國國民，博士班在學一年以上；須經申請機構推薦並於畢業前完成研究，曾受領本補助者不得再申請",
-        id_block,
-        source["id"],
-        revision_id,
-        evidence_mode,
-    )
-    cand["organizations"] = {
-        "funder": {"text": "國家科學及技術委員會", "refs": [first_ref]},
-        "announcer": {"text": "國家科學及技術委員會", "refs": [first_ref]},
-        "receiver": {"text": "由申請機構彙整後於每年七月三十一日前向國科會提出", "refs": [dl_ref]},
-    }
-    b_item = {
-        "branch_or_tier": "千里馬赴外研究補助",
-        "amount_min": 525000,
-        "amount_max": 900000,
-        "currency": "TWD",
-        "unit": "total_range",
-        "basis": "range",
-        "duration_months_min": 7,
-        "duration_months_max": 12,
-        "tax_note": "依所得稅法規定辦理",
-        "refs": [money_ref],
-    }
-    cand["benefit"]["items"] = [b_item]
-    cand["benefit"]["summary"] = "以一年新臺幣900,000元按規定研究日數核算（7至12個月，約52.5萬至90萬元），非一律領足一年。"
-    cand["benefit"]["refs"] = [money_ref]
+    cand["participants"]["applicant"] = actor
+    identity = _find_identity_block(blocks)
+    first_ref = {"source":source["id"],"locator":identity["locator"]}
+    _set_identity_with_evidence(cand, "身分條件請至來源定位核對", identity, source["id"], revision_id, evidence_mode)
     _populate_common_extractions(cand, blocks, source["id"], revision_id, evidence_mode)
-
-    cand["compatibility"]["mode"] = "conditional"
-    cand["compatibility"]["note"] = "補助期間不得重複支領政府其他赴國外研修公費、相關獎助或出席國際學術會議費用；須揭露其他資助。"
-    cand["compatibility"]["refs"] = [first_ref]
-
-    cand["schedule"]["application_start"] = {
-        "kind": "date",
-        "value": "2026-06-01",
-        "timezone": "Asia/Taipei",
-        "note": "每年6月1日起國科會線上系統開放受理申請",
-    }
-    cand["schedule"]["steps"] = [
-        {
-            "actor": "student",
-            "action": "於國科會線上系統填寫申請書並上傳國外機構邀請函、研修計畫等文件",
-            "deadline": {
-                "kind": "unknown",
-                "value": None,
-                "timezone": "Asia/Taipei",
-                "note": "每年6/1至7/31開放；個別學校學生校內收件截止通常早於7/31，須依校內公告核對。",
-            },
-            "refs": [dl_ref],
-        },
-        {
-            "actor": "institution",
-            "action": "申請機構確認線上送出並備函檢送名冊至國科會",
-            "deadline": {
-                "kind": "date",
-                "value": "2026-07-31",
-                "timezone": "Asia/Taipei",
-                "note": "每年7/31為機構線上申請截止日，名冊至遲8/10備函送達；遇例假日順延。",
-            },
-            "refs": [dl_ref],
-        },
-    ]
-    cand["field_evidence"].append(
-        make_field_evidence("eligibility.nationality", source["id"], revision_id, first_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("eligibility.candidate", source["id"], revision_id, first_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("benefit.items/0", source["id"], revision_id, money_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("compatibility", source["id"], revision_id, first_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("schedule.application_start", source["id"], revision_id, dl_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("schedule.steps/1/deadline", source["id"], revision_id, dl_block, evidence_mode)
-    )
-    cand["gaps_and_conflicts"]["missing_fields"] = [
-        "schedule.steps/0/deadline",
-        "institution_internal_deadline",
-    ]
-    return [cand]
-
-
-def _extract_nstc_assistant_rule(source, blocks, revision_id, observed_at, url, as_of, evidence_mode):
-    """國科會專題研究計畫研究人力約用注意事項：兼任助理底線6,000元，博士增核10,000元（至少16,000元）。"""
-    first_block = blocks[0]
-    first_ref = {"source": source["id"], "locator": first_block["locator"]}
-    money_block = next((b for b in blocks if any(k in b["text"] for k in ("六千元", "6,000", "一萬六千元", "增核費用", "研究獎助生"))), first_block)
-    money_ref = {"source": source["id"], "locator": money_block["locator"]}
-
-    cand_id = f"cand-nstc-assistant-policy-{revision_id[:8]}"
-    cand = _base_candidate_template(
-        candidate_id=cand_id,
-        opportunity_id="nstc-assistant-policy",
-        program_key="nstc-assistant-policy",
-        title="國科會專題研究計畫研究人力給付標準與約用規範",
-        category="indirect_support",
-        resource_kind="employment_support",
-        scope="nationwide",
-        cycle={
-            "kind": "policy_snapshot",
-            "label": "現行研究人力約用規範快照",
-            "year_system": "none",
-            "year": None,
-            "term_or_round": None,
-            "branch": "研究人力給付標準",
-        },
-        source_id=source["id"],
-        revision_id=revision_id,
-        url=url,
-        observed_at=observed_at,
-        evidence_mode=evidence_mode,
-        as_of=as_of,
-    )
-    cand["participants"]["applicant"] = "unit"
-    cand["participants"]["beneficiary"] = "student"
-    cand["participants"]["payee"] = "student"
-    cand["eligibility"]["degrees"] = ["master", "phd"]
-    id_block = _find_identity_block(blocks, first_block)
-    _set_identity_with_evidence(
-        cand,
-        "專題研究計畫之專任人員、博士後研究人員、學生兼任人員（含研究助理與研究獎助生）；依身分與計畫性質約用",
-        id_block,
-        source["id"],
-        revision_id,
-        evidence_mode,
-    )
-    cand["organizations"] = {
-        "funder": {"text": "國家科學及技術委員會專題研究計畫經費", "refs": [first_ref]},
-        "announcer": {"text": "國家科學及技術委員會", "refs": [first_ref]},
-        "receiver": {"text": "由計畫執行機構與計畫主持人依規定約用並支給", "refs": [first_ref]},
-    }
-    b1 = {
-        "branch_or_tier": "學生兼任人員一般保底",
-        "amount_min": 6000,
-        "amount_max": None,
-        "currency": "TWD",
-        "unit": "per_month",
-        "basis": "minimum",
-        "duration_months_min": None,
-        "duration_months_max": None,
-        "tax_note": "依稅法與所得性質核處",
-        "refs": [money_ref],
-    }
-    b2 = {
-        "branch_or_tier": "領有增核費用之博士生兼任助理",
-        "amount_min": 16000,
-        "amount_max": None,
-        "currency": "TWD",
-        "unit": "per_month",
-        "basis": "minimum",
-        "duration_months_min": None,
-        "duration_months_max": None,
-        "tax_note": "專款專用",
-        "refs": [money_ref],
-    }
-    cand["benefit"]["items"] = [b1, b2]
-    cand["benefit"]["summary"] = "兼任助理與獎助生每月至少6,000元；領有增核費用之博士生兼任助理每月至少16,000元；專任助理依學歷最低30,400至41,500元起。"
-    cand["benefit"]["refs"] = [money_ref]
-    _populate_common_extractions(cand, blocks, source["id"], revision_id, evidence_mode)
-
-    cand["compatibility"]["mode"] = "conditional"
-    cand["compatibility"]["note"] = "學生兼任人員得兼任不同計畫但須核對工時與各校上限；領有博士增核者不得在校外從事專職全時有給工作。"
-    cand["compatibility"]["refs"] = [first_ref]
-
-    cand["schedule"]["steps"] = [
-        {
-            "actor": "unit",
-            "action": "執行機構與計畫主持人依核定清單及聘約於計畫執行期間約用並按月支給",
-            "deadline": {
-                "kind": "unknown",
-                "value": None,
-                "timezone": "Asia/Taipei",
-                "note": "隨個別專題計畫期程執行，非全方案單一截止日。",
-            },
-            "refs": [first_ref],
-        }
-    ]
-    cand["field_evidence"].append(
-        make_field_evidence("benefit.items/0", source["id"], revision_id, money_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("benefit.items/1", source["id"], revision_id, money_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("compatibility", source["id"], revision_id, first_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("benefit.items/2", source["id"], revision_id, money_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("benefit.items/1", source["id"], revision_id, money_block, evidence_mode)
-    )
-    cand["gaps_and_conflicts"]["missing_fields"] = [
-        "individual_project_appointment_dates",
-    ]
-    return [cand]
-
-
-def _extract_ntu_ta_policy(source, blocks, revision_id, observed_at, url, as_of, evidence_mode):
-    """臺大教務處教學助理（TA）制度獎勵金實施辦法：博8k-10k，碩6k-7.5k，採 hash_only 模式。"""
-    first_block = blocks[0]
-    first_ref = {"source": source["id"], "locator": first_block["locator"]}
-    money_block = next((b for b in blocks if any(k in b["text"] for k in ("八千", "8,000", "獎勵金", "教學助理"))), first_block)
-    money_ref = {"source": source["id"], "locator": money_block["locator"]}
-
-    cand_id = f"cand-ntu-ta-policy-{revision_id[:8]}"
-    cand = _base_candidate_template(
-        candidate_id=cand_id,
-        opportunity_id="ntu-ta-policy",
-        program_key="ntu-ta-policy",
-        title="臺大教務處教學助理（TA）制度獎勵金實施辦法",
-        category="indirect_support",
-        resource_kind="employment_support",
-        scope="ntu",
-        cycle={
-            "kind": "policy_snapshot",
-            "label": "教務處TA制度辦法快照",
-            "year_system": "none",
-            "year": None,
-            "term_or_round": None,
-            "branch": "教學助理獎勵金",
-        },
-        source_id=source["id"],
-        revision_id=revision_id,
-        url=url,
-        observed_at=observed_at,
-        evidence_mode="hash_only",
-        as_of=as_of,
-    )
-    cand["participants"]["applicant"] = "unit"
-    cand["participants"]["beneficiary"] = "student"
-    cand["participants"]["payee"] = "student"
-    cand["eligibility"]["degrees"] = ["master", "phd"]
-    cand["eligibility"]["other_conditions"] = [
-        {"text": "在校學生通過教學助理認證訓練，每學期原則最多兼任兩門課，不得兼任修讀課程助理", "refs": [first_ref]}
-    ]
-    id_block = _find_identity_block(blocks, first_block)
-    _set_identity_with_evidence(
-        cand,
-        "國立臺灣大學在學學生，符合教學助理資格與訓練，不得同時修讀其擔任助理之課程",
-        id_block,
-        source["id"],
-        revision_id,
-        "hash_only",
-    )
-    cand["organizations"] = {
-        "funder": {"text": "臺大教務處相關課程補助經費", "refs": [first_ref]},
-        "announcer": {"text": "國立臺灣大學教務處", "refs": [first_ref]},
-        "receiver": {"text": "開課單位於規定時程以單位帳號申請，經審核核定後聘用助理", "refs": [first_ref]},
-    }
-    b1 = {
-        "branch_or_tier": "博士班一般課程教學助理",
-        "amount_min": 8000,
-        "amount_max": 10000,
-        "currency": "TWD",
-        "unit": "per_month",
-        "basis": "range",
-        "duration_months_min": None,
-        "duration_months_max": None,
-        "tax_note": "依聘任契約與所得性質核定",
-        "refs": [money_ref],
-    }
-    b2 = {
-        "branch_or_tier": "碩士班一般中文教學助理",
-        "amount_min": 6000,
-        "amount_max": 7500,
-        "currency": "TWD",
-        "unit": "per_month",
-        "basis": "range",
-        "duration_months_min": None,
-        "duration_months_max": None,
-        "tax_note": "依聘任契約與所得性質核定",
-        "refs": [money_ref],
-    }
-    cand["benefit"]["items"] = [b1, b2]
-    cand["benefit"]["summary"] = "博士生每月8,000–10,000元為一般課程規定範圍；碩士生中文TA每月6,000–7,500元；須依實際聘約核定。"
-    cand["benefit"]["refs"] = [money_ref]
-    _populate_common_extractions(cand, blocks, source["id"], revision_id, "hash_only")
-
-    cand["compatibility"]["mode"] = "conditional"
-    cand["compatibility"]["note"] = "每學期最多擔任兩門課並依規定支領；其他獎助兼領及工時須核雙方規定。"
-    cand["compatibility"]["refs"] = [first_ref]
-
-    cand["schedule"]["steps"] = [
-        {
-            "actor": "unit",
-            "action": "課程開設單位通常於每學期結束前（6月／12月）申請次學期TA員額",
-            "deadline": {
-                "kind": "unknown",
-                "value": None,
-                "timezone": "Asia/Taipei",
-                "note": "月份為制度節奏，各學期確切申請收件時程依教務處公告。",
-            },
-            "refs": [first_ref],
-        },
-        {
-            "actor": "student",
-            "action": "學生依各開課單位公開招募公告接洽並簽署聘約",
-            "deadline": {
-                "kind": "unknown",
-                "value": None,
-                "timezone": "Asia/Taipei",
-                "note": "學生不在此制度入口直接領取一筆固定獎學金。",
-            },
-            "refs": [first_ref],
-        },
-    ]
-    cand["field_evidence"].append(
-        make_field_evidence("benefit.items/0", source["id"], revision_id, money_block, "hash_only")
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("benefit.items/1", source["id"], revision_id, money_block, "hash_only")
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("compatibility", source["id"], revision_id, first_block, "hash_only")
-    )
-    cand["gaps_and_conflicts"]["missing_fields"] = [
-        "semester_specific_ta_application_deadlines",
-    ]
-    return [cand]
-
-
-def _extract_ntu_ord_assistant_limit(source, blocks, revision_id, observed_at, url, as_of, evidence_mode):
-    """臺大專題計畫兼任助理與獎助生每月支給上限規定：碩20k/博42k/博候50k，此為天花板非保底。"""
-    first_block = blocks[0]
-    first_ref = {"source": source["id"], "locator": first_block["locator"]}
-    money_block = next((b for b in blocks if any(k in b["text"] for k in ("支給上限", "50,000", "五萬元", "42,000", "補助費用"))), first_block)
-    money_ref = {"source": source["id"], "locator": money_block["locator"]}
-
-    cand_id = f"cand-ntu-ord-assistant-limit-{revision_id[:8]}"
-    cand = _base_candidate_template(
-        candidate_id=cand_id,
-        opportunity_id="ntu-ord-assistant-limit",
-        program_key="ntu-ord-assistant-limit",
-        title="臺大計畫兼任助理及研究獎助生每月支給上限標準",
-        category="indirect_support",
-        resource_kind="employment_support",
-        scope="ntu",
-        cycle={
-            "kind": "policy_snapshot",
-            "label": "研發處支給上限標準快照",
-            "year_system": "none",
-            "year": None,
-            "term_or_round": None,
-            "branch": "兼任助理與獎助生上限",
-        },
-        source_id=source["id"],
-        revision_id=revision_id,
-        url=url,
-        observed_at=observed_at,
-        evidence_mode=evidence_mode,
-        as_of=as_of,
-    )
-    cand["participants"]["applicant"] = "unit"
-    cand["participants"]["beneficiary"] = "student"
-    cand["participants"]["payee"] = "student"
-    cand["eligibility"]["degrees"] = ["master", "phd"]
-    id_block = _find_identity_block(blocks, first_block)
-    _set_identity_with_evidence(
-        cand,
-        "國立臺灣大學執行委託及補助計畫之兼任助理與研究獎助生；依碩士生、博士生未獲候選人及已獲候選人資格分列支給上限",
-        id_block,
-        source["id"],
-        revision_id,
-        evidence_mode,
-    )
-    cand["organizations"] = {
-        "funder": {"text": "委託／補助單位計畫經費", "refs": [first_ref]},
-        "announcer": {"text": "國立臺灣大學研究發展處", "refs": [first_ref]},
-        "receiver": {"text": "計畫執行單位與主持人依上限標準編列及支領", "refs": [first_ref]},
-    }
-    b1 = {
-        "branch_or_tier": "碩士生兼任助理及獎助生每月上限",
-        "amount_min": None,
-        "amount_max": 20000,
-        "currency": "TWD",
-        "unit": "per_month",
-        "basis": "maximum",
-        "duration_months_min": None,
-        "duration_months_max": None,
-        "tax_note": "上限標準",
-        "refs": [money_ref],
-    }
-    b2 = {
-        "branch_or_tier": "博士生未取得候選人資格每月上限",
-        "amount_min": None,
-        "amount_max": 42000,
-        "currency": "TWD",
-        "unit": "per_month",
-        "basis": "maximum",
-        "duration_months_min": None,
-        "duration_months_max": None,
-        "tax_note": "上限標準",
-        "refs": [money_ref],
-    }
-    b3 = {
-        "branch_or_tier": "博士候選人每月支給上限",
-        "amount_min": None,
-        "amount_max": 50000,
-        "currency": "TWD",
-        "unit": "per_month",
-        "basis": "maximum",
-        "duration_months_min": None,
-        "duration_months_max": None,
-        "tax_note": "上限標準",
-        "refs": [money_ref],
-    }
-    cand["benefit"]["items"] = [b1, b2, b3]
-    cand["benefit"]["summary"] = "每月支給上限：碩士20,000元、博士未具候選資格42,000元、博士候選人50,000元。此為天花板而非保底。"
-    cand["benefit"]["refs"] = [money_ref]
-    _populate_common_extractions(cand, blocks, source["id"], revision_id, evidence_mode)
-
-    cand["compatibility"]["mode"] = "conditional"
-    cand["compatibility"]["note"] = "同一委補助單位計畫兼任支給合計不得逾此上限標準；兼領其他單位給付依各單位規章辦理。"
-    cand["compatibility"]["refs"] = [first_ref]
-
-    cand["schedule"]["steps"] = [
-        {
-            "actor": "unit",
-            "action": "計畫執行機構依委補助合約及上限標準按月撥發",
-            "deadline": {
-                "kind": "unknown",
-                "value": None,
-                "timezone": "Asia/Taipei",
-                "note": "法規快照，112年12月15日起實施，非年度單次徵件。",
-            },
-            "refs": [first_ref],
-        }
-    ]
-    cand["field_evidence"].append(
-        make_field_evidence("benefit.items/0", source["id"], revision_id, money_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("benefit.items/1", source["id"], revision_id, money_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("benefit.items/2", source["id"], revision_id, money_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("compatibility", source["id"], revision_id, first_block, evidence_mode)
-    )
-    cand["gaps_and_conflicts"]["missing_fields"] = [
-        "individual_project_appointment_dates",
-    ]
-    return [cand]
-
-
-
-
-def _extract_sinica_phd_fellowship(source, blocks, revision_id, observed_at, url, as_of, evidence_mode):
-    """中研院博士候選人培育計畫：人文組每月40,000元，數理生命組每月50,000元，每年3/1至4/10受理。"""
-    first_block = blocks[0]
-    first_ref = {"source": source["id"], "locator": first_block["locator"]}
-    money_block = next((b for b in blocks if any(k in b["text"] for k in ("四萬", "40,000", "五萬", "50,000"))), first_block)
-    money_ref = {"source": source["id"], "locator": money_block["locator"]}
-    dl_block = next((b for b in blocks if any(k in b["text"] for k in ("四月十日", "4/10", "4月10日"))), first_block)
-    dl_ref = {"source": source["id"], "locator": dl_block["locator"]}
-
-    cand_id = f"cand-sinica-phd-{revision_id[:8]}"
-    cand = _base_candidate_template(
-        candidate_id=cand_id,
-        opportunity_id="sinica-phd-fellowship-policy",
-        program_key="sinica-phd-fellowship",
-        title="中央研究院博士候選人培育計畫",
-        category="phd_research",
-        resource_kind="scholarship",
-        scope="nationwide",
-        cycle={
-            "kind": "calendar_year",
-            "label": "年度培育梯次（每年3/1至4/10申請）",
-            "year_system": "none",
-            "year": None,
-            "term_or_round": "培育梯次",
-            "branch": "博士候選人培育",
-        },
-        source_id=source["id"],
-        revision_id=revision_id,
-        url=url,
-        observed_at=observed_at,
-        evidence_mode=evidence_mode,
-        as_of=as_of,
-    )
-    cand["participants"]["applicant"] = "student"
-    cand["participants"]["beneficiary"] = "student"
-    cand["participants"]["awardee"] = "student"
-    cand["participants"]["payee"] = "student"
-    cand["eligibility"]["degrees"] = ["phd"]
-    cand["eligibility"]["candidate"] = {"mode": "required", "assessed_at": None, "refs": [first_ref]}
-    cand["eligibility"]["employment_status"] = "non_in_service_only"
-    cand["eligibility"]["negated_conditions"] = [
-        {"field": "employment_status", "operator": "exclude", "text": "排除全時有給職者", "refs": [first_ref]},
-        {"field": "prior_funding", "operator": "exclude", "text": "受獎期間不得兼領中研院其他獎勵金", "refs": [first_ref]},
-    ]
-    id_block = _find_identity_block(blocks, first_block)
-    _set_identity_with_evidence(
-        cand,
-        "國內公私立大學博士班在學研究生，已通過資格考取得博士候選人資格，且非全時有給職者",
-        id_block,
-        source["id"],
-        revision_id,
-        evidence_mode,
-    )
-    cand["organizations"] = {
-        "funder": {"text": "中央研究院學術處", "refs": [first_ref]},
-        "announcer": {"text": "中央研究院", "refs": [first_ref]},
-        "receiver": {"text": "於中研院培育計畫線上系統填寫申請，由就讀學校備函送達中研院", "refs": [dl_ref]},
-    }
-    b1 = {
-        "branch_or_tier": "人文社會科學組",
-        "amount_min": 40000,
-        "amount_max": 40000,
-        "currency": "TWD",
-        "unit": "per_month",
-        "basis": "fixed",
-        "duration_months_min": 12,
-        "duration_months_max": 12,
-        "tax_note": "專款專用",
-        "refs": [money_ref],
-    }
-    b2 = {
-        "branch_or_tier": "數理與生命科學組",
-        "amount_min": 50000,
-        "amount_max": 50000,
-        "currency": "TWD",
-        "unit": "per_month",
-        "basis": "fixed",
-        "duration_months_min": 12,
-        "duration_months_max": 12,
-        "tax_note": "專款專用",
-        "refs": [money_ref],
-    }
-    cand["benefit"]["items"] = [b1, b2]
-    cand["benefit"]["summary"] = "人文社科組每月40,000元、數理生命組每月50,000元，獎助一年（7/1起至次年6/30止），得續申請一次。"
-    cand["benefit"]["refs"] = [money_ref]
-    _populate_common_extractions(cand, blocks, source["id"], revision_id, evidence_mode)
-
-    cand["compatibility"]["mode"] = "conditional"
-    cand["compatibility"]["note"] = "獲獎期間不得兼領政府機關或中研院同性質獎助金；兼職工時依中研院培育要點核處。"
-    cand["compatibility"]["refs"] = [first_ref]
-
-    cand["schedule"]["application_start"] = {
-        "kind": "date",
-        "value": "2026-03-01",
-        "timezone": "Asia/Taipei",
-        "note": "每年3月1日起中研院培育計畫線上系統開放受理申請",
-    }
-    cand["schedule"]["steps"] = [
-        {
-            "actor": "student",
-            "action": "於中研院線上系統完成申請程序並上傳計畫書與指導教授推薦函",
-            "deadline": {
-                "kind": "date",
-                "value": "2026-04-10",
-                "timezone": "Asia/Taipei",
-                "note": "每年3/1至4/10線上申請截止，學校彙送日至遲4/20。",
-            },
-            "refs": [dl_ref],
-        },
-        {
-            "actor": "institution",
-            "action": "就讀學校彙整審查名冊並備函送達中央研究院",
-            "deadline": {
-                "kind": "unknown",
-                "value": None,
-                "timezone": "Asia/Taipei",
-                "note": "就讀學校彙辦與公文函轉期程，依各校校內作業程序辦理。",
-            },
-            "refs": [dl_ref],
-        },
-    ]
-    cand["field_evidence"].append(
-        make_field_evidence("eligibility.candidate", source["id"], revision_id, first_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("eligibility.employment_status", source["id"], revision_id, first_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("benefit.items/0", source["id"], revision_id, money_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("benefit.items/1", source["id"], revision_id, money_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("compatibility", source["id"], revision_id, first_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("schedule.application_start", source["id"], revision_id, dl_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("schedule.steps/0/deadline", source["id"], revision_id, dl_block, evidence_mode)
-    )
-    return [cand]
-
-
-def _extract_tsmc_phd_fellowship(source, blocks, revision_id, observed_at, url, as_of, evidence_mode):
-    """台積電博士獎學金專案：每年新臺幣500,000元，最長獎助四年，並享業師指導與實習。"""
-    first_block = blocks[0]
-    first_ref = {"source": source["id"], "locator": first_block["locator"]}
-    money_block = next((b for b in blocks if any(k in b["text"] for k in ("五十萬", "500,000", "50萬"))), first_block)
-    money_ref = {"source": source["id"], "locator": money_block["locator"]}
-
-    cand_id = f"cand-tsmc-phd-{revision_id[:8]}"
-    cand = _base_candidate_template(
-        candidate_id=cand_id,
-        opportunity_id="tsmc-phd-fellowship-policy",
-        program_key="tsmc-phd-fellowship",
-        title="台積電博士獎學金專案",
-        category="phd_research",
-        resource_kind="scholarship",
-        scope="nationwide",
-        cycle={
-            "kind": "calendar_year",
-            "label": "年度遴選專案（每年秋季）",
-            "year_system": "none",
-            "year": None,
-            "term_or_round": "年度遴選",
-            "branch": "台積電博士獎學金",
-        },
-        source_id=source["id"],
-        revision_id=revision_id,
-        url=url,
-        observed_at=observed_at,
-        evidence_mode=evidence_mode,
-        as_of=as_of,
-    )
-    cand["participants"]["applicant"] = "student"
-    cand["participants"]["beneficiary"] = "student"
-    cand["participants"]["awardee"] = "student"
-    cand["participants"]["payee"] = "student"
-    cand["eligibility"]["degrees"] = ["phd"]
-    id_block = _find_identity_block(blocks, first_block)
-    _set_identity_with_evidence(
-        cand,
-        "國內大學半導體、電機資訊、物理化學與材料等相關領域在學博士生",
-        id_block,
-        source["id"],
-        revision_id,
-        evidence_mode,
-    )
-    cand["organizations"] = {
-        "funder": {"text": "台灣積體電路製造股份有限公司（TSMC）", "refs": [first_ref]},
-        "announcer": {"text": "台積電人力資源處與文教基金會", "refs": [first_ref]},
-        "receiver": {"text": "於台積電校園徵件系統線上申請並上傳指導教授推薦書", "refs": [first_ref]},
-    }
-    b1 = {
-        "branch_or_tier": "博士獎學金每年定額",
-        "amount_min": 500000,
-        "amount_max": 500000,
-        "currency": "TWD",
-        "unit": "per_year",
-        "basis": "fixed",
-        "duration_months_min": 12,
-        "duration_months_max": 48,
-        "tax_note": "依企業獎學金規範",
-        "refs": [money_ref],
-    }
-    cand["benefit"]["items"] = [b1]
-    cand["benefit"]["summary"] = "每年新臺幣500,000元，最長補助4年，總額可達200萬元；另享有台積電業師指導與實習機會。"
-    cand["benefit"]["refs"] = [money_ref]
-    _populate_common_extractions(cand, blocks, source["id"], revision_id, evidence_mode)
-
-    cand["compatibility"]["mode"] = "conditional"
-    cand["compatibility"]["note"] = "得兼領校內外其他未具排他性獎學金；須配合參與台積電相關研發交流活動。"
-    cand["compatibility"]["refs"] = [first_ref]
-
-    cand["schedule"]["steps"] = [
-        {
-            "actor": "student",
-            "action": "於台積電招募專區博士獎學金專頁完成線上登錄並送出申請",
-            "deadline": {
-                "kind": "unknown",
-                "value": None,
-                "timezone": "Asia/Taipei",
-                "note": "每年秋季9月至10月中旬公告收件，以當年度官方網頁為準。",
-            },
-            "refs": [first_ref],
-        }
-    ]
-    cand["field_evidence"].append(
-        make_field_evidence("benefit.items/0", source["id"], revision_id, money_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("compatibility", source["id"], revision_id, first_block, evidence_mode)
-    )
-    return [cand]
-
-
-def _extract_ntu_eecs_scholarship(source, blocks, revision_id, observed_at, url, as_of, evidence_mode):
-    """臺大電資學院優秀研究生獎學金：優秀博士生每月10,000至20,000元。"""
-    first_block = blocks[0]
-    first_ref = {"source": source["id"], "locator": first_block["locator"]}
-    money_block = next((b for b in blocks if any(k in b["text"] for k in ("一萬", "10,000", "兩萬", "20,000"))), first_block)
-    money_ref = {"source": source["id"], "locator": money_block["locator"]}
-
-    cand_id = f"cand-ntu-eecs-{revision_id[:8]}"
-    cand = _base_candidate_template(
-        candidate_id=cand_id,
-        opportunity_id="ntu-eecs-scholarship-policy",
-        program_key="ntu-eecs-scholarship",
-        title="臺大電資學院優秀研究生獎助學金",
-        category="phd_research",
-        resource_kind="scholarship",
-        scope="ntu",
-        cycle={
-            "kind": "academic_year",
-            "label": "電資學院每學年獎助評選",
-            "year_system": "none",
-            "year": None,
-            "term_or_round": "院級評選",
-            "branch": "電資優秀研究生",
-        },
-        source_id=source["id"],
-        revision_id=revision_id,
-        url=url,
-        observed_at=observed_at,
-        evidence_mode=evidence_mode,
-        as_of=as_of,
-    )
-    cand["participants"]["applicant"] = "student"
-    cand["participants"]["beneficiary"] = "student"
-    cand["participants"]["awardee"] = "student"
-    cand["participants"]["payee"] = "student"
-    cand["eligibility"]["degrees"] = ["master", "phd"]
-    id_block = _find_identity_block(blocks, first_block)
-    _set_identity_with_evidence(
-        cand,
-        "國立臺灣大學電機資訊學院所屬各學系所在學研究生（碩士生與博士生）",
-        id_block,
-        source["id"],
-        revision_id,
-        evidence_mode,
-    )
-    cand["organizations"] = {
-        "funder": {"text": "臺大電資學院優秀研究生獎學金經費與產學捐贈", "refs": [first_ref]},
-        "announcer": {"text": "國立臺灣大學電機資訊學院", "refs": [first_ref]},
-        "receiver": {"text": "向電機資訊學院辦公室或所屬系所提出申請", "refs": [first_ref]},
-    }
-    b1 = {
-        "branch_or_tier": "電資優秀博士生獎助",
-        "amount_min": 10000,
-        "amount_max": 20000,
-        "currency": "TWD",
-        "unit": "per_month",
-        "basis": "range",
-        "duration_months_min": None,
-        "duration_months_max": None,
-        "tax_note": "專款專用",
-        "refs": [money_ref],
-    }
-    cand["benefit"]["items"] = [b1]
-    cand["benefit"]["summary"] = "優秀博士生每月約10,000至20,000元，依每學期院務會議審定金額發給。"
-    cand["benefit"]["refs"] = [money_ref]
-    _populate_common_extractions(cand, blocks, source["id"], revision_id, evidence_mode)
-
-    cand["compatibility"]["mode"] = "conditional"
-    cand["compatibility"]["note"] = "得兼領其他一般獎學金，但不得逾校內或學院規定期限上限。"
-    cand["compatibility"]["refs"] = [first_ref]
-
-    cand["schedule"]["steps"] = [
-        {
-            "actor": "student",
-            "action": "備妥申請表、成績單與推薦信向所屬系所或院辦送件",
-            "deadline": {
-                "kind": "unknown",
-                "value": None,
-                "timezone": "Asia/Taipei",
-                "note": "依電資學院各學期公告收件時程辦理。",
-            },
-            "refs": [first_ref],
-        }
-    ]
-    cand["field_evidence"].append(
-        make_field_evidence("benefit.items/0", source["id"], revision_id, money_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("compatibility", source["id"], revision_id, first_block, evidence_mode)
-    )
-    return [cand]
-
-
-def _extract_ntu_coe_scholarship(source, blocks, revision_id, observed_at, url, as_of, evidence_mode):
-    """臺大工學院研究生獎助學金：每學年50,000至100,000元。"""
-    first_block = blocks[0]
-    first_ref = {"source": source["id"], "locator": first_block["locator"]}
-    money_block = next((b for b in blocks if any(k in b["text"] for k in ("五萬", "50,000", "十萬", "100,000"))), first_block)
-    money_ref = {"source": source["id"], "locator": money_block["locator"]}
-
-    cand_id = f"cand-ntu-coe-{revision_id[:8]}"
-    cand = _base_candidate_template(
-        candidate_id=cand_id,
-        opportunity_id="ntu-coe-scholarship-policy",
-        program_key="ntu-coe-scholarship",
-        title="臺大工學院研究生獎助學金專區",
-        category="phd_research",
-        resource_kind="scholarship",
-        scope="ntu",
-        cycle={
-            "kind": "academic_year",
-            "label": "工學院各類獎學金評選",
-            "year_system": "none",
-            "year": None,
-            "term_or_round": "院級評審",
-            "branch": "工學院獎助",
-        },
-        source_id=source["id"],
-        revision_id=revision_id,
-        url=url,
-        observed_at=observed_at,
-        evidence_mode=evidence_mode,
-        as_of=as_of,
-    )
-    cand["participants"]["applicant"] = "student"
-    cand["participants"]["beneficiary"] = "student"
-    cand["participants"]["awardee"] = "student"
-    cand["participants"]["payee"] = "student"
-    cand["eligibility"]["degrees"] = ["master", "phd"]
-    id_block = _find_identity_block(blocks, first_block)
-    _set_identity_with_evidence(
-        cand,
-        "國立臺灣大學工學院所屬各學系所研究生，學業與研究表現優良者",
-        id_block,
-        source["id"],
-        revision_id,
-        evidence_mode,
-    )
-    cand["organizations"] = {
-        "funder": {"text": "工學院校友捐贈基金與各財團法人基金會", "refs": [first_ref]},
-        "announcer": {"text": "國立臺灣大學工學院", "refs": [first_ref]},
-        "receiver": {"text": "依各獎項規定向工學院辦公室或系所承辦提出申請", "refs": [first_ref]},
-    }
-    b1 = {
-        "branch_or_tier": "工學院各類獎助金每學年定額",
-        "amount_min": 50000,
-        "amount_max": 100000,
-        "currency": "TWD",
-        "unit": "per_year",
-        "basis": "range",
-        "duration_months_min": None,
-        "duration_months_max": None,
-        "tax_note": "依各獎助規章辦理",
-        "refs": [money_ref],
-    }
-    cand["benefit"]["items"] = [b1]
-    cand["benefit"]["summary"] = "每學年約50,000至100,000元，依工學院各類獎學金及宗倬章獎助金辦法核給。"
-    cand["benefit"]["refs"] = [money_ref]
-    _populate_common_extractions(cand, blocks, source["id"], revision_id, evidence_mode)
-
-    cand["compatibility"]["mode"] = "conditional"
-    cand["compatibility"]["note"] = "同一學年原則不得重複領取工學院其他院級指定全額獎學金。"
-    cand["compatibility"]["refs"] = [first_ref]
-
-    cand["schedule"]["steps"] = [
-        {
-            "actor": "student",
-            "action": "填寫工學院獎學金申請表並檢附相關著作及系所推薦意見送件",
-            "deadline": {
-                "kind": "unknown",
-                "value": None,
-                "timezone": "Asia/Taipei",
-                "note": "每學年秋季與春季學期依院網專區公告辦理。",
-            },
-            "refs": [first_ref],
-        }
-    ]
-    cand["field_evidence"].append(
-        make_field_evidence("benefit.items/0", source["id"], revision_id, money_block, evidence_mode)
-    )
-    cand["field_evidence"].append(
-        make_field_evidence("compatibility", source["id"], revision_id, first_block, evidence_mode)
-    )
+    # Source clauses stay separate; no annual amount is converted into an invented total.
+    cand["benefit"] = {"summary":"金額待來源完整核對", "items":[], "refs":[]}
+    cand["field_evidence"] = [e for e in cand["field_evidence"] if not e["field_path"].startswith("benefit.")]
+    for block in blocks:
+        for clause in re.split(r"[；。，]", block["text"]):
+            parsed = parse_amount_from_text(clause)
+            if not parsed:
+                continue
+            ref = {"source":source["id"], "locator":block["locator"]}
+            if any(w in clause for w in ("每年", "每學年", "一年")) and parsed["unit"] in ("lump_sum", "total_range"):
+                parsed["unit"] = "per_year"
+            if "上限" in clause or "最高" in clause or "至多" in clause:
+                parsed.update(amount_min=None, basis="maximum")
+            elif "至少" in clause or "最低" in clause:
+                parsed.update(amount_max=None, basis="minimum")
+            item = {"branch_or_tier":None, **parsed, "refs":[ref]}
+            idx = len(cand["benefit"]["items"])
+            cand["benefit"]["items"].append(item)
+            cand["benefit"]["refs"].append(ref)
+            cand["field_evidence"].append(make_field_evidence(f"benefit.items/{idx}",source["id"],revision_id,block,evidence_mode))
+    if cand["benefit"]["items"]:
+        cand["benefit"]["summary"] = "；".join(_format_benefit_summary(i) for i in cand["benefit"]["items"])
+    steps = []
+    for block in blocks:
+        if not any(w in block["text"] for w in ("申請期間", "申請期限", "截止", "完成申請")):
+            continue
+        start, end = parse_date_range_from_text(block["text"])
+        if not end:
+            _, end = parse_roc_or_iso_date_from_text(block["text"])
+        ref = {"source":source["id"], "locator":block["locator"]}
+        # Institution routing in a mixed paragraph cannot become a student deadline.
+        step_actor = "institution" if any(w in block["text"] for w in ("備函", "學校彙", "申請機構")) else actor
+        deadline = {"kind":"date" if end else "unknown", "value":end, "timezone":"Asia/Taipei", "note":"依來源明示年度；常態月日不推定當期日期"}
+        steps.append({"actor":step_actor, "action":"依來源程序辦理（角色及當期公告仍須覆核）", "deadline":deadline, "refs":[ref]})
+        if end:
+            cand["field_evidence"].append(make_field_evidence(f"schedule.steps/{len(steps)-1}/deadline",source["id"],revision_id,block,evidence_mode))
+        if start:
+            cand["schedule"]["application_start"] = {"kind":"date", "value":start, "timezone":"Asia/Taipei", "note":"來源明示起日", "certainty":"confirmed"}
+            cand["field_evidence"].append(make_field_evidence("schedule.application_start",source["id"],revision_id,block,evidence_mode))
+    cand["schedule"]["steps"] = steps or [{"actor":actor,"action":"申請或約用程序待當期文件核對","deadline":{"kind":"unknown","value":None,"timezone":"Asia/Taipei","note":"法規快照不推定當期受理日期"},"refs":[first_ref]}]
+    cand["gaps_and_conflicts"]["open_questions"].append("需逐項覆核領域、院系、發放分支、申請角色及完整資格；不以來源台帳預設值補空。")
     return [cand]
 
 
@@ -3171,7 +2306,7 @@ def extract_from_in_memory_blocks(
     revision_id,
     observed_at,
     url=None,
-    as_of="2026-10-29",
+    as_of=None,
     model_adapter=None,
     extraction_strategy="rules_plus_llm",
 ):
@@ -3181,6 +2316,7 @@ def extract_from_in_memory_blocks(
       - 'rules_only'：僅跑確定性規則
       - 'llm_only'：不跑特定規則解析，直接以基礎模板交由模型 extract（僅供可公開摘錄來源之基準測試比較）
     """
+    as_of = as_of or taipei_today()
     url = url or source["url"]
     evidence_mode = source.get("evidence_mode", "short_excerpt")
     sid = source["id"]
@@ -3225,22 +2361,8 @@ def extract_from_in_memory_blocks(
         candidates = _extract_nstc_conference(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
     elif sid == "faos-student-conference":
         candidates = _extract_faos_conference(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
-    elif sid == "nstc-abroad-dragon-rule":
-        candidates = _extract_nstc_abroad_dragon(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
-    elif sid == "nstc-assistant-rule":
-        candidates = _extract_nstc_assistant_rule(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
-    elif sid == "ntu-ta-policy":
-        candidates = _extract_ntu_ta_policy(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
-    elif sid == "ntu-ord-assistant-limit":
-        candidates = _extract_ntu_ord_assistant_limit(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
-    elif sid == "sinica-phd-fellowship":
-        candidates = _extract_sinica_phd_fellowship(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
-    elif sid == "tsmc-phd-fellowship":
-        candidates = _extract_tsmc_phd_fellowship(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
-    elif sid == "ntu-eecs-scholarship":
-        candidates = _extract_ntu_eecs_scholarship(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
-    elif sid == "ntu-coe-scholarship":
-        candidates = _extract_ntu_coe_scholarship(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
+    elif sid in POLICY_SOURCES:
+        candidates = _extract_policy(source, blocks, revision_id, observed_at, url, as_of, evidence_mode)
     else:
         first_ref = {"source": sid, "locator": blocks[0]["locator"]}
         id_block = _find_identity_block(blocks, blocks[0])
@@ -3274,6 +2396,7 @@ def extract_from_in_memory_blocks(
 
     model_adapter = model_adapter or DisabledModelAdapter()
     results = []
+    excerpt_remaining = 120
     for cand in candidates:
         if extraction_strategy != "rules_only" and model_adapter.enabled:
             if (evidence_mode == "hash_only" or "aca.ntu.edu.tw" in url) and model_adapter.is_external:
@@ -3295,16 +2418,18 @@ def extract_from_in_memory_blocks(
         }
 
         # 執行獨立檢核
+        excerpt_remaining = limit_evidence_excerpts(cand, excerpt_remaining)
         verified = verify_candidate(cand, in_memory_blocks=blocks, now_iso=observed_at)
         results.append(verified)
 
     return results
 
 
-def extract_from_candidate_stub_without_memory(candidate_stub, source, as_of="2026-10-29"):
+def extract_from_candidate_stub_without_memory(candidate_stub, source, as_of=None):
     """當僅有 scan_sources.py 產生的短證據或雜湊 (candidates.json) 且無法重新取得記憶體全文時：
     嚴格禁止從雜湊或殘句猜測答案！所有無法由完整上下文確認之欄位一律保留 unknown/null，並標記 needs_context。
     """
+    as_of = as_of or taipei_today()
     sid = candidate_stub["source_id"]
     rev_id = candidate_stub["id"]
     url = candidate_stub["url"]
@@ -3391,7 +2516,7 @@ def refetch_and_extract_candidates(
     pending_candidates,
     config,
     fetcher=None,
-    as_of="2026-10-29",
+    as_of=None,
     model_adapter=None,
     in_memory_blocks_by_url=None,
     allow_network_refetch=True,
@@ -3401,6 +2526,7 @@ def refetch_and_extract_candidates(
     2. 否則若 allow_network_refetch 為真，使用受限 Fetcher (遵守 robots、白名單、3秒間隔、最多20請求) 重新取得至記憶體萃取，不落盤原檔。
     3. 若重取失敗或遭 robots 禁止，保留既有狀態並退回不猜測之 stub，絕不從雜湊或殘句硬猜。
     """
+    as_of = as_of or taipei_today()
     sources_by_id = {s["id"]: s for s in config.get("sources", [])}
     in_memory_blocks_by_url = dict(in_memory_blocks_by_url or {})
     model_adapter = model_adapter or create_model_adapter_from_env()
@@ -3417,17 +2543,25 @@ def refetch_and_extract_candidates(
         observed_at = stub.get("observed_at", datetime.now(timezone.utc).isoformat(timespec="seconds"))
         source = sources_by_id.get(sid, {"id": sid, "title": sid, "url": url, "evidence_mode": stub.get("evidence_mode", "short_excerpt")})
 
+        if sid not in sources_by_id or not source.get("enabled", True):
+            refetch_statuses[url] = "source_disabled_or_unregistered"
+            all_records.extend(extract_from_candidate_stub_without_memory(stub, source, as_of=as_of))
+            continue
+
         blocks = in_memory_blocks_by_url.get(url)
         if blocks is None and fetcher is not None and allow_network_refetch:
             try:
                 is_pdf = url.lower().endswith(".pdf")
                 resp = fetcher.get(url, {}, 10 * 1024 * 1024 if is_pdf else 2 * 1024 * 1024)
                 if resp["status"] == 200:
+                    if stub.get("revision", {}).get("raw_sha256") and digest(resp["body"]) != stub["revision"]["raw_sha256"]:
+                        raise ScanError("stale_revision_requires_rescan")
                     if is_pdf:
                         blocks = pdf_document(resp["body"])
                     else:
                         blocks, _ = html_document(resp["body"], source, resp["url"], config["allowed_hosts"])
                     in_memory_blocks_by_url[url] = blocks
+                    fetcher.in_memory_blocks[url] = blocks
                     refetch_statuses[url] = "refetched_in_memory"
                 else:
                     refetch_statuses[url] = f"http_{resp['status']}"
@@ -3440,6 +2574,11 @@ def refetch_and_extract_candidates(
         else:
             refetch_statuses[url] = "skipped_no_fetcher"
 
+        expected_raw = stub.get("revision", {}).get("raw_sha256")
+        actual_raw = getattr(fetcher, "in_memory_raw_sha256", {}).get(url) if fetcher else None
+        if expected_raw and actual_raw and expected_raw != actual_raw:
+            blocks = None
+            refetch_statuses[url] = "stale_revision_requires_rescan"
         if blocks:
             extracted = extract_from_in_memory_blocks(
                 source,
@@ -3473,7 +2612,7 @@ def main():
     parser.add_argument("--config", type=Path, default=ROOT / "data/scan-sources.json")
     parser.add_argument("--candidates", type=Path, default=ROOT / "work/scanner/report/candidates.json")
     parser.add_argument("--output", type=Path, default=ROOT / "work/scanner/report/structured-candidates.json")
-    parser.add_argument("--as-of", default="2026-10-29")
+    parser.add_argument("--as-of", default=taipei_today())
     parser.add_argument("--no-refetch", action="store_true", help="Do not refetch over network; use stub if not in memory")
     args = parser.parse_args()
 

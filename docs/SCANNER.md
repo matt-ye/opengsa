@@ -1,66 +1,73 @@
-# 公開來源自動掃描與結構化候選管線
+# 公開來源掃描與候選覆核
 
-2026-10-29使用者要求開始處理自動爬取，並進一步要求完成「爬取結果 → 結構化獎助資料 → 檢核 → 申請時間判斷 → 候選差異覆核報告」管線及雙軌「確定性規則 + LLM API (`extract` 補缺 + `audit` 交叉盤查)」架構。本版實作公開GET、正文／文字PDF萃取、增量雜湊、記憶體內雙軌結構化萃取與盤查 (`scripts/extract_candidates.py`, `extractor-1.1.0`)、七面向獨立檢核 (`scripts/verify_candidates.py`, `verifier-1.1.0`，含 `coverage_ok` 與 `passed_with_gaps`)、學生窗口申請時間與 P1 資格判斷 (`scripts/evaluate_deadlines.py`)、候選差異覆核報告 (`scripts/review_candidates.py`)，以及三軌對照基準測試 (`scripts/evaluate_extraction_benchmark.py`)。模型 Adapter 預設關閉 (`OPENGSA_MODEL_MODE=off`)，排程自動掃描強制維持 `off`，僅手動觸發 (`workflow_dispatch`) 可選配 `audit`／`extract`／`both`，且爬蟲或模型絕不直接覆寫 `data/pilot.json`。
+更新：2026-10-30，以PR #16／#17合併後狀態為基準。有限公開GET、增量差異、規則萃取、可選手動LLM、獨立檢核、申請時間及P1資格比對已串接。**只產生待覆核報告，不直接改寫網站資料**。模型排程固定off；API設定、觀察值及限制見[API查核](API-AUDIT.md)。
 
-## 已實作範圍
+## 來源台帳與最近實測
 
-| 掃描目標 | 處理方式 | 限制 |
-|---|---|---|
-| 臺大博士生獎學金、研究生校長獎、國科會會議校內程序 | 教務處正文選擇器、必要標記、最多一份匹配辦法PDF、記憶體結構化拆分與檢核 | 教務處要求轉載先聯繫；本版只保留雜湊、欄位類型、URL與定位，零原文摘錄外流，且嚴格禁止送往外部模型 |
-| 臺大遠學 | 正文分區、獨立下載區發現與一般補助結構化擷取 | 研發處robots禁止`/WebUPD/`，附件只報受限，不下載、不從殘句猜測附件內容 |
-| 國科會研究生國際會議作業要點 | 法規正文容器、條款標記、事件相對規則與三層期限分流 | 法規變更只交待覆核，不自動認定修正日等於生效日或重算學生期限 |
-| 傑出人才發展基金會出國開會 | 公開HTML、必要標記、會前兩個曆月機構期限與學生校內期限留未知 | 必要短證據每份合計最多120字，資格與機構／學生期限仍須人工核對 |
+執行設定：[scan-sources.json](../data/scan-sources.json)，共14筆、9筆啟用、5筆停用。disabled仍保留為搜尋種子，不由scanner或候選重新擷取器下載；啟用不代表可擷取或已人工核准。
 
-共六個正文目標，涵蓋原四組試點及新增FAOS。實際設定在[scan-sources.json](../data/scan-sources.json)；舊`examples/ingestion-sources.proposed.json`保留為歷史提案，不由程式載入。醫學院國際事務正文需動態渲染、FAO需登入，均列deferred，不假稱已支援。
+| 群組 | 狀態與限制 |
+|---|---|
+| 臺大博士生獎學金、校長獎、國科會會議校內程序 | 正文與允許PDF可解析；教務處轉載條款採hash_only，不存原文、不外送模型 |
+| 臺大遠學 | 正文可解析；robots禁止/WebUPD/，附件保留受限，不下載 |
+| 國科會國際會議要點 | 正文可解析；固定學生期限、機關相對規則與補送期限分流 |
+| FAOS出國開會 | 本輪transport_error，保留前次狀態；學生校內期限不由機關期限補猜 |
+| 國科會千里馬、研究人力約用要點 | 原必要標記誤用摘要字句，依官方原文修正；另輪3次HTTP成功取得兩份正文，模型0次、核准0筆 |
+| 臺大TA辦法 | HTML及一份允許PDF已取到，hash_only；金額單位、資格及約用層次仍需覆核 |
+| 臺大兼任助理上限表 | 停用：原URL誤指遠學；實際附件在robots禁止路徑，不繞過 |
+| 中研院候選人、台積電博士、電資學院、工學院 | 四筆停用：依序為transport_error、404、404、robots_not_plain_rules；URL／選擇器尚未完成實測，不當成已支援來源 |
 
-## 如何執行及看結果
+FAO登入頁、醫學院動態正文仍deferred。擴展藍圖與examples/ingestion-sources.proposed.json為提案，不由程式載入。修正停用來源前須確認官方URL、正文範圍、標記、robots、重製政策及完整profile，再以小量單次掃描驗收。
+
+本輪兩次分批掃描分別為8／20次HTTP、5／2份變更；另有上述國科會單獨修正驗證3次HTTP。全部模型0次、official_data_modified=false、promotion_ready=0。候選有passed、gaps、needs_context及failed混合結果，**不宣稱全數萃取通過**；法規分支與中文金額仍需人工核對。這是觀察紀錄，不是每週成功率保證。
+
+## 執行與輸出
+
+需Python 3.10以上、Node；CI使用Python 3.13／Node24。
 
 ```powershell
 python -m pip install -r requirements-dev.txt
+python scripts/scan_sources.py --check-config
 python scripts/scan_sources.py
 python scripts/review_candidates.py --candidates work/scanner/report/candidates.json --output-dir work/scanner/report
 ```
 
-需Python 3.10以上及Node，CI使用Python 3.13／Node 24。網路採Node內建HTTPS單次GET，明確`rejectUnauthorized: true`，不設定忽略憑證或降級HTTP；Python負責解析、結構化萃取、獨立檢核與報告。Node與Python的憑證驗證實作不同，任一HTTPS驗證失敗皆轉錯誤，不以不驗證TLS作備援。
+`--check-config`離線驗證來源預算、啟用項目必要設定／唯一URL及處置台帳；不連網、不寫檔。真實掃描才讀取robots與允許的HTTPS目標。
 
-- 本機觀察狀態：`work/scanner/state.json`，只含雜湊、HTTP驗證資訊、附件清單與未覆核候選。它是上次觀察值，**不是上次核准資料**。
-- 掃描與結構化覆核報告（位於 `work/scanner/report/`）：
-  - `summary.md`、`scan-report.json`、`candidates.json`：每頁狀態、版權／robots限制、短證據或雜湊、正文區塊／PDF頁碼定位。
-  - `structured-candidates.json`：依 [`schema/candidate.schema.json`](../schema/candidate.schema.json) (`1.1.0-candidate`) 產生的結構化候選（已拆分制度分支、學年度與法規快照 `policy_snapshot`，附帶逐欄證據 `source_block_sha256`、獨立檢核結果與學生窗口時間狀態）。
-  - `review-diff.json`、`review-summary.md` 與 `model-usage.json`：分列（一）來源變更與上下文狀態、（二）結構化萃取結果、（三）獨立檢核與學生申請時間／P1資格判斷、（四）與 `data/pilot.json` 的欄位差異（法規快照 PDF 單獨歸類為 `policy_regulation_snapshot`，避免假性 `application.state` 差異）及 `data/scan-reviews.json` 人工處置狀態，並記錄模型呼叫與 `hash_only_bytes_sent=0` 統計。
-- GitHub：[Scan public sources](https://github.com/matt-ye/opengsa/actions/workflows/scan-sources.yml)可手動執行（支援 `model_mode`: `off` 預設、`audit`、`extract`、`both`），也排定**臺北時間週二、週五09:17**低頻掃描（排程強制 `OPENGSA_MODEL_MODE=off`）。排程可能延遲或被平台停用，不保證即時通知。
-- 每次執行的Summary可直接看掃描與候選覆核表，報告artifact保留14天；下載artifact需GitHub登入。沒有發Email、建立Issue、代送申請或自動合併資料PR。
+- `work/scanner/state.json`：觀察雜湊、HTTP驗證資訊、附件清單、待審佇列及下一輪來源游標；不是正式核准資料。變更／請求預算用完會輪替，避免永遠只掃前幾頁。
+- `scan-report.json`／`summary.md`：各文件狀態與失敗原因；`candidates.json`：來源變更線索。
+- `structured-candidates.json`：有版本候選Schema、逐欄證據、金額／資格／日期與檢核結果。
+- `review-diff.json`／`review-summary.md`：來源上下文、候選內容、學生及上層期限、P1（臺大職能治療博士五年級候選人）比對、與pilot差異及人工處置。
+- `model-usage.json`：外部呼叫、tokens、快取及hash_only外送0 bytes等統計。
 
-首次建立基準會出現多份changed，單輪最多五份，因此可能需要再執行一次處理延後項目。這是首次觀察，不代表官方今天修改。未變更時仍檢查母頁的已知PDF（可用ETag／Last-Modified），同URL附件更新不會只因母頁未改就漏掉。
+檔案均在ignored work/；Actions只上傳報告artifact14天、cache觀察狀態。原始HTML／PDF只在記憶體，不進Git、Pages或artifact。個人研討會及資格輸入不進scanner。
 
-## 結構化候選欄位、雙軌模型盤查、獨立檢核與人工覆核
+## 萃取、日期與檢核
 
-1. **記憶體內完整上下文 vs 無上下文退回 (`needs_context`)**：
-   - `candidates.json` 僅保存短證據（每段 `<=50` 字、每份合計 `<=120` 字）或雜湊 (`hash_only`)，不足以單獨推導完整結構化欄位。
-   - 因此 `scan_sources.py` 與 `review_candidates.py` 會在單輪允許範圍內使用記憶體中的完整區塊 (`in_memory_full_blocks`) 執行通用確定性規則解析；若在 `--no-refetch` 或來源失敗時無記憶體全文，萃取器會建立 `needs_context` 候選骨架，將未知欄位保留為 `null`／`unknown`，**絕不從雜湊或殘句猜測答案**。
-2. **雙軌模型 Adapter (`extract` 補缺 + `audit` 交叉盤查)**：
-   - 預設 `OPENGSA_MODEL_MODE=off`（零外部呼叫）；啟用時硬性攔截 `hash_only` 來源（`www.aca.ntu.edu.tw` `hash_only_bytes_sent == 0`）。
-   - 對允許 `short_excerpt` 之來源，以 `<untrusted_source_data>` 隔離並過濾提示詞注入；模型回傳的每一項宣告都必須通過 JSON Schema 驗證、原文逐字引文子字串核對（`<=80` 字）及確定性規則二次解析（日期與金額數值／單位一致），否則標記 `model_value_mismatch` 或 `model_quote_not_substring_of_block` 予以剔除。
-3. **七面向獨立檢核 (`scripts/verify_candidates.py`, `verifier-1.1.0`)**：
-   - 自動檢查：（1）`schema/candidate.schema.json` 格式、（2）逐欄證據強制性（所有非 `unknown` 欄位皆須具備 `field_evidence` 並核對 `source_block_sha256`，且 `hash_only` 強制 `excerpt: null`）、（3）日期精度（`Asia/Taipei`、純日期不自造 `23:59`、法規修正日不自動當生效日）與金額單位完整性、（4）不同學年度或互斥分支（教育部 vs 國科會博獎、遠學一般 vs 配合補助）不混成單筆、（5）否定條件（非在職、不得重複請領）與申請角色分流（機關彙送日、學院推薦日不當學生截止日）、（6）來源衝突與雙軌 `disagree` 攔截 (`conflict_detected`)、（7）`coverage_ok` 關鍵欄位與附件覆蓋率檢核（若有未抓取之申請說明附件或缺漏結構化金額，降級為 `passed_with_gaps`）。
-   - **忽略 Agent 自信宣告**：即使模型 Adapter 注入 `self_verified=true` 或 `confidence=1.0`，檢核器一律忽略並強制剔除；未經非原編輯者 (`independent_reviewer != editor`) 人工覆核前，一律維持 `review.status = "pending"` 且 `promotion_ready = false`。
-4. **人工覆核與處置台帳 (`data/scan-reviews.json`)**：
-   - 處理完候選後，維護者在[scan-reviews.json](../data/scan-reviews.json)提交紀錄：`revision_id`、`action`（`noted`／`applied`／`dismissed`）、`reviewer`、`reason`、`reviewed_on`。
-   - 只有通過自動檢核且完成非原編輯者獨立覆核的候選，才會由維護者另開資料 PR 更新 `data/pilot.json`。
+完整原文於記憶體依HTML／PDF取得，再規則優先萃取；不以profile預填當年度日期、金額、年級或可兼領。只有常態月日時不展開成今年，修正日不等於生效日，機構／學院送件日不等於學生期限。缺完整上下文時維持unknown／needs_context；既有拒絕不能因重新驗證洗成通過。原始內容版本已不同時要求重新掃描，不沿用舊核准。
 
-## 存取、成本與失敗處理
+候選契約為1.1.0-candidate；獨立檢核包括Schema、證據、日期／金額單位、年度分支、否定條件／角色、衝突及coverage。起日、結果與截止日均需逐欄依據與年度錨點；passed_with_gaps不具正式匯出資格。模型自稱核准或信心分數無效；模型交叉盤查不取代獨立人工覆核。
 
-- 每輪最多20次HTTP，包含robots、重新導向、重試及附件；每主機間隔至少3秒，同時只有一個請求。robots有更長Crawl-delay時採更長間隔。
-- 僅設定中的HTTPS主機、標準443埠；逐次檢查重新導向。登入、名冊、獲獎名單、學號、身分證及帶token／session的連結不取回。
-- 每輪重新取robots。404視為沒有提供規則，**不當成轉載授權**；403／429、5xx、無法解析或無法連線時停止該路徑。保守解析所有適用Disallow（支援星號與結尾符號），不自動使用Allow例外。
-- 403／429暫停該主機，不換IP、登入、偽裝瀏覽器或用第三方代理繞過。5xx最多再試一次，若有Retry-After則留待下次，不立即重試。
-- HTML上限2MB；PDF最多10MB／50頁，純記憶體抽字，子程序最長20秒。Linux子程序另限CPU與768MB記憶體；Windows沒有同等記憶體硬上限。加密、空文字、超限、掃描圖與解析問題轉人工，不做OCR。
-- 新請求啟動預算180秒，每次請求另有23秒外部逾時；工作流程10分鐘上限。故障保留該文件先前狀態與未覆核候選，不當成下架或停辦。
-- 不存原始HTML／PDF、不上傳原檔、無大量全文cache；raw資料只在處理記憶體。短證據跳過聯絡資料並限制長度，教務處只存雜湊且禁止送往外部模型。Cache及artifact不含學生個人條件。
-- 模型 Adapter 預設關閉（呼叫0次），不使用D1或付費擷取備援；無金鑰時以 `MockModelAdapter` 離線驗證；本機或手動啟用時具磁碟快取 (`work/model-cache/`) 與 429／402 自動降級保護。
+對short_excerpt，每份來源revision的各分支合計最多120字證據／audit引文；超出欄位降為hash_only，保留定位及原區塊雜湊，需回來源覆核。hash_only來源則所有欄位無原文，禁止送任何外部API。兩種限制只針對證據摘錄，不等於原創摘要或結構化數字可以不查證。
 
-## 驗證與維護
+時間與資格分開：缺必要學校、候選人或年級條件時不當符合；未結構化限制仍需人工核對。網站依臺北今天重算可確認窗口，舊快照的open不直接冒充今日開放；推定／未知起日不當正式開放日。結果確定程度、補送角色、結構化金額、國籍／就業／否定條件在候選轉pilot時保留。
 
-離線測試涵蓋四組各五種合成情境、正文範圍、下載區、文字PDF、附件同URL變更、條款／robots、304、白名單、限流、預算、故障保留、設定改版、cache遺失、處置去重，以及新增之候選 Schema (`1.1.0-candidate`)、R1～R7 規則修復、雙軌 `extract`／`audit` 模型檢驗、防提示詞注入、年度／梯次／分支拆分、學生與機關期限分流、否定資格、未知兼領、金額單位、事件相對日期（跨年／閏月／例假日待核）、證據不足不猜測、來源衝突、模型捏造攔截與 P1 博士五年級候選人情境。目前 **51 項 Python 測試與 23 項 Node 原型測試** 全部通過。
+## 人工台帳與PR匯出
 
-依據：[GitHub排程事件](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows)、[Robots協定RFC 9309](https://www.rfc-editor.org/rfc/rfc9309.html)、[教務處隱私與版權聲明](https://www.aca.ntu.edu.tw/w/aca/Privacy)、[pypdf抽字及記憶體說明](https://pypdf.readthedocs.io/en/stable/user/extract-text.html)。
+[data/scan-reviews.json](../data/scan-reviews.json)依[台帳Schema](../schema/scan-reviews.schema.json)版本1.1.0驗證。目前正式reviews為空；舊合成紀錄已移入明示測試fixture。
+
+每筆處置需revision_id、source_id、action、reviewer、reason、reviewed_on；action為noted／dismissed／applied。日期有效且不可在未來，覆核者需不同於原編輯者。applied另需candidate_id及candidate_sha256（由scripts.review_candidates.candidate_fingerprint計算），綁定實際候選內容；錯來源、缺日期、改內容、只有gaps或無上下文不核准。
+
+noted／dismissed是文件層級佇列處置；帶candidate_id的處置只影響該候選，不清整份文件。applied不自動清除同一文件其他分支，須完成全文件判讀後另以文件層級處置結案。
+
+`review_candidates.py --export-pr-draft work/reviewed-pilot.json`只匯出經完整自動檢核及獨立人工核准、內容雜湊相符者；禁止直接覆寫data/pilot.json。候選與資料集as_of不同時拒絕匯出，須明確更新整體快照與受理狀態，不能把新觀察日期改成舊快照日。資料PR仍由維護者審查，不自動建立或合併。
+
+## 排程與失敗保留
+
+- Actions週二／五09:17（臺北），GitHub不保證準時；main手動scan可執行，模型預設off。Pages部署另由pages.yml執行，PR只離線檢查及建置，不取得來源Secrets。
+- 每輪最多20次HTTP（含robots／轉向／重試／附件）、5份變更、24份待審；至少3秒主機間隔、一次一請求。待審滿則停新增，不覆蓋未審候選。
+- HTTPS白名單逐次檢查重新導向、TLS正常驗證；不登入、不下載名單或帶session／token連結。robots每輪重查，404不等於轉載授權；禁止路徑不以代理、換IP或偽裝瀏覽器繞過。
+- 403／429暫停主機；5xx最多再試一次，Retry-After延後下輪。HTML上限2MB；PDF10MB／50頁，文字抽取20秒；Linux子程序限CPU／768MB，Windows無相同記憶體硬上限。加密、掃描圖或解析問題轉人工，不做OCR。
+- 新請求啟動預算180秒、單次逾時23秒、workflow10分鐘。故障保留舊正式資料及候選，不當停辦。舊版雜湊或304沒有完整原文可用時，不重新宣稱內容通過。
+
+離線測試與建置指令見[資料契約](DATA-CONTRACT.md)；本輪驗收見[可靠性紀錄](RELIABILITY-AUDIT.md)。依據：[GitHub排程事件](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows)、[RFC9309](https://www.rfc-editor.org/rfc/rfc9309.html)、[教務處聲明](https://www.aca.ntu.edu.tw/w/aca/Privacy)、[pypdf限制](https://pypdf.readthedocs.io/en/stable/user/extract-text.html)。

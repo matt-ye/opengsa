@@ -22,16 +22,20 @@ v0.8研討會可選國科會、臺大醫學院、傑出人才發展基金會或�
 
 第一階段先做「全國性方案＋臺大試點」，再依資料維護量能逐步擴校。海外方案先保留少數來源占位。
 
-來源掃描採臺北時間週二、週五09:17，另可手動執行；目前六個正文目標及允許的文字PDF在記憶體完成結構化萃取、七項獨立檢核（含 `coverage_ok` 與 `passed_with_gaps`）、學生窗口時間判斷與 `data/pilot.json` 差異比對，只產生待覆核報告，不直接改寫網站正式資料。每次檢查robots，PDF不長期存放；教務處因轉載條款只保留雜湊與定位，且絕不送往外部模型（`hash_only_bytes_sent = 0`）。雙軌模型 Adapter（`extract` 補缺＋`audit` 交叉盤查）於排程預設關閉（`model_mode=off`、呼叫0次），僅支援手動觸發或本機評估。[看掃描狀態](https://github.com/matt-ye/opengsa/actions/workflows/scan-sources.yml) · [操作與限制](docs/SCANNER.md)。
+來源掃描採臺北時間週二、週五09:17，另可手動執行；目前來源台帳中已啟用的正文目標及允許的文字PDF在記憶體完成結構化萃取、七項獨立檢核（含 `coverage_ok` 與 `passed_with_gaps`）、學生窗口時間判斷與 `data/pilot.json` 差異比對，只產生待覆核報告，不直接改寫網站正式資料。每次檢查robots，PDF不長期存放；教務處因轉載條款只保留雜湊與定位，且絕不送往外部模型（`hash_only_bytes_sent = 0`）。雙軌模型 Adapter（`extract` 補缺＋`audit` 交叉盤查）於排程預設關閉（`model_mode=off`、呼叫0次），僅支援手動觸發或本機評估。[看掃描狀態](https://github.com/matt-ye/opengsa/actions/workflows/scan-sources.yml) · [操作與限制](docs/SCANNER.md)。
 
-## 規劃中的功能
+本輪以已合併的 PR #16／#17 為基準，補上日期信心標示、準備帶縮放、未知資格與受理狀態判斷、候選核准內容綁定及失效來源隔離。來源設定共14筆，其中9筆啟用、5筆暫停；「啟用」不保證每次都可擷取，最近實測狀態見[掃描文件](docs/SCANNER.md)。10筆網站資料仍是待覆核草稿，人工處置台帳已清除合成紀錄。
+
+8組Repository Secrets已接線，模型預設與官方額度宣稱已重新盤查；僅Groq完成小量JSON推論，其他服務的目錄成功不等於金鑰／免費推論全部可用。看[API查核及操作](docs/API-AUDIT.md)與[本輪修正及驗收](docs/RELIABILITY-AUDIT.md)。排程維持規則模式，不啟用自動付費備援。
+
+## 已有與後續功能
 
 - 依用途查找獎學金、研究支持、成果獎、會議與境外活動、學費、急難及住宿資源。
 - 五組必要標籤：**來源、身分、年級限制、兼領、清寒限定**。
 - 分開顯示資格結果、受理狀態與資料完整度；未知不等於符合或不限。
 - 區分資助、轉知、承辦、收件、推薦與審查單位，以及申請者與受益者。
 - 本機收藏、申請準備時間軸及日曆匯出。
-- 可追溯版本的法規、適用給付依據與保密求助入口。
+- 可追溯版本的法規、適用給付依據與正式求助入口；保密條件須向各窗口確認。
 
 ## 資料如何成為學生可用的資訊
 
@@ -49,6 +53,7 @@ flowchart LR
  D --> E[獨立檢核＋申請時間判斷]
  E --> F[人工獨立覆核]
  F --> G[資料PR與Git總表]
+ D -.手動且通過來源與成本限制.-> M[單一Provider／無付費備援]
 ```
 
 ### 掃描、版本與發布全貌
@@ -81,7 +86,8 @@ flowchart TD
 | [公開預覽與部署](docs/DEPLOYMENT.md) | GitHub Pages發布、公開回饋、成品邊界、測試與回復 |
 | [長期維運與訂閱提案](docs/OPERATIONS-PLAN.md) | GitHub／D1分工、來源擷取、Agent檢核、成本、RSS與ICS；D1與訂閱尚未啟用 |
 | [首批來源及Actions設計](docs/INGESTION-POC.md) | 管線設計與已落地之結構化萃取、獨立檢核及差異覆核模組對照 |
-| [自動來源掃描](docs/SCANNER.md) | 已實作的六頁試點、低頻排程、結構化候選萃取、獨立檢核與故障保留 |
+| [API查核與模型台帳](docs/API-AUDIT.md) | Secret對應、模型目錄、額度／效期、手動實測與成本限制 |
+| [自動來源掃描](docs/SCANNER.md) | 已實作的來源台帳試點、低頻排程、結構化候選萃取、獨立檢核與故障保留 |
 | [專案縮圖原始設計](docs/design/social-preview.html) | 已核可圖稿的可修改HTML；GitHub Social preview由使用者自行上傳 |
 | [四頁線框與流程](docs/design/README.md) | 搜尋、詳情、時間軸、權益入口；可開啟HTML審閱稿 |
 | [資料契約草案](docs/DATA-CONTRACT.md) | 正式草稿與候選資料 Schema、欄位、狀態、日期、引用及檢查方式 |
@@ -93,7 +99,7 @@ flowchart TD
 | [資料政策](docs/DATA-POLICY.md) | 來源、覆核、版本、存取限制與隱私 |
 | [歷史完整 handoff](docs/reference/HANDOFF.md) | 完整規格參考；舊階段與數量目標以目前計畫為準 |
 
-執行資料檢查、51項Python測試與23項Node測試的方法見[資料契約](docs/DATA-CONTRACT.md#可執行檢查與測試)。結構檢查與自動檢核通過不取代人工獨立覆核，亦不代表官方資格已核定。
+執行資料檢查、Python與Node測試的方法見[資料契約](docs/DATA-CONTRACT.md#可執行檢查與測試)。結構檢查與自動檢核通過不取代人工獨立覆核，亦不代表官方資格已核定。
 
 ## 貢獻與授權
 

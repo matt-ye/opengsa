@@ -1,37 +1,4 @@
 {
-  "schema_version": "1.0.0",
-  "reviews": [
-    {
-      "revision_id": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
-      "source_id": "nstc-abroad-dragon-rule",
-      "action": "applied",
-      "reviewer": "independent-reviewer-2",
-      "reviewed_on": "2026-10-28",
-      "note": "國科會千里馬赴國外研究要點已核定，已通過獨立檢核與申請時程驗證，准予晉級正式機會草稿。"
-    },
-    {
-      "revision_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "source_id": "nstc-assistant-rule",
-      "action": "applied",
-      "reviewer": "independent-reviewer-2",
-      "reviewed_on": "2026-10-28",
-      "note": "國科會專題研究計畫研究人力約用注意事項已核定，助學生與助理下限基準明確，准予晉級正式政策草稿。"
-    },
-    {
-      "revision_id": "tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt",
-      "source_id": "ntu-ta-policy",
-      "action": "noted",
-      "reviewer": "independent-reviewer-2",
-      "reviewed_on": "2026-10-28",
-      "note": "教務處教學助理辦法受轉載條款限制（hash_only），目前列為法源位階地圖與薪資參考，暫不直接覆寫院系額度。"
-    },
-    {
-      "revision_id": "llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
-      "source_id": "ntu-ord-assistant-limit",
-      "action": "noted",
-      "reviewer": "independent-reviewer-2",
-      "reviewed_on": "2026-10-28",
-      "note": "研發處計畫兼任助理支給上限為上限標準非保底，列為助學金試算之頂點防呆參照，保留待覆核。"
-    }
-  ]
+  "schema_version": "1.1.0",
+  "reviews": []
 }

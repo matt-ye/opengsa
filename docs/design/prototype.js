@@ -43,11 +43,24 @@ function makeDemo(today) {
   end:event(end===null?null:at(end),end===null?"unknown":"confirmed","合成學生截止"),
   result:event(result===null?null:at(result),certainty,"合成結果日，非官方日期"),
   milestones:id==="SYNTH-E"?[{label:"校內推薦",...event(at(34),"confirmed","合成校內節點")}]:[],
+  rawState:start===null||end===null?"unknown":start>0?"not_yet_open":end<0?"closed":"open",
   application:start===null||end===null?"合成：待確認":start>0?"合成：尚未開放":end<0?"合成：已截止":"合成：受理中",evidence:"合成資料",url:null,
   note:"所有名稱、標籤與日期均為虛構；不代表任何實際方案。"
  }));
 }
-function makeDrafts(pilot) {
+function windowState(item,today) {
+ const steps=item.steps || [], end=steps.find(s=>s.actor==="student" && ["date","datetime"].includes(s.deadline?.kind))?.deadline;
+ if(end?.value && end.value.slice(0,10)<today) return "closed";
+ if(item.application?.as_of===today) return item.application.state;
+ if(item.application?.state==="closed") return "closed";
+ const start=item.start;
+ if(start?.value && start.certainty!=="inferred" && start.certainty!=="tentative" && start.certainty!=="unknown") {
+  if(start.value.slice(0,10)>today) return "not_yet_open";
+  if(end?.value && end.kind==="date" && end.value>today) return "open";
+ }
+ return "unknown"; // An old open snapshot, inferred start or same-day time needs confirmation.
+}
+function makeDrafts(pilot,asOf=taipeiToday()) {
  const funding = {
   "ntu-tuition-115-1":"government","ntu-emergency-policy":"university",
   "ntu-nstc-phd-115":"government","ntu-moe-phd-115-round2":"government",
@@ -68,7 +81,7 @@ function makeDrafts(pilot) {
    const funder = (item.organizations?.funder?.text || "").toLowerCase();
    const announcer = (item.organizations?.announcer?.text || "").toLowerCase();
    const title = (item.title || "").toLowerCase();
-   const combined = funder + " " + announcer + " " + title;
+   const combined = funder; // Funding tags describe the funder, not the forwarding school.
    if (combined.includes("國科會") || combined.includes("教育部") || combined.includes("國家科學") || combined.includes("衛福部") || combined.includes("政府")) resolvedSource = "government";
    else if (combined.includes("大學") || combined.includes("臺大") || combined.includes("教務處") || combined.includes("研發處") || combined.includes("學院") || combined.includes("系所")) resolvedSource = "university";
    else if (combined.includes("基金會") || combined.includes("財團法人") || combined.includes("學會") || combined.includes("傑出人才")) resolvedSource = "foundation";
@@ -79,11 +92,12 @@ function makeDrafts(pilot) {
 
   const startCertainty = item.start?.certainty || (["date","datetime"].includes(item.start?.kind) ? "confirmed" : "unknown");
   const structuredStart = (item.start && item.start.value) ? event(item.start.value, startCertainty, item.start.note || (startCertainty==="inferred"?"依官方公告發布日推定即日起受理":"官方受理申請起始日")) : event(null, "unknown", "目前無結構化申請起日；依內文敘述");
-  const structuredResult = (item.result && item.result.value) ? event(item.result.value, ["date","datetime"].includes(item.result.kind) ? "confirmed" : "unknown", item.result.note || "結果公告日") : event(null, "unknown", "結果尚無結構證據");
+  const structuredResult = (item.result && item.result.value && ["date","datetime"].includes(item.result.kind)) ? event(item.result.value, item.result.certainty || "unknown", item.result.note || "結果公告日") : event(null, "unknown", "結果尚無結構證據");
 
   const sources = [...item.application.refs,...item.steps.flatMap(s=>s.refs)];
   const source = sources.map(r=>sourceMap.get(r.source)).find(Boolean);
-  return {
+   const state=windowState(item,asOf);
+   return {
    id:item.id,title:item.title,category:item.category,source:resolvedSource,
    degrees:item.eligibility.degrees,year:item.eligibility.year_limit.mode,
    candidateMode:item.eligibility?.candidate?.mode || "unknown",
@@ -93,8 +107,8 @@ function makeDrafts(pilot) {
    end:event(student?.deadline?.value||null,student?"confirmed":"unknown",student?.deadline?.note||"學生截止尚未確認"),
    result:structuredResult,
    milestones,
-   application:({open:"摘要顯示受理中",closed:"本期已截止",unknown:"受理待確認",not_yet_open:"尚未開放"})[item.application.state],
-   rawState:item.application.state,
+    application:({open:"受理中（依已記錄條件）",closed:"本期已截止",unknown:"受理待確認",not_yet_open:"尚未開放"})[state],
+    rawState:state,
    evidence:item.evidence_status==="incomplete"?"資料不完整／草稿":"草稿待獨立覆核",
    url:source?.url||null,note:item.application.reason+"；所有資料皆待獨立覆核。"
   };
@@ -112,10 +126,10 @@ function filterItems(items, filters) {
     return Array.isArray(item.degrees) && item.degrees.includes(wanted);
    }
    if(key==="application") {
-    if(wanted==="open") return item.rawState==="open" || item.application?.includes("受理");
-    if(wanted==="upcoming") return item.rawState==="not_yet_open" || item.application?.includes("尚未");
-    if(wanted==="closed") return item.rawState==="closed" || item.application?.includes("截止");
-    if(wanted==="unknown") return item.rawState==="unknown" || item.application?.includes("待確認");
+    if(wanted==="open") return item.rawState==="open";
+    if(wanted==="upcoming") return item.rawState==="not_yet_open";
+    if(wanted==="closed") return item.rawState==="closed";
+    if(wanted==="unknown") return item.rawState==="unknown";
     return true;
    }
    const value=item[key];
@@ -124,10 +138,18 @@ function filterItems(items, filters) {
   });
  });
 }
+function noticeWindow(item) {
+ if(item.personal || item.start.value || dayNumber(item.end.value)===null) return null;
+ return {start:addDays(item.end.value.slice(0,10),-30),end:item.end.value};
+}
+function startLabel(item) {
+ const suffix={inferred:"（推定）",tentative:"（暫定）",unknown:"（待確認）"}[item.start.certainty] || "";
+ return item.start.value ? dateText(item.start.value)+suffix : "待確認"+(noticeWindow(item)?"（另有30天準備建議）":"");
+}
 function domain(items,today,mode="recent",offset=0) {
  const current=dayNumber(today);
  if(mode==="fit") {
-  const values=items.flatMap(x=>[x.start.value,x.end.value,x.result.value,...x.milestones.map(m=>m.value)]).map(dayNumber).filter(x=>x!==null);
+  const values=items.flatMap(x=>[x.start.value,x.end.value,x.result.value,...x.milestones.map(m=>m.value),x.preparation?.start,noticeWindow(x)?.start]).map(dayNumber).filter(x=>x!==null);
   const low=Math.min(current,...values), high=Math.max(current,...values);
   return {start:low-7,end:Math.max(high+7,low+42)};
  }
@@ -268,9 +290,9 @@ function evaluateSubordination(checks={}){
  const disclaimer="僅供依公開原則整理爭點，不構成正式法律裁決。";
  if(score===0) return {score:0,level:"none",recommendedTiers:[],disclaimer,summary:"尚未勾選項目。勾選上方任一實際情況後，將顯示對應的法規判準與救濟建議。"};
  if(score===1) return {score:1,level:"review_needed",recommendedTiers:["TIER 01","TIER 02"],disclaimer,summary:"已勾選 1 項指標：具部分從屬或學習分流爭點。建議核對勞動部指導原則第 2～4 點及書面協議，確認工時與給付是否相符（2026 最低時薪 196 元）；必要時洽 TIER 01 系院或 TIER 02 校級窗口釐清。"+disclaimer};
- return {score,level:"high_subordination",recommendedTiers:["TIER 02","TIER 04","TIER 05"],disclaimer,summary:"已勾選 "+score+" 項指標：高度呈現人格、經濟或組織從屬性（常見「假學習真勞動」爭點）。依勞動部指導原則實質認定原則，若受指揮監督並提供勞務獲取對價，學校不得僅以「獎助生」名義排除勞基法、最低工資（196元／時）與雇主外加 6% 勞退提繳義務。建議參考下方 TIER 02 校內申訴、TIER 04（1955 勞檢保密申訴／勞工局調解）或 TIER 05 高教工會。"+disclaimer};
+ return {score,level:"high_subordination",recommendedTiers:["TIER 02","TIER 04","TIER 05"],disclaimer,summary:"已勾選 "+score+" 項指標：高度呈現人格、經濟或組織從屬性（常見「假學習真勞動」爭點）。依勞動部指導原則實質認定原則，若受指揮監督並提供勞務獲取對價，不能只按給付名稱排除適用保障；勞基法、2026最低工資與退休金須分別依關係、身分及進用依據確認。建議參考下方 TIER 02 校內申訴、TIER 04（地方主管機關勞檢／勞工局調解）或 TIER 05 高教工會。"+disclaimer};
 }
-const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,filterItems,workspaceItems,domain,position,centerScroll,geometry,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination};
+const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,windowState,filterItems,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination};
 if(typeof module!=="undefined" && module.exports) module.exports=api;
 if(typeof document==="undefined") return;
 
@@ -459,7 +481,7 @@ function drawCards(items) {
   const axes=el("div","axes");
   axes.append(axis("資格："+(item.synthetic?"未進行比對":"待補資料／人工核對"),"warn"),axis("受理："+item.application),axis("證據："+item.evidence,"info"));card.append(axes);
   const tags=el("div","pills");itemTags(item).forEach(tag=>tags.append(el("span","pill",tag)));card.append(tags);
-  card.append(el("p","small","申請開始 "+dateText(item.start.value)+" → 學生截止 "+deadlineText(item)+" → "+(item.result.certainty==="expected"?"預定":"")+"結果 "+dateText(item.result.value)));
+  card.append(el("p","small","申請開始 "+startLabel(item)+" → 學生截止 "+deadlineText(item)+" → "+(item.result.certainty==="expected"?"預定":"")+"結果 "+dateText(item.result.value)));
   const actions=el("div","card-actions");actions.append(pickControl(item,"list"));
   const button=el("button","secondary",picked[mode].has(item.id)?"查看詳情":"勾選並看詳情");button.type="button";button.dataset.openDetail=item.id;button.addEventListener("click",()=>chooseAndOpen(item));actions.append(button);card.append(actions);
   list.append(card);
@@ -513,13 +535,13 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
    if(prep){const bar=el("button","gantt-bar preparation");bar.type="button";bar.style.left=prep.left+"%";bar.style.width=prep.width+"%";bar.title="個人準備建議（非官方申請期）："+dateText(item.preparation.start)+" 至 "+dateText(item.preparation.end);bar.setAttribute("aria-label",item.title+"："+bar.title);bar.addEventListener("click",()=>onInspect(item));plot.append(bar);}
   }
   let prepNoticeGeom=null;
-  if(!item.start.value && item.end.value && !item.personal){
-   const prepNoticeStart=addDays(item.end.value.slice(0,10),-30);
+  if(noticeWindow(item)){
+   const prepNoticeStart=noticeWindow(item).start;
    prepNoticeGeom=geometry({start:event(prepNoticeStart),end:event(item.end.value.slice(0,10)),result:event(),milestones:[]},range).bar;
    if(prepNoticeGeom){
     const bar=el("button","gantt-bar notice-window");
     bar.type="button";bar.style.left=prepNoticeGeom.left+"%";bar.style.width=prepNoticeGeom.width+"%";
-    bar.title="準備提醒期（官方未載明受理起日）："+dateText(prepNoticeStart)+" 至 "+dateText(item.end.value)+"（截止前 30 天準備提醒帶，非官方受理開放日）";
+    bar.title="準備提醒期（官方起日尚未確認）："+dateText(prepNoticeStart)+" 至 "+dateText(item.end.value)+"（截止前 30 天準備提醒帶，非官方受理開放日）";
     bar.setAttribute("aria-label",item.title+"："+bar.title);bar.addEventListener("click",()=>onInspect(item));plot.append(bar);
    }
   }
@@ -538,7 +560,7 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
   item.milestones.forEach(m=>{const p=position(m.value,range);if(p!==null&&p>=0&&p<100) marker(plot,p,"milestone"+(item.personal?" estimated":""),m.label+"："+dateText(m.value),item,onInspect);});
   const notes=[];
   if(item.personal) notes.push("個人規劃：虛線為準備建議，空心節點待核");
-  if(!item.start.value && item.end.value && !item.personal) notes.push("官方未載起日（已標示截止前30天準備提醒帶）");
+  if(noticeWindow(item)) notes.push(prepNoticeGeom?"官方起日待確認（已標示截止前30天準備建議）":"準備建議在視窗外；官方起日待確認");
   else if(!item.start.value && !item.personal) notes.push("起日待確認");
   if(item.start.certainty === "inferred") notes.push("起日依官方公告推定");
   if(!item.end.value) notes.push("學生截止待確認");
@@ -594,7 +616,7 @@ function drawDetail() {
  const tags=el("div","pills");itemTags(item).forEach(tag=>tags.append(el("span","pill",tag)));top.append(tags);
  top.append(el("p","small",item.note));content.append(top);
  const columns=el("div","two-col"), left=el("div"), right=el("aside");
-  const startDetailText="申請開始："+dateText(item.start.value)+(item.start.certainty==="inferred"?"（依官方公告日推定）":"")+(!item.start.value&&item.end.value&&!item.personal?"（官方未載起日，甘特圖標示截止前 30 天準備提醒帶）":"")+"；"+item.start.note;
+  const startDetailText="申請開始："+dateText(item.start.value)+(item.start.certainty==="inferred"?"（依官方公告日推定）":"")+(!item.start.value&&item.end.value&&!item.personal?"（官方起日待確認，甘特圖提供截止前 30 天準備提醒帶）":"")+"；"+item.start.note;
   const timing=factSection("申請與結果時程",[
    startDetailText,
    "學生截止："+deadlineText(item)+"；"+item.end.note,

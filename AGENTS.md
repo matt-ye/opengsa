@@ -11,3 +11,5 @@
 - v0.8研討會個人列可加入甘特圖並跨頁共用，資料僅本次記憶體；conference-programs.json為待覆核方案／來源台帳，不含個人輸入，不把機構期限、準備建議或接受通知當作官方學生起訖／補助結果。
 - 2026-10-29使用者另要求實作自動爬取；已核可範圍擴至SCANNER.md的有限公開GET、每週二／五09:17（臺北）低頻掃描及待覆核報告。此決策取代前述掃描未啟用的歷史描述；仍不啟用模型、D1、私人API、通知或自動改寫正式資料。每次檢查robots，教務處依轉載條款只存雜湊／定位，研發處/WebUPD/不下載。
 - 2026-10-29使用者另核可「規則＋LLM API」雙軌資料萃取（補漏 extract）與盤查（audit），並授權以本機既有環境變數金鑰對非受限（short_excerpt）來源作小量實測與基準評測；Actions 僅設計預設關閉（model_mode=off）之手動模型選項，排程仍維持模型關閉。此決策更新前述不呼叫模型的本機測試限制；教務處等 hash_only 來源仍嚴禁送往外部 API，新增 GitHub Secrets、排程自動呼叫模型、付費服務、D1、通知與自動改寫正式資料仍未核可。
+
+- 2026-10-30最新核可：使用者已自行存入8組OPENGSA_ Repository Secrets，並授權整輪可靠性優化、官方API／模型目錄查核與小量手動合成推論，要求整理成一個PR供審查。SiliconFlow為國際站cloud.siliconflow.com，region=com；同一key不得跨區試探。這取代上述Secrets／手動推論未核可描述；排程仍model_mode=off，不啟用付費、D1、訂閱或自動改寫正式資料。API成本未確認者只查目錄；429不連續重試。最新操作見docs/API-AUDIT.md、docs/SCANNER.md，法律摘要見docs/RIGHTS-AND-LEGAL-FRAMEWORK.md。既有擴展文件屬搜尋種子，不把未查證網址或金額當成已支援來源。正式台帳不得有合成人工覆核者。

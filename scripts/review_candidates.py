@@ -10,6 +10,8 @@ import argparse
 from copy import deepcopy
 import html
 import json
+import hashlib
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 import sys
 
@@ -18,9 +20,26 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.check_data import validate as validate_pilot_data
-from scripts.evaluate_deadlines import evaluate_application_window, evaluate_eligibility, make_p1_profile
+from scripts.evaluate_deadlines import evaluate_application_window, evaluate_eligibility, make_p1_profile, taipei_today, parse_iso_date
 from scripts.extract_candidates import refetch_and_extract_candidates
 from scripts.verify_candidates import verify_bundle
+from jsonschema import Draft202012Validator, FormatChecker
+
+
+def validate_review_ledger(payload):
+    schema = json.loads((ROOT / "schema/scan-reviews.schema.json").read_text(encoding="utf-8"))
+    errors = list(Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(payload))
+    keys = [(r.get("revision_id"), r.get("candidate_id")) for r in payload.get("reviews", [])]
+    if errors or len(keys) != len(set(keys)):
+        raise ValueError("Invalid review ledger: " + (errors[0].message if errors else "duplicate disposition"))
+    if any(r["reviewed_on"] > taipei_today() for r in payload["reviews"]):
+        raise ValueError("Review date cannot be in the future")
+
+
+def candidate_fingerprint(candidate):
+    """Bind approval to the actual claims; exclude changing evaluation timestamps."""
+    fields = {k: candidate.get(k) for k in ("candidate_id", "title", "category", "resource_kind", "scope", "evidence_status", "program_key", "cycle", "source_metadata", "participants", "organizations", "eligibility", "benefit", "compatibility", "hardship", "schedule", "policy_version", "field_evidence")}
+    return hashlib.sha256(json.dumps(fields, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
 
 def _escape_md(value):
@@ -122,7 +141,10 @@ def apply_review_ledger(candidate, reviews_by_revision):
     """套用 data/scan-reviews.json 人工處置紀錄與獨立覆核檢查，回傳更新後之候選副本。"""
     cand = deepcopy(candidate)
     rev_id = cand.get("source_metadata", {}).get("revision_id")
-    ledger_entry = reviews_by_revision.get(rev_id)
+    entries = reviews_by_revision.get(rev_id, [])
+    if isinstance(entries, dict):
+        entries = [entries]
+    ledger_entry = next((r for r in entries if r.get("source_id") == cand.get("source_metadata", {}).get("source_id") and r.get("candidate_id") in (None, cand.get("candidate_id"))), None)
     if not ledger_entry:
         return cand
 
@@ -142,12 +164,16 @@ def apply_review_ledger(candidate, reviews_by_revision):
         if (
             reviewer
             and reviewer != editor
-            and ver_status in ("passed_automated_checks", "passed_with_gaps")
+            and ver_status == "passed_automated_checks"
+            and parse_iso_date(reviewed_on) is not None and reviewed_on <= taipei_today()
+            and ledger_entry.get("candidate_id") == cand.get("candidate_id")
+            and ledger_entry.get("candidate_sha256") == candidate_fingerprint(cand)
         ):
             cand["review"]["status"] = "reviewed"
             cand["review"]["independent_reviewer"] = reviewer
             cand["review"]["reviewed_on"] = reviewed_on
             cand["review"]["promotion_ready"] = True
+            cand["review"]["approved_candidate_sha256"] = ledger_entry["candidate_sha256"]
         else:
             cand["review"]["status"] = "pending"
             cand["review"]["independent_reviewer"] = reviewer
@@ -168,15 +194,20 @@ def build_review_report(
     scan_report=None,
     reviews_data=None,
     refetch_statuses=None,
+    in_memory_blocks_by_source=None,
 ):
     """整合來源變更、萃取、檢核、申請時間與人工覆核差異，產生結構化報告與 Markdown。"""
     reviews_list = (reviews_data or {}).get("reviews", [])
-    reviews_by_rev = {r["revision_id"]: r for r in reviews_list if "revision_id" in r}
+    if reviews_data is not None:
+        validate_review_ledger(reviews_data)
+    reviews_by_rev = {}
+    for entry in reviews_list:
+        reviews_by_rev.setdefault(entry["revision_id"], []).append(entry)
     refetch_statuses = refetch_statuses or {}
     as_of = candidate_bundle.get("as_of", "2026-10-29")
     p1_profile = make_p1_profile()
 
-    verified_bundle, bundle_errors = verify_bundle(candidate_bundle, pilot_data=pilot_data)
+    verified_bundle, bundle_errors = verify_bundle(candidate_bundle, in_memory_blocks_by_source=in_memory_blocks_by_source, pilot_data=pilot_data)
     enriched_candidates = []
     review_rows = []
 
@@ -372,13 +403,12 @@ def candidate_to_pilot_opportunity(cand):
     elig = cand["eligibility"]
     steps = [
         {
-            "actor": "institution" if s["actor"] == "supplement" else ("unit" if s["actor"] == "department" else s["actor"]),
+            "actor": s["actor"],
             "action": s["action"],
             "deadline": deepcopy(s["deadline"]),
             "refs": deepcopy(s["refs"]),
         }
         for s in cand["schedule"]["steps"]
-        if s["actor"] != "supplement"
     ]
     opp = {
         "id": cand["opportunity_id"] or cand["candidate_id"],
@@ -395,23 +425,18 @@ def candidate_to_pilot_opportunity(cand):
         "organizations": deepcopy(cand["organizations"]),
         "eligibility": {
             "degrees": deepcopy(elig["degrees"]),
-            "institution": "NTU" if elig["institution"] == "NTU" else "domestic_eligible_institution",
+            "institution": elig["institution"],
             "identity": deepcopy(elig["identity"]),
             "year_limit": deepcopy(elig["year_limit"]),
-            "candidate": {
-                "mode": elig["candidate"]["mode"],
-                "refs": deepcopy(elig["candidate"]["refs"]),
-            },
+            "candidate": deepcopy(elig["candidate"]),
+            **{key: deepcopy(elig[key]) for key in ("nationality", "employment_status", "negated_conditions", "graduation_requirement", "prior_funding_rule")},
             "other_conditions": deepcopy(elig["other_conditions"]),
         },
-        "compatibility": {
-            "mode": cand["compatibility"]["mode"],
-            "note": cand["compatibility"]["note"],
-            "refs": deepcopy(cand["compatibility"]["refs"]),
-        },
+        "compatibility": deepcopy(cand["compatibility"]),
         "hardship": deepcopy(cand["hardship"]),
         "benefit": {
             "text": cand["benefit"]["summary"],
+            "items": deepcopy(cand["benefit"]["items"]),
             "refs": deepcopy(cand["benefit"]["refs"]),
         },
         "start": deepcopy(cand["schedule"]["application_start"]) if cand.get("schedule", {}).get("application_start") else None,
@@ -426,9 +451,13 @@ def candidate_to_pilot_opportunity(cand):
             "reviewed_on": cand["review"]["reviewed_on"],
         },
         "open_questions": deepcopy(cand["gaps_and_conflicts"]["open_questions"]),
+        "policy_version": deepcopy(cand["policy_version"]),
+        "field_evidence": deepcopy(cand["field_evidence"]),
     }
     if opp.get("start") is None or opp["start"].get("kind") == "unknown" and not opp["start"].get("value"):
         opp.pop("start", None)
+    elif opp.get("start"):
+        opp["start"]["refs"] = [{"source":e["source"],"locator":e["locator"]} for e in cand["field_evidence"] if e["field_path"] == "schedule.application_start"]
     if opp.get("result") is None or opp["result"].get("kind") == "unknown" and not opp["result"].get("value"):
         opp.pop("result", None)
     return opp
@@ -460,15 +489,18 @@ def export_pr_candidate_draft(verified_bundle, pilot_data, output_path, scan_sou
     for cand in verified_bundle.get("candidates", []):
         if not cand.get("review", {}).get("promotion_ready"):
             continue
-        if cand.get("verification", {}).get("status") not in ("passed_automated_checks", "passed_with_gaps"):
+        if cand.get("verification", {}).get("status") != "passed_automated_checks":
             continue
         if cand.get("review", {}).get("status") != "reviewed":
             continue
         if not cand["review"].get("independent_reviewer") or cand["review"]["independent_reviewer"] == cand["review"]["editor"]:
             continue
+        if cand["review"].get("approved_candidate_sha256") != candidate_fingerprint(cand):
+            continue
 
         opp = candidate_to_pilot_opportunity(cand)
-        opp["application"]["as_of"] = draft_pilot["as_of"]
+        if opp["application"]["as_of"] != draft_pilot["as_of"]:
+            raise ValueError("Snapshot dates differ; explicitly refresh the dataset and application states before export")
 
         # 同步登錄來源台帳至草稿 sources，維持 pilot.schema.json 與 check_data 資料契約完整性
         src_id = cand.get("source_metadata", {}).get("source_id")
@@ -480,7 +512,7 @@ def export_pr_candidate_draft(verified_bundle, pilot_data, output_path, scan_sou
                 "url": cand.get("source_metadata", {}).get("url"),
                 "authority": "official_page",
                 "access": "public",
-                "checked_on": draft_pilot["as_of"],
+                "checked_on": datetime.fromisoformat(cand["source_metadata"]["observed_at"]).astimezone(timezone(timedelta(hours=8))).date().isoformat(),
                 "locator": "候選來源觀察記錄",
                 "owner": None,
                 "ownership_status": "unassigned",
@@ -513,7 +545,7 @@ def main():
     parser.add_argument("--pilot", type=Path, default=ROOT / "data/pilot.json")
     parser.add_argument("--reviews", type=Path, default=ROOT / "data/scan-reviews.json")
     parser.add_argument("--output-dir", type=Path, default=ROOT / "work/scanner/report")
-    parser.add_argument("--as-of", default="2026-10-29")
+    parser.add_argument("--as-of", default=taipei_today())
     parser.add_argument("--no-refetch", action="store_true")
     parser.add_argument("--export-pr-draft", type=Path, default=None, help="Path to export promoted PR draft")
     args = parser.parse_args()
@@ -523,6 +555,8 @@ def main():
     reviews_data = json.loads(args.reviews.read_text(encoding="utf-8")) if args.reviews.exists() else {"reviews": []}
     raw_input = json.loads(args.candidates.read_text(encoding="utf-8")) if args.candidates.exists() else []
 
+    from scripts.scan_sources import Fetcher
+    fetcher = Fetcher(config)
     if isinstance(raw_input, dict) and "candidates" in raw_input and (not raw_input["candidates"] or "candidate_id" in raw_input["candidates"][0]):
         bundle = raw_input
         refetch_statuses = {c.get("source_metadata", {}).get("url"): "in_memory" for c in bundle.get("candidates", [])}
@@ -531,6 +565,7 @@ def main():
         bundle, refetch_statuses = refetch_and_extract_candidates(
             pending,
             config,
+            fetcher=fetcher,
             as_of=args.as_of,
             allow_network_refetch=not args.no_refetch,
         )
@@ -539,6 +574,7 @@ def main():
         pilot_data,
         reviews_data=reviews_data,
         refetch_statuses=refetch_statuses,
+        in_memory_blocks_by_source=fetcher.in_memory_blocks,
     )
     args.output_dir.mkdir(parents=True, exist_ok=True)
     (args.output_dir / "structured-candidates.json").write_text(

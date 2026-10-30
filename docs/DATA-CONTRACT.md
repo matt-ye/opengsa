@@ -71,13 +71,24 @@ erDiagram
 ```powershell
 python -m pip install -r requirements-dev.txt
 python scripts/check_data.py
+python scripts/scan_sources.py --check-config
 python -m unittest discover -s tests -v
 node --test tests/prototype.test.cjs
 python scripts/build_site.py dist/handoff-check
 ```
 
 - `python scripts/check_data.py`：驗證 `schema/pilot.schema.json`、`schema/candidate.schema.json` 與 `data/pilot.json` 結構、引用、日期精度與獨立覆核規則。
-- `python -m unittest discover -s tests -v`：執行 **51 項 Python 測試**（含資料契約 10 項、建置邊界 3 項、掃描器 24 項，以及結構化萃取／雙軌 LLM 盤查／獨立檢核／申請時間／P1 資格／覆核流程 14 項綜合測試）。
-- `node --test tests/prototype.test.cjs`：執行 **23 項 Node 原型互動與研討會時程測試**。
+- `python -m unittest discover -s tests -v`：執行全部Python資料契約、掃描、萃取、覆核與建置測試。
+- `node --test tests/prototype.test.cjs`：執行全部Node原型互動與研討會時程測試。
 
 **重要限制**：結構檢查、規則萃取與自動檢核通過不證明外站內容、個人資格或法律結論已獲官方核定，亦不取代人工獨立覆核。
+
+## 本輪契約補強（2026-10-30）
+
+pilot保留0.1.0-draft版本並加向後相容的選填欄位：eligibility國籍／就業狀態、否定條件、畢業及既領補助規則；benefit.items；compatibility禁止方案／重疊期間；policy_version與field_evidence。candidate.mode可保留unknown，institution未知不可當任何學校。
+
+result保留date／datetime／month／range／unknown、certainty、end_value與refs；month／range不畫成精確單日結果節點。start可附refs且須區分confirmed、tentative、inferred、unknown；推定日期不使窗口自動open。supplement程序角色不再丟失。起日及結果的逐欄證據與年度錨點強制檢核；匯出不能重貼觀察日期。
+
+scan-reviews採獨立1.1.0 Schema，required reason不接受舊note；applied須source_id、candidate_id與內容SHA-256，非原編輯者、有效且非未來覆核日期及passed_automated_checks才可匯出。缺上下文、gaps、衝突或內容改動後一律不得提升；目前正式覆核台帳為空。完整操作見[SCANNER.md](SCANNER.md)。
+
+自動檢核涵蓋已實作的證據／數值／角色檢查，並非語意與法規完整性證明。程式尚未逐一結構化所有院系或領域限制，保留人工覆核與needs_information，不宣稱完全自動資格判定。
