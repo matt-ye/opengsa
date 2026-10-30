@@ -4,7 +4,7 @@
 
 ## 本輪狀態（優先於下列歷史決策中的舊數量與API提案）
 
-PR #16／#17已合併；本輪在獨立分支優化後另開一個PR，不直接合併main。網站10筆資料仍draft，RSS／ICS、D1及自動資料PR未啟用。來源台帳14筆、9筆啟用、5筆停用；失敗不當下架。8組Secrets已配置並完成受限手動查核，排程模型始終關閉；不採用過期模型或未證實的免費額度宣稱，也不實作付費瀑布備援。驗收與剩餘門檻見[可靠性修正](RELIABILITY-AUDIT.md)、[API查核](API-AUDIT.md)及[掃描操作](SCANNER.md)。
+PR #16～#19已全數合併至 main。網站10筆資料仍為待覆核草稿（draft），人工覆核台帳無合成紀錄，正式資料契約與防呆全面通過。8組Repository Secrets已完成官方端點連線與模型目錄查核，Groq完成小量JSON推論，其餘7組依合規政策嚴守catalog-only（不擅自扣費或推論）；PR #18收錄之17筆AI工具與算力補助已完成初查與分流，申請管道Schema（紙本/電子/親簽/NA判準）已落實。排程模型始終關閉（model_mode=off）。驗收與剩餘門檻見[可靠性修正](RELIABILITY-AUDIT.md)、[API查核](API-AUDIT.md)及[掃描操作](SCANNER.md)。
 
 ## 已接受決策
 
