@@ -77,8 +77,8 @@ function makeDrafts(pilot) {
    else resolvedSource = "unknown";
   }
 
-  const structuredStart = item.start?.value ? item.start : event(null,"unknown","現有契約尚無結構化申請起日；不從敘述推算");
-  const structuredResult = item.result?.value ? item.result : event(null,"unknown","結果公布日尚無結構化證據");
+  const structuredStart = (item.start && item.start.value) ? event(item.start.value, ["date","datetime"].includes(item.start.kind) ? "confirmed" : "unknown", item.start.note || "官方受理申請起始日") : event(null, "unknown", "目前無結構化申請起日；依內文敘述");
+  const structuredResult = (item.result && item.result.value) ? event(item.result.value, ["date","datetime"].includes(item.result.kind) ? "confirmed" : "unknown", item.result.note || "結果公告日") : event(null, "unknown", "結果尚無結構證據");
 
   const sources = [...item.application.refs,...item.steps.flatMap(s=>s.refs)];
   const source = sources.map(r=>sourceMap.get(r.source)).find(Boolean);

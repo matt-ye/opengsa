@@ -52,5 +52,18 @@ class DataContractTests(unittest.TestCase):
         self.assertTrue(any("unit/institution" in e for e in validate(self.data)))
 
 
+    def test_inverted_start_and_deadline_is_rejected(self):
+        # 測試申請起日晚於學生截止日會被嚴格拒絕
+        opp = self.data["opportunities"][0]  # ntu-tuition-115-1 (deadline: 2026-08-13)
+        opp["start"] = {
+            "kind": "date",
+            "value": "2026-08-20",  # 晚於 2026-08-13
+            "timezone": "Asia/Taipei",
+            "note": "倒錯的申請起始日",
+        }
+        errs = validate(self.data)
+        self.assertTrue(any("inverted start and deadline" in e for e in errs))
+
+
 if __name__ == "__main__":
     unittest.main()

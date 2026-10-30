@@ -380,7 +380,7 @@ def candidate_to_pilot_opportunity(cand):
         for s in cand["schedule"]["steps"]
         if s["actor"] != "supplement"
     ]
-    return {
+    opp = {
         "id": cand["opportunity_id"] or cand["candidate_id"],
         "program_key": cand["program_key"],
         "title": cand["title"],
@@ -414,6 +414,8 @@ def candidate_to_pilot_opportunity(cand):
             "text": cand["benefit"]["summary"],
             "refs": deepcopy(cand["benefit"]["refs"]),
         },
+        "start": deepcopy(cand["schedule"]["application_start"]) if cand.get("schedule", {}).get("application_start") else None,
+        "result": deepcopy(cand["schedule"]["result_date"]) if cand.get("schedule", {}).get("result_date") else None,
         "steps": steps,
         "application": deepcopy(cand["application"]),
         "evidence_status": cand["evidence_status"],
@@ -425,6 +427,11 @@ def candidate_to_pilot_opportunity(cand):
         },
         "open_questions": deepcopy(cand["gaps_and_conflicts"]["open_questions"]),
     }
+    if opp.get("start") is None or opp["start"].get("kind") == "unknown" and not opp["start"].get("value"):
+        opp.pop("start", None)
+    if opp.get("result") is None or opp["result"].get("kind") == "unknown" and not opp["result"].get("value"):
+        opp.pop("result", None)
+    return opp
 
 
 def export_pr_candidate_draft(verified_bundle, pilot_data, output_path, scan_sources_config=None):

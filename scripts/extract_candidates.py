@@ -1999,6 +1999,12 @@ def _extract_nstc_abroad_dragon(source, blocks, revision_id, observed_at, url, a
     cand["compatibility"]["note"] = "補助期間不得重複支領政府其他赴國外研修公費、相關獎助或出席國際學術會議費用；須揭露其他資助。"
     cand["compatibility"]["refs"] = [first_ref]
 
+    cand["schedule"]["application_start"] = {
+        "kind": "date",
+        "value": "2026-06-01",
+        "timezone": "Asia/Taipei",
+        "note": "每年6月1日起國科會線上系統開放受理申請",
+    }
     cand["schedule"]["steps"] = [
         {
             "actor": "student",
@@ -2034,6 +2040,9 @@ def _extract_nstc_abroad_dragon(source, blocks, revision_id, observed_at, url, a
     )
     cand["field_evidence"].append(
         make_field_evidence("compatibility", source["id"], revision_id, first_block, evidence_mode)
+    )
+    cand["field_evidence"].append(
+        make_field_evidence("schedule.application_start", source["id"], revision_id, dl_block, evidence_mode)
     )
     cand["field_evidence"].append(
         make_field_evidence("schedule.steps/1/deadline", source["id"], revision_id, dl_block, evidence_mode)
@@ -2503,6 +2512,12 @@ def _extract_sinica_phd_fellowship(source, blocks, revision_id, observed_at, url
     cand["compatibility"]["note"] = "獲獎期間不得兼領政府機關或中研院同性質獎助金；兼職工時依中研院培育要點核處。"
     cand["compatibility"]["refs"] = [first_ref]
 
+    cand["schedule"]["application_start"] = {
+        "kind": "date",
+        "value": "2026-03-01",
+        "timezone": "Asia/Taipei",
+        "note": "每年3月1日起中研院培育計畫線上系統開放受理申請",
+    }
     cand["schedule"]["steps"] = [
         {
             "actor": "student",
@@ -2541,6 +2556,9 @@ def _extract_sinica_phd_fellowship(source, blocks, revision_id, observed_at, url
     )
     cand["field_evidence"].append(
         make_field_evidence("compatibility", source["id"], revision_id, first_block, evidence_mode)
+    )
+    cand["field_evidence"].append(
+        make_field_evidence("schedule.application_start", source["id"], revision_id, dl_block, evidence_mode)
     )
     cand["field_evidence"].append(
         make_field_evidence("schedule.steps/0/deadline", source["id"], revision_id, dl_block, evidence_mode)

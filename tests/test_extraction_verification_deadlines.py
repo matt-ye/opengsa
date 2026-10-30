@@ -1149,6 +1149,7 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
         self.assertEqual(cs["eligibility"]["employment_status"], "non_in_service_only")
         self.assertEqual(cs["benefit"]["items"][0]["amount_min"], 40000)
         self.assertEqual(cs["benefit"]["items"][1]["amount_min"], 50000)
+        self.assertEqual(cs["schedule"]["application_start"]["value"], "2026-03-01")
         self.assertEqual(cs["schedule"]["steps"][0]["deadline"]["value"], "2026-04-10")
 
         # 2. 台積電博士獎學金專案
@@ -1285,6 +1286,12 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
             draft_data = read_json(tmp_pr_path)
             errs = validate_pilot(draft_data)
             self.assertEqual(errs, [])
+
+            # 驗證千里馬晉級草稿帶有結構化起日（2026-06-01），且符合起訖先後邏輯
+            dragon_promoted = next(o for o in draft_data["opportunities"] if o["id"] == "nstc-abroad-dragon-policy")
+            self.assertIsNotNone(dragon_promoted.get("start"))
+            self.assertEqual(dragon_promoted["start"]["value"], "2026-06-01")
+            self.assertEqual(dragon_promoted["start"]["kind"], "date")
 
             # 驗證嚴格禁止直接覆寫 official pilot.json
             with self.assertRaises(ValueError):

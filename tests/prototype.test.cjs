@@ -72,13 +72,26 @@ test("結果在截止之後以獨立節點與等待線呈現，保留預定狀�
  const fit=core.domain(demo,today,"fit");
  assert.ok(core.position(today,fit)>0 && core.position(today,fit)<100);
 });
-test("真實草稿的學院送件不回填為學生期限，結果日不補猜測",()=>{
+test("真實草稿的學院送件不回填為學生期限，缺起日不補猜測，載明起日者精確結構化",()=>{
  const drafts=core.makeDrafts(pilot);
  const moe=drafts.find(x=>x.id==="ntu-moe-phd-115-round2");
  assert.equal(moe.end.value,null);
  assert.equal(moe.milestones[0].value,"2026-11-09");
- assert.ok(drafts.every(x=>x.result.value===null && x.start.value===null));
- assert.equal(drafts.find(x=>x.id==="nstc-abroad-116-ntu").end.value,"2026-07-29T08:00:00+08:00");
+ // 缺起日者嚴禁從學院送件日或非學生日期胡亂回填
+ assert.equal(moe.start.value,null);
+ assert.equal(moe.result.value,null);
+
+ // 官方文本載明起訖日者，精確結構化為甘特圖起日，不捏造也不遺失
+ const tuition=drafts.find(x=>x.id==="ntu-tuition-115-1");
+ assert.equal(tuition.start.value,"2026-08-05");
+ assert.equal(tuition.end.value,"2026-08-13");
+
+ const president=drafts.find(x=>x.id==="ntu-president-114");
+ assert.equal(president.start.value,"2026-07-08");
+
+ const abroad=drafts.find(x=>x.id==="nstc-abroad-116-ntu");
+ assert.equal(abroad.start.value,"2026-06-01");
+ assert.equal(abroad.end.value,"2026-07-29T08:00:00+08:00");
 });
 test("線框嵌入快照與正式草稿同源，避免維護兩份不同資料",()=>{
  const html=fs.readFileSync(path.join(__dirname,"../docs/design/wireframes.html"),"utf8");
