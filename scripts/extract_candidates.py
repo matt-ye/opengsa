@@ -30,6 +30,7 @@ if str(ROOT) not in sys.path:
 from scripts.evaluate_deadlines import evaluate_application_window, parse_iso_date, parse_taipei_datetime, taipei_today
 from scripts.scan_sources import CONTACT, SKIP, Fetcher, ScanError, digest, html_document, normalized, pdf_document
 from scripts.verify_candidates import digest_text, evidence_digest, verify_candidate
+from scripts.application_process import infer_process
 
 EXTRACTOR_VERSION = "extractor-1.1.0"
 PROMPT_VERSION = "prompt-1.1.0"
@@ -2407,6 +2408,23 @@ def extract_from_in_memory_blocks(
                     if isinstance(llm_resp, dict) and "extracted_fields" not in llm_resp and "audit_findings" not in llm_resp:
                         llm_resp["_adapter_kind"] = model_adapter.adapter_kind
                     cand = _apply_dual_track_llm_response(cand, llm_resp, source, blocks, model_adapter)
+
+        # 途徑與適用性依正文判斷，缺文字不自動轉N/A；簽名掃描不等於寄紙本。
+        method, applicability, process_evidence = infer_process(blocks)
+        for path, block in process_evidence.items():
+            ref={"source":sid,"locator":block["locator"]}
+            if path.startswith("application_method"):method["refs"].append(ref)
+            else:applicability[path.split(".")[1]]["refs"].append(ref)
+            cand["field_evidence"].append(make_field_evidence(path,sid,revision_id,block,evidence_mode))
+        cand["application_method"], cand["field_applicability"] = method, applicability
+        for idx, step in enumerate(cand["schedule"]["steps"]):
+            locators={r["locator"] for r in step["refs"]}
+            step_method, _, step_evidence=infer_process([b for b in blocks if b["locator"] in locators])
+            if step_method["mode"] != "unknown":
+                step_method["refs"]=deepcopy(step["refs"])
+                step["application_method"]=step_method
+                for block in step_evidence.values():
+                    cand["field_evidence"].append(make_field_evidence(f"schedule.steps/{idx}/application_method",sid,revision_id,block,evidence_mode))
 
         # 計算申請時間視窗狀態
         window = evaluate_application_window(cand, as_of)

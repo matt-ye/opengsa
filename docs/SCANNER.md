@@ -71,3 +71,7 @@ noted／dismissed是文件層級佇列處置；帶candidate_id的處置只影響
 - 新請求啟動預算180秒、單次逾時23秒、workflow10分鐘。故障保留舊正式資料及候選，不當停辦。舊版雜湊或304沒有完整原文可用時，不重新宣稱內容通過。
 
 離線測試與建置指令見[資料契約](DATA-CONTRACT.md)；本輪驗收見[可靠性紀錄](RELIABILITY-AUDIT.md)。依據：[GitHub排程事件](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows)、[RFC9309](https://www.rfc-editor.org/rfc/rfc9309.html)、[教務處聲明](https://www.aca.ntu.edu.tw/w/aca/Privacy)、[pypdf限制](https://pypdf.readthedocs.io/en/stable/user/extract-text.html)。
+
+## 申辦方式與欄位適用性更新（2026-10-30）
+
+候選及pilot新增application_method與field_applicability，紙本遞交、親簽上傳及截止判準分開。N/A須有理由、引用及完整上下文；缺來源仍待確認，不以N/A隱藏日期或必要資格。第二頁顯示整體與各步驟方式，第三頁同步給付摘要及申辦方式；覆核與資料PR部署後才更新公開內容。詳見[判斷與更新流程](APPLICATION-PROCESS.md)。

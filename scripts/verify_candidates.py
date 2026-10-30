@@ -25,6 +25,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.evaluate_deadlines import parse_iso_date, parse_taipei_datetime
+from scripts.application_process import infer_process, process_errors
 
 VERIFIER_VERSION = "verifier-1.1.0"
 
@@ -401,6 +402,31 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
     if any(pver.get(k) for k in ("promulgated_on", "amended_on", "effective_from")):
         if "policy_version" not in ev_by_path or not pver.get("refs"):
             ev_errors.append("missing_evidence:policy_version")
+
+    ev_errors.extend(process_errors(cand))
+    if in_memory_blocks is not None:
+        expected_method, expected_applicability, _ = infer_process(in_memory_blocks)
+        method=cand.get("application_method",{})
+        for key in ("mode","paper_delivery","handwritten_signature","deadline_basis"):
+            if method.get(key,"unknown") != "unknown" and method[key] != expected_method[key]:
+                ev_errors.append("unsupported_application_method:"+key)
+        if (any(method.get(k,"unknown") != "unknown" for k in ("mode","paper_delivery","handwritten_signature","deadline_basis")) or method.get("channels")) and (not method.get("refs") or not any(p.startswith("application_method") for p in ev_by_path)):
+            ev_errors.append("missing_evidence:application_method")
+        if not set(method.get("channels",[])).issubset(expected_method["channels"]):
+            ev_errors.append("unsupported_application_method:channels")
+        for idx,step in enumerate(steps):
+            if "application_method" not in step:continue
+            path=f"schedule.steps/{idx}/application_method"
+            locs={r["locator"] for r in step.get("refs",[])}
+            expected,_,_=infer_process([b for b in in_memory_blocks if b["locator"] in locs])
+            if path not in ev_by_path or not step["application_method"].get("refs"):
+                ev_errors.append("missing_evidence:"+path)
+            for key in ("mode","paper_delivery","handwritten_signature","deadline_basis"):
+                if step["application_method"].get(key,"unknown") != "unknown" and step["application_method"][key] != expected[key]:
+                    ev_errors.append("unsupported_application_method:"+path+":"+key)
+        for key, entry in cand.get("field_applicability",{}).items():
+            if entry["status"] == "not_applicable" and (key not in expected_applicability or "field_applicability."+key not in ev_by_path):
+                ev_errors.append("unsupported_not_applicable:"+key)
 
     evidence_supported = len(ev_errors) == 0
     errors.extend(ev_errors)

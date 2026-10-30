@@ -92,3 +92,7 @@ result保留date／datetime／month／range／unknown、certainty、end_value與
 scan-reviews採獨立1.1.0 Schema，required reason不接受舊note；applied須source_id、candidate_id與內容SHA-256，非原編輯者、有效且非未來覆核日期及passed_automated_checks才可匯出。缺上下文、gaps、衝突或內容改動後一律不得提升；目前正式覆核台帳為空。完整操作見[SCANNER.md](SCANNER.md)。
 
 自動檢核涵蓋已實作的證據／數值／角色檢查，並非語意與法規完整性證明。程式尚未逐一結構化所有院系或領域限制，保留人工覆核與needs_information，不宣稱完全自動資格判定。
+
+## 申辦方式與欄位適用性更新（2026-10-30）
+
+候選及pilot新增application_method與field_applicability，紙本遞交、親簽上傳及截止判準分開。N/A須有理由、引用及完整上下文；缺來源仍待確認，不以N/A隱藏日期或必要資格。第二頁顯示整體與各步驟方式，第三頁同步給付摘要及申辦方式；覆核與資料PR部署後才更新公開內容。詳見[判斷與更新流程](APPLICATION-PROCESS.md)。

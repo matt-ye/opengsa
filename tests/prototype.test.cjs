@@ -404,3 +404,26 @@ test("公告快照過期或推定起日不宣稱今天已開放",()=>{
  assert.strictEqual(core.windowState(item,"2026-10-30"),"open");
  assert.strictEqual(core.windowState(item,"2026-12-02"),"closed");
 });
+
+
+test("申請方式與給付由同一資料列更新，N/A不冒充待確認或受理中",()=>{
+ const data=structuredClone(pilot),raw=data.opportunities[0];
+ raw.application_method={mode:"electronic",paper_delivery:"not_required",handwritten_signature:"required",deadline_basis:"online_submission"};
+ raw.benefit.text="SYNTH 更新後給付";
+ raw.start={kind:"unknown",value:null,note:"SYNTH免申請"};
+ raw.steps=[];raw.result={kind:"unknown",value:null,note:"SYNTH無審查"};
+ raw.field_applicability=Object.fromEntries(["application_start","student_deadline","result_date"].map(k=>[k,{status:"not_applicable",reason:"合成案例：來源明示免申請／無審查",refs:[]} ]));
+ const item=core.makeDrafts(data,"2026-10-30")[0];
+ assert.equal(item.benefit,"SYNTH 更新後給付");
+ assert.match(core.methodText(item.method),/免遞交紙本/);
+ assert.match(core.methodText(item.method),/親筆簽名/);
+ assert.match(core.startLabel(item),/N\/A 不適用/);
+ assert.match(core.deadlineText(item),/N\/A 不適用/);
+ assert.match(core.resultText(item),/N\/A 不適用/);
+ assert.equal(core.noticeWindow(item),null);
+ assert.equal(core.filterItems([item],{application:"unknown"}).length,0);
+ assert.equal(core.filterItems([item],{application:"not_applicable"}).length,1);
+ const unknown=core.makeDrafts(pilot,"2026-10-30").find(x=>!x.end.value);
+ assert.match(core.deadlineText(unknown),/待確認/);
+ assert.doesNotMatch(core.deadlineText(unknown),/N\/A/);
+});

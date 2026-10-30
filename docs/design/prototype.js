@@ -49,6 +49,7 @@ function makeDemo(today) {
  }));
 }
 function windowState(item,today) {
+ if(["application_start","student_deadline"].every(k=>item.field_applicability?.[k]?.status==="not_applicable")) return "not_applicable";
  const steps=item.steps || [], end=steps.find(s=>s.actor==="student" && ["date","datetime"].includes(s.deadline?.kind))?.deadline;
  if(end?.value && end.value.slice(0,10)<today) return "closed";
  if(item.application?.as_of===today) return item.application.state;
@@ -91,23 +92,24 @@ function makeDrafts(pilot,asOf=taipeiToday()) {
   }
 
   const startCertainty = item.start?.certainty || (["date","datetime"].includes(item.start?.kind) ? "confirmed" : "unknown");
-  const structuredStart = (item.start && item.start.value) ? event(item.start.value, startCertainty, item.start.note || (startCertainty==="inferred"?"依官方公告發布日推定即日起受理":"官方受理申請起始日")) : event(null, "unknown", "目前無結構化申請起日；依內文敘述");
-  const structuredResult = (item.result && item.result.value && ["date","datetime"].includes(item.result.kind)) ? event(item.result.value, item.result.certainty || "unknown", item.result.note || "結果公告日") : event(null, "unknown", "結果尚無結構證據");
+  const structuredStart = (item.start && item.start.value) ? event(item.start.value, startCertainty, item.start.note || (startCertainty==="inferred"?"依官方公告發布日推定即日起受理":"官方受理申請起始日")) : event(null, "unknown", item.field_applicability?.application_start?.reason||"目前無結構化申請起日；依內文敘述");
+  const structuredResult = (item.result && item.result.value && ["date","datetime"].includes(item.result.kind)) ? event(item.result.value, item.result.certainty || "unknown", item.result.note || "結果公告日") : event(null, "unknown", item.field_applicability?.result_date?.reason||"結果尚無結構證據");
 
   const sources = [...item.application.refs,...item.steps.flatMap(s=>s.refs)];
   const source = sources.map(r=>sourceMap.get(r.source)).find(Boolean);
    const state=windowState(item,asOf);
    return {
    id:item.id,title:item.title,category:item.category,source:resolvedSource,
-   degrees:item.eligibility.degrees,year:item.eligibility.year_limit.mode,
+   degrees:item.eligibility.degrees,year:item.field_applicability?.year_limit?.status==="not_applicable"?"not_applicable":item.eligibility.year_limit.mode,
    candidateMode:item.eligibility?.candidate?.mode || "unknown",
    compatibility:item.compatibility.mode,hardship:item.hardship.mode,
    cycle:item.cycle.label,synthetic:false,
+   method:item.application_method,applicability:item.field_applicability||{},benefit:item.benefit.text,
    start:structuredStart,
    end:event(student?.deadline?.value||null,student?"confirmed":"unknown",student?.deadline?.note||"學生截止尚未確認"),
    result:structuredResult,
    milestones,
-    application:({open:"受理中（依已記錄條件）",closed:"本期已截止",unknown:"受理待確認",not_yet_open:"尚未開放"})[state],
+    application:({open:"受理中（依已記錄條件）",closed:"本期已截止",unknown:"受理待確認",not_yet_open:"尚未開放",not_applicable:"申請程序 N/A（免另行申請）"})[state],
     rawState:state,
    evidence:item.evidence_status==="incomplete"?"資料不完整／草稿":"草稿待獨立覆核",
    url:source?.url||null,note:item.application.reason+"；所有資料皆待獨立覆核。"
@@ -130,6 +132,7 @@ function filterItems(items, filters) {
     if(wanted==="upcoming") return item.rawState==="not_yet_open";
     if(wanted==="closed") return item.rawState==="closed";
     if(wanted==="unknown") return item.rawState==="unknown";
+    if(wanted==="not_applicable") return item.rawState==="not_applicable";
     return true;
    }
    const value=item[key];
@@ -139,10 +142,23 @@ function filterItems(items, filters) {
  });
 }
 function noticeWindow(item) {
- if(item.personal || item.start.value || dayNumber(item.end.value)===null) return null;
+ if(item.personal || isNA(item,"application_start") || isNA(item,"student_deadline") || item.start.value || dayNumber(item.end.value)===null) return null;
  return {start:addDays(item.end.value.slice(0,10),-30),end:item.end.value};
 }
+function isNA(item,key) { return item.applicability?.[key]?.status==="not_applicable"; }
+function fieldText(item,key,value) {
+ return isNA(item,key) ? "N/A 不適用（"+item.applicability[key].reason+"）" : dateText(value);
+}
+function resultText(item) {return fieldText(item,"result_date",item.result.value);}
+function methodText(method) {
+ if(!method) return "申請方式待確認";
+ const mode={paper:"紙本申請",electronic:"電子申請",hybrid:"紙本＋電子（須核對各階段／是否擇一）",automatic:"免另行申請",unknown:"申請方式待確認",not_applicable:"申請方式 N/A 不適用"}[method.mode];
+ const paper={required:"須遞交紙本",not_required:"免遞交紙本",unknown:"紙本遞交待確認",not_applicable:"紙本遞交 N/A 不適用"}[method.paper_delivery];
+ const basis={received:"以送達為準",postmark:"以郵戳為準",online_submission:"以線上送出為準"}[method.deadline_basis];
+ return [mode,paper,method.handwritten_signature==="required"?"需親筆簽名（另核對是否上傳）":null,basis].filter(Boolean).join("；");
+}
 function startLabel(item) {
+ if(isNA(item,"application_start")) return fieldText(item,"application_start",null);
  const suffix={inferred:"（推定）",tentative:"（暫定）",unknown:"（待確認）"}[item.start.certainty] || "";
  return item.start.value ? dateText(item.start.value)+suffix : "待確認"+(noticeWindow(item)?"（另有30天準備建議）":"");
 }
@@ -181,7 +197,7 @@ function geometry(item, range) {
  };
 }
 function dateText(value) { return value ? value.slice(0,10).replaceAll("-","/")+(value.length>10?" "+value.slice(11,16):"") : "待確認"; }
-function deadlineText(item){return (item.personal&&item.end.value?"試算／自填 ":"")+dateText(item.end.value);}
+function deadlineText(item){return (item.personal&&item.end.value?"試算／自填 ":"")+fieldText(item,"student_deadline",item.end.value);}
 function conferencePlan(start,notice=null,buffer=14) {
  const validDate=value=>typeof value==="string" && /^\d{4}-\d{2}-\d{2}$/.test(value) && dayNumber(value)!==null;
  if(!validDate(start) || (notice && !validDate(notice)) || !Number.isInteger(buffer) || buffer<0 || buffer>90) return null;
@@ -292,7 +308,7 @@ function evaluateSubordination(checks={}){
  if(score===1) return {score:1,level:"review_needed",recommendedTiers:["TIER 01","TIER 02"],disclaimer,summary:"已勾選 1 項指標：具部分從屬或學習分流爭點。建議核對勞動部指導原則第 2～4 點及書面協議，確認工時與給付是否相符（2026 最低時薪 196 元）；必要時洽 TIER 01 系院或 TIER 02 校級窗口釐清。"+disclaimer};
  return {score,level:"high_subordination",recommendedTiers:["TIER 02","TIER 04","TIER 05"],disclaimer,summary:"已勾選 "+score+" 項指標：高度呈現人格、經濟或組織從屬性（常見「假學習真勞動」爭點）。依勞動部指導原則實質認定原則，若受指揮監督並提供勞務獲取對價，不能只按給付名稱排除適用保障；勞基法、2026最低工資與退休金須分別依關係、身分及進用依據確認。建議參考下方 TIER 02 校內申訴、TIER 04（地方主管機關勞檢／勞工局調解）或 TIER 05 高教工會。"+disclaimer};
 }
-const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,windowState,filterItems,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination};
+const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,windowState,filterItems,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination,isNA,fieldText,resultText,methodText,startLabel,deadlineText};
 if(typeof module!=="undefined" && module.exports) module.exports=api;
 if(typeof document==="undefined") return;
 
@@ -437,6 +453,8 @@ window.addEventListener("hashchange",()=>{
 function itemTags(item) {
  const tags = [labels.source[item.source]||item.source, item.degrees.map(x=>labels.degree[x]||x).join("／"), labels.year[item.year]||item.year, labels.compatibility[item.compatibility]||item.compatibility, labels.hardship[item.hardship]||item.hardship];
  if(item.candidateMode==="required") tags.push("須博士候選人");
+ if(isNA(item,"year_limit")) tags[2]="年級 N/A 不適用";
+ if(!item.synthetic && item.method) tags.push(methodText(item.method));
  return tags;
 }
 function inspect(item) {
@@ -445,8 +463,8 @@ function inspect(item) {
  box.append(el("strong","",item.title));
   const startDesc = item.start.certainty === "inferred"
    ? "推定開始：" + dateText(item.start.value) + "（" + (item.start.note || "依官方公告發布日推定") + "）"
-   : (item.start.value ? "申請開始：" + dateText(item.start.value) : (item.end.value && !item.personal ? "申請開始：待確認（甘特圖已標示截止前 30 天準備提醒帶）" : "申請開始：待確認"));
-  box.append(el("p","small",startDesc+"\u3000→\u3000學生截止："+deadlineText(item)+"\u3000→\u3000"+(item.result.certainty==="expected"?"預定":"")+"結果公布："+dateText(item.result.value)));
+   : "申請開始："+startLabel(item);
+  box.append(el("p","small",startDesc+"\u3000→\u3000學生截止："+deadlineText(item)+"\u3000→\u3000"+(item.result.certainty==="expected"?"預定":"")+"結果公布："+resultText(item)));
  item.milestones.forEach(m=>box.append(el("p","small",m.label+"："+dateText(m.value))));
  box.append(el("p","tiny quiet",item.synthetic?"合成排程，全部為虛構日期。":item.note));
  if(item.url) {const link=el("a","small","核對官方來源 ↗");link.href=item.url;box.append(link);}
@@ -481,7 +499,7 @@ function drawCards(items) {
   const axes=el("div","axes");
   axes.append(axis("資格："+(item.synthetic?"未進行比對":"待補資料／人工核對"),"warn"),axis("受理："+item.application),axis("證據："+item.evidence,"info"));card.append(axes);
   const tags=el("div","pills");itemTags(item).forEach(tag=>tags.append(el("span","pill",tag)));card.append(tags);
-  card.append(el("p","small","申請開始 "+startLabel(item)+" → 學生截止 "+deadlineText(item)+" → "+(item.result.certainty==="expected"?"預定":"")+"結果 "+dateText(item.result.value)));
+  card.append(el("p","small","申請開始 "+startLabel(item)+" → 學生截止 "+deadlineText(item)+" → "+(item.result.certainty==="expected"?"預定":"")+"結果 "+resultText(item)));
   const actions=el("div","card-actions");actions.append(pickControl(item,"list"));
   const button=el("button","secondary",picked[mode].has(item.id)?"查看詳情":"勾選並看詳情");button.type="button";button.dataset.openDetail=item.id;button.addEventListener("click",()=>chooseAndOpen(item));actions.append(button);card.append(actions);
   list.append(card);
@@ -526,7 +544,7 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
   if(gridId==="gantt-grid") label.append(pickControl(item,"gantt"));
   const button=el("button","row-title",item.title);button.type="button";button.addEventListener("click",()=>onInspect(item));
   label.append(button,el("div","tiny quiet",labels.category[item.category]+" · "+labels.source[item.source]));
-  const labelDateDesc = item.personal ? "學生期限："+deadlineText(item) : (item.start.certainty==="inferred"?"推定起訖：":"")+dateText(item.start.value)+" → "+dateText(item.end.value);
+  const labelDateDesc = item.personal ? "學生期限："+deadlineText(item) : (item.start.certainty==="inferred"?"推定起訖：":"")+startLabel(item)+" → "+deadlineText(item);
   label.append(el("div","tiny quiet",labelDateDesc));
   row.append(label);
   const plot=el("div","gantt-plot");todayLine(plot,range);
@@ -556,15 +574,15 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
   const isStartInferred=item.start.certainty==="inferred";
   marker(plot,g.start,"start"+(isStartInferred?" inferred":""),(isStartInferred?"推定申請開始（依官方公告日）：":"申請開始：")+dateText(item.start.value)+(isStartInferred?"（"+(item.start.note||"")+"）":""),item,onInspect);
   marker(plot,g.end,"end"+(item.personal?" estimated":""),"學生截止："+deadlineText(item),item,onInspect);
-  marker(plot,g.result,"result "+(item.result.certainty==="expected"?"expected":""),(item.result.certainty==="expected"?"預定":"")+"結果公布："+dateText(item.result.value),item,onInspect);
+  marker(plot,g.result,"result "+(item.result.certainty==="expected"?"expected":""),(item.result.certainty==="expected"?"預定":"")+"結果公布："+resultText(item),item,onInspect);
   item.milestones.forEach(m=>{const p=position(m.value,range);if(p!==null&&p>=0&&p<100) marker(plot,p,"milestone"+(item.personal?" estimated":""),m.label+"："+dateText(m.value),item,onInspect);});
   const notes=[];
   if(item.personal) notes.push("個人規劃：虛線為準備建議，空心節點待核");
   if(noticeWindow(item)) notes.push(prepNoticeGeom?"官方起日待確認（已標示截止前30天準備建議）":"準備建議在視窗外；官方起日待確認");
-  else if(!item.start.value && !item.personal) notes.push("起日待確認");
+  else if(!item.start.value && !item.personal) notes.push(isNA(item,"application_start")?"申請起日 N/A 不適用":"起日待確認");
   if(item.start.certainty === "inferred") notes.push("起日依官方公告推定");
-  if(!item.end.value) notes.push("學生截止待確認");
-  if(!item.result.value) notes.push("結果日未確認");
+  if(!item.end.value) notes.push(isNA(item,"student_deadline")?"學生截止 N/A 不適用":"學生截止待確認");
+  if(!item.result.value) notes.push(isNA(item,"result_date")?"結果日 N/A 不適用":"結果日未確認");
   if(g.invalid) notes.push("起訖衝突，暫不畫期間");
   const hasKnown=[item.start.value,item.end.value,item.result.value,...item.milestones.map(m=>m.value)].some(Boolean);
   if(hasKnown && !g.bar && !prepNoticeGeom && g.start===null && g.end===null && g.result===null && !item.milestones.some(m=>{const p=position(m.value,range);return p!==null&&p>=0&&p<100;})) notes.push("已知日期在視窗外");
@@ -575,8 +593,8 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
 function drawTable(items) {
  const body=byId("date-rows");body.replaceChildren();
  items.forEach(item=>{
-  const startLabel=dateText(item.start.value)+(item.start.certainty==="inferred"?" (推定)":"")+(!item.start.value&&item.end.value&&!item.personal?" (標示截止前30天準備帶)":"");
-  const row=el("tr");[item.title,startLabel,deadlineText(item),(item.result.certainty==="expected"?"預定 ":"")+dateText(item.result.value),item.milestones.map(m=>m.label+" "+dateText(m.value)).join("；")||"—"].forEach(text=>row.append(el("td","",text)));body.append(row);
+  const startDisplay=startLabel(item)+(item.start.certainty==="inferred"?" (推定)":"")+(!item.start.value&&item.end.value&&!item.personal&&!isNA(item,"application_start")?" (標示截止前30天準備帶)":"");
+  const row=el("tr");[item.title,startDisplay,deadlineText(item),(item.result.certainty==="expected"?"預定 ":"")+resultText(item),item.milestones.map(m=>m.label+" "+dateText(m.value)).join("；")||"—"].forEach(text=>row.append(el("td","",text)));body.append(row);
  });
 }
 function centerToday(range,gridId="gantt-grid",value=today) {
@@ -616,24 +634,25 @@ function drawDetail() {
  const tags=el("div","pills");itemTags(item).forEach(tag=>tags.append(el("span","pill",tag)));top.append(tags);
  top.append(el("p","small",item.note));content.append(top);
  const columns=el("div","two-col"), left=el("div"), right=el("aside");
-  const startDetailText="申請開始："+dateText(item.start.value)+(item.start.certainty==="inferred"?"（依官方公告日推定）":"")+(!item.start.value&&item.end.value&&!item.personal?"（官方起日待確認，甘特圖提供截止前 30 天準備提醒帶）":"")+"；"+item.start.note;
+  const startDetailText="申請開始："+startLabel(item)+(item.start.certainty==="inferred"?"（依官方公告日推定）":"")+(!item.start.value&&item.end.value&&!item.personal&&!isNA(item,"application_start")?"（官方起日待確認，甘特圖提供截止前 30 天準備提醒帶）":"")+"；"+item.start.note;
   const timing=factSection("申請與結果時程",[
    startDetailText,
    "學生截止："+deadlineText(item)+"；"+item.end.note,
-   (item.result.certainty==="expected"?"預定":"")+"結果："+dateText(item.result.value)+"；"+item.result.note
+   (item.result.certainty==="expected"?"預定":"")+"結果："+resultText(item)+"；"+item.result.note
   ]);left.append(timing);
  if(raw) {
   const year=raw.eligibility.year_limit;
-  const grade=year.mode==="range"?year.min+"–"+year.max+"年級，基準日"+dateText(year.assessed_at):labels.year[year.mode];
-  const candidate={required:"須具博士候選人資格",not_required:"明示不要求候選人資格",unknown:"候選人限制待確認"}[raw.eligibility.candidate.mode];
+  const grade=isNA(item,"year_limit")?"年級：N/A 不適用（"+item.applicability.year_limit.reason+"）":year.mode==="range"?year.min+"–"+year.max+"年級，基準日"+dateText(year.assessed_at):labels.year[year.mode];
+  const candidate=isNA(item,"candidate_qualification")?"博士候選人資格：N/A 不適用（"+item.applicability.candidate_qualification.reason+"）":{required:"須具博士候選人資格",not_required:"明示不要求候選人資格",unknown:"候選人限制待確認"}[raw.eligibility.candidate.mode];
   left.append(factSection("已記錄條件與待確認事項",[raw.eligibility.identity.text,grade,candidate,...raw.eligibility.other_conditions.map(x=>x.text)]));
   left.append(factSection("兼領與清寒條件",[raw.compatibility.note,raw.hardship.note]));
+  left.append(factSection("申請、補件與核銷途徑",[methodText(raw.application_method),raw.application_method?.note||"未載明的遞件方式保留待確認；不從表單下載或檔案格式猜紙本要求。"]));
   const procedures=el("section","panel detail-section");procedures.append(el("h3","","各層程序"));
   const steps=el("ol","step-list");
   raw.steps.forEach(step=>{
    const row=el("li");
    const actor={student:"學生",student_or_representative:"學生／代申請人",institution:"申請機構",college:"學院",unit:"單位",university:"校級"}[step.actor]||step.actor;
-   row.append(el("strong","",actor+"："+step.action),el("p","",dateText(step.deadline.value)),el("p","quiet",step.deadline.note));steps.append(row);
+   row.append(el("strong","",actor+"："+step.action),el("p","",dateText(step.deadline.value)),el("p","quiet",step.deadline.note));if(step.application_method) row.append(el("p","small",methodText(step.application_method)));steps.append(row);
   });procedures.append(steps);left.append(procedures);
   const summary=factSection("給付與申請角色",[raw.benefit.text]);
   const roles={student:"學生",institution:"申請機構",unit:"單位",employed_student:"受聘學生",unknown:"待確認"};
@@ -697,10 +716,11 @@ function drawPlan() {
  const cards=byId("plan-options");cards.replaceChildren();
  sharedItems.forEach(item=>{
   const card=el("article","card"), button=el("button","plan-title",item.title);button.type="button";button.addEventListener("click",()=>openSharedDetail(item));card.append(button);
-  card.append(el("p","small","學生截止："+deadlineText(item)+"　／　"+(item.result.certainty==="expected"?"預定":"")+"結果："+dateText(item.result.value)));
-  card.append(el("p","tiny quiet",item.synthetic?"合成資料，僅供規劃示範。":item.evidence+"；缺日期保留待確認。"));
+  card.append(el("p","small","學生截止："+deadlineText(item)+"　／　"+(item.result.certainty==="expected"?"預定":"")+"結果："+resultText(item)));
+  if(!item.synthetic) card.append(el("p","small",methodText(item.method)),el("p","small",item.benefit||"給付內容待來源覆核"));
+  card.append(el("p","tiny quiet",item.synthetic?"合成資料，僅供規劃示範。":item.evidence+"；N/A須有依據，未載明仍待確認。"));
   const tasks=el("div","plan-tasks");
-  ["核對申請資格","確認學生收件時間","整理申請文件"].forEach((text,index)=>{
+  (isNA(item,"student_deadline")?["核對使用條件","確認開通／領取程序"]:["核對申請資格","確認學生收件時間","整理申請文件"]).forEach((text,index)=>{
    const key=item.id+":"+index,label=el("label","task-item"),input=el("input");input.type="checkbox";input.checked=completed[mode].has(key);input.setAttribute("aria-label",item.title+"："+text);
    input.addEventListener("change",()=>{if(input.checked) completed[mode].add(key);else completed[mode].delete(key);});
    label.append(input,el("span","",text));tasks.append(label);

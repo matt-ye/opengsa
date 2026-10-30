@@ -407,6 +407,13 @@ def evaluate_application_window(
         for s in upper_steps
     ]
 
+    if all(item.get("field_applicability",{}).get(k,{}).get("status")=="not_applicable" for k in ("application_start","student_deadline")):
+        return {"state":"unknown","as_of":now_d.isoformat(),"reason_code":"application_not_applicable",
+                "reason":"申請窗口 N/A 不適用：來源明示免另行申請；不代表資格已核准。",
+                "student_deadline":None,"application_start":None,"upper_layer_deadlines":upper_layer_deadlines,
+                "supplement_deadlines":supplement_steps,"same_day_time_unconfirmed":False,
+                "source_stale":source_stale,"stale_sources":stale_sources,"next_cycle_inferred":False}
+
     # 1. 純單位／機構申請之聘任入口（如 TA 制度），學生不在該入口直接申請一筆獎學金
     if item.get("resource_kind") == "employment_support" and item.get("participants", {}).get("applicant") in ("unit", "institution"):
         return {

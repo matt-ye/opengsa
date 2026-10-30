@@ -38,7 +38,7 @@ def validate_review_ledger(payload):
 
 def candidate_fingerprint(candidate):
     """Bind approval to the actual claims; exclude changing evaluation timestamps."""
-    fields = {k: candidate.get(k) for k in ("candidate_id", "title", "category", "resource_kind", "scope", "evidence_status", "program_key", "cycle", "source_metadata", "participants", "organizations", "eligibility", "benefit", "compatibility", "hardship", "schedule", "policy_version", "field_evidence")}
+    fields = {k: candidate.get(k) for k in ("candidate_id", "title", "category", "resource_kind", "scope", "evidence_status", "program_key", "cycle", "source_metadata", "participants", "organizations", "eligibility", "benefit", "compatibility", "hardship", "schedule", "policy_version", "field_evidence", "application_method", "field_applicability")}
     return hashlib.sha256(json.dumps(fields, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
 
@@ -66,6 +66,9 @@ def compute_candidate_diff(candidate, pilot_data):
         diffs = []
         if matching_opps:
             ref_opp = matching_opps[0]
+            for field in ("application_method","field_applicability"):
+                if candidate.get(field) and candidate[field] != ref_opp.get(field):
+                    diffs.append({"field":field,"pilot_value":ref_opp.get(field),"candidate_value":candidate[field]})
             for field_path, old_val, new_val in [
                 ("compatibility.mode", ref_opp.get("compatibility", {}).get("mode"), candidate.get("compatibility", {}).get("mode")),
             ]:
@@ -117,6 +120,9 @@ def compute_candidate_diff(candidate, pilot_data):
     for field_path, old_val, new_val in comparisons:
         if old_val != new_val:
             diffs.append({"field": field_path, "pilot_value": old_val, "candidate_value": new_val})
+    for field in ("application_method","field_applicability"):
+        if matched.get(field) != candidate.get(field):
+            diffs.append({"field":field,"pilot_value":matched.get(field),"candidate_value":candidate.get(field)})
 
     old_steps = [
         (s["actor"], s["deadline"]["kind"], s["deadline"]["value"])
@@ -354,6 +360,12 @@ def render_review_markdown(summary, verified_bundle, scan_report=None):
             f"{_escape_md(cond_str)} | {_escape_md(amt_str)} | {_escape_md(ev_note)} |"
         )
 
+    lines.extend(["", "### 申辦途徑與欄位適用性", "", "| 候選 | 方式／紙本／親簽 | 截止判準 | N/A欄位與理由 |", "|---|---|---|---|"])
+    for cand in verified_bundle.get("candidates",[]):
+        method=cand.get("application_method",{})
+        na="；".join(k+":"+v["reason"] for k,v in cand.get("field_applicability",{}).items() if v["status"]=="not_applicable") or "未記錄不適用；未知不自動轉N/A"
+        text=" / ".join(method.get(k,"unknown") for k in ("mode","paper_delivery","handwritten_signature"))
+        lines.append(f"| {_escape_md(cand['candidate_id'])} | {_escape_md(text)} | {_escape_md(method.get('deadline_basis','unknown'))} | {_escape_md(na)} |")
     lines.extend(
         [
             "",
@@ -407,6 +419,7 @@ def candidate_to_pilot_opportunity(cand):
             "action": s["action"],
             "deadline": deepcopy(s["deadline"]),
             "refs": deepcopy(s["refs"]),
+            **({"application_method":deepcopy(s["application_method"])} if "application_method" in s else {}),
         }
         for s in cand["schedule"]["steps"]
     ]
@@ -439,6 +452,7 @@ def candidate_to_pilot_opportunity(cand):
             "items": deepcopy(cand["benefit"]["items"]),
             "refs": deepcopy(cand["benefit"]["refs"]),
         },
+        **{k:deepcopy(cand[k]) for k in ("application_method","field_applicability") if k in cand},
         "start": deepcopy(cand["schedule"]["application_start"]) if cand.get("schedule", {}).get("application_start") else None,
         "result": deepcopy(cand["schedule"]["result_date"]) if cand.get("schedule", {}).get("result_date") else None,
         "steps": steps,
