@@ -8,6 +8,11 @@ on:
         type: choice
         default: scan
         options: [scan, provider_audit]
+      audit_scope:
+        description: 'Provider audit scope (avoids repeating successful probes)'
+        type: choice
+        default: all
+        options: [all, groq, gemini, nvidia, sambanova, cerebras, openrouter, siliconflow, mistral]
       model_provider:
         description: 'One provider; quota failures fall back to rules, never a paid model'
         type: choice
@@ -118,6 +123,7 @@ jobs:
       - name: Catalog and bounded synthetic audit (no source data)
         env:
           PROBE: ${{ inputs.probe }}
+          AUDIT_SCOPE: ${{ inputs.audit_scope || 'all' }}
           OPENGSA_MODEL_BASE_URL: ${{ vars.OPENGSA_MODEL_BASE_URL }}
           OPENGSA_MODEL_NAME: ${{ vars.OPENGSA_MODEL_NAME }}
           OPENGSA_SILICONFLOW_REGION: ${{ vars.OPENGSA_SILICONFLOW_REGION }}
@@ -130,11 +136,10 @@ jobs:
           OPENGSA_SILICONFLOW_API_KEY: ${{ secrets.OPENGSA_SILICONFLOW_API_KEY }}
           OPENGSA_MISTRAL_API_KEY: ${{ secrets.OPENGSA_MISTRAL_API_KEY }}
         run: |
-          if [ "$PROBE" = "true" ]; then
-            python scripts/audit_providers.py --probe
-          else
-            python scripts/audit_providers.py
-          fi
+          args=()
+          if [ "$AUDIT_SCOPE" != "all" ]; then args+=(--provider "$AUDIT_SCOPE"); fi
+          if [ "$PROBE" = "true" ]; then args+=(--probe); fi
+          python scripts/audit_providers.py "${args[@]}"
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         if: always()
         with:

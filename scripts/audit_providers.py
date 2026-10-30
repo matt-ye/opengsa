@@ -72,6 +72,8 @@ def audit_provider(name, environ, probe=False, requester=request_json):
         return row
     status, body, quotas = requester(base+"/models",key)
     models = model_catalog(body)
+    if name == "gemini":
+        models = [{**m,"id":m.get("id",m.get("name","")).removeprefix("models/")} for m in models]
     ids = sorted({m.get("id",m.get("name")) for m in models if re.fullmatch(r"[A-Za-z0-9_./:-]{1,200}",m.get("id",m.get("name",""))) and key not in m.get("id",m.get("name",""))})
     row.update(catalog_status="success" if status==200 and models else f"http_{status}_or_empty",model_present=wanted in ids,
                model_count=len(ids),model_ids=ids[:1000],rate_limit_headers=quotas)
@@ -100,9 +102,14 @@ def audit_provider(name, environ, probe=False, requester=request_json):
     payload = {"model":selected,"messages":[{"role":"user","content":"Return only this JSON object: {\"ok\":true}"}],"max_tokens":160,"temperature":0}
     if name == "groq":
         payload["reasoning_effort"] = "none"
+    elif name == "openrouter":
+        payload["reasoning"] = {"effort":"none","exclude":True}
+        payload["response_format"] = {"type":"json_object"}
     row["inference_calls"] = 1
     status, result, quotas = requester(base+"/chat/completions",key,payload)
     row["inference_status"] = f"http_{status}"
+    if status == 200:
+        row["inference_status"] = "http_200_json_not_validated"
     row["rate_limit_headers"].update(quotas)
     row["usage"] = {k:v if isinstance(v,(int,float)) else None for k in ("prompt_tokens","completion_tokens","total_tokens") for v in [result.get("usage",{}).get(k)]}
     try:

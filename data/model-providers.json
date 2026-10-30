@@ -31,7 +31,7 @@
     },
     "nvidia": {
       "base_url": "https://integrate.api.nvidia.com/v1",
-      "model": "meta/llama-3.3-70b-instruct",
+      "model": "openai/gpt-oss-20b",
       "key_envs": [
         "OPENGSA_NVIDIA_API_KEY",
         "NVIDIA_API_KEY"
@@ -73,7 +73,7 @@
     },
     "openrouter": {
       "base_url": "https://openrouter.ai/api/v1",
-      "model": "nvidia/nemotron-3.5-lightning:free",
+      "model": "google/gemma-4-26b-a4b-it:free",
       "key_envs": [
         "OPENGSA_OPENROUTER_API_KEY",
         "OPENROUTER_API_KEY"
@@ -92,7 +92,7 @@
         "OPENGSA_SILICONFLOW_API_KEY",
         "SILICONFLOW_API_KEY"
       ],
-      "inference_policy": "catalog_only_region_unconfirmed",
+      "inference_policy": "catalog_only_tier_unconfirmed",
       "documentation": "https://docs.siliconflow.com/en/userguide/quickstart",
       "checked_on": "2026-10-30",
       "account_quota_verified": false,
