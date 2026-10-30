@@ -113,6 +113,14 @@
         },
         "note": {
           "type": "string"
+        },
+        "certainty": {
+          "enum": [
+            "confirmed",
+            "inferred",
+            "tentative",
+            "unknown"
+          ]
         }
       },
       "required": [

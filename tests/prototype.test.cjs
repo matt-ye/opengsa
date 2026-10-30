@@ -319,3 +319,70 @@ test("makeDrafts保留候選人屬性、受理狀態並支援結構化起訖甘�
  assert.ok(geom.wait.width > 0);
  assert.ok(geom.result !== null);
 });
+
+test("方向C：官方未載起日但有截止日之方案，保留start為null且繪製截止前30天準備提醒帶",()=>{
+ const drafts = core.makeDrafts(pilot);
+ const medPub = drafts.find(x=>x.id==="ntu-med-publication-115");
+ assert.ok(medPub);
+ // 原始資料嚴禁捏造官方起日
+ assert.strictEqual(medPub.start.value, null);
+ assert.strictEqual(medPub.start.certainty, "unknown");
+ assert.ok(medPub.end.value);
+
+ // 截止前 30 天準備提醒期幾何推算
+ const endDay = medPub.end.value.slice(0, 10);
+ const prepStart = core.addDays(endDay, -30);
+ assert.strictEqual(prepStart, "2026-10-27");
+ const range = {start: core.dayNumber("2026-10-01"), end: core.dayNumber("2026-12-31")};
+ const noticeGeom = core.geometry({start: {value: prepStart}, end: {value: endDay}, result: {value: null}, milestones: []}, range).bar;
+ assert.ok(noticeGeom !== null);
+ assert.ok(noticeGeom.width > 0);
+
+ // 驗證 wireframes.html 樣式與圖例完整支援 notice-window
+ const html = fs.readFileSync(path.join(__dirname,"../docs/design/wireframes.html"),"utf8");
+ assert.ok(html.includes(".gantt-bar.notice-window"));
+ assert.ok(html.includes(".legend-prep-window"));
+ assert.ok(html.includes("準備提醒期（截止前30天）"));
+
+ // 驗證 prototype.js 包含 notice-window 繪製邏輯
+ const js = fs.readFileSync(path.join(__dirname,"../docs/design/prototype.js"),"utf8");
+ assert.ok(js.includes('gantt-bar notice-window'));
+ assert.ok(js.includes('官方未載起日（已標示截止前30天準備提醒帶）'));
+});
+
+test("方向B：依官方公告發布日推定起日之方案，標註certainty為inferred且具備專屬甘特圖樣式",()=>{
+ const drafts = core.makeDrafts(pilot);
+ const pres = drafts.find(x=>x.id==="ntu-president-114");
+ assert.ok(pres);
+ // 校長獎由公文公告發布日推定即日起受理
+ assert.strictEqual(pres.start.certainty, "inferred");
+ assert.strictEqual(pres.start.value, "2026-07-08");
+ assert.ok(pres.start.note.includes("推定"));
+
+ // 起點節點正常生成（校長獎只有校級程序截止，學生截止維持未知，嚴守不猜測原則）
+ const range = {start: core.dayNumber("2026-06-01"), end: core.dayNumber("2026-09-30")};
+ const geom = core.geometry(pres, range);
+ assert.ok(geom.start !== null);
+
+ // 模擬帶有學生截止之推定起訖草稿，驗證甘特長條正常生成
+ const mockInferred = {
+  ...pres,
+  end: {value: "2026-08-25", certainty: "confirmed", note: "學生截止"}
+ };
+ const mockGeom = core.geometry(mockInferred, range);
+ assert.ok(mockGeom.bar !== null);
+ assert.ok(mockGeom.bar.width > 0);
+
+ // 驗證 wireframes.html 樣式與圖例支援 inferred
+ const html = fs.readFileSync(path.join(__dirname,"../docs/design/wireframes.html"),"utf8");
+ assert.ok(html.includes(".gantt-bar.inferred"));
+ assert.ok(html.includes(".legend-inferred"));
+ assert.ok(html.includes("推定受理起日"));
+
+ // 驗證 prototype.js 包含 inferred 樣式賦予與標記邏輯
+ const js = fs.readFileSync(path.join(__dirname,"../docs/design/prototype.js"),"utf8");
+ assert.ok(js.includes('isInferred?"推定受理期（依官方公告日推定）："'));
+ assert.ok(js.includes('start"+(isStartInferred?" inferred":"")'));
+ assert.ok(js.includes('起日依官方公告推定'));
+});
+

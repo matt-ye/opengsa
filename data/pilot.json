@@ -1129,7 +1129,8 @@
         "kind": "date",
         "value": "2026-07-08",
         "timezone": "Asia/Taipei",
-        "note": "校方公告受理申請開始日"
+        "certainty": "inferred",
+        "note": "依校方公文公告發布日（2026-07-08）推定即日起受理"
       }
     },
     {
