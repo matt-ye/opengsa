@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OpenGSA｜候選審查工作台</title><style>
+:root{color-scheme:light;--paper:#f6f4ed;--ink:#21423b;--line:#cbd6cf}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.7 system-ui,"Microsoft JhengHei",sans-serif}main{max-width:1180px;margin:auto;padding:28px 20px 64px}h1{font-size:30px;margin-bottom:8px}h2{font-size:23px}h3{font-size:17px}.note{border-left:4px solid #a26e28;background:#fff1d4;padding:16px}.card{margin:24px 0;background:white;border:1px solid var(--line);border-radius:12px;padding:22px}.meta{color:#526b62;font-size:14px}label{display:block;font-weight:600;margin:12px 0}input,select,textarea,button{font:inherit}input,select,textarea{width:100%;padding:10px;border:1px solid #8fa79c;border-radius:6px;background:white;color:var(--ink)}textarea{min-height:92px}button,.button{display:inline-block;background:#dbe8df;color:var(--ink);padding:10px 16px;border:1px solid #9bb2a5;border-radius:7px;text-decoration:none;cursor:pointer;min-height:44px}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #a45b3c;outline-offset:3px}a{color:inherit}code,pre{font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere}table{width:100%;border-collapse:collapse;table-layout:fixed}th,td{border:1px solid var(--line);padding:10px;vertical-align:top;text-align:left;overflow-wrap:anywhere}th{background:#edf3ee}th:first-child{width:19%}.changed{background:#fff8df}.columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.columns>section{padding:12px;border:1px solid var(--line);border-radius:8px}.evidence{padding:10px 0;border-bottom:1px solid var(--line)}summary{cursor:pointer;padding:8px 0}#export-status{white-space:pre-wrap;overflow-wrap:anywhere}.hidden{display:none}ul{padding-left:20px}li{overflow-wrap:anywhere}@media(max-width:650px){main{padding:16px 12px}.card{padding:14px}.columns{grid-template-columns:1fr}th,td{padding:6px;font-size:13px}h1{font-size:25px}}
+</style></head><body><main>
+<h1>OpenGSA 候選審查工作台</h1>
+<p class="note">這是審查工具，沒有發布資料。下載的紀錄是人工處置意向；必須重新核對完整來源版本、通過檢核並提交資料 PR，才會更新公開網站。此頁不驗證覆核者身分，也不取代 GitHub 審查。</p>
+<p><a class="button" href="candidate-preview.html#search">開啟第一至三頁候選預覽 ↗</a></p>
+<p id="run-info" class="meta"></p>
+<section class="card" aria-labelledby="reviewer-title"><h2 id="reviewer-title">覆核紀錄</h2>
+<p>請使用實際覆核者識別，且須不同於原編輯者。不要填入學生個資或私人申訴；內容只留本次瀏覽，下載後由你保管。</p>
+<label>覆核者識別<input id="reviewer" autocomplete="off" placeholder="GitHub 使用者名稱或團隊認可識別"></label>
+<label>覆核日期<input id="review-date" type="date"></label>
+</section>
+<div id="candidates"></div>
+<button id="download-decisions" type="button">下載本批人工處置意向 JSON</button>
+<p id="export-status" role="status" aria-live="polite"></p>
+<p class="meta">不會自動寫入 repo、送出申請或連接外部 API。未選擇的項目不會出現在下載紀錄中。產生資料 PR 草稿後，仍須由維護者審查差異。</p>
+</main><!--REVIEW-DATA--><!--REVIEW-SCRIPT--></body></html>

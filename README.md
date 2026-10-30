@@ -24,7 +24,7 @@ v0.8研討會可選國科會、臺大醫學院、傑出人才發展基金會或�
 
 來源掃描採臺北時間週二、週五09:17，另可手動執行；目前來源台帳中已啟用的正文目標及允許的文字PDF在記憶體完成結構化萃取、七項獨立檢核（含 `coverage_ok` 與 `passed_with_gaps`）、學生窗口時間判斷與 `data/pilot.json` 差異比對，只產生待覆核報告，不直接改寫網站正式資料。每次檢查robots，PDF不長期存放；教務處因轉載條款只保留雜湊與定位，且絕不送往外部模型（`hash_only_bytes_sent = 0`）。雙軌模型 Adapter（`extract` 補缺＋`audit` 交叉盤查）於排程預設關閉（`model_mode=off`、呼叫0次），僅支援手動觸發或本機評估。[看掃描狀態](https://github.com/matt-ye/opengsa/actions/workflows/scan-sources.yml) · [操作與限制](docs/SCANNER.md)。
 
-本輪已全數合併 PR #16～#19（包含起訖與準備提醒帶、AI 工具補助台帳、可靠性修正、申請管道 Schema 與 8 組 API 實測）。來源設定共16筆，其中11筆啟用、5筆暫停；「啟用」不保證每次都可擷取，最近實測狀態見[掃描文件](docs/SCANNER.md)。10筆網站資料仍是待覆核草稿，人工處置台帳已清除合成紀錄。
+本輪已全數合併 PR #16～#20（包含起訖與準備提醒帶、AI 工具補助台帳、可靠性修正、申請管道 Schema 與 8 組 API 實測）。來源設定共16筆，其中11筆啟用、5筆暫停；「啟用」不保證每次都可擷取，最近實測狀態見[掃描文件](docs/SCANNER.md)。10筆網站資料仍是待覆核草稿，人工處置台帳已清除合成紀錄。
 
 8組Repository Secrets已接線，模型預設與官方額度宣稱已重新盤查；僅Groq完成小量JSON推論，其他服務的目錄成功不等於金鑰／免費推論全部可用。看[API查核及操作](docs/API-AUDIT.md)與[本輪修正及驗收](docs/RELIABILITY-AUDIT.md)。排程維持規則模式，不啟用自動付費備援。
 
@@ -33,6 +33,8 @@ PR #18的17筆AI資源已進行來源分流與更正，見[查核結果](docs/PR
 臺北／新竹AI工具補助已推進為兩筆[具名候選](data/candidates/README.md)，確定性萃取、分支與程序檢核已接入掃描；仍pending，不改10筆正式草稿。[推進與驗收紀錄](docs/AI-TOOLS-CANDIDATES.md)。
 
 ## 已有與後續功能
+
+候選[審查工作台](docs/REVIEW-WORKSPACE.md)已接上：逐欄差異與短證據、第一至三頁未發布預覽、人工處置意向下載，以及來源版本重新核驗後的資料 PR 提案匯出。Actions 可手動選 `review_workspace` 產生離線 artifact，不使用 Secrets 或模型。正式總表仍10筆、人工覆核台帳仍空；產生提案不會自動更新公開卡片。
 
 - 依用途查找獎學金、研究支持、成果獎、會議與境外活動、學費、急難及住宿資源。
 - 五組必要標籤：**來源、身分、年級限制、兼領、清寒限定**。
@@ -56,7 +58,9 @@ flowchart LR
  C --> D[必要時Agent補查]
  D --> E[獨立檢核＋申請時間判斷]
  E --> F[人工獨立覆核]
- F --> G[資料PR與Git總表]
+ F --> R[當次來源版本重核＋內容指紋核對]
+ R --> G[資料PR提案與Git總表]
+ E --> P[第一至三頁未發布預覽]
  D -.手動且通過來源與成本限制.-> M[單一Provider／無付費備援]
 ```
 
@@ -87,6 +91,7 @@ flowchart TD
 | 文件 | 用途 |
 |---|---|
 | [目前計畫](docs/PLAN.md) | 已核可範圍、階段、下一步與驗收 |
+| [候選審查工作台](docs/REVIEW-WORKSPACE.md) | 未發布預覽、人工處置、重新核驗與資料 PR 草稿流程 |
 | [公開預覽與部署](docs/DEPLOYMENT.md) | GitHub Pages發布、公開回饋、成品邊界、測試與回復 |
 | [長期維運與訂閱提案](docs/OPERATIONS-PLAN.md) | GitHub／D1分工、來源擷取、Agent檢核、成本、RSS與ICS；D1與訂閱尚未啟用 |
 | [首批來源及Actions設計](docs/INGESTION-POC.md) | 管線設計與已落地之結構化萃取、獨立檢核及差異覆核模組對照 |

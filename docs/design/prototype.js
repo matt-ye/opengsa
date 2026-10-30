@@ -68,7 +68,8 @@ function makeDrafts(pilot,asOf=taipeiToday()) {
   "ntu-nstc-phd-115":"government","ntu-moe-phd-115-round2":"government",
   "ntu-med-publication-115":"university","ntu-president-114":"university",
   "nstc-grad-conference-policy":"government","nstc-abroad-116-ntu":"government",
-  "ntu-yuanxue-115-ordinary":"university","ntu-ta-policy":"university"
+  "ntu-yuanxue-115-ordinary":"university","ntu-ta-policy":"university",
+  "taipei-ai-tools":"government","hsinchu-ai-tools":"government"
  };
  const sourceMap = new Map(pilot.sources.map(s=>[s.id,s]));
  return pilot.opportunities.map(item => {
@@ -78,7 +79,7 @@ function makeDrafts(pilot,asOf=taipeiToday()) {
    ...event(s.deadline.value,"confirmed",s.action+"；"+s.deadline.note)
   }));
 
-  let resolvedSource = funding[item.id];
+  let resolvedSource = funding[item.id] || funding[item.program_key];
   if(!resolvedSource) {
    const funder = (item.organizations?.funder?.text || "").toLowerCase();
    const announcer = (item.organizations?.announcer?.text || "").toLowerCase();
@@ -316,14 +317,16 @@ if(typeof document==="undefined") return;
 const byId=id=>document.getElementById(id);
 const pilot=JSON.parse(byId("pilot-data").textContent);
 const conferenceData=JSON.parse(byId("conference-data").textContent);
+const reviewPreview=document.body.dataset.reviewPreview==="true";
+if(reviewPreview){byId("mode-switch").hidden=true;byId("conference-program")?.closest("details")?.setAttribute("hidden","");}
 const personalConferences=new Map();
 function currentItems(){return [...(mode==="demo"?makeDemo(today):drafts),...personalConferences.values()];}
-const drafts=[...makeDrafts(pilot),...conferenceEntries(conferenceData.programs)];
+const drafts=[...makeDrafts(pilot),...(reviewPreview?[]:conferenceEntries(conferenceData.programs))];
 const rawById=new Map(pilot.opportunities.map(item=>[item.id,item]));
 const sourceById=new Map(pilot.sources.map(source=>[source.id,source]));
 const picked={demo:new Set(),draft:new Set()}, completed={demo:new Set(),draft:new Set()}, activeDetail={demo:null,draft:null};
 let sharedItems=[], personalRangeMode="recent", lastPersonalRange=null;
-let today=taipeiToday(), mode="demo", view="gantt", rangeMode="recent", offset=0, inspectedId=null, lastRange=null, centerPending=true, rightsView="all", activePanelId="search";
+let today=taipeiToday(), mode=reviewPreview?"draft":"demo", view="gantt", rangeMode="recent", offset=0, inspectedId=null, lastRange=null, centerPending=true, rightsView="all", activePanelId="search";
 const scrollPositions={search:0,detail:0,timeline:0,rights:0};
 const state={query:"",category:"all",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all",application:"all",includeUnknown:true};
 function el(tag, cls, text) {
@@ -677,7 +680,7 @@ function drawDetail() {
    const linkSal=el("a","pill","助教與兼任薪資總表 ↗");linkSal.href="#ta-salary-title";
    const linkGriev=el("a","pill","從屬性自測與救濟地圖 ↗");linkGriev.href="#grievance-title";
    linksDiv.append(linkMap,linkSal,linkGriev);rightsCard.append(linksDiv);left.append(rightsCard);
-  } else if(item.source==="government" || item.title.includes("國科會") || item.title.includes("千里馬")) {
+  } else if(/國科會|國家科學及技術委員會|科技部/.test(raw.organizations?.funder?.text||"")) {
    const rightsCard=el("section","panel detail-section");
    rightsCard.append(el("h3","","📜 國科會作業要點上位法參照"));
    rightsCard.append(el("p","small","本項依國家科學及技術委員會相關作業要點規範。依上位法優於下位法原則，各校校內送件與給付基準不得牴觸中央主管機關辦法。"));

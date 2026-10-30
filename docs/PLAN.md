@@ -4,9 +4,11 @@
 
 ## 本輪狀態（優先於下列歷史決策中的舊數量與API提案）
 
-PR #16～#19已全數合併至 main。網站10筆資料仍為待覆核草稿（draft），人工覆核台帳無合成紀錄，正式資料契約與防呆全面通過。8組Repository Secrets已完成官方端點連線與模型目錄查核，Groq完成小量JSON推論，其餘7組依合規政策嚴守catalog-only（不擅自扣費或推論）；PR #18收錄之17筆AI工具與算力補助已完成初查與分流，申請管道Schema（紙本/電子/親簽/NA判準）已落實。排程模型始終關閉（model_mode=off）。驗收與剩餘門檻見[可靠性修正](RELIABILITY-AUDIT.md)、[API查核](API-AUDIT.md)及[掃描操作](SCANNER.md)。
+PR #16～#20已全數合併至 main。網站10筆資料仍為待覆核草稿（draft），人工覆核台帳無合成紀錄，正式資料契約與防呆全面通過。8組Repository Secrets已完成官方端點連線與模型目錄查核，Groq完成小量JSON推論，其餘7組依合規政策嚴守catalog-only（不擅自扣費或推論）；PR #18收錄之17筆AI工具與算力補助已完成初查與分流，申請管道Schema（紙本/電子/親簽/NA判準）已落實。排程模型始終關閉（model_mode=off）。驗收與剩餘門檻見[可靠性修正](RELIABILITY-AUDIT.md)、[API查核](API-AUDIT.md)及[掃描操作](SCANNER.md)。
 
 ## 已接受決策
+
+- 2026-10-30 使用者核可候選審查閉環，並另核可合併 PR #20（已合併）。新增工作台、第一至三頁候選預覽、人工處置意向及重新核驗後的資料 PR 草稿；來源缺漏與個人條件未填分開，來源變更需重掃重審。不自動人工核准、改寫正式資料或發布。操作及驗收見 [REVIEW-WORKSPACE.md](REVIEW-WORKSPACE.md)。
 
 - 名稱：OpenGSA；英文全名：Grant Scholarships Award。
 - 長期服務全臺碩博士；第一階段先做全國性方案＋臺大試點。
@@ -40,7 +42,7 @@ PR #16～#19已全數合併至 main。網站10筆資料仍為待覆核草稿（d
 4. **申請時間與資格判斷 (`scripts/evaluate_deadlines.py`)**：嚴格以學生適用窗口判斷 `open`、`not_yet_open`、`closed`、`unknown`；支援固定日期、確切時分、事件相對規則（國科會／臺大前月首日與前一日17:00＋四週補送、醫學院會前四週送件、FAOS會前兩個曆月學校提出且學生校內期限留 `unknown`）、缺起日、例假日待核與來源過期檢查。內建 P1（臺大職能治療所博士班五年級、已取得候選人資格）及 P1-A～P3 邊界測試情境。
 5. **候選覆核、差異報告與三軌基準測試 (`scripts/review_candidates.py`, `scripts/evaluate_extraction_benchmark.py`)**：輸出 `structured-candidates.json`、`review-diff.json`、`review-summary.md` 與 `model-usage.json`，將法規快照 PDF 歸類為 `policy_regulation_snapshot` 避免假性狀態差異；並透過 Corpus A（8 份真實公開文件＝10 筆候選）＋ Corpus B（20 組合成邊界與對抗測試）完成 `rules_only`、`llm_only` 與 `rules_plus_llm` 三軌 3 輪可重現評估。
 
-目前 **52 項 Python 測試＋26 項 Node 原型測試** 全部通過。
+2026-10-29 當時 **52 項 Python 測試＋26 項 Node 原型測試** 通過；現行數量以本輪 CI 及下述工作台驗收為準。
 
 ## 階段 A：規劃與資料基礎
 
@@ -90,6 +92,9 @@ flowchart TD
 - 高風險欄位須另一位覆核者；未找到覆核者可留草稿，不標成已確認。
 
 ## 下一步待辦
+
+- [x] 候選審查工作台、同批候選三頁預覽、具版本人工意向及重新核驗後的資料 PR 提案匯出；Actions 手動離線 artifact，不含 Secrets 或模型呼叫。
+- [ ] 真正的獨立覆核者核對兩筆 AI 工具候選，解除來源疑點後另開資料 PR；本開發不填真人核准紀錄。
 
 - [x] 本批引用來源去重並建檔17筆；其餘檢索種子保留於分類清單。
 - [ ] 指定來源維護責任及非原編輯者的獨立覆核。
