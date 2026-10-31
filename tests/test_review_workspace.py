@@ -10,6 +10,7 @@ from unittest.mock import patch
 from scripts.build_review_workspace import build_workspace, merge_decisions
 from scripts.check_data import validate, validate_candidate_snapshot
 from scripts.extract_candidates import extract_from_in_memory_blocks
+from scripts.extract_candidates import limit_evidence_excerpts
 from scripts.review_candidates import build_review_report, candidate_fingerprint
 from scripts.review_context import refresh_context
 from scripts.scan_sources import Fetcher, VERSION, digest, html_document, normalized
@@ -180,6 +181,23 @@ class ReviewWorkspaceTests(unittest.TestCase):
         bundle=deepcopy(self.bundle);bundle["candidates"][0]["title"]+=" edited after review"
         with tempfile.TemporaryDirectory() as directory,self.assertRaises(ValueError):
             build_workspace(bundle,self.pilot,self.config,Path(directory)/"review",decisions=self.decisions)
+
+    def test_two_documents_for_one_opportunity_require_reconciliation_before_export(self):
+        bundle=deepcopy(self.bundle)
+        other=deepcopy(self.cand);other["candidate_id"]+="-SYNTH-second-document"
+        limit_evidence_excerpts(other,0)
+        bundle["candidates"].append(other)
+        decisions=deepcopy(self.decisions)
+        entry=deepcopy(decisions["reviews"][0]);entry.update(candidate_id=other["candidate_id"],candidate_sha256=candidate_fingerprint(other))
+        decisions["reviews"].append(entry)
+        contexts,status,_=self.refresh();status[other["candidate_id"]]="fresh_semantic_revision_matched"
+        with tempfile.TemporaryDirectory() as directory:
+            output=Path(directory)/"review"
+            result=build_workspace(bundle,self.pilot,self.config,output,decisions=decisions,contexts=contexts,
+                context_status=status,export_draft=True)
+            self.assertEqual(result["publication_status"],"blocked")
+            self.assertEqual(result["blocking_reason"],"same_opportunity_multiple_documents_require_reconciliation")
+            self.assertFalse((output/"data-pr.patch").exists())
 
 
 if __name__=="__main__":unittest.main()

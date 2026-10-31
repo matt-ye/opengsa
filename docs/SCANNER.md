@@ -4,24 +4,24 @@ PR #20 已合併；具名候選新增[審查工作台與資料 PR 草稿](REVIEW
 
 更新：2026-10-30，以PR #20合併後狀態及本輪審查工作台為基準。有限公開GET、增量差異、規則萃取、可選手動LLM、獨立檢核、申請時間及P1資格比對已串接。**只產生待覆核報告，不直接改寫網站資料**。模型排程固定off；API設定、觀察值及限制見[API查核](API-AUDIT.md)。
 
-## 來源台帳與最近實測
+## 來源台帳與最近實測（2026-10-31）
 
-執行設定：[scan-sources.json](../data/scan-sources.json)，共16筆、11筆啟用、5筆停用。disabled仍保留為搜尋種子，不由scanner或候選重新擷取器下載；啟用不代表可擷取或已人工核准。
+[scan-sources.json](../data/scan-sources.json)共16個profile：13啟用、3停用。最新實掃將13個來源17份文件整理為19筆待審候選，12 passed_automated_checks、7 passed_with_gaps，0人工核准。[完整來源驗收與成本](SOURCE-COVERAGE-AUDIT.md)、[145個網址逐項清單](SOURCE-LINKS-2026-10-31.md)。
 
-| 群組 | 狀態與限制 |
+| 群組 | 狀態 |
 |---|---|
-| 臺大博士生獎學金、校長獎、國科會會議校內程序 | 正文與允許PDF可解析；教務處轉載條款採hash_only，不存原文、不外送模型 |
-| 臺大遠學 | 正文可解析；robots禁止/WebUPD/，附件保留受限，不下載 |
-| 國科會國際會議要點 | 正文可解析；固定學生期限、機關相對規則與補送期限分流 |
-| FAOS出國開會 | 本輪transport_error，保留前次狀態；學生校內期限不由機關期限補猜 |
-| 國科會千里馬、研究人力約用要點 | 原必要標記誤用摘要字句，依官方原文修正；另輪3次HTTP成功取得兩份正文，模型0次、核准0筆 |
-| 臺大TA辦法 | HTML及一份允許PDF已取到，hash_only；金額單位、資格及約用層次仍需覆核 |
-| 臺大兼任助理上限表 | 停用：原URL誤指遠學；實際附件在robots禁止路徑，不繞過 |
-| 中研院候選人、台積電博士、電資學院、工學院 | 四筆停用：依序為transport_error、404、404、robots_not_plain_rules；URL／選擇器尚未完成實測，不當成已支援來源 |
+| 臺大博士獎學金、校長獎、TA | 正文及允許PDF可處理，教務處hash_only；公告／辦法／年度申請說明分開。博士申請附件部分年度與給付對象仍待核 |
+| 臺大遠學 | 正文可解析，/WebUPD/附件受限，coverage明確保留缺漏 |
+| 國科會會議、千里馬、研究人力 | 正文可解析；專任學歷級別、每月最低標題與金額聯合取證，不當全體學生普遍給付 |
+| FAOS | 本輪成功；機關期限與學生期限分開，缺個人會議日期不當開放 |
+| 中研院候選人 | 官方公告修復失效網址，限定人社計畫；完整金額及各所截止待核 |
+| 電資學院 | 官方連結的primary PDF已啟用；制度快照，必要給付欄位有缺漏 |
+| 臺北／新竹AI工具 | 正文與程序解析，個人條件、受理狀態與來源缺漏分開；新竹年齡採認疑點保留 |
+| 台積電、工學院、兼任上限表 | 分別403、robots非有效規則、/WebUPD/禁止，三個profile保持停用 |
 
-FAO登入頁、醫學院動態正文仍deferred。擴展藍圖與examples/ingestion-sources.proposed.json為提案，不由程式載入。修正停用來源前須確認官方URL、正文範圍、標記、robots、重製政策及完整profile，再以小量單次掃描驗收。
+生輔組robots無有效規則，使用者確認無另行授權，維持人工查核；FAO不帶登入session掃描。首頁／索引完成連結發現不代表下層方案全部接入。舊輪觀察值保留於可靠性及AI工具候選文件，不作為本輪全部來源可用的保證。
 
-本輪兩次分批掃描分別為8／20次HTTP、5／2份變更；另有上述國科會單獨修正驗證3次HTTP。全部模型0次、official_data_modified=false、promotion_ready=0。候選有passed、gaps、needs_context及failed混合結果，**不宣稱全數萃取通過**；法規分支與中文金額仍需人工核對。這是觀察紀錄，不是每週成功率保證。
+primary PDF宣告format=pdf；附件候選另需parent_url及profile的known_attachment_urls，覆核時仍須從當次父頁重新發現並通過robots。PDF相容字NFKC正規化，無OCR或全文長期保存。來源的hash_only仍不得外送模型。
 
 ## 執行與輸出
 
@@ -69,7 +69,7 @@ noted／dismissed是文件層級佇列處置；帶candidate_id的處置只影響
 - Actions週二／五09:17（臺北），GitHub不保證準時；main手動scan可執行，模型預設off。Pages部署另由pages.yml執行，PR只離線檢查及建置，不取得來源Secrets。
 - 每輪最多20次HTTP（含robots／轉向／重試／附件）、5份變更、24份待審；至少3秒主機間隔、一次一請求。待審滿則停新增，不覆蓋未審候選。
 - HTTPS白名單逐次檢查重新導向、TLS正常驗證；不登入、不下載名單或帶session／token連結。robots每輪重查，404不等於轉載授權；禁止路徑不以代理、換IP或偽裝瀏覽器繞過。
-- 403／429暫停主機；5xx最多再試一次，Retry-After延後下輪。HTML上限2MB；PDF10MB／50頁，文字抽取20秒；Linux子程序限CPU／768MB，Windows無相同記憶體硬上限。加密、掃描圖或解析問題轉人工，不做OCR。
+- 403／429暫停主機；傳輸失敗／5xx共用最多一次重試，Retry-After延後下輪。HTML上限2MB；PDF10MB／50頁，文字抽取20秒；Linux子程序限CPU／768MB，Windows無相同記憶體硬上限。加密、掃描圖或解析問題轉人工，不做OCR。
 - 新請求啟動預算180秒、單次逾時23秒、workflow10分鐘。故障保留舊正式資料及候選，不當停辦。舊版雜湊或304沒有完整原文可用時，不重新宣稱內容通過。
 
 離線測試與建置指令見[資料契約](DATA-CONTRACT.md)；本輪驗收見[可靠性紀錄](RELIABILITY-AUDIT.md)。依據：[GitHub排程事件](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows)、[RFC9309](https://www.rfc-editor.org/rfc/rfc9309.html)、[教務處聲明](https://www.aca.ntu.edu.tw/w/aca/Privacy)、[pypdf限制](https://pypdf.readthedocs.io/en/stable/user/extract-text.html)。

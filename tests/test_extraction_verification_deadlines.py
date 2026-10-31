@@ -274,7 +274,7 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
         )
         self.assertEqual(len(yx_cands), 1)
         yx = yx_cands[0]
-        self.assertEqual(yx["verification"]["status"], "passed_automated_checks")
+        self.assertEqual(yx["verification"]["status"], "passed_with_gaps")
         b_item = yx["benefit"]["items"][0]
         self.assertEqual(b_item["amount_min"], 525000)
         self.assertEqual(b_item["amount_max"], 900000)
@@ -618,7 +618,7 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
             "candidates": yx_cands,
         }
         verified_bundle, summary, md = build_review_report(good_bundle, PILOT, in_memory_blocks_by_source={CONFIG["sources"][2]["url"]:make_yuanxue_blocks()})
-        self.assertEqual(summary["passed_automated_checks"], 1)
+        self.assertEqual(summary["passed_with_gaps"], 1)
         self.assertEqual(summary["promotion_ready"], 0)  # 尚未經人工獨立覆核
         self.assertIn("一、來源變更", md)
         self.assertIn("二、結構化萃取結果", md)
@@ -1005,8 +1005,8 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
     def test_review_ledger_promotion_ready_and_pr_draft_export(self):
         from scripts.review_candidates import candidate_fingerprint
         self.assertEqual(read_json(ROOT/"data/scan-reviews.json")["reviews"],[])
-        src=CONFIG["sources"][2]
-        blocks=make_yuanxue_blocks()
+        src=CONFIG["sources"][3]
+        blocks=make_nstc_conference_blocks()
         cand=extract_from_in_memory_blocks(src,blocks,revision_id="a"*64,observed_at="2026-10-28T09:17:00+08:00",as_of="2026-10-28")[0]
         bundle={"schema_version":"1.1.0-candidate","generated_at":"2026-10-28T09:17:00+08:00","as_of":"2026-10-28","timezone":"Asia/Taipei","model_enabled":False,"model_calls":0,"official_data_modified":False,"candidates":[cand]}
         entry={"revision_id":"a"*64,"source_id":src["id"],"candidate_id":cand["candidate_id"],"candidate_sha256":candidate_fingerprint(cand),"action":"applied","reviewer":"SYNTH-independent-reviewer","reviewed_on":"2026-10-28","reason":"Synthetic test disposition, not actual human approval"}

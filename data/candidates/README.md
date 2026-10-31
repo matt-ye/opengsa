@@ -1,3 +1,11 @@
+# 當前待審批次
+
+2026-10-31的[source-review.json](source-review.json)是工作台預設批次：13個來源、17份文件、19筆候選，12筆自動檢核通過、7筆有缺漏，全部pending、promotion_ready=false。HTML、規則PDF、申請說明各自保留版本，不把文件數量當獎學金數量。
+
+原[ai-tools-115.json](ai-tools-115.json)保留較早兩筆快照供追溯；不要與當前批次直接聯集或重複匯入。正式pilot及真人覆核台帳仍不改寫。完整證據、來源限制及操作見[來源盤查](../../docs/SOURCE-COVERAGE-AUDIT.md)。
+
+---
+
 # 待覆核候選快照
 
 `ai-tools-115.json`為2026-10-30從兩個官方公開HTML正文取得的具名候選，採candidate Schema；不是網站正式總表。兩筆都是pending、passed_with_gaps、promotion_ready=false；不得把檔案存在視為完成獨立人工覆核。

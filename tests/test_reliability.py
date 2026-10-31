@@ -182,6 +182,8 @@ class ReliabilityTests(unittest.TestCase):
         self.assertFalse(date_supported("2026-01-01","2026/1/10截止"))
 
     def test_disabled_source_is_not_refetched(self):
+        self.config["sources"]=deepcopy(self.config["sources"])
+        next(s for s in self.config["sources"] if s["id"]==self.source["id"])["enabled"]=False
         class NoNetwork:
             def get(self,*args):raise AssertionError("Disabled source must never be fetched")
         stub={"source_id":self.source["id"],"id":"c"*64,"url":self.source["url"],"facts":[]}

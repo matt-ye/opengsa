@@ -1,0 +1,3024 @@
+{
+  "as_of": "2026-10-31",
+  "scope": "saved_resource_urls_in_data_and_source_documents_including_retired_links",
+  "request_count_scope": "Saved probe calls only; interrupted in-flight requests may be omitted. Scanner batches counted separately.",
+  "http_requests": 206,
+  "model_calls": 0,
+  "official_data_modified": false,
+  "rows": [
+    {
+      "url": "http://www.eng.ntu.edu.tw/tc/news.aspx?pn=2&mid=9&cid=80&key=",
+      "title": "工學院",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "http_seed_requires_verified_https_replacement",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "http://www.law.ntu.edu.tw/index.php/%E7%8D%8E%E5%AD%B8%E9%87%91-%E5%BE%B5%E6%89%8D%E5%85%AC%E5%91%8A",
+      "title": "法律學院",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "http_seed_requires_verified_https_replacement",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/",
+      "title": "生輔組首頁",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_not_plain_rules",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/CMS/GetFile/1359",
+      "title": "臺大學生急難慰助金實施辦法",
+      "used_in": [
+        "data/pilot.json"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_not_plain_rules",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/CMS/HTML/118",
+      "title": "https://advisory.ntu.edu.tw/CMS/HTML/118",
+      "used_in": [
+        "data/scan-sources.json",
+        "data/pilot.json",
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_not_plain_rules",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/CMS/HTML/122",
+      "title": "教育部學產基金急難慰問",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_not_plain_rules",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/CMS/HTML/123",
+      "title": "行天宮社會急難扶助金",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_not_plain_rules",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/CMS/HTML/184",
+      "title": "勵學獎學金實際連結",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_not_plain_rules",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/CMS/Page/174",
+      "title": "https://advisory.ntu.edu.tw/CMS/Page/174",
+      "used_in": [
+        "data/scan-sources.json",
+        "data/pilot.json",
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_not_plain_rules",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/CMS/Page/176",
+      "title": "就學貸款",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_not_plain_rules",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/CMS/Page/180",
+      "title": "不利處境助學金（原弱勢助學金）",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_not_plain_rules",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/CMS/Page/186",
+      "title": "急難慰問救助總入口",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_not_plain_rules",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/CMS/Page/21",
+      "title": "獎助學金總說明",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_not_plain_rules",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/CMS/Page/211",
+      "title": "生輔組相關辦法入口",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md",
+        "docs/RIGHTS-AND-LEGAL-FRAMEWORK.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "inherited_host_pause": true,
+      "scan_status": "robots_not_plain_rules",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/CMS/Page/252",
+      "title": "臺大學生申訴專區",
+      "used_in": [
+        "docs/RIGHTS-AND-LEGAL-FRAMEWORK.md",
+        "docs/reference/HANDOFF.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "inherited_host_pause": true,
+      "scan_status": "robots_not_plain_rules",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/CMS/Scholarship?pageId=232",
+      "title": "生輔組獎學金公告一覽",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "inherited_host_pause": true,
+      "scan_status": "robots_not_plain_rules",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://aiacademy.tw/",
+      "title": "機構入口",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md",
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:25:59+00:00",
+      "raw_sha256": "0a2ff68291b2f3de342dbb3aa4f0ee53b29b92c8fb0a0a0f88f9f5097651fa69",
+      "final_url": "https://aiacademy.tw/",
+      "format": "html",
+      "body_characters": 1684,
+      "relevant_link_count": 1,
+      "discovered_urls": [
+        "https://aiacademy.tw/policy-tech/"
+      ]
+    },
+    {
+      "url": "https://ann.cc.ntu.edu.tw/nasattach/97000/45637_5195881007.pdf",
+      "title": "校外常見獎補助資源表（11509彙整）",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_denied",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://ann.cc.ntu.edu.tw/nasattach/97000/45638_6230009973.pdf",
+      "title": "校內獎補助資源表（11509臺大彙整）",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_denied",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://ann.cc.ntu.edu.tw/nasattach/97000/45639_8879372011.pdf",
+      "title": "校內研究計畫資源表（11509臺大彙整）",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_denied",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://aws.amazon.com/education/awseducate/",
+      "title": "官方方案",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md",
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:26:03+00:00",
+      "raw_sha256": "8b1586e5087c0836e20a37a535674cea629fdadda4e80bf99520efdf8aafc2de",
+      "final_url": "https://aws.amazon.com/education/awseducate/",
+      "format": "html",
+      "body_characters": 3171,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://blog.google/",
+      "title": "Google 官方部落格",
+      "used_in": [
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:26:07+00:00",
+      "raw_sha256": "79423fbda51e43e9077f1c40f6d40b8e0ab1c31fee5ea3d49483258f1970fa01",
+      "final_url": "https://blog.google/",
+      "format": "html",
+      "body_characters": 4832,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://blog.google/intl/zh-tw/products/explore-get-answers/back-to-school-2026/",
+      "title": "臺灣官方公告",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:26:10+00:00",
+      "raw_sha256": "cad390c2d1efc153c7eb4c08250d70ee0f0eaeb9a9fe8d58067a623d3ee09b33",
+      "final_url": "https://blog.google/intl/zh-tw/products/explore-get-answers/back-to-school-2026/",
+      "format": "html",
+      "body_characters": 2372,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://cge.ntu.edu.tw/News_n_68409_sms_66659.html",
+      "title": "共同教育中心公告索引",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "html_no_meaningful_body_or_dynamic_content",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://cloud.google.com/startup",
+      "title": "新創專區",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md",
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "transport_error",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://cols.ntu.edu.tw/regulations-student.html",
+      "title": "生命科學院",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "html_no_meaningful_body_or_dynamic_content",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://coph.ntu.edu.tw/web/admissions/admissions_affairs.jsp?cp_id=CP1653651195215",
+      "title": "公共衛生學院",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:26:23+00:00",
+      "raw_sha256": "f12bbf06f954dd4606947f5f2616e02946b191ba01481c6dfb52d6737275372e",
+      "final_url": "https://coph.ntu.edu.tw/web/admissions/admissions_affairs.jsp?cp_id=CP1653651195215",
+      "format": "html",
+      "body_characters": 1693,
+      "relevant_link_count": 15,
+      "discovered_urls": [
+        "https://coph.ntu.edu.tw/web/admissions/admissions_affairs.jsp?cp_id=CP1653651195215",
+        "https://coph.ntu.edu.tw/web/admissions/admissions_award.jsp?dm_id=DM1706068694563",
+        "https://coph.ntu.edu.tw/web/admissions/admissions_award.jsp?dm_id=DM1706255577770",
+        "https://coph.ntu.edu.tw/web/admissions/admissions_award.jsp?dm_id=DM1709779137882",
+        "https://coph.ntu.edu.tw/web/admissions/admissions_award.jsp?dm_id=DM1706255593768",
+        "https://coph.ntu.edu.tw/web/admissions/admissions_award.jsp?dm_id=DM1706255601111",
+        "https://coph.ntu.edu.tw/web/admissions/admissions_info.jsp?cp_id=CP1653651328977",
+        "https://coph.ntu.edu.tw/uploads/root/hsiaopc/linyaonanscolarship_1120110.pdf",
+        "https://coph.ntu.edu.tw/uploads/root/hsiaopc/leeshuyuscholar_rule_new_20250724.pdf",
+        "https://dph.ntu.edu.tw/web/message/message.jsp?cp_no=CP1634788981022&lang=tw",
+        "https://coph.ntu.edu.tw/uploads/root/hsiaopc/2025leeshuyukaigai.docx",
+        "https://coph.ntu.edu.tw/uploads/root/hsiaopc/NTUCPH_MASTER-1120923.pdf",
+        "https://coph.ntu.edu.tw/uploads/root/phc/shueshu_form.docx",
+        "https://coph.ntu.edu.tw/uploads/root/phc/abroad_report.doc",
+        "https://advisory.ntu.edu.tw/CMS/Scholarship?pageId=232"
+      ]
+    },
+    {
+      "url": "https://coss.ntu.edu.tw/News_n_10821_sms_19598.html",
+      "title": "社會科學院",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "html_no_meaningful_body_or_dynamic_content",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://creativecommons.org/licenses/by/4.0/deed.zh-hant",
+      "title": "CC BY 4.0",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "supporting_documentation",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:26:30+00:00",
+      "raw_sha256": "903f782bb187928304cf2b81ff2c9f2b21fbc5d78c706c00a04c3298455c0dab",
+      "final_url": "https://creativecommons.org/licenses/by/4.0/deed.zh-hant",
+      "format": "html",
+      "body_characters": 957,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://data.gov.tw/license",
+      "title": "政府資料開放授權條款第 1 版",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "supporting_documentation",
+      "scan_status": "robots_unavailable",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
+      "title": "新竹市AI領航青年數位工具補助",
+      "used_in": [
+        "data/scan-sources.json",
+        "docs/PR18-RESOURCE-REVIEW.md"
+      ],
+      "source_id": "hsinchu-ai-tools",
+      "pipeline_role": "enabled_candidate_profile",
+      "scan_status": "changed",
+      "format": "html",
+      "observed_at": "2026-10-31T05:49:52+00:00",
+      "candidate_ids": [
+        "cand-hsinchu-ai-tools-2df2bf61"
+      ],
+      "verification": [
+        "passed_with_gaps"
+      ],
+      "application_states": [
+        "unknown"
+      ],
+      "judgment": "candidate_pending_review"
+    },
+    {
+      "url": "https://docs.astro.build/en/guides/content-collections/",
+      "title": "Content Collections",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "supporting_documentation",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:26:33+00:00",
+      "raw_sha256": "b83c8929de8071600d2c9d4cfc03075199911205e37ec91174afa091ef82e3ef",
+      "final_url": "https://docs.astro.build/en/guides/content-collections/",
+      "format": "html",
+      "body_characters": 47154,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students",
+      "title": "學生啟用流程",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:26:37+00:00",
+      "raw_sha256": "ab627e7684014aedc24d71e5e17440107c22d467caa8d8575251c930ca3f20ef",
+      "final_url": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students",
+      "format": "html",
+      "body_characters": 1434,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL001889",
+      "title": "獎助生權益保障指導原則",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md",
+        "docs/RIGHTS-AND-LEGAL-FRAMEWORK.md",
+        "docs/reference/HANDOFF.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:26:41+00:00",
+      "raw_sha256": "cf6ec6267bb7239df41d5239a7ac7e59c7a353e2595e0afa7e2a23678b1d47fe",
+      "final_url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL001889",
+      "format": "html",
+      "body_characters": 3191,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://education.github.com/pack",
+      "title": "Pack個別福利",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md",
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:26:47+00:00",
+      "raw_sha256": "d9fd67b2c40bd7041347115d15fdfca4c3c910868f6fa7bc9b33ef7c99e3887c",
+      "final_url": "https://education.github.com/pack",
+      "format": "html",
+      "body_characters": 31726,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf",
+      "title": "臺大電資學院優秀博士生獎學金評選辦法",
+      "used_in": [
+        "data/scan-sources.json"
+      ],
+      "source_id": "ntu-eecs-scholarship",
+      "pipeline_role": "enabled_candidate_profile",
+      "scan_status": "changed",
+      "format": "pdf",
+      "observed_at": "2026-10-31T06:08:33+00:00",
+      "candidate_ids": [
+        "cand-ntu-eecs-scholarship-970ee807"
+      ],
+      "verification": [
+        "passed_with_gaps"
+      ],
+      "application_states": [
+        "unknown"
+      ],
+      "judgment": "candidate_pending_review"
+    },
+    {
+      "url": "https://eecs.ntu.edu.tw/zh_tw/Studentinformation/stu1",
+      "title": "電機資訊學院",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "html_no_meaningful_body_or_dynamic_content",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://elite.taiwanjobs.gov.tw/",
+      "title": "台灣就業通產業新尖兵",
+      "used_in": [
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:26:57+00:00",
+      "raw_sha256": "230187d3980e5ff5053f933a87ddd1f914676b065a90374554dc4165674a0b12",
+      "final_url": "https://elite.taiwanjobs.gov.tw/",
+      "format": "html",
+      "body_characters": 422,
+      "relevant_link_count": 2,
+      "discovered_urls": [
+        "https://elite.taiwanjobs.gov.tw/ClassApply",
+        "https://elite.taiwanjobs.gov.tw/ClassApply/ClassRecord"
+      ]
+    },
+    {
+      "url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+      "title": "Joint Masters",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "overseas_degree_placeholder_deferred",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://help.openai.com/en/articles/10139500-researcher-access-program-faq",
+      "title": "官方FAQ",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "http_403_host_paused",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://ibs.ntu.edu.tw/uploads/download/tw/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%951090929.pdf",
+      "title": "生化科學研究所副本",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_pdf",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:27:03+00:00",
+      "raw_sha256": "590853c0510cf86932948a0331362c957cda5aea1bd25aed7493000dffed0109",
+      "final_url": "https://ibs.ntu.edu.tw/uploads/download/tw/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%951090929.pdf",
+      "format": "pdf",
+      "text_blocks": 79
+    },
+    {
+      "url": "https://innoaward.taiwan-healthcare.org/",
+      "title": "主辦獎項網站",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:27:07+00:00",
+      "raw_sha256": "9d493f51894303575c67e8736f5839a6f2251f007f13b3a4be04a7301da9f027",
+      "final_url": "https://innoaward.taiwan-healthcare.org/",
+      "format": "html",
+      "body_characters": 1238,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://iservice.nchc.org.tw/nchc_service/nchc_service_qa.php?target=16",
+      "title": "計畫FAQ",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_denied",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=I0050021",
+      "title": "個人資料保護法官方頁",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_denied",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=J0070017",
+      "title": "著作權法",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_denied",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=N0030001",
+      "title": "勞動基準法",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_denied",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0030001",
+      "title": "勞動基準法",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_denied",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0030020",
+      "title": "勞工退休金條例",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md",
+        "docs/reference/HANDOFF.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_denied",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0030028",
+      "title": "最低工資法",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md",
+        "docs/reference/HANDOFF.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_denied",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0050031",
+      "title": "勞工職業災害保險及保護法",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_denied",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686",
+      "title": "國科會專題研究計畫研究人力約用注意事項原文",
+      "used_in": [
+        "data/scan-sources.json",
+        "docs/RIGHTS-SOURCES.md",
+        "docs/RIGHTS-AND-LEGAL-FRAMEWORK.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": "nstc-assistant-rule",
+      "pipeline_role": "enabled_candidate_profile",
+      "scan_status": "changed",
+      "format": "html",
+      "observed_at": "2026-10-31T06:08:33+00:00",
+      "candidate_ids": [
+        "cand-nstc-assistant-rule-14a6cfad"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ],
+      "judgment": "candidate_pending_review"
+    },
+    {
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260",
+      "title": "國科會國際會議作業要點原文",
+      "used_in": [
+        "data/scan-sources.json",
+        "data/pilot.json",
+        "data/conference-programs.json",
+        "docs/CONFERENCE-SOURCES.md",
+        "docs/reference/HANDOFF.md",
+        "docs/INGESTION-POC.md"
+      ],
+      "source_id": "nstc-conference-rule",
+      "pipeline_role": "enabled_candidate_profile",
+      "scan_status": "changed",
+      "format": "html",
+      "observed_at": "2026-10-31T05:48:47+00:00",
+      "candidate_ids": [
+        "cand-nstc-conference-rule-1e764218"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ],
+      "judgment": "candidate_pending_review"
+    },
+    {
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039061",
+      "title": "國科會人社博士候選人論文獎勵作業要點",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:27:11+00:00",
+      "raw_sha256": "992f43ddf035dafe72097731b72777df51915871b998625b21503ab483d2c35f",
+      "final_url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039061",
+      "format": "html",
+      "body_characters": 1765,
+      "relevant_link_count": 1,
+      "discovered_urls": [
+        "https://law.nstc.gov.tw/Download.ashx?FileID=143206&id=FL039061&type=LAW"
+      ]
+    },
+    {
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039188",
+      "title": "國科會博士生赴國外研究（千里馬）作業要點原文",
+      "used_in": [
+        "data/scan-sources.json",
+        "data/pilot.json",
+        "data/conference-programs.json"
+      ],
+      "source_id": "nstc-abroad-dragon-rule",
+      "pipeline_role": "enabled_candidate_profile",
+      "scan_status": "changed",
+      "format": "html",
+      "observed_at": "2026-10-31T05:48:56+00:00",
+      "candidate_ids": [
+        "cand-nstc-abroad-dragon-rule-5b229e29"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ],
+      "judgment": "candidate_pending_review"
+    },
+    {
+      "url": "https://law.nstc.gov.tw/LawContentHistory.aspx?hid=101161&id=FL028686",
+      "title": "110.12.28版",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:27:14+00:00",
+      "raw_sha256": "fc4474f5def186d4105aad9c72dab5b68047026abdfa44566b7aeeeab1631252",
+      "final_url": "https://law.nstc.gov.tw/LawContentHistory.aspx?hid=101161&id=FL028686",
+      "format": "html",
+      "body_characters": 1997,
+      "relevant_link_count": 2,
+      "discovered_urls": [
+        "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686",
+        "https://law.nstc.gov.tw/Download.ashx?FileID=131538&id=101161&type=HLAW"
+      ]
+    },
+    {
+      "url": "https://law.nstc.gov.tw/LawContentHistory.aspx?hid=91075&id=FL028686",
+      "title": "108.5.17版",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:27:17+00:00",
+      "raw_sha256": "d8e8141835905953ae3ae19c42729f14bebe5478b4ae6875618d92755b046b59",
+      "final_url": "https://law.nstc.gov.tw/LawContentHistory.aspx?hid=91075&id=FL028686",
+      "format": "html",
+      "body_characters": 1830,
+      "relevant_link_count": 2,
+      "discovered_urls": [
+        "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686",
+        "https://law.nstc.gov.tw/Download.ashx?FileID=20971&id=91075&type=HLAW"
+      ]
+    },
+    {
+      "url": "https://law.nstc.gov.tw/LawContentSource.aspx?id=FL028686",
+      "title": "官方沿革",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:27:20+00:00",
+      "raw_sha256": "45037e981114a1eb932d32c68f6b78e5053ca7aa5faa19f5b73d156588c42723",
+      "final_url": "https://law.nstc.gov.tw/LawContentSource.aspx?id=FL028686",
+      "format": "html",
+      "body_characters": 963,
+      "relevant_link_count": 1,
+      "discovered_urls": [
+        "https://law.nstc.gov.tw/Download.ashx?FileID=142836&id=FL028686&type=LAW"
+      ]
+    },
+    {
+      "url": "https://laws.mol.gov.tw/FLAW/FLAWDAT0202.aspx?id=FL077250",
+      "title": "勞動部兼任助理勞動權益保障指導原則",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:27:23+00:00",
+      "raw_sha256": "e357e966dedddf0ef39bffa683ea71b671e060d69cb0595a3f50bf3331c5880e",
+      "final_url": "https://laws.mol.gov.tw/FLAW/FLAWDAT0202.aspx?id=FL077250",
+      "format": "html",
+      "body_characters": 1810,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://laws.mol.gov.tw/FLAW/FLAWDOC03.aspx?datatype=etype&ecase=%E5%8B%9E%E5%8B%95%E6%A2%9D+2&ecode=N00000&edate=20251021&eno=1140148807",
+      "title": "勞動部 1140148807 號公告",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "html_no_meaningful_body_or_dynamic_content",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://laws.mol.gov.tw/FLAW/PrintFLAWDAT0202.aspx?id=FL077250",
+      "title": "兼任助理勞動權益保障指導原則列印版",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md",
+        "docs/RIGHTS-AND-LEGAL-FRAMEWORK.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "html_no_meaningful_body_or_dynamic_content",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://liberal.ntu.edu.tw/web/student/student.jsp?dm_id=DM1656910432608",
+      "title": "文學院",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:27:33+00:00",
+      "raw_sha256": "883919028a7e5fa201ca2d765b4c60ca4a61cf12929ef15c8f7d27f7cd10da23",
+      "final_url": "https://liberal.ntu.edu.tw/web/student/student.jsp?dm_id=DM1656910432608",
+      "format": "html",
+      "body_characters": 600,
+      "relevant_link_count": 11,
+      "discovered_urls": [
+        "https://liberal.ntu.edu.tw/web/student/student.jsp?dm_id=DM1656910432608",
+        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1793243802410",
+        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1790153625329",
+        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609268938",
+        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609156448",
+        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1788249360727",
+        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787889215831",
+        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787888998694",
+        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1768889444792",
+        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787024420703",
+        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1786692862536"
+      ]
+    },
+    {
+      "url": "https://management.ntu.edu.tw/AboutCoM/LawsCoM",
+      "title": "管理學院",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:27:36+00:00",
+      "raw_sha256": "f0f5c22a8e708bab196a432b5ffb73e1e537cd15eb622c829b37da8b0d8f1898",
+      "final_url": "https://management.ntu.edu.tw/AboutCoM/LawsCoM",
+      "format": "html",
+      "body_characters": 5338,
+      "relevant_link_count": 79,
+      "discovered_urls": [
+        "https://yllproject.ntu.edu.tw/",
+        "https://management.ntu.edu.tw/AboutCoM/LawsCoM",
+        "https://management.ntu.edu.tw/cm/paragraph_file/1/16/臺大管理學院提名及選舉校長遴選委員會教師代表候選人及校友代表或社會公正人士候選人辦法-101.0515.pdf",
+        "https://management.ntu.edu.tw/cm/paragraph_file/1/16/國立臺灣大學管理學院院長選任辦法.pdf",
+        "https://management.ntu.edu.tw/cm/paragraph_file/1/16/國立臺灣大學管理學院院務會議代表產生辦法.pdf",
+        "https://management.ntu.edu.tw/cm/explorer/management/history/pages/臺大管理學院校務會議系所主管代表推派及教師代表推選辦法.pdf",
+        "https://management.ntu.edu.tw/cm/paragraph_file/1/16/國立臺灣大學管理學院教學優良教師遴選委員會設置及遴選辦法1120815.pdf",
+        "https://management.ntu.edu.tw/cm/explorer/management/history/pages/臺大管理學院經費稽核委員會設置辦法.pdf",
+        "https://management.ntu.edu.tw/cm/explorer/management/history/pages/臺大管理學院預算分配委員會設置辦法.pdf",
+        "https://management.ntu.edu.tw/cm/paragraph_file/1/16/01-國立臺灣大學管理學院各研究中心設置與管理辦法_112.12.18院務會議通過.pdf",
+        "https://management.ntu.edu.tw/cm/paragraph_file/1/16/02-國立臺灣大學管理學院各研究中心申請表_112.12.18院務會議通過.docx",
+        "https://management.ntu.edu.tw/cm/paragraph_file/1/16/國立臺灣大學管理學院數據分析與數位轉型研究中心設置辦法.pdf",
+        "https://management.ntu.edu.tw/cm/explorer/management/history/pages/臺大管理學院諮詢委員會設置辦法.pdf",
+        "https://management.ntu.edu.tw/cm/explorer/management/history/pages/臺大管理學院院務發展顧問設置辦法.pdf",
+        "https://management.ntu.edu.tw/cm/explorer/management/history/pages/臺大管理學院電腦中心設置辦法.pdf",
+        "https://management.ntu.edu.tw/cm/paragraph_file/1/16/國立臺灣大學管理學院組織規模及發展規劃辦法.pdf",
+        "https://management.ntu.edu.tw/cm/paragraph_file/1/16/國立臺灣大學管理學院課程委員會設置要點107.5.21.pdf",
+        "https://management.ntu.edu.tw/cm/paragraph_file/1/16/國立臺灣大學管理學院教師評審委員會設置辦法_2021-01-19.pdf",
+        "https://management.ntu.edu.tw/cm/paragraph_file/1/16/國立臺灣大學管理學院教師評鑑委員會設置辦法-100.0531(1).pdf",
+        "https://management.ntu.edu.tw/cm/paragraph_file/1/16/國立臺灣大學管理學院教師評鑑辦法_2021-6-22校行政會議通過(1).pdf"
+      ]
+    },
+    {
+      "url": "https://my.ntu.edu.tw/fao/search.aspx",
+      "title": "https://my.ntu.edu.tw/fao/search.aspx",
+      "used_in": [
+        "data/scan-sources.json",
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "login_only_manual",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://ocf.tw/",
+      "title": "機構入口",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md",
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:27:39+00:00",
+      "raw_sha256": "0b730f1b7078af19e3d924a7889f77b06dad319c4d0ca4b62071c1e629ab06b5",
+      "final_url": "https://ocf.tw/",
+      "format": "html",
+      "body_characters": 776,
+      "relevant_link_count": 1,
+      "discovered_urls": [
+        "https://forms.gle/wqGycyn6jwjKmq848"
+      ]
+    },
+    {
+      "url": "https://oia.ntu.edu.tw/",
+      "title": "https://oia.ntu.edu.tw/",
+      "used_in": [
+        "data/scan-sources.json"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:27:42+00:00",
+      "raw_sha256": "24b4026d9bbf210414946930408594e8c09cdde5904d15ea862bd1640cf1929b",
+      "final_url": "https://oia.ntu.edu.tw/",
+      "format": "html",
+      "body_characters": 1236,
+      "relevant_link_count": 2,
+      "discovered_urls": [
+        "https://admissions.ntu.edu.tw/zh-hant/news/2027-september-entry-first-round-of-international-student-applications-open-on-september-29th/",
+        "https://admissions.ntu.edu.tw/zh-hant/news/%e3%80%90%e6%94%b9%e5%88%b6%e3%80%91%e8%87%ba%e5%a4%a7%e5%83%91%e6%b8%af%e6%be%b3%e7%94%9f%e5%96%ae%e7%8d%a8%e6%8b%9b%e7%94%9f%ef%bd%9c2027%e5%b9%b49%e6%9c%88%e5%85%a5%e5%ad%b8%ef%bd%9c8%e6%9c%883/"
+      ]
+    },
+    {
+      "url": "https://oia.ntu.edu.tw/cooperation-with-ntu/international-funding/joint-seed-funding",
+      "title": "國際處 Joint Seed Funding",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:27:49+00:00",
+      "raw_sha256": "c9ede7f08e531a0c33385ffd774e36fa2e7e2f4b84dc010296127314de9f0c78",
+      "final_url": "https://oia.ntu.edu.tw/cooperation-with-ntu/international-funding/joint-seed-funding",
+      "format": "html",
+      "body_characters": 4459,
+      "relevant_link_count": 5,
+      "discovered_urls": [
+        "https://forms.cloud.microsoft/pages/responsepage.aspx?id=yyZW-KgN00mqWGTvZ47wGovRGPn8aiFFstIolwFqfWBUMlJVMVk3T1VDNU9ZMzBWWkI2TjA5QlEwWS4u&route=shorturl",
+        "https://lmuidp.lrz.de/idp/profile/SAML2/Redirect/SSO?execution=e1s2",
+        "https://globalcornell.quickbase.com/nav/app/bu7kxfntx/action/appoverview/b427d95c-47c3-4bd8-9196-6d8ffea4c238",
+        "https://global.utexas.edu/engagement-strategy/funding-opportunities/research-seed-grants",
+        "https://ovpi.knack.com/ovpi-grants"
+      ]
+    },
+    {
+      "url": "https://oia.ntu.edu.tw/cooperation-with-ntu/international-funding/tukuc-research-grant",
+      "title": "國際處研究計畫",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:27:53+00:00",
+      "raw_sha256": "89c7692fab7ddc78a8b52a6030aec4e7928e0507083632bd3d436752c9333932",
+      "final_url": "https://oia.ntu.edu.tw/cooperation-with-ntu/international-funding/tukuc-research-grant",
+      "format": "html",
+      "body_characters": 1242,
+      "relevant_link_count": 2,
+      "discovered_urls": [
+        "https://oia.ntu.edu.tw/cm/explorer/management/TUKUC/2026 TUKUC 附件1-研究計畫申請書範本.pdf",
+        "https://oia.ntu.edu.tw/cm/explorer/management/TUKUC/附件1-研究計畫申請書範本.docx"
+      ]
+    },
+    {
+      "url": "https://one.google.com/offer/studentoffer8?hl=zh-TW",
+      "title": "優惠條款",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:27:56+00:00",
+      "raw_sha256": "d6a26e8d3827726935a59b79d976c8c2d5daee5d0b23ff8abdbd18692c551c43",
+      "final_url": "https://one.google.com/offer/studentoffer8?hl=zh-TW",
+      "format": "html",
+      "body_characters": 1137,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://openai.com/researcher-access-program/",
+      "title": "OpenAI Researcher Program",
+      "used_in": [
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "http_403_host_paused",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://opensource.org/license/mit",
+      "title": "MIT",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "supporting_documentation",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:28:03+00:00",
+      "raw_sha256": "5460c6ce499fc9f26daa3a342f0e11cfce5fd59fdbb2564b3c9f7ae60c60988c",
+      "final_url": "https://opensource.org/license/mit",
+      "format": "html",
+      "body_characters": 1138,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://ord.ntu.edu.tw/WebUPD/ordntu/pm/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E8%A8%88%E7%95%AB%E5%85%BC%E4%BB%BB%E5%8A%A9%E7%90%86%E5%8F%8A%E7%A0%94%E7%A9%B6%E7%8D%8E%E5%8A%A9%E7%94%9F%E6%AF%8F%E6%9C%88%E6%94%AF%E7%B5%A6%E4%B8%8A%E9%99%90%E6%A8%99%E6%BA%96%E8%A1%A8_23121516034949938.pdf",
+      "title": "臺大計畫兼任助理與獎助生每月支給上限規定",
+      "used_in": [
+        "data/scan-sources.json",
+        "docs/RIGHTS-SOURCES.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": "ntu-ord-assistant-limit",
+      "pipeline_role": "disabled_profile",
+      "scan_status": "robots_denied",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://ord.ntu.edu.tw/robots.txt",
+      "title": "https://ord.ntu.edu.tw/robots.txt",
+      "used_in": [
+        "data/scan-sources.json"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "crawl_policy_reference",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260",
+      "title": "臺大遠學計畫",
+      "used_in": [
+        "data/scan-sources.json",
+        "data/pilot.json",
+        "docs/examples/ingestion-sources.proposed.json",
+        "docs/TAXONOMY-AND-SOURCES.md",
+        "docs/INGESTION-POC.md"
+      ],
+      "source_id": "ntu-yuanxue",
+      "pipeline_role": "enabled_candidate_profile",
+      "scan_status": "changed",
+      "format": "html",
+      "observed_at": "2026-10-31T05:48:38+00:00",
+      "candidate_ids": [
+        "cand-ntu-yuanxue-115-ordinary-e4bcffd5"
+      ],
+      "verification": [
+        "passed_with_gaps"
+      ],
+      "application_states": [
+        "closed"
+      ],
+      "judgment": "candidate_pending_review"
+    },
+    {
+      "url": "https://pan.itri.org.tw/datadetailTab?SiteID=1&MmmID=1310654304506445452",
+      "title": "基金會獎項頁",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "html_no_meaningful_body_or_dynamic_content",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/form0.asp?LTPno=52&ntPno=&pno=27",
+      "title": "醫學院研發分處表單／辦法頁",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "html_no_meaningful_body_or_dynamic_content",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/form0.asp?pno=25&LTPno=47",
+      "title": "臺大醫學院研發分處：參與學術會議／補助與報銷申請",
+      "used_in": [
+        "data/conference-programs.json",
+        "docs/CONFERENCE-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "inherited_host_pause": true,
+      "scan_status": "http_403_host_paused",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/news_txt.asp?pno=7296",
+      "title": "115學年度醫學院研究生優秀著作獎公告線索",
+      "used_in": [
+        "data/pilot.json",
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "inherited_host_pause": true,
+      "scan_status": "http_403_host_paused",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://rd.usc.edu.tw/p/406-1048-4836%2Cr147.php?Lang=zh-tw",
+      "title": "國科會計畫兼任助理標準",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:28:16+00:00",
+      "raw_sha256": "2ee9177c2d10c090cc70e4594c80f4d4fb77014ad5e21b43feed4efea6e480dd",
+      "final_url": "https://rd.usc.edu.tw/p/406-1048-4836%2Cr147.php?Lang=zh-tw",
+      "format": "html",
+      "body_characters": 181,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://rd.web.shu.edu.tw/%E5%9C%8B%E7%A7%91%E6%9C%83%E4%BF%AE%E6%AD%A3%E3%80%8C%E5%9C%8B%E5%AE%B6%E7%A7%91%E5%AD%B8%E5%8F%8A%E6%8A%80%E8%A1%93%E5%A7%94%E5%93%A1%E6%9C%83%E8%A3%9C%E5%8A%A9%E5%B0%88%E9%A1%8C%E7%A0%94%E7%A9%B6/",
+      "title": "113.10.24轉知公告",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:28:20+00:00",
+      "raw_sha256": "4fc5d98f8f52a262559e29d5bdea13b0893054824ffcf12795728cade8cb1ee1",
+      "final_url": "https://rd.web.shu.edu.tw/%E5%9C%8B%E7%A7%91%E6%9C%83%E4%BF%AE%E6%AD%A3%E3%80%8C%E5%9C%8B%E5%AE%B6%E7%A7%91%E5%AD%B8%E5%8F%8A%E6%8A%80%E8%A1%93%E5%A7%94%E5%93%A1%E6%9C%83%E8%A3%9C%E5%8A%A9%E5%B0%88%E9%A1%8C%E7%A0%94%E7%A9%B6/",
+      "format": "html",
+      "body_characters": 925,
+      "relevant_link_count": 4,
+      "discovered_urls": [
+        "https://rd.web.shu.edu.tw/%e5%ad%b8%e8%a1%93%e7%a0%94%e7%a9%b6/%e6%8f%90%e6%a1%88%e9%9a%8e%e6%ae%b5/",
+        "https://rd.web.shu.edu.tw/%e5%ad%b8%e8%a1%93%e7%a0%94%e7%a9%b6/%e5%9f%b7%e8%a1%8c%e6%a0%a1%e5%85%a7%e8%a3%9c%e5%8a%a9%e8%a8%88%e7%95%ab/",
+        "https://rd.web.shu.edu.tw/%e6%95%99%e8%82%b2%e9%83%a8%e7%8d%8e%e8%a3%9c%e5%8a%a9%e8%a8%88%e7%95%ab/",
+        "https://liveshuedu-my.sharepoint.com/:b:/g/personal/rd-d_live_shu_edu_tw/EdJ0Yiyn2dZGkUieZxIfCqoBCx1TjKeLyQkJjHjDCRXBBg?e=cglzOz"
+      ]
+    },
+    {
+      "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/9760/24895/71247f3a-7b42-474b-962d-02481279dfef.pdf",
+      "title": "生輔組目前連結的秘書室PDF",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_pdf",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:28:23+00:00",
+      "raw_sha256": "590853c0510cf86932948a0331362c957cda5aea1bd25aed7493000dffed0109",
+      "final_url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/9760/24895/71247f3a-7b42-474b-962d-02481279dfef.pdf",
+      "format": "pdf",
+      "text_blocks": 79
+    },
+    {
+      "url": "https://sec.ntu.edu.tw/001/Upload/relfile/9760/24895/04-038.pdf",
+      "title": "原秘書室04-038.pdf",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_pdf",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:28:26+00:00",
+      "raw_sha256": "b787377001bdbfd6af8b9036e4a339fd64f19ee1a8f2d7241281e40b1ef1669f",
+      "final_url": "https://sec.ntu.edu.tw/001/Upload/relfile/9760/24895/04-038.pdf",
+      "format": "pdf",
+      "text_blocks": 70
+    },
+    {
+      "url": "https://serv.gcis.nat.gov.tw/AOCAI/courses/youth",
+      "title": "資格、獎勵與流程",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:28:30+00:00",
+      "raw_sha256": "c55e6288d44df04492ad2f3b821439b792138a8afba301a7b75fbaf6f7b99fed",
+      "final_url": "https://serv.gcis.nat.gov.tw/AOCAI/courses/youth",
+      "format": "html",
+      "body_characters": 1418,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://studyabroad.ntu.edu.tw/internship/moe-overseas-internships/",
+      "title": "國際處學海築夢頁",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:28:36+00:00",
+      "raw_sha256": "fa6b3e3f364798718971941ec1d75d2fbad72fafe3429fbf04da090be23ee9b2",
+      "final_url": "https://studyabroad.ntu.edu.tw/internship/moe-overseas-internships/",
+      "format": "html",
+      "body_characters": 2363,
+      "relevant_link_count": 1,
+      "discovered_urls": [
+        "https://www.studyabroad.moe.gov.tw/ckfinder_upload/files/20211214073031.pdf"
+      ]
+    },
+    {
+      "url": "https://tcnr.wda.gov.tw/News_Content.aspx?n=9CDFC65181CC2AEA&s=3CB8C51B711D842C&sms=68798FA6FAE753EC",
+      "title": "課程辦理原則修正入口",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "html_no_meaningful_body_or_dynamic_content",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf",
+      "title": "臺大博士生獎學金設置辦法，114-04-23 版 PDF",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "changed",
+      "format": "pdf",
+      "observed_at": "2026-10-31T05:51:13+00:00",
+      "candidate_ids": [
+        "cand-ntu-nstc-phd-rule-fe5ff9a3",
+        "cand-ntu-moe-phd-rule-fe5ff9a3"
+      ],
+      "verification": [
+        "passed_automated_checks",
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown",
+        "unknown"
+      ],
+      "judgment": "candidate_pending_review"
+    },
+    {
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf",
+      "title": "研究生校長獎設置辦法",
+      "used_in": [
+        "data/pilot.json"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "changed",
+      "format": "pdf",
+      "observed_at": "2026-10-31T05:51:34+00:00",
+      "candidate_ids": [
+        "cand-ntu-president-unknown-rule-b35d810f"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ],
+      "judgment": "candidate_pending_review"
+    },
+    {
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
+      "title": "115學年度教育部博獎第二梯次申請訊息",
+      "used_in": [
+        "data/pilot.json",
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "changed",
+      "format": "pdf",
+      "observed_at": "2026-10-31T05:51:13+00:00",
+      "candidate_ids": [
+        "cand-ntu-moe-phd-unknown-9bb65253"
+      ],
+      "verification": [
+        "passed_with_gaps"
+      ],
+      "application_states": [
+        "unknown"
+      ],
+      "judgment": "candidate_pending_review"
+    },
+    {
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/%E6%95%99%E5%8B%99%E8%99%95%E6%95%99%E5%AD%B8%E5%8A%A9%E7%90%86%E5%88%B6%E5%BA%A6%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E6%A2%9D%E6%96%87-%E5%85%AC%E5%91%8A%E7%89%88.pdf",
+      "title": "教務處教學助理制度獎勵金實施辦法",
+      "used_in": [
+        "data/pilot.json"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "changed",
+      "format": "pdf",
+      "observed_at": "2026-10-31T06:10:02+00:00",
+      "candidate_ids": [
+        "cand-ntu-ta-policy-cc28dee0"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ],
+      "judgment": "candidate_pending_review"
+    },
+    {
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/TA%E7%94%B3%E8%AB%8B%E9%A0%88%E7%9F%A5_26071416413942730.pdf",
+      "title": "教學助理申請須知",
+      "used_in": [
+        "data/pilot.json"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_pdf",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:28:52+00:00",
+      "raw_sha256": "1e1899b5bfa4d0f2a5317390ccea2c239aedaee48bb8576a0913813bdfbc22a8",
+      "final_url": "https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/TA%E7%94%B3%E8%AB%8B%E9%A0%88%E7%9F%A5_26071416413942730.pdf",
+      "format": "pdf",
+      "text_blocks": 57
+    },
+    {
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+      "title": "臺大 115 年人社論文獎勵公告",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:28:59+00:00",
+      "raw_sha256": "2b5e37f272bb761a3fd4dd5519eb496355f38d6559df94c7ed3dfa97635e2276",
+      "final_url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+      "format": "html",
+      "body_characters": 6240,
+      "relevant_link_count": 90,
+      "discovered_urls": [
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26091609392026127",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26030315454242003",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25091709451708626",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25051610035803840",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25031215102112341",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADService_23091415501308264",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24102811061946165",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24102308294799076",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24092608492207035",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24052817132319077",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24052211230185000",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24030408572460071",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_23091514221585223",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_23091415525408652"
+      ]
+    },
+    {
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
+      "title": "臺大116年度國科會博士生赴國外研究校內公告",
+      "used_in": [
+        "data/pilot.json",
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:29:02+00:00",
+      "raw_sha256": "f0bd4ef6e52998a25e79377a0576f1e4a99b8fb701b5bb3f6d2840527cb6cda8",
+      "final_url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
+      "format": "html",
+      "body_characters": 6206,
+      "relevant_link_count": 91,
+      "discovered_urls": [
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
+        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26091609392026127",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26030315454242003",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25091709451708626",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25051610035803840",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25031215102112341",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADService_23091415501308264",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24102811061946165",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24102308294799076",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24092608492207035",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24052817132319077",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24052211230185000",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24030408572460071",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_23091514221585223",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_23091415525408652"
+      ]
+    },
+    {
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383",
+      "title": "國科會國際會議補助：臺大學生程序",
+      "used_in": [
+        "data/scan-sources.json",
+        "data/conference-programs.json",
+        "docs/examples/ingestion-sources.proposed.json",
+        "docs/CONFERENCE-SOURCES.md",
+        "docs/INGESTION-POC.md"
+      ],
+      "source_id": "nstc-ntu-conference",
+      "pipeline_role": "enabled_candidate_profile",
+      "scan_status": "changed",
+      "format": "html",
+      "observed_at": "2026-10-31T05:48:47+00:00",
+      "candidate_ids": [
+        "cand-nstc-ntu-conference-3450d15a"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ],
+      "judgment": "candidate_pending_review"
+    },
+    {
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+      "title": "臺大校級博士生獎學金",
+      "used_in": [
+        "data/scan-sources.json",
+        "data/pilot.json",
+        "docs/examples/ingestion-sources.proposed.json",
+        "docs/PILOT-REVIEW.md",
+        "docs/reference/HANDOFF.md",
+        "docs/INGESTION-POC.md"
+      ],
+      "source_id": "ntu-doctoral-funding",
+      "pipeline_role": "enabled_candidate_profile",
+      "scan_status": "changed",
+      "format": "html",
+      "observed_at": "2026-10-31T05:51:13+00:00",
+      "candidate_ids": [
+        "cand-ntu-nstc-phd-115-a87d34fa",
+        "cand-ntu-moe-phd-115-a87d34fa"
+      ],
+      "verification": [
+        "passed_with_gaps",
+        "passed_with_gaps"
+      ],
+      "application_states": [
+        "unknown",
+        "unknown"
+      ],
+      "judgment": "candidate_pending_review"
+    },
+    {
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368",
+      "title": "臺大研究生校長獎",
+      "used_in": [
+        "data/scan-sources.json",
+        "data/pilot.json",
+        "docs/examples/ingestion-sources.proposed.json",
+        "docs/INGESTION-POC.md"
+      ],
+      "source_id": "ntu-president-award",
+      "pipeline_role": "enabled_candidate_profile",
+      "scan_status": "changed",
+      "format": "html",
+      "observed_at": "2026-10-31T05:51:34+00:00",
+      "candidate_ids": [
+        "cand-ntu-president-114-call-627eac82"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "closed"
+      ],
+      "judgment": "candidate_pending_review"
+    },
+    {
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_24102208484895715",
+      "title": "臺大教育部博士生獎學金",
+      "used_in": [
+        "data/pilot.json",
+        "docs/reference/HANDOFF.md",
+        "docs/INGESTION-POC.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:29:05+00:00",
+      "raw_sha256": "d853bce68bd553fff2cf483331da1b52d23c12e6dfb54c042b430f92e75eee4d",
+      "final_url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_24102208484895715",
+      "format": "html",
+      "body_characters": 6203,
+      "relevant_link_count": 90,
+      "discovered_urls": [
+        "https://www.aca.ntu.edu.tw/w/aca/GAADService_24102208484895715",
+        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26091609392026127",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26030315454242003",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25091709451708626",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25051610035803840",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25031215102112341",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADService_23091415501308264",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24102811061946165",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24102308294799076",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24092608492207035",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24052817132319077",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24052211230185000",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24030408572460071",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_23091514221585223"
+      ]
+    },
+    {
+      "url": "https://www.aca.ntu.edu.tw/w/aca/Privacy",
+      "title": "https://www.aca.ntu.edu.tw/w/aca/Privacy",
+      "used_in": [
+        "data/scan-sources.json"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "crawl_policy_reference",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514",
+      "title": "臺大教務處教學助理制度獎勵金實施辦法",
+      "used_in": [
+        "data/scan-sources.json",
+        "data/pilot.json",
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": "ntu-ta-policy",
+      "pipeline_role": "enabled_candidate_profile",
+      "scan_status": "changed",
+      "format": "html",
+      "observed_at": "2026-10-31T06:10:02+00:00",
+      "candidate_ids": [
+        "cand-ntu-ta-policy-73ab1ac7"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ],
+      "judgment": "candidate_pending_review"
+    },
+    {
+      "url": "https://www.bioagri.ntu.edu.tw/bulletin.php",
+      "title": "生物資源暨農學院",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "html_no_meaningful_body_or_dynamic_content",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.chevening.org/scholarships/",
+      "title": "Scholarships",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "overseas_degree_placeholder_deferred",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.daad.de/en/studying-in-germany/scholarships/",
+      "title": "Scholarships & Funding",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "overseas_degree_placeholder_deferred",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.eng.ntu.edu.tw/tc/scholarship.aspx",
+      "title": "臺大工學院研究生獎助學金專區",
+      "used_in": [
+        "data/scan-sources.json"
+      ],
+      "source_id": "ntu-coe-scholarship",
+      "pipeline_role": "disabled_profile",
+      "scan_status": "robots_not_plain_rules",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.faos.org.tw/Application/ApplicatStud.html",
+      "title": "傑出人才發展基金會：優秀學生出國開會補助",
+      "used_in": [
+        "data/scan-sources.json",
+        "data/conference-programs.json",
+        "docs/CONFERENCE-SOURCES.md",
+        "docs/INGESTION-POC.md"
+      ],
+      "source_id": "faos-student-conference",
+      "pipeline_role": "enabled_candidate_profile",
+      "scan_status": "changed",
+      "format": "html",
+      "observed_at": "2026-10-31T05:48:56+00:00",
+      "candidate_ids": [
+        "cand-faos-student-conference-de284c75"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ],
+      "judgment": "candidate_pending_review"
+    },
+    {
+      "url": "https://www.fulbright.org.tw/zh-hant/awards-to-the-u-s/",
+      "title": "臺灣公民赴美獎助",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "overseas_degree_placeholder_deferred",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.gov.tw/News_Content_26_586833",
+      "title": "政府住宅補助資訊索引",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "html_no_meaningful_body_or_dynamic_content",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.hccg.gov.tw/",
+      "title": "新竹市政府公告",
+      "used_in": [
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:29:21+00:00",
+      "raw_sha256": "22a42e6a848e6f91a5865dd6580ff55172ace75185e274b74e434fbd7ff47385",
+      "final_url": "https://www.hccg.gov.tw/hccg/index",
+      "format": "html",
+      "body_characters": 2040,
+      "relevant_link_count": 8,
+      "discovered_urls": [
+        "https://www.hccg.gov.tw/hccg/app/folder/12",
+        "https://www.hccg.gov.tw/hccg/app/folder/14",
+        "https://www.hccg.gov.tw/hccg/app/folder/13",
+        "https://www.hccg.gov.tw/hccg/app/folder/19",
+        "https://www.hccg.gov.tw/hccg/app/folder/11",
+        "https://www.hccg.gov.tw/hccg/app/folder/10",
+        "https://www.hccg.gov.tw/hccg/app/data/view?module=isfocusnews&id=30210&serno=5c23e4b0-6fd1-4b6c-bcc2-0047b6b5b6b9",
+        "https://www.hccg.gov.tw/hccg/app/data/view?module=municipalnews&id=30122&serno=5c23e4b0-6fd1-4b6c-bcc2-0047b6b5b6b9"
+      ]
+    },
+    {
+      "url": "https://www.junyiacademy.org/",
+      "title": "平台入口",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md",
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:29:24+00:00",
+      "raw_sha256": "ef88bca6847605ed127d970a671730285a2bede5bf99e0a16607c9bd4440730b",
+      "final_url": "https://www.junyiacademy.org/",
+      "format": "html",
+      "body_characters": 167,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://www.mc.ntu.edu.tw/manage/upload/fp/f_20250820160641092.pdf",
+      "title": "臺大醫學院職能治療博士班修業進度官方文件",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_pdf",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:29:30+00:00",
+      "raw_sha256": "ea93c16f2e75aa5586409cfb80bec40899e684111822f4c68b932ff58e4eb31d",
+      "final_url": "https://www.mc.ntu.edu.tw/public_upload/fp/f_20250820160641092.pdf",
+      "format": "pdf",
+      "text_blocks": 75
+    },
+    {
+      "url": "https://www.mc.ntu.edu.tw/ntucm/Index.action",
+      "title": "醫學院",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:29:34+00:00",
+      "raw_sha256": "ff4ee3c43657ec42d8322fd34248f9795ec7bde69df1a846636b7172e86bb54d",
+      "final_url": "https://www.mc.ntu.edu.tw/ntucm/Index.action",
+      "format": "html",
+      "body_characters": 2708,
+      "relevant_link_count": 2,
+      "discovered_urls": [
+        "https://www.mc.ntu.edu.tw/ntucm/Fpage.action?muid=133&fid=373",
+        "https://www.mc.ntu.edu.tw/ntucm/Index.action"
+      ]
+    },
+    {
+      "url": "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296",
+      "title": "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296",
+      "used_in": [
+        "data/scan-sources.json",
+        "data/conference-programs.json",
+        "docs/CONFERENCE-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:29:37+00:00",
+      "raw_sha256": "c485e6f2cfcff0f3344e2391961fc0feea8a7d6c346616fb76c07c55c761136c",
+      "final_url": "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296",
+      "format": "html",
+      "body_characters": 1050,
+      "relevant_link_count": 7,
+      "discovered_urls": [
+        "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=5&fid=981",
+        "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1960&fid=4730",
+        "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296",
+        "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1962&fid=1295",
+        "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1965&fid=1292",
+        "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=10&fid=2627",
+        "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=8&fid=1030"
+      ]
+    },
+    {
+      "url": "https://www.moe.gov.tw/Content_List.aspx?n=DBDDB8DC17D0D8C4",
+      "title": "教育部獎助專區",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md",
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "html_no_meaningful_body_or_dynamic_content",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.mol.gov.tw/1607/28162/28166/28180/28182/28188/29025/",
+      "title": "最低工資的意義",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md",
+        "docs/RIGHTS-AND-LEGAL-FRAMEWORK.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "http_410",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.mol.gov.tw/1607/28162/28296/28428/28430/28438/28440/29148/",
+      "title": "官方PDF備援",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_pdf",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:29:51+00:00",
+      "raw_sha256": "65fdd59a1335ddde75dd07a5c0c32dd5b8dc345a7aa0ccc3f8c7474e150866fa",
+      "final_url": "https://www.mol.gov.tw/media/n3pbb1st/01%E5%B0%88%E7%A7%91%E4%BB%A5%E4%B8%8A%E5%AD%B8%E6%A0%A1%E5%85%BC%E4%BB%BB%E5%8A%A9%E7%90%86%E5%8B%9E%E5%8B%95%E6%AC%8A%E7%9B%8A%E4%BF%9D%E9%9A%9C%E6%8C%87%E5%B0%8E%E5%8E%9F%E5%89%87.pdf?mediaDL=true",
+      "format": "pdf",
+      "text_blocks": 241
+    },
+    {
+      "url": "https://www.mol.gov.tw/1607/28690/2282/2302/2304/81139/?cprint=pt",
+      "title": "勞動部正式說明",
+      "used_in": [
+        "docs/RIGHTS-AND-LEGAL-FRAMEWORK.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:29:55+00:00",
+      "raw_sha256": "fa5d79fbc86a8600ffef4060dc9e25837818fd2457a4e76f433e0c200fc6f4f8",
+      "final_url": "https://www.mol.gov.tw/1607/28690/2282/2302/2304/81139/?cprint=pt",
+      "format": "html",
+      "body_characters": 780,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://www.mol.gov.tw/1607/28690/89680/",
+      "title": "勞動部勞資爭議入口",
+      "used_in": [
+        "docs/RIGHTS-AND-LEGAL-FRAMEWORK.md",
+        "docs/reference/HANDOFF.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:29:58+00:00",
+      "raw_sha256": "0e24e5403a0a6641c2eec8ad6038688bdf3f4391a9277af5b7831d2a8a07b77b",
+      "final_url": "https://www.mol.gov.tw/1607/28690/89680/",
+      "format": "html",
+      "body_characters": 960,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://www.nchc.org.tw/",
+      "title": "國網中心官網",
+      "used_in": [
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "transport_error",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.nstc.gov.tw/",
+      "title": "國科會",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:30:22+00:00",
+      "raw_sha256": "6427bb15ffa1bd1ad9998bb98d6540ed58169df3526ed04d325d0710e3841973",
+      "final_url": "https://www.nstc.gov.tw/",
+      "format": "html",
+      "body_characters": 2681,
+      "relevant_link_count": 7,
+      "discovered_urls": [
+        "https://www.nstc.gov.tw/folksonomy/list/f7ac4f39-56fd-4d77-bf0f-7101db2d2b11?l=ch",
+        "https://www.nstc.gov.tw/folksonomy/list/a2cff226-5ab0-4c30-8aab-2c00cb9f53f0?l=ch",
+        "https://www.nstc.gov.tw/folksonomy/list/a45bd7cb-83e5-4d7d-80ce-67b49a11334e?l=ch",
+        "https://www.nstc.gov.tw/folksonomy/list/f6d5c23c-b3ce-438e-911b-12a705dbac5a?l=ch",
+        "https://www.nstc.gov.tw/folksonomy/qa",
+        "https://wsts.nstc.gov.tw/",
+        "https://www.nstc.gov.tw/folksonomy/list/0cd87faf-08ad-47e5-a1fa-a9e1f3f4761d?l=ch"
+      ]
+    },
+    {
+      "url": "https://www.nstc.gov.tw/folksonomy/list/ced2afbb-f4d4-48b3-909f-247d5fbbe2f5?l=ch",
+      "title": "博士生費用增核入口",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:30:25+00:00",
+      "raw_sha256": "fca0147b753de410d0f9be0e792d78db5d086471d4282172d50eae296292dd14",
+      "final_url": "https://www.nstc.gov.tw/folksonomy/list/ced2afbb-f4d4-48b3-909f-247d5fbbe2f5?l=ch",
+      "format": "html",
+      "body_characters": 3195,
+      "relevant_link_count": 7,
+      "discovered_urls": [
+        "https://www.nstc.gov.tw/folksonomy/list/f7ac4f39-56fd-4d77-bf0f-7101db2d2b11?l=ch",
+        "https://www.nstc.gov.tw/folksonomy/list/a2cff226-5ab0-4c30-8aab-2c00cb9f53f0?l=ch",
+        "https://www.nstc.gov.tw/folksonomy/list/a45bd7cb-83e5-4d7d-80ce-67b49a11334e?l=ch",
+        "https://www.nstc.gov.tw/folksonomy/list/f6d5c23c-b3ce-438e-911b-12a705dbac5a?l=ch",
+        "https://www.nstc.gov.tw/folksonomy/qa",
+        "https://wsts.nstc.gov.tw/",
+        "https://www.nstc.gov.tw/folksonomy/list/0cd87faf-08ad-47e5-a1fa-a9e1f3f4761d?l=ch"
+      ]
+    },
+    {
+      "url": "https://www.nstc.gov.tw/folksonomy/rfpDetail/fb285d89-02c6-4a01-a256-580b4c434822?l=ch",
+      "title": "116 年度千里馬申請須知",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "http_410",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.nstc.gov.tw/nstc/attachments/0a7ca0b3-2bb4-4d00-a175-45246024cf08",
+      "title": "原函PDF",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_pdf",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:30:32+00:00",
+      "raw_sha256": "59bf517435d75d854ac4b105b8f757099d5a0230944dd2542a6a7916169620c1",
+      "final_url": "https://www.nstc.gov.tw/nstc/attachments/0a7ca0b3-2bb4-4d00-a175-45246024cf08",
+      "format": "pdf",
+      "text_blocks": 110
+    },
+    {
+      "url": "https://www.nstc.gov.tw/nstc/attachments/e3c16203-1b68-49bd-bf5d-ba1d12f6976e",
+      "title": "博士生增核FAQ PDF",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_pdf",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:30:35+00:00",
+      "raw_sha256": "b8c31c3b7395dfedb9c82bdffb066aa11b03727e0cabe9b61fac91b79f2986ef",
+      "final_url": "https://www.nstc.gov.tw/nstc/attachments/e3c16203-1b68-49bd-bf5d-ba1d12f6976e",
+      "format": "pdf",
+      "text_blocks": 80
+    },
+    {
+      "url": "https://www.nstc.gov.tw/sci/ch/detail/24ad4e4a-bd37-4ba0-9955-5b2e2ffd5ac6",
+      "title": "115 年國科會博士生研究獎學金試辦方案",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:30:38+00:00",
+      "raw_sha256": "7f51775d59672f45d91622bdb3b3c582cf358c592e423a55ba79ec08d28470ae",
+      "final_url": "https://www.nstc.gov.tw/sci/ch/detail/24ad4e4a-bd37-4ba0-9955-5b2e2ffd5ac6",
+      "format": "html",
+      "body_characters": 1050,
+      "relevant_link_count": 5,
+      "discovered_urls": [
+        "https://www.nstc.gov.tw/sci/ch/list/bce80249-20d2-48aa-828f-e7e7c905323e",
+        "https://www.nstc.gov.tw/sci/ch/list/24276c85-b77d-4277-a415-11c8d257cfcc",
+        "https://www.nstc.gov.tw/sci/ch/list/12eaa71e-785b-42f0-8329-d64668403e95",
+        "https://www.nstc.gov.tw/sci/ch/list/6b4a4661-9126-4d0c-897a-4022c82114a9",
+        "https://www.nstc.gov.tw/nstc/attachments/8b000cff-36d5-4098-9550-3c926c751e9f"
+      ]
+    },
+    {
+      "url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+      "title": "國科會116年度博士生赴國外研究公告",
+      "used_in": [
+        "data/pilot.json",
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:30:41+00:00",
+      "raw_sha256": "10a15cb7a3e6a270c2aa9299af3c1e3fdf3a3ee3f662607eee6370ea0c570cb2",
+      "final_url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+      "format": "html",
+      "body_characters": 2195,
+      "relevant_link_count": 17,
+      "discovered_urls": [
+        "https://www.nstc.gov.tw/sci/ch/list/bce80249-20d2-48aa-828f-e7e7c905323e",
+        "https://www.nstc.gov.tw/sci/ch/list/24276c85-b77d-4277-a415-11c8d257cfcc",
+        "https://www.nstc.gov.tw/sci/ch/list/12eaa71e-785b-42f0-8329-d64668403e95",
+        "https://www.nstc.gov.tw/sci/ch/list/6b4a4661-9126-4d0c-897a-4022c82114a9",
+        "https://www.nstc.gov.tw/nstc/attachments/92025fc4-ec4f-4109-980a-03f23f91f41c",
+        "https://www.nstc.gov.tw/nstc/attachments/b510a7b7-c54b-4621-a65c-e79620d13939",
+        "https://www.nstc.gov.tw/nstc/attachments/d6e268dc-75bb-4829-813b-3d2ce0ce46eb",
+        "https://www.nstc.gov.tw/nstc/attachments/06564dc4-4c4c-4a78-adda-affce2e1bfc6",
+        "https://www.nstc.gov.tw/nstc/attachments/ad36e297-ad59-44a9-b8a2-ea0950f2a892",
+        "https://www.nstc.gov.tw/nstc/attachments/4300767d-733b-43fc-95dc-d9f5fa7322d6",
+        "https://www.nstc.gov.tw/nstc/attachments/5a92d94c-ae70-447d-8aeb-528593def920",
+        "https://www.nstc.gov.tw/nstc/attachments/6866397e-6beb-437e-af16-c4f0c7a3c363",
+        "https://www.nstc.gov.tw/nstc/attachments/3a1ff3da-2979-4f15-8d94-b424839c1c0a",
+        "https://www.nstc.gov.tw/nstc/attachments/7ab19454-a2a8-474e-a698-7713a460f45f",
+        "https://www.nstc.gov.tw/nstc/attachments/552d0ba6-c7d3-4db4-b1e0-0f243ec07781",
+        "https://www.nstc.gov.tw/nstc/attachments/b94ef36b-b8e5-42a5-9abd-e7c56946daf5",
+        "https://www.immigration.gov.tw/5385/7244/7250/20406/190354/190435/"
+      ]
+    },
+    {
+      "url": "https://www.nvidia.com/en-us/startups/",
+      "title": "Inception官方定位",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md",
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:30:44+00:00",
+      "raw_sha256": "6f2d80125f554f4ffcb29d347b603cf9cd47e4dec3870f065554b78b68c147ae",
+      "final_url": "https://www.nvidia.com/en-us/startups/",
+      "format": "html",
+      "body_characters": 14462,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://www.personnel.ntu.edu.tw/News_Content_Create_1_n_64102_state_F5D336F102ACBC68_s_70764_sms_62508.html",
+      "title": "專任研究助理參考表入口",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "html_no_meaningful_body_or_dynamic_content",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.personnel.ntu.edu.tw/News_n_101162_sms_79140.html",
+      "title": "人事室薪資標準",
+      "used_in": [
+        "docs/RIGHTS-SOURCES.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "html_no_meaningful_body_or_dynamic_content",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html",
+      "title": "RFC 5545",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "supporting_documentation",
+      "scan_status": "html_body_missing",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9309.html",
+      "title": "RFC 9309",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "supporting_documentation",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:30:57+00:00",
+      "raw_sha256": "bbaa280636d3e38f0a1a130a5ce40e9753db1ed18c860945b0bf795ff8dc1a87",
+      "final_url": "https://www.rfc-editor.org/rfc/rfc9309.html",
+      "format": "html",
+      "body_characters": 20735,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://www.science.ntu.edu.tw/student-affairs/",
+      "title": "理學院",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:31:02+00:00",
+      "raw_sha256": "0c0a0606609df7fb602dfd322120312a0d3f8b001a00279ad4d08088928b3fab",
+      "final_url": "https://www.science.ntu.edu.tw/student-affairs/",
+      "format": "html",
+      "body_characters": 138,
+      "relevant_link_count": 7,
+      "discovered_urls": [
+        "https://www.science.ntu.edu.tw/student-affairs/cos-international-graduate-students-scholarship/",
+        "https://www.science.ntu.edu.tw/student-affairs/scholarships-for-international-degree-students/",
+        "https://www.science.ntu.edu.tw/student-affairs/",
+        "https://www.science.ntu.edu.tw/student-affairs/cos-travel-grants-and-scholarship/",
+        "https://www.science.ntu.edu.tw/student-affairs/cos-other-grants-and-scholarship/",
+        "https://reg.aca.ntu.edu.tw/newstu/",
+        "https://www.science.ntu.edu.tw/student-affairs/list-of-cos-scholarships-and-grants/"
+      ]
+    },
+    {
+      "url": "https://www.sinica.edu.tw/news_content/56/3434",
+      "title": "中研院115年度人文社會科學博士候選人培育計畫公告",
+      "used_in": [
+        "data/scan-sources.json",
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": "sinica-phd-fellowship",
+      "pipeline_role": "enabled_candidate_profile",
+      "scan_status": "changed",
+      "format": "html",
+      "observed_at": "2026-10-31T05:49:08+00:00",
+      "candidate_ids": [
+        "cand-sinica-phd-fellowship-82eddedf"
+      ],
+      "verification": [
+        "passed_with_gaps"
+      ],
+      "application_states": [
+        "unknown"
+      ],
+      "judgment": "candidate_pending_review"
+    },
+    {
+      "url": "https://www.sme.gov.tw/",
+      "title": "經濟部商業發展署",
+      "used_in": [
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:31:16+00:00",
+      "raw_sha256": "611928fe3d09f3e7e0f680d47451dd19f40496a058954967c59a1e9691d66b60",
+      "final_url": "https://www.sme.gov.tw/masterpage-tw",
+      "format": "html",
+      "body_characters": 855,
+      "relevant_link_count": 4,
+      "discovered_urls": [
+        "https://www.sme.gov.tw/article-tw-2275-15285",
+        "https://www.sme.gov.tw/article-tw-2278-15283",
+        "https://www.sme.gov.tw/article-tw-2275-15216",
+        "https://sbir.sme.gov.tw/"
+      ]
+    },
+    {
+      "url": "https://www.tipo.gov.tw/tw/copyright/701-21249.html",
+      "title": "智財局論文著作權說明",
+      "used_in": [
+        "docs/RIGHTS-AND-LEGAL-FRAMEWORK.md",
+        "docs/design/wireframes.html"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:31:19+00:00",
+      "raw_sha256": "556e375f9447a90087f3ba87d72b0a6572e67118be5a6dccc0c45c5f33d1d743",
+      "final_url": "https://www.tipo.gov.tw/tw/copyright/701-21249.html",
+      "format": "html",
+      "body_characters": 799,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://www.tsmc.com/chinese/careers/phd_fellowship",
+      "title": "台積電博士獎學金專案",
+      "used_in": [
+        "data/scan-sources.json"
+      ],
+      "source_id": "tsmc-phd-fellowship",
+      "pipeline_role": "disabled_profile",
+      "scan_status": "http_403_host_paused",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.twcc.ai/",
+      "title": "TWCC",
+      "used_in": [
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_denied",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "title": "WCAG 2.2 AA",
+      "used_in": [
+        "docs/reference/HANDOFF.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "supporting_documentation",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:31:23+00:00",
+      "raw_sha256": "6e3c5fe397257cae509a2fb4752b73062cf8cbeb92c2cec618989b17e4cf7057",
+      "final_url": "https://www.w3.org/TR/WCAG22/",
+      "format": "html",
+      "body_characters": 151515,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://www.wcs.org.tw/news-4.php",
+      "title": "吳健雄學術基金會",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_not_plain_rules",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://www.wda.gov.tw/News_Content.aspx?n=31&s=19491&sms=10306",
+      "title": "最新公告",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:31:31+00:00",
+      "raw_sha256": "51ba559572613fec90c7b78457bf99828a755b0364eb2a01db0f498058493d3a",
+      "final_url": "https://www.wda.gov.tw/News_Content.aspx?n=31&s=19491&sms=10306",
+      "format": "html",
+      "body_characters": 1318,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://www.youth.ntpc.gov.tw/",
+      "title": "新北市青年局官網",
+      "used_in": [
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:31:38+00:00",
+      "raw_sha256": "c20a424a3ce9568eef35cd6464464f7dad261437c170776aa704d31b96e3c332",
+      "final_url": "https://www.youth.ntpc.gov.tw/youth/ch/index",
+      "format": "html",
+      "body_characters": 1668,
+      "relevant_link_count": 1,
+      "discovered_urls": [
+        "https://www.youth.ntpc.gov.tw/youth/ch/app/artwebsite/view?module=artwebsite&id=171&serno=27a44453-1437-439a-b910-fd49a4efdc81"
+      ]
+    },
+    {
+      "url": "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f",
+      "title": "當期公告",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:31:41+00:00",
+      "raw_sha256": "f2142ad653e8f68c066a2bd9219a40b5e9cb7a8340ae83ca440cc0d17473cdc1",
+      "final_url": "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f",
+      "format": "html",
+      "body_characters": 2283,
+      "relevant_link_count": 3,
+      "discovered_urls": [
+        "https://www.youth.ntpc.gov.tw/youth/ch/app/news/image?module=headnews&detailNo=1514869287733432320&init=N",
+        "https://www.youth.ntpc.gov.tw/youth/ch/app/news/image?module=headnews&detailNo=1514869288958169088&init=N",
+        "https://www.youth.ntpc.gov.tw/youth/ch/app/artwebsite/view?module=artwebsite&id=171&serno=27a44453-1437-439a-b910-fd49a4efdc81"
+      ]
+    },
+    {
+      "url": "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796",
+      "title": "臺北市青年AI工具補助",
+      "used_in": [
+        "data/scan-sources.json",
+        "docs/PR18-RESOURCE-REVIEW.md",
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": "taipei-ai-tools",
+      "pipeline_role": "enabled_candidate_profile",
+      "scan_status": "changed",
+      "format": "html",
+      "observed_at": "2026-10-31T05:49:29+00:00",
+      "candidate_ids": [
+        "cand-taipei-ai-tools-52289fdc"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ],
+      "judgment": "candidate_pending_review"
+    },
+    {
+      "url": "https://youth.kcg.gov.tw/",
+      "title": "青年局入口",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md",
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "html_no_meaningful_body_or_dynamic_content",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://youth.tycg.gov.tw/",
+      "title": "桃園市青年局官網",
+      "used_in": [
+        "docs/reference/AI-TOOL-SUBSIDIES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T06:12:16+00:00",
+      "raw_sha256": "91c75bd985de550c8c2da429cae27c2284103d4c7a3dbf972a53451628accef8",
+      "final_url": "https://youth.tycg.gov.tw/",
+      "format": "html",
+      "body_characters": 348,
+      "relevant_link_count": 2,
+      "discovered_urls": [
+        "https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1937540",
+        "https://youth.tycg.gov.tw/Common/GetVisitcount.ashx?n=15257&s=977249&ur=F2CA057EEA38D537E009D25164D3AB5D2D6AB3A50229C90F"
+      ]
+    },
+    {
+      "url": "https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1617472",
+      "title": "計畫公告",
+      "used_in": [
+        "docs/PR18-RESOURCE-REVIEW.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "parsed_html_discovery_only",
+      "judgment": "needs_source_profile_and_field_review",
+      "observed_at": "2026-10-31T05:32:09+00:00",
+      "raw_sha256": "191f696209fba6ca456f696ce6669aaf2ddeeed5f25d75513a17227115388fec",
+      "final_url": "https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1617472",
+      "format": "html",
+      "body_characters": 528,
+      "relevant_link_count": 0,
+      "discovered_urls": []
+    },
+    {
+      "url": "https://yzhsu.feg.com.tw/Programs.html?selectID=0591395e-8a94-433b-8e07-9732c431856d",
+      "title": "基金會獎項頁",
+      "used_in": [
+        "docs/TAXONOMY-AND-SOURCES.md"
+      ],
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "robots_not_plain_rules",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://daas.sinica.edu.tw/pages/2798",
+      "title": "中研院博士候選人培育計畫",
+      "used_in": [
+        "data/scan-sources.json"
+      ],
+      "retired_from_current_inventory": true,
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "transport_error",
+      "judgment": "not_evaluated"
+    },
+    {
+      "url": "https://eecs.ntu.edu.tw/w/eecsntu/scholarship_list",
+      "title": "臺大電資學院優秀研究生獎助學金",
+      "used_in": [
+        "data/scan-sources.json"
+      ],
+      "retired_from_current_inventory": true,
+      "source_id": null,
+      "pipeline_role": "discovery_or_reference",
+      "scan_status": "http_404",
+      "judgment": "not_evaluated"
+    }
+  ],
+  "batches": [
+    {
+      "http_requests": 10
+    },
+    {
+      "http_requests": 10
+    },
+    {
+      "http_requests": 2
+    },
+    {
+      "http_requests": 8
+    },
+    {
+      "http_requests": 10
+    },
+    {
+      "http_requests": 8
+    },
+    {
+      "http_requests": 9
+    },
+    {
+      "http_requests": 8
+    },
+    {
+      "http_requests": 7
+    },
+    {
+      "http_requests": 9
+    },
+    {
+      "http_requests": 8
+    },
+    {
+      "http_requests": 9
+    },
+    {
+      "http_requests": 9
+    },
+    {
+      "http_requests": 7
+    },
+    {
+      "http_requests": 7
+    },
+    {
+      "http_requests": 12
+    },
+    {
+      "http_requests": 9
+    },
+    {
+      "http_requests": 7
+    },
+    {
+      "http_requests": 6
+    },
+    {
+      "http_requests": 8
+    },
+    {
+      "http_requests": 11
+    },
+    {
+      "http_requests": 10
+    },
+    {
+      "http_requests": 8
+    },
+    {
+      "http_requests": 2
+    },
+    {
+      "http_requests": 2
+    },
+    {
+      "http_requests": 10
+    }
+  ],
+  "counts": {
+    "http_seed_requires_verified_https_replacement": 2,
+    "robots_not_plain_rules": 17,
+    "parsed_html_discovery_only": 53,
+    "robots_denied": 13,
+    "html_no_meaningful_body_or_dynamic_content": 15,
+    "transport_error": 3,
+    "robots_unavailable": 1,
+    "changed": 17,
+    "overseas_degree_placeholder_deferred": 4,
+    "http_403_host_paused": 5,
+    "parsed_pdf": 8,
+    "login_only_manual": 1,
+    "crawl_policy_reference": 2,
+    "http_410": 2,
+    "html_body_missing": 1,
+    "http_404": 1
+  },
+  "candidate_bundle": "data/candidates/source-review.json",
+  "candidate_count": 19,
+  "active_profiles": 13,
+  "disabled_profiles": 3,
+  "scanner_observations": [
+    {
+      "source_id": "ntu-doctoral-funding",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+      "candidate_ids": [
+        "cand-ntu-nstc-phd-115-a87d34fa",
+        "cand-ntu-moe-phd-115-a87d34fa"
+      ],
+      "verification": [
+        "passed_with_gaps",
+        "passed_with_gaps"
+      ],
+      "application_states": [
+        "unknown",
+        "unknown"
+      ]
+    },
+    {
+      "source_id": "ntu-doctoral-funding",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf",
+      "candidate_ids": [
+        "cand-ntu-nstc-phd-rule-fe5ff9a3",
+        "cand-ntu-moe-phd-rule-fe5ff9a3"
+      ],
+      "verification": [
+        "passed_automated_checks",
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown",
+        "unknown"
+      ]
+    },
+    {
+      "source_id": "ntu-doctoral-funding",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
+      "candidate_ids": [
+        "cand-ntu-moe-phd-unknown-9bb65253"
+      ],
+      "verification": [
+        "passed_with_gaps"
+      ],
+      "application_states": [
+        "unknown"
+      ]
+    },
+    {
+      "source_id": "ntu-president-award",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368",
+      "candidate_ids": [
+        "cand-ntu-president-114-call-627eac82"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "closed"
+      ]
+    },
+    {
+      "source_id": "ntu-yuanxue",
+      "url": "https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260",
+      "candidate_ids": [
+        "cand-ntu-yuanxue-115-ordinary-e4bcffd5"
+      ],
+      "verification": [
+        "passed_with_gaps"
+      ],
+      "application_states": [
+        "closed"
+      ]
+    },
+    {
+      "source_id": "ntu-president-award",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf",
+      "candidate_ids": [
+        "cand-ntu-president-unknown-rule-b35d810f"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ]
+    },
+    {
+      "source_id": "nstc-ntu-conference",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383",
+      "candidate_ids": [
+        "cand-nstc-ntu-conference-3450d15a"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ]
+    },
+    {
+      "source_id": "nstc-conference-rule",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260",
+      "candidate_ids": [
+        "cand-nstc-conference-rule-1e764218"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ]
+    },
+    {
+      "source_id": "faos-student-conference",
+      "url": "https://www.faos.org.tw/Application/ApplicatStud.html",
+      "candidate_ids": [
+        "cand-faos-student-conference-de284c75"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ]
+    },
+    {
+      "source_id": "nstc-abroad-dragon-rule",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039188",
+      "candidate_ids": [
+        "cand-nstc-abroad-dragon-rule-5b229e29"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ]
+    },
+    {
+      "source_id": "sinica-phd-fellowship",
+      "url": "https://www.sinica.edu.tw/news_content/56/3434",
+      "candidate_ids": [
+        "cand-sinica-phd-fellowship-82eddedf"
+      ],
+      "verification": [
+        "passed_with_gaps"
+      ],
+      "application_states": [
+        "unknown"
+      ]
+    },
+    {
+      "source_id": "taipei-ai-tools",
+      "url": "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796",
+      "candidate_ids": [
+        "cand-taipei-ai-tools-52289fdc"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ]
+    },
+    {
+      "source_id": "hsinchu-ai-tools",
+      "url": "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
+      "candidate_ids": [
+        "cand-hsinchu-ai-tools-2df2bf61"
+      ],
+      "verification": [
+        "passed_with_gaps"
+      ],
+      "application_states": [
+        "unknown"
+      ]
+    },
+    {
+      "source_id": "nstc-assistant-rule",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686",
+      "candidate_ids": [
+        "cand-nstc-assistant-rule-14a6cfad"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ]
+    },
+    {
+      "source_id": "ntu-eecs-scholarship",
+      "url": "https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf",
+      "candidate_ids": [
+        "cand-ntu-eecs-scholarship-970ee807"
+      ],
+      "verification": [
+        "passed_with_gaps"
+      ],
+      "application_states": [
+        "unknown"
+      ]
+    },
+    {
+      "source_id": "ntu-ta-policy",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514",
+      "candidate_ids": [
+        "cand-ntu-ta-policy-73ab1ac7"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ]
+    },
+    {
+      "source_id": "ntu-ta-policy",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/%E6%95%99%E5%8B%99%E8%99%95%E6%95%99%E5%AD%B8%E5%8A%A9%E7%90%86%E5%88%B6%E5%BA%A6%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E6%A2%9D%E6%96%87-%E5%85%AC%E5%91%8A%E7%89%88.pdf",
+      "candidate_ids": [
+        "cand-ntu-ta-policy-cc28dee0"
+      ],
+      "verification": [
+        "passed_automated_checks"
+      ],
+      "application_states": [
+        "unknown"
+      ]
+    }
+  ],
+  "scanner_batches": [
+    {
+      "observed_at": "2026-10-31T05:21:10+00:00",
+      "http_requests": 4,
+      "changed_documents": 2,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:21:21+00:00",
+      "http_requests": 4,
+      "changed_documents": 2,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:21:29+00:00",
+      "http_requests": 4,
+      "changed_documents": 2,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:21:36+00:00",
+      "http_requests": 3,
+      "changed_documents": 2,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:21:43+00:00",
+      "http_requests": 5,
+      "changed_documents": 3,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:21:51+00:00",
+      "http_requests": 2,
+      "changed_documents": 1,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:34:24+00:00",
+      "http_requests": 2,
+      "changed_documents": 1,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:34:29+00:00",
+      "http_requests": 1,
+      "changed_documents": 0,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:34:30+00:00",
+      "http_requests": 2,
+      "changed_documents": 1,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:34:35+00:00",
+      "http_requests": 3,
+      "changed_documents": 2,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:34:42+00:00",
+      "http_requests": 3,
+      "changed_documents": 2,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:34:49+00:00",
+      "http_requests": 3,
+      "changed_documents": 1,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:38:12+00:00",
+      "http_requests": 6,
+      "changed_documents": 5,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:38:29+00:00",
+      "http_requests": 2,
+      "changed_documents": 1,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:48:22+00:00",
+      "http_requests": 5,
+      "changed_documents": 3,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:48:38+00:00",
+      "http_requests": 5,
+      "changed_documents": 3,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:48:47+00:00",
+      "http_requests": 4,
+      "changed_documents": 2,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:48:56+00:00",
+      "http_requests": 4,
+      "changed_documents": 2,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:49:08+00:00",
+      "http_requests": 5,
+      "changed_documents": 2,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:49:29+00:00",
+      "http_requests": 4,
+      "changed_documents": 2,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:49:52+00:00",
+      "http_requests": 2,
+      "changed_documents": 1,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:51:13+00:00",
+      "http_requests": 6,
+      "changed_documents": 5,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T05:51:34+00:00",
+      "http_requests": 5,
+      "changed_documents": 3,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T06:08:33+00:00",
+      "http_requests": 5,
+      "changed_documents": 2,
+      "model_calls": 0
+    },
+    {
+      "observed_at": "2026-10-31T06:10:02+00:00",
+      "http_requests": 3,
+      "changed_documents": 2,
+      "model_calls": 0
+    }
+  ],
+  "scanner_http_requests": 92,
+  "role_counts": {
+    "discovery_or_reference": 122,
+    "supporting_documentation": 7,
+    "enabled_candidate_profile": 13,
+    "disabled_profile": 3
+  }
+}

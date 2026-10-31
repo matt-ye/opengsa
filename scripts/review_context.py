@@ -1,5 +1,5 @@
 """Refresh only allowlisted source context; semantic revisions survive irrelevant HTML changes."""
-from scripts.scan_sources import Fetcher, VERSION, digest, normalized, html_document, ScanError
+from scripts.scan_sources import Fetcher, VERSION, digest, normalized, html_document, pdf_document, ScanError
 
 
 def refresh_context(bundle, config, fetcher=None):
@@ -13,13 +13,26 @@ def refresh_context(bundle, config, fetcher=None):
         if key in statuses:continue
         try:
             if not source:raise ScanError("source_disabled_or_unregistered")
-            # Named pending snapshots currently support registered HTML pages only.
-            if url!=source["url"]:raise ScanError("source_profile_mismatch")
+            is_attachment=url!=source["url"]
+            is_pdf=is_attachment or source.get("format")=="pdf"
+            if is_attachment:
+                if meta.get("parent_url")!=source["url"] or url not in source.get("known_attachment_urls",[]):
+                    raise ScanError("source_profile_mismatch")
+                if source["url"] not in documents:
+                    parent=fetcher.get(source["url"],{},2*1024*1024)
+                    if parent["status"]!=200 or "text/html" not in parent["headers"].get("content-type","").lower():
+                        raise ScanError("attachment_parent_unavailable")
+                    documents[source["url"]]=html_document(parent["body"],source,parent["url"],config["allowed_hosts"])
+                if url not in {a["url"] for a in documents[source["url"]][1]}:raise ScanError("attachment_not_discovered")
             if url not in documents:
-                response=fetcher.get(url,{},2*1024*1024)
+                response=fetcher.get(url,{},10*1024*1024 if is_pdf else 2*1024*1024)
                 if response["status"]!=200:raise ScanError("http_"+str(response["status"]))
-                if "text/html" not in response["headers"].get("content-type","").lower():raise ScanError("unexpected_content_type")
-                documents[url]=html_document(response["body"],source,response["url"],config["allowed_hosts"])
+                if is_pdf:
+                    if not response["body"].startswith(b"%PDF-"):raise ScanError("unexpected_content_type")
+                    documents[url]=(pdf_document(response["body"]),[])
+                else:
+                    if "text/html" not in response["headers"].get("content-type","").lower():raise ScanError("unexpected_content_type")
+                    documents[url]=html_document(response["body"],source,response["url"],config["allowed_hosts"])
             blocks,attachments=documents[url]
             semantic=digest([[normalized(b["text"]) for b in blocks],attachments])
             revision=digest([url,semantic,digest([VERSION,source])])

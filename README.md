@@ -24,13 +24,15 @@ v0.8研討會可選國科會、臺大醫學院、傑出人才發展基金會或�
 
 來源掃描採臺北時間週二、週五09:17，另可手動執行；目前來源台帳中已啟用的正文目標及允許的文字PDF在記憶體完成結構化萃取、七項獨立檢核（含 `coverage_ok` 與 `passed_with_gaps`）、學生窗口時間判斷與 `data/pilot.json` 差異比對，只產生待覆核報告，不直接改寫網站正式資料。每次檢查robots，PDF不長期存放；教務處因轉載條款只保留雜湊與定位，且絕不送往外部模型（`hash_only_bytes_sent = 0`）。雙軌模型 Adapter（`extract` 補缺＋`audit` 交叉盤查）於排程預設關閉（`model_mode=off`、呼叫0次），僅支援手動觸發或本機評估。[看掃描狀態](https://github.com/matt-ye/opengsa/actions/workflows/scan-sources.yml) · [操作與限制](docs/SCANNER.md)。
 
-本輪已全數合併 PR #16～#20（包含起訖與準備提醒帶、AI 工具補助台帳、可靠性修正、申請管道 Schema 與 8 組 API 實測）。來源設定共16筆，其中11筆啟用、5筆暫停；「啟用」不保證每次都可擷取，最近實測狀態見[掃描文件](docs/SCANNER.md)。10筆網站資料仍是待覆核草稿，人工處置台帳已清除合成紀錄。
+本輪已全數合併 PR #16～#21（包含起訖與準備提醒帶、AI 工具補助台帳、可靠性修正、申請管道 Schema 與 8 組 API 實測）。來源設定共16筆，其中13筆啟用、3筆暫停；「啟用」不保證每次都可擷取，最近實測狀態見[掃描文件](docs/SCANNER.md)。10筆網站資料仍是待覆核草稿，人工處置台帳已清除合成紀錄。
 
 8組Repository Secrets已接線，模型預設與官方額度宣稱已重新盤查；僅Groq完成小量JSON推論，其他服務的目錄成功不等於金鑰／免費推論全部可用。看[API查核及操作](docs/API-AUDIT.md)與[本輪修正及驗收](docs/RELIABILITY-AUDIT.md)。排程維持規則模式，不啟用自動付費備援。
 
 PR #18的17筆AI資源已進行來源分流與更正，見[查核結果](docs/PR18-RESOURCE-REVIEW.md)。申辦方式新增紙本／電子、親簽與收件判準；欄位不適用須有依據才標N/A，不能把未知或資格不符改成N/A。掃描仍先產生候選，經覆核、資料PR及部署後，第一至三頁才共用新快照，見[判斷與更新流程](docs/APPLICATION-PROCESS.md)。
 
 臺北／新竹AI工具補助已推進為兩筆[具名候選](data/candidates/README.md)，確定性萃取、分支與程序檢核已接入掃描；仍pending，不改10筆正式草稿。[推進與驗收紀錄](docs/AI-TOOLS-CANDIDATES.md)。
+
+2026-10-31已盤點145個來源／參考網址，13個具名來源的17份文件已匯入19筆待審候選（12筆自動檢核通過、7筆有缺漏）；正式資料仍10筆。入口發現、欄位萃取與人工核准分開驗收，詳見[來源全盤檢查](docs/SOURCE-COVERAGE-AUDIT.md)及[逐項來源清單](docs/SOURCE-LINKS-2026-10-31.md)。
 
 ## 已有與後續功能
 

@@ -20,6 +20,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+from urllib.parse import unquote
 
 from jsonschema import Draft202012Validator
 
@@ -33,7 +34,7 @@ from scripts.verify_candidates import digest_text, evidence_digest, verify_candi
 from scripts.application_process import infer_process
 from scripts.ai_tool_rules import benefit_tiers
 
-EXTRACTOR_VERSION = "extractor-1.1.0"
+EXTRACTOR_VERSION = "extractor-1.2.0"
 PROMPT_VERSION = "prompt-1.1.0"
 
 PII_REDACT_RE = re.compile(
@@ -1234,7 +1235,12 @@ def _extract_doctoral_funding(source, blocks, revision_id, observed_at, url, as_
     """
     first_block = blocks[0]
     first_ref = {"source": source["id"], "locator": first_block["locator"]}
-    is_pdf = url.lower().endswith(".pdf")
+    pdf_format=url.lower().split("?",1)[0].endswith(".pdf")
+    heading=re.sub(r"\s+","","".join(b["text"] for b in blocks[:40]))
+    moe_application_pdf=pdf_format and "教育部" in heading and (
+        any(k in heading for k in ("申請說明","梯次申請","第2梯次"))
+        or ("教育部" in unquote(url) and "申請" in unquote(url) and "申請" in heading))
+    is_pdf=pdf_format and "設置辦法" in heading and not moe_application_pdf
 
     # 依章節標題與關鍵字將區塊分流至國科會分支、教育部分支或共用區塊
     nstc_blocks = []
@@ -1272,33 +1278,40 @@ def _extract_doctoral_funding(source, blocks, revision_id, observed_at, url, as_
                 nstc_blocks.append(b)
                 moe_blocks.append(b)
 
+    if moe_application_pdf:
+        # References to prohibited NSTC funding do not change this document's MOE branch.
+        moe_blocks=list(blocks)
+        nstc_blocks=[]
+
     years_found = sorted(
         {
             int(y)
             for b in blocks
-            for y in re.findall(r"(11[3-9])\s*學年度", _normalize_chinese_roc_years(b["text"]))
+            for y in re.findall(r"(?<!\d)(11[3-9])學年度", re.sub(r"\s+","",_normalize_chinese_roc_years(b["text"])))
         }
     )
-    target_year = max(years_found) if years_found else 115
+    target_year = max(years_found) if years_found else None
+    year_key=target_year if target_year is not None else "unknown"
+    year_label=f"{target_year}學年度" if target_year is not None else "學年度待核"
 
     # 分支 1：國科會核配博士生獎學金
-    nstc_id = f"cand-ntu-nstc-phd-{'rule' if is_pdf else target_year}-{revision_id[:8]}"
+    nstc_id = f"cand-ntu-nstc-phd-{'rule' if is_pdf else year_key}-{revision_id[:8]}"
     nstc = _base_candidate_template(
         candidate_id=nstc_id,
-        opportunity_id="ntu-nstc-phd-policy" if is_pdf else f"ntu-nstc-phd-{target_year}",
+        opportunity_id="ntu-nstc-phd-policy" if is_pdf else f"ntu-nstc-phd-{year_key}",
         program_key="ntu-nstc-phd",
         title=(
             "臺大國科會核配博士生獎學金（設置辦法條文快照）"
             if is_pdf
-            else f"臺大{target_year}學年度國科會核配博士生獎學金"
+            else f"臺大{year_label}國科會核配博士生獎學金"
         ),
         category="phd_research",
         resource_kind="scholarship",
         scope="ntu",
         cycle={
             "kind": "policy_snapshot" if is_pdf else "academic_year",
-            "label": "設置辦法條文快照" if is_pdf else f"{target_year}學年度",
-            "year_system": "none" if is_pdf else "roc",
+            "label": "設置辦法條文快照" if is_pdf else year_label,
+            "year_system": "none" if is_pdf else "roc" if target_year is not None else "unknown",
             "year": None if is_pdf else target_year,
             "term_or_round": None,
             "branch": "國科會核配",
@@ -1349,23 +1362,23 @@ def _extract_doctoral_funding(source, blocks, revision_id, observed_at, url, as_
     )
 
     # 分支 2：教育部博士生獎學金
-    moe_id = f"cand-ntu-moe-phd-{'rule' if is_pdf else target_year}-{revision_id[:8]}"
+    moe_id = f"cand-ntu-moe-phd-{'rule' if is_pdf else year_key}-{revision_id[:8]}"
     moe = _base_candidate_template(
         candidate_id=moe_id,
-        opportunity_id="ntu-moe-phd-policy" if is_pdf else f"ntu-moe-phd-{target_year}-round2",
+        opportunity_id="ntu-moe-phd-policy" if is_pdf else f"ntu-moe-phd-{year_key}-round2",
         program_key="ntu-moe-phd",
         title=(
             "臺大教育部博士生獎學金（設置辦法條文快照）"
             if is_pdf
-            else f"臺大{target_year}學年度教育部博士生獎學金（第二梯次）"
+            else f"臺大{year_label}教育部博士生獎學金（第二梯次）"
         ),
         category="phd_research",
         resource_kind="scholarship",
         scope="ntu",
         cycle={
             "kind": "policy_snapshot" if is_pdf else "academic_year",
-            "label": "設置辦法條文快照" if is_pdf else f"{target_year}學年度第二梯次",
-            "year_system": "none" if is_pdf else "roc",
+            "label": "設置辦法條文快照" if is_pdf else year_label+"第二梯次",
+            "year_system": "none" if is_pdf else "roc" if target_year is not None else "unknown",
             "year": None if is_pdf else target_year,
             "term_or_round": None if is_pdf else "第二梯次",
             "branch": "教育部",
@@ -1442,11 +1455,11 @@ def _extract_doctoral_funding(source, blocks, revision_id, observed_at, url, as_
         "schedule.result_date",
         "hardship",
     ]
-    # 若 HTML 提及「第二梯次申請說明」附件但未載入該 PDF，誠實標示 unfetched_attachment
-    if not is_pdf and not found_college_dl and any(re.search(r"第[二2]梯次.*申請說明", b["text"]) for b in (moe_blocks or blocks)):
-        moe_missing.append("unfetched_attachment:1151015_教育部博獎第二梯申請.pdf")
+    # The wrapper checks actual fetched attachments; a filename in HTML is not proof of failure.
+    if not pdf_format and not found_college_dl and any(re.search(r"第[二2]梯次.*申請說明", b["text"]) for b in (moe_blocks or blocks)):
+        moe_missing.append("unfetched_attachment:doctoral_round_application")
         moe["gaps_and_conflicts"]["open_questions"].append(
-            "本頁連結之『115學年度第2梯次教育部博士生獎學金申請說明 (1151015_教育部博獎第二梯申請.pdf)』含學院送件截止日 (2026-11-09)，因 scan-sources.json 設 max_attachments=1 僅抓取設置辦法 PDF，故此處誠實標示待抓附件，不臆測補值。"
+            "本頁提及第二梯次申請說明，但本份正文尚未解析出學院送件日；須另核對附件，不由已知檔名或歷史日期補值。"
         )
     moe["gaps_and_conflicts"]["missing_fields"] = moe_missing
     moe["gaps_and_conflicts"]["open_questions"].append(
@@ -1454,9 +1467,16 @@ def _extract_doctoral_funding(source, blocks, revision_id, observed_at, url, as_
     )
     doc_has_nstc = any("國科會" in b["text"] for b in blocks)
     doc_has_moe = any("教育部" in b["text"] for b in blocks)
+    for item in (nstc,moe):
+        if item["benefit"]["items"] and any(b["unit"]=="unknown" for b in item["benefit"]["items"]):
+            item["gaps_and_conflicts"]["missing_fields"].append("benefit.unit_and_payee")
+            item["gaps_and_conflicts"]["open_questions"].append("文件金額線索的給付單位及對象待核，不把配合款或未辨明金額當作學生總獎助額。")
+            item["benefit"].update(summary="金額與給付單位／對象待核；請核對原文件",items=[])
+            for ev in item["field_evidence"]:
+                if ev["field_path"].startswith("benefit.items"):ev["field_path"]="raw_clue.benefit_amount"
     if doc_has_nstc and not doc_has_moe:
         return [nstc]
-    if doc_has_moe and not doc_has_nstc:
+    if moe_application_pdf or (doc_has_moe and not doc_has_nstc):
         return [moe]
     return [nstc, moe]
 
@@ -1466,22 +1486,24 @@ def _extract_yuanxue(source, blocks, revision_id, observed_at, url, as_of, evide
     first_block = blocks[0]
     first_ref = {"source": source["id"], "locator": first_block["locator"]}
     years_found = sorted({int(y) for b in blocks for y in re.findall(r"(11[4-9])\s*年", _normalize_chinese_roc_years(b["text"]))})
-    target_year = max(years_found) if years_found else 115
+    target_year = max(years_found) if years_found else None
+    year_key=target_year if target_year is not None else "unknown"
+    year_label=f"{target_year}年" if target_year is not None else "年度待核"
 
     ordinary_blocks = [b for b in blocks if "配合補助" not in b["text"] or "一般補助" in b["text"]]
-    cand_id = f"cand-ntu-yuanxue-{target_year}-ordinary-{revision_id[:8]}"
+    cand_id = f"cand-ntu-yuanxue-{year_key}-ordinary-{revision_id[:8]}"
     ordinary = _base_candidate_template(
         candidate_id=cand_id,
-        opportunity_id=f"ntu-yuanxue-{target_year}-ordinary",
+        opportunity_id=f"ntu-yuanxue-{year_key}-ordinary",
         program_key="ntu-yuanxue",
-        title=f"臺大{target_year}年遠學計畫（博士生一般補助）",
+        title=f"臺大{year_label}遠學計畫（博士生一般補助）",
         category="overseas_research",
         resource_kind="travel_grant",
         scope="ntu",
         cycle={
             "kind": "calendar_year",
-            "label": f"{target_year}年申請梯次",
-            "year_system": "roc",
+            "label": year_label+"申請梯次",
+            "year_system": "roc" if target_year is not None else "unknown",
             "year": target_year,
             "term_or_round": None,
             "branch": "博士生一般補助",
@@ -1567,22 +1589,24 @@ def _extract_president_award(source, blocks, revision_id, observed_at, url, as_o
     first_block = blocks[0]
     first_ref = {"source": source["id"], "locator": first_block["locator"]}
     years_found = sorted({int(y) for b in blocks for y in re.findall(r"(11[3-9])\s*學年度", _normalize_chinese_roc_years(b["text"]))})
-    target_year = max(years_found) if years_found else 114
+    target_year = max(years_found) if years_found else None
     is_pdf = url.lower().endswith(".pdf")
+    year_key=target_year if target_year is not None else "unknown"
+    year_label=f"{target_year}學年度" if target_year is not None else "學年度待核"
 
-    cand_id = f"cand-ntu-president-{target_year}-{'rule' if is_pdf else 'call'}-{revision_id[:8]}"
+    cand_id = f"cand-ntu-president-{year_key}-{'rule' if is_pdf else 'call'}-{revision_id[:8]}"
     cand = _base_candidate_template(
         candidate_id=cand_id,
-        opportunity_id="ntu-president-policy" if is_pdf else f"ntu-president-{target_year}",
+        opportunity_id="ntu-president-policy" if is_pdf else f"ntu-president-{year_key}",
         program_key="ntu-president",
-        title="臺大研究生校長獎（設置辦法依據）" if is_pdf else f"臺大{target_year}學年度研究生校長獎",
+        title="臺大研究生校長獎（設置辦法依據）" if is_pdf else f"臺大{year_label}研究生校長獎",
         category="outcome_award",
         resource_kind="award",
         scope="ntu",
         cycle={
             "kind": "policy_snapshot" if is_pdf else "academic_year",
-            "label": "設置辦法條文快照" if is_pdf else f"{target_year}學年度",
-            "year_system": "none" if is_pdf else "roc",
+            "label": "設置辦法條文快照" if is_pdf else year_label,
+            "year_system": "none" if is_pdf else "roc" if target_year is not None else "unknown",
             "year": None if is_pdf else target_year,
             "term_or_round": None,
             "branch": None,
@@ -1934,6 +1958,7 @@ def _extract_policy(source, blocks, revision_id, observed_at, url, as_of, eviden
         evidence_mode=evidence_mode, as_of=as_of,
     )
     cand["participants"]["applicant"] = actor
+    if resource=="employment_support":cand["eligibility"]["degrees"]=["master","phd"]
     identity = _find_identity_block(blocks)
     first_ref = {"source":source["id"],"locator":identity["locator"]}
     _set_identity_with_evidence(cand, "身分條件請至來源定位核對", identity, source["id"], revision_id, evidence_mode)
@@ -1941,7 +1966,18 @@ def _extract_policy(source, blocks, revision_id, observed_at, url, as_of, eviden
     # Source clauses stay separate; no annual amount is converted into an invented total.
     cand["benefit"] = {"summary":"金額待來源完整核對", "items":[], "refs":[]}
     cand["field_evidence"] = [e for e in cand["field_evidence"] if not e["field_path"].startswith("benefit.")]
+    monthly_minimum_header=None
+    salary_grade=None
     for block in blocks:
+        # NSTC splits the monthly minimum heading, grade and amount across DOM blocks.
+        if source["id"]=="nstc-assistant-rule":
+            compact=re.sub(r"\s+","",block["text"])
+            if "專任人員月支酬金不得低於" in compact:
+                monthly_minimum_header=block;salary_grade=None
+            elif re.search(r"兼任人員費用|為研發替代役|得按專任人員工作酬金",compact):
+                monthly_minimum_header=None;salary_grade=None
+            match=re.search(r"專科級|學士級|碩士級",compact)
+            if monthly_minimum_header and match:salary_grade=(match[0],block)
         for clause in re.split(r"[；。，]", block["text"]):
             parsed = parse_amount_from_text(clause)
             if not parsed:
@@ -1953,11 +1989,18 @@ def _extract_policy(source, blocks, revision_id, observed_at, url, as_of, eviden
                 parsed.update(amount_min=None, basis="maximum")
             elif "至少" in clause or "最低" in clause:
                 parsed.update(amount_max=None, basis="minimum")
-            item = {"branch_or_tier":None, **parsed, "refs":[ref]}
+            context=[]
+            if monthly_minimum_header and salary_grade:
+                parsed.update(unit="per_month",basis="minimum",amount_max=None)
+                context=[monthly_minimum_header,salary_grade[1]]
+            evidence_blocks=[block]+[b for b in context if b!=block]
+            item = {"branch_or_tier":salary_grade[0] if context else None, **parsed,
+                    "refs":[{"source":source["id"],"locator":b["locator"]} for b in evidence_blocks]}
             idx = len(cand["benefit"]["items"])
             cand["benefit"]["items"].append(item)
             cand["benefit"]["refs"].append(ref)
-            cand["field_evidence"].append(make_field_evidence(f"benefit.items/{idx}",source["id"],revision_id,block,evidence_mode))
+            for b in evidence_blocks:
+                cand["field_evidence"].append(make_field_evidence(f"benefit.items/{idx}",source["id"],revision_id,b,evidence_mode))
     if cand["benefit"]["items"]:
         cand["benefit"]["summary"] = "；".join(_format_benefit_summary(i) for i in cand["benefit"]["items"])
     steps = []
@@ -2504,6 +2547,7 @@ def extract_from_in_memory_blocks(
     results = []
     excerpt_remaining = 120
     for cand in candidates:
+        if url!=source["url"]:cand["source_metadata"]["parent_url"]=source["url"]
         if extraction_strategy != "rules_only" and model_adapter.enabled:
             if (evidence_mode == "hash_only" or "aca.ntu.edu.tw" in url) and model_adapter.is_external:
                 cand["verification"]["warnings"].append("external_model_skipped_for_hash_only_source")
@@ -2674,7 +2718,7 @@ def refetch_and_extract_candidates(
         blocks = in_memory_blocks_by_url.get(url)
         if blocks is None and fetcher is not None and allow_network_refetch:
             try:
-                is_pdf = url.lower().endswith(".pdf")
+                is_pdf = source.get("format")=="pdf" or url.lower().split("?",1)[0].endswith(".pdf")
                 resp = fetcher.get(url, {}, 10 * 1024 * 1024 if is_pdf else 2 * 1024 * 1024)
                 if resp["status"] == 200:
                     if stub.get("revision", {}).get("raw_sha256") and digest(resp["body"]) != stub["revision"]["raw_sha256"]:
@@ -2712,6 +2756,18 @@ def refetch_and_extract_candidates(
                 as_of=as_of,
                 model_adapter=model_adapter,
             )
+            missing_attachments=[a["url"] for a in stub.get("revision",{}).get("attachments",[])
+                if a["url"] not in in_memory_blocks_by_url]
+            application_attachment_available=any(a["url"] in in_memory_blocks_by_url
+                and re.search(r"申請|application",a.get("title","")+unquote(a["url"]),re.I)
+                for a in stub.get("revision",{}).get("attachments",[]))
+            if missing_attachments or application_attachment_available:
+                for index,item in enumerate(extracted):
+                    if application_attachment_available:
+                        item["gaps_and_conflicts"]["missing_fields"]=[g for g in item["gaps_and_conflicts"]["missing_fields"]
+                            if g!="unfetched_attachment:doctoral_round_application"]
+                    item["gaps_and_conflicts"]["missing_fields"].extend("unfetched_attachment:"+u for u in missing_attachments)
+                    extracted[index]=verify_candidate(item,in_memory_blocks=blocks,now_iso=observed_at)
             all_records.extend(extracted)
         else:
             all_records.extend(extract_from_candidate_stub_without_memory(stub, source, as_of=as_of))

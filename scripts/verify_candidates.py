@@ -28,7 +28,7 @@ from scripts.evaluate_deadlines import parse_iso_date, parse_taipei_datetime
 from scripts.application_process import infer_process, process_errors
 from scripts.ai_tool_rules import benefit_tiers
 
-VERIFIER_VERSION = "verifier-1.1.0"
+VERIFIER_VERSION = "verifier-1.2.0"
 
 CONTACT_RE = re.compile(r"@|電話|聯絡|承辦|傳真|住址|通訊地址|\b0\d{1,3}[- ]\d{6,}")
 SKIP_RE = re.compile(r"名冊|名單|獲獎|得獎|姓名|學號|身分證|jsessionid|password|token=|login|登入", re.I)
@@ -367,6 +367,12 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
                 if amt is not None:
                     if not amount_supported(amt, combined):
                         ev_errors.append(f"hallucinated_amount_not_in_source:{path_key}:{amt}")
+            if cand.get("program_key")=="nstc-assistant-rule":
+                compact=re.sub(r"\s+","",combined)
+                if b_item.get("unit")=="per_month" and not re.search(r"每月|月支|月薪",compact):
+                    ev_errors.append("unsupported_monthly_salary_context:"+path_key)
+                if b_item.get("basis")=="minimum" and not re.search(r"至少|最低|不得低於",compact):
+                    ev_errors.append("unsupported_salary_minimum_context:"+path_key)
 
     if cand.get("compatibility", {}).get("mode") not in (None, "unknown"):
         if "compatibility" not in ev_by_path or not cand["compatibility"].get("refs"):
@@ -607,6 +613,8 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
     # 7. R5：欄位涵蓋率與對照 pilot.json 退步檢查 (Coverage & Regression Check)
     coverage_warnings = []
     if not is_stub:
+        if cycle.get("kind") in ("calendar_year","academic_year") and cycle.get("year") is None:
+            coverage_warnings.append("coverage_gap:cycle_year_unknown")
         if cand.get("resource_kind")=="tool_subscription":
             if not cand.get("expense_period"):coverage_warnings.append("coverage_gap:ai_tools:expense_period")
             if in_memory_blocks is not None:
@@ -629,7 +637,7 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
         if cand.get("resource_kind") in ("scholarship", "award") and len(benefit_items) == 0:
             coverage_warnings.append("coverage_gap:missing_structured_benefit_items")
         for mf in cand.get("gaps_and_conflicts", {}).get("missing_fields", []):
-            if "unfetched_attachment" in mf:
+            if "attachment" in mf and any(word in mf for word in ("unfetched","restricted","unavailable")):
                 coverage_warnings.append(f"coverage_gap:{mf}")
 
         if pilot_by_id and cycle.get("kind") != "policy_snapshot":

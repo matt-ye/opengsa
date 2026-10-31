@@ -10,6 +10,7 @@ import re
 import subprocess
 import sys
 import time
+import unicodedata
 from datetime import datetime, timezone, timedelta
 from urllib.parse import quote, unquote, urljoin, urlsplit, urlunsplit
 
@@ -171,7 +172,12 @@ class Fetcher:
         if previous.get("last_modified"):
             headers["If-Modified-Since"] = previous["last_modified"]
         for attempt in range(2):
-            response = self.follow(url, headers, limit)
+            try:
+                response = self.follow(url, headers, limit)
+            except ScanError as error:
+                # Same TLS/robots/host budget on retry; never retry access denials or 429.
+                if str(error)=="transport_error" and attempt==0:continue
+                raise
             if response["status"] >= 500 and response["headers"].get("retry-after"):
                 self.blocked[urlsplit(url).hostname] = "service_retry_after_deferred"
                 raise ScanError("service_retry_after_deferred")
@@ -229,7 +235,7 @@ def pdf_document(data):
     if result.returncode:
         raise ScanError("pdf_requires_manual_review")
     pages = json.loads(result.stdout)
-    return [{"locator": f"PDF page {page['page']}", "text": normalized(line)}
+    return [{"locator": f"PDF page {page['page']}", "text": normalized(unicodedata.normalize("NFKC",line))}
             for page in pages for line in page["text"].splitlines() if normalized(line)]
 
 
@@ -264,7 +270,7 @@ def scan(config, previous=None, fetcher=None, resolved=None):
     sources = [s for s in config["sources"] if s.get("enabled", True)]
     start = state.get("next_source_index", 0) % max(1, len(sources))
     ordered = sources[start:] + sources[:start]
-    queue = [(source, source["url"], "html") for source in ordered]
+    queue = [(source, source["url"], source.get("format","html")) for source in ordered]
     deferred_index = None
     while queue:
         source, original_url, kind = queue.pop(0)
@@ -290,6 +296,10 @@ def scan(config, previous=None, fetcher=None, resolved=None):
                     raise ScanError("unexpected_content_type")
                 if kind == "pdf":
                     blocks, attachments = pdf_document(response["body"]), []
+                    if source.get("format")=="pdf":
+                        text=re.sub(r"\s+",""," ".join(b["text"] for b in blocks))
+                        if any(re.sub(r"\s+","",term) not in text for term in source["required_markers"]):
+                            raise ScanError("required_marker_missing")
                 else:
                     blocks, attachments = html_document(response["body"], source, response["url"], config["allowed_hosts"])
                 if hasattr(fetcher, "in_memory_blocks"):
@@ -365,6 +375,12 @@ def validate_config(config):
             raise ValueError(f"Invalid attachment budget: {source['id']}")
         if source["evidence_mode"] not in ("hash_only", "short_excerpt"):
             raise ValueError(f"Invalid evidence policy: {source['id']}")
+        if source.get("format","html") not in ("html","pdf"):raise ValueError("Unsupported source format")
+        known=source.get("known_attachment_urls",[])
+        if not isinstance(known,list) or any(not isinstance(url,str) for url in known):raise ValueError("Invalid known attachment list")
+        for url in known:
+            safe_url(url,config["allowed_hosts"])
+            if not urlsplit(url).path.lower().endswith(".pdf"):raise ValueError("Known attachments must be PDF URLs")
 
 
 def run():

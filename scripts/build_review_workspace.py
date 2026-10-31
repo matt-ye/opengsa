@@ -6,6 +6,8 @@ import difflib
 import json
 from pathlib import Path
 import sys
+from collections import Counter
+from urllib.parse import urlsplit
 
 ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
@@ -54,11 +56,17 @@ def candidate_preview_data(bundle,pilot,config):
     dataset=deepcopy(pilot)
     dataset["as_of"]=bundle["as_of"]
     dataset["opportunities"]=[]
+    identities=Counter(c.get("opportunity_id") or c["candidate_id"] for c in bundle["candidates"])
     for candidate in bundle["candidates"]:
         cand=deepcopy(candidate)
         # Preview never presents a review intent as a published/reviewed opportunity.
         cand["review"].update(status="pending",independent_reviewer=None,reviewed_on=None,promotion_ready=False)
         item=candidate_to_pilot_opportunity(cand)
+        # Each document candidate is distinct in an unpublished review, even for the same program.
+        item["id"]=cand["candidate_id"]
+        if identities[cand.get("opportunity_id") or cand["candidate_id"]]>1:
+            kind="PDF" if urlsplit(cand["source_metadata"]["url"]).path.lower().endswith(".pdf") else "HTML"
+            item["title"]+=f"（{kind}文件候選，待整併）"
         window=evaluate_application_window(item,bundle["as_of"])
         item["application"].update(state=window["state"],as_of=bundle["as_of"],reason=window["reason"])
         dataset["opportunities"].append(item)
@@ -129,7 +137,10 @@ def build_workspace(bundle,pilot,config,output,ledger=None,decisions=None,contex
     applied={r["candidate_id"] for r in decisions["reviews"] if r["action"]=="applied"}
     ready={c["candidate_id"] for c in verified["candidates"] if c["review"]["promotion_ready"]}
     if export_draft:
+        selected_ids=[c.get("opportunity_id") or c["candidate_id"] for c in verified["candidates"] if c["candidate_id"] in applied]
         if not applied:manifest["publication_status"]="no_approved_candidates"
+        elif len(selected_ids)!=len(set(selected_ids)):
+            manifest.update(publication_status="blocked",blocking_reason="same_opportunity_multiple_documents_require_reconciliation")
         elif (not applied.issubset(ready) or summary["bundle_schema_errors"]
                 or any(classify_review_gaps(c)["source"] for c in verified["candidates"] if c["candidate_id"] in applied)
                 or any((context_status or {}).get(cid)!="fresh_semantic_revision_matched" for cid in applied)):
@@ -153,7 +164,8 @@ def build_workspace(bundle,pilot,config,output,ledger=None,decisions=None,contex
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--candidates",type=Path,default=ROOT/"data/candidates/ai-tools-115.json")
+    parser.add_argument("--candidates",type=Path,default=ROOT/"data/candidates/source-review.json")
+    parser.add_argument("--source-id",action="append",help="Review a bounded subset; repeat for a small batch of source IDs")
     parser.add_argument("--pilot",type=Path,default=ROOT/"data/pilot.json")
     parser.add_argument("--config",type=Path,default=ROOT/"data/scan-sources.json")
     parser.add_argument("--ledger",type=Path,default=ROOT/"data/scan-reviews.json")
@@ -165,6 +177,10 @@ def main():
     args=parser.parse_args()
     read=lambda p:json.loads(p.read_text(encoding="utf-8"))
     bundle,pilot,config=read(args.candidates),read(args.pilot),read(args.config)
+    if args.source_id:
+        available={c["source_metadata"]["source_id"] for c in bundle["candidates"]}
+        if set(args.source_id)-available:parser.error("Unknown candidate source ID")
+        bundle={**bundle,"candidates":[c for c in bundle["candidates"] if c["source_metadata"]["source_id"] in args.source_id]}
     validate_config(config)
     errors=validate_candidate_snapshot(bundle,config)
     if errors:parser.error("Invalid pending candidates: "+str(errors))
