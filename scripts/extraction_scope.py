@@ -25,7 +25,8 @@ def overlaps(a,b):
 def loses_information(old,new):
     if isinstance(old,dict) and isinstance(new,dict):
         return any(loses_information(value,new.get(key)) for key,value in old.items() if key not in ('refs','note','summary'))
-    if isinstance(old,list) and isinstance(new,list):return len(new)<len(old)
+    if isinstance(old,list) and isinstance(new,list):
+        return len(new)<len(old) or any(loses_information(a,b) for a,b in zip(old,new))
     return old not in (None,'unknown',[],{}) and new in (None,'unknown',[],{})
 
 
@@ -44,6 +45,10 @@ def compile_scope(candidate,groups=None,fields=None):
         for parent in ('benefit','eligibility.year_limit','eligibility.candidate','schedule','application_method'):
             if overlaps(parent,path) and path.startswith(parent+'.'):
                 targets.remove(path);targets.add(parent);break
+    process={'application_method','schedule','field_applicability'}
+    if any(overlaps(path,parent) for path in targets for parent in process):
+        # N/A, delivery and deadlines jointly determine the student window.
+        targets.update(path for path in process if path in candidate)
     targets={p for p in targets if not any(p!=other and p.startswith(other+'.') for other in targets)}
     return {'write_fields':sorted(targets),
         'read_dependencies':['cycle','participants','institution_scope','eligibility','benefit','schedule','policy_version'],
@@ -80,6 +85,12 @@ def apply_scoped_replay(original,refreshed,plan,blocks):
     result['review'].pop('approved_candidate_sha256',None)
     result['source_metadata'].update({k:refreshed['source_metadata'][k] for k in
         ('extractor_version','normalizer_version','prepared_document_sha256') if k in refreshed['source_metadata']})
+    # Derived state belongs to the merged candidate, not the old or partial replay.
+    from scripts.evaluate_deadlines import evaluate_application_window
+    window=evaluate_application_window(result,original['application']['as_of'])
+    result['application']={**{k:window[k] for k in ('state','as_of','reason')},'refs':
+        [{'source':result['source_metadata']['source_id'],'locator':blocks[0]['locator']}]
+        if window['state']!='unknown' and blocks else []}
     from scripts.extract_candidates import limit_evidence_excerpts
     limit_evidence_excerpts(result,120)
     return verify_candidate(result,blocks)

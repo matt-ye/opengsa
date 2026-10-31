@@ -34,8 +34,8 @@ from scripts.verify_candidates import digest_text, evidence_digest, verify_candi
 from scripts.application_process import infer_process
 from scripts.ai_tool_rules import benefit_tiers
 
-EXTRACTOR_VERSION = "extractor-1.4.0"
-PROMPT_VERSION = "prompt-1.2.0"
+EXTRACTOR_VERSION = "extractor-1.4.1"
+PROMPT_VERSION = "prompt-1.2.1"
 
 PII_REDACT_RE = re.compile(
     r"([A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}|(?:\(0\d\)|0\d)[\-\s]?\d{3,4}[\-\s]?\d{3,4}(?:\s*(?:轉|分機|ext\.?)\s*\d+)?)"
@@ -527,7 +527,7 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
         self.total_tokens += int(usage.get("total_tokens") or 0)
 
         choice = (body.get("choices") or [{}])[0]
-        if choice.get("finish_reason") in ("length","model_context_window_exceeded","content_filter"):
+        if choice.get("finish_reason") != "stop":
             return {"_skipped_reason":"incomplete_model_output"}
         content = choice.get("message", {}).get("content", "")
         try:
@@ -565,6 +565,18 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
         self._guard_hash_only(source)
         if not self.enabled or (mode or self.mode)=='off':return None
         sanitized=self._sanitize_blocks(blocks, source)
+        from scripts.document_ir import prepare_document
+        source_units=blocks if all('unit_id' in b for b in blocks) else prepare_document(blocks)['units']
+        admitted={u['unit_id']:u for u in sanitized}
+        altered=[u['unit_id'] for u in source_units if
+                 normalized(u['text'])!=admitted.get(u['unit_id'],{}).get('text') or
+                 admitted.get(u['unit_id'],{}).get('structure_status')=='context_requires_manual_review']
+        # Privacy filtering is unchanged. A removed exception must not turn into
+        # an apparently complete model task. Only IDs/counts enter the report.
+        if altered:
+            self.last_preparation={'complete':False,'filtered_unit_ids':altered,
+                                   'chunks_planned':0,'chunks_completed':0}
+            return {'_skipped_reason':'source_sanitization_requires_review'}
         document={'units':sanitized,'document_sha256':sha(sanitized)}
         if not self.model_limits or self.model_limits.get('model')!=self.model:
             return {'_skipped_reason':'model_capabilities_required'}
@@ -1562,7 +1574,8 @@ def _extract_yuanxue(source, blocks, revision_id, observed_at, url, as_of, evide
     year_key=target_year if target_year is not None else "unknown"
     year_label=f"{target_year}年" if target_year is not None else "年度待核"
 
-    ordinary_blocks = [b for b in blocks if "配合補助" not in b["text"] or "一般補助" in b["text"]]
+    ordinary_blocks = [b for b in blocks if "配合補助" not in b["text"] or "一般補助" in b["text"]
+        or re.search(r"遠學補助\s*(?:及|與|或|、)\s*(?:遠學)?配合補助",b['text'])]
     cand_id = f"cand-ntu-yuanxue-{year_key}-ordinary-{revision_id[:8]}"
     ordinary = _base_candidate_template(
         candidate_id=cand_id,

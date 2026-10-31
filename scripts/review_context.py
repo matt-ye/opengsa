@@ -38,8 +38,9 @@ def refresh_context(bundle, config, fetcher=None):
             revision=digest([url,semantic,digest([VERSION,source])])
             if revision!=meta["revision_id"]:raise ScanError("source_revision_changed_requires_rescan")
             if meta.get('prepared_document_sha256'):
-                from scripts.document_ir import prepare_document
-                if prepare_document(blocks)['document_sha256']!=meta['prepared_document_sha256']:
+                from scripts.document_ir import prepare_document, VERSION as NORMALIZER_VERSION
+                if (meta.get('normalizer_version')!=NORMALIZER_VERSION or
+                        prepare_document(blocks)['document_sha256']!=meta['prepared_document_sha256']):
                     raise ScanError('source_preparation_changed_requires_rescan')
             contexts[url]=blocks
             statuses[key]="fresh_semantic_revision_matched"

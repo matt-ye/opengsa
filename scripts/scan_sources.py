@@ -19,7 +19,7 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-VERSION = "scanner-1"
+VERSION = "scanner-2"
 AGENT = "OpenGSA/0.1 (+https://github.com/matt-ye/opengsa)"
 SKIP = re.compile(r"名冊|名單|獲獎|得獎|姓名|學號|身分證|jsessionid|password|token=|login|登入", re.I)
 CONTACT = re.compile(r"@|電話|聯絡|承辦|傳真|住址|通訊地址|\b0\d{1,3}[- ]\d{6,}")
@@ -189,7 +189,8 @@ class Fetcher:
 def html_document(data, source, url, hosts):
     soup = BeautifulSoup(data, "html.parser")
     nodes = soup.select(source["body_selector"])
-    roots = [node for node in nodes if not any(parent in nodes for parent in node.parents)]
+    node_ids={id(node) for node in nodes}
+    roots = [node for node in nodes if not any(id(parent) in node_ids for parent in node.parents)]
     if not roots:
         raise ScanError("body_selector_changed")
     attachments = {}
@@ -213,32 +214,51 @@ def html_document(data, source, url, hosts):
     lines = []
     structures = []
     from bs4 import NavigableString, Comment
+    # Join inline markup inside semantic blocks; inserting spaces between DOM text
+    # nodes breaks Chinese amounts, negation and dates (e.g. 四<strong>萬</strong>元).
+    block_tags={'address','article','aside','blockquote','dd','div','dl','dt','fieldset',
+                'figcaption','figure','h1','h2','h3','h4','h5','h6','hr','li','main',
+                'ol','p','pre','section','table','tbody','td','th','thead','tfoot','tr','ul'}
+    def text_runs(root):
+        buffer=[];runs=[]
+        def flush(container):
+            text=normalized(''.join(buffer));buffer.clear()
+            if text:runs.append((text,container))
+        def visit(node,container):
+            if isinstance(node,Comment):return
+            if isinstance(node,NavigableString):buffer.append(str(node));return
+            if node.name=='br':flush(container);return
+            boundary=node.name in block_tags
+            if boundary:flush(container)
+            current=node if boundary else container
+            for child in node.children:visit(child,current)
+            if boundary:flush(current)
+        visit(root,root);flush(root)
+        return runs
+    tables=soup.find_all('table')
+    table_ids={id(table):f'table-{i}' for i,table in enumerate(tables,1)}
     for root in roots:
-        tables=soup.find_all('table');section=[]
-        for node in root.descendants:
-            if not isinstance(node,NavigableString) or isinstance(node,Comment):continue
-            for line in str(node).strip().splitlines():
-                line=normalized(line)
-                if not line:continue
-                parent=node.parent;heading=parent.find_parent(re.compile('^h[1-6]$')) if not re.match('^h[1-6]$',parent.name or '') else parent
-                kind='heading' if heading else 'list_item' if parent.find_parent('li') or parent.name=='li' else 'paragraph'
-                if heading:
-                    level=int(heading.name[1])
-                    title=normalized(heading.get_text(' ',strip=True))
-                    if not section or section[-1]!=(level,title):
-                        section=[entry for entry in section if entry[0]<level]+[(level,title)]
-                meta={'kind':kind,'section_path':[title for _,title in section]}
-                cell=parent if parent.name in ('td','th') else parent.find_parent(['td','th'])
-                if cell:
-                    table=cell.find_parent('table');row=cell.find_parent('tr')
-                    rows=[r for r in table.find_all('tr') if r.find_parent('table') is table]
-                    headers=rows[0].find_all(['td','th'],recursive=False) if rows else []
-                    meta.update(kind='table_cell',table_id=f'table-{tables.index(table)+1}',
-                        headers=[normalized(c.get_text(' ',strip=True)) for c in headers],
-                        row_cells=[normalized(c.get_text(' ',strip=True)) for c in row.find_all(['td','th'],recursive=False)] if row else [],
-                        row_index=rows.index(row) if row in rows else None,
-                        structure_status='complex_spans_require_review' if table.select('[rowspan],[colspan]') else 'preserved')
-                lines.append(line);structures.append(meta)
+        section=[]
+        for line,parent in text_runs(root):
+            heading=parent.find_parent(re.compile('^h[1-6]$')) if not re.match('^h[1-6]$',parent.name or '') else parent
+            kind='heading' if heading else 'list_item' if parent.find_parent('li') or parent.name=='li' else 'paragraph'
+            if heading:
+                level=int(heading.name[1])
+                title=normalized(heading.get_text())
+                if not section or section[-1]!=(level,title):
+                    section=[entry for entry in section if entry[0]<level]+[(level,title)]
+            meta={'kind':kind,'section_path':[title for _,title in section]}
+            cell=parent if parent.name in ('td','th') else parent.find_parent(['td','th'])
+            if cell:
+                table=cell.find_parent('table');row=cell.find_parent('tr')
+                rows=[r for r in table.find_all('tr') if r.find_parent('table') is table]
+                headers=rows[0].find_all(['td','th'],recursive=False) if rows else []
+                meta.update(kind='table_cell',table_id=table_ids[id(table)],
+                    headers=[normalized(c.get_text()) for c in headers],
+                    row_cells=[normalized(c.get_text()) for c in row.find_all(['td','th'],recursive=False)] if row else [],
+                    row_index=next((i for i,r in enumerate(rows) if r is row),None),
+                    structure_status='complex_spans_require_review' if table.select('[rowspan],[colspan]') else 'preserved')
+            lines.append(line);structures.append(meta)
     if source.get("start_marker"):
         marker = source["start_marker"]
         start = next((i for i, line in enumerate(lines) if marker in line), None)

@@ -1,10 +1,11 @@
 """Lossless in-memory document units and bounded request packing. No fetch or persistence."""
 from copy import deepcopy
+from datetime import date
 import hashlib
 import json
 import re
 
-VERSION = 'document-ir-1'
+VERSION = 'document-ir-2'
 
 
 def sha(value):
@@ -54,8 +55,14 @@ def pack_requests(document, render, count_tokens, limits):
     Missing/unverified capabilities do not admit a network call.
     """
     if not limits or not callable(count_tokens):raise ValueError('model_capabilities_or_token_counter_required')
-    if not limits.get('reviewed') or not limits.get('model') or not limits.get('checked_on'):
+    if limits.get('reviewed') is not True or not limits.get('model') or not limits.get('checked_on'):
         raise ValueError('model_capabilities_not_reviewed')
+    try:
+        checked=limits['checked_on']
+        if not isinstance(checked,str) or not re.fullmatch(r'\d{4}-\d{2}-\d{2}',checked):raise ValueError()
+        date.fromisoformat(checked)
+    except (TypeError,ValueError):raise ValueError('invalid_capability_review_date')
+    if type(limits.get('shared_context')) is not bool:raise ValueError('explicit_context_type_required')
     for key in ('input_limit','output_limit','output_reserve','max_request_bytes'):
         if type(limits.get(key)) is not int or limits[key]<=0:raise ValueError('invalid_model_limit:'+key)
     if limits['output_reserve']>limits['output_limit']:raise ValueError('output_reserve_exceeds_limit')
@@ -92,7 +99,11 @@ def pack_requests(document, render, count_tokens, limits):
             # Prefer sentence boundaries. Fallback is still lossless and mapped to its parent.
             prefix=unit['text'][start:start+best]
             cuts=list(re.finditer(r'[。；;！？\n]',prefix))
-            if cuts and cuts[-1].end()>=best//2:best=cuts[-1].end()
+            if cuts and cuts[-1].end()>=best//2:
+                cut=cuts[-1].end()
+                # Tokenizers need not be monotonic: even a shorter prefix must fit.
+                if fits([{**unit,'text':unit['text'][start:start+cut],
+                          'span_start':start,'span_end':start+cut}]):best=cut
             queue.append({**unit,'text':unit['text'][start:start+best],
                           'span_start':start,'span_end':start+best})
             start+=best

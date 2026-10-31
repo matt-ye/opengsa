@@ -8,7 +8,7 @@ from unittest.mock import patch
 
 from pypdf import PdfWriter
 from pypdf.generic import DictionaryObject, NameObject, DecodedStreamObject
-from scripts.scan_sources import (ROOT, Fetcher, ScanError, digest, evidence_mentions,
+from scripts.scan_sources import (ROOT, VERSION, Fetcher, ScanError, digest, evidence_mentions,
                                  html_document, markdown_report, pdf_document, robots_policy, safe_url, scan)
 
 CONFIG = json.loads((ROOT / "data/scan-sources.json").read_text(encoding="utf-8"))
@@ -186,7 +186,7 @@ class ScannerTests(unittest.TestCase):
 
     def test_304_uses_cached_attachment_manifest_and_headers(self):
         config = self.config();url = config['sources'][0]['url']
-        previous={'documents':{url:{'semantic_sha256':'old','etag':'abc','attachments':[],'profile_sha256':digest(['scanner-1',config['sources'][0]])}},'pending':{}}
+        previous={'documents':{url:{'semantic_sha256':'old','etag':'abc','attachments':[],'profile_sha256':digest([VERSION,config['sources'][0]])}},'pending':{}}
         sent=[]
         def transport(url, headers, limit):
             sent.append(headers);return response(status=404 if url.endswith('robots.txt') else 304)
