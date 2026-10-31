@@ -4,7 +4,7 @@
 const data=JSON.parse(document.getElementById("review-data").textContent);
 const byId=id=>document.getElementById(id);
 const el=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
-const fields={title:"名稱",cycle:"年度／梯次",category:"分類",resource_kind:"資源類型",scope:"適用範圍",participants:"申請／受益角色",organizations:"相關單位",benefit:"給付",eligibility:"資格",compatibility:"兼領",hardship:"清寒限制",application_method:"申請途徑",expense_period:"可認列支出期間",start:"申請起日",steps:"分層程序",result:"結果日期",field_applicability:"不適用依據",policy_version:"法規版本",evidence_status:"證據狀態"};
+const fields={title:"名稱",cycle:"年度／梯次",category:"分類",resource_kind:"資源類型",scope:"適用範圍",institution_scope:"學校／學院／系所限制",participants:"申請／受益角色",organizations:"相關單位",benefit:"給付",eligibility:"資格",compatibility:"兼領",hardship:"清寒限制",application_method:"申請途徑",expense_period:"可認列支出期間",start:"申請起日",steps:"分層程序",result:"結果日期",field_applicability:"不適用依據",policy_version:"法規版本",evidence_status:"證據狀態"};
 function valueCell(value){
  const td=el("td");
  if(value===undefined||value===null){td.append(el("p","未記錄／尚未收錄"));return td;}
@@ -17,9 +17,14 @@ const gapNames={"ai_tools:personal_purchase_or_completion_date":"學生的購買
 const controls=[];
 const date=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 byId("review-date").value=date;
-byId("run-info").textContent="快照 "+data.as_of+" · "+data.rows.length+"筆候選 · 本次工作台來源GET "+data.manifest.http_requests+"次 · 模型呼叫0次 · 未發布";
+byId("run-info").textContent="快照 "+data.as_of+" · "+data.rows.length+"筆文件候選／"+Object.keys(data.document_groups||{}).length+"組方案 · 本次工作台來源GET "+data.manifest.http_requests+"次 · 模型呼叫0次 · 未發布";
+for(const [program,ids] of Object.entries(data.document_groups||{})){
+ const li=el("li",program+"：");
+ for(const id of ids){const row=data.rows.find(r=>r.candidate_id===id);if(!row)continue;const a=el("a",row.title);a.href="#"+id;li.append(a,document.createTextNode("； "));}
+ byId("document-groups").append(li);
+}
 for(const row of data.rows){
- const article=el("article");article.className="card";
+ const article=el("article");article.className="card";article.id=row.candidate_id;
  article.append(el("h2",row.title));
  const link=el("a","核對官方來源 ↗");
  if(row.source.url.startsWith("https://")){link.href=row.source.url;link.target="_blank";link.rel="noopener noreferrer";}

@@ -34,7 +34,7 @@ from scripts.verify_candidates import digest_text, evidence_digest, verify_candi
 from scripts.application_process import infer_process
 from scripts.ai_tool_rules import benefit_tiers
 
-EXTRACTOR_VERSION = "extractor-1.2.0"
+EXTRACTOR_VERSION = "extractor-1.3.0"
 PROMPT_VERSION = "prompt-1.1.0"
 
 PII_REDACT_RE = re.compile(
@@ -796,7 +796,7 @@ def parse_amount_from_text(text):
                 "amount_min": val,
                 "amount_max": val,
                 "currency": "TWD",
-                "unit": "lump_sum",
+                "unit": "per_year" if re.search(r"每年|每學年|一年", clean) else "lump_sum",
                 "basis": "fixed",
                 "duration_months_min": None,
                 "duration_months_max": None,
@@ -824,13 +824,16 @@ def _format_benefit_summary(item):
 
     if amin is None or amax is None:
         value = amin if amin is not None else amax
-        return f"{'至少' if amax is None else '至多'}新臺幣{value:,}元（{unit}）；適用身分與期間待核。"
+        period = {"per_month":"每月", "per_year":"每年"}.get(unit, "")
+        return f"{branch + '：' if branch else ''}{period}{'至少' if amax is None else '至多'}新臺幣{value:,}元；適用條件及期間依來源核對。"
 
+    if unit in ("per_month", "per_year"):
+        period = "每月" if unit == "per_month" else "每年"
+        value = f"{amin:,}" if amin == amax else f"{amin:,}至{amax:,}"
+        return f"{branch + '：' if branch else ''}{period}新臺幣{value}元；實際期間與給付條件依核定。"
     if unit == "total_range" or amin != amax:
         dur_prefix = f"{branch or '補助'}{dmin}–{dmax}個月，" if (dmin and dmax) else (f"{branch}：" if branch else "")
         return f"{dur_prefix}總額新臺幣{amin:,}至{amax:,}元（實際額度依審議結果決定）。"
-    if unit == "per_month":
-        return f"每月新臺幣{amin:,}元；實際領取期間與續領條件依核定。"
     if unit == "lump_sum":
         return f"獎勵金新臺幣{amin:,}元。"
     return f"新臺幣{amin:,}元 ({unit})。"
@@ -1635,6 +1638,7 @@ def _extract_president_award(source, blocks, revision_id, observed_at, url, as_o
         "receiver": {"text": "所屬院系所評選推薦後送校級承辦", "refs": [first_ref]},
     }
     _populate_common_extractions(cand, blocks, source["id"], revision_id, evidence_mode)
+
     if cand["benefit"]["items"] and "獎狀" in " ".join(b["text"] for b in blocks):
         cand["benefit"]["summary"] = f"獎勵金新臺幣{cand['benefit']['items'][0]['amount_min']:,}元及獎狀。"
 
@@ -1963,12 +1967,29 @@ def _extract_policy(source, blocks, revision_id, observed_at, url, as_of, eviden
     first_ref = {"source":source["id"],"locator":identity["locator"]}
     _set_identity_with_evidence(cand, "身分條件請至來源定位核對", identity, source["id"], revision_id, evidence_mode)
     _populate_common_extractions(cand, blocks, source["id"], revision_id, evidence_mode)
+    # These documents describe several roles. A clause about temporary staff or
+    # full-time staff must not become a global student eligibility prohibition.
+    if source["id"] == "nstc-assistant-rule":
+        cand["eligibility"]["employment_status"] = "unknown"
+        cand["eligibility"]["negated_conditions"] = []
+        cand["compatibility"] = {"mode":"unknown", "prohibited_schemes":[],
+            "overlap_period_rule":None, "note":"依專任、兼任及臨時工身分分別核對約用及兼任限制。", "refs":[]}
+        cand["field_evidence"] = [e for e in cand["field_evidence"]
+            if e["field_path"] not in ("eligibility.employment_status", "compatibility")]
+        cand["eligibility"]["other_conditions"].append({"text":"各金額只適用所標示的約用類別；僱傭關係另須遵守勞動法規。", "refs":[first_ref]})
+    if source["id"] == "ntu-eecs-scholarship":
+        college_block = next((b for b in blocks if re.search(r"電機資訊學院|電資學院", b["text"])), None)
+        if college_block and re.search(r"本(?:學)?院.{0,30}(?:博士|研究生)", re.sub(r"\s+", "", " ".join(b["text"] for b in blocks))):
+            cand["institution_scope"]["college"] = "電機資訊學院"
+            cand["field_evidence"].append(make_field_evidence("institution_scope.college", source["id"], revision_id, college_block, evidence_mode))
+            cand["eligibility"]["other_conditions"].append({"text":"電機資訊學院方案；須另核對本院學籍及完整甄選條件。", "refs":[{"source":source["id"], "locator":college_block["locator"]}]})
     # Source clauses stay separate; no annual amount is converted into an invented total.
     cand["benefit"] = {"summary":"金額待來源完整核對", "items":[], "refs":[]}
     cand["field_evidence"] = [e for e in cand["field_evidence"] if not e["field_path"].startswith("benefit.")]
     monthly_minimum_header=None
     salary_grade=None
-    for block in blocks:
+    ta_role=None
+    for block_index, block in enumerate(blocks):
         # NSTC splits the monthly minimum heading, grade and amount across DOM blocks.
         if source["id"]=="nstc-assistant-rule":
             compact=re.sub(r"\s+","",block["text"])
@@ -1978,7 +1999,16 @@ def _extract_policy(source, blocks, revision_id, observed_at, url, as_of, eviden
                 monthly_minimum_header=None;salary_grade=None
             match=re.search(r"專科級|學士級|碩士級",compact)
             if monthly_minimum_header and match:salary_grade=(match[0],block)
-        for clause in re.split(r"[；。，]", block["text"]):
+        # Commas can separate the period/role heading from its monetary value.
+        for clause in re.split(r"[；;。]", block["text"]):
+            if source["id"] == "ntu-ta-policy":
+                roles = re.findall(r"博士(?:班|生)|碩士(?:班|生)|學士(?:班|生)", clause)
+                if len(set(r[:2] for r in roles)) == 1:
+                    ta_role=(roles[0][:2]+"班教學助理", block, block_index, "每月" in clause)
+                elif roles or (ta_role and block_index-ta_role[2]>1):
+                    ta_role=None
+            if source["id"] == "nstc-abroad-dragon-rule" and "計算方式" in clause:
+                continue  # Formula repeats the annual reference amount, not a second award.
             parsed = parse_amount_from_text(clause)
             if not parsed:
                 continue
@@ -1993,8 +2023,16 @@ def _extract_policy(source, blocks, revision_id, observed_at, url, as_of, eviden
             if monthly_minimum_header and salary_grade:
                 parsed.update(unit="per_month",basis="minimum",amount_max=None)
                 context=[monthly_minimum_header,salary_grade[1]]
+            if source["id"] == "ntu-ta-policy" and ta_role:
+                if ta_role[3]:parsed["unit"]="per_month"
+                context=[ta_role[1]]
             evidence_blocks=[block]+[b for b in context if b!=block]
-            item = {"branch_or_tier":salary_grade[0] if context else None, **parsed,
+            branch = "專任人員／" + salary_grade[0] if monthly_minimum_header and salary_grade else None
+            if source["id"] == "nstc-assistant-rule" and "學生兼任人員" in block["text"]:
+                branch = "學生兼任人員（學習或僱傭關係）"
+            if source["id"] == "ntu-ta-policy":
+                branch = ta_role[0] if ta_role else None
+            item = {"branch_or_tier":branch, **parsed,
                     "refs":[{"source":source["id"],"locator":b["locator"]} for b in evidence_blocks]}
             idx = len(cand["benefit"]["items"])
             cand["benefit"]["items"].append(item)
@@ -2003,6 +2041,8 @@ def _extract_policy(source, blocks, revision_id, observed_at, url, as_of, eviden
                 cand["field_evidence"].append(make_field_evidence(f"benefit.items/{idx}",source["id"],revision_id,b,evidence_mode))
     if cand["benefit"]["items"]:
         cand["benefit"]["summary"] = "；".join(_format_benefit_summary(i) for i in cand["benefit"]["items"])
+        if source["id"] == "nstc-abroad-dragon-rule":
+            cand["benefit"]["summary"] += "此為年補助計算基準；實領依核定研究日數計算，不另加計公式內的重複金額。"
     steps = []
     for block in blocks:
         if not any(w in block["text"] for w in ("申請期間", "申請期限", "截止", "完成申請")):
@@ -2559,7 +2599,7 @@ def extract_from_in_memory_blocks(
                     cand = _apply_dual_track_llm_response(cand, llm_resp, source, blocks, model_adapter)
 
         # 途徑與適用性依正文判斷，缺文字不自動轉N/A；簽名掃描不等於寄紙本。
-        method, applicability, process_evidence = infer_process(blocks)
+        method, applicability, process_evidence = infer_process(blocks, cand)
         for path, block in process_evidence.items():
             ref={"source":sid,"locator":block["locator"]}
             if path.startswith("application_method"):method["refs"].append(ref)

@@ -28,7 +28,7 @@ from scripts.evaluate_deadlines import parse_iso_date, parse_taipei_datetime
 from scripts.application_process import infer_process, process_errors
 from scripts.ai_tool_rules import benefit_tiers
 
-VERIFIER_VERSION = "verifier-1.2.0"
+VERIFIER_VERSION = "verifier-1.3.0"
 
 CONTACT_RE = re.compile(r"@|電話|聯絡|承辦|傳真|住址|通訊地址|\b0\d{1,3}[- ]\d{6,}")
 SKIP_RE = re.compile(r"名冊|名單|獲獎|得獎|姓名|學號|身分證|jsessionid|password|token=|login|登入", re.I)
@@ -103,6 +103,10 @@ def classify_review_gaps(candidate):
     for field in candidate.get("gaps_and_conflicts",{}).get("missing_fields",[]):
         kind="personal" if field=="ai_tools:personal_purchase_or_completion_date" else "operational" if field=="ai_tools:budget_exhaustion_status" else "source"
         result[kind].append(field)
+    for warning in candidate.get("verification",{}).get("warnings",[]):
+        if warning.startswith(("coverage_gap:","coverage_regression:")):
+            field=warning.split(":",1)[1]
+            if field not in result["source"]:result["source"].append(field)
     return result
 
 
@@ -361,18 +365,31 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
             ev_errors.append(f"missing_evidence:{path_key}")
         if in_memory_blocks is not None:
             locs = [e["locator"] for e in matching_ev] if matching_ev else [r.get("locator") for r in b_item.get("refs", []) if r.get("locator")]
-            combined = " ".join(block_map.get(l, "") for l in locs)
+            # PDF locators can repeat for every line on a page. Match the exact
+            # evidence hashes instead of borrowing a qualifier from another row.
+            combined = " ".join(b["text"] for b in in_memory_blocks
+                if any(e["locator"]==b["locator"] and e.get("source_block_sha256")==evidence_digest(b["text"]) for e in matching_ev))
             for amt_field in ("amount_min", "amount_max"):
                 amt = b_item.get(amt_field)
                 if amt is not None:
                     if not amount_supported(amt, combined):
                         ev_errors.append(f"hallucinated_amount_not_in_source:{path_key}:{amt}")
+            compact = re.sub(r"\s+", "", combined)
+            if b_item.get("unit") == "per_month" and not re.search(r"每月|月支|月薪",compact):
+                ev_errors.append("unsupported_period_context:"+path_key)
+            if b_item.get("unit") == "per_year" and not re.search(r"每年|每學年|一年",compact):
+                ev_errors.append("unsupported_period_context:"+path_key)
             if cand.get("program_key")=="nstc-assistant-rule":
                 compact=re.sub(r"\s+","",combined)
                 if b_item.get("unit")=="per_month" and not re.search(r"每月|月支|月薪",compact):
                     ev_errors.append("unsupported_monthly_salary_context:"+path_key)
                 if b_item.get("basis")=="minimum" and not re.search(r"至少|最低|不得低於",compact):
                     ev_errors.append("unsupported_salary_minimum_context:"+path_key)
+                branch = b_item.get("branch_or_tier") or ""
+                if branch.startswith("專任人員／") and not ("專任人員" in compact and branch.split("／",1)[1] in compact):
+                    ev_errors.append("unsupported_salary_role:"+path_key)
+                if branch.startswith("學生兼任人員") and "學生兼任人員" not in compact:
+                    ev_errors.append("unsupported_salary_role:"+path_key)
 
     if cand.get("compatibility", {}).get("mode") not in (None, "unknown"):
         if "compatibility" not in ev_by_path or not cand["compatibility"].get("refs"):
@@ -434,7 +451,7 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
                 if not period_ev or not all(date_supported(period[k],period_text) for k in ("starts_on","ends_on")):
                     ev_errors.append("ai_tools:unsupported_expense_period")
                 if period["starts_on"]>period["ends_on"]:ev_errors.append("ai_tools:inverted_expense_period")
-        expected_method, expected_applicability, _ = infer_process(in_memory_blocks)
+        expected_method, expected_applicability, _ = infer_process(in_memory_blocks, cand)
         method=cand.get("application_method",{})
         for key in ("mode","paper_delivery","handwritten_signature","deadline_basis"):
             if method.get(key,"unknown") != "unknown" and method[key] != expected_method[key]:
@@ -533,6 +550,16 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
         if b_item.get("duration_months_min") is not None and b_item.get("duration_months_max") is not None:
             if b_item["duration_months_min"] > b_item["duration_months_max"]:
                 da_errors.append(f"benefit_inverted_duration_range:benefit.items/{idx}")
+        # A single source monetary claim cannot be counted twice under different units.
+        locs = {r.get("locator") for r in b_item.get("refs", [])}
+        for other in benefit_items[:idx]:
+            same_value = all(other.get(k) == b_item.get(k) for k in
+                ("amount_min", "amount_max", "currency", "branch_or_tier"))
+            if same_value and locs.intersection(r.get("locator") for r in other.get("refs", [])):
+                da_errors.append(f"duplicate_benefit_claim:benefit.items/{idx}")
+    summary = cand.get("benefit", {}).get("summary", "")
+    if benefit_items and all(i.get("unit") in ("per_month", "per_year") for i in benefit_items) and "總額" in summary:
+        da_errors.append("benefit_summary_period_conflicts_with_items")
 
     date_and_amount_units_valid = len(da_errors) == 0
     errors.extend(da_errors)
@@ -572,7 +599,7 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
     )
     combined_elig_text = f"{id_text} {all_ev_text}"
 
-    if any(k in combined_elig_text for k in ("非在職", "不含在職")):
+    if cand.get("program_key") != "nstc-assistant-rule" and any(k in combined_elig_text for k in ("非在職", "不含在職")):
         if elig.get("employment_status") == "allowed":
             nr_errors.append("negated_in_service_condition_turned_into_allowed")
         if not any(nc.get("field") == "employment_status" for nc in neg_conds):
@@ -585,6 +612,8 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
             nr_errors.append("negated_compatibility_turned_into_allowed")
 
     participants = cand.get("participants", {})
+    if cand.get("program_key") == "nstc-assistant-rule" and elig.get("employment_status") != "unknown":
+        nr_errors.append("multi_role_policy_cannot_have_global_employment_exclusion")
     if cand.get("resource_kind") == "employment_support" and participants.get("applicant") == "student":
         nr_errors.append("employment_support_applicant_cannot_be_student")
     if cand.get("program_key") in ("nstc-grad-conference-policy", "nstc-abroad", "faos-student-conference"):
@@ -636,6 +665,15 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
             coverage_warnings.append("coverage_gap:fewer_than_2_field_evidence_entries")
         if cand.get("resource_kind") in ("scholarship", "award") and len(benefit_items) == 0:
             coverage_warnings.append("coverage_gap:missing_structured_benefit_items")
+        if elig.get("identity", {}).get("text", "").startswith("身分條件請至來源定位核對"):
+            coverage_warnings.append("coverage_gap:eligibility.identity_not_extracted")
+        if cand.get("program_key") == "ntu-eecs-scholarship" and not cand.get("institution_scope", {}).get("college"):
+            coverage_warnings.append("coverage_gap:institution_scope.college")
+        if cand.get("resource_kind") == "employment_support" and any(not i.get("branch_or_tier") for i in benefit_items):
+            coverage_warnings.append("coverage_gap:benefit_role_not_extracted")
+        for field in ("college", "department"):
+            if cand.get("institution_scope", {}).get(field) and not ev_by_path.get("institution_scope."+field):
+                coverage_warnings.append("coverage_gap:institution_scope."+field+"_evidence")
         for mf in cand.get("gaps_and_conflicts", {}).get("missing_fields", []):
             if "attachment" in mf and any(word in mf for word in ("unfetched","restricted","unavailable")):
                 coverage_warnings.append(f"coverage_gap:{mf}")

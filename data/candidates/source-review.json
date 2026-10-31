@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0-candidate",
-  "generated_at": "2026-10-31T06:10:09+00:00",
+  "generated_at": "2026-10-31T07:56:15+00:00",
   "as_of": "2026-10-31",
   "timezone": "Asia/Taipei",
   "model_enabled": false,
@@ -120,7 +120,7 @@
         "other_conditions": []
       },
       "benefit": {
-        "summary": "每月新臺幣40,000元；實際領取期間與續領條件依核定。",
+        "summary": "國科會核配：每月新臺幣40,000元；實際期間與給付條件依核定。",
         "items": [
           {
             "branch_or_tier": "國科會核配",
@@ -228,10 +228,10 @@
         "source_id": "ntu-doctoral-funding",
         "revision_id": "a87d34fa89892c7d263d819ed875cd0694b98a37c66a1ffa3c667e018b0b0822",
         "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
-        "observed_at": "2026-10-31T05:51:13+00:00",
+        "observed_at": "2026-10-31T07:54:21+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null
       },
@@ -297,8 +297,8 @@
       "evidence_status": "sufficient_for_draft",
       "verification": {
         "status": "passed_with_gaps",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T05:51:31+00:00",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:54:21+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -317,7 +317,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -441,7 +441,7 @@
         "other_conditions": []
       },
       "benefit": {
-        "summary": "每月新臺幣40,000元；實際領取期間與續領條件依核定。",
+        "summary": "教育部：每月新臺幣40,000元；實際期間與給付條件依核定。",
         "items": [
           {
             "branch_or_tier": "教育部",
@@ -549,10 +549,10 @@
         "source_id": "ntu-doctoral-funding",
         "revision_id": "a87d34fa89892c7d263d819ed875cd0694b98a37c66a1ffa3c667e018b0b0822",
         "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
-        "observed_at": "2026-10-31T05:51:13+00:00",
+        "observed_at": "2026-10-31T07:54:21+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null
       },
@@ -640,8 +640,8 @@
       "evidence_status": "sufficient_for_draft",
       "verification": {
         "status": "passed_with_gaps",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T05:51:31+00:00",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:54:21+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -660,7 +660,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -790,7 +790,7 @@
         "other_conditions": []
       },
       "benefit": {
-        "summary": "每月新臺幣40,000元；實際領取期間與續領條件依核定。",
+        "summary": "國科會核配：每月新臺幣40,000元；實際期間與給付條件依核定。",
         "items": [
           {
             "branch_or_tier": "國科會核配",
@@ -903,10 +903,10 @@
         "source_id": "ntu-doctoral-funding",
         "revision_id": "fe5ff9a3409e6ff57ac0fd6a0fee107deb4b2c6ba46bc3e64bf5d4c99e5db656",
         "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf",
-        "observed_at": "2026-10-31T05:51:13+00:00",
+        "observed_at": "2026-10-31T07:54:21+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null,
         "parent_url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713"
@@ -984,8 +984,8 @@
       "evidence_status": "sufficient_for_draft",
       "verification": {
         "status": "passed_automated_checks",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T05:51:31+00:00",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:54:21+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -1002,7 +1002,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -1137,7 +1137,7 @@
         "other_conditions": []
       },
       "benefit": {
-        "summary": "每月新臺幣40,000元；實際領取期間與續領條件依核定。",
+        "summary": "教育部：每月新臺幣40,000元；實際期間與給付條件依核定。",
         "items": [
           {
             "branch_or_tier": "教育部",
@@ -1250,10 +1250,10 @@
         "source_id": "ntu-doctoral-funding",
         "revision_id": "fe5ff9a3409e6ff57ac0fd6a0fee107deb4b2c6ba46bc3e64bf5d4c99e5db656",
         "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf",
-        "observed_at": "2026-10-31T05:51:13+00:00",
+        "observed_at": "2026-10-31T07:54:21+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null,
         "parent_url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713"
@@ -1353,8 +1353,8 @@
       "evidence_status": "sufficient_for_draft",
       "verification": {
         "status": "passed_automated_checks",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T05:51:31+00:00",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:54:21+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -1371,7 +1371,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -1573,10 +1573,10 @@
         "source_id": "ntu-doctoral-funding",
         "revision_id": "9bb6525384cc70fd06b40e448b52da30c1a80656a44a50f9d17f28bc16c5029d",
         "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
-        "observed_at": "2026-10-31T05:51:13+00:00",
+        "observed_at": "2026-10-31T07:54:21+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null,
         "parent_url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713"
@@ -1645,8 +1645,8 @@
       "evidence_status": "sufficient_for_draft",
       "verification": {
         "status": "passed_with_gaps",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T05:51:31+00:00",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:54:21+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -1666,7 +1666,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -1781,7 +1781,7 @@
             "amount_min": 100000,
             "amount_max": 100000,
             "currency": "TWD",
-            "unit": "lump_sum",
+            "unit": "per_year",
             "basis": "fixed",
             "duration_months_min": null,
             "duration_months_max": null,
@@ -1903,10 +1903,10 @@
         "source_id": "ntu-president-award",
         "revision_id": "627eac826f172f8f70443fff8325527febe01218c259ec3d8de1a81dc9988f9d",
         "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368",
-        "observed_at": "2026-10-31T05:51:34+00:00",
+        "observed_at": "2026-10-31T07:54:21+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null
       },
@@ -1970,8 +1970,8 @@
       "evidence_status": "sufficient_for_draft",
       "verification": {
         "status": "passed_automated_checks",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T05:51:45+00:00",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:54:21+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -1988,7 +1988,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -2229,10 +2229,10 @@
         "source_id": "ntu-yuanxue",
         "revision_id": "e4bcffd5ee93eb15e04a4784b309dbfcd8c6088ad4bc8c841d96429c28a4133a",
         "url": "https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260",
-        "observed_at": "2026-10-31T05:48:38+00:00",
+        "observed_at": "2026-10-31T07:54:38+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null
       },
@@ -2310,8 +2310,8 @@
       "evidence_status": "sufficient_for_draft",
       "verification": {
         "status": "passed_with_gaps",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T05:48:46+00:00",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:54:38+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -2331,7 +2331,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -2446,7 +2446,7 @@
             "amount_min": 100000,
             "amount_max": 100000,
             "currency": "TWD",
-            "unit": "lump_sum",
+            "unit": "per_year",
             "basis": "fixed",
             "duration_months_min": null,
             "duration_months_max": null,
@@ -2545,10 +2545,10 @@
         "source_id": "ntu-president-award",
         "revision_id": "b35d810f6227a7525df0bcc40efe2f8822ef82162754920674b7666f63a74091",
         "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf",
-        "observed_at": "2026-10-31T05:51:34+00:00",
+        "observed_at": "2026-10-31T07:54:38+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null,
         "parent_url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368"
@@ -2602,8 +2602,8 @@
       "evidence_status": "sufficient_for_draft",
       "verification": {
         "status": "passed_automated_checks",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T05:51:45+00:00",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:54:38+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -2620,7 +2620,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -2850,10 +2850,10 @@
         "source_id": "nstc-ntu-conference",
         "revision_id": "3450d15aaa6d8fbe1c9ee3e8b56cd26ffd372154d6b38cbffafa3d8a461a50d2",
         "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383",
-        "observed_at": "2026-10-31T05:48:47+00:00",
+        "observed_at": "2026-10-31T07:54:38+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null
       },
@@ -2950,8 +2950,8 @@
       "evidence_status": "sufficient_for_draft",
       "verification": {
         "status": "passed_automated_checks",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T05:48:55+00:00",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:54:38+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -2968,7 +2968,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -3222,10 +3222,10 @@
         "source_id": "nstc-conference-rule",
         "revision_id": "1e76421839904500c8e652211a97df34ba3990101daeed19d3ca8d87fe5cdb2d",
         "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260",
-        "observed_at": "2026-10-31T05:48:47+00:00",
+        "observed_at": "2026-10-31T07:54:38+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null
       },
@@ -3333,8 +3333,8 @@
       "evidence_status": "sufficient_for_draft",
       "verification": {
         "status": "passed_automated_checks",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T05:48:55+00:00",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:54:38+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -3351,7 +3351,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -3589,10 +3589,10 @@
         "source_id": "faos-student-conference",
         "revision_id": "de284c75c586e42da933780b1e05a37cec3d0949724ee8aa79790d110a9bd0d7",
         "url": "https://www.faos.org.tw/Application/ApplicatStud.html",
-        "observed_at": "2026-10-31T05:48:56+00:00",
+        "observed_at": "2026-10-31T07:54:55+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null
       },
@@ -3666,8 +3666,8 @@
       "evidence_status": "sufficient_for_draft",
       "verification": {
         "status": "passed_automated_checks",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T05:49:03+00:00",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:54:55+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -3684,7 +3684,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -3776,7 +3776,7 @@
         "other_conditions": []
       },
       "benefit": {
-        "summary": "新臺幣900,000元 (per_year)。；獎勵金新臺幣900,000元。",
+        "summary": "每年新臺幣900,000元；實際期間與給付條件依核定。此為年補助計算基準；實領依核定研究日數計算，不另加計公式內的重複金額。",
         "items": [
           {
             "branch_or_tier": null,
@@ -3794,30 +3794,9 @@
                 "locator": "#ctl00_cp_content_divLawContent08 / text-block 46"
               }
             ]
-          },
-          {
-            "branch_or_tier": null,
-            "amount_min": 900000,
-            "amount_max": 900000,
-            "currency": "TWD",
-            "unit": "lump_sum",
-            "basis": "fixed",
-            "duration_months_min": null,
-            "duration_months_max": null,
-            "tax_note": null,
-            "refs": [
-              {
-                "source": "nstc-abroad-dragon-rule",
-                "locator": "#ctl00_cp_content_divLawContent08 / text-block 46"
-              }
-            ]
           }
         ],
         "refs": [
-          {
-            "source": "nstc-abroad-dragon-rule",
-            "locator": "#ctl00_cp_content_divLawContent08 / text-block 46"
-          },
           {
             "source": "nstc-abroad-dragon-rule",
             "locator": "#ctl00_cp_content_divLawContent08 / text-block 46"
@@ -3999,10 +3978,10 @@
         "source_id": "nstc-abroad-dragon-rule",
         "revision_id": "5b229e2937d8795e03559ae40307d92cd985f5fd0a37825e418351c1f9940a2a",
         "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039188",
-        "observed_at": "2026-10-31T05:48:56+00:00",
+        "observed_at": "2026-10-31T07:54:55+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null
       },
@@ -4042,17 +4021,6 @@
         },
         {
           "field_path": "benefit.items/0",
-          "source": "nstc-abroad-dragon-rule",
-          "revision_id": "5b229e2937d8795e03559ae40307d92cd985f5fd0a37825e418351c1f9940a2a",
-          "locator": "#ctl00_cp_content_divLawContent08 / text-block 46",
-          "evidence_mode": "hash_only",
-          "excerpt": null,
-          "excerpt_sha256": "aaf5b18a2975ca0b492f1d7d498081410c7c6f1cd45ecd1263cf3eba9f2b4435",
-          "source_block_sha256": "aaf5b18a2975ca0b492f1d7d498081410c7c6f1cd45ecd1263cf3eba9f2b4435",
-          "extraction_method": "deterministic_rule"
-        },
-        {
-          "field_path": "benefit.items/1",
           "source": "nstc-abroad-dragon-rule",
           "revision_id": "5b229e2937d8795e03559ae40307d92cd985f5fd0a37825e418351c1f9940a2a",
           "locator": "#ctl00_cp_content_divLawContent08 / text-block 46",
@@ -4117,9 +4085,9 @@
       },
       "evidence_status": "sufficient_for_draft",
       "verification": {
-        "status": "passed_automated_checks",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T05:49:04+00:00",
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:54:55+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -4128,15 +4096,17 @@
           "no_year_or_branch_mixing": true,
           "negation_and_roles_valid": true,
           "no_unresolved_conflicts": true,
-          "coverage_ok": true
+          "coverage_ok": false
         },
         "errors": [],
-        "warnings": [],
+        "warnings": [
+          "coverage_gap:eligibility.identity_not_extracted"
+        ],
         "audit_findings": []
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -4327,10 +4297,10 @@
         "source_id": "sinica-phd-fellowship",
         "revision_id": "82eddedf877a8abc0a38956573b14172e2307a505660cbbaddb5d6f8e81b7d39",
         "url": "https://www.sinica.edu.tw/news_content/56/3434",
-        "observed_at": "2026-10-31T05:49:08+00:00",
+        "observed_at": "2026-10-31T07:54:55+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null
       },
@@ -4380,8 +4350,8 @@
       "evidence_status": "sufficient_for_draft",
       "verification": {
         "status": "passed_with_gaps",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T05:49:21+00:00",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:54:55+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -4394,13 +4364,14 @@
         },
         "errors": [],
         "warnings": [
-          "coverage_gap:missing_structured_benefit_items"
+          "coverage_gap:missing_structured_benefit_items",
+          "coverage_gap:eligibility.identity_not_extracted"
         ],
         "audit_findings": []
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -4717,10 +4688,10 @@
         "source_id": "taipei-ai-tools",
         "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
         "url": "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796",
-        "observed_at": "2026-10-31T05:49:29+00:00",
+        "observed_at": "2026-10-31T07:54:55+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null
       },
@@ -4949,8 +4920,8 @@
       "evidence_status": "sufficient_for_draft",
       "verification": {
         "status": "passed_automated_checks",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T05:49:42+00:00",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:54:55+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -4970,7 +4941,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -5352,10 +5323,10 @@
         "source_id": "hsinchu-ai-tools",
         "revision_id": "2df2bf6147610b2cc22648da58a1225e2e3c61e08673a2540e0924413d47cb96",
         "url": "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
-        "observed_at": "2026-10-31T05:49:52+00:00",
+        "observed_at": "2026-10-31T07:55:08+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null
       },
@@ -5695,8 +5666,8 @@
       "evidence_status": "sufficient_for_draft",
       "verification": {
         "status": "passed_with_gaps",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T05:49:57+00:00",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:55:08+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -5717,7 +5688,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -5824,7 +5795,7 @@
         ],
         "institution": "domestic_eligible_institution",
         "nationality": "unknown",
-        "employment_status": "non_in_service_only",
+        "employment_status": "unknown",
         "year_limit": {
           "mode": "unknown",
           "min": null,
@@ -5839,19 +5810,7 @@
         },
         "graduation_requirement": "unknown",
         "prior_funding_rule": "unknown",
-        "negated_conditions": [
-          {
-            "field": "employment_status",
-            "operator": "exclude",
-            "text": "排除在職生／在職專班或有專職工作者",
-            "refs": [
-              {
-                "source": "nstc-assistant-rule",
-                "locator": "#ctl00_cp_content_divLawContent08 / text-block 38"
-              }
-            ]
-          }
-        ],
+        "negated_conditions": [],
         "identity": {
           "text": "身分條件請至來源定位核對",
           "refs": [
@@ -5861,13 +5820,23 @@
             }
           ]
         },
-        "other_conditions": []
+        "other_conditions": [
+          {
+            "text": "各金額只適用所標示的約用類別；僱傭關係另須遵守勞動法規。",
+            "refs": [
+              {
+                "source": "nstc-assistant-rule",
+                "locator": "#ctl00_cp_content_divLawContent08 / text-block 24"
+              }
+            ]
+          }
+        ]
       },
       "benefit": {
-        "summary": "至少新臺幣30,400元（per_month）；適用身分與期間待核。；至少新臺幣36,300元（per_month）；適用身分與期間待核。；至少新臺幣41,500元（per_month）；適用身分與期間待核。；至少新臺幣6,000元（per_month）；適用身分與期間待核。",
+        "summary": "專任人員／專科級：每月至少新臺幣30,400元；適用條件及期間依來源核對。；專任人員／學士級：每月至少新臺幣36,300元；適用條件及期間依來源核對。；專任人員／碩士級：每月至少新臺幣41,500元；適用條件及期間依來源核對。；學生兼任人員（學習或僱傭關係）：每月至少新臺幣6,000元；適用條件及期間依來源核對。",
         "items": [
           {
-            "branch_or_tier": "專科級",
+            "branch_or_tier": "專任人員／專科級",
             "amount_min": 30400,
             "amount_max": null,
             "currency": "TWD",
@@ -5892,7 +5861,7 @@
             ]
           },
           {
-            "branch_or_tier": "學士級",
+            "branch_or_tier": "專任人員／學士級",
             "amount_min": 36300,
             "amount_max": null,
             "currency": "TWD",
@@ -5913,7 +5882,7 @@
             ]
           },
           {
-            "branch_or_tier": "碩士級",
+            "branch_or_tier": "專任人員／碩士級",
             "amount_min": 41500,
             "amount_max": null,
             "currency": "TWD",
@@ -5938,7 +5907,7 @@
             ]
           },
           {
-            "branch_or_tier": null,
+            "branch_or_tier": "學生兼任人員（學習或僱傭關係）",
             "amount_min": 6000,
             "amount_max": null,
             "currency": "TWD",
@@ -5978,7 +5947,7 @@
         "mode": "unknown",
         "prohibited_schemes": [],
         "overlap_period_rule": null,
-        "note": "須查雙方方案及重疊期間，未明示不代表可兼領。",
+        "note": "依專任、兼任及臨時工身分分別核對約用及兼任限制。",
         "refs": []
       },
       "hardship": {
@@ -6033,7 +6002,7 @@
       "application": {
         "state": "unknown",
         "as_of": "2026-10-31",
-        "reason": "此為單位申請／聘任制度入口，學生需查個別課程或單位招募時間，非單一獎學金收件窗口。",
+        "reason": "申請窗口 N/A 不適用：本筆為聘任制度參考文件，當期學生申請窗口及結果日期另查個別招募。",
         "refs": []
       },
       "policy_version": {
@@ -6053,10 +6022,10 @@
         "source_id": "nstc-assistant-rule",
         "revision_id": "14a6cfad9d95660d12a4a0ce69a28b6fed91bd6efb843f45022959d81497e24e",
         "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686",
-        "observed_at": "2026-10-31T06:08:33+00:00",
+        "observed_at": "2026-10-31T07:56:15+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null
       },
@@ -6070,17 +6039,6 @@
           "excerpt": "專任人員：指執行機構約用之專職從事專題研究計畫工作人員。但在職行政人員或在學學生，除在職進修或進修部學生專職於專題研究計畫外，不得擔任專任人員。",
           "excerpt_sha256": "2eb35940b373e4714e772218e161dcbe0ba8c64a726552a5786f0eeda79960f7",
           "source_block_sha256": "2eb35940b373e4714e772218e161dcbe0ba8c64a726552a5786f0eeda79960f7",
-          "extraction_method": "deterministic_rule"
-        },
-        {
-          "field_path": "eligibility.employment_status",
-          "source": "nstc-assistant-rule",
-          "revision_id": "14a6cfad9d95660d12a4a0ce69a28b6fed91bd6efb843f45022959d81497e24e",
-          "locator": "#ctl00_cp_content_divLawContent08 / text-block 38",
-          "evidence_mode": "short_excerpt",
-          "excerpt": "臨時工：指臨時僱用且無專職工作之人員。",
-          "excerpt_sha256": "64f24467640146127d882abed1fc167a6599d54f6f046ba260e369861dccc593",
-          "source_block_sha256": "64f24467640146127d882abed1fc167a6599d54f6f046ba260e369861dccc593",
           "extraction_method": "deterministic_rule"
         },
         {
@@ -6132,8 +6090,8 @@
           "source": "nstc-assistant-rule",
           "revision_id": "14a6cfad9d95660d12a4a0ce69a28b6fed91bd6efb843f45022959d81497e24e",
           "locator": "#ctl00_cp_content_divLawContent08 / text-block 59",
-          "evidence_mode": "hash_only",
-          "excerpt": null,
+          "evidence_mode": "short_excerpt",
+          "excerpt": "學士級：三萬六千三百元。",
           "excerpt_sha256": "263daab692b505da2f4b65baee0490802ebab7f4c42a6470c6bd108d4ba79b03",
           "source_block_sha256": "263daab692b505da2f4b65baee0490802ebab7f4c42a6470c6bd108d4ba79b03",
           "extraction_method": "deterministic_rule"
@@ -6176,8 +6134,8 @@
           "source": "nstc-assistant-rule",
           "revision_id": "14a6cfad9d95660d12a4a0ce69a28b6fed91bd6efb843f45022959d81497e24e",
           "locator": "#ctl00_cp_content_divLawContent08 / text-block 61",
-          "evidence_mode": "hash_only",
-          "excerpt": null,
+          "evidence_mode": "short_excerpt",
+          "excerpt": "碩士級",
           "excerpt_sha256": "1fa9251f7811865def724837e5c1eea7f04402e0f953ff547ba1d5a107763be0",
           "source_block_sha256": "1fa9251f7811865def724837e5c1eea7f04402e0f953ff547ba1d5a107763be0",
           "extraction_method": "deterministic_rule"
@@ -6192,6 +6150,39 @@
           "excerpt_sha256": "49d9238928217d45ebd2e912bf8ec1ed18dd5a5d57746c83426cd04817114e14",
           "source_block_sha256": "49d9238928217d45ebd2e912bf8ec1ed18dd5a5d57746c83426cd04817114e14",
           "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "field_applicability.application_start",
+          "source": "nstc-assistant-rule",
+          "revision_id": "14a6cfad9d95660d12a4a0ce69a28b6fed91bd6efb843f45022959d81497e24e",
+          "locator": "#ctl00_cp_content_divLawContent08 / text-block 14",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "a42226e3aea15a4bd292f389ca92bf53b3317f6a8b633921a7ec6972f1d3dddd",
+          "source_block_sha256": "a42226e3aea15a4bd292f389ca92bf53b3317f6a8b633921a7ec6972f1d3dddd",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "field_applicability.student_deadline",
+          "source": "nstc-assistant-rule",
+          "revision_id": "14a6cfad9d95660d12a4a0ce69a28b6fed91bd6efb843f45022959d81497e24e",
+          "locator": "#ctl00_cp_content_divLawContent08 / text-block 14",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "a42226e3aea15a4bd292f389ca92bf53b3317f6a8b633921a7ec6972f1d3dddd",
+          "source_block_sha256": "a42226e3aea15a4bd292f389ca92bf53b3317f6a8b633921a7ec6972f1d3dddd",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "field_applicability.result_date",
+          "source": "nstc-assistant-rule",
+          "revision_id": "14a6cfad9d95660d12a4a0ce69a28b6fed91bd6efb843f45022959d81497e24e",
+          "locator": "#ctl00_cp_content_divLawContent08 / text-block 14",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "a42226e3aea15a4bd292f389ca92bf53b3317f6a8b633921a7ec6972f1d3dddd",
+          "source_block_sha256": "a42226e3aea15a4bd292f389ca92bf53b3317f6a8b633921a7ec6972f1d3dddd",
+          "extraction_method": "deterministic_rule"
         }
       ],
       "gaps_and_conflicts": {
@@ -6204,9 +6195,9 @@
       },
       "evidence_status": "sufficient_for_draft",
       "verification": {
-        "status": "passed_automated_checks",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T06:08:41+00:00",
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:56:15+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -6215,15 +6206,17 @@
           "no_year_or_branch_mixing": true,
           "negation_and_roles_valid": true,
           "no_unresolved_conflicts": true,
-          "coverage_ok": true
+          "coverage_ok": false
         },
         "errors": [],
-        "warnings": [],
+        "warnings": [
+          "coverage_gap:eligibility.identity_not_extracted"
+        ],
         "audit_findings": []
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -6238,7 +6231,38 @@
         "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
         "refs": []
       },
-      "field_applicability": {}
+      "field_applicability": {
+        "application_start": {
+          "status": "not_applicable",
+          "reason": "本筆為聘任制度參考文件，當期學生申請窗口及結果日期另查個別招募。",
+          "refs": [
+            {
+              "source": "nstc-assistant-rule",
+              "locator": "#ctl00_cp_content_divLawContent08 / text-block 14"
+            }
+          ]
+        },
+        "student_deadline": {
+          "status": "not_applicable",
+          "reason": "本筆為聘任制度參考文件，當期學生申請窗口及結果日期另查個別招募。",
+          "refs": [
+            {
+              "source": "nstc-assistant-rule",
+              "locator": "#ctl00_cp_content_divLawContent08 / text-block 14"
+            }
+          ]
+        },
+        "result_date": {
+          "status": "not_applicable",
+          "reason": "本筆為聘任制度參考文件，當期學生申請窗口及結果日期另查個別招募。",
+          "refs": [
+            {
+              "source": "nstc-assistant-rule",
+              "locator": "#ctl00_cp_content_divLawContent08 / text-block 14"
+            }
+          ]
+        }
+      }
     },
     {
       "candidate_id": "cand-ntu-eecs-scholarship-970ee807",
@@ -6264,7 +6288,7 @@
       },
       "institution_scope": {
         "school": "NTU",
-        "college": null,
+        "college": "電機資訊學院",
         "department": null
       },
       "organizations": {
@@ -6312,7 +6336,17 @@
             }
           ]
         },
-        "other_conditions": []
+        "other_conditions": [
+          {
+            "text": "電機資訊學院方案；須另核對本院學籍及完整甄選條件。",
+            "refs": [
+              {
+                "source": "ntu-eecs-scholarship",
+                "locator": "PDF page 1"
+              }
+            ]
+          }
+        ]
       },
       "benefit": {
         "summary": "金額待來源完整核對",
@@ -6398,10 +6432,10 @@
         "source_id": "ntu-eecs-scholarship",
         "revision_id": "970ee8072b5c30acd168fef9f6399c7c72d5a26a6f83f61b4dde1b50bf1f4383",
         "url": "https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf",
-        "observed_at": "2026-10-31T06:08:33+00:00",
+        "observed_at": "2026-10-31T07:55:08+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null
       },
@@ -6427,6 +6461,17 @@
           "excerpt_sha256": "fb2f9e7cb7080afcef3445481ab57d5a701de667abf7b11ae72894458a924dda",
           "source_block_sha256": "fb2f9e7cb7080afcef3445481ab57d5a701de667abf7b11ae72894458a924dda",
           "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "institution_scope.college",
+          "source": "ntu-eecs-scholarship",
+          "revision_id": "970ee8072b5c30acd168fef9f6399c7c72d5a26a6f83f61b4dde1b50bf1f4383",
+          "locator": "PDF page 1",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "國立臺灣大學電資學院優秀博士生獎學金評選辦法",
+          "excerpt_sha256": "012e8be2a65809169dd4304579ba9e06d313c4a14f6d499083741972af749b33",
+          "source_block_sha256": "012e8be2a65809169dd4304579ba9e06d313c4a14f6d499083741972af749b33",
+          "extraction_method": "deterministic_rule"
         }
       ],
       "gaps_and_conflicts": {
@@ -6440,8 +6485,8 @@
       "evidence_status": "sufficient_for_draft",
       "verification": {
         "status": "passed_with_gaps",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T06:08:41+00:00",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:55:08+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -6454,13 +6499,14 @@
         },
         "errors": [],
         "warnings": [
-          "coverage_gap:missing_structured_benefit_items"
+          "coverage_gap:missing_structured_benefit_items",
+          "coverage_gap:eligibility.identity_not_extracted"
         ],
         "audit_findings": []
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -6623,7 +6669,7 @@
       "application": {
         "state": "unknown",
         "as_of": "2026-10-31",
-        "reason": "此為單位申請／聘任制度入口，學生需查個別課程或單位招募時間，非單一獎學金收件窗口。",
+        "reason": "申請窗口 N/A 不適用：本筆為聘任制度參考文件，當期學生申請窗口及結果日期另查個別招募。",
         "refs": []
       },
       "policy_version": {
@@ -6638,10 +6684,10 @@
         "source_id": "ntu-ta-policy",
         "revision_id": "73ab1ac7097c5b65cf3a08a89561ef9ec55322bcdf94467d495a6db19bc728bf",
         "url": "https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514",
-        "observed_at": "2026-10-31T06:10:02+00:00",
+        "observed_at": "2026-10-31T07:56:15+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null
       },
@@ -6667,6 +6713,39 @@
           "excerpt_sha256": "9ab5292600ab45485e8d6da5940fa74d7b6e99ffa954237560b33b9b2763d9a9",
           "source_block_sha256": "9ab5292600ab45485e8d6da5940fa74d7b6e99ffa954237560b33b9b2763d9a9",
           "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "field_applicability.application_start",
+          "source": "ntu-ta-policy",
+          "revision_id": "73ab1ac7097c5b65cf3a08a89561ef9ec55322bcdf94467d495a6db19bc728bf",
+          "locator": ".article-center / text-block 12",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "15514fa990e4c7b2ba33448b9912fe9b5875227131c82f2bfa94a6bc6cae7a73",
+          "source_block_sha256": "15514fa990e4c7b2ba33448b9912fe9b5875227131c82f2bfa94a6bc6cae7a73",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "field_applicability.student_deadline",
+          "source": "ntu-ta-policy",
+          "revision_id": "73ab1ac7097c5b65cf3a08a89561ef9ec55322bcdf94467d495a6db19bc728bf",
+          "locator": ".article-center / text-block 12",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "15514fa990e4c7b2ba33448b9912fe9b5875227131c82f2bfa94a6bc6cae7a73",
+          "source_block_sha256": "15514fa990e4c7b2ba33448b9912fe9b5875227131c82f2bfa94a6bc6cae7a73",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "field_applicability.result_date",
+          "source": "ntu-ta-policy",
+          "revision_id": "73ab1ac7097c5b65cf3a08a89561ef9ec55322bcdf94467d495a6db19bc728bf",
+          "locator": ".article-center / text-block 12",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "15514fa990e4c7b2ba33448b9912fe9b5875227131c82f2bfa94a6bc6cae7a73",
+          "source_block_sha256": "15514fa990e4c7b2ba33448b9912fe9b5875227131c82f2bfa94a6bc6cae7a73",
+          "extraction_method": "deterministic_rule"
         }
       ],
       "gaps_and_conflicts": {
@@ -6679,9 +6758,9 @@
       },
       "evidence_status": "sufficient_for_draft",
       "verification": {
-        "status": "passed_automated_checks",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T06:10:09+00:00",
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:56:15+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -6690,15 +6769,17 @@
           "no_year_or_branch_mixing": true,
           "negation_and_roles_valid": true,
           "no_unresolved_conflicts": true,
-          "coverage_ok": true
+          "coverage_ok": false
         },
         "errors": [],
-        "warnings": [],
+        "warnings": [
+          "coverage_gap:eligibility.identity_not_extracted"
+        ],
         "audit_findings": []
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -6713,7 +6794,38 @@
         "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
         "refs": []
       },
-      "field_applicability": {}
+      "field_applicability": {
+        "application_start": {
+          "status": "not_applicable",
+          "reason": "本筆為聘任制度參考文件，當期學生申請窗口及結果日期另查個別招募。",
+          "refs": [
+            {
+              "source": "ntu-ta-policy",
+              "locator": ".article-center / text-block 12"
+            }
+          ]
+        },
+        "student_deadline": {
+          "status": "not_applicable",
+          "reason": "本筆為聘任制度參考文件，當期學生申請窗口及結果日期另查個別招募。",
+          "refs": [
+            {
+              "source": "ntu-ta-policy",
+              "locator": ".article-center / text-block 12"
+            }
+          ]
+        },
+        "result_date": {
+          "status": "not_applicable",
+          "reason": "本筆為聘任制度參考文件，當期學生申請窗口及結果日期另查個別招募。",
+          "refs": [
+            {
+              "source": "ntu-ta-policy",
+              "locator": ".article-center / text-block 12"
+            }
+          ]
+        }
+      }
     },
     {
       "candidate_id": "cand-ntu-ta-policy-cc28dee0",
@@ -6791,10 +6903,10 @@
         "other_conditions": []
       },
       "benefit": {
-        "summary": "總額新臺幣8,000至10,000元（實際額度依審議結果決定）。；總額新臺幣6,000至7,500元（實際額度依審議結果決定）。",
+        "summary": "博士班教學助理：每月新臺幣8,000至10,000元；實際期間與給付條件依核定。；碩士班教學助理：每月新臺幣6,000至7,500元；實際期間與給付條件依核定。；學士班教學助理：每月新臺幣4,000至6,000元；實際期間與給付條件依核定。",
         "items": [
           {
-            "branch_or_tier": null,
+            "branch_or_tier": "博士班教學助理",
             "amount_min": 8000,
             "amount_max": 10000,
             "currency": "TWD",
@@ -6811,9 +6923,30 @@
             ]
           },
           {
-            "branch_or_tier": null,
+            "branch_or_tier": "碩士班教學助理",
             "amount_min": 6000,
             "amount_max": 7500,
+            "currency": "TWD",
+            "unit": "per_month",
+            "basis": "range",
+            "duration_months_min": null,
+            "duration_months_max": null,
+            "tax_note": null,
+            "refs": [
+              {
+                "source": "ntu-ta-policy",
+                "locator": "PDF page 1"
+              },
+              {
+                "source": "ntu-ta-policy",
+                "locator": "PDF page 1"
+              }
+            ]
+          },
+          {
+            "branch_or_tier": "學士班教學助理",
+            "amount_min": 4000,
+            "amount_max": 6000,
             "currency": "TWD",
             "unit": "per_month",
             "basis": "range",
@@ -6829,6 +6962,10 @@
           }
         ],
         "refs": [
+          {
+            "source": "ntu-ta-policy",
+            "locator": "PDF page 1"
+          },
           {
             "source": "ntu-ta-policy",
             "locator": "PDF page 1"
@@ -6898,7 +7035,7 @@
       "application": {
         "state": "unknown",
         "as_of": "2026-10-31",
-        "reason": "此為單位申請／聘任制度入口，學生需查個別課程或單位招募時間，非單一獎學金收件窗口。",
+        "reason": "申請窗口 N/A 不適用：本筆為聘任制度參考文件，當期學生申請窗口及結果日期另查個別招募。",
         "refs": []
       },
       "policy_version": {
@@ -6918,10 +7055,10 @@
         "source_id": "ntu-ta-policy",
         "revision_id": "cc28dee00a3c0ed2f34c0adbfa14eb01f8701c2da480c54dd43252706bf4caea",
         "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/%E6%95%99%E5%8B%99%E8%99%95%E6%95%99%E5%AD%B8%E5%8A%A9%E7%90%86%E5%88%B6%E5%BA%A6%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E6%A2%9D%E6%96%87-%E5%85%AC%E5%91%8A%E7%89%88.pdf",
-        "observed_at": "2026-10-31T06:10:02+00:00",
+        "observed_at": "2026-10-31T07:56:15+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.2.0",
+        "extractor_version": "extractor-1.3.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null,
         "parent_url": "https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514"
@@ -6970,6 +7107,61 @@
           "excerpt_sha256": "d2a456730a647b46a1d6377f19f20e4fc0df8129b3d86372cd45b15b77bc8d88",
           "source_block_sha256": "d2a456730a647b46a1d6377f19f20e4fc0df8129b3d86372cd45b15b77bc8d88",
           "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "benefit.items/1",
+          "source": "ntu-ta-policy",
+          "revision_id": "cc28dee00a3c0ed2f34c0adbfa14eb01f8701c2da480c54dd43252706bf4caea",
+          "locator": "PDF page 1",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "29dd889b847e377aac4a08649228fd3250beb2835310fbb3c405345834ffb9bb",
+          "source_block_sha256": "29dd889b847e377aac4a08649228fd3250beb2835310fbb3c405345834ffb9bb",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "benefit.items/2",
+          "source": "ntu-ta-policy",
+          "revision_id": "cc28dee00a3c0ed2f34c0adbfa14eb01f8701c2da480c54dd43252706bf4caea",
+          "locator": "PDF page 1",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "d2a456730a647b46a1d6377f19f20e4fc0df8129b3d86372cd45b15b77bc8d88",
+          "source_block_sha256": "d2a456730a647b46a1d6377f19f20e4fc0df8129b3d86372cd45b15b77bc8d88",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "field_applicability.application_start",
+          "source": "ntu-ta-policy",
+          "revision_id": "cc28dee00a3c0ed2f34c0adbfa14eb01f8701c2da480c54dd43252706bf4caea",
+          "locator": "PDF page 1",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "15514fa990e4c7b2ba33448b9912fe9b5875227131c82f2bfa94a6bc6cae7a73",
+          "source_block_sha256": "15514fa990e4c7b2ba33448b9912fe9b5875227131c82f2bfa94a6bc6cae7a73",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "field_applicability.student_deadline",
+          "source": "ntu-ta-policy",
+          "revision_id": "cc28dee00a3c0ed2f34c0adbfa14eb01f8701c2da480c54dd43252706bf4caea",
+          "locator": "PDF page 1",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "15514fa990e4c7b2ba33448b9912fe9b5875227131c82f2bfa94a6bc6cae7a73",
+          "source_block_sha256": "15514fa990e4c7b2ba33448b9912fe9b5875227131c82f2bfa94a6bc6cae7a73",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "field_applicability.result_date",
+          "source": "ntu-ta-policy",
+          "revision_id": "cc28dee00a3c0ed2f34c0adbfa14eb01f8701c2da480c54dd43252706bf4caea",
+          "locator": "PDF page 1",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "15514fa990e4c7b2ba33448b9912fe9b5875227131c82f2bfa94a6bc6cae7a73",
+          "source_block_sha256": "15514fa990e4c7b2ba33448b9912fe9b5875227131c82f2bfa94a6bc6cae7a73",
+          "extraction_method": "deterministic_rule"
         }
       ],
       "gaps_and_conflicts": {
@@ -6982,9 +7174,9 @@
       },
       "evidence_status": "sufficient_for_draft",
       "verification": {
-        "status": "passed_automated_checks",
-        "verifier_version": "verifier-1.2.0",
-        "checked_at": "2026-10-31T06:10:09+00:00",
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.3.0",
+        "checked_at": "2026-10-31T07:56:15+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -6993,15 +7185,17 @@
           "no_year_or_branch_mixing": true,
           "negation_and_roles_valid": true,
           "no_unresolved_conflicts": true,
-          "coverage_ok": true
+          "coverage_ok": false
         },
         "errors": [],
-        "warnings": [],
+        "warnings": [
+          "coverage_gap:eligibility.identity_not_extracted"
+        ],
         "audit_findings": []
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.2.0",
+        "editor": "extractor-1.3.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -7016,7 +7210,38 @@
         "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
         "refs": []
       },
-      "field_applicability": {}
+      "field_applicability": {
+        "application_start": {
+          "status": "not_applicable",
+          "reason": "本筆為聘任制度參考文件，當期學生申請窗口及結果日期另查個別招募。",
+          "refs": [
+            {
+              "source": "ntu-ta-policy",
+              "locator": "PDF page 1"
+            }
+          ]
+        },
+        "student_deadline": {
+          "status": "not_applicable",
+          "reason": "本筆為聘任制度參考文件，當期學生申請窗口及結果日期另查個別招募。",
+          "refs": [
+            {
+              "source": "ntu-ta-policy",
+              "locator": "PDF page 1"
+            }
+          ]
+        },
+        "result_date": {
+          "status": "not_applicable",
+          "reason": "本筆為聘任制度參考文件，當期學生申請窗口及結果日期另查個別招募。",
+          "refs": [
+            {
+              "source": "ntu-ta-policy",
+              "locator": "PDF page 1"
+            }
+          ]
+        }
+      }
     }
   ]
 }

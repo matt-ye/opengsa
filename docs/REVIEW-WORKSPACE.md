@@ -81,3 +81,5 @@ PR #21階段驗收：90 項 Python、38 項 Node 通過；資料、來源設定�
 
 
 2026-10-31完整來源匯入及驗收見[來源盤查](SOURCE-COVERAGE-AUDIT.md)，工作台預設讀取 `data/candidates/source-review.json`，不與舊批次自動聯集。
+
+2026-10-31後續核可：先穩定本批再擴張。已修正給付重複、週期與身分、院別範圍及文件層級N/A；工作台新增方案文件分組及review-text.md文字審查清單。最新8筆通過、11筆有缺漏，仍全部待審。詳見[本批穩定化與擴張門檻](CANDIDATE-STABILITY.md)。

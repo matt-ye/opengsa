@@ -66,7 +66,7 @@ class SourceAuditTests(unittest.TestCase):
         self.assertEqual(cand["verification"]["errors"],[])
         self.assertEqual(cand["eligibility"]["degrees"],["master","phd"])
         self.assertEqual([b["amount_min"] for b in cand["benefit"]["items"]],[30400,36300,41500,6000])
-        self.assertEqual([b["branch_or_tier"] for b in cand["benefit"]["items"][:3]],["專科級","學士級","碩士級"])
+        self.assertEqual([b["branch_or_tier"] for b in cand["benefit"]["items"][:3]],["專任人員／專科級","專任人員／學士級","專任人員／碩士級"])
         self.assertTrue(all(b["unit"]=="per_month" and b["basis"]=="minimum" and b["amount_max"] is None for b in cand["benefit"]["items"]))
         wrong=deepcopy(cand)
         wrong["field_evidence"]=[e for e in wrong["field_evidence"] if e["locator"]!="SYNTH/1"]

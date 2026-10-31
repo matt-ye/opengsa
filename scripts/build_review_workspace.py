@@ -109,11 +109,14 @@ def build_workspace(bundle,pilot,config,output,ledger=None,decisions=None,contex
         cand["application"].update(state=window["state"],as_of=working["as_of"],reason=window["reason"])
     verified,summary,markdown=build_review_report(working,pilot,reviews_data=merged,in_memory_blocks_by_source=contexts)
     preview=candidate_preview_data(verified,pilot,config)
+    document_groups = {}
+    for cand in verified["candidates"]:
+        document_groups.setdefault(cand["program_key"], []).append(cand["candidate_id"])
     rows=[]
     previous={o["id"]:o for o in pilot["opportunities"]}
     for original,cand in zip(bundle["candidates"],verified["candidates"]):
         converted=candidate_to_pilot_opportunity(cand)
-        keys=("title","cycle","category","resource_kind","scope","participants","organizations","benefit","eligibility",
+        keys=("title","cycle","category","resource_kind","scope","institution_scope","participants","organizations","benefit","eligibility",
               "compatibility","hardship","application_method","expense_period","start","steps","result",
               "field_applicability","policy_version","evidence_status")
         old=previous.get(converted["id"])
@@ -129,10 +132,21 @@ def build_workspace(bundle,pilot,config,output,ledger=None,decisions=None,contex
         "official_data_modified":False,"publication_status":"not_requested","published":False}
     output.mkdir(parents=True,exist_ok=True)
     export(output/"candidate-preview.html",pilot_data=preview,review_preview=True)
-    payload={"as_of":working["as_of"],"rows":rows,"manifest":manifest}
+    payload={"as_of":working["as_of"],"rows":rows,"manifest":manifest,"document_groups":document_groups}
     template=(ROOT/"docs/design/review-workspace.html").read_text(encoding="utf-8")
     script=(ROOT/"docs/design/review-workspace.js").read_text(encoding="utf-8")
     (output/"review-summary.md").write_text(markdown,encoding="utf-8")
+    text_lines=["# 本批文字審查", "", f"{len(rows)} 筆文件候選／{len(document_groups)} 組方案；全部未發布。",
+        "同組文件保留各自年度、版本與判斷；尚未整併為正式方案，不自動把辦法、舊公告與新公告的欄位拼接。", ""]
+    for program, ids in document_groups.items():
+        text_lines.extend(["## "+program, ""])
+        for row in rows:
+            if row["candidate_id"] not in ids:continue
+            text_lines.extend(["- "+row["title"], "  - 候選："+row["candidate_id"], "  - 來源："+row["source"]["url"],
+                "  - 本次檢核："+row["verification"]["status"], "  - 給付："+row["after"]["benefit"]["text"],
+                "  - 來源缺漏："+("、".join(row["gaps"]["source"]) or "依本次檢核結果，仍須人工核對"),
+                "  - 檢核問題："+("；".join(row["verification"]["errors"]+row["verification"]["warnings"]) or "無"), ""])
+    (output/"review-text.md").write_text("\n".join(text_lines)+"\n",encoding="utf-8")
     (output/"verified-candidates.json").write_text(json.dumps(verified,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     applied={r["candidate_id"] for r in decisions["reviews"] if r["action"]=="applied"}
     ready={c["candidate_id"] for c in verified["candidates"] if c["review"]["promotion_ready"]}

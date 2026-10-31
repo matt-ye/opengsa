@@ -40,7 +40,7 @@ def validate_review_ledger(payload):
 
 def candidate_fingerprint(candidate):
     """Bind approval to the actual claims; exclude changing evaluation timestamps."""
-    fields = {k: candidate.get(k) for k in ("candidate_id", "title", "category", "resource_kind", "scope", "evidence_status", "program_key", "cycle", "source_metadata", "participants", "organizations", "eligibility", "benefit", "compatibility", "hardship", "schedule", "policy_version", "field_evidence", "application_method", "field_applicability", "expense_period", "gaps_and_conflicts")}
+    fields = {k: candidate.get(k) for k in ("candidate_id", "title", "category", "resource_kind", "scope", "institution_scope", "evidence_status", "program_key", "cycle", "source_metadata", "participants", "organizations", "eligibility", "benefit", "compatibility", "hardship", "schedule", "policy_version", "field_evidence", "application_method", "field_applicability", "expense_period", "gaps_and_conflicts")}
     fields["editor"] = candidate.get("review", {}).get("editor")
     fields["opportunity_id"] = candidate.get("opportunity_id")
     return hashlib.sha256(json.dumps(fields, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
@@ -439,6 +439,7 @@ def candidate_to_pilot_opportunity(cand):
         "category": cand["category"],
         "resource_kind": cand["resource_kind"],
         "scope": cand["scope"],
+        "institution_scope": deepcopy(cand.get("institution_scope", {})),
         "cycle": {
             "kind": cand["cycle"]["kind"],
             "label": cand["cycle"]["label"],
@@ -507,6 +508,10 @@ def export_pr_candidate_draft(verified_bundle, pilot_data, output_path, scan_sou
         except Exception:
             pass
 
+    ready = [c for c in verified_bundle.get("candidates", []) if c.get("review", {}).get("promotion_ready")]
+    targets = [c.get("opportunity_id") or c["candidate_id"] for c in ready]
+    if len(targets) != len(set(targets)):
+        raise ValueError("Same opportunity has multiple document candidates; reconcile evidence before export")
     promoted_ids = []
 
     for cand in verified_bundle.get("candidates", []):
