@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0-candidate",
-  "generated_at": "2026-10-31T07:56:15+00:00",
+  "generated_at": "2026-10-31T11:10:16+00:00",
   "as_of": "2026-10-31",
   "timezone": "Asia/Taipei",
   "model_enabled": false,
@@ -231,9 +231,11 @@
         "observed_at": "2026-10-31T07:54:21+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
-        "prompt_version": null
+        "prompt_version": null,
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "6c31d511c6671fe5d430d59bb9ae4b651603664cf3961e543b65e4af01b24142"
       },
       "field_evidence": [
         {
@@ -298,7 +300,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:54:21+00:00",
+        "checked_at": "2026-10-31T11:03:04+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -552,9 +554,11 @@
         "observed_at": "2026-10-31T07:54:21+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
-        "prompt_version": null
+        "prompt_version": null,
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "6c31d511c6671fe5d430d59bb9ae4b651603664cf3961e543b65e4af01b24142"
       },
       "field_evidence": [
         {
@@ -641,7 +645,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:54:21+00:00",
+        "checked_at": "2026-10-31T11:03:04+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -906,10 +910,12 @@
         "observed_at": "2026-10-31T07:54:21+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null,
-        "parent_url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713"
+        "parent_url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "3d8ba1795a77431469531846e955a11c3c779b7fd6591700e4f10de3de7f2f44"
       },
       "field_evidence": [
         {
@@ -985,7 +991,7 @@
       "verification": {
         "status": "passed_automated_checks",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:54:21+00:00",
+        "checked_at": "2026-10-31T11:03:04+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -1253,10 +1259,12 @@
         "observed_at": "2026-10-31T07:54:21+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null,
-        "parent_url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713"
+        "parent_url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "3d8ba1795a77431469531846e955a11c3c779b7fd6591700e4f10de3de7f2f44"
       },
       "field_evidence": [
         {
@@ -1354,7 +1362,7 @@
       "verification": {
         "status": "passed_automated_checks",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:54:21+00:00",
+        "checked_at": "2026-10-31T11:03:04+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -1576,12 +1584,25 @@
         "observed_at": "2026-10-31T07:54:21+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null,
-        "parent_url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713"
+        "parent_url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "a1309528726b5894af7cb5ac1192548b1acae7e695cfe5ed1db707f553607d3b"
       },
       "field_evidence": [
+        {
+          "field_path": "raw_clue.benefit_amount",
+          "source": "ntu-doctoral-funding",
+          "revision_id": "9bb6525384cc70fd06b40e448b52da30c1a80656a44a50f9d17f28bc16c5029d",
+          "locator": "PDF page 2",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "4b946d7cfdcd5a79d6b6408f874488431ee9a1a4b71608b43f8f2b577b409ec7",
+          "source_block_sha256": "4b946d7cfdcd5a79d6b6408f874488431ee9a1a4b71608b43f8f2b577b409ec7",
+          "extraction_method": "deterministic_rule"
+        },
         {
           "field_path": "eligibility.identity",
           "source": "ntu-doctoral-funding",
@@ -1614,17 +1635,6 @@
           "excerpt_sha256": "a5345fa8a42f2bdb53e5e013d43da50f30295d70aa882d48829bd92cfbf76197",
           "source_block_sha256": "a5345fa8a42f2bdb53e5e013d43da50f30295d70aa882d48829bd92cfbf76197",
           "extraction_method": "deterministic_rule"
-        },
-        {
-          "field_path": "raw_clue.benefit_amount",
-          "source": "ntu-doctoral-funding",
-          "revision_id": "9bb6525384cc70fd06b40e448b52da30c1a80656a44a50f9d17f28bc16c5029d",
-          "locator": "PDF page 2",
-          "evidence_mode": "hash_only",
-          "excerpt": null,
-          "excerpt_sha256": "4b946d7cfdcd5a79d6b6408f874488431ee9a1a4b71608b43f8f2b577b409ec7",
-          "source_block_sha256": "4b946d7cfdcd5a79d6b6408f874488431ee9a1a4b71608b43f8f2b577b409ec7",
-          "extraction_method": "deterministic_rule"
         }
       ],
       "gaps_and_conflicts": {
@@ -1646,7 +1656,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:54:21+00:00",
+        "checked_at": "2026-10-31T11:03:04+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -1906,9 +1916,11 @@
         "observed_at": "2026-10-31T07:54:21+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
-        "prompt_version": null
+        "prompt_version": null,
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "2c066cea0747a004fb02c2e3ee59736ad5f64bcf2944a3f045404048b0588d9f"
       },
       "field_evidence": [
         {
@@ -1971,7 +1983,7 @@
       "verification": {
         "status": "passed_automated_checks",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:54:21+00:00",
+        "checked_at": "2026-10-31T11:03:04+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -2232,9 +2244,11 @@
         "observed_at": "2026-10-31T07:54:38+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
-        "prompt_version": null
+        "prompt_version": null,
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "952f0445b76213ee9fe12d5655eb9ac6f7ca150eb81b7a66e51bfbd223f444fe"
       },
       "field_evidence": [
         {
@@ -2295,11 +2309,11 @@
       ],
       "gaps_and_conflicts": {
         "missing_fields": [
+          "unfetched_attachment:https://ord.ntu.edu.tw/WebUPD/ordntu/GW/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E9%AB%98%E7%AD%89%E6%95%99%E8%82%B2%E6%B7%B1%E8%80%95%E8%A8%88%E7%95%AB-%E9%81%A0%E5%AD%B8%E8%A8%88%E7%95%AB%E8%A3%9C%E5%8A%A9%E4%BD%9C%E6%A5%AD%E8%A6%81%E9%BB%9E_1140414.pdf",
           "schedule.application_start",
           "schedule.steps/0/deadline",
           "schedule.result_date",
-          "policy_version.full_attachment_robots_restricted",
-          "unfetched_attachment:https://ord.ntu.edu.tw/WebUPD/ordntu/GW/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E9%AB%98%E7%AD%89%E6%95%99%E8%82%B2%E6%B7%B1%E8%80%95%E8%A8%88%E7%95%AB-%E9%81%A0%E5%AD%B8%E8%A8%88%E7%95%AB%E8%A3%9C%E5%8A%A9%E4%BD%9C%E6%A5%AD%E8%A6%81%E9%BB%9E_1140414.pdf"
+          "policy_version.full_attachment_robots_restricted"
         ],
         "conflicts": [],
         "open_questions": [
@@ -2311,7 +2325,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:54:38+00:00",
+        "checked_at": "2026-10-31T11:03:21+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -2324,8 +2338,8 @@
         },
         "errors": [],
         "warnings": [
-          "coverage_gap:policy_version.full_attachment_robots_restricted",
-          "coverage_gap:unfetched_attachment:https://ord.ntu.edu.tw/WebUPD/ordntu/GW/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E9%AB%98%E7%AD%89%E6%95%99%E8%82%B2%E6%B7%B1%E8%80%95%E8%A8%88%E7%95%AB-%E9%81%A0%E5%AD%B8%E8%A8%88%E7%95%AB%E8%A3%9C%E5%8A%A9%E4%BD%9C%E6%A5%AD%E8%A6%81%E9%BB%9E_1140414.pdf"
+          "coverage_gap:unfetched_attachment:https://ord.ntu.edu.tw/WebUPD/ordntu/GW/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E9%AB%98%E7%AD%89%E6%95%99%E8%82%B2%E6%B7%B1%E8%80%95%E8%A8%88%E7%95%AB-%E9%81%A0%E5%AD%B8%E8%A8%88%E7%95%AB%E8%A3%9C%E5%8A%A9%E4%BD%9C%E6%A5%AD%E8%A6%81%E9%BB%9E_1140414.pdf",
+          "coverage_gap:policy_version.full_attachment_robots_restricted"
         ],
         "audit_findings": []
       },
@@ -2548,10 +2562,12 @@
         "observed_at": "2026-10-31T07:54:38+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null,
-        "parent_url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368"
+        "parent_url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368",
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "4ef0e52f5611e18c59a6ff8c65b7312567d0fceba5fbb93ec743ff46a8d09d02"
       },
       "field_evidence": [
         {
@@ -2603,7 +2619,7 @@
       "verification": {
         "status": "passed_automated_checks",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:54:38+00:00",
+        "checked_at": "2026-10-31T11:03:21+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -2853,9 +2869,11 @@
         "observed_at": "2026-10-31T07:54:38+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
-        "prompt_version": null
+        "prompt_version": null,
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "ba1482e0557702c491d1415b4348d642880c2434adea1767ddceaf0c7550bc5a"
       },
       "field_evidence": [
         {
@@ -2951,7 +2969,7 @@
       "verification": {
         "status": "passed_automated_checks",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:54:38+00:00",
+        "checked_at": "2026-10-31T11:03:21+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -3225,9 +3243,11 @@
         "observed_at": "2026-10-31T07:54:38+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
-        "prompt_version": null
+        "prompt_version": null,
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "ff9a2f8247267094060fdf520dafaf02e4e0d8c7719eb53f6ed2552b59446407"
       },
       "field_evidence": [
         {
@@ -3334,7 +3354,7 @@
       "verification": {
         "status": "passed_automated_checks",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:54:38+00:00",
+        "checked_at": "2026-10-31T11:03:21+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -3592,9 +3612,11 @@
         "observed_at": "2026-10-31T07:54:55+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
-        "prompt_version": null
+        "prompt_version": null,
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "1c5d20b28674f0ab9f301bfe129840c9df9f625b0108d598c165aef607e8be0d"
       },
       "field_evidence": [
         {
@@ -3655,8 +3677,8 @@
       ],
       "gaps_and_conflicts": {
         "missing_fields": [
-          "schedule.steps/0/deadline",
-          "cross_agency_compatibility"
+          "cross_agency_compatibility",
+          "schedule.steps/0/deadline"
         ],
         "conflicts": [],
         "open_questions": [
@@ -3667,7 +3689,7 @@
       "verification": {
         "status": "passed_automated_checks",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:54:55+00:00",
+        "checked_at": "2026-10-31T11:03:37+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -3981,9 +4003,11 @@
         "observed_at": "2026-10-31T07:54:55+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
-        "prompt_version": null
+        "prompt_version": null,
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "76a3c74f3d59b3202e4d0d9e7f9f03c8a1151b79554f6c0d582a4ae0c0120409"
       },
       "field_evidence": [
         {
@@ -4087,7 +4111,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:54:55+00:00",
+        "checked_at": "2026-10-31T11:03:37+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -4300,9 +4324,11 @@
         "observed_at": "2026-10-31T07:54:55+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
-        "prompt_version": null
+        "prompt_version": null,
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "f0f01a6d0cc79923246b119b799eca4da7074e95d38f3ecdd8d16f7a3bac4748"
       },
       "field_evidence": [
         {
@@ -4351,7 +4377,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:54:55+00:00",
+        "checked_at": "2026-10-31T11:03:37+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -4691,9 +4717,11 @@
         "observed_at": "2026-10-31T07:54:55+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
-        "prompt_version": null
+        "prompt_version": null,
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "6a92478ff1aeaab7b50d2516521db0a59de6a26c5ff5c31b0f936f858bb345f4"
       },
       "field_evidence": [
         {
@@ -4921,7 +4949,7 @@
       "verification": {
         "status": "passed_automated_checks",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:54:55+00:00",
+        "checked_at": "2026-10-31T11:03:37+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -5323,12 +5351,14 @@
         "source_id": "hsinchu-ai-tools",
         "revision_id": "2df2bf6147610b2cc22648da58a1225e2e3c61e08673a2540e0924413d47cb96",
         "url": "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
-        "observed_at": "2026-10-31T07:55:08+00:00",
+        "observed_at": "2026-10-31T11:10:16+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
-        "prompt_version": null
+        "prompt_version": null,
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "f20cfb73cc1224f5eef8ef8057eb8f0165ca413010a20c0bf0950d7475122e3c"
       },
       "field_evidence": [
         {
@@ -5610,7 +5640,7 @@
           "field_path": "application_method/91",
           "source": "hsinchu-ai-tools",
           "revision_id": "2df2bf6147610b2cc22648da58a1225e2e3c61e08673a2540e0924413d47cb96",
-          "locator": "#mainContainer / text-block 95",
+          "locator": "#mainContainer / text-block 92",
           "evidence_mode": "hash_only",
           "excerpt": null,
           "excerpt_sha256": "f8f9c6c65a66cbad1635d2ec6741ec08ed3b0a97c843ee49e2d6e273482b879a",
@@ -5621,7 +5651,7 @@
           "field_path": "application_method/95",
           "source": "hsinchu-ai-tools",
           "revision_id": "2df2bf6147610b2cc22648da58a1225e2e3c61e08673a2540e0924413d47cb96",
-          "locator": "#mainContainer / text-block 99",
+          "locator": "#mainContainer / text-block 96",
           "evidence_mode": "hash_only",
           "excerpt": null,
           "excerpt_sha256": "fdb6780eee6e64116f3fbf8a9413afa76a1213f1e8c014ebdbf5e32dad615fd0",
@@ -5632,7 +5662,7 @@
           "field_path": "application_method/98",
           "source": "hsinchu-ai-tools",
           "revision_id": "2df2bf6147610b2cc22648da58a1225e2e3c61e08673a2540e0924413d47cb96",
-          "locator": "#mainContainer / text-block 102",
+          "locator": "#mainContainer / text-block 99",
           "evidence_mode": "short_excerpt",
           "excerpt": "線上申辦",
           "excerpt_sha256": "2245eca29e1ab85731c83e2663dad5c3cd9eb8db7dbe2dbc1d5be61b6b8abcde",
@@ -5643,7 +5673,7 @@
           "field_path": "application_method/99",
           "source": "hsinchu-ai-tools",
           "revision_id": "2df2bf6147610b2cc22648da58a1225e2e3c61e08673a2540e0924413d47cb96",
-          "locator": "#mainContainer / text-block 103",
+          "locator": "#mainContainer / text-block 100",
           "evidence_mode": "short_excerpt",
           "excerpt": "線上申辦",
           "excerpt_sha256": "2245eca29e1ab85731c83e2663dad5c3cd9eb8db7dbe2dbc1d5be61b6b8abcde",
@@ -5667,7 +5697,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:55:08+00:00",
+        "checked_at": "2026-10-31T11:10:16+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -5688,7 +5718,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.3.0",
+        "editor": "extractor-1.4.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -5729,7 +5759,11 @@
           },
           {
             "source": "hsinchu-ai-tools",
-            "locator": "#mainContainer / text-block 95"
+            "locator": "#mainContainer / text-block 92"
+          },
+          {
+            "source": "hsinchu-ai-tools",
+            "locator": "#mainContainer / text-block 96"
           },
           {
             "source": "hsinchu-ai-tools",
@@ -5737,11 +5771,7 @@
           },
           {
             "source": "hsinchu-ai-tools",
-            "locator": "#mainContainer / text-block 102"
-          },
-          {
-            "source": "hsinchu-ai-tools",
-            "locator": "#mainContainer / text-block 103"
+            "locator": "#mainContainer / text-block 100"
           }
         ]
       },
@@ -6025,9 +6055,11 @@
         "observed_at": "2026-10-31T07:56:15+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
-        "prompt_version": null
+        "prompt_version": null,
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "fe29c9dc3c0e16d21353e435264524d62dfc00e2be5793fece2742fab845bfe8"
       },
       "field_evidence": [
         {
@@ -6197,7 +6229,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:56:15+00:00",
+        "checked_at": "2026-10-31T11:03:50+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -6435,9 +6467,11 @@
         "observed_at": "2026-10-31T07:55:08+00:00",
         "evidence_mode": "short_excerpt",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
-        "prompt_version": null
+        "prompt_version": null,
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "8d51bde4f7c7cb41680c7de1231e5b5ff0cfee405933f592d099306feb806d59"
       },
       "field_evidence": [
         {
@@ -6486,7 +6520,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:55:08+00:00",
+        "checked_at": "2026-10-31T11:03:50+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -6687,9 +6721,11 @@
         "observed_at": "2026-10-31T07:56:15+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
-        "prompt_version": null
+        "prompt_version": null,
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "e11c2aee8b36adcccfa3d446cf549de8a971e5014752be2fb283cea1b5518be3"
       },
       "field_evidence": [
         {
@@ -6760,7 +6796,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:56:15+00:00",
+        "checked_at": "2026-10-31T11:03:50+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -7058,10 +7094,12 @@
         "observed_at": "2026-10-31T07:56:15+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.3.0",
+        "extractor_version": "extractor-1.4.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null,
-        "parent_url": "https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514"
+        "parent_url": "https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514",
+        "normalizer_version": "document-ir-1",
+        "prepared_document_sha256": "669c4596c30132a2a25d9a4de7b2732fcbc30d076ab093c40320f824c5601d3e"
       },
       "field_evidence": [
         {
@@ -7176,7 +7214,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.3.0",
-        "checked_at": "2026-10-31T07:56:15+00:00",
+        "checked_at": "2026-10-31T11:03:57+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,

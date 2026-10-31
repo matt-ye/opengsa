@@ -1854,6 +1854,14 @@
                 "string",
                 "null"
               ]
+            },
+            "normalizer_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "prepared_document_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
             }
           },
           "required": [

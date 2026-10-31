@@ -1,5 +1,7 @@
 # 當前待審批次
 
+> 後續整合更新：本批已接上統一文件準備、Token預算分段及局部規則重萃，現行能力／未完成項目與實際驗收見[文件準備整合](../../docs/PREPARED-EXTRACTION.md)。舊階段提案或測試數量不代表最新整合狀態。
+
 2026-10-31的[source-review.json](source-review.json)是工作台預設批次：13個來源、17份文件、19筆候選，8筆自動檢核通過、11筆有缺漏，全部pending、promotion_ready=false。HTML、規則PDF、申請說明各自保留版本，不把文件數量當獎學金數量。
 
 原[ai-tools-115.json](ai-tools-115.json)保留較早兩筆快照供追溯；不要與當前批次直接聯集或重複匯入。正式pilot及真人覆核台帳仍不改寫。完整證據、來源限制及操作見[來源盤查](../../docs/SOURCE-COVERAGE-AUDIT.md)。

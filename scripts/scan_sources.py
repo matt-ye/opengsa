@@ -211,21 +211,48 @@ def html_document(data, source, url, hosts):
         for node in root.select("script,style,nav,footer,form,noscript"):
             node.decompose()
     lines = []
+    structures = []
+    from bs4 import NavigableString, Comment
     for root in roots:
-        lines.extend(normalized(line) for line in root.get_text("\n", strip=True).splitlines())
+        tables=soup.find_all('table');section=[]
+        for node in root.descendants:
+            if not isinstance(node,NavigableString) or isinstance(node,Comment):continue
+            for line in str(node).strip().splitlines():
+                line=normalized(line)
+                if not line:continue
+                parent=node.parent;heading=parent.find_parent(re.compile('^h[1-6]$')) if not re.match('^h[1-6]$',parent.name or '') else parent
+                kind='heading' if heading else 'list_item' if parent.find_parent('li') or parent.name=='li' else 'paragraph'
+                if heading:
+                    level=int(heading.name[1])
+                    title=normalized(heading.get_text(' ',strip=True))
+                    if not section or section[-1]!=(level,title):
+                        section=[entry for entry in section if entry[0]<level]+[(level,title)]
+                meta={'kind':kind,'section_path':[title for _,title in section]}
+                cell=parent if parent.name in ('td','th') else parent.find_parent(['td','th'])
+                if cell:
+                    table=cell.find_parent('table');row=cell.find_parent('tr')
+                    rows=[r for r in table.find_all('tr') if r.find_parent('table') is table]
+                    headers=rows[0].find_all(['td','th'],recursive=False) if rows else []
+                    meta.update(kind='table_cell',table_id=f'table-{tables.index(table)+1}',
+                        headers=[normalized(c.get_text(' ',strip=True)) for c in headers],
+                        row_cells=[normalized(c.get_text(' ',strip=True)) for c in row.find_all(['td','th'],recursive=False)] if row else [],
+                        row_index=rows.index(row) if row in rows else None,
+                        structure_status='complex_spans_require_review' if table.select('[rowspan],[colspan]') else 'preserved')
+                lines.append(line);structures.append(meta)
     if source.get("start_marker"):
         marker = source["start_marker"]
         start = next((i for i, line in enumerate(lines) if marker in line), None)
         if start is None:
             raise ScanError("start_marker_changed")
         lines = lines[start:]
+        structures = structures[start:]
     text = normalized(" ".join(lines))
     compact = re.sub(r"\s+", "", text)
     if len(text) < 80 or any(re.sub(r"\s+", "", term) not in compact for term in source["required_markers"]):
         raise ScanError("required_marker_missing")
     # 序號是此版萃取正文的定位，非原HTML原始碼行號。
-    blocks = [{"locator": f"{source['body_selector']} / text-block {i}", "text": line}
-              for i, line in enumerate(lines, 1) if line]
+    blocks = [{"locator": f"{source['body_selector']} / text-block {i}", "text": line, **meta}
+              for i, (line,meta) in enumerate(zip(lines,structures), 1) if line]
     return blocks, list(attachments.values())[:source["max_pdfs"]]
 
 
@@ -235,7 +262,8 @@ def pdf_document(data):
     if result.returncode:
         raise ScanError("pdf_requires_manual_review")
     pages = json.loads(result.stdout)
-    return [{"locator": f"PDF page {page['page']}", "text": normalized(unicodedata.normalize("NFKC",line))}
+    return [{"locator": f"PDF page {page['page']}", "text": normalized(unicodedata.normalize("NFKC",line)),
+             "kind":"paragraph","page":page['page'],"structure_status":"pdf_layout_unverified"}
             for page in pages for line in page["text"].splitlines() if normalized(line)]
 
 

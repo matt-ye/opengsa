@@ -202,6 +202,7 @@ def strip_model_self_claims(candidate):
 def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None, pilot_by_id=None):
     """對單筆結構化候選執行七大獨立檢核，回傳更新 verification 與 review 狀態後的候選複本。"""
     cand = strip_model_self_claims(candidate)
+    prior_regressions=[w for w in cand.get('verification',{}).get('warnings',[]) if w.startswith('coverage_regression:')]
     schema = schema or load_candidate_schema()
     now_iso = now_iso or datetime.now(timezone.utc).isoformat(timespec="seconds")
     errors = list(cand.get("verification", {}).get("errors", [])) if in_memory_blocks is None else []
@@ -641,6 +642,8 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
 
     # 7. R5：欄位涵蓋率與對照 pilot.json 退步檢查 (Coverage & Regression Check)
     coverage_warnings = []
+    if pilot_by_id is None:
+        coverage_warnings.extend(prior_regressions)
     if not is_stub:
         if cycle.get("kind") in ("calendar_year","academic_year") and cycle.get("year") is None:
             coverage_warnings.append("coverage_gap:cycle_year_unknown")
