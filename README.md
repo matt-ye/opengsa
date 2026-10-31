@@ -32,6 +32,8 @@ PR #18的17筆AI資源已進行來源分流與更正，見[查核結果](docs/PR
 
 臺北／新竹AI工具補助已推進為兩筆[具名候選](data/candidates/README.md)，確定性萃取、分支與程序檢核已接入掃描；仍pending，不改10筆正式草稿。[推進與驗收紀錄](docs/AI-TOOLS-CANDIDATES.md)。
 
+針對來源網址年更與斷鏈韌性、Google Search API 日落評估、長期運算與 Token 成本精算、OpenAI 開源贊助計畫以及國內外公民科技開源專案觀摩，見[長期架構與維運研究報告](docs/LONG-TERM-ARCHITECTURE-AND-OPERATIONS.md)。
+
 ## 已有與後續功能
 
 候選[審查工作台](docs/REVIEW-WORKSPACE.md)已接上：逐欄差異與短證據、第一至三頁未發布預覽、人工處置意向下載，以及來源版本重新核驗後的資料 PR 提案匯出。Actions 可手動選 `review_workspace` 產生離線 artifact，不使用 Secrets 或模型。正式總表仍10筆、人工覆核台帳仍空；產生提案不會自動更新公開卡片。
