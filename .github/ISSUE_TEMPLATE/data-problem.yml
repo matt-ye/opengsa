@@ -1,0 +1,32 @@
+name: 獎助資料問題
+description: 回報某筆獎助的名稱、時間、資格、來源或其他資料問題
+title: "[資料問題] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        此Issue內容公開，請勿填學號、生日、所得、證件、私人申訴或未遮蔽個資。
+        系統只預填公開資料；請確認內容並按Submit才會送出。未知欄位不代表條件不限或一定符合。
+  - type: input
+    id: resource_name
+    attributes:
+      label: 獎助名稱
+  - type: input
+    id: resource_id
+    attributes:
+      label: 資料ID
+  - type: input
+    id: source_url
+    attributes:
+      label: 官方來源
+  - type: input
+    id: source_version
+    attributes:
+      label: 資料版本／觀察日期
+  - type: textarea
+    id: problem
+    attributes:
+      label: 哪裡有問題？
+      description: 請描述欄位、錯誤或不清楚之處；若有官方更正連結，請一併提供。
+    validations:
+      required: true

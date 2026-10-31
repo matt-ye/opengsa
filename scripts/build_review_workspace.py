@@ -20,6 +20,7 @@ from scripts.review_candidates import (build_review_report,candidate_fingerprint
 from scripts.review_context import refresh_context
 from scripts.scan_sources import validate_config
 from scripts.verify_candidates import classify_review_gaps
+from scripts.radar_metadata import radar_metadata
 
 
 def merge_decisions(ledger, decisions, bundle):
@@ -71,6 +72,24 @@ def candidate_preview_data(bundle,pilot,config):
         item["application"].update(state=window["state"],as_of=bundle["as_of"],reason=window["reason"])
         dataset["opportunities"].append(item)
     add_sources(dataset,bundle["candidates"],config)
+    # A source profile may contain several PDFs. Keep exact document URLs in the
+    # preview rather than resolving every citation to the profile's parent page.
+    for item,cand in zip(dataset['opportunities'],bundle['candidates']):
+        meta=cand['source_metadata'];sid=meta['source_id']
+        document_id=sid+'-doc-'+meta['revision_id'][:12]
+        if not any(s['id']==document_id for s in dataset['sources']):
+            source=deepcopy(next(s for s in dataset['sources'] if s['id']==sid))
+            source.update(id=document_id,url=meta['url'],locator='來源revision '+meta['revision_id'],
+                checked_on=datetime.fromisoformat(meta['observed_at']).astimezone(timezone(timedelta(hours=8))).date().isoformat())
+            dataset['sources'].append(source)
+        def remap(value):
+            if isinstance(value,list):
+                for child in value:remap(child)
+            elif isinstance(value,dict):
+                for key,child in value.items():
+                    if key=='source' and child==sid:value[key]=document_id
+                    else:remap(child)
+        remap(item)
     errors=validate_pilot(dataset)
     if errors:raise ValueError("Candidate preview violates the pilot contract: "+str(errors))
     return dataset
@@ -128,11 +147,13 @@ def build_workspace(bundle,pilot,config,output,ledger=None,decisions=None,contex
             "after":{k:converted.get(k) for k in keys},"evidence":cand["field_evidence"],
             "questions":cand["gaps_and_conflicts"]["open_questions"],"review":cand["review"]})
     manifest={"as_of":working["as_of"],"generated_at":datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "workbench_version":"review-1.1.0","candidate_ids":[c["candidate_id"] for c in verified["candidates"]],
+        "workbench_version":"review-1.2.0","candidate_ids":[c["candidate_id"] for c in verified["candidates"]],
         "promotion_ready":summary["promotion_ready"],"http_requests":http_requests,"model_calls":0,
         "official_data_modified":False,"publication_status":"not_requested","published":False}
     output.mkdir(parents=True,exist_ok=True)
-    export(output/"candidate-preview.html",pilot_data=preview,review_preview=True)
+    # Last verified snapshot controls field visibility; an offline workspace's
+    # needs_context status is not a new claim that the original source omitted it.
+    export(output/"candidate-preview.html",pilot_data=preview,review_preview=True,radar_data=radar_metadata(bundle))
     payload={"as_of":working["as_of"],"rows":rows,"manifest":manifest,"document_groups":document_groups}
     template=(ROOT/"docs/design/review-workspace.html").read_text(encoding="utf-8")
     script=(ROOT/"docs/design/review-workspace.js").read_text(encoding="utf-8")

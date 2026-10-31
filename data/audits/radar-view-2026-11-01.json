@@ -1,0 +1,30 @@
+{
+  "checked_on": "2026-11-01",
+  "view_version": "radar-1",
+  "source_snapshot_sha256": "3856ddb123c14a3622e370fb8509ddf0d59224be13b7c0c95d06604f1c7a8710",
+  "python_tests": 142,
+  "node_tests": 44,
+  "browser": "Chrome via playwright-cli",
+  "browser_checks": {
+    "records": 19,
+    "detail_views": 19,
+    "timeline_cards": 19,
+    "programs": 13,
+    "all_report_ids_and_source_versions_match": true,
+    "all_unknowns_link_to_source": true,
+    "year_filter": "符合已知篩選 0 項；可能相關／待確認 17 項（共 19 項）",
+    "compatibility_filter": "符合已知篩選 0 項；可能相關／待確認 7 項（共 19 項）",
+    "mobile": {
+      "width": 320,
+      "scroll": 320
+    },
+    "submitted_issues": 0
+  },
+  "source_network_requests_this_change": 0,
+  "model_calls": 0,
+  "human_approvals_added": 0,
+  "formal_pilot_modified": false,
+  "github_form_submission_tested": false,
+  "github_form_note": "新Issue表單須本PR合併至預設分支後生效；已測試19筆預填URL，未代送Issue。",
+  "digest_normalization": "UTF-8 JSON; sort_keys=true; ensure_ascii=false"
+}

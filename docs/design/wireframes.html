@@ -3,6 +3,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8"/>
+<link rel="icon" href="data:,"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="light" name="color-scheme"/>
 <title>OpenGSA｜四頁線框審閱稿</title>
@@ -177,6 +178,8 @@ html{scroll-behavior:smooth}
 :target{animation:target-flash 1.6s ease-out}
 @keyframes target-flash{0%{background:#fff8e1}50%{background:#fffde7}100%{background:transparent}}
 @media(max-width:800px){#rights-view-switch{max-width:100%;flex-wrap:wrap}#rights-view-switch button,#jump-to-grievance{max-width:100%;white-space:normal;text-align:left;overflow-wrap:anywhere}}
+.clarity{padding:8px 12px;border-left:4px solid #a26e28;background:#fff5dd;border-radius:4px;font-size:14px}.clarity.green{border-color:#356c56;background:#e8f3eb}.clarity.red{border-color:#a23c32;background:#fcebea}.clarity.example{border-color:#6b7774;background:#edf1ee}.card-actions a{display:inline-flex;align-items:center;min-height:44px;overflow-wrap:anywhere}.result-group{grid-column:1/-1;margin:20px 0 0}.card details{margin-top:12px}.card details summary{cursor:pointer;min-height:44px}
+#document-mode{display:block;width:100%;max-width:520px;min-width:0}
 </style>
 </head>
 <body>
@@ -191,6 +194,8 @@ html{scroll-behavior:smooth}
 <div class="headline"><div><div class="screen-label">01 / DISCOVER · 找獎助</div><h1 id="search-title">把時間留給研究。</h1><p>先篩選值得了解的機會，再用清單或甘特圖看申請期間與結果公布日。</p></div><div class="status-note">互動原型 · 不進行個人資格核定</div></div>
 <div class="mode-row"><div aria-label="資料模式" class="segmented" id="mode-switch" role="group"><button aria-pressed="true" data-mode="demo" type="button">合成排程示範</button><button aria-pressed="false" data-mode="draft" type="button">來源草稿＋會議方案</button></div></div>
 <p class="synthetic-note" id="mode-note">合成資料，僅供互動設計。</p>
+<p class="small quiet">燈號描述來源資訊清晰度，非正確率、申請資格核定或受理保證。未知條件會另列為可能相關。核心四項：來源對應、年度／版本、時間規則、大致對象。</p>
+<label class="small">呈現方式 <select id="document-mode"><option value="documents">依來源文件顯示（保留各年度與版本）</option><option value="programs">依方案彙整（其他文件保留原文連結）</option></select></label>
 <div aria-label="探索島情境快速篩選" class="persona-grid" id="persona-bar" role="group">
 <button aria-pressed="false" class="persona-tile" data-persona="phd_research" type="button"><span aria-hidden="true" class="hex-badge">博</span><span>博士研究專注<small>國科會／教育部博獎</small></span></button>
 <button aria-pressed="false" class="persona-tile" data-persona="living_support" type="button"><span aria-hidden="true" class="hex-badge">生</span><span>生活與學費減免<small>碩博減免與生活支持</small></span></button>
@@ -209,7 +214,7 @@ html{scroll-behavior:smooth}
 <label>④ 是否可兼領<select data-filter="compatibility" id="filter-compatibility"><option value="all">全部</option><option value="allowed">可兼領（已查範圍）</option><option value="conditional">有條件</option><option value="prohibited">不可兼領</option><option value="unknown">待確認</option></select></label>
 <label>⑤ 是否清寒限定<select data-filter="hardship" id="filter-hardship"><option value="all">全部</option><option value="required">清寒限定</option><option value="not_exclusive">非僅清寒</option><option value="unknown">待確認</option></select></label>
 <label>⑥ 受理狀態<select data-filter="application" id="filter-application"><option value="all">全部狀態</option><option value="open">受理中</option><option value="upcoming">尚未開放／即將開放</option><option value="closed">本期已截止</option><option value="unknown">受理待確認</option><option value="not_applicable">無申請程序（N/A）</option></select></label>
-<label class="checkbox-label"><input checked="" data-filter="includeUnknown" id="filter-unknown" type="checkbox"/><span>保留標籤待確認項目</span></label>
+<label class="checkbox-label"><input checked="" data-filter="includeUnknown" id="filter-unknown" type="checkbox"/><span>另列可能相關項目（部分條件未確認）</span></label>
 </div><button class="reset-button" id="reset-filters" type="button">清除條件</button></details>
 </aside>
 <div style="min-width:0">
