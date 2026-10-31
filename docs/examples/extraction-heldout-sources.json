@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "validation_only": true,
+  "owner": "repository-maintainers",
+  "policy_checked_on": "2026-11-01",
+  "policy": "public_bounded_get_short_evidence_only",
+  "allowed_hosts": ["www.personnel.ntu.edu.tw", "rd.usc.edu.tw"],
+  "max_requests": 20,
+  "max_changed_documents": 5,
+  "max_pending_candidates": 24,
+  "minimum_host_interval_seconds": 3,
+  "max_run_seconds": 180,
+  "sources": [
+    {
+      "id": "heldout-ntu-research-personnel",
+      "title": "臺大人事室研究人力相關公告",
+      "url": "https://www.personnel.ntu.edu.tw/News_n_101162_sms_79140.html",
+      "body_selector": "body",
+      "required_markers": ["研究"],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "evidence_mode": "short_excerpt",
+      "scope": "ntu",
+      "category": "indirect_support",
+      "resource_kind": "employment_support",
+      "review_note": "既有待納入種子，第二輪未調參驗證；非排程來源。"
+    },
+    {
+      "id": "heldout-usc-research-personnel",
+      "title": "實踐大學國科會研究人力規定轉知",
+      "url": "https://rd.usc.edu.tw/p/406-1048-4836,r147.php?Lang=zh-tw",
+      "body_selector": "body",
+      "required_markers": ["研究"],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "evidence_mode": "short_excerpt",
+      "scope": "nationwide",
+      "category": "indirect_support",
+      "resource_kind": "employment_support",
+      "review_note": "轉知不代表本校以外直接適用，僅驗正文擷取與角色判斷；不發布。"
+    }
+  ]
+}

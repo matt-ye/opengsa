@@ -64,7 +64,7 @@ class SourceAuditTests(unittest.TestCase):
             "二、兼任人員費用：", "研究生每月均應至少支給新臺幣六千元。"])
         cand=candidates[0]
         self.assertEqual(cand["verification"]["errors"],[])
-        self.assertEqual(cand["eligibility"]["degrees"],["master","phd"])
+        self.assertEqual(cand["eligibility"]["degrees"],[])  # Salary grades are not enrollment rules.
         self.assertEqual([b["amount_min"] for b in cand["benefit"]["items"]],[30400,36300,41500,6000])
         self.assertEqual([b["branch_or_tier"] for b in cand["benefit"]["items"][:3]],["專任人員／專科級","專任人員／學士級","專任人員／碩士級"])
         self.assertTrue(all(b["unit"]=="per_month" and b["basis"]=="minimum" and b["amount_max"] is None for b in cand["benefit"]["items"]))

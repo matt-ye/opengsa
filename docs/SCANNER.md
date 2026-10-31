@@ -1,5 +1,7 @@
 # 公開來源掃描與候選覆核
 
+2026-11-01最新：19筆以extractor-1.5.0完整重萃，12筆自動檢核通過、7筆有缺漏，仍全部pending；新增通用指令、`--full-replay`及隔離外部驗證。來源profile仍16筆／13啟用，未增加正式排程目標。[最新結果與限制](GENERALIZABLE-EXTRACTION.md)優先於下列歷史階段描述。
+
 > 後續整合更新：本批已接上統一文件準備、Token預算分段及局部規則重萃，現行能力／未完成項目與實際驗收見[文件準備整合](PREPARED-EXTRACTION.md)。舊階段提案或測試數量不代表最新整合狀態。
 
 PR #20 已合併；具名候選新增[審查工作台與資料 PR 草稿](REVIEW-WORKSPACE.md)。Actions `operation=review_workspace` 僅產生 repo 候選池的離線審查 artifact，與 `scan`／`provider_audit` 分流；不重新抓來源、不注入金鑰或模型，不改變原有低頻掃描排程。重新核驗及意向匯出由本機 CLI 執行。

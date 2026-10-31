@@ -10,14 +10,14 @@ ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from scripts.check_data import validate_candidate_snapshot
 from scripts.document_ir import prepare_document,document_manifest
-from scripts.extraction_scope import compile_scope,apply_scoped_replay
+from scripts.extraction_scope import GROUPS,compile_scope,apply_scoped_replay
 from scripts.extract_candidates import extract_from_in_memory_blocks,limit_evidence_excerpts
 from scripts.review_candidates import candidate_fingerprint
 from scripts.review_context import refresh_context
 from scripts.verify_candidates import verify_candidate
 
 
-def prepare_batch(bundle,config,groups=None,fields=None,contexts=None,statuses=None,pilot=None):
+def prepare_batch(bundle,config,groups=None,fields=None,contexts=None,statuses=None,pilot=None,full_replay=False):
     errors=validate_candidate_snapshot(bundle,config)
     if errors:raise ValueError('invalid_candidate_input:'+str(errors))
     profiles={s['id']:s for s in config['sources']}
@@ -27,7 +27,7 @@ def prepare_batch(bundle,config,groups=None,fields=None,contexts=None,statuses=N
     by_revision_budget={}
     for index,original in enumerate(bundle['candidates']):
         meta=original['source_metadata']
-        plan={**compile_scope(original,groups,fields),'candidate_id':original['candidate_id'],
+        plan={**compile_scope(original,list(GROUPS) if full_replay else groups,fields),'full_replay':full_replay,'candidate_id':original['candidate_id'],
             'candidate_sha256':candidate_fingerprint(original),'source_revision':meta['revision_id'],
             'status':'requires_fresh_source_context','model_calls':0}
         blocks=(contexts or {}).get(meta['url'])
@@ -40,7 +40,15 @@ def prepare_batch(bundle,config,groups=None,fields=None,contexts=None,statuses=N
             matches=[c for c in fresh if c['candidate_id']==original['candidate_id']]
             if len(matches)==1:
                 try:
-                    updated=apply_scoped_replay(original,matches[0],plan,blocks)
+                    # An explicit full replay recomputes the whole pending record;
+                    # unlike a partial patch, it can correct old unsupported defaults.
+                    updated=matches[0] if full_replay else apply_scoped_replay(original,matches[0],plan,blocks)
+                    if full_replay:
+                        # Fresh body context does not prove that an inaccessible
+                        # attachment has been acquired. Preserve that boundary.
+                        for gap in original['gaps_and_conflicts']['missing_fields']:
+                            if any(term in gap for term in ('attachment','robots','restricted','unavailable')) and gap not in updated['gaps_and_conflicts']['missing_fields']:
+                                updated['gaps_and_conflicts']['missing_fields'].append(gap)
                     result['candidates'][index]=updated
                     plan.update(status='replayed_pending_review',verification=updated['verification']['status'])
                 except ValueError as error:
@@ -67,6 +75,7 @@ def main():
     parser.add_argument('--group',action='append',dest='groups')
     parser.add_argument('--field',action='append',dest='fields')
     parser.add_argument('--refresh',action='store_true',help='Bounded public GET; otherwise offline plan only')
+    parser.add_argument('--full-replay',action='store_true',help='Recompute every field from fresh context; never carries approvals')
     parser.add_argument('--output-dir',type=Path,required=True)
     args=parser.parse_args()
     output=args.output_dir.resolve()
@@ -80,10 +89,10 @@ def main():
         bundle['candidates']=[c for c in bundle['candidates'] if c['source_metadata']['source_id'] in args.source_id]
     if not bundle['candidates']:raise ValueError('empty_candidate_selection')
     # Validate the complete scope before any possible source request.
-    prepare_batch(bundle,config,args.groups,args.fields)
+    prepare_batch(bundle,config,args.groups,args.fields,full_replay=args.full_replay)
     contexts,statuses,count=({}, {},0)
     if args.refresh:contexts,statuses,count=refresh_context(bundle,config)
-    result,report=prepare_batch(bundle,config,args.groups,args.fields,contexts,statuses)
+    result,report=prepare_batch(bundle,config,args.groups,args.fields,contexts,statuses,full_replay=args.full_replay)
     report['http_requests']=count;report['mode']='rule_replay' if args.refresh else 'offline_plan_only'
     output.mkdir(parents=True)
     (output/'preparation-report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
