@@ -51,7 +51,7 @@ def build(output):
 <meta property="og:image:alt" content="OpenGSA：把時間留給研究，研究與安心生活">
 <meta name="twitter:card" content="summary_large_image">
 </head>''')
-    replace_once("設計審閱稿 · 四分頁互動線框 · 資料快照 2026.10.28 · 所有獎助資料待獨立覆核，非申請建議", f'獎助雷達預覽 · 來源摘要，非即時資格核定 · 未載明/無法辨識，請至來源確認 · <a href="{FEEDBACK}">提供回饋 ↗</a>')
+    replace_once("設計審閱稿 · 四分頁互動線框 · 資料快照 2026.10.28 · 所有獎助資料待獨立覆核，非申請建議", f'獎助雷達預覽 · 來源摘要，非即時資格核定 · ⚠ 不明，請見來源 · <a href="{FEEDBACK}">提供回饋 ↗</a>')
     replace_once("互動原型 · 不進行個人資格核定", "公開預覽 · 不進行個人資格核定")
     replace_once("OpenGSA · MVP介面基礎審閱稿 0.8 · 無外部字型、無追蹤、無個資送出。<br/>原創線框內容依專案授權；官方文件各保留原權利。自動擷取及正式發布尚待驗證。", f'''OpenGSA · 公開預覽 0.9 · 個人條件與研討會輸入只留本次瀏覽，無分析追蹤程式。<br>
 GitHub Pages託管可能保留連線紀錄，詳見<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub隱私聲明</a>。<br>

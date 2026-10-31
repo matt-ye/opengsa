@@ -11,12 +11,21 @@ async (page) => {
    return {id,title:card.querySelector('h3').textContent,source:official.href===new URL(metadata[id].url).href,
     report:u.searchParams.get('resource_id')===id&&u.searchParams.get('source_version')===metadata[id].revision&&
      u.searchParams.get('source_url')===new URL(metadata[id].url).href&&u.searchParams.get('resource_name')===card.querySelector('h3').textContent.slice(0,120),
-    unknown:[...card.querySelectorAll('a')].some(a=>a.textContent.includes('未載明/無法辨識，請至來源確認')),
-    clean:!(/undefined|NaN|\[object Object\]/.test(card.textContent)),clarity:!!card.querySelector('.clarity')};
+    unknown:[...card.querySelectorAll('a')].some(a=>a.textContent.includes('不明，請見來源')&&a.querySelector('.unknown-icon')),
+    clean:!(/undefined|NaN|\[object Object\]|文件候選，待整併/.test(card.textContent)),clarity:!!card.querySelector('.clarity')};
   });
   const failed=checks.filter(c=>!c.source||!c.report||!c.unknown||!c.clean||!c.clarity);
   if(cards.length!==19||failed.length)throw new Error(JSON.stringify({count:cards.length,failed}));
-  return {count:cards.length,checks};
+  const receivers=cards.filter(c=>c.textContent.includes('收件／轉送：')).length;
+  const timing=cards.filter(c=>[...c.querySelectorAll('strong')].some(s=>/^(學生|校級|學院|機構|補件)(時間規則|期限)：/.test(s.textContent))).length;
+  if(receivers!==12||timing!==7)throw new Error('lost recorded facts '+JSON.stringify({receivers,timing}));
+  // IDs reside in data attributes rather than visible card text.
+  const ai=cards.filter(c=>c.querySelector('[data-pick-id]').dataset.pickId.includes('ai-tools'));
+  if(ai.length!==2||ai.some(c=>!c.textContent.includes('地方青年訂閱費補助')))throw new Error('partial audience hidden');
+  const national=cards.find(c=>c.querySelector('[data-pick-id]').dataset.pickId.includes('nstc-conference-rule'));
+  if(!national.textContent.includes('機構時間規則')||!national.textContent.includes('學生截止：'))throw new Error('institution deadline confused with student');
+  if(national.textContent.includes('學生先送臺大'))throw new Error('national policy inherited NTU-only receiver');
+  return {count:cards.length,checks,receivers,timing};
  });
  for(const card of summary.checks){
   await page.locator(`[data-open-detail="${card.id}"]`).click();
@@ -53,7 +62,7 @@ async (page) => {
  if(layout.scroll>layout.width+1)throw new Error('mobile overflow '+JSON.stringify(layout));
  await page.locator('#result-cards article.card').first().scrollIntoViewIfNeeded();
  await page.screenshot({path:'output/playwright/radar-mobile.png'});
- const report={records:summary.count,detail_views:19,timeline_cards:19,programs:13,
+ const report={records:summary.count,detail_views:19,timeline_cards:19,programs:13,receiver_summaries:summary.receivers,time_summaries:summary.timing,
   all_report_ids_and_source_versions_match:true,all_unknowns_link_to_source:true,
   year_filter:yearText,compatibility_filter:compText,mobile:layout,submitted_issues:0};
  await page.evaluate(value=>{document.body.dataset.radarSmokeResult=JSON.stringify(value)},report);

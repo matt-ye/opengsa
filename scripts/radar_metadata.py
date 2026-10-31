@@ -23,8 +23,24 @@ def radar_metadata(bundle):
         known['audience']=known['audience'] and not any('identity_not_extracted' in g for g in gaps)
         student=[i for i,s in enumerate(candidate['schedule']['steps']) if s['actor']=='student']
         known['deadline']=any(supported(f'schedule.steps/{i}/deadline') for i in student)
+        # Organizations are source-linked facts in the existing schema, not URL fields.
+        # Keep their declared roles; receiver does not imply a named contact person.
+        organizations={role:fact['text'] for role,fact in candidate['organizations'].items()
+            if not unsafe and fact.get('text') not in ('待查','待確認','unknown','')
+            and any(r.get('source')==candidate['source_metadata']['source_id'] and r.get('locator')
+                for r in fact.get('refs',[]))}
+        # Old national-policy records inherited an NTU receiver from a shared
+        # extractor. Do not expose that route outside its declared school scope.
+        if (candidate['institution_scope'].get('school')!='NTU'
+                and any(name in organizations.get('receiver','') for name in ('臺大','台大','臺灣大學','台灣大學'))):
+            organizations.pop('receiver',None)
+            gaps=[*gaps,'organizations.receiver_scope_mismatch']
+        time_steps=[{'actor':step['actor'],'action':step['action'],'deadline':step['deadline']}
+            for i,step in enumerate(candidate['schedule']['steps'])
+            if step['deadline']['kind']!='unknown' and supported(f'schedule.steps/{i}/deadline')]
         records[candidate['candidate_id']]={'url':candidate['source_metadata']['url'],
             'revision':candidate['source_metadata']['revision_id'],
             'observed_at':candidate['source_metadata']['observed_at'],
-            'known':known,'unsafe':unsafe,'unknown_reasons':gaps}
+            'known':known,'unsafe':unsafe,'unknown_reasons':gaps,
+            'organizations':organizations,'time_steps':time_steps}
     return {'version':'radar-1','records':records}

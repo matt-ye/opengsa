@@ -6,8 +6,6 @@ import difflib
 import json
 from pathlib import Path
 import sys
-from collections import Counter
-from urllib.parse import urlsplit
 
 ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
@@ -57,7 +55,6 @@ def candidate_preview_data(bundle,pilot,config):
     dataset=deepcopy(pilot)
     dataset["as_of"]=bundle["as_of"]
     dataset["opportunities"]=[]
-    identities=Counter(c.get("opportunity_id") or c["candidate_id"] for c in bundle["candidates"])
     for candidate in bundle["candidates"]:
         cand=deepcopy(candidate)
         # Preview never presents a review intent as a published/reviewed opportunity.
@@ -65,9 +62,6 @@ def candidate_preview_data(bundle,pilot,config):
         item=candidate_to_pilot_opportunity(cand)
         # Each document candidate is distinct in an unpublished review, even for the same program.
         item["id"]=cand["candidate_id"]
-        if identities[cand.get("opportunity_id") or cand["candidate_id"]]>1:
-            kind="PDF" if urlsplit(cand["source_metadata"]["url"]).path.lower().endswith(".pdf") else "HTML"
-            item["title"]+=f"（{kind}文件候選，待整併）"
         window=evaluate_application_window(item,bundle["as_of"])
         item["application"].update(state=window["state"],as_of=bundle["as_of"],reason=window["reason"])
         dataset["opportunities"].append(item)

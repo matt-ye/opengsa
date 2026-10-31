@@ -65,6 +65,22 @@ test("雷達不顯示缺證據的預設資格與日期，來源版次仍可回�
  assert.equal(new URL(core.issueUrl(item)).searchParams.get("source_version"),"a".repeat(64));
 });
 
+test("局部未知不抹掉整段說明，推估日期與正式受理分開",()=>{
+ assert.equal(core.unknownValue('待確認'),true);
+ assert.equal(core.unknownValue('身分條件請至來源定位核對'),true);
+ assert.equal(core.unknownValue('會議舉行前一個月首日；例假日校正尚待確認'),false);
+ assert.equal(core.unknownValue('地方青年訂閱費補助；個別資格須依各條件核對'),false);
+ const data=JSON.parse(JSON.stringify(pilot)),raw=data.opportunities.find(x=>x.id==='ntu-president-114');
+ raw.eligibility.identity.text='部分身分已明確；其他條件尚未確認';
+ const metadata={records:{[raw.id]:{url:'https://example.test',revision:'SYNTH',observed_at:'2026-11-01T00:00:00+08:00',unsafe:false,
+ known:{audience:true,start:true,deadline:false},organizations:{receiver:'先送系所，再送學院'},
+ time_steps:[{actor:'university',action:'校級收件',deadline:{kind:'date',value:'2026-08-25',note:'系所可能更早'}}]}}};
+ const item=core.makeDrafts(data,'2026-11-01',metadata).find(x=>x.id===raw.id);
+ assert.equal(item.start.value,null);assert.equal(item.end.value,null);assert.notEqual(item.rawState,'open');
+ assert.equal(item.estimatedStart.value,'2026-07-08');assert.equal(item.organizations.receiver,'先送系所，再送學院');
+ assert.equal(item.timeSteps[0].actor,'university');assert.equal(item.audience,raw.eligibility.identity.text);
+});
+
 test("審查篩選保留處置且不解除來源缺漏的核准限制（合成DOM）",async()=>{
  class Element{
   constructor(tag){this.tag=tag;this.children=[];this.handlers={};this.value="";this.textContent="";}

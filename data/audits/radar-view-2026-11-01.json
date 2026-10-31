@@ -2,14 +2,16 @@
   "checked_on": "2026-11-01",
   "view_version": "radar-1",
   "source_snapshot_sha256": "3856ddb123c14a3622e370fb8509ddf0d59224be13b7c0c95d06604f1c7a8710",
-  "python_tests": 142,
-  "node_tests": 44,
+  "python_tests": 143,
+  "node_tests": 45,
   "browser": "Chrome via playwright-cli",
   "browser_checks": {
     "records": 19,
     "detail_views": 19,
     "timeline_cards": 19,
     "programs": 13,
+    "receiver_summaries": 12,
+    "time_summaries": 7,
     "all_report_ids_and_source_versions_match": true,
     "all_unknowns_link_to_source": true,
     "year_filter": "符合已知篩選 0 項；可能相關／待確認 17 項（共 19 項）",
@@ -26,5 +28,21 @@
   "formal_pilot_modified": false,
   "github_form_submission_tested": false,
   "github_form_note": "新Issue表單須本PR合併至預設分支後生效；已測試19筆預填URL，未代送Issue。",
-  "digest_normalization": "UTF-8 JSON; sort_keys=true; ensure_ascii=false"
+  "digest_normalization": "UTF-8 JSON; sort_keys=true; ensure_ascii=false",
+  "display_diagnosis": {
+    "raw_receiver_texts": 13,
+    "independent_receiver_urls": 0,
+    "displayed_receiver_summaries": 12,
+    "receiver_scope_mismatches_hidden": 1,
+    "audience_summaries_before": 11,
+    "audience_summaries_after": 13,
+    "generic_identity_placeholders_remaining": 6,
+    "records_with_supported_multilayer_times": 7,
+    "records_with_student_time_information": 3,
+    "title_matches_original_candidate": true,
+    "unknown_label": "不明，請見來源",
+    "source_snapshot_reextracted": false,
+    "extractor_code_version": "extractor-1.4.2",
+    "snapshot_extractor_version": "extractor-1.4.1"
+  }
 }

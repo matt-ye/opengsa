@@ -62,7 +62,10 @@ function windowState(item,today) {
  }
  return "unknown"; // An old open snapshot, inferred start or same-day time needs confirmation.
 }
-const UNKNOWN_LABEL="未載明/無法辨識，請至來源確認";
+const UNKNOWN_LABEL="不明，請見來源";
+function unknownValue(value){
+ return !value||value===UNKNOWN_LABEL||/^(?:待確認|待核|待查|未載明|未確認|尚無|尚未辨識|unknown|身分條件請至來源定位核對)$/.test(value.trim());
+}
 function officialUrl(value){
  try{const url=new URL(value);return url.protocol==="https:"&&!url.username&&!url.password?url.href:null;}catch{return null;}
 }
@@ -159,7 +162,7 @@ function makeDrafts(pilot,asOf=taipeiToday(),radarData=null) {
    const state=windowState(item,asOf);
    const draft={
    id:item.id,title:item.title,category:item.category,source:resolvedSource,programKey:item.program_key,cycleKind:item.cycle.kind,resourceKind:item.resource_kind,
-   audience:/身分條件請至來源|待確認|未完整|待查|須依各條件核對/.test(item.eligibility.identity.text)?null:item.eligibility.identity.text,
+   audience:unknownValue(item.eligibility.identity.text)?null:item.eligibility.identity.text,
    degrees:/身分條件請至來源/.test(item.eligibility.identity.text)?[]:item.eligibility.degrees,year:item.field_applicability?.year_limit?.status==="not_applicable"?"not_applicable":item.eligibility.year_limit.mode,
    candidateMode:item.eligibility?.candidate?.mode || "unknown",
    compatibility:item.compatibility.mode,hardship:item.hardship.mode,
@@ -173,6 +176,8 @@ function makeDrafts(pilot,asOf=taipeiToday(),radarData=null) {
     rawState:state,
    evidence:item.evidence_status==="incomplete"?"資料不完整／草稿":"草稿待獨立覆核",
    url:source?.url||null,officeUrl:officialUrl(item.organizations?.receiver?.url),sourceChecked:source?.checked_on,
+   organizations:Object.fromEntries(Object.entries(item.organizations||{}).filter(([,fact])=>fact.refs?.length&&!unknownValue(fact.text)).map(([role,fact])=>[role,fact.text])),
+   timeSteps:[],estimatedStart:null,
    sourceVersion:source?.locator?.startsWith("來源revision ")?source.locator:pilot.as_of,conflict:item.evidence_status==="conflicting_sources",
    timeRule:item.steps.find(s=>s.actor==="student"&&s.deadline?.kind==="relative")?.deadline?.note||null,
    note:item.application.reason+"；所有資料皆待獨立覆核。"
@@ -181,6 +186,9 @@ function makeDrafts(pilot,asOf=taipeiToday(),radarData=null) {
   if(meta){
    draft.url=officialUrl(meta.url);draft.sourceVersion=meta.revision;draft.sourceChecked=taipeiToday(new Date(meta.observed_at));
    draft.conflict=meta.unsafe;
+   draft.organizations=meta.organizations||{};
+   draft.timeSteps=meta.time_steps||[];
+   if(meta.known.start&&["inferred","tentative"].includes(draft.start.certainty))draft.estimatedStart={...draft.start};
    if(!meta.known.audience){draft.audience=null;draft.degrees=[];}
    for(const key of ["year","compatibility","hardship"])if(!meta.known[key])draft[key]="unknown";
    if(!meta.known.candidate)draft.candidateMode="unknown";
@@ -386,7 +394,7 @@ function evaluateSubordination(checks={}){
  if(score===1) return {score:1,level:"review_needed",recommendedTiers:["TIER 01","TIER 02"],disclaimer,summary:"已勾選 1 項指標：具部分從屬或學習分流爭點。建議核對勞動部指導原則第 2～4 點及書面協議，確認工時與給付是否相符（2026 最低時薪 196 元）；必要時洽 TIER 01 系院或 TIER 02 校級窗口釐清。"+disclaimer};
  return {score,level:"high_subordination",recommendedTiers:["TIER 02","TIER 04","TIER 05"],disclaimer,summary:"已勾選 "+score+" 項指標：高度呈現人格、經濟或組織從屬性（常見「假學習真勞動」爭點）。依勞動部指導原則實質認定原則，若受指揮監督並提供勞務獲取對價，不能只按給付名稱排除適用保障；勞基法、2026最低工資與退休金須分別依關係、身分及進用依據確認。建議參考下方 TIER 02 校內申訴、TIER 04（地方主管機關勞檢／勞工局調解）或 TIER 05 高教工會。"+disclaimer};
 }
-const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,windowState,filterItems,partitionItems,clarity,groupDocuments,issueUrl,officialUrl,UNKNOWN_LABEL,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination,isNA,fieldText,resultText,methodText,startLabel,deadlineText};
+const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,windowState,filterItems,partitionItems,clarity,groupDocuments,issueUrl,officialUrl,UNKNOWN_LABEL,unknownValue,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination,isNA,fieldText,resultText,methodText,startLabel,deadlineText};
 if(typeof module!=="undefined" && module.exports) module.exports=api;
 if(typeof document==="undefined") return;
 
@@ -543,18 +551,20 @@ function itemTags(item) {
 }
 function sourceLink(text,item,url=item.url){
  const safe=officialUrl(url);if(!safe)return el("span","quiet",item.synthetic?"合成示範，無官方來源":text+"（目前無有效來源連結）");
- const a=el("a","",text+" ↗");a.href=safe;a.target="_blank";a.rel="noopener noreferrer";return a;
+ const a=el("a",text.includes(UNKNOWN_LABEL)?"unknown-link":"",text+" ↗");
+ if(text.includes(UNKNOWN_LABEL)){const icon=el("span","unknown-icon","⚠");icon.setAttribute("aria-hidden","true");a.prepend(icon);a.title="來源可能未載明或尚未完整辨識，請核對官方原文";}
+ a.href=safe;a.target="_blank";a.rel="noopener noreferrer";return a;
 }
 function radarFact(container,label,value,item){
  const p=el("p","small");p.append(el("strong","",label+"："));
- const unknown=!value||value===UNKNOWN_LABEL||/待確認|待核|待查|未載明|未確認|尚無|尚未|未完整|身分條件請至/.test(value);
+ const unknown=unknownValue(value);
  p.append(unknown?sourceLink(UNKNOWN_LABEL,item):document.createTextNode(value));container.append(p);
 }
 function radarLinks(item){
  const links=el("div","card-actions");
  if(!item.synthetic&&!item.personal){
   links.append(sourceLink("官方公告",item));
-  links.append(item.officeUrl?sourceLink("承辦單位",item,item.officeUrl):sourceLink("承辦單位："+UNKNOWN_LABEL,item));
+  links.append(item.organizations?.receiver?sourceLink("收件／轉送："+item.organizations.receiver,item,item.officeUrl||item.url):sourceLink("收件單位："+UNKNOWN_LABEL,item));
  }
  const report=el("a","","回報問題 ↗");report.href=issueUrl(item);report.target="_blank";report.rel="noopener noreferrer";links.append(report);
  return links;
@@ -565,7 +575,16 @@ function radarSummary(container,item){
  container.append(badge);
  if(item.rawState==="closed")container.append(el("p","small","歷史公告：本期已截止"));
  radarFact(container,"大致對象",item.audience||(item.synthetic?"合成示範":null),item);
+ if(item.estimatedStart)radarFact(container,"推估開始（非官方起日）",dateText(item.estimatedStart.value)+"；"+item.estimatedStart.note,item);
  if(item.rawState==="not_applicable")radarFact(container,"申請時間",item.method?.mode==="automatic"?"來源明示免另行申請":"制度參考；當期申請請查個別公告",item);
+ else if(item.timeSteps?.length){
+  if(item.start.value)radarFact(container,"申請開始",startLabel(item),item);
+  for(const step of item.timeSteps){
+   const actor={student:"學生",department:"系所",unit:"單位",college:"學院",university:"校級",institution:"機構",supplement:"補件"}[step.actor]||"其他程序";
+   radarFact(container,actor+(step.deadline.kind==="relative"?"時間規則":"期限"),[step.action,step.deadline.value?dateText(step.deadline.value):null,step.deadline.note].filter(Boolean).join("；"),item);
+  }
+  if(!item.timeSteps.some(s=>s.actor==="student"))radarFact(container,"學生截止",null,item);
+ }
  else if(item.timeRule)radarFact(container,"申請時間規則",item.timeRule,item);
  else if(item.start.value||item.end.value){radarFact(container,"申請開始",item.start.value?startLabel(item):null,item);radarFact(container,"學生截止",item.end.value?deadlineText(item):null,item);}
  else radarFact(container,"申請時間",null,item);
@@ -583,7 +602,7 @@ function inspect(item) {
  box.append(el("strong","",item.title));
   radarFact(box,"申請開始",item.start.value?startLabel(item):null,item);
   radarFact(box,"學生截止",item.end.value?deadlineText(item):null,item);
-  radarFact(box,"結果公告",item.result.value?resultText(item):null,item);
+  radarFact(box,"結果公告",resultText(item),item);
  item.milestones.forEach(m=>box.append(el("p","small",m.label+"："+dateText(m.value))));
  box.append(el("p","tiny quiet",item.synthetic?"合成排程，全部為虛構日期。":item.note));
  box.append(radarLinks(item));
@@ -749,11 +768,12 @@ function drawDetail() {
   const year=raw.eligibility.year_limit;
   radarFact(details,"年級",item.year==="range"?year.min+"–"+year.max+"年級；基準日 "+dateText(year.assessed_at):item.year==="unlimited"?"來源明示不限年級":null,item);
   radarFact(details,"學校／學院",[raw.institution_scope?.school==="NTU"?"國立臺灣大學":null,raw.institution_scope?.college,raw.institution_scope?.department].filter(Boolean).join("／")||null,item);
+  for(const [role,label] of Object.entries({funder:"資助單位",announcer:"公告單位",receiver:"收件／轉送"}))if(item.organizations?.[role])radarFact(details,label,item.organizations[role],item);
   radarFact(details,"給付",item.benefit,item);
   radarFact(details,"兼領",item.compatibility==="unknown"?null:raw.compatibility.note,item);
   radarFact(details,"申請方式",{paper:"紙本申請",electronic:"電子申請",hybrid:"紙本與電子程序，請核對各階段",automatic:"來源明示免另行申請"}[item.method?.mode],item);
   radarFact(details,"紙本遞交",{required:"須遞交紙本",not_required:"免遞交紙本"}[item.method?.paper_delivery],item);
-  radarFact(details,"結果公告",item.result.value?resultText(item):null,item);
+  radarFact(details,"結果公告",resultText(item),item);
   content.append(details);return;
  }
  const columns=el("div","two-col"), left=el("div"), right=el("aside");
@@ -795,7 +815,7 @@ function drawPlan() {
  sharedItems.forEach(item=>{
   const card=el("article","card"), button=el("button","plan-title",item.title);button.type="button";button.addEventListener("click",()=>openSharedDetail(item));card.append(button);
   radarSummary(card,item);
-  radarFact(card,"結果公告",item.result.value?resultText(item):null,item);
+  radarFact(card,"結果公告",resultText(item),item);
   card.append(el("p","tiny quiet",item.synthetic?"合成資料，僅供規劃示範。":"來源摘要；未明欄位請直接核對原文。"));
   const tasks=el("div","plan-tasks");
   (isNA(item,"student_deadline")?["核對使用條件","確認開通／領取程序"]:["核對申請資格","確認學生收件時間","整理申請文件"]).forEach((text,index)=>{
