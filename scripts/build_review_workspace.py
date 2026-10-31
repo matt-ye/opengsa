@@ -127,7 +127,8 @@ def build_workspace(bundle,pilot,config,output,ledger=None,decisions=None,contex
             "gaps":classify_review_gaps(cand),"before":{k:old.get(k) for k in keys} if old else None,
             "after":{k:converted.get(k) for k in keys},"evidence":cand["field_evidence"],
             "questions":cand["gaps_and_conflicts"]["open_questions"],"review":cand["review"]})
-    manifest={"as_of":working["as_of"],"candidate_ids":[c["candidate_id"] for c in verified["candidates"]],
+    manifest={"as_of":working["as_of"],"generated_at":datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "workbench_version":"review-1.1.0","candidate_ids":[c["candidate_id"] for c in verified["candidates"]],
         "promotion_ready":summary["promotion_ready"],"http_requests":http_requests,"model_calls":0,
         "official_data_modified":False,"publication_status":"not_requested","published":False}
     output.mkdir(parents=True,exist_ok=True)

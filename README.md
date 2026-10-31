@@ -12,6 +12,8 @@
 
 ## 目前狀態
 
+2026-11-01本版整合PR #22–#27：維運與資助研究經更正後納入，文件準備／進階萃取與候選審查共用最新版本。全套140項Python／39項Node測試通過；review-1.1.0新增操作說明、中文缺漏及審查篩選。[需要你審核的項目與操作](docs/CURRENT-REVIEW-CHECKLIST.md) · [維運與成本提案](docs/LONG-TERM-ARCHITECTURE-AND-OPERATIONS.md) · [開源資助與擴展提案](docs/OPENAI-CODEX-FUND-APPLICATION-AND-EXPANSION.md)。19筆候選仍待審，合併程式不代表發布資料。
+
 2026-10-31進階驗證補上15項對抗測試，修正HTML行內文字、表格定位、共用分支限制及局部時程。17文件／19候選已依新版本完整重掃，維持8通過／11有缺漏，沒有已知欄位退步；全套140項Python／38項Node通過。仍全部待審、0模型呼叫。[進階測試與限制](docs/ADVANCED-EXTRACTION-TESTS.md)。
 
 2026-10-31整合PR #24～#26後，已接上統一文件區塊、HTML表格／章節脈絡、完整請求分段及指定欄位規則重萃。17份實際文件／19筆候選已重跑，8通過／11有缺漏，仍全部待審。[目前實作與限制](docs/PREPARED-EXTRACTION.md) · [後續規劃](docs/FIELD-SCOPED-EXTRACTION-PLAN.md) · [PR #25研究整合](docs/BLOCKED-SOURCES-AND-DEFUDDLE-STUDY.md)。模型能力／正確Token計數器未核對時會延期，排程仍off。
