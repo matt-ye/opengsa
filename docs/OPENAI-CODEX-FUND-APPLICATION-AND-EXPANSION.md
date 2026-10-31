@@ -10,9 +10,10 @@ OpenGSA 專案由最初解決全臺碩博士研究生獎助學金與兼任助理
 
 經深度調研，OpenAI 官方專門面向活躍開源專案維護者設立之 **The Codex Open Source Fund / Codex for Open Source（100 萬美元專項基金）**，其核心宗旨為「透過 AI 工具與 API 額度減輕開源維護者的日常繁重負擔，促進公共代碼生態健康」。本專案具備完全開源、強固的 CI/CD 管線、負責任的 AI 治理設計（`hash_only` 零外送保護）、以及消除青年弱勢資訊不對稱之顯著公共利益，**高度契合其資助標準**。
 
-同時，本報告進一步完成全臺教育與青年支援體系之拓撲規劃：
+同時，本報告進一步完成全臺教育與青年支援體系之拓撲規劃，並前瞻描繪遠程跨國架構：
 1. **垂直延伸**：向上銜接幼兒園（0~6 歲托育與育兒津貼）、國中小（義務教育弱勢代辦費、午餐與原民特教補助）、高中職（全免學費政策、證照獎勵金與建教津貼）。
 2. **橫向擴展**：涵蓋大專與青年創業補助（FITI、U-start、SBIR）、就學貸款與寬緩利息補貼、弱勢載具與 AI 工具設備經費，以及國內頂尖加速器與孵化器（NTU TEC、TTA、AppWorks、Garage+、TACC+）。
+3. **跨國雙邊與目標國深度檢索藍圖**：規劃「雙國選擇器（Bilateral Country Selector）」以媒合政府級協議、互惠獎學金與跨校雙聯學位；並擬定目標國（美、德、日、法、英及歐盟）境內三層級（聯邦/中央、州/省、大學校務基金）之垂直深度與廣度檢索規劃。
 
 ---
 
@@ -202,28 +203,137 @@ graph TD
 
 ---
 
-## 6. 架構整合藍圖與資料模型調適（Schema Adaptation）
+## 6. 未來擴展藍圖三：跨國雙邊合作與目標國境內深度檢索規劃（Transnational & Bilateral Blueprint）
 
-為了讓現行的 OpenGSA 資料管線能平滑納入垂直教育階段與橫向創業生態，候選資料模型與核心欄位可進行向下相容之微調：
+跨國交流、國際研學與雙聯學位是全球頂尖學子與青年研究員的核心需求。現行國際資訊極度分散於各國教育部、駐外使館、各國學術交流總署及大學國際事務處。本節規劃遠程之**跨國雙邊媒合機制**與**目標國境內深度檢索架構**（屬於長遠架構藍圖，目前專案先不實作代碼，保留設計彈性）。
 
-### 6.1 `candidate.schema.json` 擴充設計
+### 6.1 跨國雙邊合作與跨校國際交流生態拓撲
+
+雙邊合作獎助金依據協議簽訂層級，可歸納為四大支柱：
+
+```mermaid
+graph TD
+    subgraph TRANS["跨國雙邊合作生態四大支柱 (Transnational Matrix)"]
+        T1["1. 政府級雙邊協議 (Bilateral Treaties)<br>• 臺德 NSTC-DAAD PPP 人員交流<br>• 臺日 NSTC-JSPS 共同合作計畫<br>• 臺法 幽蘭計畫 (Orchid Program)<br>• 臺美 國科會-NSF 合作協議"]
+        T2["2. 跨國互惠留學獎學金 (Reciprocal Grants)<br>• 教育部與各國政府雙邊互惠獎金<br>• 傅爾布萊特 (Fulbright Taiwan)<br>• 臺德互惠獎學金 / 臺日交換獎學金<br>• 外交部臺灣獎學金 (MOFA Taiwan)"]
+        T3["3. 跨校雙聯學位與姊妹校 (Dual Degrees)<br>• 臺大-京都大學 雙聯博士<br>• 臺大-海德堡大學 / 漢堡大學 雙聯碩士<br>• 頂尖姊妹校學費全免與出國獎助<br>• 世界百大合作設置獎學金 (各出資50%)"]
+        T4["4. 多邊跨國培育架構 (Multilateral Consortia)<br>• 歐盟 Erasmus+ / Erasmus Mundus (EMJM)<br>• 歐盟 Horizon Europe & 瑪麗居禮 (MSCA)<br>• 亞太大學交流便覽 (UMAP) 移動獎助"]
+    end
+```
+
+1. **政府級科技與學術雙邊協議（Bilateral Treaties）**：
+   - **臺德 NSTC-DAAD 計畫**：國科會與德國學術交流總署長期合作，包含基於計畫之研究人員互訪補助（PPP 計畫）以及資助我國博士候選人赴德進行短期研究之「三明治計畫（Sandwich Program）」。
+   - **臺日 NSTC-JSPS 計畫**：國科會與日本學術振興會（JSPS）共同推動雙邊合作研究計畫、雙邊研討會與青年學者/博士生訪問研究。
+   - **臺法幽蘭計畫（Orchid Program）**：國科會與法國國家科研署（ANR）/ 法國在台協會共同資助雙邊研究團隊。
+   - **臺美科學與技術合作協議（STA）**：國科會與美國國家科學基金會（NSF）、國家衛生院（NIH）推動之雙邊重點合作。
+2. **跨國互惠留學獎學金（Reciprocal Scholarships）**：
+   - **雙邊政府互惠獎學金**：教育部與日本、波蘭、捷克、奧地利、德國、立陶宛等國政府相互提供留學免學費與每月生活費補助（例如：臺奧雙邊互惠獎學金每月提供約 1,050 歐元）。
+   - **臺美教育倡議與傅爾布萊特計畫（Fulbright Taiwan）**：提供碩士、博士赴美攻讀與訪問研究之高額獎助金（含學費補貼、生活津貼與往返機票）。
+   - **教育部與世界頂尖大學合作設置獎學金**：由教育部與海外百大名校（如英國劍橋大學、牛津大學、美國加州理工學院 Caltech、哥倫比亞大學、伊利諾大學 UIUC、南加州大學 USC 等）簽署雙邊合作備忘錄，雙方平均分攤（各出資 50%）提供 3~4 年全額博士學費與生活費。
+3. **校際雙聯學位與姊妹校協議（Inter-University Dual Degrees & Exchanges）**：
+   - 國內指標大學與海外名校簽訂之 1+1 雙聯碩士、2+2 雙聯學士及雙聯博士計畫（例如：臺大與日本京都大學、德國漢堡大學、法國索邦大學等），通常附帶對方校內註冊費減免、校內專案出國獎學金，完成後同時授予兩校正式學位。
+4. **多邊跨國培育架構（Multilateral Consortia）**：
+   - **歐盟 Erasmus+ / Erasmus Mundus 聯合碩士（EMJM）**：學生於歐洲 2 至 3 個不同國家的大學輪替就讀，歐盟提供全額學費補助、每月 1,400 歐元生活津貼與旅遊保險。
+   - **歐盟 Horizon Europe 瑪麗居禮培育計畫（MSCA）**：博士生與博士後研究員跨國科研流動補助。
+
+---
+
+### 6.2 雙國選擇器與雙邊媒合架構設計（Bilateral Country Selector）
+
+為提供直覺、革命性的跨國查找體驗，未來的互動原型可導入「雙國矩陣挑選器」：
+
+```mermaid
+flowchart LR
+    subgraph UI["雙國挑選器互動介面 (UI Flow)"]
+        ORIGIN["出發國 / 母籍國<br>(例如: 🇹🇼 臺灣)"] --> MATRIX{"雙邊交叉媒合引擎<br>(Bilateral Matrix)"}
+        DEST["目標國 / 留學國<br>(例如: 🇩🇪 德國)"] --> MATRIX
+        UNIV["(選填) 所屬學校<br>(例如: 國立臺灣大學)"] -.-> MATRIX
+    end
+
+    subgraph OUTPUT["雙向合作獎學金過濾結果"]
+        MATRIX --> R1["🏛️ 政府級雙邊協議<br>• NSTC-DAAD PPP 人員交流<br>• NSTC-DAAD 三明治博士赴德"]
+        MATRIX --> R2["🎓 互惠留學獎學金<br>• 教育部臺德互惠獎學金 (每月生活費)<br>• DAAD 全額碩博士留德獎金"]
+        MATRIX --> R3["🤝 校級雙聯/交換學位<br>• 臺大-漢堡大學 雙聯碩士 (學費互免)<br>• 臺大校級赴德交換獎學金"]
+        MATRIX --> R4["🌐 涵蓋兩國之多邊計畫<br>• 歐盟 Erasmus+ Joint Master"]
+    end
+```
+
+#### 互動與檢索邏輯：
+1. **雙向對等匹配**：使用者在頂部選擇 `[母籍國: 臺灣]` 與 `[目標國: 德國]`。
+2. **多維聚合分類**：系統即刻將結果聚合成四大維度（政府協議、政府互惠、校際雙聯、多邊計畫），清楚標記由「我方政府出資」、「對方政府出資」或「兩校共同減免」。
+3. **支援反向交換（Inbound）**：若外國學生選擇 `[母籍國: 德國]` 與 `[目標國: 臺灣]`，系統自動呈現臺灣外交部臺灣獎學金（MOFA Taiwan Scholarship）、教育部華語文獎學金（HES）以及國科會臺灣國際研究生學程（TIGP）補助，達成國際雙向雙贏。
+
+---
+
+### 6.3 目標國境內的「垂直深度與廣度」分層檢索計畫（In-Country Ingestion Strategy）
+
+當青年抵達目標國留學或深造時，其生活與研究支持不僅依賴雙邊協議，更高度仰賴「目標國國內的本土獎補助體系」。OpenGSA 規劃的三層分層檢索矩陣如下：
+
+```mermaid
+graph TD
+    subgraph HIERARCHY["目標國境內三層級檢索架構 (In-Country Depth & Breadth)"]
+        L1["第 1 層：聯邦 / 中央國家科研基金會 (Federal/National Tier)<br>• 美國: NSF, NIH, Grants.gov<br>• 德國: DAAD, DFG, BMBF Stipendienlotse<br>• 日本: 文部科學省 MEXT, JSPS, JASSO<br>• 英國: UKRI, Chevening 志奮領<br>• 法國: Campus France, ANR, Éiffel"]
+        
+        L2["第 2 層：州 / 省 / 地方政府公共資助 (Sub-National / State Tier)<br>• 美國: 各州 HESC, 加州 Cal Grant<br>• 德國: 各邦研究生資助法規 (Landesgraduiertenförderung)<br>• 日本: 各都道府縣育英會與地域振興留學生支援<br>• 加拿大: 安大略省 OGS, 魁北克 FRQ"]
+        
+        L3["第 3 層：大學機構校務基金與系所獨立獎助 (Institutional Tier)<br>• 名校校務基金 (University Endowments) 全額獎學金<br>• 博士研究生助研金 (RA) / 助教金 (TA) 全免學費保證 (Full Tuition Waiver + Stipend)<br>• 產學合作實驗室 Fellowship 與私人紀念獎學金"]
+    end
+```
+
+#### 各國檢索深度與代表性官方來源矩陣：
+1. **美國（United States）**：
+   - 聯邦層級：NSF Graduate Research Fellowship Program (GRFP)、NIH F31 Fellowship、Grants.gov 青年研究入口。
+   - 州與校級：各大名校之 Dean's Fellowship、Graduate Assistantship（強制保障健康保險與免學費）。
+2. **德國（Germany）**：
+   - 聯邦層級：DAAD 獎學金資料庫（涵盖逾 2,000 項留德獎助）、德國科學基金會（DFG）個別研究計畫與博士培育群體（Graduiertenkollegs）。
+   - 邦與政黨基金會：13 個大型國家獎學金組織（Begabtenförderungswerke，如洪堡基金會 Alexander von Humboldt Foundation、阿登納基金會、艾伯特基金會）。
+3. **日本（Japan）**：
+   - 國家層級：文部科學省（MEXT）國費外國人留學生獎學金、日本學生支援機構（JASSO）私費外國人留學生學習獎勵費。
+   - 學術與民間：日本學術振興會（JSPS）特別研究員（DC1/DC2）、似鳥國際獎學財團、平和中島財團。
+4. **英國（United Kingdom）**：
+   - UKRI（工程與物理科學 EPSRC、生物科技 BBSRC 等 7 大研究委員會）學生資助、大英帝國志奮領獎學金（Chevening）、羅德獎學金（Rhodes Trust）。
+5. **法國（France）**：
+   - 法國在台協會與 Campus France 總覽、埃菲爾優秀獎學金（Bourse d'Excellence Eiffel）、法國國家科學研究中心（CNRS）博士合同。
+
+---
+
+### 6.4 跨國技術與法規挑戰因應
+
+1. **多語系確定性規則與適配器（Multilingual Parser Adapters）**：
+   - 擴充日期正規表達式，支援德文（`31. März 2027`）、法文（`15 novembre 2026`）、日文（`令和9年3月31日`）與標準 ISO-8601。
+   - 金額解析支援多國貨幣（EUR、USD、JPY、GBP、CAD）與歐陸數字標記（小數點逗號 `1.500,00 €`）。
+2. **匯率與購買力平價指數（PPP Index & Offline Currency Conversion）**：
+   - 為避免使用者在跨國比較時產生幣值偏誤，系統將內建世界銀行（World Bank）購買力平價指數（PPP）與離線固定匯率表，提供「等值生活水準」之換算參考，不因浮動匯率誤導獎助實質效益。
+3. **跨國學生簽證與合法工讀權益邊界（Visa & Work Authorization Gates）**：
+   - 跨國留學生在各國均受到嚴格的簽證與工讀時數限制（例如：美國 F-1 學生第一年僅限校內工讀每週 20 小時、畢業後 OPT；德國 §16b AufenthG 每年僅限 140 個工作天或 280 個半天；日本留學生「資格外活動許可」每週上限 28 小時）。
+   - OpenGSA 堅持「法源位階與勞工權益清楚標示」原則，將在跨國方案中增列簽證工作權益警示，防止學生違反留學國移民法規。
+
+---
+
+## 7. 架構整合藍圖與資料模型調適（Schema Adaptation）
+
+為了讓現行的 OpenGSA 資料管線能平滑納入垂直教育階段、橫向創業生態以及遠程跨國雙邊合作，候選資料模型與核心欄位可進行向下相容之微調：
+
+### 7.1 `candidate.schema.json` 擴充設計
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "OpenGSA Candidate Schema (Expanded for K-12 & Venture)",
+  "title": "OpenGSA Candidate Schema (Expanded for K-12, Venture & Transnational)",
   "type": "object",
   "properties": {
     "resource_kind": {
       "type": "string",
       "enum": [
-        "scholarship",       // 傳統獎學金
-        "grant",             // 研究/差旅補助款
-        "subsidy",           // 政策性津貼/免學費差額
-        "loan_relief",       // 就學貸款/利息寬緩
-        "venture_grant",     // 創業補助/FITI/U-start
-        "incubator_award",   // 加速器獎金/進駐激勵
-        "equipment_stipend", // 數位載具/輔具採購補助
-        "childcare_aid"      // 托育/育兒就學補助
+        "scholarship",          // 傳統獎學金
+        "grant",                // 研究/差旅補助款
+        "subsidy",              // 政策性津貼/免學費差額
+        "loan_relief",          // 就學貸款/利息寬緩
+        "venture_grant",        // 創業補助/FITI/U-start
+        "incubator_award",      // 加速器獎金/進駐激勵
+        "equipment_stipend",    // 數位載具/輔具採購補助
+        "childcare_aid",         // 托育/育兒就學補助
+        "bilateral_scholarship",// 跨國雙邊協議/互惠獎學金
+        "dual_degree_stipend"   // 跨校雙聯學位學費減免與補助
       ]
     },
     "education_stage": {
@@ -231,17 +341,36 @@ graph TD
       "items": {
         "type": "string",
         "enum": [
-          "preschool",       // 幼兒園 (0-6歲)
-          "elementary",      // 國小 (6-12歲)
-          "junior_high",     // 國中 (12-15歲)
-          "senior_high",     // 普通高中 (15-18歲)
-          "vocational",      // 技術型高中/高職 (15-18歲)
-          "undergraduate",   // 大專院校學士
-          "master",          // 碩士班
-          "doctorate",       // 博士班
-          "postdoc",         // 博士後研究員
-          "early_career"     // 青年初創業者/畢業未滿5年
+          "preschool",          // 幼兒園 (0-6歲)
+          "elementary",         // 國小 (6-12歲)
+          "junior_high",        // 國中 (12-15歲)
+          "senior_high",        // 普通高中 (15-18歲)
+          "vocational",         // 技術型高中/高職 (15-18歲)
+          "undergraduate",      // 大專院校學士
+          "master",             // 碩士班
+          "doctorate",          // 博士班
+          "postdoc",            // 博士後研究員
+          "early_career"        // 青年初創業者/畢業未滿5年
         ]
+      }
+    },
+    "international_cooperation": {
+      "type": "object",
+      "properties": {
+        "is_transnational": { "type": "boolean" },
+        "origin_countries": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[A-Z]{2}$" } // ISO-3166-1 alpha-2 (如 TW)
+        },
+        "destination_countries": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[A-Z]{2}$" } // ISO-3166-1 alpha-2 (如 DE, US, JP)
+        },
+        "agreement_type": {
+          "type": "string",
+          "enum": ["bilateral_government", "reciprocal_exchange", "inter_university_dual_degree", "multilateral_consortium", "in_country_domestic"]
+        },
+        "visa_work_limit_hours_per_week": { "type": "number" }
       }
     },
     "application_process": {
@@ -249,7 +378,7 @@ graph TD
       "properties": {
         "delivery_method": {
           "type": "string",
-          "enum": ["online_only", "paper_only", "online_and_paper", "school_internal", "bank_counter", "not_applicable"]
+          "enum": ["online_only", "paper_only", "online_and_paper", "school_internal", "bank_counter", "consulate_embassy", "not_applicable"]
         },
         "financial_terms": {
           "type": "object",
@@ -265,22 +394,22 @@ graph TD
 }
 ```
 
-### 6.2 零負擔架構保證
-- **相容性**：現有 10 筆試點與大專碩博士資料維持 `education_stage: ["master", "doctorate"]`，完全向下相容，不破壞既有驗證邏輯。
+### 7.2 零負擔架構保證
+- **相容性**：現有 10 筆試點與大專碩博士資料維持 `education_stage: ["master", "doctorate"]`，未設定 `international_cooperation` 時預設為境內方案，完全向下相容，不破壞既有驗證邏輯。
 - **純靜態性能**：即便未來資料量由 10 筆擴展至 500 筆，前端 JSON 壓縮後大小仍小於 200 KB，維持客戶端毫秒級即時過濾（Client-side Filtering）之優異體驗，完全不依賴後端資料庫查詢。
 
 ---
 
-## 7. 參考來源、官方網站與文獻清單（References & Official Links）
+## 8. 參考來源、官方網站與文獻清單（References & Official Links）
 
-### 7.1 OpenAI 官方資助與開源計畫
+### 8.1 OpenAI 官方資助與開源計畫
 1. **OpenAI Developer Programs: Codex for Open Source & Open Source Fund**  
    - 官方網站：[https://developers.openai.com/](https://developers.openai.com/)  
    - 官方公告與申請指引：[OpenAI Codex for Open Source Overview](https://openai.com/)
 2. **OpenAI Researcher Access Program**  
    - 官方申請頁：[https://openai.com/form/researcher-access-program/](https://openai.com/form/researcher-access-program/)
 
-### 7.2 垂直延伸官方依據（幼兒園至高中職）
+### 8.2 垂直延伸官方依據（幼兒園至高中職）
 1. **教育部國民及學前教育署：全國教保資訊網（育兒津貼與幼兒就學補助）**  
    - 官網：[https://www.ece.moe.edu.tw/](https://www.ece.moe.edu.tw/)
 2. **教育部學生學產基金助學金（國小、國中、高中職低收入戶助學金）**  
@@ -290,7 +419,7 @@ graph TD
 4. **原住民族委員會：原住民學生獎助學金平臺**  
    - 官網：[https://law.cip.gov.tw/](https://law.cip.gov.tw/)
 
-### 7.3 橫向擴展官方依據（創業、貸款、設備、加速器）
+### 8.3 橫向擴展官方依據（創業、貸款、設備、加速器）
 1. **教育部青年發展署：U-start 創新創業計畫官網**  
    - 官網：[https://ustart.yda.gov.tw/](https://ustart.yda.gov.tw/)
 2. **國科會創新創業激勵計畫（FITI）官網**  
@@ -309,3 +438,20 @@ graph TD
    - 官網：[https://www.garageplus.asia/](https://www.garageplus.asia/)
 9. **經濟部 TACC+ 臺灣物聯網加速器**  
    - 官網：[https://www.taccplus.com/](https://www.taccplus.com/)
+
+### 8.4 跨國雙邊合作與國際交流官方依據
+1. **國家科學及技術委員會（NSTC）雙邊國際合作計畫（DAAD、JSPS、ANR）**  
+   - 官網：[https://www.nstc.gov.tw/](https://www.nstc.gov.tw/)
+2. **DAAD 德國學術交流總署（臺灣代表處與獎學金資料庫）**  
+   - 官網：[https://www.daad.org.tw/](https://www.daad.org.tw/)
+3. **日本學術振興會（JSPS, Japan Society for the Promotion of Science）**  
+   - 官網：[https://www.jsps.go.jp/](https://www.jsps.go.jp/)
+4. **學術交流基金會（Fulbright Taiwan / 傅爾布萊特）**  
+   - 官網：[https://www.fulbright.org.tw/](https://www.fulbright.org.tw/)
+5. **教育部國際及兩岸教育司：TaiwanGPS 海外留學獎助平臺與雙邊百大獎學金**  
+   - 官網：[https://twgps.moe.edu.tw/](https://twgps.moe.edu.tw/)
+6. **歐盟執委會：Erasmus+ 與 Erasmus Mundus Joint Masters（EMJM）**  
+   - 官網：[https://erasmus-plus.ec.europa.eu/](https://erasmus-plus.ec.europa.eu/)
+7. **法國在台協會商務處 / 法國教育中心（Campus France Taiwan）**  
+   - 官網：[https://www.taiwan.campusfrance.org/](https://www.taiwan.campusfrance.org/)
+

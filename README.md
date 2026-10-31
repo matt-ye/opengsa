@@ -32,7 +32,7 @@ PR #18的17筆AI資源已進行來源分流與更正，見[查核結果](docs/PR
 
 臺北／新竹AI工具補助已推進為兩筆[具名候選](data/candidates/README.md)，確定性萃取、分支與程序檢核已接入掃描；仍pending，不改10筆正式草稿。[推進與驗收紀錄](docs/AI-TOOLS-CANDIDATES.md)。
 
-針對 OpenAI The Codex Open Source Fund 之申請適切性評估、境內教育垂直延伸（幼兒園至高中職）與青年發展橫向擴展（創業補助、就學貸款、設備經費與加速器育成），見[OpenAI 開源資助申請與擴展藍圖](docs/OPENAI-CODEX-FUND-APPLICATION-AND-EXPANSION.md)。
+針對 OpenAI The Codex Open Source Fund 之申請適切性評估、境內教育垂直延伸（幼兒園至高中職）、青年發展橫向擴展（創業補助、就學貸款、設備與加速器）及跨國雙邊合作與目標國深度檢索藍圖，見[OpenAI 開源資助申請與擴展藍圖](docs/OPENAI-CODEX-FUND-APPLICATION-AND-EXPANSION.md)。
 
 ## 已有與後續功能
 
