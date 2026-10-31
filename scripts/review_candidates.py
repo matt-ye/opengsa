@@ -34,11 +34,15 @@ def validate_review_ledger(payload):
         raise ValueError("Invalid review ledger: " + (errors[0].message if errors else "duplicate disposition"))
     if any(r["reviewed_on"] > taipei_today() for r in payload["reviews"]):
         raise ValueError("Review date cannot be in the future")
+    if any(not r["reviewer"].strip() or not r["reason"].strip() for r in payload["reviews"]):
+        raise ValueError("Reviewer and reason cannot be blank")
 
 
 def candidate_fingerprint(candidate):
     """Bind approval to the actual claims; exclude changing evaluation timestamps."""
-    fields = {k: candidate.get(k) for k in ("candidate_id", "title", "category", "resource_kind", "scope", "evidence_status", "program_key", "cycle", "source_metadata", "participants", "organizations", "eligibility", "benefit", "compatibility", "hardship", "schedule", "policy_version", "field_evidence", "application_method", "field_applicability", "expense_period")}
+    fields = {k: candidate.get(k) for k in ("candidate_id", "title", "category", "resource_kind", "scope", "evidence_status", "program_key", "cycle", "source_metadata", "participants", "organizations", "eligibility", "benefit", "compatibility", "hardship", "schedule", "policy_version", "field_evidence", "application_method", "field_applicability", "expense_period", "gaps_and_conflicts")}
+    fields["editor"] = candidate.get("review", {}).get("editor")
+    fields["opportunity_id"] = candidate.get("opportunity_id")
     return hashlib.sha256(json.dumps(fields, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
 
 
@@ -146,6 +150,9 @@ def compute_candidate_diff(candidate, pilot_data):
 def apply_review_ledger(candidate, reviews_by_revision):
     """套用 data/scan-reviews.json 人工處置紀錄與獨立覆核檢查，回傳更新後之候選副本。"""
     cand = deepcopy(candidate)
+    # A candidate file cannot confer its own human approval; the ledger is authoritative.
+    cand["review"].update(status="pending",promotion_ready=False,independent_reviewer=None,reviewed_on=None,ledger_action="unreviewed")
+    cand["review"].pop("approved_candidate_sha256",None)
     rev_id = cand.get("source_metadata", {}).get("revision_id")
     entries = reviews_by_revision.get(rev_id, [])
     if isinstance(entries, dict):
@@ -169,7 +176,7 @@ def apply_review_ledger(candidate, reviews_by_revision):
         ver_status = cand.get("verification", {}).get("status")
         if (
             reviewer
-            and reviewer != editor
+            and reviewer.strip().casefold() != editor.strip().casefold()
             and ver_status == "passed_automated_checks"
             and parse_iso_date(reviewed_on) is not None and reviewed_on <= taipei_today()
             and ledger_entry.get("candidate_id") == cand.get("candidate_id")
@@ -219,6 +226,8 @@ def build_review_report(
 
     for cand in verified_bundle.get("candidates", []):
         cand = apply_review_ledger(cand, reviews_by_rev)
+        if bundle_errors:
+            cand["review"].update(status="pending",promotion_ready=False)
         window = evaluate_application_window(cand, as_of)
         p1_eval = evaluate_eligibility(cand, p1_profile, as_of=as_of)
         diff = compute_candidate_diff(cand, pilot_data)

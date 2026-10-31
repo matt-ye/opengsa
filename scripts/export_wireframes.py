@@ -7,11 +7,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def export(output):
+def export(output, pilot_data=None, review_preview=False):
     source = ROOT / "docs/design/wireframes.html"
     html = source.read_text(encoding="utf-8")
     for block, filename in [("pilot-data", "pilot.json"), ("conference-data", "conference-programs.json")]:
-        data = json.loads((ROOT / "data" / filename).read_text(encoding="utf-8"))
+        data = pilot_data if block=="pilot-data" and pilot_data is not None else json.loads((ROOT / "data" / filename).read_text(encoding="utf-8"))
         encoded = json.dumps(data, ensure_ascii=False).replace("<", "\\u003c")
         html, count = re.subn(
             rf'(<script id="{block}" type="application/json">).*?(</script>)',
@@ -23,6 +23,11 @@ def export(output):
     if "</script" in code.lower():
         raise ValueError("Inline script delimiter must be escaped")
     html = html.replace('<script src="prototype.js"></script>', "<script>\n" + code + "\n</script>")
+    if review_preview:
+        html=html.replace("<body>",'<body data-review-preview="true">',1)
+        html=html.replace("設計審閱稿 · 四分頁互動線框 · 資料快照 2026.10.28 · 所有獎助資料待獨立覆核，非申請建議","候選審查預覽 · 未核准／未發布 · 僅顯示本批候選，非正式可申請清單",1)
+        html=html.replace("OpenGSA｜四頁線框審閱稿","OpenGSA｜候選審查預覽",1)
+        html=html.replace("收錄臺大與全國代表性獎助草稿及會議補助制度；申請前請以主辦單位當期公告為準。","本頁僅預覽本批待審候選；尚未更新公開網站，申請前請核對官方當期公告。",1)
     if output.resolve() == source.resolve():
         raise ValueError("Keep the source HTML and JavaScript separate; choose an export path")
     output.parent.mkdir(parents=True, exist_ok=True)

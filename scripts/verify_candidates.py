@@ -97,6 +97,15 @@ def load_candidate_schema():
     return json.loads((ROOT / "schema/candidate.schema.json").read_text(encoding="utf-8"))
 
 
+def classify_review_gaps(candidate):
+    """Source completeness is independent of a student's inputs and service availability."""
+    result={"source":[],"personal":[],"operational":[]}
+    for field in candidate.get("gaps_and_conflicts",{}).get("missing_fields",[]):
+        kind="personal" if field=="ai_tools:personal_purchase_or_completion_date" else "operational" if field=="ai_tools:budget_exhaustion_status" else "source"
+        result[kind].append(field)
+    return result
+
+
 def _date_tokens(iso_date_str):
     """產生某個西元日期可能出現在中文／民國／西元原文中的字元片段，用於驗證日期非憑空捏造。"""
     d = parse_iso_date(iso_date_str[:10])
@@ -198,7 +207,7 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
         cand["verification"] = {}
     prior_warnings = [
         w for w in cand["verification"].get("warnings", [])
-        if isinstance(w, str) and not w.startswith("unresolved_conflicts_count:") and not w.startswith("coverage_")
+        if isinstance(w, str) and not w.startswith(("unresolved_conflicts_count:","coverage_","personal_context_required:","operational_status_unknown:"))
     ]
     warnings = list(prior_warnings)
     cand["verification"].setdefault("audit_findings", [])
@@ -608,8 +617,11 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
             if len(elig.get("other_conditions",[]))<3:coverage_warnings.append("coverage_gap:ai_tools:local_and_purchase_conditions")
             if not any(s.get("actor")=="student" and s.get("deadline",{}).get("kind")=="date" for s in steps):
                 coverage_warnings.append("coverage_gap:ai_tools:annual_deadline")
-            for missing in cand.get("gaps_and_conflicts",{}).get("missing_fields",[]):
-                if missing.startswith("ai_tools:"):coverage_warnings.append("coverage_gap:"+missing)
+            gap_groups=classify_review_gaps(cand)
+            for missing in gap_groups["source"]:
+                coverage_warnings.append("coverage_gap:"+missing)
+            warnings.extend("personal_context_required:"+field for field in gap_groups["personal"])
+            warnings.extend("operational_status_unknown:"+field for field in gap_groups["operational"])
             if cand.get("application_method",{}).get("mode","unknown")=="unknown":
                 coverage_warnings.append("coverage_gap:ai_tools:delivery_method")
         if len(field_ev) < 2:

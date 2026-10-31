@@ -1008,7 +1008,7 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
         src=CONFIG["sources"][2]
         blocks=make_yuanxue_blocks()
         cand=extract_from_in_memory_blocks(src,blocks,revision_id="a"*64,observed_at="2026-10-28T09:17:00+08:00",as_of="2026-10-28")[0]
-        bundle={"schema_version":"1.1.0-candidate","as_of":"2026-10-28","timezone":"Asia/Taipei","model_enabled":False,"model_calls":0,"official_data_modified":False,"candidates":[cand]}
+        bundle={"schema_version":"1.1.0-candidate","generated_at":"2026-10-28T09:17:00+08:00","as_of":"2026-10-28","timezone":"Asia/Taipei","model_enabled":False,"model_calls":0,"official_data_modified":False,"candidates":[cand]}
         entry={"revision_id":"a"*64,"source_id":src["id"],"candidate_id":cand["candidate_id"],"candidate_sha256":candidate_fingerprint(cand),"action":"applied","reviewer":"SYNTH-independent-reviewer","reviewed_on":"2026-10-28","reason":"Synthetic test disposition, not actual human approval"}
         ledger={"schema_version":"1.1.0","reviews":[entry]}
         verified,summary,_=build_review_report(bundle,PILOT,reviews_data=ledger,in_memory_blocks_by_source={src["url"]:blocks})

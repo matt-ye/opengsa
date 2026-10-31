@@ -7,6 +7,12 @@ const today = "2026-10-28";
 const demo = core.makeDemo(today);
 const pilot = JSON.parse(fs.readFileSync(path.join(__dirname,"../data/pilot.json"),"utf8"));
 const conferenceData=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/conference-programs.json"),"utf8"));
+test("具名地方政府補助跨年度仍可由政府來源篩選，不靠單位名稱含政府二字",()=>{
+ const candidates=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/candidates/ai-tools-115.json"),"utf8")).candidates;
+ const items=candidates.map(c=>({...pilot.opportunities[0],id:c.program_key+"-synthetic-year",program_key:c.program_key,title:c.title,organizations:c.organizations}));
+ const drafts=core.makeDrafts({...pilot,opportunities:items},today);
+ assert.equal(core.filterItems(drafts,{source:"government"}).length,2);
+});
 const conference=(id,changes={})=>core.makeConferenceItem({name:"合成測試會議",start:"2027-07-20",buffer:14,...changes},conferenceData.programs.find(p=>p.id===id));
 
 test("今天以臺北時區跨日，不取執行電腦的日期",()=>{
