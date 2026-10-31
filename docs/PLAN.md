@@ -6,7 +6,7 @@
 
 PR #16～#21已全數合併至 main。網站10筆資料仍為待覆核草稿（draft），人工覆核台帳無合成紀錄，正式資料契約與防呆全面通過。8組Repository Secrets已完成官方端點連線與模型目錄查核，Groq完成小量JSON推論，其餘7組依合規政策嚴守catalog-only（不擅自扣費或推論）；PR #18收錄之17筆AI工具與算力補助已完成初查與分流，申請管道Schema（紙本/電子/親簽/NA判準）已落實。排程模型始終關閉（model_mode=off）。驗收與剩餘門檻見[可靠性修正](RELIABILITY-AUDIT.md)、[API查核](API-AUDIT.md)及[掃描操作](SCANNER.md)。
 
-2026-10-31已完成145個來源／參考網址盤查，16個profile中13啟用、3停用；17份文件整理成19筆當前待審候選。12筆自動檢核通過、7筆有缺漏，無真人核准，正式pilot不改寫。最新驗收與限制見[SOURCE-COVERAGE-AUDIT.md](SOURCE-COVERAGE-AUDIT.md)。
+2026-10-31已完成145個來源／參考網址盤查，16個profile中13啟用、3停用；17份文件整理成19筆當前待審候選。12筆自動檢核通過、7筆有缺漏，無真人核准，正式pilot不改寫。最新驗收與限制見[SOURCE-COVERAGE-AUDIT.md](SOURCE-COVERAGE-AUDIT.md)。完成[受阻來源低成本取得途徑與解析工具（Defuddle等）評估](BLOCKED-SOURCES-AND-DEFUDDLE-STUDY.md)，明確區分存取層與解析層，實測驗證法規開放資料、非受限公開路徑與生輔組人工查核保留。
 
 ## 已接受決策
 
