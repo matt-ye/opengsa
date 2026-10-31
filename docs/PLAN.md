@@ -1,10 +1,12 @@
 # 目前計畫與已接受決策
 
-更新日期：2026-10-30。使用者已核可建立公開repo、規劃／資料基礎及互動原型；本文件是目前分期的依據，優先於歷史handoff的階段與數量目標。
+更新日期：2026-10-31。使用者已核可建立公開repo、規劃／資料基礎及互動原型；本文件是目前分期的依據，優先於歷史handoff的階段與數量目標。
 
 ## 本輪狀態（優先於下列歷史決策中的舊數量與API提案）
 
-PR #16～#20已全數合併至 main。網站10筆資料仍為待覆核草稿（draft），人工覆核台帳無合成紀錄，正式資料契約與防呆全面通過。8組Repository Secrets已完成官方端點連線與模型目錄查核，Groq完成小量JSON推論，其餘7組依合規政策嚴守catalog-only（不擅自扣費或推論）；PR #18收錄之17筆AI工具與算力補助已完成初查與分流，申請管道Schema（紙本/電子/親簽/NA判準）已落實。排程模型始終關閉（model_mode=off）。驗收與剩餘門檻見[可靠性修正](RELIABILITY-AUDIT.md)、[API查核](API-AUDIT.md)及[掃描操作](SCANNER.md)。
+2026-10-31使用者核可先記錄[五組欄位、局部重萃、模型評測與長文本Token分段規劃](FIELD-SCOPED-EXTRACTION-PLAN.md)，先穩定既有批次再擴張；[官方研究及PR #25註記](CRAWLING-EXTRACTION-BEST-PRACTICES.md)區分已查來源與未補證實測。PR #24／#25仍開啟；#24已有110項Python／38項Node及8通過／11有缺漏，此為其分支基準，尚非main已發布資料。本次只改文件，不啟用模型、不改來源或資料台帳。
+
+PR #16～#21已全數合併至 main。網站10筆資料仍為待覆核草稿（draft），人工覆核台帳無合成紀錄，正式資料契約與防呆全面通過。8組Repository Secrets已完成官方端點連線與模型目錄查核，Groq完成小量JSON推論，其餘7組依合規政策嚴守catalog-only（不擅自扣費或推論）；PR #18收錄之17筆AI工具與算力補助已完成初查與分流，申請管道Schema（紙本/電子/親簽/NA判準）已落實。排程模型始終關閉（model_mode=off）。驗收與剩餘門檻見[可靠性修正](RELIABILITY-AUDIT.md)、[API查核](API-AUDIT.md)及[掃描操作](SCANNER.md)。
 
 ## 已接受決策
 
