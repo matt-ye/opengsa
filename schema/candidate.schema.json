@@ -1797,6 +1797,11 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "parent_url": {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://"
+            },
             "source_id": {
               "type": "string",
               "minLength": 1
@@ -1849,6 +1854,14 @@
                 "string",
                 "null"
               ]
+            },
+            "normalizer_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "prepared_document_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
             }
           },
           "required": [

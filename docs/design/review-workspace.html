@@ -7,6 +7,20 @@
 <p class="note">這是審查工具，沒有發布資料。下載的紀錄是人工處置意向；必須重新核對完整來源版本、通過檢核並提交資料 PR，才會更新公開網站。此頁不驗證覆核者身分，也不取代 GitHub 審查。</p>
 <p><a class="button" href="candidate-preview.html#search">開啟第一至三頁候選預覽 ↗</a></p>
 <p id="run-info" class="meta"></p>
+<section class="card" aria-labelledby="how-title"><h2 id="how-title">先看這裡：如何審查</h2>
+<ol><li>選一筆，開啟官方來源，核對年度、申請／受益身分、金額與單位、兼領、紙本／電子及分層期限。</li>
+<li>比較「既有資料／本次候選」，展開完整欄位與短證據。缺資料選「待補資料」；錯誤或不採用選「退回／不採用」。不要把未知改成N/A。</li>
+<li>來源缺漏解除後，才選「核准意向」。自動通過不代表適合你、目前受理或已核准發布；同方案多份文件須先確認如何整併。</li>
+<li>填實際覆核者、日期及每筆理由，下載JSON交給維護者。尚未下載的輸入只在本次瀏覽，重整會遺失。</li>
+<li>維護者重新核驗來源版本，再另開資料PR；本次程式合併不會核准任何候選。</li></ol>
+<p>已決定保留待核：教育部第二梯附件年度／給付對象、新竹AI年齡採認基準、未公告的院系收件日。沒有官方補充時，選待補資料即可。</p>
+<p id="review-counts" role="status" aria-live="polite"></p>
+<label>審查範圍<select id="review-filter"><option value="all">全部文件候選</option><option value="ready">可提出核准意向</option><option value="gaps">需要補來源或修正萃取</option><option value="stale">本次尚未核驗來源版本</option></select></label>
+<p id="review-filter-count" class="meta" role="status" aria-live="polite"></p>
+</section>
+<section class="card" aria-labelledby="group-title"><h2 id="group-title">方案與相關文件</h2>
+<p>同組文件分別覆核年度、條文及申請程序。文件候選尚未整併為正式方案，不能把文件數當成獎學金數量。</p>
+<p><a href="review-text.md" download>下載本批文字審查清單</a></p><ul id="document-groups"></ul></section>
 <section class="card" aria-labelledby="reviewer-title"><h2 id="reviewer-title">覆核紀錄</h2>
 <p>請使用實際覆核者識別，且須不同於原編輯者。不要填入學生個資或私人申訴；內容只留本次瀏覽，下載後由你保管。</p>
 <label>覆核者識別<input id="reviewer" autocomplete="off" placeholder="GitHub 使用者名稱或團隊認可識別"></label>

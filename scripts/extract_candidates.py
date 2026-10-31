@@ -20,6 +20,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+from urllib.parse import unquote
 
 from jsonschema import Draft202012Validator
 
@@ -33,8 +34,8 @@ from scripts.verify_candidates import digest_text, evidence_digest, verify_candi
 from scripts.application_process import infer_process
 from scripts.ai_tool_rules import benefit_tiers
 
-EXTRACTOR_VERSION = "extractor-1.1.0"
-PROMPT_VERSION = "prompt-1.1.0"
+EXTRACTOR_VERSION = "extractor-1.4.1"
+PROMPT_VERSION = "prompt-1.2.1"
 
 PII_REDACT_RE = re.compile(
     r"([A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}|(?:\(0\d\)|0\d)[\-\s]?\d{3,4}[\-\s]?\d{3,4}(?:\s*(?:轉|分機|ext\.?)\s*\d+)?)"
@@ -308,6 +309,9 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
         cache_dir=None,
         use_cache=True,
         allow_local_no_key=False,
+        model_limits=None,
+        count_tokens=None,
+        field_scope=None,
     ):
         super().__init__(mode=mode)
         self.base_url = (base_url or "").rstrip("/")
@@ -319,6 +323,10 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
         self.use_cache = use_cache
         self.cache_dir = Path(cache_dir) if cache_dir else (ROOT / "work/model-cache")
         self.allow_local_no_key = allow_local_no_key
+        self.model_limits = model_limits
+        self.count_tokens = count_tokens
+        self.field_scope = tuple(field_scope or ())
+        self.last_preparation = {}
         key = self._get_api_key()
         self.enabled = (mode in ("extract", "audit", "both")) and (bool(key) or allow_local_no_key) and bool(self.base_url) and bool(self.model)
 
@@ -336,7 +344,9 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
         if source is not None:
             self._guard_hash_only(source)
         cleaned = []
-        for b in blocks[:25]:
+        from scripts.document_ir import prepare_document
+        units = blocks if all("unit_id" in b for b in blocks) else prepare_document(blocks)["units"]
+        for b in units:
             txt = normalized(b.get("text", ""))
             if not txt or SKIP.search(txt):
                 continue
@@ -346,7 +356,10 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
             txt = PII_REDACT_RE.sub("[REDACTED]", txt).strip()
             if not txt:
                 continue
-            cleaned.append({"locator": b["locator"], "text": txt[:320]})
+            context = {k:b[k] for k in ("kind","section_path","headers","row_cells","structure_status") if k in b}
+            if CONTACT.search(json.dumps(context,ensure_ascii=False)) or SKIP.search(json.dumps(context,ensure_ascii=False)):
+                context = {"structure_status":"context_requires_manual_review"}
+            cleaned.append({"unit_id":b["unit_id"], "locator":b["unit_id"], "source_locator":b.get("source_locator",b["locator"]), "text":txt, **context})
         return cleaned
 
     def _build_messages(self, draft_candidate, sanitized_blocks, active_mode):
@@ -419,7 +432,27 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
             raw = raw[start : end + 1]
         return json.loads(raw)
 
-    def run_dual_track(self, source, blocks, draft_candidate, mode=None):
+    def _request_payload(self, draft_candidate, sanitized, active_mode):
+        messages = self._build_messages(draft_candidate, sanitized, active_mode)
+        if self.field_scope:
+            messages[0]["content"] += "\n本次只允許下列field_path，其他欄位不得輸出："+json.dumps(self.field_scope,ensure_ascii=False)
+        payload = {
+            "model": self.model,
+            "temperature": 0,
+            "max_tokens": self.model_limits["output_reserve"] if self.model_limits else 900,
+            "messages": messages,
+        }
+        if "mistral.ai" in self.base_url:
+            payload["response_format"] = {"type": "json_object"}
+        if "groq.com" in self.base_url:
+            payload["reasoning_effort"] = "none"
+        if "openrouter.ai" in self.base_url:
+            payload["reasoning"] = {"effort":"none","exclude":True}
+            payload["response_format"] = {"type":"json_object"}
+
+        return payload
+
+    def _run_one(self, source, blocks, draft_candidate, mode=None):
         self._guard_hash_only(source)
         active_mode = mode or self.mode
         if active_mode == "off" or not self.enabled:
@@ -430,7 +463,7 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
 
         blocks_hash = hashlib.sha256(json.dumps(sanitized, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
         cache_key = hashlib.sha256(
-            f"{self.base_url}|{self.model}|{PROMPT_VERSION}|{active_mode}|{draft_candidate.get('program_key')}|{blocks_hash}".encode("utf-8")
+            f"{self.base_url}|{self.model}|{PROMPT_VERSION}|{active_mode}|{hashlib.sha256(json.dumps(draft_candidate,sort_keys=True,ensure_ascii=False).encode()).hexdigest()}|{self.field_scope}|{blocks_hash}".encode("utf-8")
         ).hexdigest()
 
         if self.use_cache and self.cache_dir:
@@ -450,20 +483,7 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
         if not api_key and not self.allow_local_no_key:
             return None
 
-        messages = self._build_messages(draft_candidate, sanitized, active_mode)
-        payload = {
-            "model": self.model,
-            "temperature": 0,
-            "max_tokens": 900,
-            "messages": messages,
-        }
-        if "mistral.ai" in self.base_url:
-            payload["response_format"] = {"type": "json_object"}
-        if "groq.com" in self.base_url:
-            payload["reasoning_effort"] = "none"
-        if "openrouter.ai" in self.base_url:
-            payload["reasoning"] = {"effort":"none","exclude":True}
-            payload["response_format"] = {"type":"json_object"}
+        payload = self._request_payload(draft_candidate, sanitized, active_mode)
 
         headers = {
             "Content-Type": "application/json",
@@ -506,7 +526,10 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
         self.completion_tokens += int(usage.get("completion_tokens") or 0)
         self.total_tokens += int(usage.get("total_tokens") or 0)
 
-        content = (body.get("choices") or [{}])[0].get("message", {}).get("content", "")
+        choice = (body.get("choices") or [{}])[0]
+        if choice.get("finish_reason") != "stop":
+            return {"_skipped_reason":"incomplete_model_output"}
+        content = choice.get("message", {}).get("content", "")
         try:
             parsed = self._parse_json_content(content)
         except Exception:
@@ -535,6 +558,65 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
                 pass
 
         return parsed
+
+    def run_dual_track(self, source, blocks, draft_candidate, mode=None):
+        from scripts.document_ir import sha, pack_requests
+        self.last_preparation={}
+        self._guard_hash_only(source)
+        if not self.enabled or (mode or self.mode)=='off':return None
+        sanitized=self._sanitize_blocks(blocks, source)
+        from scripts.document_ir import prepare_document
+        source_units=blocks if all('unit_id' in b for b in blocks) else prepare_document(blocks)['units']
+        admitted={u['unit_id']:u for u in sanitized}
+        altered=[u['unit_id'] for u in source_units if
+                 normalized(u['text'])!=admitted.get(u['unit_id'],{}).get('text') or
+                 admitted.get(u['unit_id'],{}).get('structure_status')=='context_requires_manual_review']
+        # Privacy filtering is unchanged. A removed exception must not turn into
+        # an apparently complete model task. Only IDs/counts enter the report.
+        if altered:
+            self.last_preparation={'complete':False,'filtered_unit_ids':altered,
+                                   'chunks_planned':0,'chunks_completed':0}
+            return {'_skipped_reason':'source_sanitization_requires_review'}
+        document={'units':sanitized,'document_sha256':sha(sanitized)}
+        if not self.model_limits or self.model_limits.get('model')!=self.model:
+            return {'_skipped_reason':'model_capabilities_required'}
+        # Global exclusions and definitions are shared context, never silently omitted.
+        background=[u for u in document['units'] if u.get('kind')=='heading' or
+            re.search(r'但|除外|不得|不含|資格|申請對象|補助對象|適用|以下簡稱',u['text'])]
+        def render(units):
+            combined={(u['unit_id'],u.get('span_start'),u.get('span_end')):u for u in background}
+            combined.update({(u['unit_id'],u.get('span_start'),u.get('span_end')):u for u in units})
+            return self._request_payload(draft_candidate,self._sanitize_blocks(list(combined.values()),source),mode or self.mode)
+        try:chunks=pack_requests(document,render,self.count_tokens,self.model_limits)
+        except ValueError as error:return {'_skipped_reason':str(error)}
+        self.last_preparation={'document_sha256':document['document_sha256'],
+            'chunks_planned':len(chunks),'chunks_completed':0,'complete':False}
+        if len(chunks)>self.max_calls-self.calls:
+            return {'_skipped_reason':'model_call_budget_insufficient_for_complete_task'}
+        result={'extracted_fields':[],'audit_findings':[]};seen={}
+        for chunk in chunks:
+            # The actual request is built from exactly the counted context + chunk.
+            combined={(u['unit_id'],u.get('span_start'),u.get('span_end')):u for u in background}
+            combined.update({(u['unit_id'],u.get('span_start'),u.get('span_end')):u for u in chunk['units']})
+            response=self._run_one(source,list(combined.values()),draft_candidate,mode)
+            if not response or any(k.startswith('_') for k in response):
+                return response or {'_skipped_reason':'model_chunk_failed'}
+            if list(_LLM_SCHEMA_VALIDATOR.iter_errors(response)):
+                return {'_skipped_reason':'model_invalid_chunk_schema'}
+            for key in result:
+                for claim in response.get(key,[]):
+                    path=claim.get('field_path')
+                    if self.field_scope and path not in self.field_scope:return {'_skipped_reason':'model_field_scope_violation'}
+                    identity=(key,path)
+                    value=json.dumps(claim.get('value') if key=='extracted_fields' else
+                        [claim.get('verdict'),claim.get('llm_value')],sort_keys=True,ensure_ascii=False)
+                    if identity in seen:
+                        if seen[identity]!=value:return {'_skipped_reason':'model_conflicting_chunk_claims'}
+                        continue
+                    seen[identity]=value;result[key].append(claim)
+            self.last_preparation['chunks_completed']+=1
+        self.last_preparation['complete']=True
+        return result
 
     def extract_patch(self, source, blocks, draft_candidate):
         return self.run_dual_track(source, blocks, draft_candidate, mode=self.mode)
@@ -795,7 +877,7 @@ def parse_amount_from_text(text):
                 "amount_min": val,
                 "amount_max": val,
                 "currency": "TWD",
-                "unit": "lump_sum",
+                "unit": "per_year" if re.search(r"每年|每學年|一年", clean) else "lump_sum",
                 "basis": "fixed",
                 "duration_months_min": None,
                 "duration_months_max": None,
@@ -823,13 +905,16 @@ def _format_benefit_summary(item):
 
     if amin is None or amax is None:
         value = amin if amin is not None else amax
-        return f"{'至少' if amax is None else '至多'}新臺幣{value:,}元（{unit}）；適用身分與期間待核。"
+        period = {"per_month":"每月", "per_year":"每年"}.get(unit, "")
+        return f"{branch + '：' if branch else ''}{period}{'至少' if amax is None else '至多'}新臺幣{value:,}元；適用條件及期間依來源核對。"
 
+    if unit in ("per_month", "per_year"):
+        period = "每月" if unit == "per_month" else "每年"
+        value = f"{amin:,}" if amin == amax else f"{amin:,}至{amax:,}"
+        return f"{branch + '：' if branch else ''}{period}新臺幣{value}元；實際期間與給付條件依核定。"
     if unit == "total_range" or amin != amax:
         dur_prefix = f"{branch or '補助'}{dmin}–{dmax}個月，" if (dmin and dmax) else (f"{branch}：" if branch else "")
         return f"{dur_prefix}總額新臺幣{amin:,}至{amax:,}元（實際額度依審議結果決定）。"
-    if unit == "per_month":
-        return f"每月新臺幣{amin:,}元；實際領取期間與續領條件依核定。"
     if unit == "lump_sum":
         return f"獎勵金新臺幣{amin:,}元。"
     return f"新臺幣{amin:,}元 ({unit})。"
@@ -1234,7 +1319,12 @@ def _extract_doctoral_funding(source, blocks, revision_id, observed_at, url, as_
     """
     first_block = blocks[0]
     first_ref = {"source": source["id"], "locator": first_block["locator"]}
-    is_pdf = url.lower().endswith(".pdf")
+    pdf_format=url.lower().split("?",1)[0].endswith(".pdf")
+    heading=re.sub(r"\s+","","".join(b["text"] for b in blocks[:40]))
+    moe_application_pdf=pdf_format and "教育部" in heading and (
+        any(k in heading for k in ("申請說明","梯次申請","第2梯次"))
+        or ("教育部" in unquote(url) and "申請" in unquote(url) and "申請" in heading))
+    is_pdf=pdf_format and "設置辦法" in heading and not moe_application_pdf
 
     # 依章節標題與關鍵字將區塊分流至國科會分支、教育部分支或共用區塊
     nstc_blocks = []
@@ -1272,33 +1362,40 @@ def _extract_doctoral_funding(source, blocks, revision_id, observed_at, url, as_
                 nstc_blocks.append(b)
                 moe_blocks.append(b)
 
+    if moe_application_pdf:
+        # References to prohibited NSTC funding do not change this document's MOE branch.
+        moe_blocks=list(blocks)
+        nstc_blocks=[]
+
     years_found = sorted(
         {
             int(y)
             for b in blocks
-            for y in re.findall(r"(11[3-9])\s*學年度", _normalize_chinese_roc_years(b["text"]))
+            for y in re.findall(r"(?<!\d)(11[3-9])學年度", re.sub(r"\s+","",_normalize_chinese_roc_years(b["text"])))
         }
     )
-    target_year = max(years_found) if years_found else 115
+    target_year = max(years_found) if years_found else None
+    year_key=target_year if target_year is not None else "unknown"
+    year_label=f"{target_year}學年度" if target_year is not None else "學年度待核"
 
     # 分支 1：國科會核配博士生獎學金
-    nstc_id = f"cand-ntu-nstc-phd-{'rule' if is_pdf else target_year}-{revision_id[:8]}"
+    nstc_id = f"cand-ntu-nstc-phd-{'rule' if is_pdf else year_key}-{revision_id[:8]}"
     nstc = _base_candidate_template(
         candidate_id=nstc_id,
-        opportunity_id="ntu-nstc-phd-policy" if is_pdf else f"ntu-nstc-phd-{target_year}",
+        opportunity_id="ntu-nstc-phd-policy" if is_pdf else f"ntu-nstc-phd-{year_key}",
         program_key="ntu-nstc-phd",
         title=(
             "臺大國科會核配博士生獎學金（設置辦法條文快照）"
             if is_pdf
-            else f"臺大{target_year}學年度國科會核配博士生獎學金"
+            else f"臺大{year_label}國科會核配博士生獎學金"
         ),
         category="phd_research",
         resource_kind="scholarship",
         scope="ntu",
         cycle={
             "kind": "policy_snapshot" if is_pdf else "academic_year",
-            "label": "設置辦法條文快照" if is_pdf else f"{target_year}學年度",
-            "year_system": "none" if is_pdf else "roc",
+            "label": "設置辦法條文快照" if is_pdf else year_label,
+            "year_system": "none" if is_pdf else "roc" if target_year is not None else "unknown",
             "year": None if is_pdf else target_year,
             "term_or_round": None,
             "branch": "國科會核配",
@@ -1349,23 +1446,23 @@ def _extract_doctoral_funding(source, blocks, revision_id, observed_at, url, as_
     )
 
     # 分支 2：教育部博士生獎學金
-    moe_id = f"cand-ntu-moe-phd-{'rule' if is_pdf else target_year}-{revision_id[:8]}"
+    moe_id = f"cand-ntu-moe-phd-{'rule' if is_pdf else year_key}-{revision_id[:8]}"
     moe = _base_candidate_template(
         candidate_id=moe_id,
-        opportunity_id="ntu-moe-phd-policy" if is_pdf else f"ntu-moe-phd-{target_year}-round2",
+        opportunity_id="ntu-moe-phd-policy" if is_pdf else f"ntu-moe-phd-{year_key}-round2",
         program_key="ntu-moe-phd",
         title=(
             "臺大教育部博士生獎學金（設置辦法條文快照）"
             if is_pdf
-            else f"臺大{target_year}學年度教育部博士生獎學金（第二梯次）"
+            else f"臺大{year_label}教育部博士生獎學金（第二梯次）"
         ),
         category="phd_research",
         resource_kind="scholarship",
         scope="ntu",
         cycle={
             "kind": "policy_snapshot" if is_pdf else "academic_year",
-            "label": "設置辦法條文快照" if is_pdf else f"{target_year}學年度第二梯次",
-            "year_system": "none" if is_pdf else "roc",
+            "label": "設置辦法條文快照" if is_pdf else year_label+"第二梯次",
+            "year_system": "none" if is_pdf else "roc" if target_year is not None else "unknown",
             "year": None if is_pdf else target_year,
             "term_or_round": None if is_pdf else "第二梯次",
             "branch": "教育部",
@@ -1442,11 +1539,11 @@ def _extract_doctoral_funding(source, blocks, revision_id, observed_at, url, as_
         "schedule.result_date",
         "hardship",
     ]
-    # 若 HTML 提及「第二梯次申請說明」附件但未載入該 PDF，誠實標示 unfetched_attachment
-    if not is_pdf and not found_college_dl and any(re.search(r"第[二2]梯次.*申請說明", b["text"]) for b in (moe_blocks or blocks)):
-        moe_missing.append("unfetched_attachment:1151015_教育部博獎第二梯申請.pdf")
+    # The wrapper checks actual fetched attachments; a filename in HTML is not proof of failure.
+    if not pdf_format and not found_college_dl and any(re.search(r"第[二2]梯次.*申請說明", b["text"]) for b in (moe_blocks or blocks)):
+        moe_missing.append("unfetched_attachment:doctoral_round_application")
         moe["gaps_and_conflicts"]["open_questions"].append(
-            "本頁連結之『115學年度第2梯次教育部博士生獎學金申請說明 (1151015_教育部博獎第二梯申請.pdf)』含學院送件截止日 (2026-11-09)，因 scan-sources.json 設 max_attachments=1 僅抓取設置辦法 PDF，故此處誠實標示待抓附件，不臆測補值。"
+            "本頁提及第二梯次申請說明，但本份正文尚未解析出學院送件日；須另核對附件，不由已知檔名或歷史日期補值。"
         )
     moe["gaps_and_conflicts"]["missing_fields"] = moe_missing
     moe["gaps_and_conflicts"]["open_questions"].append(
@@ -1454,9 +1551,16 @@ def _extract_doctoral_funding(source, blocks, revision_id, observed_at, url, as_
     )
     doc_has_nstc = any("國科會" in b["text"] for b in blocks)
     doc_has_moe = any("教育部" in b["text"] for b in blocks)
+    for item in (nstc,moe):
+        if item["benefit"]["items"] and any(b["unit"]=="unknown" for b in item["benefit"]["items"]):
+            item["gaps_and_conflicts"]["missing_fields"].append("benefit.unit_and_payee")
+            item["gaps_and_conflicts"]["open_questions"].append("文件金額線索的給付單位及對象待核，不把配合款或未辨明金額當作學生總獎助額。")
+            item["benefit"].update(summary="金額與給付單位／對象待核；請核對原文件",items=[])
+            for ev in item["field_evidence"]:
+                if ev["field_path"].startswith("benefit.items"):ev["field_path"]="raw_clue.benefit_amount"
     if doc_has_nstc and not doc_has_moe:
         return [nstc]
-    if doc_has_moe and not doc_has_nstc:
+    if moe_application_pdf or (doc_has_moe and not doc_has_nstc):
         return [moe]
     return [nstc, moe]
 
@@ -1466,22 +1570,25 @@ def _extract_yuanxue(source, blocks, revision_id, observed_at, url, as_of, evide
     first_block = blocks[0]
     first_ref = {"source": source["id"], "locator": first_block["locator"]}
     years_found = sorted({int(y) for b in blocks for y in re.findall(r"(11[4-9])\s*年", _normalize_chinese_roc_years(b["text"]))})
-    target_year = max(years_found) if years_found else 115
+    target_year = max(years_found) if years_found else None
+    year_key=target_year if target_year is not None else "unknown"
+    year_label=f"{target_year}年" if target_year is not None else "年度待核"
 
-    ordinary_blocks = [b for b in blocks if "配合補助" not in b["text"] or "一般補助" in b["text"]]
-    cand_id = f"cand-ntu-yuanxue-{target_year}-ordinary-{revision_id[:8]}"
+    ordinary_blocks = [b for b in blocks if "配合補助" not in b["text"] or "一般補助" in b["text"]
+        or re.search(r"遠學補助\s*(?:及|與|或|、)\s*(?:遠學)?配合補助",b['text'])]
+    cand_id = f"cand-ntu-yuanxue-{year_key}-ordinary-{revision_id[:8]}"
     ordinary = _base_candidate_template(
         candidate_id=cand_id,
-        opportunity_id=f"ntu-yuanxue-{target_year}-ordinary",
+        opportunity_id=f"ntu-yuanxue-{year_key}-ordinary",
         program_key="ntu-yuanxue",
-        title=f"臺大{target_year}年遠學計畫（博士生一般補助）",
+        title=f"臺大{year_label}遠學計畫（博士生一般補助）",
         category="overseas_research",
         resource_kind="travel_grant",
         scope="ntu",
         cycle={
             "kind": "calendar_year",
-            "label": f"{target_year}年申請梯次",
-            "year_system": "roc",
+            "label": year_label+"申請梯次",
+            "year_system": "roc" if target_year is not None else "unknown",
             "year": target_year,
             "term_or_round": None,
             "branch": "博士生一般補助",
@@ -1567,22 +1674,24 @@ def _extract_president_award(source, blocks, revision_id, observed_at, url, as_o
     first_block = blocks[0]
     first_ref = {"source": source["id"], "locator": first_block["locator"]}
     years_found = sorted({int(y) for b in blocks for y in re.findall(r"(11[3-9])\s*學年度", _normalize_chinese_roc_years(b["text"]))})
-    target_year = max(years_found) if years_found else 114
+    target_year = max(years_found) if years_found else None
     is_pdf = url.lower().endswith(".pdf")
+    year_key=target_year if target_year is not None else "unknown"
+    year_label=f"{target_year}學年度" if target_year is not None else "學年度待核"
 
-    cand_id = f"cand-ntu-president-{target_year}-{'rule' if is_pdf else 'call'}-{revision_id[:8]}"
+    cand_id = f"cand-ntu-president-{year_key}-{'rule' if is_pdf else 'call'}-{revision_id[:8]}"
     cand = _base_candidate_template(
         candidate_id=cand_id,
-        opportunity_id="ntu-president-policy" if is_pdf else f"ntu-president-{target_year}",
+        opportunity_id="ntu-president-policy" if is_pdf else f"ntu-president-{year_key}",
         program_key="ntu-president",
-        title="臺大研究生校長獎（設置辦法依據）" if is_pdf else f"臺大{target_year}學年度研究生校長獎",
+        title="臺大研究生校長獎（設置辦法依據）" if is_pdf else f"臺大{year_label}研究生校長獎",
         category="outcome_award",
         resource_kind="award",
         scope="ntu",
         cycle={
             "kind": "policy_snapshot" if is_pdf else "academic_year",
-            "label": "設置辦法條文快照" if is_pdf else f"{target_year}學年度",
-            "year_system": "none" if is_pdf else "roc",
+            "label": "設置辦法條文快照" if is_pdf else year_label,
+            "year_system": "none" if is_pdf else "roc" if target_year is not None else "unknown",
             "year": None if is_pdf else target_year,
             "term_or_round": None,
             "branch": None,
@@ -1611,6 +1720,7 @@ def _extract_president_award(source, blocks, revision_id, observed_at, url, as_o
         "receiver": {"text": "所屬院系所評選推薦後送校級承辦", "refs": [first_ref]},
     }
     _populate_common_extractions(cand, blocks, source["id"], revision_id, evidence_mode)
+
     if cand["benefit"]["items"] and "獎狀" in " ".join(b["text"] for b in blocks):
         cand["benefit"]["summary"] = f"獎勵金新臺幣{cand['benefit']['items'][0]['amount_min']:,}元及獎狀。"
 
@@ -1934,15 +2044,53 @@ def _extract_policy(source, blocks, revision_id, observed_at, url, as_of, eviden
         evidence_mode=evidence_mode, as_of=as_of,
     )
     cand["participants"]["applicant"] = actor
+    if resource=="employment_support":cand["eligibility"]["degrees"]=["master","phd"]
     identity = _find_identity_block(blocks)
     first_ref = {"source":source["id"],"locator":identity["locator"]}
     _set_identity_with_evidence(cand, "身分條件請至來源定位核對", identity, source["id"], revision_id, evidence_mode)
     _populate_common_extractions(cand, blocks, source["id"], revision_id, evidence_mode)
+    # These documents describe several roles. A clause about temporary staff or
+    # full-time staff must not become a global student eligibility prohibition.
+    if source["id"] == "nstc-assistant-rule":
+        cand["eligibility"]["employment_status"] = "unknown"
+        cand["eligibility"]["negated_conditions"] = []
+        cand["compatibility"] = {"mode":"unknown", "prohibited_schemes":[],
+            "overlap_period_rule":None, "note":"依專任、兼任及臨時工身分分別核對約用及兼任限制。", "refs":[]}
+        cand["field_evidence"] = [e for e in cand["field_evidence"]
+            if e["field_path"] not in ("eligibility.employment_status", "compatibility")]
+        cand["eligibility"]["other_conditions"].append({"text":"各金額只適用所標示的約用類別；僱傭關係另須遵守勞動法規。", "refs":[first_ref]})
+    if source["id"] == "ntu-eecs-scholarship":
+        college_block = next((b for b in blocks if re.search(r"電機資訊學院|電資學院", b["text"])), None)
+        if college_block and re.search(r"本(?:學)?院.{0,30}(?:博士|研究生)", re.sub(r"\s+", "", " ".join(b["text"] for b in blocks))):
+            cand["institution_scope"]["college"] = "電機資訊學院"
+            cand["field_evidence"].append(make_field_evidence("institution_scope.college", source["id"], revision_id, college_block, evidence_mode))
+            cand["eligibility"]["other_conditions"].append({"text":"電機資訊學院方案；須另核對本院學籍及完整甄選條件。", "refs":[{"source":source["id"], "locator":college_block["locator"]}]})
     # Source clauses stay separate; no annual amount is converted into an invented total.
     cand["benefit"] = {"summary":"金額待來源完整核對", "items":[], "refs":[]}
     cand["field_evidence"] = [e for e in cand["field_evidence"] if not e["field_path"].startswith("benefit.")]
-    for block in blocks:
-        for clause in re.split(r"[；。，]", block["text"]):
+    monthly_minimum_header=None
+    salary_grade=None
+    ta_role=None
+    for block_index, block in enumerate(blocks):
+        # NSTC splits the monthly minimum heading, grade and amount across DOM blocks.
+        if source["id"]=="nstc-assistant-rule":
+            compact=re.sub(r"\s+","",block["text"])
+            if "專任人員月支酬金不得低於" in compact:
+                monthly_minimum_header=block;salary_grade=None
+            elif re.search(r"兼任人員費用|為研發替代役|得按專任人員工作酬金",compact):
+                monthly_minimum_header=None;salary_grade=None
+            match=re.search(r"專科級|學士級|碩士級",compact)
+            if monthly_minimum_header and match:salary_grade=(match[0],block)
+        # Commas can separate the period/role heading from its monetary value.
+        for clause in re.split(r"[；;。]", block["text"]):
+            if source["id"] == "ntu-ta-policy":
+                roles = re.findall(r"博士(?:班|生)|碩士(?:班|生)|學士(?:班|生)", clause)
+                if len(set(r[:2] for r in roles)) == 1:
+                    ta_role=(roles[0][:2]+"班教學助理", block, block_index, "每月" in clause)
+                elif roles or (ta_role and block_index-ta_role[2]>1):
+                    ta_role=None
+            if source["id"] == "nstc-abroad-dragon-rule" and "計算方式" in clause:
+                continue  # Formula repeats the annual reference amount, not a second award.
             parsed = parse_amount_from_text(clause)
             if not parsed:
                 continue
@@ -1953,13 +2101,30 @@ def _extract_policy(source, blocks, revision_id, observed_at, url, as_of, eviden
                 parsed.update(amount_min=None, basis="maximum")
             elif "至少" in clause or "最低" in clause:
                 parsed.update(amount_max=None, basis="minimum")
-            item = {"branch_or_tier":None, **parsed, "refs":[ref]}
+            context=[]
+            if monthly_minimum_header and salary_grade:
+                parsed.update(unit="per_month",basis="minimum",amount_max=None)
+                context=[monthly_minimum_header,salary_grade[1]]
+            if source["id"] == "ntu-ta-policy" and ta_role:
+                if ta_role[3]:parsed["unit"]="per_month"
+                context=[ta_role[1]]
+            evidence_blocks=[block]+[b for b in context if b!=block]
+            branch = "專任人員／" + salary_grade[0] if monthly_minimum_header and salary_grade else None
+            if source["id"] == "nstc-assistant-rule" and "學生兼任人員" in block["text"]:
+                branch = "學生兼任人員（學習或僱傭關係）"
+            if source["id"] == "ntu-ta-policy":
+                branch = ta_role[0] if ta_role else None
+            item = {"branch_or_tier":branch, **parsed,
+                    "refs":[{"source":source["id"],"locator":b["locator"]} for b in evidence_blocks]}
             idx = len(cand["benefit"]["items"])
             cand["benefit"]["items"].append(item)
             cand["benefit"]["refs"].append(ref)
-            cand["field_evidence"].append(make_field_evidence(f"benefit.items/{idx}",source["id"],revision_id,block,evidence_mode))
+            for b in evidence_blocks:
+                cand["field_evidence"].append(make_field_evidence(f"benefit.items/{idx}",source["id"],revision_id,b,evidence_mode))
     if cand["benefit"]["items"]:
         cand["benefit"]["summary"] = "；".join(_format_benefit_summary(i) for i in cand["benefit"]["items"])
+        if source["id"] == "nstc-abroad-dragon-rule":
+            cand["benefit"]["summary"] += "此為年補助計算基準；實領依核定研究日數計算，不另加計公式內的重複金額。"
     steps = []
     for block in blocks:
         if not any(w in block["text"] for w in ("申請期間", "申請期限", "截止", "完成申請")):
@@ -2091,6 +2256,10 @@ def _verify_quote_and_reparse(field_path, claimed_val, unit, currency, locator, 
     if not locator or locator not in block_map:
         return False, "model_locator_not_found", None, None
     block = block_map[locator]
+    if isinstance(block,list):
+        matches=[b for b in block if quote and normalized(quote) in normalized(b['text'])]
+        if len(matches)!=1:return False,'model_locator_ambiguous',None,None
+        block=matches[0]
     if not quote or len(quote) > 80:
         return False, "model_quote_empty_or_too_long", block, None
     norm_quote = normalized(quote)
@@ -2162,7 +2331,8 @@ def _apply_dual_track_llm_response(cand, llm_resp, source, blocks, model_adapter
         updated["verification"]["warnings"].append("model_invalid_json_or_schema")
         return updated
 
-    block_map = {b["locator"]: b for b in blocks}
+    from scripts.document_ir import evidence_block_map
+    block_map = evidence_block_map(blocks)
     sid = source["id"]
     rev_id = updated["source_metadata"]["revision_id"]
     ev_mode = updated["source_metadata"]["evidence_mode"]
@@ -2187,6 +2357,7 @@ def _apply_dual_track_llm_response(cand, llm_resp, source, blocks, model_adapter
                 updated["verification"]["warnings"].append(f"{err_code}:{fpath}")
                 continue
 
+            loc=blk['locator']
             updated["verification"]["audit_findings"].append(
                 {
                     "field_path": fpath,
@@ -2216,7 +2387,8 @@ def _apply_dual_track_llm_response(cand, llm_resp, source, blocks, model_adapter
                         or ev["field_path"].startswith(alias_prefix)
                         or fpath.startswith(ev["field_path"])
                     ):
-                        ev["rule_and_model_agreed"] = True
+                        if ev.get('source_block_sha256')==evidence_digest(blk['text']):
+                            ev["rule_and_model_agreed"] = True
             elif verdict == "disagree":
                 # 規則與模型不一致：絕不靜默覆寫，寫入 conflicts 觸發人工覆核
                 updated["gaps_and_conflicts"]["conflicts"].append(
@@ -2251,6 +2423,7 @@ def _apply_dual_track_llm_response(cand, llm_resp, source, blocks, model_adapter
                 updated["verification"]["warnings"].append(f"{err_code}:{fpath}")
                 continue
 
+            loc=blk['locator']
             ref = {"source": sid, "locator": loc}
             elig = updated["eligibility"]
 
@@ -2422,6 +2595,9 @@ def extract_from_in_memory_blocks(
     """
     as_of = as_of or taipei_today()
     url = url or source["url"]
+    from scripts.document_ir import prepare_document
+    prepared_document=prepare_document(blocks)
+    blocks=prepared_document['units']
     evidence_mode = source.get("evidence_mode", "short_excerpt")
     sid = source["id"]
 
@@ -2504,6 +2680,9 @@ def extract_from_in_memory_blocks(
     results = []
     excerpt_remaining = 120
     for cand in candidates:
+        cand['source_metadata'].update(normalizer_version=prepared_document['version'],
+            prepared_document_sha256=prepared_document['document_sha256'])
+        if url!=source["url"]:cand["source_metadata"]["parent_url"]=source["url"]
         if extraction_strategy != "rules_only" and model_adapter.enabled:
             if (evidence_mode == "hash_only" or "aca.ntu.edu.tw" in url) and model_adapter.is_external:
                 cand["verification"]["warnings"].append("external_model_skipped_for_hash_only_source")
@@ -2515,7 +2694,7 @@ def extract_from_in_memory_blocks(
                     cand = _apply_dual_track_llm_response(cand, llm_resp, source, blocks, model_adapter)
 
         # 途徑與適用性依正文判斷，缺文字不自動轉N/A；簽名掃描不等於寄紙本。
-        method, applicability, process_evidence = infer_process(blocks)
+        method, applicability, process_evidence = infer_process(blocks, cand)
         for path, block in process_evidence.items():
             ref={"source":sid,"locator":block["locator"]}
             if path.startswith("application_method"):method["refs"].append(ref)
@@ -2674,7 +2853,7 @@ def refetch_and_extract_candidates(
         blocks = in_memory_blocks_by_url.get(url)
         if blocks is None and fetcher is not None and allow_network_refetch:
             try:
-                is_pdf = url.lower().endswith(".pdf")
+                is_pdf = source.get("format")=="pdf" or url.lower().split("?",1)[0].endswith(".pdf")
                 resp = fetcher.get(url, {}, 10 * 1024 * 1024 if is_pdf else 2 * 1024 * 1024)
                 if resp["status"] == 200:
                     if stub.get("revision", {}).get("raw_sha256") and digest(resp["body"]) != stub["revision"]["raw_sha256"]:
@@ -2712,6 +2891,18 @@ def refetch_and_extract_candidates(
                 as_of=as_of,
                 model_adapter=model_adapter,
             )
+            missing_attachments=[a["url"] for a in stub.get("revision",{}).get("attachments",[])
+                if a["url"] not in in_memory_blocks_by_url]
+            application_attachment_available=any(a["url"] in in_memory_blocks_by_url
+                and re.search(r"申請|application",a.get("title","")+unquote(a["url"]),re.I)
+                for a in stub.get("revision",{}).get("attachments",[]))
+            if missing_attachments or application_attachment_available:
+                for index,item in enumerate(extracted):
+                    if application_attachment_available:
+                        item["gaps_and_conflicts"]["missing_fields"]=[g for g in item["gaps_and_conflicts"]["missing_fields"]
+                            if g!="unfetched_attachment:doctoral_round_application"]
+                    item["gaps_and_conflicts"]["missing_fields"].extend("unfetched_attachment:"+u for u in missing_attachments)
+                    extracted[index]=verify_candidate(item,in_memory_blocks=blocks,now_iso=observed_at)
             all_records.extend(extracted)
         else:
             all_records.extend(extract_from_candidate_stub_without_memory(stub, source, as_of=as_of))

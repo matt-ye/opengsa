@@ -1036,6 +1036,36 @@
             "note",
             "refs"
           ]
+        },
+        "institution_scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "school": {
+              "enum": [
+                "NTU",
+                "domestic_eligible_institution",
+                "unknown"
+              ]
+            },
+            "college": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "department": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "school",
+            "college",
+            "department"
+          ]
         }
       },
       "required": [

@@ -409,7 +409,7 @@ def evaluate_application_window(
 
     if all(item.get("field_applicability",{}).get(k,{}).get("status")=="not_applicable" for k in ("application_start","student_deadline")):
         return {"state":"unknown","as_of":now_d.isoformat(),"reason_code":"application_not_applicable",
-                "reason":"申請窗口 N/A 不適用：來源明示免另行申請；不代表資格已核准。",
+                "reason":"申請窗口 N/A 不適用："+item["field_applicability"]["student_deadline"]["reason"],
                 "student_deadline":None,"application_start":None,"upper_layer_deadlines":upper_layer_deadlines,
                 "supplement_deadlines":supplement_steps,"same_day_time_unconfirmed":False,
                 "source_stale":source_stale,"stale_sources":stale_sources,"next_cycle_inferred":False}
@@ -862,6 +862,18 @@ def evaluate_eligibility(item, profile, as_of="2026-10-28"):
             "missing_information": [],
             "official_qualification_approved": False,
         }
+
+    # College/department restrictions must survive candidate-to-site conversion.
+    for field, label in (("college", "學院"), ("department", "系所")):
+        required = item.get("institution_scope", {}).get(field)
+        actual = profile.get(field, "unknown")
+        if required and actual in (None, "unknown"):
+            missing.append(field)
+        elif required and actual != required:
+            return {"opportunity_id": item.get("id") or item.get("opportunity_id"),
+                "program_key": item.get("program_key"), "criteria":"not_met",
+                "reasons":[f"{label}不符：方案範圍為 {required}，測試身分為 {actual}。"],
+                "missing_information":[], "official_qualification_approved":False}
 
     # 3. 年級限制（嚴格區分觀察日年級與基準日 assessed_at 年級；教育部 1-3 年級不影響國科會 unlimited）
     year_limit = elig.get("year_limit", {"mode": "unknown"})

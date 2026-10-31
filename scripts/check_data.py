@@ -106,7 +106,15 @@ def validate_candidate_snapshot(bundle, config):
     totals={};ids=set()
     for cand in bundle["candidates"]:
         meta=cand["source_metadata"];sid=meta["source_id"]
-        if sid not in sources or meta["url"]!=sources[sid]["url"]:errors.append("candidate source profile mismatch")
+        if sid not in sources:errors.append("candidate source profile mismatch")
+        elif meta["url"]!=sources[sid]["url"]:
+            if meta.get("parent_url")!=sources[sid]["url"] or meta["url"] not in sources[sid].get("known_attachment_urls",[]):
+                errors.append("candidate attachment is not bound to its registered parent/URL")
+        if sid in sources and meta["evidence_mode"]!=sources[sid]["evidence_mode"]:
+            errors.append("candidate evidence policy differs from its source profile")
+        if sid in sources and sources[sid]["evidence_mode"]=="hash_only":
+            if any(e.get("excerpt") is not None for e in cand["field_evidence"]) or any(a.get("quote") is not None for a in cand["verification"].get("audit_findings",[])):
+                errors.append("hash_only source cannot retain excerpts or audit quotes")
         if cand["candidate_id"] in ids:errors.append("duplicate candidate id")
         ids.add(cand["candidate_id"])
         revision=(sid,meta["revision_id"])

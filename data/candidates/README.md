@@ -1,3 +1,13 @@
+# 當前待審批次
+
+> 後續整合更新：本批已接上統一文件準備、Token預算分段及局部規則重萃，現行能力／未完成項目與實際驗收見[文件準備整合](../../docs/PREPARED-EXTRACTION.md)。舊階段提案或測試數量不代表最新整合狀態。
+
+2026-10-31的[source-review.json](source-review.json)是工作台預設批次：13個來源、17份文件、19筆候選，8筆自動檢核通過、11筆有缺漏，全部pending、promotion_ready=false。HTML、規則PDF、申請說明各自保留版本，不把文件數量當獎學金數量。
+
+原[ai-tools-115.json](ai-tools-115.json)保留較早兩筆快照供追溯；不要與當前批次直接聯集或重複匯入。正式pilot及真人覆核台帳仍不改寫。完整證據、來源限制及操作見[來源盤查](../../docs/SOURCE-COVERAGE-AUDIT.md)。
+
+---
+
 # 待覆核候選快照
 
 `ai-tools-115.json`為2026-10-30從兩個官方公開HTML正文取得的具名候選，採candidate Schema；不是網站正式總表。兩筆都是pending、passed_with_gaps、promotion_ready=false；不得把檔案存在視為完成獨立人工覆核。
@@ -14,3 +24,5 @@
 `check_data.py`額外檢查本目錄候選bundle的Schema、來源URL、摘錄預算與待審邊界；不在CI重新連外，也不以短證據重新宣告完整原文核驗通過。合成測試放tests，不放本目錄；正式人工處置仍在data/scan-reviews.json，目前沒有本批核准紀錄。
 
 官方依據：[臺北市計畫](https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796)、[新竹市申辦說明](https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest)。操作與驗收見[候選推進紀錄](../../docs/AI-TOOLS-CANDIDATES.md)。
+
+2026-10-31後續核可：先穩定本批再擴張。已修正給付重複、週期與身分、院別範圍及文件層級N/A；工作台新增方案文件分組及review-text.md文字審查清單。最新8筆通過、11筆有缺漏，仍全部待審。詳見[本批穩定化與擴張門檻](../../docs/CANDIDATE-STABILITY.md)。

@@ -1,0 +1,224 @@
+{
+  "as_of": "2026-10-31",
+  "generated_at": "2026-10-31T07:56:15+00:00",
+  "scope": "existing_batch_only",
+  "source_profiles": 13,
+  "documents": 17,
+  "document_candidates": 19,
+  "program_groups": 13,
+  "verification": {
+    "passed_with_gaps": 11,
+    "passed_automated_checks": 8
+  },
+  "model_calls": 0,
+  "official_data_modified": false,
+  "human_approvals": 0,
+  "final_replay_http_requests": 38,
+  "count_note": "Final full-batch replay plus targeted N/A follow-up only; earlier debugging, initial replay and official web lookups excluded.",
+  "states": {
+    "cand-ntu-nstc-phd-115-a87d34fa": "fresh_semantic_revision_matched",
+    "cand-ntu-moe-phd-115-a87d34fa": "fresh_semantic_revision_matched",
+    "cand-ntu-nstc-phd-rule-fe5ff9a3": "fresh_semantic_revision_matched",
+    "cand-ntu-moe-phd-rule-fe5ff9a3": "fresh_semantic_revision_matched",
+    "cand-ntu-moe-phd-unknown-9bb65253": "fresh_semantic_revision_matched",
+    "cand-ntu-president-114-call-627eac82": "fresh_semantic_revision_matched",
+    "cand-ntu-yuanxue-115-ordinary-e4bcffd5": "fresh_semantic_revision_matched",
+    "cand-ntu-president-unknown-rule-b35d810f": "fresh_semantic_revision_matched",
+    "cand-nstc-ntu-conference-3450d15a": "fresh_semantic_revision_matched",
+    "cand-nstc-conference-rule-1e764218": "fresh_semantic_revision_matched",
+    "cand-faos-student-conference-de284c75": "fresh_semantic_revision_matched",
+    "cand-nstc-abroad-dragon-rule-5b229e29": "fresh_semantic_revision_matched",
+    "cand-sinica-phd-fellowship-82eddedf": "fresh_semantic_revision_matched",
+    "cand-taipei-ai-tools-52289fdc": "fresh_semantic_revision_matched",
+    "cand-hsinchu-ai-tools-2df2bf61": "fresh_semantic_revision_matched",
+    "cand-nstc-assistant-rule-14a6cfad": "fresh_semantic_revision_matched",
+    "cand-ntu-eecs-scholarship-970ee807": "fresh_semantic_revision_matched",
+    "cand-ntu-ta-policy-73ab1ac7": "fresh_semantic_revision_matched",
+    "cand-ntu-ta-policy-cc28dee0": "fresh_semantic_revision_matched"
+  },
+  "candidates": [
+    {
+      "candidate_id": "cand-ntu-nstc-phd-115-a87d34fa",
+      "source_revision": "a87d34fa89892c7d263d819ed875cd0694b98a37c66a1ffa3c667e018b0b0822",
+      "before_sha256": "81e2da9c0043dd57ae717f8cb903cf4afcbf2c3174151f018ad4c7e83e815a84",
+      "after_sha256": "f7d8f8073e7150da1912c6db303637ae8261c883bab2e51b5179d2c1c8ebb41a",
+      "verification": "passed_with_gaps",
+      "warnings": [
+        "coverage_regression:eligibility.year_limit.mode(unlimited->unknown)"
+      ]
+    },
+    {
+      "candidate_id": "cand-ntu-moe-phd-115-a87d34fa",
+      "source_revision": "a87d34fa89892c7d263d819ed875cd0694b98a37c66a1ffa3c667e018b0b0822",
+      "before_sha256": "7b297c2b731548967e7c551de13e081a35c13cbf7c7b043862cfaa7ee138948f",
+      "after_sha256": "a0de812bac90f4407c1a738447666709a2dcb99d3488901727621020d50db35b",
+      "verification": "passed_with_gaps",
+      "warnings": [
+        "coverage_regression:schedule.steps_missing_dated_step([('college', '2026-11-09')])"
+      ]
+    },
+    {
+      "candidate_id": "cand-ntu-nstc-phd-rule-fe5ff9a3",
+      "source_revision": "fe5ff9a3409e6ff57ac0fd6a0fee107deb4b2c6ba46bc3e64bf5d4c99e5db656",
+      "before_sha256": "371d03218e1cf5dafe7063228551e8afcc61bb9fb5de419f5b3edb4f034a3c8a",
+      "after_sha256": "8aaeadb6c44be2b71eea60391081113344c51980f493e2bd52a2ed7179c3abbf",
+      "verification": "passed_automated_checks",
+      "warnings": []
+    },
+    {
+      "candidate_id": "cand-ntu-moe-phd-rule-fe5ff9a3",
+      "source_revision": "fe5ff9a3409e6ff57ac0fd6a0fee107deb4b2c6ba46bc3e64bf5d4c99e5db656",
+      "before_sha256": "f8dc9c80d6934d6db1e30a5ca0fd6ec5b567bf165beb2ff0a170c44236eee4ee",
+      "after_sha256": "0b42b71e2cd9685dcd6449384c82c63f0e0ee17932405ef6b277d954cbf7c82b",
+      "verification": "passed_automated_checks",
+      "warnings": []
+    },
+    {
+      "candidate_id": "cand-ntu-moe-phd-unknown-9bb65253",
+      "source_revision": "9bb6525384cc70fd06b40e448b52da30c1a80656a44a50f9d17f28bc16c5029d",
+      "before_sha256": "b0988ec709b2961195b410df28461b3d48b8d63dac1e32cd77f92a858486741d",
+      "after_sha256": "093e3d2411cef51b985fb67a5b27819a2ec962c60b91201618b102ebf60c47bd",
+      "verification": "passed_with_gaps",
+      "warnings": [
+        "coverage_gap:cycle_year_unknown",
+        "coverage_gap:missing_structured_benefit_items"
+      ]
+    },
+    {
+      "candidate_id": "cand-ntu-president-114-call-627eac82",
+      "source_revision": "627eac826f172f8f70443fff8325527febe01218c259ec3d8de1a81dc9988f9d",
+      "before_sha256": "1be3aa95313150c17604190626200ac5e95d1fa5b381b6b3a2e6a7d089bfce34",
+      "after_sha256": "97cdd3b3d9210e6f63fec8c98aa7eaceefce61fe0b11a59fcee0e727d0d3af51",
+      "verification": "passed_automated_checks",
+      "warnings": []
+    },
+    {
+      "candidate_id": "cand-ntu-yuanxue-115-ordinary-e4bcffd5",
+      "source_revision": "e4bcffd5ee93eb15e04a4784b309dbfcd8c6088ad4bc8c841d96429c28a4133a",
+      "before_sha256": "20d248a1c216ca2a3c4c0661754f3567de969715253ec03d989b9c1acc7a5481",
+      "after_sha256": "531cfa39db49325eed3f6a6354b0f90bc7fbee243ddb95c7e90982f43e00bbd9",
+      "verification": "passed_with_gaps",
+      "warnings": [
+        "coverage_gap:policy_version.full_attachment_robots_restricted",
+        "coverage_gap:unfetched_attachment:https://ord.ntu.edu.tw/WebUPD/ordntu/GW/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E9%AB%98%E7%AD%89%E6%95%99%E8%82%B2%E6%B7%B1%E8%80%95%E8%A8%88%E7%95%AB-%E9%81%A0%E5%AD%B8%E8%A8%88%E7%95%AB%E8%A3%9C%E5%8A%A9%E4%BD%9C%E6%A5%AD%E8%A6%81%E9%BB%9E_1140414.pdf"
+      ]
+    },
+    {
+      "candidate_id": "cand-ntu-president-unknown-rule-b35d810f",
+      "source_revision": "b35d810f6227a7525df0bcc40efe2f8822ef82162754920674b7666f63a74091",
+      "before_sha256": "41457a4fd71f603017aa069c477af0519f20e05bfe4997cd208e5502bdefe016",
+      "after_sha256": "c6ceadabe5fb241c1833c016d9458e5db1f8aa847db44272a17860e118781d6b",
+      "verification": "passed_automated_checks",
+      "warnings": []
+    },
+    {
+      "candidate_id": "cand-nstc-ntu-conference-3450d15a",
+      "source_revision": "3450d15aaa6d8fbe1c9ee3e8b56cd26ffd372154d6b38cbffafa3d8a461a50d2",
+      "before_sha256": "0a5b386acc6cbb5f3f9176b5b650fc5af8fef8fedb0416933175530e819cc1c1",
+      "after_sha256": "f9a8a86778d52e197fe8810888485b5e108331c7964b803df66a9174eb8108c5",
+      "verification": "passed_automated_checks",
+      "warnings": []
+    },
+    {
+      "candidate_id": "cand-nstc-conference-rule-1e764218",
+      "source_revision": "1e76421839904500c8e652211a97df34ba3990101daeed19d3ca8d87fe5cdb2d",
+      "before_sha256": "eaaea40549aa47fa1a1edce546d78800203a3e9ee1b065b2bdfe18793f904c0c",
+      "after_sha256": "97d52bce913d0f1487624e49e6304b2b4dff61b6d29df59cb7f3acb95c3138a6",
+      "verification": "passed_automated_checks",
+      "warnings": []
+    },
+    {
+      "candidate_id": "cand-faos-student-conference-de284c75",
+      "source_revision": "de284c75c586e42da933780b1e05a37cec3d0949724ee8aa79790d110a9bd0d7",
+      "before_sha256": "a990244d116a988d19c7ef7422f96c966f74476d8dd6f39a41906683398694b3",
+      "after_sha256": "b893a88c646611f45d2359dc6431510d5172e8d2dec6fff7b6b1c515cd22e474",
+      "verification": "passed_automated_checks",
+      "warnings": []
+    },
+    {
+      "candidate_id": "cand-nstc-abroad-dragon-rule-5b229e29",
+      "source_revision": "5b229e2937d8795e03559ae40307d92cd985f5fd0a37825e418351c1f9940a2a",
+      "before_sha256": "ecfe83b7849419fc35cac35774748bc66e6ea2bd0985cad2a92ae668bc1959fe",
+      "after_sha256": "e17715fa087b96b557649da12e12dc10297cddcf8737cb433c75b31aeef61822",
+      "verification": "passed_with_gaps",
+      "warnings": [
+        "coverage_gap:eligibility.identity_not_extracted"
+      ]
+    },
+    {
+      "candidate_id": "cand-sinica-phd-fellowship-82eddedf",
+      "source_revision": "82eddedf877a8abc0a38956573b14172e2307a505660cbbaddb5d6f8e81b7d39",
+      "before_sha256": "f95cc9754b52c7ed6fe110f2e00803ed00f7d6846e1ef812c497be52d1c17651",
+      "after_sha256": "db058b50b8d21eb4654bb01910367dfcdc4b2e9a6bfbc694ee7898d1507a4483",
+      "verification": "passed_with_gaps",
+      "warnings": [
+        "coverage_gap:missing_structured_benefit_items",
+        "coverage_gap:eligibility.identity_not_extracted"
+      ]
+    },
+    {
+      "candidate_id": "cand-taipei-ai-tools-52289fdc",
+      "source_revision": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+      "before_sha256": "f7d602a81a317569665775a9d567fa79c8cb4bbb64ed2a8eede37ef634635e0c",
+      "after_sha256": "aff020f496479d27e7b890cb64718f550a48afa2fb2411f0febadf5eceb83ba1",
+      "verification": "passed_automated_checks",
+      "warnings": [
+        "personal_context_required:ai_tools:personal_purchase_or_completion_date",
+        "operational_status_unknown:ai_tools:budget_exhaustion_status"
+      ]
+    },
+    {
+      "candidate_id": "cand-hsinchu-ai-tools-2df2bf61",
+      "source_revision": "2df2bf6147610b2cc22648da58a1225e2e3c61e08673a2540e0924413d47cb96",
+      "before_sha256": "31e73f18ea5cc51a1d173b426ae52edaa3b394b94fa81ff93cd51fb387c107b3",
+      "after_sha256": "8cbd05e4ff048ac89cde6abbe087426cc03d830b186bde5a289be2dd33a837bd",
+      "verification": "passed_with_gaps",
+      "warnings": [
+        "personal_context_required:ai_tools:personal_purchase_or_completion_date",
+        "operational_status_unknown:ai_tools:budget_exhaustion_status",
+        "coverage_gap:ai_tools:age_reference_date"
+      ]
+    },
+    {
+      "candidate_id": "cand-nstc-assistant-rule-14a6cfad",
+      "source_revision": "14a6cfad9d95660d12a4a0ce69a28b6fed91bd6efb843f45022959d81497e24e",
+      "before_sha256": "c97250d6008cfb25e2eea3f907267469b2748d9751a475bd4a15e980ac6b2289",
+      "after_sha256": "125b54c9da4e6f4a8b017bb4dc737390f47516e501f5f93cf3bafc2d39485016",
+      "verification": "passed_with_gaps",
+      "warnings": [
+        "coverage_gap:eligibility.identity_not_extracted"
+      ]
+    },
+    {
+      "candidate_id": "cand-ntu-eecs-scholarship-970ee807",
+      "source_revision": "970ee8072b5c30acd168fef9f6399c7c72d5a26a6f83f61b4dde1b50bf1f4383",
+      "before_sha256": "72cb88a469c18d707fc0a196c130ef1fe955bdd1eb4b1984a40dd2b279d8cd34",
+      "after_sha256": "02f028b5a56ca2c92dbbd41c499d7112995ead3f051783be9eeffeb1081e8d76",
+      "verification": "passed_with_gaps",
+      "warnings": [
+        "coverage_gap:missing_structured_benefit_items",
+        "coverage_gap:eligibility.identity_not_extracted"
+      ]
+    },
+    {
+      "candidate_id": "cand-ntu-ta-policy-73ab1ac7",
+      "source_revision": "73ab1ac7097c5b65cf3a08a89561ef9ec55322bcdf94467d495a6db19bc728bf",
+      "before_sha256": "399a23d77961cdf70ce3f45cffd38e1c5f43fe738fae14a93c74c8f428ce74d5",
+      "after_sha256": "86012c3fa225e12a6ba77bab41d68953ab8b075c1d2376b3c6e79de8aadb21e7",
+      "verification": "passed_with_gaps",
+      "warnings": [
+        "coverage_gap:eligibility.identity_not_extracted"
+      ]
+    },
+    {
+      "candidate_id": "cand-ntu-ta-policy-cc28dee0",
+      "source_revision": "cc28dee00a3c0ed2f34c0adbfa14eb01f8701c2da480c54dd43252706bf4caea",
+      "before_sha256": "bff2e2b9109b9614a626d7d3aabd2142b80618298b1656bd25a7df7ec435ad3b",
+      "after_sha256": "4cba8c8fffec31cf0effcadc267ec47ead95c88fa9561b3c969d322d93a6329e",
+      "verification": "passed_with_gaps",
+      "warnings": [
+        "coverage_gap:eligibility.identity_not_extracted"
+      ]
+    }
+  ]
+}

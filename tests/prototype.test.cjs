@@ -7,6 +7,45 @@ const today = "2026-10-28";
 const demo = core.makeDemo(today);
 const pilot = JSON.parse(fs.readFileSync(path.join(__dirname,"../data/pilot.json"),"utf8"));
 const conferenceData=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/conference-programs.json"),"utf8"));
+
+test("審查篩選保留處置且不解除來源缺漏的核准限制（合成DOM）",async()=>{
+ class Element{
+  constructor(tag){this.tag=tag;this.children=[];this.handlers={};this.value="";this.textContent="";}
+  append(...nodes){this.children.push(...nodes);}
+  setAttribute(key,value){this[key]=value;}
+  addEventListener(key,handler){this.handlers[key]=handler;}
+  click(){this.handlers.click?.();}
+ }
+ const ids=Object.fromEntries(["review-data","review-date","run-info","review-counts","document-groups","candidates","reviewer","download-decisions","export-status","review-filter","review-filter-count"].map(id=>[id,new Element("div")]));
+ ids["review-filter"].value="all";
+ const row=id=>({candidate_id:id,title:"SYNTH "+id,source:{url:"https://example.test",source_id:"SYNTH",revision_id:"SYNTH"},
+  fingerprint:"SYNTH-fingerprint",editor:"SYNTH-editor",last_verification:"passed_automated_checks",context_status:"fresh_semantic_revision_matched",
+  verification:{status:"passed_automated_checks",errors:[]},gaps:{source:[],personal:[],operational:[]},before:null,after:{},evidence:[],questions:[]});
+ const ready=row("SYNTH-ready"),blocked=row("SYNTH-blocked"),stale=row("SYNTH-stale");blocked.gaps.source=["ai_tools:age_reference_date"];
+ stale.context_status="source_revision_changed_requires_rescan";
+ ids["review-data"].textContent=JSON.stringify({as_of:"2026-11-01",manifest:{http_requests:0},document_groups:{SYNTH:[ready.candidate_id,blocked.candidate_id,stale.candidate_id]},rows:[ready,blocked,stale]});
+ let downloaded;
+ require("node:vm").runInNewContext(fs.readFileSync(path.join(__dirname,"../docs/design/review-workspace.js"),"utf8"),{
+  document:{getElementById:id=>ids[id],createElement:tag=>new Element(tag),createTextNode:text=>({textContent:text})},
+  Intl,Date,Blob,URL:{createObjectURL:blob=>{downloaded=blob;return "blob:SYNTH";},revokeObjectURL(){}},setTimeout:fn=>fn()
+ });
+ const find=(parent,tag)=>parent.children.flatMap(n=>[n,...(n.children?find(n,tag):[])]).filter(n=>n.tag===tag);
+ const [a,b,c]=ids.candidates.children;
+ assert.equal(find(a,"select")[0].children.find(n=>n.value==="applied").disabled,undefined);
+ assert.equal(find(b,"select")[0].children.find(n=>n.value==="applied").disabled,true);
+ assert.equal(find(c,"select")[0].children.find(n=>n.value==="applied").disabled,true);
+ find(a,"select")[0].value="applied";find(b,"select")[0].value="noted";
+ find(a,"textarea")[0].value="SYNTH 核對原文";find(b,"textarea")[0].value="SYNTH 等待官方依據";
+ ids["reviewer"].value="SYNTH-independent";
+ ids["review-filter"].value="ready";ids["review-filter"].handlers.change();
+ assert.equal(a.hidden,false);assert.equal(b.hidden,true);
+ assert.equal(c.hidden,true);
+ assert.match(ids["review-filter-count"].textContent,/1／3/);
+ ids["download-decisions"].click();
+ const reviews=JSON.parse(await downloaded.text()).reviews;
+ assert.deepEqual(reviews.map(r=>[r.candidate_id,r.action]),[["SYNTH-ready","applied"],["SYNTH-blocked","noted"]]);
+ assert.match(ids["export-status"].textContent,/尚未核准發布/);
+});
 test("具名地方政府補助跨年度仍可由政府來源篩選，不靠單位名稱含政府二字",()=>{
  const candidates=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/candidates/ai-tools-115.json"),"utf8")).candidates;
  const items=candidates.map(c=>({...pilot.opportunities[0],id:c.program_key+"-synthetic-year",program_key:c.program_key,title:c.title,organizations:c.organizations}));

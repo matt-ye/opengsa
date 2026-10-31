@@ -10,6 +10,7 @@ import re
 import subprocess
 import sys
 import time
+import unicodedata
 from datetime import datetime, timezone, timedelta
 from urllib.parse import quote, unquote, urljoin, urlsplit, urlunsplit
 
@@ -18,7 +19,7 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-VERSION = "scanner-1"
+VERSION = "scanner-2"
 AGENT = "OpenGSA/0.1 (+https://github.com/matt-ye/opengsa)"
 SKIP = re.compile(r"名冊|名單|獲獎|得獎|姓名|學號|身分證|jsessionid|password|token=|login|登入", re.I)
 CONTACT = re.compile(r"@|電話|聯絡|承辦|傳真|住址|通訊地址|\b0\d{1,3}[- ]\d{6,}")
@@ -171,7 +172,12 @@ class Fetcher:
         if previous.get("last_modified"):
             headers["If-Modified-Since"] = previous["last_modified"]
         for attempt in range(2):
-            response = self.follow(url, headers, limit)
+            try:
+                response = self.follow(url, headers, limit)
+            except ScanError as error:
+                # Same TLS/robots/host budget on retry; never retry access denials or 429.
+                if str(error)=="transport_error" and attempt==0:continue
+                raise
             if response["status"] >= 500 and response["headers"].get("retry-after"):
                 self.blocked[urlsplit(url).hostname] = "service_retry_after_deferred"
                 raise ScanError("service_retry_after_deferred")
@@ -183,7 +189,8 @@ class Fetcher:
 def html_document(data, source, url, hosts):
     soup = BeautifulSoup(data, "html.parser")
     nodes = soup.select(source["body_selector"])
-    roots = [node for node in nodes if not any(parent in nodes for parent in node.parents)]
+    node_ids={id(node) for node in nodes}
+    roots = [node for node in nodes if not any(id(parent) in node_ids for parent in node.parents)]
     if not roots:
         raise ScanError("body_selector_changed")
     attachments = {}
@@ -205,21 +212,67 @@ def html_document(data, source, url, hosts):
         for node in root.select("script,style,nav,footer,form,noscript"):
             node.decompose()
     lines = []
+    structures = []
+    from bs4 import NavigableString, Comment
+    # Join inline markup inside semantic blocks; inserting spaces between DOM text
+    # nodes breaks Chinese amounts, negation and dates (e.g. 四<strong>萬</strong>元).
+    block_tags={'address','article','aside','blockquote','dd','div','dl','dt','fieldset',
+                'figcaption','figure','h1','h2','h3','h4','h5','h6','hr','li','main',
+                'ol','p','pre','section','table','tbody','td','th','thead','tfoot','tr','ul'}
+    def text_runs(root):
+        buffer=[];runs=[]
+        def flush(container):
+            text=normalized(''.join(buffer));buffer.clear()
+            if text:runs.append((text,container))
+        def visit(node,container):
+            if isinstance(node,Comment):return
+            if isinstance(node,NavigableString):buffer.append(str(node));return
+            if node.name=='br':flush(container);return
+            boundary=node.name in block_tags
+            if boundary:flush(container)
+            current=node if boundary else container
+            for child in node.children:visit(child,current)
+            if boundary:flush(current)
+        visit(root,root);flush(root)
+        return runs
+    tables=soup.find_all('table')
+    table_ids={id(table):f'table-{i}' for i,table in enumerate(tables,1)}
     for root in roots:
-        lines.extend(normalized(line) for line in root.get_text("\n", strip=True).splitlines())
+        section=[]
+        for line,parent in text_runs(root):
+            heading=parent.find_parent(re.compile('^h[1-6]$')) if not re.match('^h[1-6]$',parent.name or '') else parent
+            kind='heading' if heading else 'list_item' if parent.find_parent('li') or parent.name=='li' else 'paragraph'
+            if heading:
+                level=int(heading.name[1])
+                title=normalized(heading.get_text())
+                if not section or section[-1]!=(level,title):
+                    section=[entry for entry in section if entry[0]<level]+[(level,title)]
+            meta={'kind':kind,'section_path':[title for _,title in section]}
+            cell=parent if parent.name in ('td','th') else parent.find_parent(['td','th'])
+            if cell:
+                table=cell.find_parent('table');row=cell.find_parent('tr')
+                rows=[r for r in table.find_all('tr') if r.find_parent('table') is table]
+                headers=rows[0].find_all(['td','th'],recursive=False) if rows else []
+                meta.update(kind='table_cell',table_id=table_ids[id(table)],
+                    headers=[normalized(c.get_text()) for c in headers],
+                    row_cells=[normalized(c.get_text()) for c in row.find_all(['td','th'],recursive=False)] if row else [],
+                    row_index=next((i for i,r in enumerate(rows) if r is row),None),
+                    structure_status='complex_spans_require_review' if table.select('[rowspan],[colspan]') else 'preserved')
+            lines.append(line);structures.append(meta)
     if source.get("start_marker"):
         marker = source["start_marker"]
         start = next((i for i, line in enumerate(lines) if marker in line), None)
         if start is None:
             raise ScanError("start_marker_changed")
         lines = lines[start:]
+        structures = structures[start:]
     text = normalized(" ".join(lines))
     compact = re.sub(r"\s+", "", text)
     if len(text) < 80 or any(re.sub(r"\s+", "", term) not in compact for term in source["required_markers"]):
         raise ScanError("required_marker_missing")
     # 序號是此版萃取正文的定位，非原HTML原始碼行號。
-    blocks = [{"locator": f"{source['body_selector']} / text-block {i}", "text": line}
-              for i, line in enumerate(lines, 1) if line]
+    blocks = [{"locator": f"{source['body_selector']} / text-block {i}", "text": line, **meta}
+              for i, (line,meta) in enumerate(zip(lines,structures), 1) if line]
     return blocks, list(attachments.values())[:source["max_pdfs"]]
 
 
@@ -229,7 +282,8 @@ def pdf_document(data):
     if result.returncode:
         raise ScanError("pdf_requires_manual_review")
     pages = json.loads(result.stdout)
-    return [{"locator": f"PDF page {page['page']}", "text": normalized(line)}
+    return [{"locator": f"PDF page {page['page']}", "text": normalized(unicodedata.normalize("NFKC",line)),
+             "kind":"paragraph","page":page['page'],"structure_status":"pdf_layout_unverified"}
             for page in pages for line in page["text"].splitlines() if normalized(line)]
 
 
@@ -264,7 +318,7 @@ def scan(config, previous=None, fetcher=None, resolved=None):
     sources = [s for s in config["sources"] if s.get("enabled", True)]
     start = state.get("next_source_index", 0) % max(1, len(sources))
     ordered = sources[start:] + sources[:start]
-    queue = [(source, source["url"], "html") for source in ordered]
+    queue = [(source, source["url"], source.get("format","html")) for source in ordered]
     deferred_index = None
     while queue:
         source, original_url, kind = queue.pop(0)
@@ -290,6 +344,10 @@ def scan(config, previous=None, fetcher=None, resolved=None):
                     raise ScanError("unexpected_content_type")
                 if kind == "pdf":
                     blocks, attachments = pdf_document(response["body"]), []
+                    if source.get("format")=="pdf":
+                        text=re.sub(r"\s+",""," ".join(b["text"] for b in blocks))
+                        if any(re.sub(r"\s+","",term) not in text for term in source["required_markers"]):
+                            raise ScanError("required_marker_missing")
                 else:
                     blocks, attachments = html_document(response["body"], source, response["url"], config["allowed_hosts"])
                 if hasattr(fetcher, "in_memory_blocks"):
@@ -365,6 +423,12 @@ def validate_config(config):
             raise ValueError(f"Invalid attachment budget: {source['id']}")
         if source["evidence_mode"] not in ("hash_only", "short_excerpt"):
             raise ValueError(f"Invalid evidence policy: {source['id']}")
+        if source.get("format","html") not in ("html","pdf"):raise ValueError("Unsupported source format")
+        known=source.get("known_attachment_urls",[])
+        if not isinstance(known,list) or any(not isinstance(url,str) for url in known):raise ValueError("Invalid known attachment list")
+        for url in known:
+            safe_url(url,config["allowed_hosts"])
+            if not urlsplit(url).path.lower().endswith(".pdf"):raise ValueError("Known attachments must be PDF URLs")
 
 
 def run():

@@ -4,7 +4,7 @@
 const data=JSON.parse(document.getElementById("review-data").textContent);
 const byId=id=>document.getElementById(id);
 const el=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
-const fields={title:"名稱",cycle:"年度／梯次",category:"分類",resource_kind:"資源類型",scope:"適用範圍",participants:"申請／受益角色",organizations:"相關單位",benefit:"給付",eligibility:"資格",compatibility:"兼領",hardship:"清寒限制",application_method:"申請途徑",expense_period:"可認列支出期間",start:"申請起日",steps:"分層程序",result:"結果日期",field_applicability:"不適用依據",policy_version:"法規版本",evidence_status:"證據狀態"};
+const fields={title:"名稱",cycle:"年度／梯次",category:"分類",resource_kind:"資源類型",scope:"適用範圍",institution_scope:"學校／學院／系所限制",participants:"申請／受益角色",organizations:"相關單位",benefit:"給付",eligibility:"資格",compatibility:"兼領",hardship:"清寒限制",application_method:"申請途徑",expense_period:"可認列支出期間",start:"申請起日",steps:"分層程序",result:"結果日期",field_applicability:"不適用依據",policy_version:"法規版本",evidence_status:"證據狀態"};
 function valueCell(value){
  const td=el("td");
  if(value===undefined||value===null){td.append(el("p","未記錄／尚未收錄"));return td;}
@@ -13,17 +13,28 @@ function valueCell(value){
  td.append(el("p",summary));
  const details=el("details");details.append(el("summary","展開完整欄位"),el("pre",JSON.stringify(value,null,2)));td.append(details);return td;
 }
-const gapNames={"ai_tools:personal_purchase_or_completion_date":"學生的購買日／條件完成日尚未提供","ai_tools:budget_exhaustion_status":"目前是否額滿或經費用罄尚未確認","ai_tools:age_reference_date":"年齡採認基準與出生日期區間須核對"};
+const gapNames={"ai_tools:personal_purchase_or_completion_date":"學生的購買日／條件完成日尚未提供","ai_tools:budget_exhaustion_status":"目前是否額滿或經費用罄尚未確認","ai_tools:age_reference_date":"年齡採認基準與出生日期區間須核對",
+ "schedule.application_start":"申請起日未確認","schedule.steps/0/deadline":"學生／院系收件截止日未確認","schedule.result_date":"結果公告日期未確認","hardship":"是否清寒限定待核","compatibility":"兼領條件待核","benefit.unit_and_payee":"金額的給付單位／對象未辨明","cycle_year_unknown":"文件適用年度未辨明","missing_structured_benefit_items":"給付尚未完整萃取，需要修正解析","eligibility.identity_not_extracted":"申請／受益身分未完整萃取，需要修正解析","policy_version.full_attachment_robots_restricted":"完整辦法附件受robots限制，須人工核對","official_holiday_calendar":"例假日順延仍需官方行事曆","department_internal_lead_time":"院系是否提前收件待核","conference_start_event_date":"需提供個人會議日期才能試算（不是官方固定截止日）","cross_agency_compatibility":"跨補助方案兼領條件待核"};
+const statusNames={passed_automated_checks:"自動檢核通過（仍待人工覆核）",passed_with_gaps:"檢核通過但有缺漏",needs_context:"本次未取得完整來源脈絡",failed_automated_checks:"檢核失敗",conflict_detected:"有待解衝突",fresh_semantic_revision_matched:"已重新核對，來源與準備版本相符",offline_context_not_refreshed:"離線檢視，尚未重新核對來源版本",source_revision_changed_requires_rescan:"來源內容已變更，須重掃重審",source_preparation_changed_requires_rescan:"來源準備版本已變更，須重掃重審"};
+const displayStatus=value=>statusNames[value]||value;
+const canPropose=row=>!row.gaps.source.length&&!(row.verification.errors||[]).length&&!["failed_automated_checks","conflict_detected"].includes(row.verification.status)&&["fresh_semantic_revision_matched","offline_context_not_refreshed"].includes(row.context_status);
 const controls=[];
 const date=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 byId("review-date").value=date;
-byId("run-info").textContent="快照 "+data.as_of+" · "+data.rows.length+"筆候選 · 本次工作台來源GET "+data.manifest.http_requests+"次 · 模型呼叫0次 · 未發布";
+byId("run-info").textContent="快照 "+data.as_of+" · "+data.rows.length+"筆文件候選／"+Object.keys(data.document_groups||{}).length+"組方案 · 本次工作台來源GET "+data.manifest.http_requests+"次 · 模型呼叫0次 · 未發布";
+byId("review-counts").textContent="上次自動檢核通過 "+data.rows.filter(r=>r.last_verification==="passed_automated_checks").length+" 筆；本次有來源缺漏 "+data.rows.filter(r=>r.gaps.source.length).length+" 筆；可提出核准意向 "+data.rows.filter(canPropose).length+" 筆。以上不等於已發布或目前可申請。";
+const articles=[];
+for(const [program,ids] of Object.entries(data.document_groups||{})){
+ const li=el("li",program+"：");
+ for(const id of ids){const row=data.rows.find(r=>r.candidate_id===id);if(!row)continue;const a=el("a",row.title);a.href="#"+id;li.append(a,document.createTextNode("； "));}
+ byId("document-groups").append(li);
+}
 for(const row of data.rows){
- const article=el("article");article.className="card";
+ const article=el("article");article.className="card";article.id=row.candidate_id;
  article.append(el("h2",row.title));
  const link=el("a","核對官方來源 ↗");
  if(row.source.url.startsWith("https://")){link.href=row.source.url;link.target="_blank";link.rel="noopener noreferrer";}
- article.append(link,el("p","本次來源狀態："+row.context_status),el("p","上次檢核："+row.last_verification+"；本次檢核："+row.verification.status));
+ article.append(link,el("p","本次來源狀態："+displayStatus(row.context_status)),el("p","上次檢核："+displayStatus(row.last_verification)+"；本次檢核："+displayStatus(row.verification.status)));
  const groups=el("div");groups.className="columns";
  for(const [key,title] of [["source","來源缺漏（影響核准）"],["personal","個人資料未填（影響個人判斷）"],["operational","受理／經費狀態未知"]]){
   const section=el("section");section.append(el("h3",title));const list=el("ul");
@@ -50,15 +61,24 @@ for(const row of data.rows){
  article.append(details);
  if(row.questions.length){const q=el("ul");for(const item of row.questions)q.append(el("li",item));article.append(el("h3","待查事項"),q);}
  const label=el("label","本筆處置"),select=el("select");select.setAttribute("aria-label",row.title+"處置");
- const canProposeApproval=!row.gaps.source.length&&!errors.length&&!["failed_automated_checks","conflict_detected"].includes(row.verification.status);
+ const canProposeApproval=canPropose(row);
  for(const [value,text] of [["","尚未處置"],["noted","待補資料"],["dismissed","退回／不採用"],["applied","核准意向（仍須重新核驗來源）"]]){
   const option=el("option",text);option.value=value;if(value==="applied"&&!canProposeApproval)option.disabled=true;select.append(option);
  }
  label.append(select);article.append(label);
- if(!canProposeApproval)article.append(el("p","本筆來源缺漏或檢核錯誤尚未解除，目前不能提出核准意向。"));
+ if(!canProposeApproval)article.append(el("p","本筆來源缺漏、版本異動／受阻或檢核問題尚未解除，目前不能提出核准意向。"));
  const reasonLabel=el("label","處置理由（必填）"),reason=el("textarea");reason.setAttribute("aria-label",row.title+"處置理由");reasonLabel.append(reason);article.append(reasonLabel);
- controls.push({row,select,reason});byId("candidates").append(article);
+ controls.push({row,select,reason});articles.push({row,article});byId("candidates").append(article);
 }
+function filterReview(){
+ const mode=byId("review-filter").value;let count=0;
+ for(const {row,article} of articles){
+  const show=mode==="all"||(mode==="ready"&&canPropose(row))||(mode==="gaps"&&row.gaps.source.length>0)||(mode==="stale"&&row.context_status!=="fresh_semantic_revision_matched");
+  article.hidden=!show;if(show)count++;
+ }
+ byId("review-filter-count").textContent="顯示 "+count+"／"+articles.length+" 筆；切換篩選保留已填處置，下載包含所有已處置項目。";
+}
+byId("review-filter").addEventListener("change",filterReview);filterReview();
 byId("download-decisions").addEventListener("click",()=>{
  const reviewer=byId("reviewer").value.trim(),reviewed_on=byId("review-date").value;
  const selected=controls.filter(c=>c.select.value);

@@ -2,7 +2,7 @@
 import re
 
 
-def infer_process(blocks):
+def infer_process(blocks, record=None):
     method = {"mode":"unknown", "channels":[], "paper_delivery":"unknown",
               "handwritten_signature":"unknown", "deadline_basis":"unknown",
               "note":"須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本", "refs":[]}
@@ -50,6 +50,17 @@ def infer_process(blocks):
         method["mode"] = "hybrid" if has_paper and has_online else "paper" if has_paper else "electronic" if has_online else "unknown"
         if method["mode"] == "hybrid":
             method["note"]="同時出現紙本與電子途徑；須核對是擇一或各階段皆必須，不推定全程免紙本"
+    # N/A describes this reference document, not a future recruitment/application.
+    if (record and record.get("cycle",{}).get("kind")=="policy_snapshot"
+            and record.get("resource_kind")=="employment_support"
+            and record.get("participants",{}).get("applicant") in ("unit","institution")
+            and not any(re.search(r"申請期間|申請期限|受理期間|截止",b["text"]) for b in blocks)
+            and not any(s.get("deadline",{}).get("kind") in ("date","datetime","relative") for s in record.get("schedule",{}).get("steps",[]))):
+        basis=next((b for b in blocks if re.search(r"特訂定本|本辦法|本注意事項|教學助理制度",b["text"])),None)
+        if basis:
+            for key in ("application_start","student_deadline","result_date"):
+                applicability[key]={"status":"not_applicable","reason":"本筆為聘任制度參考文件，當期學生申請窗口及結果日期另查個別招募。","refs":[]}
+                evidence["field_applicability."+key]=basis
     return method, applicability, evidence
 
 

@@ -12,6 +12,12 @@
 
 ## 目前狀態
 
+2026-11-01本版整合PR #22–#27：維運與資助研究經更正後納入，文件準備／進階萃取與候選審查共用最新版本。全套140項Python／39項Node測試通過；review-1.1.0新增操作說明、中文缺漏及審查篩選。[需要你審核的項目與操作](docs/CURRENT-REVIEW-CHECKLIST.md) · [維運與成本提案](docs/LONG-TERM-ARCHITECTURE-AND-OPERATIONS.md) · [開源資助與擴展提案](docs/OPENAI-CODEX-FUND-APPLICATION-AND-EXPANSION.md)。19筆候選仍待審，合併程式不代表發布資料。
+
+2026-10-31進階驗證補上15項對抗測試，修正HTML行內文字、表格定位、共用分支限制及局部時程。17文件／19候選已依新版本完整重掃，維持8通過／11有缺漏，沒有已知欄位退步；全套140項Python／38項Node通過。仍全部待審、0模型呼叫。[進階測試與限制](docs/ADVANCED-EXTRACTION-TESTS.md)。
+
+2026-10-31整合PR #24～#26後，已接上統一文件區塊、HTML表格／章節脈絡、完整請求分段及指定欄位規則重萃。17份實際文件／19筆候選已重跑，8通過／11有缺漏，仍全部待審。[目前實作與限制](docs/PREPARED-EXTRACTION.md) · [後續規劃](docs/FIELD-SCOPED-EXTRACTION-PLAN.md) · [PR #25研究整合](docs/BLOCKED-SOURCES-AND-DEFUDDLE-STUDY.md)。模型能力／正確Token計數器未核對時會延期，排程仍off。
+
 本專案處於**公開預覽、結構化候選萃取與檢核管線已建立、正式資料仍待人工獨立覆核階段**。已有四分頁、清單／甘特圖、研討會多方案規劃、獨立權益入口、10筆草稿、17筆引用來源、低頻公開來源差異掃描，以及「爬取結果 → 有版本候選 Schema → 結構化萃取（規則優先＋可替換模型 Adapter）→ 獨立檢核 → 申請時間與資格判斷 → 候選差異覆核報告」管線；正式資料契約簽核及發布門檻仍待完成，結構驗證通過、模型輸出或原型試算均不代表官方資格已核定。
 
 **[開啟公開預覽](https://matt-ye.github.io/opengsa/)** · [提供試用回饋](https://github.com/matt-ye/opengsa/issues/new?template=preview-feedback.yml)
@@ -24,13 +30,15 @@ v0.8研討會可選國科會、臺大醫學院、傑出人才發展基金會或�
 
 來源掃描採臺北時間週二、週五09:17，另可手動執行；目前來源台帳中已啟用的正文目標及允許的文字PDF在記憶體完成結構化萃取、七項獨立檢核（含 `coverage_ok` 與 `passed_with_gaps`）、學生窗口時間判斷與 `data/pilot.json` 差異比對，只產生待覆核報告，不直接改寫網站正式資料。每次檢查robots，PDF不長期存放；教務處因轉載條款只保留雜湊與定位，且絕不送往外部模型（`hash_only_bytes_sent = 0`）。雙軌模型 Adapter（`extract` 補缺＋`audit` 交叉盤查）於排程預設關閉（`model_mode=off`、呼叫0次），僅支援手動觸發或本機評估。[看掃描狀態](https://github.com/matt-ye/opengsa/actions/workflows/scan-sources.yml) · [操作與限制](docs/SCANNER.md)。
 
-本輪已全數合併 PR #16～#20（包含起訖與準備提醒帶、AI 工具補助台帳、可靠性修正、申請管道 Schema 與 8 組 API 實測）。來源設定共16筆，其中11筆啟用、5筆暫停；「啟用」不保證每次都可擷取，最近實測狀態見[掃描文件](docs/SCANNER.md)。10筆網站資料仍是待覆核草稿，人工處置台帳已清除合成紀錄。
+本輪已全數合併 PR #16～#21（包含起訖與準備提醒帶、AI 工具補助台帳、可靠性修正、申請管道 Schema 與 8 組 API 實測）。來源設定共16筆，其中13筆啟用、3筆暫停；「啟用」不保證每次都可擷取，最近實測狀態見[掃描文件](docs/SCANNER.md)。10筆網站資料仍是待覆核草稿，人工處置台帳已清除合成紀錄。
 
 8組Repository Secrets已接線，模型預設與官方額度宣稱已重新盤查；僅Groq完成小量JSON推論，其他服務的目錄成功不等於金鑰／免費推論全部可用。看[API查核及操作](docs/API-AUDIT.md)與[本輪修正及驗收](docs/RELIABILITY-AUDIT.md)。排程維持規則模式，不啟用自動付費備援。
 
 PR #18的17筆AI資源已進行來源分流與更正，見[查核結果](docs/PR18-RESOURCE-REVIEW.md)。申辦方式新增紙本／電子、親簽與收件判準；欄位不適用須有依據才標N/A，不能把未知或資格不符改成N/A。掃描仍先產生候選，經覆核、資料PR及部署後，第一至三頁才共用新快照，見[判斷與更新流程](docs/APPLICATION-PROCESS.md)。
 
 臺北／新竹AI工具補助已推進為兩筆[具名候選](data/candidates/README.md)，確定性萃取、分支與程序檢核已接入掃描；仍pending，不改10筆正式草稿。[推進與驗收紀錄](docs/AI-TOOLS-CANDIDATES.md)。
+
+2026-10-31已盤點145個來源／參考網址，13個具名來源的17份文件已匯入19筆待審候選（8筆自動檢核通過、11筆有缺漏）；正式資料仍10筆。入口發現、欄位萃取與人工核准分開驗收，詳見[來源全盤檢查](docs/SOURCE-COVERAGE-AUDIT.md)及[逐項來源清單](docs/SOURCE-LINKS-2026-10-31.md)。
 
 ## 已有與後續功能
 
@@ -117,3 +125,5 @@ flowchart TD
 程式碼、測試與建置腳本採 [MIT](LICENSE)；團隊原創文件與可授權的資料編輯部分採 [CC BY 4.0](LICENSES/CC-BY-4.0.txt)。第三方文件、網站內容及資料各保留原授權，不因被列入來源就統一重授權。詳見 [授權範圍](LICENSES/README.md)。
 
 目前沒有公布可接收私人個案或敏感附件的窗口。本專案提供資訊與正式求助入口，不代替主管機關或專業人員作資格核定、法律責任或申訴結果判斷。
+
+2026-10-31後續核可：先穩定本批再擴張。已修正給付重複、週期與身分、院別範圍及文件層級N/A；工作台新增方案文件分組及review-text.md文字審查清單。最新8筆通過、11筆有缺漏，仍全部待審。詳見[本批穩定化與擴張門檻](docs/CANDIDATE-STABILITY.md)。
