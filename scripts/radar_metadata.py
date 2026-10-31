@@ -42,5 +42,6 @@ def radar_metadata(bundle):
             'revision':candidate['source_metadata']['revision_id'],
             'observed_at':candidate['source_metadata']['observed_at'],
             'known':known,'unsafe':unsafe,'unknown_reasons':gaps,
+            'audience_kind':candidate['eligibility']['identity'].get('claim_kind','source_specific_summary'),
             'organizations':organizations,'time_steps':time_steps}
     return {'version':'radar-1','records':records}

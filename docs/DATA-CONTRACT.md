@@ -4,6 +4,8 @@
 
 ## 最小模型與候選擴充
 
+2026-11-01相容擴充：兩份Schema的`eligibility.degrees`允許空陣列，表示尚未辨識學位規則；既有判斷器保留`scheme_degree_rule`，不能當不限或不符。fact可選`claim_kind`區分資格段落摘要與制度對象線索；後者不當完整資格、也不能讓清晰度變綠。正式pilot內容未更動。[最新流程及驗收](GENERALIZABLE-EXTRACTION.md)。
+
 ```mermaid
 erDiagram
   SOURCE ||--o{ EVIDENCE_REF : "來源與定位"

@@ -18,14 +18,16 @@ async (page) => {
   if(cards.length!==19||failed.length)throw new Error(JSON.stringify({count:cards.length,failed}));
   const receivers=cards.filter(c=>c.textContent.includes('收件／轉送：')).length;
   const timing=cards.filter(c=>[...c.querySelectorAll('strong')].some(s=>/^(學生|校級|學院|機構|補件)(時間規則|期限)：/.test(s.textContent))).length;
-  if(receivers!==12||timing!==7)throw new Error('lost recorded facts '+JSON.stringify({receivers,timing}));
+  if(receivers!==16||timing!==8)throw new Error('lost recorded facts '+JSON.stringify({receivers,timing}));
+  const descriptors=cards.filter(c=>c.textContent.includes('對象線索（非完整資格）')).length;
+  if(descriptors!==2)throw new Error('descriptor confused with eligibility');
   // IDs reside in data attributes rather than visible card text.
   const ai=cards.filter(c=>c.querySelector('[data-pick-id]').dataset.pickId.includes('ai-tools'));
   if(ai.length!==2||ai.some(c=>!c.textContent.includes('地方青年訂閱費補助')))throw new Error('partial audience hidden');
   const national=cards.find(c=>c.querySelector('[data-pick-id]').dataset.pickId.includes('nstc-conference-rule'));
   if(!national.textContent.includes('機構時間規則')||!national.textContent.includes('學生截止：'))throw new Error('institution deadline confused with student');
   if(national.textContent.includes('學生先送臺大'))throw new Error('national policy inherited NTU-only receiver');
-  return {count:cards.length,checks,receivers,timing};
+  return {count:cards.length,checks,receivers,timing,descriptors};
  });
  for(const card of summary.checks){
   await page.locator(`[data-open-detail="${card.id}"]`).click();
@@ -38,6 +40,9 @@ async (page) => {
  await page.getByRole('tab',{name:'我的時間軸',exact:true}).click();
  if(await page.locator('#plan-options article.card').count()!==19)throw new Error('timeline lost records');
  await page.getByRole('tab',{name:'找獎助',exact:true}).click();
+ await page.locator('#view-switch [data-view="gantt"]').click();
+ if(await page.locator('#gantt-grid > .gantt-row:not(.gantt-top)').count()!==19)throw new Error('gantt lost records');
+ await page.locator('#view-switch [data-view="list"]').click();
  await page.locator('#document-mode').selectOption('programs');
  if(await page.locator('#result-cards article.card').count()!==13)throw new Error('grouping mismatch');
  await page.getByRole('tab',{name:'我的時間軸',exact:true}).click();
@@ -62,7 +67,7 @@ async (page) => {
  if(layout.scroll>layout.width+1)throw new Error('mobile overflow '+JSON.stringify(layout));
  await page.locator('#result-cards article.card').first().scrollIntoViewIfNeeded();
  await page.screenshot({path:'output/playwright/radar-mobile.png'});
- const report={records:summary.count,detail_views:19,timeline_cards:19,programs:13,receiver_summaries:summary.receivers,time_summaries:summary.timing,
+ const report={records:summary.count,detail_views:19,timeline_cards:19,gantt_rows:19,programs:13,receiver_summaries:summary.receivers,time_summaries:summary.timing,descriptor_cards:summary.descriptors,
   all_report_ids_and_source_versions_match:true,all_unknowns_link_to_source:true,
   year_filter:yearText,compatibility_filter:compText,mobile:layout,submitted_issues:0};
  await page.evaluate(value=>{document.body.dataset.radarSmokeResult=JSON.stringify(value)},report);

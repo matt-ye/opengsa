@@ -30,14 +30,21 @@ class RadarMetadataTests(unittest.TestCase):
 
     def test_source_linked_roles_and_verified_multilayer_times_are_retained(self):
         records=radar_metadata(read('candidates/source-review.json'))['records']
-        self.assertEqual(sum('receiver' in r['organizations'] for r in records.values()),12)
-        self.assertEqual(sum(bool(r['time_steps']) for r in records.values()),7)
+        self.assertEqual(sum('receiver' in r['organizations'] for r in records.values()),16)
+        self.assertEqual(sum(bool(r['time_steps']) for r in records.values()),8)
+        self.assertEqual(sum(r['known']['audience'] for r in records.values()),19)
+        self.assertEqual(sum(r['audience_kind']=='program_descriptor' for r in records.values()),2)
         national=next(r for cid,r in records.items() if 'nstc-conference-rule' in cid)
         self.assertFalse(national['known']['deadline'])
-        self.assertNotIn('receiver',national['organizations'])
-        self.assertIn('organizations.receiver_scope_mismatch',national['unknown_reasons'])
+        self.assertNotIn('臺大',national['organizations']['receiver'])
         self.assertEqual([s['actor'] for s in national['time_steps']],['institution','supplement'])
         self.assertTrue(all(s['deadline']['kind']=='relative' for s in national['time_steps']))
+        bad=read('candidates/source-review.json')
+        target=next(c for c in bad['candidates'] if 'nstc-conference-rule' in c['candidate_id'])
+        target['organizations']['receiver']['text']='學生先送臺大校內程序'
+        isolated=radar_metadata(bad)['records'][target['candidate_id']]
+        self.assertNotIn('receiver',isolated['organizations'])
+        self.assertIn('organizations.receiver_scope_mismatch',isolated['unknown_reasons'])
         bundle=read('candidates/source-review.json');bundle['candidates'][0]['verification']['checks']['evidence_supported']=False
         unsafe=radar_metadata(bundle)['records'][bundle['candidates'][0]['candidate_id']]
         self.assertEqual(unsafe['organizations'],{});self.assertEqual(unsafe['time_steps'],[])
