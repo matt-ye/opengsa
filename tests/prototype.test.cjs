@@ -8,6 +8,79 @@ const demo = core.makeDemo(today);
 const pilot = JSON.parse(fs.readFileSync(path.join(__dirname,"../data/pilot.json"),"utf8"));
 const conferenceData=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/conference-programs.json"),"utf8"));
 
+test("雷達將已知符合與未知條件分區，未知不冒充不限年級或可兼領",()=>{
+ const entries=[{id:"SYNTH-known",title:"SYNTH",cycle:"2026",year:"unlimited",compatibility:"allowed",degrees:["phd"],rawState:"open"},
+ {id:"SYNTH-unknown",title:"SYNTH",cycle:"2026",year:"unknown",compatibility:"unknown",degrees:[],rawState:"unknown"},
+ {id:"SYNTH-no",title:"SYNTH",cycle:"2026",year:"range",compatibility:"prohibited",degrees:["master"],rawState:"closed"}];
+ const result=core.partitionItems(entries,{year:"unlimited",compatibility:"allowed",includeUnknown:true});
+ assert.deepEqual(result.matched.map(i=>i.id),["SYNTH-known"]);
+ assert.deepEqual(result.possible.map(i=>i.id),["SYNTH-unknown"]);
+ assert.equal(core.partitionItems(entries,{degree:"phd",includeUnknown:false}).all.length,1);
+ assert.equal(core.partitionItems(entries,{application:"open",includeUnknown:true}).matched.length,1);
+ assert.equal(core.partitionItems(entries,{application:"open",includeUnknown:true}).possible.length,1);
+});
+
+test("回報連結保留公開識別與原文URL，不帶個人規劃或篩選條件",()=>{
+ const publicItem={id:"SYNTH-id",title:"合成獎助 & ? # 測試",url:"https://example.test/"+"%E7%94%B3".repeat(40)+".pdf",sourceVersion:"a".repeat(64),privateAge:29,filter:{school:"PRIVATE"}};
+ const url=new URL(core.issueUrl(publicItem));
+ assert.equal(url.pathname,"/matt-ye/opengsa/issues/new");
+ assert.equal(url.searchParams.get("resource_id"),publicItem.id);
+ assert.equal(url.searchParams.get("resource_name"),publicItem.title);
+ assert.equal(url.searchParams.get("source_url"),publicItem.url);
+ assert.equal(url.searchParams.get("source_version"),publicItem.sourceVersion);
+ assert.doesNotMatch(url.href,/PRIVATE|privateAge|filter/);
+ const personal=core.issueUrl({...publicItem,personal:true,title:"PRIVATE-CONFERENCE"});
+ assert.doesNotMatch(personal,/SYNTH-id|PRIVATE-CONFERENCE|source_url/);
+ assert.equal(core.officialUrl("javascript:alert(1)"),null);
+ assert.equal(core.officialUrl("https://user:password@example.test"),null);
+});
+
+test("清晰度評估核心欄位，日期矛盾不能被完整度抵銷",()=>{
+ const item={title:"SYNTH",url:"https://example.test",cycle:"115年度",audience:"博士生",sourceChecked:"2026-10-31",
+  start:{value:"2026-11-01",certainty:"confirmed"},end:{value:"2026-12-01",certainty:"confirmed"}};
+ assert.equal(core.clarity(item,"2026-11-01").level,"green");
+ assert.equal(core.clarity({...item,audience:null},"2026-11-01").level,"amber");
+ assert.equal(core.clarity({...item,sourceChecked:"2020-01-01"},"2026-11-01").level,"amber");
+ assert.equal(core.clarity({...item,end:{value:"2026-10-01"}},"2026-11-01").level,"red");
+ assert.equal(core.clarity({...item,resourceKind:"tool_subscription"},"2026-11-01").level,"amber");
+});
+
+test("方案彙整不把辦法與當期公告的欄位拼接，所有其他文件仍可連回來源",()=>{
+ const docs=[{id:"SYNTH-policy",programKey:"SYNTH",cycle:"辦法",cycleKind:"policy_snapshot",url:"https://example.test/rule",benefit:"policy amount"},
+ {id:"SYNTH-call",programKey:"SYNTH",cycle:"115年度",cycleKind:"academic_year",url:"https://example.test/call",benefit:null}];
+ const grouped=core.groupDocuments(docs);
+ assert.equal(grouped.length,1);assert.equal(grouped[0].id,"SYNTH-call");assert.equal(grouped[0].benefit,null);
+ assert.equal(grouped[0].relatedDocuments[0].url,docs[0].url);
+ assert.equal(docs[0].relatedDocuments,undefined);
+});
+
+test("雷達不顯示缺證據的預設資格與日期，來源版次仍可回報",()=>{
+ const data=JSON.parse(JSON.stringify(pilot));const raw=data.opportunities[0];
+ const metadata={records:{[raw.id]:{url:"https://example.test/original.pdf",revision:"a".repeat(64),observed_at:"2026-10-31T12:00:00+08:00",unsafe:false,
+  known:Object.fromEntries(["audience","year","candidate","compatibility","hardship","start","deadline","result","benefit","method"].map(k=>[k,false]))}}};
+ const item=core.makeDrafts(data,"2026-11-01",metadata)[0];
+ assert.equal(item.audience,null);assert.deepEqual(item.degrees,[]);assert.equal(item.year,"unknown");
+ assert.equal(item.start.value,null);assert.equal(item.end.value,null);assert.equal(item.benefit,null);
+ assert.equal(item.url,metadata.records[raw.id].url);
+ assert.equal(new URL(core.issueUrl(item)).searchParams.get("source_version"),"a".repeat(64));
+});
+
+test("局部未知不抹掉整段說明，推估日期與正式受理分開",()=>{
+ assert.equal(core.unknownValue('待確認'),true);
+ assert.equal(core.unknownValue('身分條件請至來源定位核對'),true);
+ assert.equal(core.unknownValue('會議舉行前一個月首日；例假日校正尚待確認'),false);
+ assert.equal(core.unknownValue('地方青年訂閱費補助；個別資格須依各條件核對'),false);
+ const data=JSON.parse(JSON.stringify(pilot)),raw=data.opportunities.find(x=>x.id==='ntu-president-114');
+ raw.eligibility.identity.text='部分身分已明確；其他條件尚未確認';
+ const metadata={records:{[raw.id]:{url:'https://example.test',revision:'SYNTH',observed_at:'2026-11-01T00:00:00+08:00',unsafe:false,
+ known:{audience:true,start:true,deadline:false},organizations:{receiver:'先送系所，再送學院'},
+ time_steps:[{actor:'university',action:'校級收件',deadline:{kind:'date',value:'2026-08-25',note:'系所可能更早'}}]}}};
+ const item=core.makeDrafts(data,'2026-11-01',metadata).find(x=>x.id===raw.id);
+ assert.equal(item.start.value,null);assert.equal(item.end.value,null);assert.notEqual(item.rawState,'open');
+ assert.equal(item.estimatedStart.value,'2026-07-08');assert.equal(item.organizations.receiver,'先送系所，再送學院');
+ assert.equal(item.timeSteps[0].actor,'university');assert.equal(item.audience,raw.eligibility.identity.text);
+});
+
 test("審查篩選保留處置且不解除來源缺漏的核准限制（合成DOM）",async()=>{
  class Element{
   constructor(tag){this.tag=tag;this.children=[];this.handlers={};this.value="";this.textContent="";}
@@ -45,6 +118,10 @@ test("審查篩選保留處置且不解除來源缺漏的核准限制（合成DO
  const reviews=JSON.parse(await downloaded.text()).reviews;
  assert.deepEqual(reviews.map(r=>[r.candidate_id,r.action]),[["SYNTH-ready","applied"],["SYNTH-blocked","noted"]]);
  assert.match(ids["export-status"].textContent,/尚未核准發布/);
+ ids["review-filter"].value="exceptions";ids["review-filter"].handlers.change();
+ assert.equal(a.hidden,true);assert.equal(c.hidden,false);
+ find(ids["document-groups"],"a")[0].click();
+ assert.equal(ids["review-filter"].value,"all");assert.equal(a.hidden,false);assert.equal(b.hidden,false);
 });
 test("具名地方政府補助跨年度仍可由政府來源篩選，不靠單位名稱含政府二字",()=>{
  const candidates=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/candidates/ai-tools-115.json"),"utf8")).candidates;
@@ -469,7 +546,7 @@ test("申請方式與給付由同一資料列更新，N/A不冒充待確認或�
  assert.equal(core.filterItems([item],{application:"unknown"}).length,0);
  assert.equal(core.filterItems([item],{application:"not_applicable"}).length,1);
  const unknown=core.makeDrafts(pilot,"2026-10-30").find(x=>!x.end.value);
- assert.match(core.deadlineText(unknown),/待確認/);
+ assert.equal(core.deadlineText(unknown),core.UNKNOWN_LABEL);
  assert.doesNotMatch(core.deadlineText(unknown),/N\/A/);
 });
 

@@ -5,13 +5,23 @@ const data=JSON.parse(document.getElementById("review-data").textContent);
 const byId=id=>document.getElementById(id);
 const el=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
 const fields={title:"名稱",cycle:"年度／梯次",category:"分類",resource_kind:"資源類型",scope:"適用範圍",institution_scope:"學校／學院／系所限制",participants:"申請／受益角色",organizations:"相關單位",benefit:"給付",eligibility:"資格",compatibility:"兼領",hardship:"清寒限制",application_method:"申請途徑",expense_period:"可認列支出期間",start:"申請起日",steps:"分層程序",result:"結果日期",field_applicability:"不適用依據",policy_version:"法規版本",evidence_status:"證據狀態"};
-function valueCell(value){
+const UNKNOWN_LABEL="不明，請見來源";
+const readable={mode:"類型",min:"最低",max:"最高",assessed_at:"採認基準日",degrees:"學位",institution:"機構",identity:"對象",year_limit:"年級",candidate:"候選人資格",text:"說明",nationality:"國籍",employment_status:"在職限制",other_conditions:"其他條件",negated_conditions:"排除條件",mode_note:"說明",kind:"類型",value:"日期／值",items:"給付項目",amount_min:"金額下限",amount_max:"金額上限",currency:"幣別",unit:"給付週期",branch_or_tier:"適用身分／級距",duration_months_min:"最短月數",duration_months_max:"最長月數",basis:"給付基準",school:"學校",college:"學院",department:"系所",label:"說明",note:"補充",status:"狀態",reason:"原因",deadline:"期限",actor:"角色",action:"程序",funder:"資助",announcer:"公告",receiver:"收件",applicant:"申請人",beneficiary:"受益者",awardee:"受獎者",payee:"受款者",paper_delivery:"紙本遞交",handwritten_signature:"親簽",deadline_basis:"收件判準",electronic_channels:"電子管道",paper_channels:"紙本管道",summary:"摘要",required:"必要／限定",not_required:"非必要",not_applicable:"不適用（需核對依據）",conditional:"有條件",allowed:"允許（已查範圍）",prohibited:"禁止",range:"範圍",unlimited:"來源明示不限",phd:"博士",master:"碩士",student:"學生",per_month:"每月",per_year:"每年",lump_sum:"一次給付",TWD:"新臺幣",paper:"紙本",electronic:"電子",hybrid:"紙本與電子",automatic:"免另行申請",received:"送達",postmark:"郵戳",online_submission:"線上送出"};
+function valueCell(value,row){
  const td=el("td");
- if(value===undefined||value===null){td.append(el("p","未記錄／尚未收錄"));return td;}
- if(typeof value==="string"){td.append(el("p",value));return td;}
- const summary=value.text||value.label||value.note||value.identity?.text||"結構化欄位，請展開逐項核對";
- td.append(el("p",summary));
- const details=el("details");details.append(el("summary","展開完整欄位"),el("pre",JSON.stringify(value,null,2)));td.append(details);return td;
+ function render(value,parent){
+  if(value===undefined||value===null||value==="unknown"||(Array.isArray(value)&&!value.length)){
+   const link=el("a");const icon=el("span","⚠ ");icon.setAttribute("style","color:#966300");icon.setAttribute("aria-hidden","true");link.append(icon,el("span",UNKNOWN_LABEL+" ↗"));if(row.source.url.startsWith("https://")){link.href=row.source.url;link.target="_blank";link.rel="noopener noreferrer";}parent.append(link);return;
+  }
+  if(typeof value!=="object"){parent.append(el("span",readable[value]||String(value)));return;}
+  const list=el("ul");
+  for(const [key,child] of Object.entries(value)){
+   if(["refs","source_block_sha256","excerpt_sha256","timezone"].includes(key))continue;
+   const line=el("li");if(!Array.isArray(value))line.append(el("strong",(readable[key]||key)+"："));render(child,line);list.append(line);
+  }
+  if(list.children.length)parent.append(list);else render(null,parent);
+ }
+ render(value,td);return td;
 }
 const gapNames={"ai_tools:personal_purchase_or_completion_date":"學生的購買日／條件完成日尚未提供","ai_tools:budget_exhaustion_status":"目前是否額滿或經費用罄尚未確認","ai_tools:age_reference_date":"年齡採認基準與出生日期區間須核對",
  "schedule.application_start":"申請起日未確認","schedule.steps/0/deadline":"學生／院系收件截止日未確認","schedule.result_date":"結果公告日期未確認","hardship":"是否清寒限定待核","compatibility":"兼領條件待核","benefit.unit_and_payee":"金額的給付單位／對象未辨明","cycle_year_unknown":"文件適用年度未辨明","missing_structured_benefit_items":"給付尚未完整萃取，需要修正解析","eligibility.identity_not_extracted":"申請／受益身分未完整萃取，需要修正解析","policy_version.full_attachment_robots_restricted":"完整辦法附件受robots限制，須人工核對","official_holiday_calendar":"例假日順延仍需官方行事曆","department_internal_lead_time":"院系是否提前收件待核","conference_start_event_date":"需提供個人會議日期才能試算（不是官方固定截止日）","cross_agency_compatibility":"跨補助方案兼領條件待核"};
@@ -22,11 +32,11 @@ const controls=[];
 const date=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 byId("review-date").value=date;
 byId("run-info").textContent="快照 "+data.as_of+" · "+data.rows.length+"筆文件候選／"+Object.keys(data.document_groups||{}).length+"組方案 · 本次工作台來源GET "+data.manifest.http_requests+"次 · 模型呼叫0次 · 未發布";
-byId("review-counts").textContent="上次自動檢核通過 "+data.rows.filter(r=>r.last_verification==="passed_automated_checks").length+" 筆；本次有來源缺漏 "+data.rows.filter(r=>r.gaps.source.length).length+" 筆；可提出核准意向 "+data.rows.filter(canPropose).length+" 筆。以上不等於已發布或目前可申請。";
+byId("review-counts").textContent="本批 "+data.rows.length+" 份文件可查看雷達摘要；有未明欄位 "+data.rows.filter(r=>r.gaps.source.length).length+" 筆；可提出完整資料核准意向 "+data.rows.filter(canPropose).length+" 筆。完整意向數不限制雷達摘要顯示。";
 const articles=[];
 for(const [program,ids] of Object.entries(data.document_groups||{})){
  const li=el("li",program+"：");
- for(const id of ids){const row=data.rows.find(r=>r.candidate_id===id);if(!row)continue;const a=el("a",row.title);a.href="#"+id;li.append(a,document.createTextNode("； "));}
+ for(const id of ids){const row=data.rows.find(r=>r.candidate_id===id);if(!row)continue;const a=el("a",row.title);a.href="#"+id;a.addEventListener("click",()=>{byId("review-filter").value="all";filterReview();});li.append(a,document.createTextNode("； "));}
  byId("document-groups").append(li);
 }
 for(const row of data.rows){
@@ -51,7 +61,7 @@ for(const row of data.rows){
  for(const [key,title] of Object.entries(fields)){
   const tr=el("tr"),th=el("th",title);th.scope="row";tr.append(th);
   const old=row.before?.[key],value=row.after[key];
-  for(const v of [old,value])tr.append(valueCell(v));
+  for(const v of [old,value])tr.append(valueCell(v,row));
   if(JSON.stringify(old)!==JSON.stringify(value))tr.className="changed";body.append(tr);
  }
  table.append(body);article.append(table);
@@ -73,7 +83,8 @@ for(const row of data.rows){
 function filterReview(){
  const mode=byId("review-filter").value;let count=0;
  for(const {row,article} of articles){
-  const show=mode==="all"||(mode==="ready"&&canPropose(row))||(mode==="gaps"&&row.gaps.source.length>0)||(mode==="stale"&&row.context_status!=="fresh_semantic_revision_matched");
+  const exception=(row.verification.errors||[]).length>0||row.verification.status==="conflict_detected"||!["fresh_semantic_revision_matched","offline_context_not_refreshed"].includes(row.context_status);
+  const show=mode==="all"||(mode==="exceptions"&&exception)||(mode==="ready"&&canPropose(row))||(mode==="gaps"&&row.gaps.source.length>0)||(mode==="stale"&&row.context_status!=="fresh_semantic_revision_matched");
   article.hidden=!show;if(show)count++;
  }
  byId("review-filter-count").textContent="顯示 "+count+"／"+articles.length+" 筆；切換篩選保留已填處置，下載包含所有已處置項目。";
