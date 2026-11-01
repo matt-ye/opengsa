@@ -54,7 +54,7 @@ flowchart TD
 - `scripts/source_chains.py`：沿用Fetcher、正文IR及PDF解析；公開WebForm先解開、JSON-LD發布日須對應當頁；安全解析window.open，不執行來源JS。
 - `data/source-chain-sources.json`：6個明確年度／地方公告配置；3個地方範圍，官方host白名單、最多20請求／12讀取文件／180秒。純辦法不產生當期收件事件。
 - `data/source-chains.json`＋`schema/source-chains.schema.json`：保留原19筆／17文件對應，新增共用文件、關係、hash定位、Asia/Taipei事件；無原始HTML／PDF及hash_only摘錄。
-- 第一至三頁共用全局系所範例及參考年度；實際收件條、公告流程線、半透明歷史底帶、來源格式及文字表同步。提供跳至時段及底帶開關；未知／歷史不改資格，純辦法仍非當期申請。原公告的程序期限並列保留，不被範例替換。
+- 第一至三頁共用全局系所範例及參考年度；實際收件條、公告流程線、半透明歷史底帶、來源格式及文字表同步。以時間範圍整併跳至時段及底帶開關；未知／歷史不改資格，純辦法仍非當期申請。原公告的程序期限並列保留，不被範例替換。
 - 新增手動Actions `operation=source_chains`：無Secrets／模型，只輸出待審artifact；不改目前每週二／五的既有掃描排程，不自動回寫網站。
 
 ### 實測日期
@@ -82,7 +82,7 @@ python scripts/build_review_workspace.py --output work/review-chain-new
 
 第一頁預設甘特圖；桌面圖表在頁面捲動時維持可見，獎項在圖內上下捲動、日期可水平捲動，標題／日期軸及左側名稱固定。可用鍵盤捲動區域，手機也保留雙向捲動與文字日期表。清單仍可切換。
 
-網站直接綜覽各方案已有的系所範例；可切換2026／2027及往年底帶，或按「跳至申請／參考時段」。不同單位／梯次各自保留日期、來源及歷史底帶，不拼成單一申請期，也不判定使用者屬於該單位。第二、三頁沿用同一組範例，Issue仍只帶公開資料，不代送。
+網站直接綜覽各方案已有的系所範例；可切換2026／2027及往年底帶，或選「涵蓋所有已知日期」。不同單位／梯次各自保留日期、來源及歷史底帶，不拼成單一申請期，也不判定使用者屬於該單位。第二、三頁沿用同一組範例，Issue仍只帶公開資料，不代送。
 
 新CLI輸出經檢查後才可另行提交到`data/source-chains.json`；建置只讀repo快照，Actions artifact不會自動改公開頁。獨立核准與正式資料PR仍是另一流程。新增日期JSON不是新版完整候選Schema的替代品。
 
@@ -99,3 +99,5 @@ python scripts/build_review_workspace.py --output work/review-chain-new
 GitHub端亦已手動執行[source_chains](https://github.com/matt-ye/opengsa/actions/runs/41274222102)：15次HTTP、12份讀取、17個日期事件、模型0；已下載artifact通過Schema檢查。仍有4筆格式及4筆文件預算延期，工作成功不代表整條資訊鏈已完整。
 
 甘特圖捲動驗收：`scripts/browser_gantt_scroll_smoke.js`以Chrome驗證預設甘特圖、19列、內部上下與水平捲動（600px／300px）、標題與日期軸／左欄固定、頁面捲動不遮標題、Ctrl+End、清單切換及320px無整頁溢出。採原生CSS與捲動區域，未新增前端套件。
+
+工具列已依使用者核可採A配置：左欄選取管理，時間控制集中圖表，11項白底grid圖例預設收合。涵蓋已知日期會重設平移、定位實際／參考時段，不補猜未知；手機初訪可收合資格條件。完整對照與實作見[工具列整理](design/CONTROLS-MOCK-PLAN.md)。

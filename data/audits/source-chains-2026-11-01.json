@@ -90,5 +90,40 @@
     "candidate_rows": 19,
     "node_tests": 46,
     "chrome_script": "scripts/browser_gantt_scroll_smoke.js"
+  },
+  "layout_a_ui": {
+    "approved_and_applied": true,
+    "selection_controls": "sidebar_native_details",
+    "time_controls": "chart_toolbar",
+    "legend": {
+      "keys": 11,
+      "background": "#ffffff",
+      "default_collapsed": true,
+      "grid_columns": [
+        3,
+        2,
+        1
+      ]
+    },
+    "shared_selection_preserved": true,
+    "range_pan_year_synced": true,
+    "fit_resets_offset": true,
+    "today_resets_available_current_year": true,
+    "mobile_filter_initially_collapsed": true,
+    "responsive_widths": [
+      1059,
+      768,
+      320
+    ],
+    "horizontal_page_overflow": false,
+    "python_tests": 163,
+    "node_tests": 46,
+    "dedicated_chrome": "passed",
+    "source_chain_chrome": "passed",
+    "sticky_scroll_chrome": "passed",
+    "dedicated_script": "scripts/browser_layout_a_smoke.js",
+    "formal_data_modified": false,
+    "existing_19_record_chrome": "passed",
+    "issues_submitted": 0
   }
 }

@@ -4,7 +4,7 @@ async (page) => {
  await page.goto('http://127.0.0.1:8783/?smoke=source-chain-'+Date.now());
  await page.locator('#view-switch [data-view="gantt"]').click();
  if(await page.locator('#timeline-scope').count())throw new Error('scope dropdown still present');
- await page.locator('#timeline-focus').click();
+ await page.locator('#range-mode').selectOption('fit');
  for(const unit of ['臺大電信所','臺大農化系','中研院政治所']){
   const rows=page.locator('#gantt-grid .gantt-row').filter({has:page.locator('.timeline-example',{hasText:unit})});
   if(!await rows.count())throw new Error('global example missing: '+unit);
@@ -21,7 +21,7 @@ async (page) => {
  const ac=page.locator('#gantt-grid .gantt-row').filter({has:page.locator(`[data-pick-id="${acId}"]`)});
  if(await ac.locator('.gantt-bar:not(.baseline):not(.notice-window)').count()!==1)throw new Error('AC actual interval missing');
  if(await ac.locator('.baseline').count()!==1||await ac.locator('.process-line').count()!==1)throw new Error('AC layering missing');
- await page.locator('#timeline-focus').click();
+ await page.locator('#range-mode').selectOption('fit');
  await ac.locator('.gantt-bar:not(.baseline)').click();
  if(!(await page.locator('#schedule-inspect').textContent()).includes('2026/07/27 17:00'))throw new Error('inspector missing exact local deadline');
  await page.locator('#schedule-inspect [data-open-detail]').click();
@@ -50,7 +50,7 @@ async (page) => {
  await page.screenshot({path:'output/playwright/source-chain-mobile.png'});
  await page.setViewportSize({width:1280,height:900});
  await search.fill('校長獎');
- await page.locator('#timeline-focus').click();
+ await page.locator('#range-mode').selectOption('fit');
  await search.fill('');
  await ac.locator('.row-title').scrollIntoViewIfNeeded();
  await page.screenshot({path:'output/playwright/source-chain-desktop.png'});

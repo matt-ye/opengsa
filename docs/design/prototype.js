@@ -487,6 +487,7 @@ function updateNavHeight() {
  document.documentElement.style.setProperty("--nav-height",height+"px");
 }
 updateNavHeight();
+if(window.matchMedia("(max-width:800px)").matches)document.querySelector("#search .filter>details").open=false;
 if(typeof ResizeObserver!=="undefined") new ResizeObserver(updateNavHeight).observe(document.querySelector(".nav-wrap"));
 function renderConferencePlan() {
  const output=byId("conference-output"), start=byId("conference-start").value, notice=byId("conference-notice").value;
@@ -940,6 +941,7 @@ function renderWorkspace() {
  const text=(mode==="demo"?"合成資料":"來源草稿")+(personalConferences.size?"＋本次個人規劃":"")+" · "+basis+(hiddenCount?"；其中 "+hiddenCount+" 項不在目前篩選結果":"");
  for(const id of ["detail-context","timeline-context"]){byId(id).textContent=text;byId(id).classList.toggle("synthetic-note",mode==="demo");}
  byId("selection-count").textContent="已勾選 "+selected.size+" 項；第二、三頁使用 "+sharedItems.length+" 項"+(selected.size?"已選內容":"篩選結果");
+ byId("picked-count").textContent=selected.size+" 項";
  byId("select-filtered").disabled=!filtered.length;byId("clear-selection").disabled=!selected.size;
  document.querySelectorAll("[data-pick-id]").forEach(input=>{input.checked=selected.has(input.dataset.pickId);});
  document.querySelectorAll("[data-open-detail]").forEach(button=>{button.textContent=selected.has(button.dataset.openDetail)?"查看詳情":"勾選並看詳情";});
@@ -959,17 +961,19 @@ function render() {
  byId("mode-note").classList.toggle("synthetic-note",mode==="demo");
  if(personalConferences.size) byId("mode-note").textContent+=" 另含本次研討會規劃"+personalConferences.size+"項，為自填／試算待核，非合成方案。";
  byId("chart-range").textContent=iso(range.start).replaceAll("-","/")+" — "+iso(range.end).replaceAll("-","/")+" · 臺北時間";
- byId("today-label").textContent="今天 "+today.replaceAll("-","/");
+ byId("return-today").title="今天 "+today.replaceAll("-","/");
+ byId("return-today").setAttribute("aria-label","回到今天，"+today.replaceAll("-","/"));
  byId("outside-today").hidden=!(dayNumber(today)<range.start || dayNumber(today)>range.end);
  byId("empty-results").hidden=found.length>0;
  byId("gantt-view").hidden=view!=="gantt" || !found.length;
+ byId("results-panel").classList.toggle("has-gantt",view==="gantt"&&found.length>0);
  byId("list-view").hidden=view!=="list" || !found.length;
  byId("dates-table").hidden=!found.length;
  selectedButtons("#mode-switch","mode",mode);selectedButtons("#view-switch","view",view);
  selectedButtons("#persona-bar","persona",activePersona(state));
  drawCards(found,partition);drawGantt(found,range);drawTable(found);
  renderWorkspace();
- if(centerPending && view==="gantt" && found.length && !byId("search").hidden){requestAnimationFrame(()=>centerToday(range));centerPending=false;}
+ if(centerPending && view==="gantt" && found.length && !byId("search").hidden){const value=rangeMode==="fit"?timelineFocusValue(found):today;requestAnimationFrame(()=>centerToday(range,"gantt-grid",value));centerPending=false;}
  if(inspectedId){const inspected=found.find(x=>x.id===inspectedId);if(inspected) inspect(inspected);else{inspectedId=null;byId("schedule-inspect").hidden=true;}}
 }
 document.querySelectorAll("[data-filter]").forEach(input=>{
@@ -985,18 +989,19 @@ byId("reset-filters").addEventListener("click",resetFilters);
 byId("empty-reset").addEventListener("click",resetFilters);
 byId("select-filtered").addEventListener("click",()=>{partitionItems(currentItems(),state).all.forEach(item=>picked[mode].add(item.id));renderWorkspace();});
 byId("document-mode").addEventListener("change",()=>{documentMode=byId("document-mode").value;render();});
+function timelineFocusValue(items){
+ const item=items.find(i=>i.timeline&&timelineDates(i).length)||items.find(i=>i.start.value||i.end.value||i.milestones.some(m=>m.value));
+ return item?.start.value||item?.timeline?.baselines[0]?.start||item?.timeline?.events[0]?.value||item?.end.value||item?.milestones.find(m=>m.value)?.value||today;
+}
+function focusTimeline(){
+ rangeMode="fit";offset=0;byId("range-mode").value="fit";view="gantt";centerPending=true;render();
+}
 if(byId("timeline-controls")){
- byId("timeline-controls").hidden=!chainData;
+ byId("timeline-year-control").hidden=!chainData;
+ byId("timeline-baselines-control").hidden=!chainData;
  if(chainData){
-  for(const year of chainData.years){const option=el("option","",year+"年"+(year>Number(today.slice(0,4))?"（含歷史估計）":""));option.value=year;byId("timeline-year").append(option);}
-  function focusTimeline(){
-   rangeMode="fit";byId("range-mode").value="fit";view="gantt";centerPending=false;render();
-   const item=partitionItems(currentItems(),state).all.find(i=>i.timeline&&(i.start.value||timelineDates(i).length));
-   const value=item?.start.value||item?.timeline.baselines[0]?.start||item?.timeline.events[0]?.value||today;
-   requestAnimationFrame(()=>centerToday(lastRange,"gantt-grid",value));
-  }
+  for(const year of chainData.years){const option=el("option","",year+"年");option.value=year;byId("timeline-year").append(option);}
   byId("timeline-year").addEventListener("change",()=>{timelineYear=Number(byId("timeline-year").value);focusTimeline();});
-  byId("timeline-focus").addEventListener("click",focusTimeline);
   byId("timeline-baselines").addEventListener("change",()=>{showBaselines=byId("timeline-baselines").checked;render();});
  }
 }
@@ -1009,14 +1014,14 @@ byId("personal-range-mode").addEventListener("change",event=>{personalRangeMode=
 byId("personal-return-today").addEventListener("click",()=>{personalRangeMode="recent";byId("personal-range-mode").value="recent";drawPlan();});
 byId("mode-switch").addEventListener("click",event=>{const button=event.target.closest("[data-mode]");if(button){mode=button.dataset.mode;inspectedId=null;centerPending=true;byId("schedule-inspect").hidden=true;render();}});
 byId("view-switch").addEventListener("click",event=>{const button=event.target.closest("[data-view]");if(button){view=button.dataset.view;centerPending=true;render();}});
-byId("range-mode").addEventListener("change",event=>{rangeMode=event.target.value;offset=0;centerPending=true;render();});
+byId("range-mode").addEventListener("change",event=>{if(event.target.value==="fit"){focusTimeline();return;}rangeMode=event.target.value;offset=0;centerPending=true;render();});
 byId("previous-range").addEventListener("click",()=>{rangeMode="recent";byId("range-mode").value="recent";offset-=30;render();});
 byId("next-range").addEventListener("click",()=>{rangeMode="recent";byId("range-mode").value="recent";offset+=30;render();});
-byId("return-today").addEventListener("click",()=>{rangeMode="recent";byId("range-mode").value="recent";offset=0;centerPending=true;render();});
+byId("return-today").addEventListener("click",()=>{const year=Number(today.slice(0,4));if(chainData?.years.includes(year)){timelineYear=year;byId("timeline-year").value=year;}rangeMode="recent";byId("range-mode").value="recent";offset=0;centerPending=true;render();});
 function refreshToday(){const value=taipeiToday();if(value!==today){today=value;render();renderConferencePlan();}}
 document.addEventListener("visibilitychange",()=>{if(!document.hidden) refreshToday();});
 window.addEventListener("focus",refreshToday);
-window.addEventListener("resize",()=>{updateNavHeight();if(lastRange && view==="gantt" && !byId("search").hidden) requestAnimationFrame(()=>centerToday(lastRange));if(lastPersonalRange && !byId("timeline").hidden) requestAnimationFrame(()=>centerToday(lastPersonalRange,"personal-gantt-grid"));});
+window.addEventListener("resize",()=>{updateNavHeight();if(lastRange && view==="gantt" && !byId("search").hidden){const value=rangeMode==="fit"?timelineFocusValue(partitionItems(currentItems(),state).all):today;requestAnimationFrame(()=>centerToday(lastRange,"gantt-grid",value));}if(lastPersonalRange && !byId("timeline").hidden) requestAnimationFrame(()=>centerToday(lastPersonalRange,"personal-gantt-grid"));});
 for(const program of conferenceData.programs){const option=el("option","",program.title);option.value=program.id;byId("conference-program").append(option);}
 for(const ref of conferenceData.reference_sources){const row=el("p","small"),link=el("a","",ref.title+" ↗");link.href=ref.url;row.append(link,el("span","","："+ref.note));byId("conference-references").append(row);}
 byId("conference-planner").addEventListener("input",()=>{byId("conference-status").textContent="";renderConferencePlan();});

@@ -4,7 +4,7 @@ async (page) => {
  await page.goto('http://127.0.0.1:8783/?smoke=sticky-gantt-'+Date.now()+'#search');
  const chart=page.locator('#gantt-view'), scroll=chart.locator('.gantt-scroll');
  if(!await chart.isVisible()||await page.locator('#view-switch [data-view="gantt"]').getAttribute('aria-pressed')!=='true')throw new Error('Gantt is not the default');
- await page.locator('#timeline-focus').click();
+ await page.locator('#range-mode').selectOption('fit');
  await scroll.evaluate(node=>window.scrollTo(0,node.getBoundingClientRect().top+window.scrollY-200));
  const read=()=>scroll.evaluate(node=>{
   const box=node.getBoundingClientRect(),head=node.querySelector('.gantt-top').getBoundingClientRect(),corner=node.querySelector('.gantt-heading').getBoundingClientRect();

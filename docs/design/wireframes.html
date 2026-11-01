@@ -68,7 +68,10 @@ button:focus-visible,select:focus-visible,input:focus-visible,.gantt-scroll:focu
 #search .gantt-top{position:sticky;top:0;z-index:10;background:#f0f3ec}
 #search .gantt-scroll{overflow:auto;max-height:65vh;max-height:65dvh;overscroll-behavior:contain}
 @media(min-width:801px){
- #search #gantt-view:not([hidden]){display:flex;flex-direction:column;position:sticky;top:calc(var(--nav-height,104px) + 12px);max-height:calc(100vh - var(--nav-height,104px) - 24px);max-height:calc(100dvh - var(--nav-height,104px) - 24px);background:var(--paper);z-index:1}
+ #search #results-panel.has-gantt{position:sticky;top:calc(var(--nav-height,104px) + 12px);max-height:calc(100vh - var(--nav-height,104px) - 24px);max-height:calc(100dvh - var(--nav-height,104px) - 24px);z-index:1}
+ #search #results-panel.has-gantt,#search #gantt-view:not([hidden]){display:flex;flex-direction:column;min-height:0}
+ #search #gantt-view{flex:1 1 auto}
+ #search #results-panel>.chart-header,#search #results-panel>.chart-foot{flex-shrink:0}
  #search #gantt-view>.gantt-scroll{flex:1 1 auto;min-height:0;max-height:none}
  #search #gantt-view>:not(.gantt-scroll){flex-shrink:0}
 }
@@ -117,9 +120,6 @@ th{background:#eaf0e8}
 
 
 /* 第三版：第一頁的選項共用於詳情及準備頁 */
-.selection-strip{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:12px 0 0;border:1px solid var(--line);border-radius:9px;background:#eaf0e8;padding:12px;font-size:12px}
-.selection-strip .range-buttons{gap:8px}
-.selection-strip~.prototype-hint{margin-bottom:14px}
 .selection-context,.independent-note{padding:12px 16px;background:#e7eee6;border-left:3px solid #728972;font-size:13px;margin:0 0 22px}
 .selection-context.synthetic-note{background:#f3ead7;border-color:#a36e30}
 .independent-note{background:#edf0f2;border-color:#758897}
@@ -142,7 +142,7 @@ th{background:#eaf0e8}
 .plan-tasks{display:flex;gap:8px 20px;flex-wrap:wrap;margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
 .task-item{display:flex;align-items:center;gap:7px;font-size:13px;min-height:28px}
 .empty-workspace{text-align:center;padding:40px}
-@media(max-width:800px){.option-picker select{flex-basis:100%}.detail-title{font-size:22px}.selection-strip{align-items:start}.plan-tasks{display:grid;grid-template-columns:1fr}.detail-section .facts{grid-template-columns:75px minmax(0,1fr)}}
+@media(max-width:800px){.option-picker select{flex-basis:100%}.detail-title{font-size:22px}.plan-tasks{display:grid;grid-template-columns:1fr}.detail-section .facts{grid-template-columns:75px minmax(0,1fr)}}
 
 /* MVP基礎：桌面篩選隨捲動，短視窗可在卡片內捲動。 */
 @media(min-width:801px){#search .filter{position:sticky;top:calc(var(--nav-height,104px) + 12px);max-height:calc(100vh - var(--nav-height,104px) - 24px);max-height:calc(100dvh - var(--nav-height,104px) - 24px);overflow-y:auto;scrollbar-gutter:stable}}
@@ -193,8 +193,48 @@ html{scroll-behavior:smooth}
 .process-line{position:absolute;top:65px;height:2px;background:#899797;z-index:1}
 .timeline-summary{border-left:3px solid #c0cfbe;padding:0 10px;margin:12px 0}
 .timeline-summary p{margin:6px 0}
-#timeline-controls{padding:12px;border:1px solid var(--line);border-radius:10px}
-#timeline-controls p{flex-basis:100%;margin:0}
+.selection-manager{padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--line)}
+.selection-manager h3{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:14px;margin:0}
+.selection-manager p{font-size:12px;margin:8px 0;color:var(--muted)}
+.selection-manager summary{font-size:12px!important;cursor:pointer;margin:0!important}
+.selection-manager .range-buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.selection-manager .range-buttons a{grid-column:1/-1}
+.results-panel{background:var(--white);border:1px solid var(--line);border-radius:12px;overflow:clip}
+.chart-header{padding:14px 16px;margin:0;border-bottom:1px solid var(--line)}
+.chart-heading{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;min-width:0}
+.chart-heading h2{font-size:17px;margin:0}
+.chart-heading .result-meta{font-size:12px}
+.chart-toolbar{padding:12px 16px 6px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.chart-time-fields{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.chart-time-fields label{font-size:12px;display:flex;align-items:center;gap:6px}
+.chart-time-fields select{padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--white);color:var(--ink);font:inherit}
+.chart-time-fields input{accent-color:var(--ink);margin:0}
+.chart-move{gap:0;flex-wrap:nowrap;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.chart-move button{border:0;border-radius:0;padding:7px 9px;font-size:12px}
+.chart-move button+button{border-left:1px solid var(--line)}
+.chart-caption{padding:0 16px 10px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.chart-caption p{margin:0;font-size:11px}
+#search .chart-legend{background:#fff;border-top:1px solid var(--line);max-height:30dvh;overflow:auto}
+.chart-legend summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;cursor:pointer;font-size:12px;list-style:none;position:sticky;top:0;background:#fff;z-index:1}
+.chart-legend summary::-webkit-details-marker{display:none}
+.chart-legend summary::after{content:'＋';font-size:16px}
+.chart-legend[open] summary::after{content:'－'}
+.chart-legend summary small{font-size:11px;color:var(--muted);margin-left:auto}
+.chart-legend summary:focus-visible{outline:3px solid var(--rust);outline-offset:-3px}
+#search .gantt-legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 18px;padding:0 16px 10px;background:#fff}
+#search .legend-item{display:grid;grid-template-columns:28px minmax(0,1fr);align-items:center;gap:10px;min-height:42px;border-top:1px solid #edf0eb;font-size:12px}
+#search .legend-item>i{justify-self:center}
+.legend-history{width:24px;height:14px;background:rgba(168,187,153,.22);border:1px dashed #849477}
+.legend-process{width:24px;height:2px;background:#899797}
+.legend-personal{width:24px;height:10px;background:var(--white);border:1px dashed #849477}
+.legend-reading{font-size:11px;color:var(--muted);margin:0;padding:0 16px 12px}
+#search .gantt-scroll{border-width:1px 0 0;border-radius:0;scroll-padding-top:80px}
+#search .chart-hint{padding:8px 16px;margin:0;font-size:11px}
+.chart-foot{padding:10px 16px;margin:0;font-size:11px;color:var(--muted);border-top:1px solid var(--line)}
+#list-view{padding:16px}
+@media(max-width:1100px){#search .gantt-legend{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:800px){.chart-heading{display:block}.chart-heading h2{font-size:16px}.chart-time-fields label{align-items:flex-start;flex-direction:column}.chart-time-fields .checkbox-label{flex-direction:row;align-items:center}.chart-move{margin-top:0}.chart-header{gap:8px}.chart-legend summary small{display:none}}
+@media(max-width:400px){#search .gantt-legend{grid-template-columns:1fr}.chart-header{padding:12px}.chart-header .segmented button{padding:6px 9px}.chart-toolbar,.chart-caption{padding-left:12px;padding-right:12px}.chart-time-fields select{max-width:170px}}
 </style>
 </head>
 <body>
@@ -220,7 +260,9 @@ html{scroll-behavior:smooth}
 <button aria-pressed="false" class="persona-tile" data-persona="ta_assistant" type="button"><span aria-hidden="true" class="hex-badge">聘</span><span>助教與兼任聘任<small>TA／EMITA／RA薪資</small></span></button>
 </div>
 <div class="layout">
-<aside aria-label="篩選條件" class="panel filter" tabindex="0">
+<aside aria-label="我的選項與篩選條件" class="panel filter" tabindex="0">
+<section class="selection-manager" aria-label="我的選項"><h3>我的選項 <span id="picked-count">0 項</span></h3><p aria-live="polite" id="selection-count" role="status"></p><details id="selection-management"><summary>管理選項</summary><div class="range-buttons"><button class="secondary" id="select-filtered" type="button">勾選目前結果</button><button class="secondary" id="clear-selection" type="button">清除勾選</button><a class="small" href="#detail">看詳情 →</a><a class="small" href="#timeline">排時間軸 →</a></div></details></section>
+
 <details open=""><summary>篩選條件</summary><div class="filter-fields">
 <label>用途<select data-filter="category" id="filter-category"><option value="all">全部用途</option><option value="phd_research">博士研究</option><option value="living_tuition">生活／學費</option><option value="living_emergency">急難支持</option><option value="outcome_award">成果獎</option><option value="international_conference">國際會議</option><option value="overseas_research">境外研究</option><option value="indirect_support">聘任入口</option><option value="research_tools">研究工具／算力</option></select></label>
 <label>① 資助來源<select data-filter="source" id="filter-source"><option value="all">全部來源</option><option value="government">政府</option><option value="university">學校</option><option value="foundation">基金會</option><option value="enterprise">企業／產學</option><option value="research_institute">研究法人／中研院</option><option value="unknown">待確認</option></select></label>
@@ -256,24 +298,36 @@ html{scroll-behavior:smooth}
 <p class="source-note">試算日期僅暫存於本機瀏覽器（重整即清除）；虛線為個人準備建議、空心節點為試算待核，各院系可能另有更早收件日，請以校內公告為準。</p>
 <details><summary>其他會議補助與報銷來源</summary><div id="conference-references"></div></details>
 </details>
-<div class="view-row"><span aria-live="polite" class="result-meta" id="result-count" role="status"></span><div aria-label="結果檢視" class="segmented" id="view-switch" role="group"><button aria-pressed="true" data-view="gantt" type="button">甘特圖</button><button aria-pressed="false" data-view="list" type="button">清單</button></div></div>
-<div class="selection-strip"><span aria-live="polite" id="selection-count" role="status"></span><div class="range-buttons"><button class="secondary" id="select-filtered" type="button">勾選目前結果</button><button class="secondary" id="clear-selection" type="button">清除勾選</button><a class="small" href="#detail">看詳情 →</a><a class="small" href="#timeline">排時間軸 →</a></div></div>
-<div class="panel" hidden="" id="empty-results"><p>沒有符合目前條件的項目。</p><button class="secondary" id="empty-reset" type="button">清除篩選，查看全部</button></div>
-<div id="timeline-controls" class="range-controls" hidden>
-<label for="timeline-year">參考年度 <select id="timeline-year"></select></label>
-<label class="checkbox-label"><input id="timeline-baselines" type="checkbox" checked>顯示往年／估計底帶</label>
-<button id="timeline-focus" type="button" class="secondary">跳至申請／參考時段</button>
-<p class="tiny quiet">全局顯示已找到的系所收件範例；滑鼠移至圖上可查看適用單位。範例不代表其他系所期限，實際請以所屬系所及主辦單位公告為準。</p>
-</div>
+<section class="results-panel" id="results-panel" aria-label="獎助檢視">
+<div class="view-row chart-header"><div class="chart-heading"><h2>獎助時程</h2><span aria-live="polite" class="result-meta" id="result-count" role="status"></span></div><div aria-label="結果檢視" class="segmented" id="view-switch" role="group"><button aria-pressed="true" data-view="gantt" type="button">甘特圖</button><button aria-pressed="false" data-view="list" type="button">清單</button></div></div>
 <div id="gantt-view">
-<div class="range-controls"><label for="range-mode">時間範圍 <select id="range-mode"><option value="recent">今天前後 90 天</option><option value="fit">涵蓋所有已知日期</option></select></label><span class="today-label" id="today-label"></span><div class="range-buttons"><button aria-label="往前30天" class="secondary" id="previous-range" type="button">← 30 天</button><button class="secondary" id="return-today" type="button">回到今天</button><button aria-label="往後30天" class="secondary" id="next-range" type="button">30 天 →</button></div></div>
-<p class="tiny quiet" id="chart-range"></p><p class="tiny quiet" hidden="" id="outside-today">今天不在目前視窗內，可按「回到今天」。</p>
-<div aria-label="甘特圖圖例" class="gantt-legend"><span class="legend-item">▱ 淺色底帶：往年參考／估計（非官方受理）</span><span class="legend-item">─ 公告至截止流程（非申請期）</span><span class="legend-item"><i aria-hidden="true" class="legend-bar"></i>申請起訖</span><span class="legend-item"><i aria-hidden="true" class="legend-inferred"></i>推定受理起日</span><span class="legend-item"><i aria-hidden="true" class="legend-prep-window"></i>準備提醒期（截止前30天）</span><span class="legend-item"><i aria-hidden="true" class="legend-wait"></i>等待結果</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond"></i>結果公布</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond expected"></i>預定結果日</span><span class="legend-item"><i aria-hidden="true" class="legend-square"></i>校內／機關節點</span><span class="legend-item">▱ 個人準備建議／空心節點待核</span><span class="legend-item"><i aria-hidden="true" class="legend-today"></i>今天進行線</span></div>
+<div class="chart-toolbar"><div class="chart-time-fields" id="timeline-controls">
+<label id="timeline-year-control" hidden>參考年度 <select id="timeline-year"></select></label>
+<label>時間範圍 <select id="range-mode"><option value="recent">今天前後 90 天</option><option value="fit">涵蓋所有已知日期</option></select></label>
+<label class="checkbox-label" id="timeline-baselines-control" hidden><input id="timeline-baselines" type="checkbox" checked>往年／估計底帶</label>
+</div><div class="range-buttons chart-move"><button aria-label="往前30天" class="secondary" id="previous-range" type="button">← 30 天</button><button class="secondary" id="return-today" type="button">今天</button><button aria-label="往後30天" class="secondary" id="next-range" type="button">30 天 →</button></div></div>
+<div class="chart-caption"><p class="tiny quiet" id="chart-range"></p><p class="tiny quiet" hidden="" id="outside-today">今天不在目前範圍，可按「今天」。</p></div>
+<details class="chart-legend" id="chart-legend"><summary><span>圖例與閱讀說明</span><small>實線為已知期間 · 淺色為歷史參考</small></summary>
+<div aria-label="甘特圖圖例" class="gantt-legend">
+<span class="legend-item"><i aria-hidden="true" class="legend-bar"></i><span>申請起訖</span></span>
+<span class="legend-item"><i aria-hidden="true" class="legend-inferred"></i><span>推定受理起日</span></span>
+<span class="legend-item"><i aria-hidden="true" class="legend-prep-window"></i><span>截止前30天準備提醒</span></span>
+<span class="legend-item"><i aria-hidden="true" class="legend-process"></i><span>公告至截止流程</span></span>
+<span class="legend-item"><i aria-hidden="true" class="legend-wait"></i><span>等待結果</span></span>
+<span class="legend-item"><i aria-hidden="true" class="legend-square"></i><span>校內／機關節點</span></span>
+<span class="legend-item"><i aria-hidden="true" class="legend-diamond"></i><span>結果公布</span></span>
+<span class="legend-item"><i aria-hidden="true" class="legend-diamond expected"></i><span>預定結果日</span></span>
+<span class="legend-item"><i aria-hidden="true" class="legend-today"></i><span>今天進行線</span></span>
+<span class="legend-item"><i aria-hidden="true" class="legend-history"></i><span>往年參考／估計底帶</span></span>
+<span class="legend-item"><i aria-hidden="true" class="legend-personal"></i><span>個人準備建議／空心節點待核</span></span>
+</div><p class="legend-reading">淺色底帶、推定起日及準備提醒不等於官方受理期。全局顯示已找到的系所範例，各獎項旁及滑鼠提示會標明適用單位；不代表其他系所期限。參考年度僅用於檢視，不代表當年度已公告。</p></details>
 <div aria-label="獎助申請甘特圖，可上下及水平捲動，標題與日期軸固定；下方另有文字日期表" class="gantt-scroll" role="region" tabindex="0"><div class="gantt-grid" id="gantt-grid"></div></div>
-<p class="prototype-hint">在圖內上下捲動獎項，或水平捲動日期；標題、日期軸與左側名稱固定。點選色帶或節點查看日期，確切截止時分請看摘要與正式來源。</p>
+<p class="prototype-hint chart-hint">圖內可上下捲動獎項、水平捲動日期；標題、日期軸與左側名稱固定。點選色帶或節點查看日期。</p>
 </div>
-<p class="tiny quiet">往年／常態區間僅供準備參考；實際資格、申請起訖與程序，以及未竟事宜，以主辦及受理單位最新公告為準。</p>
 <div hidden="" id="list-view"><div class="cards" id="result-cards"></div></div>
+<div class="panel" hidden="" id="empty-results"><p>沒有符合目前條件的項目。</p><button class="secondary" id="empty-reset" type="button">清除篩選，查看全部</button></div>
+<p class="chart-foot">系所時程僅為範例；往年／估計區間供準備參考。實際資格、申請起訖與程序，以所屬系所及主辦單位最新公告為準。</p>
+</section>
 <aside aria-label="選取項目的時程摘要" aria-live="polite" class="panel" hidden="" id="schedule-inspect"></aside>
 <details id="dates-table"><summary>查看文字日期表</summary><div class="table-scroll"><table><caption class="tiny quiet">與目前篩選同步的日期；待確認不代表不限期。</caption><thead><tr><th scope="col">獎助項目</th><th scope="col">申請開始</th><th scope="col">學生截止</th><th scope="col">結果公布</th><th scope="col">其他程序</th></tr></thead><tbody id="date-rows"></tbody></table></div></details>
 </div>
