@@ -1,14 +1,20 @@
-// Manual Chrome regression: local scope, layered dates and historical references.
+// Manual Chrome regression: global local examples, layered dates and historical references.
 async (page) => {
  await page.setViewportSize({width:1280,height:900});
  await page.goto('http://127.0.0.1:8783/');
  await page.locator('#view-switch [data-view="gantt"]').click();
- await page.locator('#timeline-scope').selectOption('ntu-gice');
+ if(await page.locator('#timeline-scope').count())throw new Error('scope dropdown still present');
+ await page.locator('#timeline-focus').click();
+ for(const unit of ['臺大電信所','臺大農化系','中研院政治所']){
+  const rows=page.locator('#gantt-grid .gantt-row').filter({has:page.locator('.timeline-example',{hasText:unit})});
+  if(!await rows.count())throw new Error('global example missing: '+unit);
+  const bar=rows.locator('.gantt-bar:not(.baseline):not(.notice-window)').first();
+  if(!(await bar.getAttribute('title')).includes('實際請以所屬系所為準'))throw new Error('example tooltip missing: '+unit);
+ }
  const nstcId='cand-ntu-nstc-phd-115-49f19393';
  const gice=page.locator('#gantt-grid .gantt-row').filter({has:page.locator(`[data-pick-id="${nstcId}"]`)});
  if(await gice.locator('.gantt-bar:not(.baseline):not(.notice-window)').count()!==1)throw new Error('GICE actual interval missing');
  if(!(await gice.textContent()).includes('2026/07/10 17:00'))throw new Error('GICE precision missing');
- await page.locator('#timeline-scope').selectOption('ntu-ac');
  const search=page.locator('[data-filter="query"]');
  await search.fill('校長獎');
  const acId='cand-ntu-president-114-call-6d00251d';
@@ -31,7 +37,6 @@ async (page) => {
  if(await ac.locator('.baseline').count())throw new Error('baseline toggle ineffective');
  await page.locator('#timeline-baselines').check();
  await search.fill('人文社會科學博士候選人');
- await page.locator('#timeline-scope').selectOption('sinica-ipsas');
  await page.locator('#timeline-year').selectOption('2026');
  const ipsas=page.locator('#gantt-grid .gantt-row').filter({has:page.locator('[data-pick-id="cand-sinica-phd-fellowship-6165c00d"]')});
  if(!(await ipsas.textContent()).includes('2026/01/02'))throw new Error('since-publication start missing');
@@ -44,12 +49,12 @@ async (page) => {
  if(mobile.scroll>mobile.width+1)throw new Error('mobile overflow');
  await page.screenshot({path:'output/playwright/source-chain-mobile.png'});
  await page.setViewportSize({width:1280,height:900});
- await page.locator('#timeline-scope').selectOption('ntu-ac');
  await search.fill('校長獎');
  await page.locator('#timeline-focus').click();
+ await search.fill('');
  await ac.locator('.row-title').scrollIntoViewIfNeeded();
  await page.screenshot({path:'output/playwright/source-chain-desktop.png'});
- const result={local_intervals:3,source_formats:true,scope_shared_across_tabs:true,baseline_toggle:true,
+ const result={local_intervals:3,source_formats:true,global_examples:true,example_scope_shared_across_tabs:true,baseline_toggle:true,
   forecast_not_official:true,explicit_time_preserved:true,publication_basis:true,mobile,submitted_issues:0};
  await page.evaluate(value=>{document.body.dataset.chainSmokeResult=JSON.stringify(value)},result);
  return result;

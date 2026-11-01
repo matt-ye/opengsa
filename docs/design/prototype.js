@@ -204,10 +204,23 @@ function makeDrafts(pilot,asOf=taipeiToday(),radarData=null) {
  });
 }
 const timelineLabels={announcement:"公布",application_start:"申請開始",student_deadline:"學生截止",supplement_deadline:"補件截止",college_forward:"學院送件",university_forward:"校級彙送",decision:"核定（排程）",result_publication:"結果公布",payment:"報支／撥款"};
+function timelinePhase(phase){return phase.split("／").map(p=>/^round\d+$/.test(p)?"第"+p.slice(5)+"梯次":p==="annual"?"年度收件":p).join("／");}
 function applyTimeline(item,data,scope,year,showBaselines=true,asOf=taipeiToday()){
- if(item.personal||item.synthetic||scope==="general")return item;
- const contexts=data?.records?.[item.id]?.contexts.filter(c=>c.scope===scope&&c.year===Number(year))||[];
+ if(item.personal||item.synthetic)return item;
+ const contexts=data?.records?.[item.id]?.contexts.filter(c=>(scope==="examples"||c.scope===scope)&&c.year===Number(year))||[];
  if(!contexts.length)return item;
+ if(scope==="examples"){
+  // Each unit/round keeps its own interval; examples never change the global intake status.
+  const examples=contexts.map(c=>{
+   const localData={...data,records:{[item.id]:{contexts:[c]}}};
+   const local=applyTimeline(item,localData,c.scope,year,showBaselines,asOf);
+   return {...local,rawState:item.rawState,application:item.application,timeline:{...local.timeline,isExample:true}};
+  });
+  const first=examples[0];
+  return {...(examples.length===1?first:item),timeSteps:item.timeSteps,timeline:{...first.timeline,examples,
+   events:[...new Map(examples.flatMap(e=>e.timeline.events).map(e=>[e.id,e])).values()],
+   baselines:examples.flatMap(e=>e.timeline.baselines),conflict:examples.some(e=>e.timeline.conflict)}};
+ }
  const documents=new Map(data.documents.map(d=>[d.id,d]));
  const events=[...new Map(contexts.flatMap(c=>c.events).map(e=>[e.id,e])).values()];
  const multiPhase=new Set(contexts.map(c=>c.phase)).size>1;
@@ -446,10 +459,10 @@ const reviewPreview=document.body.dataset.reviewPreview==="true";
 const radarView=document.body.dataset.radarView==="true";
 const radarData=byId("radar-data")?JSON.parse(byId("radar-data").textContent):null;
 const chainData=byId("source-chain-data")?JSON.parse(byId("source-chain-data").textContent):null;
-let timelineScope="general",timelineYear=chainData?.years[0]||Number(taipeiToday().slice(0,4)),showBaselines=true;
+let timelineYear=chainData?.years[0]||Number(taipeiToday().slice(0,4)),showBaselines=true;
 if(reviewPreview){byId("mode-switch").hidden=true;byId("conference-program")?.closest("details")?.setAttribute("hidden","");}
 const personalConferences=new Map();
-function scoped(items){return items.map(item=>applyTimeline(item,chainData,timelineScope,timelineYear,showBaselines,today));}
+function scoped(items){return items.map(item=>applyTimeline(item,chainData,"examples",timelineYear,showBaselines,today));}
 function currentItems(){return [...scoped(mode==="demo"?makeDemo(today):documentMode==="documents"?documentDrafts:drafts),...personalConferences.values()];}
 function allItems(){return [...scoped(mode==="demo"?makeDemo(today):documentDrafts),...personalConferences.values()];}
 const documentDrafts=[...makeDrafts(pilot,taipeiToday(),radarData),...(reviewPreview||radarView?[]:conferenceEntries(conferenceData.programs))];
@@ -615,8 +628,9 @@ function radarLinks(item){
 }
 function timelineSummary(container,item){
  if(!item.timeline)return;
+ if(item.timeline.examples){for(const example of item.timeline.examples)timelineSummary(container,example);return;}
  const t=item.timeline, box=el("div","timeline-summary");
- box.append(el("p","small","地方補充時程："+t.scopeLabel+" · "+t.year+"年（僅此單位適用）"));
+ box.append(el("p","small",(t.isExample?"以"+t.scopeLabel+"為例；實際請以所屬系所為準":"地方補充時程："+t.scopeLabel+"（僅此單位適用）")+" · "+t.year+"年 · "+timelinePhase(t.phase)));
  if(t.conflict)box.append(el("p","callout",t.multiPhase?"有多個梯次，暫不合成單一申請條；請分別核對公告。":"時程有衝突，暫不畫正式申請條；請核對補充公告。"));
  for(const e of t.events){
   const doc=t.documents.get(e.document_id),line=el("p","small",(e.certainty==="expected"?"預定 ":"")+timelineLabels[e.kind]+"："+dateText(e.value)+(e.basis==="since_publication"?"（公告明載即日起）":""));
@@ -729,6 +743,7 @@ function todayLine(plot, range, header=false) {
 }
 function marker(plot,percent,kind,label,item,onInspect=inspect) {
  if(percent===null) return;
+ if(item.timeline?.isExample)label="以"+item.timeline.scopeLabel+"為例；實際請以所屬系所為準；"+label;
  const node=el("button","gantt-marker "+kind);
  node.type="button";node.style.left=percent+"%";
  node.title=label;node.setAttribute("aria-label",item.title+"："+label);
@@ -752,12 +767,15 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
   }
  }
  todayLine(head,range,true);top.append(head);grid.append(top);
- items.forEach(item=>{
+ items.flatMap(item=>item.timeline?.examples||[item]).forEach(item=>{
   const g=geometry(item,range), row=el("div","gantt-row");
+  const exampleNote=item.timeline?.isExample?"以"+item.timeline.scopeLabel+"為例；實際請以所屬系所為準":"";
+  if(exampleNote)row.title=exampleNote+" · "+timelinePhase(item.timeline.phase);
   const label=el("div","gantt-label");
   if(gridId==="gantt-grid") label.append(pickControl(item,"gantt"));
   const button=el("button","row-title",item.title);button.type="button";button.addEventListener("click",()=>onInspect(item));
   label.append(button,el("div","tiny quiet",labels.category[item.category]+" · "+labels.source[item.source]));
+  if(exampleNote)label.append(el("div","tiny quiet timeline-example",exampleNote+" · "+timelinePhase(item.timeline.phase)));
   const labelDateDesc = item.personal ? "學生期限："+deadlineText(item) : (item.start.certainty==="inferred"?"推定起訖：":"")+startLabel(item)+" → "+deadlineText(item);
   if(item.start.value||item.end.value)label.append(el("div","tiny quiet",labelDateDesc));
   else label.append(sourceLink(UNKNOWN_LABEL,item));
@@ -767,7 +785,7 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
   for(const b of item.timeline?.baselines||[]){
    const area=geometry({start:event(b.start),end:event(b.end),result:event(),milestones:[]},range).bar;
    if(area){const bar=el("button","gantt-bar baseline");bar.type="button";bar.style.left=area.left+"%";bar.style.width=area.width+"%";
-    bar.title=(b.kind==="historical_estimate"?"歷史估計（低信心）":"單年度參考")+"："+b.start+" 至 "+b.end+"，參考"+b.sample_years.join("、")+"年；非官方申請期";
+    bar.title=(exampleNote?exampleNote+"；":"")+(b.kind==="historical_estimate"?"歷史估計（低信心）":"單年度參考")+"："+b.start+" 至 "+b.end+"，參考"+b.sample_years.join("、")+"年；非官方申請期";
     bar.setAttribute("aria-label",item.title+"："+bar.title);bar.addEventListener("click",()=>onInspect(item));plot.append(bar);}
   }
   const announce=item.timeline?.events.find(e=>e.kind==="announcement");
@@ -793,7 +811,7 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
    const isInferred=item.start.certainty==="inferred";
    const bar=el("button","gantt-bar"+(isInferred?" inferred":""));
    bar.type="button";bar.style.left=g.bar.left+"%";bar.style.width=g.bar.width+"%";
-   bar.title=(isInferred?"推定受理期（依官方公告日推定）：":"申請期間：")+dateText(item.start.value)+" 至 "+dateText(item.end.value)+(isInferred?"（"+(item.start.note||"依官方公告發布日推定即日起受理")+"）":"");
+   bar.title=(exampleNote?exampleNote+"；":"")+(isInferred?"推定受理期（依官方公告日推定）：":"申請期間：")+dateText(item.start.value)+" 至 "+dateText(item.end.value)+(isInferred?"（"+(item.start.note||"依官方公告發布日推定即日起受理")+"）":"");
    bar.setAttribute("aria-label",item.title+"，"+bar.title);bar.addEventListener("click",()=>onInspect(item));plot.append(bar);
   }
   const isStartInferred=item.start.certainty==="inferred";
@@ -803,7 +821,7 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
   item.milestones.forEach(m=>{const p=position(m.value,range);if(p!==null&&p>=0&&p<100) marker(plot,p,"milestone"+(item.personal?" estimated":""),m.label+"："+dateText(m.value),item,onInspect);});
   const notes=[];
   if(item.personal) notes.push("個人規劃：虛線為準備建議，空心節點待核");
-  if(item.timeline)notes.push(item.timeline.scopeLabel+" · "+item.timeline.year+"年"+(item.timeline.conflict?" · 時程衝突":""));
+  if(item.timeline)notes.push(item.timeline.year+"年 · "+timelinePhase(item.timeline.phase)+(item.timeline.conflict?" · 時程衝突":""));
   if(item.timeline?.baselines.length)notes.push("淺色底帶為歷史參考／估計，非官方受理");
   if(noticeWindow(item)) notes.push(prepNoticeGeom?"官方起日待確認（已標示截止前30天準備建議）":"準備建議在視窗外；官方起日待確認");
   else if(!item.start.value && !item.personal) notes.push(isNA(item,"application_start")?"申請起日 N/A 不適用":"起日待確認");
@@ -970,7 +988,6 @@ byId("document-mode").addEventListener("change",()=>{documentMode=byId("document
 if(byId("timeline-controls")){
  byId("timeline-controls").hidden=!chainData;
  if(chainData){
-  for(const scope of chainData.scopes){const option=el("option","",scope.label);option.value=scope.id;byId("timeline-scope").append(option);}
   for(const year of chainData.years){const option=el("option","",year+"年"+(year>Number(today.slice(0,4))?"（含歷史估計）":""));option.value=year;byId("timeline-year").append(option);}
   function focusTimeline(){
    rangeMode="fit";byId("range-mode").value="fit";view="gantt";centerPending=false;render();
@@ -978,7 +995,6 @@ if(byId("timeline-controls")){
    const value=item?.start.value||item?.timeline.baselines[0]?.start||item?.timeline.events[0]?.value||today;
    requestAnimationFrame(()=>centerToday(lastRange,"gantt-grid",value));
   }
-  byId("timeline-scope").addEventListener("change",()=>{timelineScope=byId("timeline-scope").value;focusTimeline();});
   byId("timeline-year").addEventListener("change",()=>{timelineYear=Number(byId("timeline-year").value);focusTimeline();});
   byId("timeline-focus").addEventListener("click",focusTimeline);
   byId("timeline-baselines").addEventListener("change",()=>{showBaselines=byId("timeline-baselines").checked;render();});

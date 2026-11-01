@@ -253,11 +253,10 @@ html{scroll-behavior:smooth}
 <div class="selection-strip"><span aria-live="polite" id="selection-count" role="status"></span><div class="range-buttons"><button class="secondary" id="select-filtered" type="button">勾選目前結果</button><button class="secondary" id="clear-selection" type="button">清除勾選</button><a class="small" href="#detail">看詳情 →</a><a class="small" href="#timeline">排時間軸 →</a></div></div>
 <div class="panel" hidden="" id="empty-results"><p>沒有符合目前條件的項目。</p><button class="secondary" id="empty-reset" type="button">清除篩選，查看全部</button></div>
 <div id="timeline-controls" class="range-controls" hidden>
-<label for="timeline-scope">時程適用單位 <select id="timeline-scope"></select></label>
 <label for="timeline-year">參考年度 <select id="timeline-year"></select></label>
 <label class="checkbox-label"><input id="timeline-baselines" type="checkbox" checked>顯示往年／估計底帶</label>
 <button id="timeline-focus" type="button" class="secondary">跳至申請／參考時段</button>
-<p class="tiny quiet">選擇單位可查看已找到的地方收件公告；僅補充對應方案，其他單位期限另定。</p>
+<p class="tiny quiet">全局顯示已找到的系所收件範例；滑鼠移至圖上可查看適用單位。範例不代表其他系所期限，實際請以所屬系所及主辦單位公告為準。</p>
 </div>
 <div id="gantt-view">
 <div class="range-controls"><label for="range-mode">時間範圍 <select id="range-mode"><option value="recent">今天前後 90 天</option><option value="fit">涵蓋所有已知日期</option></select></label><span class="today-label" id="today-label"></span><div class="range-buttons"><button aria-label="往前30天" class="secondary" id="previous-range" type="button">← 30 天</button><button class="secondary" id="return-today" type="button">回到今天</button><button aria-label="往後30天" class="secondary" id="next-range" type="button">30 天 →</button></div></div>

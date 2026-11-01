@@ -58,5 +58,22 @@
     "events": 17,
     "checked_documents": 12,
     "artifact_downloaded_and_schema_validated": true
+  },
+  "global_examples_ui": {
+    "mode": "all_available_unit_examples",
+    "scope_dropdown_removed": true,
+    "examples_visible_together": [
+      "ntu-gice",
+      "ntu-ac",
+      "sinica-ipsas"
+    ],
+    "unit_and_round_tracks_separate": "synthetic_regression_passed",
+    "global_intake_status_unchanged": true,
+    "source_procedure_steps_preserved": true,
+    "receiver_summaries": 16,
+    "original_time_summaries": 8,
+    "source_chain_chrome": "passed",
+    "existing_19_record_chrome": "passed",
+    "issues_submitted": 0
   }
 }

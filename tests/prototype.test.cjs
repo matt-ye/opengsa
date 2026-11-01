@@ -8,7 +8,7 @@ const demo = core.makeDemo(today);
 const pilot = JSON.parse(fs.readFileSync(path.join(__dirname,"../data/pilot.json"),"utf8"));
 const conferenceData=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/conference-programs.json"),"utf8"));
 
-test("地方時間事件僅套用指定單位，歷史估計不宣稱開放申請",()=>{
+test("地方時程全局綜覽依單位／梯次分列，範例與歷史不改全局受理",()=>{
  const item={id:"SYNTH",title:"SYNTH",start:{value:null},end:{value:null},result:{value:null},milestones:[],rawState:"unknown",application:"待確認",note:"SYNTH",degrees:[]};
  const data={documents:[{id:"d",url:"https://example.test/call",checked_on:"2026-07-01"}],records:{SYNTH:{contexts:[
   {scope:"unit",scope_label:"合成單位",year:2026,phase:"annual",conflict:false,events:[
@@ -20,9 +20,14 @@ test("地方時間事件僅套用指定單位，歷史估計不宣稱開放申�
    {start:"2027-07-07",end:"2027-07-27",sample_years:[2025,2026],kind:"historical_estimate"}]}]}}};
  assert.equal(core.applyTimeline(item,data,"general",2026),item);
  assert.equal(core.applyTimeline(item,data,"other",2026),item);
+ item.timeSteps=[{actor:"university",action:"合成原公告程序",deadline:{value:"2026-08-01"}}];
  const actual=core.applyTimeline(item,data,"unit",2026,true,"2026-07-10");
  assert.equal(actual.start.value,"2026-07-08");assert.equal(actual.end.value,"2026-07-27T17:00:00+08:00");
  assert.equal(actual.rawState,"open");assert.deepEqual(actual.degrees,[]);assert.equal(item.start.value,null);
+ const overview=core.applyTimeline(item,data,"examples",2026,true,"2026-07-10");
+ assert.equal(overview.start.value,"2026-07-08");assert.equal(overview.rawState,"unknown");
+ assert.equal(overview.application,item.application);assert.equal(overview.timeline.examples[0].timeline.scopeLabel,"合成單位");
+ assert.deepEqual(overview.timeSteps,item.timeSteps);
  assert.equal(actual.milestones.find(x=>x.note==="college_forward").value,"2026-08-01");
  const forecast=core.applyTimeline(item,data,"unit",2027,true,"2027-07-10");
  assert.equal(forecast.rawState,"unknown");assert.equal(forecast.start.value,null);
@@ -45,6 +50,16 @@ test("地方時間事件僅套用指定單位，歷史估計不宣稱開放申�
  data.records.SYNTH.contexts.push({...data.records.SYNTH.contexts[0],phase:"round2"});
  const multiple=core.applyTimeline(item,data,"unit",2026,true,"2026-07-10");
  assert.equal(multiple.start.value,null);assert.equal(multiple.timeline.multiPhase,true);
+ // Global overview retains separate unit/round tracks, never a fabricated combined interval.
+ data.records.SYNTH.contexts.push({...data.records.SYNTH.contexts[0],scope:"other",scope_label:"其他合成系所",
+  events:data.records.SYNTH.contexts[0].events.map(e=>({...e,id:"other-"+e.id,value:e.kind==="student_deadline"?"2026-08-15":e.value}))});
+ const all=core.applyTimeline(item,data,"examples",2026,true,"2026-07-10");
+ assert.equal(all.timeline.examples.length,3);assert.equal(all.start.value,null);assert.equal(all.end.value,null);
+ assert.equal(all.rawState,item.rawState);assert.equal(all.timeline.conflict,false);
+ assert.deepEqual(all.timeline.examples.map(e=>e.timeline.scopeLabel),["合成單位","合成單位","其他合成系所"]);
+ assert.equal(all.timeline.examples[0].end.value,"2026-07-27T17:00:00+08:00");
+ assert.equal(all.timeline.examples[2].end.value,"2026-08-15");
+ assert.ok(core.timelineDates(all).includes("2026-08-15"));
 });
 
 test("雷達將已知符合與未知條件分區，未知不冒充不限年級或可兼領",()=>{
