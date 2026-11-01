@@ -1,0 +1,86 @@
+filters: entity_type == "source"
+formulas:
+  title: file.asLink(aliases[0])
+properties:
+  formula.title:
+    displayName: 來源名稱
+  file.name:
+    displayName: 來源ID
+  note.queue_label:
+    displayName: 處理狀態
+  note.source_url:
+    displayName: 來源網址
+  note.format:
+    displayName: 實際格式
+  note.last_checked:
+    displayName: 最後觀察
+views:
+  - type: table
+    name: 全部來源
+    order:
+      - formula.title
+      - queue_label
+      - format
+      - last_checked
+      - source_url
+      - file.name
+  - type: table
+    name: 可分批掃描
+    filters: queue_state == "ready"
+    order:
+      - formula.title
+      - queue_label
+      - format
+      - last_checked
+      - source_url
+      - file.name
+  - type: table
+    name: 需補來源規格
+    filters: queue_state == "needs_profile"
+    order:
+      - formula.title
+      - queue_label
+      - format
+      - last_checked
+      - source_url
+      - file.name
+  - type: table
+    name: 人工查核
+    filters: queue_state == "manual_only"
+    order:
+      - formula.title
+      - queue_label
+      - format
+      - last_checked
+      - source_url
+      - file.name
+  - type: table
+    name: 格式待支援
+    filters: queue_state == "format_deferred"
+    order:
+      - formula.title
+      - queue_label
+      - format
+      - last_checked
+      - source_url
+      - file.name
+  - type: table
+    name: 需HTTPS入口
+    filters: queue_state == "needs_https"
+    order:
+      - formula.title
+      - queue_label
+      - format
+      - last_checked
+      - source_url
+      - file.name
+  - type: table
+    name: 參考／海外占位
+    filters: queue_state == "reference_only"
+    order:
+      - formula.title
+      - queue_label
+      - format
+      - last_checked
+      - source_url
+      - file.name
