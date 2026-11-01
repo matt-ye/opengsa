@@ -48,5 +48,15 @@
     "年度入口自動發現與人工例外尚未全面整合",
     "新資料僅為雷達補充，所有時間事件pending",
     "手動Actions不啟用定期補鏈或自動發布"
-  ]
+  ],
+  "remote_actions": {
+    "run_url": "https://github.com/matt-ye/opengsa/actions/runs/41274222102",
+    "implementation_commit": "917ab2357619dfbb46f2e0cc15c17f87ee482fc6",
+    "status": "success",
+    "http_requests": 15,
+    "model_calls": 0,
+    "events": 17,
+    "checked_documents": 12,
+    "artifact_downloaded_and_schema_validated": true
+  }
 }
