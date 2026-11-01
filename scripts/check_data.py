@@ -110,9 +110,10 @@ def validate_candidate_snapshot(bundle, config):
         elif meta["url"]!=sources[sid]["url"]:
             if meta.get("parent_url")!=sources[sid]["url"] or meta["url"] not in sources[sid].get("known_attachment_urls",[]):
                 errors.append("candidate attachment is not bound to its registered parent/URL")
-        if sid in sources and meta["evidence_mode"]!=sources[sid]["evidence_mode"]:
+        # A document may retain less than its source permits, never more.
+        if sid in sources and meta["evidence_mode"]!=sources[sid]["evidence_mode"] and not (meta["evidence_mode"]=="hash_only" and sources[sid]["evidence_mode"]=="short_excerpt"):
             errors.append("candidate evidence policy differs from its source profile")
-        if sid in sources and sources[sid]["evidence_mode"]=="hash_only":
+        if meta['evidence_mode']=='hash_only' or (sid in sources and sources[sid]["evidence_mode"]=="hash_only"):
             if any(e.get("excerpt") is not None for e in cand["field_evidence"]) or any(a.get("quote") is not None for a in cand["verification"].get("audit_findings",[])):
                 errors.append("hash_only source cannot retain excerpts or audit quotes")
         if cand["candidate_id"] in ids:errors.append("duplicate candidate id")
@@ -145,6 +146,10 @@ def main():
             load_graph()
         except Exception as error:
             errors.append('source-chain-index: '+str(error))
+    if (ROOT/'data/source-expansion/run-2026-11-01.json').exists():
+        from scripts.export_expansion_report import validate_artifacts
+        try:validate_artifacts(ROOT)
+        except Exception as error:errors.append('source-expansion: '+str(error))
     if errors:
         for error in errors:
             print(error)

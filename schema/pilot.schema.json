@@ -758,7 +758,8 @@
               "enum": [
                 "student",
                 "institution",
-                "unit"
+                "unit",
+                "unknown"
               ]
             },
             "beneficiary": {

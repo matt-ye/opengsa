@@ -13,6 +13,15 @@
 
 ## 目前狀態
 
+2026-11-01完成全來源擴展的第一輪與集中修補：**367個範圍內原始URL均有處置，另讀取／處置56個新發現子來源**；全程634次HTTP、模型0。入口、辦法及受阻頁面不硬轉卡片。本批22筆待審候選（10筆自動檢核通過、12筆正確但有缺漏）；與保留的5份舊文件合成**27筆／21組暫定方案的隔離預覽**。不是新增27個獎學金，也不是全部資訊鏈已閉合。公開站仍維持19筆，正式pilot10筆draft與真人核准台帳未改。
+
+**[本輪結果、待辦與重現方式](docs/SOURCE-EXPANSION-RUN.md)** · [資訊鏈樹狀圖HTML](docs/source-expansion/results.html) · [全部來源處置JSON](data/source-expansion/run-2026-11-01.json) · [原始完整來源目錄](docs/source-expansion/catalog.html)
+
+來源JSON與網頁圖維持主流程。Obsidian已棄用；PR34依使用者要求保留原樣。本輪疊於尚未合併的PR32，不自動合併或發布。新增排程產物為雷達資料patch與離線預覽artifact，Actions權限仍唯讀、不代開或合併資料PR。
+
+<details>
+<summary>來源資訊鏈第一批基線（PR32，保留當時數量）</summary>
+
 PR #28、#29、#31已合併，PR31的A版工具列與資訊鏈時間軸已部署至GitHub Pages。當前工作為資訊鏈排查第一批，獨立待審，不自動改寫公開期限。
 
 新增[第一批排查與資料結構](docs/SOURCE-CHAIN-BATCH-01.md)、[離線樹狀圖HTML](docs/source-chains/source-chain-map.html)及[Obsidian Canvas](docs/source-chains/source-chain-map.canvas)。總索引涵蓋13方案／19候選；本批重新讀取3方案的10個指定來源，規則仍pending。
@@ -23,6 +32,8 @@ PR #28、#29、#31已合併，PR31的A版工具列與資訊鏈時間軸已部署
 - 手動Actions新增`source_chains`，零模型、無Secrets、有限公開GET；只產生待審artifact，不自動回寫網站。既有週二／五掃描與模型off不變。
 
 [規劃、操作、實作及限制](docs/SOURCE-CHAINS-AND-TIMELINE.md) · [19筆完整探索](docs/SOURCE-CHAIN-RESEARCH-2026-11-01.md) · [驗收紀錄](data/audits/source-chains-2026-11-01.json)
+
+</details>
 
 **[開啟公開預覽](https://matt-ye.github.io/opengsa/)** · [提供回饋](https://github.com/matt-ye/opengsa/issues/new?template=preview-feedback.yml)
 

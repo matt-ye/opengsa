@@ -2728,6 +2728,11 @@ def extract_from_in_memory_blocks(
             evidence_mode=evidence_mode,
             as_of=as_of,
         )
+        # Routing metadata (including a university hostname) is not an eligibility
+        # clause or proof that the student is the formal applicant/payee.
+        generic['eligibility']['institution']='unknown'
+        generic['institution_scope']['school']='unknown'
+        generic['participants']['applicant']='unknown'
         _set_identity_with_evidence(generic, PLACEHOLDER, id_block, sid, revision_id, evidence_mode)
         if generic['resource_kind']=='employment_support':generic['participants']['applicant']='unit'
         _populate_common_extractions(generic, blocks, sid, revision_id, evidence_mode)
