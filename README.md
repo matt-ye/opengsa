@@ -13,7 +13,7 @@
 
 ## 目前狀態
 
-PR #28、#29已合併且GitHub Pages部署成功。本分支為PR #31：來源資訊鏈與多層時間軸第一階段，尚未合併；下列新增功能須PR31部署後才會出現在公開頁。
+PR #28、#29已合併且GitHub Pages部署成功。本分支為PR #31：來源資訊鏈與多層時間軸第一階段，尚未合併；下列新增功能須PR31部署後才會出現在公開頁。另完成開源資助與專案補助研究（包含 OpenAI Codex for OSS 500 字元投件模板、foropensource.com 矩陣、g0v 公民科技基金與安全政策落實）：[開源資助與OpenAI策略](docs/OPEN-SOURCE-GRANTS-AND-OPENAI-STRATEGY.md) · [安全政策](SECURITY.md)。
 
 - 保留19筆雷達候選／17份原文件／13組方案；正式pilot仍10筆draft，人工台帳仍空。
 - 新增共用JSON文件、關係與17個有來源hash／定位的日期事件；6個地方公告完成程式萃取，三個單位已有完整區間。不是全部19筆已完成資訊鏈。
@@ -126,6 +126,8 @@ flowchart TD
 | [公開預覽與部署](docs/DEPLOYMENT.md) | GitHub Pages發布、公開回饋、成品邊界、測試與回復 |
 | [長期維運與訂閱提案](docs/OPERATIONS-PLAN.md) | GitHub／D1分工、來源擷取、Agent檢核、成本、RSS與ICS；D1與訂閱尚未啟用 |
 | [首批來源及Actions設計](docs/INGESTION-POC.md) | 管線設計與已落地之結構化萃取、獨立檢核及差異覆核模組對照 |
+| [開源資助與OpenAI策略](docs/OPEN-SOURCE-GRANTS-AND-OPENAI-STRATEGY.md) | OpenAI Codex for OSS、foropensource.com 與公民科技基金申請策略、500字元精煉模板與Repo衛生升級 |
+| [安全政策](SECURITY.md) | 支援版本、零個資原則、受限來源零外送防護與漏洞通報處理 SLA |
 | [API查核與模型台帳](docs/API-AUDIT.md) | Secret對應、模型目錄、額度／效期、手動實測與成本限制 |
 | [自動來源掃描](docs/SCANNER.md) | 已實作的來源台帳試點、低頻排程、結構化候選萃取、獨立檢核與故障保留 |
 | [專案縮圖原始設計](docs/design/social-preview.html) | 已核可圖稿的可修改HTML；GitHub Social preview由使用者自行上傳 |
