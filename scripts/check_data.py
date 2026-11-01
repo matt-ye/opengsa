@@ -139,6 +139,12 @@ def main():
         timeline_metadata(read_json(ROOT/'data/source-chains.json'),read_json(ROOT/'data/candidates/source-review.json'))
     except Exception as error:
         errors.append('source-chains: '+str(error))
+    if (ROOT/'data/source-chain-index.json').exists():
+        from scripts.export_source_chain_graph import load_graph
+        try:
+            load_graph()
+        except Exception as error:
+            errors.append('source-chain-index: '+str(error))
     if errors:
         for error in errors:
             print(error)

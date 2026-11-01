@@ -1,0 +1,271 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "as_of",
+    "candidate_file",
+    "candidate_sha256",
+    "bundles",
+    "batch_configs",
+    "programs",
+    "included_links",
+    "document_titles",
+    "model_calls",
+    "official_data_modified",
+    "human_approvals",
+    "notes",
+    "current_batch"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "source-chain-index-1"
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "candidate_file": {
+      "type": "string"
+    },
+    "candidate_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "bundles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "batch_configs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "programs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "title",
+          "candidate_ids",
+          "audit_status",
+          "source_contexts",
+          "gaps",
+          "rules",
+          "audited_batch"
+        ],
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "candidate_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "audit_status": {
+            "enum": [
+              "partial",
+              "baseline_pending"
+            ]
+          },
+          "source_contexts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "url",
+                "role",
+                "scope",
+                "cycle"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "cycle": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "gaps": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/rule"
+            }
+          },
+          "audited_batch": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "included_links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "program_key",
+          "from_url",
+          "to_url",
+          "role",
+          "label"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "program_key": {
+            "type": "string"
+          },
+          "from_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "to_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "role": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "document_titles": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "model_calls": {
+      "const": 0
+    },
+    "official_data_modified": {
+      "const": false
+    },
+    "human_approvals": {
+      "const": 0
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "current_batch": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "actor",
+        "scope",
+        "cycle",
+        "summary",
+        "value",
+        "evidence_refs",
+        "review_status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "relative_deadline",
+            "date_window",
+            "fixed_deadline",
+            "application_process",
+            "contact"
+          ]
+        },
+        "actor": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "cycle": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "value": {
+          "type": "object"
+        },
+        "review_status": {
+          "const": "pending"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "document_id",
+              "revision_id",
+              "locator",
+              "block_sha256"
+            ],
+            "properties": {
+              "document_id": {
+                "type": "string"
+              },
+              "revision_id": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "locator": {
+                "type": "string"
+              },
+              "block_sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

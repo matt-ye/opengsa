@@ -1,0 +1,1048 @@
+{
+  "schema_version": "source-chain-1",
+  "generated_at": "2026-11-01T09:54:55+00:00",
+  "model_calls": 0,
+  "official_data_modified": false,
+  "documents": [
+    {
+      "id": "doc-79af60be2eedec9477f7a965",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+      "format": "html",
+      "revision_id": "49f1939374329523db9aa9dde6aafed30e1a760a93c4557c74a954b7b56ef500",
+      "observed_at": "2026-10-31T19:34:54+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ntu-nstc-phd-115-49f19393",
+        "cand-ntu-moe-phd-115-49f19393"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-91454a8293b655ab031449cb",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf",
+      "format": "pdf",
+      "revision_id": "9dd47e845fe0708caffb8b5063f49160ec4627a9c55c3dc8a9348f5f51de0c1f",
+      "observed_at": "2026-10-31T19:34:54+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ntu-nstc-phd-rule-9dd47e84",
+        "cand-ntu-moe-phd-rule-9dd47e84"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-31f65bf74eda8cb6510d4aea",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
+      "format": "pdf",
+      "revision_id": "5ec6eddc12208139f3acffd06320c0a11bea87264cbb9003024fab340abef120",
+      "observed_at": "2026-10-31T19:34:54+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ntu-moe-phd-unknown-5ec6eddc"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-71e6e9fae7c0dac56233106e",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368",
+      "format": "html",
+      "revision_id": "6d00251dfe4a83029f745b27c165febc38ec5ecd70581a12b9ac9b40ead44a1c",
+      "observed_at": "2026-10-31T19:41:12+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ntu-president-114-call-6d00251d"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-3b59f5279df532cf4d9ee497",
+      "url": "https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260",
+      "format": "html",
+      "revision_id": "a943081a2458e9a427b0d252364328577925b2b42fd2c97697ec25c63c876ff6",
+      "observed_at": "2026-10-31T19:41:12+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "short_excerpt",
+      "candidate_ids": [
+        "cand-ntu-yuanxue-115-ordinary-a943081a"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-91155ef2caf594eb5ace7f66",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf",
+      "format": "pdf",
+      "revision_id": "0ef18354b5441b0f1443c8e8f95076736df8106d77f6d260c9b7b1220e09bda9",
+      "observed_at": "2026-10-31T19:41:12+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ntu-president-unknown-rule-0ef18354"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-82e732a493acd30b20ee2163",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383",
+      "candidate_ids": [
+        "cand-nstc-ntu-conference-f5477f6c"
+      ],
+      "evidence_mode": "hash_only",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "events": [],
+      "links": [
+        {
+          "url": "https://www.nstc.gov.tw/sci/ch/detail?article_uid=bf1bf8bd-42b8-4089-aea6-45ed1fcc94bb&menu_id=6b4a4661-9126-4d0c-897a-4022c82114a9",
+          "role": "policy",
+          "label": "作業要點"
+        }
+      ],
+      "profile_sha256": "2f104d12bd751b7308a781bd256c97a502352789e8914f3ec45cbaa8ea01332e",
+      "role": "local_process",
+      "format": "html",
+      "semantic_sha256": "67d8b60dea30bcc3e876ff73e569a02d3e6f45407d2c161b8e0ef5ccbd72a54f",
+      "raw_sha256": "e8d067c0a9baf10642c72f2fb113bcfd59946b477c490ddbd8ee069dccf33f44",
+      "etag": null,
+      "last_modified": null,
+      "revision_id": "1c27ab87860638bc6dc2f5970c724c2721e9cc17b96641a4c4a72bfd3bcd8580",
+      "status": "changed"
+    },
+    {
+      "id": "doc-f86ed6a15af02d63eae87cfe",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260",
+      "candidate_ids": [
+        "cand-nstc-conference-rule-1b67cc16"
+      ],
+      "evidence_mode": "hash_only",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "events": [],
+      "links": [
+        {
+          "url": "https://law.nstc.gov.tw/Download.ashx?FileID=142590&id=FL038260&type=LAW",
+          "role": "policy",
+          "label": "國家科學及技術委員會補助國內研究生出席國際學術會議作業要點部分規定修正對照表1120316.pdf"
+        }
+      ],
+      "profile_sha256": "68a4d896d2b45ad87294315a843991e73b593bc69dbf7bc8b78dc0f4c645866e",
+      "role": "policy",
+      "format": "html",
+      "semantic_sha256": "f6517483f01b4f0c573cee97820d969c507361c295e374f09e84b1dae6785dd9",
+      "raw_sha256": "2eef9659dc0a5153a1ed7fb39fddb672e0e9cd625966e495dded8806dae7d5a9",
+      "etag": null,
+      "last_modified": null,
+      "revision_id": "d1f01d4eec7239af743f5cdcaf441b8747acb13fcd35128028c086a19def163e",
+      "status": "changed"
+    },
+    {
+      "id": "doc-8dbd63e96b3f5bba3534bc8b",
+      "url": "https://www.faos.org.tw/Application/ApplicatStud.html",
+      "candidate_ids": [
+        "cand-faos-student-conference-ccd80040"
+      ],
+      "evidence_mode": "hash_only",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "events": [],
+      "links": [],
+      "profile_sha256": "1c47c7c564108ca4e3974f36e9359b9f49486a44ba36a15ae7e42495acc32214",
+      "role": "policy",
+      "format": "html",
+      "semantic_sha256": "3a5cfa0d36d3321a51155e6f5b32ac225911bfd2e80ad82d6d9460598ed4338a",
+      "raw_sha256": "1be7f58b5946e42a59f49d8b7fe3d29ddb4e7114ece90a3d4130d0553f7eb14c",
+      "etag": "\"691c7734-21f8\"",
+      "last_modified": "Tue, 18 Nov 2025 13:40:04 GMT",
+      "revision_id": "abf6d15b5df5056771260b933a378ab681686093c23a8376693e3fe37acbbd0f",
+      "status": "changed"
+    },
+    {
+      "id": "doc-9d2009cc5ee30fd247f7a177",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039188",
+      "candidate_ids": [
+        "cand-nstc-abroad-dragon-rule-81d5aeb0"
+      ],
+      "evidence_mode": "hash_only",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "events": [],
+      "links": [
+        {
+          "url": "https://law.nstc.gov.tw/Download.ashx?FileID=142627&id=FL039188&type=LAW",
+          "role": "policy",
+          "label": "國家科學及技術委員會補助博士生赴國外研究作業要點第五點、第六點、第七點修正對照表1120523.pdf"
+        }
+      ],
+      "profile_sha256": "f1ea453e3834af9bc387d840e7e816e06b59cc545586ebe464db22451d34f24a",
+      "role": "policy",
+      "format": "html",
+      "semantic_sha256": "4ff9c71570729bbdfb7cd278385815a8ad2beebfbda66525c0399eab0c138f67",
+      "raw_sha256": "befc3dd91498cde77a25eb1be92276e7fec5683cdc1c29acea9ac661a69be906",
+      "etag": null,
+      "last_modified": null,
+      "revision_id": "44de8310e8cc1dad3e01d08edb6de2b6af23f0d5c1c763bca101b036b5a1405d",
+      "status": "changed"
+    },
+    {
+      "id": "doc-172426b6bcf93c62c2ec1925",
+      "url": "https://www.sinica.edu.tw/news_content/56/3434",
+      "format": "html",
+      "revision_id": "6165c00d39bd5b616433c77363b5e51b8058d97349b786e33fe133a0e5892e31",
+      "observed_at": "2026-10-31T19:48:38+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "short_excerpt",
+      "candidate_ids": [
+        "cand-sinica-phd-fellowship-6165c00d"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-988d52b25067160a7cf10eb7",
+      "url": "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796",
+      "format": "html",
+      "revision_id": "4618de5c5a7bb85331c38461bece52c9e7bdbedddb9e0b4f7884ef06318ebc43",
+      "observed_at": "2026-10-31T19:35:46+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "short_excerpt",
+      "candidate_ids": [
+        "cand-taipei-ai-tools-4618de5c"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-769a300c41787a4a80ff06da",
+      "url": "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
+      "format": "html",
+      "revision_id": "5067a6752e91b885f347719d79e5332b5a5ba6c0d59c6a6f935b77aaa21e687e",
+      "observed_at": "2026-10-31T19:35:46+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "short_excerpt",
+      "candidate_ids": [
+        "cand-hsinchu-ai-tools-5067a675"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-83da10adff378e11b1688002",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686",
+      "format": "html",
+      "revision_id": "d14f4d4e18e5c1952074472af9421b9f809097c76be7fbf7e82c82a71c5bdba2",
+      "observed_at": "2026-10-31T19:48:38+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "short_excerpt",
+      "candidate_ids": [
+        "cand-nstc-assistant-rule-d14f4d4e"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-b79ae3b1fb419af04f0b25f5",
+      "url": "https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf",
+      "format": "pdf",
+      "revision_id": "faea928cb922b5173a04700db093627ff075725b9ce0ee4ee865a3c96e228afb",
+      "observed_at": "2026-10-31T19:48:38+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "short_excerpt",
+      "candidate_ids": [
+        "cand-ntu-eecs-scholarship-faea928c"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-bb3e2cc25b6975a7a4e7e690",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514",
+      "format": "html",
+      "revision_id": "7569d5365f268e184929063f60db17598fe7d0f6f673d2513d2a4bdc9d9de829",
+      "observed_at": "2026-10-31T19:48:38+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ntu-ta-policy-7569d536"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-ee4d210bbfa286fc2d8d0168",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/%E6%95%99%E5%8B%99%E8%99%95%E6%95%99%E5%AD%B8%E5%8A%A9%E7%90%86%E5%88%B6%E5%BA%A6%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E6%A2%9D%E6%96%87-%E5%85%AC%E5%91%8A%E7%89%88.pdf",
+      "format": "pdf",
+      "revision_id": "2c257f6c8cade4b349844843073273317655606c8cbc5bcaae66432c583aec1c",
+      "observed_at": "2026-10-31T19:48:38+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ntu-ta-policy-2c257f6c"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-c327b135dc202bdf07bef717",
+      "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/9811/214008/add73815-0131-4901-b098-8dd402078f4c.pdf",
+      "candidate_ids": [],
+      "evidence_mode": "hash_only",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "events": [],
+      "links": [],
+      "profile_sha256": "d1e2d50ffdfad76a84da9fbbab2d2fbcf8e0330048191ef372956b393f0aea25",
+      "role": "local_process",
+      "format": "pdf",
+      "semantic_sha256": "1a7d01d20580e52d6ebe65d817473ec971a7dde951a2bfcafa86b37666656c07",
+      "raw_sha256": "4f4e9c9de77a0d8f1a6d42f17115ddba067ac66103857ec57de2d486b1bd3dbc",
+      "etag": "\"5e1685e96a67dd1:0\"",
+      "last_modified": "Thu, 29 Oct 2026 06:01:17 GMT",
+      "revision_id": "8f93b2438eb64b87e16334fbef726ad3ed17fab5418fa628dfab16c85a38738a",
+      "status": "changed"
+    },
+    {
+      "id": "doc-4f7b2b6ad18cfaa56db6be65",
+      "url": "https://sec.ntu.edu.tw/News_n_27890_sms_10166__CSN_541.html",
+      "candidate_ids": [],
+      "evidence_mode": "hash_only",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "events": [],
+      "links": [
+        {
+          "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/3733/e3e4cbe9-b068-4402-8497-ad5d4256aee1.docx",
+          "role": "related_call",
+          "label": "「優秀學生出國開會經費補助」推薦申請書"
+        },
+        {
+          "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/3734/1234482d-32d1-416f-8e49-3cfb7f124cf3.pdf",
+          "role": "related_call",
+          "label": "「財團法人傑出人才發展基金會」｜出國開會補助請款流程說明"
+        },
+        {
+          "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/211670/42ab6af2-116f-4426-af3f-35b4e63b3e7a.docx",
+          "role": "related_call",
+          "label": "博士後研究學者獎助候選人推薦申請書"
+        },
+        {
+          "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/254193/b46badec-779b-4f85-bd5b-3689e1da93bd.docx",
+          "role": "related_call",
+          "label": "「飛躍講座」候選人推薦申請書"
+        },
+        {
+          "url": "https://sec.ntu.edu.tw/News_n_27910_sms_10268.html",
+          "role": "related_call",
+          "label": "作業流程"
+        }
+      ],
+      "profile_sha256": "e1571ad10fd46476b229ac64d619c7c865456faffe82deda53fabd58bdf9c3cc",
+      "role": "forms_index",
+      "format": "html",
+      "semantic_sha256": "26dd3bc80d5551facfc33963c49ec5b74d32424053beeaee1df54d6d225641ea",
+      "raw_sha256": "60984bd5a2965d394ec5f70e82afe98aaa746605e52522412d7334a149533c5c",
+      "etag": "\"692ce9a6967dd1:0\"",
+      "last_modified": "Thu, 29 Oct 2026 05:51:55 GMT",
+      "revision_id": "109102d884e3222733f0f80cc56837138c0d3680494ad3d95c5b16199c63723f",
+      "status": "changed"
+    },
+    {
+      "id": "doc-4fd96bd5af62899f70833774",
+      "url": "https://www.faos.org.tw/apply/student/",
+      "candidate_ids": [],
+      "evidence_mode": "hash_only",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "events": [],
+      "links": [],
+      "profile_sha256": "26b1e4093f48132e22abecc929f63d0aab78755faf63c4324a12af788e1db3c4",
+      "role": "application_system",
+      "format": "html",
+      "semantic_sha256": "f34cf1c462ba65fc00b0968d5dd7d6481880c55308454497b3b4ba91b878d7cd",
+      "raw_sha256": "4ea3329a0af5991ffdc13d70171f6b8036f73552767e3afd511c82824bb29a31",
+      "etag": null,
+      "last_modified": null,
+      "revision_id": "ba078c2810aa41bbc27930cdf49a5a26dbe4baaa6b4c3cd745788cd9bcf348f4",
+      "status": "changed"
+    },
+    {
+      "id": "doc-725ff2f8d770e4f19724edd7",
+      "url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+      "candidate_ids": [],
+      "evidence_mode": "hash_only",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "events": [],
+      "links": [
+        {
+          "url": "https://www.nstc.gov.tw/nstc/attachments/92025fc4-ec4f-4109-980a-03f23f91f41c",
+          "role": "related_call",
+          "label": "0. 116年度千里馬計畫(博士生)申請須知.pdf"
+        },
+        {
+          "url": "https://www.nstc.gov.tw/nstc/attachments/b510a7b7-c54b-4621-a65c-e79620d13939",
+          "role": "policy",
+          "label": "1. 博士生赴國外研究作業要點.pdf"
+        },
+        {
+          "url": "https://www.nstc.gov.tw/nstc/attachments/d6e268dc-75bb-4829-813b-3d2ce0ce46eb",
+          "role": "related_call",
+          "label": "2.115年學員(116年出國)申請應注意事項及操作說明_博生(0716).pdf"
+        },
+        {
+          "url": "https://www.nstc.gov.tw/nstc/attachments/06564dc4-4c4c-4a78-adda-affce2e1bfc6",
+          "role": "related_call",
+          "label": "5. 申請人資格證明(博生).pdf.pdf"
+        },
+        {
+          "url": "https://www.nstc.gov.tw/nstc/attachments/ad36e297-ad59-44a9-b8a2-ea0950f2a892",
+          "role": "related_call",
+          "label": "6. 申請機構與學員訂定合約須包含事項.pdf.pdf"
+        },
+        {
+          "url": "https://www.nstc.gov.tw/nstc/attachments/4300767d-733b-43fc-95dc-d9f5fa7322d6",
+          "role": "related_call",
+          "label": "7.1 116年度學員(及申請機構)應注意事項(適用核定通過後).pdf.pdf"
+        },
+        {
+          "url": "https://www.nstc.gov.tw/nstc/attachments/5a92d94c-ae70-447d-8aeb-528593def920",
+          "role": "related_call",
+          "label": "7.2 115年度學員(及申請機構)應注意事項(適用核定通過後).pdf.pdf"
+        },
+        {
+          "url": "https://www.nstc.gov.tw/nstc/attachments/d24ba1dc-fca3-4fdc-9d8a-ecc39bce6384",
+          "role": "related_call",
+          "label": "10. 量子科技高階人才培育方案－量子科技千里馬計畫.pdf.pdf"
+        }
+      ],
+      "profile_sha256": "e575557f03a27ed0c2701915854b00018716c2c6edfb04e20c9376f8e01117c3",
+      "role": "annual_call",
+      "format": "html",
+      "semantic_sha256": "363a02cdf07ca27f4dcb0add14020dca80c61bc174eaa5155d5e8050061c38e9",
+      "raw_sha256": "10a15cb7a3e6a270c2aa9299af3c1e3fdf3a3ee3f662607eee6370ea0c570cb2",
+      "etag": null,
+      "last_modified": null,
+      "revision_id": "bea0c2c27b6ab7901d9ead8d313c2c24bc3b7b89dba932889ed46d04a40183ac",
+      "status": "changed"
+    },
+    {
+      "id": "doc-7cb8562c2b191beabfef7e46",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
+      "candidate_ids": [],
+      "evidence_mode": "hash_only",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "events": [],
+      "links": [
+        {
+          "url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+          "role": "policy",
+          "label": "補助博士生赴國外研究作業要點 (115年申請, 116年出國者適用)"
+        }
+      ],
+      "profile_sha256": "d1c2e9422497cf3fc71dd06088289b01664158f3f00ab6e6c147154a2de9a77f",
+      "role": "local_intake",
+      "format": "html",
+      "semantic_sha256": "a3133d111179b84841923d7dd58d894bc89cb37c9b66e291d3ae5d7c15337f2d",
+      "raw_sha256": "ad8b39527c661037eb96aa3669267e1593faa4fda671c3d4feb8ddeb1a2ab767",
+      "etag": null,
+      "last_modified": null,
+      "revision_id": "03d35f3ff50671a9991b43838e69d65219031cd66585a1aa67e7c55787e9197e",
+      "status": "changed"
+    },
+    {
+      "id": "doc-6db49eb6cd36a3c5ed6ecae1",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
+      "candidate_ids": [],
+      "evidence_mode": "hash_only",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "events": [],
+      "links": [
+        {
+          "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%9B%BB%E4%BF%A1%E6%89%80%E5%8F%AF%E7%94%B3%E8%AB%8B%E8%A3%9C%E5%8A%A9%E4%B9%8B%E5%9C%8B%E9%9A%9B%E6%9C%83%E8%AD%B0%E5%88%97%E8%A1%A8_2026.pdf&filepath=.%2FNewsUploadDir%2F2026_06_18_16_37_20_0.pdf",
+          "role": "related_call",
+          "label": "電信所可申請補助之國際會議列表_2026.pdf"
+        },
+        {
+          "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%9B%BB%E4%BF%A1%E6%89%80%E5%87%BA%E5%B8%AD%E5%9C%8B%E9%9A%9B%E6%9C%83%E8%AD%B0%E7%94%B3%E8%AB%8B%E8%A1%A8.pdf&filepath=.%2FNewsUploadDir%2F2026_06_18_16_37_20_1.pdf",
+          "role": "related_call",
+          "label": "電信所出席國際會議申請表.pdf"
+        }
+      ],
+      "profile_sha256": "139d5677cdccd613c975ac91ed36f308546ea28ca6699449f382822126e6c816",
+      "role": "local_process",
+      "format": "html",
+      "semantic_sha256": "266ff25399e1c14c78b0b22f59c900aa044f191f5625f607dc081cec0284daaa",
+      "raw_sha256": "27b875e35a9ae1534379ac36389f9484875a6f1c9c8b44097c144fabc0e86443",
+      "etag": null,
+      "last_modified": null,
+      "revision_id": "0e79804a0e48487fa29a2d4b795518cebae21c218109073e3c8c064c7203cd56",
+      "status": "changed"
+    },
+    {
+      "id": "doc-b06c2c6311fcda9c1461ceb5",
+      "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/3733/e3e4cbe9-b068-4402-8497-ad5d4256aee1.docx",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    },
+    {
+      "id": "doc-cef4d7285548482485f1cb20",
+      "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/3734/1234482d-32d1-416f-8e49-3cfb7f124cf3.pdf",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    },
+    {
+      "id": "doc-b40a174f44c18ad2042a5637",
+      "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/211670/42ab6af2-116f-4426-af3f-35b4e63b3e7a.docx",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    },
+    {
+      "id": "doc-05f75aae9389888de1334e25",
+      "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/254193/b46badec-779b-4f85-bd5b-3689e1da93bd.docx",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    },
+    {
+      "id": "doc-2b7b87bde8d7de127f7f3aa3",
+      "url": "https://sec.ntu.edu.tw/News_n_27910_sms_10268.html",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    },
+    {
+      "id": "doc-d642ef478c6246cc0db8ebc9",
+      "url": "https://law.nstc.gov.tw/Download.ashx?FileID=142590&id=FL038260&type=LAW",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    },
+    {
+      "id": "doc-20bd257d92e9b6e6be113ee9",
+      "url": "https://www.nstc.gov.tw/sci/ch/detail?article_uid=bf1bf8bd-42b8-4089-aea6-45ed1fcc94bb&menu_id=6b4a4661-9126-4d0c-897a-4022c82114a9",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    },
+    {
+      "id": "doc-c50fd8a84df93fbef9ac094c",
+      "url": "https://law.nstc.gov.tw/Download.ashx?FileID=142627&id=FL039188&type=LAW",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    },
+    {
+      "id": "doc-aabb3ef821a7e5b35a69380f",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/92025fc4-ec4f-4109-980a-03f23f91f41c",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    },
+    {
+      "id": "doc-f0e94d088cab136e496a946c",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/b510a7b7-c54b-4621-a65c-e79620d13939",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    },
+    {
+      "id": "doc-89cf496c24dc59307f73af6b",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/d6e268dc-75bb-4829-813b-3d2ce0ce46eb",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    },
+    {
+      "id": "doc-70dc130bc7b234593f092128",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/06564dc4-4c4c-4a78-adda-affce2e1bfc6",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    },
+    {
+      "id": "doc-e3fc2dae22cfe599f18a9044",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/ad36e297-ad59-44a9-b8a2-ea0950f2a892",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    },
+    {
+      "id": "doc-7fea0a46b5aba965623ca0e4",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/4300767d-733b-43fc-95dc-d9f5fa7322d6",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    },
+    {
+      "id": "doc-4311f92a51fc801a3272085a",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/5a92d94c-ae70-447d-8aeb-528593def920",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    },
+    {
+      "id": "doc-28e021277a24381d383050a8",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/d24ba1dc-fca3-4fdc-9d8a-ecc39bce6384",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    },
+    {
+      "id": "doc-4832561457a5aacbf3f4a74b",
+      "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%9B%BB%E4%BF%A1%E6%89%80%E5%8F%AF%E7%94%B3%E8%AB%8B%E8%A3%9C%E5%8A%A9%E4%B9%8B%E5%9C%8B%E9%9A%9B%E6%9C%83%E8%AD%B0%E5%88%97%E8%A1%A8_2026.pdf&filepath=.%2FNewsUploadDir%2F2026_06_18_16_37_20_0.pdf",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    },
+    {
+      "id": "doc-39b737ec72e7d1ea9eef8472",
+      "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%9B%BB%E4%BF%A1%E6%89%80%E5%87%BA%E5%B8%AD%E5%9C%8B%E9%9A%9B%E6%9C%83%E8%AD%B0%E7%94%B3%E8%AB%8B%E8%A1%A8.pdf&filepath=.%2FNewsUploadDir%2F2026_06_18_16_37_20_1.pdf",
+      "format": "unknown",
+      "observed_at": "2026-11-01T09:54:55+00:00",
+      "status": "discovered_not_read",
+      "evidence_mode": "hash_only",
+      "events": [],
+      "links": [],
+      "candidate_ids": []
+    }
+  ],
+  "relations": [
+    {
+      "from": "doc-8dbd63e96b3f5bba3534bc8b",
+      "to": "doc-c327b135dc202bdf07bef717",
+      "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/9811/214008/add73815-0131-4901-b098-8dd402078f4c.pdf",
+      "role": "local_process",
+      "program_key": "faos-student-conference",
+      "scope": "ntu",
+      "cycle": "1140522"
+    },
+    {
+      "from": "doc-8dbd63e96b3f5bba3534bc8b",
+      "to": "doc-4f7b2b6ad18cfaa56db6be65",
+      "url": "https://sec.ntu.edu.tw/News_n_27890_sms_10166__CSN_541.html",
+      "role": "forms_index",
+      "program_key": "faos-student-conference",
+      "scope": "ntu",
+      "cycle": "current"
+    },
+    {
+      "from": "doc-4f7b2b6ad18cfaa56db6be65",
+      "to": "doc-b06c2c6311fcda9c1461ceb5",
+      "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/3733/e3e4cbe9-b068-4402-8497-ad5d4256aee1.docx",
+      "role": "related_call",
+      "program_key": "faos-student-conference",
+      "scope": "ntu",
+      "cycle": "current"
+    },
+    {
+      "from": "doc-4f7b2b6ad18cfaa56db6be65",
+      "to": "doc-cef4d7285548482485f1cb20",
+      "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/3734/1234482d-32d1-416f-8e49-3cfb7f124cf3.pdf",
+      "role": "related_call",
+      "program_key": "faos-student-conference",
+      "scope": "ntu",
+      "cycle": "current"
+    },
+    {
+      "from": "doc-4f7b2b6ad18cfaa56db6be65",
+      "to": "doc-b40a174f44c18ad2042a5637",
+      "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/211670/42ab6af2-116f-4426-af3f-35b4e63b3e7a.docx",
+      "role": "related_call",
+      "program_key": "faos-student-conference",
+      "scope": "ntu",
+      "cycle": "current"
+    },
+    {
+      "from": "doc-4f7b2b6ad18cfaa56db6be65",
+      "to": "doc-05f75aae9389888de1334e25",
+      "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/254193/b46badec-779b-4f85-bd5b-3689e1da93bd.docx",
+      "role": "related_call",
+      "program_key": "faos-student-conference",
+      "scope": "ntu",
+      "cycle": "current"
+    },
+    {
+      "from": "doc-4f7b2b6ad18cfaa56db6be65",
+      "to": "doc-2b7b87bde8d7de127f7f3aa3",
+      "url": "https://sec.ntu.edu.tw/News_n_27910_sms_10268.html",
+      "role": "related_call",
+      "program_key": "faos-student-conference",
+      "scope": "ntu",
+      "cycle": "current"
+    },
+    {
+      "from": "doc-8dbd63e96b3f5bba3534bc8b",
+      "to": "doc-4fd96bd5af62899f70833774",
+      "url": "https://www.faos.org.tw/apply/student/",
+      "role": "application_system",
+      "program_key": "faos-student-conference",
+      "scope": "general",
+      "cycle": "current"
+    },
+    {
+      "from": "doc-f86ed6a15af02d63eae87cfe",
+      "to": "doc-d642ef478c6246cc0db8ebc9",
+      "url": "https://law.nstc.gov.tw/Download.ashx?FileID=142590&id=FL038260&type=LAW",
+      "role": "policy",
+      "program_key": "nstc-grad-conference-policy",
+      "scope": "general",
+      "cycle": "current"
+    },
+    {
+      "from": "doc-f86ed6a15af02d63eae87cfe",
+      "to": "doc-82e732a493acd30b20ee2163",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383",
+      "role": "local_process",
+      "program_key": "nstc-grad-conference-policy",
+      "scope": "ntu",
+      "cycle": "current"
+    },
+    {
+      "from": "doc-82e732a493acd30b20ee2163",
+      "to": "doc-20bd257d92e9b6e6be113ee9",
+      "url": "https://www.nstc.gov.tw/sci/ch/detail?article_uid=bf1bf8bd-42b8-4089-aea6-45ed1fcc94bb&menu_id=6b4a4661-9126-4d0c-897a-4022c82114a9",
+      "role": "policy",
+      "program_key": "nstc-grad-conference-policy",
+      "scope": "ntu",
+      "cycle": "current"
+    },
+    {
+      "from": "doc-9d2009cc5ee30fd247f7a177",
+      "to": "doc-c50fd8a84df93fbef9ac094c",
+      "url": "https://law.nstc.gov.tw/Download.ashx?FileID=142627&id=FL039188&type=LAW",
+      "role": "policy",
+      "program_key": "nstc-abroad-dragon",
+      "scope": "general",
+      "cycle": "current"
+    },
+    {
+      "from": "doc-9d2009cc5ee30fd247f7a177",
+      "to": "doc-725ff2f8d770e4f19724edd7",
+      "url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+      "role": "annual_call",
+      "program_key": "nstc-abroad-dragon",
+      "scope": "general",
+      "cycle": "116"
+    },
+    {
+      "from": "doc-725ff2f8d770e4f19724edd7",
+      "to": "doc-aabb3ef821a7e5b35a69380f",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/92025fc4-ec4f-4109-980a-03f23f91f41c",
+      "role": "related_call",
+      "program_key": "nstc-abroad-dragon",
+      "scope": "general",
+      "cycle": "116"
+    },
+    {
+      "from": "doc-725ff2f8d770e4f19724edd7",
+      "to": "doc-f0e94d088cab136e496a946c",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/b510a7b7-c54b-4621-a65c-e79620d13939",
+      "role": "policy",
+      "program_key": "nstc-abroad-dragon",
+      "scope": "general",
+      "cycle": "116"
+    },
+    {
+      "from": "doc-725ff2f8d770e4f19724edd7",
+      "to": "doc-89cf496c24dc59307f73af6b",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/d6e268dc-75bb-4829-813b-3d2ce0ce46eb",
+      "role": "related_call",
+      "program_key": "nstc-abroad-dragon",
+      "scope": "general",
+      "cycle": "116"
+    },
+    {
+      "from": "doc-725ff2f8d770e4f19724edd7",
+      "to": "doc-70dc130bc7b234593f092128",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/06564dc4-4c4c-4a78-adda-affce2e1bfc6",
+      "role": "related_call",
+      "program_key": "nstc-abroad-dragon",
+      "scope": "general",
+      "cycle": "116"
+    },
+    {
+      "from": "doc-725ff2f8d770e4f19724edd7",
+      "to": "doc-e3fc2dae22cfe599f18a9044",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/ad36e297-ad59-44a9-b8a2-ea0950f2a892",
+      "role": "related_call",
+      "program_key": "nstc-abroad-dragon",
+      "scope": "general",
+      "cycle": "116"
+    },
+    {
+      "from": "doc-725ff2f8d770e4f19724edd7",
+      "to": "doc-7fea0a46b5aba965623ca0e4",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/4300767d-733b-43fc-95dc-d9f5fa7322d6",
+      "role": "related_call",
+      "program_key": "nstc-abroad-dragon",
+      "scope": "general",
+      "cycle": "116"
+    },
+    {
+      "from": "doc-725ff2f8d770e4f19724edd7",
+      "to": "doc-4311f92a51fc801a3272085a",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/5a92d94c-ae70-447d-8aeb-528593def920",
+      "role": "related_call",
+      "program_key": "nstc-abroad-dragon",
+      "scope": "general",
+      "cycle": "116"
+    },
+    {
+      "from": "doc-725ff2f8d770e4f19724edd7",
+      "to": "doc-28e021277a24381d383050a8",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/d24ba1dc-fca3-4fdc-9d8a-ecc39bce6384",
+      "role": "related_call",
+      "program_key": "nstc-abroad-dragon",
+      "scope": "general",
+      "cycle": "116"
+    },
+    {
+      "from": "doc-725ff2f8d770e4f19724edd7",
+      "to": "doc-7cb8562c2b191beabfef7e46",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
+      "role": "local_intake",
+      "program_key": "nstc-abroad-dragon",
+      "scope": "ntu",
+      "cycle": "116"
+    },
+    {
+      "from": "doc-7cb8562c2b191beabfef7e46",
+      "to": "doc-725ff2f8d770e4f19724edd7",
+      "url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+      "role": "policy",
+      "program_key": "nstc-abroad-dragon",
+      "scope": "ntu",
+      "cycle": "116"
+    },
+    {
+      "from": "doc-82e732a493acd30b20ee2163",
+      "to": "doc-6db49eb6cd36a3c5ed6ecae1",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
+      "role": "local_process",
+      "program_key": "nstc-grad-conference-policy",
+      "scope": "ntu-gice",
+      "cycle": "115"
+    },
+    {
+      "from": "doc-6db49eb6cd36a3c5ed6ecae1",
+      "to": "doc-4832561457a5aacbf3f4a74b",
+      "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%9B%BB%E4%BF%A1%E6%89%80%E5%8F%AF%E7%94%B3%E8%AB%8B%E8%A3%9C%E5%8A%A9%E4%B9%8B%E5%9C%8B%E9%9A%9B%E6%9C%83%E8%AD%B0%E5%88%97%E8%A1%A8_2026.pdf&filepath=.%2FNewsUploadDir%2F2026_06_18_16_37_20_0.pdf",
+      "role": "related_call",
+      "program_key": "nstc-grad-conference-policy",
+      "scope": "ntu-gice",
+      "cycle": "115"
+    },
+    {
+      "from": "doc-6db49eb6cd36a3c5ed6ecae1",
+      "to": "doc-39b737ec72e7d1ea9eef8472",
+      "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%9B%BB%E4%BF%A1%E6%89%80%E5%87%BA%E5%B8%AD%E5%9C%8B%E9%9A%9B%E6%9C%83%E8%AD%B0%E7%94%B3%E8%AB%8B%E8%A1%A8.pdf&filepath=.%2FNewsUploadDir%2F2026_06_18_16_37_20_1.pdf",
+      "role": "related_call",
+      "program_key": "nstc-grad-conference-policy",
+      "scope": "ntu-gice",
+      "cycle": "115"
+    }
+  ],
+  "scopes": [
+    {
+      "id": "general",
+      "label": "全國／主辦機構"
+    },
+    {
+      "id": "ntu",
+      "label": "臺大校級"
+    },
+    {
+      "id": "ntu-gice",
+      "label": "臺大電信所"
+    }
+  ],
+  "candidate_bindings": [
+    {
+      "candidate_id": "cand-ntu-nstc-phd-115-49f19393",
+      "program_key": "ntu-nstc-phd",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-ntu-moe-phd-115-49f19393",
+      "program_key": "ntu-moe-phd",
+      "phase": "round2",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-ntu-nstc-phd-rule-9dd47e84",
+      "program_key": "ntu-nstc-phd",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-ntu-moe-phd-rule-9dd47e84",
+      "program_key": "ntu-moe-phd",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-ntu-moe-phd-unknown-5ec6eddc",
+      "program_key": "ntu-moe-phd",
+      "phase": "round2",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-ntu-president-114-call-6d00251d",
+      "program_key": "ntu-president",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-ntu-yuanxue-115-ordinary-a943081a",
+      "program_key": "ntu-yuanxue",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-ntu-president-unknown-rule-0ef18354",
+      "program_key": "ntu-president",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-nstc-ntu-conference-f5477f6c",
+      "program_key": "nstc-grad-conference-policy",
+      "phase": "all",
+      "historical_baseline_allowed": false
+    },
+    {
+      "candidate_id": "cand-nstc-conference-rule-1b67cc16",
+      "program_key": "nstc-grad-conference-policy",
+      "phase": "all",
+      "historical_baseline_allowed": false
+    },
+    {
+      "candidate_id": "cand-faos-student-conference-ccd80040",
+      "program_key": "faos-student-conference",
+      "phase": "all",
+      "historical_baseline_allowed": false
+    },
+    {
+      "candidate_id": "cand-nstc-abroad-dragon-rule-81d5aeb0",
+      "program_key": "nstc-abroad-dragon",
+      "phase": "all",
+      "historical_baseline_allowed": false
+    },
+    {
+      "candidate_id": "cand-sinica-phd-fellowship-6165c00d",
+      "program_key": "sinica-phd-fellowship",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-taipei-ai-tools-4618de5c",
+      "program_key": "taipei-ai-tools",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-hsinchu-ai-tools-5067a675",
+      "program_key": "hsinchu-ai-tools",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-nstc-assistant-rule-d14f4d4e",
+      "program_key": "nstc-assistant-rule",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-ntu-eecs-scholarship-faea928c",
+      "program_key": "ntu-eecs-scholarship",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-ntu-ta-policy-7569d536",
+      "program_key": "ntu-ta-policy",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-ntu-ta-policy-2c257f6c",
+      "program_key": "ntu-ta-policy",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    }
+  ],
+  "http_requests": 16,
+  "reports": []
+}

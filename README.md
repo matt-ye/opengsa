@@ -13,7 +13,9 @@
 
 ## 目前狀態
 
-PR #28、#29已合併且GitHub Pages部署成功。本分支為PR #31：來源資訊鏈與多層時間軸第一階段，尚未合併；下列新增功能須PR31部署後才會出現在公開頁。
+PR #28、#29、#31已合併，PR31的A版工具列與資訊鏈時間軸已部署至GitHub Pages。當前工作為資訊鏈排查第一批，獨立待審，不自動改寫公開期限。
+
+新增[第一批排查與資料結構](docs/SOURCE-CHAIN-BATCH-01.md)、[離線樹狀圖HTML](docs/source-chains/source-chain-map.html)及[Obsidian Canvas](docs/source-chains/source-chain-map.canvas)。總索引涵蓋13方案／19候選；本批重新讀取3方案的10個指定來源，規則仍pending。
 
 - 保留19筆雷達候選／17份原文件／13組方案；正式pilot仍10筆draft，人工台帳仍空。
 - 新增共用JSON文件、關係與17個有來源hash／定位的日期事件；6個地方公告完成程式萃取，三個單位已有完整區間。不是全部19筆已完成資訊鏈。
