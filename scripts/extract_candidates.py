@@ -34,7 +34,7 @@ from scripts.verify_candidates import digest_text, evidence_digest, verify_candi
 from scripts.application_process import infer_process
 from scripts.ai_tool_rules import benefit_tiers
 
-EXTRACTOR_VERSION = "extractor-1.4.1"
+EXTRACTOR_VERSION = "extractor-1.4.2"
 PROMPT_VERSION = "prompt-1.2.1"
 
 PII_REDACT_RE = re.compile(
@@ -1843,7 +1843,7 @@ def _extract_nstc_conference(source, blocks, revision_id, observed_at, url, as_o
     cand["organizations"] = {
         "funder": {"text": "國家科學及技術委員會", "refs": [first_ref]},
         "announcer": {"text": "國立臺灣大學教務處研究生教務組" if is_ntu_route else "國家科學及技術委員會", "refs": [first_ref]},
-        "receiver": {"text": "學生先送臺大校內程序，再由學校向國科會線上彙送", "refs": [first_ref]},
+        "receiver": {"text": "學生先送臺大校內程序，再由學校向國科會線上彙送" if is_ntu_route else "申請機構向國科會彙送申請案；學生校內收件窗口另查", "refs": [first_ref]},
     }
     cand["benefit"] = {
         "summary": "核定部分出國開會費用補助（機票、註冊費、生活費等依核定分攤，非固定全額）。",

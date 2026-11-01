@@ -27,16 +27,23 @@ class SiteBuildTests(unittest.TestCase):
         self.assertEqual(files, {"index.html", "assets/opengsa-social-preview.jpg", ".nojekyll"})
         self.assertEqual((self.output / "assets/opengsa-social-preview.jpg").read_bytes(), (ROOT / "docs/assets/opengsa-social-preview.jpg").read_bytes())
 
-    def test_preview_is_self_contained_and_uses_current_draft(self):
+    def test_preview_is_self_contained_and_uses_named_radar_snapshot(self):
         self.assertNotIn('<script src=', self.html)
         embedded = re.search(r'<script id="pilot-data" type="application/json">(.*?)</script>', self.html, re.S)
-        self.assertEqual(json.loads(embedded[1]), json.loads((ROOT / "data/pilot.json").read_text(encoding="utf-8")))
+        snapshot=json.loads(embedded[1])
+        candidates=json.loads((ROOT/'data/candidates/source-review.json').read_text(encoding='utf-8'))['candidates']
+        self.assertEqual({o['id'] for o in snapshot['opportunities']},{c['candidate_id'] for c in candidates})
+        self.assertEqual(len(snapshot['opportunities']),19)
+        self.assertTrue(all(o['review']['status']=='draft' for o in snapshot['opportunities']))
+        self.assertIn('data-radar-view="true"',self.html)
+        metadata=re.search(r'<script id="radar-data" type="application/json">(.*?)</script>',self.html,re.S)
+        self.assertEqual(len(json.loads(metadata[1])['records']),19)
         conferences = re.search(r'<script id="conference-data" type="application/json">(.*?)</script>', self.html, re.S)
         self.assertEqual(json.loads(conferences[1]), json.loads((ROOT / "data/conference-programs.json").read_text(encoding="utf-8")))
         self.assertIn('name="robots" content="noindex, nofollow"', self.html)
         self.assertIn('property="og:image" content="https://matt-ye.github.io/opengsa/assets/opengsa-social-preview.jpg"', self.html)
         self.assertIn('href="https://matt-ye.github.io/opengsa/"', self.html)
-        self.assertIn('公開預覽 · 合成示範與來源草稿，非即時申請清單', self.html)
+        self.assertIn('獎助雷達預覽 · 來源摘要，非即時資格核定', self.html)
         self.assertIn('issues/new?template=preview-feedback.yml', self.html)
         self.assertIn('請勿提交個資或私人申訴', self.html)
 

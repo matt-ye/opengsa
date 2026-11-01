@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def export(output, pilot_data=None, review_preview=False):
+def export(output, pilot_data=None, review_preview=False, radar_view=False, radar_data=None):
     source = ROOT / "docs/design/wireframes.html"
     html = source.read_text(encoding="utf-8")
     for block, filename in [("pilot-data", "pilot.json"), ("conference-data", "conference-programs.json")]:
@@ -20,9 +20,14 @@ def export(output, pilot_data=None, review_preview=False):
         if count != 1:
             raise ValueError(f"Expected one {block} block")
     code = (ROOT / "docs/design/prototype.js").read_text(encoding="utf-8")
+    if radar_data is not None:
+        encoded=json.dumps(radar_data,ensure_ascii=False).replace('<','\\u003c')
+        html=html.replace('<script id="pilot-data"',f'<script id="radar-data" type="application/json">{encoded}</script>\n<script id="pilot-data"',1)
     if "</script" in code.lower():
         raise ValueError("Inline script delimiter must be escaped")
     html = html.replace('<script src="prototype.js"></script>', "<script>\n" + code + "\n</script>")
+    if radar_view:
+        html=html.replace('<body>','<body data-radar-view="true">',1)
     if review_preview:
         html=html.replace("<body>",'<body data-review-preview="true">',1)
         html=html.replace("設計審閱稿 · 四分頁互動線框 · 資料快照 2026.10.28 · 所有獎助資料待獨立覆核，非申請建議","候選審查預覽 · 未核准／未發布 · 僅顯示本批候選，非正式可申請清單",1)
