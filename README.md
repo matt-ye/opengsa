@@ -12,7 +12,7 @@
 
 ## 目前狀態
 
-2026-11-01本版整合PR #22–#27：維運與資助研究經更正後納入，文件準備／進階萃取與候選審查共用最新版本。全套140項Python／39項Node測試通過；review-1.1.0新增操作說明、中文缺漏及審查篩選。[需要你審核的項目與操作](docs/CURRENT-REVIEW-CHECKLIST.md) · [維運與成本提案](docs/LONG-TERM-ARCHITECTURE-AND-OPERATIONS.md) · [開源資助與擴展提案](docs/OPENAI-CODEX-FUND-APPLICATION-AND-EXPANSION.md)。19筆候選仍待審，合併程式不代表發布資料。
+2026-11-01本版整合PR #22–#27：維運與資助研究經更正後納入，文件準備／進階萃取與候選審查共用最新版本。全套140項Python／39項Node測試通過；review-1.1.0新增操作說明、中文缺漏及審查篩選。[需要你審核的項目與操作](docs/CURRENT-REVIEW-CHECKLIST.md) · [維運與成本提案](docs/LONG-TERM-ARCHITECTURE-AND-OPERATIONS.md) · [開源資助與擴展提案](docs/OPENAI-CODEX-FUND-APPLICATION-AND-EXPANSION.md) · [UI/UX與導覽教學研究](docs/UI-UX-ONBOARDING-AND-SKILLS-STUDY.md)。19筆候選仍待審，合併程式不代表發布資料。
 
 2026-10-31進階驗證補上15項對抗測試，修正HTML行內文字、表格定位、共用分支限制及局部時程。17文件／19候選已依新版本完整重掃，維持8通過／11有缺漏，沒有已知欄位退步；全套140項Python／38項Node通過。仍全部待審、0模型呼叫。[進階測試與限制](docs/ADVANCED-EXTRACTION-TESTS.md)。
 
@@ -103,6 +103,7 @@ flowchart TD
 | [公開預覽與部署](docs/DEPLOYMENT.md) | GitHub Pages發布、公開回饋、成品邊界、測試與回復 |
 | [長期維運與訂閱提案](docs/OPERATIONS-PLAN.md) | GitHub／D1分工、來源擷取、Agent檢核、成本、RSS與ICS；D1與訂閱尚未啟用 |
 | [首批來源及Actions設計](docs/INGESTION-POC.md) | 管線設計與已落地之結構化萃取、獨立檢核及差異覆核模組對照 |
+| [UI/UX與導覽教學研究](docs/UI-UX-ONBOARDING-AND-SKILLS-STUDY.md) | 使用者自研 Toutour / yaeo、cinematic-ui、Driver.js、Scroll-Hint 等工具庫評比與三階段落地藍圖 |
 | [API查核與模型台帳](docs/API-AUDIT.md) | Secret對應、模型目錄、額度／效期、手動實測與成本限制 |
 | [自動來源掃描](docs/SCANNER.md) | 已實作的來源台帳試點、低頻排程、結構化候選萃取、獨立檢核與故障保留 |
 | [專案縮圖原始設計](docs/design/social-preview.html) | 已核可圖稿的可修改HTML；GitHub Social preview由使用者自行上傳 |
