@@ -1,0 +1,52 @@
+{
+  "as_of": "2026-11-01",
+  "scope": "first_source_chain_stage_not_full_19_chain_completion",
+  "candidate_bindings": 19,
+  "document_nodes": 47,
+  "new_date_events": 17,
+  "documents_checked_in_last_run": 12,
+  "last_run_http_requests": 15,
+  "request_count_scope": "last_run_only_development_included_multiple_bounded_replays",
+  "model_calls": 0,
+  "human_approvals": 0,
+  "formal_data_modified": false,
+  "event_kinds": {
+    "announcement": 6,
+    "application_start": 5,
+    "student_deadline": 6
+  },
+  "deferred_reports": {
+    "format_parser_deferred": 4,
+    "document_budget_deferred": 4
+  },
+  "actual_interval_scopes": [
+    "ntu-gice",
+    "ntu-ac",
+    "sinica-ipsas"
+  ],
+  "historical_forecast_scopes": [
+    "ntu-ac",
+    "sinica-ipsas"
+  ],
+  "python_tests": 163,
+  "node_tests": 46,
+  "chrome": {
+    "existing_records": 19,
+    "details": 19,
+    "gantt_rows": 19,
+    "groups": 13,
+    "local_intervals": 3,
+    "mobile_width": 320,
+    "horizontal_page_overflow": false,
+    "errors": 0,
+    "warnings": 0,
+    "issues_submitted": 0
+  },
+  "limits": [
+    "六個明確年度／地方公告，其他既有來源僅保留快照與關聯入口",
+    "ODT等格式延後，不假稱已解析",
+    "年度入口自動發現與人工例外尚未全面整合",
+    "新資料僅為雷達補充，所有時間事件pending",
+    "手動Actions不啟用定期補鏈或自動發布"
+  ]
+}

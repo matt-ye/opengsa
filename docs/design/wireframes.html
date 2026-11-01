@@ -181,6 +181,13 @@ html{scroll-behavior:smooth}
 .clarity{padding:8px 12px;border-left:4px solid #a26e28;background:#fff5dd;border-radius:4px;font-size:14px}.clarity.green{border-color:#356c56;background:#e8f3eb}.clarity.red{border-color:#a23c32;background:#fcebea}.clarity.example{border-color:#6b7774;background:#edf1ee}.card-actions a{display:inline-flex;align-items:center;min-height:44px;overflow-wrap:anywhere}.result-group{grid-column:1/-1;margin:20px 0 0}.card details{margin-top:12px}.card details summary{cursor:pointer;min-height:44px}
 #document-mode{display:block;width:100%;max-width:520px;min-width:0}
 .unknown-icon{color:#966300;margin-right:.3em;display:inline-block}.unknown-link{font-weight:500}
+
+.gantt-bar.baseline{top:15px;height:48px;background:rgba(168,187,153,.22)!important;border:1px dashed #849477;z-index:0}
+.process-line{position:absolute;top:65px;height:2px;background:#899797;z-index:1}
+.timeline-summary{border-left:3px solid #c0cfbe;padding:0 10px;margin:12px 0}
+.timeline-summary p{margin:6px 0}
+#timeline-controls{padding:12px;border:1px solid var(--line);border-radius:10px}
+#timeline-controls p{flex-basis:100%;margin:0}
 </style>
 </head>
 <body>
@@ -245,13 +252,21 @@ html{scroll-behavior:smooth}
 <div class="view-row"><span aria-live="polite" class="result-meta" id="result-count" role="status"></span><div aria-label="結果檢視" class="segmented" id="view-switch" role="group"><button aria-pressed="true" data-view="gantt" type="button">甘特圖</button><button aria-pressed="false" data-view="list" type="button">清單</button></div></div>
 <div class="selection-strip"><span aria-live="polite" id="selection-count" role="status"></span><div class="range-buttons"><button class="secondary" id="select-filtered" type="button">勾選目前結果</button><button class="secondary" id="clear-selection" type="button">清除勾選</button><a class="small" href="#detail">看詳情 →</a><a class="small" href="#timeline">排時間軸 →</a></div></div>
 <div class="panel" hidden="" id="empty-results"><p>沒有符合目前條件的項目。</p><button class="secondary" id="empty-reset" type="button">清除篩選，查看全部</button></div>
+<div id="timeline-controls" class="range-controls" hidden>
+<label for="timeline-scope">時程適用單位 <select id="timeline-scope"></select></label>
+<label for="timeline-year">參考年度 <select id="timeline-year"></select></label>
+<label class="checkbox-label"><input id="timeline-baselines" type="checkbox" checked>顯示往年／估計底帶</label>
+<button id="timeline-focus" type="button" class="secondary">跳至申請／參考時段</button>
+<p class="tiny quiet">選擇單位可查看已找到的地方收件公告；僅補充對應方案，其他單位期限另定。</p>
+</div>
 <div id="gantt-view">
 <div class="range-controls"><label for="range-mode">時間範圍 <select id="range-mode"><option value="recent">今天前後 90 天</option><option value="fit">涵蓋所有已知日期</option></select></label><span class="today-label" id="today-label"></span><div class="range-buttons"><button aria-label="往前30天" class="secondary" id="previous-range" type="button">← 30 天</button><button class="secondary" id="return-today" type="button">回到今天</button><button aria-label="往後30天" class="secondary" id="next-range" type="button">30 天 →</button></div></div>
 <p class="tiny quiet" id="chart-range"></p><p class="tiny quiet" hidden="" id="outside-today">今天不在目前視窗內，可按「回到今天」。</p>
-<div aria-label="甘特圖圖例" class="gantt-legend"><span class="legend-item"><i aria-hidden="true" class="legend-bar"></i>申請起訖</span><span class="legend-item"><i aria-hidden="true" class="legend-inferred"></i>推定受理起日</span><span class="legend-item"><i aria-hidden="true" class="legend-prep-window"></i>準備提醒期（截止前30天）</span><span class="legend-item"><i aria-hidden="true" class="legend-wait"></i>等待結果</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond"></i>結果公布</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond expected"></i>預定結果日</span><span class="legend-item"><i aria-hidden="true" class="legend-square"></i>校內／機關節點</span><span class="legend-item">▱ 個人準備建議／空心節點待核</span><span class="legend-item"><i aria-hidden="true" class="legend-today"></i>今天進行線</span></div>
+<div aria-label="甘特圖圖例" class="gantt-legend"><span class="legend-item">▱ 淺色底帶：往年參考／估計（非官方受理）</span><span class="legend-item">─ 公告至截止流程（非申請期）</span><span class="legend-item"><i aria-hidden="true" class="legend-bar"></i>申請起訖</span><span class="legend-item"><i aria-hidden="true" class="legend-inferred"></i>推定受理起日</span><span class="legend-item"><i aria-hidden="true" class="legend-prep-window"></i>準備提醒期（截止前30天）</span><span class="legend-item"><i aria-hidden="true" class="legend-wait"></i>等待結果</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond"></i>結果公布</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond expected"></i>預定結果日</span><span class="legend-item"><i aria-hidden="true" class="legend-square"></i>校內／機關節點</span><span class="legend-item">▱ 個人準備建議／空心節點待核</span><span class="legend-item"><i aria-hidden="true" class="legend-today"></i>今天進行線</span></div>
 <div aria-label="獎助申請甘特圖，可水平捲動；下方另有文字日期表" class="gantt-scroll" role="region" tabindex="0"><div class="gantt-grid" id="gantt-grid"></div></div>
 <p class="prototype-hint">點選色帶或節點查看日期；窄螢幕可水平捲動，左側名稱固定。圖以日為單位，確切截止時分請看摘要與正式來源。</p>
 </div>
+<p class="tiny quiet">往年／常態區間僅供準備參考；實際資格、申請起訖與程序，以及未竟事宜，以主辦及受理單位最新公告為準。</p>
 <div hidden="" id="list-view"><div class="cards" id="result-cards"></div></div>
 <aside aria-label="選取項目的時程摘要" aria-live="polite" class="panel" hidden="" id="schedule-inspect"></aside>
 <details id="dates-table"><summary>查看文字日期表</summary><div class="table-scroll"><table><caption class="tiny quiet">與目前篩選同步的日期；待確認不代表不限期。</caption><thead><tr><th scope="col">獎助項目</th><th scope="col">申請開始</th><th scope="col">學生截止</th><th scope="col">結果公布</th><th scope="col">其他程序</th></tr></thead><tbody id="date-rows"></tbody></table></div></details>
@@ -275,7 +290,7 @@ html{scroll-behavior:smooth}
 <div id="timeline-workspace">
 <div class="range-controls"><label for="personal-range-mode">時間範圍 <select id="personal-range-mode"><option value="recent">今天前後90天</option><option value="fit">涵蓋選項的已知日期</option></select></label><span class="today-label" id="personal-today"></span><button class="secondary" id="personal-return-today" type="button">回到今天</button></div>
 <p class="tiny quiet" id="personal-chart-range"></p>
-<div aria-label="個人時間軸圖例" class="gantt-legend"><span class="legend-item"><i aria-hidden="true" class="legend-bar"></i>申請期間</span><span class="legend-item"><i aria-hidden="true" class="legend-inferred"></i>推定受理起日</span><span class="legend-item"><i aria-hidden="true" class="legend-prep-window"></i>準備提醒期（截止前30天）</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond expected"></i>預定結果</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond"></i>結果公布</span><span class="legend-item"><i aria-hidden="true" class="legend-square"></i>其他程序</span><span class="legend-item">▱ 個人準備建議／空心節點待核</span><span class="legend-item"><i aria-hidden="true" class="legend-today"></i>今天</span></div>
+<div aria-label="個人時間軸圖例" class="gantt-legend"><span class="legend-item">▱ 淺色底帶：往年參考／估計（非官方受理）</span><span class="legend-item">─ 公告至截止流程（非申請期）</span><span class="legend-item"><i aria-hidden="true" class="legend-bar"></i>申請期間</span><span class="legend-item"><i aria-hidden="true" class="legend-inferred"></i>推定受理起日</span><span class="legend-item"><i aria-hidden="true" class="legend-prep-window"></i>準備提醒期（截止前30天）</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond expected"></i>預定結果</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond"></i>結果公布</span><span class="legend-item"><i aria-hidden="true" class="legend-square"></i>其他程序</span><span class="legend-item">▱ 個人準備建議／空心節點待核</span><span class="legend-item"><i aria-hidden="true" class="legend-today"></i>今天</span></div>
 <div aria-label="使用中選項的時間軸，可水平捲動" class="gantt-scroll" role="region" tabindex="0"><div class="gantt-grid" id="personal-gantt-grid"></div></div>
 <p class="prototype-hint">點選項目或節點可前往第二頁。缺日期保留待確認，不影響下方待辦。</p>
 <div class="section-title"><h3>申請清單與準備待辦</h3></div>

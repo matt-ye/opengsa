@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def export(output, pilot_data=None, review_preview=False, radar_view=False, radar_data=None):
+def export(output, pilot_data=None, review_preview=False, radar_view=False, radar_data=None, chain_data=None):
     source = ROOT / "docs/design/wireframes.html"
     html = source.read_text(encoding="utf-8")
     for block, filename in [("pilot-data", "pilot.json"), ("conference-data", "conference-programs.json")]:
@@ -23,6 +23,9 @@ def export(output, pilot_data=None, review_preview=False, radar_view=False, rada
     if radar_data is not None:
         encoded=json.dumps(radar_data,ensure_ascii=False).replace('<','\\u003c')
         html=html.replace('<script id="pilot-data"',f'<script id="radar-data" type="application/json">{encoded}</script>\n<script id="pilot-data"',1)
+    if chain_data is not None:
+        encoded=json.dumps(chain_data,ensure_ascii=False).replace('<','\\u003c')
+        html=html.replace('<script id="pilot-data"',f'<script id="source-chain-data" type="application/json">{encoded}</script>\n<script id="pilot-data"',1)
     if "</script" in code.lower():
         raise ValueError("Inline script delimiter must be escaped")
     html = html.replace('<script src="prototype.js"></script>', "<script>\n" + code + "\n</script>")

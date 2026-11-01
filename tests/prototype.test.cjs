@@ -8,6 +8,45 @@ const demo = core.makeDemo(today);
 const pilot = JSON.parse(fs.readFileSync(path.join(__dirname,"../data/pilot.json"),"utf8"));
 const conferenceData=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/conference-programs.json"),"utf8"));
 
+test("地方時間事件僅套用指定單位，歷史估計不宣稱開放申請",()=>{
+ const item={id:"SYNTH",title:"SYNTH",start:{value:null},end:{value:null},result:{value:null},milestones:[],rawState:"unknown",application:"待確認",note:"SYNTH",degrees:[]};
+ const data={documents:[{id:"d",url:"https://example.test/call",checked_on:"2026-07-01"}],records:{SYNTH:{contexts:[
+  {scope:"unit",scope_label:"合成單位",year:2026,phase:"annual",conflict:false,events:[
+   {id:"a",kind:"announcement",value:"2026-06-01",document_id:"d"},
+   {id:"s",kind:"application_start",value:"2026-07-08",document_id:"d"},
+   {id:"e",kind:"student_deadline",value:"2026-07-27T17:00:00+08:00",document_id:"d"},
+   {id:"f",kind:"college_forward",value:"2026-08-01",document_id:"d"}],baselines:[]},
+  {scope:"unit",scope_label:"合成單位",year:2027,phase:"annual",conflict:false,events:[],baselines:[
+   {start:"2027-07-07",end:"2027-07-27",sample_years:[2025,2026],kind:"historical_estimate"}]}]}}};
+ assert.equal(core.applyTimeline(item,data,"general",2026),item);
+ assert.equal(core.applyTimeline(item,data,"other",2026),item);
+ const actual=core.applyTimeline(item,data,"unit",2026,true,"2026-07-10");
+ assert.equal(actual.start.value,"2026-07-08");assert.equal(actual.end.value,"2026-07-27T17:00:00+08:00");
+ assert.equal(actual.rawState,"open");assert.deepEqual(actual.degrees,[]);assert.equal(item.start.value,null);
+ assert.equal(actual.milestones.find(x=>x.note==="college_forward").value,"2026-08-01");
+ const forecast=core.applyTimeline(item,data,"unit",2027,true,"2027-07-10");
+ assert.equal(forecast.rawState,"unknown");assert.equal(forecast.start.value,null);
+ assert.equal(forecast.timeline.baselines.length,1);
+ assert.equal(core.applyTimeline(item,data,"unit",2027,false).timeline.baselines.length,0);
+ const range=core.domain([forecast],"2026-11-01","fit");
+ assert.ok(range.end>=core.dayNumber("2027-07-27"));
+ data.records.SYNTH.contexts[0].conflict=true;
+ const conflict=core.applyTimeline(item,data,"unit",2026,true,"2026-07-10");
+ assert.equal(conflict.start.value,null);assert.equal(conflict.rawState,"unknown");
+ data.records.SYNTH.contexts[0].conflict=false;
+ data.documents[0].checked_on="2020-01-01";
+ assert.equal(core.applyTimeline(item,data,"unit",2026,true,"2026-07-10").rawState,"unknown");
+ data.documents[0].checked_on="2026-07-01";
+ for(const e of data.records.SYNTH.contexts[0].events)e.certainty="expected";
+ const expected=core.applyTimeline(item,data,"unit",2026,true,"2026-07-10");
+ assert.equal(expected.rawState,"unknown");assert.equal(expected.start.value,null);
+ assert.ok(expected.milestones.some(e=>e.label==="預定 申請開始"));
+ for(const e of data.records.SYNTH.contexts[0].events)e.certainty="announced";
+ data.records.SYNTH.contexts.push({...data.records.SYNTH.contexts[0],phase:"round2"});
+ const multiple=core.applyTimeline(item,data,"unit",2026,true,"2026-07-10");
+ assert.equal(multiple.start.value,null);assert.equal(multiple.timeline.multiPhase,true);
+});
+
 test("雷達將已知符合與未知條件分區，未知不冒充不限年級或可兼領",()=>{
  const entries=[{id:"SYNTH-known",title:"SYNTH",cycle:"2026",year:"unlimited",compatibility:"allowed",degrees:["phd"],rawState:"open"},
  {id:"SYNTH-unknown",title:"SYNTH",cycle:"2026",year:"unknown",compatibility:"unknown",degrees:[],rawState:"unknown"},

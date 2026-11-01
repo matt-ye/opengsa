@@ -134,6 +134,11 @@ def main():
     candidate_paths=list((ROOT/"data/candidates").glob("*.json"))
     for path in candidate_paths:
         errors.extend(f"{path.name}: {e}" for e in validate_candidate_snapshot(read_json(path),read_json(ROOT/"data/scan-sources.json")))
+    from scripts.source_chains import timeline_metadata
+    try:
+        timeline_metadata(read_json(ROOT/'data/source-chains.json'),read_json(ROOT/'data/candidates/source-review.json'))
+    except Exception as error:
+        errors.append('source-chains: '+str(error))
     if errors:
         for error in errors:
             print(error)
