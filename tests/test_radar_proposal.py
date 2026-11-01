@@ -63,6 +63,22 @@ class RadarProposalTests(unittest.TestCase):
         bad=set(summary['invalidated_timeline_documents'])
         self.assertFalse(any(ref['document_id'] in bad for p in index['programs'] for r in p['rules'] for ref in r['evidence_refs']))
 
+    def test_same_bytes_allow_explicit_revision_rebinding_without_new_dates(self):
+        base=read(ROOT/'data/candidates/source-review.json');index=read(ROOT/'data/source-chain-index.json')
+        docs=[d for path in index['bundles'] for d in read(ROOT/path)['documents'] if d.get('raw_sha256')]
+        c=deepcopy(next(c for c in base['candidates'] if any(d['url']==c['source_metadata']['url'] for d in docs)))
+        doc=next(d for d in docs if d['url']==c['source_metadata']['url']);old=c['source_metadata']['revision_id'];new='b'*64
+        c['candidate_id']='SYNTH-byte-revision';c['source_metadata']['revision_id']=new
+        for e in c['field_evidence']:
+            if e.get('revision_id')==old:e['revision_id']=new
+        base['candidates']=[c]
+        observation={'records':[{'url':doc['url'],'revision_id':new,'raw_sha256':doc['raw_sha256'],'content_verified':True}]}
+        files,summary=prepare(base,read(ROOT/'data/scan-sources.json'),observation)
+        self.assertIn(doc['id'],summary['byte_identical_rebound_documents'])
+        self.assertNotIn(doc['id'],summary['invalidated_timeline_documents'])
+        changed=next(d for path in index['bundles'] for d in files[path]['documents'] if d['id']==doc['id'] and d.get('events')) if doc['events'] else None
+        if changed:self.assertEqual([e['value'] for e in changed['events']],[e['value'] for e in doc['events']])
+
     def test_unused_discovery_aliases_do_not_break_preview_or_enable_scans(self):
         bundle,config,profile=self.fixture()
         config['sources'].append({**profile,'id':'SYNTH-unused-alias'})

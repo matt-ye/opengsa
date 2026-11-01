@@ -173,6 +173,7 @@ def _amount_tokens(amount):
     elif amount == amt_int:
         # Exact decimal 萬 representation (2.5萬元), independently checked below.
         tokens.append(format(Decimal(amt_int)/Decimal(10000),'f').rstrip('0').rstrip('.')+'萬')
+    if amt_int and amt_int%1000==0:tokens.append(str(amt_int//1000)+'千')
     return list(dict.fromkeys(tokens))
 
 
@@ -467,7 +468,7 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
 
     ev_errors.extend(process_errors(cand))
     if in_memory_blocks is not None:
-        if cand.get("resource_kind")=="tool_subscription":
+        if cand.get("program_key") in ("taipei-ai-tools","hsinchu-ai-tools") or meta.get('source_id') in ("taipei-ai-tools","hsinchu-ai-tools"):
             expected_tiers=benefit_tiers(in_memory_blocks)
             expected_pairs={(t["label"],t["amount_max"]) for t in expected_tiers}
             for item in benefit_items:
@@ -675,7 +676,7 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
     if not is_stub:
         if cycle.get("kind") in ("calendar_year","academic_year") and cycle.get("year") is None:
             coverage_warnings.append("coverage_gap:cycle_year_unknown")
-        if cand.get("resource_kind")=="tool_subscription":
+        if cand.get("program_key") in ("taipei-ai-tools","hsinchu-ai-tools") or meta.get('source_id') in ("taipei-ai-tools","hsinchu-ai-tools"):
             if not cand.get("expense_period"):coverage_warnings.append("coverage_gap:ai_tools:expense_period")
             if in_memory_blocks is not None:
                 expected={(t["label"],t["amount_max"]) for t in benefit_tiers(in_memory_blocks)}

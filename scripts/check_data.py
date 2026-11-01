@@ -150,6 +150,10 @@ def main():
         from scripts.export_expansion_report import validate_artifacts
         try:validate_artifacts(ROOT)
         except Exception as error:errors.append('source-expansion: '+str(error))
+    if (ROOT/'data/source-expansion/original-source-verification.json').exists():
+        from scripts.close_source_verification import validate_report
+        try:validate_report(read_json(ROOT/'data/source-expansion/original-source-verification.json'),read_json(ROOT/'data/source-inventory.json'))
+        except Exception as error:errors.append('original-source-verification: '+str(error))
     if errors:
         for error in errors:
             print(error)

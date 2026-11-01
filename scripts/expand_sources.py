@@ -104,9 +104,10 @@ def named_candidate(row,prepared,known):
 def profile_for(row,prepared,known):
     if known:return deepcopy(known)
     category,kind={'award':('outcome_award','award'),'mobility':('international_conference','travel_grant'),
-        'living':('living_tuition','scholarship'),'foundation':('living_tuition','scholarship'),
+        'living':('living_tuition','scholarship'),'foundation':('living_tuition','scholarship'),'campus':('living_tuition','scholarship'),
         'identity':('living_tuition','scholarship'),'ai':('research_tools','tool_subscription')}.get(row['category'],('phd_research','scholarship'))
     if re.search(r'赴國外研究|境外研究',prepared['title'] or ''):category,kind='overseas_research','travel_grant'
+    if re.search(r'校長獎|院長獎|論文獎|著作獎',prepared['title'] or ''):category,kind='outcome_award','award'
     # Routing tags are preliminary; unknown degree/year/college remain unknown.
     return {'id':'discovery-'+row['id'].lower(),'title':prepared['title'],'url':row['url'],
         'body_selector':'body','required_markers':[],'pdf_include':[],'max_pdfs':0,
