@@ -19,6 +19,7 @@ from scripts.review_context import refresh_context
 from scripts.scan_sources import validate_config
 from scripts.verify_candidates import classify_review_gaps
 from scripts.radar_metadata import radar_metadata
+from scripts.source_chains import timeline_metadata
 
 
 def merge_decisions(ledger, decisions, bundle):
@@ -147,7 +148,9 @@ def build_workspace(bundle,pilot,config,output,ledger=None,decisions=None,contex
     output.mkdir(parents=True,exist_ok=True)
     # Last verified snapshot controls field visibility; an offline workspace's
     # needs_context status is not a new claim that the original source omitted it.
-    export(output/"candidate-preview.html",pilot_data=preview,review_preview=True,radar_data=radar_metadata(bundle))
+    chain_path=ROOT/'data/source-chains.json'
+    chain=timeline_metadata(json.loads(chain_path.read_text(encoding='utf-8')),bundle) if chain_path.exists() else None
+    export(output/"candidate-preview.html",pilot_data=preview,review_preview=True,radar_data=radar_metadata(bundle),chain_data=chain)
     payload={"as_of":working["as_of"],"rows":rows,"manifest":manifest,"document_groups":document_groups}
     template=(ROOT/"docs/design/review-workspace.html").read_text(encoding="utf-8")
     script=(ROOT/"docs/design/review-workspace.js").read_text(encoding="utf-8")

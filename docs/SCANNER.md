@@ -85,3 +85,8 @@ noted／dismissed是文件層級佇列處置；帶candidate_id的處置只影響
 ## 地方AI工具補助候選
 
 臺北／新竹兩個公開正文profile及具名候選已接入，僅規則萃取、不修改pilot。購買／訂閱支出期間與申請期限分開，年度上限不代表個人仍可申請；分支與缺漏需覆核。細節見[候選推進](AI-TOOLS-CANDIDATES.md)。
+
+
+## 來源資訊鏈的手動掃描（PR31）
+
+`data/source-chain-sources.json`為有限補鏈配置，`data/source-chains.json`為待審文件／關係／事件快照，依`schema/source-chains.schema.json`驗證；不修改既有完整候選／正式pilot。HTML／文字PDF已支持，其他格式與未讀連結明示延期；全文不存repo，hash_only沒有摘錄。新手動operation=source_chains無Secrets／模型，不自動回存或發布。地方／梯次、實際／歷史／預估分別呈現，完整說明見[SOURCE-CHAINS-AND-TIMELINE.md](SOURCE-CHAINS-AND-TIMELINE.md)。

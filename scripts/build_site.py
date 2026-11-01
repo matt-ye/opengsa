@@ -10,6 +10,7 @@ if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from scripts.build_review_workspace import candidate_preview_data
 from scripts.check_data import validate_candidate_snapshot
 from scripts.radar_metadata import radar_metadata
+from scripts.source_chains import timeline_metadata
 
 URL = "https://matt-ye.github.io/opengsa/"
 FEEDBACK = "https://github.com/matt-ye/opengsa/issues/new?template=preview-feedback.yml"
@@ -25,7 +26,7 @@ def build(output):
     # Read-only discovery view. This does not confer human approval or modify
     # the complete-data pilot/ledger; unknown fields remain explicit in the UI.
     export(output / "index.html",pilot_data=candidate_preview_data(candidates,pilot,config),radar_view=True,
-           radar_data=radar_metadata(candidates))
+           radar_data=radar_metadata(candidates),chain_data=timeline_metadata(read('source-chains.json'),candidates))
     page = output / "index.html"
     html = page.read_text(encoding="utf-8")
 

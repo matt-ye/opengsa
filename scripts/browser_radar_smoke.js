@@ -1,5 +1,6 @@
 // Manual Chrome smoke test via playwright-cli run-code --filename. No issues submitted.
 async (page) => {
+ await page.locator('#view-switch [data-view="list"]').click();
  const summary=await page.evaluate(()=>{
   const metadata=JSON.parse(document.querySelector('#radar-data').textContent).records;
   const cards=[...document.querySelectorAll('#result-cards article.card')];

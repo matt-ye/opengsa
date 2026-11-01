@@ -1,0 +1,370 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OpenGSA來源關係與待審時間事件（不代表核准）",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_at",
+    "model_calls",
+    "official_data_modified",
+    "documents",
+    "relations",
+    "scopes",
+    "candidate_bindings",
+    "http_requests",
+    "reports"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "source-chain-1"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "model_calls": {
+      "const": 0
+    },
+    "official_data_modified": {
+      "const": false
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "observed_at": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "format": {
+            "enum": [
+              "html",
+              "pdf",
+              "unknown"
+            ]
+          },
+          "evidence_mode": {
+            "enum": [
+              "short_excerpt",
+              "hash_only"
+            ]
+          },
+          "candidate_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/event"
+            }
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "url",
+                "role"
+              ],
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string",
+                  "maxLength": 100
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "etag": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "last_modified": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "revision_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "previous_revision_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "semantic_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "raw_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "profile_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "id",
+          "url",
+          "format",
+          "status",
+          "evidence_mode",
+          "events",
+          "links",
+          "candidate_ids",
+          "observed_at"
+        ]
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "from",
+          "to",
+          "url",
+          "role",
+          "program_key",
+          "scope",
+          "cycle"
+        ],
+        "properties": {
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "program_key": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "cycle": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "scopes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "label"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "candidate_bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "candidate_id",
+          "program_key",
+          "phase"
+        ],
+        "properties": {
+          "candidate_id": {
+            "type": "string"
+          },
+          "program_key": {
+            "type": "string"
+          },
+          "phase": {
+            "type": "string"
+          },
+          "historical_baseline_allowed": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "http_requests": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 20
+    },
+    "reports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "url",
+          "status"
+        ],
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "program_key": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "cycle": {
+          "type": "string"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "announcement",
+            "application_start",
+            "student_deadline",
+            "supplement_deadline",
+            "college_forward",
+            "university_forward",
+            "decision",
+            "result_publication",
+            "payment"
+          ]
+        },
+        "value": {
+          "type": "string"
+        },
+        "document_id": {
+          "type": "string"
+        },
+        "revision_id": {
+          "type": "string"
+        },
+        "locator": {
+          "type": "string"
+        },
+        "basis": {
+          "enum": [
+            "explicit",
+            "since_publication"
+          ]
+        },
+        "certainty": {
+          "enum": [
+            "announced",
+            "expected"
+          ]
+        },
+        "review_status": {
+          "const": "pending"
+        },
+        "application_year": {
+          "type": "integer",
+          "minimum": 2000,
+          "maximum": 2100
+        },
+        "block_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "excerpt": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "publication_ref": {
+          "type": "object",
+          "required": [
+            "locator",
+            "block_sha256"
+          ],
+          "properties": {
+            "locator": {
+              "type": "string"
+            },
+            "block_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "additionalProperties": false
+        },
+        "timezone": {
+          "const": "Asia/Taipei"
+        }
+      },
+      "required": [
+        "id",
+        "program_key",
+        "scope",
+        "cycle",
+        "phase",
+        "kind",
+        "value",
+        "document_id",
+        "revision_id",
+        "locator",
+        "basis",
+        "certainty",
+        "review_status",
+        "application_year",
+        "block_sha256",
+        "timezone"
+      ]
+    }
+  }
+}
