@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0.0",
+  "validation_only": true,
+  "owner": "repository-maintainers",
+  "policy_checked_on": "2026-11-01",
+  "policy": "public_bounded_get_short_evidence_only",
+  "allowed_hosts": ["law.nstc.gov.tw", "www.aca.ntu.edu.tw", "sec.ntu.edu.tw"],
+  "max_requests": 20,
+  "max_changed_documents": 5,
+  "max_pending_candidates": 24,
+  "minimum_host_interval_seconds": 3,
+  "max_run_seconds": 180,
+  "sources": [
+    {
+      "id": "validation-nstc-humanities-dissertation",
+      "title": "國科會人文社會科學博士候選人撰寫博士論文獎勵作業要點",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039061",
+      "body_selector": "#ctl00_cp_content_divLawContent08",
+      "required_markers": ["博士候選人", "論文"],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "evidence_mode": "short_excerpt",
+      "scope": "nationwide",
+      "review_note": "既有種子之隔離外部驗證；不是排程來源，不匯入正式資料。"
+    },
+    {
+      "id": "validation-ntu-humanities-call",
+      "title": "臺大115年人社博士候選人論文獎勵公告",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+      "body_selector": ".article-center",
+      "required_markers": ["博士", "申請"],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "evidence_mode": "hash_only",
+      "scope": "ntu",
+      "review_note": "教務處維持零原文外送；只作未調參的外部格式檢驗。"
+    },
+    {
+      "id": "validation-ntu-graduate-support-policy",
+      "title": "臺大研究生獎勵金實施辦法（秘書室制度文件）",
+      "url": "https://sec.ntu.edu.tw/001/Upload/relfile/9760/24895/04-038.pdf",
+      "body_selector": "body",
+      "required_markers": ["研究生獎勵金"],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "format": "pdf",
+      "evidence_mode": "short_excerpt",
+      "scope": "ntu",
+      "category": "indirect_support",
+      "resource_kind": "employment_support",
+      "review_note": "隔離驗證PDF；版本新舊須另核對，不標為當期受理或最新版。"
+    }
+  ]
+}

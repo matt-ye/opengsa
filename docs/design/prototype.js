@@ -105,7 +105,7 @@ function partitionItems(items,filters){
 function clarity(item,asOf=taipeiToday()){
  if(item.synthetic||item.personal)return {level:"example",text:item.personal?"個人規劃／未核實":"合成示範",known:0,total:0};
  const parts=[Boolean(officialUrl(item.url)&&item.title),Boolean(item.cycle&&!/待|不明|unknown/.test(item.cycle)),
-  Boolean(item.timeRule||(item.end.value&&item.end.certainty==="confirmed"&&item.resourceKind!=="tool_subscription")),Boolean(item.audience)];
+  Boolean(item.timeRule||(item.end.value&&item.end.certainty==="confirmed"&&item.resourceKind!=="tool_subscription")),Boolean(item.audience&&item.audienceKind!=="program_descriptor")];
  const known=parts.filter(Boolean).length;
  const invalidDate=[item.start,item.end].some(e=>e.value&&dayNumber(e.value)===null);
  const conflict=Boolean(item.conflict)||!parts[0]||invalidDate||(item.start.value&&item.end.value&&dayNumber(item.end.value)<dayNumber(item.start.value));
@@ -163,6 +163,7 @@ function makeDrafts(pilot,asOf=taipeiToday(),radarData=null) {
    const draft={
    id:item.id,title:item.title,category:item.category,source:resolvedSource,programKey:item.program_key,cycleKind:item.cycle.kind,resourceKind:item.resource_kind,
    audience:unknownValue(item.eligibility.identity.text)?null:item.eligibility.identity.text,
+   audienceKind:item.eligibility.identity.claim_kind||"source_specific_summary",
    degrees:/身分條件請至來源/.test(item.eligibility.identity.text)?[]:item.eligibility.degrees,year:item.field_applicability?.year_limit?.status==="not_applicable"?"not_applicable":item.eligibility.year_limit.mode,
    candidateMode:item.eligibility?.candidate?.mode || "unknown",
    compatibility:item.compatibility.mode,hardship:item.hardship.mode,
@@ -574,7 +575,7 @@ function radarSummary(container,item){
  badge.textContent=({green:"🟢 ",amber:"🟡 ",red:"🔴 ",example:"○ "})[quality.level]+quality.text+(quality.total?" · 核心資訊 "+quality.known+"／"+quality.total+" 項":"");
  container.append(badge);
  if(item.rawState==="closed")container.append(el("p","small","歷史公告：本期已截止"));
- radarFact(container,"大致對象",item.audience||(item.synthetic?"合成示範":null),item);
+ radarFact(container,item.audienceKind==="program_descriptor"?"對象線索（非完整資格）":"大致對象",item.audience||(item.synthetic?"合成示範":null),item);
  if(item.estimatedStart)radarFact(container,"推估開始（非官方起日）",dateText(item.estimatedStart.value)+"；"+item.estimatedStart.note,item);
  if(item.rawState==="not_applicable")radarFact(container,"申請時間",item.method?.mode==="automatic"?"來源明示免另行申請":"制度參考；當期申請請查個別公告",item);
  else if(item.timeSteps?.length){

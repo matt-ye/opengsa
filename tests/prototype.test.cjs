@@ -40,6 +40,10 @@ test("清晰度評估核心欄位，日期矛盾不能被完整度抵銷",()=>{
   start:{value:"2026-11-01",certainty:"confirmed"},end:{value:"2026-12-01",certainty:"confirmed"}};
  assert.equal(core.clarity(item,"2026-11-01").level,"green");
  assert.equal(core.clarity({...item,audience:null},"2026-11-01").level,"amber");
+ assert.equal(core.clarity({...item,audienceKind:"program_descriptor"},"2026-11-01").level,"amber");
+ const descriptor={...item,id:'SYNTH-descriptor',degrees:[],candidateMode:'unknown'};
+ assert.equal(core.partitionItems([descriptor],{degree:'phd',includeUnknown:false}).all.length,0);
+ assert.equal(core.partitionItems([descriptor],{degree:'phd',includeUnknown:true}).possible.length,1);
  assert.equal(core.clarity({...item,sourceChecked:"2020-01-01"},"2026-11-01").level,"amber");
  assert.equal(core.clarity({...item,end:{value:"2026-10-01"}},"2026-11-01").level,"red");
  assert.equal(core.clarity({...item,resourceKind:"tool_subscription"},"2026-11-01").level,"amber");

@@ -28,7 +28,7 @@ from scripts.evaluate_deadlines import parse_iso_date, parse_taipei_datetime
 from scripts.application_process import infer_process, process_errors
 from scripts.ai_tool_rules import benefit_tiers
 
-VERIFIER_VERSION = "verifier-1.3.0"
+VERIFIER_VERSION = "verifier-1.4.0"
 
 CONTACT_RE = re.compile(r"@|電話|聯絡|承辦|傳真|住址|通訊地址|\b0\d{1,3}[- ]\d{6,}")
 SKIP_RE = re.compile(r"名冊|名單|獲獎|得獎|姓名|學號|身分證|jsessionid|password|token=|login|登入", re.I)
@@ -333,6 +333,22 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
     if elig.get("nationality") not in (None, "unknown"):
         if "eligibility.nationality" not in ev_by_path:
             ev_errors.append("missing_evidence:eligibility.nationality")
+
+    # New generic facts must support the value and the declared role, not just
+    # point to an arbitrary source block. Legacy source-specific facts remain
+    # identifiable by the absence of a role evidence path.
+    for role,fact in cand.get('organizations',{}).items():
+        path='organizations.'+role;entries=ev_by_path.get(path,[])
+        if entries and in_memory_blocks is not None:
+            text=re.sub(r'\s+','',''.join(block_map.get(e['locator'],'') for e in entries))
+            verbs={'receiver':r'向|送|洽|收件|受理|承辦','funder':r'補助|經費|預算','announcer':r'公告單位|主辦單位'}
+            if not re.search(verbs[role],text) or any(name not in text for name in fact['text'].split('／')):
+                ev_errors.append('unsupported_organization_role:'+role)
+    if in_memory_blocks is not None and ev_by_path.get('eligibility.degrees'):
+        text=re.sub(r'\s+','',''.join(block_map.get(e['locator'],'') for e in ev_by_path['eligibility.degrees']))
+        for degree in elig.get('degrees',[]):
+            pattern=r'博士|碩[、及或與]?博' if degree=='phd' else r'碩士|碩[、及或與]?博'
+            if not re.search(pattern,text):ev_errors.append('unsupported_degree_rule:'+degree)
 
     if elig.get("employment_status") not in (None, "unknown"):
         if "eligibility.employment_status" not in ev_by_path:

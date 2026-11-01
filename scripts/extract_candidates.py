@@ -32,10 +32,11 @@ from scripts.evaluate_deadlines import evaluate_application_window, parse_iso_da
 from scripts.scan_sources import CONTACT, SKIP, Fetcher, ScanError, digest, html_document, normalized, pdf_document
 from scripts.verify_candidates import digest_text, evidence_digest, verify_candidate
 from scripts.application_process import infer_process
+from scripts.semantic_facts import INSTRUCTIONS, PLACEHOLDER, discover_identity, discover_organizations, recurring_time, degree_terms, time_actor
 from scripts.ai_tool_rules import benefit_tiers
 
-EXTRACTOR_VERSION = "extractor-1.4.2"
-PROMPT_VERSION = "prompt-1.2.1"
+EXTRACTOR_VERSION = "extractor-1.5.0"
+PROMPT_VERSION = "prompt-1.3.0"
 
 PII_REDACT_RE = re.compile(
     r"([A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}|(?:\(0\d\)|0\d)[\-\s]?\d{3,4}[\-\s]?\d{3,4}(?:\s*(?:轉|分機|ext\.?)\s*\d+)?)"
@@ -411,6 +412,7 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
             "- policy_version.amended_on (ISO 日期 YYYY-MM-DD；注意：修正日不可當作生效日 effective_from)\n"
             "嚴格規定：quote 必須是 blocks 對應 locator 內的逐字子字串（<=80字）。未知一律不填或標記 uncertain，禁止猜測。"
         )
+        sys_prompt += '\n跨來源萃取規則：'+INSTRUCTIONS
         user_content = (
             f"執行模式: {active_mode}\n"
             f"目前規則解析摘要:\n{json.dumps(rule_summary, ensure_ascii=False)}\n\n"
@@ -680,6 +682,8 @@ def make_field_evidence(
     block_sha = evidence_digest(block["text"])
     target_text = span_text if (span_text and evidence_mode == "short_excerpt") else block["text"]
     excerpt, sha = _safe_excerpt(target_text, evidence_mode)
+    if evidence_mode=='short_excerpt' and not excerpt:
+        evidence_mode='hash_only';excerpt=None
     if evidence_mode == "hash_only":
         sha = block_sha
     ev = {
@@ -965,6 +969,7 @@ def _find_identity_block(blocks, default_block=None):
 def _set_identity_with_evidence(cand, text, block, source_id, revision_id, evidence_mode):
     ref = {"source": source_id, "locator": block["locator"]}
     cand["eligibility"]["identity"] = {"text": text, "refs": [ref]}
+    if text!=PLACEHOLDER:cand['eligibility']['degrees']=degree_terms(text)
     cand["field_evidence"].append(
         make_field_evidence("eligibility.identity", source_id, revision_id, block, evidence_mode)
     )
@@ -1014,7 +1019,7 @@ def _base_candidate_template(
             "receiver": {"text": "待查", "refs": []},
         },
         "eligibility": {
-            "degrees": ["phd"],
+            "degrees": [],
             "institution": "NTU" if scope in ("ntu", "nationwide_ntu_route") else "domestic_eligible_institution",
             "nationality": "unknown",
             "employment_status": "unknown",
@@ -1223,7 +1228,8 @@ def _populate_common_extractions(cand, blocks, source_id, revision_id, evidence_
     for b in blocks:
         txt = normalized(b["text"])
         if (re.search(r"博士候選人|通過.{0,8}資格考|取得.{0,8}候選人資格", txt)
-                and not re.search(r"不(?:需|須|限)|無(?:需|須)|未(?:通過|取得)|(?:給付|上限|津貼|支給)", txt)):
+                and re.search(r'通過|取得|申請資格|申請對象|須|應|限定',txt)
+                and not re.search(r"不(?:需|須|限|必)|無(?:需|須)|未(?:通過|取得)|(?:給付|上限|津貼|支給)", txt)):
             ref = {"source": source_id, "locator": b["locator"]}
             elig["candidate"] = {
                 "mode": "required",
@@ -2020,6 +2026,65 @@ def _extract_faos_conference(source, blocks, revision_id, observed_at, url, as_o
 
 
 
+def _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode):
+    """Fill missing facts through the same content rules for known and unseen URLs."""
+    sid=source['id']
+    def evidence(path,units):
+        for block in units:
+            cand['field_evidence'].append(make_field_evidence(path,sid,revision_id,block,evidence_mode))
+        return [{'source':sid,'locator':b['locator']} for b in units]
+    generic_identity=cand['eligibility']['identity']['text']==PLACEHOLDER
+    if generic_identity:
+        claim=discover_identity(blocks)
+        if claim:
+            if cand['resource_kind']=='employment_support':
+                role_units=[b for b in blocks if re.search(r'專任人員|兼任人員|臨時工',b['text'])]
+                if len(role_units)>=2:
+                    claim['text']='多身分約用制度；學生部分：'+claim['text']+'；其他約用身分須分別查核'
+                    claim['units']+=role_units[:3]
+            cand['field_evidence']=[e for e in cand['field_evidence'] if e['field_path']!='eligibility.identity']
+            cand['eligibility']['identity']={'text':claim['text'],'claim_kind':claim['kind'],'refs':evidence('eligibility.identity',claim['units'])}
+            cand['eligibility']['degrees']=claim['degrees']
+            if claim['degrees']:evidence('eligibility.degrees',claim['units'])
+    for role,claims in discover_organizations(blocks).items():
+        if cand['organizations'][role]['text']!='待查':continue
+        if len(claims)>4:
+            cand['gaps_and_conflicts']['missing_fields'].append('organizations.'+role+'_multiple_routes')
+            continue
+        units=list({b.get('unit_id',b['locator']):b for claim in claims for b in claim['units']}.values())
+        cand['organizations'][role]={'text':'／'.join(c['value'] for c in claims),
+            'refs':evidence('organizations.'+role,units)}
+    if generic_identity:
+        seen=set()
+        for block in blocks:
+            if PROMPT_INJECTION_RE.search(block['text']) or SKIP.search(block['text']):continue
+            text=re.sub(r'\s+','',block['text'])
+            rule=recurring_time(text)
+            if (not rule and re.search(r'申請期間|受理期間|申請期限|申請截止|截止',text)
+                    and not re.search(r'每年|修正|生效|購買|支出|出國期間|公布結果|出生|年齡',text)):
+                start,end=parse_date_range_from_text(text)
+                kind,value=parse_roc_or_iso_date_from_text(text) if not end else ('date',end)
+                actor=time_actor(text)
+                if value:
+                    rule={'actor':actor,'action':'依來源明示期間辦理'+('（'+start+'至'+end+'）' if start and end else ''),
+                        'deadline':{'kind':kind,'value':value,'timezone':'Asia/Taipei','note':'角色依本段辨識；未載學生期限時不以其他層級回填'}}
+                    if start and actor=='student' and not cand['schedule']['application_start'].get('value'):
+                        cand['schedule']['application_start']={'kind':'date','value':start,'timezone':'Asia/Taipei','certainty':'confirmed','note':'學生受理期間明示起日'}
+                        evidence('schedule.application_start',[block])
+            if not rule:continue
+            key=(rule['actor'],rule['deadline']['note'])
+            if key in seen:continue
+            seen.add(key)
+            steps=cand['schedule']['steps']
+            if any(s['deadline']['kind']!='unknown' and any(r['locator']==block['locator'] for r in s['refs']) for s in steps):continue
+            index=next((i for i,s in enumerate(steps) if s['deadline']['kind']=='unknown'
+                and any(r['locator']==block['locator'] for r in s['refs'])),len(steps))
+            rule['refs']=[{'source':sid,'locator':block['locator']}]
+            if index==len(steps):steps.append(rule)
+            else:steps[index]=rule
+            evidence(f'schedule.steps/{index}/deadline',[block])
+
+
 POLICY_SOURCES = {
     "nstc-abroad-dragon-rule": ("nstc-abroad-dragon", "nstc-abroad-dragon-policy", "overseas_research", "travel_grant", "nationwide", "institution"),
     "nstc-assistant-rule": ("nstc-assistant-rule", "nstc-assistant-policy", "indirect_support", "employment_support", "nationwide", "institution"),
@@ -2044,7 +2109,6 @@ def _extract_policy(source, blocks, revision_id, observed_at, url, as_of, eviden
         evidence_mode=evidence_mode, as_of=as_of,
     )
     cand["participants"]["applicant"] = actor
-    if resource=="employment_support":cand["eligibility"]["degrees"]=["master","phd"]
     identity = _find_identity_block(blocks)
     first_ref = {"source":source["id"],"locator":identity["locator"]}
     _set_identity_with_evidence(cand, "身分條件請至來源定位核對", identity, source["id"], revision_id, evidence_mode)
@@ -2158,7 +2222,7 @@ def _extract_ai_tools(source, blocks, revision_id, observed_at, url, as_of, evid
         program_key=sid,title=source["title"],category="research_tools",resource_kind="tool_subscription",scope="local",
         cycle={"kind":"calendar_year","label":f"{year-1911}年度" if year else "年度待核","year_system":"roc" if year else "unknown","year":year-1911 if year else None,"term_or_round":None,"branch":None},
         source_id=sid,revision_id=revision_id,url=url,observed_at=observed_at,evidence_mode=evidence_mode,as_of=as_of)
-    cand["eligibility"]["degrees"]=["master","phd"]  # Service subset; the scheme may also cover other identities.
+    cand["eligibility"]["degrees"]=[]  # Youth identity does not establish a degree rule.
     cand["eligibility"]["institution"]="unknown"
     def ref(block):return {"source":sid,"locator":block["locator"]}
     def evidence(path,block):cand["field_evidence"].append(make_field_evidence(path,sid,revision_id,block,evidence_mode))
@@ -2653,9 +2717,9 @@ def extract_from_in_memory_blocks(
             opportunity_id=sid,
             program_key=sid,
             title=source.get("title", sid),
-            category="phd_research",
-            resource_kind="scholarship",
-            scope="ntu",
+            category=source.get('category','phd_research'),
+            resource_kind=source.get('resource_kind','scholarship'),
+            scope=source.get('scope','nationwide'),
             cycle={"kind": "academic_year", "label": "待確認學年度", "year_system": "unknown", "year": None, "term_or_round": None, "branch": None},
             source_id=sid,
             revision_id=revision_id,
@@ -2664,7 +2728,8 @@ def extract_from_in_memory_blocks(
             evidence_mode=evidence_mode,
             as_of=as_of,
         )
-        _set_identity_with_evidence(generic, source.get("title", sid), id_block, sid, revision_id, evidence_mode)
+        _set_identity_with_evidence(generic, PLACEHOLDER, id_block, sid, revision_id, evidence_mode)
+        if generic['resource_kind']=='employment_support':generic['participants']['applicant']='unit'
         _populate_common_extractions(generic, blocks, sid, revision_id, evidence_mode)
         generic["schedule"]["steps"] = [
             {
@@ -2683,6 +2748,8 @@ def extract_from_in_memory_blocks(
         cand['source_metadata'].update(normalizer_version=prepared_document['version'],
             prepared_document_sha256=prepared_document['document_sha256'])
         if url!=source["url"]:cand["source_metadata"]["parent_url"]=source["url"]
+        if extraction_strategy!='llm_only':
+            _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode)
         if extraction_strategy != "rules_only" and model_adapter.enabled:
             if (evidence_mode == "hash_only" or "aca.ntu.edu.tw" in url) and model_adapter.is_external:
                 cand["verification"]["warnings"].append("external_model_skipped_for_hash_only_source")

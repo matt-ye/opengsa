@@ -1,0 +1,525 @@
+{
+  "checked_on": "2026-11-01",
+  "generated_at": "2026-10-31T19:55:22+00:00",
+  "extractor_version": "extractor-1.5.0",
+  "verifier_version": "verifier-1.4.0",
+  "prompt_version": "prompt-1.3.0",
+  "scanner_version": "scanner-2",
+  "normalizer_version": "document-ir-2",
+  "before_snapshot_sha256": "3856ddb123c14a3622e370fb8509ddf0d59224be13b7c0c95d06604f1c7a8710",
+  "after_snapshot_sha256": "06fbe10a8840156a6ed138ba8f83ca1aa10bffb27286b2b4e58168fa8a29cab8",
+  "digest_normalization": "UTF-8 JSON; ensure_ascii=false; sort_keys=true",
+  "metrics_before": {
+    "records": 19,
+    "audiences": 13,
+    "descriptors": 0,
+    "receiver_summaries": 12,
+    "time_summaries": 7,
+    "verification": {
+      "passed_with_gaps": 11,
+      "passed_automated_checks": 8
+    },
+    "empty_degree_rules": 0
+  },
+  "metrics_after": {
+    "records": 19,
+    "audiences": 19,
+    "descriptors": 2,
+    "receiver_summaries": 16,
+    "time_summaries": 8,
+    "verification": {
+      "passed_with_gaps": 7,
+      "passed_automated_checks": 12
+    },
+    "empty_degree_rules": 6
+  },
+  "source_network_requests_total": 99,
+  "source_requests_by_phase": [
+    {
+      "phase": "generic-six-portability",
+      "http_requests": 11
+    },
+    {
+      "phase": "generic-doctoral-final",
+      "http_requests": 4
+    },
+    {
+      "phase": "generic-awards-release",
+      "http_requests": 5
+    },
+    {
+      "phase": "generic-conference-final",
+      "http_requests": 6
+    },
+    {
+      "phase": "generic-tools-final",
+      "http_requests": 4
+    },
+    {
+      "phase": "generic-six-v1",
+      "http_requests": 11
+    },
+    {
+      "phase": "generic-six-final",
+      "http_requests": 11
+    },
+    {
+      "phase": "generic-awards-final",
+      "http_requests": 5
+    },
+    {
+      "phase": "generic-six-release",
+      "http_requests": 11
+    },
+    {
+      "phase": "initial_structure_diagnostic",
+      "http_requests": 11
+    },
+    {
+      "phase": "initial_held_out_then_used_for_calibration",
+      "http_requests": 6
+    },
+    {
+      "phase": "calibration_repeat_not_blind_test",
+      "http_requests": 6
+    },
+    {
+      "phase": "second_unseen_cohort",
+      "http_requests": 4
+    },
+    {
+      "phase": "same_second_cohort_safety_recheck",
+      "http_requests": 4
+    }
+  ],
+  "model_calls": 0,
+  "human_approvals_added": 0,
+  "pilot_modified": false,
+  "source_registry_modified": false,
+  "external_samples_added_to_public_snapshot": false,
+  "source_revisions_changed": false,
+  "python_tests": 153,
+  "node_tests": 45,
+  "browser_checks": {
+    "records": 19,
+    "detail_views": 19,
+    "timeline_cards": 19,
+    "gantt_rows": 19,
+    "programs": 13,
+    "receiver_summaries": 16,
+    "time_summaries": 8,
+    "descriptor_cards": 2,
+    "all_report_ids_and_source_versions_match": true,
+    "all_unknowns_link_to_source": true,
+    "year_filter": "符合已知篩選 0 項；可能相關／待確認 17 項（共 19 項）",
+    "compatibility_filter": "符合已知篩選 0 項；可能相關／待確認 7 項（共 19 項）",
+    "mobile": {
+      "width": 320,
+      "scroll": 320
+    },
+    "submitted_issues": 0
+  },
+  "issue_submissions": 0,
+  "external_rounds": [
+    {
+      "phase": "initial_held_out_then_used_for_calibration",
+      "checked_at": "2026-10-31T19:36:46+00:00",
+      "http_requests": 6,
+      "code_and_config_sha256": {
+        "scripts/semantic_facts.py": "b72063e312e1b48a6fb086bbc7cca9611b52223c7b86a7e5ab20dd7ef32376dd",
+        "scripts/extract_candidates.py": "f1b0ea654cfa74705a7f5997c7a8c7f77a62b34a6ef140fe84f50d2de4b7a78d",
+        "scripts/verify_candidates.py": "317cf4b00c82f979f195fb9087e3d344c162b4c366338520bf2b111c7f51b347",
+        "scripts/document_ir.py": "077f660ec9884e96cbfdde06697caf31f1bfd295927ee14c2428f109ec5b63fa",
+        "schema/candidate.schema.json": "53819e5e0186669f776e1ead8b5e62f14859777ab55f05e842247093f380b69a",
+        "docs/examples/extraction-validation-sources.json": "634f01f3f26de1c60a2c5bb955afb9ea236a533c844d47ee21870092fcc5548c"
+      },
+      "scan_documents": [
+        {
+          "source_id": "validation-nstc-humanities-dissertation",
+          "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039061",
+          "kind": "html",
+          "status": "changed"
+        },
+        {
+          "source_id": "validation-ntu-humanities-call",
+          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+          "kind": "html",
+          "status": "changed"
+        },
+        {
+          "source_id": "validation-ntu-graduate-support-policy",
+          "url": "https://sec.ntu.edu.tw/001/Upload/relfile/9760/24895/04-038.pdf",
+          "kind": "pdf",
+          "status": "changed"
+        }
+      ],
+      "results": [
+        {
+          "candidate_id": "cand-validation-nstc-humanities-dissertation-bb6d0047",
+          "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039061",
+          "verification": "passed_with_gaps",
+          "errors": [],
+          "audience_extracted": true,
+          "degree_rules": [
+            "phd"
+          ],
+          "student_dates": [],
+          "field_evidence_count": 6
+        },
+        {
+          "candidate_id": "cand-validation-ntu-humanities-call-4b55c756",
+          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+          "verification": "passed_with_gaps",
+          "errors": [],
+          "audience_extracted": false,
+          "degree_rules": [],
+          "student_dates": [],
+          "field_evidence_count": 1
+        },
+        {
+          "candidate_id": "cand-validation-ntu-graduate-support-policy-bf54d5cf",
+          "url": "https://sec.ntu.edu.tw/001/Upload/relfile/9760/24895/04-038.pdf",
+          "verification": "passed_with_gaps",
+          "errors": [],
+          "audience_extracted": false,
+          "degree_rules": [],
+          "student_dates": [],
+          "field_evidence_count": 3
+        }
+      ],
+      "candidate_validation_errors": []
+    },
+    {
+      "phase": "calibration_repeat_not_blind_test",
+      "checked_at": "2026-10-31T19:41:38+00:00",
+      "http_requests": 6,
+      "code_and_config_sha256": {
+        "scripts/semantic_facts.py": "bf184d1e411493ee1617e606c5d0c5630760a8e8ceddf6e3337827ec8eb72184",
+        "scripts/extract_candidates.py": "2952afbefe01dfb6843f0067eb94ec00a31c623149223649d3d48d25455f3a4b",
+        "scripts/verify_candidates.py": "317cf4b00c82f979f195fb9087e3d344c162b4c366338520bf2b111c7f51b347",
+        "scripts/document_ir.py": "077f660ec9884e96cbfdde06697caf31f1bfd295927ee14c2428f109ec5b63fa",
+        "schema/candidate.schema.json": "dcda2d3a60c1c7f63d433cc5ca5d8e07b3ffb2c65408942cc655ca9bce9dfa05"
+      },
+      "scan_documents": [
+        {
+          "source_id": "validation-nstc-humanities-dissertation",
+          "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039061",
+          "kind": "html",
+          "status": "changed"
+        },
+        {
+          "source_id": "validation-ntu-humanities-call",
+          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+          "kind": "html",
+          "status": "changed"
+        },
+        {
+          "source_id": "validation-ntu-graduate-support-policy",
+          "url": "https://sec.ntu.edu.tw/001/Upload/relfile/9760/24895/04-038.pdf",
+          "kind": "pdf",
+          "status": "changed"
+        }
+      ],
+      "results": [
+        {
+          "candidate_id": "cand-validation-nstc-humanities-dissertation-bb6d0047",
+          "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039061",
+          "verification": "passed_with_gaps",
+          "errors": [],
+          "audience_extracted": true,
+          "degree_rules": [
+            "phd"
+          ],
+          "student_dates": [],
+          "field_evidence_count": 6
+        },
+        {
+          "candidate_id": "cand-validation-ntu-humanities-call-4b55c756",
+          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+          "verification": "passed_with_gaps",
+          "errors": [],
+          "audience_extracted": true,
+          "degree_rules": [],
+          "student_dates": [],
+          "field_evidence_count": 1
+        },
+        {
+          "candidate_id": "cand-validation-ntu-graduate-support-policy-bf54d5cf",
+          "url": "https://sec.ntu.edu.tw/001/Upload/relfile/9760/24895/04-038.pdf",
+          "verification": "passed_with_gaps",
+          "errors": [],
+          "audience_extracted": true,
+          "degree_rules": [],
+          "student_dates": [],
+          "field_evidence_count": 3
+        }
+      ],
+      "candidate_validation_errors": [],
+      "config_sha256": "634f01f3f26de1c60a2c5bb955afb9ea236a533c844d47ee21870092fcc5548c"
+    },
+    {
+      "phase": "second_unseen_cohort",
+      "checked_at": "2026-10-31T19:41:56+00:00",
+      "http_requests": 4,
+      "code_and_config_sha256": {
+        "scripts/semantic_facts.py": "bf184d1e411493ee1617e606c5d0c5630760a8e8ceddf6e3337827ec8eb72184",
+        "scripts/extract_candidates.py": "2952afbefe01dfb6843f0067eb94ec00a31c623149223649d3d48d25455f3a4b",
+        "scripts/verify_candidates.py": "317cf4b00c82f979f195fb9087e3d344c162b4c366338520bf2b111c7f51b347",
+        "scripts/document_ir.py": "077f660ec9884e96cbfdde06697caf31f1bfd295927ee14c2428f109ec5b63fa",
+        "schema/candidate.schema.json": "dcda2d3a60c1c7f63d433cc5ca5d8e07b3ffb2c65408942cc655ca9bce9dfa05"
+      },
+      "scan_documents": [
+        {
+          "source_id": "heldout-ntu-research-personnel",
+          "url": "https://www.personnel.ntu.edu.tw/News_n_101162_sms_79140.html",
+          "kind": "html",
+          "status": "required_marker_missing",
+          "retained_previous": false
+        },
+        {
+          "source_id": "heldout-usc-research-personnel",
+          "url": "https://rd.usc.edu.tw/p/406-1048-4836,r147.php?Lang=zh-tw",
+          "kind": "html",
+          "status": "changed"
+        }
+      ],
+      "results": [
+        {
+          "candidate_id": "cand-heldout-usc-research-personnel-5726ca6b",
+          "url": "https://rd.usc.edu.tw/p/406-1048-4836,r147.php?Lang=zh-tw",
+          "verification": "passed_with_gaps",
+          "errors": [],
+          "audience_extracted": false,
+          "degree_rules": [],
+          "student_dates": [],
+          "field_evidence_count": 2
+        }
+      ],
+      "candidate_validation_errors": [],
+      "config_sha256": "6e61cf560bbbc34d8eb767eea9429e084f8a3c1493c7c047767dbc37335b4ef8"
+    },
+    {
+      "phase": "same_second_cohort_safety_recheck",
+      "checked_at": "2026-10-31T19:48:45+00:00",
+      "http_requests": 4,
+      "code_and_config_sha256": {
+        "scripts/semantic_facts.py": "b7a6f3a18e0a109b3e5bb69555387af7fedc94aa8b53c2c4243208dbb7bc0be3",
+        "scripts/extract_candidates.py": "2952afbefe01dfb6843f0067eb94ec00a31c623149223649d3d48d25455f3a4b",
+        "scripts/verify_candidates.py": "317cf4b00c82f979f195fb9087e3d344c162b4c366338520bf2b111c7f51b347",
+        "scripts/document_ir.py": "077f660ec9884e96cbfdde06697caf31f1bfd295927ee14c2428f109ec5b63fa",
+        "schema/candidate.schema.json": "dcda2d3a60c1c7f63d433cc5ca5d8e07b3ffb2c65408942cc655ca9bce9dfa05"
+      },
+      "scan_documents": [
+        {
+          "source_id": "heldout-ntu-research-personnel",
+          "url": "https://www.personnel.ntu.edu.tw/News_n_101162_sms_79140.html",
+          "kind": "html",
+          "status": "required_marker_missing",
+          "retained_previous": false
+        },
+        {
+          "source_id": "heldout-usc-research-personnel",
+          "url": "https://rd.usc.edu.tw/p/406-1048-4836,r147.php?Lang=zh-tw",
+          "kind": "html",
+          "status": "changed"
+        }
+      ],
+      "results": [
+        {
+          "candidate_id": "cand-heldout-usc-research-personnel-5726ca6b",
+          "url": "https://rd.usc.edu.tw/p/406-1048-4836,r147.php?Lang=zh-tw",
+          "verification": "passed_with_gaps",
+          "errors": [],
+          "audience_extracted": false,
+          "degree_rules": [],
+          "student_dates": [],
+          "field_evidence_count": 2
+        }
+      ],
+      "candidate_validation_errors": [],
+      "config_sha256": "6e61cf560bbbc34d8eb767eea9429e084f8a3c1493c7c047767dbc37335b4ef8"
+    }
+  ],
+  "records": [
+    {
+      "candidate_id": "cand-ntu-nstc-phd-115-49f19393",
+      "before_fingerprint": "909368263c2f22e1395976e0089c7c0eb46de12f6b4684ebab0c2a7f907e225a",
+      "after_fingerprint": "7b0b312a653cc3f9d415c333fce0c87f58f9e59c4ef3d747596e2c8d5ae8ebdc",
+      "source_revision": "49f1939374329523db9aa9dde6aafed30e1a760a93c4557c74a954b7b56ef500",
+      "prepared_document_sha256": "8a6eb9c2d8f8be08b10ae1ef25566d49189b4765d6c98f1eb4909ac04ca63581",
+      "verification": "passed_with_gaps",
+      "claim_kind": "source_specific_summary"
+    },
+    {
+      "candidate_id": "cand-ntu-moe-phd-115-49f19393",
+      "before_fingerprint": "1024b6382d33b9bae39a8d60f48ed5a850143f665684fdc1db45281855856d9f",
+      "after_fingerprint": "d799c3505b84cf6533ddea1d7781cb83b3afcab3336a8b7cd898a3a4f68787dd",
+      "source_revision": "49f1939374329523db9aa9dde6aafed30e1a760a93c4557c74a954b7b56ef500",
+      "prepared_document_sha256": "8a6eb9c2d8f8be08b10ae1ef25566d49189b4765d6c98f1eb4909ac04ca63581",
+      "verification": "passed_with_gaps",
+      "claim_kind": "source_specific_summary"
+    },
+    {
+      "candidate_id": "cand-ntu-nstc-phd-rule-9dd47e84",
+      "before_fingerprint": "f1408afd3c3bae167de364c730574201a1f83508017712f6c1625cc3b0f45a38",
+      "after_fingerprint": "ca3309f82d9f5f7838845ae751379a371e5fd413730f5c193b1e4509af57f466",
+      "source_revision": "9dd47e845fe0708caffb8b5063f49160ec4627a9c55c3dc8a9348f5f51de0c1f",
+      "prepared_document_sha256": "3d8ba1795a77431469531846e955a11c3c779b7fd6591700e4f10de3de7f2f44",
+      "verification": "passed_automated_checks",
+      "claim_kind": "source_specific_summary"
+    },
+    {
+      "candidate_id": "cand-ntu-moe-phd-rule-9dd47e84",
+      "before_fingerprint": "b647450ab2eac360906f0df8867fb03bbf066494122937f0c3efb90f3b8f69b3",
+      "after_fingerprint": "4b8af34287781aa2941352047ea6d2135794fd6c194e7b0fd066718fab046691",
+      "source_revision": "9dd47e845fe0708caffb8b5063f49160ec4627a9c55c3dc8a9348f5f51de0c1f",
+      "prepared_document_sha256": "3d8ba1795a77431469531846e955a11c3c779b7fd6591700e4f10de3de7f2f44",
+      "verification": "passed_automated_checks",
+      "claim_kind": "source_specific_summary"
+    },
+    {
+      "candidate_id": "cand-ntu-moe-phd-unknown-5ec6eddc",
+      "before_fingerprint": "ffca4de009fd9324dd80fbe5ffb79da8bc61d7004e04cf102649155caa8a60a4",
+      "after_fingerprint": "2fbc0156ef722ba7f586775a7737c2c535b2defd3a8cc3f7c84f88cd304862ee",
+      "source_revision": "5ec6eddc12208139f3acffd06320c0a11bea87264cbb9003024fab340abef120",
+      "prepared_document_sha256": "a1309528726b5894af7cb5ac1192548b1acae7e695cfe5ed1db707f553607d3b",
+      "verification": "passed_with_gaps",
+      "claim_kind": "source_specific_summary"
+    },
+    {
+      "candidate_id": "cand-ntu-president-114-call-6d00251d",
+      "before_fingerprint": "a696288c1427d1e16f2560f8ddb27955e08d0de388175af90d76092651fe60c3",
+      "after_fingerprint": "045fd5854d40ec27715d849301513a5daf66b11178f0947ef6a18abeb42d98a3",
+      "source_revision": "6d00251dfe4a83029f745b27c165febc38ec5ecd70581a12b9ac9b40ead44a1c",
+      "prepared_document_sha256": "c298046c87d372f9c646d80fde1044697609728c5274c65989140282af25fc39",
+      "verification": "passed_automated_checks",
+      "claim_kind": "source_specific_summary"
+    },
+    {
+      "candidate_id": "cand-ntu-yuanxue-115-ordinary-a943081a",
+      "before_fingerprint": "a6a641185e624d2c832644274611195bca72a5e98d7d0bdc12a0140b3c8d29ba",
+      "after_fingerprint": "423010681cce4d8307f7f8cb64c3a39cd004e9b2110f580ff6c5dc4455738b29",
+      "source_revision": "a943081a2458e9a427b0d252364328577925b2b42fd2c97697ec25c63c876ff6",
+      "prepared_document_sha256": "057f77e9f9094389e3d6c26db400904abb239e5230724b1eecfb4e9e20ebf4f4",
+      "verification": "passed_with_gaps",
+      "claim_kind": "source_specific_summary"
+    },
+    {
+      "candidate_id": "cand-ntu-president-unknown-rule-0ef18354",
+      "before_fingerprint": "f6edc04a5c1b7454187b50cb1cf4877e07cc957379ee3db3677d3b266c831755",
+      "after_fingerprint": "3d8b52f9abc60ffcea7748df54de77dbcd791744b621a63314894cb0444d0086",
+      "source_revision": "0ef18354b5441b0f1443c8e8f95076736df8106d77f6d260c9b7b1220e09bda9",
+      "prepared_document_sha256": "4ef0e52f5611e18c59a6ff8c65b7312567d0fceba5fbb93ec743ff46a8d09d02",
+      "verification": "passed_automated_checks",
+      "claim_kind": "source_specific_summary"
+    },
+    {
+      "candidate_id": "cand-nstc-ntu-conference-f5477f6c",
+      "before_fingerprint": "486ed3046e27e1743f821dabcb9bebf6b6bccc20598fc70682cc66d424695485",
+      "after_fingerprint": "43ceca2d0de18d4a3ec1e2893d8c94163b70f04f944e4ad556281ad34cecb575",
+      "source_revision": "f5477f6cc7ee3d2b2d9d3620abacf50008c98e70b9fbb080f84e3778e0785ba6",
+      "prepared_document_sha256": "d1de6da69ce242c10b193d3fa0304c7688ff6fa8eae69559bbe035ca757372f6",
+      "verification": "passed_automated_checks",
+      "claim_kind": "source_specific_summary"
+    },
+    {
+      "candidate_id": "cand-nstc-conference-rule-1b67cc16",
+      "before_fingerprint": "ae1bbe54fb88642053dc5a7bdfdd5dda7efb293a53a8a5b2840259431bb6752f",
+      "after_fingerprint": "97113c8b3656debf7c2a15bca1daf3b98d38f1e0f1d3e815a74f34eea311eb24",
+      "source_revision": "1b67cc16d67c263c26c7ac0db223b28784f20143b1fc0555e9dd76a6756bfe04",
+      "prepared_document_sha256": "65ed13f7d2a82c5b273cbdca236ad6c5dfe3ca985a1d3e989f17d66619785dd6",
+      "verification": "passed_automated_checks",
+      "claim_kind": "source_specific_summary"
+    },
+    {
+      "candidate_id": "cand-faos-student-conference-ccd80040",
+      "before_fingerprint": "92c698b7d14bec556c549fdff0bdbb65e03bed4f0809f439396c2d497de082e4",
+      "after_fingerprint": "e7a339d416910b5f3acdbbd5a8160012497eff52f694d47be96d6cdefd45ec94",
+      "source_revision": "ccd8004050b03ea7c75f6a230d6efcdb40e2af715d29aa3390e760032d1ac5ad",
+      "prepared_document_sha256": "b124a879bb5b3135ef77ac070679b080636fb6defb2f4b40cbbe3d5f641caed5",
+      "verification": "passed_automated_checks",
+      "claim_kind": "source_specific_summary"
+    },
+    {
+      "candidate_id": "cand-nstc-abroad-dragon-rule-81d5aeb0",
+      "before_fingerprint": "ef1df26cf6e8ddef4a5abaab64f1fbd37a865e6ee10e4d5bfc1c9a46290f8187",
+      "after_fingerprint": "15bec71ba2efee3fa6b424edc017ab16125e19af14f55db1a4e586a62ed302a4",
+      "source_revision": "81d5aeb0b632eb304e5fc5429d7a1df1bfa6e6da5e5d7d6d1bda0ea519838f80",
+      "prepared_document_sha256": "9d718f8b1131e1e871fbf9bf719984017889a80fc2493ae856b3af3f82adfbed",
+      "verification": "passed_automated_checks",
+      "claim_kind": "eligibility_clause"
+    },
+    {
+      "candidate_id": "cand-sinica-phd-fellowship-6165c00d",
+      "before_fingerprint": "f7943fbbf7e0e09192c06865c3b56771bb3b049897382bb8717f147ceaaa4ce9",
+      "after_fingerprint": "46fbece5e3c0fc34dc851b9b9bd448352e7661875bcf8fa5e0fc0e0fe72bacbc",
+      "source_revision": "6165c00d39bd5b616433c77363b5e51b8058d97349b786e33fe133a0e5892e31",
+      "prepared_document_sha256": "efe00ab49d65ae7675d59af72145e242e954229088b902af210c6c16da5ee28c",
+      "verification": "passed_with_gaps",
+      "claim_kind": "program_descriptor"
+    },
+    {
+      "candidate_id": "cand-taipei-ai-tools-4618de5c",
+      "before_fingerprint": "c9411d09e4a478dbf3bb3256d927f2b5ef77fa6339aa9cfe55e94f09948b38dd",
+      "after_fingerprint": "e059aa602fd18e22a714e142590dc63add6d237337b83eba3a7264b6d31c1b01",
+      "source_revision": "4618de5c5a7bb85331c38461bece52c9e7bdbedddb9e0b4f7884ef06318ebc43",
+      "prepared_document_sha256": "6a92478ff1aeaab7b50d2516521db0a59de6a26c5ff5c31b0f936f858bb345f4",
+      "verification": "passed_automated_checks",
+      "claim_kind": "source_specific_summary"
+    },
+    {
+      "candidate_id": "cand-hsinchu-ai-tools-5067a675",
+      "before_fingerprint": "edd9cef7cc1be94cd549ae6ac6d8b5c239862502152a30b37a8537c2e8fee20b",
+      "after_fingerprint": "66e78aa9c044abbd23f79fce49d01f8760308c7bcf582eb42c40adc5eb515b22",
+      "source_revision": "5067a6752e91b885f347719d79e5332b5a5ba6c0d59c6a6f935b77aaa21e687e",
+      "prepared_document_sha256": "5e8c0e78e11429537bf71ea4695a12906c615e4c50083b6d353bc49e92e9b734",
+      "verification": "passed_with_gaps",
+      "claim_kind": "source_specific_summary"
+    },
+    {
+      "candidate_id": "cand-nstc-assistant-rule-d14f4d4e",
+      "before_fingerprint": "aa6467e5020b79bfc64a322494093e9b4517165b8a3247bedf969ee49f12ad53",
+      "after_fingerprint": "223d31eb1706127a034d2e76ecc26630e28c00ac42cf0788188967e89d2c790e",
+      "source_revision": "d14f4d4e18e5c1952074472af9421b9f809097c76be7fbf7e82c82a71c5bdba2",
+      "prepared_document_sha256": "95a34d08f66479c1830d255b7aa156eec1a83a8ccbfa4b8ade4b0b7fe3a4a7b9",
+      "verification": "passed_automated_checks",
+      "claim_kind": "eligibility_clause"
+    },
+    {
+      "candidate_id": "cand-ntu-eecs-scholarship-faea928c",
+      "before_fingerprint": "7776b4a49ce78453f33496836b9093d7fbfe7dd411451ea358f6b1ef9ae99cf4",
+      "after_fingerprint": "dbdccfbb62cf957661be086b585888ad85eab966feeae30350d7405c00afaf22",
+      "source_revision": "faea928cb922b5173a04700db093627ff075725b9ce0ee4ee865a3c96e228afb",
+      "prepared_document_sha256": "8d51bde4f7c7cb41680c7de1231e5b5ff0cfee405933f592d099306feb806d59",
+      "verification": "passed_with_gaps",
+      "claim_kind": "eligibility_clause"
+    },
+    {
+      "candidate_id": "cand-ntu-ta-policy-7569d536",
+      "before_fingerprint": "e95ba52123862bd2277b0b1066958787e0ca1f67c97a8eaed1f7e40d60f41093",
+      "after_fingerprint": "d72ee139e9d3e4e1e5e9d82146571f19e2c27132b9008d4256ef8fe2966f1152",
+      "source_revision": "7569d5365f268e184929063f60db17598fe7d0f6f673d2513d2a4bdc9d9de829",
+      "prepared_document_sha256": "5ca0c2e2e7875bafad1f9abc5c2af6f3d710f0ed1aaa67c41aa6f452d539ba11",
+      "verification": "passed_automated_checks",
+      "claim_kind": "program_descriptor"
+    },
+    {
+      "candidate_id": "cand-ntu-ta-policy-2c257f6c",
+      "before_fingerprint": "00f62adcaa6287b7d1830e69375164ce3cda54a52f62972006903344f6ad9f6f",
+      "after_fingerprint": "b743ce9a95c9f38d29242e646fa7f88c123b03668b512c80fc4118fd7d064537",
+      "source_revision": "2c257f6c8cade4b349844843073273317655606c8cbc5bcaae66432c583aec1c",
+      "prepared_document_sha256": "669c4596c30132a2a25d9a4de7b2732fcbc30d076ab093c40320f824c5601d3e",
+      "verification": "passed_automated_checks",
+      "claim_kind": "eligibility_clause"
+    }
+  ],
+  "limits": [
+    "automated_checks_are_not_accuracy_or_human_approval",
+    "two_of_19_audiences_are_descriptors_not_full_eligibility",
+    "first_external_cohort_used_for_calibration_after_initial_failure",
+    "second_cohort_has_no_confirmed_eligibility_summaries",
+    "no_full_cross_site_gold_corpus",
+    "pdf_complex_layout_and_unresolved_aliases_remain",
+    "actions_snapshot_writeback_not_enabled"
+  ]
+}
