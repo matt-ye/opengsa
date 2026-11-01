@@ -75,5 +75,20 @@
     "source_chain_chrome": "passed",
     "existing_19_record_chrome": "passed",
     "issues_submitted": 0
+  },
+  "gantt_scroll_ui": {
+    "default_view": "gantt",
+    "scrolling": "native_vertical_and_horizontal",
+    "sticky_heading_and_date_axis": true,
+    "sticky_name_column": true,
+    "desktop_chart_sticky": true,
+    "outer_scroll_heading_visible": true,
+    "keyboard_scroll": "Control+End verified",
+    "list_toggle_preserved": true,
+    "mobile_width": 320,
+    "horizontal_page_overflow": false,
+    "candidate_rows": 19,
+    "node_tests": 46,
+    "chrome_script": "scripts/browser_gantt_scroll_smoke.js"
   }
 }

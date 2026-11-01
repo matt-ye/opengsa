@@ -65,6 +65,13 @@ button:focus-visible,select:focus-visible,input:focus-visible,.gantt-scroll:focu
 .gantt-row{display:grid;grid-template-columns:var(--label-width) minmax(640px,1fr)}
 .gantt-label{padding:16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--white);position:sticky;left:0;z-index:5;line-height:1.7;min-height:110px}
 .gantt-top .gantt-label{min-height:80px;background:#eaf0e8}
+#search .gantt-top{position:sticky;top:0;z-index:10;background:#f0f3ec}
+#search .gantt-scroll{overflow:auto;max-height:65vh;max-height:65dvh;overscroll-behavior:contain}
+@media(min-width:801px){
+ #search #gantt-view:not([hidden]){display:flex;flex-direction:column;position:sticky;top:calc(var(--nav-height,104px) + 12px);max-height:calc(100vh - var(--nav-height,104px) - 24px);max-height:calc(100dvh - var(--nav-height,104px) - 24px);background:var(--paper);z-index:1}
+ #search #gantt-view>.gantt-scroll{flex:1 1 auto;min-height:0;max-height:none}
+ #search #gantt-view>:not(.gantt-scroll){flex-shrink:0}
+}
 .gantt-heading{font-size:12px;font-weight:700;display:flex;align-items:center}
 .row-title{font-size:13px!important;white-space:normal!important;text-align:left;background:none!important;color:var(--ink)!important;padding:0!important;border:0!important;font-weight:700!important;line-height:1.6!important}
 .row-title:hover{text-decoration:underline}
@@ -262,8 +269,8 @@ html{scroll-behavior:smooth}
 <div class="range-controls"><label for="range-mode">時間範圍 <select id="range-mode"><option value="recent">今天前後 90 天</option><option value="fit">涵蓋所有已知日期</option></select></label><span class="today-label" id="today-label"></span><div class="range-buttons"><button aria-label="往前30天" class="secondary" id="previous-range" type="button">← 30 天</button><button class="secondary" id="return-today" type="button">回到今天</button><button aria-label="往後30天" class="secondary" id="next-range" type="button">30 天 →</button></div></div>
 <p class="tiny quiet" id="chart-range"></p><p class="tiny quiet" hidden="" id="outside-today">今天不在目前視窗內，可按「回到今天」。</p>
 <div aria-label="甘特圖圖例" class="gantt-legend"><span class="legend-item">▱ 淺色底帶：往年參考／估計（非官方受理）</span><span class="legend-item">─ 公告至截止流程（非申請期）</span><span class="legend-item"><i aria-hidden="true" class="legend-bar"></i>申請起訖</span><span class="legend-item"><i aria-hidden="true" class="legend-inferred"></i>推定受理起日</span><span class="legend-item"><i aria-hidden="true" class="legend-prep-window"></i>準備提醒期（截止前30天）</span><span class="legend-item"><i aria-hidden="true" class="legend-wait"></i>等待結果</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond"></i>結果公布</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond expected"></i>預定結果日</span><span class="legend-item"><i aria-hidden="true" class="legend-square"></i>校內／機關節點</span><span class="legend-item">▱ 個人準備建議／空心節點待核</span><span class="legend-item"><i aria-hidden="true" class="legend-today"></i>今天進行線</span></div>
-<div aria-label="獎助申請甘特圖，可水平捲動；下方另有文字日期表" class="gantt-scroll" role="region" tabindex="0"><div class="gantt-grid" id="gantt-grid"></div></div>
-<p class="prototype-hint">點選色帶或節點查看日期；窄螢幕可水平捲動，左側名稱固定。圖以日為單位，確切截止時分請看摘要與正式來源。</p>
+<div aria-label="獎助申請甘特圖，可上下及水平捲動，標題與日期軸固定；下方另有文字日期表" class="gantt-scroll" role="region" tabindex="0"><div class="gantt-grid" id="gantt-grid"></div></div>
+<p class="prototype-hint">在圖內上下捲動獎項，或水平捲動日期；標題、日期軸與左側名稱固定。點選色帶或節點查看日期，確切截止時分請看摘要與正式來源。</p>
 </div>
 <p class="tiny quiet">往年／常態區間僅供準備參考；實際資格、申請起訖與程序，以及未竟事宜，以主辦及受理單位最新公告為準。</p>
 <div hidden="" id="list-view"><div class="cards" id="result-cards"></div></div>

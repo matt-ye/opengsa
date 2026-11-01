@@ -1,7 +1,7 @@
 // Manual Chrome regression: global local examples, layered dates and historical references.
 async (page) => {
  await page.setViewportSize({width:1280,height:900});
- await page.goto('http://127.0.0.1:8783/');
+ await page.goto('http://127.0.0.1:8783/?smoke=source-chain-'+Date.now());
  await page.locator('#view-switch [data-view="gantt"]').click();
  if(await page.locator('#timeline-scope').count())throw new Error('scope dropdown still present');
  await page.locator('#timeline-focus').click();

@@ -472,7 +472,7 @@ const rawById=new Map(pilot.opportunities.map(item=>[item.id,item]));
 const sourceById=new Map(pilot.sources.map(source=>[source.id,source]));
 const picked={demo:new Set(),draft:new Set()}, completed={demo:new Set(),draft:new Set()}, activeDetail={demo:null,draft:null};
 let sharedItems=[], personalRangeMode="recent", lastPersonalRange=null;
-let today=taipeiToday(), mode=reviewPreview||radarView?"draft":"demo", view="list", rangeMode="recent", offset=0, inspectedId=null, lastRange=null, centerPending=true, rightsView="all", activePanelId="search";
+let today=taipeiToday(), mode=reviewPreview||radarView?"draft":"demo", view="gantt", rangeMode="recent", offset=0, inspectedId=null, lastRange=null, centerPending=true, rightsView="all", activePanelId="search";
 const scrollPositions={search:0,detail:0,timeline:0,rights:0};
 const state={query:"",category:"all",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all",application:"all",includeUnknown:true};
 function el(tag, cls, text) {

@@ -80,6 +80,8 @@ python scripts/build_site.py _site/chain-new
 python scripts/build_review_workspace.py --output work/review-chain-new
 ```
 
+第一頁預設甘特圖；桌面圖表在頁面捲動時維持可見，獎項在圖內上下捲動、日期可水平捲動，標題／日期軸及左側名稱固定。可用鍵盤捲動區域，手機也保留雙向捲動與文字日期表。清單仍可切換。
+
 網站直接綜覽各方案已有的系所範例；可切換2026／2027及往年底帶，或按「跳至申請／參考時段」。不同單位／梯次各自保留日期、來源及歷史底帶，不拼成單一申請期，也不判定使用者屬於該單位。第二、三頁沿用同一組範例，Issue仍只帶公開資料，不代送。
 
 新CLI輸出經檢查後才可另行提交到`data/source-chains.json`；建置只讀repo快照，Actions artifact不會自動改公開頁。獨立核准與正式資料PR仍是另一流程。新增日期JSON不是新版完整候選Schema的替代品。
@@ -95,3 +97,5 @@ python scripts/build_review_workspace.py --output work/review-chain-new
 驗收：163項Python、46項Node；資料／來源配置、公開頁與19筆工作台建置通過；Chrome19筆既有操作與3個地方範例同時顯示、跨頁、歷史開關及320px檢查通過，0錯誤／警告。合成測試驗證多單位／梯次不合併、不改全局受理；16筆收件與8筆原程序時程完整保留。數字是測試結果，不是全部來源的萃取準確率。
 
 GitHub端亦已手動執行[source_chains](https://github.com/matt-ye/opengsa/actions/runs/41274222102)：15次HTTP、12份讀取、17個日期事件、模型0；已下載artifact通過Schema檢查。仍有4筆格式及4筆文件預算延期，工作成功不代表整條資訊鏈已完整。
+
+甘特圖捲動驗收：`scripts/browser_gantt_scroll_smoke.js`以Chrome驗證預設甘特圖、19列、內部上下與水平捲動（600px／300px）、標題與日期軸／左欄固定、頁面捲動不遮標題、Ctrl+End、清單切換及320px無整頁溢出。採原生CSS與捲動區域，未新增前端套件。
