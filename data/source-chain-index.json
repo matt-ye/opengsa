@@ -1,11 +1,12 @@
 {
   "schema_version": "source-chain-index-1",
-  "as_of": "2026-11-01",
+  "as_of": "2026-11-02",
   "candidate_file": "data/candidates/source-review.json",
-  "candidate_sha256": "06fbe10a8840156a6ed138ba8f83ca1aa10bffb27286b2b4e58168fa8a29cab8",
+  "candidate_sha256": "85573f34b9a3a51bdef0c1b8778c832d83442b4c36a3e8db5449bb873235d288",
   "bundles": [
     "data/source-chains.json",
-    "data/source-chain-batches/batch-01.json"
+    "data/source-chain-batches/batch-01.json",
+    "data/source-chain-batches/radar-proposal-snapshots.json"
   ],
   "batch_configs": [
     "data/source-chain-batches/batch-01.config.json"
@@ -15,8 +16,8 @@
       "key": "ntu-nstc-phd",
       "title": "臺大國科會博士生獎學金",
       "candidate_ids": [
-        "cand-ntu-nstc-phd-115-49f19393",
-        "cand-ntu-nstc-phd-rule-9dd47e84"
+        "cand-ntu-nstc-phd-115-43434c54",
+        "cand-ntu-nstc-phd-rule-5e314130"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
@@ -30,9 +31,9 @@
       "key": "ntu-moe-phd",
       "title": "臺大教育部博士生獎學金",
       "candidate_ids": [
-        "cand-ntu-moe-phd-115-49f19393",
-        "cand-ntu-moe-phd-rule-9dd47e84",
-        "cand-ntu-moe-phd-unknown-5ec6eddc"
+        "cand-ntu-moe-phd-unknown-5ec6eddc",
+        "cand-ntu-moe-phd-115-43434c54",
+        "cand-ntu-moe-phd-rule-5e314130"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
@@ -46,8 +47,8 @@
       "key": "ntu-president",
       "title": "臺大研究生校長獎",
       "candidate_ids": [
-        "cand-ntu-president-114-call-6d00251d",
-        "cand-ntu-president-unknown-rule-0ef18354"
+        "cand-ntu-president-unknown-rule-0ef18354",
+        "cand-ntu-president-114-call-b0607734"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
@@ -61,7 +62,7 @@
       "key": "ntu-yuanxue",
       "title": "臺大遠學計畫",
       "candidate_ids": [
-        "cand-ntu-yuanxue-115-ordinary-a943081a"
+        "cand-ntu-yuanxue-115-ordinary-fc090099"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
@@ -75,8 +76,8 @@
       "key": "nstc-grad-conference-policy",
       "title": "國科會研究生國際會議補助",
       "candidate_ids": [
-        "cand-nstc-ntu-conference-f5477f6c",
-        "cand-nstc-conference-rule-1b67cc16"
+        "cand-nstc-conference-rule-aa01fd94",
+        "cand-nstc-ntu-conference-004d30f5"
       ],
       "audit_status": "partial",
       "source_contexts": [
@@ -102,87 +103,17 @@
       "gaps": [
         "依個別會議首日的相對規則，不是固定年度窗口；未輸入會議日期不產生個人截止日。",
         "假日順延需可靠行事曆，系所額外提前要求仍須另查。",
-        "電信所綜合公告含多種補助；其開頭系級補助日期未套用至國科會。"
+        "電信所綜合公告含多種補助；其開頭系級補助日期未套用至國科會。",
+        "本批候選來源已有新版本，舊規則先撤下待重核：nstc-conference-institution,nstc-conference-ntu-student,nstc-conference-supplement"
       ],
-      "rules": [
-        {
-          "id": "nstc-conference-institution",
-          "kind": "relative_deadline",
-          "actor": "institution",
-          "scope": "nationwide",
-          "cycle": "112-03-16",
-          "summary": "機構彙送：會議首日所屬月份前一個月的首日；遇例假日順延至次一上班日。",
-          "value": {
-            "anchor": "conference_start_month_first",
-            "offset": -1,
-            "unit": "calendar_month",
-            "holiday_adjustment": "next_working_day"
-          },
-          "evidence_refs": [
-            {
-              "document_id": "doc-f86ed6a15af02d63eae87cfe",
-              "revision_id": "d1f01d4eec7239af743f5cdcaf441b8747acb13fcd35128028c086a19def163e",
-              "locator": "body / text-block 45",
-              "block_sha256": "ae9066abd4df5ce17883074d95947b5286ea3dc39278176ba82cce2bc605182b"
-            }
-          ],
-          "review_status": "pending"
-        },
-        {
-          "id": "nstc-conference-ntu-student",
-          "kind": "relative_deadline",
-          "actor": "student",
-          "scope": "ntu",
-          "cycle": "current",
-          "summary": "臺大學生在線上系統的校內送件：機構彙送日前一日17:00。",
-          "value": {
-            "anchor_rule_id": "nstc-conference-institution",
-            "offset": -1,
-            "unit": "day",
-            "time": "17:00",
-            "timezone": "Asia/Taipei"
-          },
-          "evidence_refs": [
-            {
-              "document_id": "doc-82e732a493acd30b20ee2163",
-              "revision_id": "1c27ab87860638bc6dc2f5970c724c2721e9cc17b96641a4c4a72bfd3bcd8580",
-              "locator": "body / text-block 298",
-              "block_sha256": "59677d18641c32944191870caa446739717856a455b61683a298907f9c709196"
-            }
-          ],
-          "review_status": "pending"
-        },
-        {
-          "id": "nstc-conference-supplement",
-          "kind": "relative_deadline",
-          "actor": "student",
-          "scope": "nationwide",
-          "cycle": "112-03-16",
-          "summary": "接受證明最遲會議首日前四週補送；僅適用已按期申請且註明補送者。",
-          "value": {
-            "anchor": "conference_start",
-            "offset": -4,
-            "unit": "week",
-            "condition": "original_application_submitted_on_time_and_marked_for_supplement"
-          },
-          "evidence_refs": [
-            {
-              "document_id": "doc-f86ed6a15af02d63eae87cfe",
-              "revision_id": "d1f01d4eec7239af743f5cdcaf441b8747acb13fcd35128028c086a19def163e",
-              "locator": "body / text-block 42",
-              "block_sha256": "a84f387602a46a9d2be074cf1c49c1938907b67519c202b695061bb9ba9e7e57"
-            }
-          ],
-          "review_status": "pending"
-        }
-      ],
+      "rules": [],
       "audited_batch": "batch-01"
     },
     {
       "key": "faos-student-conference",
       "title": "傑出人才基金會優秀學生出國開會補助",
       "candidate_ids": [
-        "cand-faos-student-conference-ccd80040"
+        "cand-faos-student-conference-ffb0ac6c"
       ],
       "audit_status": "partial",
       "source_contexts": [
@@ -234,7 +165,7 @@
           "evidence_refs": [
             {
               "document_id": "doc-8dbd63e96b3f5bba3534bc8b",
-              "revision_id": "abf6d15b5df5056771260b933a378ab681686093c23a8376693e3fe37acbbd0f",
+              "revision_id": "ffb0ac6cd0c1972bdf8fc5c6e586f4006bb81b424390faa3e972ee326e5a94b0",
               "locator": "body / text-block 20",
               "block_sha256": "7312985328050df2ec04f6517abe0e14326dac557fc8817aca43174b3746b6d5"
             }
@@ -319,7 +250,7 @@
       "key": "nstc-abroad-dragon",
       "title": "國科會博士生赴國外研究（千里馬）",
       "candidate_ids": [
-        "cand-nstc-abroad-dragon-rule-81d5aeb0"
+        "cand-nstc-abroad-dragon-rule-2ba1c668"
       ],
       "audit_status": "partial",
       "source_contexts": [
@@ -345,7 +276,8 @@
       "gaps": [
         "116補助年度對應2026申請，不代表2027年仍受理同一期。",
         "年度申請須知、操作說明等附件只發現連結，尚未下載；預定結果日不填入。",
-        "沒有職治所另訂學生收件日期；不將校級與國科會期限互換。"
+        "沒有職治所另訂學生收件日期；不將校級與國科會期限互換。",
+        "本批候選來源已有新版本，舊規則先撤下待重核：dragon-116-ntu"
       ],
       "rules": [
         {
@@ -365,33 +297,9 @@
           "evidence_refs": [
             {
               "document_id": "doc-725ff2f8d770e4f19724edd7",
-              "revision_id": "bea0c2c27b6ab7901d9ead8d313c2c24bc3b7b89dba932889ed46d04a40183ac",
+              "revision_id": "dff20b54708dec5020774a1ebae371f8a237ca62a3717beb4016b7ff41c91e43",
               "locator": "body / text-block 57",
               "block_sha256": "ca56d71d4e29592ba59fe0e2fd7666ae657917f8c5950876495e6354542cd605"
-            }
-          ],
-          "review_status": "pending"
-        },
-        {
-          "id": "dragon-116-ntu",
-          "kind": "date_window",
-          "actor": "student",
-          "scope": "ntu",
-          "cycle": "116",
-          "summary": "臺大本期學生線上送件：2026年6月1日至7月29日08:00，早於國科會彙送期限。",
-          "value": {
-            "application_year": 2026,
-            "funding_year": 2027,
-            "start": "2026-06-01",
-            "end": "2026-07-29T08:00:00+08:00",
-            "timezone": "Asia/Taipei"
-          },
-          "evidence_refs": [
-            {
-              "document_id": "doc-7cb8562c2b191beabfef7e46",
-              "revision_id": "03d35f3ff50671a9991b43838e69d65219031cd66585a1aa67e7c55787e9197e",
-              "locator": "body / text-block 284",
-              "block_sha256": "8c3b93af857a4d3539db7bbeb1be1ed0e748aab7f52b2188405d2a035950bbcd"
             }
           ],
           "review_status": "pending"
@@ -411,7 +319,7 @@
           "evidence_refs": [
             {
               "document_id": "doc-725ff2f8d770e4f19724edd7",
-              "revision_id": "bea0c2c27b6ab7901d9ead8d313c2c24bc3b7b89dba932889ed46d04a40183ac",
+              "revision_id": "dff20b54708dec5020774a1ebae371f8a237ca62a3717beb4016b7ff41c91e43",
               "locator": "body / text-block 57",
               "block_sha256": "ca56d71d4e29592ba59fe0e2fd7666ae657917f8c5950876495e6354542cd605"
             }
@@ -425,7 +333,7 @@
       "key": "sinica-phd-fellowship",
       "title": "中研院人社博士候選人培育",
       "candidate_ids": [
-        "cand-sinica-phd-fellowship-6165c00d"
+        "cand-sinica-phd-fellowship-8aeb9c09"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
@@ -467,7 +375,7 @@
       "key": "nstc-assistant-rule",
       "title": "國科會研究人力約用規範",
       "candidate_ids": [
-        "cand-nstc-assistant-rule-d14f4d4e"
+        "cand-nstc-assistant-rule-38d1c24a"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
@@ -481,7 +389,7 @@
       "key": "ntu-eecs-scholarship",
       "title": "臺大電資學院博士獎學金辦法",
       "candidate_ids": [
-        "cand-ntu-eecs-scholarship-faea928c"
+        "cand-ntu-eecs-scholarship-4d727a75"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
@@ -495,13 +403,643 @@
       "key": "ntu-ta-policy",
       "title": "臺大教學助理制度",
       "candidate_ids": [
-        "cand-ntu-ta-policy-7569d536",
-        "cand-ntu-ta-policy-2c257f6c"
+        "cand-ntu-ta-policy-2c257f6c",
+        "cand-ntu-ta-policy-1e03054b"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
       "gaps": [
         "沿用PR31來源快照／資訊鏈，尚未納入本次第一批重新查核；不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r317",
+      "title": "國科會博士生研究獎學金國科會甄選類",
+      "candidate_ids": [
+        "cand-discovery-r317-a4bb5884"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r112",
+      "title": "教育部主管法規共用系統-法規內容-教育部博士生獎學金補助計畫作業要點",
+      "candidate_ids": [
+        "cand-discovery-r112-f2d1a510"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r297",
+      "title": "轉知「國科會博士生研究獎學金試辦方案」相關訊息",
+      "candidate_ids": [
+        "cand-discovery-r297-ddcf1e39"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-q009",
+      "title": "【元大文教基金會】115年元大優秀人才獎學金（9/8收件截止）  - 國立中山大學管理學院 College of Management, NSYSU",
+      "candidate_ids": [
+        "cand-discovery-q009-94dcd502"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r299",
+      "title": "本校國科會113年度獎勵人文與社會科學領域博士候選人撰寫博士論文申請至3/25(一)上午8時",
+      "candidate_ids": [
+        "cand-discovery-r299-e1706d39"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r301",
+      "title": "國科會114年度補助博士生赴國外研究案，申請時間自113年6月1日至7月29日早上8時止",
+      "candidate_ids": [
+        "cand-discovery-r301-5824ef69"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r308",
+      "title": "國科會115年度補助博士生赴國外研究案，申請時間自114年6月1日至7月28日(星期一)早上8時止",
+      "candidate_ids": [
+        "cand-discovery-r308-6f720c85"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-q001",
+      "title": "鴻海獎學鯨｜大專碩博組獎學金計畫｜助力弱勢生安心就學勇敢追夢",
+      "candidate_ids": [
+        "cand-discovery-q001-b88ac019"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r043",
+      "title": "AWS Educate",
+      "candidate_ids": [
+        "cand-discovery-r043-50ffd19e"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r044",
+      "title": "AWS Cloud Credit for Research",
+      "candidate_ids": [
+        "cand-discovery-r044-437c67aa"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r055",
+      "title": "國立臺灣大學公共衛生學院碩士生學業表現優良獎勵要點",
+      "candidate_ids": [
+        "cand-discovery-r055-8d21b1f7"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r057",
+      "title": "林耀南獎助學金設置辦法",
+      "candidate_ids": [
+        "cand-discovery-r057-83542ef5"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r110",
+      "title": "Apply for Google Cloud research credits",
+      "candidate_ids": [
+        "cand-discovery-r110-3abe4115"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r113",
+      "title": "GitHub Student Developer Pack",
+      "candidate_ids": [
+        "cand-discovery-r113-e684413e"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r182",
+      "title": "國家科學及技術委員會主管法規共用系統-法規內容-國家科學及技術委員會獎勵人文與社會科學領域博士候選人撰寫博士論文作業要點",
+      "candidate_ids": [
+        "cand-discovery-r182-288ad7b8"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r192",
+      "title": "國立臺灣大學文學院學生參與國際學術與教育活動獎學金事項說明",
+      "candidate_ids": [
+        "cand-discovery-r192-6af32937"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r193",
+      "title": "財團法人孫哲生先生學術基金會115年度獎學金開放申請",
+      "candidate_ids": [
+        "cand-discovery-r193-703352ec"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r194",
+      "title": "115學年度「財團法人俞國華文教基金會獎學金」開放申請",
+      "candidate_ids": [
+        "cand-discovery-r194-99de45ff"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r195",
+      "title": "115學年度「國立臺灣大學侯永雄校友進修碩博士醫護人員獎學金」開放申請",
+      "candidate_ids": [
+        "cand-discovery-r195-b50c1901"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r196",
+      "title": "115學年度「國立臺灣大學文學院紀念鄧立登先生及鄧劉治妹女士清寒獎助學金」開放申請",
+      "candidate_ids": [
+        "cand-discovery-r196-82f49fbb"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r197",
+      "title": "115學年度「錢思亮先生紀念獎學金」開放申請",
+      "candidate_ids": [
+        "cand-discovery-r197-507b607d"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r198",
+      "title": "115學年度「國立臺灣大學文學院國際學生獎學金」開放申請",
+      "candidate_ids": [
+        "cand-discovery-r198-129757e0"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r199",
+      "title": "115學年度中央研究院「傅斯年獎學金」開放申請",
+      "candidate_ids": [
+        "cand-discovery-r199-373a18e7"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r200",
+      "title": "115學年度「國立臺灣大學亞細亞銀行獎學金」開放申請",
+      "candidate_ids": [
+        "cand-discovery-r200-bbd47757"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r241",
+      "title": "Google AI 方案會員學生優惠條款",
+      "candidate_ids": [
+        "cand-discovery-r241-0c1d79a4"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r270",
+      "title": "Google PhD fellowship program",
+      "candidate_ids": [
+        "cand-discovery-r270-26de7cd1"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r306",
+      "title": "114年人社論文獎勵申請相關資訊",
+      "candidate_ids": [
+        "cand-discovery-r306-b74be77d"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r310",
+      "title": "115年人社論文獎勵申請相關資訊",
+      "candidate_ids": [
+        "cand-discovery-r310-7f19e415"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r425",
+      "title": "115年國家科學及技術委員會博士生研究獎學金試辦方案",
+      "candidate_ids": [
+        "cand-discovery-r425-68009666"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r426",
+      "title": "補助博士生赴國外研究作業要點 (115年申請, 116年出國)",
+      "candidate_ids": [
+        "cand-discovery-r426-dff20b54"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r432",
+      "title": "NVIDIA Research: Graduate Fellows & Fellowship Opportunities",
+      "candidate_ids": [
+        "cand-discovery-r432-ae4d5dfe"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r448",
+      "title": "中央研究院 | 中央研究院人文社會科學博士候選人培育計畫要點",
+      "candidate_ids": [
+        "cand-discovery-r448-4a12438c"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r456",
+      "title": "教育部鼓勵國內大專校院選送學生出國研修或國外專業實習補助要點",
+      "candidate_ids": [
+        "cand-discovery-r456-9722f37d"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r482",
+      "title": "【課程】桃園青年數位力正式啟動｜115年青年數位工具人才培育計畫開放報名",
+      "candidate_ids": [
+        "cand-discovery-r482-c6e0ca4a"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r090",
+      "title": "Access GitHub Copilot for free as a student",
+      "candidate_ids": [
+        "cand-discovery-r090-b3a75d98"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r312",
+      "title": "國科會116年度補助博士生赴國外研究案，申請時間自115年6月1日至7月29日(星期三)早上8時止",
+      "candidate_ids": [
+        "cand-discovery-r312-1149cefa"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r468",
+      "title": "產業新尖兵計畫補助最高10萬元訓練費，每月再發8千元學習獎勵金！",
+      "candidate_ids": [
+        "cand-discovery-r468-d4034175"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r473",
+      "title": "新北青年局「AI實戰職涯營」開跑 全額補助6.6萬課程 助攻AWS國際雙認證 優先媒合熱門職缺",
+      "candidate_ids": [
+        "cand-discovery-r473-6beb562d"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r477",
+      "title": "青年AI工具補助計畫 - 臺北市政府青年局",
+      "candidate_ids": [
+        "cand-discovery-r477-49a7cad8"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r136",
+      "title": "【申請時程6/12-7/3】114學年度「教育部博士生獎學金」申請公告",
+      "candidate_ids": [
+        "cand-discovery-r136-64788e2f"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r137",
+      "title": "【申請時程6/12-7/3】114學年度「國科會核配博士生獎學金」申請公告",
+      "candidate_ids": [
+        "cand-discovery-r137-b0dc50c3"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r138",
+      "title": "【申請時程6/15-7/10】115學年度「國科會核配博士生獎學金」申請公告",
+      "candidate_ids": [
+        "cand-discovery-r138-750fac40"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r139",
+      "title": "【申請時程6/15-7/10】115學年度「教育部博士生獎學金」申請公告",
+      "candidate_ids": [
+        "cand-discovery-r139-f06c9f47"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r140",
+      "title": "【6/22-6/26申請】電信所補助研究生出席國際會議經費申請 (5~7月會議)",
+      "candidate_ids": [
+        "cand-discovery-r140-44b5810a"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-r141",
+      "title": "【115.10.12(一)止】115學年度「教育部博士生獎學金」第二階段申請公告",
+      "candidate_ids": [
+        "cand-discovery-r141-31feb0b4"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
       ],
       "rules": [],
       "audited_batch": null
@@ -565,9 +1103,9 @@
   "official_data_modified": false,
   "human_approvals": 0,
   "notes": [
-    "全13方案19筆候選的拓樸盤點；本批僅3方案10來源重新讀取，非全部資訊鏈閉合。",
-    "規則均pending，未覆寫公開卡片、正式pilot或審查台帳。",
-    "第一輪17次HTTP有1件PDF關鍵字空白誤判；修正後第二輪16次HTTP，10指定來源均讀取。搜尋服務與人工瀏覽另計，不把16次當整輪總量。"
+    "第一批以13方案／19候選為基線；本次為64份候選文件／58組暫定方案，未完成跨URL語義別名整併。",
+    "batch-01僅表示原第一批3方案的資訊鏈規則；全原始URL盤查見original-source-verification.json。",
+    "全部規則與候選維持pending，不是人工發布核准。"
   ],
   "current_batch": "batch-01"
 }

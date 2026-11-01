@@ -25,7 +25,7 @@ class RadarProposalTests(unittest.TestCase):
     def test_new_candidate_keeps_originals_and_is_not_enabled_for_schedule(self):
         bundle,config,profile=self.fixture();before=(ROOT/'data/candidates/source-review.json').read_bytes()
         files,summary=prepare(bundle,config)
-        self.assertEqual(summary['proposed_candidates'],20);self.assertEqual(summary['human_approvals'],0)
+        self.assertEqual(summary['proposed_candidates'],len(json.loads(before)['candidates'])+1);self.assertEqual(summary['human_approvals'],0)
         self.assertFalse(next(p for p in files['data/scan-sources.json']['sources'] if p['id']==profile['id'])['enabled'])
         self.assertEqual(before,(ROOT/'data/candidates/source-review.json').read_bytes())
         self.assertIn('data/source-chain-batches/radar-proposal-snapshots.json',files)
@@ -40,7 +40,7 @@ class RadarProposalTests(unittest.TestCase):
 
     def test_failed_checks_withheld_and_approval_claim_rejected(self):
         bundle,config,_=self.fixture();bundle['candidates'][0]['verification']['status']='failed_automated_checks'
-        _,summary=prepare(bundle,config);self.assertEqual(summary['proposed_candidates'],19)
+        files,summary=prepare(bundle,config);self.assertEqual(files['data/candidates/source-review.json']['candidates'],read(ROOT/'data/candidates/source-review.json')['candidates'])
         bundle,config,_=self.fixture();bundle['candidates'][0]['review']['promotion_ready']=True
         with self.assertRaises(ValueError):prepare(bundle,config)
 
@@ -51,7 +51,11 @@ class RadarProposalTests(unittest.TestCase):
         self.assertTrue(merged['model_enabled']);self.assertEqual(merged['model_calls'],1)
 
     def test_new_revision_cannot_reuse_old_chain_events_or_dependent_rules(self):
-        base=read(ROOT/'data/candidates/source-review.json');c=deepcopy(next(c for c in base['candidates'] if c['program_key']=='nstc-grad-conference-policy'))
+        base=read(ROOT/'data/candidates/source-review.json')
+        from scripts.export_source_chain_graph import load_graph
+        graph=load_graph();rule_docs={ref['document_id'] for p in graph['programs'] for r in p['rules'] for ref in r['evidence_refs']}
+        urls={d['url'] for d in graph['documents'].values() if d['id'] in rule_docs and d['status'] in ('changed','unchanged','unchanged_304')}
+        c=deepcopy(next(c for c in base['candidates'] if c['source_metadata']['url'] in urls))
         old=c['source_metadata']['revision_id'];new='b'*64
         c['candidate_id']='SYNTH-revision';c['source_metadata']['revision_id']=new
         for e in c['field_evidence']:
@@ -65,7 +69,8 @@ class RadarProposalTests(unittest.TestCase):
 
     def test_same_bytes_allow_explicit_revision_rebinding_without_new_dates(self):
         base=read(ROOT/'data/candidates/source-review.json');index=read(ROOT/'data/source-chain-index.json')
-        docs=[d for path in index['bundles'] for d in read(ROOT/path)['documents'] if d.get('raw_sha256')]
+        from scripts.export_source_chain_graph import load_graph
+        docs=[d for d in load_graph()['documents'].values() if d.get('raw_sha256') and d['status'] in ('changed','unchanged','unchanged_304')]
         c=deepcopy(next(c for c in base['candidates'] if any(d['url']==c['source_metadata']['url'] for d in docs)))
         doc=next(d for d in docs if d['url']==c['source_metadata']['url']);old=c['source_metadata']['revision_id'];new='b'*64
         c['candidate_id']='SYNTH-byte-revision';c['source_metadata']['revision_id']=new

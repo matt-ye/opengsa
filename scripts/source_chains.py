@@ -409,6 +409,7 @@ def timeline_metadata(bundle, candidates):
     years = [current_year, current_year + 1]
     records = {}
     current_ids = {c['candidate_id']: c['program_key'] for c in candidates['candidates']}
+    current_candidates={c['candidate_id']:c for c in candidates['candidates']}
     for binding in bundle['candidate_bindings']:
         if binding['candidate_id'] not in current_ids:
             continue
@@ -416,9 +417,12 @@ def timeline_metadata(bundle, candidates):
             raise ValueError('candidate_binding_mismatch')
         entries = []
         documents = [d for d in bundle['documents'] if d['events'] and d['status'] in ('changed','unchanged','unchanged_304')]
+        metadata=current_candidates[binding['candidate_id']].get('source_metadata',{})
+        own_documents={d['id'] for d in documents if d['url']==metadata.get('url') and d.get('revision_id')==metadata.get('revision_id')
+            and len({e['program_key'] for e in d['events']})==1}
         for scope in bundle['scopes']:
             # Phase stays separate, even for a broad policy snapshot.
-            relevant = [e for d in documents for e in d['events'] if e['scope']==scope['id'] and e['program_key']==binding['program_key']
+            relevant = [e for d in documents for e in d['events'] if e['scope']==scope['id'] and (e['program_key']==binding['program_key'] or d['id'] in own_documents)
                         and binding['phase'] in ('all',e['phase'])]
             for phase in sorted({e['phase'] for e in relevant}):
                 phase_events = [e for e in relevant if e['phase']==phase]

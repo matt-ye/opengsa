@@ -1,0 +1,2863 @@
+{
+  "synthetic": true,
+  "as_of": "2026-11-02",
+  "candidate_sha256": "85573f34b9a3a51bdef0c1b8778c832d83442b4c36a3e8db5449bb873235d288",
+  "candidate_count": 64,
+  "notes": [
+    "合成情境僅驗證未知不當符合、學位與院系排除；不是個人資格核定或模型準確率評估。"
+  ],
+  "cases": [
+    {
+      "synthetic_profile": {
+        "profile_id": "SYNTH-NTU-OT-PHD5",
+        "observed_on": "2026-10-28",
+        "institution": "NTU",
+        "college": "醫學院",
+        "department": "職能治療學系",
+        "degree": "phd",
+        "current_year": 5,
+        "year_at_date": {},
+        "is_candidate": true,
+        "candidate_acquired_on": null,
+        "candidate_acquired_after": null,
+        "nationality": "unknown",
+        "admission_route": "unknown",
+        "in_service": "unknown",
+        "has_fulltime_pay": "unknown",
+        "graduating_this_year": "unknown",
+        "applied_degree_exam": "unknown",
+        "prior_nstc_abroad_result": "unknown",
+        "received_nstc_abroad_before": "unknown",
+        "hardship_proof": "unknown",
+        "financial_difficulty_informal": false,
+        "emergency_incident": "unknown",
+        "publication_details": "unknown",
+        "conference_details": "unknown",
+        "existing_grants": "unknown"
+      },
+      "counts": {
+        "needs_information": 62,
+        "not_met": 2
+      },
+      "results": [
+        {
+          "opportunity_id": "cand-ntu-moe-phd-unknown-5ec6eddc",
+          "program_key": "ntu-moe-phd",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_year_limit_rule",
+            "nationality",
+            "in_service_and_employment",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-president-unknown-rule-0ef18354",
+          "program_key": "ntu-president",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_year_limit_rule",
+            "graduation_and_degree_exam_status",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-ta-policy-2c257f6c",
+          "program_key": "ntu-ta-policy",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_year_limit_rule",
+            "course_recruitment_and_training_qualification",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-taipei-ai-tools-4618de5c",
+          "program_key": "taipei-ai-tools",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-hsinchu-ai-tools-5067a675",
+          "program_key": "hsinchu-ai-tools",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-nstc-phd-115-43434c54",
+          "program_key": "ntu-nstc-phd",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_year_limit_rule",
+            "has_fulltime_pay",
+            "in_service_and_employment",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-moe-phd-115-43434c54",
+          "program_key": "ntu-moe-phd",
+          "criteria": "needs_information",
+          "reasons": [
+            "需要基準日 2026-09-01 之在學年級，不以 2026-10-28 當日觀察直接代填。"
+          ],
+          "missing_information": [
+            "year_at_2026-09-01",
+            "nationality",
+            "in_service_and_employment",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-sinica-phd-fellowship-8aeb9c09",
+          "program_key": "sinica-phd-fellowship",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-eecs-scholarship-4d727a75",
+          "program_key": "ntu-eecs-scholarship",
+          "criteria": "not_met",
+          "reasons": [
+            "學院不符：方案範圍為 電機資訊學院，測試身分為 醫學院。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r317-a4bb5884",
+          "program_key": "discovery-r317",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-nstc-conference-rule-aa01fd94",
+          "program_key": "nstc-grad-conference-policy",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_year_limit_rule",
+            "nationality",
+            "in_service_and_employment",
+            "conference_date_acceptance_and_prior_subsidy",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-nstc-abroad-dragon-rule-2ba1c668",
+          "program_key": "nstc-abroad-dragon",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_year_limit_rule",
+            "nationality",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-yuanxue-115-ordinary-fc090099",
+          "program_key": "ntu-yuanxue",
+          "criteria": "needs_information",
+          "reasons": [
+            "需確認是否在截止日（2026-01-30）前已取得博士候選人資格，不把事後觀察回填至過去時點。"
+          ],
+          "missing_information": [
+            "scheme_year_limit_rule",
+            "candidate_acquired_on",
+            "prior_nstc_abroad_result",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-nstc-ntu-conference-004d30f5",
+          "program_key": "nstc-grad-conference-policy",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_year_limit_rule",
+            "nationality",
+            "conference_date_acceptance_and_prior_subsidy",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-faos-student-conference-ffb0ac6c",
+          "program_key": "faos-student-conference",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_year_limit_rule",
+            "nationality",
+            "conference_date_acceptance_and_prior_subsidy",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-president-114-call-b0607734",
+          "program_key": "ntu-president",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_year_limit_rule",
+            "graduation_and_degree_exam_status",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-nstc-assistant-rule-38d1c24a",
+          "program_key": "nstc-assistant-rule",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_year_limit_rule",
+            "course_recruitment_and_training_qualification",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-ta-policy-1e03054b",
+          "program_key": "ntu-ta-policy",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_year_limit_rule",
+            "course_recruitment_and_training_qualification",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r112-f2d1a510",
+          "program_key": "discovery-r112",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "nationality",
+            "in_service_and_employment",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r297-ddcf1e39",
+          "program_key": "discovery-r297",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-q009-94dcd502",
+          "program_key": "discovery-q009",
+          "criteria": "not_met",
+          "reasons": [
+            "學位不符：方案要求 ['master']，申請者為 phd。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r299-e1706d39",
+          "program_key": "discovery-r299",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r301-5824ef69",
+          "program_key": "discovery-r301",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r308-6f720c85",
+          "program_key": "discovery-r308",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-q001-b88ac019",
+          "program_key": "discovery-q001",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "nationality",
+            "in_service_and_employment",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r043-50ffd19e",
+          "program_key": "discovery-r043",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r044-437c67aa",
+          "program_key": "discovery-r044",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r055-8d21b1f7",
+          "program_key": "discovery-r055",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r057-83542ef5",
+          "program_key": "discovery-r057",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r110-3abe4115",
+          "program_key": "discovery-r110",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r113-e684413e",
+          "program_key": "discovery-r113",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r182-288ad7b8",
+          "program_key": "discovery-r182",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "in_service_and_employment",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r192-6af32937",
+          "program_key": "discovery-r192",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r193-703352ec",
+          "program_key": "discovery-r193",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r194-99de45ff",
+          "program_key": "discovery-r194",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r195-b50c1901",
+          "program_key": "discovery-r195",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r196-82f49fbb",
+          "program_key": "discovery-r196",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r197-507b607d",
+          "program_key": "discovery-r197",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r198-129757e0",
+          "program_key": "discovery-r198",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r199-373a18e7",
+          "program_key": "discovery-r199",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r200-bbd47757",
+          "program_key": "discovery-r200",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r241-0c1d79a4",
+          "program_key": "discovery-r241",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r270-26de7cd1",
+          "program_key": "discovery-r270",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-nstc-phd-rule-5e314130",
+          "program_key": "ntu-nstc-phd",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_year_limit_rule",
+            "in_service_and_employment",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-moe-phd-rule-5e314130",
+          "program_key": "ntu-moe-phd",
+          "criteria": "needs_information",
+          "reasons": [
+            "需要基準日 2024-09-01 之在學年級，不以 2026-10-28 當日觀察直接代填。"
+          ],
+          "missing_information": [
+            "year_at_2024-09-01",
+            "nationality",
+            "in_service_and_employment",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r306-b74be77d",
+          "program_key": "discovery-r306",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r310-7f19e415",
+          "program_key": "discovery-r310",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r425-68009666",
+          "program_key": "discovery-r425",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r426-dff20b54",
+          "program_key": "discovery-r426",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r432-ae4d5dfe",
+          "program_key": "discovery-r432",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r448-4a12438c",
+          "program_key": "discovery-r448",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r456-9722f37d",
+          "program_key": "discovery-r456",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "nationality",
+            "conference_date_acceptance_and_prior_subsidy",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r482-c6e0ca4a",
+          "program_key": "discovery-r482",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r090-b3a75d98",
+          "program_key": "discovery-r090",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r312-1149cefa",
+          "program_key": "discovery-r312",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r468-d4034175",
+          "program_key": "discovery-r468",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "tuition_remission_identity_category",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r473-6beb562d",
+          "program_key": "discovery-r473",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "nationality",
+            "tuition_remission_identity_category",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r477-49a7cad8",
+          "program_key": "discovery-r477",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r136-64788e2f",
+          "program_key": "discovery-r136",
+          "criteria": "needs_information",
+          "reasons": [
+            "需要基準日 2025-09-01 之在學年級，不以 2026-10-28 當日觀察直接代填。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "year_at_2025-09-01",
+            "nationality",
+            "in_service_and_employment",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r137-b0dc50c3",
+          "program_key": "discovery-r137",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r138-750fac40",
+          "program_key": "discovery-r138",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r139-f06c9f47",
+          "program_key": "discovery-r139",
+          "criteria": "needs_information",
+          "reasons": [
+            "需要基準日 2026-09-01 之在學年級，不以 2026-10-28 當日觀察直接代填。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "year_at_2026-09-01",
+            "nationality",
+            "in_service_and_employment",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r140-44b5810a",
+          "program_key": "discovery-r140",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "conference_date_acceptance_and_prior_subsidy",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r141-31feb0b4",
+          "program_key": "discovery-r141",
+          "criteria": "needs_information",
+          "reasons": [
+            "需要基準日 2026-09-01 之在學年級，不以 2026-10-28 當日觀察直接代填。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "year_at_2026-09-01",
+            "nationality",
+            "in_service_and_employment",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        }
+      ]
+    },
+    {
+      "synthetic_profile": {
+        "profile_id": "SYNTH-NTU-MASTER2",
+        "observed_on": "2026-10-28",
+        "institution": "NTU",
+        "college": "醫學院",
+        "department": "職能治療學系",
+        "degree": "master",
+        "current_year": 2,
+        "year_at_date": {},
+        "is_candidate": false,
+        "candidate_acquired_on": null,
+        "candidate_acquired_after": null,
+        "nationality": "unknown",
+        "admission_route": "unknown",
+        "in_service": "unknown",
+        "has_fulltime_pay": "unknown",
+        "graduating_this_year": "unknown",
+        "applied_degree_exam": "unknown",
+        "prior_nstc_abroad_result": "unknown",
+        "received_nstc_abroad_before": "unknown",
+        "hardship_proof": "unknown",
+        "financial_difficulty_informal": false,
+        "emergency_incident": "unknown",
+        "publication_details": "unknown",
+        "conference_details": "unknown",
+        "existing_grants": "unknown"
+      },
+      "counts": {
+        "not_met": 12,
+        "needs_information": 52
+      },
+      "results": [
+        {
+          "opportunity_id": "cand-ntu-moe-phd-unknown-5ec6eddc",
+          "program_key": "ntu-moe-phd",
+          "criteria": "not_met",
+          "reasons": [
+            "學位不符：方案要求 ['phd']，申請者為 master。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-president-unknown-rule-0ef18354",
+          "program_key": "ntu-president",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_year_limit_rule",
+            "graduation_and_degree_exam_status",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-ta-policy-2c257f6c",
+          "program_key": "ntu-ta-policy",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_year_limit_rule",
+            "course_recruitment_and_training_qualification",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-taipei-ai-tools-4618de5c",
+          "program_key": "taipei-ai-tools",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-hsinchu-ai-tools-5067a675",
+          "program_key": "hsinchu-ai-tools",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-nstc-phd-115-43434c54",
+          "program_key": "ntu-nstc-phd",
+          "criteria": "not_met",
+          "reasons": [
+            "學位不符：方案要求 ['phd']，申請者為 master。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-moe-phd-115-43434c54",
+          "program_key": "ntu-moe-phd",
+          "criteria": "not_met",
+          "reasons": [
+            "學位不符：方案要求 ['phd']，申請者為 master。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-sinica-phd-fellowship-8aeb9c09",
+          "program_key": "sinica-phd-fellowship",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-eecs-scholarship-4d727a75",
+          "program_key": "ntu-eecs-scholarship",
+          "criteria": "not_met",
+          "reasons": [
+            "學位不符：方案要求 ['phd']，申請者為 master。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r317-a4bb5884",
+          "program_key": "discovery-r317",
+          "criteria": "not_met",
+          "reasons": [
+            "學位不符：方案要求 ['phd']，申請者為 master。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-nstc-conference-rule-aa01fd94",
+          "program_key": "nstc-grad-conference-policy",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_year_limit_rule",
+            "nationality",
+            "in_service_and_employment",
+            "conference_date_acceptance_and_prior_subsidy",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-nstc-abroad-dragon-rule-2ba1c668",
+          "program_key": "nstc-abroad-dragon",
+          "criteria": "not_met",
+          "reasons": [
+            "學位不符：方案要求 ['phd']，申請者為 master。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-yuanxue-115-ordinary-fc090099",
+          "program_key": "ntu-yuanxue",
+          "criteria": "not_met",
+          "reasons": [
+            "學位不符：方案要求 ['phd']，申請者為 master。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-nstc-ntu-conference-004d30f5",
+          "program_key": "nstc-grad-conference-policy",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_year_limit_rule",
+            "nationality",
+            "conference_date_acceptance_and_prior_subsidy",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-faos-student-conference-ffb0ac6c",
+          "program_key": "faos-student-conference",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_year_limit_rule",
+            "nationality",
+            "conference_date_acceptance_and_prior_subsidy",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-president-114-call-b0607734",
+          "program_key": "ntu-president",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_year_limit_rule",
+            "graduation_and_degree_exam_status",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-nstc-assistant-rule-38d1c24a",
+          "program_key": "nstc-assistant-rule",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_year_limit_rule",
+            "course_recruitment_and_training_qualification",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-ta-policy-1e03054b",
+          "program_key": "ntu-ta-policy",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_year_limit_rule",
+            "course_recruitment_and_training_qualification",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r112-f2d1a510",
+          "program_key": "discovery-r112",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "nationality",
+            "in_service_and_employment",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r297-ddcf1e39",
+          "program_key": "discovery-r297",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-q009-94dcd502",
+          "program_key": "discovery-q009",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "nationality",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r299-e1706d39",
+          "program_key": "discovery-r299",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r301-5824ef69",
+          "program_key": "discovery-r301",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r308-6f720c85",
+          "program_key": "discovery-r308",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-q001-b88ac019",
+          "program_key": "discovery-q001",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "nationality",
+            "in_service_and_employment",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r043-50ffd19e",
+          "program_key": "discovery-r043",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r044-437c67aa",
+          "program_key": "discovery-r044",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r055-8d21b1f7",
+          "program_key": "discovery-r055",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r057-83542ef5",
+          "program_key": "discovery-r057",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r110-3abe4115",
+          "program_key": "discovery-r110",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r113-e684413e",
+          "program_key": "discovery-r113",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r182-288ad7b8",
+          "program_key": "discovery-r182",
+          "criteria": "not_met",
+          "reasons": [
+            "學位不符：方案要求 ['phd']，申請者為 master。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r192-6af32937",
+          "program_key": "discovery-r192",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r193-703352ec",
+          "program_key": "discovery-r193",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r194-99de45ff",
+          "program_key": "discovery-r194",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r195-b50c1901",
+          "program_key": "discovery-r195",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r196-82f49fbb",
+          "program_key": "discovery-r196",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r197-507b607d",
+          "program_key": "discovery-r197",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r198-129757e0",
+          "program_key": "discovery-r198",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r199-373a18e7",
+          "program_key": "discovery-r199",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r200-bbd47757",
+          "program_key": "discovery-r200",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r241-0c1d79a4",
+          "program_key": "discovery-r241",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r270-26de7cd1",
+          "program_key": "discovery-r270",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-nstc-phd-rule-5e314130",
+          "program_key": "ntu-nstc-phd",
+          "criteria": "not_met",
+          "reasons": [
+            "學位不符：方案要求 ['phd']，申請者為 master。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-moe-phd-rule-5e314130",
+          "program_key": "ntu-moe-phd",
+          "criteria": "not_met",
+          "reasons": [
+            "學位不符：方案要求 ['phd']，申請者為 master。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r306-b74be77d",
+          "program_key": "discovery-r306",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r310-7f19e415",
+          "program_key": "discovery-r310",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r425-68009666",
+          "program_key": "discovery-r425",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r426-dff20b54",
+          "program_key": "discovery-r426",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r432-ae4d5dfe",
+          "program_key": "discovery-r432",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r448-4a12438c",
+          "program_key": "discovery-r448",
+          "criteria": "not_met",
+          "reasons": [
+            "未具博士學位候選人資格。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r456-9722f37d",
+          "program_key": "discovery-r456",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "nationality",
+            "conference_date_acceptance_and_prior_subsidy",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r482-c6e0ca4a",
+          "program_key": "discovery-r482",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r090-b3a75d98",
+          "program_key": "discovery-r090",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r312-1149cefa",
+          "program_key": "discovery-r312",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r468-d4034175",
+          "program_key": "discovery-r468",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "tuition_remission_identity_category",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r473-6beb562d",
+          "program_key": "discovery-r473",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "nationality",
+            "tuition_remission_identity_category",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r477-49a7cad8",
+          "program_key": "discovery-r477",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r136-64788e2f",
+          "program_key": "discovery-r136",
+          "criteria": "needs_information",
+          "reasons": [
+            "需要基準日 2025-09-01 之在學年級，不以 2026-10-28 當日觀察直接代填。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "year_at_2025-09-01",
+            "nationality",
+            "in_service_and_employment",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r137-b0dc50c3",
+          "program_key": "discovery-r137",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r138-750fac40",
+          "program_key": "discovery-r138",
+          "criteria": "not_met",
+          "reasons": [
+            "學位不符：方案要求 ['phd']，申請者為 master。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r139-f06c9f47",
+          "program_key": "discovery-r139",
+          "criteria": "needs_information",
+          "reasons": [
+            "需要基準日 2026-09-01 之在學年級，不以 2026-10-28 當日觀察直接代填。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "year_at_2026-09-01",
+            "nationality",
+            "in_service_and_employment",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r140-44b5810a",
+          "program_key": "discovery-r140",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "conference_date_acceptance_and_prior_subsidy",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r141-31feb0b4",
+          "program_key": "discovery-r141",
+          "criteria": "needs_information",
+          "reasons": [
+            "需要基準日 2026-09-01 之在學年級，不以 2026-10-28 當日觀察直接代填。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "year_at_2026-09-01",
+            "nationality",
+            "in_service_and_employment",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        }
+      ]
+    },
+    {
+      "synthetic_profile": {
+        "profile_id": "SYNTH-OTHER-INTERNATIONAL-PHD",
+        "observed_on": "2026-10-28",
+        "institution": "OTHER",
+        "college": "unknown",
+        "department": "unknown",
+        "degree": "phd",
+        "current_year": 5,
+        "year_at_date": {},
+        "is_candidate": true,
+        "candidate_acquired_on": null,
+        "candidate_acquired_after": null,
+        "nationality": "international",
+        "admission_route": "unknown",
+        "in_service": "unknown",
+        "has_fulltime_pay": "unknown",
+        "graduating_this_year": "unknown",
+        "applied_degree_exam": "unknown",
+        "prior_nstc_abroad_result": "unknown",
+        "received_nstc_abroad_before": "unknown",
+        "hardship_proof": "unknown",
+        "financial_difficulty_informal": false,
+        "emergency_incident": "unknown",
+        "publication_details": "unknown",
+        "conference_details": "unknown",
+        "existing_grants": "unknown"
+      },
+      "counts": {
+        "not_met": 23,
+        "needs_information": 41
+      },
+      "results": [
+        {
+          "opportunity_id": "cand-ntu-moe-phd-unknown-5ec6eddc",
+          "program_key": "ntu-moe-phd",
+          "criteria": "not_met",
+          "reasons": [
+            "學校不符：方案限國立臺灣大學在學學生。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-president-unknown-rule-0ef18354",
+          "program_key": "ntu-president",
+          "criteria": "not_met",
+          "reasons": [
+            "學校不符：方案限國立臺灣大學在學學生。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-ta-policy-2c257f6c",
+          "program_key": "ntu-ta-policy",
+          "criteria": "not_met",
+          "reasons": [
+            "學校不符：方案限國立臺灣大學在學學生。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-taipei-ai-tools-4618de5c",
+          "program_key": "taipei-ai-tools",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-hsinchu-ai-tools-5067a675",
+          "program_key": "hsinchu-ai-tools",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-nstc-phd-115-43434c54",
+          "program_key": "ntu-nstc-phd",
+          "criteria": "not_met",
+          "reasons": [
+            "學校不符：方案限國立臺灣大學在學學生。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-moe-phd-115-43434c54",
+          "program_key": "ntu-moe-phd",
+          "criteria": "not_met",
+          "reasons": [
+            "學校不符：方案限國立臺灣大學在學學生。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-sinica-phd-fellowship-8aeb9c09",
+          "program_key": "sinica-phd-fellowship",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-eecs-scholarship-4d727a75",
+          "program_key": "ntu-eecs-scholarship",
+          "criteria": "not_met",
+          "reasons": [
+            "學校不符：方案限國立臺灣大學在學學生。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r317-a4bb5884",
+          "program_key": "discovery-r317",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-nstc-conference-rule-aa01fd94",
+          "program_key": "nstc-grad-conference-policy",
+          "criteria": "not_met",
+          "reasons": [
+            "國籍不符：本方案限本國籍／中華民國國民。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-nstc-abroad-dragon-rule-2ba1c668",
+          "program_key": "nstc-abroad-dragon",
+          "criteria": "not_met",
+          "reasons": [
+            "國籍不符：本方案限本國籍／中華民國國民。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-yuanxue-115-ordinary-fc090099",
+          "program_key": "ntu-yuanxue",
+          "criteria": "not_met",
+          "reasons": [
+            "學校不符：方案限國立臺灣大學在學學生。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-nstc-ntu-conference-004d30f5",
+          "program_key": "nstc-grad-conference-policy",
+          "criteria": "not_met",
+          "reasons": [
+            "學校不符：方案限國立臺灣大學在學學生。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-faos-student-conference-ffb0ac6c",
+          "program_key": "faos-student-conference",
+          "criteria": "not_met",
+          "reasons": [
+            "國籍不符：本方案限本國籍／中華民國國民。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-president-114-call-b0607734",
+          "program_key": "ntu-president",
+          "criteria": "not_met",
+          "reasons": [
+            "學校不符：方案限國立臺灣大學在學學生。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-nstc-assistant-rule-38d1c24a",
+          "program_key": "nstc-assistant-rule",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_year_limit_rule",
+            "course_recruitment_and_training_qualification",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-ta-policy-1e03054b",
+          "program_key": "ntu-ta-policy",
+          "criteria": "not_met",
+          "reasons": [
+            "學校不符：方案限國立臺灣大學在學學生。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r112-f2d1a510",
+          "program_key": "discovery-r112",
+          "criteria": "not_met",
+          "reasons": [
+            "國籍不符：本方案限本國籍／中華民國國民。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r297-ddcf1e39",
+          "program_key": "discovery-r297",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-q009-94dcd502",
+          "program_key": "discovery-q009",
+          "criteria": "not_met",
+          "reasons": [
+            "學位不符：方案要求 ['master']，申請者為 phd。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r299-e1706d39",
+          "program_key": "discovery-r299",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r301-5824ef69",
+          "program_key": "discovery-r301",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r308-6f720c85",
+          "program_key": "discovery-r308",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-q001-b88ac019",
+          "program_key": "discovery-q001",
+          "criteria": "not_met",
+          "reasons": [
+            "國籍不符：本方案限本國籍／中華民國國民。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r043-50ffd19e",
+          "program_key": "discovery-r043",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r044-437c67aa",
+          "program_key": "discovery-r044",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r055-8d21b1f7",
+          "program_key": "discovery-r055",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r057-83542ef5",
+          "program_key": "discovery-r057",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r110-3abe4115",
+          "program_key": "discovery-r110",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r113-e684413e",
+          "program_key": "discovery-r113",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r182-288ad7b8",
+          "program_key": "discovery-r182",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "in_service_and_employment",
+            "existing_grants_for_compatibility",
+            "additional_conditions_manual_check"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r192-6af32937",
+          "program_key": "discovery-r192",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r193-703352ec",
+          "program_key": "discovery-r193",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r194-99de45ff",
+          "program_key": "discovery-r194",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r195-b50c1901",
+          "program_key": "discovery-r195",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r196-82f49fbb",
+          "program_key": "discovery-r196",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r197-507b607d",
+          "program_key": "discovery-r197",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r198-129757e0",
+          "program_key": "discovery-r198",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r199-373a18e7",
+          "program_key": "discovery-r199",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r200-bbd47757",
+          "program_key": "discovery-r200",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r241-0c1d79a4",
+          "program_key": "discovery-r241",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r270-26de7cd1",
+          "program_key": "discovery-r270",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-nstc-phd-rule-5e314130",
+          "program_key": "ntu-nstc-phd",
+          "criteria": "not_met",
+          "reasons": [
+            "學校不符：方案限國立臺灣大學在學學生。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-ntu-moe-phd-rule-5e314130",
+          "program_key": "ntu-moe-phd",
+          "criteria": "not_met",
+          "reasons": [
+            "學校不符：方案限國立臺灣大學在學學生。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r306-b74be77d",
+          "program_key": "discovery-r306",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r310-7f19e415",
+          "program_key": "discovery-r310",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r425-68009666",
+          "program_key": "discovery-r425",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r426-dff20b54",
+          "program_key": "discovery-r426",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r432-ae4d5dfe",
+          "program_key": "discovery-r432",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r448-4a12438c",
+          "program_key": "discovery-r448",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r456-9722f37d",
+          "program_key": "discovery-r456",
+          "criteria": "not_met",
+          "reasons": [
+            "國籍不符：本方案限本國籍／中華民國國民。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r482-c6e0ca4a",
+          "program_key": "discovery-r482",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r090-b3a75d98",
+          "program_key": "discovery-r090",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r312-1149cefa",
+          "program_key": "discovery-r312",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r468-d4034175",
+          "program_key": "discovery-r468",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "tuition_remission_identity_category",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r473-6beb562d",
+          "program_key": "discovery-r473",
+          "criteria": "not_met",
+          "reasons": [
+            "國籍不符：本方案限本國籍／中華民國國民。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r477-49a7cad8",
+          "program_key": "discovery-r477",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r136-64788e2f",
+          "program_key": "discovery-r136",
+          "criteria": "not_met",
+          "reasons": [
+            "國籍不符：本方案限本國籍／中華民國國民。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r137-b0dc50c3",
+          "program_key": "discovery-r137",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r138-750fac40",
+          "program_key": "discovery-r138",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r139-f06c9f47",
+          "program_key": "discovery-r139",
+          "criteria": "not_met",
+          "reasons": [
+            "國籍不符：本方案限本國籍／中華民國國民。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r140-44b5810a",
+          "program_key": "discovery-r140",
+          "criteria": "needs_information",
+          "reasons": [
+            "尚缺未提供之個人條件或待查欄位，不自動推定符合。"
+          ],
+          "missing_information": [
+            "scheme_degree_rule",
+            "scheme_institution_rule",
+            "scheme_year_limit_rule",
+            "conference_date_acceptance_and_prior_subsidy",
+            "existing_grants_for_compatibility"
+          ],
+          "official_qualification_approved": false
+        },
+        {
+          "opportunity_id": "cand-discovery-r141-31feb0b4",
+          "program_key": "discovery-r141",
+          "criteria": "not_met",
+          "reasons": [
+            "國籍不符：本方案限本國籍／中華民國國民。"
+          ],
+          "missing_information": [],
+          "official_qualification_approved": false
+        }
+      ]
+    }
+  ]
+}
