@@ -6,6 +6,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -55,6 +56,20 @@ class SiteBuildTests(unittest.TestCase):
             result = subprocess.run([sys.executable, str(ROOT / "scripts/build_site.py"), str(output)], capture_output=True)
             self.assertNotEqual(result.returncode, 0)
             self.assertEqual(sentinel.read_text(encoding="utf-8"), "do not publish")
+
+    def test_header_issue_actions_are_links_outside_the_four_page_tabs(self):
+        soup=BeautifulSoup(self.html,'html.parser')
+        header=soup.select_one('header.nav-wrap')
+        tabs=header.select('[role="tab"]')
+        self.assertEqual([t.get_text(strip=True) for t in tabs],['找獎助','獎助詳情','我的時間軸','權益與求助'])
+        links=header.select('.header-actions a')
+        self.assertEqual([a.get_text(strip=True) for a in links],['提供回饋 ↗','提供獎助來源 ↗'])
+        for link,template in zip(links,['preview-feedback.yml','resource-source.yml']):
+            self.assertEqual(link['href'],'https://github.com/matt-ye/opengsa/issues/new?template='+template)
+            self.assertTrue((ROOT/'.github/ISSUE_TEMPLATE'/template).is_file())
+            self.assertIsNone(link.find_parent(attrs={'role':'tablist'}))
+            self.assertEqual(link['target'],'_blank');self.assertIn('noopener',link['rel'])
+        self.assertIsNone(soup.select_one('.review-strip a'))
 
 
 if __name__ == "__main__":
