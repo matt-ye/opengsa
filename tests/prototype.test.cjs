@@ -482,13 +482,15 @@ test("權益跨主題連結揭露目標、展開規劃並維持焦點，未知�
   scrollIntoView:options=>{assert.equal(groups[1].hidden,false);assert.equal(details.open,true);assert.equal(options.behavior,"instant");scrolled=true;},
   focus:()=>{focused=true;}};
  const scope={byId:id=>id==="salary-target"?target:null,activatePanel:id=>{panel=id;},
-  selectedButtons:(_selector,_key,value)=>{selected=value;},document:{querySelectorAll:()=>groups}};
+  selectedButtons:(_selector,_key,value)=>{selected=value;},document:{querySelectorAll:()=>groups},
+  location:{hash:"#rights"},history:{replaceState:(_state,_title,hash)=>{scope.location.hash=hash;}}};
  vm.createContext(scope);
  for(const [begin,end] of [["function setRightsView(",'\nif(byId("rights-view-switch"))'],["function scrollToInternalTarget(",'\ndocument.addEventListener("click"']]){
   const start=js.indexOf(begin);vm.runInContext(js.slice(start,js.indexOf(end,start)),scope);
  }
  assert.equal(scope.scrollToInternalTarget("salary-target"),true);
  assert.equal(panel,"rights");assert.equal(selected,"pay");assert.equal(focused,true);assert.equal(scrolled,true);
+ assert.equal(scope.location.hash,"#salary-target");
  assert.deepEqual(groups.map(g=>g.hidden),[true,false,true,true]);
  panel=null;assert.equal(scope.scrollToInternalTarget("missing"),false);assert.equal(panel,null);
  scope.setRightsView("invalid");assert.deepEqual(groups.map(g=>g.hidden),[false,true,true,true]);

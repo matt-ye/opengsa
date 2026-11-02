@@ -573,6 +573,7 @@ function scrollToInternalTarget(targetId) {
  const rightsSection=target.closest("[data-rights-section]");
  if(rightsSection) setRightsView(rightsSection.dataset.rightsSection);
  for(let details=target.closest("details");details;details=details.parentElement?.closest("details")) details.open=true;
+ if(location.hash!=="#"+targetId) history.replaceState(null,"","#"+targetId);
  target.scrollIntoView({behavior:"instant",block:"start"});
  if(target.tabIndex<0) target.tabIndex=-1;
  target.focus({preventScroll:true});
