@@ -18,6 +18,7 @@ class RadarMetadataTests(unittest.TestCase):
         self.assertEqual(source('Google PhD fellowship')['type'],'enterprise')
         self.assertEqual(source('SYNTH 未具名獎助')['type'],'unknown')
         self.assertEqual(source('教育部與基金會共同補助')['type'],'unknown')
+        self.assertEqual(source('非由教育部提供的SYNTH獎助')['type'],'unknown')
         self.assertEqual(source('中央研究院博士候選人培育計畫')['type'],'research_institute')
         known=source('SYNTH 計畫',{'funder':'國家科學及技術委員會'})
         self.assertEqual(known['basis'],'evidenced_funder')

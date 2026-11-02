@@ -12,7 +12,9 @@ def programme_source(candidate, organizations):
         'enterprise':r'\b(?:Google|AWS|Amazon|GitHub|NVIDIA|Microsoft)\b|公司|台積電|聯發科',
         'university':r'大學|臺大|台大|學院|研究所|電信所|教務處|研發處'}
     for basis,text in [('evidenced_funder',organizations.get('funder','')),('programme_title',candidate['title'])]:
-        found={kind for kind,pattern in patterns.items() if re.search(pattern,text,re.I)}
+        found={kind for kind,pattern in patterns.items() if any(
+            not re.search(r'(?:非由|不由|不是|不屬於|非)$',text[max(0,m.start()-4):m.start()])
+            for m in re.finditer(pattern,text,re.I))}
         # A forwarding university in a title does not replace the named programme's agency.
         if len(found)>1:found.discard('university')
         if len(found)==1:
