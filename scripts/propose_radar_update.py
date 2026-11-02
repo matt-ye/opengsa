@@ -26,7 +26,7 @@ def prepare(incoming,config,observations=None):
     urls={c['source_metadata']['url'] for c in good}
     fresh_ids={c['candidate_id'] for c in good}
     keep=[c for c in base['candidates'] if c['source_metadata']['url'] not in urls and c['candidate_id'] not in fresh_ids]
-    merged={**base,'generated_at':incoming['generated_at'],'as_of':incoming['as_of'],
+    merged={**base,'generated_at':base['generated_at'] if incoming['as_of']<base['as_of'] else incoming['generated_at'],'as_of':max(base['as_of'],incoming['as_of']),
         'model_enabled':incoming['model_enabled'],'model_calls':incoming['model_calls'],'candidates':keep+good}
     merged.pop('model_usage',None) # No stale usage claims from an unrelated scan.
     if 'model_usage' in incoming:merged['model_usage']=deepcopy(incoming['model_usage'])
@@ -42,12 +42,17 @@ def prepare(incoming,config,observations=None):
     newconfig={**oldconfig,'sources':list(profiles.values()),'allowed_hosts':sorted(set(oldconfig['allowed_hosts'])|set(config['allowed_hosts']))}
     files['data/scan-sources.json']=newconfig
     index=read(ROOT/'data/source-chain-index.json')
-    index.update(candidate_sha256=digest(merged),as_of=incoming['as_of'])
+    index.update(candidate_sha256=digest(merged),as_of=merged['as_of'])
     # A fresh candidate revision must not silently inherit older timeline claims/rules.
     invalid_docs=set();rebound={};observed={r['url']:r for r in (observations or {}).get('records',[]) if r.get('content_verified')}
     for path in index['bundles']:
         bundle=read(ROOT/path)
         for doc in bundle['documents']:
+            if doc['url'] in urls and doc['status'] in ('candidate_snapshot','discovered_not_read'):
+                revisions={c['source_metadata']['revision_id'] for c in good if c['source_metadata']['url']==doc['url']}
+                if len(revisions)==1:
+                    doc.update(revision_id=next(iter(revisions)),events=[],candidate_ids=[c['candidate_id'] for c in good if c['source_metadata']['url']==doc['url']])
+                continue
             if doc['url'] in urls and doc.get('revision_id') not in {c['source_metadata']['revision_id'] for c in good if c['source_metadata']['url']==doc['url']}:
                 revisions={c['source_metadata']['revision_id'] for c in good if c['source_metadata']['url']==doc['url']}
                 observation=observed.get(doc['url'],{})

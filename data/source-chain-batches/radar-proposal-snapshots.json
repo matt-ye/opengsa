@@ -1,0 +1,883 @@
+{
+  "schema_version": "source-chain-1",
+  "generated_at": "2026-11-01T16:27:57+00:00",
+  "model_calls": 0,
+  "official_data_modified": false,
+  "documents": [
+    {
+      "id": "doc-31f65bf74eda8cb6510d4aea",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
+      "format": "pdf",
+      "revision_id": "5ec6eddc12208139f3acffd06320c0a11bea87264cbb9003024fab340abef120",
+      "observed_at": "2026-10-31T19:34:54+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ntu-moe-phd-unknown-5ec6eddc"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-91155ef2caf594eb5ace7f66",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf",
+      "format": "pdf",
+      "revision_id": "0ef18354b5441b0f1443c8e8f95076736df8106d77f6d260c9b7b1220e09bda9",
+      "observed_at": "2026-10-31T19:41:12+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ntu-president-unknown-rule-0ef18354"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-ee4d210bbfa286fc2d8d0168",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/%E6%95%99%E5%8B%99%E8%99%95%E6%95%99%E5%AD%B8%E5%8A%A9%E7%90%86%E5%88%B6%E5%BA%A6%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E6%A2%9D%E6%96%87-%E5%85%AC%E5%91%8A%E7%89%88.pdf",
+      "format": "pdf",
+      "revision_id": "2c257f6c8cade4b349844843073273317655606c8cbc5bcaae66432c583aec1c",
+      "observed_at": "2026-10-31T19:48:38+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ntu-ta-policy-2c257f6c"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-988d52b25067160a7cf10eb7",
+      "url": "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796",
+      "format": "html",
+      "revision_id": "4618de5c5a7bb85331c38461bece52c9e7bdbedddb9e0b4f7884ef06318ebc43",
+      "observed_at": "2026-11-01T12:57:13+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "short_excerpt",
+      "candidate_ids": [
+        "cand-taipei-ai-tools-4618de5c"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-769a300c41787a4a80ff06da",
+      "url": "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
+      "format": "html",
+      "revision_id": "5067a6752e91b885f347719d79e5332b5a5ba6c0d59c6a6f935b77aaa21e687e",
+      "observed_at": "2026-11-01T12:57:13+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "short_excerpt",
+      "candidate_ids": [
+        "cand-hsinchu-ai-tools-5067a675"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-79af60be2eedec9477f7a965",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+      "format": "html",
+      "revision_id": "43434c5440fe3874c7b9c1ec08a4038b2ba6b2cd552486a75af52bf3bfdfdad3",
+      "observed_at": "2026-11-01T13:03:57+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ntu-nstc-phd-115-43434c54",
+        "cand-ntu-moe-phd-115-43434c54"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-172426b6bcf93c62c2ec1925",
+      "url": "https://www.sinica.edu.tw/news_content/56/3434",
+      "format": "html",
+      "revision_id": "8aeb9c09b9bc80cd6d9c20395728a6a6c5d70f799f2fc6f4f803ddaf4e6da635",
+      "observed_at": "2026-11-01T13:04:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-sinica-phd-fellowship-8aeb9c09"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-b79ae3b1fb419af04f0b25f5",
+      "url": "https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf",
+      "format": "pdf",
+      "revision_id": "4d727a7579db0e9bafef72a09e42531496b6133ae5dff42700d6d97b48a0e7a6",
+      "observed_at": "2026-11-01T13:04:07+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ntu-eecs-scholarship-4d727a75"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-aa85b0659b35645a4756f364",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23091415501308264",
+      "format": "html",
+      "revision_id": "a4bb5884e7b1ea048fe0022074dd5b5c31fc396b6962d6cb1056b9ca6d9a3b09",
+      "observed_at": "2026-11-01T13:05:43+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r317-a4bb5884"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-f86ed6a15af02d63eae87cfe",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260",
+      "format": "html",
+      "revision_id": "aa01fd944f45e25bb4d34021fcd28129626efdad81302490aaa415df9bcfb3db",
+      "observed_at": "2026-11-01T13:07:37+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-nstc-conference-rule-aa01fd94"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-9d2009cc5ee30fd247f7a177",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039188",
+      "format": "html",
+      "revision_id": "2ba1c668375522b2acc1c157104b6b4093439ed318c5e6a9ea98bc62d3b06801",
+      "observed_at": "2026-11-01T13:07:40+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-nstc-abroad-dragon-rule-2ba1c668"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-3b59f5279df532cf4d9ee497",
+      "url": "https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260",
+      "format": "html",
+      "revision_id": "fc0900991973e46a96665752f95675ac45dda9afc979c49aa8389a43945cb48f",
+      "observed_at": "2026-11-01T13:07:43+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ntu-yuanxue-115-ordinary-fc090099"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-82e732a493acd30b20ee2163",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383",
+      "format": "html",
+      "revision_id": "004d30f55baeb2b56f79f41e39ab0f484db22c7cd3a406f9b042adeaf25a2266",
+      "observed_at": "2026-11-01T13:07:47+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-nstc-ntu-conference-004d30f5"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-8dbd63e96b3f5bba3534bc8b",
+      "url": "https://www.faos.org.tw/Application/ApplicatStud.html",
+      "format": "html",
+      "revision_id": "ffb0ac6cd0c1972bdf8fc5c6e586f4006bb81b424390faa3e972ee326e5a94b0",
+      "observed_at": "2026-11-01T13:07:51+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-faos-student-conference-ffb0ac6c"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-71e6e9fae7c0dac56233106e",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368",
+      "format": "html",
+      "revision_id": "b06077346278f08ea8301b68e6dbf16a7b829924acfdd56e1fad3832be3d488d",
+      "observed_at": "2026-11-01T13:11:32+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ntu-president-114-call-b0607734"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-83da10adff378e11b1688002",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686",
+      "format": "html",
+      "revision_id": "38d1c24a8c10c69622ed2658694beed7153860b0db44c30d8331f645a7784943",
+      "observed_at": "2026-11-01T13:23:03+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-nstc-assistant-rule-38d1c24a"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-bb3e2cc25b6975a7a4e7e690",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514",
+      "format": "html",
+      "revision_id": "1e03054bb9db5b1933e051a0cab4f22c6568042ea439a0f47a8baa48ee382fec",
+      "observed_at": "2026-11-01T13:23:07+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ntu-ta-policy-1e03054b"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-1bfc6006712543fdbb1a72c3",
+      "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL002336",
+      "format": "html",
+      "revision_id": "f2d1a51086de1482fa781fc2207e2853dea296c9d596f3361f1e2e9cc360611a",
+      "observed_at": "2026-11-01T14:56:03+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r112-f2d1a510"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-253e9b5575177a74914df6f8",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_23091415525408652",
+      "format": "html",
+      "revision_id": "ddcf1e39c48f4473278ff8baa6e7594ba055184a769718870dfc9dec267a54fb",
+      "observed_at": "2026-11-01T14:56:26+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r297-ddcf1e39"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-885e0b558746b8e4ed2029f1",
+      "url": "https://www.cm.nsysu.edu.tw/p/404-1024-380732.php?Lang=zh-tw",
+      "format": "html",
+      "revision_id": "94dcd5028614b6d64d49d4cdc2b16c3a33f24a496153fd23801aa027c0912de9",
+      "observed_at": "2026-11-01T14:57:32+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-q009-94dcd502"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-44ccad6156a4615066dc1d87",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187",
+      "format": "html",
+      "revision_id": "e1706d391f95e7b4197e14dbcee3b6208eb3a799ffa8f34ac38ce98ace1077a6",
+      "observed_at": "2026-11-01T15:03:14+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r299-e1706d39"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-901beea0c9af31678c11d22d",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24052211230185000",
+      "format": "html",
+      "revision_id": "5824ef698c276f67213d1c9f10f4349ccc152df416b8602d3439ca00bbe91594",
+      "observed_at": "2026-11-01T15:03:18+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r301-5824ef69"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-444b1a8fdd55950b033bad1d",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25051610035803840",
+      "format": "html",
+      "revision_id": "6f720c851adde7e07b2a2cc4d6596032907200faef45db094561ecb337ab9757",
+      "observed_at": "2026-11-01T15:03:24+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r308-6f720c85"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-8a9d0c5b59a384092b34f031",
+      "url": "https://www.foxconnfoundation.org/news/80479d881F20",
+      "format": "html",
+      "revision_id": "b88ac019603ffe0317746b5442c234646a80e5b5f0635c8f57c56918bc8f5306",
+      "observed_at": "2026-11-01T15:08:22+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-q001-b88ac019"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-75479de7d0818de1cddb16bc",
+      "url": "https://aws.amazon.com/education/awseducate/",
+      "format": "html",
+      "revision_id": "50ffd19e180dc7922d89a6077134c413a13fe9885a73c5beb771cd21bd8c333f",
+      "observed_at": "2026-11-01T15:54:03+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r043-50ffd19e"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-a6345f7bd2216fd936385342",
+      "url": "https://aws.amazon.com/research-credits/",
+      "format": "html",
+      "revision_id": "437c67aab6d66d8d99ac594e8b6260a59fe16e25d8199edc4593ec9433942e35",
+      "observed_at": "2026-11-01T15:54:07+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r044-437c67aa"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-292a51578c85803654350bb7",
+      "url": "https://coph.ntu.edu.tw/uploads/root/hsiaopc/NTUCPH_MASTER-1120923.pdf",
+      "format": "pdf",
+      "revision_id": "8d21b1f7aa474ccdb095962f07656065fb0572290f124ecb77594e2db25fc3dd",
+      "observed_at": "2026-11-01T15:54:34+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r055-8d21b1f7"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-e6ed8e95b3e7c7aa8ed6d4a4",
+      "url": "https://coph.ntu.edu.tw/uploads/root/hsiaopc/linyaonanscolarship_1120110.pdf",
+      "format": "pdf",
+      "revision_id": "83542ef5f8e81f144ccb8023c6d686fe9710abc195b69dd7265cfa1dddab9971",
+      "observed_at": "2026-11-01T15:54:42+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r057-83542ef5"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-3bebfa997d946a574b2d28ec",
+      "url": "https://edu.google.com/programs/credits/research/",
+      "format": "html",
+      "revision_id": "3abe41158adeae2edce8b437112314e5cbba15d5ca11d8aeb18b8bc428f33906",
+      "observed_at": "2026-11-01T15:55:28+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r110-3abe4115"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-f8aabc115cc7b9d441989fde",
+      "url": "https://education.github.com/pack",
+      "format": "html",
+      "revision_id": "e684413eaa1dd668fe80dbeee98f47f32b0de9ca51bbc3e3e7fe19cd757abfae",
+      "observed_at": "2026-11-01T15:55:32+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r113-e684413e"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-e3cdf6279f171613b62cbe2e",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039061",
+      "format": "html",
+      "revision_id": "288ad7b88ed8c932906a5197e78299c748fcfd643280a46a3ddaf467b8a44e27",
+      "observed_at": "2026-11-01T15:57:04+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r182-288ad7b8"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-21fcde5df98856211e3e75d5",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1768889444792",
+      "format": "html",
+      "revision_id": "6af3293727e9db1e21fa8ddaa81a14835393738499653dd3cad404597b089e06",
+      "observed_at": "2026-11-01T15:57:13+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r192-6af32937"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-272705eb4956ae8fe5c764ee",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1786692862536",
+      "format": "html",
+      "revision_id": "703352ec0d84971cedc73fddced9d5a418d51c3a6a31b706fa3da24a7d712bc3",
+      "observed_at": "2026-11-01T15:57:16+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r193-703352ec"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-abad54288b36d356550402ea",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787024420703",
+      "format": "html",
+      "revision_id": "99de45ff7c14032555c8947cde0b158b1a279f0fb1b154d559ffee1a4dd20cca",
+      "observed_at": "2026-11-01T15:57:19+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r194-99de45ff"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-0914831510fd14fd5030ff21",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787888998694",
+      "format": "html",
+      "revision_id": "b50c190164aad10327aa0d273b4ca19745de0d3ba391dcb297fc3c7ba969b7a4",
+      "observed_at": "2026-11-01T15:57:22+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r195-b50c1901"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-e28c85a591b743c31b503bc1",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787889215831",
+      "format": "html",
+      "revision_id": "82f49fbbec7543ee09222f90db673cd1c4e9a68bb9a55f0ad3cc087acf301f78",
+      "observed_at": "2026-11-01T15:57:25+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r196-82f49fbb"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-0a357de2059f16964c5c3acf",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1788249360727",
+      "format": "html",
+      "revision_id": "507b607d68584783117dc083dd7310856a664560fc8633c08cf4c834fc0afbf4",
+      "observed_at": "2026-11-01T15:57:28+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r197-507b607d"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-b2ddc736a09e0d21a4a88580",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609156448",
+      "format": "html",
+      "revision_id": "129757e068fa11b3e8e2135f10352a7b7fee9104fa4f56e3a04b50c70b9939f6",
+      "observed_at": "2026-11-01T15:57:34+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r198-129757e0"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-c9372e6c20701eb43d713eaa",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609268938",
+      "format": "html",
+      "revision_id": "373a18e7564bb8ed6bc90d63c3a2230969d4614531f4ce7a2c6466f6d204a782",
+      "observed_at": "2026-11-01T15:57:37+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r199-373a18e7"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-e93d72909ca9499e738ddf9f",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1790153625329",
+      "format": "html",
+      "revision_id": "bbd477571c8e827db029e15db8af95f47fecde5c4a37e6cf7825ca979370c33b",
+      "observed_at": "2026-11-01T15:57:40+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r200-bbd47757"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-fbeedeb6db9ac4a4f7fee6c3",
+      "url": "https://one.google.com/offer/studentoffer8?hl=zh-TW",
+      "format": "html",
+      "revision_id": "0c1d79a48a1a3ba4d846cba2efac80335d0cf7203e1b92ee0081884cdc13cac0",
+      "observed_at": "2026-11-01T15:57:47+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r241-0c1d79a4"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-59a2d94a64d65f7cb01e189a",
+      "url": "https://research.google/outreach/phd-fellowship/",
+      "format": "html",
+      "revision_id": "26de7cd1b9baa1fd0995f56f4b03ca74ef9f96890b5a79d3f866934882d68a26",
+      "observed_at": "2026-11-01T15:58:08+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r270-26de7cd1"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-91454a8293b655ab031449cb",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf",
+      "format": "pdf",
+      "revision_id": "5e31413036d54213ddd966f7f0cbd0edfc6fe55d43dbf98bedb108d702039659",
+      "observed_at": "2026-11-01T15:59:15+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ntu-nstc-phd-rule-5e314130",
+        "cand-ntu-moe-phd-rule-5e314130"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-cdd611fc11ee04eae3c7b86a",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216",
+      "format": "html",
+      "revision_id": "b74be77d2fa6329fe8b786b587104759b271367edc87707418689b204424ba72",
+      "observed_at": "2026-11-01T15:59:28+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r306-b74be77d"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-da8d33d1239d45c6bfb56497",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+      "format": "html",
+      "revision_id": "7f19e41548c8874c62e08bf0384fb9ead81e54ed510a205c1fc452ba6b34a6d9",
+      "observed_at": "2026-11-01T15:59:31+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r310-7f19e415"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-2117db637f1a2f916bb16689",
+      "url": "https://www.nstc.gov.tw/sci/ch/detail/24ad4e4a-bd37-4ba0-9955-5b2e2ffd5ac6",
+      "format": "html",
+      "revision_id": "68009666fd3922cd3dfb046e525d7b9b6fce1d2d9c2bb51c850b367df61c4b79",
+      "observed_at": "2026-11-01T16:02:43+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r425-68009666"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-725ff2f8d770e4f19724edd7",
+      "url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+      "format": "html",
+      "revision_id": "dff20b54708dec5020774a1ebae371f8a237ca62a3717beb4016b7ff41c91e43",
+      "observed_at": "2026-11-01T16:02:45+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r426-dff20b54"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-17cdb2ac269e507fe069ec7f",
+      "url": "https://www.nvidia.com/en-us/research/graduate-fellowships/",
+      "format": "html",
+      "revision_id": "ae4d5dfe503f9ab1e941157c296d02f96dcde9d6f49a32e6c265e0cb3fb33efe",
+      "observed_at": "2026-11-01T16:03:03+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r432-ae4d5dfe"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-d3ddf6c45d153bc6e148050d",
+      "url": "https://www.sinica.edu.tw/cp/332",
+      "format": "html",
+      "revision_id": "4a12438c278c8360b6564edf2273d7aecec60b2f054b6a3c7c7c2ddec7fdedf8",
+      "observed_at": "2026-11-01T16:03:25+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r448-4a12438c"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-9d9d1abc489aed8933f1eb19",
+      "url": "https://www.studyabroad.moe.gov.tw/ckfinder_upload/files/20211214073031.pdf",
+      "format": "pdf",
+      "revision_id": "9722f37ddf76adcee99030246ad4687056a00a98865ce8d632a3f35deca8575d",
+      "observed_at": "2026-11-01T16:03:35+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r456-9722f37d"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-d40d1b31053f521074286505",
+      "url": "https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1617472",
+      "format": "html",
+      "revision_id": "c6e0ca4a1024ffded1e85053cef5bf680520f5ea67120d83695a9a0391a16372",
+      "observed_at": "2026-11-01T16:04:04+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r482-c6e0ca4a"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-c98b74576bb43eaeeec926e7",
+      "url": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students",
+      "format": "html",
+      "revision_id": "b3a75d98720fb059d855df5d5d1c27c6d3150c71aabbfbf6d619073b900f7105",
+      "observed_at": "2026-11-01T16:10:13+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r090-b3a75d98"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-7cb8562c2b191beabfef7e46",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
+      "format": "html",
+      "revision_id": "1149cefaedd7de94f39635e4128edaa72814ceb407f6f4e3e4be4dcf16bd64b5",
+      "observed_at": "2026-11-01T16:10:17+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r312-1149cefa"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-da2a65a5dfd3c7948ffe85c3",
+      "url": "https://www.wda.gov.tw/News_Content.aspx?n=31&s=19491&sms=10306",
+      "format": "html",
+      "revision_id": "d40341750bffe7d366b9f758675ddaedc612ee747bdbc97bc8c9ff31a732ea6d",
+      "observed_at": "2026-11-01T16:10:31+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r468-d4034175"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-0c93b2f3f44ee9d1b9d82e21",
+      "url": "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f",
+      "format": "html",
+      "revision_id": "6beb562d8733a77529f892a002ab9451803a316361a090b48705e9bbc036e588",
+      "observed_at": "2026-11-01T16:10:34+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r473-6beb562d"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-855fa23d9b9b4e76f2024829",
+      "url": "https://youth.gov.taipei/announcement/latest-announcement/e3c5cee4-b81a-4a53-aa79-6cd8c654b02e",
+      "format": "html",
+      "revision_id": "49a7cad8a1d112b3bb93aca7c26482e4b3e57acd6f6e3fbf9e4fd1eb7cddbb6c",
+      "observed_at": "2026-11-01T16:10:38+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r477-49a7cad8"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-fbfb1e1d14dbdb4af537329a",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7061",
+      "format": "html",
+      "revision_id": "64788e2f7a0e2b4d7e4df4fb32884ebd54a0f955167cb0c4e39c71fae391f06e",
+      "observed_at": "2026-11-01T16:20:29+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r136-64788e2f"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-ba35927f41966f08bfbb476e",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7062",
+      "format": "html",
+      "revision_id": "b0dc50c39450694197eb65dfb50273a84f480eb2a15186de2c8d1ad319ff94f5",
+      "observed_at": "2026-11-01T16:20:33+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r137-b0dc50c3"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-65fdcc25317db87ff0f5e5a6",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7278",
+      "format": "html",
+      "revision_id": "750fac405bfbcc33e3d52e4baec84cf7fb35ced8c36daa4e8312b48007db99c1",
+      "observed_at": "2026-11-01T16:20:35+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r138-750fac40"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-6ea52db572c805dfd7238e39",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7279",
+      "format": "html",
+      "revision_id": "f06c9f47ec652b36d489a941f1cdaae383807e9ea3ad207cab9c48f7da5dfe4f",
+      "observed_at": "2026-11-01T16:20:38+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r139-f06c9f47"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-6db49eb6cd36a3c5ed6ecae1",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
+      "format": "html",
+      "revision_id": "44b5810a2e639b7afa8af741064bfd9909cce4cc277f171dd2430d1f76ed04c0",
+      "observed_at": "2026-11-01T16:20:41+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r140-44b5810a"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-6ed640449dfc70447e1ca65b",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7344",
+      "format": "html",
+      "revision_id": "31feb0b400ba63ee4db7c47a83692fa20269abea0b89be304743f8f6b76cce88",
+      "observed_at": "2026-11-01T16:20:44+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r141-31feb0b4"
+      ],
+      "events": [],
+      "links": []
+    }
+  ],
+  "relations": [],
+  "scopes": [],
+  "candidate_bindings": [],
+  "http_requests": 0,
+  "reports": []
+}

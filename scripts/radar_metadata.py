@@ -32,7 +32,8 @@ def radar_metadata(bundle):
         # Old national-policy records inherited an NTU receiver from a shared
         # extractor. Do not expose that route outside its declared school scope.
         if (candidate['institution_scope'].get('school')!='NTU'
-                and any(name in organizations.get('receiver','') for name in ('臺大','台大','臺灣大學','台灣大學'))):
+                and any(name in organizations.get('receiver','') for name in ('臺大','台大','臺灣大學','台灣大學'))
+                and not supported('organizations.receiver')):
             organizations.pop('receiver',None)
             gaps=[*gaps,'organizations.receiver_scope_mismatch']
         time_steps=[{'actor':step['actor'],'action':step['action'],'deadline':step['deadline']}

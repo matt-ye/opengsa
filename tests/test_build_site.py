@@ -33,11 +33,11 @@ class SiteBuildTests(unittest.TestCase):
         snapshot=json.loads(embedded[1])
         candidates=json.loads((ROOT/'data/candidates/source-review.json').read_text(encoding='utf-8'))['candidates']
         self.assertEqual({o['id'] for o in snapshot['opportunities']},{c['candidate_id'] for c in candidates})
-        self.assertEqual(len(snapshot['opportunities']),19)
+        self.assertEqual(len(snapshot['opportunities']),len(candidates))
         self.assertTrue(all(o['review']['status']=='draft' for o in snapshot['opportunities']))
         self.assertIn('data-radar-view="true"',self.html)
         metadata=re.search(r'<script id="radar-data" type="application/json">(.*?)</script>',self.html,re.S)
-        self.assertEqual(len(json.loads(metadata[1])['records']),19)
+        self.assertEqual(set(json.loads(metadata[1])['records']),{c['candidate_id'] for c in candidates})
         conferences = re.search(r'<script id="conference-data" type="application/json">(.*?)</script>', self.html, re.S)
         self.assertEqual(json.loads(conferences[1]), json.loads((ROOT / "data/conference-programs.json").read_text(encoding="utf-8")))
         self.assertIn('name="robots" content="noindex, nofollow"', self.html)

@@ -15,7 +15,8 @@ class SourceChainGraphTests(unittest.TestCase):
                 self.assertEqual((Path(directory)/name).read_text(encoding='utf-8'),(ROOT/'docs/source-chains'/name).read_text(encoding='utf-8'))
 
     def test_candidate_coverage_and_canvas_references(self):
-        graph=load_graph();self.assertEqual(graph['summary']['programs'],13);self.assertEqual(graph['summary']['candidates'],19)
+        graph=load_graph();candidates=json.loads((ROOT/'data/candidates/source-review.json').read_text(encoding='utf-8'))['candidates']
+        self.assertEqual(graph['summary']['programs'],len({c['program_key'] for c in candidates}));self.assertEqual(graph['summary']['candidates'],len(candidates))
         self.assertEqual(graph['summary']['batch_programs'],3)
         result=canvas(graph);ids={n['id'] for n in result['nodes']}
         self.assertEqual(len(ids),len(result['nodes']))
@@ -25,7 +26,10 @@ class SourceChainGraphTests(unittest.TestCase):
         graph=load_graph();rules={r['id']:r for p in graph['programs'] for r in p['rules']}
         self.assertEqual(rules['faos-agency-months']['value']['unit'],'calendar_month')
         self.assertEqual(rules['faos-ntu-paper-days']['value']['day_basis'],'not_stated')
-        self.assertEqual(rules['dragon-116-ntu']['value']['end'],'2026-07-29T08:00:00+08:00')
+        index=json.loads((ROOT/'data/source-chain-index.json').read_text(encoding='utf-8'))
+        dragon=next(p for p in index['programs'] if p['key']=='nstc-abroad-dragon')
+        self.assertNotIn('dragon-116-ntu',rules)
+        self.assertTrue(any('dragon-116-ntu' in gap for gap in dragon['gaps']))
         self.assertEqual(rules['dragon-116-central']['actor'],'institution')
         self.assertTrue(all(r['review_status']=='pending' for r in rules.values()))
 
