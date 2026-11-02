@@ -1,0 +1,2051 @@
+{
+  "audit_date": "2026-11-03",
+  "timezone": "Asia/Taipei",
+  "baseline_commit": "6c34998d78ed774eedd93f214abbe26f7937a9ef",
+  "scope": "Existing snapshot and current display functions only; no source refetch or model calls; not temporal-type ground truth or extraction accuracy.",
+  "scholarship_source_requests": 0,
+  "model_calls": 0,
+  "summary": {
+    "candidate_count": 64,
+    "program_key_count": 58,
+    "review_states": {
+      "pending": 64
+    },
+    "cycle_kinds": {
+      "academic_year": 48,
+      "policy_snapshot": 9,
+      "calendar_year": 4,
+      "event_relative": 3
+    },
+    "candidate_raw_dated_student_step": 3,
+    "candidate_raw_any_dated_step": 9,
+    "candidate_raw_relative_step": 5,
+    "source_visible_start": 1,
+    "source_visible_student_deadline_or_rule": 4,
+    "source_visible_result": 0,
+    "source_visible_any_time_step": 14,
+    "source_unsafe_count": 0
+  },
+  "records": [
+    {
+      "candidate_id": "cand-ntu-moe-phd-unknown-5ec6eddc",
+      "title": "臺大學年度待核教育部博士生獎學金（第二梯次）",
+      "source_id": "ntu-doctoral-funding",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-ntu-president-unknown-rule-0ef18354",
+      "title": "臺大研究生校長獎（設置辦法依據）",
+      "source_id": "ntu-president-award",
+      "resource_kind": "award",
+      "cycle_kind": "policy_snapshot",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_reference_policy_from_current_call",
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 1,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 1,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-ntu-ta-policy-2c257f6c",
+      "title": "臺大教務處教學助理制度獎勵金實施辦法",
+      "source_id": "ntu-ta-policy",
+      "resource_kind": "employment_support",
+      "cycle_kind": "policy_snapshot",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_reference_policy_from_current_call",
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-taipei-ai-tools-4618de5c",
+      "title": "臺北市青年AI工具補助",
+      "source_id": "taipei-ai-tools",
+      "resource_kind": "tool_subscription",
+      "cycle_kind": "calendar_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [
+          {
+            "actor": "student",
+            "kind": "date",
+            "value": "2026-11-10"
+          }
+        ],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": true,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_entitlement_purchase_and_application_times",
+        "check_event_role_year_and_application_status_independently"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": true
+      }
+    },
+    {
+      "candidate_id": "cand-hsinchu-ai-tools-5067a675",
+      "title": "新竹市AI領航青年數位工具補助",
+      "source_id": "hsinchu-ai-tools",
+      "resource_kind": "tool_subscription",
+      "cycle_kind": "calendar_year",
+      "snapshot": {
+        "start_present": true,
+        "dated_steps": [
+          {
+            "actor": "student",
+            "kind": "date",
+            "value": "2026-11-30"
+          }
+        ],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": true,
+        "deadline": true,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_entitlement_purchase_and_application_times",
+        "check_event_role_year_and_application_status_independently"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 1,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": true
+      }
+    },
+    {
+      "candidate_id": "cand-ntu-nstc-phd-115-43434c54",
+      "title": "臺大115學年度國科會核配博士生獎學金",
+      "source_id": "ntu-doctoral-funding",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 1,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-ntu-moe-phd-115-43434c54",
+      "title": "臺大115學年度教育部博士生獎學金（第二梯次）",
+      "source_id": "ntu-doctoral-funding",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-sinica-phd-fellowship-8aeb9c09",
+      "title": "中研院115年度人文社會科學博士候選人培育計畫公告",
+      "source_id": "sinica-phd-fellowship",
+      "resource_kind": "scholarship",
+      "cycle_kind": "policy_snapshot",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_reference_policy_from_current_call",
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 1,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 1,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-ntu-eecs-scholarship-4d727a75",
+      "title": "臺大電資學院優秀博士生獎學金評選辦法",
+      "source_id": "ntu-eecs-scholarship",
+      "resource_kind": "scholarship",
+      "cycle_kind": "policy_snapshot",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_reference_policy_from_current_call",
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r317-a4bb5884",
+      "title": "國科會博士生研究獎學金國科會甄選類",
+      "source_id": "discovery-r317",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [
+          {
+            "actor": "student",
+            "kind": "date",
+            "value": "2024-12-01"
+          }
+        ],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": true,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "check_event_role_year_and_application_status_independently"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": true
+      }
+    },
+    {
+      "candidate_id": "cand-nstc-conference-rule-aa01fd94",
+      "title": "國科會補助研究生出席國際學術會議（作業要點法源）",
+      "source_id": "nstc-conference-rule",
+      "resource_kind": "travel_grant",
+      "cycle_kind": "event_relative",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [
+          "institution",
+          "supplement"
+        ],
+        "relative_rule_type": "nstc_ntu"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "normalize_rule_semantics_and_actor"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": true
+      }
+    },
+    {
+      "candidate_id": "cand-nstc-abroad-dragon-rule-2ba1c668",
+      "title": "國科會博士生赴國外研究（千里馬）作業要點原文",
+      "source_id": "nstc-abroad-dragon-rule",
+      "resource_kind": "travel_grant",
+      "cycle_kind": "policy_snapshot",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [
+          "institution"
+        ],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "normalize_rule_semantics_and_actor",
+        "separate_reference_policy_from_current_call"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": true
+      }
+    },
+    {
+      "candidate_id": "cand-ntu-yuanxue-115-ordinary-fc090099",
+      "title": "臺大115年遠學計畫（博士生一般補助）",
+      "source_id": "ntu-yuanxue",
+      "resource_kind": "travel_grant",
+      "cycle_kind": "calendar_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [
+          {
+            "actor": "college",
+            "kind": "date",
+            "value": "2026-01-30"
+          }
+        ],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "check_event_role_year_and_application_status_independently"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": true
+      }
+    },
+    {
+      "candidate_id": "cand-nstc-ntu-conference-004d30f5",
+      "title": "國科會補助研究生出席國際學術會議（臺大校內申請路徑）",
+      "source_id": "nstc-ntu-conference",
+      "resource_kind": "travel_grant",
+      "cycle_kind": "event_relative",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [
+          "student",
+          "institution",
+          "supplement"
+        ],
+        "relative_rule_type": "nstc_ntu"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": true,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "normalize_rule_semantics_and_actor"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": true,
+        "process_steps_visible": true
+      }
+    },
+    {
+      "candidate_id": "cand-faos-student-conference-ffb0ac6c",
+      "title": "傑出人才發展基金會：優秀學生出國開會補助",
+      "source_id": "faos-student-conference",
+      "resource_kind": "travel_grant",
+      "cycle_kind": "event_relative",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [
+          "institution"
+        ],
+        "relative_rule_type": "months_before"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "normalize_rule_semantics_and_actor"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": true
+      }
+    },
+    {
+      "candidate_id": "cand-ntu-president-114-call-b0607734",
+      "title": "臺大114學年度研究生校長獎",
+      "source_id": "ntu-president-award",
+      "resource_kind": "award",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [
+          {
+            "actor": "university",
+            "kind": "date",
+            "value": "2026-08-25"
+          }
+        ],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "check_event_role_year_and_application_status_independently"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 1,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 1,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": true
+      }
+    },
+    {
+      "candidate_id": "cand-nstc-assistant-rule-38d1c24a",
+      "title": "國科會專題研究計畫研究人力約用注意事項原文",
+      "source_id": "nstc-assistant-rule",
+      "resource_kind": "employment_support",
+      "cycle_kind": "policy_snapshot",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_reference_policy_from_current_call",
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-ntu-ta-policy-1e03054b",
+      "title": "臺大教務處教學助理制度獎勵金實施辦法",
+      "source_id": "ntu-ta-policy",
+      "resource_kind": "employment_support",
+      "cycle_kind": "policy_snapshot",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_reference_policy_from_current_call",
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r112-f2d1a510",
+      "title": "教育部主管法規共用系統-法規內容-教育部博士生獎學金補助計畫作業要點",
+      "source_id": "discovery-r112",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r297-ddcf1e39",
+      "title": "轉知「國科會博士生研究獎學金試辦方案」相關訊息",
+      "source_id": "discovery-r297",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-q009-94dcd502",
+      "title": "【元大文教基金會】115年元大優秀人才獎學金（9/8收件截止）  - 國立中山大學管理學院 College of Management, NSYSU",
+      "source_id": "discovery-q009",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r299-e1706d39",
+      "title": "本校國科會113年度獎勵人文與社會科學領域博士候選人撰寫博士論文申請至3/25(一)上午8時",
+      "source_id": "discovery-r299",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r301-5824ef69",
+      "title": "國科會114年度補助博士生赴國外研究案，申請時間自113年6月1日至7月29日早上8時止",
+      "source_id": "discovery-r301",
+      "resource_kind": "travel_grant",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [
+          {
+            "actor": "unit",
+            "kind": "date",
+            "value": "2024-06-01"
+          }
+        ],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "check_event_role_year_and_application_status_independently"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": true
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r308-6f720c85",
+      "title": "國科會115年度補助博士生赴國外研究案，申請時間自114年6月1日至7月28日(星期一)早上8時止",
+      "source_id": "discovery-r308",
+      "resource_kind": "travel_grant",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [
+          {
+            "actor": "unit",
+            "kind": "date",
+            "value": "2025-07-28"
+          }
+        ],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "check_event_role_year_and_application_status_independently"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": true
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-q001-b88ac019",
+      "title": "鴻海獎學鯨｜大專碩博組獎學金計畫｜助力弱勢生安心就學勇敢追夢",
+      "source_id": "discovery-q001",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r043-50ffd19e",
+      "title": "AWS Educate",
+      "source_id": "discovery-r043",
+      "resource_kind": "tool_subscription",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_entitlement_purchase_and_application_times",
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r044-437c67aa",
+      "title": "AWS Cloud Credit for Research",
+      "source_id": "discovery-r044",
+      "resource_kind": "tool_subscription",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_entitlement_purchase_and_application_times",
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r055-8d21b1f7",
+      "title": "國立臺灣大學公共衛生學院碩士生學業表現優良獎勵要點",
+      "source_id": "discovery-r055",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r057-83542ef5",
+      "title": "林耀南獎助學金設置辦法",
+      "source_id": "discovery-r057",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r110-3abe4115",
+      "title": "Apply for Google Cloud research credits",
+      "source_id": "discovery-r110",
+      "resource_kind": "tool_subscription",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_entitlement_purchase_and_application_times",
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r113-e684413e",
+      "title": "GitHub Student Developer Pack",
+      "source_id": "discovery-r113",
+      "resource_kind": "tool_subscription",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_entitlement_purchase_and_application_times",
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r182-288ad7b8",
+      "title": "國家科學及技術委員會主管法規共用系統-法規內容-國家科學及技術委員會獎勵人文與社會科學領域博士候選人撰寫博士論文作業要點",
+      "source_id": "discovery-r182",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r192-6af32937",
+      "title": "國立臺灣大學文學院學生參與國際學術與教育活動獎學金事項說明",
+      "source_id": "discovery-r192",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [
+          {
+            "actor": "unit",
+            "kind": "date",
+            "value": "2026-10-21"
+          }
+        ],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "check_event_role_year_and_application_status_independently"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": true
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r193-703352ec",
+      "title": "財團法人孫哲生先生學術基金會115年度獎學金開放申請",
+      "source_id": "discovery-r193",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r194-99de45ff",
+      "title": "115學年度「財團法人俞國華文教基金會獎學金」開放申請",
+      "source_id": "discovery-r194",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r195-b50c1901",
+      "title": "115學年度「國立臺灣大學侯永雄校友進修碩博士醫護人員獎學金」開放申請",
+      "source_id": "discovery-r195",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r196-82f49fbb",
+      "title": "115學年度「國立臺灣大學文學院紀念鄧立登先生及鄧劉治妹女士清寒獎助學金」開放申請",
+      "source_id": "discovery-r196",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r197-507b607d",
+      "title": "115學年度「錢思亮先生紀念獎學金」開放申請",
+      "source_id": "discovery-r197",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r198-129757e0",
+      "title": "115學年度「國立臺灣大學文學院國際學生獎學金」開放申請",
+      "source_id": "discovery-r198",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r199-373a18e7",
+      "title": "115學年度中央研究院「傅斯年獎學金」開放申請",
+      "source_id": "discovery-r199",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r200-bbd47757",
+      "title": "115學年度「國立臺灣大學亞細亞銀行獎學金」開放申請",
+      "source_id": "discovery-r200",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r241-0c1d79a4",
+      "title": "Google AI 方案會員學生優惠條款",
+      "source_id": "discovery-r241",
+      "resource_kind": "tool_subscription",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_entitlement_purchase_and_application_times",
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r270-26de7cd1",
+      "title": "Google PhD fellowship program",
+      "source_id": "discovery-r270",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-ntu-nstc-phd-rule-5e314130",
+      "title": "臺大國科會核配博士生獎學金（設置辦法條文快照）",
+      "source_id": "ntu-doctoral-funding",
+      "resource_kind": "scholarship",
+      "cycle_kind": "policy_snapshot",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_reference_policy_from_current_call",
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 1,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-ntu-moe-phd-rule-5e314130",
+      "title": "臺大教育部博士生獎學金（設置辦法條文快照）",
+      "source_id": "ntu-doctoral-funding",
+      "resource_kind": "scholarship",
+      "cycle_kind": "policy_snapshot",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_reference_policy_from_current_call",
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r306-b74be77d",
+      "title": "114年人社論文獎勵申請相關資訊",
+      "source_id": "discovery-r306",
+      "resource_kind": "award",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r310-7f19e415",
+      "title": "115年人社論文獎勵申請相關資訊",
+      "source_id": "discovery-r310",
+      "resource_kind": "award",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r425-68009666",
+      "title": "115年國家科學及技術委員會博士生研究獎學金試辦方案",
+      "source_id": "discovery-r425",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r426-dff20b54",
+      "title": "補助博士生赴國外研究作業要點 (115年申請, 116年出國)",
+      "source_id": "discovery-r426",
+      "resource_kind": "travel_grant",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r432-ae4d5dfe",
+      "title": "NVIDIA Research: Graduate Fellows & Fellowship Opportunities",
+      "source_id": "discovery-r432",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r448-4a12438c",
+      "title": "中央研究院 | 中央研究院人文社會科學博士候選人培育計畫要點",
+      "source_id": "discovery-r448",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r456-9722f37d",
+      "title": "教育部鼓勵國內大專校院選送學生出國研修或國外專業實習補助要點",
+      "source_id": "discovery-r456",
+      "resource_kind": "travel_grant",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [
+          "unit"
+        ],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "normalize_rule_semantics_and_actor"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": true
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r482-c6e0ca4a",
+      "title": "【課程】桃園青年數位力正式啟動｜115年青年數位工具人才培育計畫開放報名",
+      "source_id": "discovery-r482",
+      "resource_kind": "tool_subscription",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_entitlement_purchase_and_application_times",
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r090-b3a75d98",
+      "title": "Access GitHub Copilot for free as a student",
+      "source_id": "discovery-r090",
+      "resource_kind": "tool_subscription",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_entitlement_purchase_and_application_times",
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r468-d4034175",
+      "title": "產業新尖兵計畫補助最高10萬元訓練費，每月再發8千元學習獎勵金！",
+      "source_id": "discovery-r468",
+      "resource_kind": "tuition_remission",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r473-6beb562d",
+      "title": "新北青年局「AI實戰職涯營」開跑 全額補助6.6萬課程 助攻AWS國際雙認證 優先媒合熱門職缺",
+      "source_id": "discovery-r473",
+      "resource_kind": "tuition_remission",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r477-49a7cad8",
+      "title": "青年AI工具補助計畫 - 臺北市政府青年局",
+      "source_id": "discovery-r477",
+      "resource_kind": "tool_subscription",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "separate_entitlement_purchase_and_application_times",
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r137-066362bb",
+      "title": "【申請時程6/12-7/3】114學年度「國科會核配博士生獎學金」申請公告",
+      "source_id": "discovery-r137",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r138-5021d5eb",
+      "title": "【申請時程6/15-7/10】115學年度「國科會核配博士生獎學金」申請公告",
+      "source_id": "discovery-r138",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 1,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r312-aba9d3b3",
+      "title": "國科會116年度補助博士生赴國外研究案，申請時間自115年6月1日至7月29日(星期三)早上8時止",
+      "source_id": "discovery-r312",
+      "resource_kind": "travel_grant",
+      "cycle_kind": "calendar_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [
+          {
+            "actor": "unit",
+            "kind": "datetime",
+            "value": "2026-07-29T08:00:00+08:00"
+          }
+        ],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "check_event_role_year_and_application_status_independently"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": true
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r136-369fece6",
+      "title": "【申請時程6/12-7/3】114學年度「教育部博士生獎學金」申請公告",
+      "source_id": "discovery-r136",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 0,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r139-bcf86c90",
+      "title": "【申請時程6/15-7/10】115學年度「教育部博士生獎學金」申請公告",
+      "source_id": "discovery-r139",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 1,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r140-ecd377b6",
+      "title": "【6/22-6/26申請】電信所補助研究生出席國際會議經費申請 (5~7月會議)",
+      "source_id": "discovery-r140",
+      "resource_kind": "travel_grant",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 1,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    },
+    {
+      "candidate_id": "cand-discovery-r141-028a44be",
+      "title": "【115.10.12(一)止】115學年度「教育部博士生獎學金」第二階段申請公告",
+      "source_id": "discovery-r141",
+      "resource_kind": "scholarship",
+      "cycle_kind": "academic_year",
+      "snapshot": {
+        "start_present": false,
+        "dated_steps": [],
+        "relative_step_actors": [],
+        "relative_rule_type": "none"
+      },
+      "source_visibility": {
+        "start": false,
+        "deadline": false,
+        "result": false
+      },
+      "source_not_marked_unsafe": true,
+      "next_review_tasks": [
+        "inspect_chain_and_non_date_terms_before_classifying"
+      ],
+      "current_display": {
+        "row_count": 1,
+        "rows_with_start_and_end": 0,
+        "rows_with_any_date_or_reference": 1,
+        "rows_with_reference_band": 0,
+        "relative_rule_text_visible": false,
+        "process_steps_visible": false
+      }
+    }
+  ],
+  "display_projection": {
+    "reference_year": 2026,
+    "as_of": "2026-11-03",
+    "mode": "documents; examples; baselines=true; no user filters; all dates regardless viewport",
+    "candidates_with_any_drawable_date_or_reference": 20,
+    "candidates_with_start_and_end": 7,
+    "candidates_with_reference_band": 5,
+    "candidates_with_student_relative_rule_text": 1,
+    "document_state_before_unit_examples": {
+      "unknown": 54,
+      "not_applicable": 3,
+      "closed": 7
+    }
+  }
+}
