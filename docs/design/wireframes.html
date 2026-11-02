@@ -235,6 +235,12 @@ html{scroll-behavior:smooth}
 @media(max-width:1100px){#search .gantt-legend{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:800px){.chart-heading{display:block}.chart-heading h2{font-size:16px}.chart-time-fields label{align-items:flex-start;flex-direction:column}.chart-time-fields .checkbox-label{flex-direction:row;align-items:center}.chart-move{margin-top:0}.chart-header{gap:8px}.chart-legend summary small{display:none}}
 @media(max-width:400px){#search .gantt-legend{grid-template-columns:1fr}.chart-header{padding:12px}.chart-header .segmented button{padding:6px 9px}.chart-toolbar,.chart-caption{padding-left:12px;padding-right:12px}.chart-time-fields select{max-width:170px}}
+.header-controls{display:flex;align-items:center;justify-content:flex-end;gap:16px;flex-wrap:wrap;min-width:0}
+.header-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.header-action{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 12px;border:1px solid var(--ink);border-radius:7px;background:var(--white);color:var(--ink);font-size:13px;font-weight:700;line-height:1.5;text-decoration:none;white-space:nowrap}
+.header-action.primary{background:var(--ink);color:white}.header-action:hover{background:var(--green)}.header-action.primary:hover{background:#315d50}
+@media(max-width:800px){.header-controls{gap:8px}.header-controls .nav-links{max-width:none;flex-wrap:wrap}.header-action{font-size:12px;padding:7px 10px}}
+@media(max-width:500px){.header-controls,.header-actions{width:100%}.header-actions .header-action{flex:1}}
 </style>
 </head>
 <body>
@@ -242,7 +248,7 @@ html{scroll-behavior:smooth}
 <div class="review-strip">設計審閱稿 · 四分頁互動線框 · 資料快照 2026.10.28 · 所有獎助資料待獨立覆核，非申請建議</div>
 <header class="nav-wrap">
 <div class="nav"><a class="brand" href="#search">OpenGSA<small>Grant Scholarships Award</small></a>
-<nav aria-label="OpenGSA 功能分頁" class="nav-links" role="tablist"><button aria-controls="search" aria-selected="true" data-panel="search" id="tab-search" role="tab" tabindex="0">找獎助</button><button aria-controls="detail" aria-selected="false" data-panel="detail" id="tab-detail" role="tab" tabindex="-1">獎助詳情</button><button aria-controls="timeline" aria-selected="false" data-panel="timeline" id="tab-timeline" role="tab" tabindex="-1">我的時間軸</button><button aria-controls="rights" aria-selected="false" data-panel="rights" id="tab-rights" role="tab" tabindex="-1">權益與求助</button></nav></div>
+<div class="header-controls"><nav aria-label="OpenGSA 功能分頁" class="nav-links" role="tablist"><button aria-controls="search" aria-selected="true" data-panel="search" id="tab-search" role="tab" tabindex="0">找獎助</button><button aria-controls="detail" aria-selected="false" data-panel="detail" id="tab-detail" role="tab" tabindex="-1">獎助詳情</button><button aria-controls="timeline" aria-selected="false" data-panel="timeline" id="tab-timeline" role="tab" tabindex="-1">我的時間軸</button><button aria-controls="rights" aria-selected="false" data-panel="rights" id="tab-rights" role="tab" tabindex="-1">權益與求助</button></nav><nav aria-label="參與 OpenGSA" class="header-actions"><a class="header-action" href="https://github.com/matt-ye/opengsa/issues/new?template=preview-feedback.yml" target="_blank" rel="noopener noreferrer" title="在新分頁開啟 GitHub 回饋表單；需帳號，內容公開">提供回饋 ↗</a><a class="header-action primary" href="https://github.com/matt-ye/opengsa/issues/new?template=resource-source.yml" target="_blank" rel="noopener noreferrer" title="提供尚未收錄的獎學金、補助或研究資源；需 GitHub 帳號，內容公開">提供獎助來源 ↗</a></nav></div></div>
 </header>
 <main id="main">
 <section aria-labelledby="tab-search" class="screen" id="search" role="tabpanel">
