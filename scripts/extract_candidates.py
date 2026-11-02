@@ -35,7 +35,7 @@ from scripts.application_process import infer_process
 from scripts.semantic_facts import INSTRUCTIONS, PLACEHOLDER, discover_identity, discover_organizations, recurring_time, degree_terms, time_actor
 from scripts.ai_tool_rules import benefit_tiers
 
-EXTRACTOR_VERSION = "extractor-1.5.0"
+EXTRACTOR_VERSION = "extractor-1.6.0"
 PROMPT_VERSION = "prompt-1.3.0"
 
 PII_REDACT_RE = re.compile(
@@ -889,12 +889,17 @@ def parse_amount_from_text(text):
             }
 
     # Visible monetary clause, including headings between 每月 and the number.
-    money = re.search(r"([0-9,]+|[一二兩三四五六七八九零〇壹貳參肆伍陸柒捌玖十拾拾百佰千仟萬]+)元", clean)
+    money = re.search(r"(?<![0-9,.])([0-9,]+(?:\.\d+)?\s*[萬千仟百佰]?|[一二兩三四五六七八九零〇壹貳參肆伍陸柒捌玖十拾拾百佰千仟萬]+)元", clean)
     if money:
         amount = parse_chinese_or_arabic_int(money.group(1).replace("兩", "二"))
         if amount and amount >= 1000:
-            unit = "per_month" if "每月" in clean else ("per_year" if any(w in clean for w in ("每年", "每學年", "一年")) else "unknown")
-            return {"amount_min":amount,"amount_max":amount,"currency":"TWD","unit":unit,"basis":"fixed","duration_months_min":None,"duration_months_max":None,"tax_note":None}
+            # A later clause's monthly stipend must not turn an earlier tuition cap into a monthly payment.
+            start=max(clean.rfind(mark,0,money.start()) for mark in ('。','；','，'))+1
+            ends=[pos for mark in ('。','；','，') if (pos:=clean.find(mark,money.end()))>=0]
+            clause=clean[start:min(ends) if ends else len(clean)]
+            unit = "per_month" if "每月" in clause else ("per_year" if any(w in clause for w in ("每年", "每學年", "一年")) else "unknown")
+            basis='maximum' if re.search('最高|上限|至多',clause) else 'minimum' if re.search('最低|至少|不得低於',clause) else 'fixed'
+            return {"amount_min":None if basis=='maximum' else amount,"amount_max":None if basis=='minimum' else amount,"currency":"TWD","unit":unit,"basis":basis,"duration_months_min":None,"duration_months_max":None,"tax_note":None}
     return None
 
 
@@ -2728,6 +2733,22 @@ def extract_from_in_memory_blocks(
             evidence_mode=evidence_mode,
             as_of=as_of,
         )
+        # Routing metadata (including a university hostname) is not an eligibility
+        # clause or proof that the student is the formal applicant/payee.
+        generic['eligibility']['institution']='unknown'
+        generic['institution_scope']['school']='unknown'
+        generic['participants']['applicant']='unknown'
+        generic['participants']['beneficiary']='unknown'
+        title=source.get('title','')
+        cycles=list(dict.fromkeys(re.findall(r'(?<!\d)((?:20\d{2}|1\d{2}))(學年度|年度)',title)))
+        title_block=next((b for b in blocks if re.sub(r'\s+','',title) in re.sub(r'\s+','',b['text'])),None)
+        if re.search(r'辦法|作業要點|補助要點',title):
+            generic['cycle'].update(kind='policy_snapshot',label='制度快照；版本依原文核對')
+        elif len(cycles)==1 and title_block:
+            year,suffix=cycles[0]
+            generic['cycle'].update(kind='academic_year' if suffix=='學年度' else 'calendar_year',label=year+suffix,
+                year_system='roc' if len(year)==3 else 'gregorian',year=int(year))
+            generic['field_evidence'].append(make_field_evidence('cycle',sid,revision_id,title_block,evidence_mode))
         _set_identity_with_evidence(generic, PLACEHOLDER, id_block, sid, revision_id, evidence_mode)
         if generic['resource_kind']=='employment_support':generic['participants']['applicant']='unit'
         _populate_common_extractions(generic, blocks, sid, revision_id, evidence_mode)

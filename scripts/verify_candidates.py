@@ -149,6 +149,13 @@ def _date_tokens(iso_date_str):
 def _amount_tokens(amount):
     if amount is None:
         return []
+    from decimal import Decimal,InvalidOperation
+    try:
+        exact=Decimal(str(amount))
+    except InvalidOperation:
+        return []
+    if not exact.is_finite() or exact<0:return []
+    if exact!=exact.to_integral_value():return [format(exact,'f'),format(exact,',f')]
     amt_int = int(amount)
     tokens = [str(amt_int), f"{amt_int:,}"]
     chinese = _to_chinese_num(amt_int)
@@ -163,6 +170,10 @@ def _amount_tokens(amount):
         tokens.append(f"{c_wan}萬")
         if wan == 2:
             tokens.append("兩萬")
+    elif amount == amt_int:
+        # Exact decimal 萬 representation (2.5萬元), independently checked below.
+        tokens.append(format(Decimal(amt_int)/Decimal(10000),'f').rstrip('0').rstrip('.')+'萬')
+    if amt_int and amt_int%1000==0:tokens.append(str(amt_int//1000)+'千')
     return list(dict.fromkeys(tokens))
 
 
@@ -183,8 +194,10 @@ def date_supported(value, text):
 
 
 def amount_supported(amount, text):
-    numerals = "0-9,一二兩三四五六七八九零〇十百千萬壹貳參肆伍陸柒捌玖拾佰仟拾"
-    return any(re.search(f"(?<![{numerals}])" + re.escape(token) + f"(?![{numerals}])", text) for token in _amount_tokens(amount) if token)
+    numerals = "0-9,.一二兩三四五六七八九零〇十百千萬壹貳參肆伍陸柒捌玖拾佰仟拾"
+    variants=str.maketrans({'壹':'一','貳':'二','參':'三','肆':'四','伍':'五','陸':'六','柒':'七','捌':'八','玖':'九','拾':'十','拾':'十','佰':'百','仟':'千','兩':'二','〇':'零'})
+    text=re.sub(r'\s+','',text).translate(variants)
+    return any(re.search(f"(?<![{numerals}])" + re.escape(token.translate(variants)) + f"(?![{numerals}])", text) for token in _amount_tokens(amount) if token)
 
 
 def strip_model_self_claims(candidate):
@@ -455,7 +468,7 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
 
     ev_errors.extend(process_errors(cand))
     if in_memory_blocks is not None:
-        if cand.get("resource_kind")=="tool_subscription":
+        if cand.get("program_key") in ("taipei-ai-tools","hsinchu-ai-tools") or meta.get('source_id') in ("taipei-ai-tools","hsinchu-ai-tools"):
             expected_tiers=benefit_tiers(in_memory_blocks)
             expected_pairs={(t["label"],t["amount_max"]) for t in expected_tiers}
             for item in benefit_items:
@@ -663,7 +676,7 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
     if not is_stub:
         if cycle.get("kind") in ("calendar_year","academic_year") and cycle.get("year") is None:
             coverage_warnings.append("coverage_gap:cycle_year_unknown")
-        if cand.get("resource_kind")=="tool_subscription":
+        if cand.get("program_key") in ("taipei-ai-tools","hsinchu-ai-tools") or meta.get('source_id') in ("taipei-ai-tools","hsinchu-ai-tools"):
             if not cand.get("expense_period"):coverage_warnings.append("coverage_gap:ai_tools:expense_period")
             if in_memory_blocks is not None:
                 expected={(t["label"],t["amount_max"]) for t in benefit_tiers(in_memory_blocks)}

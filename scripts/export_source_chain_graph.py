@@ -19,12 +19,13 @@ ROLE={'policy':'辦法／法源','annual_call':'年度公告','local_intake':'�
 def read(path):
     return json.loads((ROOT/path).read_text(encoding='utf-8'))
 
-def load_graph(index=None):
-    index=deepcopy(index) if index is not None else read('data/source-chain-index.json')
-    Draft202012Validator(read('schema/source-chain-index.schema.json'),format_checker=FormatChecker()).validate(index)
-    if digest(read(index['candidate_file']))!=index['candidate_sha256']:
+def load_graph(index=None,reader=None):
+    read_file=reader or read
+    index=deepcopy(index) if index is not None else read_file('data/source-chain-index.json')
+    Draft202012Validator(read_file('schema/source-chain-index.schema.json'),format_checker=FormatChecker()).validate(index)
+    if digest(read_file(index['candidate_file']))!=index['candidate_sha256']:
         raise ValueError('candidate_snapshot_changed')
-    candidates=read(index['candidate_file'])['candidates']
+    candidates=read_file(index['candidate_file'])['candidates']
     expected={c['candidate_id']:c['program_key'] for c in candidates}
     actual={cid:p['key'] for p in index['programs'] for cid in p['candidate_ids']}
     if expected!=actual or sum(len(p['candidate_ids']) for p in index['programs'])!=len(expected):
@@ -39,7 +40,7 @@ def load_graph(index=None):
         identity=(program,source,target,role,origin)
         if identity not in seen_edges:
             seen_edges.add(identity);edges.append(dict(program_key=program,source=source,target=target,role=role,origin=origin))
-    bundles=[read(path) for path in index['bundles']]
+    bundles=[read_file(path) for path in index['bundles']]
     for bundle in bundles:
         validate(bundle)
         for document in bundle['documents']:
@@ -50,7 +51,7 @@ def load_graph(index=None):
     for relation in bundles[0]['relations']:
         edge(relation['program_key'],docs[relation['from']]['url'],relation['url'],relation['role'],'baseline_relation')
     for config_path in index['batch_configs']:
-        config=read(config_path)
+        config=read_file(config_path)
         for source in config['sources']:
             for parent in source.get('parent_urls',[]):
                 edge(source['program_key'],parent,source['url'],source['role'],'registry_context')

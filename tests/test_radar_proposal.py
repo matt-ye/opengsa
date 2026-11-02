@@ -1,0 +1,100 @@
+"""Proposals must be traceable and readable without modifying or approving the base."""
+from copy import deepcopy
+import json
+from pathlib import Path
+from tempfile import TemporaryDirectory
+import unittest
+from unittest.mock import patch
+from scripts.propose_radar_update import ROOT,prepare,write_proposal,read
+from scripts.expand_sources import prepare_response,profile_for
+from scripts.extract_candidates import extract_from_in_memory_blocks
+from scripts.scan_sources import digest
+from tests.test_expansion import HTML,row
+
+class RadarProposalTests(unittest.TestCase):
+    def fixture(self):
+        response={'url':row()['url'],'body':HTML,'headers':{'content-type':'text/html'}}
+        prep=prepare_response(response,{},['example.test']);profile=profile_for(row(),prep,None)
+        cs=extract_from_in_memory_blocks(profile,prep['blocks'],'a'*64,'2026-11-01T00:00:00+00:00',as_of='2026-11-01',extraction_strategy='rules_only')
+        bundle={'schema_version':'1.1.0-candidate','generated_at':'2026-11-01T00:00:00+00:00','as_of':'2026-11-01',
+            'timezone':'Asia/Taipei','model_enabled':False,'model_calls':0,'official_data_modified':False,'candidates':cs}
+        config=read(ROOT/'data/scan-sources.json');config['sources'].append(profile)
+        config['allowed_hosts'].append('example.test')
+        return bundle,config,profile
+
+    def test_new_candidate_keeps_originals_and_is_not_enabled_for_schedule(self):
+        bundle,config,profile=self.fixture();before=(ROOT/'data/candidates/source-review.json').read_bytes()
+        files,summary=prepare(bundle,config)
+        self.assertEqual(summary['proposed_candidates'],20);self.assertEqual(summary['human_approvals'],0)
+        self.assertFalse(next(p for p in files['data/scan-sources.json']['sources'] if p['id']==profile['id'])['enabled'])
+        self.assertEqual(before,(ROOT/'data/candidates/source-review.json').read_bytes())
+        self.assertIn('data/source-chain-batches/radar-proposal-snapshots.json',files)
+
+    def test_readable_preview_and_patch_created_offline(self):
+        bundle,config,_=self.fixture()
+        with TemporaryDirectory() as tmp:
+            output=Path(tmp)/'proposal';summary=write_proposal(bundle,config,output)
+            self.assertTrue((output/'preview/candidate-preview.html').exists())
+            self.assertTrue((output/'data-pr.patch').read_text(encoding='utf-8').startswith('--- a/data/'))
+            self.assertFalse(summary['published'])
+
+    def test_failed_checks_withheld_and_approval_claim_rejected(self):
+        bundle,config,_=self.fixture();bundle['candidates'][0]['verification']['status']='failed_automated_checks'
+        _,summary=prepare(bundle,config);self.assertEqual(summary['proposed_candidates'],19)
+        bundle,config,_=self.fixture();bundle['candidates'][0]['review']['promotion_ready']=True
+        with self.assertRaises(ValueError):prepare(bundle,config)
+
+    def test_manual_scan_usage_is_not_relabelled_as_zero_model_calls(self):
+        bundle,config,_=self.fixture();bundle.update(model_enabled=True,model_calls=1)
+        files,_=prepare(bundle,config)
+        merged=files['data/candidates/source-review.json']
+        self.assertTrue(merged['model_enabled']);self.assertEqual(merged['model_calls'],1)
+
+    def test_new_revision_cannot_reuse_old_chain_events_or_dependent_rules(self):
+        base=read(ROOT/'data/candidates/source-review.json');c=deepcopy(next(c for c in base['candidates'] if c['program_key']=='nstc-grad-conference-policy'))
+        old=c['source_metadata']['revision_id'];new='b'*64
+        c['candidate_id']='SYNTH-revision';c['source_metadata']['revision_id']=new
+        for e in c['field_evidence']:
+            if e.get('revision_id')==old:e['revision_id']=new
+        base['candidates']=[c]
+        files,summary=prepare(base,read(ROOT/'data/scan-sources.json'))
+        self.assertTrue(summary['invalidated_timeline_documents'])
+        index=files['data/source-chain-index.json']
+        bad=set(summary['invalidated_timeline_documents'])
+        self.assertFalse(any(ref['document_id'] in bad for p in index['programs'] for r in p['rules'] for ref in r['evidence_refs']))
+
+    def test_same_bytes_allow_explicit_revision_rebinding_without_new_dates(self):
+        base=read(ROOT/'data/candidates/source-review.json');index=read(ROOT/'data/source-chain-index.json')
+        docs=[d for path in index['bundles'] for d in read(ROOT/path)['documents'] if d.get('raw_sha256')]
+        c=deepcopy(next(c for c in base['candidates'] if any(d['url']==c['source_metadata']['url'] for d in docs)))
+        doc=next(d for d in docs if d['url']==c['source_metadata']['url']);old=c['source_metadata']['revision_id'];new='b'*64
+        c['candidate_id']='SYNTH-byte-revision';c['source_metadata']['revision_id']=new
+        for e in c['field_evidence']:
+            if e.get('revision_id')==old:e['revision_id']=new
+        base['candidates']=[c]
+        observation={'records':[{'url':doc['url'],'revision_id':new,'raw_sha256':doc['raw_sha256'],'content_verified':True}]}
+        files,summary=prepare(base,read(ROOT/'data/scan-sources.json'),observation)
+        self.assertIn(doc['id'],summary['byte_identical_rebound_documents'])
+        self.assertNotIn(doc['id'],summary['invalidated_timeline_documents'])
+        changed=next(d for path in index['bundles'] for d in files[path]['documents'] if d['id']==doc['id'] and d.get('events')) if doc['events'] else None
+        if changed:self.assertEqual([e['value'] for e in changed['events']],[e['value'] for e in doc['events']])
+
+    def test_unused_discovery_aliases_do_not_break_preview_or_enable_scans(self):
+        bundle,config,profile=self.fixture()
+        config['sources'].append({**profile,'id':'SYNTH-unused-alias'})
+        with TemporaryDirectory() as tmp:
+            output=Path(tmp)/'proposal';write_proposal(bundle,config,output)
+            actual=read(output/'repo/data/scan-sources.json')
+            self.assertNotIn('SYNTH-unused-alias',[p['id'] for p in actual['sources']])
+            self.assertFalse(next(p for p in actual['sources'] if p['id']==profile['id'])['enabled'])
+
+    def test_stricter_document_retention_is_allowed_but_excerpts_still_rejected(self):
+        from scripts.check_data import validate_candidate_snapshot
+        bundle,config,profile=self.fixture()
+        profile['evidence_mode']='short_excerpt'
+        self.assertEqual(validate_candidate_snapshot(bundle,config),[])
+        bundle['candidates'][0]['field_evidence'][0]['excerpt']='SYNTH'
+        self.assertTrue(validate_candidate_snapshot(bundle,config))
+        bundle,config,profile=self.fixture()
+        bundle['candidates'][0]['source_metadata']['evidence_mode']='short_excerpt'
+        self.assertIn('candidate evidence policy differs from its source profile',validate_candidate_snapshot(bundle,config))

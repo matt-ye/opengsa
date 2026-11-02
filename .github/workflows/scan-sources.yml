@@ -109,6 +109,18 @@ jobs:
           retention-days: 14
           if-no-files-found: warn
 
+      - name: Prepare radar candidate update and offline preview
+        if: success()
+        run: python scripts/propose_radar_update.py --candidates work/scanner/report/structured-candidates.json --output work/radar-proposal
+      - name: Preserve radar proposal and preview
+        if: success()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: radar-data-proposal-${{ github.run_id }}
+          path: work/radar-proposal/
+          retention-days: 14
+          if-no-files-found: error
+
   review-workspace:
     if: github.event_name == 'workflow_dispatch' && inputs.operation == 'review_workspace'
     runs-on: ubuntu-latest
