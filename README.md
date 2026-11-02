@@ -13,6 +13,8 @@
 
 ## 目前狀態
 
+2026-11-02使用者已核可整合PR32、37、38及64筆雷達摘要，依序合併後沿用既有Pages流程更新公開預覽；實際部署成功以[Actions](https://github.com/matt-ye/opengsa/actions/workflows/pages.yml)為準。這是來源摘要公開，所有候選仍pending，不代填逐筆完整資料核准。下方「公開19筆／不合併／不部署」是此次核可前的階段紀錄；正式pilot10筆、真人台帳、模型0、新增來源停用與PR34不動的界線維持。下一輪優先[簡化呈現方式、補快捷入口與改善萃取覆蓋](docs/VERIFIED-SOURCE-CARDS.md#下一輪優先順序)。
+
 2026-11-02建卡資料支線：原始來源盤查完成後，另以PR37為基礎匯入**64筆待審摘要／58組暫定方案**（本輪61筆＋保留3筆）。14筆自動檢核通過、50筆有缺漏，全部pending；不是64個已核定可申請獎學金。來源與資訊鏈版本防護、篩選同步及合成資格試算見[本批建卡說明](docs/VERIFIED-SOURCE-CARDS.md)；[完整資訊鏈樹狀圖](docs/source-chains/source-chain-map.html)已更新。公開站仍為19筆，須經PR審查、合併與部署才會更新；正式pilot10筆與真人台帳不變。新增來源排程維持停用，模型0，不自動發布。
 
 2026-11-02：[原始來源逐項檢核](docs/ORIGINAL-SOURCE-VERIFICATION.md)已覆蓋485個原始URL；本輪367個目標中256個可讀、111個仍有存取／渲染／格式／網址限制，未冒充正文通過。57個來源可進待審建卡，累計912HTTP、模型0。[逐項查詢](docs/source-expansion/original-source-verification.html)與JSON已保存；後續建卡另開資料PR，公開19筆、pilot及真人台帳不因本次來源PR更新。
@@ -21,7 +23,7 @@
 
 **[本輪結果、待辦與重現方式](docs/SOURCE-EXPANSION-RUN.md)** · [資訊鏈樹狀圖HTML](docs/source-expansion/results.html) · [全部來源處置JSON](data/source-expansion/run-2026-11-01.json) · [原始完整來源目錄](docs/source-expansion/catalog.html)
 
-來源JSON與網頁圖維持主流程。Obsidian已棄用；PR34依使用者要求保留原樣。本輪疊於尚未合併的PR32，不自動合併或發布。新增排程產物為雷達資料patch與離線預覽artifact，Actions權限仍唯讀、不代開或合併資料PR。
+來源JSON與網頁圖維持主流程。Obsidian已棄用；PR34依使用者要求保留原樣。本輪原先疊於PR32，現依上方最新核可整合PR32、37、38；後續掃描仍不自動合併或發布。新增排程產物為雷達資料patch與離線預覽artifact，Actions權限仍唯讀、不代開或合併資料PR。
 
 <details>
 <summary>來源資訊鏈第一批基線（PR32，保留當時數量）</summary>
