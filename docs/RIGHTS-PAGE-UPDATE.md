@@ -1,6 +1,6 @@
 # 權益與求助：主題分頁、給付表與連結查核
 
-2026-11-02使用者核可實作；本變更供PR覆核，不自行合併或部署。承接PR40的頁首回報按鈕，採堆疊PR，先以PR40分支為base；PR40合併後再改回main。正式pilot10筆、64筆pending候選、真人覆核台帳、新來源排程與模型設定均不改；PR34不動。
+2026-11-02使用者核可實作，後續明確核可merge及上架。本變更最初堆疊於PR40；PR40已合併，PR41已改回main，通過PR檢查後依核可合併，沿既有GitHub Pages發布。實際結果以[Pages Actions](https://github.com/matt-ye/opengsa/actions/workflows/pages.yml)的main合併SHA及公開站驗證為準。正式pilot10筆、64筆pending候選、真人覆核台帳、新來源排程與模型設定均不改；PR34不動。
 
 ## 內容放置
 
