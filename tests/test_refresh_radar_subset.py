@@ -6,10 +6,12 @@ import json
 from scripts.refresh_radar_subset import ROOT,refresh
 
 class RefreshRadarSubsetTests(unittest.TestCase):
+    def setUp(self):
+        (ROOT/'work').mkdir(exist_ok=True)
+
     def test_unknown_source_and_invalid_budget_never_call_transport(self):
         calls=[]
         def transport(*args):calls.append(args);raise AssertionError('network_must_not_be_used')
-        (ROOT/'work').mkdir(exist_ok=True)
         with tempfile.TemporaryDirectory(dir=ROOT/'work') as folder:
             with self.assertRaisesRegex(ValueError,'source_must_be_an_existing_primary_candidate'):
                 refresh(['SYNTH-unknown'],Path(folder)/'unknown',transport=transport)
