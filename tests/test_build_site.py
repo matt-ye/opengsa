@@ -6,6 +6,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from urllib.parse import urlparse, unquote
 from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -70,6 +71,29 @@ class SiteBuildTests(unittest.TestCase):
             self.assertIsNone(link.find_parent(attrs={'role':'tablist'}))
             self.assertEqual(link['target'],'_blank');self.assertIn('noopener',link['rel'])
         self.assertIsNone(soup.select_one('.review-strip a'))
+
+    def test_rights_sections_and_all_fragment_or_document_links_resolve(self):
+        soup = BeautifulSoup(self.html, 'html.parser')
+        ids = [tag['id'] for tag in soup.select('[id]')]
+        self.assertEqual(len(ids), len(set(ids)), 'Duplicate IDs break fragment navigation')
+        for link in soup.select('a[href^="#"]'):
+            self.assertIn(link['href'][1:], ids)
+        rights = soup.select_one('#rights')
+        sections = rights.select('[data-rights-section]')
+        self.assertEqual([s['data-rights-section'] for s in sections],
+                         ['overview', 'pay', 'standards', 'grievance'])
+        self.assertEqual([s['data-rights-section'] for s in sections if not s.has_attr('hidden')], ['overview'])
+        controls = rights.select('#rights-view-switch [aria-controls]')
+        self.assertEqual({c['aria-controls'] for c in controls}, {s['id'] for s in sections})
+        for link in rights.select('a[href]'):
+            url = urlparse(link['href'])
+            self.assertIn(url.scheme, ('', 'https'))
+            if url.netloc == 'github.com':
+                self.assertTrue(url.path.startswith('/matt-ye/opengsa/blob/main/docs/'))
+                local = ROOT / unquote(url.path.split('/blob/main/', 1)[1])
+                self.assertTrue(local.is_file(), str(local))
+        self.assertIn('支給上限', rights.select_one('#rights-pay-group').get_text())
+        self.assertNotIn('29025/', str(rights))  # Removed official URL returns 410.
 
 
 if __name__ == "__main__":

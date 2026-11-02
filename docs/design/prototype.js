@@ -475,7 +475,7 @@ const rawById=new Map(pilot.opportunities.map(item=>[item.id,item]));
 const sourceById=new Map(pilot.sources.map(source=>[source.id,source]));
 const picked={demo:new Set(),draft:new Set()}, completed={demo:new Set(),draft:new Set()}, activeDetail={demo:null,draft:null};
 let sharedItems=[], personalRangeMode="recent", lastPersonalRange=null;
-let today=taipeiToday(), mode=reviewPreview||radarView?"draft":"demo", view="gantt", rangeMode="recent", offset=0, inspectedId=null, lastRange=null, centerPending=true, rightsView="all", activePanelId="search";
+let today=taipeiToday(), mode=reviewPreview||radarView?"draft":"demo", view="gantt", rangeMode="recent", offset=0, inspectedId=null, lastRange=null, centerPending=true, rightsView="overview", activePanelId="search";
 const scrollPositions={search:0,detail:0,timeline:0,rights:0};
 const state={query:"",category:"all",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all",application:"all",includeUnknown:true};
 function el(tag, cls, text) {
@@ -547,7 +547,7 @@ function activatePanel(id, focus=false) {
  document.querySelectorAll("main > .screen").forEach(panel=>{panel.hidden=panel.id!==id;});
  if(location.hash!=="#"+id) history.replaceState(null,"","#"+id);
  activePanelId=id;
- window.scrollTo(0,scrollPositions[id]||0);
+ window.scrollTo({top:scrollPositions[id]||0,behavior:"instant"});
  if(id==="search" && lastRange) requestAnimationFrame(()=>centerToday(lastRange));
  if(id==="timeline" && lastPersonalRange) requestAnimationFrame(()=>centerToday(lastPersonalRange,"personal-gantt-grid"));
 }
@@ -570,14 +570,11 @@ function scrollToInternalTarget(targetId) {
  if(parentScreen && parentScreen.id) {
   activatePanel(parentScreen.id);
  }
- if(parentScreen && parentScreen.id==="rights") {
-  if(byId("rights-standards-group") && byId("rights-standards-group").contains(target)) {
-   if(rightsView==="grievance") setRightsView("all");
-  } else if(byId("rights-grievance-group") && byId("rights-grievance-group").contains(target)) {
-   if(rightsView==="standards") setRightsView("all");
-  }
- }
- target.scrollIntoView({behavior:"smooth",block:"start"});
+ const rightsSection=target.closest("[data-rights-section]");
+ if(rightsSection) setRightsView(rightsSection.dataset.rightsSection);
+ for(let details=target.closest("details");details;details=details.parentElement?.closest("details")) details.open=true;
+ if(location.hash!=="#"+targetId) history.replaceState(null,"","#"+targetId);
+ target.scrollIntoView({behavior:"instant",block:"start"});
  if(target.tabIndex<0) target.tabIndex=-1;
  target.focus({preventScroll:true});
  return true;
@@ -1054,11 +1051,10 @@ if(byId("persona-bar")){
  });
 }
 function setRightsView(nextView){
- if(!["all","standards","grievance"].includes(nextView)) nextView="all";
+ if(!["overview","pay","standards","grievance"].includes(nextView)) nextView="overview";
  rightsView=nextView;
  selectedButtons("#rights-view-switch","rightsView",rightsView);
- if(byId("rights-standards-group")) byId("rights-standards-group").hidden=(rightsView==="grievance");
- if(byId("rights-grievance-group")) byId("rights-grievance-group").hidden=(rightsView==="standards");
+ document.querySelectorAll("[data-rights-section]").forEach(section=>{section.hidden=section.dataset.rightsSection!==rightsView;});
 }
 if(byId("rights-view-switch")){
  byId("rights-view-switch").addEventListener("click",event=>{
@@ -1068,8 +1064,7 @@ if(byId("rights-view-switch")){
 }
 if(byId("jump-to-grievance")){
  byId("jump-to-grievance").addEventListener("click",()=>{
-  setRightsView("grievance");
-  if(byId("subordination-wizard")) byId("subordination-wizard").scrollIntoView({behavior:"smooth",block:"start"});
+  scrollToInternalTarget("subordination-wizard");
  });
 }
 function updateSubordinationWizard(){
@@ -1085,5 +1080,9 @@ if(byId("subordination-reset")){
   updateSubordinationWizard();
  });
 }
-activatePanel(location.hash.slice(1));render();
+setRightsView(rightsView);
+const initialTarget=location.hash.slice(1);
+if(["search","detail","timeline","rights"].includes(initialTarget)) activatePanel(initialTarget);
+else if(!scrollToInternalTarget(initialTarget)) activatePanel("search");
+render();
 }());

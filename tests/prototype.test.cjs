@@ -472,6 +472,30 @@ test("法源位階地圖按鈕導向正確表格ID，不觸發未定義hash跳�
  assert.ok(js.includes('["search","detail","timeline","rights"].includes(targetId)'));
 });
 
+test("權益跨主題連結揭露目標、展開規劃並維持焦點，未知目標不跳錯頁",()=>{
+ const vm=require("node:vm");
+ const js=fs.readFileSync(path.join(__dirname,"../docs/design/prototype.js"),"utf8");
+ const groups=["overview","pay","standards","grievance"].map(view=>({dataset:{rightsSection:view},hidden:view!=="overview"}));
+ let panel=null,selected=null,focused=false,scrolled=false;
+ const details={open:false,parentElement:null};
+ const target={tabIndex:-1,closest:selector=>selector==="main > .screen"?{id:"rights"}:selector==="[data-rights-section]"?groups[1]:details,
+  scrollIntoView:options=>{assert.equal(groups[1].hidden,false);assert.equal(details.open,true);assert.equal(options.behavior,"instant");scrolled=true;},
+  focus:()=>{focused=true;}};
+ const scope={byId:id=>id==="salary-target"?target:null,activatePanel:id=>{panel=id;},
+  selectedButtons:(_selector,_key,value)=>{selected=value;},document:{querySelectorAll:()=>groups},
+  location:{hash:"#rights"},history:{replaceState:(_state,_title,hash)=>{scope.location.hash=hash;}}};
+ vm.createContext(scope);
+ for(const [begin,end] of [["function setRightsView(",'\nif(byId("rights-view-switch"))'],["function scrollToInternalTarget(",'\ndocument.addEventListener("click"']]){
+  const start=js.indexOf(begin);vm.runInContext(js.slice(start,js.indexOf(end,start)),scope);
+ }
+ assert.equal(scope.scrollToInternalTarget("salary-target"),true);
+ assert.equal(panel,"rights");assert.equal(selected,"pay");assert.equal(focused,true);assert.equal(scrolled,true);
+ assert.equal(scope.location.hash,"#salary-target");
+ assert.deepEqual(groups.map(g=>g.hidden),[true,false,true,true]);
+ panel=null;assert.equal(scope.scrollToInternalTarget("missing"),false);assert.equal(panel,null);
+ scope.setRightsView("invalid");assert.deepEqual(groups.map(g=>g.hidden),[false,true,true,true]);
+});
+
 
 test("擴充篩選器支援博士候選人資格、受理狀態與多來源維度",()=>{
  const sampleItems = [
