@@ -1,5 +1,6 @@
 """Bounded source graph and evidence-backed timeline sidecar. Never approves candidates."""
 import argparse
+from html import unescape
 from copy import deepcopy
 from datetime import date, datetime, timezone, timedelta
 import json
@@ -17,7 +18,7 @@ from scripts.scan_sources import Fetcher, ScanError, digest, html_document, pdf_
 from scripts.document_ir import prepare_document, VERSION as IR_VERSION
 
 VERSION = 'source-chain-1'
-PARSER_VERSION = 'chain-parser-1.5'
+PARSER_VERSION = 'chain-parser-1.6'
 DATE = re.compile(r'(?<!\d)(?:(20\d{2}|1\d{2})[年/.-])?(\d{1,2})[月/.-](\d{1,2})(?!\d)日?')
 INTERVAL = re.compile(r'申請時程|申請時間|受理期間|即日起.*(?:受理|申請)|有意申請.*至')
 
@@ -56,11 +57,13 @@ def discover_links(raw, url, hosts, selector=None):
     found = {}
     for root in roots:
         for a in root.select('a'):
+            if a.find_parent(['nav','header','footer']) or a.find_parent(attrs={'role':'navigation'}):
+                continue
             label = a.get_text(' ', strip=True)
             attachment = a.find_parent(class_='file-download-multiple')
             if attachment:
                 label = attachment.get_text(' ', strip=True)
-            if not re.search(r'辦法|要點|申請|徵件|補助|獎學金|計畫', label):
+            if not re.search(r'辦法|要點|申請|徵件|補助|獎學金|計畫|登記|查詢|表單|須知|流程', label):
                 continue
             href = a.get('href', '')
             if href in ('', '#'):
@@ -69,14 +72,15 @@ def discover_links(raw, url, hosts, selector=None):
             if not href or href.startswith(('javascript:', 'mailto:')):
                 continue
             try:
-                target = safe_url(urljoin(url, href), hosts)
+                target = safe_url(urljoin(url, unescape(href)), hosts)
             except (ScanError, ValueError):
                 continue
             if target == safe_url(url, hosts):
                 continue
             role = 'policy' if re.search(r'辦法|要點', label) else 'related_call'
-            found[target] = {'url': target, 'role': role}
-    return list(found.values())[:8]
+            found[target] = {'url': target, 'role': role, 'label': label[:100]}
+    # Real attachments precede menu/list links so a bounded page budget is useful.
+    return sorted(found.values(), key=lambda link: not bool(re.search(r'\.pdf|\.docx?|Download|attachments/|filedownload',link['url'],re.I)))[:8]
 
 
 def publication(soup, blocks, url=None):
@@ -118,7 +122,7 @@ def publication(soup, blocks, url=None):
 
 def extract_events(blocks, profile, doc, published=None):
     """Source-independent date group. Policies do not create current calls."""
-    if profile['role'] == 'policy':
+    if profile['role'] == 'policy' or profile.get('extract_dates') is False:
         return []
     events = []
     def add(kind, value, block, basis='explicit'):
@@ -234,7 +238,7 @@ def scan_chains(config, bundle, previous=None, fetcher=None, as_of=None):
         doc_id = 'doc-' + digest(p['url'])[:24]
         for parent in p.get('parent_urls', []):
             relations.append({'from': 'doc-' + digest(parent)[:24], 'to': doc_id, 'url': p['url'],
-                              'role': 'local_intake', 'program_key': p['program_key'], 'scope': p['scope'], 'cycle': p['cycle']})
+                              'role': p['role'], 'program_key': p['program_key'], 'scope': p['scope'], 'cycle': p['cycle']})
         if p['url'] in fetched_urls:
             continue
         fetched_urls.add(p['url'])
@@ -274,6 +278,9 @@ def scan_chains(config, bundle, previous=None, fetcher=None, as_of=None):
                     if any(marker not in ''.join(b['text'] for b in blocks) for marker in p['required_markers']):
                         raise ScanError('required_marker_missing')
                 ir = prepare_document(blocks)
+                if hasattr(fetcher,'in_memory_blocks'):
+                    fetcher.in_memory_blocks[p['url']] = blocks
+                    fetcher.in_memory_raw_sha256[p['url']] = digest(raw)
                 semantic = digest([ir['document_sha256'], links])
                 doc.update(format=kind, semantic_sha256=semantic, raw_sha256=digest(raw), links=links,
                            etag=response['headers'].get('etag'), last_modified=response['headers'].get('last-modified'),

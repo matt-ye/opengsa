@@ -1,0 +1,1712 @@
+{
+  "nodes": [
+    {
+      "id": "3c3afed25a02e69b",
+      "type": "text",
+      "x": 0,
+      "y": 0,
+      "width": 350,
+      "height": 175,
+      "color": "5",
+      "text": "## 臺大國科會博士生獎學金\n\n2筆候選｜baseline_pending\n\n沿用基線；待下一批查核"
+    },
+    {
+      "id": "a5c5664edb9e8833",
+      "type": "text",
+      "x": 430,
+      "y": 0,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### filedownload.php\n\n辦法／法源 · pdf · changed\n\n查核：2026-11-01\n\n[來源網站](https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B61-%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf&filepath=.%2FNewsUploadDir%2F2026_06_16_13_57_48_0.pdf)\n\n`doc-829aff53c964112ddb647680`"
+    },
+    {
+      "id": "f3f9a5bc333bf30a",
+      "type": "text",
+      "x": 840,
+      "y": 0,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### shownews.php\n\n地方收件 · html · changed\n\n查核：2026-11-01\n\n[來源網站](https://gice.ntu.edu.tw/shownews.php?ID=7278)\n\n`doc-65fdcc25317db87ff0f5e5a6`"
+    },
+    {
+      "id": "113ca5ad5dcf2a22",
+      "type": "text",
+      "x": 1250,
+      "y": 0,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### filedownload.php\n\n待核關聯 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B62-115%E5%AD%B8%E5%B9%B4%E3%80%8C%E5%9C%8B%E7%A7%91%E6%9C%83%E6%A0%B8%E9%85%8D%E3%80%8D%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91_%E7%94%B3%E8%AB%8B%E8%B3%87%E6%96%99%E8%A1%A8.doc&filepath=.%2FNewsUploadDir%2F2026_06_23_16_06_23_0.doc)\n\n`doc-55c5d7f4f0f04a1ecdcaa035`"
+    },
+    {
+      "id": "ddfeb8af15f9d495",
+      "type": "text",
+      "x": 1660,
+      "y": 0,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### filedownload.php\n\n待核關聯 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://gice.ntu.edu.tw/filedownload.php?filename=%288%29%E5%82%99%E5%AF%A9%E8%B3%87%E6%96%99%E6%91%98%E8%A6%81%E5%BD%99%E6%95%B4%E8%A1%A8-%E5%9C%8B%E7%A7%91%E6%9C%83%E6%A0%B8%E9%85%8D%E5%8D%9A%E5%A3%AB%E7%8D%8E%E5%AD%B8%E9%87%91.xlsx&filepath=.%2FNewsUploadDir%2F2026_06_23_16_06_23_1xlsx)\n\n`doc-afb16872c2cb054b18b6aff5`"
+    },
+    {
+      "id": "f4e682649d51db3e",
+      "type": "text",
+      "x": 430,
+      "y": 300,
+      "width": 350,
+      "height": 260,
+      "color": "3",
+      "text": "### 臺大115學年度教育部博士生獎學金（第二梯次）\n\n原候選來源 · html · candidate_snapshot\n\n查核：2026-10-31\n\n[來源網站](https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713)\n\n`doc-79af60be2eedec9477f7a965`"
+    },
+    {
+      "id": "f8bd8fa7c05c2084",
+      "type": "text",
+      "x": 840,
+      "y": 300,
+      "width": 350,
+      "height": 260,
+      "color": "3",
+      "text": "### 臺大教育部博士生獎學金（設置辦法條文快照）\n\n原候選來源 · pdf · candidate_snapshot\n\n查核：2026-10-31\n\n[來源網站](https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf)\n\n`doc-91454a8293b655ab031449cb`"
+    },
+    {
+      "id": "071860094ce642af",
+      "type": "text",
+      "x": 0,
+      "y": 700,
+      "width": 350,
+      "height": 175,
+      "color": "5",
+      "text": "## 臺大教育部博士生獎學金\n\n3筆候選｜baseline_pending\n\n沿用基線；待下一批查核"
+    },
+    {
+      "id": "2193955e28b91a33",
+      "type": "text",
+      "x": 430,
+      "y": 700,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### filedownload.php\n\n辦法／法源 · pdf · changed\n\n查核：2026-11-01\n\n[來源網站](https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B61-%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf&filepath=.%2FNewsUploadDir%2F2026_10_06_11_03_34_0.pdf)\n\n`doc-6df50b7657d765e25b95b3f6`"
+    },
+    {
+      "id": "d98ece217501ac79",
+      "type": "text",
+      "x": 840,
+      "y": 700,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### shownews.php\n\n地方收件 · html · changed\n\n查核：2026-11-01\n\n[來源網站](https://gice.ntu.edu.tw/shownews.php?ID=7344)\n\n`doc-6ed640449dfc70447e1ca65b`"
+    },
+    {
+      "id": "3100bc85294f6e58",
+      "type": "text",
+      "x": 1250,
+      "y": 700,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### filedownload.php\n\n待核關聯 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://gice.ntu.edu.tw/filedownload.php?filename=%289%29%E5%82%99%E5%AF%A9%E8%B3%87%E6%96%99%E6%91%98%E8%A6%81%E5%BD%99%E6%95%B4%E8%A1%A8-%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91.xlsx&filepath=.%2FNewsUploadDir%2F2026_10_06_11_03_34_3xlsx)\n\n`doc-173278a74d8c8720743ca2c7`"
+    },
+    {
+      "id": "4e102039e36c22d1",
+      "type": "text",
+      "x": 1660,
+      "y": 700,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### filedownload.php\n\n待核關聯 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B63-115%E6%95%99%E8%82%B2%E9%83%A8%E7%8D%8E%E5%AD%B8%E9%87%91_%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E9%85%8D%E5%90%88%E6%AC%BE%E5%90%8C%E6%84%8F%E6%9B%B8.doc&filepath=.%2FNewsUploadDir%2F2026_10_06_11_03_34_2.doc)\n\n`doc-59b198de9c49801cf0c195db`"
+    },
+    {
+      "id": "8acd48e740ab6f51",
+      "type": "text",
+      "x": 430,
+      "y": 1000,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### filedownload.php\n\n待核關聯 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B62-115%E3%80%90%E6%95%99%E8%82%B2%E9%83%A8%E3%80%91%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91_%E7%94%B3%E8%AB%8B%E8%B3%87%E6%96%99%E8%A1%A8.docx&filepath=.%2FNewsUploadDir%2F2026_10_06_11_03_34_1docx)\n\n`doc-da37015838176a2bc7172ca8`"
+    },
+    {
+      "id": "654c8d9293ed6a6a",
+      "type": "text",
+      "x": 840,
+      "y": 1000,
+      "width": 350,
+      "height": 260,
+      "color": "3",
+      "text": "### 臺大學年度待核教育部博士生獎學金（第二梯次）\n\n原候選來源 · pdf · candidate_snapshot\n\n查核：2026-10-31\n\n[來源網站](https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf)\n\n`doc-31f65bf74eda8cb6510d4aea`"
+    },
+    {
+      "id": "3313c8345837e035",
+      "type": "text",
+      "x": 0,
+      "y": 1400,
+      "width": 350,
+      "height": 175,
+      "color": "5",
+      "text": "## 臺大研究生校長獎\n\n2筆候選｜baseline_pending\n\n沿用基線；待下一批查核"
+    },
+    {
+      "id": "2c5fdeae20b05bbd",
+      "type": "text",
+      "x": 430,
+      "y": 1400,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### 161eae16-eed8-423b-875e-57c19a37e6ff.pdf\n\n辦法／法源 · pdf · changed\n\n查核：2026-11-01\n\n[來源網站](https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/263996/161eae16-eed8-423b-875e-57c19a37e6ff.pdf)\n\n`doc-83be8561a7c9058267a0f285`"
+    },
+    {
+      "id": "e83361505c4f9dd0",
+      "type": "text",
+      "x": 840,
+      "y": 1400,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### 26fe6b56-f175-43fb-8715-25d053a52a7f.pdf\n\n辦法／法源 · pdf · changed\n\n查核：2026-11-01\n\n[來源網站](https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/255718/26fe6b56-f175-43fb-8715-25d053a52a7f.pdf)\n\n`doc-e3c8700ad899976478f24c7e`"
+    },
+    {
+      "id": "100d15f5fa8cc05e",
+      "type": "text",
+      "x": 1250,
+      "y": 1400,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### 95600d69-b4d8-43c4-b2e7-81ca70f140d8.pdf\n\n辦法／法源 · pdf · changed\n\n查核：2026-11-01\n\n[來源網站](https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/263996/95600d69-b4d8-43c4-b2e7-81ca70f140d8.pdf)\n\n`doc-fd87ee0b6be83f78d8c80fa5`"
+    },
+    {
+      "id": "bce930ded3b24d91",
+      "type": "text",
+      "x": 1660,
+      "y": 1400,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### b71d29b1-5764-4766-9df9-ad24f96953d6.pdf\n\n辦法／法源 · pdf · changed\n\n查核：2026-11-01\n\n[來源網站](https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/255718/b71d29b1-5764-4766-9df9-ad24f96953d6.pdf)\n\n`doc-ede883487b1a08cc8fc5f74f`"
+    },
+    {
+      "id": "82307cbea155fc63",
+      "type": "text",
+      "x": 430,
+      "y": 1700,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### News_Content_n_194922_s_255718.html\n\n地方收件 · html · changed\n\n查核：2026-11-01\n\n[來源網站](https://ac.ntu.edu.tw/News_Content_n_194922_s_255718.html)\n\n`doc-3ab38c0fcb35e1da6cdc13cd`"
+    },
+    {
+      "id": "d2f625c131c978b7",
+      "type": "text",
+      "x": 840,
+      "y": 1700,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### News_Content_n_194922_sms_123934_s_263996.html\n\n地方收件 · html · changed\n\n查核：2026-11-01\n\n[來源網站](https://ac.ntu.edu.tw/News_Content_n_194922_sms_123934_s_263996.html)\n\n`doc-3d56302ab135830329b2a282`"
+    },
+    {
+      "id": "7a054fcba530c25a",
+      "type": "text",
+      "x": 1250,
+      "y": 1700,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### 3924f741-976c-4f26-8794-fc7c890c41ea.docx\n\n待核關聯 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/263996/3924f741-976c-4f26-8794-fc7c890c41ea.docx)\n\n`doc-c949fd6d9ecef4c164a4f14e`"
+    },
+    {
+      "id": "02dba54dcd708cb5",
+      "type": "text",
+      "x": 1660,
+      "y": 1700,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### 3c8a6cb6-a008-47bc-87d4-80d1a61f313e.docx\n\n待核關聯 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/255718/3c8a6cb6-a008-47bc-87d4-80d1a61f313e.docx)\n\n`doc-e5df94cea84609e7f673d265`"
+    },
+    {
+      "id": "00059b2cfbc1b7f4",
+      "type": "text",
+      "x": 430,
+      "y": 2000,
+      "width": 350,
+      "height": 260,
+      "color": "3",
+      "text": "### 臺大114學年度研究生校長獎\n\n原候選來源 · html · candidate_snapshot\n\n查核：2026-10-31\n\n[來源網站](https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368)\n\n`doc-71e6e9fae7c0dac56233106e`"
+    },
+    {
+      "id": "8d73a83c7a7d1e4f",
+      "type": "text",
+      "x": 840,
+      "y": 2000,
+      "width": 350,
+      "height": 260,
+      "color": "3",
+      "text": "### 臺大研究生校長獎（設置辦法依據）\n\n原候選來源 · pdf · candidate_snapshot\n\n查核：2026-10-31\n\n[來源網站](https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf)\n\n`doc-91155ef2caf594eb5ace7f66`"
+    },
+    {
+      "id": "1b1ef652a62bcdc6",
+      "type": "text",
+      "x": 0,
+      "y": 2400,
+      "width": 350,
+      "height": 175,
+      "color": "5",
+      "text": "## 臺大遠學計畫\n\n1筆候選｜baseline_pending\n\n沿用基線；待下一批查核"
+    },
+    {
+      "id": "f293c12b6bc175b4",
+      "type": "text",
+      "x": 430,
+      "y": 2400,
+      "width": 350,
+      "height": 260,
+      "color": "3",
+      "text": "### 臺大115年遠學計畫（博士生一般補助）\n\n原候選來源 · html · candidate_snapshot\n\n查核：2026-10-31\n\n[來源網站](https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260)\n\n`doc-3b59f5279df532cf4d9ee497`"
+    },
+    {
+      "id": "7a5391593e036de3",
+      "type": "text",
+      "x": 0,
+      "y": 2800,
+      "width": 350,
+      "height": 175,
+      "color": "5",
+      "text": "## 國科會研究生國際會議補助\n\n2筆候選｜partial\n\n本批已補鏈，仍有缺口"
+    },
+    {
+      "id": "d44c7e14dfa22ce4",
+      "type": "text",
+      "x": 430,
+      "y": 2800,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### 國科會會議補助作業要點\n\n辦法／法源 · html · changed\n\n查核：2026-11-01\n\n[來源網站](https://law.nstc.gov.tw/LawContent.aspx?id=FL038260)\n\n`doc-f86ed6a15af02d63eae87cfe`"
+    },
+    {
+      "id": "274272af28bfa35c",
+      "type": "text",
+      "x": 840,
+      "y": 2800,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### 臺大國科會會議補助程序\n\n校內流程 · html · changed\n\n查核：2026-11-01\n\n[來源網站](https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383)\n\n`doc-82e732a493acd30b20ee2163`"
+    },
+    {
+      "id": "f687f963e9292db0",
+      "type": "text",
+      "x": 1250,
+      "y": 2800,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### 電信所國際會議補助綜合公告（多方案）\n\n校內流程 · html · changed\n\n查核：2026-11-01\n\n[來源網站](https://gice.ntu.edu.tw/shownews.php?ID=7282)\n\n`doc-6db49eb6cd36a3c5ed6ecae1`"
+    },
+    {
+      "id": "7341f283f6cc75a0",
+      "type": "text",
+      "x": 0,
+      "y": 3200,
+      "width": 350,
+      "height": 175,
+      "color": "5",
+      "text": "## 傑出人才基金會優秀學生出國開會補助\n\n1筆候選｜partial\n\n本批已補鏈，仍有缺口"
+    },
+    {
+      "id": "7df7435896091c05",
+      "type": "text",
+      "x": 430,
+      "y": 3200,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### 基金會補助辦法（113.05.29）\n\n辦法／法源 · html · changed\n\n查核：2026-11-01\n\n[來源網站](https://www.faos.org.tw/Application/ApplicatStud.html)\n\n`doc-8dbd63e96b3f5bba3534bc8b`"
+    },
+    {
+      "id": "094f6d9cbdd5d2a4",
+      "type": "text",
+      "x": 840,
+      "y": 3200,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### 臺大秘書室申辦提醒（114.5.22）\n\n校內流程 · pdf · changed\n\n查核：2026-11-01\n\n[來源網站](https://sec.ntu.edu.tw/001/Upload/18/relfile/9811/214008/add73815-0131-4901-b098-8dd402078f4c.pdf)\n\n`doc-c327b135dc202bdf07bef717`"
+    },
+    {
+      "id": "c6a4ef628979769e",
+      "type": "text",
+      "x": 1250,
+      "y": 3200,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### 臺大秘書室表格入口\n\n表格入口 · html · changed\n\n查核：2026-11-01\n\n[來源網站](https://sec.ntu.edu.tw/News_n_27890_sms_10166__CSN_541.html)\n\n`doc-4f7b2b6ad18cfaa56db6be65`"
+    },
+    {
+      "id": "3e735206dffc3475",
+      "type": "text",
+      "x": 1660,
+      "y": 3200,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### 基金會公開線上登記入口\n\n申辦入口 · html · changed\n\n查核：2026-11-01\n\n[來源網站](https://www.faos.org.tw/apply/student/)\n\n`doc-4fd96bd5af62899f70833774`"
+    },
+    {
+      "id": "6e58219110ef55b9",
+      "type": "text",
+      "x": 430,
+      "y": 3500,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### 「優秀學生出國開會經費補助」推薦申請書\n\n附件／表單 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/3733/e3e4cbe9-b068-4402-8497-ad5d4256aee1.docx)\n\n`doc-b06c2c6311fcda9c1461ceb5`"
+    },
+    {
+      "id": "e11c4b2b90a5f6b4",
+      "type": "text",
+      "x": 840,
+      "y": 3500,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### 「財團法人傑出人才發展基金會」｜出國開會補助請款流程說明\n\n附件／表單 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/3734/1234482d-32d1-416f-8e49-3cfb7f124cf3.pdf)\n\n`doc-cef4d7285548482485f1cb20`"
+    },
+    {
+      "id": "a423b695f241430e",
+      "type": "text",
+      "x": 0,
+      "y": 3900,
+      "width": 350,
+      "height": 175,
+      "color": "5",
+      "text": "## 國科會博士生赴國外研究（千里馬）\n\n1筆候選｜partial\n\n本批已補鏈，仍有缺口"
+    },
+    {
+      "id": "3924884e523fafb3",
+      "type": "text",
+      "x": 430,
+      "y": 3900,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### 國科會博士赴國外研究作業要點\n\n辦法／法源 · html · changed\n\n查核：2026-11-01\n\n[來源網站](https://law.nstc.gov.tw/LawContent.aspx?id=FL039188)\n\n`doc-9d2009cc5ee30fd247f7a177`"
+    },
+    {
+      "id": "04eaf4e13a47e968",
+      "type": "text",
+      "x": 840,
+      "y": 3900,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### 國科會116年度徵件入口\n\n年度公告 · html · changed\n\n查核：2026-11-01\n\n[來源網站](https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942)\n\n`doc-725ff2f8d770e4f19724edd7`"
+    },
+    {
+      "id": "2fbae85abca722e8",
+      "type": "text",
+      "x": 1250,
+      "y": 3900,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### 臺大116年度收件公告\n\n地方收件 · html · changed\n\n查核：2026-11-01\n\n[來源網站](https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878)\n\n`doc-7cb8562c2b191beabfef7e46`"
+    },
+    {
+      "id": "d0ba63365d575f7d",
+      "type": "text",
+      "x": 1660,
+      "y": 3900,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### 0. 116年度千里馬計畫(博士生)申請須知.pdf\n\n附件／表單 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://www.nstc.gov.tw/nstc/attachments/92025fc4-ec4f-4109-980a-03f23f91f41c)\n\n`doc-aabb3ef821a7e5b35a69380f`"
+    },
+    {
+      "id": "d470d342288bbdc6",
+      "type": "text",
+      "x": 430,
+      "y": 4200,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### 1. 博士生赴國外研究作業要點.pdf\n\n附件／表單 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://www.nstc.gov.tw/nstc/attachments/b510a7b7-c54b-4621-a65c-e79620d13939)\n\n`doc-f0e94d088cab136e496a946c`"
+    },
+    {
+      "id": "040f47b4b609cacd",
+      "type": "text",
+      "x": 840,
+      "y": 4200,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### 2.115年學員(116年出國)申請應注意事項及操作說明_博生(0716).pdf\n\n附件／表單 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://www.nstc.gov.tw/nstc/attachments/d6e268dc-75bb-4829-813b-3d2ce0ce46eb)\n\n`doc-89cf496c24dc59307f73af6b`"
+    },
+    {
+      "id": "821b486d9b27d03c",
+      "type": "text",
+      "x": 0,
+      "y": 4600,
+      "width": 350,
+      "height": 175,
+      "color": "5",
+      "text": "## 中研院人社博士候選人培育\n\n1筆候選｜baseline_pending\n\n沿用基線；待下一批查核"
+    },
+    {
+      "id": "5e76a6c267f8c9aa",
+      "type": "text",
+      "x": 430,
+      "y": 4600,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### ahq7i-hly0j.odt\n\n辦法／法源 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/ahq7i-hly0j.odt)\n\n`doc-1981aa37f69dce4ea24bd4cd`"
+    },
+    {
+      "id": "a1e8b01b393f0382",
+      "type": "text",
+      "x": 840,
+      "y": 4600,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### am2sg-egsi4.odt\n\n辦法／法源 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/am2sg-egsi4.odt)\n\n`doc-2c0180107951848659974d8c`"
+    },
+    {
+      "id": "c810ff4361ccfb19",
+      "type": "text",
+      "x": 1250,
+      "y": 4600,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### 中研院人文社會博士候選人培育計畫要點-odt.odt\n\n辦法／法源 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E8%A6%81%E9%BB%9E-odt.odt)\n\n`doc-6cd06e08a418560562d77e6f`"
+    },
+    {
+      "id": "a4de72c121bb12a4",
+      "type": "text",
+      "x": 1660,
+      "y": 4600,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### 中研院人文社會博士候選人培育計畫要點.pdf\n\n辦法／法源 · pdf · changed\n\n查核：2026-11-01\n\n[來源網站](https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E8%A6%81%E9%BB%9E.pdf)\n\n`doc-27aa46ab787a1dd06f584ab3`"
+    },
+    {
+      "id": "ab2af8795805ffee",
+      "type": "text",
+      "x": 430,
+      "y": 4900,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### 中研院人文社會博士候選人培育計畫要點.pdf\n\n辦法／法源 · pdf · changed\n\n查核：2026-11-01\n\n[來源網站](https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E8%A6%81%E9%BB%9E.pdf)\n\n`doc-63cd2c5eba55f291b9a4ce52`"
+    },
+    {
+      "id": "6c6f84b7b3d2c76e",
+      "type": "text",
+      "x": 840,
+      "y": 4900,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### 中研院政治所博士候選人培育計畫審查辦法-odt.odt\n\n辦法／法源 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E6%94%BF%E6%B2%BB%E6%89%80%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%AF%A9%E6%9F%A5%E8%BE%A6%E6%B3%95-odt.odt)\n\n`doc-f0c0b8ac7ca7e78da0f4c548`"
+    },
+    {
+      "id": "e52b8941ccfc6df3",
+      "type": "text",
+      "x": 1250,
+      "y": 4900,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### 中研院政治所博士候選人培育計畫審查辦法-僅中文版.pdf\n\n辦法／法源 · pdf · changed\n\n查核：2026-11-01\n\n[來源網站](https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E6%94%BF%E6%B2%BB%E6%89%80%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%AF%A9%E6%9F%A5%E8%BE%A6%E6%B3%95-%E5%83%85%E4%B8%AD%E6%96%87%E7%89%88.pdf)\n\n`doc-0398df054d807697619950eb`"
+    },
+    {
+      "id": "b0b91077cee42339",
+      "type": "text",
+      "x": 1660,
+      "y": 4900,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### 中研院政治所博士候選人培育計畫審查辦法-僅中文版.pdf\n\n辦法／法源 · pdf · changed\n\n查核：2026-11-01\n\n[來源網站](https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E6%94%BF%E6%B2%BB%E6%89%80%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%AF%A9%E6%9F%A5%E8%BE%A6%E6%B3%95-%E5%83%85%E4%B8%AD%E6%96%87%E7%89%88.pdf)\n\n`doc-b414f6c39be170c4c4962e41`"
+    },
+    {
+      "id": "0a5edb0c40ce6a74",
+      "type": "text",
+      "x": 430,
+      "y": 5200,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### www.ipsas.sinica.edu.tw\n\n地方收件 · html · changed\n\n查核：2026-11-01\n\n[來源網站](https://www.ipsas.sinica.edu.tw/最新訊息/學術公告/ipsas-115年度人文社會科學博士候選人培育計畫即日起/)\n\n`doc-5af38c1b5da51a66c8d6bab5`"
+    },
+    {
+      "id": "27702275cfb23831",
+      "type": "text",
+      "x": 840,
+      "y": 5200,
+      "width": 350,
+      "height": 260,
+      "color": "4",
+      "text": "### www.ipsas.sinica.edu.tw\n\n地方收件 · html · changed\n\n查核：2026-11-01\n\n[來源網站](https://www.ipsas.sinica.edu.tw/最新訊息/學術公告/ipsas-114年度人文社會科學博士候選人培育計畫即日起/)\n\n`doc-e20dff8d6faf7ac0d21f7699`"
+    },
+    {
+      "id": "f0aaec4ddfeb0b12",
+      "type": "text",
+      "x": 1250,
+      "y": 5200,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### 中央研究院人文社會科學博士候選人申請表.doc\n\n待核關聯 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E7%A7%91%E5%AD%B8%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E7%94%B3%E8%AB%8B%E8%A1%A8.doc)\n\n`doc-1b236b9444da75c5365970c7`"
+    },
+    {
+      "id": "8124058c4a223d4a",
+      "type": "text",
+      "x": 1660,
+      "y": 5200,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### 中央研究院人文社會科學博士候選人申請表.doc\n\n待核關聯 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E7%A7%91%E5%AD%B8%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E7%94%B3%E8%AB%8B%E8%A1%A8.doc)\n\n`doc-956146e710cb86b2362f2ba9`"
+    },
+    {
+      "id": "8f6d73ced479a7b5",
+      "type": "text",
+      "x": 430,
+      "y": 5500,
+      "width": 350,
+      "height": 260,
+      "color": "3",
+      "text": "### 中研院115年度人文社會科學博士候選人培育計畫公告\n\n原候選來源 · html · candidate_snapshot\n\n查核：2026-10-31\n\n[來源網站](https://www.sinica.edu.tw/news_content/56/3434)\n\n`doc-172426b6bcf93c62c2ec1925`"
+    },
+    {
+      "id": "6f0e6ea19f967b7d",
+      "type": "text",
+      "x": 840,
+      "y": 5500,
+      "width": 350,
+      "height": 260,
+      "color": "2",
+      "text": "### 研究計畫群組\n\n待核關聯 · unknown · discovered_not_read\n\n查核：2026-11-01\n\n[來源網站](https://www.ipsas.sinica.edu.tw/%E7%A0%94%E7%A9%B6%E8%A8%88%E7%95%AB%E7%BE%A4%E7%B5%84)\n\n`doc-b55e6f3705304804be1d980d`"
+    },
+    {
+      "id": "deba95194bf65b27",
+      "type": "text",
+      "x": 0,
+      "y": 5900,
+      "width": 350,
+      "height": 175,
+      "color": "5",
+      "text": "## 臺北市青年AI工具補助\n\n1筆候選｜baseline_pending\n\n沿用基線；待下一批查核"
+    },
+    {
+      "id": "1df05970c57df48f",
+      "type": "text",
+      "x": 430,
+      "y": 5900,
+      "width": 350,
+      "height": 260,
+      "color": "3",
+      "text": "### 臺北市青年AI工具補助\n\n原候選來源 · html · candidate_snapshot\n\n查核：2026-10-31\n\n[來源網站](https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796)\n\n`doc-988d52b25067160a7cf10eb7`"
+    },
+    {
+      "id": "7c341e698ef6c99f",
+      "type": "text",
+      "x": 0,
+      "y": 6300,
+      "width": 350,
+      "height": 175,
+      "color": "5",
+      "text": "## 新竹市AI領航工具補助\n\n1筆候選｜baseline_pending\n\n沿用基線；待下一批查核"
+    },
+    {
+      "id": "43707dccc711d3f0",
+      "type": "text",
+      "x": 430,
+      "y": 6300,
+      "width": 350,
+      "height": 260,
+      "color": "3",
+      "text": "### 新竹市AI領航青年數位工具補助\n\n原候選來源 · html · candidate_snapshot\n\n查核：2026-10-31\n\n[來源網站](https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest)\n\n`doc-769a300c41787a4a80ff06da`"
+    },
+    {
+      "id": "cb81bb05a99287fb",
+      "type": "text",
+      "x": 0,
+      "y": 6700,
+      "width": 350,
+      "height": 175,
+      "color": "5",
+      "text": "## 國科會研究人力約用規範\n\n1筆候選｜baseline_pending\n\n沿用基線；待下一批查核"
+    },
+    {
+      "id": "886e5b57374590b2",
+      "type": "text",
+      "x": 430,
+      "y": 6700,
+      "width": 350,
+      "height": 260,
+      "color": "3",
+      "text": "### 國科會專題研究計畫研究人力約用注意事項原文\n\n原候選來源 · html · candidate_snapshot\n\n查核：2026-10-31\n\n[來源網站](https://law.nstc.gov.tw/LawContent.aspx?id=FL028686)\n\n`doc-83da10adff378e11b1688002`"
+    },
+    {
+      "id": "b90f93d5b5628552",
+      "type": "text",
+      "x": 0,
+      "y": 7100,
+      "width": 350,
+      "height": 175,
+      "color": "5",
+      "text": "## 臺大電資學院博士獎學金辦法\n\n1筆候選｜baseline_pending\n\n沿用基線；待下一批查核"
+    },
+    {
+      "id": "82c828fd65f6b0ea",
+      "type": "text",
+      "x": 430,
+      "y": 7100,
+      "width": 350,
+      "height": 260,
+      "color": "3",
+      "text": "### 臺大電資學院優秀博士生獎學金評選辦法\n\n原候選來源 · pdf · candidate_snapshot\n\n查核：2026-10-31\n\n[來源網站](https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf)\n\n`doc-b79ae3b1fb419af04f0b25f5`"
+    },
+    {
+      "id": "77fcbe963bcac92b",
+      "type": "text",
+      "x": 0,
+      "y": 7500,
+      "width": 350,
+      "height": 175,
+      "color": "5",
+      "text": "## 臺大教學助理制度\n\n2筆候選｜baseline_pending\n\n沿用基線；待下一批查核"
+    },
+    {
+      "id": "23080ccb2ebfe6e3",
+      "type": "text",
+      "x": 430,
+      "y": 7500,
+      "width": 350,
+      "height": 260,
+      "color": "3",
+      "text": "### 臺大教務處教學助理制度獎勵金實施辦法\n\n原候選來源 · html · candidate_snapshot\n\n查核：2026-10-31\n\n[來源網站](https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514)\n\n`doc-bb3e2cc25b6975a7a4e7e690`"
+    },
+    {
+      "id": "7f2aac9b6ccfe148",
+      "type": "text",
+      "x": 840,
+      "y": 7500,
+      "width": 350,
+      "height": 260,
+      "color": "3",
+      "text": "### 臺大教務處教學助理制度獎勵金實施辦法\n\n原候選來源 · pdf · candidate_snapshot\n\n查核：2026-10-31\n\n[來源網站](https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/%E6%95%99%E5%8B%99%E8%99%95%E6%95%99%E5%AD%B8%E5%8A%A9%E7%90%86%E5%88%B6%E5%BA%A6%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E6%A2%9D%E6%96%87-%E5%85%AC%E5%91%8A%E7%89%88.pdf)\n\n`doc-ee4d210bbfa286fc2d8d0168`"
+    },
+    {
+      "id": "f94a583d91ca7514",
+      "type": "text",
+      "x": 0,
+      "y": -260,
+      "width": 850,
+      "height": 200,
+      "text": "# OpenGSA 來源資訊鏈\n\n綠：已讀取；黃：既有快照；橙：連結未讀；紅：受阻。來源可讀不等於規則完整或已核准。共用文件只有一個節點，會跨方案連線。\n\nregistry_context＝配置的脈絡關係，不表示原頁有該超連結。observed_link＝實際觀察到的連結。規則與缺口請看同資料生成的HTML樹狀圖。"
+    }
+  ],
+  "edges": [
+    {
+      "id": "8d1a62b1ca05e085",
+      "fromNode": "3c3afed25a02e69b",
+      "toNode": "a5c5664edb9e8833",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "bfb05bb5f005adde",
+      "fromNode": "3c3afed25a02e69b",
+      "toNode": "f3f9a5bc333bf30a",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "9cfbe4ab36115763",
+      "fromNode": "3c3afed25a02e69b",
+      "toNode": "113ca5ad5dcf2a22",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "0bb7c096c1dcc2b0",
+      "fromNode": "3c3afed25a02e69b",
+      "toNode": "ddfeb8af15f9d495",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "d019876b5fb2f14f",
+      "fromNode": "3c3afed25a02e69b",
+      "toNode": "f4e682649d51db3e",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "b211350d2416a8f6",
+      "fromNode": "3c3afed25a02e69b",
+      "toNode": "f8bd8fa7c05c2084",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "a7bf031f60351579",
+      "fromNode": "071860094ce642af",
+      "toNode": "2193955e28b91a33",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "1aa52141ececc3ed",
+      "fromNode": "071860094ce642af",
+      "toNode": "d98ece217501ac79",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "fbb0922b7a836ab7",
+      "fromNode": "071860094ce642af",
+      "toNode": "3100bc85294f6e58",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "a625890d420ee439",
+      "fromNode": "071860094ce642af",
+      "toNode": "4e102039e36c22d1",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "b450a1f81f3122fe",
+      "fromNode": "071860094ce642af",
+      "toNode": "8acd48e740ab6f51",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "258de02a0f3ec061",
+      "fromNode": "071860094ce642af",
+      "toNode": "f4e682649d51db3e",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "fdacf2431283bfa8",
+      "fromNode": "071860094ce642af",
+      "toNode": "654c8d9293ed6a6a",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "daf38044bd10e9a6",
+      "fromNode": "071860094ce642af",
+      "toNode": "f8bd8fa7c05c2084",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "5863df46277953c4",
+      "fromNode": "3313c8345837e035",
+      "toNode": "2c5fdeae20b05bbd",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "fb50cf6e79b2b9ab",
+      "fromNode": "3313c8345837e035",
+      "toNode": "e83361505c4f9dd0",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "c3cf02b2e7fce7af",
+      "fromNode": "3313c8345837e035",
+      "toNode": "100d15f5fa8cc05e",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "2a7ccac16afd4ceb",
+      "fromNode": "3313c8345837e035",
+      "toNode": "bce930ded3b24d91",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "54d73bfb1273bd74",
+      "fromNode": "3313c8345837e035",
+      "toNode": "82307cbea155fc63",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "9a67950e59cf2225",
+      "fromNode": "3313c8345837e035",
+      "toNode": "d2f625c131c978b7",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "9a6866bde06b6f07",
+      "fromNode": "3313c8345837e035",
+      "toNode": "7a054fcba530c25a",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "f3446cbec3cfe9d4",
+      "fromNode": "3313c8345837e035",
+      "toNode": "02dba54dcd708cb5",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "2d904596abab35ec",
+      "fromNode": "3313c8345837e035",
+      "toNode": "00059b2cfbc1b7f4",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "57d97090338b64de",
+      "fromNode": "3313c8345837e035",
+      "toNode": "8d73a83c7a7d1e4f",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "d80059301722ab28",
+      "fromNode": "1b1ef652a62bcdc6",
+      "toNode": "f293c12b6bc175b4",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "7c377c9e4c77c90c",
+      "fromNode": "7a5391593e036de3",
+      "toNode": "d44c7e14dfa22ce4",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "244707b0fbba3385",
+      "fromNode": "7a5391593e036de3",
+      "toNode": "274272af28bfa35c",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "bae392cea822e588",
+      "fromNode": "7a5391593e036de3",
+      "toNode": "f687f963e9292db0",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "6de2e750119e7fac",
+      "fromNode": "7341f283f6cc75a0",
+      "toNode": "7df7435896091c05",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "8932db912cf82ce5",
+      "fromNode": "7341f283f6cc75a0",
+      "toNode": "094f6d9cbdd5d2a4",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "782a2091d9b0a137",
+      "fromNode": "7341f283f6cc75a0",
+      "toNode": "c6a4ef628979769e",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "d9779098fcda7acf",
+      "fromNode": "7341f283f6cc75a0",
+      "toNode": "3e735206dffc3475",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "395b6da0b8ab645c",
+      "fromNode": "7341f283f6cc75a0",
+      "toNode": "6e58219110ef55b9",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "57b0b784ee17f2f7",
+      "fromNode": "7341f283f6cc75a0",
+      "toNode": "e11c4b2b90a5f6b4",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "ec344a59bb1bcc35",
+      "fromNode": "a423b695f241430e",
+      "toNode": "3924884e523fafb3",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "d723bd6ff7fccee3",
+      "fromNode": "a423b695f241430e",
+      "toNode": "04eaf4e13a47e968",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "f53205ae93b2316c",
+      "fromNode": "a423b695f241430e",
+      "toNode": "2fbae85abca722e8",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "ee90d3e3aee95378",
+      "fromNode": "a423b695f241430e",
+      "toNode": "d0ba63365d575f7d",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "ce53974dc88e2ae2",
+      "fromNode": "a423b695f241430e",
+      "toNode": "d470d342288bbdc6",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "97ba9bba8d006b57",
+      "fromNode": "a423b695f241430e",
+      "toNode": "040f47b4b609cacd",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "3b9b5fd7585a7d2d",
+      "fromNode": "821b486d9b27d03c",
+      "toNode": "5e76a6c267f8c9aa",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "1bc9263af4d3c4e6",
+      "fromNode": "821b486d9b27d03c",
+      "toNode": "a1e8b01b393f0382",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "6d5aa49d2fae13ff",
+      "fromNode": "821b486d9b27d03c",
+      "toNode": "c810ff4361ccfb19",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "ae90ecd07090fcf2",
+      "fromNode": "821b486d9b27d03c",
+      "toNode": "a4de72c121bb12a4",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "2e0b31298e70cb21",
+      "fromNode": "821b486d9b27d03c",
+      "toNode": "ab2af8795805ffee",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "348c026eec914eb6",
+      "fromNode": "821b486d9b27d03c",
+      "toNode": "6c6f84b7b3d2c76e",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "50b89fcb4cc677f0",
+      "fromNode": "821b486d9b27d03c",
+      "toNode": "e52b8941ccfc6df3",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "0fdc093f6fcaebed",
+      "fromNode": "821b486d9b27d03c",
+      "toNode": "b0b91077cee42339",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "ab1a6504b197d892",
+      "fromNode": "821b486d9b27d03c",
+      "toNode": "0a5edb0c40ce6a74",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "75499d1993f801df",
+      "fromNode": "821b486d9b27d03c",
+      "toNode": "27702275cfb23831",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "5ad261aeff385349",
+      "fromNode": "821b486d9b27d03c",
+      "toNode": "f0aaec4ddfeb0b12",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "a8720823b9d0478b",
+      "fromNode": "821b486d9b27d03c",
+      "toNode": "8124058c4a223d4a",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "41071eb9c3acef1e",
+      "fromNode": "821b486d9b27d03c",
+      "toNode": "8f6d73ced479a7b5",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "14f5c173d30a77dc",
+      "fromNode": "821b486d9b27d03c",
+      "toNode": "6f0e6ea19f967b7d",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "91ca9afc8c398fa9",
+      "fromNode": "deba95194bf65b27",
+      "toNode": "1df05970c57df48f",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "8168da70308bf76b",
+      "fromNode": "7c341e698ef6c99f",
+      "toNode": "43707dccc711d3f0",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "6088942699e34174",
+      "fromNode": "cb81bb05a99287fb",
+      "toNode": "886e5b57374590b2",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "6314a5372d7ff57d",
+      "fromNode": "b90f93d5b5628552",
+      "toNode": "82c828fd65f6b0ea",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "66c52b5b7b6a7feb",
+      "fromNode": "77fcbe963bcac92b",
+      "toNode": "23080ccb2ebfe6e3",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "4676d47639324f23",
+      "fromNode": "77fcbe963bcac92b",
+      "toNode": "7f2aac9b6ccfe148",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "5e401b4defa929ce",
+      "fromNode": "f4e682649d51db3e",
+      "toNode": "f3f9a5bc333bf30a",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "地方收件／baseline_relation"
+    },
+    {
+      "id": "de3290b58dfceba7",
+      "fromNode": "f3f9a5bc333bf30a",
+      "toNode": "a5c5664edb9e8833",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "辦法／法源／baseline_relation"
+    },
+    {
+      "id": "d1ed980fbc7e3884",
+      "fromNode": "f3f9a5bc333bf30a",
+      "toNode": "113ca5ad5dcf2a22",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "待核關聯／baseline_relation"
+    },
+    {
+      "id": "e56aef6426df43dc",
+      "fromNode": "f3f9a5bc333bf30a",
+      "toNode": "ddfeb8af15f9d495",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "待核關聯／baseline_relation"
+    },
+    {
+      "id": "5c9f5bbdc8329d35",
+      "fromNode": "00059b2cfbc1b7f4",
+      "toNode": "d2f625c131c978b7",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "地方收件／baseline_relation"
+    },
+    {
+      "id": "e1b80376461faeb1",
+      "fromNode": "d2f625c131c978b7",
+      "toNode": "7a054fcba530c25a",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "待核關聯／baseline_relation"
+    },
+    {
+      "id": "d9730e4281e71442",
+      "fromNode": "d2f625c131c978b7",
+      "toNode": "100d15f5fa8cc05e",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "辦法／法源／baseline_relation"
+    },
+    {
+      "id": "c2d9e74ff7b29a4b",
+      "fromNode": "d2f625c131c978b7",
+      "toNode": "2c5fdeae20b05bbd",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "辦法／法源／baseline_relation"
+    },
+    {
+      "id": "382d29f5bb7fb297",
+      "fromNode": "8f6d73ced479a7b5",
+      "toNode": "0a5edb0c40ce6a74",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "地方收件／baseline_relation"
+    },
+    {
+      "id": "5e48e34f00ddf335",
+      "fromNode": "0a5edb0c40ce6a74",
+      "toNode": "6f0e6ea19f967b7d",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "待核關聯／baseline_relation"
+    },
+    {
+      "id": "089a879c11e6766b",
+      "fromNode": "0a5edb0c40ce6a74",
+      "toNode": "a4de72c121bb12a4",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "辦法／法源／baseline_relation"
+    },
+    {
+      "id": "cd4e79db070f744d",
+      "fromNode": "0a5edb0c40ce6a74",
+      "toNode": "5e76a6c267f8c9aa",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "辦法／法源／baseline_relation"
+    },
+    {
+      "id": "36beaaefcee58125",
+      "fromNode": "0a5edb0c40ce6a74",
+      "toNode": "e52b8941ccfc6df3",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "辦法／法源／baseline_relation"
+    },
+    {
+      "id": "e0a7c04edd3389de",
+      "fromNode": "0a5edb0c40ce6a74",
+      "toNode": "a1e8b01b393f0382",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "辦法／法源／baseline_relation"
+    },
+    {
+      "id": "19bdbfe5572074e4",
+      "fromNode": "0a5edb0c40ce6a74",
+      "toNode": "8124058c4a223d4a",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "待核關聯／baseline_relation"
+    },
+    {
+      "id": "167f8fb265a2d36b",
+      "fromNode": "f4e682649d51db3e",
+      "toNode": "d98ece217501ac79",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "地方收件／baseline_relation"
+    },
+    {
+      "id": "cc385305a686370a",
+      "fromNode": "d98ece217501ac79",
+      "toNode": "2193955e28b91a33",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "辦法／法源／baseline_relation"
+    },
+    {
+      "id": "755f3c94d337523d",
+      "fromNode": "d98ece217501ac79",
+      "toNode": "8acd48e740ab6f51",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "待核關聯／baseline_relation"
+    },
+    {
+      "id": "bf6055f8c274b467",
+      "fromNode": "d98ece217501ac79",
+      "toNode": "4e102039e36c22d1",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "待核關聯／baseline_relation"
+    },
+    {
+      "id": "0e34f16926df8cab",
+      "fromNode": "d98ece217501ac79",
+      "toNode": "3100bc85294f6e58",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "待核關聯／baseline_relation"
+    },
+    {
+      "id": "c9df224fa3693a3a",
+      "fromNode": "00059b2cfbc1b7f4",
+      "toNode": "82307cbea155fc63",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "地方收件／baseline_relation"
+    },
+    {
+      "id": "b9b0f63420a120c9",
+      "fromNode": "82307cbea155fc63",
+      "toNode": "02dba54dcd708cb5",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "待核關聯／baseline_relation"
+    },
+    {
+      "id": "d80ccc973e7f16f4",
+      "fromNode": "82307cbea155fc63",
+      "toNode": "e83361505c4f9dd0",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "辦法／法源／baseline_relation"
+    },
+    {
+      "id": "0113da84c4c8605e",
+      "fromNode": "82307cbea155fc63",
+      "toNode": "bce930ded3b24d91",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "辦法／法源／baseline_relation"
+    },
+    {
+      "id": "485e5ac62f6f0ad8",
+      "fromNode": "8f6d73ced479a7b5",
+      "toNode": "27702275cfb23831",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "地方收件／baseline_relation"
+    },
+    {
+      "id": "8525014fdb5ba2f3",
+      "fromNode": "27702275cfb23831",
+      "toNode": "6f0e6ea19f967b7d",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "待核關聯／baseline_relation"
+    },
+    {
+      "id": "9c7ee756739d60b7",
+      "fromNode": "27702275cfb23831",
+      "toNode": "ab2af8795805ffee",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "辦法／法源／baseline_relation"
+    },
+    {
+      "id": "e4477990b486da54",
+      "fromNode": "27702275cfb23831",
+      "toNode": "c810ff4361ccfb19",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "辦法／法源／baseline_relation"
+    },
+    {
+      "id": "fa6ec47b63d03e65",
+      "fromNode": "27702275cfb23831",
+      "toNode": "b0b91077cee42339",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "辦法／法源／baseline_relation"
+    },
+    {
+      "id": "030ebfa9a5e7e65f",
+      "fromNode": "27702275cfb23831",
+      "toNode": "6c6f84b7b3d2c76e",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "辦法／法源／baseline_relation"
+    },
+    {
+      "id": "d97bfd1f09625438",
+      "fromNode": "27702275cfb23831",
+      "toNode": "f0aaec4ddfeb0b12",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "待核關聯／baseline_relation"
+    },
+    {
+      "id": "c66e4099f7130138",
+      "fromNode": "7df7435896091c05",
+      "toNode": "094f6d9cbdd5d2a4",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "校內流程／registry_context"
+    },
+    {
+      "id": "5e44a3321a1f733f",
+      "fromNode": "7df7435896091c05",
+      "toNode": "c6a4ef628979769e",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "表格入口／registry_context"
+    },
+    {
+      "id": "cd97b458291999f1",
+      "fromNode": "7df7435896091c05",
+      "toNode": "3e735206dffc3475",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "申辦入口／registry_context"
+    },
+    {
+      "id": "86a7627ffd257d3d",
+      "fromNode": "d44c7e14dfa22ce4",
+      "toNode": "274272af28bfa35c",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "校內流程／registry_context"
+    },
+    {
+      "id": "92e798a99e878308",
+      "fromNode": "3924884e523fafb3",
+      "toNode": "04eaf4e13a47e968",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "年度公告／registry_context"
+    },
+    {
+      "id": "ec3cc62d06ce57a7",
+      "fromNode": "04eaf4e13a47e968",
+      "toNode": "2fbae85abca722e8",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "地方收件／registry_context"
+    },
+    {
+      "id": "d35bc56184c7c402",
+      "fromNode": "274272af28bfa35c",
+      "toNode": "f687f963e9292db0",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "校內流程／registry_context"
+    },
+    {
+      "id": "b1eeeeb24c596dce",
+      "fromNode": "c6a4ef628979769e",
+      "toNode": "6e58219110ef55b9",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "附件／表單／observed_link"
+    },
+    {
+      "id": "9e349e1a4fede4f0",
+      "fromNode": "c6a4ef628979769e",
+      "toNode": "e11c4b2b90a5f6b4",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "附件／表單／observed_link"
+    },
+    {
+      "id": "0aaefa2b4416b95e",
+      "fromNode": "04eaf4e13a47e968",
+      "toNode": "d0ba63365d575f7d",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "附件／表單／observed_link"
+    },
+    {
+      "id": "0f79d833fa48be5e",
+      "fromNode": "04eaf4e13a47e968",
+      "toNode": "d470d342288bbdc6",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "附件／表單／observed_link"
+    },
+    {
+      "id": "b024f04775d1ae3c",
+      "fromNode": "04eaf4e13a47e968",
+      "toNode": "040f47b4b609cacd",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "附件／表單／observed_link"
+    }
+  ]
+}
