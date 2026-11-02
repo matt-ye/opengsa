@@ -1,0 +1,243 @@
+{
+  "schema_version": "source-chain-1",
+  "generated_at": "2026-11-02T06:38:44+00:00",
+  "model_calls": 0,
+  "official_data_modified": false,
+  "documents": [
+    {
+      "id": "doc-fbfb1e1d14dbdb4af537329a",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7061",
+      "format": "html",
+      "revision_id": "369fece6ea4fad1c7861e2e58ff61a38f0fcbef0205a5cb7c4a4c7a0e2decb39",
+      "observed_at": "2026-11-02T06:38:35+00:00",
+      "status": "changed",
+      "evidence_mode": "hash_only",
+      "raw_sha256": "e2be170509b3d07a5416afbfc2667fc8f27cfeb533e1c0468ce54ca322a31eb1",
+      "candidate_ids": [
+        "cand-discovery-r136-369fece6"
+      ],
+      "events": [
+        {
+          "program_key": "discovery-r136",
+          "scope": "ntu-gice",
+          "cycle": "114學年度",
+          "application_year": 2025,
+          "phase": "annual",
+          "kind": "application_start",
+          "value": "2025-06-12",
+          "basis": "publication_year_context",
+          "document_id": "doc-fbfb1e1d14dbdb4af537329a",
+          "revision_id": "369fece6ea4fad1c7861e2e58ff61a38f0fcbef0205a5cb7c4a4c7a0e2decb39",
+          "timezone": "Asia/Taipei",
+          "locator": "body / text-block 2",
+          "block_sha256": "c2f2fc90e62c362cccec714009e98e3caaee258efd7d2ac39252b699fbf421c0",
+          "review_status": "pending",
+          "certainty": "expected",
+          "publication_ref": {
+            "locator": "body / text-block 3",
+            "block_sha256": "1d003292bf4a10c6e97ac8f5d3569dc9504d1799acbf61cb87a1fbe582550be9"
+          },
+          "id": "event-27f4fbf3813d034e7a82f1b2"
+        },
+        {
+          "program_key": "discovery-r136",
+          "scope": "ntu-gice",
+          "cycle": "114學年度",
+          "application_year": 2025,
+          "phase": "annual",
+          "kind": "student_deadline",
+          "value": "2025-07-03",
+          "basis": "publication_year_context",
+          "document_id": "doc-fbfb1e1d14dbdb4af537329a",
+          "revision_id": "369fece6ea4fad1c7861e2e58ff61a38f0fcbef0205a5cb7c4a4c7a0e2decb39",
+          "timezone": "Asia/Taipei",
+          "locator": "body / text-block 2",
+          "block_sha256": "c2f2fc90e62c362cccec714009e98e3caaee258efd7d2ac39252b699fbf421c0",
+          "review_status": "pending",
+          "certainty": "expected",
+          "publication_ref": {
+            "locator": "body / text-block 3",
+            "block_sha256": "1d003292bf4a10c6e97ac8f5d3569dc9504d1799acbf61cb87a1fbe582550be9"
+          },
+          "id": "event-cb9c999b8a58b9932f9ef6f6"
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": "doc-6ea52db572c805dfd7238e39",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7279",
+      "format": "html",
+      "revision_id": "bcf86c901fca04412a033dfcd0742445ddb70d730eef9c6d15226f6d60e88e28",
+      "observed_at": "2026-11-02T06:38:38+00:00",
+      "status": "changed",
+      "evidence_mode": "hash_only",
+      "raw_sha256": "239de4c3ffab151202066683a4db5ece300a988c6c6a392afe4943b8327ec11e",
+      "candidate_ids": [
+        "cand-discovery-r139-bcf86c90"
+      ],
+      "events": [
+        {
+          "program_key": "discovery-r139",
+          "scope": "ntu-gice",
+          "cycle": "115學年度",
+          "application_year": 2026,
+          "phase": "annual",
+          "kind": "application_start",
+          "value": "2026-06-15",
+          "basis": "publication_year_context",
+          "document_id": "doc-6ea52db572c805dfd7238e39",
+          "revision_id": "bcf86c901fca04412a033dfcd0742445ddb70d730eef9c6d15226f6d60e88e28",
+          "timezone": "Asia/Taipei",
+          "locator": "body / text-block 2",
+          "block_sha256": "27a30eda513b1e1fbd827d1e692237fde3851006c6ff363f75f02c838d981b37",
+          "review_status": "pending",
+          "certainty": "expected",
+          "publication_ref": {
+            "locator": "body / text-block 3",
+            "block_sha256": "f6b67577fa34d4467b878d106d49d775ca2d73fa3b15be528b720a15e335e75a"
+          },
+          "id": "event-2eae45c0324ca8dde6af76b9"
+        },
+        {
+          "program_key": "discovery-r139",
+          "scope": "ntu-gice",
+          "cycle": "115學年度",
+          "application_year": 2026,
+          "phase": "annual",
+          "kind": "student_deadline",
+          "value": "2026-07-10",
+          "basis": "publication_year_context",
+          "document_id": "doc-6ea52db572c805dfd7238e39",
+          "revision_id": "bcf86c901fca04412a033dfcd0742445ddb70d730eef9c6d15226f6d60e88e28",
+          "timezone": "Asia/Taipei",
+          "locator": "body / text-block 2",
+          "block_sha256": "27a30eda513b1e1fbd827d1e692237fde3851006c6ff363f75f02c838d981b37",
+          "review_status": "pending",
+          "certainty": "expected",
+          "publication_ref": {
+            "locator": "body / text-block 3",
+            "block_sha256": "f6b67577fa34d4467b878d106d49d775ca2d73fa3b15be528b720a15e335e75a"
+          },
+          "id": "event-5a77a330bc0a0acd7d2e6aec"
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": "doc-6db49eb6cd36a3c5ed6ecae1",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
+      "format": "html",
+      "revision_id": "ecd377b6476616d3f17628f6518ce8dc51840b634b97aaf9ca3be61f93156207",
+      "observed_at": "2026-11-02T06:38:41+00:00",
+      "status": "changed",
+      "evidence_mode": "hash_only",
+      "raw_sha256": "27b875e35a9ae1534379ac36389f9484875a6f1c9c8b44097c144fabc0e86443",
+      "candidate_ids": [
+        "cand-discovery-r140-ecd377b6"
+      ],
+      "events": [
+        {
+          "program_key": "discovery-r140",
+          "scope": "ntu-gice",
+          "cycle": "待確認學年度",
+          "application_year": 2026,
+          "phase": "annual",
+          "kind": "application_start",
+          "value": "2026-06-22",
+          "basis": "publication_year_context",
+          "document_id": "doc-6db49eb6cd36a3c5ed6ecae1",
+          "revision_id": "ecd377b6476616d3f17628f6518ce8dc51840b634b97aaf9ca3be61f93156207",
+          "timezone": "Asia/Taipei",
+          "locator": "body / text-block 18",
+          "block_sha256": "3e452fa89d7bd726f1dd9fa80ac3ccebfadd5900c7d6522adcfe0636361a02fc",
+          "review_status": "pending",
+          "certainty": "expected",
+          "publication_ref": {
+            "locator": "body / text-block 3",
+            "block_sha256": "f6900c05d1537de9ac89b194daa959635ebd4a64d9a01b77b14f337ae828cb5c"
+          },
+          "id": "event-63a53fdf3d42a029ec59dc70"
+        },
+        {
+          "program_key": "discovery-r140",
+          "scope": "ntu-gice",
+          "cycle": "待確認學年度",
+          "application_year": 2026,
+          "phase": "annual",
+          "kind": "student_deadline",
+          "value": "2026-06-26",
+          "basis": "publication_year_context",
+          "document_id": "doc-6db49eb6cd36a3c5ed6ecae1",
+          "revision_id": "ecd377b6476616d3f17628f6518ce8dc51840b634b97aaf9ca3be61f93156207",
+          "timezone": "Asia/Taipei",
+          "locator": "body / text-block 18",
+          "block_sha256": "3e452fa89d7bd726f1dd9fa80ac3ccebfadd5900c7d6522adcfe0636361a02fc",
+          "review_status": "pending",
+          "certainty": "expected",
+          "publication_ref": {
+            "locator": "body / text-block 3",
+            "block_sha256": "f6900c05d1537de9ac89b194daa959635ebd4a64d9a01b77b14f337ae828cb5c"
+          },
+          "id": "event-689fc530daba8a5725952cd1"
+        }
+      ],
+      "links": []
+    }
+  ],
+  "relations": [],
+  "scopes": [
+    {
+      "id": "general",
+      "label": "校級／通用（地方期限另定）"
+    },
+    {
+      "id": "ntu-gice",
+      "label": "臺大電信所"
+    },
+    {
+      "id": "ntu-ac",
+      "label": "臺大農化系"
+    },
+    {
+      "id": "sinica-ipsas",
+      "label": "中研院政治所"
+    }
+  ],
+  "candidate_bindings": [],
+  "http_requests": 5,
+  "reports": [
+    {
+      "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/ahq7i-hly0j.odt",
+      "status": "format_parser_deferred"
+    },
+    {
+      "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/am2sg-egsi4.odt",
+      "status": "format_parser_deferred"
+    },
+    {
+      "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E8%A6%81%E9%BB%9E-odt.odt",
+      "status": "format_parser_deferred"
+    },
+    {
+      "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E6%94%BF%E6%B2%BB%E6%89%80%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%AF%A9%E6%9F%A5%E8%BE%A6%E6%B3%95-odt.odt",
+      "status": "format_parser_deferred"
+    },
+    {
+      "url": "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/255718/26fe6b56-f175-43fb-8715-25d053a52a7f.pdf",
+      "status": "document_budget_deferred"
+    },
+    {
+      "url": "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/255718/b71d29b1-5764-4766-9df9-ad24f96953d6.pdf",
+      "status": "document_budget_deferred"
+    },
+    {
+      "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E8%A6%81%E9%BB%9E.pdf",
+      "status": "document_budget_deferred"
+    },
+    {
+      "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E6%94%BF%E6%B2%BB%E6%89%80%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%AF%A9%E6%9F%A5%E8%BE%A6%E6%B3%95-%E5%83%85%E4%B8%AD%E6%96%87%E7%89%88.pdf",
+      "status": "document_budget_deferred"
+    }
+  ]
+}

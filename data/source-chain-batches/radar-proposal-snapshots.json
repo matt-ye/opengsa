@@ -1,6 +1,6 @@
 {
   "schema_version": "source-chain-1",
-  "generated_at": "2026-11-01T16:27:57+00:00",
+  "generated_at": "2026-11-02T06:38:44+00:00",
   "model_calls": 0,
   "official_data_modified": false,
   "documents": [
@@ -735,20 +735,6 @@
       "links": []
     },
     {
-      "id": "doc-7cb8562c2b191beabfef7e46",
-      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
-      "format": "html",
-      "revision_id": "1149cefaedd7de94f39635e4128edaa72814ceb407f6f4e3e4be4dcf16bd64b5",
-      "observed_at": "2026-11-01T16:10:17+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-discovery-r312-1149cefa"
-      ],
-      "events": [],
-      "links": []
-    },
-    {
       "id": "doc-da2a65a5dfd3c7948ffe85c3",
       "url": "https://www.wda.gov.tw/News_Content.aspx?n=31&s=19491&sms=10306",
       "format": "html",
@@ -791,29 +777,15 @@
       "links": []
     },
     {
-      "id": "doc-fbfb1e1d14dbdb4af537329a",
-      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7061",
-      "format": "html",
-      "revision_id": "64788e2f7a0e2b4d7e4df4fb32884ebd54a0f955167cb0c4e39c71fae391f06e",
-      "observed_at": "2026-11-01T16:20:29+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-discovery-r136-64788e2f"
-      ],
-      "events": [],
-      "links": []
-    },
-    {
       "id": "doc-ba35927f41966f08bfbb476e",
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7062",
       "format": "html",
-      "revision_id": "b0dc50c39450694197eb65dfb50273a84f480eb2a15186de2c8d1ad319ff94f5",
-      "observed_at": "2026-11-01T16:20:33+00:00",
+      "revision_id": "066362bb22ad6c36d7c1f52ee511f5c74bbf256d3096410b13e2712a9e776a0b",
+      "observed_at": "2026-11-02T06:30:46+00:00",
       "status": "candidate_snapshot",
       "evidence_mode": "hash_only",
       "candidate_ids": [
-        "cand-discovery-r137-b0dc50c3"
+        "cand-discovery-r137-066362bb"
       ],
       "events": [],
       "links": []
@@ -822,12 +794,40 @@
       "id": "doc-65fdcc25317db87ff0f5e5a6",
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7278",
       "format": "html",
-      "revision_id": "750fac405bfbcc33e3d52e4baec84cf7fb35ced8c36daa4e8312b48007db99c1",
-      "observed_at": "2026-11-01T16:20:35+00:00",
+      "revision_id": "5021d5ebd766187d662a3afa4c91c001d2c8133a8bfcbd5780c4a9ea884b81ae",
+      "observed_at": "2026-11-02T06:30:49+00:00",
       "status": "candidate_snapshot",
       "evidence_mode": "hash_only",
       "candidate_ids": [
-        "cand-discovery-r138-750fac40"
+        "cand-discovery-r138-5021d5eb"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-7cb8562c2b191beabfef7e46",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
+      "format": "html",
+      "revision_id": "aba9d3b36dc7153024a8014ab6a58d9a2413a074f6268b286d469525c88d7c9c",
+      "observed_at": "2026-11-02T06:31:01+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r312-aba9d3b3"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-fbfb1e1d14dbdb4af537329a",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7061",
+      "format": "html",
+      "revision_id": "369fece6ea4fad1c7861e2e58ff61a38f0fcbef0205a5cb7c4a4c7a0e2decb39",
+      "observed_at": "2026-11-02T06:38:35+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-r136-369fece6"
       ],
       "events": [],
       "links": []
@@ -836,12 +836,12 @@
       "id": "doc-6ea52db572c805dfd7238e39",
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7279",
       "format": "html",
-      "revision_id": "f06c9f47ec652b36d489a941f1cdaae383807e9ea3ad207cab9c48f7da5dfe4f",
-      "observed_at": "2026-11-01T16:20:38+00:00",
+      "revision_id": "bcf86c901fca04412a033dfcd0742445ddb70d730eef9c6d15226f6d60e88e28",
+      "observed_at": "2026-11-02T06:38:38+00:00",
       "status": "candidate_snapshot",
       "evidence_mode": "hash_only",
       "candidate_ids": [
-        "cand-discovery-r139-f06c9f47"
+        "cand-discovery-r139-bcf86c90"
       ],
       "events": [],
       "links": []
@@ -850,12 +850,12 @@
       "id": "doc-6db49eb6cd36a3c5ed6ecae1",
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
       "format": "html",
-      "revision_id": "44b5810a2e639b7afa8af741064bfd9909cce4cc277f171dd2430d1f76ed04c0",
-      "observed_at": "2026-11-01T16:20:41+00:00",
+      "revision_id": "ecd377b6476616d3f17628f6518ce8dc51840b634b97aaf9ca3be61f93156207",
+      "observed_at": "2026-11-02T06:38:41+00:00",
       "status": "candidate_snapshot",
       "evidence_mode": "hash_only",
       "candidate_ids": [
-        "cand-discovery-r140-44b5810a"
+        "cand-discovery-r140-ecd377b6"
       ],
       "events": [],
       "links": []
@@ -864,12 +864,12 @@
       "id": "doc-6ed640449dfc70447e1ca65b",
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7344",
       "format": "html",
-      "revision_id": "31feb0b400ba63ee4db7c47a83692fa20269abea0b89be304743f8f6b76cce88",
-      "observed_at": "2026-11-01T16:20:44+00:00",
+      "revision_id": "028a44beabb0fd54c1601b22da05f50602c89c5d3092e639a5757fc0eb57f737",
+      "observed_at": "2026-11-02T06:38:44+00:00",
       "status": "candidate_snapshot",
       "evidence_mode": "hash_only",
       "candidate_ids": [
-        "cand-discovery-r141-31feb0b4"
+        "cand-discovery-r141-028a44be"
       ],
       "events": [],
       "links": []

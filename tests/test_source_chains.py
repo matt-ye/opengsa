@@ -5,7 +5,7 @@ from pathlib import Path
 import unittest
 
 from scripts.source_chains import dates, discover_links, extract_events, scan_chains, validate, baselines
-from scripts.source_chains import publication, timeline_metadata, candidate_bindings
+from scripts.source_chains import publication, timeline_metadata, candidate_bindings,publication_reference_events
 from scripts.scan_sources import Fetcher, digest
 from bs4 import BeautifulSoup
 
@@ -26,6 +26,18 @@ def fixture():
 
 
 class SourceChainTests(unittest.TestCase):
+    def test_publication_year_windows_remain_unannounced_with_dual_evidence(self):
+        p=profile();doc={'id':'SYNTH-doc','revision_id':'a'*64}
+        units=[{'locator':'SYNTH-window','text':'申請時程6/15至7/10'}]
+        pub=('2026-06-15',{'locator':'SYNTH-publication','text':'2026-06-15'})
+        events=publication_reference_events(units,p,doc,pub)
+        self.assertEqual([e['value'] for e in events],['2026-06-15','2026-07-10'])
+        self.assertTrue(all(e['certainty']=='expected' and e['publication_ref']['locator']=='SYNTH-publication' for e in events))
+        self.assertEqual(baselines(events,2027),[])
+        self.assertEqual(publication_reference_events(units,p,doc,None),[])
+        self.assertEqual(publication_reference_events([{'locator':'SYNTH','text':'購買及申請期間6/15至7/10'}],p,doc,pub),[])
+        self.assertEqual(publication_reference_events([{'locator':'SYNTH','text':'申請期間12/20至1/10'}],p,doc,pub),[])
+
     def test_attachment_priority_navigation_and_html_entity_urls(self):
         raw=('<main><nav><a href="/unrelated">計畫</a></nav>'+''.join('<a href="/list/'+str(i)+'">計畫列表</a>' for i in range(12))+
              '<a href="/attachments/real?x=1&amp;amp;y=2">申請須知</a></main>').encode()

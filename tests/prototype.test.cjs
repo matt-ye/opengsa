@@ -112,6 +112,28 @@ test("方案彙整不把辦法與當期公告的欄位拼接，所有其他文�
  assert.equal(docs[0].relatedDocuments,undefined);
 });
 
+test("方案代表文件優先較新年度，工具快捷不清除搜尋或受理條件",()=>{
+ const old={id:"SYNTH-old",programKey:"SYNTH",cycleKind:"academic_year",cycleYear:114,cycle:"114學年度"};
+ const newer={...old,id:"SYNTH-new",cycleYear:115,cycle:"115學年度"};
+ assert.equal(core.groupDocuments([old,newer])[0].id,"SYNTH-new");
+ assert.equal(core.groupDocuments([newer,old])[0].id,"SYNTH-new");
+ assert.equal(core.groupDocuments([{...old,cycleYear:2025},newer])[0].id,"SYNTH-new");
+ const filters=core.applyPersona({query:"GitHub",application:"open",includeUnknown:false},"research_tools");
+ assert.equal(filters.category,"research_tools");assert.equal(filters.query,"GitHub");
+ assert.equal(filters.application,"open");assert.equal(filters.includeUnknown,false);
+});
+
+test("公告年份推估只顯示參考帶，不升格為官方起訖或受理中",()=>{
+ const events=[{kind:"application_start",value:"2026-11-01",certainty:"expected",basis:"publication_year_context",document_id:"SYNTH-doc"},
+  {kind:"student_deadline",value:"2026-11-30",certainty:"expected",basis:"publication_year_context",document_id:"SYNTH-doc"}];
+ const baseline={start:"2026-11-01",end:"2026-11-30",kind:"publication_year_reference",sample_years:[2026]};
+ const item={id:"SYNTH-reference",cycleKind:"academic_year",rawState:"unknown",application:"待確認",start:{value:null},end:{value:null},result:{value:null}};
+ const data={documents:[{id:"SYNTH-doc",checked_on:"2026-11-02"}],records:{[item.id]:{contexts:[{scope:"SYNTH",scope_label:"合成",year:2026,phase:"annual",events,baselines:[baseline],document_ids:["SYNTH-doc"]}]}}};
+ const output=core.applyTimeline(item,data,"SYNTH",2026,true,"2026-11-02");
+ assert.equal(output.rawState,"unknown");assert.equal(output.start.value,null);assert.equal(output.end.value,null);
+ assert.equal(output.timeline.baselines.length,1);assert.match(output.milestones[0].label,/公告年份推估/);
+});
+
 test("雷達不顯示缺證據的預設資格與日期，來源版次仍可回報",()=>{
  const data=JSON.parse(JSON.stringify(pilot));const raw=data.opportunities[0];
  const metadata={records:{[raw.id]:{url:"https://example.test/original.pdf",revision:"a".repeat(64),observed_at:"2026-10-31T12:00:00+08:00",unsafe:false,

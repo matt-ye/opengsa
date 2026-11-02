@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0-candidate",
-  "generated_at": "2026-11-01T16:27:57+00:00",
+  "generated_at": "2026-11-02T06:38:44+00:00",
   "as_of": "2026-11-02",
   "timezone": "Asia/Taipei",
   "model_enabled": false,
@@ -16441,294 +16441,6 @@
       "field_applicability": {}
     },
     {
-      "candidate_id": "cand-discovery-r312-1149cefa",
-      "opportunity_id": "discovery-r312",
-      "program_key": "discovery-r312",
-      "title": "國科會116年度補助博士生赴國外研究案，申請時間自115年6月1日至7月29日(星期三)早上8時止",
-      "category": "overseas_research",
-      "resource_kind": "travel_grant",
-      "scope": "ntu",
-      "cycle": {
-        "kind": "academic_year",
-        "label": "待確認學年度",
-        "year_system": "unknown",
-        "year": null,
-        "term_or_round": null,
-        "branch": null
-      },
-      "participants": {
-        "applicant": "unknown",
-        "beneficiary": "unknown",
-        "awardee": "unknown",
-        "payee": "unknown"
-      },
-      "institution_scope": {
-        "school": "unknown",
-        "college": null,
-        "department": null
-      },
-      "organizations": {
-        "funder": {
-          "text": "待查",
-          "refs": []
-        },
-        "announcer": {
-          "text": "待查",
-          "refs": []
-        },
-        "receiver": {
-          "text": "待查",
-          "refs": []
-        }
-      },
-      "eligibility": {
-        "degrees": [],
-        "institution": "unknown",
-        "nationality": "unknown",
-        "employment_status": "unknown",
-        "year_limit": {
-          "mode": "unknown",
-          "min": null,
-          "max": null,
-          "assessed_at": null,
-          "refs": []
-        },
-        "candidate": {
-          "mode": "unknown",
-          "assessed_at": null,
-          "refs": []
-        },
-        "graduation_requirement": "unknown",
-        "prior_funding_rule": "unknown",
-        "negated_conditions": [],
-        "identity": {
-          "text": "身分條件請至來源定位核對",
-          "refs": [
-            {
-              "source": "discovery-r312",
-              "locator": ".article-center / text-block 1"
-            }
-          ]
-        },
-        "other_conditions": []
-      },
-      "benefit": {
-        "summary": "金額、幣別與發放頻率待核對",
-        "items": [],
-        "refs": []
-      },
-      "compatibility": {
-        "mode": "unknown",
-        "prohibited_schemes": [],
-        "overlap_period_rule": null,
-        "note": "須查雙方方案及重疊期間，未明示不代表可兼領。",
-        "refs": []
-      },
-      "hardship": {
-        "mode": "unknown",
-        "note": "未完成清寒限定條文查核。",
-        "refs": []
-      },
-      "schedule": {
-        "application_start": {
-          "kind": "unknown",
-          "value": null,
-          "timezone": "Asia/Taipei",
-          "note": "未記錄明確申請起日"
-        },
-        "steps": [
-          {
-            "actor": "student",
-            "action": "依公告規定申請",
-            "deadline": {
-              "kind": "unknown",
-              "value": null,
-              "timezone": "Asia/Taipei",
-              "note": "待確認"
-            },
-            "refs": [
-              {
-                "source": "discovery-r312",
-                "locator": ".article-center / text-block 1"
-              }
-            ]
-          },
-          {
-            "actor": "unit",
-            "action": "依來源明示期間辦理（2026-06-01至2026-07-29）",
-            "deadline": {
-              "kind": "unknown",
-              "value": null,
-              "timezone": "Asia/Taipei",
-              "note": "日期證據未能獨立確認，請至來源核對"
-            },
-            "refs": [
-              {
-                "source": "discovery-r312",
-                "locator": ".article-center / text-block 4"
-              }
-            ],
-            "application_method": {
-              "mode": "electronic",
-              "channels": [
-                "portal"
-              ],
-              "paper_delivery": "unknown",
-              "handwritten_signature": "unknown",
-              "deadline_basis": "unknown",
-              "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
-              "refs": [
-                {
-                  "source": "discovery-r312",
-                  "locator": ".article-center / text-block 4"
-                }
-              ]
-            }
-          }
-        ],
-        "result_date": {
-          "kind": "unknown",
-          "certainty": "unknown",
-          "value": null,
-          "end_value": null,
-          "timezone": "Asia/Taipei",
-          "note": "官方未公告明確結果公布日",
-          "refs": []
-        },
-        "relative_rule": {
-          "rule_type": "none",
-          "anchor_event": null,
-          "agency_rule": null,
-          "student_rule": null,
-          "supplement_rule": null,
-          "holiday_policy": "not_specified",
-          "calendar_status": "not_applicable"
-        }
-      },
-      "application": {
-        "state": "unknown",
-        "as_of": "2026-11-02",
-        "reason": "尚無足以確認學生收件窗口的資料。",
-        "refs": [
-          {
-            "source": "discovery-r312",
-            "locator": ".article-center / text-block 1"
-          }
-        ]
-      },
-      "policy_version": {
-        "promulgated_on": null,
-        "amended_on": null,
-        "effective_from": null,
-        "effective_to": null,
-        "note": "法規版本與生效日待覆核；修正日不自動當作生效日。",
-        "refs": []
-      },
-      "source_metadata": {
-        "source_id": "discovery-r312",
-        "revision_id": "1149cefaedd7de94f39635e4128edaa72814ceb407f6f4e3e4be4dcf16bd64b5",
-        "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
-        "observed_at": "2026-11-01T16:10:17+00:00",
-        "evidence_mode": "hash_only",
-        "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.5.0",
-        "adapter_used": "deterministic_rule",
-        "prompt_version": null,
-        "normalizer_version": "document-ir-2",
-        "prepared_document_sha256": "a6c249cf5051f6b42f0b630d6a454c3d42fc11f9d2d320b9a7e47d6695639d50"
-      },
-      "field_evidence": [
-        {
-          "field_path": "eligibility.identity",
-          "source": "discovery-r312",
-          "revision_id": "1149cefaedd7de94f39635e4128edaa72814ceb407f6f4e3e4be4dcf16bd64b5",
-          "locator": ".article-center / text-block 1",
-          "evidence_mode": "hash_only",
-          "excerpt": null,
-          "excerpt_sha256": "5d0c68e40bffab192fcfce11588e64b876b9f130afb4e8f13eb36265dd416ee9",
-          "source_block_sha256": "5d0c68e40bffab192fcfce11588e64b876b9f130afb4e8f13eb36265dd416ee9",
-          "extraction_method": "deterministic_rule"
-        },
-        {
-          "field_path": "application_method/3",
-          "source": "discovery-r312",
-          "revision_id": "1149cefaedd7de94f39635e4128edaa72814ceb407f6f4e3e4be4dcf16bd64b5",
-          "locator": ".article-center / text-block 4",
-          "evidence_mode": "hash_only",
-          "excerpt": null,
-          "excerpt_sha256": "8c3b93af857a4d3539db7bbeb1be1ed0e748aab7f52b2188405d2a035950bbcd",
-          "source_block_sha256": "8c3b93af857a4d3539db7bbeb1be1ed0e748aab7f52b2188405d2a035950bbcd",
-          "extraction_method": "deterministic_rule"
-        },
-        {
-          "field_path": "schedule.steps/1/application_method",
-          "source": "discovery-r312",
-          "revision_id": "1149cefaedd7de94f39635e4128edaa72814ceb407f6f4e3e4be4dcf16bd64b5",
-          "locator": ".article-center / text-block 4",
-          "evidence_mode": "hash_only",
-          "excerpt": null,
-          "excerpt_sha256": "8c3b93af857a4d3539db7bbeb1be1ed0e748aab7f52b2188405d2a035950bbcd",
-          "source_block_sha256": "8c3b93af857a4d3539db7bbeb1be1ed0e748aab7f52b2188405d2a035950bbcd",
-          "extraction_method": "deterministic_rule"
-        }
-      ],
-      "gaps_and_conflicts": {
-        "missing_fields": [],
-        "conflicts": [],
-        "open_questions": [
-          "指定非原編輯者獨立覆核重大欄位（資格、金額、期限、兼領、法源版本）。",
-          "獨立檢核無法確認，欄位已降為未知：schedule.steps/1/deadline"
-        ]
-      },
-      "evidence_status": "sufficient_for_draft",
-      "verification": {
-        "status": "passed_with_gaps",
-        "verifier_version": "verifier-1.4.0",
-        "checked_at": "2026-11-01T16:10:24+00:00",
-        "model_self_claim_ignored": true,
-        "checks": {
-          "schema_valid": true,
-          "evidence_supported": true,
-          "date_and_amount_units_valid": true,
-          "no_year_or_branch_mixing": true,
-          "negation_and_roles_valid": true,
-          "no_unresolved_conflicts": true,
-          "coverage_ok": false
-        },
-        "errors": [],
-        "warnings": [
-          "coverage_gap:cycle_year_unknown",
-          "coverage_gap:eligibility.identity_not_extracted"
-        ],
-        "audit_findings": []
-      },
-      "review": {
-        "status": "pending",
-        "editor": "extractor-1.5.0",
-        "independent_reviewer": null,
-        "reviewed_on": null,
-        "ledger_action": "unreviewed",
-        "promotion_ready": false
-      },
-      "application_method": {
-        "mode": "electronic",
-        "channels": [
-          "portal"
-        ],
-        "paper_delivery": "unknown",
-        "handwritten_signature": "unknown",
-        "deadline_basis": "unknown",
-        "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
-        "refs": [
-          {
-            "source": "discovery-r312",
-            "locator": ".article-center / text-block 4"
-          }
-        ]
-      },
-      "field_applicability": {}
-    },
-    {
       "candidate_id": "cand-discovery-r468-d4034175",
       "opportunity_id": "discovery-r468",
       "program_key": "discovery-r468",
@@ -17504,7 +17216,765 @@
       "field_applicability": {}
     },
     {
-      "candidate_id": "cand-discovery-r136-64788e2f",
+      "candidate_id": "cand-discovery-r137-066362bb",
+      "opportunity_id": "discovery-r137",
+      "program_key": "discovery-r137",
+      "title": "【申請時程6/12-7/3】114學年度「國科會核配博士生獎學金」申請公告",
+      "category": "phd_research",
+      "resource_kind": "scholarship",
+      "scope": "ntu",
+      "cycle": {
+        "kind": "academic_year",
+        "label": "114學年度",
+        "year_system": "roc",
+        "year": 114,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "unknown",
+        "beneficiary": "unknown",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "unknown",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "待查",
+          "refs": []
+        },
+        "announcer": {
+          "text": "待查",
+          "refs": []
+        },
+        "receiver": {
+          "text": "待查",
+          "refs": []
+        }
+      },
+      "eligibility": {
+        "degrees": [],
+        "institution": "unknown",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "身分條件請至來源定位核對",
+          "refs": [
+            {
+              "source": "discovery-r137",
+              "locator": "body / text-block 11"
+            }
+          ]
+        },
+        "other_conditions": []
+      },
+      "benefit": {
+        "summary": "金額、幣別與發放頻率待核對",
+        "items": [],
+        "refs": []
+      },
+      "compatibility": {
+        "mode": "unknown",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "須查雙方方案及重疊期間，未明示不代表可兼領。",
+        "refs": []
+      },
+      "hardship": {
+        "mode": "unknown",
+        "note": "未完成清寒限定條文查核。",
+        "refs": []
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "未記錄明確申請起日"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "依公告規定申請",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "待確認"
+            },
+            "refs": [
+              {
+                "source": "discovery-r137",
+                "locator": "body / text-block 1"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "官方未公告明確結果公布日",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-11-02",
+        "reason": "尚無足以確認學生收件窗口的資料。",
+        "refs": []
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "法規版本與生效日待覆核；修正日不自動當作生效日。",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "discovery-r137",
+        "revision_id": "066362bb22ad6c36d7c1f52ee511f5c74bbf256d3096410b13e2712a9e776a0b",
+        "url": "https://gice.ntu.edu.tw/shownews.php?ID=7062",
+        "observed_at": "2026-11-02T06:30:46+00:00",
+        "evidence_mode": "hash_only",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.7.0",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "309f17a59d27aabc31a803ba832f6a5ef2a717541c888f8f9cbf8fe31620ce6e"
+      },
+      "field_evidence": [
+        {
+          "field_path": "cycle",
+          "source": "discovery-r137",
+          "revision_id": "066362bb22ad6c36d7c1f52ee511f5c74bbf256d3096410b13e2712a9e776a0b",
+          "locator": "body / text-block 2",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "8adc7b89c1d324c9573cff9d98d9fb584403d6d49c31be59d484a5b7129ae756",
+          "source_block_sha256": "8adc7b89c1d324c9573cff9d98d9fb584403d6d49c31be59d484a5b7129ae756",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.identity",
+          "source": "discovery-r137",
+          "revision_id": "066362bb22ad6c36d7c1f52ee511f5c74bbf256d3096410b13e2712a9e776a0b",
+          "locator": "body / text-block 11",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "f48ca4e4693fa331d289319d2aff4abd319cd3cab31369a5b254a215f311ca97",
+          "source_block_sha256": "f48ca4e4693fa331d289319d2aff4abd319cd3cab31369a5b254a215f311ca97",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [],
+        "conflicts": [],
+        "open_questions": [
+          "指定非原編輯者獨立覆核重大欄位（資格、金額、期限、兼領、法源版本）。"
+        ]
+      },
+      "evidence_status": "sufficient_for_draft",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.4.0",
+        "checked_at": "2026-11-02T06:30:46+00:00",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [
+          "coverage_gap:missing_structured_benefit_items",
+          "coverage_gap:eligibility.identity_not_extracted"
+        ],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.7.0",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "unknown",
+        "channels": [],
+        "paper_delivery": "unknown",
+        "handwritten_signature": "unknown",
+        "deadline_basis": "unknown",
+        "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
+        "refs": []
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-discovery-r138-5021d5eb",
+      "opportunity_id": "discovery-r138",
+      "program_key": "discovery-r138",
+      "title": "【申請時程6/15-7/10】115學年度「國科會核配博士生獎學金」申請公告",
+      "category": "phd_research",
+      "resource_kind": "scholarship",
+      "scope": "ntu",
+      "cycle": {
+        "kind": "academic_year",
+        "label": "115學年度",
+        "year_system": "roc",
+        "year": 115,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "unknown",
+        "beneficiary": "unknown",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "unknown",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "待查",
+          "refs": []
+        },
+        "announcer": {
+          "text": "待查",
+          "refs": []
+        },
+        "receiver": {
+          "text": "待查",
+          "refs": []
+        }
+      },
+      "eligibility": {
+        "degrees": [
+          "phd"
+        ],
+        "institution": "unknown",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "博士班學生；其餘資格、排除與文件要求請核對來源",
+          "claim_kind": "eligibility_clause",
+          "refs": [
+            {
+              "source": "discovery-r138",
+              "locator": "body / text-block 13"
+            }
+          ]
+        },
+        "other_conditions": []
+      },
+      "benefit": {
+        "summary": "金額、幣別與發放頻率待核對",
+        "items": [],
+        "refs": []
+      },
+      "compatibility": {
+        "mode": "unknown",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "須查雙方方案及重疊期間，未明示不代表可兼領。",
+        "refs": []
+      },
+      "hardship": {
+        "mode": "unknown",
+        "note": "未完成清寒限定條文查核。",
+        "refs": []
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "未記錄明確申請起日"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "依公告規定申請",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "待確認"
+            },
+            "refs": [
+              {
+                "source": "discovery-r138",
+                "locator": "body / text-block 1"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "官方未公告明確結果公布日",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-11-02",
+        "reason": "尚無足以確認學生收件窗口的資料。",
+        "refs": []
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "法規版本與生效日待覆核；修正日不自動當作生效日。",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "discovery-r138",
+        "revision_id": "5021d5ebd766187d662a3afa4c91c001d2c8133a8bfcbd5780c4a9ea884b81ae",
+        "url": "https://gice.ntu.edu.tw/shownews.php?ID=7278",
+        "observed_at": "2026-11-02T06:30:49+00:00",
+        "evidence_mode": "hash_only",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.7.0",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "e3dd71fbcd0a0e218eee2df2471a849b21b57f4b2709661ab4882689bb693a26"
+      },
+      "field_evidence": [
+        {
+          "field_path": "cycle",
+          "source": "discovery-r138",
+          "revision_id": "5021d5ebd766187d662a3afa4c91c001d2c8133a8bfcbd5780c4a9ea884b81ae",
+          "locator": "body / text-block 2",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "eff4ca9da3bac4d2064ff4a1da509621ff2c9deddf33dac7ca86a76001171fc3",
+          "source_block_sha256": "eff4ca9da3bac4d2064ff4a1da509621ff2c9deddf33dac7ca86a76001171fc3",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.identity",
+          "source": "discovery-r138",
+          "revision_id": "5021d5ebd766187d662a3afa4c91c001d2c8133a8bfcbd5780c4a9ea884b81ae",
+          "locator": "body / text-block 13",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "b7fa783d0480ee73973771a4aa80aa75a2e6c737d6609536b3fd72e7fbc1846b",
+          "source_block_sha256": "b7fa783d0480ee73973771a4aa80aa75a2e6c737d6609536b3fd72e7fbc1846b",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.degrees",
+          "source": "discovery-r138",
+          "revision_id": "5021d5ebd766187d662a3afa4c91c001d2c8133a8bfcbd5780c4a9ea884b81ae",
+          "locator": "body / text-block 13",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "b7fa783d0480ee73973771a4aa80aa75a2e6c737d6609536b3fd72e7fbc1846b",
+          "source_block_sha256": "b7fa783d0480ee73973771a4aa80aa75a2e6c737d6609536b3fd72e7fbc1846b",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [],
+        "conflicts": [],
+        "open_questions": [
+          "指定非原編輯者獨立覆核重大欄位（資格、金額、期限、兼領、法源版本）。"
+        ]
+      },
+      "evidence_status": "sufficient_for_draft",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.4.0",
+        "checked_at": "2026-11-02T06:30:49+00:00",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [
+          "coverage_gap:missing_structured_benefit_items"
+        ],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.7.0",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "unknown",
+        "channels": [],
+        "paper_delivery": "unknown",
+        "handwritten_signature": "unknown",
+        "deadline_basis": "unknown",
+        "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
+        "refs": []
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-discovery-r312-aba9d3b3",
+      "opportunity_id": "discovery-r312",
+      "program_key": "discovery-r312",
+      "title": "國科會116年度補助博士生赴國外研究案，申請時間自115年6月1日至7月29日(星期三)早上8時止",
+      "category": "overseas_research",
+      "resource_kind": "travel_grant",
+      "scope": "ntu",
+      "cycle": {
+        "kind": "calendar_year",
+        "label": "116年度",
+        "year_system": "roc",
+        "year": 116,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "unknown",
+        "beneficiary": "unknown",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "unknown",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "待查",
+          "refs": []
+        },
+        "announcer": {
+          "text": "待查",
+          "refs": []
+        },
+        "receiver": {
+          "text": "待查",
+          "refs": []
+        }
+      },
+      "eligibility": {
+        "degrees": [],
+        "institution": "unknown",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "身分條件請至來源定位核對",
+          "refs": [
+            {
+              "source": "discovery-r312",
+              "locator": ".article-center / text-block 1"
+            }
+          ]
+        },
+        "other_conditions": []
+      },
+      "benefit": {
+        "summary": "金額、幣別與發放頻率待核對",
+        "items": [],
+        "refs": []
+      },
+      "compatibility": {
+        "mode": "unknown",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "須查雙方方案及重疊期間，未明示不代表可兼領。",
+        "refs": []
+      },
+      "hardship": {
+        "mode": "unknown",
+        "note": "未完成清寒限定條文查核。",
+        "refs": []
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "未記錄明確申請起日"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "依公告規定申請",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "待確認"
+            },
+            "refs": [
+              {
+                "source": "discovery-r312",
+                "locator": ".article-center / text-block 1"
+              }
+            ]
+          },
+          {
+            "actor": "unit",
+            "action": "依來源明示期間辦理（2026-06-01至2026-07-29）",
+            "deadline": {
+              "kind": "datetime",
+              "value": "2026-07-29T08:00:00+08:00",
+              "timezone": "Asia/Taipei",
+              "note": "角色依本段辨識；未載學生期限時不以其他層級回填"
+            },
+            "refs": [
+              {
+                "source": "discovery-r312",
+                "locator": ".article-center / text-block 2"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "官方未公告明確結果公布日",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "closed",
+        "as_of": "2026-11-02",
+        "reason": "本梯次校院／機關送件期限已過，本期已截止；保留歷史，不從歷年日期猜測下一期。",
+        "refs": [
+          {
+            "source": "discovery-r312",
+            "locator": ".article-center / text-block 1"
+          }
+        ]
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "法規版本與生效日待覆核；修正日不自動當作生效日。",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "discovery-r312",
+        "revision_id": "aba9d3b36dc7153024a8014ab6a58d9a2413a074f6268b286d469525c88d7c9c",
+        "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
+        "observed_at": "2026-11-02T06:31:01+00:00",
+        "evidence_mode": "hash_only",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.7.0",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "a6c249cf5051f6b42f0b630d6a454c3d42fc11f9d2d320b9a7e47d6695639d50"
+      },
+      "field_evidence": [
+        {
+          "field_path": "cycle",
+          "source": "discovery-r312",
+          "revision_id": "aba9d3b36dc7153024a8014ab6a58d9a2413a074f6268b286d469525c88d7c9c",
+          "locator": ".article-center / text-block 2",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "416b040a7c697870cf5433c2c9a95104d490a390bccdb170a442f291f7f4612d",
+          "source_block_sha256": "416b040a7c697870cf5433c2c9a95104d490a390bccdb170a442f291f7f4612d",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.identity",
+          "source": "discovery-r312",
+          "revision_id": "aba9d3b36dc7153024a8014ab6a58d9a2413a074f6268b286d469525c88d7c9c",
+          "locator": ".article-center / text-block 1",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "5d0c68e40bffab192fcfce11588e64b876b9f130afb4e8f13eb36265dd416ee9",
+          "source_block_sha256": "5d0c68e40bffab192fcfce11588e64b876b9f130afb4e8f13eb36265dd416ee9",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "schedule.steps/1/deadline",
+          "source": "discovery-r312",
+          "revision_id": "aba9d3b36dc7153024a8014ab6a58d9a2413a074f6268b286d469525c88d7c9c",
+          "locator": ".article-center / text-block 2",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "416b040a7c697870cf5433c2c9a95104d490a390bccdb170a442f291f7f4612d",
+          "source_block_sha256": "416b040a7c697870cf5433c2c9a95104d490a390bccdb170a442f291f7f4612d",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "application_method/3",
+          "source": "discovery-r312",
+          "revision_id": "aba9d3b36dc7153024a8014ab6a58d9a2413a074f6268b286d469525c88d7c9c",
+          "locator": ".article-center / text-block 4",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "8c3b93af857a4d3539db7bbeb1be1ed0e748aab7f52b2188405d2a035950bbcd",
+          "source_block_sha256": "8c3b93af857a4d3539db7bbeb1be1ed0e748aab7f52b2188405d2a035950bbcd",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [],
+        "conflicts": [],
+        "open_questions": [
+          "指定非原編輯者獨立覆核重大欄位（資格、金額、期限、兼領、法源版本）。"
+        ]
+      },
+      "evidence_status": "sufficient_for_draft",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.4.0",
+        "checked_at": "2026-11-02T06:31:01+00:00",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [
+          "coverage_gap:eligibility.identity_not_extracted"
+        ],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.7.0",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "electronic",
+        "channels": [
+          "portal"
+        ],
+        "paper_delivery": "unknown",
+        "handwritten_signature": "unknown",
+        "deadline_basis": "unknown",
+        "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
+        "refs": [
+          {
+            "source": "discovery-r312",
+            "locator": ".article-center / text-block 4"
+          }
+        ]
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-discovery-r136-369fece6",
       "opportunity_id": "discovery-r136",
       "program_key": "discovery-r136",
       "title": "【申請時程6/12-7/3】114學年度「教育部博士生獎學金」申請公告",
@@ -17669,12 +18139,12 @@
       },
       "source_metadata": {
         "source_id": "discovery-r136",
-        "revision_id": "64788e2f7a0e2b4d7e4df4fb32884ebd54a0f955167cb0c4e39c71fae391f06e",
+        "revision_id": "369fece6ea4fad1c7861e2e58ff61a38f0fcbef0205a5cb7c4a4c7a0e2decb39",
         "url": "https://gice.ntu.edu.tw/shownews.php?ID=7061",
-        "observed_at": "2026-11-01T16:20:29+00:00",
+        "observed_at": "2026-11-02T06:38:35+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.6.0",
+        "extractor_version": "extractor-1.7.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null,
         "normalizer_version": "document-ir-2",
@@ -17684,7 +18154,7 @@
         {
           "field_path": "cycle",
           "source": "discovery-r136",
-          "revision_id": "64788e2f7a0e2b4d7e4df4fb32884ebd54a0f955167cb0c4e39c71fae391f06e",
+          "revision_id": "369fece6ea4fad1c7861e2e58ff61a38f0fcbef0205a5cb7c4a4c7a0e2decb39",
           "locator": "body / text-block 2",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -17695,7 +18165,7 @@
         {
           "field_path": "eligibility.identity",
           "source": "discovery-r136",
-          "revision_id": "64788e2f7a0e2b4d7e4df4fb32884ebd54a0f955167cb0c4e39c71fae391f06e",
+          "revision_id": "369fece6ea4fad1c7861e2e58ff61a38f0fcbef0205a5cb7c4a4c7a0e2decb39",
           "locator": "body / text-block 11",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -17706,7 +18176,7 @@
         {
           "field_path": "eligibility.employment_status",
           "source": "discovery-r136",
-          "revision_id": "64788e2f7a0e2b4d7e4df4fb32884ebd54a0f955167cb0c4e39c71fae391f06e",
+          "revision_id": "369fece6ea4fad1c7861e2e58ff61a38f0fcbef0205a5cb7c4a4c7a0e2decb39",
           "locator": "body / text-block 11",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -17717,7 +18187,7 @@
         {
           "field_path": "eligibility.nationality",
           "source": "discovery-r136",
-          "revision_id": "64788e2f7a0e2b4d7e4df4fb32884ebd54a0f955167cb0c4e39c71fae391f06e",
+          "revision_id": "369fece6ea4fad1c7861e2e58ff61a38f0fcbef0205a5cb7c4a4c7a0e2decb39",
           "locator": "body / text-block 11",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -17728,7 +18198,7 @@
         {
           "field_path": "eligibility.year_limit",
           "source": "discovery-r136",
-          "revision_id": "64788e2f7a0e2b4d7e4df4fb32884ebd54a0f955167cb0c4e39c71fae391f06e",
+          "revision_id": "369fece6ea4fad1c7861e2e58ff61a38f0fcbef0205a5cb7c4a4c7a0e2decb39",
           "locator": "body / text-block 11",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -17748,7 +18218,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.4.0",
-        "checked_at": "2026-11-01T16:20:29+00:00",
+        "checked_at": "2026-11-02T06:38:35+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -17768,7 +18238,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.6.0",
+        "editor": "extractor-1.7.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -17786,484 +18256,7 @@
       "field_applicability": {}
     },
     {
-      "candidate_id": "cand-discovery-r137-b0dc50c3",
-      "opportunity_id": "discovery-r137",
-      "program_key": "discovery-r137",
-      "title": "【申請時程6/12-7/3】114學年度「國科會核配博士生獎學金」申請公告",
-      "category": "phd_research",
-      "resource_kind": "scholarship",
-      "scope": "ntu",
-      "cycle": {
-        "kind": "academic_year",
-        "label": "114學年度",
-        "year_system": "roc",
-        "year": 114,
-        "term_or_round": null,
-        "branch": null
-      },
-      "participants": {
-        "applicant": "unknown",
-        "beneficiary": "unknown",
-        "awardee": "unknown",
-        "payee": "unknown"
-      },
-      "institution_scope": {
-        "school": "unknown",
-        "college": null,
-        "department": null
-      },
-      "organizations": {
-        "funder": {
-          "text": "待查",
-          "refs": []
-        },
-        "announcer": {
-          "text": "待查",
-          "refs": []
-        },
-        "receiver": {
-          "text": "待查",
-          "refs": []
-        }
-      },
-      "eligibility": {
-        "degrees": [],
-        "institution": "unknown",
-        "nationality": "unknown",
-        "employment_status": "unknown",
-        "year_limit": {
-          "mode": "unknown",
-          "min": null,
-          "max": null,
-          "assessed_at": null,
-          "refs": []
-        },
-        "candidate": {
-          "mode": "unknown",
-          "assessed_at": null,
-          "refs": []
-        },
-        "graduation_requirement": "unknown",
-        "prior_funding_rule": "unknown",
-        "negated_conditions": [],
-        "identity": {
-          "text": "身分條件請至來源定位核對",
-          "refs": [
-            {
-              "source": "discovery-r137",
-              "locator": "body / text-block 11"
-            }
-          ]
-        },
-        "other_conditions": []
-      },
-      "benefit": {
-        "summary": "金額、幣別與發放頻率待核對",
-        "items": [],
-        "refs": []
-      },
-      "compatibility": {
-        "mode": "unknown",
-        "prohibited_schemes": [],
-        "overlap_period_rule": null,
-        "note": "須查雙方方案及重疊期間，未明示不代表可兼領。",
-        "refs": []
-      },
-      "hardship": {
-        "mode": "unknown",
-        "note": "未完成清寒限定條文查核。",
-        "refs": []
-      },
-      "schedule": {
-        "application_start": {
-          "kind": "unknown",
-          "value": null,
-          "timezone": "Asia/Taipei",
-          "note": "未記錄明確申請起日"
-        },
-        "steps": [
-          {
-            "actor": "student",
-            "action": "依公告規定申請",
-            "deadline": {
-              "kind": "unknown",
-              "value": null,
-              "timezone": "Asia/Taipei",
-              "note": "待確認"
-            },
-            "refs": [
-              {
-                "source": "discovery-r137",
-                "locator": "body / text-block 1"
-              }
-            ]
-          }
-        ],
-        "result_date": {
-          "kind": "unknown",
-          "certainty": "unknown",
-          "value": null,
-          "end_value": null,
-          "timezone": "Asia/Taipei",
-          "note": "官方未公告明確結果公布日",
-          "refs": []
-        },
-        "relative_rule": {
-          "rule_type": "none",
-          "anchor_event": null,
-          "agency_rule": null,
-          "student_rule": null,
-          "supplement_rule": null,
-          "holiday_policy": "not_specified",
-          "calendar_status": "not_applicable"
-        }
-      },
-      "application": {
-        "state": "unknown",
-        "as_of": "2026-11-02",
-        "reason": "尚無足以確認學生收件窗口的資料。",
-        "refs": []
-      },
-      "policy_version": {
-        "promulgated_on": null,
-        "amended_on": null,
-        "effective_from": null,
-        "effective_to": null,
-        "note": "法規版本與生效日待覆核；修正日不自動當作生效日。",
-        "refs": []
-      },
-      "source_metadata": {
-        "source_id": "discovery-r137",
-        "revision_id": "b0dc50c39450694197eb65dfb50273a84f480eb2a15186de2c8d1ad319ff94f5",
-        "url": "https://gice.ntu.edu.tw/shownews.php?ID=7062",
-        "observed_at": "2026-11-01T16:20:33+00:00",
-        "evidence_mode": "hash_only",
-        "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.6.0",
-        "adapter_used": "deterministic_rule",
-        "prompt_version": null,
-        "normalizer_version": "document-ir-2",
-        "prepared_document_sha256": "309f17a59d27aabc31a803ba832f6a5ef2a717541c888f8f9cbf8fe31620ce6e"
-      },
-      "field_evidence": [
-        {
-          "field_path": "cycle",
-          "source": "discovery-r137",
-          "revision_id": "b0dc50c39450694197eb65dfb50273a84f480eb2a15186de2c8d1ad319ff94f5",
-          "locator": "body / text-block 2",
-          "evidence_mode": "hash_only",
-          "excerpt": null,
-          "excerpt_sha256": "8adc7b89c1d324c9573cff9d98d9fb584403d6d49c31be59d484a5b7129ae756",
-          "source_block_sha256": "8adc7b89c1d324c9573cff9d98d9fb584403d6d49c31be59d484a5b7129ae756",
-          "extraction_method": "deterministic_rule"
-        },
-        {
-          "field_path": "eligibility.identity",
-          "source": "discovery-r137",
-          "revision_id": "b0dc50c39450694197eb65dfb50273a84f480eb2a15186de2c8d1ad319ff94f5",
-          "locator": "body / text-block 11",
-          "evidence_mode": "hash_only",
-          "excerpt": null,
-          "excerpt_sha256": "f48ca4e4693fa331d289319d2aff4abd319cd3cab31369a5b254a215f311ca97",
-          "source_block_sha256": "f48ca4e4693fa331d289319d2aff4abd319cd3cab31369a5b254a215f311ca97",
-          "extraction_method": "deterministic_rule"
-        }
-      ],
-      "gaps_and_conflicts": {
-        "missing_fields": [],
-        "conflicts": [],
-        "open_questions": [
-          "指定非原編輯者獨立覆核重大欄位（資格、金額、期限、兼領、法源版本）。"
-        ]
-      },
-      "evidence_status": "sufficient_for_draft",
-      "verification": {
-        "status": "passed_with_gaps",
-        "verifier_version": "verifier-1.4.0",
-        "checked_at": "2026-11-01T16:20:33+00:00",
-        "model_self_claim_ignored": true,
-        "checks": {
-          "schema_valid": true,
-          "evidence_supported": true,
-          "date_and_amount_units_valid": true,
-          "no_year_or_branch_mixing": true,
-          "negation_and_roles_valid": true,
-          "no_unresolved_conflicts": true,
-          "coverage_ok": false
-        },
-        "errors": [],
-        "warnings": [
-          "coverage_gap:missing_structured_benefit_items",
-          "coverage_gap:eligibility.identity_not_extracted"
-        ],
-        "audit_findings": []
-      },
-      "review": {
-        "status": "pending",
-        "editor": "extractor-1.6.0",
-        "independent_reviewer": null,
-        "reviewed_on": null,
-        "ledger_action": "unreviewed",
-        "promotion_ready": false
-      },
-      "application_method": {
-        "mode": "unknown",
-        "channels": [],
-        "paper_delivery": "unknown",
-        "handwritten_signature": "unknown",
-        "deadline_basis": "unknown",
-        "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
-        "refs": []
-      },
-      "field_applicability": {}
-    },
-    {
-      "candidate_id": "cand-discovery-r138-750fac40",
-      "opportunity_id": "discovery-r138",
-      "program_key": "discovery-r138",
-      "title": "【申請時程6/15-7/10】115學年度「國科會核配博士生獎學金」申請公告",
-      "category": "phd_research",
-      "resource_kind": "scholarship",
-      "scope": "ntu",
-      "cycle": {
-        "kind": "academic_year",
-        "label": "115學年度",
-        "year_system": "roc",
-        "year": 115,
-        "term_or_round": null,
-        "branch": null
-      },
-      "participants": {
-        "applicant": "unknown",
-        "beneficiary": "unknown",
-        "awardee": "unknown",
-        "payee": "unknown"
-      },
-      "institution_scope": {
-        "school": "unknown",
-        "college": null,
-        "department": null
-      },
-      "organizations": {
-        "funder": {
-          "text": "待查",
-          "refs": []
-        },
-        "announcer": {
-          "text": "待查",
-          "refs": []
-        },
-        "receiver": {
-          "text": "待查",
-          "refs": []
-        }
-      },
-      "eligibility": {
-        "degrees": [
-          "phd"
-        ],
-        "institution": "unknown",
-        "nationality": "unknown",
-        "employment_status": "unknown",
-        "year_limit": {
-          "mode": "unknown",
-          "min": null,
-          "max": null,
-          "assessed_at": null,
-          "refs": []
-        },
-        "candidate": {
-          "mode": "unknown",
-          "assessed_at": null,
-          "refs": []
-        },
-        "graduation_requirement": "unknown",
-        "prior_funding_rule": "unknown",
-        "negated_conditions": [],
-        "identity": {
-          "text": "博士班學生；其餘資格、排除與文件要求請核對來源",
-          "claim_kind": "eligibility_clause",
-          "refs": [
-            {
-              "source": "discovery-r138",
-              "locator": "body / text-block 13"
-            }
-          ]
-        },
-        "other_conditions": []
-      },
-      "benefit": {
-        "summary": "金額、幣別與發放頻率待核對",
-        "items": [],
-        "refs": []
-      },
-      "compatibility": {
-        "mode": "unknown",
-        "prohibited_schemes": [],
-        "overlap_period_rule": null,
-        "note": "須查雙方方案及重疊期間，未明示不代表可兼領。",
-        "refs": []
-      },
-      "hardship": {
-        "mode": "unknown",
-        "note": "未完成清寒限定條文查核。",
-        "refs": []
-      },
-      "schedule": {
-        "application_start": {
-          "kind": "unknown",
-          "value": null,
-          "timezone": "Asia/Taipei",
-          "note": "未記錄明確申請起日"
-        },
-        "steps": [
-          {
-            "actor": "student",
-            "action": "依公告規定申請",
-            "deadline": {
-              "kind": "unknown",
-              "value": null,
-              "timezone": "Asia/Taipei",
-              "note": "待確認"
-            },
-            "refs": [
-              {
-                "source": "discovery-r138",
-                "locator": "body / text-block 1"
-              }
-            ]
-          }
-        ],
-        "result_date": {
-          "kind": "unknown",
-          "certainty": "unknown",
-          "value": null,
-          "end_value": null,
-          "timezone": "Asia/Taipei",
-          "note": "官方未公告明確結果公布日",
-          "refs": []
-        },
-        "relative_rule": {
-          "rule_type": "none",
-          "anchor_event": null,
-          "agency_rule": null,
-          "student_rule": null,
-          "supplement_rule": null,
-          "holiday_policy": "not_specified",
-          "calendar_status": "not_applicable"
-        }
-      },
-      "application": {
-        "state": "unknown",
-        "as_of": "2026-11-02",
-        "reason": "尚無足以確認學生收件窗口的資料。",
-        "refs": []
-      },
-      "policy_version": {
-        "promulgated_on": null,
-        "amended_on": null,
-        "effective_from": null,
-        "effective_to": null,
-        "note": "法規版本與生效日待覆核；修正日不自動當作生效日。",
-        "refs": []
-      },
-      "source_metadata": {
-        "source_id": "discovery-r138",
-        "revision_id": "750fac405bfbcc33e3d52e4baec84cf7fb35ced8c36daa4e8312b48007db99c1",
-        "url": "https://gice.ntu.edu.tw/shownews.php?ID=7278",
-        "observed_at": "2026-11-01T16:20:35+00:00",
-        "evidence_mode": "hash_only",
-        "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.6.0",
-        "adapter_used": "deterministic_rule",
-        "prompt_version": null,
-        "normalizer_version": "document-ir-2",
-        "prepared_document_sha256": "e3dd71fbcd0a0e218eee2df2471a849b21b57f4b2709661ab4882689bb693a26"
-      },
-      "field_evidence": [
-        {
-          "field_path": "cycle",
-          "source": "discovery-r138",
-          "revision_id": "750fac405bfbcc33e3d52e4baec84cf7fb35ced8c36daa4e8312b48007db99c1",
-          "locator": "body / text-block 2",
-          "evidence_mode": "hash_only",
-          "excerpt": null,
-          "excerpt_sha256": "eff4ca9da3bac4d2064ff4a1da509621ff2c9deddf33dac7ca86a76001171fc3",
-          "source_block_sha256": "eff4ca9da3bac4d2064ff4a1da509621ff2c9deddf33dac7ca86a76001171fc3",
-          "extraction_method": "deterministic_rule"
-        },
-        {
-          "field_path": "eligibility.identity",
-          "source": "discovery-r138",
-          "revision_id": "750fac405bfbcc33e3d52e4baec84cf7fb35ced8c36daa4e8312b48007db99c1",
-          "locator": "body / text-block 13",
-          "evidence_mode": "hash_only",
-          "excerpt": null,
-          "excerpt_sha256": "b7fa783d0480ee73973771a4aa80aa75a2e6c737d6609536b3fd72e7fbc1846b",
-          "source_block_sha256": "b7fa783d0480ee73973771a4aa80aa75a2e6c737d6609536b3fd72e7fbc1846b",
-          "extraction_method": "deterministic_rule"
-        },
-        {
-          "field_path": "eligibility.degrees",
-          "source": "discovery-r138",
-          "revision_id": "750fac405bfbcc33e3d52e4baec84cf7fb35ced8c36daa4e8312b48007db99c1",
-          "locator": "body / text-block 13",
-          "evidence_mode": "hash_only",
-          "excerpt": null,
-          "excerpt_sha256": "b7fa783d0480ee73973771a4aa80aa75a2e6c737d6609536b3fd72e7fbc1846b",
-          "source_block_sha256": "b7fa783d0480ee73973771a4aa80aa75a2e6c737d6609536b3fd72e7fbc1846b",
-          "extraction_method": "deterministic_rule"
-        }
-      ],
-      "gaps_and_conflicts": {
-        "missing_fields": [],
-        "conflicts": [],
-        "open_questions": [
-          "指定非原編輯者獨立覆核重大欄位（資格、金額、期限、兼領、法源版本）。"
-        ]
-      },
-      "evidence_status": "sufficient_for_draft",
-      "verification": {
-        "status": "passed_with_gaps",
-        "verifier_version": "verifier-1.4.0",
-        "checked_at": "2026-11-01T16:20:35+00:00",
-        "model_self_claim_ignored": true,
-        "checks": {
-          "schema_valid": true,
-          "evidence_supported": true,
-          "date_and_amount_units_valid": true,
-          "no_year_or_branch_mixing": true,
-          "negation_and_roles_valid": true,
-          "no_unresolved_conflicts": true,
-          "coverage_ok": false
-        },
-        "errors": [],
-        "warnings": [
-          "coverage_gap:missing_structured_benefit_items"
-        ],
-        "audit_findings": []
-      },
-      "review": {
-        "status": "pending",
-        "editor": "extractor-1.6.0",
-        "independent_reviewer": null,
-        "reviewed_on": null,
-        "ledger_action": "unreviewed",
-        "promotion_ready": false
-      },
-      "application_method": {
-        "mode": "unknown",
-        "channels": [],
-        "paper_delivery": "unknown",
-        "handwritten_signature": "unknown",
-        "deadline_basis": "unknown",
-        "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
-        "refs": []
-      },
-      "field_applicability": {}
-    },
-    {
-      "candidate_id": "cand-discovery-r139-f06c9f47",
+      "candidate_id": "cand-discovery-r139-bcf86c90",
       "opportunity_id": "discovery-r139",
       "program_key": "discovery-r139",
       "title": "【申請時程6/15-7/10】115學年度「教育部博士生獎學金」申請公告",
@@ -18428,12 +18421,12 @@
       },
       "source_metadata": {
         "source_id": "discovery-r139",
-        "revision_id": "f06c9f47ec652b36d489a941f1cdaae383807e9ea3ad207cab9c48f7da5dfe4f",
+        "revision_id": "bcf86c901fca04412a033dfcd0742445ddb70d730eef9c6d15226f6d60e88e28",
         "url": "https://gice.ntu.edu.tw/shownews.php?ID=7279",
-        "observed_at": "2026-11-01T16:20:38+00:00",
+        "observed_at": "2026-11-02T06:38:38+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.6.0",
+        "extractor_version": "extractor-1.7.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null,
         "normalizer_version": "document-ir-2",
@@ -18443,7 +18436,7 @@
         {
           "field_path": "cycle",
           "source": "discovery-r139",
-          "revision_id": "f06c9f47ec652b36d489a941f1cdaae383807e9ea3ad207cab9c48f7da5dfe4f",
+          "revision_id": "bcf86c901fca04412a033dfcd0742445ddb70d730eef9c6d15226f6d60e88e28",
           "locator": "body / text-block 2",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -18454,7 +18447,7 @@
         {
           "field_path": "eligibility.identity",
           "source": "discovery-r139",
-          "revision_id": "f06c9f47ec652b36d489a941f1cdaae383807e9ea3ad207cab9c48f7da5dfe4f",
+          "revision_id": "bcf86c901fca04412a033dfcd0742445ddb70d730eef9c6d15226f6d60e88e28",
           "locator": "body / text-block 13",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -18465,7 +18458,7 @@
         {
           "field_path": "eligibility.employment_status",
           "source": "discovery-r139",
-          "revision_id": "f06c9f47ec652b36d489a941f1cdaae383807e9ea3ad207cab9c48f7da5dfe4f",
+          "revision_id": "bcf86c901fca04412a033dfcd0742445ddb70d730eef9c6d15226f6d60e88e28",
           "locator": "body / text-block 13",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -18476,7 +18469,7 @@
         {
           "field_path": "eligibility.nationality",
           "source": "discovery-r139",
-          "revision_id": "f06c9f47ec652b36d489a941f1cdaae383807e9ea3ad207cab9c48f7da5dfe4f",
+          "revision_id": "bcf86c901fca04412a033dfcd0742445ddb70d730eef9c6d15226f6d60e88e28",
           "locator": "body / text-block 13",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -18487,7 +18480,7 @@
         {
           "field_path": "eligibility.year_limit",
           "source": "discovery-r139",
-          "revision_id": "f06c9f47ec652b36d489a941f1cdaae383807e9ea3ad207cab9c48f7da5dfe4f",
+          "revision_id": "bcf86c901fca04412a033dfcd0742445ddb70d730eef9c6d15226f6d60e88e28",
           "locator": "body / text-block 13",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -18507,7 +18500,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.4.0",
-        "checked_at": "2026-11-01T16:20:38+00:00",
+        "checked_at": "2026-11-02T06:38:38+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -18527,7 +18520,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.6.0",
+        "editor": "extractor-1.7.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -18545,7 +18538,7 @@
       "field_applicability": {}
     },
     {
-      "candidate_id": "cand-discovery-r140-44b5810a",
+      "candidate_id": "cand-discovery-r140-ecd377b6",
       "opportunity_id": "discovery-r140",
       "program_key": "discovery-r140",
       "title": "【6/22-6/26申請】電信所補助研究生出席國際會議經費申請 (5~7月會議)",
@@ -18702,12 +18695,12 @@
       },
       "source_metadata": {
         "source_id": "discovery-r140",
-        "revision_id": "44b5810a2e639b7afa8af741064bfd9909cce4cc277f171dd2430d1f76ed04c0",
+        "revision_id": "ecd377b6476616d3f17628f6518ce8dc51840b634b97aaf9ca3be61f93156207",
         "url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
-        "observed_at": "2026-11-01T16:20:41+00:00",
+        "observed_at": "2026-11-02T06:38:41+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.6.0",
+        "extractor_version": "extractor-1.7.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null,
         "normalizer_version": "document-ir-2",
@@ -18717,7 +18710,7 @@
         {
           "field_path": "eligibility.identity",
           "source": "discovery-r140",
-          "revision_id": "44b5810a2e639b7afa8af741064bfd9909cce4cc277f171dd2430d1f76ed04c0",
+          "revision_id": "ecd377b6476616d3f17628f6518ce8dc51840b634b97aaf9ca3be61f93156207",
           "locator": "body / text-block 2",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -18728,7 +18721,7 @@
         {
           "field_path": "organizations.receiver",
           "source": "discovery-r140",
-          "revision_id": "44b5810a2e639b7afa8af741064bfd9909cce4cc277f171dd2430d1f76ed04c0",
+          "revision_id": "ecd377b6476616d3f17628f6518ce8dc51840b634b97aaf9ca3be61f93156207",
           "locator": "body / text-block 37",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -18739,7 +18732,7 @@
         {
           "field_path": "organizations.receiver",
           "source": "discovery-r140",
-          "revision_id": "44b5810a2e639b7afa8af741064bfd9909cce4cc277f171dd2430d1f76ed04c0",
+          "revision_id": "ecd377b6476616d3f17628f6518ce8dc51840b634b97aaf9ca3be61f93156207",
           "locator": "body / text-block 41",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -18750,7 +18743,7 @@
         {
           "field_path": "application_method/20",
           "source": "discovery-r140",
-          "revision_id": "44b5810a2e639b7afa8af741064bfd9909cce4cc277f171dd2430d1f76ed04c0",
+          "revision_id": "ecd377b6476616d3f17628f6518ce8dc51840b634b97aaf9ca3be61f93156207",
           "locator": "body / text-block 21",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -18761,7 +18754,7 @@
         {
           "field_path": "application_method/22",
           "source": "discovery-r140",
-          "revision_id": "44b5810a2e639b7afa8af741064bfd9909cce4cc277f171dd2430d1f76ed04c0",
+          "revision_id": "ecd377b6476616d3f17628f6518ce8dc51840b634b97aaf9ca3be61f93156207",
           "locator": "body / text-block 23",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -18772,7 +18765,7 @@
         {
           "field_path": "application_method/49",
           "source": "discovery-r140",
-          "revision_id": "44b5810a2e639b7afa8af741064bfd9909cce4cc277f171dd2430d1f76ed04c0",
+          "revision_id": "ecd377b6476616d3f17628f6518ce8dc51840b634b97aaf9ca3be61f93156207",
           "locator": "body / text-block 50",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -18792,7 +18785,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.4.0",
-        "checked_at": "2026-11-01T16:20:41+00:00",
+        "checked_at": "2026-11-02T06:38:41+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -18812,7 +18805,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.6.0",
+        "editor": "extractor-1.7.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
@@ -18846,7 +18839,7 @@
       "field_applicability": {}
     },
     {
-      "candidate_id": "cand-discovery-r141-31feb0b4",
+      "candidate_id": "cand-discovery-r141-028a44be",
       "opportunity_id": "discovery-r141",
       "program_key": "discovery-r141",
       "title": "【115.10.12(一)止】115學年度「教育部博士生獎學金」第二階段申請公告",
@@ -19011,12 +19004,12 @@
       },
       "source_metadata": {
         "source_id": "discovery-r141",
-        "revision_id": "31feb0b400ba63ee4db7c47a83692fa20269abea0b89be304743f8f6b76cce88",
+        "revision_id": "028a44beabb0fd54c1601b22da05f50602c89c5d3092e639a5757fc0eb57f737",
         "url": "https://gice.ntu.edu.tw/shownews.php?ID=7344",
-        "observed_at": "2026-11-01T16:20:44+00:00",
+        "observed_at": "2026-11-02T06:38:44+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
-        "extractor_version": "extractor-1.6.0",
+        "extractor_version": "extractor-1.7.0",
         "adapter_used": "deterministic_rule",
         "prompt_version": null,
         "normalizer_version": "document-ir-2",
@@ -19026,7 +19019,7 @@
         {
           "field_path": "cycle",
           "source": "discovery-r141",
-          "revision_id": "31feb0b400ba63ee4db7c47a83692fa20269abea0b89be304743f8f6b76cce88",
+          "revision_id": "028a44beabb0fd54c1601b22da05f50602c89c5d3092e639a5757fc0eb57f737",
           "locator": "body / text-block 2",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -19037,7 +19030,7 @@
         {
           "field_path": "eligibility.identity",
           "source": "discovery-r141",
-          "revision_id": "31feb0b400ba63ee4db7c47a83692fa20269abea0b89be304743f8f6b76cce88",
+          "revision_id": "028a44beabb0fd54c1601b22da05f50602c89c5d3092e639a5757fc0eb57f737",
           "locator": "body / text-block 13",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -19048,7 +19041,7 @@
         {
           "field_path": "eligibility.employment_status",
           "source": "discovery-r141",
-          "revision_id": "31feb0b400ba63ee4db7c47a83692fa20269abea0b89be304743f8f6b76cce88",
+          "revision_id": "028a44beabb0fd54c1601b22da05f50602c89c5d3092e639a5757fc0eb57f737",
           "locator": "body / text-block 13",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -19059,7 +19052,7 @@
         {
           "field_path": "eligibility.nationality",
           "source": "discovery-r141",
-          "revision_id": "31feb0b400ba63ee4db7c47a83692fa20269abea0b89be304743f8f6b76cce88",
+          "revision_id": "028a44beabb0fd54c1601b22da05f50602c89c5d3092e639a5757fc0eb57f737",
           "locator": "body / text-block 13",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -19070,7 +19063,7 @@
         {
           "field_path": "eligibility.year_limit",
           "source": "discovery-r141",
-          "revision_id": "31feb0b400ba63ee4db7c47a83692fa20269abea0b89be304743f8f6b76cce88",
+          "revision_id": "028a44beabb0fd54c1601b22da05f50602c89c5d3092e639a5757fc0eb57f737",
           "locator": "body / text-block 13",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -19090,7 +19083,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.4.0",
-        "checked_at": "2026-11-01T16:20:44+00:00",
+        "checked_at": "2026-11-02T06:38:44+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -19110,7 +19103,7 @@
       },
       "review": {
         "status": "pending",
-        "editor": "extractor-1.6.0",
+        "editor": "extractor-1.7.0",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",

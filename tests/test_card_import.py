@@ -12,15 +12,16 @@ class CardImportTests(unittest.TestCase):
     def test_every_card_ready_original_is_in_the_pending_pool(self):
         audit=read('data/source-expansion/original-source-verification.json')
         cards=read('data/candidates/source-review.json')['candidates']
-        by_id={c['candidate_id']:c for c in cards}
+        by_url={c['source_metadata']['url']:c for c in cards}
         for source in audit['records']:
             if not source['card_ready']:
                 continue
             self.assertTrue(source['content_verified'])
             self.assertTrue(source['candidate_ids'])
-            for cid in source['candidate_ids']:
-                self.assertIn(cid,by_id)
-                self.assertEqual(by_id[cid]['source_metadata']['url'],source['url'])
+            # The original audit is immutable history; later reads rotate revision/IDs.
+            self.assertIn(source['url'],by_url)
+            if by_url[source['url']]['candidate_id'] not in source['candidate_ids']:
+                self.assertGreaterEqual(by_url[source['url']]['source_metadata']['observed_at'],source['checked_at'])
 
     def test_import_is_not_a_human_approval_or_formal_release(self):
         cards=read('data/candidates/source-review.json')['candidates']

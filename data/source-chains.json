@@ -1,6 +1,6 @@
 {
   "schema_version": "source-chain-1",
-  "generated_at": "2026-11-01T04:33:21+00:00",
+  "generated_at": "2026-11-02T06:38:44+00:00",
   "model_calls": 0,
   "official_data_modified": false,
   "documents": [
@@ -428,7 +428,7 @@
       "id": "doc-65fdcc25317db87ff0f5e5a6",
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7278",
       "candidate_ids": [
-        "cand-discovery-r138-750fac40"
+        "cand-discovery-r138-5021d5eb"
       ],
       "evidence_mode": "hash_only",
       "observed_at": "2026-11-01T04:33:21+00:00",
@@ -443,13 +443,13 @@
           "value": "2026-06-15",
           "basis": "explicit",
           "document_id": "doc-65fdcc25317db87ff0f5e5a6",
-          "revision_id": "750fac405bfbcc33e3d52e4baec84cf7fb35ced8c36daa4e8312b48007db99c1",
+          "revision_id": "5021d5ebd766187d662a3afa4c91c001d2c8133a8bfcbd5780c4a9ea884b81ae",
           "timezone": "Asia/Taipei",
           "locator": "body / text-block 3",
           "block_sha256": "f6b67577fa34d4467b878d106d49d775ca2d73fa3b15be528b720a15e335e75a",
           "review_status": "pending",
           "certainty": "announced",
-          "id": "event-8a9d09d42305f49a4f2eff11"
+          "id": "event-47c46f70e97ccf89124d8de5"
         },
         {
           "program_key": "ntu-nstc-phd",
@@ -461,13 +461,13 @@
           "value": "2026-06-15",
           "basis": "explicit",
           "document_id": "doc-65fdcc25317db87ff0f5e5a6",
-          "revision_id": "750fac405bfbcc33e3d52e4baec84cf7fb35ced8c36daa4e8312b48007db99c1",
+          "revision_id": "5021d5ebd766187d662a3afa4c91c001d2c8133a8bfcbd5780c4a9ea884b81ae",
           "timezone": "Asia/Taipei",
           "locator": "body / text-block 2",
           "block_sha256": "eff4ca9da3bac4d2064ff4a1da509621ff2c9deddf33dac7ca86a76001171fc3",
           "review_status": "pending",
           "certainty": "announced",
-          "id": "event-eac5669d3a74012573cb4ebb"
+          "id": "event-c05b68f981d5d47f1d22e7a1"
         },
         {
           "program_key": "ntu-nstc-phd",
@@ -479,13 +479,13 @@
           "value": "2026-07-10T17:00:00+08:00",
           "basis": "explicit",
           "document_id": "doc-65fdcc25317db87ff0f5e5a6",
-          "revision_id": "750fac405bfbcc33e3d52e4baec84cf7fb35ced8c36daa4e8312b48007db99c1",
+          "revision_id": "5021d5ebd766187d662a3afa4c91c001d2c8133a8bfcbd5780c4a9ea884b81ae",
           "timezone": "Asia/Taipei",
           "locator": "body / text-block 12",
           "block_sha256": "c76830579498941db777244b5fc9dea984367bcf9fe4b889e760039c21b2bec5",
           "review_status": "pending",
           "certainty": "announced",
-          "id": "event-591f474dd1eea26a051b307a"
+          "id": "event-fb093318fee9cb9507e659d0"
         }
       ],
       "links": [
@@ -509,7 +509,7 @@
       "raw_sha256": "2d7643c15adb8ff3b6989e8fd3ba1dc369e11b638f79dc3cfd276b80f0c4d558",
       "etag": null,
       "last_modified": null,
-      "revision_id": "750fac405bfbcc33e3d52e4baec84cf7fb35ced8c36daa4e8312b48007db99c1",
+      "revision_id": "5021d5ebd766187d662a3afa4c91c001d2c8133a8bfcbd5780c4a9ea884b81ae",
       "status": "unchanged"
     },
     {
@@ -704,7 +704,7 @@
       "id": "doc-6ed640449dfc70447e1ca65b",
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7344",
       "candidate_ids": [
-        "cand-discovery-r141-31feb0b4"
+        "cand-discovery-r141-028a44be"
       ],
       "evidence_mode": "hash_only",
       "observed_at": "2026-11-01T04:33:21+00:00",
@@ -719,13 +719,13 @@
           "value": "2026-10-06",
           "basis": "explicit",
           "document_id": "doc-6ed640449dfc70447e1ca65b",
-          "revision_id": "31feb0b400ba63ee4db7c47a83692fa20269abea0b89be304743f8f6b76cce88",
+          "revision_id": "028a44beabb0fd54c1601b22da05f50602c89c5d3092e639a5757fc0eb57f737",
           "timezone": "Asia/Taipei",
           "locator": "body / text-block 3",
           "block_sha256": "263d69edd09af0dde90a5ff13016baf67a6c0167eab77e90d4b908a9a9bfbe38",
           "review_status": "pending",
           "certainty": "announced",
-          "id": "event-fca3d557ebfcf0a6cf8e5952"
+          "id": "event-c11df5b5ccdb48e7e6a07159"
         },
         {
           "program_key": "ntu-moe-phd",
@@ -737,13 +737,13 @@
           "value": "2026-10-12T17:00:00+08:00",
           "basis": "explicit",
           "document_id": "doc-6ed640449dfc70447e1ca65b",
-          "revision_id": "31feb0b400ba63ee4db7c47a83692fa20269abea0b89be304743f8f6b76cce88",
+          "revision_id": "028a44beabb0fd54c1601b22da05f50602c89c5d3092e639a5757fc0eb57f737",
           "timezone": "Asia/Taipei",
           "locator": "body / text-block 12",
           "block_sha256": "6dc4b0bf89aa5b5a6b514112978041546fc93fbf8a68e5f7faa8ecc2800d9763",
           "review_status": "pending",
           "certainty": "announced",
-          "id": "event-35c55f75cd242f147750d972"
+          "id": "event-be75c9e3272812b9167afc30"
         }
       ],
       "links": [
@@ -771,7 +771,7 @@
       "raw_sha256": "8698fe986c83bdf886c4718730ee2fa0f54e968893c729542394d3492adaa48f",
       "etag": null,
       "last_modified": null,
-      "revision_id": "31feb0b400ba63ee4db7c47a83692fa20269abea0b89be304743f8f6b76cce88",
+      "revision_id": "028a44beabb0fd54c1601b22da05f50602c89c5d3092e639a5757fc0eb57f737",
       "status": "unchanged"
     },
     {
@@ -1115,6 +1115,186 @@
       "events": [],
       "links": [],
       "candidate_ids": []
+    },
+    {
+      "id": "doc-fbfb1e1d14dbdb4af537329a",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7061",
+      "format": "html",
+      "revision_id": "369fece6ea4fad1c7861e2e58ff61a38f0fcbef0205a5cb7c4a4c7a0e2decb39",
+      "observed_at": "2026-11-02T06:38:35+00:00",
+      "status": "changed",
+      "evidence_mode": "hash_only",
+      "raw_sha256": "e2be170509b3d07a5416afbfc2667fc8f27cfeb533e1c0468ce54ca322a31eb1",
+      "candidate_ids": [
+        "cand-discovery-r136-369fece6"
+      ],
+      "events": [
+        {
+          "program_key": "discovery-r136",
+          "scope": "ntu-gice",
+          "cycle": "114學年度",
+          "application_year": 2025,
+          "phase": "annual",
+          "kind": "application_start",
+          "value": "2025-06-12",
+          "basis": "publication_year_context",
+          "document_id": "doc-fbfb1e1d14dbdb4af537329a",
+          "revision_id": "369fece6ea4fad1c7861e2e58ff61a38f0fcbef0205a5cb7c4a4c7a0e2decb39",
+          "timezone": "Asia/Taipei",
+          "locator": "body / text-block 2",
+          "block_sha256": "c2f2fc90e62c362cccec714009e98e3caaee258efd7d2ac39252b699fbf421c0",
+          "review_status": "pending",
+          "certainty": "expected",
+          "publication_ref": {
+            "locator": "body / text-block 3",
+            "block_sha256": "1d003292bf4a10c6e97ac8f5d3569dc9504d1799acbf61cb87a1fbe582550be9"
+          },
+          "id": "event-27f4fbf3813d034e7a82f1b2"
+        },
+        {
+          "program_key": "discovery-r136",
+          "scope": "ntu-gice",
+          "cycle": "114學年度",
+          "application_year": 2025,
+          "phase": "annual",
+          "kind": "student_deadline",
+          "value": "2025-07-03",
+          "basis": "publication_year_context",
+          "document_id": "doc-fbfb1e1d14dbdb4af537329a",
+          "revision_id": "369fece6ea4fad1c7861e2e58ff61a38f0fcbef0205a5cb7c4a4c7a0e2decb39",
+          "timezone": "Asia/Taipei",
+          "locator": "body / text-block 2",
+          "block_sha256": "c2f2fc90e62c362cccec714009e98e3caaee258efd7d2ac39252b699fbf421c0",
+          "review_status": "pending",
+          "certainty": "expected",
+          "publication_ref": {
+            "locator": "body / text-block 3",
+            "block_sha256": "1d003292bf4a10c6e97ac8f5d3569dc9504d1799acbf61cb87a1fbe582550be9"
+          },
+          "id": "event-cb9c999b8a58b9932f9ef6f6"
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": "doc-6ea52db572c805dfd7238e39",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7279",
+      "format": "html",
+      "revision_id": "bcf86c901fca04412a033dfcd0742445ddb70d730eef9c6d15226f6d60e88e28",
+      "observed_at": "2026-11-02T06:38:38+00:00",
+      "status": "changed",
+      "evidence_mode": "hash_only",
+      "raw_sha256": "239de4c3ffab151202066683a4db5ece300a988c6c6a392afe4943b8327ec11e",
+      "candidate_ids": [
+        "cand-discovery-r139-bcf86c90"
+      ],
+      "events": [
+        {
+          "program_key": "discovery-r139",
+          "scope": "ntu-gice",
+          "cycle": "115學年度",
+          "application_year": 2026,
+          "phase": "annual",
+          "kind": "application_start",
+          "value": "2026-06-15",
+          "basis": "publication_year_context",
+          "document_id": "doc-6ea52db572c805dfd7238e39",
+          "revision_id": "bcf86c901fca04412a033dfcd0742445ddb70d730eef9c6d15226f6d60e88e28",
+          "timezone": "Asia/Taipei",
+          "locator": "body / text-block 2",
+          "block_sha256": "27a30eda513b1e1fbd827d1e692237fde3851006c6ff363f75f02c838d981b37",
+          "review_status": "pending",
+          "certainty": "expected",
+          "publication_ref": {
+            "locator": "body / text-block 3",
+            "block_sha256": "f6b67577fa34d4467b878d106d49d775ca2d73fa3b15be528b720a15e335e75a"
+          },
+          "id": "event-2eae45c0324ca8dde6af76b9"
+        },
+        {
+          "program_key": "discovery-r139",
+          "scope": "ntu-gice",
+          "cycle": "115學年度",
+          "application_year": 2026,
+          "phase": "annual",
+          "kind": "student_deadline",
+          "value": "2026-07-10",
+          "basis": "publication_year_context",
+          "document_id": "doc-6ea52db572c805dfd7238e39",
+          "revision_id": "bcf86c901fca04412a033dfcd0742445ddb70d730eef9c6d15226f6d60e88e28",
+          "timezone": "Asia/Taipei",
+          "locator": "body / text-block 2",
+          "block_sha256": "27a30eda513b1e1fbd827d1e692237fde3851006c6ff363f75f02c838d981b37",
+          "review_status": "pending",
+          "certainty": "expected",
+          "publication_ref": {
+            "locator": "body / text-block 3",
+            "block_sha256": "f6b67577fa34d4467b878d106d49d775ca2d73fa3b15be528b720a15e335e75a"
+          },
+          "id": "event-5a77a330bc0a0acd7d2e6aec"
+        }
+      ],
+      "links": []
+    },
+    {
+      "id": "doc-6db49eb6cd36a3c5ed6ecae1",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
+      "format": "html",
+      "revision_id": "ecd377b6476616d3f17628f6518ce8dc51840b634b97aaf9ca3be61f93156207",
+      "observed_at": "2026-11-02T06:38:41+00:00",
+      "status": "changed",
+      "evidence_mode": "hash_only",
+      "raw_sha256": "27b875e35a9ae1534379ac36389f9484875a6f1c9c8b44097c144fabc0e86443",
+      "candidate_ids": [
+        "cand-discovery-r140-ecd377b6"
+      ],
+      "events": [
+        {
+          "program_key": "discovery-r140",
+          "scope": "ntu-gice",
+          "cycle": "待確認學年度",
+          "application_year": 2026,
+          "phase": "annual",
+          "kind": "application_start",
+          "value": "2026-06-22",
+          "basis": "publication_year_context",
+          "document_id": "doc-6db49eb6cd36a3c5ed6ecae1",
+          "revision_id": "ecd377b6476616d3f17628f6518ce8dc51840b634b97aaf9ca3be61f93156207",
+          "timezone": "Asia/Taipei",
+          "locator": "body / text-block 18",
+          "block_sha256": "3e452fa89d7bd726f1dd9fa80ac3ccebfadd5900c7d6522adcfe0636361a02fc",
+          "review_status": "pending",
+          "certainty": "expected",
+          "publication_ref": {
+            "locator": "body / text-block 3",
+            "block_sha256": "f6900c05d1537de9ac89b194daa959635ebd4a64d9a01b77b14f337ae828cb5c"
+          },
+          "id": "event-63a53fdf3d42a029ec59dc70"
+        },
+        {
+          "program_key": "discovery-r140",
+          "scope": "ntu-gice",
+          "cycle": "待確認學年度",
+          "application_year": 2026,
+          "phase": "annual",
+          "kind": "student_deadline",
+          "value": "2026-06-26",
+          "basis": "publication_year_context",
+          "document_id": "doc-6db49eb6cd36a3c5ed6ecae1",
+          "revision_id": "ecd377b6476616d3f17628f6518ce8dc51840b634b97aaf9ca3be61f93156207",
+          "timezone": "Asia/Taipei",
+          "locator": "body / text-block 18",
+          "block_sha256": "3e452fa89d7bd726f1dd9fa80ac3ccebfadd5900c7d6522adcfe0636361a02fc",
+          "review_status": "pending",
+          "certainty": "expected",
+          "publication_ref": {
+            "locator": "body / text-block 3",
+            "block_sha256": "f6900c05d1537de9ac89b194daa959635ebd4a64d9a01b77b14f337ae828cb5c"
+          },
+          "id": "event-689fc530daba8a5725952cd1"
+        }
+      ],
+      "links": []
     }
   ],
   "relations": [
@@ -1742,12 +1922,6 @@
       "historical_baseline_allowed": true
     },
     {
-      "candidate_id": "cand-discovery-r312-1149cefa",
-      "program_key": "discovery-r312",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
       "candidate_id": "cand-discovery-r468-d4034175",
       "program_key": "discovery-r468",
       "phase": "all",
@@ -1766,37 +1940,43 @@
       "historical_baseline_allowed": true
     },
     {
-      "candidate_id": "cand-discovery-r136-64788e2f",
-      "program_key": "discovery-r136",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
-      "candidate_id": "cand-discovery-r137-b0dc50c3",
+      "candidate_id": "cand-discovery-r137-066362bb",
       "program_key": "discovery-r137",
       "phase": "all",
       "historical_baseline_allowed": true
     },
     {
-      "candidate_id": "cand-discovery-r138-750fac40",
+      "candidate_id": "cand-discovery-r138-5021d5eb",
       "program_key": "discovery-r138",
       "phase": "all",
       "historical_baseline_allowed": true
     },
     {
-      "candidate_id": "cand-discovery-r139-f06c9f47",
+      "candidate_id": "cand-discovery-r312-aba9d3b3",
+      "program_key": "discovery-r312",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-r136-369fece6",
+      "program_key": "discovery-r136",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-r139-bcf86c90",
       "program_key": "discovery-r139",
       "phase": "all",
       "historical_baseline_allowed": true
     },
     {
-      "candidate_id": "cand-discovery-r140-44b5810a",
+      "candidate_id": "cand-discovery-r140-ecd377b6",
       "program_key": "discovery-r140",
       "phase": "all",
       "historical_baseline_allowed": true
     },
     {
-      "candidate_id": "cand-discovery-r141-31feb0b4",
+      "candidate_id": "cand-discovery-r141-028a44be",
       "program_key": "discovery-r141",
       "phase": "round2",
       "historical_baseline_allowed": true

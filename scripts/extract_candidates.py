@@ -35,7 +35,7 @@ from scripts.application_process import infer_process
 from scripts.semantic_facts import INSTRUCTIONS, PLACEHOLDER, discover_identity, discover_organizations, recurring_time, degree_terms, time_actor
 from scripts.ai_tool_rules import benefit_tiers
 
-EXTRACTOR_VERSION = "extractor-1.6.0"
+EXTRACTOR_VERSION = "extractor-1.7.0"
 PROMPT_VERSION = "prompt-1.3.0"
 
 PII_REDACT_RE = re.compile(
@@ -730,6 +730,7 @@ def parse_roc_or_iso_date_from_text(text, default_roc_year=None):
     絕不將純日期補上 23:59！
     """
     clean = _normalize_chinese_roc_years(normalized(text))
+    clean = re.sub(r'[（(](?:星期|週)?[一二三四五六日天][）)]', '', clean)
 
     # 1. 檢查民國年月日 + 時間 (例如: 115/11/26下午5時, 115年7月29日早上8時, 115/7/31中午12時, 115年11月26日 17:00)
     dt_roc = re.search(
@@ -787,8 +788,13 @@ def parse_roc_or_iso_date_from_text(text, default_roc_year=None):
 
     # 5. 若提供明確章節年份 (default_roc_year)，支援「M月D日」
     if default_roc_year is not None:
-        d_md = re.search(r"(?<!\d)(\d{1,2})\s*月\s*(\d{1,2})\s*日", clean)
+        d_md = re.search(r"(?<!\d)(\d{1,2})\s*[月/.\-]\s*(\d{1,2})\s*日?", clean)
         if d_md:
+            # Reuse the full-date parser so an explicit end clock is retained.
+            suffix = clean[d_md.start():]
+            parsed = parse_roc_or_iso_date_from_text(str(default_roc_year)+'年'+suffix)
+            if parsed[1] is not None:
+                return parsed
             year = int(default_roc_year) + 1911
             month = int(d_md.group(1))
             day = int(d_md.group(2))
@@ -932,8 +938,9 @@ def _format_benefit_summary(item):
 def parse_date_range_from_text(text):
     """擷取期間起訖（如 '2026-07-08至2026-08-25' 或 '115/8/5至8/13'），回傳 (start_iso, end_iso) 或 (None, None)。"""
     clean = _normalize_chinese_roc_years(normalized(text))
+    clean = re.sub(r'[（(](?:星期|週)?[一二三四五六日天][）)]', '', clean)
     m_iso = re.search(
-        r"(20\d{2})[/.\-](\d{1,2})[/.\-](\d{1,2})\s*(?:至|~|～|-|到)\s*(?:(20\d{2})[/.\-])?(\d{1,2})[/.\-](\d{1,2})",
+        r"(20\d{2})[年/.\-](\d{1,2})[月/.\-](\d{1,2})日?\s*(?:至|~|～|-|到)\s*(?:(20\d{2})[年/.\-])?(\d{1,2})[月/.\-](\d{1,2})",
         clean,
     )
     if m_iso:
@@ -942,7 +949,7 @@ def parse_date_range_from_text(text):
         m2, d2 = int(m_iso.group(5)), int(m_iso.group(6))
         s = f"{y1:04d}-{m1:02d}-{d1:02d}"
         e = f"{y2:04d}-{m2:02d}-{d2:02d}"
-        if parse_iso_date(s) and parse_iso_date(e):
+        if parse_iso_date(s) and parse_iso_date(e) and s<=e:
             return s, e
 
     m_roc = re.search(
@@ -956,7 +963,7 @@ def parse_date_range_from_text(text):
         m2, d2 = int(m_roc.group(5)), int(m_roc.group(6))
         s = f"{y1:04d}-{m1:02d}-{d1:02d}"
         e = f"{y2:04d}-{m2:02d}-{d2:02d}"
-        if parse_iso_date(s) and parse_iso_date(e):
+        if parse_iso_date(s) and parse_iso_date(e) and s<=e:
             return s, e
 
     return None, None
@@ -2059,16 +2066,21 @@ def _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode):
         units=list({b.get('unit_id',b['locator']):b for claim in claims for b in claim['units']}.values())
         cand['organizations'][role]={'text':'／'.join(c['value'] for c in claims),
             'refs':evidence('organizations.'+role,units)}
-    if generic_identity:
+    # Timing is independent of whether identity was already recognized.
+    if blocks:
         seen=set()
         for block in blocks:
             if PROMPT_INJECTION_RE.search(block['text']) or SKIP.search(block['text']):continue
             text=re.sub(r'\s+','',block['text'])
             rule=recurring_time(text)
-            if (not rule and re.search(r'申請期間|受理期間|申請期限|申請截止|截止',text)
+            if (not rule and re.search(r'申請期間|申請時程|申請時間|受理期間|收件期間|申請期限|申請截止|截止',text)
                     and not re.search(r'每年|修正|生效|購買|支出|出國期間|公布結果|出生|年齡',text)):
                 start,end=parse_date_range_from_text(text)
                 kind,value=parse_roc_or_iso_date_from_text(text) if not end else ('date',end)
+                if end:
+                    tail=re.split(r'至|到|[~～]',text)[-1]
+                    end_kind,end_value=parse_roc_or_iso_date_from_text(tail,int(end[:4])-1911)
+                    if end_value and end_value[:10]==end:kind,value=end_kind,end_value
                 actor=time_actor(text)
                 if value:
                     rule={'actor':actor,'action':'依來源明示期間辦理'+('（'+start+'至'+end+'）' if start and end else ''),

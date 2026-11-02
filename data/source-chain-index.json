@@ -2,11 +2,12 @@
   "schema_version": "source-chain-index-1",
   "as_of": "2026-11-02",
   "candidate_file": "data/candidates/source-review.json",
-  "candidate_sha256": "85573f34b9a3a51bdef0c1b8778c832d83442b4c36a3e8db5449bb873235d288",
+  "candidate_sha256": "9969473461da16ed5d40dcf605d89d514c8327aa2aeb1ba42cc137b14a07dd0d",
   "bundles": [
     "data/source-chains.json",
     "data/source-chain-batches/batch-01.json",
-    "data/source-chain-batches/radar-proposal-snapshots.json"
+    "data/source-chain-batches/radar-proposal-snapshots.json",
+    "data/source-chain-batches/radar-reference-windows.json"
   ],
   "batch_configs": [
     "data/source-chain-batches/batch-01.config.json"
@@ -908,7 +909,7 @@
       "key": "discovery-r312",
       "title": "國科會116年度補助博士生赴國外研究案，申請時間自115年6月1日至7月29日(星期三)早上8時止",
       "candidate_ids": [
-        "cand-discovery-r312-1149cefa"
+        "cand-discovery-r312-aba9d3b3"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
@@ -964,7 +965,7 @@
       "key": "discovery-r136",
       "title": "【申請時程6/12-7/3】114學年度「教育部博士生獎學金」申請公告",
       "candidate_ids": [
-        "cand-discovery-r136-64788e2f"
+        "cand-discovery-r136-369fece6"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
@@ -978,7 +979,7 @@
       "key": "discovery-r137",
       "title": "【申請時程6/12-7/3】114學年度「國科會核配博士生獎學金」申請公告",
       "candidate_ids": [
-        "cand-discovery-r137-b0dc50c3"
+        "cand-discovery-r137-066362bb"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
@@ -992,7 +993,7 @@
       "key": "discovery-r138",
       "title": "【申請時程6/15-7/10】115學年度「國科會核配博士生獎學金」申請公告",
       "candidate_ids": [
-        "cand-discovery-r138-750fac40"
+        "cand-discovery-r138-5021d5eb"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
@@ -1006,7 +1007,7 @@
       "key": "discovery-r139",
       "title": "【申請時程6/15-7/10】115學年度「教育部博士生獎學金」申請公告",
       "candidate_ids": [
-        "cand-discovery-r139-f06c9f47"
+        "cand-discovery-r139-bcf86c90"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
@@ -1020,7 +1021,7 @@
       "key": "discovery-r140",
       "title": "【6/22-6/26申請】電信所補助研究生出席國際會議經費申請 (5~7月會議)",
       "candidate_ids": [
-        "cand-discovery-r140-44b5810a"
+        "cand-discovery-r140-ecd377b6"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
@@ -1034,7 +1035,7 @@
       "key": "discovery-r141",
       "title": "【115.10.12(一)止】115學年度「教育部博士生獎學金」第二階段申請公告",
       "candidate_ids": [
-        "cand-discovery-r141-31feb0b4"
+        "cand-discovery-r141-028a44be"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
@@ -1105,7 +1106,8 @@
   "notes": [
     "第一批以13方案／19候選為基線；本次為64份候選文件／58組暫定方案，未完成跨URL語義別名整併。",
     "batch-01僅表示原第一批3方案的資訊鏈規則；全原始URL盤查見original-source-verification.json。",
-    "全部規則與候選維持pending，不是人工發布核准。"
+    "全部規則與候選維持pending，不是人工發布核准。",
+    "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。"
   ],
   "current_batch": "batch-01"
 }

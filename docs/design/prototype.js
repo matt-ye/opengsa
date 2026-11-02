@@ -4,7 +4,7 @@
 const DAY = 86400000;
 const labels = {
  category: {living_tuition:"生活／學費",living_emergency:"急難支持",phd_research:"博士研究",outcome_award:"成果獎",international_conference:"國際會議",overseas_research:"境外研究",indirect_support:"聘任入口",research_tools:"研究工具／算力"},
- source: {government:"政府",university:"學校",foundation:"基金會",enterprise:"企業／產學",research_institute:"研究法人／中研院",unknown:"來源待查"},
+ source: {government:"政府",university:"學校",foundation:"基金會／學會",enterprise:"企業／產學",research_institute:"研究法人／中研院",unknown:"來源待查"},
  degree: {master:"碩士",phd:"博士",candidate:"博士候選人"},
  year: {unlimited:"明示不限年級",range:"限定年級",freshman:"新生入學",graduating:"畢業／論文期",unknown:"年級待確認"},
  compatibility: {allowed:"可兼領（限已查範圍）",conditional:"兼領有條件",prohibited:"不可兼領",unknown:"兼領待確認"},
@@ -118,7 +118,8 @@ function groupDocuments(items){
   if(!groups.has(key))groups.set(key,[]);groups.get(key).push(item);}
  return [...groups.values()].map(docs=>{
   const rank=item=>(["academic_year","calendar_year"].includes(item.cycleKind)&&!/待|unknown/.test(item.cycle)?2:0)+(item.cycleKind==="event_relative"?1:0);
-  const primary=[...docs].sort((a,b)=>rank(b)-rank(a))[0];
+  const year=item=>{const n=Number(item.cycleYear)||Number((item.cycle||'').match(/(?:20\d{2}|1\d{2})/)?.[0])||0;return n>=100&&n<1000?n+1911:n;};
+  const primary=[...docs].sort((a,b)=>rank(b)-rank(a)||year(b)-year(a)||a.id.localeCompare(b.id))[0];
   return {...primary,relatedDocuments:docs.filter(d=>d.id!==primary.id).map(d=>({id:d.id,title:d.title,url:d.url,cycle:d.cycle}))};
  });
 }
@@ -161,7 +162,7 @@ function makeDrafts(pilot,asOf=taipeiToday(),radarData=null) {
   const source = sources.map(r=>sourceMap.get(r.source)).find(Boolean);
    const state=windowState(item,asOf);
    const draft={
-   id:item.id,title:item.title,category:item.category,source:resolvedSource,programKey:item.program_key,cycleKind:item.cycle.kind,resourceKind:item.resource_kind,
+   id:item.id,title:item.title,category:item.category,source:resolvedSource,programKey:item.program_key,cycleKind:item.cycle.kind,cycleYear:item.cycle.year,resourceKind:item.resource_kind,
    audience:unknownValue(item.eligibility.identity.text)?null:item.eligibility.identity.text,
    audienceKind:item.eligibility.identity.claim_kind||"source_specific_summary",
    degrees:/身分條件請至來源/.test(item.eligibility.identity.text)?[]:item.eligibility.degrees,year:item.field_applicability?.year_limit?.status==="not_applicable"?"not_applicable":item.eligibility.year_limit.mode,
@@ -188,6 +189,7 @@ function makeDrafts(pilot,asOf=taipeiToday(),radarData=null) {
    draft.url=officialUrl(meta.url);draft.sourceVersion=meta.revision;draft.sourceChecked=taipeiToday(new Date(meta.observed_at));
    draft.conflict=meta.unsafe;
    draft.organizations=meta.organizations||{};
+   if(meta.programme_source){draft.source=meta.programme_source.type;draft.sourceBasis=meta.programme_source.label;}
    draft.timeSteps=meta.time_steps||[];
    if(meta.known.start&&["inferred","tentative"].includes(draft.start.certainty))draft.estimatedStart={...draft.start};
    if(!meta.known.audience){draft.audience=null;draft.degrees=[];}
@@ -230,7 +232,7 @@ function applyTimeline(item,data,scope,year,showBaselines=true,asOf=taipeiToday(
  const fresh=e=>{const checked=dayNumber(documents.get(e?.document_id)?.checked_on),now=dayNumber(asOf);return checked!==null&&now-checked>=0&&now-checked<=180;};
  const baseline=showBaselines?contexts.flatMap(c=>c.baselines):[];
  const marks=events.filter(e=>!["application_start","student_deadline"].includes(e.kind)||e.certainty==="expected").map(e=>({
-  label:(e.certainty==="expected"?"預定 ":"")+timelineLabels[e.kind],...event(e.value,e.certainty,e.kind),
+  label:(e.basis==="publication_year_context"?"公告年份推估 ":e.certainty==="expected"?"預定 ":"")+timelineLabels[e.kind],...event(e.value,e.certainty,e.kind),
   sourceUrl:documents.get(e.document_id)?.url,eventId:e.id}));
  let rawState=item.rawState;
  if(conflict||item.conflict)rawState="unknown";
@@ -422,7 +424,8 @@ const personaPresets={
  abroad_conf:{category:"international_conference",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
  overseas_study:{category:"overseas_research",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
  outcome_award:{category:"outcome_award",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
- ta_assistant:{category:"indirect_support",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"}
+ ta_assistant:{category:"indirect_support",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
+ research_tools:{category:"research_tools",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"}
 };
 function activePersona(currentState){
  if(!currentState) return null;
@@ -634,11 +637,11 @@ function timelineSummary(container,item){
  box.append(el("p","small",(t.isExample?"以"+t.scopeLabel+"為例；實際請以所屬系所為準":"地方補充時程："+t.scopeLabel+"（僅此單位適用）")+" · "+t.year+"年 · "+timelinePhase(t.phase)));
  if(t.conflict)box.append(el("p","callout",t.multiPhase?"有多個梯次，暫不合成單一申請條；請分別核對公告。":"時程有衝突，暫不畫正式申請條；請核對補充公告。"));
  for(const e of t.events){
-  const doc=t.documents.get(e.document_id),line=el("p","small",(e.certainty==="expected"?"預定 ":"")+timelineLabels[e.kind]+"："+dateText(e.value)+(e.basis==="since_publication"?"（公告明載即日起）":""));
+  const doc=t.documents.get(e.document_id),line=el("p","small",(e.basis==="publication_year_context"?"公告年份推估 ":e.certainty==="expected"?"預定 ":"")+timelineLabels[e.kind]+"："+dateText(e.value)+(e.basis==="since_publication"?"（公告明載即日起）":""));
   line.append(el("span","","　"),sourceLink("時程來源",item,doc?.url));box.append(line);
  }
  for(const b of t.baselines){
-  const label=b.kind==="historical_estimate"?"歷史估計（低信心）":"單年度參考（非正式起訖）";
+  const label=b.kind==="publication_year_reference"?"公告年份推估（原文僅載月日）":b.kind==="historical_estimate"?"歷史估計（低信心）":"單年度參考（非正式起訖）";
   box.append(el("p","small",label+"："+b.start+"–"+b.end+"；參考"+b.sample_years.join("、")+"年，實際以當期公告為準。"));
  }
  if(!t.events.length)box.append(el("p","small","此參考年度尚無已讀取的當期地方公告；歷史底帶不代表已開放申請。"));
@@ -786,7 +789,7 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
   for(const b of item.timeline?.baselines||[]){
    const area=geometry({start:event(b.start),end:event(b.end),result:event(),milestones:[]},range).bar;
    if(area){const bar=el("button","gantt-bar baseline");bar.type="button";bar.style.left=area.left+"%";bar.style.width=area.width+"%";
-    bar.title=(exampleNote?exampleNote+"；":"")+(b.kind==="historical_estimate"?"歷史估計（低信心）":"單年度參考")+"："+b.start+" 至 "+b.end+"，參考"+b.sample_years.join("、")+"年；非官方申請期";
+    bar.title=(exampleNote?exampleNote+"；":"")+(b.kind==="publication_year_reference"?"公告年份推估（原文僅載月日）":b.kind==="historical_estimate"?"歷史估計（低信心）":"單年度參考")+"："+b.start+" 至 "+b.end+"，參考"+b.sample_years.join("、")+"年；非官方申請期";
     bar.setAttribute("aria-label",item.title+"："+bar.title);bar.addEventListener("click",()=>onInspect(item));plot.append(bar);}
   }
   const announce=item.timeline?.events.find(e=>e.kind==="announcement");
@@ -876,6 +879,7 @@ function drawDetail() {
   radarFact(details,"年級",item.year==="range"?year.min+"–"+year.max+"年級；基準日 "+dateText(year.assessed_at):item.year==="unlimited"?"來源明示不限年級":null,item);
   radarFact(details,"學校／學院",[raw.institution_scope?.school==="NTU"?"國立臺灣大學":null,raw.institution_scope?.college,raw.institution_scope?.department].filter(Boolean).join("／")||null,item);
   for(const [role,label] of Object.entries({funder:"資助單位",announcer:"公告單位",receiver:"收件／轉送"}))if(item.organizations?.[role])radarFact(details,label,item.organizations[role],item);
+  if(item.sourceBasis)radarFact(details,"方案來源分類依據",item.sourceBasis,item);
   radarFact(details,"給付",item.benefit,item);
   radarFact(details,"兼領",item.compatibility==="unknown"?null:raw.compatibility.note,item);
   radarFact(details,"申請方式",{paper:"紙本申請",electronic:"電子申請",hybrid:"紙本與電子程序，請核對各階段",automatic:"來源明示免另行申請"}[item.method?.mode],item);

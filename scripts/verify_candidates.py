@@ -186,7 +186,8 @@ def date_supported(value, text):
     full = [t for t in _date_tokens(value) if str(d.year) in t or str(d.year - 1911) in t or (ROC_CHINESE_YEARS.get(d.year - 1911, "!") + "年") in t]
     if any(re.search(r"(?<!\d)" + re.escape(t) + r"(?!\d)", compact) for t in full if not t.endswith("年")):
         return True
-    years = {int(y) if len(y) == 4 else int(y) + 1911 for y in re.findall(r"(?<!\d)(20\d{2}|1\d{2})(?=年|[/.-]\d)", compact)}
+    # An award's 116年度 is not the application year of an explicit 115/6/1–7/29 range.
+    years = {int(y) if len(y) == 4 else int(y) + 1911 for y in re.findall(r"(?<!\d)(20\d{2}|1\d{2})(?=年(?!度)|[/.-]\d)", compact)}
     for y, cy in ROC_CHINESE_YEARS.items():
         if cy + "年" in compact:
             years.add(y + 1911)

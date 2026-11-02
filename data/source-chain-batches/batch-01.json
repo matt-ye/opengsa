@@ -455,7 +455,7 @@
       "id": "doc-6db49eb6cd36a3c5ed6ecae1",
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
       "candidate_ids": [
-        "cand-discovery-r140-44b5810a"
+        "cand-discovery-r140-ecd377b6"
       ],
       "evidence_mode": "hash_only",
       "observed_at": "2026-11-01T09:54:55+00:00",
@@ -479,7 +479,7 @@
       "raw_sha256": "27b875e35a9ae1534379ac36389f9484875a6f1c9c8b44097c144fabc0e86443",
       "etag": null,
       "last_modified": null,
-      "revision_id": "44b5810a2e639b7afa8af741064bfd9909cce4cc277f171dd2430d1f76ed04c0",
+      "revision_id": "ecd377b6476616d3f17628f6518ce8dc51840b634b97aaf9ca3be61f93156207",
       "status": "unchanged"
     },
     {
