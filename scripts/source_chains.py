@@ -18,7 +18,7 @@ from scripts.scan_sources import Fetcher, ScanError, digest, html_document, pdf_
 from scripts.document_ir import prepare_document, VERSION as IR_VERSION
 
 VERSION = 'source-chain-1'
-PARSER_VERSION = 'chain-parser-1.6'
+PARSER_VERSION = 'chain-parser-1.7'
 DATE = re.compile(r'(?<!\d)(?:(20\d{2}|1\d{2})[年/.-])?(\d{1,2})[月/.-](\d{1,2})(?!\d)日?')
 INTERVAL = re.compile(r'申請時程|申請時間|受理期間|即日起.*(?:受理|申請)|有意申請.*至')
 
@@ -195,6 +195,31 @@ def candidate_documents(bundle):
     return docs
 
 
+def publication_reference_events(blocks, profile, doc, published):
+    """Month/day application ranges may use the publication year only as a labeled reference."""
+    if not published or profile.get('role')=='policy':return []
+    year=int(published[0][:4]);result=[]
+    for block in blocks:
+        text=block['text']
+        if not re.search(r'申請(?:時程|期間|時間)|受理期間',text):continue
+        if re.search(r'每年|每學期|購買|支出|補助期間|會議期間|會議日期',text):continue
+        if re.search(r'(?:20\d{2}|1\d{2})[年/.-]\d{1,2}[月/.-]\d{1,2}',text):continue
+        values=dates(text,year)
+        if len(values)!=2 or values[0]>values[1] or not re.search(r'至|到|[~～–—-]',text):continue
+        if (date.fromisoformat(values[1][:10])-date.fromisoformat(values[0][:10])).days>180:continue
+        if abs((date.fromisoformat(values[0][:10])-date.fromisoformat(published[0])).days)>120:continue
+        for kind,value in zip(('application_start','student_deadline'),values):
+            event={k:profile[k] for k in ('program_key','scope','cycle','application_year','phase')}
+            event.update(application_year=year,kind=kind,value=value,basis='publication_year_context',
+                document_id=doc['id'],revision_id=doc['revision_id'],timezone='Asia/Taipei',
+                locator=block['locator'],block_sha256=digest(text.encode()),review_status='pending',certainty='expected',
+                publication_ref={'locator':published[1]['locator'],'block_sha256':digest(published[1]['text'].encode())})
+            event['id']='event-'+digest(event)[:24]
+            result.append(event)
+        break
+    return result
+
+
 def candidate_bindings(candidates, config):
     result=[]
     for c in candidates:
@@ -356,8 +381,10 @@ def validate(bundle):
                     raise ValueError('timeline_timezone_required')
             if d['evidence_mode'] == 'hash_only' and 'excerpt' in e:
                 raise ValueError('hash_only_excerpt_forbidden')
-            if e['basis'] == 'since_publication' and not e.get('publication_ref'):
+            if e['basis'] in ('since_publication','publication_year_context') and not e.get('publication_ref'):
                 raise ValueError('publication_evidence_required')
+            if e['basis']=='publication_year_context' and e['certainty']!='expected':
+                raise ValueError('publication_year_reference_must_not_be_announced')
             if e['id'] != 'event-' + digest({k:v for k,v in e.items() if k!='id'})[:24]:
                 raise ValueError('event_fingerprint_mismatch')
     return True
@@ -433,6 +460,11 @@ def timeline_metadata(bundle, candidates):
                     conflict = date_conflict(starts) or date_conflict(ends) or bool(starts and ends and min(starts)>max(ends))
                     # 115 central NSTC scheme changed: do not forecast across its old edition.
                     baseline = baselines(phase_events,year) if binding.get('historical_baseline_allowed',True) else []
+                    references={kind:[e for e in events if e['kind']==kind and e['basis']=='publication_year_context'] for kind in ('application_start','student_deadline')}
+                    if all(len(v)==1 for v in references.values()):
+                        start,end=(references[k][0] for k in ('application_start','student_deadline'))
+                        baseline.append({'start':start['value'],'end':end['value'],'kind':'publication_year_reference',
+                            'sample_years':[year],'event_ids':[start['id'],end['id']],'confidence':'low'})
                     entries.append({'scope':scope['id'],'scope_label':scope['label'],'year':year,'phase':phase,
                         'events':events,'baselines':baseline,'conflict':conflict,
                         'document_ids':sorted({e['document_id'] for e in phase_events})})

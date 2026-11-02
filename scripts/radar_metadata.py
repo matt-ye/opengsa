@@ -1,5 +1,24 @@
 """Field visibility for the discovery view. No approvals, fetches or source text."""
 from scripts.verify_candidates import classify_review_gaps
+import re
+
+
+def programme_source(candidate, organizations):
+    """Classify named scheme provenance, never the forwarding website or a student's eligibility."""
+    patterns={
+        'government':r'國科會|國家科學及技術委員會|教育部|衛生福利部|勞動部|政府|青年局|青年發展中心',
+        'foundation':r'基金會|學會',
+        'research_institute':r'中央研究院|中研院|國家實驗研究院|工研院',
+        'enterprise':r'\b(?:Google|AWS|Amazon|GitHub|NVIDIA|Microsoft)\b|公司|台積電|聯發科',
+        'university':r'大學|臺大|台大|學院|研究所|電信所|教務處|研發處'}
+    for basis,text in [('evidenced_funder',organizations.get('funder','')),('programme_title',candidate['title'])]:
+        found={kind for kind,pattern in patterns.items() if re.search(pattern,text,re.I)}
+        # A forwarding university in a title does not replace the named programme's agency.
+        if len(found)>1:found.discard('university')
+        if len(found)==1:
+            return {'type':found.pop(),'basis':basis,'label':'資助單位文字' if basis=='evidenced_funder' else '方案名稱載明；非經費來源核定'}
+        if found:return {'type':'unknown','basis':'ambiguous','label':'多類單位並列，請核對來源'}
+    return {'type':'unknown','basis':'unresolved','label':'未辨識方案來源，不以公告網站代填'}
 
 
 def radar_metadata(bundle):
@@ -44,5 +63,6 @@ def radar_metadata(bundle):
             'observed_at':candidate['source_metadata']['observed_at'],
             'known':known,'unsafe':unsafe,'unknown_reasons':gaps,
             'audience_kind':candidate['eligibility']['identity'].get('claim_kind','source_specific_summary'),
-            'organizations':organizations,'time_steps':time_steps}
+            'organizations':organizations,'time_steps':time_steps,
+            'programme_source':programme_source(candidate,organizations) if not unsafe else {'type':'unknown','basis':'unsafe','label':'來源檢核未通過'}}
     return {'version':'radar-1','records':records}

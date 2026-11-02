@@ -3,7 +3,7 @@ from copy import deepcopy
 import json
 from pathlib import Path
 import unittest
-from scripts.radar_metadata import radar_metadata
+from scripts.radar_metadata import radar_metadata,programme_source
 from scripts.build_review_workspace import candidate_preview_data
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -11,6 +11,17 @@ read=lambda name:json.loads((ROOT/'data'/name).read_text(encoding='utf-8'))
 
 
 class RadarMetadataTests(unittest.TestCase):
+    def test_source_classification_uses_named_programme_not_forwarding_host(self):
+        def source(title,orgs={}):return programme_source({'title':title},orgs)
+        self.assertEqual(source('臺大115學年度國科會博士生獎學金')['type'],'government')
+        self.assertEqual(source('元大文教基金會獎學金－國立中山大學轉知')['type'],'foundation')
+        self.assertEqual(source('Google PhD fellowship')['type'],'enterprise')
+        self.assertEqual(source('SYNTH 未具名獎助')['type'],'unknown')
+        self.assertEqual(source('教育部與基金會共同補助')['type'],'unknown')
+        self.assertEqual(source('中央研究院博士候選人培育計畫')['type'],'research_institute')
+        known=source('SYNTH 計畫',{'funder':'國家科學及技術委員會'})
+        self.assertEqual(known['basis'],'evidenced_funder')
+
     def test_all_records_keep_exact_urls_and_snapshot_without_approval(self):
         bundle=read('candidates/source-review.json');before=deepcopy(bundle)
         metadata=radar_metadata(bundle)

@@ -301,7 +301,8 @@
         "basis": {
           "enum": [
             "explicit",
-            "since_publication"
+            "since_publication",
+            "publication_year_context"
           ]
         },
         "certainty": {
