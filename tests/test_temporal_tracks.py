@@ -123,11 +123,11 @@ class TemporalTracksAndDiffTests(unittest.TestCase):
         plan_ent = plan_track_execution(self.candidates, self.observations, track="enterprise", max_sources=5)
         self.assertEqual(plan_ent["track"], "enterprise")
         self.assertEqual(plan_ent["total_in_track"], 7)
-        self.assertEqual(plan_ent["run_candidate_count"], 4)
-        self.assertEqual(plan_ent["skip_candidate_count"], 3)
+        self.assertEqual(plan_ent["run_candidate_count"], 3)
+        self.assertEqual(plan_ent["skip_candidate_count"], 4)
 
         ids, _ = resolve_action_sources("track:enterprise", self.candidates, self.observations, max_sources=5)
-        self.assertEqual(len(ids), 4)
+        self.assertEqual(len(ids), 3)
 
         # When incremental_only=True on already-resolved taipei-ai-tools, 0 HTTP requests are made
         (ROOT / "work").mkdir(exist_ok=True)
