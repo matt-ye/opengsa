@@ -38,6 +38,25 @@ from scripts.ai_tool_rules import benefit_tiers
 EXTRACTOR_VERSION = "extractor-1.8.0"
 PROMPT_VERSION = "prompt-1.4.0"
 
+
+def safe_rate_metadata(headers, error_body=None):
+    """Only numeric quota diagnostics, never account IDs or raw error text."""
+    allowed={'retry-after','x-ratelimit-limit-requests','x-ratelimit-limit-tokens',
+             'x-ratelimit-remaining-requests','x-ratelimit-remaining-tokens',
+             'x-ratelimit-reset-requests','x-ratelimit-reset-tokens'}
+    result={k.lower():v for k,v in (headers.items() if headers else [])
+            if k.lower() in allowed and re.fullmatch(r'[0-9 .:smhdTZ+_-]{1,80}',str(v))}
+    if error_body:
+        try:
+            message=json.loads(error_body).get('error',{}).get('message','')
+            unit=re.search(r'\b(TPM|TPD|RPM|RPD)\b',message)
+            if unit:result['limit_unit']=unit[1]
+            for key in ('limit','used','requested'):
+                value=re.search(r'\b'+key+r'[:\s]+([0-9]+)',message,re.I)
+                if value:result[key]=int(value[1])
+        except (ValueError,TypeError,AttributeError):pass
+    return result
+
 PII_REDACT_RE = re.compile(
     r"([A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}|(?:\(0\d\)|0\d)[\-\s]?\d{3,4}[\-\s]?\d{3,4}(?:\s*(?:轉|分機|ext\.?)\s*\d+)?)"
 )
@@ -546,9 +565,12 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
             self.calls += 1
             with getattr(self,'request_open',urllib.request.urlopen)(req, timeout=self.timeout) as resp:
                 body = json.loads(resp.read().decode("utf-8"))
+                self.last_rate_metadata=safe_rate_metadata(getattr(resp,'headers',None))
             elapsed_ms = round((time.perf_counter() - t0) * 1000, 2)
             self.latencies_ms.append(elapsed_ms)
         except urllib.error.HTTPError as err:
+            try:self.last_rate_metadata=safe_rate_metadata(err.headers,err.read(8192))
+            except (OSError,AttributeError):self.last_rate_metadata=safe_rate_metadata(err.headers)
             elapsed_ms = round((time.perf_counter() - t0) * 1000, 2)
             self.latencies_ms.append(elapsed_ms)
             if err.code == 429:

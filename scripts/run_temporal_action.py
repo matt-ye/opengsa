@@ -83,6 +83,7 @@ def run(output, source_ids, attachments=False, adapter_factory=model_for_tempora
         model_usage=adapter.usage_summary() if adapter else {'enabled':False,'calls':0,'hash_only_bytes_sent':0},
         rules_updated_candidates=len(state['records']),attachments_requested=attachments,
         rules_only_model_proposals_not_applied=True)
+    report['rate_limit_diagnostics']=getattr(adapter,'last_rate_metadata',{})
     report['model_configuration']={'model':getattr(adapter,'model',None),'tokenizer_model':MODEL if adapter and adapter.enabled else None,
         'input_budget_tokens':6000,'output_reserve_tokens':1200,'template_reserve_in_counter':True,
         'minimum_request_interval_seconds':getattr(adapter,'minimum_request_interval_seconds',None),

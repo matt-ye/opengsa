@@ -9,7 +9,7 @@ from unittest.mock import patch
 from scripts.temporal_model import model_review, source_allowed, model_for_temporal
 from scripts.run_temporal_action import select_sources, run
 from scripts.temporal_reextract import replay, ROOT, read
-from scripts.extract_candidates import _verify_quote_and_reparse, OpenAICompatibleAdapter
+from scripts.extract_candidates import _verify_quote_and_reparse, OpenAICompatibleAdapter, safe_rate_metadata
 from scripts.document_ir import evidence_block_map
 
 
@@ -100,6 +100,13 @@ class TemporalActionTests(unittest.TestCase):
             self.assertEqual(len(calls),1)
             self.assertEqual(state['http_requests'],1)
             self.assertEqual(next(iter(state['records'].values()))['reason'],'run_budget_exhausted')
+
+    def test_quota_diagnostics_do_not_retain_account_ids_or_error_text(self):
+        message={'error':{'message':'SYNTH secret-user-account limit reached on tokens per minute (TPM): Limit 8000, Used 6000, Requested 3000'}}
+        result=safe_rate_metadata({'Authorization':'Bearer SYNTH-secret','retry-after':'65','x-ratelimit-reset-tokens':'1m5s'},json.dumps(message))
+        self.assertEqual(result['limit_unit'],'TPM')
+        self.assertEqual(result['limit'],8000)
+        self.assertNotIn('SYNTH',json.dumps(result))
 
     def test_unverified_model_capability_never_downloads_tokenizer(self):
         adapter=FakeAdapter();adapter.model='SYNTH-unknown';adapter.base_url='https://api.groq.com/openai/v1'
