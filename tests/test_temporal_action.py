@@ -6,7 +6,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from scripts.temporal_model import model_review, source_allowed, model_for_temporal
+from scripts.temporal_model import model_review, source_allowed, model_for_temporal, temporal_units
 from scripts.run_temporal_action import select_sources, run
 from scripts.temporal_reextract import replay, ROOT, read
 from scripts.extract_candidates import _verify_quote_and_reparse, OpenAICompatibleAdapter, safe_rate_metadata
@@ -89,6 +89,16 @@ class TemporalActionTests(unittest.TestCase):
         self.assertEqual(reconstructed,units)
         self.assertEqual(units,before)
         self.assertLess(len(source),len(json.dumps(units,ensure_ascii=False)))
+
+    def test_time_scope_keeps_late_exceptions_without_first_n_truncation(self):
+        blocks=[{'locator':f'SYNTH/nav/{i}','text':'無關導覽選單'} for i in range(50)]
+        blocks += [{'locator':'SYNTH/deadline','text':'學生申請截止115年11月10日。'},
+                   {'locator':'SYNTH/exception','text':'但曾經領取者不得重複申請。'}]
+        selected,total=temporal_units(blocks)
+        self.assertEqual(total,52)
+        self.assertTrue(any(u['locator']=='SYNTH/exception' for u in selected))
+        self.assertTrue(any(u['locator']=='SYNTH/deadline' for u in selected))
+        self.assertLess(len(selected),total)
 
     def test_runtime_request_cap_is_reserved_before_transport(self):
         calls=[]

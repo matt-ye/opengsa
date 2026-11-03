@@ -70,6 +70,24 @@ def source_allowed(candidate, profile):
             and host not in ('www.aca.ntu.edu.tw','aca.ntu.edu.tw','ord.ntu.edu.tw'))
 
 
+def temporal_units(blocks):
+    """Field-scoped input, not a claim to cover every non-temporal source field.
+
+    Keep all time/date clauses, qualifications, definitions and exceptions plus
+    adjacent same-section continuations. No first-N truncation or ID routing.
+    """
+    units=prepare_document(blocks)['units']
+    keep=set()
+    pattern=r'申請|受理|截止|期限|期間|日[前後]|每年|每學期|補件|購買|訂閱|公布|結果|資格|對象|條件|例外|不得|不予|不含|除外|但|以下簡稱|\d{2,4}[年/.-]\d{1,2}[月/.-]'
+    for i,unit in enumerate(units):
+        if unit.get('kind')=='heading' or re.search(pattern,unit['text']):
+            keep.add(i)
+            for j in (i-1,i+1):
+                if 0<=j<len(units) and units[j].get('page')==unit.get('page') and units[j].get('section_path',[])==unit.get('section_path',[]):
+                    if unit.get('kind')!='table_cell' and units[j].get('kind') not in ('heading','table_cell'):keep.add(j)
+    return [u for i,u in enumerate(units) if i in keep],len(units)
+
+
 def model_review(candidate, profile, blocks, adapter, revision):
     row={'candidate_id':candidate['candidate_id'],'source_id':profile['id'],
          'source_revision':revision,'status':'not_requested','claims':[],'rejected_claims':0}
@@ -79,13 +97,17 @@ def model_review(candidate, profile, blocks, adapter, revision):
         row['status']='model_unavailable_rules_only';return row
     if adapter.calls>=adapter.max_calls or adapter.rate_limited_429:
         row['status']='model_budget_or_quota_deferred';return row
-    units=prepare_document(blocks)['units']
+    units,total=temporal_units(blocks)
+    row.update(coverage_scope='temporal_fields_and_shared_exceptions',source_unit_count=total,selected_unit_count=len(units),
+        whole_source_coverage_claimed=False)
     # Only pure contact units can be excluded. Mixed date/exception/contact
     # text stays intact and the existing sanitization guard defers that task.
     excluded=[u for u in units if CONTACT.search(u['text']) and re.match(r'^\s*(?:聯絡|洽詢|承辦|電話|地址|Email|E-mail|Tel|Fax|傳真|©|版權)',u['text'],re.I)
               and not re.search(r'申請|受理|截止|期限|但|除外|不得|資格|對象|補件',u['text'])]
     units=[u for u in units if u not in excluded]
     row['contact_only_units_excluded']=len(excluded)
+    if not units:
+        row['status']='no_safe_time_units';return row
     response=adapter.run_dual_track(profile,units,candidate)
     row['preparation']=deepcopy(getattr(adapter,'last_preparation',{}))
     if not response or any(k.startswith('_') for k in response):
