@@ -94,6 +94,7 @@ class TemporalReplayTests(unittest.TestCase):
         def denied(url,headers,limit):
             requests.append(url)
             return {'status':200,'headers':{'content-type':'text/plain'},'body':b'User-agent: *\nDisallow: /\n'}
+        (ROOT/'work').mkdir(exist_ok=True)
         with tempfile.TemporaryDirectory(dir=ROOT/'work') as d:
             state=replay(Path(d)/'batch',transport=denied,source_ids=['sinica-phd-fellowship'])
             self.assertEqual(len(requests),1)
