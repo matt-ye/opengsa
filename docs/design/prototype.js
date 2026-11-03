@@ -63,6 +63,24 @@ function windowState(item,today) {
  return "unknown"; // An old open snapshot, inferred start or same-day time needs confirmation.
 }
 const UNKNOWN_LABEL="不明，請見來源";
+const timingLabels={fixed_window:"固定申請期",deadline_only:"截止已公告",start_only:"起日已公告",event_relative:"依活動日期計算",recurring:"常態月日規則",rule_text:"時間規則已載（計算方式待整理）",mixed:"多階段時間規則",procedure_only:"僅有行政程序",conditional_deadline:"年度上限＋個人條件",automatic:"免另行申請",reference:"制度參考",undetermined:"時間資訊待補",historical:"往年／月份參考"};
+const timingActors={student:"學生",department:"系所",unit:"單位",college:"學院",university:"校級",institution:"機構",supplement:"補件",other:"其他程序"};
+const timingGaps={source_checks_failed:"來源檢核未通過，需重新核對",time_not_projected:"目前快照未有可投影的申請時程",student_window_not_recorded:"學生／所屬單位收件時間另查",needs_event_date:"有規則，需活動日期才能換算",calendar_unverified:"假日順延與所屬單位期限仍需確認",personal_conditions_required:"年度最晚日仍受個人條件期限限制"};
+function timePresentation(item){
+ const policy=item.timePolicy, rules=item.conflict?[]:policy?.rules||[];
+ let mode=item.conflict?"undetermined":policy?.submission_mode||"undetermined";
+ if(!item.conflict&&mode!=="conditional_deadline"){
+  if(item.start.value&&item.end.value)mode="fixed_window";
+  else if(item.timeline?.baselines?.length&&!item.start.value&&!item.end.value)mode="historical";
+  else if(mode==="undetermined"&&item.end.value)mode="deadline_only";
+  else if(mode==="undetermined"&&item.start.value)mode="start_only";
+  else if(mode==="undetermined"&&item.milestones?.length)mode="procedure_only";
+ }
+ const known=mode!=="undetermined"||rules.length>0;
+ return {mode,label:timingLabels[mode]||timingLabels.undetermined,known,rules,
+  icon:({event_relative:"⚓",recurring:"↻",procedure_only:"◇",historical:"◌",automatic:"✓",reference:"▤",conditional_deadline:"◷"})[mode]||(known?"▣":"⚠"),
+  gaps:item.conflict?[timingGaps.source_checks_failed]:(policy?.gaps||[]).map(g=>timingGaps[g])};
+}
 function unknownValue(value){
  return !value||value===UNKNOWN_LABEL||/^(?:待確認|待核|待查|未載明|未確認|尚無|尚未辨識|unknown|身分條件請至來源定位核對)$/.test(value.trim());
 }
@@ -105,7 +123,7 @@ function partitionItems(items,filters){
 function clarity(item,asOf=taipeiToday()){
  if(item.synthetic||item.personal)return {level:"example",text:item.personal?"個人規劃／未核實":"合成示範",known:0,total:0};
  const parts=[Boolean(officialUrl(item.url)&&item.title),Boolean(item.cycle&&!/待|不明|unknown/.test(item.cycle)),
-  Boolean(item.timeRule||(item.end.value&&item.end.certainty==="confirmed"&&item.resourceKind!=="tool_subscription")),Boolean(item.audience&&item.audienceKind!=="program_descriptor")];
+  Boolean(item.timeRule||item.timePolicy?.rules?.length||(item.end.value&&item.end.certainty==="confirmed"&&item.resourceKind!=="tool_subscription")),Boolean(item.audience&&item.audienceKind!=="program_descriptor")];
  const known=parts.filter(Boolean).length;
  const invalidDate=[item.start,item.end].some(e=>e.value&&dayNumber(e.value)===null);
  const conflict=Boolean(item.conflict)||!parts[0]||invalidDate||(item.start.value&&item.end.value&&dayNumber(item.end.value)<dayNumber(item.start.value));
@@ -191,6 +209,7 @@ function makeDrafts(pilot,asOf=taipeiToday(),radarData=null) {
    draft.organizations=meta.organizations||{};
    if(meta.programme_source){draft.source=meta.programme_source.type;draft.sourceBasis=meta.programme_source.label;}
    draft.timeSteps=meta.time_steps||[];
+   draft.timePolicy=meta.time_policy;
    if(meta.known.start&&["inferred","tentative"].includes(draft.start.certainty))draft.estimatedStart={...draft.start};
    if(!meta.known.audience){draft.audience=null;draft.degrees=[];}
    for(const key of ["year","compatibility","hardship"])if(!meta.known[key])draft[key]="unknown";
@@ -451,7 +470,7 @@ function evaluateSubordination(checks={}){
  if(score===1) return {score:1,level:"review_needed",recommendedTiers:["TIER 01","TIER 02"],disclaimer,summary:"已勾選 1 項指標：具部分從屬或學習分流爭點。建議核對勞動部指導原則第 2～4 點及書面協議，確認工時與給付是否相符（2026 最低時薪 196 元）；必要時洽 TIER 01 系院或 TIER 02 校級窗口釐清。"+disclaimer};
  return {score,level:"high_subordination",recommendedTiers:["TIER 02","TIER 04","TIER 05"],disclaimer,summary:"已勾選 "+score+" 項指標：高度呈現人格、經濟或組織從屬性（常見「假學習真勞動」爭點）。依勞動部指導原則實質認定原則，若受指揮監督並提供勞務獲取對價，不能只按給付名稱排除適用保障；勞基法、2026最低工資與退休金須分別依關係、身分及進用依據確認。建議參考下方 TIER 02 校內申訴、TIER 04（地方主管機關勞檢／勞工局調解）或 TIER 05 高教工會。"+disclaimer};
 }
-const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,windowState,filterItems,partitionItems,clarity,groupDocuments,issueUrl,officialUrl,UNKNOWN_LABEL,unknownValue,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination,isNA,fieldText,resultText,methodText,startLabel,deadlineText,applyTimeline,timelineDates};
+const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,timePresentation,windowState,filterItems,partitionItems,clarity,groupDocuments,issueUrl,officialUrl,UNKNOWN_LABEL,unknownValue,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination,isNA,fieldText,resultText,methodText,startLabel,deadlineText,applyTimeline,timelineDates};
 if(typeof module!=="undefined" && module.exports) module.exports=api;
 if(typeof document==="undefined") return;
 
@@ -659,9 +678,11 @@ function radarSummary(container,item){
  badge.textContent=({green:"🟢 ",amber:"🟡 ",red:"🔴 ",example:"○ "})[quality.level]+quality.text+(quality.total?" · 核心資訊 "+quality.known+"／"+quality.total+" 項":"");
  container.append(badge);
  timelineSummary(container,item);
+ renderTimePolicy(container,item);
  if(item.rawState==="closed")container.append(el("p","small","歷史公告：本期已截止"));
  radarFact(container,item.audienceKind==="program_descriptor"?"對象線索（非完整資格）":"大致對象",item.audience||(item.synthetic?"合成示範":null),item);
  if(item.estimatedStart)radarFact(container,"推估開始（非官方起日）",dateText(item.estimatedStart.value)+"；"+item.estimatedStart.note,item);
+ if(!item.timePolicy?.rules?.length){
  if(item.rawState==="not_applicable")radarFact(container,"申請時間",item.method?.mode==="automatic"?"來源明示免另行申請":"制度參考；當期申請請查個別公告",item);
  else if(item.timeSteps?.length){
   if(item.start.value)radarFact(container,"申請開始",startLabel(item),item);
@@ -674,6 +695,7 @@ function radarSummary(container,item){
  else if(item.timeRule)radarFact(container,"申請時間規則",item.timeRule,item);
  else if(item.start.value||item.end.value){radarFact(container,"申請開始",item.start.value?startLabel(item):null,item);radarFact(container,"學生截止",item.end.value?deadlineText(item):null,item);}
  else radarFact(container,"申請時間",null,item);
+ }
  const missing=[item.year==="unknown"?"年級":null,item.compatibility==="unknown"?"兼領":null,item.hardship==="unknown"?"清寒限定":null].filter(Boolean);
  if(missing.length)radarFact(container,missing.join("／"),null,item);
  container.append(radarLinks(item));
@@ -682,14 +704,38 @@ function radarSummary(container,item){
   for(const doc of item.relatedDocuments){const p=el("p","small");p.append(sourceLink(doc.title,item,doc.url));details.append(p);}container.append(details);
  }
 }
+function renderTimePolicy(container,item,expanded=false){
+ const timing=timePresentation(item),box=el("div","time-policy"),label=el("p","time-label "+(timing.known?"known":"pending"));
+ const icon=el("span","",timing.icon);icon.setAttribute("aria-hidden","true");label.append(icon,el("strong","",timing.label));box.append(label);
+ if(timing.rules.length){
+  const list=el("ul","time-rule-list");
+  for(const rule of timing.rules){
+   const row=el("li");row.append(el("strong","",(timingActors[rule.actor]||"其他程序")+(rule.stage==="application_start"?"起日":"")+"："));
+   if(rule.value){const date=el("time","",dateText(rule.value));date.dateTime=rule.value;row.append(date,"；");}
+   row.append(document.createTextNode(rule.summary+" "));
+   const ref=sourceLink("來源",item);ref.title=rule.source_refs.map(r=>r.locator).join("；");row.append(ref);list.append(row);
+  }
+  if(expanded)box.append(list);
+  else {const details=el("details"),summary=el("summary","",timing.rules.length+" 條時間規則（依角色分列）");details.append(summary,list);box.append(details);}
+ }
+ if(timing.gaps.length)box.append(el("p","tiny quiet",timing.gaps.join("；")));
+ if(!timing.known)box.append(sourceLink("確認當期／所屬單位公告",item));
+ else if(timing.rules.some(r=>r.anchor_event==="conference_start")){
+  const link=el("a","time-planner-link","選擇方案並填入活動日期 →");link.href="#conference-planner";box.append(link);
+ }
+ container.append(box);
+}
 function inspect(item) {
  inspectedId=item.id;
  const box=byId("schedule-inspect");box.replaceChildren();
  box.append(el("strong","",item.title));
  timelineSummary(box,item);
+ renderTimePolicy(box,item,true);
+ if(!item.timePolicy?.rules?.length){
   radarFact(box,"申請開始",item.start.value?startLabel(item):null,item);
   radarFact(box,"學生截止",item.end.value?deadlineText(item):null,item);
   radarFact(box,"結果公告",resultText(item),item);
+ }
  item.milestones.forEach(m=>box.append(el("p","small",m.label+"："+dateText(m.value))));
  box.append(el("p","tiny quiet",item.synthetic?"合成排程，全部為虛構日期。":item.note));
  box.append(radarLinks(item));
@@ -699,7 +745,7 @@ function inspect(item) {
  box.hidden=false;
  if(wasHidden && typeof box.getBoundingClientRect==="function"){
   const rect=box.getBoundingClientRect();
-  if(rect.top>window.innerHeight || rect.bottom<0) box.scrollIntoView({behavior:"smooth",block:"nearest"});
+  if(rect.top>window.innerHeight || rect.bottom<0) box.scrollIntoView({behavior:"instant",block:"nearest"});
  }
 }
 function pickControl(item,slot) {
@@ -770,6 +816,7 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
  todayLine(head,range,true);top.append(head);grid.append(top);
  items.flatMap(item=>item.timeline?.examples||[item]).forEach(item=>{
   const g=geometry(item,range), row=el("div","gantt-row");
+  const timing=timePresentation(item),hasCoordinates=[item.start.value,item.end.value,item.result.value,...item.milestones.map(m=>m.value),...timelineDates(item)].some(Boolean);
   const exampleNote=item.timeline?.isExample?"以"+item.timeline.scopeLabel+"為例；實際請以所屬系所為準":"";
   if(exampleNote)row.title=exampleNote+" · "+timelinePhase(item.timeline.phase);
   const label=el("div","gantt-label");
@@ -779,10 +826,13 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
   if(exampleNote)label.append(el("div","tiny quiet timeline-example",exampleNote+" · "+timelinePhase(item.timeline.phase)));
   const labelDateDesc = item.personal ? "學生期限："+deadlineText(item) : (item.start.certainty==="inferred"?"推定起訖：":"")+startLabel(item)+" → "+deadlineText(item);
   if(item.start.value||item.end.value)label.append(el("div","tiny quiet",labelDateDesc));
-  else label.append(sourceLink(UNKNOWN_LABEL,item));
+  else label.append(sourceLink(timing.label,item));
+  if(item.start.value||item.end.value)label.append(el("div","tiny quiet",timing.label));
   if(partitionItems([item],state).possible.length)label.append(el("div","tiny quiet","部分篩選條件未確認"));
   row.append(label);
-  const plot=el("div","gantt-plot");todayLine(plot,range);
+  const plot=el("div","gantt-plot"+(hasCoordinates?"":" rule-plot"));
+  if(hasCoordinates||item.synthetic||item.personal)todayLine(plot,range);
+  if(!hasCoordinates)renderTimePolicy(plot,item,true);
   for(const b of item.timeline?.baselines||[]){
    const area=geometry({start:event(b.start),end:event(b.end),result:event(),milestones:[]},range).bar;
    if(area){const bar=el("button","gantt-bar baseline");bar.type="button";bar.style.left=area.left+"%";bar.style.width=area.width+"%";
@@ -812,7 +862,7 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
    const isInferred=item.start.certainty==="inferred";
    const bar=el("button","gantt-bar"+(isInferred?" inferred":""));
    bar.type="button";bar.style.left=g.bar.left+"%";bar.style.width=g.bar.width+"%";
-   bar.title=(exampleNote?exampleNote+"；":"")+(isInferred?"推定受理期（依官方公告日推定）：":"申請期間：")+dateText(item.start.value)+" 至 "+dateText(item.end.value)+(isInferred?"（"+(item.start.note||"依官方公告發布日推定即日起受理")+"）":"");
+   bar.title=(exampleNote?exampleNote+"；":"")+(timing.mode==="conditional_deadline"?"外層受理區間（個人條件另核）：":isInferred?"推定受理期（依官方公告日推定）：":"申請期間：")+dateText(item.start.value)+" 至 "+dateText(item.end.value)+(isInferred?"（"+(item.start.note||"依官方公告發布日推定即日起受理")+"）":"");
    bar.setAttribute("aria-label",item.title+"，"+bar.title);bar.addEventListener("click",()=>onInspect(item));plot.append(bar);
   }
   const isStartInferred=item.start.certainty==="inferred";
@@ -825,10 +875,10 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
   if(item.timeline)notes.push(item.timeline.year+"年 · "+timelinePhase(item.timeline.phase)+(item.timeline.conflict?" · 時程衝突":""));
   if(item.timeline?.baselines.length)notes.push("淺色底帶為歷史參考／估計，非官方受理");
   if(noticeWindow(item)) notes.push(prepNoticeGeom?"官方起日待確認（已標示截止前30天準備建議）":"準備建議在視窗外；官方起日待確認");
-  else if(!item.start.value && !item.personal) notes.push(isNA(item,"application_start")?"申請起日 N/A 不適用":"起日待確認");
+  else if(hasCoordinates&&!item.start.value && !item.personal) notes.push(isNA(item,"application_start")?"申請起日 N/A 不適用":"起日待確認");
   if(item.start.certainty === "inferred") notes.push("起日依官方公告推定");
-  if(!item.end.value) notes.push(isNA(item,"student_deadline")?"學生截止 N/A 不適用":"學生截止待確認");
-  if(!item.result.value) notes.push(isNA(item,"result_date")?"結果日 N/A 不適用":"結果日未確認");
+  if(hasCoordinates&&!item.end.value) notes.push(isNA(item,"student_deadline")?"學生截止 N/A 不適用":"學生截止待確認");
+  if(timing.mode==="conditional_deadline")notes.push(timing.gaps.join("；"));
   if(g.invalid) notes.push("起訖衝突，暫不畫期間");
   const hasKnown=[item.start.value,item.end.value,item.result.value,...item.milestones.map(m=>m.value),...timelineDates(item)].some(Boolean);
   if(hasKnown && !g.bar && !prepNoticeGeom && g.start===null && g.end===null && g.result===null && !item.milestones.some(m=>{const p=position(m.value,range);return p!==null&&p>=0&&p<100;})) notes.push("已知日期在視窗外");
@@ -840,8 +890,12 @@ function drawTable(items) {
  const body=byId("date-rows");body.replaceChildren();
  items.forEach(item=>{
   const startDisplay=startLabel(item)+(item.start.certainty==="inferred"?" (推定)":"")+(!item.start.value&&item.end.value&&!item.personal&&!isNA(item,"application_start")?" (標示截止前30天準備帶)":"");
-  const row=el("tr");[item.title,startDisplay,deadlineText(item),(item.result.certainty==="expected"?"預定 ":"")+resultText(item),item.milestones.map(m=>m.label+" "+dateText(m.value)).join("；")||"—"].forEach(text=>row.append(el("td","",text)));body.append(row);
-  if(item.timeline){const detailRow=el("tr"),cell=el("td");cell.colSpan=5;timelineSummary(cell,item);detailRow.append(cell);body.append(detailRow);}
+  const hasRules=item.timePolicy?.rules?.length;
+  const startCell=!item.start.value&&hasRules?"未有固定起日，請見規則":startDisplay;
+  const endCell=!item.end.value&&hasRules?(item.timePolicy.rules.some(r=>r.actor==="student"&&r.stage==="submission")?"依規則；尚未換算日期":"學生／所屬單位收件時間另查"):deadlineText(item);
+  const row=el("tr");[item.title,startCell,endCell,(item.result.certainty==="expected"?"預定 ":"")+resultText(item),item.milestones.map(m=>m.label+" "+dateText(m.value)).join("；")||"—"].forEach(text=>row.append(el("td","",text)));
+  const rules=el("td");renderTimePolicy(rules,item);row.append(rules);body.append(row);
+  if(item.timeline){const detailRow=el("tr"),cell=el("td");cell.colSpan=6;timelineSummary(cell,item);detailRow.append(cell);body.append(detailRow);}
  });
 }
 function centerToday(range,gridId="gantt-grid",value=today) {

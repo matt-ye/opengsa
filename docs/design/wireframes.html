@@ -248,6 +248,12 @@ html{scroll-behavior:smooth}
 .pay-kind{font-weight:700}#rights [id]{scroll-margin-top:calc(var(--nav-height,90px) + 20px)}
 #rights [data-rights-section][hidden]{display:none}
 @media(max-width:800px){.rights-overview-grid{grid-template-columns:1fr}#rights-view-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}#rights-view-switch button{min-height:44px;text-align:center}#rights .table-scroll{max-width:100%;overscroll-behavior-inline:contain}}
+.time-policy{font-size:13px;line-height:1.65;margin:10px 0;overflow-wrap:anywhere}
+.time-label{display:flex;gap:8px;align-items:center;margin:0 0 8px}.time-label.known{color:var(--ink)}.time-label.pending{color:#85601f}
+.time-rule-list{padding-left:20px;margin:8px 0}.time-rule-list li{margin-bottom:8px}.time-policy summary{cursor:pointer;font-weight:700}
+.gantt-plot.rule-plot{background:#fff}.rule-plot .time-policy{position:relative;max-width:640px;margin:16px 18px 42px;padding:12px 16px;border:1px solid var(--line);border-radius:8px;background:#f6faf7;z-index:1}
+.rule-plot .time-policy .time-rule-list{margin-bottom:0}.gantt-plot.rule-plot .gantt-notes{position:relative;padding:0 18px 12px}
+.time-planner-link{display:inline-block;margin-top:6px;min-height:32px}
 </style>
 </head>
 <body>
@@ -343,7 +349,7 @@ html{scroll-behavior:smooth}
 <p class="chart-foot">系所時程僅為範例；往年／估計區間供準備參考。實際資格、申請起訖與程序，以所屬系所及主辦單位最新公告為準。</p>
 </section>
 <aside aria-label="選取項目的時程摘要" aria-live="polite" class="panel" hidden="" id="schedule-inspect"></aside>
-<details id="dates-table"><summary>查看文字日期表</summary><div class="table-scroll"><table><caption class="tiny quiet">與目前篩選同步的日期；待確認不代表不限期。</caption><thead><tr><th scope="col">獎助項目</th><th scope="col">申請開始</th><th scope="col">學生截止</th><th scope="col">結果公布</th><th scope="col">其他程序</th></tr></thead><tbody id="date-rows"></tbody></table></div></details>
+<details id="dates-table"><summary>查看文字日期與規則表</summary><div class="table-scroll" role="region" tabindex="0" aria-label="獎助日期與時間規則，可水平捲動"><table><caption class="tiny quiet">與目前篩選同步；規則依角色分列，沒有確定日期時保留規則文字。</caption><thead><tr><th scope="col">獎助項目</th><th scope="col">申請開始</th><th scope="col">學生截止</th><th scope="col">結果公布</th><th scope="col">其他程序</th><th scope="col">時間類型／規則</th></tr></thead><tbody id="date-rows"></tbody></table></div></details>
 </div>
 </div>
 <noscript><p class="callout">此互動原型需啟用 JavaScript。靜態規劃與資料契約仍可於 repo 閱讀。</p></noscript>

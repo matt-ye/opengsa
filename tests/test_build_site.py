@@ -95,6 +95,14 @@ class SiteBuildTests(unittest.TestCase):
         self.assertIn('支給上限', rights.select_one('#rights-pay-group').get_text())
         self.assertNotIn('29025/', str(rights))  # Removed official URL returns 410.
 
+    def test_page_heading_and_timing_table_remain_semantic_in_the_build(self):
+        soup = BeautifulSoup(self.html, 'html.parser')
+        self.assertEqual(len(soup.select('main h1')), 1)
+        table = soup.select_one('#dates-table table')
+        self.assertEqual(len(table.select('thead th[scope="col"]')), 6)
+        self.assertIn('時間類型／規則', table.get_text())
+        self.assertIsNotNone(table.caption)
+
 
 if __name__ == "__main__":
     unittest.main()

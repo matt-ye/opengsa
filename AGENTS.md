@@ -1,5 +1,7 @@
 # OpenGSA 工作規則
 
+- 2026-11-03後續核可：使用者要求繼續時間契約與既有規則投影，取代上一筆本輪「僅規劃、不可改UI／script」；先做相容顯示契約與T1，候選／正式資料不改，不重抓來源、不新增模型。見docs/TIME-POLICY-PROJECTION.md；以PR42為base另開實作PR，不自動合併／部署。導覽預設不顯示，未來圓形?按鈕留到修正穩定後；可先補HTML語意，noindex維持，mattye.dev side project部署本輪不做。PR30及33–36保持原樣，PR34棄用保留。
+
 - 2026-11-03最新任務僅分析／規劃並開新PR：時間規則與甘特呈現、UI／UX、導覽及SEO／AEO，參照PR30等既有研究。見docs/TEMPORAL-UX-AND-DISCOVERY-ROADMAP.md及docs/audits/temporal-coverage-2026-11-03.json；64筆離線觀察不是時間類型核准或萃取正確率。新PR不自動合併／部署，不改UI、production script、Schema、正式資料、候選、noindex、模型或排程；本輪無獎助源站重抓、模型0。先提P1時間契約與T1規則投影，實作另待核可。PR30及其他開啟PR不合併，PR34棄用但保留。
 
 - 2026-11-02最新發布核可：使用者明確要求merge並上架，授權依序合併PR40、將PR41轉main並通過檢查後合併，沿既有GitHub Pages部署。本次核可取代下方本輪「不自動合併／部署」；不代表候選正式資格或真人核准，資料、模型與來源排程不改，PR34不動。部署成功須以main合併SHA的Actions及公開站驗證為準。

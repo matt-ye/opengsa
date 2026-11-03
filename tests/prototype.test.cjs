@@ -8,6 +8,32 @@ const demo = core.makeDemo(today);
 const pilot = JSON.parse(fs.readFileSync(path.join(__dirname,"../data/pilot.json"),"utf8"));
 const conferenceData=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/conference-programs.json"),"utf8"));
 
+test("機構時間規則不依賴學生截止閘門，缺日期仍保留角色與來源",()=>{
+ const id=pilot.opportunities[0].id;
+ const policy={version:"time-policy-1",submission_mode:"event_relative",review_mode:"not_stated",gaps:["needs_event_date","student_window_not_recorded"],rules:[
+  {kind:"event_relative",actor:"institution",stage:"submission",summary:"SYNTH 會前兩個曆月",value:null,anchor_event:"conference_start",source_refs:[{locator:"SYNTH"}]}]};
+ const meta={url:"https://example.test/synth",revision:"SYNTH",observed_at:"2026-11-03T00:00:00+08:00",unsafe:false,known:{},organizations:{},time_steps:[],time_policy:policy};
+ const item=core.makeDrafts(pilot,"2026-11-03",{records:{[id]:meta}})[0];
+ assert.equal(item.end.value,null);assert.equal(item.timeRule,null);
+ assert.equal(item.rawState,core.makeDrafts(pilot,"2026-11-03")[0].rawState);
+ assert.equal(core.timePresentation(item).mode,"event_relative");
+ assert.equal(core.timePresentation(item).rules[0].actor,"institution");
+ assert.equal(core.timePresentation(item).rules[0].value,null);
+ assert.ok(core.timePresentation(item).gaps.some(s=>s.includes("所屬單位")));
+});
+
+test("條件上限保持條件標記，常態規則不補日期，來源衝突不顯示規則",()=>{
+ const base={start:{value:null},end:{value:null},result:{value:null},milestones:[],timePolicy:{submission_mode:"recurring",rules:[{kind:"recurring",actor:"unit",stage:"submission",value:null}],gaps:[]}};
+ assert.equal(core.timePresentation(base).mode,"recurring");
+ const conditional={...base,start:{value:"2026-01-01"},end:{value:"2026-11-10"},timePolicy:{...base.timePolicy,submission_mode:"conditional_deadline"}};
+ assert.equal(core.timePresentation(conditional).mode,"conditional_deadline");
+ const unsafe=core.timePresentation({...base,conflict:true});
+ assert.equal(unsafe.mode,"undetermined");assert.deepEqual(unsafe.rules,[]);
+ const example={...base,start:{value:"2026-06-01"},end:{value:"2026-06-30"},timeline:{isExample:true}};
+ assert.equal(core.timePresentation(example).mode,"fixed_window");
+ assert.equal(core.timePresentation(example).rules[0].actor,"unit");
+});
+
 test("地方時程全局綜覽依單位／梯次分列，範例與歷史不改全局受理",()=>{
  const item={id:"SYNTH",title:"SYNTH",start:{value:null},end:{value:null},result:{value:null},milestones:[],rawState:"unknown",application:"待確認",note:"SYNTH",degrees:[]};
  const data={documents:[{id:"d",url:"https://example.test/call",checked_on:"2026-07-01"}],records:{SYNTH:{contexts:[

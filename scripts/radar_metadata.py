@@ -1,5 +1,6 @@
 """Field visibility for the discovery view. No approvals, fetches or source text."""
 from scripts.verify_candidates import classify_review_gaps
+from scripts.time_policy import project_time_policy, source_is_unsafe
 import re
 
 
@@ -27,12 +28,7 @@ def radar_metadata(bundle):
     records={}
     for candidate in bundle['candidates']:
         gaps=classify_review_gaps(candidate)['source']
-        verification=candidate['verification']
-        unsafe=bool(verification['errors'] or candidate['gaps_and_conflicts']['conflicts'])
-        unsafe=unsafe or verification['status'] in ('failed_automated_checks','conflict_detected','needs_context')
-        unsafe=unsafe or any(verification['checks'].get(k) is not True for k in (
-            'schema_valid','evidence_supported','date_and_amount_units_valid',
-            'no_year_or_branch_mixing','negation_and_roles_valid','no_unresolved_conflicts'))
+        unsafe=source_is_unsafe(candidate)
         evidence=candidate['field_evidence']
         def supported(path):
             return not unsafe and any(e['field_path']==path or e['field_path'].startswith((path+'.',path+'/')) for e in evidence)
@@ -66,5 +62,6 @@ def radar_metadata(bundle):
             'known':known,'unsafe':unsafe,'unknown_reasons':gaps,
             'audience_kind':candidate['eligibility']['identity'].get('claim_kind','source_specific_summary'),
             'organizations':organizations,'time_steps':time_steps,
+            'time_policy':project_time_policy(candidate,unsafe),
             'programme_source':programme_source(candidate,organizations) if not unsafe else {'type':'unknown','basis':'unsafe','label':'來源檢核未通過'}}
     return {'version':'radar-1','records':records}
