@@ -690,3 +690,48 @@ test("地方工具補助須檢查個人相對期限，不以年度上限宣稱�
   assert.equal(c.category,"research_tools");
  }
 });
+
+test("跨Chunk與多文件Map-Reduce合成之fixed_window與學院里程碑可投影至甘特圖",()=>{
+ const id=pilot.opportunities[0].id;
+ const policy={
+  version:"time-policy-1",
+  submission_mode:"fixed_window",
+  review_mode:"batch",
+  gaps:[],
+  rules:[
+   {rule_id:"model_verified/0",kind:"absolute",actor:"student",stage:"application_start",summary:"來源明示受理起日",value:"2026-06-01",precision:"date",anchor_event:null,source_refs:[{source:"s1",revision_id:"r1",locator:"HTML/p1",evidence_path:"temporal_model_verified/application_start"}]},
+   {rule_id:"model_verified/1",kind:"absolute",actor:"student",stage:"submission",summary:"來源明示收件截止",value:"2026-07-29T08:00:00+08:00",precision:"datetime",anchor_event:null,source_refs:[{source:"s1",revision_id:"r2",locator:"PDF/p2",evidence_path:"temporal_model_verified/submission",url:"https://example.test/call.pdf"}]},
+   {rule_id:"model_verified/2",kind:"absolute",actor:"college",stage:"submission",summary:"來源明示學院彙送截止",value:"2026-08-05",precision:"date",anchor_event:null,source_refs:[{source:"s1",revision_id:"r1",locator:"HTML/p2",evidence_path:"temporal_model_verified/submission"}]},
+   {rule_id:"model_verified/3",kind:"absolute",actor:"other",stage:"result",summary:"來源明示結果公布日",value:"2026-10-15",precision:"date",anchor_event:null,source_refs:[{source:"s1",revision_id:"r2",locator:"PDF/p3",evidence_path:"temporal_model_verified/result",url:"https://example.test/call.pdf"}]}
+  ]
+ };
+ const meta={
+  url:"https://example.test/synth",
+  revision:"r1",
+  observed_at:"2026-11-03T00:00:00+08:00",
+  unsafe:false,
+  known:{},
+  organizations:{},
+  time_steps:[],
+  time_policy:policy,
+  time_observed_at:"2026-11-03T00:00:00+08:00",
+  time_revision:"r1",
+  time_dates:{
+   start:{value:"2026-06-01",certainty:"confirmed"},
+   end:{value:"2026-07-29T08:00:00+08:00",certainty:"confirmed"},
+   result:{value:"2026-10-15",certainty:"confirmed"}
+  }
+ };
+ const item=core.makeDrafts(pilot,"2026-06-15",{records:{[id]:meta}})[0];
+ assert.equal(item.start.value,"2026-06-01");
+ assert.equal(item.end.value,"2026-07-29T08:00:00+08:00");
+ assert.equal(item.result.value,"2026-10-15");
+ assert.equal(item.milestones.length,1);
+ assert.equal(item.milestones[0].label,"學院截止");
+ assert.equal(item.milestones[0].value,"2026-08-05");
+ assert.equal(core.timePresentation(item).mode,"fixed_window");
+ const range=core.domain([item],"2026-06-15","fit");
+ const geom=core.geometry(item,range);
+ assert.ok(geom.bar && geom.bar.width>0);
+ assert.ok(geom.wait && geom.wait.width>0);
+});

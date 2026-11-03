@@ -729,10 +729,19 @@ function renderTimePolicy(container,item,expanded=false){
  if(timing.rules.length){
   const list=el("ul","time-rule-list");
   for(const rule of timing.rules){
-   const row=el("li");row.append(el("strong","",(timingActors[rule.actor]||"其他程序")+(rule.stage==="application_start"?"起日":"")+"："));
+   const stageSuffix=rule.stage==="application_start"?"起日":rule.stage==="result"?"結果公布":"";
+   const actorTitle=rule.stage==="result"&&rule.actor==="other"?"結果公布":(timingActors[rule.actor]||"其他程序")+stageSuffix;
+   const row=el("li");row.append(el("strong","",actorTitle+"："));
    if(rule.value){const date=el("time","",dateText(rule.value));date.dateTime=rule.value;row.append(date,"；");}
    row.append(document.createTextNode(rule.summary+" "));
-   for(const evidence of rule.source_refs){const ref=sourceLink(evidence.url?"來源附件":"來源",{...item,url:evidence.url||item.url});ref.title=evidence.locator;row.append(ref," ");}list.append(row);
+   for(const evidence of rule.source_refs){
+    const isModelVerified=String(evidence.evidence_path||"").startsWith("temporal_model_verified/");
+    const ref=sourceLink(evidence.url?"來源附件":"來源",{...item,url:evidence.url||item.url});
+    ref.title=(isModelVerified?"雙軌引文核驗 · ":"")+evidence.locator;
+    if(isModelVerified)ref.dataset.evidenceOrigin="model_verified";
+    row.append(ref," ");
+   }
+   list.append(row);
   }
   if(expanded)box.append(list);
   else {const details=el("details"),summary=el("summary","",timing.rules.length+" 條時間規則（依角色分列）");details.append(summary,list);box.append(details);}

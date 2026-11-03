@@ -275,12 +275,13 @@ def replay(output, previous=None, transport=node_get, source_ids=None, retry_unc
     return state
 
 
-def follow_attachments(output, previous, source_ids, transport=node_get, max_round_requests=ROUND_REQUEST_LIMIT):
+def follow_attachments(output, previous, source_ids, transport=node_get, max_round_requests=ROUND_REQUEST_LIMIT, on_document=None):
     """Re-read each parent, then at most one directly linked same-host PDF.
 
     Select announcement/policy by link role and label, excluding forms. Do not
     recursively crawl links or concatenate documents across years/branches.
     """
+    from scripts.temporal_model import merge_parent_and_child_policies
     output=Path(output).resolve()
     if not output.is_relative_to(ROOT/'work') or output.exists() or not 1<=len(source_ids)<=8:
         raise ValueError('new_work_output_and_one_to_eight_sources_required')
@@ -305,7 +306,7 @@ def follow_attachments(output, previous, source_ids, transport=node_get, max_rou
         if len(group)!=1:
             continue  # Multi-branch documents need separate branch-specific proof.
         candidate=group[0];cid=candidate['candidate_id'];old=state['records'].get(cid,{})
-        if old.get('status')!='replayed' or old['policy']['submission_mode']!='undetermined':
+        if old.get('status')!='replayed' or old['policy']['submission_mode'] not in ('undetermined','start_only','procedure_only','rule_text','review_only'):
             continue
         parent_url=candidate['source_metadata']['url'];attempt={'parent_url':parent_url,'status':'not_read'}
         old.setdefault('attachment_attempts',[]).append(attempt)
@@ -328,21 +329,27 @@ def follow_attachments(output, previous, source_ids, transport=node_get, max_rou
             revision=digest([link['url'],digest(response['body']),VERSION,digest(Path(__file__).read_bytes())])
             profile={**profiles[sid],'url':link['url'],'evidence_mode':'hash_only','title':candidate['title']}
             child_candidate=deepcopy(candidate);child_candidate['source_metadata']['url']=link['url']
-            policy=extract_policy(child_candidate,prepare_document(child['blocks'])['units'],profile,revision,batch['observed_at'])
+            child_units=prepare_document(child['blocks'])['units']
+            policy=extract_policy(child_candidate,child_units,profile,revision,batch['observed_at'])
             for rule in policy['rules']:
                 for ref in rule['source_refs']:ref['url']=link['url']
             parent_revision=digest([parent_url,digest(parent['body']),VERSION,digest(Path(__file__).read_bytes())])
-            attempt.update(status='read',submission_mode=policy['submission_mode'])
-            # We only replace undetermined projections, never overwrite known dates
-            # with a guideline from another route. Old evidence remains in history.
+            # Re-bind parent rules to parent_revision before Map-Reduce merge
+            parent_policy=deepcopy(old['policy'])
+            for prule in parent_policy.get('rules',[]):
+                for pref in prule.get('source_refs',[]):
+                    if not pref.get('url'):
+                        pref['revision_id']=parent_revision
+            merged_policy=merge_parent_and_child_policies(parent_policy,policy) if policy['rules'] else parent_policy
+            attempt.update(status='read',submission_mode=merged_policy['submission_mode'])
             if policy['rules']:
                 documents=[{'url':link['url'],'revision_id':revision,'raw_sha256':digest(response['body']),
                     'parent_url':parent_url,'parent_raw_sha256':digest(parent['body']),'format':'pdf'}]
-                replacement={**old,'history':[old], 'policy':policy,'revision_id':parent_revision,
+                replacement={**old,'history':[deepcopy(old)],'policy':merged_policy,'revision_id':parent_revision,
                     'raw_sha256':digest(parent['body']),'observed_at':batch['observed_at'],'documents':documents}
-                # Avoid self-references when retaining the original observation.
-                replacement['history']=[deepcopy(old)]
                 state['records'][cid]=replacement
+            if on_document:
+                on_document(candidate,child_units,revision,batch['observed_at'],doc_url=link['url'],doc_raw_sha256=digest(response['body']))
         except (ScanError,ValueError) as error:
             attempt.update(status='blocked',reason=str(error))
         save(output/'temporal-observations.json',state)

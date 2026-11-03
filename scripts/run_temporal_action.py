@@ -16,6 +16,7 @@ from scripts.temporal_model import (
     model_review,
     source_allowed,
     TemporalBatchHarness,
+    reconcile_verified_claims_to_policy,
     MICRO_CHUNK_INPUT_LIMIT,
     MICRO_CHUNK_OUTPUT_RESERVE,
     MODEL,
@@ -101,6 +102,7 @@ def run(
     force_recheck=False,
     max_sources=8,
     checkpoint_path=None,
+    apply_verified_model_rules=True,
 ):
     output = Path(output).resolve()
     if not output.is_relative_to(ROOT / "work") or output.exists():
@@ -189,11 +191,16 @@ def run(
         checkpoint_path=Path(checkpoint_path) if checkpoint_path else (output / "checkpoint.json"),
     )
     harness.pre_batch_hook({"planned_count": len(selected)})
+    verified_by_candidate = {}
 
-    def on_document(candidate, blocks, revision, observed):
+    def on_document(candidate, blocks, revision, observed, doc_url=None, doc_raw_sha256=None):
         profile = profiles[candidate["source_metadata"]["source_id"]]
         try:
             row = harness.run_source(candidate, profile, blocks, revision)
+            if doc_url:
+                row["document_url"] = doc_url
+                row["document_revision_id"] = revision
+                row["document_raw_sha256"] = doc_raw_sha256
         except Exception as error:
             # Never log exception text: an endpoint can echo headers or source data.
             row = {
@@ -204,6 +211,8 @@ def run(
                 "claims": [],
             }
         report["model_reviews"].append(row)
+        if row.get("claims"):
+            verified_by_candidate.setdefault(candidate["candidate_id"], []).append(row)
         save(output / "report.json", report)
 
     if ids:
@@ -214,6 +223,7 @@ def run(
                 output / "rules/temporal-observations.json",
                 ids,
                 max_round_requests=20,
+                on_document=on_document,
             )
     else:
         state = {
@@ -224,12 +234,50 @@ def run(
             "batches": [{"http_requests": 0, "attempted_urls": [], "observed_at": report["observed_at"]}],
             "records": {},
         }
+
+    # Map-Reduce Reconciliation: fold quote-verified model claims into proposed preview policy
+    reconciled_candidates = 0
+    if apply_verified_model_rules and verified_by_candidate:
+        for cid, rows in verified_by_candidate.items():
+            rec = state.get("records", {}).get(cid)
+            if not rec or rec.get("status") != "replayed" or "policy" not in rec:
+                continue
+            all_claims = []
+            block_doc_map = {}
+            for r in rows:
+                sid = r["source_id"]
+                doc_url = r.get("document_url")
+                doc_rev = r.get("document_revision_id")
+                for cl in r.get("claims", []):
+                    all_claims.append(cl)
+                    if doc_url and doc_rev:
+                        block_doc_map[cl["locator"]] = {"url": doc_url, "revision_id": doc_rev}
+                        if not any(d.get("url") == doc_url and d.get("revision_id") == doc_rev for d in rec.get("documents", [])):
+                            rec.setdefault("documents", []).append({
+                                "url": doc_url,
+                                "revision_id": doc_rev,
+                                "raw_sha256": r.get("document_raw_sha256") or ("0" * 64),
+                                "parent_url": rec["url"],
+                                "parent_raw_sha256": rec["raw_sha256"],
+                                "format": "pdf",
+                            })
+            if all_claims:
+                rec["policy"] = reconcile_verified_claims_to_policy(
+                    rec["policy"],
+                    all_claims,
+                    rows[0]["source_id"],
+                    rec["revision_id"],
+                    block_doc_map=block_doc_map,
+                )
+                reconciled_candidates += 1
+
     harness_summary = harness.post_batch_hook(report["model_reviews"])
     report["harness_summary"] = {
         "hook_events_count": len(harness.hook_events),
         "sources_processed": harness_summary["sources_processed"],
         "completed_count": harness_summary["completed_count"],
         "verified_claim_count": harness_summary["verified_claim_count"],
+        "reconciled_candidates": reconciled_candidates,
     }
     merged = deepcopy(state)
     merged["records"] = {**deepcopy(baseline["records"]), **state["records"]}
@@ -248,7 +296,8 @@ def run(
         model_usage=adapter.usage_summary() if adapter else {"enabled": False, "calls": 0, "hash_only_bytes_sent": 0},
         rules_updated_candidates=len(state["records"]),
         attachments_requested=attachments,
-        rules_only_model_proposals_not_applied=True,
+        rules_only_model_proposals_not_applied=(not apply_verified_model_rules or reconciled_candidates == 0),
+        verified_model_rules_applied_to_preview=(apply_verified_model_rules and reconciled_candidates > 0),
     )
     report["rate_limit_diagnostics"] = getattr(adapter, "last_rate_metadata", {})
     report["model_configuration"] = {
@@ -269,14 +318,14 @@ def run(
         "",
         f"來源HTTP：{state['http_requests']} / 20；模型推論：{report['model_usage']['calls']} / {report['max_inference_calls']}。",
         f"排程軌道：{report['schedule_track']}；待執行／跳過未變動：{track_plan['run_candidate_count']} / {track_plan['skip_candidate_count']}。",
-        f"模型準備：{report['model_status']}；未發布、人工核准0。",
+        f"模型準備：{report['model_status']}；Map-Reduce 融合至甘特圖預覽：{reconciled_candidates} 筆；未發布、人工核准0。",
         "本輪與舊200HTTP台帳分開；保留舊紀錄不是宣稱本輪全部重新掃描。",
         "",
         "| 來源 | 模型處置 | 有證據的待審提案 |",
         "|---|---|---|",
     ]
     summary += [f"| {r['source_id']} | {r['status']} | {len(r.get('claims', []))} |" for r in report["model_reviews"]]
-    summary += ["", "模型提案未套入時間投影；規則預覽與API盤查分開。", "原文、tokenizer及模型原始回應不在artifact內。"]
+    summary += ["", "通過逐字引文核驗之模型時間規則已融合入待審預覽甘特圖；正式資料未修改。", "原文、tokenizer及模型原始回應不在artifact內。"]
     (output / "summary.md").write_text("\n".join(summary) + "\n", encoding="utf-8")
     # Build an isolated view without writing proposed data into the checkout.
     from scripts.build_review_workspace import candidate_preview_data
