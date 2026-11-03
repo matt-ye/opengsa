@@ -32,10 +32,10 @@ from scripts.evaluate_deadlines import evaluate_application_window, parse_iso_da
 from scripts.scan_sources import CONTACT, SKIP, Fetcher, ScanError, digest, html_document, normalized, pdf_document
 from scripts.verify_candidates import digest_text, evidence_digest, verify_candidate
 from scripts.application_process import infer_process
-from scripts.semantic_facts import INSTRUCTIONS, PLACEHOLDER, discover_identity, discover_organizations, recurring_time, degree_terms, time_actor
+from scripts.semantic_facts import INSTRUCTIONS, PLACEHOLDER, discover_identity, discover_organizations, recurring_time, degree_terms, time_actor, labelled_date_clause
 from scripts.ai_tool_rules import benefit_tiers
 
-EXTRACTOR_VERSION = "extractor-1.7.0"
+EXTRACTOR_VERSION = "extractor-1.8.0"
 PROMPT_VERSION = "prompt-1.3.0"
 
 PII_REDACT_RE = re.compile(
@@ -2075,10 +2075,11 @@ def _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode):
             rule=recurring_time(text)
             if (not rule and re.search(r'申請期間|申請時程|申請時間|受理期間|收件期間|申請期限|申請截止|截止',text)
                     and not re.search(r'每年|修正|生效|購買|支出|出國期間|公布結果|出生|年齡',text)):
-                start,end=parse_date_range_from_text(text)
-                kind,value=parse_roc_or_iso_date_from_text(text) if not end else ('date',end)
+                labelled=labelled_date_clause(text)
+                start,end=parse_date_range_from_text(labelled or '')
+                kind,value=parse_roc_or_iso_date_from_text(labelled or '') if not end else ('date',end)
                 if end:
-                    tail=re.split(r'至|到|[~～]',text)[-1]
+                    tail=re.split(r'至|到|[~～]',labelled)[-1]
                     end_kind,end_value=parse_roc_or_iso_date_from_text(tail,int(end[:4])-1911)
                     if end_value and end_value[:10]==end:kind,value=end_kind,end_value
                 actor=time_actor(text)
@@ -2089,7 +2090,7 @@ def _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode):
                         cand['schedule']['application_start']={'kind':'date','value':start,'timezone':'Asia/Taipei','certainty':'confirmed','note':'學生受理期間明示起日'}
                         evidence('schedule.application_start',[block])
             if not rule:continue
-            key=(rule['actor'],rule['deadline']['note'])
+            key=(rule['actor'],rule['deadline']['kind'],rule['deadline']['value'],rule['deadline']['note'])
             if key in seen:continue
             seen.add(key)
             steps=cand['schedule']['steps']

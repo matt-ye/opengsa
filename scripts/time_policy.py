@@ -3,9 +3,11 @@ import json
 import re
 from functools import lru_cache
 from pathlib import Path
+from urllib.parse import urlsplit
 
-from jsonschema import Draft202012Validator, FormatChecker
+from jsonschema import Draft202012Validator, FormatChecker, ValidationError
 from scripts.evaluate_deadlines import parse_iso_date, parse_taipei_datetime
+from scripts.review_candidates import candidate_fingerprint
 
 
 @lru_cache(maxsize=1)
@@ -21,6 +23,72 @@ def source_is_unsafe(candidate):
         verification['checks'].get(k) is not True for k in (
             'schema_valid', 'evidence_supported', 'date_and_amount_units_valid',
             'no_year_or_branch_mixing', 'negation_and_roles_valid', 'no_unresolved_conflicts'))
+
+
+def temporal_observation(candidate, observations):
+    """Fail closed on stale bindings or foreign-source claims; no silent rebinding."""
+    if not observations or observations.get('version') != 'temporal-replay-1' or source_is_unsafe(candidate):
+        return None
+    record = observations.get('records', {}).get(candidate['candidate_id'], {})
+    if (record.get('status') != 'replayed'
+            or record.get('candidate_sha256') != candidate_fingerprint(candidate)
+            or record.get('url') != candidate['source_metadata']['url']):
+        return None
+    policy = record['policy']
+    policy_validator().validate(policy)
+    if not all(re.fullmatch(r'[0-9a-f]{64}',record.get(k,'')) for k in ('raw_sha256','revision_id')):
+        raise ValueError('temporal_observation_missing_source_hash')
+    for rule in policy['rules']:
+        documents={(d['url'],d['revision_id']) for d in record.get('documents',[])
+                   if re.fullmatch(r'[0-9a-f]{64}',d.get('raw_sha256',''))
+                   and d.get('parent_url')==record['url'] and d.get('parent_raw_sha256')==record['raw_sha256']
+                   and urlsplit(d['url']).hostname==urlsplit(record['url']).hostname}
+        if not all(ref['source'] == candidate['source_metadata']['source_id'] and (
+                   (not ref.get('url') and ref['revision_id'] == record.get('revision_id'))
+                   or (ref.get('url'),ref['revision_id']) in documents) for ref in rule['source_refs']):
+            raise ValueError('temporal_observation_source_revision_mismatch')
+    return record
+
+
+def calendar_is_ambiguous(policy):
+    dates=[r for r in policy['rules'] if r['kind']=='absolute' and r['stage']!='result']
+    years={r['value'][:4] for r in dates}
+    if len(years)<=1:
+        return False
+    # A single explicit window crossing New Year is valid; several unbound
+    # school/agency/student dates from different years must first be split.
+    starts={r['value'] for r in dates if r['actor']=='student' and r['stage']=='application_start'}
+    ends={r['value'] for r in dates if r['actor']=='student' and r['stage']=='submission'}
+    return not (len(starts)==len(ends)==1 and min(starts)<=min(ends)
+                and all(min(starts)<=r['value']<=min(ends) for r in dates))
+
+
+def validate_temporal_snapshot(bundle, observations):
+    errors=[]
+    if (observations.get('version')!='temporal-replay-1' or observations.get('model_calls')!=0
+            or observations.get('published') is not False):
+        return ['temporal_snapshot_boundary_invalid']
+    batches=observations.get('batches',[])
+    if (not batches or any(type(b.get('http_requests')) is not int or not 0<=b['http_requests']<=20 for b in batches)
+            or sum(b['http_requests'] for b in batches)!=observations.get('http_requests')
+            or not 0<=observations['http_requests']<=200):
+        errors.append('temporal_request_ledger_invalid')
+    if not isinstance(observations.get('records'),dict):
+        return [*errors,'temporal_candidate_inventory_invalid']
+    for candidate in bundle['candidates']:
+        record=observations.get('records',{}).get(candidate['candidate_id'],{})
+        # Normal candidate updates need not re-read every unrelated source.
+        # Archived/stale observations are inert, never rebound to new claims.
+        if not record or record.get('candidate_sha256')!=candidate_fingerprint(candidate):
+            continue
+        if (record.get('url')!=candidate['source_metadata']['url']
+                or record.get('status') not in ('replayed','blocked')):
+            errors.append('temporal_record_binding_invalid:'+candidate['candidate_id'])
+        try:
+            temporal_observation(candidate,observations)
+        except (ValueError,KeyError,TypeError,ValidationError) as error:
+            errors.append('temporal_record_invalid:'+candidate['candidate_id']+':'+str(error))
+    return errors
 
 
 def project_time_policy(candidate, unsafe=False):

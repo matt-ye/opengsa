@@ -64,8 +64,12 @@ function windowState(item,today) {
 }
 const UNKNOWN_LABEL="不明，請見來源";
 const timingLabels={fixed_window:"固定申請期",deadline_only:"截止已公告",start_only:"起日已公告",event_relative:"依活動日期計算",recurring:"常態月日規則",rule_text:"時間規則已載（計算方式待整理）",mixed:"多階段時間規則",procedure_only:"僅有行政程序",conditional_deadline:"年度上限＋個人條件",automatic:"免另行申請",reference:"制度參考",undetermined:"時間資訊待補",historical:"往年／月份參考"};
+Object.assign(timingLabels,{continuous:"常態受理（資格與額度另核）",unit_announced:"依所屬單位公告",review_only:"已載審查方式；受理期間另查"});
+timingLabels.procedure_only="已知單位／行政時點";
 const timingActors={student:"學生",department:"系所",unit:"單位",college:"學院",university:"校級",institution:"機構",supplement:"補件",other:"其他程序"};
 const timingGaps={source_checks_failed:"來源檢核未通過，需重新核對",time_not_projected:"目前快照未有可投影的申請時程",student_window_not_recorded:"學生／所屬單位收件時間另查",needs_event_date:"有規則，需活動日期才能換算",calendar_unverified:"假日順延與所屬單位期限仍需確認",personal_conditions_required:"年度最晚日仍受個人條件期限限制"};
+Object.assign(timingGaps,{multiple_cycles_need_split:"來源含不同年度時點，先分年核對；不合成申請區間",needs_linked_document:"申請時程需續查附件／配合單位公告",unparsed_timing_clause:"來源有時間文字，日期或申請角色仍需核對",time_rule_not_verified:"尚未取得可確認的受理時間規則"});
+Object.assign(timingGaps,{replay_deferred:"本次重查未完成，保留先前快照供查找",source_access_restricted:"本次自動讀取受限，需人工確認來源"});
 function timePresentation(item){
  const policy=item.timePolicy, rules=item.conflict?[]:policy?.rules||[];
  let mode=item.conflict?"undetermined":policy?.submission_mode||"undetermined";
@@ -78,7 +82,7 @@ function timePresentation(item){
  }
  const known=mode!=="undetermined"||rules.length>0;
  return {mode,label:timingLabels[mode]||timingLabels.undetermined,known,rules,
-  icon:({event_relative:"⚓",recurring:"↻",procedure_only:"◇",historical:"◌",automatic:"✓",reference:"▤",conditional_deadline:"◷"})[mode]||(known?"▣":"⚠"),
+  icon:({event_relative:"⚓",recurring:"↻",procedure_only:"◇",historical:"◌",automatic:"✓",reference:"▤",conditional_deadline:"◷",continuous:"↺",unit_announced:"⌂",review_only:"≋"})[mode]||(known?"▣":"⚠"),
   gaps:item.conflict?[timingGaps.source_checks_failed]:(policy?.gaps||[]).map(g=>timingGaps[g])};
 }
 function unknownValue(value){
@@ -217,6 +221,20 @@ function makeDrafts(pilot,asOf=taipeiToday(),radarData=null) {
    if(!meta.known.start||["inferred","tentative","unknown"].includes(draft.start.certainty))draft.start=event();
    if(!meta.known.deadline){draft.end=event();draft.timeRule=null;}
    if(!meta.known.result)draft.result=event();
+   if(meta.time_dates&&!meta.unsafe){
+    for(const key of ["start","end","result"])draft[key]=meta.time_dates[key]?{...meta.time_dates[key]}:event();
+    draft.timeObservedAt=meta.time_observed_at;draft.timeRevision=meta.time_revision;
+    draft.estimatedStart=null;
+    draft.note="時程由本輪來源重萃；資格與其他欄位各自查核。所有資料皆待獨立覆核。";
+    if(!["automatic","reference"].includes(meta.time_policy?.submission_mode)){
+     draft.rawState="unknown";draft.application="時程已更新；目前受理狀態請查來源";
+     if(dayNumber(draft.end.value)!==null&&dayNumber(draft.end.value)<dayNumber(asOf)){draft.rawState="closed";draft.application="已記錄的學生截止已過（資格另核）";}
+     else if(dayNumber(draft.start.value)!==null&&dayNumber(draft.start.value)>dayNumber(asOf)){draft.rawState="not_yet_open";draft.application="尚未開放（已記錄起日）";}
+    }
+    draft.milestones=(meta.time_policy?.gaps?.includes("multiple_cycles_need_split")?[]:meta.time_policy?.rules||[]).filter(r=>r.kind==="absolute"&&r.actor!=="student"&&r.stage!=="result").map(r=>({
+     ...event(r.value,"confirmed",r.summary),label:(timingActors[r.actor]||"其他程序")+(r.stage==="application_start"?"起日":"截止")
+    }));
+   }
    if(!meta.known.benefit)draft.benefit=null;
    if(!meta.known.method)draft.method=null;
    if(meta.unsafe){draft.rawState="unknown";draft.application=UNKNOWN_LABEL;draft.applicability={};}
@@ -707,13 +725,14 @@ function radarSummary(container,item){
 function renderTimePolicy(container,item,expanded=false){
  const timing=timePresentation(item),box=el("div","time-policy"),label=el("p","time-label "+(timing.known?"known":"pending"));
  const icon=el("span","",timing.icon);icon.setAttribute("aria-hidden","true");label.append(icon,el("strong","",timing.label));box.append(label);
+ if(item.timeObservedAt){const checked=el("p","tiny quiet","時程檢核："+taipeiToday(new Date(item.timeObservedAt)));checked.title="時程來源revision "+item.timeRevision;box.append(checked);}
  if(timing.rules.length){
   const list=el("ul","time-rule-list");
   for(const rule of timing.rules){
    const row=el("li");row.append(el("strong","",(timingActors[rule.actor]||"其他程序")+(rule.stage==="application_start"?"起日":"")+"："));
    if(rule.value){const date=el("time","",dateText(rule.value));date.dateTime=rule.value;row.append(date,"；");}
    row.append(document.createTextNode(rule.summary+" "));
-   const ref=sourceLink("來源",item);ref.title=rule.source_refs.map(r=>r.locator).join("；");row.append(ref);list.append(row);
+   for(const evidence of rule.source_refs){const ref=sourceLink(evidence.url?"來源附件":"來源",{...item,url:evidence.url||item.url});ref.title=evidence.locator;row.append(ref," ");}list.append(row);
   }
   if(expanded)box.append(list);
   else {const details=el("details"),summary=el("summary","",timing.rules.length+" 條時間規則（依角色分列）");details.append(summary,list);box.append(details);}
@@ -745,7 +764,7 @@ function inspect(item) {
  box.hidden=false;
  if(wasHidden && typeof box.getBoundingClientRect==="function"){
   const rect=box.getBoundingClientRect();
-  if(rect.top>window.innerHeight || rect.bottom<0) box.scrollIntoView({behavior:"instant",block:"nearest"});
+  if(rect.top<180 || rect.bottom>window.innerHeight) box.scrollIntoView({behavior:"instant",block:"start"});
  }
 }
 function pickControl(item,slot) {

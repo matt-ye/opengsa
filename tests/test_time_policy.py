@@ -21,7 +21,7 @@ class TimePolicyTests(unittest.TestCase):
 
     def test_all_64_project_without_mutation_or_intake_state_changes(self):
         before = deepcopy(self.bundle)
-        records = radar_metadata(self.bundle)['records']
+        records = radar_metadata(self.bundle,observations={})['records']
         self.assertEqual(len(records), 64)
         for candidate in self.bundle['candidates']:
             policy = records[candidate['candidate_id']]['time_policy']

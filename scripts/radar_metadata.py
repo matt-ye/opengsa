@@ -1,6 +1,9 @@
 """Field visibility for the discovery view. No approvals, fetches or source text."""
 from scripts.verify_candidates import classify_review_gaps
-from scripts.time_policy import project_time_policy, source_is_unsafe
+from scripts.review_candidates import candidate_fingerprint
+from scripts.time_policy import project_time_policy, source_is_unsafe, temporal_observation, calendar_is_ambiguous
+import json
+from pathlib import Path
 import re
 
 
@@ -24,7 +27,10 @@ def programme_source(candidate, organizations):
     return {'type':'unknown','basis':'unresolved','label':'未辨識方案來源，不以公告網站代填'}
 
 
-def radar_metadata(bundle):
+def radar_metadata(bundle, observations=None):
+    if observations is None:
+        path=Path(__file__).resolve().parents[1]/'data/temporal-observations.json'
+        observations=json.loads(path.read_text(encoding='utf-8')) if path.exists() else {}
     records={}
     for candidate in bundle['candidates']:
         gaps=classify_review_gaps(candidate)['source']
@@ -64,4 +70,28 @@ def radar_metadata(bundle):
             'organizations':organizations,'time_steps':time_steps,
             'time_policy':project_time_policy(candidate,unsafe),
             'programme_source':programme_source(candidate,organizations) if not unsafe else {'type':'unknown','basis':'unsafe','label':'來源檢核未通過'}}
+        observation=temporal_observation(candidate,observations)
+        attempt=observations.get('records',{}).get(candidate['candidate_id'],{})
+        if attempt.get('status')=='blocked' and attempt.get('candidate_sha256')==candidate_fingerprint(candidate):
+            reason='replay_deferred' if attempt.get('reason')=='run_budget_exhausted' else 'source_access_restricted'
+            records[candidate['candidate_id']]['time_policy']['gaps']=[reason]
+        if observation:
+            row=records[candidate['candidate_id']]
+            row['time_policy']=observation['policy']
+            row['time_observed_at']=observation['observed_at']
+            row['time_revision']=observation['revision_id']
+            row['time_dates']={}
+            # Multiple routes/deadlines stay rules, never collapse by min/max.
+            for key,stage in [('start','application_start'),('end','submission'),('result','result')]:
+                claims=[r for r in observation['policy']['rules'] if r['kind']=='absolute' and r['stage']==stage
+                        and (r['actor']=='student' if key!='result' else True)]
+                values={r['value'] for r in claims}
+                if len(values)==1 and not calendar_is_ambiguous(observation['policy']):
+                    row['time_dates'][key]={'value':claims[0]['value'],'certainty':'confirmed'}
+            if calendar_is_ambiguous(observation['policy']):
+                row['time_policy']={**observation['policy'],'submission_mode':'mixed',
+                    'gaps':list(dict.fromkeys([*observation['policy']['gaps'],'multiple_cycles_need_split']))}
+            if (observation['policy']['submission_mode']=='fixed_window'
+                    and not all(k in row['time_dates'] for k in ('start','end'))):
+                row['time_policy']={**observation['policy'],'submission_mode':'mixed'}
     return {'version':'radar-1','records':records}

@@ -121,3 +121,16 @@ def time_actor(text):
     if re.search(r'各學院|學院彙',text):return 'college'
     if re.search(r'學生|申請人|申請者',text):return 'student'
     return 'unit'
+
+
+def labelled_date_clause(clause):
+    """Parse a date adjacent to the application label, never the first page date."""
+    year=r'(?:20\d{2}|1\d{2})[年/.\-]|[一二三四五六七八九〇零]{3}年'
+    prefix=r'^[：:自從為截至即日起\s]*(?:'+year+r')'
+    for pattern in (r'申請期間|申請時間|申請時程|受理期間|收件期間',
+                    r'截止(?:日期|時間)?(?:為|至)?|申請期限(?:為)?|請於|申請至|收件至'):
+        for label in reversed(list(re.finditer(pattern,clause))):
+            tail=clause[label.end():]
+            if re.match(prefix,tail):
+                return tail
+    return None
