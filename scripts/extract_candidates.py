@@ -430,10 +430,26 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
             )
             rule_summary={k:rule_summary[k] for k in ('program_key','cycle','participants','steps')}
         sys_prompt += '\n跨來源萃取規則：'+INSTRUCTIONS
+        # Table headers/row context can repeat for every text node. Share exact
+        # duplicates within this request; preserve every text, locator and cell.
+        shared={};source_blocks=[]
+        for block in sanitized_blocks:
+            item=deepcopy(block)
+            context={key:item[key] for key in ('headers','row_cells') if item.get(key)}
+            if context:
+                context_id='ctx-'+hashlib.sha256(json.dumps(context,ensure_ascii=False,sort_keys=True).encode()).hexdigest()[:16]
+                shared[context_id]=context
+                for key in context:item.pop(key)
+                item['context_ref']=context_id
+            source_blocks.append(item)
+        compact={'shared_table_context':shared,'blocks':source_blocks}
+        original_json=json.dumps(sanitized_blocks,ensure_ascii=False)
+        compact_json=json.dumps(compact,ensure_ascii=False)
+        source_json=compact_json if len(compact_json)<len(original_json) else original_json
         user_content = (
             f"執行模式: {active_mode}\n"
             f"目前規則解析摘要:\n{json.dumps(rule_summary, ensure_ascii=False)}\n\n"
-            f"<untrusted_source_data>\n{json.dumps(sanitized_blocks, ensure_ascii=False)}\n</untrusted_source_data>"
+            f"<untrusted_source_data>\n{source_json}\n</untrusted_source_data>"
         )
         return [
             {"role": "system", "content": sys_prompt},
@@ -519,6 +535,12 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
             headers=headers,
             method="POST",
         )
+        interval=getattr(self,'minimum_request_interval_seconds',0)
+        remaining=getattr(self,'_last_request_started',-1000000)+interval-time.monotonic()
+        while remaining>0:
+            time.sleep(min(30,remaining))
+            remaining=self._last_request_started+interval-time.monotonic()
+        self._last_request_started=time.monotonic()
         t0 = time.perf_counter()
         try:
             self.calls += 1
@@ -610,7 +632,8 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
         try:chunks=pack_requests(document,render,self.count_tokens,self.model_limits)
         except ValueError as error:return {'_skipped_reason':str(error)}
         self.last_preparation={'document_sha256':document['document_sha256'],
-            'chunks_planned':len(chunks),'chunks_completed':0,'complete':False}
+            'chunks_planned':len(chunks),'chunks_completed':0,'complete':False,
+            'input_tokens_by_chunk':[chunk['input_tokens'] for chunk in chunks]}
         if len(chunks)>self.max_calls-self.calls:
             return {'_skipped_reason':'model_call_budget_insufficient_for_complete_task'}
         result={'extracted_fields':[],'audit_findings':[]};seen={}

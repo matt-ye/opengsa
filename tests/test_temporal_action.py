@@ -9,7 +9,7 @@ from unittest.mock import patch
 from scripts.temporal_model import model_review, source_allowed, model_for_temporal
 from scripts.run_temporal_action import select_sources, run
 from scripts.temporal_reextract import replay, ROOT, read
-from scripts.extract_candidates import _verify_quote_and_reparse
+from scripts.extract_candidates import _verify_quote_and_reparse, OpenAICompatibleAdapter
 from scripts.document_ir import evidence_block_map
 
 
@@ -73,6 +73,22 @@ class TemporalActionTests(unittest.TestCase):
             None,None,'SYNTH/range',blocks[0]['text'],evidence_block_map(blocks))
         self.assertTrue(result[0])
         self.assertEqual(result[3],'2026-07-29T08:00:00+08:00')
+
+    def test_shared_table_context_saves_space_without_dropping_cells_or_text(self):
+        adapter=OpenAICompatibleAdapter('https://api.example.test/v1','SYNTH',allow_local_no_key=True)
+        c=self.candidate('taipei-ai-tools')
+        units=[{'unit_id':f'SYNTH/{i}','locator':f'SYNTH/{i}','text':f'第{i}項',
+                'headers':['期限','角色'],'row_cells':['重要例外不得刪除。'*40,'學生申請截止115年11月10日。']} for i in range(10)]
+        before=deepcopy(units)
+        source=adapter._build_messages(c,units,'both')[1]['content'].split('<untrusted_source_data>\n')[1].split('\n</untrusted_source_data>')[0]
+        payload=json.loads(source)
+        reconstructed=[]
+        for row in payload['blocks']:
+            row=deepcopy(row);context=payload['shared_table_context'][row.pop('context_ref')]
+            reconstructed.append({**row,**context})
+        self.assertEqual(reconstructed,units)
+        self.assertEqual(units,before)
+        self.assertLess(len(source),len(json.dumps(units,ensure_ascii=False)))
 
     def test_runtime_request_cap_is_reserved_before_transport(self):
         calls=[]

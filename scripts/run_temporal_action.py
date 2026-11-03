@@ -85,6 +85,7 @@ def run(output, source_ids, attachments=False, adapter_factory=model_for_tempora
         rules_only_model_proposals_not_applied=True)
     report['model_configuration']={'model':getattr(adapter,'model',None),'tokenizer_model':MODEL if adapter and adapter.enabled else None,
         'input_budget_tokens':6000,'output_reserve_tokens':1200,'template_reserve_in_counter':True,
+        'minimum_request_interval_seconds':getattr(adapter,'minimum_request_interval_seconds',None),
         'actual_usage_is_provider_reported':True,'cost_usd':None}
     if report['model_usage']['hash_only_bytes_sent']!=0:raise ValueError('restricted_source_leak')
     save(output/'report.json',report)

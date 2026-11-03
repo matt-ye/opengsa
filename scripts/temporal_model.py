@@ -57,6 +57,9 @@ def model_for_temporal(tokenizer_path):
     adapter.count_tokens=count;adapter.max_calls=4;adapter.field_scope=FIELDS
     adapter.use_cache=False  # Do not retain raw model quotes/responses in artifacts.
     adapter.request_open=urllib.request.build_opener(NoRedirect()).open
+    # First live run hit this account's TPM limit on chunk two. Pace new
+    # attempts proactively; an actual 429 still stops the task without retry.
+    adapter.minimum_request_interval_seconds=65
     return adapter,'ready'
 
 
