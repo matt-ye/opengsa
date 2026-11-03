@@ -1,5 +1,7 @@
 # 目前計畫與已接受決策
 
+2026-11-03四階段時間重萃與甘特圖整合（接續PR44，分開立PR45～PR48）：見[Actions時間重萃、8組API備援池、Map-Reduce與甘特圖整合](ACTIONS-TEMPORAL-EXTRACTION.md)。完成(1)最外層三軌排程路由（週二五gov公部門30筆／週一四enterprise企業基金會7筆／週三六other AI工具與其他27筆）與三層增量比對閘門（未變動且已分型來源0 HTTP／0 Token跳過）；(2)8組API動態備援池（`ProviderFailoverPool`）、1500-token小分包、90s Timeout、PII `[REDACTED]`遮蔽解鎖與5大Lifecycle Hooks批次Harness（`TemporalBatchHarness`）；(3)母頁HTML＋子頁＋公告PDF無損彙整、跨Chunk Map-Reduce合成（`fixed_window`／`deadline_only`／`procedure_only`／`mixed`）並對接最新甘特圖Layout A預覽；(4)Actions 45分鐘Timeout、跨Run Checkpoint快取與64筆三軌盤點報告。排程仍維持`model_mode=off`，正式`pilot.json`與真人台帳不變。
+
 2026-11-03使用者核可使用GitHub Secrets API繼續：[手動Actions時間萃取](ACTIONS-TEMPORAL-EXTRACTION.md)接PR44。新增小批20源站HTTP／4推論的`temporal_replay`，先跑候選及台帳皆short_excerpt的臺北／新竹來源；其餘規則模式。模型提案獨立待審，輸出artifact而不自動套用、合併或上架；排程off、PR34保留。最新實測結果另記文件，不宣稱64筆都已由模型重萃。
 
 2026-11-03後續時間重萃：[本輪結果與操作](TEMPORAL-REEXTRACTION.md)。64項皆有處置與建議甘特形式，最新60項成功重萃／4項保留原因；投影32項已分型／32項待補。母頁／附件各自綁版本，8份文學院PDF補出單位時點；公告日／活動日期與跨年度規則防誤用已納入共用萃取及前端投影。候選資格與正式資料不改，附件重萃尚未排程化；下一批先處理角色、分支與待補資訊鏈，不假稱64項期限全部確認。新PR接PR43，仍不自動合併／部署。

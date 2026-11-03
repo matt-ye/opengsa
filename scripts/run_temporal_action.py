@@ -351,6 +351,8 @@ if __name__ == "__main__":
     p.add_argument("--incremental-only", action="store_true")
     p.add_argument("--include-refinement", action="store_true")
     p.add_argument("--attachments", action="store_true")
+    p.add_argument("--max-sources", type=int, default=8)
+    p.add_argument("--checkpoint", type=Path, default=None)
     args = p.parse_args()
     report = run(
         args.output,
@@ -359,6 +361,8 @@ if __name__ == "__main__":
         track=args.track,
         incremental_only=args.incremental_only,
         include_refinement=args.include_refinement,
+        max_sources=args.max_sources,
+        checkpoint_path=args.checkpoint,
     )
     print(
         json.dumps(
