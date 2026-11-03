@@ -184,12 +184,14 @@ def extract_policy(candidate, blocks, profile, revision, observed):
 
 
 def replay(output, previous=None, transport=node_get, source_ids=None, retry_unclassified=False, recheck=False,
-           max_round_requests=ROUND_REQUEST_LIMIT, on_document=None):
+           max_round_requests=ROUND_REQUEST_LIMIT, on_document=None, track=None,
+           baseline_observations=None, skip_unchanged_model=False):
     """One micro-batch <=8 URLs/20 HTTP/180 seconds; whole round <=200 HTTP.
 
     Resume artifacts contain no original text. Previous attempts (including
     blocked reads) are never retried automatically or reset silently.
     """
+    from scripts.temporal_tracks import classify_source_track, evaluate_incremental_diff, track_for_weekday
     output=Path(output).resolve()
     if not output.is_relative_to(ROOT/'work') or output.exists():
         raise ValueError('new_work_output_required')
@@ -202,16 +204,21 @@ def replay(output, previous=None, transport=node_get, source_ids=None, retry_unc
     if state['version']!=VERSION or state['model_calls']!=0 or state['published'] or state['http_requests']>=max_round_requests:
         raise ValueError('invalid_round_state_or_exhausted_budget')
     audit={r['url']:r for r in read(ROOT/'data/source-expansion/original-source-verification.json')['records']}
+    resolved_track=track_for_weekday() if track=='auto' else track
     urls={}
     if recheck and not source_ids:
         raise ValueError('explicit_source_ids_required_for_recheck')
     for c in candidates:
+        if resolved_track and resolved_track!='all' and classify_source_track(c)!=resolved_track:
+            continue
         old=state['records'].get(c['candidate_id'],{})
         retry=(recheck and old.get('status')=='replayed') or (retry_unclassified and old.get('status')=='replayed' and old['policy']['submission_mode']=='undetermined' and not old.get('history'))
         if (not old or retry) and (not source_ids or c['source_metadata']['source_id'] in source_ids):
             urls.setdefault(c['source_metadata']['url'],[]).append(c)
     output.mkdir(parents=True)
     batch={'http_requests':0,'attempted_urls':[], 'observed_at':datetime.now(timezone.utc).isoformat(timespec='seconds')}
+    if resolved_track:
+        batch['track']=resolved_track
     state['batches'].append(batch)
     def request(url, headers, limit):
         batch['http_requests']+=1
@@ -233,15 +240,16 @@ def replay(output, previous=None, transport=node_get, source_ids=None, retry_unc
             response=fetcher.get(url,{},10*1024*1024)
             if response['status']!=200:
                 raise ScanError('http_'+str(response['status']))
+            raw_hash=digest(response['body'])
             prepared=prepare_public(response,config['allowed_hosts'])
             blocks=prepare_document(prepared['blocks'])['units']
             parser_sha256=digest([digest(Path(__file__).read_bytes()),digest((ROOT/'scripts/extract_candidates.py').read_bytes()),digest((ROOT/'scripts/semantic_facts.py').read_bytes())])
-            revision=digest([url,digest(response['body']),VERSION,parser_sha256])
+            revision=digest([url,raw_hash,VERSION,parser_sha256])
             for c in group:
                 profile={**deepcopy(profiles[c['source_metadata']['source_id']]),'url':url,'title':c['title'],
                     'category':c['category'],'resource_kind':c['resource_kind'],'scope':c['scope'],'evidence_mode':'hash_only'}
                 policy=extract_policy(c,blocks,profile,revision,batch['observed_at'])
-                records[c['candidate_id']].update(status='replayed',reason=None,raw_sha256=digest(response['body']),
+                records[c['candidate_id']].update(status='replayed',reason=None,raw_sha256=raw_hash,
                     revision_id=revision,format=prepared['kind'],policy=policy,parser_sha256=parser_sha256)
                 records[c['candidate_id']]['diagnostics']=[{
                     'locator':b['locator'],'has_deadline':bool(re.search(r'截止|期限',b['text'])),
@@ -250,6 +258,11 @@ def replay(output, previous=None, transport=node_get, source_ids=None, retry_unc
                     'parsed_date':list(parse_roc_or_iso_date_from_text(b['text'])),
                 } for b in timing_contexts(blocks) if TIMING.search(b['text'])][:30]
                 if on_document:
+                    if skip_unchanged_model and baseline_observations:
+                        diff_decision=evaluate_incremental_diff(c,observations=baseline_observations,observed_raw_sha256=raw_hash)
+                        if not diff_decision['should_run']:
+                            records[c['candidate_id']]['incremental_decision']=diff_decision['decision']
+                            continue
                     on_document(c,blocks,revision,batch['observed_at'])
         except (ScanError,ValueError) as error:
             for record in records.values():
@@ -342,6 +355,7 @@ if __name__=='__main__':
     p.add_argument('--output',type=Path,required=True)
     p.add_argument('--previous',type=Path)
     p.add_argument('--source-id',action='append')
+    p.add_argument('--track',choices=['gov','enterprise','other','all','auto'])
     p.add_argument('--retry-unclassified',action='store_true',help='One explicit retry after parser changes; retain history and budget')
     p.add_argument('--recheck',action='store_true',help='Explicit source IDs only; preserve prior observations and budget')
     p.add_argument('--follow-attachments',action='store_true',help='One directly linked same-host announcement PDF per source')
@@ -350,5 +364,5 @@ if __name__=='__main__':
         if not args.previous or not args.source_id:p.error('--previous and --source-id required for attachment replay')
         result=follow_attachments(args.output,args.previous,args.source_id)
     else:
-        result=replay(args.output,args.previous,source_ids=args.source_id,retry_unclassified=args.retry_unclassified,recheck=args.recheck)
+        result=replay(args.output,args.previous,source_ids=args.source_id,retry_unclassified=args.retry_unclassified,recheck=args.recheck,track=args.track)
     print(json.dumps({'items':len(result['records']),'http_requests':result['http_requests']},ensure_ascii=False))

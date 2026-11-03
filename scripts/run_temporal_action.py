@@ -11,25 +11,100 @@ ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from scripts.temporal_reextract import read, save, replay, follow_attachments
 from scripts.temporal_model import model_for_temporal, model_review, source_allowed, MODEL
+from scripts.temporal_tracks import (
+    TRACKS, classify_source_track, evaluate_incremental_diff, plan_track_execution,
+)
 from scripts.providers import PROVIDERS
 from scripts.audit_providers import audit_provider, request_json
 from scripts.scan_sources import digest
 from scripts.time_policy import validate_temporal_snapshot
 
 
-def select_sources(value, candidates):
+def select_sources(value, candidates, max_sources=8):
     ids=[part.strip() for part in value.split(',')]
     allowed={c['source_metadata']['source_id'] for c in candidates}
-    if not 1<=len(ids)<=8 or len(ids)!=len(set(ids)) or any(sid not in allowed for sid in ids):
+    if not 1<=len(ids)<=max_sources or len(ids)!=len(set(ids)) or any(sid not in allowed for sid in ids):
         raise ValueError('select_one_to_eight_unique_existing_source_ids')
     return ids
 
 
-def run(output, source_ids, attachments=False, adapter_factory=model_for_temporal):
+def resolve_action_sources(
+    value,
+    candidates,
+    observations=None,
+    track=None,
+    max_sources=8,
+    include_refinement=False,
+    force_recheck=False,
+    as_of=None,
+):
+    """Resolve either explicit source_ids or a track-based incremental batch."""
+    token = (value or '').strip()
+    if token.startswith('track:') or token in ('auto', 'all_pending') or (track and token in ('', 'auto', 'track')):
+        target_track = token.split(':', 1)[1] if token.startswith('track:') else (track or 'auto')
+        if token == 'all_pending' and not track:
+            target_track = 'all'
+        plan = plan_track_execution(
+            candidates,
+            observations=observations,
+            track=target_track,
+            include_refinement=include_refinement,
+            force_recheck=force_recheck,
+            max_sources=max_sources,
+            as_of=as_of,
+        )
+        return plan['selected_source_ids'], plan
+
+    ids = select_sources(token, candidates, max_sources=max_sources)
+    selected_cands = [c for c in candidates if c['source_metadata']['source_id'] in ids]
+    decisions = [
+        evaluate_incremental_diff(
+            c,
+            observations=observations,
+            include_refinement=include_refinement,
+            force_recheck=force_recheck,
+        )
+        for c in selected_cands
+    ]
+    tracks_present = sorted({d['track'] for d in decisions})
+    plan = {
+        'track': track if track in TRACKS else (tracks_present[0] if len(tracks_present) == 1 else 'mixed'),
+        'total_in_track': len(selected_cands),
+        'run_candidate_count': sum(1 for d in decisions if d['should_run']),
+        'skip_candidate_count': sum(1 for d in decisions if not d['should_run']),
+        'selected_source_ids': ids,
+        'decisions': decisions,
+    }
+    return ids, plan
+
+
+def run(
+    output,
+    source_ids,
+    attachments=False,
+    adapter_factory=model_for_temporal,
+    track=None,
+    incremental_only=False,
+    include_refinement=False,
+    force_recheck=False,
+    max_sources=8,
+):
     output=Path(output).resolve()
     if not output.is_relative_to(ROOT/'work') or output.exists():raise ValueError('new_work_output_required')
     bundle=read(ROOT/'data/candidates/source-review.json')
-    ids=select_sources(source_ids,bundle['candidates'])
+    baseline=read(ROOT/'data/temporal-observations.json')
+    ids,track_plan=resolve_action_sources(
+        source_ids,
+        bundle['candidates'],
+        observations=baseline,
+        track=track,
+        max_sources=max_sources,
+        include_refinement=include_refinement,
+        force_recheck=force_recheck,
+    )
+    if incremental_only:
+        run_sids={d['source_id'] for d in track_plan['decisions'] if d['should_run']}
+        ids=[sid for sid in ids if sid in run_sids]
     config=read(ROOT/'data/scan-sources.json');profiles={p['id']:p for p in config['sources']}
     selected=[c for c in bundle['candidates'] if c['source_metadata']['source_id'] in ids]
     output.mkdir(parents=True)
@@ -40,6 +115,14 @@ def run(output, source_ids, attachments=False, adapter_factory=model_for_tempora
     report={'version':'temporal-action-1','observed_at':datetime.now(timezone.utc).isoformat(timespec='seconds'),
         'manual_only':True,'published':False,'human_approvals':0,'source_ids':ids,'model_mode':mode,
         'model_provider':provider,'max_source_requests':20,'max_inference_calls':4,
+        'schedule_track':track_plan['track'],
+        'incremental_diff':{
+            'total_evaluated':len(track_plan['decisions']),
+            'run_candidate_count':track_plan['run_candidate_count'],
+            'skip_candidate_count':track_plan['skip_candidate_count'],
+            'incremental_only':incremental_only,
+            'decisions':track_plan['decisions'],
+        },
         'provider_audit':None,'model_status':'off','model_reviews':[]}
     report['provider_metadata_requests']=0
     adapter=None
@@ -68,10 +151,13 @@ def run(output, source_ids, attachments=False, adapter_factory=model_for_tempora
         report['model_reviews'].append(row)
         save(output/'report.json',report)
 
-    state=replay(output/'rules',source_ids=ids,max_round_requests=20,on_document=on_document)
-    if attachments and state['http_requests']<20:
-        state=follow_attachments(output/'attachments',output/'rules/temporal-observations.json',ids,max_round_requests=20)
-    baseline=read(ROOT/'data/temporal-observations.json')
+    if ids:
+        state=replay(output/'rules',source_ids=ids,max_round_requests=20,on_document=on_document)
+        if attachments and state['http_requests']<20:
+            state=follow_attachments(output/'attachments',output/'rules/temporal-observations.json',ids,max_round_requests=20)
+    else:
+        state={'version':'temporal-replay-1','http_requests':0,'model_calls':0,'published':False,
+               'batches':[{'http_requests':0,'attempted_urls':[],'observed_at':report['observed_at']}],'records':{}}
     merged=deepcopy(state)
     merged['records']={**deepcopy(baseline['records']),**state['records']}
     merged['baseline']={'sha256':digest(baseline),'previous_round_http_requests':baseline['http_requests'],
@@ -91,6 +177,7 @@ def run(output, source_ids, attachments=False, adapter_factory=model_for_tempora
     if report['model_usage']['hash_only_bytes_sent']!=0:raise ValueError('restricted_source_leak')
     save(output/'report.json',report)
     summary=['# 時間重萃：手動待審結果','',f"來源HTTP：{state['http_requests']} / 20；模型推論：{report['model_usage']['calls']} / 4。",
+        f"排程軌道：{report['schedule_track']}；待執行／跳過未變動：{track_plan['run_candidate_count']} / {track_plan['skip_candidate_count']}。",
         f"模型準備：{report['model_status']}；未發布、人工核准0。",
         '本輪與舊200HTTP台帳分開；保留舊紀錄不是宣稱本輪全部重新掃描。','',
         '| 來源 | 模型處置 | 有證據的待審提案 |','|---|---|---|']
@@ -112,7 +199,18 @@ if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--output',type=Path,default=ROOT/'work/temporal-action')
     p.add_argument('--source-ids',default=os.environ.get('TEMPORAL_SOURCE_IDS','taipei-ai-tools,hsinchu-ai-tools'))
+    p.add_argument('--track',default=os.environ.get('TEMPORAL_TRACK') or None)
+    p.add_argument('--incremental-only',action='store_true')
+    p.add_argument('--include-refinement',action='store_true')
     p.add_argument('--attachments',action='store_true')
-    args=p.parse_args();report=run(args.output,args.source_ids,args.attachments)
+    args=p.parse_args()
+    report=run(
+        args.output,
+        args.source_ids,
+        args.attachments,
+        track=args.track,
+        incremental_only=args.incremental_only,
+        include_refinement=args.include_refinement,
+    )
     print(json.dumps({'source_http_requests':report['source_http_requests'],'model_calls':report['model_usage']['calls'],
-        'published':False},ensure_ascii=False))
+        'schedule_track':report['schedule_track'],'published':False},ensure_ascii=False))
