@@ -103,12 +103,13 @@ def run(
     max_sources=8,
     checkpoint_path=None,
     apply_verified_model_rules=True,
+    baseline_path=None,
 ):
     output = Path(output).resolve()
     if not output.is_relative_to(ROOT / "work") or output.exists():
         raise ValueError("new_work_output_required")
     bundle = read(ROOT / "data/candidates/source-review.json")
-    baseline = read(ROOT / "data/temporal-observations.json")
+    baseline = read(Path(baseline_path) if baseline_path else (ROOT / "data/temporal-observations.json"))
     ids, track_plan = resolve_action_sources(
         source_ids,
         bundle["candidates"],
@@ -281,11 +282,16 @@ def run(
     }
     merged = deepcopy(state)
     merged["records"] = {**deepcopy(baseline["records"]), **state["records"]}
-    merged["baseline"] = {
-        "sha256": digest(baseline),
-        "previous_round_http_requests": baseline["http_requests"],
-        "note": "Separate manual round; unchanged records retained with their own observed_at and revisions.",
-    }
+    if baseline_path and "baseline" in baseline and baseline.get("http_requests", 0) + state["http_requests"] <= 200:
+        merged["batches"] = deepcopy(baseline.get("batches", [])) + deepcopy(state["batches"])
+        merged["http_requests"] = sum(b["http_requests"] for b in merged["batches"])
+        merged["baseline"] = deepcopy(baseline["baseline"])
+    else:
+        merged["baseline"] = {
+            "sha256": digest(baseline),
+            "previous_round_http_requests": baseline["http_requests"],
+            "note": "Separate manual round; unchanged records retained with their own observed_at and revisions.",
+        }
     errors = validate_temporal_snapshot(bundle, merged)
     if errors:
         raise ValueError("invalid_temporal_proposal")
@@ -353,6 +359,7 @@ if __name__ == "__main__":
     p.add_argument("--attachments", action="store_true")
     p.add_argument("--max-sources", type=int, default=8)
     p.add_argument("--checkpoint", type=Path, default=None)
+    p.add_argument("--baseline", type=Path, default=None)
     args = p.parse_args()
     report = run(
         args.output,
@@ -363,6 +370,7 @@ if __name__ == "__main__":
         include_refinement=args.include_refinement,
         max_sources=args.max_sources,
         checkpoint_path=args.checkpoint,
+        baseline_path=args.baseline,
     )
     print(
         json.dumps(
