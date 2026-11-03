@@ -183,7 +183,8 @@ def extract_policy(candidate, blocks, profile, revision, observed):
     return policy
 
 
-def replay(output, previous=None, transport=node_get, source_ids=None, retry_unclassified=False, recheck=False):
+def replay(output, previous=None, transport=node_get, source_ids=None, retry_unclassified=False, recheck=False,
+           max_round_requests=ROUND_REQUEST_LIMIT, on_document=None):
     """One micro-batch <=8 URLs/20 HTTP/180 seconds; whole round <=200 HTTP.
 
     Resume artifacts contain no original text. Previous attempts (including
@@ -196,7 +197,9 @@ def replay(output, previous=None, transport=node_get, source_ids=None, retry_unc
     config=read(ROOT/'data/scan-sources.json')
     profiles={p['id']:p for p in config['sources']}
     state=read(previous) if previous else {'version':VERSION,'http_requests':0,'model_calls':0,'published':False,'batches':[],'records':{}}
-    if state['version']!=VERSION or state['model_calls']!=0 or state['published'] or state['http_requests']>=ROUND_REQUEST_LIMIT:
+    if not 1<=max_round_requests<=ROUND_REQUEST_LIMIT:
+        raise ValueError('invalid_request_limit')
+    if state['version']!=VERSION or state['model_calls']!=0 or state['published'] or state['http_requests']>=max_round_requests:
         raise ValueError('invalid_round_state_or_exhausted_budget')
     audit={r['url']:r for r in read(ROOT/'data/source-expansion/original-source-verification.json')['records']}
     urls={}
@@ -215,7 +218,7 @@ def replay(output, previous=None, transport=node_get, source_ids=None, retry_unc
         state['http_requests']+=1
         save(output/'temporal-observations.json',state)
         return transport(url,headers,limit)
-    fetcher=Fetcher({'allowed_hosts':config['allowed_hosts'],'max_requests':min(20,ROUND_REQUEST_LIMIT-state['http_requests']),
+    fetcher=Fetcher({'allowed_hosts':config['allowed_hosts'],'max_requests':min(20,max_round_requests-state['http_requests']),
         'max_run_seconds':180,'minimum_host_interval_seconds':3},transport=request)
     for url, group in list(urls.items())[:8]:
         batch['attempted_urls'].append(url)
@@ -246,6 +249,8 @@ def replay(output, previous=None, transport=node_get, source_ids=None, retry_unc
                     'parsed_range':list(parse_date_range_from_text(b['text'])),
                     'parsed_date':list(parse_roc_or_iso_date_from_text(b['text'])),
                 } for b in timing_contexts(blocks) if TIMING.search(b['text'])][:30]
+                if on_document:
+                    on_document(c,blocks,revision,batch['observed_at'])
         except (ScanError,ValueError) as error:
             for record in records.values():
                 record.update(status='blocked',reason=str(error))
@@ -257,7 +262,7 @@ def replay(output, previous=None, transport=node_get, source_ids=None, retry_unc
     return state
 
 
-def follow_attachments(output, previous, source_ids, transport=node_get):
+def follow_attachments(output, previous, source_ids, transport=node_get, max_round_requests=ROUND_REQUEST_LIMIT):
     """Re-read each parent, then at most one directly linked same-host PDF.
 
     Select announcement/policy by link role and label, excluding forms. Do not
@@ -267,7 +272,9 @@ def follow_attachments(output, previous, source_ids, transport=node_get):
     if not output.is_relative_to(ROOT/'work') or output.exists() or not 1<=len(source_ids)<=8:
         raise ValueError('new_work_output_and_one_to_eight_sources_required')
     state=read(previous);config=read(ROOT/'data/scan-sources.json')
-    if state['version']!=VERSION or state['model_calls'] or state['published'] or state['http_requests']>=ROUND_REQUEST_LIMIT:
+    if not 1<=max_round_requests<=ROUND_REQUEST_LIMIT:
+        raise ValueError('invalid_request_limit')
+    if state['version']!=VERSION or state['model_calls'] or state['published'] or state['http_requests']>=max_round_requests:
         raise ValueError('invalid_round_or_exhausted_budget')
     candidates=read(ROOT/'data/candidates/source-review.json')['candidates']
     profiles={p['id']:p for p in config['sources']}
@@ -278,7 +285,7 @@ def follow_attachments(output, previous, source_ids, transport=node_get):
         state['http_requests']+=1;batch['http_requests']+=1
         save(output/'temporal-observations.json',state)
         return transport(url,headers,limit)
-    fetcher=Fetcher({'allowed_hosts':config['allowed_hosts'],'max_requests':min(20,ROUND_REQUEST_LIMIT-state['http_requests']),
+    fetcher=Fetcher({'allowed_hosts':config['allowed_hosts'],'max_requests':min(20,max_round_requests-state['http_requests']),
         'max_run_seconds':180,'minimum_host_interval_seconds':3},transport=request)
     for sid in source_ids:
         group=[c for c in candidates if c['source_metadata']['source_id']==sid]

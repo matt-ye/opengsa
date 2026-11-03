@@ -7,7 +7,15 @@ on:
         description: 'scan, provider audit, or offline named-candidate review workspace'
         type: choice
         default: scan
-        options: [scan, provider_audit, review_workspace, source_chains]
+        options: [scan, provider_audit, review_workspace, source_chains, temporal_replay]
+      temporal_source_ids:
+        description: 'Temporal replay only: 1-8 existing source IDs, comma-separated'
+        type: string
+        default: 'taipei-ai-tools,hsinchu-ai-tools'
+      temporal_attachments:
+        description: 'Follow one directly linked same-host announcement PDF; source GET budget still 20'
+        type: boolean
+        default: false
       audit_scope:
         description: 'Provider audit scope (avoids repeating successful probes)'
         type: choice
@@ -44,6 +52,52 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  temporal-replay:
+    if: github.event_name == 'workflow_dispatch' && inputs.operation == 'temporal_replay' && github.actor == github.repository_owner && startsWith(github.ref, 'refs/heads/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      - name: Install optional manual model dependencies (no secrets)
+        run: python -m pip install -r requirements-model.txt
+      - name: Manual temporal extraction and independent evidence checks
+        env:
+          TEMPORAL_SOURCE_IDS: ${{ inputs.temporal_source_ids }}
+          FOLLOW_ATTACHMENTS: ${{ inputs.temporal_attachments }}
+          OPENGSA_MODEL_MODE: ${{ inputs.model_mode || 'off' }}
+          OPENGSA_MODEL_PROVIDER: ${{ inputs.model_provider || 'groq' }}
+          OPENGSA_MODEL_BASE_URL: ${{ vars.OPENGSA_MODEL_BASE_URL }}
+          OPENGSA_MODEL_NAME: ${{ vars.OPENGSA_MODEL_NAME }}
+          OPENGSA_SILICONFLOW_REGION: ${{ vars.OPENGSA_SILICONFLOW_REGION }}
+          OPENGSA_SELECTED_API_KEY: ${{ secrets[fromJSON('{"groq":"OPENGSA_MODEL_API_KEY","gemini":"OPENGSA_GEMINI_API_KEY","nvidia":"OPENGSA_NVIDIA_API_KEY","sambanova":"OPENGSA_SAMBANOVA_API_KEY","cerebras":"OPENGSA_CEREBRAS_API_KEY","openrouter":"OPENGSA_OPENROUTER_API_KEY","siliconflow":"OPENGSA_SILICONFLOW_API_KEY","mistral":"OPENGSA_MISTRAL_API_KEY"}')[inputs.model_provider || 'groq']] }}
+        shell: bash
+        run: |
+          args=()
+          if [ "$FOLLOW_ATTACHMENTS" = "true" ]; then args+=(--attachments); fi
+          python scripts/run_temporal_action.py "${args[@]}"
+      - name: Temporal summary
+        if: always()
+        shell: bash
+        run: |
+          if [ -f work/temporal-action/summary.md ]; then
+            cat work/temporal-action/summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        if: always()
+        with:
+          name: temporal-review-${{ github.run_id }}
+          path: work/temporal-action/
+          retention-days: 14
+          if-no-files-found: error
+
   scan:
     if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.operation == 'scan')
     runs-on: ubuntu-latest
