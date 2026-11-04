@@ -1,5 +1,7 @@
 # 公開來源掃描與候選覆核
 
+2026-11-01全來源第一輪另見[擴展結果與重現方式](SOURCE-EXPANSION-RUN.md)：367原始URL均有處置，56新子來源、22份待審快照，634HTTP／模型0。原19筆正式候選池與16個排程profile不變，新profile停用；擴展資料在`data/source-expansion/`，不自動進公開網站。新增`expand_sources.py`有界續跑與`propose_radar_update.py`離線資料patch／三頁預覽；scan完成後保留14天提案artifact，權限仍唯讀，不自動開、合併或發布資料PR。下列19筆數字為既有基線。
+
 2026-11-01最新：19筆以extractor-1.5.0完整重萃，12筆自動檢核通過、7筆有缺漏，仍全部pending；新增通用指令、`--full-replay`及隔離外部驗證。來源profile仍16筆／13啟用，未增加正式排程目標。[最新結果與限制](GENERALIZABLE-EXTRACTION.md)優先於下列歷史階段描述。
 
 > 後續整合更新：本批已接上統一文件準備、Token預算分段及局部規則重萃，現行能力／未完成項目與實際驗收見[文件準備整合](PREPARED-EXTRACTION.md)。舊階段提案或測試數量不代表最新整合狀態。

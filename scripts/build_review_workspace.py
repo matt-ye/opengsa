@@ -107,7 +107,7 @@ def patch_text(before,after,path):
 
 
 def build_workspace(bundle,pilot,config,output,ledger=None,decisions=None,contexts=None,context_status=None,
-                    export_draft=False,as_of=None,http_requests=0):
+                    export_draft=False,as_of=None,http_requests=0,chain_data=None):
     output=Path(output).resolve()
     if output.is_relative_to(ROOT/"data"):raise ValueError("Review artifacts cannot be written into formal data")
     if output.exists() and any(output.iterdir()):raise ValueError("Use a fresh empty output directory; existing review artifacts are preserved")
@@ -149,7 +149,7 @@ def build_workspace(bundle,pilot,config,output,ledger=None,decisions=None,contex
     # Last verified snapshot controls field visibility; an offline workspace's
     # needs_context status is not a new claim that the original source omitted it.
     chain_path=ROOT/'data/source-chains.json'
-    chain=timeline_metadata(json.loads(chain_path.read_text(encoding='utf-8')),bundle) if chain_path.exists() else None
+    chain=chain_data if chain_data is not None else timeline_metadata(json.loads(chain_path.read_text(encoding='utf-8')),bundle) if chain_path.exists() else None
     export(output/"candidate-preview.html",pilot_data=preview,review_preview=True,radar_data=radar_metadata(bundle),chain_data=chain)
     payload={"as_of":working["as_of"],"rows":rows,"manifest":manifest,"document_groups":document_groups}
     template=(ROOT/"docs/design/review-workspace.html").read_text(encoding="utf-8")

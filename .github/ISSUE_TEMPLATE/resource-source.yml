@@ -1,0 +1,53 @@
+name: 提供獎助來源／新資源
+description: 推薦尚未收錄的獎學金、補助、獎項或研究生資源
+title: "[資源推薦] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        歡迎提供尚未收錄或新發現的資源！提交後由維護者查核，不會直接發布或自動加入爬取排程。
+        此 Issue 會公開顯示，請只提供可公開分享的連結；不要貼登入憑證、私人文件、學號、所得或個人申訴。
+        不確定資格、年度或期限時可以留空，不必代為猜測。
+  - type: input
+    id: resource-name
+    attributes:
+      label: 資源名稱
+      placeholder: 獎學金、補助、獎項或資源入口名稱
+    validations:
+      required: true
+  - type: input
+    id: source-url
+    attributes:
+      label: 公開來源網址
+      description: 優先提供主辦單位的公告或辦法；轉知頁、索引與來源入口也可以，請在下方說明。
+      placeholder: https://
+    validations:
+      required: true
+  - type: dropdown
+    id: resource-category
+    attributes:
+      label: 資源類型
+      options:
+        - 獎學金／研究獎助
+        - 研究成果獎／學術獎項
+        - 國際會議／出國交流補助
+        - 境外研究／研修／實習
+        - 學費／生活／急難／住宿支持
+        - RA／TA 聘任或權益資訊
+        - 研究工具／AI／算力／學生優惠
+        - 公告索引／其他／不確定
+  - type: input
+    id: audience
+    attributes:
+      label: 大致適用對象（選填）
+      description: 例如碩士、博士、國際生、特定學校或院系；請不要填寫自己的個資。
+  - type: input
+    id: cycle
+    attributes:
+      label: 年度／申請時間（選填）
+      description: 僅填來源明確載明的年度或日期，不確定可留空。
+  - type: textarea
+    id: notes
+    attributes:
+      label: 補充說明（選填）
+      description: 例如主辦或轉知單位、辦法附件連結、是否需要登入、為什麼值得收錄。

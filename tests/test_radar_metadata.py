@@ -3,7 +3,7 @@ from copy import deepcopy
 import json
 from pathlib import Path
 import unittest
-from scripts.radar_metadata import radar_metadata
+from scripts.radar_metadata import radar_metadata,programme_source
 from scripts.build_review_workspace import candidate_preview_data
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -11,13 +11,25 @@ read=lambda name:json.loads((ROOT/'data'/name).read_text(encoding='utf-8'))
 
 
 class RadarMetadataTests(unittest.TestCase):
-    def test_all_19_records_keep_exact_urls_and_snapshot_without_approval(self):
+    def test_source_classification_uses_named_programme_not_forwarding_host(self):
+        def source(title,orgs={}):return programme_source({'title':title},orgs)
+        self.assertEqual(source('臺大115學年度國科會博士生獎學金')['type'],'government')
+        self.assertEqual(source('元大文教基金會獎學金－國立中山大學轉知')['type'],'foundation')
+        self.assertEqual(source('Google PhD fellowship')['type'],'enterprise')
+        self.assertEqual(source('SYNTH 未具名獎助')['type'],'unknown')
+        self.assertEqual(source('教育部與基金會共同補助')['type'],'unknown')
+        self.assertEqual(source('非由教育部提供的SYNTH獎助')['type'],'unknown')
+        self.assertEqual(source('中央研究院博士候選人培育計畫')['type'],'research_institute')
+        known=source('SYNTH 計畫',{'funder':'國家科學及技術委員會'})
+        self.assertEqual(known['basis'],'evidenced_funder')
+
+    def test_all_records_keep_exact_urls_and_snapshot_without_approval(self):
         bundle=read('candidates/source-review.json');before=deepcopy(bundle)
         metadata=radar_metadata(bundle)
         preview=candidate_preview_data(bundle,read('pilot.json'),read('scan-sources.json'))
         sources={s['id']:s for s in preview['sources']}
-        self.assertEqual(len(metadata['records']),19)
-        self.assertEqual(len(preview['opportunities']),19)
+        self.assertEqual(set(metadata['records']),{c['candidate_id'] for c in bundle['candidates']})
+        self.assertEqual(len(preview['opportunities']),len(bundle['candidates']))
         for item,cand in zip(preview['opportunities'],bundle['candidates']):
             self.assertEqual(item['title'],cand['title'])
             record=metadata['records'][item['id']]
@@ -30,10 +42,10 @@ class RadarMetadataTests(unittest.TestCase):
 
     def test_source_linked_roles_and_verified_multilayer_times_are_retained(self):
         records=radar_metadata(read('candidates/source-review.json'))['records']
-        self.assertEqual(sum('receiver' in r['organizations'] for r in records.values()),16)
-        self.assertEqual(sum(bool(r['time_steps']) for r in records.values()),8)
-        self.assertEqual(sum(r['known']['audience'] for r in records.values()),19)
-        self.assertEqual(sum(r['audience_kind']=='program_descriptor' for r in records.values()),2)
+        self.assertGreaterEqual(sum('receiver' in r['organizations'] for r in records.values()),16)
+        self.assertGreaterEqual(sum(bool(r['time_steps']) for r in records.values()),8)
+        self.assertGreaterEqual(sum(r['known']['audience'] for r in records.values()),19)
+        self.assertGreaterEqual(sum(r['audience_kind']=='program_descriptor' for r in records.values()),2)
         national=next(r for cid,r in records.items() if 'nstc-conference-rule' in cid)
         self.assertFalse(national['known']['deadline'])
         self.assertNotIn('臺大',national['organizations']['receiver'])
@@ -61,6 +73,16 @@ class RadarMetadataTests(unittest.TestCase):
         self.assertEqual(unsafe['url'],candidate['source_metadata']['url'])
         candidate=deepcopy(bundle['candidates'][0]);candidate['field_evidence']=[]
         self.assertFalse(any(record(candidate)['known'].values()))
+
+    def test_own_document_timeline_requires_the_same_url_and_revision(self):
+        from scripts.source_chains import timeline_metadata
+        bundle=read('candidates/source-review.json');chain=read('source-chains.json')
+        c=next(c for c in bundle['candidates'] if c['program_key'].startswith('discovery-') and any(
+            d['url']==c['source_metadata']['url'] and d.get('revision_id')==c['source_metadata']['revision_id'] and d['events'] for d in chain['documents']))
+        contexts=timeline_metadata(chain,bundle)['records'][c['candidate_id']]['contexts']
+        self.assertTrue(any(v['events'] or v['baselines'] for v in contexts))
+        changed=deepcopy(bundle);next(row for row in changed['candidates'] if row['candidate_id']==c['candidate_id'])['source_metadata']['revision_id']='0'*64
+        self.assertFalse(timeline_metadata(chain,changed)['records'][c['candidate_id']]['contexts'])
 
 
 if __name__=='__main__':unittest.main()

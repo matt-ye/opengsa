@@ -13,7 +13,46 @@
 
 ## 目前狀態
 
-PR #28、#29已合併且GitHub Pages部署成功。本分支為PR #31：來源資訊鏈與多層時間軸第一階段，尚未合併；下列新增功能須PR31部署後才會出現在公開頁。另完成開源資助與專案補助研究（包含 OpenAI Codex for OSS 500 字元投件模板、foropensource.com 矩陣、g0v 公民科技基金與安全政策落實）：[開源資助與OpenAI策略](docs/OPEN-SOURCE-GRANTS-AND-OPENAI-STRATEGY.md) · [安全政策](SECURITY.md)。
+2026-11-04 全庫四大批次來源萃取與時程政策整併（PR #50～#53）：[全庫萃取管線說明](docs/FULL-LIBRARY-EXTRACTION-PLAN.md)。納入四大批次（Batch 1: K-12 公部門與助學 25 方案、Batch 2: 學生福利與特惠 28 方案、Batch 3: 企業、基金會與學會獎助 85 方案、Batch 4: AI 工具 2 方案 + 既有 64 方案）。全庫 **204 筆候選方案與 204 筆時程觀測政策達成 1-to-1 精確覆蓋**，**undetermined = 0 筆（覆蓋率 100%）**。三軌排程路由（週二五公部門、週一四企業基金會、週三六福利與AI工具）、三層增量比對閘門與動態備援池上線；正式 pilot 與人工審核欄位未改，全數標註待審。
+
+2026-11-04 多層來源資訊鏈（Source Chains）全庫架構整合：[來源資訊鏈地圖](docs/source-chains/source-chain-map.html) · [Obsidian Canvas](docs/source-chains/source-chain-map.canvas)。全庫收錄跨教育階段與民間資助之深度調研報告：
+- [K-12 獎助全景與五層法源資訊鏈](docs/K12-SCHOLARSHIP-LANDSCAPE-AND-SOURCE-CHAINS.md)：梳理中央母法、部會作業要點、地方委辦平台、學校初審與憑證表單。
+- [學生身分軟硬體、AI與學習資源優惠全景](docs/STUDENT-SOFTWARE-HARDWARE-AND-AI-PERKS.md)：收錄六大福利支柱、6 種查驗途徑（SheerID/UNiDAYS/.edu.tw/GitHub Pack）與續期週期。
+- [企業、基金會與學會獎助全景與雙軌申辦鏈](docs/ENTERPRISE-SCHOLARSHIP-LANDSCAPE-AND-SOURCE-CHAINS.md)：分析 85 方案雙軌申辦（大學生輔組統一造冊薦送 vs 官方入口線上直申）、資格防偽與排他條款。
+- [UI/UX 導覽教學與易用性升級調研](docs/UI-UX-ONBOARDING-AND-SKILLS-STUDY.md) 及 [開源資助與生態系贊助策略](docs/OPEN-SOURCE-GRANTS-AND-OPENAI-STRATEGY.md)。
+
+2026-11-03手動Actions時間萃取支線：[操作與邊界](docs/ACTIONS-TEMPORAL-EXTRACTION.md)。既有workflow新增`temporal_replay`，可用GitHub Secrets對允許來源執行小批時間提案／盤查，最多20源站HTTP／4推論；受限來源維持規則模式。輸出待審JSON、模型報告及離線預覽artifact，不自動回寫repo或網站。新PR接PR44、不自行合併／部署，實測結果以該文件後續紀錄為準。
+
+2026-11-03時間重萃支線：[本輪方法、結果與限制](docs/TEMPORAL-REEXTRACTION.md)及[64項逐筆甘特形式檢核](docs/audits/temporal-reextraction-2026-11-03.md)。累計200HTTP、模型0；最新60項重萃完成、4項保留原因，32項已可分型、32項待補（不是正確率或可申請數）。補讀文學院8份公告PDF；學生日期、單位時點、相對／週期規則及跨年度待核分開呈現，不猜年份或自動宣稱受理中。候選／pilot／真人台帳未改，時間觀察獨立存JSON；附件重萃目前為手動CLI。本PR接PR43，不自行合併／部署；下方「未重萃」屬上一階段紀錄。
+
+2026-11-03實作支線：[時間投影契約v1](docs/TIME-POLICY-PROJECTION.md)讓既有帶證據的活動相對、常態月日、行政程序與條件期限分型顯示；機構規則不再依賴學生截止閘門。甘特列、卡片、第二三頁及文字表共用投影；來源／revision不符不揭露。候選、期限與受理核定未改，原64筆缺口未重萃。新PR接續PR42，不自動合併或部署；導覽圓形?入口稍後做，mattye.dev部署不在本輪範圍。
+
+2026-11-03下一輪規劃：[時間語意、UI／UX、導覽與SEO／AEO路線圖](docs/TEMPORAL-UX-AND-DISCOVERY-ROADMAP.md)對照未合併PR30及已上架PR31–41，附[64筆離線時間覆蓋盤點](docs/audits/temporal-coverage-2026-11-03.json)。建議先分清固定期、常態、事件相對、單位窗口與待補原因，再做導覽與分階段索引。20筆有可畫日期／節點／參考、7筆有可連接起訖，皆非萃取正確率。本PR僅規劃，不改網站、候選、Schema、noindex、掃描或模型設定，不自動合併／部署。
+
+2026-11-02發布：使用者已核可依序合併PR40、41並沿既有GitHub Pages上架；PR40已合併，PR41已轉main。第四頁改為「重點總覽／聘任與給付／法規與保障／求助與自測」，補五類聘任查核路徑、分清給付性質的比較表與三份GitHub延伸文件；跨主題連結會顯示目標，研討會入口會展開，直接連入與重新整理保留定位。實作與逐項連結紀錄見[權益頁更新](docs/RIGHTS-PAGE-UPDATE.md)；實際部署結果以[Pages Actions](https://github.com/matt-ye/opengsa/actions/workflows/pages.yml)及公開站為準。候選及真人核准台帳不變，下方較早「待合併／不部署」為歷史階段紀錄。
+
+頁首參與入口（PR40）：四個分頁右側新增「提供回饋」與「提供獎助來源」按鈕；後者使用獨立GitHub Issue表單，必填名稱與公開網址，其餘對象／年度可留空。PR40已進預設分支，表單可供GitHub登入者使用；回報經人工查核，不自動建卡或啟用掃描。第四頁表格更新已獲後續核可，納入PR41。
+
+2026-11-02已部署：[64筆雷達可用性改善](docs/RADAR-DISCOVERY-IMPROVEMENTS.md)補工具／AI／算力快捷入口，將文件／方案切換收進進階。方案來源依單位文字／方案名稱分類，56筆可辨識、8筆待查，並顯示判斷依據；不拿轉知學校當出資者。限量19HTTP／模型0重萃7個來源，修復跨年度及結束時刻，新增兩個當年「公告年份推估」淺色參考區間；不當官方起訖或受理核定。候選仍64筆pending；PR39已合併，Pages部署成功。
+
+2026-11-02使用者已核可整合PR32、37、38及64筆雷達摘要，依序合併後沿用既有Pages流程更新公開預覽；實際部署成功以[Actions](https://github.com/matt-ye/opengsa/actions/workflows/pages.yml)為準。這是來源摘要公開，所有候選仍pending，不代填逐筆完整資料核准。下方「公開19筆／不合併／不部署」是此次核可前的階段紀錄；正式pilot10筆、真人台帳、模型0、新增來源停用與PR34不動的界線維持。下一輪優先[簡化呈現方式、補快捷入口與改善萃取覆蓋](docs/VERIFIED-SOURCE-CARDS.md#下一輪優先順序)。
+
+2026-11-02建卡資料支線：原始來源盤查完成後，另以PR37為基礎匯入**64筆待審摘要／58組暫定方案**（本輪61筆＋保留3筆）。14筆自動檢核通過、50筆有缺漏，全部pending；不是64個已核定可申請獎學金。來源與資訊鏈版本防護、篩選同步及合成資格試算見[本批建卡說明](docs/VERIFIED-SOURCE-CARDS.md)；[完整資訊鏈樹狀圖](docs/source-chains/source-chain-map.html)已更新。公開站仍為19筆，須經PR審查、合併與部署才會更新；正式pilot10筆與真人台帳不變。新增來源排程維持停用，模型0，不自動發布。
+
+2026-11-02：[原始來源逐項檢核](docs/ORIGINAL-SOURCE-VERIFICATION.md)已覆蓋485個原始URL；本輪367個目標中256個可讀、111個仍有存取／渲染／格式／網址限制，未冒充正文通過。57個來源可進待審建卡，累計912HTTP、模型0。[逐項查詢](docs/source-expansion/original-source-verification.html)與JSON已保存；後續建卡另開資料PR，公開19筆、pilot及真人台帳不因本次來源PR更新。
+
+2026-11-01完成全來源擴展的第一輪與集中修補：**367個範圍內原始URL均有處置，另讀取／處置56個新發現子來源**；全程634次HTTP、模型0。入口、辦法及受阻頁面不硬轉卡片。本批22筆待審候選（10筆自動檢核通過、12筆通過自動檢核但有缺漏）；與保留的5份舊文件合成**27筆／21組暫定方案的隔離預覽**。不是新增27個獎學金，也不是全部資訊鏈已閉合。公開站仍維持19筆，正式pilot10筆draft與真人核准台帳未改。
+
+**[本輪結果、待辦與重現方式](docs/SOURCE-EXPANSION-RUN.md)** · [資訊鏈樹狀圖HTML](docs/source-expansion/results.html) · [全部來源處置JSON](data/source-expansion/run-2026-11-01.json) · [原始完整來源目錄](docs/source-expansion/catalog.html)
+
+來源JSON與網頁圖維持主流程。Obsidian已棄用；PR34依使用者要求保留原樣。本輪原先疊於PR32，現依上方最新核可整合PR32、37、38；後續掃描仍不自動合併或發布。新增排程產物為雷達資料patch與離線預覽artifact，Actions權限仍唯讀、不代開或合併資料PR。
+
+<details>
+<summary>來源資訊鏈第一批基線（PR32，保留當時數量）</summary>
+
+PR #28、#29、#31已合併，PR31的A版工具列與資訊鏈時間軸已部署至GitHub Pages。當前工作為資訊鏈排查第一批，獨立待審，不自動改寫公開期限。
+
+新增[第一批排查與資料結構](docs/SOURCE-CHAIN-BATCH-01.md)、[離線樹狀圖HTML](docs/source-chains/source-chain-map.html)及[Obsidian Canvas](docs/source-chains/source-chain-map.canvas)。總索引涵蓋13方案／19候選；本批重新讀取3方案的10個指定來源，規則仍pending。
 
 - 保留19筆雷達候選／17份原文件／13組方案；正式pilot仍10筆draft，人工台帳仍空。
 - 新增共用JSON文件、關係與17個有來源hash／定位的日期事件；6個地方公告完成程式萃取，三個單位已有完整區間。不是全部19筆已完成資訊鏈。
@@ -21,6 +60,8 @@ PR #28、#29已合併且GitHub Pages部署成功。本分支為PR #31：來源�
 - 手動Actions新增`source_chains`，零模型、無Secrets、有限公開GET；只產生待審artifact，不自動回寫網站。既有週二／五掃描與模型off不變。
 
 [規劃、操作、實作及限制](docs/SOURCE-CHAINS-AND-TIMELINE.md) · [19筆完整探索](docs/SOURCE-CHAIN-RESEARCH-2026-11-01.md) · [驗收紀錄](data/audits/source-chains-2026-11-01.json)
+
+</details>
 
 **[開啟公開預覽](https://matt-ye.github.io/opengsa/)** · [提供回饋](https://github.com/matt-ye/opengsa/issues/new?template=preview-feedback.yml)
 
@@ -122,12 +163,20 @@ flowchart TD
 | 文件 | 用途 |
 |---|---|
 | [目前計畫](docs/PLAN.md) | 已核可範圍、階段、下一步與驗收 |
+| [全庫來源萃取與時程政策規劃](docs/FULL-LIBRARY-EXTRACTION-PLAN.md) | 全庫 204 方案四大批次萃取架構、三軌排程、超時防護與維運流程 |
+| [K-12 獎助全景與來源資訊鏈](docs/K12-SCHOLARSHIP-LANDSCAPE-AND-SOURCE-CHAINS.md) | 臺灣幼兒至高中職 25 方案五層法源、委辦大學平台與初審代收鏈路 |
+| [學生身分福利與特惠全景調研](docs/STUDENT-SOFTWARE-HARDWARE-AND-AI-PERKS.md) | 軟硬體、雲端算力、AI 帳號等 28 項福利與 6 種學生身分驗證途徑 |
+| [企業與基金會獎助全景與申辦鏈](docs/ENTERPRISE-SCHOLARSHIP-LANDSCAPE-AND-SOURCE-CHAINS.md) | 85 筆民間與企業獎助雙軌申辦鏈（生輔組薦送 vs 線上直申）與防偽查核 |
+| [UI/UX 易用性升級與導覽研究](docs/UI-UX-ONBOARDING-AND-SKILLS-STUDY.md) | 網站導覽教學、可近性改進與參考開源 Skill 深度研究 |
+| [開源資助與生態系贊助策略](docs/OPEN-SOURCE-GRANTS-AND-OPENAI-STRATEGY.md) | 開源專案資助申請策略、OpenAI Grants 與長效營運規劃 |
+| [研究生與學生專用免費 AI API 全攻略](docs/FREE-AI-API-KEYS-GUIDE.md) | 10 大主流 LLM API（Groq, Gemini, Cerebras, OpenRouter 等）免費額度、申請資格、避坑與使用指南 |
+| [免費學術文獻檢索 API 與自動化管線報告](docs/FREE-LITERATURE-SEARCH-APIS-RESEARCH.md) | PubMed, Europe PMC, OpenAlex, Semantic Scholar 等 8 大文獻 API 申請與聯邦檢索架構 |
 | [候選審查工作台](docs/REVIEW-WORKSPACE.md) | 未發布預覽、人工處置、重新核驗與資料 PR 草稿流程 |
 | [公開預覽與部署](docs/DEPLOYMENT.md) | GitHub Pages發布、公開回饋、成品邊界、測試與回復 |
 | [長期維運與訂閱提案](docs/OPERATIONS-PLAN.md) | GitHub／D1分工、來源擷取、Agent檢核、成本、RSS與ICS；D1與訂閱尚未啟用 |
 | [首批來源及Actions設計](docs/INGESTION-POC.md) | 管線設計與已落地之結構化萃取、獨立檢核及差異覆核模組對照 |
-| [開源資助與OpenAI策略](docs/OPEN-SOURCE-GRANTS-AND-OPENAI-STRATEGY.md) | OpenAI Codex for OSS、foropensource.com 與公民科技基金申請策略、500字元精煉模板與Repo衛生升級 |
-| [安全政策](SECURITY.md) | 支援版本、零個資原則、受限來源零外送防護與漏洞通報處理 SLA |
+| [學生軟硬體與AI優惠調研](docs/STUDENT-SOFTWARE-HARDWARE-AND-AI-PERKS.md) | 學生身分可申請之軟體、硬體、AI、線上課程、文獻庫與生活優惠全景、驗證機制與避坑指南 |
+| [學生優惠基準台帳資料](data/student-perks-baseline.json) | 28 項學生身分軟硬體與 AI 優惠結構化 JSON 資料，供後續知識庫與工具推薦打底 |
 | [API查核與模型台帳](docs/API-AUDIT.md) | Secret對應、模型目錄、額度／效期、手動實測與成本限制 |
 | [自動來源掃描](docs/SCANNER.md) | 已實作的來源台帳試點、低頻排程、結構化候選萃取、獨立檢核與故障保留 |
 | [專案縮圖原始設計](docs/design/social-preview.html) | 已核可圖稿的可修改HTML；GitHub Social preview由使用者自行上傳 |

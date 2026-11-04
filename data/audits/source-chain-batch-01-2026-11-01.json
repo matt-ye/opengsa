@@ -1,0 +1,96 @@
+{
+  "as_of": "2026-11-01",
+  "pr31_merge_commit": "61d4916f2a5142bcd65fcdd8507b37cfdb6d1eaf",
+  "pr31_pages_run": "https://github.com/matt-ye/opengsa/actions/runs/41294531610",
+  "batch": "batch-01",
+  "scan_runs": [
+    {
+      "http_requests": 17,
+      "source_profiles": 10,
+      "fresh_successes": 9,
+      "reports": [
+        "PDF required_marker_missing due whitespace; retained as failure"
+      ]
+    },
+    {
+      "http_requests": 16,
+      "source_profiles": 10,
+      "fresh_successes": 10,
+      "reports": []
+    }
+  ],
+  "controlled_scanner_http_total": 33,
+  "search_and_manual_browsing_included": false,
+  "final_scan_summary": {
+    "requests": 16,
+    "robots_checks": {
+      "www.faos.org.tw": {
+        "status": 404,
+        "sha256": "55f7d9e99b8e2d4e0e193b2f0275501e6d9c1ebd29cadbea6a0da48a8587e3e0"
+      },
+      "sec.ntu.edu.tw": {
+        "status": 404,
+        "sha256": "eab09f82e87641fb3e8c72b6c9e061f11684c7d8345925aad1fd7de4c05f87ab"
+      },
+      "law.nstc.gov.tw": {
+        "status": 404,
+        "sha256": "eab09f82e87641fb3e8c72b6c9e061f11684c7d8345925aad1fd7de4c05f87ab"
+      },
+      "www.aca.ntu.edu.tw": {
+        "status": 404,
+        "sha256": "eab09f82e87641fb3e8c72b6c9e061f11684c7d8345925aad1fd7de4c05f87ab"
+      },
+      "www.nstc.gov.tw": {
+        "status": 404,
+        "sha256": "b9d456666f3bc59d91886d350fc9f9abe53e20dcf5a2555081e83889b2f82c3f"
+      },
+      "gice.ntu.edu.tw": {
+        "status": 404,
+        "sha256": "b4fd01a8dda05066cc6290bee911826a17ced39347cfb16299665856eced5895"
+      }
+    },
+    "reports": []
+  },
+  "graph": {
+    "programs": 13,
+    "candidates": 19,
+    "documents": 58,
+    "relations": 43,
+    "batch_programs": 3,
+    "rules": 10,
+    "document_statuses": {
+      "read": 26,
+      "snapshot": 13,
+      "unread": 19
+    },
+    "canvas_nodes": 72,
+    "canvas_edges": 103
+  },
+  "model_calls": 0,
+  "human_approvals": 0,
+  "official_data_modified": false,
+  "candidate_pool_modified": false,
+  "canonical_timeline_snapshot_modified": false,
+  "rules_review_status": "all_pending",
+  "python_tests": 169,
+  "node_tests": 46,
+  "browser": {
+    "default_batch": 3,
+    "all_inventory": 13,
+    "backlog": 10,
+    "responsive_widths": [
+      1059,
+      768,
+      320
+    ],
+    "page_overflow": false,
+    "script_errors": 0,
+    "canvas_download_validated": true
+  },
+  "limits": [
+    "Only 10 explicit sources in 3 schemes re-read; 13 schemes are not all complete.",
+    "Annual attachments and DOCX found, not parsed.",
+    "FAOS internal example/date-unit/version uncertainty retained; no auto calculator update.",
+    "New batch not loaded by the public website or scheduled workflow."
+  ]
+}
