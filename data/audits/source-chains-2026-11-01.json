@@ -1,0 +1,129 @@
+{
+  "as_of": "2026-11-01",
+  "scope": "first_source_chain_stage_not_full_19_chain_completion",
+  "candidate_bindings": 19,
+  "document_nodes": 47,
+  "new_date_events": 17,
+  "documents_checked_in_last_run": 12,
+  "last_run_http_requests": 15,
+  "request_count_scope": "last_run_only_development_included_multiple_bounded_replays",
+  "model_calls": 0,
+  "human_approvals": 0,
+  "formal_data_modified": false,
+  "event_kinds": {
+    "announcement": 6,
+    "application_start": 5,
+    "student_deadline": 6
+  },
+  "deferred_reports": {
+    "format_parser_deferred": 4,
+    "document_budget_deferred": 4
+  },
+  "actual_interval_scopes": [
+    "ntu-gice",
+    "ntu-ac",
+    "sinica-ipsas"
+  ],
+  "historical_forecast_scopes": [
+    "ntu-ac",
+    "sinica-ipsas"
+  ],
+  "python_tests": 163,
+  "node_tests": 46,
+  "chrome": {
+    "existing_records": 19,
+    "details": 19,
+    "gantt_rows": 19,
+    "groups": 13,
+    "local_intervals": 3,
+    "mobile_width": 320,
+    "horizontal_page_overflow": false,
+    "errors": 0,
+    "warnings": 0,
+    "issues_submitted": 0
+  },
+  "limits": [
+    "六個明確年度／地方公告，其他既有來源僅保留快照與關聯入口",
+    "ODT等格式延後，不假稱已解析",
+    "年度入口自動發現與人工例外尚未全面整合",
+    "新資料僅為雷達補充，所有時間事件pending",
+    "手動Actions不啟用定期補鏈或自動發布"
+  ],
+  "remote_actions": {
+    "run_url": "https://github.com/matt-ye/opengsa/actions/runs/41274222102",
+    "implementation_commit": "917ab2357619dfbb46f2e0cc15c17f87ee482fc6",
+    "status": "success",
+    "http_requests": 15,
+    "model_calls": 0,
+    "events": 17,
+    "checked_documents": 12,
+    "artifact_downloaded_and_schema_validated": true
+  },
+  "global_examples_ui": {
+    "mode": "all_available_unit_examples",
+    "scope_dropdown_removed": true,
+    "examples_visible_together": [
+      "ntu-gice",
+      "ntu-ac",
+      "sinica-ipsas"
+    ],
+    "unit_and_round_tracks_separate": "synthetic_regression_passed",
+    "global_intake_status_unchanged": true,
+    "source_procedure_steps_preserved": true,
+    "receiver_summaries": 16,
+    "original_time_summaries": 8,
+    "source_chain_chrome": "passed",
+    "existing_19_record_chrome": "passed",
+    "issues_submitted": 0
+  },
+  "gantt_scroll_ui": {
+    "default_view": "gantt",
+    "scrolling": "native_vertical_and_horizontal",
+    "sticky_heading_and_date_axis": true,
+    "sticky_name_column": true,
+    "desktop_chart_sticky": true,
+    "outer_scroll_heading_visible": true,
+    "keyboard_scroll": "Control+End verified",
+    "list_toggle_preserved": true,
+    "mobile_width": 320,
+    "horizontal_page_overflow": false,
+    "candidate_rows": 19,
+    "node_tests": 46,
+    "chrome_script": "scripts/browser_gantt_scroll_smoke.js"
+  },
+  "layout_a_ui": {
+    "approved_and_applied": true,
+    "selection_controls": "sidebar_native_details",
+    "time_controls": "chart_toolbar",
+    "legend": {
+      "keys": 11,
+      "background": "#ffffff",
+      "default_collapsed": true,
+      "grid_columns": [
+        3,
+        2,
+        1
+      ]
+    },
+    "shared_selection_preserved": true,
+    "range_pan_year_synced": true,
+    "fit_resets_offset": true,
+    "today_resets_available_current_year": true,
+    "mobile_filter_initially_collapsed": true,
+    "responsive_widths": [
+      1059,
+      768,
+      320
+    ],
+    "horizontal_page_overflow": false,
+    "python_tests": 163,
+    "node_tests": 46,
+    "dedicated_chrome": "passed",
+    "source_chain_chrome": "passed",
+    "sticky_scroll_chrome": "passed",
+    "dedicated_script": "scripts/browser_layout_a_smoke.js",
+    "formal_data_modified": false,
+    "existing_19_record_chrome": "passed",
+    "issues_submitted": 0
+  }
+}

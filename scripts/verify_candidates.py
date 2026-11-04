@@ -28,7 +28,7 @@ from scripts.evaluate_deadlines import parse_iso_date, parse_taipei_datetime
 from scripts.application_process import infer_process, process_errors
 from scripts.ai_tool_rules import benefit_tiers
 
-VERIFIER_VERSION = "verifier-1.3.0"
+VERIFIER_VERSION = "verifier-1.4.0"
 
 CONTACT_RE = re.compile(r"@|電話|聯絡|承辦|傳真|住址|通訊地址|\b0\d{1,3}[- ]\d{6,}")
 SKIP_RE = re.compile(r"名冊|名單|獲獎|得獎|姓名|學號|身分證|jsessionid|password|token=|login|登入", re.I)
@@ -149,6 +149,13 @@ def _date_tokens(iso_date_str):
 def _amount_tokens(amount):
     if amount is None:
         return []
+    from decimal import Decimal,InvalidOperation
+    try:
+        exact=Decimal(str(amount))
+    except InvalidOperation:
+        return []
+    if not exact.is_finite() or exact<0:return []
+    if exact!=exact.to_integral_value():return [format(exact,'f'),format(exact,',f')]
     amt_int = int(amount)
     tokens = [str(amt_int), f"{amt_int:,}"]
     chinese = _to_chinese_num(amt_int)
@@ -163,6 +170,10 @@ def _amount_tokens(amount):
         tokens.append(f"{c_wan}萬")
         if wan == 2:
             tokens.append("兩萬")
+    elif amount == amt_int:
+        # Exact decimal 萬 representation (2.5萬元), independently checked below.
+        tokens.append(format(Decimal(amt_int)/Decimal(10000),'f').rstrip('0').rstrip('.')+'萬')
+    if amt_int and amt_int%1000==0:tokens.append(str(amt_int//1000)+'千')
     return list(dict.fromkeys(tokens))
 
 
@@ -175,7 +186,8 @@ def date_supported(value, text):
     full = [t for t in _date_tokens(value) if str(d.year) in t or str(d.year - 1911) in t or (ROC_CHINESE_YEARS.get(d.year - 1911, "!") + "年") in t]
     if any(re.search(r"(?<!\d)" + re.escape(t) + r"(?!\d)", compact) for t in full if not t.endswith("年")):
         return True
-    years = {int(y) if len(y) == 4 else int(y) + 1911 for y in re.findall(r"(?<!\d)(20\d{2}|1\d{2})(?=年|[/.-]\d)", compact)}
+    # An award's 116年度 is not the application year of an explicit 115/6/1–7/29 range.
+    years = {int(y) if len(y) == 4 else int(y) + 1911 for y in re.findall(r"(?<!\d)(20\d{2}|1\d{2})(?=年(?!度)|[/.-]\d)", compact)}
     for y, cy in ROC_CHINESE_YEARS.items():
         if cy + "年" in compact:
             years.add(y + 1911)
@@ -183,8 +195,10 @@ def date_supported(value, text):
 
 
 def amount_supported(amount, text):
-    numerals = "0-9,一二兩三四五六七八九零〇十百千萬壹貳參肆伍陸柒捌玖拾佰仟拾"
-    return any(re.search(f"(?<![{numerals}])" + re.escape(token) + f"(?![{numerals}])", text) for token in _amount_tokens(amount) if token)
+    numerals = "0-9,.一二兩三四五六七八九零〇十百千萬壹貳參肆伍陸柒捌玖拾佰仟拾"
+    variants=str.maketrans({'壹':'一','貳':'二','參':'三','肆':'四','伍':'五','陸':'六','柒':'七','捌':'八','玖':'九','拾':'十','拾':'十','佰':'百','仟':'千','兩':'二','〇':'零'})
+    text=re.sub(r'\s+','',text).translate(variants)
+    return any(re.search(f"(?<![{numerals}])" + re.escape(token.translate(variants)) + f"(?![{numerals}])", text) for token in _amount_tokens(amount) if token)
 
 
 def strip_model_self_claims(candidate):
@@ -334,6 +348,22 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
         if "eligibility.nationality" not in ev_by_path:
             ev_errors.append("missing_evidence:eligibility.nationality")
 
+    # New generic facts must support the value and the declared role, not just
+    # point to an arbitrary source block. Legacy source-specific facts remain
+    # identifiable by the absence of a role evidence path.
+    for role,fact in cand.get('organizations',{}).items():
+        path='organizations.'+role;entries=ev_by_path.get(path,[])
+        if entries and in_memory_blocks is not None:
+            text=re.sub(r'\s+','',''.join(block_map.get(e['locator'],'') for e in entries))
+            verbs={'receiver':r'向|送|洽|收件|受理|承辦','funder':r'補助|經費|預算','announcer':r'公告單位|主辦單位'}
+            if not re.search(verbs[role],text) or any(name not in text for name in fact['text'].split('／')):
+                ev_errors.append('unsupported_organization_role:'+role)
+    if in_memory_blocks is not None and ev_by_path.get('eligibility.degrees'):
+        text=re.sub(r'\s+','',''.join(block_map.get(e['locator'],'') for e in ev_by_path['eligibility.degrees']))
+        for degree in elig.get('degrees',[]):
+            pattern=r'博士|碩[、及或與]?博' if degree=='phd' else r'碩士|碩[、及或與]?博'
+            if not re.search(pattern,text):ev_errors.append('unsupported_degree_rule:'+degree)
+
     if elig.get("employment_status") not in (None, "unknown"):
         if "eligibility.employment_status" not in ev_by_path:
             ev_errors.append("missing_evidence:eligibility.employment_status")
@@ -439,7 +469,7 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
 
     ev_errors.extend(process_errors(cand))
     if in_memory_blocks is not None:
-        if cand.get("resource_kind")=="tool_subscription":
+        if cand.get("program_key") in ("taipei-ai-tools","hsinchu-ai-tools") or meta.get('source_id') in ("taipei-ai-tools","hsinchu-ai-tools"):
             expected_tiers=benefit_tiers(in_memory_blocks)
             expected_pairs={(t["label"],t["amount_max"]) for t in expected_tiers}
             for item in benefit_items:
@@ -647,7 +677,7 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
     if not is_stub:
         if cycle.get("kind") in ("calendar_year","academic_year") and cycle.get("year") is None:
             coverage_warnings.append("coverage_gap:cycle_year_unknown")
-        if cand.get("resource_kind")=="tool_subscription":
+        if cand.get("program_key") in ("taipei-ai-tools","hsinchu-ai-tools") or meta.get('source_id') in ("taipei-ai-tools","hsinchu-ai-tools"):
             if not cand.get("expense_period"):coverage_warnings.append("coverage_gap:ai_tools:expense_period")
             if in_memory_blocks is not None:
                 expected={(t["label"],t["amount_max"]) for t in benefit_tiers(in_memory_blocks)}

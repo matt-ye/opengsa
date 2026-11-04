@@ -4,6 +4,8 @@
 
 ## 提交資料或更正
 
+網站頁首的「提供獎助來源」會開啟[資源推薦表單](https://github.com/matt-ye/opengsa/issues/new?template=resource-source.yml)，用於尚未收錄的獎學金、補助、獎項及研究生資源；操作或版面問題請用[提供回饋](https://github.com/matt-ye/opengsa/issues/new?template=preview-feedback.yml)。兩者皆需GitHub帳號，內容公開。提交後由維護者查核，不自動發布或啟用來源掃描。
+
 請提供制度名稱、年度／梯次、公開來源連結、欲修正欄位、原文定位及核對日期。說明來源是主辦方或轉知方，以及有無登入／重製限制。重複的中英文名稱先查是否同一制度。
 
 資格、期限、金額、兼領及法律內容須另一位覆核者確認；無法覆核時保持待審。請不要把舊年度、搜尋摘要或推測填成當期事實。

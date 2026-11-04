@@ -1,6 +1,8 @@
 # Private data, local tooling and generated artifacts
 work/
 outputs/
+output/playwright/
+.playwright-cli/
 tmp/
 private/
 .env

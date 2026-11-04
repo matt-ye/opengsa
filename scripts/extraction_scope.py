@@ -1,5 +1,6 @@
 """Field-scoped rule replay. Source/evidence/review ownership cannot be patched by a model."""
 from copy import deepcopy
+from scripts.semantic_facts import INSTRUCTIONS
 
 GROUPS={
  'identity':('title','category','resource_kind','scope','cycle','participants','organizations','institution_scope'),
@@ -50,7 +51,7 @@ def compile_scope(candidate,groups=None,fields=None):
         # N/A, delivery and deadlines jointly determine the student window.
         targets.update(path for path in process if path in candidate)
     targets={p for p in targets if not any(p!=other and p.startswith(other+'.') for other in targets)}
-    return {'write_fields':sorted(targets),
+    return {'write_fields':sorted(targets),'instructions':INSTRUCTIONS,
         'read_dependencies':['cycle','participants','institution_scope','eligibility','benefit','schedule','policy_version'],
         'revalidate':'whole_candidate','model_field_support':'existing_adapter_allowlist_only'}
 

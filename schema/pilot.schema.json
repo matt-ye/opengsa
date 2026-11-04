@@ -68,6 +68,7 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "claim_kind": {"enum": ["eligibility_clause", "program_descriptor"]},
         "text": {
           "type": "string",
           "minLength": 1
@@ -757,11 +758,12 @@
               "enum": [
                 "student",
                 "institution",
-                "unit"
+                "unit",
+                "unknown"
               ]
             },
             "beneficiary": {
-              "const": "student"
+              "enum": ["student", "unknown"]
             },
             "awardee": {
               "enum": [
@@ -820,7 +822,8 @@
                   "phd"
                 ]
               },
-              "minItems": 1
+              "minItems": 0,
+              "description": "空陣列表示學位條件尚未辨識，不等於不限學位或資格不符"
             },
             "institution": {
               "enum": [

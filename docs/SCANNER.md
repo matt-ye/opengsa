@@ -1,5 +1,9 @@
 # 公開來源掃描與候選覆核
 
+2026-11-01全來源第一輪另見[擴展結果與重現方式](SOURCE-EXPANSION-RUN.md)：367原始URL均有處置，56新子來源、22份待審快照，634HTTP／模型0。原19筆正式候選池與16個排程profile不變，新profile停用；擴展資料在`data/source-expansion/`，不自動進公開網站。新增`expand_sources.py`有界續跑與`propose_radar_update.py`離線資料patch／三頁預覽；scan完成後保留14天提案artifact，權限仍唯讀，不自動開、合併或發布資料PR。下列19筆數字為既有基線。
+
+2026-11-01最新：19筆以extractor-1.5.0完整重萃，12筆自動檢核通過、7筆有缺漏，仍全部pending；新增通用指令、`--full-replay`及隔離外部驗證。來源profile仍16筆／13啟用，未增加正式排程目標。[最新結果與限制](GENERALIZABLE-EXTRACTION.md)優先於下列歷史階段描述。
+
 > 後續整合更新：本批已接上統一文件準備、Token預算分段及局部規則重萃，現行能力／未完成項目與實際驗收見[文件準備整合](PREPARED-EXTRACTION.md)。舊階段提案或測試數量不代表最新整合狀態。
 
 PR #20 已合併；具名候選新增[審查工作台與資料 PR 草稿](REVIEW-WORKSPACE.md)。Actions `operation=review_workspace` 僅產生 repo 候選池的離線審查 artifact，與 `scan`／`provider_audit` 分流；不重新抓來源、不注入金鑰或模型，不改變原有低頻掃描排程。重新核驗及意向匯出由本機 CLI 執行。
@@ -83,3 +87,8 @@ noted／dismissed是文件層級佇列處置；帶candidate_id的處置只影響
 ## 地方AI工具補助候選
 
 臺北／新竹兩個公開正文profile及具名候選已接入，僅規則萃取、不修改pilot。購買／訂閱支出期間與申請期限分開，年度上限不代表個人仍可申請；分支與缺漏需覆核。細節見[候選推進](AI-TOOLS-CANDIDATES.md)。
+
+
+## 來源資訊鏈的手動掃描（PR31）
+
+`data/source-chain-sources.json`為有限補鏈配置，`data/source-chains.json`為待審文件／關係／事件快照，依`schema/source-chains.schema.json`驗證；不修改既有完整候選／正式pilot。HTML／文字PDF已支持，其他格式與未讀連結明示延期；全文不存repo，hash_only沒有摘錄。新手動operation=source_chains無Secrets／模型，不自動回存或發布。地方／梯次、實際／歷史／預估分別呈現，完整說明見[SOURCE-CHAINS-AND-TIMELINE.md](SOURCE-CHAINS-AND-TIMELINE.md)。

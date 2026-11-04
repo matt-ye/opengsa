@@ -1,0 +1,224 @@
+{
+  "schema_version": "source-chain-config-1",
+  "max_requests": 20,
+  "max_documents": 12,
+  "max_depth": 0,
+  "max_run_seconds": 180,
+  "minimum_host_interval_seconds": 3,
+  "allowed_hosts": [
+    "www.faos.org.tw",
+    "sec.ntu.edu.tw",
+    "law.nstc.gov.tw",
+    "www.aca.ntu.edu.tw",
+    "www.nstc.gov.tw",
+    "gice.ntu.edu.tw"
+  ],
+  "scopes": [
+    {
+      "id": "general",
+      "label": "全國／主辦機構"
+    },
+    {
+      "id": "ntu",
+      "label": "臺大校級"
+    },
+    {
+      "id": "ntu-gice",
+      "label": "臺大電信所"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.faos.org.tw/Application/ApplicatStud.html",
+      "program_key": "faos-student-conference",
+      "scope": "general",
+      "cycle": "current",
+      "application_year": 2026,
+      "phase": "event_relative",
+      "role": "policy",
+      "evidence_mode": "hash_only",
+      "body_selector": "body",
+      "required_markers": [
+        "優秀學生",
+        "兩個月"
+      ],
+      "parent_urls": [],
+      "extract_dates": false,
+      "historical_baseline_allowed": false
+    },
+    {
+      "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/9811/214008/add73815-0131-4901-b098-8dd402078f4c.pdf",
+      "program_key": "faos-student-conference",
+      "scope": "ntu",
+      "cycle": "1140522",
+      "application_year": 2026,
+      "phase": "event_relative",
+      "role": "local_process",
+      "evidence_mode": "hash_only",
+      "body_selector": "body",
+      "required_markers": [
+        "傑出人才",
+        "秘書室"
+      ],
+      "parent_urls": [
+        "https://www.faos.org.tw/Application/ApplicatStud.html"
+      ],
+      "extract_dates": false,
+      "historical_baseline_allowed": false
+    },
+    {
+      "url": "https://sec.ntu.edu.tw/News_n_27890_sms_10166__CSN_541.html",
+      "program_key": "faos-student-conference",
+      "scope": "ntu",
+      "cycle": "current",
+      "application_year": 2026,
+      "phase": "event_relative",
+      "role": "forms_index",
+      "evidence_mode": "hash_only",
+      "body_selector": "body",
+      "required_markers": [
+        "傑出人才"
+      ],
+      "parent_urls": [
+        "https://www.faos.org.tw/Application/ApplicatStud.html"
+      ],
+      "extract_dates": false,
+      "historical_baseline_allowed": false
+    },
+    {
+      "url": "https://www.faos.org.tw/apply/student/",
+      "program_key": "faos-student-conference",
+      "scope": "general",
+      "cycle": "current",
+      "application_year": 2026,
+      "phase": "event_relative",
+      "role": "application_system",
+      "evidence_mode": "hash_only",
+      "body_selector": "body",
+      "required_markers": [
+        "優秀學生",
+        "登記"
+      ],
+      "parent_urls": [
+        "https://www.faos.org.tw/Application/ApplicatStud.html"
+      ],
+      "extract_dates": false,
+      "historical_baseline_allowed": false
+    },
+    {
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260",
+      "program_key": "nstc-grad-conference-policy",
+      "scope": "general",
+      "cycle": "current",
+      "application_year": 2026,
+      "phase": "event_relative",
+      "role": "policy",
+      "evidence_mode": "hash_only",
+      "body_selector": "body",
+      "required_markers": [
+        "國內研究生",
+        "國際學術會議"
+      ],
+      "parent_urls": [],
+      "extract_dates": false,
+      "historical_baseline_allowed": false
+    },
+    {
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383",
+      "program_key": "nstc-grad-conference-policy",
+      "scope": "ntu",
+      "cycle": "current",
+      "application_year": 2026,
+      "phase": "event_relative",
+      "role": "local_process",
+      "evidence_mode": "hash_only",
+      "body_selector": "body",
+      "required_markers": [
+        "國科會",
+        "國際學術會議"
+      ],
+      "parent_urls": [
+        "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260"
+      ],
+      "extract_dates": false,
+      "historical_baseline_allowed": false
+    },
+    {
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039188",
+      "program_key": "nstc-abroad-dragon",
+      "scope": "general",
+      "cycle": "current",
+      "application_year": 2026,
+      "phase": "annual",
+      "role": "policy",
+      "evidence_mode": "hash_only",
+      "body_selector": "body",
+      "required_markers": [
+        "博士生赴國外研究"
+      ],
+      "parent_urls": [],
+      "extract_dates": false,
+      "historical_baseline_allowed": false
+    },
+    {
+      "url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+      "program_key": "nstc-abroad-dragon",
+      "scope": "general",
+      "cycle": "116",
+      "application_year": 2026,
+      "phase": "annual",
+      "role": "annual_call",
+      "evidence_mode": "hash_only",
+      "body_selector": "body",
+      "required_markers": [
+        "115年",
+        "116年"
+      ],
+      "parent_urls": [
+        "https://law.nstc.gov.tw/LawContent.aspx?id=FL039188"
+      ],
+      "extract_dates": false,
+      "historical_baseline_allowed": false
+    },
+    {
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
+      "program_key": "nstc-abroad-dragon",
+      "scope": "ntu",
+      "cycle": "116",
+      "application_year": 2026,
+      "phase": "annual",
+      "role": "local_intake",
+      "evidence_mode": "hash_only",
+      "body_selector": "body",
+      "required_markers": [
+        "116",
+        "7月29"
+      ],
+      "parent_urls": [
+        "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942"
+      ],
+      "extract_dates": false,
+      "historical_baseline_allowed": false
+    },
+    {
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
+      "program_key": "nstc-grad-conference-policy",
+      "scope": "ntu-gice",
+      "cycle": "115",
+      "application_year": 2026,
+      "phase": "event_relative",
+      "role": "local_process",
+      "evidence_mode": "hash_only",
+      "body_selector": "body",
+      "required_markers": [
+        "國際",
+        "會議"
+      ],
+      "parent_urls": [
+        "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383"
+      ],
+      "extract_dates": false,
+      "historical_baseline_allowed": false
+    }
+  ]
+}

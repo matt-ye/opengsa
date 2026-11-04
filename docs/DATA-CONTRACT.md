@@ -4,6 +4,8 @@
 
 ## 最小模型與候選擴充
 
+2026-11-01相容擴充：兩份Schema的`eligibility.degrees`允許空陣列，表示尚未辨識學位規則；既有判斷器保留`scheme_degree_rule`，不能當不限或不符。fact可選`claim_kind`區分資格段落摘要與制度對象線索；後者不當完整資格、也不能讓清晰度變綠。正式pilot內容未更動。[最新流程及驗收](GENERALIZABLE-EXTRACTION.md)。
+
 ```mermaid
 erDiagram
   SOURCE ||--o{ EVIDENCE_REF : "來源與定位"
@@ -100,3 +102,8 @@ scan-reviews採獨立1.1.0 Schema，required reason不接受舊note；applied須
 ## AI工具候選補充
 
 新增research_tools類別、tool_subscription種類、local範圍；expense_period（starts_on／ends_on／note／refs）保留可認列支出期間，不作學生收件窗口。兩份契約與候選轉pilot均保留此欄位，納入核准雜湊。候選根層model_usage依實際用量摘要提供選填型別，未知屬性仍拒絕。check_data.py另檢查data/candidates的來源綁定及120字摘錄預算；完整原文不在CI取回。
+
+
+## 來源關係與時間事件補充契約（PR31）
+
+`data/source-chain-sources.json`為有限補鏈配置，`data/source-chains.json`為待審文件／關係／事件快照，依`schema/source-chains.schema.json`驗證；不修改既有完整候選／正式pilot。HTML／文字PDF已支持，其他格式與未讀連結明示延期；全文不存repo，hash_only沒有摘錄。新手動operation=source_chains無Secrets／模型，不自動回存或發布。地方／梯次、實際／歷史／預估分別呈現，完整說明見[SOURCE-CHAINS-AND-TIMELINE.md](SOURCE-CHAINS-AND-TIMELINE.md)。

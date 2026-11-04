@@ -1,0 +1,1809 @@
+{
+  "version": "temporal-item-audit-1",
+  "as_of": "2026-11-04",
+  "candidate_as_of": "2026-11-02",
+  "items": 64,
+  "http_requests": 53,
+  "model_calls": 0,
+  "human_approvals": 0,
+  "published": false,
+  "tracks": {
+    "gov": 30,
+    "other": 27,
+    "enterprise": 7
+  },
+  "incremental_decisions": {
+    "SKIP_UNCHANGED": 64
+  },
+  "modes": {
+    "unit_announced": 7,
+    "mixed": 5,
+    "reference": 3,
+    "conditional_deadline": 3,
+    "recurring": 9,
+    "event_relative": 3,
+    "fixed_window": 13,
+    "procedure_only": 11,
+    "deadline_only": 5,
+    "continuous": 4,
+    "rule_text": 1
+  },
+  "latest_statuses": {
+    "replayed": 64
+  },
+  "records": [
+    {
+      "candidate_id": "cand-ntu-moe-phd-unknown-5ec6eddc",
+      "title": "臺大學年度待核教育部博士生獎學金（第二梯次）",
+      "source_id": "ntu-doctoral-funding",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "unit_announced",
+      "gantt_form": "時間規則卡，不虛構日曆座標；另有具名單位範例／參考層",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [
+        "臺大電信所"
+      ],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-ntu-president-unknown-rule-0ef18354",
+      "title": "臺大研究生校長獎（設置辦法依據）",
+      "source_id": "ntu-president-award",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "mixed",
+      "gantt_form": "時間規則卡，不虛構日曆座標；另有具名單位範例／參考層",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [
+        "臺大農化系"
+      ],
+      "attachment_urls": [],
+      "next_step": "續查附件／當期公告／適用單位；不補猜日期"
+    },
+    {
+      "candidate_id": "cand-ntu-ta-policy-2c257f6c",
+      "title": "臺大教務處教學助理制度獎勵金實施辦法",
+      "source_id": "ntu-ta-policy",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/%E6%95%99%E5%8B%99%E8%99%95%E6%95%99%E5%AD%B8%E5%8A%A9%E7%90%86%E5%88%B6%E5%BA%A6%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E6%A2%9D%E6%96%87-%E5%85%AC%E5%91%8A%E7%89%88.pdf",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "reference",
+      "gantt_form": "制度參考卡，不畫申請長條",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-taipei-ai-tools-4618de5c",
+      "title": "臺北市青年AI工具補助",
+      "source_id": "taipei-ai-tools",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "conditional_deadline",
+      "gantt_form": "年度上限／個人條件標記",
+      "dates": {
+        "end": {
+          "value": "2026-11-10",
+          "certainty": "confirmed"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-11-10"
+        }
+      ],
+      "gaps": [
+        "personal_conditions_required"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-hsinchu-ai-tools-5067a675",
+      "title": "新竹市AI領航青年數位工具補助",
+      "source_id": "hsinchu-ai-tools",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "conditional_deadline",
+      "gantt_form": "年度上限／個人條件標記",
+      "dates": {
+        "start": {
+          "value": "2026-04-02",
+          "certainty": "confirmed"
+        },
+        "end": {
+          "value": "2026-11-30",
+          "certainty": "confirmed"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2026-04-02"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-11-30"
+        },
+        {
+          "actor": "unit",
+          "stage": "submission",
+          "value": "2026-04-02"
+        }
+      ],
+      "gaps": [
+        "personal_conditions_required"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-ntu-nstc-phd-115-43434c54",
+      "title": "臺大115學年度國科會核配博士生獎學金",
+      "source_id": "ntu-doctoral-funding",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "mixed",
+      "gantt_form": "時間規則卡，不虛構日曆座標；另有具名單位範例／參考層",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [
+        "臺大電信所"
+      ],
+      "attachment_urls": [],
+      "next_step": "續查附件／當期公告／適用單位；不補猜日期"
+    },
+    {
+      "candidate_id": "cand-ntu-moe-phd-115-43434c54",
+      "title": "臺大115學年度教育部博士生獎學金（第二梯次）",
+      "source_id": "ntu-doctoral-funding",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "unit_announced",
+      "gantt_form": "時間規則卡，不虛構日曆座標；另有具名單位範例／參考層",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [
+        "臺大電信所"
+      ],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-sinica-phd-fellowship-8aeb9c09",
+      "title": "中研院115年度人文社會科學博士候選人培育計畫公告",
+      "source_id": "sinica-phd-fellowship",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.sinica.edu.tw/news_content/56/3434",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "unit_announced",
+      "gantt_form": "時間規則卡，不虛構日曆座標；另有具名單位範例／參考層",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [
+        "中研院政治所"
+      ],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-ntu-eecs-scholarship-4d727a75",
+      "title": "臺大電資學院優秀博士生獎學金評選辦法",
+      "source_id": "ntu-eecs-scholarship",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "recurring",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r317-a4bb5884",
+      "title": "國科會博士生研究獎學金國科會甄選類",
+      "source_id": "discovery-r317",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23091415501308264",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "mixed",
+      "gantt_form": "跨年度規則卡；分年核對後才畫座標",
+      "dates": {},
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2025-01-10T12:00:00+08:00"
+        },
+        {
+          "actor": "unit",
+          "stage": "submission",
+          "value": "2024-11-15"
+        }
+      ],
+      "gaps": [
+        "multiple_cycles_need_split"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "先分年度／梯次並核對收件角色"
+    },
+    {
+      "candidate_id": "cand-nstc-conference-rule-aa01fd94",
+      "title": "國科會補助研究生出席國際學術會議（作業要點法源）",
+      "source_id": "nstc-conference-rule",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "event_relative",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [
+        "needs_event_date",
+        "calendar_unverified",
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-nstc-abroad-dragon-rule-2ba1c668",
+      "title": "國科會博士生赴國外研究（千里馬）作業要點原文",
+      "source_id": "nstc-abroad-dragon-rule",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039188",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "recurring",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-ntu-yuanxue-115-ordinary-fc090099",
+      "title": "臺大115年遠學計畫（博士生一般補助）",
+      "source_id": "ntu-yuanxue",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "mixed",
+      "gantt_form": "跨年度規則卡；分年核對後才畫座標",
+      "dates": {},
+      "absolute_rules": [
+        {
+          "actor": "unit",
+          "stage": "submission",
+          "value": "2023-03-01"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2022-03-31"
+        }
+      ],
+      "gaps": [
+        "source_checks_failed",
+        "multiple_cycles_need_split"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "先分年度／梯次並核對收件角色"
+    },
+    {
+      "candidate_id": "cand-nstc-ntu-conference-004d30f5",
+      "title": "國科會補助研究生出席國際學術會議（臺大校內申請路徑）",
+      "source_id": "nstc-ntu-conference",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "event_relative",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [
+        "needs_event_date",
+        "calendar_unverified"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-faos-student-conference-ffb0ac6c",
+      "title": "傑出人才發展基金會：優秀學生出國開會補助",
+      "source_id": "faos-student-conference",
+      "schedule_track": "enterprise",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.faos.org.tw/Application/ApplicatStud.html",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "event_relative",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [
+        "needs_event_date",
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-ntu-president-114-call-b0607734",
+      "title": "臺大114學年度研究生校長獎",
+      "source_id": "ntu-president-award",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "mixed",
+      "gantt_form": "單位／行政時點標記；不代填學生期限；另有具名單位範例／參考層",
+      "dates": {},
+      "absolute_rules": [
+        {
+          "actor": "university",
+          "stage": "submission",
+          "value": "2026-08-25"
+        }
+      ],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [
+        "臺大農化系"
+      ],
+      "attachment_urls": [],
+      "next_step": "續查附件／當期公告／適用單位；不補猜日期"
+    },
+    {
+      "candidate_id": "cand-nstc-assistant-rule-38d1c24a",
+      "title": "國科會專題研究計畫研究人力約用注意事項原文",
+      "source_id": "nstc-assistant-rule",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "reference",
+      "gantt_form": "制度參考卡，不畫申請長條",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-ntu-ta-policy-1e03054b",
+      "title": "臺大教務處教學助理制度獎勵金實施辦法",
+      "source_id": "ntu-ta-policy",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "reference",
+      "gantt_form": "制度參考卡，不畫申請長條",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r112-f2d1a510",
+      "title": "教育部主管法規共用系統-法規內容-教育部博士生獎學金補助計畫作業要點",
+      "source_id": "discovery-r112",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL002336",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "unit_announced",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r297-ddcf1e39",
+      "title": "轉知「國科會博士生研究獎學金試辦方案」相關訊息",
+      "source_id": "discovery-r297",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_23091415525408652",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條",
+      "dates": {
+        "start": {
+          "value": "2023-09-15",
+          "certainty": "confirmed"
+        },
+        "end": {
+          "value": "2023-10-16",
+          "certainty": "confirmed"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2023-09-15"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2023-10-16"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-q009-94dcd502",
+      "title": "【元大文教基金會】115年元大優秀人才獎學金（9/8收件截止）  - 國立中山大學管理學院 College of Management, NSYSU",
+      "source_id": "discovery-q009",
+      "schedule_track": "enterprise",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.cm.nsysu.edu.tw/p/404-1024-380732.php?Lang=zh-tw",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "procedure_only",
+      "gantt_form": "單位／行政時點標記；不代填學生期限",
+      "dates": {},
+      "absolute_rules": [
+        {
+          "actor": "department",
+          "stage": "submission",
+          "value": "2026-09-08T16:00:00+08:00"
+        }
+      ],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r299-e1706d39",
+      "title": "本校國科會113年度獎勵人文與社會科學領域博士候選人撰寫博士論文申請至3/25(一)上午8時",
+      "source_id": "discovery-r299",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "deadline_only",
+      "gantt_form": "單一學生截止標記＋準備建議（非起日）",
+      "dates": {
+        "end": {
+          "value": "2024-03-25T08:00:00+08:00",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2024-03-25T08:00:00+08:00"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r301-5824ef69",
+      "title": "國科會114年度補助博士生赴國外研究案，申請時間自113年6月1日至7月29日早上8時止",
+      "source_id": "discovery-r301",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24052211230185000",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條",
+      "dates": {
+        "start": {
+          "value": "2024-06-01",
+          "certainty": "confirmed"
+        },
+        "end": {
+          "value": "2024-07-29T08:00:00+08:00",
+          "certainty": "confirmed"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "unit",
+          "stage": "submission",
+          "value": "2024-07-29T08:00:00+08:00"
+        },
+        {
+          "actor": "unit",
+          "stage": "application_start",
+          "value": "2024-06-01"
+        },
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2024-06-01"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2024-07-29T08:00:00+08:00"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r308-6f720c85",
+      "title": "國科會115年度補助博士生赴國外研究案，申請時間自114年6月1日至7月28日(星期一)早上8時止",
+      "source_id": "discovery-r308",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25051610035803840",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條",
+      "dates": {
+        "start": {
+          "value": "2025-06-01",
+          "certainty": "confirmed"
+        },
+        "end": {
+          "value": "2025-07-28T08:00:00+08:00",
+          "certainty": "confirmed"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "unit",
+          "stage": "submission",
+          "value": "2025-07-28T08:00:00+08:00"
+        },
+        {
+          "actor": "unit",
+          "stage": "application_start",
+          "value": "2025-06-01"
+        },
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2025-06-01"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2025-07-28T08:00:00+08:00"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-q001-b88ac019",
+      "title": "鴻海獎學鯨｜大專碩博組獎學金計畫｜助力弱勢生安心就學勇敢追夢",
+      "source_id": "discovery-q001",
+      "schedule_track": "enterprise",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.foxconnfoundation.org/news/80479d881F20",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條",
+      "dates": {
+        "start": {
+          "value": "2026-08-04",
+          "certainty": "confirmed"
+        },
+        "end": {
+          "value": "2026-09-28T23:59:00+08:00",
+          "certainty": "confirmed"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2026-08-04"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-09-28T23:59:00+08:00"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r043-50ffd19e",
+      "title": "AWS Educate",
+      "source_id": "discovery-r043",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://aws.amazon.com/education/awseducate/",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "continuous",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r044-437c67aa",
+      "title": "AWS Cloud Credit for Research",
+      "source_id": "discovery-r044",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://aws.amazon.com/research-credits/",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "continuous",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r055-8d21b1f7",
+      "title": "國立臺灣大學公共衛生學院碩士生學業表現優良獎勵要點",
+      "source_id": "discovery-r055",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://coph.ntu.edu.tw/uploads/root/hsiaopc/NTUCPH_MASTER-1120923.pdf",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "recurring",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r057-83542ef5",
+      "title": "林耀南獎助學金設置辦法",
+      "source_id": "discovery-r057",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://coph.ntu.edu.tw/uploads/root/hsiaopc/linyaonanscolarship_1120110.pdf",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "recurring",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r110-3abe4115",
+      "title": "Apply for Google Cloud research credits",
+      "source_id": "discovery-r110",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://edu.google.com/programs/credits/research/",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "rule_text",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r113-e684413e",
+      "title": "GitHub Student Developer Pack",
+      "source_id": "discovery-r113",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://education.github.com/pack",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "continuous",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r182-288ad7b8",
+      "title": "國家科學及技術委員會主管法規共用系統-法規內容-國家科學及技術委員會獎勵人文與社會科學領域博士候選人撰寫博士論文作業要點",
+      "source_id": "discovery-r182",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039061",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "recurring",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r192-6af32937",
+      "title": "國立臺灣大學文學院學生參與國際學術與教育活動獎學金事項說明",
+      "source_id": "discovery-r192",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1768889444792",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "procedure_only",
+      "gantt_form": "單位／行政時點標記；不代填學生期限",
+      "dates": {},
+      "absolute_rules": [
+        {
+          "actor": "unit",
+          "stage": "submission",
+          "value": "2026-10-21"
+        }
+      ],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r193-703352ec",
+      "title": "財團法人孫哲生先生學術基金會115年度獎學金開放申請",
+      "source_id": "discovery-r193",
+      "schedule_track": "enterprise",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1786692862536",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "procedure_only",
+      "gantt_form": "單位／行政時點標記；不代填學生期限",
+      "dates": {},
+      "absolute_rules": [
+        {
+          "actor": "unit",
+          "stage": "submission",
+          "value": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [
+        "https://liberal.ntu.edu.tw/uploads/root/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91/%E8%B2%A1%E5%9C%98%E6%B3%95%E4%BA%BA%E5%AD%AB%E5%93%B2%E7%94%9F%E5%85%88%E7%94%9F%E5%AD%B8%E8%A1%93%E5%9F%BA%E9%87%91%E6%9C%83115%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A/%E8%B2%A1%E5%9C%98%E6%B3%95%E4%BA%BA%E5%AD%AB%E5%93%B2%E7%94%9F%E5%85%88%E7%94%9F%E5%AD%B8%E8%A1%93%E5%9F%BA%E9%87%91%E6%9C%83115%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A.pdf"
+      ],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r194-99de45ff",
+      "title": "115學年度「財團法人俞國華文教基金會獎學金」開放申請",
+      "source_id": "discovery-r194",
+      "schedule_track": "enterprise",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787024420703",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "procedure_only",
+      "gantt_form": "單位／行政時點標記；不代填學生期限",
+      "dates": {},
+      "absolute_rules": [
+        {
+          "actor": "unit",
+          "stage": "submission",
+          "value": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [
+        "https://liberal.ntu.edu.tw/uploads/root/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E8%B2%A1%E5%9C%98%E6%B3%95%E4%BA%BA%E4%BF%9E%E5%9C%8B%E8%8F%AF%E6%96%87%E6%95%99%E5%9F%BA%E9%87%91%E6%9C%83%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E8%B2%A1%E5%9C%98%E6%B3%95%E4%BA%BA%E4%BF%9E%E5%9C%8B%E8%8F%AF%E6%96%87%E6%95%99%E5%9F%BA%E9%87%91%E6%9C%83%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A.pdf"
+      ],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r195-b50c1901",
+      "title": "115學年度「國立臺灣大學侯永雄校友進修碩博士醫護人員獎學金」開放申請",
+      "source_id": "discovery-r195",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787888998694",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "procedure_only",
+      "gantt_form": "單位／行政時點標記；不代填學生期限",
+      "dates": {},
+      "absolute_rules": [
+        {
+          "actor": "unit",
+          "stage": "submission",
+          "value": "2026-09-11"
+        }
+      ],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [
+        "https://liberal.ntu.edu.tw/uploads/root/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E4%BE%AF%E6%B0%B8%E9%9B%84%E6%A0%A1%E5%8F%8B%E9%80%B2%E4%BF%AE%E7%A2%A9%E5%8D%9A%E5%A3%AB%E9%86%AB%E8%AD%B7%E4%BA%BA%E5%93%A1%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E4%BE%AF%E6%B0%B8%E9%9B%84%E6%A0%A1%E5%8F%8B%E9%80%B2%E4%BF%AE%E7%A2%A9%E5%8D%9A%E5%A3%AB%E9%86%AB%E8%AD%B7%E4%BA%BA%E5%93%A1%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A.pdf"
+      ],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r196-82f49fbb",
+      "title": "115學年度「國立臺灣大學文學院紀念鄧立登先生及鄧劉治妹女士清寒獎助學金」開放申請",
+      "source_id": "discovery-r196",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787889215831",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "procedure_only",
+      "gantt_form": "單位／行政時點標記；不代填學生期限",
+      "dates": {},
+      "absolute_rules": [
+        {
+          "actor": "unit",
+          "stage": "submission",
+          "value": "2026-09-30"
+        }
+      ],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [
+        "https://liberal.ntu.edu.tw/uploads/root/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E6%96%87%E5%AD%B8%E9%99%A2%E7%B4%80%E5%BF%B5%E9%84%A7%E7%AB%8B%E7%99%BB%E5%85%88%E7%94%9F%E5%8F%8A%E9%84%A7%E5%8A%89%E6%B2%BB%E5%A6%B9%E5%A5%B3%E5%A3%AB%E6%B8%85%E5%AF%92%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E6%96%87%E5%AD%B8%E9%99%A2%E7%B4%80%E5%BF%B5%E9%84%A7%E7%AB%8B%E7%99%BB%E5%85%88%E7%94%9F%E5%8F%8A%E9%84%A7%E5%8A%89%E6%B2%BB%E5%A6%B9%E5%A5%B3%E5%A3%AB%E6%B8%85%E5%AF%92%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A.pdf"
+      ],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r197-507b607d",
+      "title": "115學年度「錢思亮先生紀念獎學金」開放申請",
+      "source_id": "discovery-r197",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1788249360727",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "procedure_only",
+      "gantt_form": "單位／行政時點標記；不代填學生期限",
+      "dates": {},
+      "absolute_rules": [
+        {
+          "actor": "unit",
+          "stage": "submission",
+          "value": "2026-09-30"
+        }
+      ],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [
+        "https://liberal.ntu.edu.tw/uploads/root/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E9%8C%A2%E6%80%9D%E4%BA%AE%E5%85%88%E7%94%9F%E7%B4%80%E5%BF%B5%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E9%8C%A2%E6%80%9D%E4%BA%AE%E5%85%88%E7%94%9F%E7%B4%80%E5%BF%B5%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A.pdf"
+      ],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r198-129757e0",
+      "title": "115學年度「國立臺灣大學文學院國際學生獎學金」開放申請",
+      "source_id": "discovery-r198",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609156448",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "procedure_only",
+      "gantt_form": "單位／行政時點標記；不代填學生期限",
+      "dates": {},
+      "absolute_rules": [
+        {
+          "actor": "unit",
+          "stage": "submission",
+          "value": "2026-10-15"
+        }
+      ],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [
+        "https://liberal.ntu.edu.tw/uploads/root/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E6%96%87%E5%AD%B8%E9%99%A2%E5%9C%8B%E9%9A%9B%E5%AD%B8%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E6%96%87%E5%AD%B8%E9%99%A2%E5%9C%8B%E9%9A%9B%E5%AD%B8%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A.pdf"
+      ],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r199-373a18e7",
+      "title": "115學年度中央研究院「傅斯年獎學金」開放申請",
+      "source_id": "discovery-r199",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609268938",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "procedure_only",
+      "gantt_form": "單位／行政時點標記；不代填學生期限",
+      "dates": {},
+      "absolute_rules": [
+        {
+          "actor": "unit",
+          "stage": "submission",
+          "value": "2026-10-15"
+        }
+      ],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [
+        "https://liberal.ntu.edu.tw/uploads/root/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E9%99%A2%E5%82%85%E6%96%AF%E5%B9%B4%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E9%99%A2%E5%82%85%E6%96%AF%E5%B9%B4%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A.pdf"
+      ],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r200-bbd47757",
+      "title": "115學年度「國立臺灣大學亞細亞銀行獎學金」開放申請",
+      "source_id": "discovery-r200",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1790153625329",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "procedure_only",
+      "gantt_form": "單位／行政時點標記；不代填學生期限",
+      "dates": {},
+      "absolute_rules": [
+        {
+          "actor": "unit",
+          "stage": "submission",
+          "value": "2026-10-15"
+        }
+      ],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [
+        "https://liberal.ntu.edu.tw/uploads/root/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E4%BA%9E%E7%B4%B0%E4%BA%9E%E9%8A%80%E8%A1%8C%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E4%BA%9E%E7%B4%B0%E4%BA%9E%E9%8A%80%E8%A1%8C%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A.pdf"
+      ],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r241-0c1d79a4",
+      "title": "Google AI 方案會員學生優惠條款",
+      "source_id": "discovery-r241",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://one.google.com/offer/studentoffer8?hl=zh-TW",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "deadline_only",
+      "gantt_form": "單一學生截止標記＋準備建議（非起日）",
+      "dates": {
+        "end": {
+          "value": "2026-12-31",
+          "certainty": "confirmed"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-12-31"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r270-26de7cd1",
+      "title": "Google PhD fellowship program",
+      "source_id": "discovery-r270",
+      "schedule_track": "enterprise",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://research.google/outreach/phd-fellowship/",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "procedure_only",
+      "gantt_form": "單位／行政時點標記；不代填學生期限",
+      "dates": {},
+      "absolute_rules": [
+        {
+          "actor": "institution",
+          "stage": "application_start",
+          "value": "2026-03-05"
+        },
+        {
+          "actor": "institution",
+          "stage": "submission",
+          "value": "2026-04-30"
+        }
+      ],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-ntu-nstc-phd-rule-5e314130",
+      "title": "臺大國科會核配博士生獎學金（設置辦法條文快照）",
+      "source_id": "ntu-doctoral-funding",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "recurring",
+      "gantt_form": "時間規則卡，不虛構日曆座標；另有具名單位範例／參考層",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [
+        "臺大電信所"
+      ],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-ntu-moe-phd-rule-5e314130",
+      "title": "臺大教育部博士生獎學金（設置辦法條文快照）",
+      "source_id": "ntu-doctoral-funding",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "recurring",
+      "gantt_form": "時間規則卡，不虛構日曆座標；另有具名單位範例／參考層",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [
+        "臺大電信所"
+      ],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r306-b74be77d",
+      "title": "114年人社論文獎勵申請相關資訊",
+      "source_id": "discovery-r306",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "deadline_only",
+      "gantt_form": "單一學生截止標記＋準備建議（非起日）",
+      "dates": {
+        "end": {
+          "value": "2025-03-25T12:00:00+08:00",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2025-03-25T12:00:00+08:00"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r310-7f19e415",
+      "title": "115年人社論文獎勵申請相關資訊",
+      "source_id": "discovery-r310",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "deadline_only",
+      "gantt_form": "單一學生截止標記＋準備建議（非起日）",
+      "dates": {
+        "end": {
+          "value": "2026-03-24T12:00:00+08:00",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-03-24T12:00:00+08:00"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r425-68009666",
+      "title": "115年國家科學及技術委員會博士生研究獎學金試辦方案",
+      "source_id": "discovery-r425",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.nstc.gov.tw/sci/ch/detail/24ad4e4a-bd37-4ba0-9955-5b2e2ffd5ac6",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "recurring",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [
+        "https://www.nstc.gov.tw/nstc/attachments/8b000cff-36d5-4098-9550-3c926c751e9f"
+      ],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r426-dff20b54",
+      "title": "補助博士生赴國外研究作業要點 (115年申請, 116年出國)",
+      "source_id": "discovery-r426",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條",
+      "dates": {
+        "start": {
+          "value": "2026-06-01",
+          "certainty": "confirmed"
+        },
+        "end": {
+          "value": "2026-07-31T12:00:00+08:00",
+          "certainty": "confirmed"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "unit",
+          "stage": "application_start",
+          "value": "2026-06-01"
+        },
+        {
+          "actor": "unit",
+          "stage": "submission",
+          "value": "2026-07-31T12:00:00+08:00"
+        },
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2026-06-01"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-07-31T12:00:00+08:00"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [
+        "https://www.nstc.gov.tw/nstc/attachments/92025fc4-ec4f-4109-980a-03f23f91f41c"
+      ],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r432-ae4d5dfe",
+      "title": "NVIDIA Research: Graduate Fellows & Fellowship Opportunities",
+      "source_id": "discovery-r432",
+      "schedule_track": "enterprise",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.nvidia.com/en-us/research/graduate-fellowships/",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條",
+      "dates": {
+        "start": {
+          "value": "2026-09-30",
+          "certainty": "confirmed"
+        },
+        "end": {
+          "value": "2026-10-30",
+          "certainty": "confirmed"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2026-09-30"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-10-30"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r448-4a12438c",
+      "title": "中央研究院 | 中央研究院人文社會科學博士候選人培育計畫要點",
+      "source_id": "discovery-r448",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.sinica.edu.tw/cp/332",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "unit_announced",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r456-9722f37d",
+      "title": "教育部鼓勵國內大專校院選送學生出國研修或國外專業實習補助要點",
+      "source_id": "discovery-r456",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.studyabroad.moe.gov.tw/ckfinder_upload/files/20211214073031.pdf",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "recurring",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [
+        "student_window_not_recorded"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r482-c6e0ca4a",
+      "title": "【課程】桃園青年數位力正式啟動｜115年青年數位工具人才培育計畫開放報名",
+      "source_id": "discovery-r482",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1617472",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "unit_announced",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r090-b3a75d98",
+      "title": "Access GitHub Copilot for free as a student",
+      "source_id": "discovery-r090",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "continuous",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r468-d4034175",
+      "title": "產業新尖兵計畫補助最高10萬元訓練費，每月再發8千元學習獎勵金！",
+      "source_id": "discovery-r468",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.wda.gov.tw/News_Content.aspx?n=31&s=19491&sms=10306",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "unit_announced",
+      "gantt_form": "時間規則卡，不虛構日曆座標",
+      "dates": {},
+      "absolute_rules": [],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r473-6beb562d",
+      "title": "新北青年局「AI實戰職涯營」開跑 全額補助6.6萬課程 助攻AWS國際雙認證 優先媒合熱門職缺",
+      "source_id": "discovery-r473",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條",
+      "dates": {
+        "start": {
+          "value": "2026-06-12",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        },
+        "end": {
+          "value": "2026-07-12",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-07-12"
+        },
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2026-06-12"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r477-49a7cad8",
+      "title": "青年AI工具補助計畫 - 臺北市政府青年局",
+      "source_id": "discovery-r477",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://youth.gov.taipei/announcement/latest-announcement/e3c5cee4-b81a-4a53-aa79-6cd8c654b02e",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "conditional_deadline",
+      "gantt_form": "年度上限／個人條件標記",
+      "dates": {
+        "end": {
+          "value": "2026-11-10",
+          "certainty": "confirmed"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-11-10"
+        }
+      ],
+      "gaps": [
+        "personal_conditions_required"
+      ],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r137-066362bb",
+      "title": "【申請時程6/12-7/3】114學年度「國科會核配博士生獎學金」申請公告",
+      "source_id": "discovery-r137",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7062",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條",
+      "dates": {
+        "start": {
+          "value": "2025-06-12",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        },
+        "end": {
+          "value": "2025-07-03T17:00:00+08:00",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2025-06-12"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2025-07-03T17:00:00+08:00"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r138-5021d5eb",
+      "title": "【申請時程6/15-7/10】115學年度「國科會核配博士生獎學金」申請公告",
+      "source_id": "discovery-r138",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7278",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條；另有具名單位範例／參考層",
+      "dates": {
+        "start": {
+          "value": "2026-06-15",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        },
+        "end": {
+          "value": "2026-07-10T17:00:00+08:00",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2026-06-15"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-07-10T17:00:00+08:00"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [
+        "臺大電信所"
+      ],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r312-aba9d3b3",
+      "title": "國科會116年度補助博士生赴國外研究案，申請時間自115年6月1日至7月29日(星期三)早上8時止",
+      "source_id": "discovery-r312",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條",
+      "dates": {
+        "start": {
+          "value": "2026-06-01",
+          "certainty": "confirmed"
+        },
+        "end": {
+          "value": "2026-07-29T08:00:00+08:00",
+          "certainty": "confirmed"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "unit",
+          "stage": "submission",
+          "value": "2026-07-29T08:00:00+08:00"
+        },
+        {
+          "actor": "unit",
+          "stage": "application_start",
+          "value": "2026-06-01"
+        },
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2026-06-01"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-07-29T08:00:00+08:00"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r136-369fece6",
+      "title": "【申請時程6/12-7/3】114學年度「教育部博士生獎學金」申請公告",
+      "source_id": "discovery-r136",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7061",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條；另有具名單位範例／參考層",
+      "dates": {
+        "start": {
+          "value": "2025-06-12",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        },
+        "end": {
+          "value": "2025-07-03T17:00:00+08:00",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2025-06-12"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2025-07-03T17:00:00+08:00"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [
+        "臺大電信所"
+      ],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r139-bcf86c90",
+      "title": "【申請時程6/15-7/10】115學年度「教育部博士生獎學金」申請公告",
+      "source_id": "discovery-r139",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7279",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條；另有具名單位範例／參考層",
+      "dates": {
+        "start": {
+          "value": "2026-06-15",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        },
+        "end": {
+          "value": "2026-07-10T17:00:00+08:00",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2026-06-15"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-07-10T17:00:00+08:00"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [
+        "臺大電信所"
+      ],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r140-ecd377b6",
+      "title": "【6/22-6/26申請】電信所補助研究生出席國際會議經費申請 (5~7月會議)",
+      "source_id": "discovery-r140",
+      "schedule_track": "other",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條；另有具名單位範例／參考層",
+      "dates": {
+        "start": {
+          "value": "2026-06-22",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        },
+        "end": {
+          "value": "2026-06-26T17:00:00+08:00",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2026-06-22"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-06-26T17:00:00+08:00"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [
+        "臺大電信所"
+      ],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    },
+    {
+      "candidate_id": "cand-discovery-r141-028a44be",
+      "title": "【115.10.12(一)止】115學年度「教育部博士生獎學金」第二階段申請公告",
+      "source_id": "discovery-r141",
+      "schedule_track": "gov",
+      "incremental_decision": "SKIP_UNCHANGED",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7344",
+      "latest_replay_status": "replayed",
+      "reason": null,
+      "submission_mode": "deadline_only",
+      "gantt_form": "單一學生截止標記＋準備建議（非起日）；另有具名單位範例／參考層",
+      "dates": {
+        "end": {
+          "value": "2026-10-12",
+          "certainty": "confirmed"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-10-12"
+        }
+      ],
+      "gaps": [],
+      "example_scopes": [
+        "臺大電信所"
+      ],
+      "attachment_urls": [],
+      "next_step": "保留當期來源連結；按規則及個人條件核對"
+    }
+  ]
+}

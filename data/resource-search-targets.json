@@ -1,0 +1,3093 @@
+{
+  "as_of": "2026-11-01",
+  "scope": "檢索名稱與類型線索，不是去重後的有效獎學金數；名稱可能互為別名或上下位方案",
+  "count": 189,
+  "items": [
+    {
+      "name": "教務處研究生教務組",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 96
+        }
+      ],
+      "urls": [
+        "https://www.aca.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K001"
+    },
+    {
+      "name": "學務處生活輔導組",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 97
+        }
+      ],
+      "urls": [
+        "https://advisory.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K002"
+    },
+    {
+      "name": "學務處僑生及陸生輔導組",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 98
+        }
+      ],
+      "urls": [
+        "https://osa_dos.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K003"
+    },
+    {
+      "name": "國際事務處 (OIA)",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 99
+        }
+      ],
+      "urls": [
+        "https://oia.ntu.edu.tw/",
+        "https://studyabroad.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K004"
+    },
+    {
+      "name": "研究發展處 (ORD)",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 100
+        }
+      ],
+      "urls": [
+        "https://ord.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K005"
+    },
+    {
+      "name": "共同教育中心",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 101
+        }
+      ],
+      "urls": [
+        "https://cge.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K006"
+    },
+    {
+      "name": "學生獎助學金查詢系統 (FAO)",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 102
+        }
+      ],
+      "urls": [
+        "https://my.ntu.edu.tw/fao/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K007"
+    },
+    {
+      "name": "文學院",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 112
+        }
+      ],
+      "urls": [
+        "https://liberal.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K008"
+    },
+    {
+      "name": "理學院",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 113
+        }
+      ],
+      "urls": [
+        "https://www.science.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K009"
+    },
+    {
+      "name": "社會科學院",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 114
+        }
+      ],
+      "urls": [
+        "https://coss.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K010"
+    },
+    {
+      "name": "醫學院",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 115
+        }
+      ],
+      "urls": [
+        "https://www.mc.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K011"
+    },
+    {
+      "name": "工學院",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 116
+        }
+      ],
+      "urls": [
+        "https://www.eng.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K012"
+    },
+    {
+      "name": "生物資源暨農學院",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 117
+        }
+      ],
+      "urls": [
+        "https://www.bioagri.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K013"
+    },
+    {
+      "name": "管理學院",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 118
+        }
+      ],
+      "urls": [
+        "https://management.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K014"
+    },
+    {
+      "name": "公共衛生學院",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 119
+        }
+      ],
+      "urls": [
+        "https://coph.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K015"
+    },
+    {
+      "name": "電機資訊學院",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 120
+        }
+      ],
+      "urls": [
+        "https://eecs.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K016"
+    },
+    {
+      "name": "法律學院",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 121
+        }
+      ],
+      "urls": [
+        "https://www.law.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K017"
+    },
+    {
+      "name": "生命科學院",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 122
+        }
+      ],
+      "urls": [
+        "https://cols.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K018"
+    },
+    {
+      "name": "重點科技研究學院 (半導體)",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 123
+        }
+      ],
+      "urls": [
+        "https://gsat.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K019"
+    },
+    {
+      "name": "創新設計學院 (D-School)",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 124
+        }
+      ],
+      "urls": [
+        "https://dschool.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K020"
+    },
+    {
+      "name": "進修推廣學院",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 125
+        }
+      ],
+      "urls": [
+        "https://extension.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K021"
+    },
+    {
+      "name": "電機工程學系 (DEP-EE, ee.ntu.edu.tw)",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 135
+        }
+      ],
+      "urls": [],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K022"
+    },
+    {
+      "name": "學士班專題研究培育獎學金、程欲明獎學金、何宜慈博士紀念獎助金",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 136
+        }
+      ],
+      "urls": [],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K023"
+    },
+    {
+      "name": "資訊工程學系所 (DEP-CSIE, csie.ntu.edu.tw)",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 138
+        }
+      ],
+      "urls": [],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K024"
+    },
+    {
+      "name": "電資學院頂尖博士培育專案、台達電工業獎學金、玉山傑出人才、科林研發論文獎",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 139
+        }
+      ],
+      "urls": [],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K025"
+    },
+    {
+      "name": "錢思亮先生紀念獎學金、台聚教育基金會獎學金",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 143
+        }
+      ],
+      "urls": [],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K026"
+    },
+    {
+      "name": "中鋼獎學金、應用材料培訓獎助",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 144
+        }
+      ],
+      "urls": [],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K027"
+    },
+    {
+      "name": "周大紓教授紀念獎、台橡獎學金、國際會議發表差旅補助",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 147
+        }
+      ],
+      "urls": [],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K028"
+    },
+    {
+      "name": "",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 150
+        }
+      ],
+      "urls": [],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K029"
+    },
+    {
+      "name": "生醫及復健醫學專案論文獎、國際復健學會參會補助",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 151
+        }
+      ],
+      "urls": [],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K030"
+    },
+    {
+      "name": "國家科學及技術委員會博士生研究獎學金（國科會甄選類）",
+      "category": "doctoral",
+      "category_label": "博士／候選人研究獎助",
+      "batch": "B1",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 214
+        }
+      ],
+      "urls": [
+        "https://www.nstc.gov.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K031"
+    },
+    {
+      "name": "國家科學及技術委員會博士生研究獎學金（大專校院核配類）",
+      "category": "doctoral",
+      "category_label": "博士／候選人研究獎助",
+      "batch": "B1",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 215
+        }
+      ],
+      "urls": [],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K032"
+    },
+    {
+      "name": "補助博士生赴國外研究作業要點（千里馬計畫）",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 216
+        }
+      ],
+      "urls": [
+        "https://law.nstc.gov.tw/LawContent.aspx?id=FL004652"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K033"
+    },
+    {
+      "name": "補助國內研究生出席國際學術會議作業要點",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 217
+        }
+      ],
+      "urls": [
+        "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K034"
+    },
+    {
+      "name": "補助專題研究計畫研究人力約用注意事項（含博士生費用增核）",
+      "category": "rights",
+      "category_label": "RA／TA／工資／法規與求助",
+      "batch": "B7",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 218
+        }
+      ],
+      "urls": [
+        "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K035"
+    },
+    {
+      "name": "中央研究院人文社會科學博士候選人培育計畫要點",
+      "category": "doctoral",
+      "category_label": "博士／候選人研究獎助",
+      "batch": "B1",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 226
+        }
+      ],
+      "urls": [
+        "https://daais.sinica.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K036"
+    },
+    {
+      "name": "臺灣國際研究生學程 (TIGP Fellowship)",
+      "category": "doctoral",
+      "category_label": "博士／候選人研究獎助",
+      "batch": "B1",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 227
+        }
+      ],
+      "urls": [
+        "https://tigp.sinica.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K037"
+    },
+    {
+      "name": "各研究所/研究中心研究生培育與專題獎助（如資訊所、分生所）",
+      "category": "doctoral",
+      "category_label": "博士／候選人研究獎助",
+      "batch": "B1",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 228
+        }
+      ],
+      "urls": [],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K038"
+    },
+    {
+      "name": "教育部博士生獎學金補助計畫作業要點",
+      "category": "doctoral",
+      "category_label": "博士／候選人研究獎助",
+      "batch": "B1",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 236
+        }
+      ],
+      "urls": [
+        "https://www.moe.gov.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K039"
+    },
+    {
+      "name": "公費留學考試與留學獎學金甄試",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 237
+        }
+      ],
+      "urls": [
+        "https://www.scholarship.moe.gov.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K040"
+    },
+    {
+      "name": "教育部學海系列（學海惜珠、學海飛颺、學海築夢、新南向學海築夢）",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 238
+        }
+      ],
+      "urls": [],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K041"
+    },
+    {
+      "name": "產業高階人才培訓計畫 / 產學合作推動方案",
+      "category": "agency",
+      "category_label": "中央機關／其他研究入口",
+      "batch": "B8",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 246
+        }
+      ],
+      "urls": [
+        "https://www.moea.gov.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K042"
+    },
+    {
+      "name": "國家發展基金創業天使投資計畫",
+      "category": "startup",
+      "category_label": "創業／創新資源",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 247
+        }
+      ],
+      "urls": [
+        "https://www.angelfund.org.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K043"
+    },
+    {
+      "name": "國家衛生研究院生醫研究生整合型培訓獎助",
+      "category": "agency",
+      "category_label": "中央機關／其他研究入口",
+      "batch": "B8",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 248
+        }
+      ],
+      "urls": [
+        "https://www.nhri.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K044"
+    },
+    {
+      "name": "國際青年大使交流計畫 / NGO 海外實習補助",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 249
+        }
+      ],
+      "urls": [
+        "https://www.mofa.gov.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K045"
+    },
+    {
+      "name": "財團法人傑出人才發展基金會｜優秀學生出國開會補助",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 259
+        }
+      ],
+      "urls": [
+        "https://www.faos.org.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K046"
+    },
+    {
+      "name": "財團法人中技社｜科技獎學金（研究/創意/境外生）",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 260
+        }
+      ],
+      "urls": [
+        "https://www.ctci.org.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K047"
+    },
+    {
+      "name": "財團法人台北行天宮｜行天宮資優學生長期培育獎助學金 / 急難濟助",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 261
+        }
+      ],
+      "urls": [
+        "https://www.ht.org.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K048"
+    },
+    {
+      "name": "財團法人吳健雄學術基金會｜孟粹珠獎學金 / 女性科學人才培育",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 262
+        }
+      ],
+      "urls": [
+        "https://www.wcs.org.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K049"
+    },
+    {
+      "name": "財團法人潘文淵文教基金會｜考察研究獎助金 / 論文獎 / 獎學金",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 263
+        }
+      ],
+      "urls": [
+        "https://pan.itri.org.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K050"
+    },
+    {
+      "name": "財團法人徐有庠先生紀念基金會｜有庠科技論文獎 / 有庠科技講座",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 264
+        }
+      ],
+      "urls": [
+        "https://yzhsu.feg.com.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K051"
+    },
+    {
+      "name": "財團法人宋作楠先生紀念教育基金會｜碩士論文獎 / 獎助學金",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 265
+        }
+      ],
+      "urls": [
+        "https://www.soongsan.org.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K052"
+    },
+    {
+      "name": "財團法人台灣經濟研究院 / 台灣綜合研究院｜產經政策研究獎學金 / 論文獎",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 266
+        }
+      ],
+      "urls": [
+        "https://www.tier.org.tw/",
+        "https://www.tri.org.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K053"
+    },
+    {
+      "name": "台積電博士獎學金 (TSMC PhD Fellowship)",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 274
+        }
+      ],
+      "urls": [
+        "https://www.tsmc.com/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K054"
+    },
+    {
+      "name": "聯發科技博士生研究獎學金",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 275
+        }
+      ],
+      "urls": [],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K055"
+    },
+    {
+      "name": "鴻海獎學鯨 (Foxconn Educational Scholarship)",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 276
+        }
+      ],
+      "urls": [
+        "https://www.foxconnfoundation.org/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K056"
+    },
+    {
+      "name": "台達科技與環境研發獎學金",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 277
+        }
+      ],
+      "urls": [
+        "https://www.delta-foundation.org.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K057"
+    },
+    {
+      "name": "Google PhD Fellowship",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 278
+        }
+      ],
+      "urls": [
+        "https://research.google/outreach/phd-fellowship/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K058"
+    },
+    {
+      "name": "Microsoft Research PhD Fellowship",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 279
+        }
+      ],
+      "urls": [
+        "https://www.microsoft.com/en-us/research/academic-program/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K059"
+    },
+    {
+      "name": "NVIDIA Graduate Fellowship Program",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 280
+        }
+      ],
+      "urls": [
+        "https://www.nvidia.com/en-us/research/graduate-fellowships/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K060"
+    },
+    {
+      "name": "富邦文教基金會 / 富邦人壽管理碩士論文獎",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 288
+        }
+      ],
+      "urls": [
+        "https://www.fubon.org/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K061"
+    },
+    {
+      "name": "國泰卓越獎助計畫",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 289
+        }
+      ],
+      "urls": [
+        "https://www.cathay-charity.org.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K062"
+    },
+    {
+      "name": "玉山培育傑出人才獎學金 / 玉山學術獎",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 290
+        }
+      ],
+      "urls": [
+        "https://www.esunfhc.com/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K063"
+    },
+    {
+      "name": "中信文教基金會 / 優秀學生獎助",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 291
+        }
+      ],
+      "urls": [
+        "https://www.ctbcfoundation.org/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K064"
+    },
+    {
+      "name": "元大文教基金會優秀人才獎助學金",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 292
+        }
+      ],
+      "urls": [
+        "https://www.yuanta.com/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K065"
+    },
+    {
+      "name": "創新創業激勵計畫 (FITI)",
+      "category": "startup",
+      "category_label": "創業／創新資源",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 302
+        }
+      ],
+      "urls": [
+        "https://fiti.stpi.narl.org.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K066"
+    },
+    {
+      "name": "U-start 創新創業計畫",
+      "category": "startup",
+      "category_label": "創業／創新資源",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 303
+        }
+      ],
+      "urls": [
+        "https://ustart.yda.gov.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K067"
+    },
+    {
+      "name": "臺大創創加速器 / 校園孵化器",
+      "category": "startup",
+      "category_label": "創業／創新資源",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 304
+        }
+      ],
+      "urls": [
+        "https://tec.ntu.edu.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K068"
+    },
+    {
+      "name": "國發基金創業天使投資方案",
+      "category": "startup",
+      "category_label": "創業／創新資源",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 305
+        }
+      ],
+      "urls": [
+        "https://www.angelfund.org.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K069"
+    },
+    {
+      "name": "地方政府青年創業補助（北市SITI、新北、桃園等）",
+      "category": "startup",
+      "category_label": "創業／創新資源",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 306
+        }
+      ],
+      "urls": [],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K070"
+    },
+    {
+      "name": "TWCC 臺灣 AI 雲 / 台灣杉系列超級電腦",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 316
+        }
+      ],
+      "urls": [
+        "https://iservice.nchc.org.tw/",
+        "https://twcc.ai/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K071"
+    },
+    {
+      "name": "Google Cloud Research Credits",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 317
+        }
+      ],
+      "urls": [
+        "https://edu.google.com/programs/credits/research/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K072"
+    },
+    {
+      "name": "AWS Cloud Credit for Research",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 318
+        }
+      ],
+      "urls": [
+        "https://aws.amazon.com/research-credits/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K073"
+    },
+    {
+      "name": "Microsoft Azure Research Grants",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 319
+        }
+      ],
+      "urls": [
+        "https://www.microsoft.com/en-us/research/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K074"
+    },
+    {
+      "name": "OpenAI Researcher Access Program",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 320
+        }
+      ],
+      "urls": [
+        "https://openai.com/form/researcher-access-program/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K075"
+    },
+    {
+      "name": "學術交流基金會 (Fulbright Taiwan)",
+      "category": "overseas",
+      "category_label": "海外占位／外國合作機構",
+      "batch": "H",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 328
+        }
+      ],
+      "urls": [
+        "https://www.fulbright.org.tw/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K076"
+    },
+    {
+      "name": "德國學術交流總署 (DAAD)",
+      "category": "overseas",
+      "category_label": "海外占位／外國合作機構",
+      "batch": "H",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 329
+        }
+      ],
+      "urls": [
+        "https://www.daad.de/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K077"
+    },
+    {
+      "name": "法國在台協會 / 法國教育中心 (Campus France)",
+      "category": "overseas",
+      "category_label": "海外占位／外國合作機構",
+      "batch": "H",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 330
+        }
+      ],
+      "urls": [
+        "https://www.taiwan.campusfrance.org/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K078"
+    },
+    {
+      "name": "英國文化協會 (British Council) / Chevening",
+      "category": "overseas",
+      "category_label": "海外占位／外國合作機構",
+      "batch": "H",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 331
+        }
+      ],
+      "urls": [
+        "https://www.chevening.org/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K079"
+    },
+    {
+      "name": "公益財團法人日本台灣交流協會",
+      "category": "overseas",
+      "category_label": "海外占位／外國合作機構",
+      "batch": "H",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 332
+        }
+      ],
+      "urls": [
+        "https://www.koryu.or.jp/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K080"
+    },
+    {
+      "name": "歐盟執委會 Horizon Europe / MSCA",
+      "category": "overseas",
+      "category_label": "海外占位／外國合作機構",
+      "batch": "H",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 333
+        }
+      ],
+      "urls": [
+        "https://ec.europa.eu/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K081"
+    },
+    {
+      "name": "青年百億海外圓夢基金計畫",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/SOURCE-LANDSCAPE-AND-EXPANSION.md",
+          "line": 343
+        }
+      ],
+      "urls": [
+        "https://twpathfinder.org/"
+      ],
+      "note": "舊規劃／提供線索；正式名稱、存在與當期規則待核",
+      "id": "K082"
+    },
+    {
+      "name": "學海惜珠",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 131
+        }
+      ],
+      "urls": [],
+      "note": "教育部及臺大國際處當期規範、國籍戶籍、錄取身分與目的地；不是已核實的當期清單",
+      "id": "K083"
+    },
+    {
+      "name": "希望出航海外見習實習學生獎學金",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 132
+        }
+      ],
+      "urls": [],
+      "note": "國際引水人計畫對應、是否自動列候選、是否另甄審；不是已核實的當期清單",
+      "id": "K084"
+    },
+    {
+      "name": "NTU Governing Scholarships for International Degree Students",
+      "category": "identity",
+      "category_label": "國際生／僑陸及特定身分",
+      "batch": "B4",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 133
+        }
+      ],
+      "urls": [],
+      "note": "正式中英文名稱、適用新舊生、GPA、續領與年級；不是已核實的當期清單",
+      "id": "K085"
+    },
+    {
+      "name": "NTU Outstanding International Graduate Student Scholarship",
+      "category": "identity",
+      "category_label": "國際生／僑陸及特定身分",
+      "batch": "B4",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 134
+        }
+      ],
+      "urls": [],
+      "note": "當期年級、期限、續領與其他方案關係；不沿用貼文英文 under 的模糊界線；不是已核實的當期清單",
+      "id": "K086"
+    },
+    {
+      "name": "NTU Voyage of Aspirations Scholarship for Exchange Students",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 135
+        }
+      ],
+      "urls": [],
+      "note": "與「希望出航交換學生獎學金」可能為同一制度中英文名稱，待比對辦法確認；不是已核實的當期清單",
+      "id": "K087"
+    },
+    {
+      "name": "國立臺灣大學希望出航交換學生獎學金",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 136
+        }
+      ],
+      "urls": [],
+      "note": "確認校級／院系交換路徑及身分別；與前項先設 suspected_duplicate；不是已核實的當期清單",
+      "id": "K088"
+    },
+    {
+      "name": "赴境外研修雙聯學位獎學金",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 137
+        }
+      ],
+      "urls": [],
+      "note": "正式辦法、學制、目的地與在職排除條件；不是已核實的當期清單",
+      "id": "K089"
+    },
+    {
+      "name": "逕行修讀博士學位學生研究提升計畫",
+      "category": "doctoral",
+      "category_label": "博士／候選人研究獎助",
+      "batch": "B1",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 138
+        }
+      ],
+      "urls": [],
+      "note": "貼文含 108／109 年歷史時程，僅作歷史發現線索，找現行研發處公告；不是已核實的當期清單",
+      "id": "K090"
+    },
+    {
+      "name": "博士生赴國外移地研究試辦方案／遠學計畫",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 139
+        }
+      ],
+      "urls": [],
+      "note": "正式名稱、是否仍辦、候選人及千里馬申請關係待查，不從「試辦」推定停辦；不是已核實的當期清單",
+      "id": "K091"
+    },
+    {
+      "name": "傅鐘獎學金",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 140
+        }
+      ],
+      "urls": [],
+      "note": "保留學制排除測試；依使用者貼文屬學士班新生，不能列研究生推薦；不是已核實的當期清單",
+      "id": "K092"
+    },
+    {
+      "name": "115 國科會核配博士生獎學金",
+      "category": "doctoral",
+      "category_label": "博士／候選人研究獎助",
+      "batch": "B1",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 141
+        }
+      ],
+      "urls": [],
+      "note": "與原 handoff 同制度去重；年級不限與各院系程序分開核對；不是已核實的當期清單",
+      "id": "K093"
+    },
+    {
+      "name": "115 教育部博士生獎學金",
+      "category": "doctoral",
+      "category_label": "博士／候選人研究獎助",
+      "batch": "B1",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 142
+        }
+      ],
+      "urls": [],
+      "note": "一至三年級及資格認定日期；不同梯次分開，與國科會方案分開；不是已核實的當期清單",
+      "id": "K094"
+    },
+    {
+      "name": "臺北市青年AI工具補助",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/PR18-RESOURCE-REVIEW.md",
+          "line": 7
+        },
+        {
+          "file": "data/source-chain-index.json",
+          "line": 0
+        }
+      ],
+      "urls": [
+        "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796"
+      ],
+      "note": "已有初查紀錄；依官方當期規範重核，不沿用舊金額／受理宣稱",
+      "id": "K095"
+    },
+    {
+      "name": "新竹市AI領航",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/PR18-RESOURCE-REVIEW.md",
+          "line": 8
+        }
+      ],
+      "urls": [
+        "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest"
+      ],
+      "note": "已有初查紀錄；依官方當期規範重核，不沿用舊金額／受理宣稱",
+      "id": "K096"
+    },
+    {
+      "name": "新北AI實戰職涯營",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/PR18-RESOURCE-REVIEW.md",
+          "line": 9
+        }
+      ],
+      "urls": [
+        "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f"
+      ],
+      "note": "已有初查紀錄；依官方當期規範重核，不沿用舊金額／受理宣稱",
+      "id": "K097"
+    },
+    {
+      "name": "桃園數位工具培訓",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/PR18-RESOURCE-REVIEW.md",
+          "line": 10
+        }
+      ],
+      "urls": [
+        "https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1617472"
+      ],
+      "note": "已有初查紀錄；依官方當期規範重核，不沿用舊金額／受理宣稱",
+      "id": "K098"
+    },
+    {
+      "name": "高雄K-TV AI課程",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/PR18-RESOURCE-REVIEW.md",
+          "line": 11
+        }
+      ],
+      "urls": [
+        "https://youth.kcg.gov.tw/"
+      ],
+      "note": "已有初查紀錄；依官方當期規範重核，不沿用舊金額／受理宣稱",
+      "id": "K099"
+    },
+    {
+      "name": "勞動部產業新尖兵",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/PR18-RESOURCE-REVIEW.md",
+          "line": 12
+        }
+      ],
+      "urls": [
+        "https://www.wda.gov.tw/News_Content.aspx?n=31&s=19491&sms=10306",
+        "https://tcnr.wda.gov.tw/News_Content.aspx?n=9CDFC65181CC2AEA&s=3CB8C51B711D842C&sms=68798FA6FAE753EC"
+      ],
+      "note": "已有初查紀錄；依官方當期規範重核，不沿用舊金額／受理宣稱",
+      "id": "K100"
+    },
+    {
+      "name": "商業發展署青年AI班",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/PR18-RESOURCE-REVIEW.md",
+          "line": 13
+        }
+      ],
+      "urls": [
+        "https://serv.gcis.nat.gov.tw/AOCAI/courses/youth"
+      ],
+      "note": "已有初查紀錄；依官方當期規範重核，不沿用舊金額／受理宣稱",
+      "id": "K101"
+    },
+    {
+      "name": "國網中心／TWCC",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/PR18-RESOURCE-REVIEW.md",
+          "line": 14
+        }
+      ],
+      "urls": [
+        "https://iservice.nchc.org.tw/nchc_service/nchc_service_qa.php?target=16"
+      ],
+      "note": "已有初查紀錄；依官方當期規範重核，不沿用舊金額／受理宣稱",
+      "id": "K102"
+    },
+    {
+      "name": "GitHub Education／Copilot",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/PR18-RESOURCE-REVIEW.md",
+          "line": 15
+        }
+      ],
+      "urls": [
+        "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students",
+        "https://education.github.com/pack"
+      ],
+      "note": "已有初查紀錄；依官方當期規範重核，不沿用舊金額／受理宣稱",
+      "id": "K103"
+    },
+    {
+      "name": "Google學生AI",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/PR18-RESOURCE-REVIEW.md",
+          "line": 16
+        }
+      ],
+      "urls": [
+        "https://blog.google/intl/zh-tw/products/explore-get-answers/back-to-school-2026/",
+        "https://one.google.com/offer/studentoffer8?hl=zh-TW"
+      ],
+      "note": "已有初查紀錄；依官方當期規範重核，不沿用舊金額／受理宣稱",
+      "id": "K104"
+    },
+    {
+      "name": "Google新創雲端",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/PR18-RESOURCE-REVIEW.md",
+          "line": 17
+        }
+      ],
+      "urls": [
+        "https://cloud.google.com/startup"
+      ],
+      "note": "已有初查紀錄；依官方當期規範重核，不沿用舊金額／受理宣稱",
+      "id": "K105"
+    },
+    {
+      "name": "AWS Educate",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/PR18-RESOURCE-REVIEW.md",
+          "line": 18
+        }
+      ],
+      "urls": [
+        "https://aws.amazon.com/education/awseducate/"
+      ],
+      "note": "已有初查紀錄；依官方當期規範重核，不沿用舊金額／受理宣稱",
+      "id": "K106"
+    },
+    {
+      "name": "OpenAI Researcher Access",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/PR18-RESOURCE-REVIEW.md",
+          "line": 19
+        }
+      ],
+      "urls": [
+        "https://help.openai.com/en/articles/10139500-researcher-access-program-faq"
+      ],
+      "note": "已有初查紀錄；依官方當期規範重核，不沿用舊金額／受理宣稱",
+      "id": "K107"
+    },
+    {
+      "name": "NVIDIA",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/PR18-RESOURCE-REVIEW.md",
+          "line": 20
+        }
+      ],
+      "urls": [
+        "https://www.nvidia.com/en-us/startups/"
+      ],
+      "note": "已有初查紀錄；依官方當期規範重核，不沿用舊金額／受理宣稱",
+      "id": "K108"
+    },
+    {
+      "name": "AIA學生方案",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/PR18-RESOURCE-REVIEW.md",
+          "line": 21
+        }
+      ],
+      "urls": [
+        "https://aiacademy.tw/"
+      ],
+      "note": "已有初查紀錄；依官方當期規範重核，不沿用舊金額／受理宣稱",
+      "id": "K109"
+    },
+    {
+      "name": "OCF黑客松／伺服器補助",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/PR18-RESOURCE-REVIEW.md",
+          "line": 22
+        }
+      ],
+      "urls": [
+        "https://ocf.tw/"
+      ],
+      "note": "已有初查紀錄；依官方當期規範重核，不沿用舊金額／受理宣稱",
+      "id": "K110"
+    },
+    {
+      "name": "均一狐狸貓",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "docs/PR18-RESOURCE-REVIEW.md",
+          "line": 23
+        }
+      ],
+      "urls": [
+        "https://www.junyiacademy.org/"
+      ],
+      "note": "已有初查紀錄；依官方當期規範重核，不沿用舊金額／受理宣稱",
+      "id": "K111"
+    },
+    {
+      "name": "臺大國科會博士生獎學金",
+      "category": "doctoral",
+      "category_label": "博士／候選人研究獎助",
+      "batch": "B1",
+      "origins": [
+        {
+          "file": "data/source-chain-index.json",
+          "line": 0
+        }
+      ],
+      "urls": [
+        "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B61-%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf&filepath=.%2FNewsUploadDir%2F2026_06_16_13_57_48_0.pdf",
+        "https://gice.ntu.edu.tw/shownews.php?ID=7278",
+        "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B62-115%E5%AD%B8%E5%B9%B4%E3%80%8C%E5%9C%8B%E7%A7%91%E6%9C%83%E6%A0%B8%E9%85%8D%E3%80%8D%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91_%E7%94%B3%E8%AB%8B%E8%B3%87%E6%96%99%E8%A1%A8.doc&filepath=.%2FNewsUploadDir%2F2026_06_23_16_06_23_0.doc",
+        "https://gice.ntu.edu.tw/filedownload.php?filename=%288%29%E5%82%99%E5%AF%A9%E8%B3%87%E6%96%99%E6%91%98%E8%A6%81%E5%BD%99%E6%95%B4%E8%A1%A8-%E5%9C%8B%E7%A7%91%E6%9C%83%E6%A0%B8%E9%85%8D%E5%8D%9A%E5%A3%AB%E7%8D%8E%E5%AD%B8%E9%87%91.xlsx&filepath=.%2FNewsUploadDir%2F2026_06_23_16_06_23_1xlsx",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf"
+      ],
+      "note": "既有13組方案之一；仍有缺口且規則pending，與同名舊種子需去重",
+      "id": "K112"
+    },
+    {
+      "name": "臺大教育部博士生獎學金",
+      "category": "doctoral",
+      "category_label": "博士／候選人研究獎助",
+      "batch": "B1",
+      "origins": [
+        {
+          "file": "data/source-chain-index.json",
+          "line": 0
+        }
+      ],
+      "urls": [
+        "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B61-%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf&filepath=.%2FNewsUploadDir%2F2026_10_06_11_03_34_0.pdf",
+        "https://gice.ntu.edu.tw/shownews.php?ID=7344",
+        "https://gice.ntu.edu.tw/filedownload.php?filename=%289%29%E5%82%99%E5%AF%A9%E8%B3%87%E6%96%99%E6%91%98%E8%A6%81%E5%BD%99%E6%95%B4%E8%A1%A8-%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91.xlsx&filepath=.%2FNewsUploadDir%2F2026_10_06_11_03_34_3xlsx",
+        "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B63-115%E6%95%99%E8%82%B2%E9%83%A8%E7%8D%8E%E5%AD%B8%E9%87%91_%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E9%85%8D%E5%90%88%E6%AC%BE%E5%90%8C%E6%84%8F%E6%9B%B8.doc&filepath=.%2FNewsUploadDir%2F2026_10_06_11_03_34_2.doc",
+        "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B62-115%E3%80%90%E6%95%99%E8%82%B2%E9%83%A8%E3%80%91%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91_%E7%94%B3%E8%AB%8B%E8%B3%87%E6%96%99%E8%A1%A8.docx&filepath=.%2FNewsUploadDir%2F2026_10_06_11_03_34_1docx",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
+        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf"
+      ],
+      "note": "既有13組方案之一；仍有缺口且規則pending，與同名舊種子需去重",
+      "id": "K113"
+    },
+    {
+      "name": "臺大研究生校長獎",
+      "category": "award",
+      "category_label": "論文／成果／榮譽",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "data/source-chain-index.json",
+          "line": 0
+        }
+      ],
+      "urls": [
+        "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/263996/161eae16-eed8-423b-875e-57c19a37e6ff.pdf",
+        "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/255718/26fe6b56-f175-43fb-8715-25d053a52a7f.pdf",
+        "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/263996/95600d69-b4d8-43c4-b2e7-81ca70f140d8.pdf",
+        "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/255718/b71d29b1-5764-4766-9df9-ad24f96953d6.pdf",
+        "https://ac.ntu.edu.tw/News_Content_n_194922_s_255718.html",
+        "https://ac.ntu.edu.tw/News_Content_n_194922_sms_123934_s_263996.html",
+        "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/263996/3924f741-976c-4f26-8794-fc7c890c41ea.docx",
+        "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/255718/3c8a6cb6-a008-47bc-87d4-80d1a61f313e.docx",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368",
+        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf"
+      ],
+      "note": "既有13組方案之一；仍有缺口且規則pending，與同名舊種子需去重",
+      "id": "K114"
+    },
+    {
+      "name": "臺大遠學計畫",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "data/source-chain-index.json",
+          "line": 0
+        }
+      ],
+      "urls": [
+        "https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260"
+      ],
+      "note": "既有13組方案之一；仍有缺口且規則pending，與同名舊種子需去重",
+      "id": "K115"
+    },
+    {
+      "name": "國科會研究生國際會議補助",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "data/source-chain-index.json",
+          "line": 0
+        }
+      ],
+      "urls": [
+        "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383",
+        "https://gice.ntu.edu.tw/shownews.php?ID=7282"
+      ],
+      "note": "既有13組方案之一；仍有缺口且規則pending，與同名舊種子需去重",
+      "id": "K116"
+    },
+    {
+      "name": "傑出人才基金會優秀學生出國開會補助",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "data/source-chain-index.json",
+          "line": 0
+        }
+      ],
+      "urls": [
+        "https://www.faos.org.tw/Application/ApplicatStud.html",
+        "https://sec.ntu.edu.tw/001/Upload/18/relfile/9811/214008/add73815-0131-4901-b098-8dd402078f4c.pdf",
+        "https://sec.ntu.edu.tw/News_n_27890_sms_10166__CSN_541.html",
+        "https://www.faos.org.tw/apply/student/",
+        "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/3733/e3e4cbe9-b068-4402-8497-ad5d4256aee1.docx",
+        "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/3734/1234482d-32d1-416f-8e49-3cfb7f124cf3.pdf"
+      ],
+      "note": "既有13組方案之一；仍有缺口且規則pending，與同名舊種子需去重",
+      "id": "K117"
+    },
+    {
+      "name": "國科會博士生赴國外研究（千里馬）",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "data/source-chain-index.json",
+          "line": 0
+        }
+      ],
+      "urls": [
+        "https://law.nstc.gov.tw/LawContent.aspx?id=FL039188",
+        "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
+        "https://www.nstc.gov.tw/nstc/attachments/92025fc4-ec4f-4109-980a-03f23f91f41c",
+        "https://www.nstc.gov.tw/nstc/attachments/b510a7b7-c54b-4621-a65c-e79620d13939",
+        "https://www.nstc.gov.tw/nstc/attachments/d6e268dc-75bb-4829-813b-3d2ce0ce46eb"
+      ],
+      "note": "既有13組方案之一；仍有缺口且規則pending，與同名舊種子需去重",
+      "id": "K118"
+    },
+    {
+      "name": "中研院人社博士候選人培育",
+      "category": "doctoral",
+      "category_label": "博士／候選人研究獎助",
+      "batch": "B1",
+      "origins": [
+        {
+          "file": "data/source-chain-index.json",
+          "line": 0
+        }
+      ],
+      "urls": [
+        "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/ahq7i-hly0j.odt",
+        "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/am2sg-egsi4.odt",
+        "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E8%A6%81%E9%BB%9E-odt.odt",
+        "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E8%A6%81%E9%BB%9E.pdf",
+        "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E8%A6%81%E9%BB%9E.pdf",
+        "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E6%94%BF%E6%B2%BB%E6%89%80%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%AF%A9%E6%9F%A5%E8%BE%A6%E6%B3%95-odt.odt",
+        "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E6%94%BF%E6%B2%BB%E6%89%80%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%AF%A9%E6%9F%A5%E8%BE%A6%E6%B3%95-%E5%83%85%E4%B8%AD%E6%96%87%E7%89%88.pdf",
+        "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E6%94%BF%E6%B2%BB%E6%89%80%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%AF%A9%E6%9F%A5%E8%BE%A6%E6%B3%95-%E5%83%85%E4%B8%AD%E6%96%87%E7%89%88.pdf",
+        "https://www.ipsas.sinica.edu.tw/%E6%9C%80%E6%96%B0%E8%A8%8A%E6%81%AF/%E5%AD%B8%E8%A1%93%E5%85%AC%E5%91%8A/ipsas-115%E5%B9%B4%E5%BA%A6%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E7%A7%91%E5%AD%B8%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%8D%B3%E6%97%A5%E8%B5%B7/",
+        "https://www.ipsas.sinica.edu.tw/%E6%9C%80%E6%96%B0%E8%A8%8A%E6%81%AF/%E5%AD%B8%E8%A1%93%E5%85%AC%E5%91%8A/ipsas-114%E5%B9%B4%E5%BA%A6%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E7%A7%91%E5%AD%B8%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%8D%B3%E6%97%A5%E8%B5%B7/",
+        "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E7%A7%91%E5%AD%B8%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E7%94%B3%E8%AB%8B%E8%A1%A8.doc",
+        "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E7%A7%91%E5%AD%B8%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E7%94%B3%E8%AB%8B%E8%A1%A8.doc",
+        "https://www.sinica.edu.tw/news_content/56/3434",
+        "https://www.ipsas.sinica.edu.tw/%E7%A0%94%E7%A9%B6%E8%A8%88%E7%95%AB%E7%BE%A4%E7%B5%84"
+      ],
+      "note": "既有13組方案之一；仍有缺口且規則pending，與同名舊種子需去重",
+      "id": "K119"
+    },
+    {
+      "name": "新竹市AI領航工具補助",
+      "category": "ai",
+      "category_label": "AI工具／算力／培訓",
+      "batch": "B6",
+      "origins": [
+        {
+          "file": "data/source-chain-index.json",
+          "line": 0
+        }
+      ],
+      "urls": [
+        "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest"
+      ],
+      "note": "既有13組方案之一；仍有缺口且規則pending，與同名舊種子需去重",
+      "id": "K120"
+    },
+    {
+      "name": "國科會研究人力約用規範",
+      "category": "rights",
+      "category_label": "RA／TA／工資／法規與求助",
+      "batch": "B7",
+      "origins": [
+        {
+          "file": "data/source-chain-index.json",
+          "line": 0
+        }
+      ],
+      "urls": [
+        "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686"
+      ],
+      "note": "既有13組方案之一；仍有缺口且規則pending，與同名舊種子需去重",
+      "id": "K121"
+    },
+    {
+      "name": "臺大電資學院博士獎學金辦法",
+      "category": "doctoral",
+      "category_label": "博士／候選人研究獎助",
+      "batch": "B1",
+      "origins": [
+        {
+          "file": "data/source-chain-index.json",
+          "line": 0
+        }
+      ],
+      "urls": [
+        "https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf"
+      ],
+      "note": "既有13組方案之一；仍有缺口且規則pending，與同名舊種子需去重",
+      "id": "K122"
+    },
+    {
+      "name": "臺大教學助理制度",
+      "category": "rights",
+      "category_label": "RA／TA／工資／法規與求助",
+      "batch": "B7",
+      "origins": [
+        {
+          "file": "data/source-chain-index.json",
+          "line": 0
+        }
+      ],
+      "urls": [
+        "https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514",
+        "https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/%E6%95%99%E5%8B%99%E8%99%95%E6%95%99%E5%AD%B8%E5%8A%A9%E7%90%86%E5%88%B6%E5%BA%A6%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E6%A2%9D%E6%96%87-%E5%85%AC%E5%91%8A%E7%89%88.pdf"
+      ],
+      "note": "既有13組方案之一；仍有缺口且規則pending，與同名舊種子需去重",
+      "id": "K123"
+    },
+    {
+      "name": "臺大醫學院研究生優秀著作獎",
+      "category": "award",
+      "category_label": "論文／成果／榮譽",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K124"
+    },
+    {
+      "name": "李鎮源院長紀念獎",
+      "category": "award",
+      "category_label": "論文／成果／榮譽",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K125"
+    },
+    {
+      "name": "陳拱北教授紀念獎學金",
+      "category": "award",
+      "category_label": "論文／成果／榮譽",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K126"
+    },
+    {
+      "name": "冠德管理學術獎",
+      "category": "award",
+      "category_label": "論文／成果／榮譽",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K127"
+    },
+    {
+      "name": "各學院院長獎",
+      "category": "award",
+      "category_label": "論文／成果／榮譽",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K128"
+    },
+    {
+      "name": "學生利他獎",
+      "category": "award",
+      "category_label": "論文／成果／榮譽",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K129"
+    },
+    {
+      "name": "斐陶斐榮譽學會推薦",
+      "category": "award",
+      "category_label": "論文／成果／榮譽",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K130"
+    },
+    {
+      "name": "臺大優秀青年遴選",
+      "category": "award",
+      "category_label": "論文／成果／榮譽",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K131"
+    },
+    {
+      "name": "全國大專優秀青年",
+      "category": "award",
+      "category_label": "論文／成果／榮譽",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K132"
+    },
+    {
+      "name": "書卷獎（學士班排除測試）",
+      "category": "award",
+      "category_label": "論文／成果／榮譽",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K133"
+    },
+    {
+      "name": "中華民國資訊學會優秀碩士論文獎",
+      "category": "award",
+      "category_label": "論文／成果／榮譽",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K134"
+    },
+    {
+      "name": "臺灣經濟學會優秀碩士論文獎",
+      "category": "award",
+      "category_label": "論文／成果／榮譽",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K135"
+    },
+    {
+      "name": "國家新創獎／生技醫療研究獎項",
+      "category": "award",
+      "category_label": "論文／成果／榮譽",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K136"
+    },
+    {
+      "name": "國科會獎勵人文與社會科學領域博士候選人撰寫博士論文",
+      "category": "doctoral",
+      "category_label": "博士／候選人研究獎助",
+      "batch": "B1",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K137"
+    },
+    {
+      "name": "蔣經國基金會博士論文獎學金",
+      "category": "doctoral",
+      "category_label": "博士／候選人研究獎助",
+      "batch": "B1",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K138"
+    },
+    {
+      "name": "國科會博士後研究學者（畢業後身分，低優先）",
+      "category": "doctoral",
+      "category_label": "博士／候選人研究獎助",
+      "batch": "B1",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K139"
+    },
+    {
+      "name": "中研院院長特聘博士後（畢業後身分，低優先）",
+      "category": "doctoral",
+      "category_label": "博士／候選人研究獎助",
+      "batch": "B1",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K140"
+    },
+    {
+      "name": "醫學院國際事務中心學生國際會議補助",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K141"
+    },
+    {
+      "name": "醫學院研發分處會議／報銷入口（先判申請角色）",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K142"
+    },
+    {
+      "name": "IEEE Taipei Section Student Travel Grants",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K143"
+    },
+    {
+      "name": "ACM SIGCOMM／SIGCHI／SIGKDD學生旅費補助",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K144"
+    },
+    {
+      "name": "中國化學會／物理學會會議獎助",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K145"
+    },
+    {
+      "name": "國際會議主辦方Student Travel Award",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K146"
+    },
+    {
+      "name": "國際會議Registration Fee Waiver",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K147"
+    },
+    {
+      "name": "學海飛颺",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K148"
+    },
+    {
+      "name": "學海築夢",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K149"
+    },
+    {
+      "name": "新南向學海築夢",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K150"
+    },
+    {
+      "name": "臺大國際引水人計畫",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K151"
+    },
+    {
+      "name": "校級雙聯學位獎助",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K152"
+    },
+    {
+      "name": "合作校學費減免（依協議，低優先）",
+      "category": "mobility",
+      "category_label": "會議／赴外研究／交換",
+      "batch": "B2",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K153"
+    },
+    {
+      "name": "學雜費減免",
+      "category": "living",
+      "category_label": "學費／生活／急難／住宿",
+      "batch": "B4",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K154"
+    },
+    {
+      "name": "就學貸款（借貸，不是獎學金）",
+      "category": "living",
+      "category_label": "學費／生活／急難／住宿",
+      "batch": "B4",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K155"
+    },
+    {
+      "name": "不利處境助學金／弱勢助學金",
+      "category": "living",
+      "category_label": "學費／生活／急難／住宿",
+      "batch": "B4",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K156"
+    },
+    {
+      "name": "勵學獎學金",
+      "category": "living",
+      "category_label": "學費／生活／急難／住宿",
+      "batch": "B4",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K157"
+    },
+    {
+      "name": "臺大學生急難慰助",
+      "category": "living",
+      "category_label": "學費／生活／急難／住宿",
+      "batch": "B4",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K158"
+    },
+    {
+      "name": "教育部學產基金急難慰問（研究生適用待查）",
+      "category": "living",
+      "category_label": "學費／生活／急難／住宿",
+      "batch": "B4",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K159"
+    },
+    {
+      "name": "行天宮社會急難扶助",
+      "category": "living",
+      "category_label": "學費／生活／急難／住宿",
+      "batch": "B4",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K160"
+    },
+    {
+      "name": "租金補貼／校外住宿支持",
+      "category": "living",
+      "category_label": "學費／生活／急難／住宿",
+      "batch": "B4",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K161"
+    },
+    {
+      "name": "身心障礙與特殊境遇就學支持",
+      "category": "living",
+      "category_label": "學費／生活／急難／住宿",
+      "batch": "B4",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K162"
+    },
+    {
+      "name": "僑生清寒獎學金",
+      "category": "identity",
+      "category_label": "國際生／僑陸及特定身分",
+      "batch": "B4",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K163"
+    },
+    {
+      "name": "優秀僑生獎助學金",
+      "category": "identity",
+      "category_label": "國際生／僑陸及特定身分",
+      "batch": "B4",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K164"
+    },
+    {
+      "name": "僑陸生醫療／緊急就學支持",
+      "category": "identity",
+      "category_label": "國際生／僑陸及特定身分",
+      "batch": "B4",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K165"
+    },
+    {
+      "name": "境外學位生獎學金與續領",
+      "category": "identity",
+      "category_label": "國際生／僑陸及特定身分",
+      "batch": "B4",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K166"
+    },
+    {
+      "name": "宮廟基金會獎助（待具名）",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K167"
+    },
+    {
+      "name": "教會與宗教慈善獎助（待具名）",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K168"
+    },
+    {
+      "name": "地方同鄉會／鄉鎮公所研究生獎助",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K169"
+    },
+    {
+      "name": "系友捐贈／企業指定獎學金",
+      "category": "foundation",
+      "category_label": "基金會／企業／宗教獎助",
+      "batch": "B5",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K170"
+    },
+    {
+      "name": "研究生獎勵金：獎助金與勞僱津貼分流",
+      "category": "rights",
+      "category_label": "RA／TA／工資／法規與求助",
+      "batch": "B7",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K171"
+    },
+    {
+      "name": "國科會博士生研究人力費用增核",
+      "category": "rights",
+      "category_label": "RA／TA／工資／法規與求助",
+      "batch": "B7",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K172"
+    },
+    {
+      "name": "專任研究助理薪資與聘僱依據",
+      "category": "rights",
+      "category_label": "RA／TA／工資／法規與求助",
+      "batch": "B7",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K173"
+    },
+    {
+      "name": "兼任學生RA權益與給付依據",
+      "category": "rights",
+      "category_label": "RA／TA／工資／法規與求助",
+      "batch": "B7",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K174"
+    },
+    {
+      "name": "共同基礎／通識課程TA",
+      "category": "rights",
+      "category_label": "RA／TA／工資／法規與求助",
+      "batch": "B7",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K175"
+    },
+    {
+      "name": "EMITA／雙語教學助理",
+      "category": "rights",
+      "category_label": "RA／TA／工資／法規與求助",
+      "batch": "B7",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K176"
+    },
+    {
+      "name": "學院聘與系所自聘TA",
+      "category": "rights",
+      "category_label": "RA／TA／工資／法規與求助",
+      "batch": "B7",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K177"
+    },
+    {
+      "name": "校內工讀／最低工資",
+      "category": "rights",
+      "category_label": "RA／TA／工資／法規與求助",
+      "batch": "B7",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K178"
+    },
+    {
+      "name": "僑外生工作許可與聘僱分流",
+      "category": "rights",
+      "category_label": "RA／TA／工資／法規與求助",
+      "batch": "B7",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K179"
+    },
+    {
+      "name": "勞僱型／學習型判斷",
+      "category": "rights",
+      "category_label": "RA／TA／工資／法規與求助",
+      "batch": "B7",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K180"
+    },
+    {
+      "name": "學校申訴／勞資爭議求助入口",
+      "category": "rights",
+      "category_label": "RA／TA／工資／法規與求助",
+      "batch": "B7",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K181"
+    },
+    {
+      "name": "論文著作權與研究成果歸屬",
+      "category": "rights",
+      "category_label": "RA／TA／工資／法規與求助",
+      "batch": "B7",
+      "origins": [
+        {
+          "file": "docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K182"
+    },
+    {
+      "name": "臺大職能治療所公開獎助與承辦入口",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K183"
+    },
+    {
+      "name": "臺大電機所／資訊所／化工所／材料所／化學所入口",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K184"
+    },
+    {
+      "name": "中研院資訊所／分生所公開研究生培育入口",
+      "category": "campus",
+      "category_label": "院系與校級公告入口",
+      "batch": "B3",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K185"
+    },
+    {
+      "name": "清華大學校級獎助入口（模板擴校，非全校深爬）",
+      "category": "agency",
+      "category_label": "中央機關／其他研究入口",
+      "batch": "B8",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K186"
+    },
+    {
+      "name": "陽明交通大學校級獎助入口（模板擴校，非全校深爬）",
+      "category": "agency",
+      "category_label": "中央機關／其他研究入口",
+      "batch": "B8",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K187"
+    },
+    {
+      "name": "成功大學校級獎助入口（模板擴校，非全校深爬）",
+      "category": "agency",
+      "category_label": "中央機關／其他研究入口",
+      "batch": "B8",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K188"
+    },
+    {
+      "name": "政治大學校級獎助入口（模板擴校，非全校深爬）",
+      "category": "agency",
+      "category_label": "中央機關／其他研究入口",
+      "batch": "B8",
+      "origins": [
+        {
+          "file": "docs/TAXONOMY-AND-SOURCES.md",
+          "line": 0
+        }
+      ],
+      "urls": [],
+      "note": "既有規劃中的名稱／類型線索；如未找到具名官方方案，保留名稱待查，不造卡片",
+      "id": "K189"
+    }
+  ]
+}

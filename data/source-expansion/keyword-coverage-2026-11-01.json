@@ -1,0 +1,2026 @@
+{
+  "count": 189,
+  "items": [
+    {
+      "id": "K001",
+      "name": "教務處研究生教務組",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://www.aca.ntu.edu.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K002",
+      "name": "學務處生活輔導組",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://advisory.ntu.edu.tw/",
+          "status": "manual_only"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K003",
+      "name": "學務處僑生及陸生輔導組",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://osa_dos.ntu.edu.tw/",
+          "status": "transport_error"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K004",
+      "name": "國際事務處 (OIA)",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://oia.ntu.edu.tw/",
+          "status": "read"
+        },
+        {
+          "url": "https://studyabroad.ntu.edu.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K005",
+      "name": "研究發展處 (ORD)",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://ord.ntu.edu.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K006",
+      "name": "共同教育中心",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://cge.ntu.edu.tw/",
+          "status": "required_marker_missing"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K007",
+      "name": "學生獎助學金查詢系統 (FAO)",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://my.ntu.edu.tw/fao/",
+          "status": "manual_only"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K008",
+      "name": "文學院",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://liberal.ntu.edu.tw/",
+          "status": "url_not_allowed"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K009",
+      "name": "理學院",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://www.science.ntu.edu.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K010",
+      "name": "社會科學院",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://coss.ntu.edu.tw/",
+          "status": "required_marker_missing"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K011",
+      "name": "醫學院",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://www.mc.ntu.edu.tw/",
+          "status": "body_selector_changed"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K012",
+      "name": "工學院",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://www.eng.ntu.edu.tw/",
+          "status": "manual_only"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K013",
+      "name": "生物資源暨農學院",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://www.bioagri.ntu.edu.tw/",
+          "status": "required_marker_missing"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K014",
+      "name": "管理學院",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://management.ntu.edu.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K015",
+      "name": "公共衛生學院",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://coph.ntu.edu.tw/",
+          "status": "required_marker_missing"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K016",
+      "name": "電機資訊學院",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://eecs.ntu.edu.tw/",
+          "status": "login_form_not_processed"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K017",
+      "name": "法律學院",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://www.law.ntu.edu.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K018",
+      "name": "生命科學院",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://cols.ntu.edu.tw/",
+          "status": "required_marker_missing"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K019",
+      "name": "重點科技研究學院 (半導體)",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://gsat.ntu.edu.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K020",
+      "name": "創新設計學院 (D-School)",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://dschool.ntu.edu.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K021",
+      "name": "進修推廣學院",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://extension.ntu.edu.tw/",
+          "status": "transport_error"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K022",
+      "name": "電機工程學系 (DEP-EE, ee.ntu.edu.tw)",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K023",
+      "name": "學士班專題研究培育獎學金、程欲明獎學金、何宜慈博士紀念獎助金",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K024",
+      "name": "資訊工程學系所 (DEP-CSIE, csie.ntu.edu.tw)",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K025",
+      "name": "電資學院頂尖博士培育專案、台達電工業獎學金、玉山傑出人才、科林研發論文獎",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K026",
+      "name": "錢思亮先生紀念獎學金、台聚教育基金會獎學金",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K027",
+      "name": "中鋼獎學金、應用材料培訓獎助",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K028",
+      "name": "周大紓教授紀念獎、台橡獎學金、國際會議發表差旅補助",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K029",
+      "name": "",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K030",
+      "name": "生醫及復健醫學專案論文獎、國際復健學會參會補助",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K031",
+      "name": "國家科學及技術委員會博士生研究獎學金（國科會甄選類）",
+      "batch": "B1",
+      "source_observations": [
+        {
+          "url": "https://www.nstc.gov.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K032",
+      "name": "國家科學及技術委員會博士生研究獎學金（大專校院核配類）",
+      "batch": "B1",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K033",
+      "name": "補助博士生赴國外研究作業要點（千里馬計畫）",
+      "batch": "B2",
+      "source_observations": [
+        {
+          "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL004652",
+          "status": "required_marker_missing"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K034",
+      "name": "補助國內研究生出席國際學術會議作業要點",
+      "batch": "B2",
+      "source_observations": [
+        {
+          "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K035",
+      "name": "補助專題研究計畫研究人力約用注意事項（含博士生費用增核）",
+      "batch": "B7",
+      "source_observations": [
+        {
+          "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K036",
+      "name": "中央研究院人文社會科學博士候選人培育計畫要點",
+      "batch": "B1",
+      "source_observations": [
+        {
+          "url": "https://daais.sinica.edu.tw/",
+          "status": "required_marker_missing"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K037",
+      "name": "臺灣國際研究生學程 (TIGP Fellowship)",
+      "batch": "B1",
+      "source_observations": [
+        {
+          "url": "https://tigp.sinica.edu.tw/",
+          "status": "required_marker_missing"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K038",
+      "name": "各研究所/研究中心研究生培育與專題獎助（如資訊所、分生所）",
+      "batch": "B1",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K039",
+      "name": "教育部博士生獎學金補助計畫作業要點",
+      "batch": "B1",
+      "source_observations": [
+        {
+          "url": "https://www.moe.gov.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K040",
+      "name": "公費留學考試與留學獎學金甄試",
+      "batch": "B2",
+      "source_observations": [
+        {
+          "url": "https://www.scholarship.moe.gov.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K041",
+      "name": "教育部學海系列（學海惜珠、學海飛颺、學海築夢、新南向學海築夢）",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K042",
+      "name": "產業高階人才培訓計畫 / 產學合作推動方案",
+      "batch": "B8",
+      "source_observations": [
+        {
+          "url": "https://www.moea.gov.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K043",
+      "name": "國家發展基金創業天使投資計畫",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://www.angelfund.org.tw/",
+          "status": "transport_error"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K044",
+      "name": "國家衛生研究院生醫研究生整合型培訓獎助",
+      "batch": "B8",
+      "source_observations": [
+        {
+          "url": "https://www.nhri.edu.tw/",
+          "status": "robots_not_plain_rules"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K045",
+      "name": "國際青年大使交流計畫 / NGO 海外實習補助",
+      "batch": "B2",
+      "source_observations": [
+        {
+          "url": "https://www.mofa.gov.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K046",
+      "name": "財團法人傑出人才發展基金會｜優秀學生出國開會補助",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://www.faos.org.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K047",
+      "name": "財團法人中技社｜科技獎學金（研究/創意/境外生）",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://www.ctci.org.tw/",
+          "status": "robots_not_plain_rules"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K048",
+      "name": "財團法人台北行天宮｜行天宮資優學生長期培育獎助學金 / 急難濟助",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://www.ht.org.tw/",
+          "status": "required_marker_missing"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K049",
+      "name": "財團法人吳健雄學術基金會｜孟粹珠獎學金 / 女性科學人才培育",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://www.wcs.org.tw/",
+          "status": "manual_only"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K050",
+      "name": "財團法人潘文淵文教基金會｜考察研究獎助金 / 論文獎 / 獎學金",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://pan.itri.org.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K051",
+      "name": "財團法人徐有庠先生紀念基金會｜有庠科技論文獎 / 有庠科技講座",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://yzhsu.feg.com.tw/",
+          "status": "manual_only"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K052",
+      "name": "財團法人宋作楠先生紀念教育基金會｜碩士論文獎 / 獎助學金",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://www.soongsan.org.tw/",
+          "status": "transport_error"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K053",
+      "name": "財團法人台灣經濟研究院 / 台灣綜合研究院｜產經政策研究獎學金 / 論文獎",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://www.tier.org.tw/",
+          "status": "robots_not_plain_rules"
+        },
+        {
+          "url": "https://www.tri.org.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K054",
+      "name": "台積電博士獎學金 (TSMC PhD Fellowship)",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://www.tsmc.com/",
+          "status": "manual_only"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K055",
+      "name": "聯發科技博士生研究獎學金",
+      "batch": "B5",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K056",
+      "name": "鴻海獎學鯨 (Foxconn Educational Scholarship)",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://www.foxconnfoundation.org/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K057",
+      "name": "台達科技與環境研發獎學金",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://www.delta-foundation.org.tw/",
+          "status": "url_not_allowed"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K058",
+      "name": "Google PhD Fellowship",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://research.google/outreach/phd-fellowship/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K059",
+      "name": "Microsoft Research PhD Fellowship",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://www.microsoft.com/en-us/research/academic-program/",
+          "status": "http_404"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K060",
+      "name": "NVIDIA Graduate Fellowship Program",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://www.nvidia.com/en-us/research/graduate-fellowships/",
+          "status": "url_not_allowed"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K061",
+      "name": "富邦文教基金會 / 富邦人壽管理碩士論文獎",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://www.fubon.org/",
+          "status": "transport_error"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K062",
+      "name": "國泰卓越獎助計畫",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://www.cathay-charity.org.tw/",
+          "status": "transport_error"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K063",
+      "name": "玉山培育傑出人才獎學金 / 玉山學術獎",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://www.esunfhc.com/",
+          "status": "robots_not_plain_rules"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K064",
+      "name": "中信文教基金會 / 優秀學生獎助",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://www.ctbcfoundation.org/",
+          "status": "robots_not_plain_rules"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K065",
+      "name": "元大文教基金會優秀人才獎助學金",
+      "batch": "B5",
+      "source_observations": [
+        {
+          "url": "https://www.yuanta.com/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K066",
+      "name": "創新創業激勵計畫 (FITI)",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://fiti.stpi.narl.org.tw/",
+          "status": "url_not_allowed"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K067",
+      "name": "U-start 創新創業計畫",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://ustart.yda.gov.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K068",
+      "name": "臺大創創加速器 / 校園孵化器",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://tec.ntu.edu.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K069",
+      "name": "國發基金創業天使投資方案",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://www.angelfund.org.tw/",
+          "status": "transport_error"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K070",
+      "name": "地方政府青年創業補助（北市SITI、新北、桃園等）",
+      "batch": "B6",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K071",
+      "name": "TWCC 臺灣 AI 雲 / 台灣杉系列超級電腦",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://iservice.nchc.org.tw/",
+          "status": "robots_denied"
+        },
+        {
+          "url": "https://twcc.ai/",
+          "status": "transport_error"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K072",
+      "name": "Google Cloud Research Credits",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://edu.google.com/programs/credits/research/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K073",
+      "name": "AWS Cloud Credit for Research",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://aws.amazon.com/research-credits/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K074",
+      "name": "Microsoft Azure Research Grants",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://www.microsoft.com/en-us/research/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K075",
+      "name": "OpenAI Researcher Access Program",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://openai.com/form/researcher-access-program/",
+          "status": "manual_only"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K076",
+      "name": "學術交流基金會 (Fulbright Taiwan)",
+      "batch": "H",
+      "source_observations": [
+        {
+          "url": "https://www.fulbright.org.tw/",
+          "status": "overseas_deferred"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K077",
+      "name": "德國學術交流總署 (DAAD)",
+      "batch": "H",
+      "source_observations": [
+        {
+          "url": "https://www.daad.de/",
+          "status": "overseas_deferred"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K078",
+      "name": "法國在台協會 / 法國教育中心 (Campus France)",
+      "batch": "H",
+      "source_observations": [
+        {
+          "url": "https://www.taiwan.campusfrance.org/",
+          "status": "overseas_deferred"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K079",
+      "name": "英國文化協會 (British Council) / Chevening",
+      "batch": "H",
+      "source_observations": [
+        {
+          "url": "https://www.chevening.org/",
+          "status": "overseas_deferred"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K080",
+      "name": "公益財團法人日本台灣交流協會",
+      "batch": "H",
+      "source_observations": [
+        {
+          "url": "https://www.koryu.or.jp/",
+          "status": "overseas_deferred"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K081",
+      "name": "歐盟執委會 Horizon Europe / MSCA",
+      "batch": "H",
+      "source_observations": [
+        {
+          "url": "https://ec.europa.eu/",
+          "status": "overseas_deferred"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K082",
+      "name": "青年百億海外圓夢基金計畫",
+      "batch": "B2",
+      "source_observations": [
+        {
+          "url": "https://twpathfinder.org/",
+          "status": "url_not_allowed"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K083",
+      "name": "學海惜珠",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K084",
+      "name": "希望出航海外見習實習學生獎學金",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K085",
+      "name": "NTU Governing Scholarships for International Degree Students",
+      "batch": "B4",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K086",
+      "name": "NTU Outstanding International Graduate Student Scholarship",
+      "batch": "B4",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K087",
+      "name": "NTU Voyage of Aspirations Scholarship for Exchange Students",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K088",
+      "name": "國立臺灣大學希望出航交換學生獎學金",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K089",
+      "name": "赴境外研修雙聯學位獎學金",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K090",
+      "name": "逕行修讀博士學位學生研究提升計畫",
+      "batch": "B1",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K091",
+      "name": "博士生赴國外移地研究試辦方案／遠學計畫",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K092",
+      "name": "傅鐘獎學金",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K093",
+      "name": "115 國科會核配博士生獎學金",
+      "batch": "B1",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K094",
+      "name": "115 教育部博士生獎學金",
+      "batch": "B1",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K095",
+      "name": "臺北市青年AI工具補助",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796",
+          "status": "preflight_read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K096",
+      "name": "新竹市AI領航",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
+          "status": "preflight_read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K097",
+      "name": "新北AI實戰職涯營",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K098",
+      "name": "桃園數位工具培訓",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1617472",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K099",
+      "name": "高雄K-TV AI課程",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://youth.kcg.gov.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K100",
+      "name": "勞動部產業新尖兵",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://www.wda.gov.tw/News_Content.aspx?n=31&s=19491&sms=10306",
+          "status": "read"
+        },
+        {
+          "url": "https://tcnr.wda.gov.tw/News_Content.aspx?n=9CDFC65181CC2AEA&s=3CB8C51B711D842C&sms=68798FA6FAE753EC",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K101",
+      "name": "商業發展署青年AI班",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://serv.gcis.nat.gov.tw/AOCAI/courses/youth",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K102",
+      "name": "國網中心／TWCC",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://iservice.nchc.org.tw/nchc_service/nchc_service_qa.php?target=16",
+          "status": "manual_only"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K103",
+      "name": "GitHub Education／Copilot",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students",
+          "status": "read"
+        },
+        {
+          "url": "https://education.github.com/pack",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K104",
+      "name": "Google學生AI",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://blog.google/intl/zh-tw/products/explore-get-answers/back-to-school-2026/",
+          "status": "read"
+        },
+        {
+          "url": "https://one.google.com/offer/studentoffer8?hl=zh-TW",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K105",
+      "name": "Google新創雲端",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://cloud.google.com/startup",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K106",
+      "name": "AWS Educate",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://aws.amazon.com/education/awseducate/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K107",
+      "name": "OpenAI Researcher Access",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://help.openai.com/en/articles/10139500-researcher-access-program-faq",
+          "status": "manual_only"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K108",
+      "name": "NVIDIA",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://www.nvidia.com/en-us/startups/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K109",
+      "name": "AIA學生方案",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://aiacademy.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K110",
+      "name": "OCF黑客松／伺服器補助",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://ocf.tw/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K111",
+      "name": "均一狐狸貓",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://www.junyiacademy.org/",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K112",
+      "name": "臺大國科會博士生獎學金",
+      "batch": "B1",
+      "source_observations": [
+        {
+          "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B61-%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf&filepath=.%2FNewsUploadDir%2F2026_06_16_13_57_48_0.pdf",
+          "status": "read"
+        },
+        {
+          "url": "https://gice.ntu.edu.tw/shownews.php?ID=7278",
+          "status": "read"
+        },
+        {
+          "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B62-115%E5%AD%B8%E5%B9%B4%E3%80%8C%E5%9C%8B%E7%A7%91%E6%9C%83%E6%A0%B8%E9%85%8D%E3%80%8D%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91_%E7%94%B3%E8%AB%8B%E8%B3%87%E6%96%99%E8%A1%A8.doc&filepath=.%2FNewsUploadDir%2F2026_06_23_16_06_23_0.doc",
+          "status": "format_parser_deferred"
+        },
+        {
+          "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%288%29%E5%82%99%E5%AF%A9%E8%B3%87%E6%96%99%E6%91%98%E8%A6%81%E5%BD%99%E6%95%B4%E8%A1%A8-%E5%9C%8B%E7%A7%91%E6%9C%83%E6%A0%B8%E9%85%8D%E5%8D%9A%E5%A3%AB%E7%8D%8E%E5%AD%B8%E9%87%91.xlsx&filepath=.%2FNewsUploadDir%2F2026_06_23_16_06_23_1xlsx",
+          "status": "unsupported_archive"
+        },
+        {
+          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+          "status": "read"
+        },
+        {
+          "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K113",
+      "name": "臺大教育部博士生獎學金",
+      "batch": "B1",
+      "source_observations": [
+        {
+          "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B61-%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf&filepath=.%2FNewsUploadDir%2F2026_10_06_11_03_34_0.pdf",
+          "status": "read"
+        },
+        {
+          "url": "https://gice.ntu.edu.tw/shownews.php?ID=7344",
+          "status": "read"
+        },
+        {
+          "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%289%29%E5%82%99%E5%AF%A9%E8%B3%87%E6%96%99%E6%91%98%E8%A6%81%E5%BD%99%E6%95%B4%E8%A1%A8-%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91.xlsx&filepath=.%2FNewsUploadDir%2F2026_10_06_11_03_34_3xlsx",
+          "status": "unsupported_archive"
+        },
+        {
+          "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B63-115%E6%95%99%E8%82%B2%E9%83%A8%E7%8D%8E%E5%AD%B8%E9%87%91_%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E9%85%8D%E5%90%88%E6%AC%BE%E5%90%8C%E6%84%8F%E6%9B%B8.doc&filepath=.%2FNewsUploadDir%2F2026_10_06_11_03_34_2.doc",
+          "status": "format_parser_deferred"
+        },
+        {
+          "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B62-115%E3%80%90%E6%95%99%E8%82%B2%E9%83%A8%E3%80%91%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91_%E7%94%B3%E8%AB%8B%E8%B3%87%E6%96%99%E8%A1%A8.docx&filepath=.%2FNewsUploadDir%2F2026_10_06_11_03_34_1docx",
+          "status": "read"
+        },
+        {
+          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+          "status": "read"
+        },
+        {
+          "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
+          "status": "read"
+        },
+        {
+          "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K114",
+      "name": "臺大研究生校長獎",
+      "batch": "B3",
+      "source_observations": [
+        {
+          "url": "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/263996/161eae16-eed8-423b-875e-57c19a37e6ff.pdf",
+          "status": "read"
+        },
+        {
+          "url": "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/255718/26fe6b56-f175-43fb-8715-25d053a52a7f.pdf",
+          "status": "read"
+        },
+        {
+          "url": "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/263996/95600d69-b4d8-43c4-b2e7-81ca70f140d8.pdf",
+          "status": "read"
+        },
+        {
+          "url": "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/255718/b71d29b1-5764-4766-9df9-ad24f96953d6.pdf",
+          "status": "read"
+        },
+        {
+          "url": "https://ac.ntu.edu.tw/News_Content_n_194922_s_255718.html",
+          "status": "read"
+        },
+        {
+          "url": "https://ac.ntu.edu.tw/News_Content_n_194922_sms_123934_s_263996.html",
+          "status": "read"
+        },
+        {
+          "url": "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/263996/3924f741-976c-4f26-8794-fc7c890c41ea.docx",
+          "status": "read"
+        },
+        {
+          "url": "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/255718/3c8a6cb6-a008-47bc-87d4-80d1a61f313e.docx",
+          "status": "read"
+        },
+        {
+          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368",
+          "status": "read"
+        },
+        {
+          "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K115",
+      "name": "臺大遠學計畫",
+      "batch": "B2",
+      "source_observations": [
+        {
+          "url": "https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K116",
+      "name": "國科會研究生國際會議補助",
+      "batch": "B2",
+      "source_observations": [
+        {
+          "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260",
+          "status": "read"
+        },
+        {
+          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383",
+          "status": "read"
+        },
+        {
+          "url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K117",
+      "name": "傑出人才基金會優秀學生出國開會補助",
+      "batch": "B2",
+      "source_observations": [
+        {
+          "url": "https://www.faos.org.tw/Application/ApplicatStud.html",
+          "status": "read"
+        },
+        {
+          "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/9811/214008/add73815-0131-4901-b098-8dd402078f4c.pdf",
+          "status": "read"
+        },
+        {
+          "url": "https://sec.ntu.edu.tw/News_n_27890_sms_10166__CSN_541.html",
+          "status": "read"
+        },
+        {
+          "url": "https://www.faos.org.tw/apply/student/",
+          "status": "read"
+        },
+        {
+          "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/3733/e3e4cbe9-b068-4402-8497-ad5d4256aee1.docx",
+          "status": "read"
+        },
+        {
+          "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/3734/1234482d-32d1-416f-8e49-3cfb7f124cf3.pdf",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K118",
+      "name": "國科會博士生赴國外研究（千里馬）",
+      "batch": "B2",
+      "source_observations": [
+        {
+          "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039188",
+          "status": "read"
+        },
+        {
+          "url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+          "status": "read"
+        },
+        {
+          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
+          "status": "read"
+        },
+        {
+          "url": "https://www.nstc.gov.tw/nstc/attachments/92025fc4-ec4f-4109-980a-03f23f91f41c",
+          "status": "read"
+        },
+        {
+          "url": "https://www.nstc.gov.tw/nstc/attachments/b510a7b7-c54b-4621-a65c-e79620d13939",
+          "status": "read"
+        },
+        {
+          "url": "https://www.nstc.gov.tw/nstc/attachments/d6e268dc-75bb-4829-813b-3d2ce0ce46eb",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K119",
+      "name": "中研院人社博士候選人培育",
+      "batch": "B1",
+      "source_observations": [
+        {
+          "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/ahq7i-hly0j.odt",
+          "status": "host_paused"
+        },
+        {
+          "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/am2sg-egsi4.odt",
+          "status": "host_paused"
+        },
+        {
+          "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E8%A6%81%E9%BB%9E-odt.odt",
+          "status": "host_paused"
+        },
+        {
+          "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E8%A6%81%E9%BB%9E.pdf",
+          "status": "host_paused"
+        },
+        {
+          "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E8%A6%81%E9%BB%9E.pdf",
+          "status": "host_paused"
+        },
+        {
+          "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E6%94%BF%E6%B2%BB%E6%89%80%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%AF%A9%E6%9F%A5%E8%BE%A6%E6%B3%95-odt.odt",
+          "status": "host_paused"
+        },
+        {
+          "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E6%94%BF%E6%B2%BB%E6%89%80%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%AF%A9%E6%9F%A5%E8%BE%A6%E6%B3%95-%E5%83%85%E4%B8%AD%E6%96%87%E7%89%88.pdf",
+          "status": "host_paused"
+        },
+        {
+          "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E6%94%BF%E6%B2%BB%E6%89%80%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%AF%A9%E6%9F%A5%E8%BE%A6%E6%B3%95-%E5%83%85%E4%B8%AD%E6%96%87%E7%89%88.pdf",
+          "status": "host_paused"
+        },
+        {
+          "url": "https://www.ipsas.sinica.edu.tw/%E6%9C%80%E6%96%B0%E8%A8%8A%E6%81%AF/%E5%AD%B8%E8%A1%93%E5%85%AC%E5%91%8A/ipsas-115%E5%B9%B4%E5%BA%A6%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E7%A7%91%E5%AD%B8%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%8D%B3%E6%97%A5%E8%B5%B7/",
+          "status": "read"
+        },
+        {
+          "url": "https://www.ipsas.sinica.edu.tw/%E6%9C%80%E6%96%B0%E8%A8%8A%E6%81%AF/%E5%AD%B8%E8%A1%93%E5%85%AC%E5%91%8A/ipsas-114%E5%B9%B4%E5%BA%A6%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E7%A7%91%E5%AD%B8%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%8D%B3%E6%97%A5%E8%B5%B7/",
+          "status": "read"
+        },
+        {
+          "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E7%A7%91%E5%AD%B8%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E7%94%B3%E8%AB%8B%E8%A1%A8.doc",
+          "status": "http_403_host_paused"
+        },
+        {
+          "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E7%A7%91%E5%AD%B8%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E7%94%B3%E8%AB%8B%E8%A1%A8.doc",
+          "status": "host_paused"
+        },
+        {
+          "url": "https://www.sinica.edu.tw/news_content/56/3434",
+          "status": "read"
+        },
+        {
+          "url": "https://www.ipsas.sinica.edu.tw/%E7%A0%94%E7%A9%B6%E8%A8%88%E7%95%AB%E7%BE%A4%E7%B5%84",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K120",
+      "name": "新竹市AI領航工具補助",
+      "batch": "B6",
+      "source_observations": [
+        {
+          "url": "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
+          "status": "preflight_read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K121",
+      "name": "國科會研究人力約用規範",
+      "batch": "B7",
+      "source_observations": [
+        {
+          "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K122",
+      "name": "臺大電資學院博士獎學金辦法",
+      "batch": "B1",
+      "source_observations": [
+        {
+          "url": "https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K123",
+      "name": "臺大教學助理制度",
+      "batch": "B7",
+      "source_observations": [
+        {
+          "url": "https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514",
+          "status": "read"
+        },
+        {
+          "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/%E6%95%99%E5%8B%99%E8%99%95%E6%95%99%E5%AD%B8%E5%8A%A9%E7%90%86%E5%88%B6%E5%BA%A6%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E6%A2%9D%E6%96%87-%E5%85%AC%E5%91%8A%E7%89%88.pdf",
+          "status": "read"
+        }
+      ],
+      "status": "has_associated_source_dispositions_not_programme_validation"
+    },
+    {
+      "id": "K124",
+      "name": "臺大醫學院研究生優秀著作獎",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K125",
+      "name": "李鎮源院長紀念獎",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K126",
+      "name": "陳拱北教授紀念獎學金",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K127",
+      "name": "冠德管理學術獎",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K128",
+      "name": "各學院院長獎",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K129",
+      "name": "學生利他獎",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K130",
+      "name": "斐陶斐榮譽學會推薦",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K131",
+      "name": "臺大優秀青年遴選",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K132",
+      "name": "全國大專優秀青年",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K133",
+      "name": "書卷獎（學士班排除測試）",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K134",
+      "name": "中華民國資訊學會優秀碩士論文獎",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K135",
+      "name": "臺灣經濟學會優秀碩士論文獎",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K136",
+      "name": "國家新創獎／生技醫療研究獎項",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K137",
+      "name": "國科會獎勵人文與社會科學領域博士候選人撰寫博士論文",
+      "batch": "B1",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K138",
+      "name": "蔣經國基金會博士論文獎學金",
+      "batch": "B1",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K139",
+      "name": "國科會博士後研究學者（畢業後身分，低優先）",
+      "batch": "B1",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K140",
+      "name": "中研院院長特聘博士後（畢業後身分，低優先）",
+      "batch": "B1",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K141",
+      "name": "醫學院國際事務中心學生國際會議補助",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K142",
+      "name": "醫學院研發分處會議／報銷入口（先判申請角色）",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K143",
+      "name": "IEEE Taipei Section Student Travel Grants",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K144",
+      "name": "ACM SIGCOMM／SIGCHI／SIGKDD學生旅費補助",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K145",
+      "name": "中國化學會／物理學會會議獎助",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K146",
+      "name": "國際會議主辦方Student Travel Award",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K147",
+      "name": "國際會議Registration Fee Waiver",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K148",
+      "name": "學海飛颺",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K149",
+      "name": "學海築夢",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K150",
+      "name": "新南向學海築夢",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K151",
+      "name": "臺大國際引水人計畫",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K152",
+      "name": "校級雙聯學位獎助",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K153",
+      "name": "合作校學費減免（依協議，低優先）",
+      "batch": "B2",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K154",
+      "name": "學雜費減免",
+      "batch": "B4",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K155",
+      "name": "就學貸款（借貸，不是獎學金）",
+      "batch": "B4",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K156",
+      "name": "不利處境助學金／弱勢助學金",
+      "batch": "B4",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K157",
+      "name": "勵學獎學金",
+      "batch": "B4",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K158",
+      "name": "臺大學生急難慰助",
+      "batch": "B4",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K159",
+      "name": "教育部學產基金急難慰問（研究生適用待查）",
+      "batch": "B4",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K160",
+      "name": "行天宮社會急難扶助",
+      "batch": "B4",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K161",
+      "name": "租金補貼／校外住宿支持",
+      "batch": "B4",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K162",
+      "name": "身心障礙與特殊境遇就學支持",
+      "batch": "B4",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K163",
+      "name": "僑生清寒獎學金",
+      "batch": "B4",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K164",
+      "name": "優秀僑生獎助學金",
+      "batch": "B4",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K165",
+      "name": "僑陸生醫療／緊急就學支持",
+      "batch": "B4",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K166",
+      "name": "境外學位生獎學金與續領",
+      "batch": "B4",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K167",
+      "name": "宮廟基金會獎助（待具名）",
+      "batch": "B5",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K168",
+      "name": "教會與宗教慈善獎助（待具名）",
+      "batch": "B5",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K169",
+      "name": "地方同鄉會／鄉鎮公所研究生獎助",
+      "batch": "B5",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K170",
+      "name": "系友捐贈／企業指定獎學金",
+      "batch": "B5",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K171",
+      "name": "研究生獎勵金：獎助金與勞僱津貼分流",
+      "batch": "B7",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K172",
+      "name": "國科會博士生研究人力費用增核",
+      "batch": "B7",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K173",
+      "name": "專任研究助理薪資與聘僱依據",
+      "batch": "B7",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K174",
+      "name": "兼任學生RA權益與給付依據",
+      "batch": "B7",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K175",
+      "name": "共同基礎／通識課程TA",
+      "batch": "B7",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K176",
+      "name": "EMITA／雙語教學助理",
+      "batch": "B7",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K177",
+      "name": "學院聘與系所自聘TA",
+      "batch": "B7",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K178",
+      "name": "校內工讀／最低工資",
+      "batch": "B7",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K179",
+      "name": "僑外生工作許可與聘僱分流",
+      "batch": "B7",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K180",
+      "name": "勞僱型／學習型判斷",
+      "batch": "B7",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K181",
+      "name": "學校申訴／勞資爭議求助入口",
+      "batch": "B7",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K182",
+      "name": "論文著作權與研究成果歸屬",
+      "batch": "B7",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K183",
+      "name": "臺大職能治療所公開獎助與承辦入口",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K184",
+      "name": "臺大電機所／資訊所／化工所／材料所／化學所入口",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K185",
+      "name": "中研院資訊所／分生所公開研究生培育入口",
+      "batch": "B3",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K186",
+      "name": "清華大學校級獎助入口（模板擴校，非全校深爬）",
+      "batch": "B8",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K187",
+      "name": "陽明交通大學校級獎助入口（模板擴校，非全校深爬）",
+      "batch": "B8",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K188",
+      "name": "成功大學校級獎助入口（模板擴校，非全校深爬）",
+      "batch": "B8",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    },
+    {
+      "id": "K189",
+      "name": "政治大學校級獎助入口（模板擴校，非全校深爬）",
+      "batch": "B8",
+      "source_observations": [],
+      "status": "name_only_or_unmatched_url_pending_search"
+    }
+  ],
+  "note": "來源入口有處置不等於該具名方案已找到或仍開放；名稱檢索仍有待辦。"
+}

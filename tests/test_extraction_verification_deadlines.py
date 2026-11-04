@@ -239,6 +239,11 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
         self.assertEqual(cand["eligibility"]["employment_status"], "non_in_service_only")
         self.assertTrue(any(nc["field"] == "employment_status" for nc in cand["eligibility"]["negated_conditions"]))
         self.assertEqual(cand["participants"]["applicant"], "institution")
+        self.assertNotIn("臺大",cand["organizations"]["receiver"]["text"])
+        ntu_source=next(s for s in CONFIG['sources'] if s['id']=='nstc-ntu-conference')
+        ntu=extract_from_in_memory_blocks(ntu_source,make_nstc_conference_blocks(),revision_id='e'*64,
+            observed_at='2026-10-29T09:17:00+08:00',as_of='2026-10-28')[0]
+        self.assertIn('臺大',ntu['organizations']['receiver']['text'])
 
         # 負向測試：原文含「非在職專班」卻標為 employment_status='allowed'，或申請人標為 student
         bad = deepcopy(cand)
