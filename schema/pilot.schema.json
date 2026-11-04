@@ -758,11 +758,12 @@
               "enum": [
                 "student",
                 "institution",
-                "unit"
+                "unit",
+                "unknown"
               ]
             },
             "beneficiary": {
-              "const": "student"
+              "enum": ["student", "unknown"]
             },
             "awardee": {
               "enum": [

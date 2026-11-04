@@ -5,7 +5,7 @@ from pathlib import Path
 import unittest
 
 from scripts.source_chains import dates, discover_links, extract_events, scan_chains, validate, baselines
-from scripts.source_chains import publication, timeline_metadata, candidate_bindings
+from scripts.source_chains import publication, timeline_metadata, candidate_bindings,publication_reference_events
 from scripts.scan_sources import Fetcher, digest
 from bs4 import BeautifulSoup
 
@@ -26,6 +26,31 @@ def fixture():
 
 
 class SourceChainTests(unittest.TestCase):
+    def test_publication_year_windows_remain_unannounced_with_dual_evidence(self):
+        p=profile();doc={'id':'SYNTH-doc','revision_id':'a'*64}
+        units=[{'locator':'SYNTH-window','text':'申請時程6/15至7/10'}]
+        pub=('2026-06-15',{'locator':'SYNTH-publication','text':'2026-06-15'})
+        events=publication_reference_events(units,p,doc,pub)
+        self.assertEqual([e['value'] for e in events],['2026-06-15','2026-07-10'])
+        self.assertTrue(all(e['certainty']=='expected' and e['publication_ref']['locator']=='SYNTH-publication' for e in events))
+        self.assertEqual(baselines(events,2027),[])
+        self.assertEqual(publication_reference_events(units,p,doc,None),[])
+        self.assertEqual(publication_reference_events([{'locator':'SYNTH','text':'購買及申請期間6/15至7/10'}],p,doc,pub),[])
+        self.assertEqual(publication_reference_events([{'locator':'SYNTH','text':'申請期間12/20至1/10'}],p,doc,pub),[])
+
+    def test_attachment_priority_navigation_and_html_entity_urls(self):
+        raw=('<main><nav><a href="/unrelated">計畫</a></nav>'+''.join('<a href="/list/'+str(i)+'">計畫列表</a>' for i in range(12))+
+             '<a href="/attachments/real?x=1&amp;amp;y=2">申請須知</a></main>').encode()
+        links=discover_links(raw,'https://example.test/index',['example.test'])
+        self.assertEqual(len(links),8)
+        self.assertEqual(links[0]['url'],'https://example.test/attachments/real?x=1&y=2')
+        self.assertNotIn('https://example.test/unrelated',[link['url'] for link in links])
+
+    def test_metadata_only_profile_does_not_guess_date_actor(self):
+        p = profile(); p['extract_dates'] = False
+        blocks = [{'locator':'SYNTH-date','text':'申請日期：115年6月1日至7月31日中午12時'}]
+        self.assertEqual(extract_events(blocks,p,{'id':'SYNTH-doc','revision_id':'a'*64}),[])
+
     def test_date_precision_and_shared_year_with_weekdays(self):
         self.assertEqual(dates('115年7月8日(三)起至7月27日(一)17:00', 2026),
                          ['2026-07-08', '2026-07-27T17:00:00+08:00'])

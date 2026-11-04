@@ -1,5 +1,6 @@
 """Bounded source graph and evidence-backed timeline sidecar. Never approves candidates."""
 import argparse
+from html import unescape
 from copy import deepcopy
 from datetime import date, datetime, timezone, timedelta
 import json
@@ -17,7 +18,7 @@ from scripts.scan_sources import Fetcher, ScanError, digest, html_document, pdf_
 from scripts.document_ir import prepare_document, VERSION as IR_VERSION
 
 VERSION = 'source-chain-1'
-PARSER_VERSION = 'chain-parser-1.5'
+PARSER_VERSION = 'chain-parser-1.7'
 DATE = re.compile(r'(?<!\d)(?:(20\d{2}|1\d{2})[年/.-])?(\d{1,2})[月/.-](\d{1,2})(?!\d)日?')
 INTERVAL = re.compile(r'申請時程|申請時間|受理期間|即日起.*(?:受理|申請)|有意申請.*至')
 
@@ -56,11 +57,13 @@ def discover_links(raw, url, hosts, selector=None):
     found = {}
     for root in roots:
         for a in root.select('a'):
+            if a.find_parent(['nav','header','footer']) or a.find_parent(attrs={'role':'navigation'}):
+                continue
             label = a.get_text(' ', strip=True)
             attachment = a.find_parent(class_='file-download-multiple')
             if attachment:
                 label = attachment.get_text(' ', strip=True)
-            if not re.search(r'辦法|要點|申請|徵件|補助|獎學金|計畫', label):
+            if not re.search(r'辦法|要點|申請|徵件|補助|獎學金|計畫|登記|查詢|表單|須知|流程', label):
                 continue
             href = a.get('href', '')
             if href in ('', '#'):
@@ -69,14 +72,15 @@ def discover_links(raw, url, hosts, selector=None):
             if not href or href.startswith(('javascript:', 'mailto:')):
                 continue
             try:
-                target = safe_url(urljoin(url, href), hosts)
+                target = safe_url(urljoin(url, unescape(href)), hosts)
             except (ScanError, ValueError):
                 continue
             if target == safe_url(url, hosts):
                 continue
             role = 'policy' if re.search(r'辦法|要點', label) else 'related_call'
-            found[target] = {'url': target, 'role': role}
-    return list(found.values())[:8]
+            found[target] = {'url': target, 'role': role, 'label': label[:100]}
+    # Real attachments precede menu/list links so a bounded page budget is useful.
+    return sorted(found.values(), key=lambda link: not bool(re.search(r'\.pdf|\.docx?|Download|attachments/|filedownload',link['url'],re.I)))[:8]
 
 
 def publication(soup, blocks, url=None):
@@ -118,7 +122,7 @@ def publication(soup, blocks, url=None):
 
 def extract_events(blocks, profile, doc, published=None):
     """Source-independent date group. Policies do not create current calls."""
-    if profile['role'] == 'policy':
+    if profile['role'] == 'policy' or profile.get('extract_dates') is False:
         return []
     events = []
     def add(kind, value, block, basis='explicit'):
@@ -191,6 +195,31 @@ def candidate_documents(bundle):
     return docs
 
 
+def publication_reference_events(blocks, profile, doc, published):
+    """Month/day application ranges may use the publication year only as a labeled reference."""
+    if not published or profile.get('role')=='policy':return []
+    year=int(published[0][:4]);result=[]
+    for block in blocks:
+        text=block['text']
+        if not re.search(r'申請(?:時程|期間|時間)|受理期間',text):continue
+        if re.search(r'每年|每學期|購買|支出|補助期間|會議期間|會議日期',text):continue
+        if re.search(r'(?:20\d{2}|1\d{2})[年/.-]\d{1,2}[月/.-]\d{1,2}',text):continue
+        values=dates(text,year)
+        if len(values)!=2 or values[0]>values[1] or not re.search(r'至|到|[~～–—-]',text):continue
+        if (date.fromisoformat(values[1][:10])-date.fromisoformat(values[0][:10])).days>180:continue
+        if abs((date.fromisoformat(values[0][:10])-date.fromisoformat(published[0])).days)>120:continue
+        for kind,value in zip(('application_start','student_deadline'),values):
+            event={k:profile[k] for k in ('program_key','scope','cycle','application_year','phase')}
+            event.update(application_year=year,kind=kind,value=value,basis='publication_year_context',
+                document_id=doc['id'],revision_id=doc['revision_id'],timezone='Asia/Taipei',
+                locator=block['locator'],block_sha256=digest(text.encode()),review_status='pending',certainty='expected',
+                publication_ref={'locator':published[1]['locator'],'block_sha256':digest(published[1]['text'].encode())})
+            event['id']='event-'+digest(event)[:24]
+            result.append(event)
+        break
+    return result
+
+
 def candidate_bindings(candidates, config):
     result=[]
     for c in candidates:
@@ -234,7 +263,7 @@ def scan_chains(config, bundle, previous=None, fetcher=None, as_of=None):
         doc_id = 'doc-' + digest(p['url'])[:24]
         for parent in p.get('parent_urls', []):
             relations.append({'from': 'doc-' + digest(parent)[:24], 'to': doc_id, 'url': p['url'],
-                              'role': 'local_intake', 'program_key': p['program_key'], 'scope': p['scope'], 'cycle': p['cycle']})
+                              'role': p['role'], 'program_key': p['program_key'], 'scope': p['scope'], 'cycle': p['cycle']})
         if p['url'] in fetched_urls:
             continue
         fetched_urls.add(p['url'])
@@ -274,6 +303,9 @@ def scan_chains(config, bundle, previous=None, fetcher=None, as_of=None):
                     if any(marker not in ''.join(b['text'] for b in blocks) for marker in p['required_markers']):
                         raise ScanError('required_marker_missing')
                 ir = prepare_document(blocks)
+                if hasattr(fetcher,'in_memory_blocks'):
+                    fetcher.in_memory_blocks[p['url']] = blocks
+                    fetcher.in_memory_raw_sha256[p['url']] = digest(raw)
                 semantic = digest([ir['document_sha256'], links])
                 doc.update(format=kind, semantic_sha256=semantic, raw_sha256=digest(raw), links=links,
                            etag=response['headers'].get('etag'), last_modified=response['headers'].get('last-modified'),
@@ -349,8 +381,10 @@ def validate(bundle):
                     raise ValueError('timeline_timezone_required')
             if d['evidence_mode'] == 'hash_only' and 'excerpt' in e:
                 raise ValueError('hash_only_excerpt_forbidden')
-            if e['basis'] == 'since_publication' and not e.get('publication_ref'):
+            if e['basis'] in ('since_publication','publication_year_context') and not e.get('publication_ref'):
                 raise ValueError('publication_evidence_required')
+            if e['basis']=='publication_year_context' and e['certainty']!='expected':
+                raise ValueError('publication_year_reference_must_not_be_announced')
             if e['id'] != 'event-' + digest({k:v for k,v in e.items() if k!='id'})[:24]:
                 raise ValueError('event_fingerprint_mismatch')
     return True
@@ -402,6 +436,7 @@ def timeline_metadata(bundle, candidates):
     years = [current_year, current_year + 1]
     records = {}
     current_ids = {c['candidate_id']: c['program_key'] for c in candidates['candidates']}
+    current_candidates={c['candidate_id']:c for c in candidates['candidates']}
     for binding in bundle['candidate_bindings']:
         if binding['candidate_id'] not in current_ids:
             continue
@@ -409,9 +444,12 @@ def timeline_metadata(bundle, candidates):
             raise ValueError('candidate_binding_mismatch')
         entries = []
         documents = [d for d in bundle['documents'] if d['events'] and d['status'] in ('changed','unchanged','unchanged_304')]
+        metadata=current_candidates[binding['candidate_id']].get('source_metadata',{})
+        own_documents={d['id'] for d in documents if d['url']==metadata.get('url') and d.get('revision_id')==metadata.get('revision_id')
+            and len({e['program_key'] for e in d['events']})==1}
         for scope in bundle['scopes']:
             # Phase stays separate, even for a broad policy snapshot.
-            relevant = [e for d in documents for e in d['events'] if e['scope']==scope['id'] and e['program_key']==binding['program_key']
+            relevant = [e for d in documents for e in d['events'] if e['scope']==scope['id'] and (e['program_key']==binding['program_key'] or d['id'] in own_documents)
                         and binding['phase'] in ('all',e['phase'])]
             for phase in sorted({e['phase'] for e in relevant}):
                 phase_events = [e for e in relevant if e['phase']==phase]
@@ -422,6 +460,11 @@ def timeline_metadata(bundle, candidates):
                     conflict = date_conflict(starts) or date_conflict(ends) or bool(starts and ends and min(starts)>max(ends))
                     # 115 central NSTC scheme changed: do not forecast across its old edition.
                     baseline = baselines(phase_events,year) if binding.get('historical_baseline_allowed',True) else []
+                    references={kind:[e for e in events if e['kind']==kind and e['basis']=='publication_year_context'] for kind in ('application_start','student_deadline')}
+                    if all(len(v)==1 for v in references.values()):
+                        start,end=(references[k][0] for k in ('application_start','student_deadline'))
+                        baseline.append({'start':start['value'],'end':end['value'],'kind':'publication_year_reference',
+                            'sample_years':[year],'event_ids':[start['id'],end['id']],'confidence':'low'})
                     entries.append({'scope':scope['id'],'scope_label':scope['label'],'year':year,'phase':phase,
                         'events':events,'baselines':baseline,'conflict':conflict,
                         'document_ids':sorted({e['document_id'] for e in phase_events})})

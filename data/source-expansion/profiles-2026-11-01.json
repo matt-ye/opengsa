@@ -1,0 +1,512 @@
+{
+  "schema_version": "1.0.0",
+  "owner": "repository-maintainers",
+  "policy_checked_on": "2026-10-30",
+  "policy": "public_bounded_get_short_evidence_only",
+  "allowed_hosts": [
+    "daas.sinica.edu.tw",
+    "dgservice.hccg.gov.tw",
+    "edu.law.moe.gov.tw",
+    "eecs.ntu.edu.tw",
+    "giee.ntu.edu.tw",
+    "law.nstc.gov.tw",
+    "ord.ntu.edu.tw",
+    "www.aca.ntu.edu.tw",
+    "www.cm.nsysu.edu.tw",
+    "www.eng.ntu.edu.tw",
+    "www.faos.org.tw",
+    "www.foxconnfoundation.org",
+    "www.sinica.edu.tw",
+    "www.tsmc.com",
+    "youth.gov.taipei"
+  ],
+  "max_requests": 20,
+  "max_changed_documents": 5,
+  "max_pending_candidates": 24,
+  "minimum_host_interval_seconds": 3,
+  "max_run_seconds": 180,
+  "sources": [
+    {
+      "id": "ntu-doctoral-funding",
+      "title": "臺大校級博士生獎學金",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+      "body_selector": ".article-center",
+      "required_markers": [
+        "教育部博士生獎學金",
+        "國科會核配"
+      ],
+      "pdf_include": [
+        "設置辦法",
+        "第二梯申請"
+      ],
+      "max_pdfs": 2,
+      "review_note": "須人工拆教育部／國科會、年度與梯次；圖片及名冊不擷取。",
+      "evidence_mode": "hash_only",
+      "known_attachment_urls": [
+        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf",
+        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf"
+      ]
+    },
+    {
+      "id": "ntu-president-award",
+      "title": "臺大研究生校長獎",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368",
+      "body_selector": ".article-center",
+      "required_markers": [
+        "研究生校長獎",
+        "申請時間"
+      ],
+      "pdf_include": [
+        "設置辦法"
+      ],
+      "max_pdfs": 1,
+      "review_note": "制度與年度受理分開；畢業及院系條件須人工覆核。",
+      "evidence_mode": "hash_only",
+      "known_attachment_urls": [
+        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf"
+      ]
+    },
+    {
+      "id": "ntu-yuanxue",
+      "title": "臺大遠學計畫",
+      "url": "https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260",
+      "body_selector": ".card-text-info",
+      "required_markers": [
+        "博士班學生",
+        "配合",
+        "補助費用"
+      ],
+      "pdf_include": [
+        "補助作業要點"
+      ],
+      "max_pdfs": 1,
+      "review_note": "一般／配合款／博士後分支須人工拆分；robots禁止/WebUPD/，附件保留受限狀態。",
+      "evidence_mode": "hash_only",
+      "attachment_selector": ".document-download"
+    },
+    {
+      "id": "nstc-ntu-conference",
+      "title": "國科會國際會議補助：臺大學生程序",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383",
+      "body_selector": ".article-center",
+      "required_markers": [
+        "之前一日17:00",
+        "四週前"
+      ],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "校方／學生／補送期限分開；不自動回填個人會議日期。",
+      "evidence_mode": "hash_only"
+    },
+    {
+      "id": "nstc-conference-rule",
+      "title": "國科會國際會議作業要點原文",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260",
+      "body_selector": "#ctl00_cp_content_divLawContent08",
+      "start_marker": "國家科學及技術委員會補助國內研究生出席國際學術會議作業要點",
+      "required_markers": [
+        "會議舉行首日四週前",
+        "之前一個月之首日"
+      ],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "修正日與生效日分開；正文選擇器／必要標記失效轉人工，不自動套新法。",
+      "evidence_mode": "hash_only"
+    },
+    {
+      "id": "faos-student-conference",
+      "title": "傑出人才發展基金會：優秀學生出國開會補助",
+      "url": "https://www.faos.org.tw/Application/ApplicatStud.html",
+      "body_selector": "body",
+      "start_marker": "優秀學生出國開會申請補助辦法",
+      "required_markers": [
+        "申請單位",
+        "會議開始日前兩個月"
+      ],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "機構期限不代替學生期限；個別學位與兼領須覆核。",
+      "evidence_mode": "hash_only"
+    },
+    {
+      "id": "nstc-abroad-dragon-rule",
+      "title": "國科會博士生赴國外研究（千里馬）作業要點原文",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039188",
+      "body_selector": "#ctl00_cp_content_divLawContent08",
+      "start_marker": "國家科學及技術委員會補助博士生赴國外研究作業要點",
+      "required_markers": [
+        "戶籍設於國內之中華民國國民",
+        "在學一年以上",
+        "新臺幣九十萬元"
+      ],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "法規快照；不得把每年受理月日推定為當年開放窗口。補助期間、分支及當期徵件須另覆核。",
+      "evidence_mode": "hash_only"
+    },
+    {
+      "id": "nstc-assistant-rule",
+      "title": "國科會專題研究計畫研究人力約用注意事項原文",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686",
+      "body_selector": "#ctl00_cp_content_divLawContent08",
+      "start_marker": "國家科學及技術委員會補助專題研究計畫研究人力約用注意事項",
+      "required_markers": [
+        "兼任人員",
+        "研究生",
+        "獎助生權益保障指導原則"
+      ],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "約用規則快照；專任、兼任、學習範疇分開。金額下限與增核措施須另核對適用文件，不由本頁標題推定。",
+      "evidence_mode": "hash_only"
+    },
+    {
+      "id": "ntu-ta-policy",
+      "title": "臺大教務處教學助理制度獎勵金實施辦法",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514",
+      "body_selector": ".article-center",
+      "required_markers": [
+        "教學助理制度",
+        "獎勵金",
+        "教務處"
+      ],
+      "pdf_include": [
+        "實施辦法條文",
+        "TA申請須知"
+      ],
+      "max_pdfs": 1,
+      "review_note": "依轉載條款採hash_only；實際給付、工作型態、學位與學期須至附件核對。",
+      "evidence_mode": "hash_only",
+      "known_attachment_urls": [
+        "https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/%E6%95%99%E5%8B%99%E8%99%95%E6%95%99%E5%AD%B8%E5%8A%A9%E7%90%86%E5%88%B6%E5%BA%A6%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E6%A2%9D%E6%96%87-%E5%85%AC%E5%91%8A%E7%89%88.pdf"
+      ]
+    },
+    {
+      "id": "ntu-ord-assistant-limit",
+      "title": "臺大計畫兼任助理與獎助生每月支給上限規定",
+      "url": "https://ord.ntu.edu.tw/WebUPD/ordntu/pm/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E8%A8%88%E7%95%AB%E5%85%BC%E4%BB%BB%E5%8A%A9%E7%90%86%E5%8F%8A%E7%A0%94%E7%A9%B6%E7%8D%8E%E5%8A%A9%E7%94%9F%E6%AF%8F%E6%9C%88%E6%94%AF%E7%B5%A6%E4%B8%8A%E9%99%90%E6%A8%99%E6%BA%96%E8%A1%A8_23121516034949938.pdf",
+      "body_selector": "body",
+      "required_markers": [
+        "兼任助理",
+        "研究獎助生"
+      ],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "2026-10-31修正原誤指遠學的URL，改為真正校方上限表。robots禁止 /WebUPD/，維持停用及人工核對，不繞過下載。上限不可當最低保障。",
+      "evidence_mode": "short_excerpt",
+      "enabled": false,
+      "format": "pdf"
+    },
+    {
+      "id": "sinica-phd-fellowship",
+      "title": "中研院115年度人文社會科學博士候選人培育計畫公告",
+      "url": "https://www.sinica.edu.tw/news_content/56/3434",
+      "body_selector": "div.content",
+      "required_markers": [
+        "人文社會科學",
+        "博士候選人培育計畫",
+        "截止日期請洽"
+      ],
+      "pdf_include": [],
+      "evidence_mode": "hash_only",
+      "enabled": true,
+      "max_pdfs": 0,
+      "review_note": "2026-10-31由原機關公開公告修復失效網址。各所截止日及完整要點另核；本頁未載獎助額，不補造。非全領域通用獎學金。"
+    },
+    {
+      "id": "tsmc-phd-fellowship",
+      "title": "台積電博士獎學金專案",
+      "url": "https://www.tsmc.com/chinese/careers/phd_fellowship",
+      "body_selector": ".fellowship-detail",
+      "required_markers": [
+        "博士獎學金",
+        "台積電"
+      ],
+      "pdf_include": [
+        "申請辦法"
+      ],
+      "evidence_mode": "short_excerpt",
+      "enabled": false,
+      "max_pdfs": 0,
+      "review_note": "2026-10-30實測未取得合規可解析正文（連線失敗、404或robots無有效規則）；URL及選擇器未驗證，暫停自動掃描。保留為搜尋種子，修正後須重新驗證。"
+    },
+    {
+      "id": "ntu-eecs-scholarship",
+      "title": "臺大電資學院優秀博士生獎學金評選辦法",
+      "url": "https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf",
+      "body_selector": "body",
+      "required_markers": [
+        "電資學院優秀博士生獎學金評選辦法"
+      ],
+      "pdf_include": [],
+      "evidence_mode": "hash_only",
+      "enabled": true,
+      "max_pdfs": 0,
+      "review_note": "2026-10-31官方Studentinformation/stu1頁指向之114年規則PDF；不是當期徵件。限院系、續領、資格及給付須逐條覆核；不下載獲獎名冊。",
+      "format": "pdf"
+    },
+    {
+      "id": "ntu-coe-scholarship",
+      "title": "臺大工學院研究生獎助學金專區",
+      "url": "https://www.eng.ntu.edu.tw/tc/scholarship.aspx",
+      "body_selector": ".content-area",
+      "required_markers": [
+        "工學院",
+        "研究生獎助學金"
+      ],
+      "pdf_include": [
+        "作業細則",
+        "推薦表"
+      ],
+      "evidence_mode": "short_excerpt",
+      "enabled": false,
+      "max_pdfs": 0,
+      "review_note": "2026-10-30實測未取得合規可解析正文（連線失敗、404或robots無有效規則）；URL及選擇器未驗證，暫停自動掃描。保留為搜尋種子，修正後須重新驗證。"
+    },
+    {
+      "id": "taipei-ai-tools",
+      "title": "臺北市青年AI工具補助",
+      "url": "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796",
+      "body_selector": ".wysiwyg .content",
+      "required_markers": [
+        "AI工具",
+        "書面方式提出",
+        "申請日以送達"
+      ],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "只依正文判斷書面提出；郵寄／親送未逐一證實。訂閱支出期間與申請窗口分開，相對一個月與11/10上限均須覆核。",
+      "evidence_mode": "short_excerpt"
+    },
+    {
+      "id": "hsinchu-ai-tools",
+      "title": "新竹市AI領航青年數位工具補助",
+      "url": "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
+      "body_selector": "#mainContainer",
+      "required_markers": [
+        "AI領航青年",
+        "線上申請",
+        "購買金額",
+        "親筆簽名"
+      ],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "線上送件、親簽上傳與紙本遞交分開；購買期限、月／年費相對期限、生日區間與額滿條件保留。只取公開說明，不登入、不取附件或申請表個資。",
+      "evidence_mode": "short_excerpt"
+    },
+    {
+      "id": "discovery-r317",
+      "title": "國科會博士生研究獎學金國科會甄選類",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23091415501308264",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "phd_research",
+      "resource_kind": "scholarship",
+      "scope": "ntu",
+      "enabled": false
+    },
+    {
+      "id": "discovery-d8a9d0c5b59a38409",
+      "title": "鴻海獎學鯨｜大專碩博組獎學金計畫｜助力弱勢生安心就學勇敢追夢",
+      "url": "https://www.foxconnfoundation.org/news/80479d881F20",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "phd_research",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": false
+    },
+    {
+      "id": "discovery-r112",
+      "title": "教育部主管法規共用系統-法規內容-教育部博士生獎學金補助計畫作業要點",
+      "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL002336",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "phd_research",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": false
+    },
+    {
+      "id": "discovery-r297",
+      "title": "轉知「國科會博士生研究獎學金試辦方案」相關訊息",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_23091415525408652",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "phd_research",
+      "resource_kind": "scholarship",
+      "scope": "ntu",
+      "enabled": false
+    },
+    {
+      "id": "discovery-r302",
+      "title": "113/5/15博士生獎學金說明會影片、簡報檔暨QA整理",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24052817132319077",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "phd_research",
+      "resource_kind": "scholarship",
+      "scope": "ntu",
+      "enabled": false
+    },
+    {
+      "id": "discovery-r304",
+      "title": "113國科會博士生研究獎學金發放訊息",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24102308294799076",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "phd_research",
+      "resource_kind": "scholarship",
+      "scope": "ntu",
+      "enabled": false
+    },
+    {
+      "id": "discovery-q001",
+      "title": "鴻海獎學鯨｜大專碩博組獎學金計畫｜助力弱勢生安心就學勇敢追夢",
+      "url": "https://www.foxconnfoundation.org/news/80479d881F20",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": false
+    },
+    {
+      "id": "discovery-q009",
+      "title": "【元大文教基金會】115年元大優秀人才獎學金（9/8收件截止）  - 國立中山大學管理學院 College of Management, NSYSU",
+      "url": "https://www.cm.nsysu.edu.tw/p/404-1024-380732.php?Lang=zh-tw",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": false
+    },
+    {
+      "id": "discovery-q017",
+      "title": "獎助學金申請辦法",
+      "url": "https://giee.ntu.edu.tw/tw/announcements/general/?class=%E7%8D%8E%E5%AD%B8%E9%87%91",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "phd_research",
+      "resource_kind": "scholarship",
+      "scope": "ntu",
+      "enabled": false
+    },
+    {
+      "id": "discovery-r299",
+      "title": "本校國科會113年度獎勵人文與社會科學領域博士候選人撰寫博士論文申請至3/25(一)上午8時",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "phd_research",
+      "resource_kind": "scholarship",
+      "scope": "ntu",
+      "enabled": false
+    },
+    {
+      "id": "discovery-r301",
+      "title": "國科會114年度補助博士生赴國外研究案，申請時間自113年6月1日至7月29日早上8時止",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24052211230185000",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "overseas_research",
+      "resource_kind": "travel_grant",
+      "scope": "ntu",
+      "enabled": false
+    },
+    {
+      "id": "discovery-r308",
+      "title": "國科會115年度補助博士生赴國外研究案，申請時間自114年6月1日至7月28日(星期一)早上8時止",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25051610035803840",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "overseas_research",
+      "resource_kind": "travel_grant",
+      "scope": "ntu",
+      "enabled": false
+    }
+  ],
+  "deferred_sources": [
+    {
+      "url": "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296",
+      "reason": "HTML僅導覽，正文需動態渲染；本版不啟用瀏覽器爬蟲。"
+    },
+    {
+      "url": "https://my.ntu.edu.tw/fao/search.aspx",
+      "reason": "登入限定，維持人工查閱，不擷取登入狀態。"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/CMS/Page/174",
+      "reason": "學務處生輔組學雜費減免系統，維持人工查對，不啟用未審批之爬蟲。"
+    },
+    {
+      "url": "https://advisory.ntu.edu.tw/CMS/HTML/118",
+      "reason": "學務處生輔組急難救助入口，維持人工查對。"
+    },
+    {
+      "url": "https://oia.ntu.edu.tw/",
+      "reason": "國際處雙聯學位與海外獎助多層動態清單，列為下一梯次主機與 robots 審查。"
+    }
+  ],
+  "terms_notes": [
+    {
+      "url": "https://www.aca.ntu.edu.tw/w/aca/Privacy",
+      "checked_on": "2026-10-29",
+      "decision": "教務處要求轉載先聯繫；本版不輸出原文摘錄，僅雜湊、欄位類型、URL及定位，不自動改寫網站。"
+    },
+    {
+      "url": "https://ord.ntu.edu.tw/robots.txt",
+      "checked_on": "2026-10-29",
+      "decision": "禁止/WebUPD/，不下載該路徑附件；每次重新檢查。"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-11-01",
+  "method": "8次官方來源搜尋工具呼叫、24組查詢；以下為選入的公開來源線索，不是所有搜尋結果或已核定方案",
+  "models": 0,
+  "status": "search_located_pending_source_fetch",
+  "notes": ["不保存得獎名單、個人姓名或私人申請表；搜尋摘要不作日期或資格證據。", "替代官網另記發現，不當成原網址已成功；保留既有受限主機處置。", "只補查列出的20個入口／公告；未對189檢索名稱逐一完成全網搜尋。"],
+  "sources": [
+    {"id":"Q001","url":"https://www.foxconnfoundation.org/news/80479d881F20","title":"鴻海2026獎學金公告線索","batch":"B5","category":"foundation"},
+    {"id":"Q002","url":"https://www.foxconnfoundation.org/plan/scholarship","title":"鴻海獎學金計畫入口","batch":"B5","category":"foundation"},
+    {"id":"Q003","url":"https://www.tnsfoundation.com.tw/","title":"宋作楠基金會官方入口替代線索；不代表當期開放","batch":"B5","category":"foundation"},
+    {"id":"Q004","url":"https://yzhsu.feg.com.tw/Registration/Index.html","title":"徐有庠基金會申請入口；含非學生獎項","batch":"B5","category":"foundation"},
+    {"id":"Q005","url":"https://yzhsu.feg.com.tw/NewsPage.html?selectID=acb7979b-ee25-42b3-bf18-451f753f377a","title":"徐有庠第24屆徵件歷史公告線索","batch":"B5","category":"foundation"},
+    {"id":"Q006","url":"https://www.fubon.com/life/introduction/announcement/news","title":"富邦人壽獎學金新聞入口線索","batch":"B5","category":"foundation"},
+    {"id":"Q007","url":"https://web.ee.nthu.edu.tw/p/412-1175-5624.php?Lang=en","title":"清大電機企業獎學金來源入口","batch":"B5","category":"foundation"},
+    {"id":"Q008","url":"https://staf-life.nptu.edu.tw/p/404-1074-197675.php?Lang=zh-tw","title":"屏大轉知行天宮115-1獎助公告線索","batch":"B5","category":"foundation"},
+    {"id":"Q009","url":"https://www.cm.nsysu.edu.tw/p/404-1024-380732.php?Lang=zh-tw","title":"中山大學元大115獎學金轉知；不套臺大期限","batch":"B5","category":"foundation"},
+    {"id":"Q010","url":"https://www.edu.tw/scholarshipinfo/Default.aspx","title":"教育部獎學金公告索引","batch":"B8","category":"agency"},
+    {"id":"Q011","url":"https://isss.ntu.edu.tw/zh-hant/finances/scholarships/","title":"臺大國際學位生最新獎學金入口","batch":"B4","category":"identity"},
+    {"id":"Q012","url":"https://admissions.ntu.edu.tw/zh-hant/fees-scholarships/scholarships/","title":"臺大外國學生入學獎學金入口","batch":"B4","category":"identity"},
+    {"id":"Q013","url":"https://osa.ntu.edu.tw/services/financialaid","title":"臺大學務處助學入口；不解除生輔組人工處置","batch":"B4","category":"living"},
+    {"id":"Q014","url":"https://www.mc.ntu.edu.tw/otntu/","title":"臺大職能治療學系官方入口","batch":"B3","category":"campus"},
+    {"id":"Q015","url":"https://ac.ntu.edu.tw/News_Content_n_194922_sms_123934_s_264896.html","title":"臺大農化系優秀青年校內範例","batch":"B3","category":"award"},
+    {"id":"Q016","url":"https://www.phys.ntu.edu.tw/News_Content_n_39675_s_263644.html","title":"臺大物理系115博士獎學金收件範例","batch":"B1","category":"doctoral"},
+    {"id":"Q017","url":"https://giee.ntu.edu.tw/tw/announcements/general/?class=%E7%8D%8E%E5%AD%B8%E9%87%91","title":"臺大電子所獎學金公告索引","batch":"B3","category":"campus"},
+    {"id":"Q018","url":"https://www.iam.ntu.edu.tw/zh/news4/news-scholarship","title":"臺大應力所獎學金公告索引","batch":"B3","category":"campus"},
+    {"id":"Q019","url":"https://www.ctci.org.tw/8838/annual-plan/34609/45415/","title":"中技社2026徵件線索；保留主機robots待核","batch":"B5","category":"foundation","access_gate":"manual_or_policy_recheck"},
+    {"id":"Q020","url":"https://rd.mc.ntu.edu.tw/bomrd/ntu2/news_txt.asp?pno=7296","title":"臺大醫學院115研究生優秀著作獎線索；保留人工","batch":"B3","category":"award","access_gate":"manual_or_policy_recheck"}
+  ]
+}
