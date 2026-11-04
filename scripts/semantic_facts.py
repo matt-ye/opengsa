@@ -126,11 +126,14 @@ def time_actor(text):
 def labelled_date_clause(clause):
     """Parse a date adjacent to the application label, never the first page date."""
     year=r'(?:20\d{2}|1\d{2})[年/.\-]|[一二三四五六七八九〇零]{3}年'
-    prefix=r'^[：:自從為截至即日起\s]*(?:'+year+r')'
-    for pattern in (r'申請期間|申請時間|申請時程|申請日期|受理期間|收件期間|報名期間|報名時間',
-                    r'截止(?:日期|時間)?(?:為|至)?|(?:申請|兌換|報名)期限(?:為)?|(?:最遲)?應於|請於|申請至|收件至|報名至|從即日起至'):
+    prefix=r'^[：:自從為截至即日起公告日\s]*(?:民國)?(?:'+year+r')'
+    for pattern in (r'申請期間|申請時間|申請時程|申請日期|受理期間|收件期間|收件日期|報名期間|報名時間',
+                    r'截止(?:日期|時間)?(?:為|至)?|(?:申請|兌換|報名)期限(?:為)?|(?:最遲)?應於|請於|申請至|收件至|報名至|從即日起至|自即日起至|自公告日起至'):
         for label in reversed(list(re.finditer(pattern,clause))):
             tail=clause[label.end():]
             if re.match(prefix,tail):
                 return tail
+    m_pre=re.search(r'(自(?:民國)?(?:'+year+r')[^。；;\n]{4,40}止)(?:受理(?:線上)?申請|開放(?:線上)?申請)',clause)
+    if m_pre:
+        return m_pre.group(1)
     return None

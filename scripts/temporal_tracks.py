@@ -27,6 +27,28 @@ from scripts.review_candidates import candidate_fingerprint
 
 TRACKS = ("gov", "enterprise", "other", "all")
 
+PARSER_FILES = (
+    "scripts/temporal_reextract.py",
+    "scripts/extract_candidates.py",
+    "scripts/semantic_facts.py",
+)
+
+
+def parser_fingerprint(root=ROOT):
+    """Line-ending-normalised parser hash so Windows and Actions checkouts agree.
+
+    Used by the undetermined cooldown: a cooled record re-runs as soon as any
+    parser file changes, never because of CRLF/LF checkout differences.
+    """
+    import hashlib
+    import json
+
+    parts = [
+        hashlib.sha256((Path(root) / name).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+        for name in PARSER_FILES
+    ]
+    return hashlib.sha256(json.dumps(parts).encode()).hexdigest()
+
 TRACK_METADATA = {
     "gov": {
         "track": "gov",
@@ -179,6 +201,7 @@ def evaluate_incremental_diff(
     observed_attachment_hashes=None,
     include_refinement=False,
     force_recheck=False,
+    current_parser_sha256=None,
 ):
     """3-Stage Incremental Diff Gate for a single candidate.
 
@@ -239,11 +262,23 @@ def evaluate_incremental_diff(
     policy = record.get("policy") or {}
     mode = policy.get("submission_mode", "undetermined")
     if mode == "undetermined":
+        subkind = record.get("undetermined_subkind")
+        if (
+            subkind in ("regulation_without_schedule", "no_schedule_in_document")
+            and current_parser_sha256
+            and record.get("parser_sha256") == current_parser_sha256
+        ):
+            return {
+                **base,
+                "should_run": False,
+                "decision": "SKIP_UNCHANGED",
+                "reason": f"cooldown_{subkind}",
+            }
         return {
             **base,
             "should_run": True,
             "decision": "RUN_BACKFILL",
-            "reason": "submission_mode_undetermined",
+            "reason": f"submission_mode_undetermined_{subkind}" if subkind else "submission_mode_undetermined",
         }
 
     if include_refinement and mode in REFINEMENT_SUBMISSION_MODES:
@@ -299,6 +334,7 @@ def plan_track_execution(
         raise ValueError(f"invalid_schedule_track:{resolved_track}")
 
     observed_hashes = observed_hashes or {}
+    current_parser = parser_fingerprint()
     track_candidates = [
         c for c in candidates
         if resolved_track == "all" or classify_source_track(c) == resolved_track
@@ -319,6 +355,7 @@ def plan_track_execution(
             observed_raw_sha256=observed_hashes.get(url),
             include_refinement=include_refinement,
             force_recheck=force_recheck,
+            current_parser_sha256=current_parser,
         )
         decisions.append(decision)
         if decision["should_run"]:

@@ -25,6 +25,7 @@ from scripts.temporal_tracks import (
     TRACKS,
     classify_source_track,
     evaluate_incremental_diff,
+    parser_fingerprint,
     plan_track_execution,
 )
 from scripts.providers import PROVIDERS
@@ -70,12 +71,14 @@ def resolve_action_sources(
 
     ids = select_sources(token, candidates, max_sources=max_sources)
     selected_cands = [c for c in candidates if c["source_metadata"]["source_id"] in ids]
+    current_parser = parser_fingerprint()
     decisions = [
         evaluate_incremental_diff(
             c,
             observations=observations,
             include_refinement=include_refinement,
             force_recheck=force_recheck,
+            current_parser_sha256=current_parser,
         )
         for c in selected_cands
     ]

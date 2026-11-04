@@ -11,7 +11,7 @@ from scripts.radar_metadata import radar_metadata
 from scripts.source_chains import timeline_metadata
 from scripts.time_policy import validate_temporal_snapshot
 from scripts.review_candidates import candidate_fingerprint
-from scripts.temporal_tracks import classify_source_track, evaluate_incremental_diff
+from scripts.temporal_tracks import classify_source_track, evaluate_incremental_diff, parser_fingerprint
 
 
 def audit():
@@ -24,6 +24,7 @@ def audit():
     radar = radar_metadata(bundle, observations)["records"]
     chain = timeline_metadata(read("data/source-chains.json"), bundle)
     rows = []
+    current_parser = parser_fingerprint()
     for candidate in bundle["candidates"]:
         cid = candidate["candidate_id"]
         record = observations["records"].get(cid, {})
@@ -56,7 +57,7 @@ def audit():
         if examples:
             form += "；另有具名單位範例／參考層"
         track = classify_source_track(candidate)
-        diff_info = evaluate_incremental_diff(candidate, observations=observations)
+        diff_info = evaluate_incremental_diff(candidate, observations=observations, current_parser_sha256=current_parser)
         rows.append({
             "candidate_id": cid,
             "title": candidate["title"],
