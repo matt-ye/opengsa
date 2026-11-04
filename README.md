@@ -17,6 +17,8 @@ PR #28、#29、#31已合併，PR31的A版工具列與資訊鏈時間軸已部署
 
 新增[第一批排查與資料結構](docs/SOURCE-CHAIN-BATCH-01.md)、[離線樹狀圖HTML](docs/source-chains/source-chain-map.html)及[Obsidian Canvas](docs/source-chains/source-chain-map.canvas)。總索引涵蓋13方案／19候選；本批重新讀取3方案的10個指定來源，規則仍pending。
 
+新增[Obsidian研究工作台](docs/OBSIDIAN-WORKSPACE.md)與[vault首頁](vault/00-首頁.md)：由JSON離線產生13方案、184個去重來源、10條待審規則、檔案Canvas及Bases待爬表。JSON維持主檔，人工筆記獨立保存；本次沒有新增抓取、模型或雲端同步。這是研究檢視，不代表184個來源都已完成萃取。
+
 - 保留19筆雷達候選／17份原文件／13組方案；正式pilot仍10筆draft，人工台帳仍空。
 - 新增共用JSON文件、關係與17個有來源hash／定位的日期事件；6個地方公告完成程式萃取，三個單位已有完整區間。不是全部19筆已完成資訊鏈。
 - 第一頁採已核可的A版：左欄整合選取管理與資格篩選，時間控制集中圖表工具列；白底網格圖例預設收合。預設甘特圖，圖內上下／水平捲動，固定標題與日期軸；保留清單切換。全局並列電信所、農化系與政治所等已有時程範例，不需選系所；圖下及滑鼠提示標明適用單位，參考年度仍可切換。實際起訖、公告流程與淺色歷史底帶分層，第二三頁同步，未知資格不因日期增加而自動通過。
@@ -124,6 +126,7 @@ flowchart TD
 | 文件 | 用途 |
 |---|---|
 | [目前計畫](docs/PLAN.md) | 已核可範圍、階段、下一步與驗收 |
+| [Obsidian研究工作台](docs/OBSIDIAN-WORKSPACE.md) | JSON與筆記分工、來源佇列、局部圖／Canvas、重建、同步與隱私邊界 |
 | [候選審查工作台](docs/REVIEW-WORKSPACE.md) | 未發布預覽、人工處置、重新核驗與資料 PR 草稿流程 |
 | [公開預覽與部署](docs/DEPLOYMENT.md) | GitHub Pages發布、公開回饋、成品邊界、測試與回復 |
 | [長期維運與訂閱提案](docs/OPERATIONS-PLAN.md) | GitHub／D1分工、來源擷取、Agent檢核、成本、RSS與ICS；D1與訂閱尚未啟用 |

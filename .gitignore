@@ -9,6 +9,14 @@ private/
 .env.*
 !.env.example
 node_modules/
+.venv/
+.local-state/
+.local-cache/
+vault/.obsidian/
+vault/Reviews/*
+!vault/Reviews/README.md
+vault/Assets/*
+!vault/Assets/README.md
 dist/
 _site/
 .astro/

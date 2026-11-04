@@ -1,0 +1,2480 @@
+{
+  "schema_version": "obsidian-export-1",
+  "as_of": "2026-11-01",
+  "model_mode": "off",
+  "scheduled": false,
+  "network_requests": 0,
+  "limits": {
+    "max_requests_per_run": 20,
+    "max_documents_per_run": 12,
+    "minimum_host_interval_seconds": 3
+  },
+  "source_inventory_rows": 145,
+  "counts": {
+    "checked": 26,
+    "format_deferred": 11,
+    "manual_only": 37,
+    "needs_https": 2,
+    "needs_profile": 83,
+    "ready": 13,
+    "reference_only": 12
+  },
+  "items": [
+    {
+      "document_id": "doc-b8b901f9776d299437191cb3",
+      "url": "http://www.eng.ntu.edu.tw/tc/news.aspx?pn=2&mid=9&cid=80&key=",
+      "title": "工學院",
+      "queue_state": "needs_https",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "http_seed_requires_verified_https_replacement"
+    },
+    {
+      "document_id": "doc-3b00eb9e1b713de1924740f1",
+      "url": "http://www.law.ntu.edu.tw/index.php/%E7%8D%8E%E5%AD%B8%E9%87%91-%E5%BE%B5%E6%89%8D%E5%85%AC%E5%91%8A",
+      "title": "法律學院",
+      "queue_state": "needs_https",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "http_seed_requires_verified_https_replacement"
+    },
+    {
+      "document_id": "doc-e3c8700ad899976478f24c7e",
+      "url": "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/255718/26fe6b56-f175-43fb-8715-25d053a52a7f.pdf",
+      "title": "26fe6b56-f175-43fb-8715-25d053a52a7f.pdf",
+      "queue_state": "checked",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-e5df94cea84609e7f673d265",
+      "url": "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/255718/3c8a6cb6-a008-47bc-87d4-80d1a61f313e.docx",
+      "title": "3c8a6cb6-a008-47bc-87d4-80d1a61f313e.docx",
+      "queue_state": "format_deferred",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-ede883487b1a08cc8fc5f74f",
+      "url": "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/255718/b71d29b1-5764-4766-9df9-ad24f96953d6.pdf",
+      "title": "b71d29b1-5764-4766-9df9-ad24f96953d6.pdf",
+      "queue_state": "checked",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-83be8561a7c9058267a0f285",
+      "url": "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/263996/161eae16-eed8-423b-875e-57c19a37e6ff.pdf",
+      "title": "161eae16-eed8-423b-875e-57c19a37e6ff.pdf",
+      "queue_state": "checked",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-c949fd6d9ecef4c164a4f14e",
+      "url": "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/263996/3924f741-976c-4f26-8794-fc7c890c41ea.docx",
+      "title": "3924f741-976c-4f26-8794-fc7c890c41ea.docx",
+      "queue_state": "format_deferred",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-fd87ee0b6be83f78d8c80fa5",
+      "url": "https://ac.ntu.edu.tw/001/Upload/1730/relfile/123934/263996/95600d69-b4d8-43c4-b2e7-81ca70f140d8.pdf",
+      "title": "95600d69-b4d8-43c4-b2e7-81ca70f140d8.pdf",
+      "queue_state": "checked",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-3ab38c0fcb35e1da6cdc13cd",
+      "url": "https://ac.ntu.edu.tw/News_Content_n_194922_s_255718.html",
+      "title": "News_Content_n_194922_s_255718.html",
+      "queue_state": "checked",
+      "profiles": [
+        {
+          "registry": "data/source-chain-sources.json",
+          "profile": "sources[4]",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-3d56302ab135830329b2a282",
+      "url": "https://ac.ntu.edu.tw/News_Content_n_194922_sms_123934_s_263996.html",
+      "title": "News_Content_n_194922_sms_123934_s_263996.html",
+      "queue_state": "checked",
+      "profiles": [
+        {
+          "registry": "data/source-chain-sources.json",
+          "profile": "sources[1]",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-378c070d4ef6123c46db4f26",
+      "url": "https://advisory.ntu.edu.tw/",
+      "title": "生輔組首頁",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_not_plain_rules"
+    },
+    {
+      "document_id": "doc-ff83d14d5062d8f870e80eb4",
+      "url": "https://advisory.ntu.edu.tw/CMS/GetFile/1359",
+      "title": "臺大學生急難慰助金實施辦法",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_not_plain_rules"
+    },
+    {
+      "document_id": "doc-cd07e197bc53a0c18c8ad5b8",
+      "url": "https://advisory.ntu.edu.tw/CMS/HTML/118",
+      "title": "https://advisory.ntu.edu.tw/CMS/HTML/118",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_not_plain_rules"
+    },
+    {
+      "document_id": "doc-f4cdbc2c7ba3dcc1792dface",
+      "url": "https://advisory.ntu.edu.tw/CMS/HTML/122",
+      "title": "教育部學產基金急難慰問",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_not_plain_rules"
+    },
+    {
+      "document_id": "doc-50252f9c2fa718746ef57052",
+      "url": "https://advisory.ntu.edu.tw/CMS/HTML/123",
+      "title": "行天宮社會急難扶助金",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_not_plain_rules"
+    },
+    {
+      "document_id": "doc-cca1c0082d214dd7a8263400",
+      "url": "https://advisory.ntu.edu.tw/CMS/HTML/184",
+      "title": "勵學獎學金實際連結",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_not_plain_rules"
+    },
+    {
+      "document_id": "doc-420c83d2ffff212e4365d348",
+      "url": "https://advisory.ntu.edu.tw/CMS/Page/174",
+      "title": "https://advisory.ntu.edu.tw/CMS/Page/174",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_not_plain_rules"
+    },
+    {
+      "document_id": "doc-59aa6603df540056940ae569",
+      "url": "https://advisory.ntu.edu.tw/CMS/Page/176",
+      "title": "就學貸款",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_not_plain_rules"
+    },
+    {
+      "document_id": "doc-20d236bc748decb9272395a4",
+      "url": "https://advisory.ntu.edu.tw/CMS/Page/180",
+      "title": "不利處境助學金（原弱勢助學金）",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_not_plain_rules"
+    },
+    {
+      "document_id": "doc-ccf3ac5858c9fb3863d1f5e7",
+      "url": "https://advisory.ntu.edu.tw/CMS/Page/186",
+      "title": "急難慰問救助總入口",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_not_plain_rules"
+    },
+    {
+      "document_id": "doc-4f7d7f3b83b14bf7044b246a",
+      "url": "https://advisory.ntu.edu.tw/CMS/Page/21",
+      "title": "獎助學金總說明",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_not_plain_rules"
+    },
+    {
+      "document_id": "doc-471e7d70f85e16a7f88c3682",
+      "url": "https://advisory.ntu.edu.tw/CMS/Page/211",
+      "title": "生輔組相關辦法入口",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_not_plain_rules"
+    },
+    {
+      "document_id": "doc-3aeb7efd9c9cb36b7b05cfd8",
+      "url": "https://advisory.ntu.edu.tw/CMS/Page/252",
+      "title": "臺大學生申訴專區",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_not_plain_rules"
+    },
+    {
+      "document_id": "doc-d7158d61f3c8f47b028bebd4",
+      "url": "https://advisory.ntu.edu.tw/CMS/Scholarship?pageId=232",
+      "title": "生輔組獎學金公告一覽",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_not_plain_rules"
+    },
+    {
+      "document_id": "doc-68a9d835d3a37b39699c2072",
+      "url": "https://aiacademy.tw/",
+      "title": "機構入口",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-1ba1bfb7fae27a56a014fcb3",
+      "url": "https://ann.cc.ntu.edu.tw/nasattach/97000/45637_5195881007.pdf",
+      "title": "校外常見獎補助資源表（11509彙整）",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_denied"
+    },
+    {
+      "document_id": "doc-cc79feeb143cc4db90b93677",
+      "url": "https://ann.cc.ntu.edu.tw/nasattach/97000/45638_6230009973.pdf",
+      "title": "校內獎補助資源表（11509臺大彙整）",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_denied"
+    },
+    {
+      "document_id": "doc-51f7d325ec22bb76da17342d",
+      "url": "https://ann.cc.ntu.edu.tw/nasattach/97000/45639_8879372011.pdf",
+      "title": "校內研究計畫資源表（11509臺大彙整）",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_denied"
+    },
+    {
+      "document_id": "doc-75479de7d0818de1cddb16bc",
+      "url": "https://aws.amazon.com/education/awseducate/",
+      "title": "官方方案",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-a5b6ef1e4b192f301f88ffe9",
+      "url": "https://blog.google/",
+      "title": "Google 官方部落格",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-c18d1a13d1ac36aac3595f40",
+      "url": "https://blog.google/intl/zh-tw/products/explore-get-answers/back-to-school-2026/",
+      "title": "臺灣官方公告",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-7b34a71b715e3860f169eb9f",
+      "url": "https://cge.ntu.edu.tw/News_n_68409_sms_66659.html",
+      "title": "共同教育中心公告索引",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "html_no_meaningful_body_or_dynamic_content"
+    },
+    {
+      "document_id": "doc-d4247606b801f684842c4b4a",
+      "url": "https://cloud.google.com/startup",
+      "title": "新創專區",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "transport_error"
+    },
+    {
+      "document_id": "doc-d88fe4a3ac419f352d9f2a02",
+      "url": "https://cols.ntu.edu.tw/regulations-student.html",
+      "title": "生命科學院",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "html_no_meaningful_body_or_dynamic_content"
+    },
+    {
+      "document_id": "doc-8e0c2ae1c220ba363eb094d1",
+      "url": "https://coph.ntu.edu.tw/web/admissions/admissions_affairs.jsp?cp_id=CP1653651195215",
+      "title": "公共衛生學院",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-5fa8739a82c13d2faa646ef5",
+      "url": "https://coss.ntu.edu.tw/News_n_10821_sms_19598.html",
+      "title": "社會科學院",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "html_no_meaningful_body_or_dynamic_content"
+    },
+    {
+      "document_id": "doc-21a4c9b702f7b4d7ce434343",
+      "url": "https://creativecommons.org/licenses/by/4.0/deed.zh-hant",
+      "title": "CC BY 4.0",
+      "queue_state": "reference_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-26c604868d16f49160cc065a",
+      "url": "https://daas.sinica.edu.tw/pages/2798",
+      "title": "中研院博士候選人培育計畫",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "transport_error"
+    },
+    {
+      "document_id": "doc-9c232c36d9ce87090d51c82e",
+      "url": "https://data.gov.tw/license",
+      "title": "政府資料開放授權條款第 1 版",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_unavailable"
+    },
+    {
+      "document_id": "doc-769a300c41787a4a80ff06da",
+      "url": "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
+      "title": "新竹市AI領航青年數位工具補助",
+      "queue_state": "ready",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "hsinchu-ai-tools",
+          "enabled": true,
+          "evidence_mode": "short_excerpt"
+        }
+      ],
+      "evidence_mode": "short_excerpt",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "changed"
+    },
+    {
+      "document_id": "doc-aae1b99df1ea436d4a0311cb",
+      "url": "https://docs.astro.build/en/guides/content-collections/",
+      "title": "Content Collections",
+      "queue_state": "reference_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-c98b74576bb43eaeeec926e7",
+      "url": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students",
+      "title": "學生啟用流程",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-7e8e85358d40813342bfb22c",
+      "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL001889",
+      "title": "獎助生權益保障指導原則",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-f8aabc115cc7b9d441989fde",
+      "url": "https://education.github.com/pack",
+      "title": "Pack個別福利",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-b79ae3b1fb419af04f0b25f5",
+      "url": "https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf",
+      "title": "臺大電資學院優秀博士生獎學金評選辦法",
+      "queue_state": "ready",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "ntu-eecs-scholarship",
+          "enabled": true,
+          "evidence_mode": "short_excerpt"
+        }
+      ],
+      "evidence_mode": "short_excerpt",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "changed"
+    },
+    {
+      "document_id": "doc-69339bd49cfd7ab632cc8f4d",
+      "url": "https://eecs.ntu.edu.tw/w/eecsntu/scholarship_list",
+      "title": "臺大電資學院優秀研究生獎助學金",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "http_404"
+    },
+    {
+      "document_id": "doc-878b197041a7d260c19ebf6b",
+      "url": "https://eecs.ntu.edu.tw/zh_tw/Studentinformation/stu1",
+      "title": "電機資訊學院",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "html_no_meaningful_body_or_dynamic_content"
+    },
+    {
+      "document_id": "doc-a6f0a850f7e5c883ce95b0ea",
+      "url": "https://elite.taiwanjobs.gov.tw/",
+      "title": "台灣就業通產業新尖兵",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-806b3fe89e72b4ed9b7fcf03",
+      "url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+      "title": "Joint Masters",
+      "queue_state": "reference_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "overseas_degree_placeholder_deferred"
+    },
+    {
+      "document_id": "doc-afb16872c2cb054b18b6aff5",
+      "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%288%29%E5%82%99%E5%AF%A9%E8%B3%87%E6%96%99%E6%91%98%E8%A6%81%E5%BD%99%E6%95%B4%E8%A1%A8-%E5%9C%8B%E7%A7%91%E6%9C%83%E6%A0%B8%E9%85%8D%E5%8D%9A%E5%A3%AB%E7%8D%8E%E5%AD%B8%E9%87%91.xlsx&filepath=.%2FNewsUploadDir%2F2026_06_23_16_06_23_1xlsx",
+      "title": "filedownload.php",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-173278a74d8c8720743ca2c7",
+      "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%289%29%E5%82%99%E5%AF%A9%E8%B3%87%E6%96%99%E6%91%98%E8%A6%81%E5%BD%99%E6%95%B4%E8%A1%A8-%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91.xlsx&filepath=.%2FNewsUploadDir%2F2026_10_06_11_03_34_3xlsx",
+      "title": "filedownload.php",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-6df50b7657d765e25b95b3f6",
+      "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B61-%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf&filepath=.%2FNewsUploadDir%2F2026_10_06_11_03_34_0.pdf",
+      "title": "filedownload.php",
+      "queue_state": "checked",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-829aff53c964112ddb647680",
+      "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B61-%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf&filepath=.%2FNewsUploadDir%2F2026_06_16_13_57_48_0.pdf",
+      "title": "filedownload.php",
+      "queue_state": "checked",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-da37015838176a2bc7172ca8",
+      "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B62-115%E3%80%90%E6%95%99%E8%82%B2%E9%83%A8%E3%80%91%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91_%E7%94%B3%E8%AB%8B%E8%B3%87%E6%96%99%E8%A1%A8.docx&filepath=.%2FNewsUploadDir%2F2026_10_06_11_03_34_1docx",
+      "title": "filedownload.php",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-55c5d7f4f0f04a1ecdcaa035",
+      "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B62-115%E5%AD%B8%E5%B9%B4%E3%80%8C%E5%9C%8B%E7%A7%91%E6%9C%83%E6%A0%B8%E9%85%8D%E3%80%8D%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91_%E7%94%B3%E8%AB%8B%E8%B3%87%E6%96%99%E8%A1%A8.doc&filepath=.%2FNewsUploadDir%2F2026_06_23_16_06_23_0.doc",
+      "title": "filedownload.php",
+      "queue_state": "format_deferred",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-59b198de9c49801cf0c195db",
+      "url": "https://gice.ntu.edu.tw/filedownload.php?filename=%E9%99%84%E4%BB%B63-115%E6%95%99%E8%82%B2%E9%83%A8%E7%8D%8E%E5%AD%B8%E9%87%91_%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E9%85%8D%E5%90%88%E6%AC%BE%E5%90%8C%E6%84%8F%E6%9B%B8.doc&filepath=.%2FNewsUploadDir%2F2026_10_06_11_03_34_2.doc",
+      "title": "filedownload.php",
+      "queue_state": "format_deferred",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-65fdcc25317db87ff0f5e5a6",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7278",
+      "title": "shownews.php",
+      "queue_state": "checked",
+      "profiles": [
+        {
+          "registry": "data/source-chain-sources.json",
+          "profile": "sources[0]",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-6db49eb6cd36a3c5ed6ecae1",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
+      "title": "電信所國際會議補助綜合公告（多方案）",
+      "queue_state": "checked",
+      "profiles": [
+        {
+          "registry": "data/source-chain-batches/batch-01.config.json",
+          "profile": "sources[9]",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-6ed640449dfc70447e1ca65b",
+      "url": "https://gice.ntu.edu.tw/shownews.php?ID=7344",
+      "title": "shownews.php",
+      "queue_state": "checked",
+      "profiles": [
+        {
+          "registry": "data/source-chain-sources.json",
+          "profile": "sources[3]",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-117a814f0c08eb5f2ea55f75",
+      "url": "https://help.openai.com/en/articles/10139500-researcher-access-program-faq",
+      "title": "官方FAQ",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "http_403_host_paused"
+    },
+    {
+      "document_id": "doc-a41fb9f9197d4c7f041f0ade",
+      "url": "https://ibs.ntu.edu.tw/uploads/download/tw/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%951090929.pdf",
+      "title": "生化科學研究所副本",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_pdf"
+    },
+    {
+      "document_id": "doc-2601ca4e5a4c3d6baa27e010",
+      "url": "https://innoaward.taiwan-healthcare.org/",
+      "title": "主辦獎項網站",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-e3a7591e0f70492cde694919",
+      "url": "https://iservice.nchc.org.tw/nchc_service/nchc_service_qa.php?target=16",
+      "title": "計畫FAQ",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_denied"
+    },
+    {
+      "document_id": "doc-76128001ecc74b3316b90242",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=I0050021",
+      "title": "個人資料保護法官方頁",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_denied"
+    },
+    {
+      "document_id": "doc-3c936efc2bfde0143e98b19e",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=J0070017",
+      "title": "著作權法",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_denied"
+    },
+    {
+      "document_id": "doc-5f083c9c02b6d45db3492384",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=N0030001",
+      "title": "勞動基準法",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_denied"
+    },
+    {
+      "document_id": "doc-0cc16fb74ee8c8ced7c6ef67",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0030001",
+      "title": "勞動基準法",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_denied"
+    },
+    {
+      "document_id": "doc-c4571c4be750fb28dabfe5a5",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0030020",
+      "title": "勞工退休金條例",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_denied"
+    },
+    {
+      "document_id": "doc-6b8015dc77120b66b3894904",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0030028",
+      "title": "最低工資法",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_denied"
+    },
+    {
+      "document_id": "doc-dfa73b0c49a3adf7ae57c2bd",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0050031",
+      "title": "勞工職業災害保險及保護法",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_denied"
+    },
+    {
+      "document_id": "doc-83da10adff378e11b1688002",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686",
+      "title": "國科會專題研究計畫研究人力約用注意事項原文",
+      "queue_state": "ready",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "nstc-assistant-rule",
+          "enabled": true,
+          "evidence_mode": "short_excerpt"
+        }
+      ],
+      "evidence_mode": "short_excerpt",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "changed"
+    },
+    {
+      "document_id": "doc-f86ed6a15af02d63eae87cfe",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260",
+      "title": "國科會會議補助作業要點",
+      "queue_state": "checked",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "nstc-conference-rule",
+          "enabled": true,
+          "evidence_mode": "short_excerpt"
+        },
+        {
+          "registry": "data/source-chain-batches/batch-01.config.json",
+          "profile": "sources[4]",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "changed"
+    },
+    {
+      "document_id": "doc-e3cdf6279f171613b62cbe2e",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039061",
+      "title": "國科會人社博士候選人論文獎勵作業要點",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-9d2009cc5ee30fd247f7a177",
+      "url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039188",
+      "title": "國科會博士赴國外研究作業要點",
+      "queue_state": "checked",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "nstc-abroad-dragon-rule",
+          "enabled": true,
+          "evidence_mode": "short_excerpt"
+        },
+        {
+          "registry": "data/source-chain-batches/batch-01.config.json",
+          "profile": "sources[6]",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "changed"
+    },
+    {
+      "document_id": "doc-7e4c0f2d182a6ba8deee6306",
+      "url": "https://law.nstc.gov.tw/LawContentHistory.aspx?hid=101161&id=FL028686",
+      "title": "110.12.28版",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-7384960c1b73efd6e52b5018",
+      "url": "https://law.nstc.gov.tw/LawContentHistory.aspx?hid=91075&id=FL028686",
+      "title": "108.5.17版",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-a2e746fb9a7061d4bbd4d0e6",
+      "url": "https://law.nstc.gov.tw/LawContentSource.aspx?id=FL028686",
+      "title": "官方沿革",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-178a05f3f79de644be115208",
+      "url": "https://laws.mol.gov.tw/FLAW/FLAWDAT0202.aspx?id=FL077250",
+      "title": "勞動部兼任助理勞動權益保障指導原則",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-9e37c8061c93a29a27443bd5",
+      "url": "https://laws.mol.gov.tw/FLAW/FLAWDOC03.aspx?datatype=etype&ecase=%E5%8B%9E%E5%8B%95%E6%A2%9D+2&ecode=N00000&edate=20251021&eno=1140148807",
+      "title": "勞動部 1140148807 號公告",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "html_no_meaningful_body_or_dynamic_content"
+    },
+    {
+      "document_id": "doc-6c79477afa6a8f2be1a6e258",
+      "url": "https://laws.mol.gov.tw/FLAW/PrintFLAWDAT0202.aspx?id=FL077250",
+      "title": "兼任助理勞動權益保障指導原則列印版",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "html_no_meaningful_body_or_dynamic_content"
+    },
+    {
+      "document_id": "doc-b04263fe87b0c1b0009e5058",
+      "url": "https://liberal.ntu.edu.tw/web/student/student.jsp?dm_id=DM1656910432608",
+      "title": "文學院",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-19bc814654416765facdfa09",
+      "url": "https://management.ntu.edu.tw/AboutCoM/LawsCoM",
+      "title": "管理學院",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-45923fd4e47c9c9cf6969bff",
+      "url": "https://my.ntu.edu.tw/fao/search.aspx",
+      "title": "https://my.ntu.edu.tw/fao/search.aspx",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "login_only_manual"
+    },
+    {
+      "document_id": "doc-158a36f4d57fdef37b5375f1",
+      "url": "https://ocf.tw/",
+      "title": "機構入口",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-d75b31a7e1442f3e25d6861e",
+      "url": "https://oia.ntu.edu.tw/",
+      "title": "https://oia.ntu.edu.tw/",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-d804fd983d15ed01a1d8902d",
+      "url": "https://oia.ntu.edu.tw/cooperation-with-ntu/international-funding/joint-seed-funding",
+      "title": "國際處 Joint Seed Funding",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-5991ca822305226cfd154c8b",
+      "url": "https://oia.ntu.edu.tw/cooperation-with-ntu/international-funding/tukuc-research-grant",
+      "title": "國際處研究計畫",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-fbeedeb6db9ac4a4f7fee6c3",
+      "url": "https://one.google.com/offer/studentoffer8?hl=zh-TW",
+      "title": "優惠條款",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-fef49f012f87749579a64c45",
+      "url": "https://openai.com/researcher-access-program/",
+      "title": "OpenAI Researcher Program",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "http_403_host_paused"
+    },
+    {
+      "document_id": "doc-012de4f0464cbb5878236fa1",
+      "url": "https://opensource.org/license/mit",
+      "title": "MIT",
+      "queue_state": "reference_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-f279587021a64bc19c81cc65",
+      "url": "https://ord.ntu.edu.tw/WebUPD/ordntu/pm/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E8%A8%88%E7%95%AB%E5%85%BC%E4%BB%BB%E5%8A%A9%E7%90%86%E5%8F%8A%E7%A0%94%E7%A9%B6%E7%8D%8E%E5%8A%A9%E7%94%9F%E6%AF%8F%E6%9C%88%E6%94%AF%E7%B5%A6%E4%B8%8A%E9%99%90%E6%A8%99%E6%BA%96%E8%A1%A8_23121516034949938.pdf",
+      "title": "臺大計畫兼任助理與獎助生每月支給上限規定",
+      "queue_state": "manual_only",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "ntu-ord-assistant-limit",
+          "enabled": false,
+          "evidence_mode": "short_excerpt"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_denied"
+    },
+    {
+      "document_id": "doc-ef87ca293ce70007bba4152c",
+      "url": "https://ord.ntu.edu.tw/robots.txt",
+      "title": "https://ord.ntu.edu.tw/robots.txt",
+      "queue_state": "reference_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "crawl_policy_reference"
+    },
+    {
+      "document_id": "doc-3b59f5279df532cf4d9ee497",
+      "url": "https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260",
+      "title": "臺大115年遠學計畫（博士生一般補助）",
+      "queue_state": "ready",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "ntu-yuanxue",
+          "enabled": true,
+          "evidence_mode": "short_excerpt"
+        }
+      ],
+      "evidence_mode": "short_excerpt",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "changed"
+    },
+    {
+      "document_id": "doc-46b422069ea318de604d225c",
+      "url": "https://pan.itri.org.tw/datadetailTab?SiteID=1&MmmID=1310654304506445452",
+      "title": "基金會獎項頁",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "html_no_meaningful_body_or_dynamic_content"
+    },
+    {
+      "document_id": "doc-fc4c274fb02ba36f1f7d7bb8",
+      "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/form0.asp?LTPno=52&ntPno=&pno=27",
+      "title": "醫學院研發分處表單／辦法頁",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "html_no_meaningful_body_or_dynamic_content"
+    },
+    {
+      "document_id": "doc-bf8534566a13440d2945a96c",
+      "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/form0.asp?pno=25&LTPno=47",
+      "title": "臺大醫學院研發分處：參與學術會議／補助與報銷申請",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "http_403_host_paused"
+    },
+    {
+      "document_id": "doc-3d1bdebab2ecc0c91e500df4",
+      "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/news_txt.asp?pno=7296",
+      "title": "115學年度醫學院研究生優秀著作獎公告線索",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "http_403_host_paused"
+    },
+    {
+      "document_id": "doc-a4b8c7a537f4b882f8be7fba",
+      "url": "https://rd.usc.edu.tw/p/406-1048-4836%2Cr147.php?Lang=zh-tw",
+      "title": "國科會計畫兼任助理標準",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-8a4916bc9c7757e931294d35",
+      "url": "https://rd.web.shu.edu.tw/%E5%9C%8B%E7%A7%91%E6%9C%83%E4%BF%AE%E6%AD%A3%E3%80%8C%E5%9C%8B%E5%AE%B6%E7%A7%91%E5%AD%B8%E5%8F%8A%E6%8A%80%E8%A1%93%E5%A7%94%E5%93%A1%E6%9C%83%E8%A3%9C%E5%8A%A9%E5%B0%88%E9%A1%8C%E7%A0%94%E7%A9%B6/",
+      "title": "113.10.24轉知公告",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-b06c2c6311fcda9c1461ceb5",
+      "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/3733/e3e4cbe9-b068-4402-8497-ad5d4256aee1.docx",
+      "title": "「優秀學生出國開會經費補助」推薦申請書",
+      "queue_state": "format_deferred",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-cef4d7285548482485f1cb20",
+      "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/10166/3734/1234482d-32d1-416f-8e49-3cfb7f124cf3.pdf",
+      "title": "「財團法人傑出人才發展基金會」｜出國開會補助請款流程說明",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-6ece87d1f43fd4e207b4413e",
+      "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/9760/24895/71247f3a-7b42-474b-962d-02481279dfef.pdf",
+      "title": "生輔組目前連結的秘書室PDF",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_pdf"
+    },
+    {
+      "document_id": "doc-c327b135dc202bdf07bef717",
+      "url": "https://sec.ntu.edu.tw/001/Upload/18/relfile/9811/214008/add73815-0131-4901-b098-8dd402078f4c.pdf",
+      "title": "臺大秘書室申辦提醒（114.5.22）",
+      "queue_state": "checked",
+      "profiles": [
+        {
+          "registry": "data/source-chain-batches/batch-01.config.json",
+          "profile": "sources[1]",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-1ab3cef16c6b148ce7312958",
+      "url": "https://sec.ntu.edu.tw/001/Upload/relfile/9760/24895/04-038.pdf",
+      "title": "原秘書室04-038.pdf",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_pdf"
+    },
+    {
+      "document_id": "doc-4f7b2b6ad18cfaa56db6be65",
+      "url": "https://sec.ntu.edu.tw/News_n_27890_sms_10166__CSN_541.html",
+      "title": "臺大秘書室表格入口",
+      "queue_state": "checked",
+      "profiles": [
+        {
+          "registry": "data/source-chain-batches/batch-01.config.json",
+          "profile": "sources[2]",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-4fe45b494722d089b7704602",
+      "url": "https://serv.gcis.nat.gov.tw/AOCAI/courses/youth",
+      "title": "資格、獎勵與流程",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-4e1748023f54d11e1eb98c18",
+      "url": "https://studyabroad.ntu.edu.tw/internship/moe-overseas-internships/",
+      "title": "國際處學海築夢頁",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-5f8454d1e5a2b00f81175dc2",
+      "url": "https://tcnr.wda.gov.tw/News_Content.aspx?n=9CDFC65181CC2AEA&s=3CB8C51B711D842C&sms=68798FA6FAE753EC",
+      "title": "課程辦理原則修正入口",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "html_no_meaningful_body_or_dynamic_content"
+    },
+    {
+      "document_id": "doc-91454a8293b655ab031449cb",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf",
+      "title": "臺大教育部博士生獎學金（設置辦法條文快照）",
+      "queue_state": "ready",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "ntu-doctoral-funding",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "changed"
+    },
+    {
+      "document_id": "doc-91155ef2caf594eb5ace7f66",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf",
+      "title": "臺大研究生校長獎（設置辦法依據）",
+      "queue_state": "ready",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "ntu-president-award",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "changed"
+    },
+    {
+      "document_id": "doc-31f65bf74eda8cb6510d4aea",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
+      "title": "臺大學年度待核教育部博士生獎學金（第二梯次）",
+      "queue_state": "ready",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "ntu-doctoral-funding",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "changed"
+    },
+    {
+      "document_id": "doc-ee4d210bbfa286fc2d8d0168",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/%E6%95%99%E5%8B%99%E8%99%95%E6%95%99%E5%AD%B8%E5%8A%A9%E7%90%86%E5%88%B6%E5%BA%A6%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E6%A2%9D%E6%96%87-%E5%85%AC%E5%91%8A%E7%89%88.pdf",
+      "title": "臺大教務處教學助理制度獎勵金實施辦法",
+      "queue_state": "ready",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "ntu-ta-policy",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "changed"
+    },
+    {
+      "document_id": "doc-ca0d89af772bca822fd0e153",
+      "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/TA%E7%94%B3%E8%AB%8B%E9%A0%88%E7%9F%A5_26071416413942730.pdf",
+      "title": "教學助理申請須知",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_pdf"
+    },
+    {
+      "document_id": "doc-da8d33d1239d45c6bfb56497",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+      "title": "臺大 115 年人社論文獎勵公告",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-7cb8562c2b191beabfef7e46",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
+      "title": "臺大116年度收件公告",
+      "queue_state": "checked",
+      "profiles": [
+        {
+          "registry": "data/source-chain-batches/batch-01.config.json",
+          "profile": "sources[8]",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-82e732a493acd30b20ee2163",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383",
+      "title": "臺大國科會會議補助程序",
+      "queue_state": "checked",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "nstc-ntu-conference",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        },
+        {
+          "registry": "data/source-chain-batches/batch-01.config.json",
+          "profile": "sources[5]",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "changed"
+    },
+    {
+      "document_id": "doc-79af60be2eedec9477f7a965",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+      "title": "臺大115學年度教育部博士生獎學金（第二梯次）",
+      "queue_state": "ready",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "ntu-doctoral-funding",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "changed"
+    },
+    {
+      "document_id": "doc-71e6e9fae7c0dac56233106e",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368",
+      "title": "臺大114學年度研究生校長獎",
+      "queue_state": "ready",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "ntu-president-award",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "changed"
+    },
+    {
+      "document_id": "doc-78efefe2fd56aa874b00968c",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_24102208484895715",
+      "title": "臺大教育部博士生獎學金",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-5aa79ce4461468a7300da060",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/Privacy",
+      "title": "https://www.aca.ntu.edu.tw/w/aca/Privacy",
+      "queue_state": "reference_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "crawl_policy_reference"
+    },
+    {
+      "document_id": "doc-bb3e2cc25b6975a7a4e7e690",
+      "url": "https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514",
+      "title": "臺大教務處教學助理制度獎勵金實施辦法",
+      "queue_state": "ready",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "ntu-ta-policy",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "changed"
+    },
+    {
+      "document_id": "doc-ee56a2f9c0a8c2828186ac9e",
+      "url": "https://www.bioagri.ntu.edu.tw/bulletin.php",
+      "title": "生物資源暨農學院",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "html_no_meaningful_body_or_dynamic_content"
+    },
+    {
+      "document_id": "doc-f3f3fc8bf5f96464897bf2c2",
+      "url": "https://www.chevening.org/scholarships/",
+      "title": "Scholarships",
+      "queue_state": "reference_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "overseas_degree_placeholder_deferred"
+    },
+    {
+      "document_id": "doc-96642df16db913aed99f4528",
+      "url": "https://www.daad.de/en/studying-in-germany/scholarships/",
+      "title": "Scholarships & Funding",
+      "queue_state": "reference_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "overseas_degree_placeholder_deferred"
+    },
+    {
+      "document_id": "doc-f3aa43a8cc34993158702bd8",
+      "url": "https://www.eng.ntu.edu.tw/tc/scholarship.aspx",
+      "title": "臺大工學院研究生獎助學金專區",
+      "queue_state": "manual_only",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "ntu-coe-scholarship",
+          "enabled": false,
+          "evidence_mode": "short_excerpt"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_not_plain_rules"
+    },
+    {
+      "document_id": "doc-8dbd63e96b3f5bba3534bc8b",
+      "url": "https://www.faos.org.tw/Application/ApplicatStud.html",
+      "title": "基金會補助辦法（113.05.29）",
+      "queue_state": "checked",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "faos-student-conference",
+          "enabled": true,
+          "evidence_mode": "short_excerpt"
+        },
+        {
+          "registry": "data/source-chain-batches/batch-01.config.json",
+          "profile": "sources[0]",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "changed"
+    },
+    {
+      "document_id": "doc-4fd96bd5af62899f70833774",
+      "url": "https://www.faos.org.tw/apply/student/",
+      "title": "基金會公開線上登記入口",
+      "queue_state": "checked",
+      "profiles": [
+        {
+          "registry": "data/source-chain-batches/batch-01.config.json",
+          "profile": "sources[3]",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-6ab88a35d1d90e505caf5203",
+      "url": "https://www.fulbright.org.tw/zh-hant/awards-to-the-u-s/",
+      "title": "臺灣公民赴美獎助",
+      "queue_state": "reference_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "overseas_degree_placeholder_deferred"
+    },
+    {
+      "document_id": "doc-776aee0b3dfb883573612261",
+      "url": "https://www.gov.tw/News_Content_26_586833",
+      "title": "政府住宅補助資訊索引",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "html_no_meaningful_body_or_dynamic_content"
+    },
+    {
+      "document_id": "doc-b36559867a91500a848df108",
+      "url": "https://www.hccg.gov.tw/",
+      "title": "新竹市政府公告",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-b55e6f3705304804be1d980d",
+      "url": "https://www.ipsas.sinica.edu.tw/%E7%A0%94%E7%A9%B6%E8%A8%88%E7%95%AB%E7%BE%A4%E7%B5%84",
+      "title": "研究計畫群組",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-1b236b9444da75c5365970c7",
+      "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E7%A7%91%E5%AD%B8%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E7%94%B3%E8%AB%8B%E8%A1%A8.doc",
+      "title": "中央研究院人文社會科學博士候選人申請表.doc",
+      "queue_state": "format_deferred",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-6cd06e08a418560562d77e6f",
+      "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E8%A6%81%E9%BB%9E-odt.odt",
+      "title": "中研院人文社會博士候選人培育計畫要點-odt.odt",
+      "queue_state": "format_deferred",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-63cd2c5eba55f291b9a4ce52",
+      "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E8%A6%81%E9%BB%9E.pdf",
+      "title": "中研院人文社會博士候選人培育計畫要點.pdf",
+      "queue_state": "checked",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-b414f6c39be170c4c4962e41",
+      "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E6%94%BF%E6%B2%BB%E6%89%80%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%AF%A9%E6%9F%A5%E8%BE%A6%E6%B3%95-%E5%83%85%E4%B8%AD%E6%96%87%E7%89%88.pdf",
+      "title": "中研院政治所博士候選人培育計畫審查辦法-僅中文版.pdf",
+      "queue_state": "checked",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-f0c0b8ac7ca7e78da0f4c548",
+      "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2025/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E6%94%BF%E6%B2%BB%E6%89%80%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%AF%A9%E6%9F%A5%E8%BE%A6%E6%B3%95-odt.odt",
+      "title": "中研院政治所博士候選人培育計畫審查辦法-odt.odt",
+      "queue_state": "format_deferred",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-956146e710cb86b2362f2ba9",
+      "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E7%A7%91%E5%AD%B8%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E7%94%B3%E8%AB%8B%E8%A1%A8.doc",
+      "title": "中央研究院人文社會科學博士候選人申請表.doc",
+      "queue_state": "format_deferred",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-27aa46ab787a1dd06f584ab3",
+      "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E4%BA%BA%E6%96%87%E7%A4%BE%E6%9C%83%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E8%A6%81%E9%BB%9E.pdf",
+      "title": "中研院人文社會博士候選人培育計畫要點.pdf",
+      "queue_state": "checked",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-0398df054d807697619950eb",
+      "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/%E4%B8%AD%E7%A0%94%E9%99%A2%E6%94%BF%E6%B2%BB%E6%89%80%E5%8D%9A%E5%A3%AB%E5%80%99%E9%81%B8%E4%BA%BA%E5%9F%B9%E8%82%B2%E8%A8%88%E7%95%AB%E5%AF%A9%E6%9F%A5%E8%BE%A6%E6%B3%95-%E5%83%85%E4%B8%AD%E6%96%87%E7%89%88.pdf",
+      "title": "中研院政治所博士候選人培育計畫審查辦法-僅中文版.pdf",
+      "queue_state": "checked",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-1981aa37f69dce4ea24bd4cd",
+      "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/ahq7i-hly0j.odt",
+      "title": "ahq7i-hly0j.odt",
+      "queue_state": "format_deferred",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-2c0180107951848659974d8c",
+      "url": "https://www.ipsas.sinica.edu.tw/wp-content/uploads/2026/01/am2sg-egsi4.odt",
+      "title": "am2sg-egsi4.odt",
+      "queue_state": "format_deferred",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-e20dff8d6faf7ac0d21f7699",
+      "url": "https://www.ipsas.sinica.edu.tw/最新訊息/學術公告/ipsas-114年度人文社會科學博士候選人培育計畫即日起/",
+      "title": "www.ipsas.sinica.edu.tw",
+      "queue_state": "checked",
+      "profiles": [
+        {
+          "registry": "data/source-chain-sources.json",
+          "profile": "sources[5]",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-5af38c1b5da51a66c8d6bab5",
+      "url": "https://www.ipsas.sinica.edu.tw/最新訊息/學術公告/ipsas-115年度人文社會科學博士候選人培育計畫即日起/",
+      "title": "www.ipsas.sinica.edu.tw",
+      "queue_state": "checked",
+      "profiles": [
+        {
+          "registry": "data/source-chain-sources.json",
+          "profile": "sources[2]",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-1ebd56c7a9cc74b61c74ce8f",
+      "url": "https://www.junyiacademy.org/",
+      "title": "平台入口",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-b5a153c3c4acd98e56d242de",
+      "url": "https://www.mc.ntu.edu.tw/manage/upload/fp/f_20250820160641092.pdf",
+      "title": "臺大醫學院職能治療博士班修業進度官方文件",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_pdf"
+    },
+    {
+      "document_id": "doc-6ebe491a1478ab6708f9fff2",
+      "url": "https://www.mc.ntu.edu.tw/ntucm/Index.action",
+      "title": "醫學院",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-7f93a0f3f47a16fe1ff2c73d",
+      "url": "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296",
+      "title": "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-aaca058b6f3c19cdbc2fb43e",
+      "url": "https://www.moe.gov.tw/Content_List.aspx?n=DBDDB8DC17D0D8C4",
+      "title": "教育部獎助專區",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "html_no_meaningful_body_or_dynamic_content"
+    },
+    {
+      "document_id": "doc-9a07996cc70b410f5d839084",
+      "url": "https://www.mol.gov.tw/1607/28162/28166/28180/28182/28188/29025/",
+      "title": "最低工資的意義",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "http_410"
+    },
+    {
+      "document_id": "doc-4f2faef0bb0ebf5f2470c8ee",
+      "url": "https://www.mol.gov.tw/1607/28162/28296/28428/28430/28438/28440/29148/",
+      "title": "官方PDF備援",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_pdf"
+    },
+    {
+      "document_id": "doc-e263715c5c28299ce22735ec",
+      "url": "https://www.mol.gov.tw/1607/28690/2282/2302/2304/81139/?cprint=pt",
+      "title": "勞動部正式說明",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-adcc3eef21a681c04c296c01",
+      "url": "https://www.mol.gov.tw/1607/28690/89680/",
+      "title": "勞動部勞資爭議入口",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-3d2bdb0e362fd6b6f996fd5f",
+      "url": "https://www.nchc.org.tw/",
+      "title": "國網中心官網",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "transport_error"
+    },
+    {
+      "document_id": "doc-f5d40b7ea23dc26e59326b8b",
+      "url": "https://www.nstc.gov.tw/",
+      "title": "國科會",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-83f1a6ad873ef4f47fe16a4a",
+      "url": "https://www.nstc.gov.tw/folksonomy/list/ced2afbb-f4d4-48b3-909f-247d5fbbe2f5?l=ch",
+      "title": "博士生費用增核入口",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-7e7cb9abf1a64435be66479f",
+      "url": "https://www.nstc.gov.tw/folksonomy/rfpDetail/fb285d89-02c6-4a01-a256-580b4c434822?l=ch",
+      "title": "116 年度千里馬申請須知",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "http_410"
+    },
+    {
+      "document_id": "doc-5645a177e016014ef44c4e65",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/0a7ca0b3-2bb4-4d00-a175-45246024cf08",
+      "title": "原函PDF",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_pdf"
+    },
+    {
+      "document_id": "doc-aabb3ef821a7e5b35a69380f",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/92025fc4-ec4f-4109-980a-03f23f91f41c",
+      "title": "0. 116年度千里馬計畫(博士生)申請須知.pdf",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-f0e94d088cab136e496a946c",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/b510a7b7-c54b-4621-a65c-e79620d13939",
+      "title": "1. 博士生赴國外研究作業要點.pdf",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-89cf496c24dc59307f73af6b",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/d6e268dc-75bb-4829-813b-3d2ce0ce46eb",
+      "title": "2.115年學員(116年出國)申請應注意事項及操作說明_博生(0716).pdf",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "not_in_older_inventory"
+    },
+    {
+      "document_id": "doc-cd7151f2476b1d66c2007f21",
+      "url": "https://www.nstc.gov.tw/nstc/attachments/e3c16203-1b68-49bd-bf5d-ba1d12f6976e",
+      "title": "博士生增核FAQ PDF",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_pdf"
+    },
+    {
+      "document_id": "doc-2117db637f1a2f916bb16689",
+      "url": "https://www.nstc.gov.tw/sci/ch/detail/24ad4e4a-bd37-4ba0-9955-5b2e2ffd5ac6",
+      "title": "115 年國科會博士生研究獎學金試辦方案",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-725ff2f8d770e4f19724edd7",
+      "url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+      "title": "國科會116年度徵件入口",
+      "queue_state": "checked",
+      "profiles": [
+        {
+          "registry": "data/source-chain-batches/batch-01.config.json",
+          "profile": "sources[7]",
+          "enabled": true,
+          "evidence_mode": "hash_only"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-6eed73c1aa96da8e2f0cf312",
+      "url": "https://www.nvidia.com/en-us/startups/",
+      "title": "Inception官方定位",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-833af2449fb435b915815f4f",
+      "url": "https://www.personnel.ntu.edu.tw/News_Content_Create_1_n_64102_state_F5D336F102ACBC68_s_70764_sms_62508.html",
+      "title": "專任研究助理參考表入口",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "html_no_meaningful_body_or_dynamic_content"
+    },
+    {
+      "document_id": "doc-c1258d7c23fc7c932c41dc4f",
+      "url": "https://www.personnel.ntu.edu.tw/News_n_101162_sms_79140.html",
+      "title": "人事室薪資標準",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "html_no_meaningful_body_or_dynamic_content"
+    },
+    {
+      "document_id": "doc-f0e8c152b2917ce59a9c9b9c",
+      "url": "https://www.rfc-editor.org/rfc/rfc5545.html",
+      "title": "RFC 5545",
+      "queue_state": "reference_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "html_body_missing"
+    },
+    {
+      "document_id": "doc-5ebb03e9c82212e9040060a9",
+      "url": "https://www.rfc-editor.org/rfc/rfc9309.html",
+      "title": "RFC 9309",
+      "queue_state": "reference_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-596fb0007c69e5b1468fab7a",
+      "url": "https://www.science.ntu.edu.tw/student-affairs/",
+      "title": "理學院",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-172426b6bcf93c62c2ec1925",
+      "url": "https://www.sinica.edu.tw/news_content/56/3434",
+      "title": "中研院115年度人文社會科學博士候選人培育計畫公告",
+      "queue_state": "ready",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "sinica-phd-fellowship",
+          "enabled": true,
+          "evidence_mode": "short_excerpt"
+        }
+      ],
+      "evidence_mode": "short_excerpt",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "changed"
+    },
+    {
+      "document_id": "doc-1cab6bee4c7bf22c76ba9697",
+      "url": "https://www.sme.gov.tw/",
+      "title": "經濟部商業發展署",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-ecd2723b9d7d8774bf7c3d69",
+      "url": "https://www.tipo.gov.tw/tw/copyright/701-21249.html",
+      "title": "智財局論文著作權說明",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-5d106add18e57aec23f9baa4",
+      "url": "https://www.tsmc.com/chinese/careers/phd_fellowship",
+      "title": "台積電博士獎學金專案",
+      "queue_state": "manual_only",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "tsmc-phd-fellowship",
+          "enabled": false,
+          "evidence_mode": "short_excerpt"
+        }
+      ],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "http_403_host_paused"
+    },
+    {
+      "document_id": "doc-aa19fbf6030f373d6cf32454",
+      "url": "https://www.twcc.ai/",
+      "title": "TWCC",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_denied"
+    },
+    {
+      "document_id": "doc-ff4b2a74c8157feb31b49546",
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "title": "WCAG 2.2 AA",
+      "queue_state": "reference_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-2ef3b8a78820f7b7d4418a2a",
+      "url": "https://www.wcs.org.tw/news-4.php",
+      "title": "吳健雄學術基金會",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_not_plain_rules"
+    },
+    {
+      "document_id": "doc-da2a65a5dfd3c7948ffe85c3",
+      "url": "https://www.wda.gov.tw/News_Content.aspx?n=31&s=19491&sms=10306",
+      "title": "最新公告",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-5d2f8ad72f584ef195cddabe",
+      "url": "https://www.youth.ntpc.gov.tw/",
+      "title": "新北市青年局官網",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-0c93b2f3f44ee9d1b9d82e21",
+      "url": "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f",
+      "title": "當期公告",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-988d52b25067160a7cf10eb7",
+      "url": "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796",
+      "title": "臺北市青年AI工具補助",
+      "queue_state": "ready",
+      "profiles": [
+        {
+          "registry": "data/scan-sources.json",
+          "profile": "taipei-ai-tools",
+          "enabled": true,
+          "evidence_mode": "short_excerpt"
+        }
+      ],
+      "evidence_mode": "short_excerpt",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "changed"
+    },
+    {
+      "document_id": "doc-ad695b32067ca2304a7b0db7",
+      "url": "https://youth.kcg.gov.tw/",
+      "title": "青年局入口",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "html_no_meaningful_body_or_dynamic_content"
+    },
+    {
+      "document_id": "doc-f72d15e8523564b983b44e50",
+      "url": "https://youth.tycg.gov.tw/",
+      "title": "桃園市青年局官網",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-d40d1b31053f521074286505",
+      "url": "https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1617472",
+      "title": "計畫公告",
+      "queue_state": "needs_profile",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "parsed_html_discovery_only"
+    },
+    {
+      "document_id": "doc-c1c4aec5fa5e9fbda770ee60",
+      "url": "https://yzhsu.feg.com.tw/Programs.html?selectID=0591395e-8a94-433b-8e07-9732c431856d",
+      "title": "基金會獎項頁",
+      "queue_state": "manual_only",
+      "profiles": [],
+      "evidence_mode": "hash_only",
+      "requires_fresh_robots_check": true,
+      "raw_retention": "memory_only",
+      "model_mode": "off",
+      "registry_status": "robots_not_plain_rules"
+    }
+  ]
+}

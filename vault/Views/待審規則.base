@@ -1,0 +1,23 @@
+filters: entity_type == "rule"
+formulas:
+  title: file.asLink(aliases[0])
+properties:
+  formula.title:
+    displayName: 規則名稱
+  note.actor:
+    displayName: 申辦角色
+  note.scope:
+    displayName: 適用範圍
+  note.cycle:
+    displayName: 年度
+  note.review_status:
+    displayName: 審查狀態
+views:
+  - type: table
+    name: 全部待審規則
+    order:
+      - formula.title
+      - actor
+      - scope
+      - cycle
+      - review_status

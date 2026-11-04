@@ -30,6 +30,7 @@ jobs:
         run: |
           python scripts/check_data.py
           python scripts/scan_sources.py --check-config
+          python scripts/export_obsidian_vault.py --check
       - name: Test data contract and publication boundaries
         run: python -m unittest discover -s tests -v
       - name: Test prototype interactions and date logic
