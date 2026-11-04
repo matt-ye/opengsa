@@ -242,6 +242,26 @@ class TemporalReplayTests(unittest.TestCase):
         self.assertEqual(modes.get('recurring', 0), 1)
         self.assertEqual(modes.get('undetermined', 0), 0)
 
+    def test_enterprise_batch3_bundle_and_observations_are_complete(self):
+        ent_bundle = json.loads((ROOT / 'data/candidates/enterprise-scholarships.json').read_text(encoding='utf-8'))
+        ent_obs = json.loads((ROOT / 'data/enterprise-temporal-observations.json').read_text(encoding='utf-8'))
+        self.assertEqual(validate_temporal_snapshot(ent_bundle, ent_obs), [])
+        self.assertEqual(len(ent_bundle['candidates']), 85)
+        self.assertEqual(len(ent_obs['records']), 85)
+
+        meta = radar_metadata(ent_bundle, ent_obs)
+        records = meta['records']
+        self.assertEqual(len(records), 85)
+
+        modes = {}
+        for rec in ent_obs['records'].values():
+            mode = rec.get('policy', {}).get('submission_mode')
+            modes[mode] = modes.get(mode, 0) + 1
+
+        self.assertEqual(modes.get('recurring', 0), 62)
+        self.assertEqual(modes.get('procedure_only', 0), 23)
+        self.assertEqual(modes.get('undetermined', 0), 0)
+
 
 if __name__=='__main__':
     unittest.main()

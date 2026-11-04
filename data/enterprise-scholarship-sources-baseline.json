@@ -1,0 +1,1368 @@
+{
+  "version": "1.0.0",
+  "as_of": "2026-11-04",
+  "description": "OpenGSA 全庫萃取 Batch 3 — 企業、基金會與專業學會獎助方案基準台帳 (85 方案)",
+  "total_schemes_count": 85,
+  "schemes": [
+    {
+      "id": "ent-tsmc-phd-fellowship",
+      "name": "台積電博士生獎學金 (TSMC PhD Fellowship)",
+      "category": "doctoral_fellowship",
+      "provider": "台積電文教基金會 / 台灣積體電路製造股份有限公司",
+      "official_url": "https://www.tsmc.com/chinese/careers/fellowships",
+      "benefit_type": "每年 50 萬元，至多補助 5 年 (最高 250 萬元) + 實習與導師",
+      "value_estimate": "最高 NT$2,500,000",
+      "verification_method": "各大學相關院系推薦或學生自薦，台積電專案委員會審查",
+      "target_audience": [
+        "半導體相關理工領域博士生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於8月至9月中旬開放申請；需檢附指導教授推薦函及研究計畫書"
+    },
+    {
+      "id": "ent-mediatek-phd-fellowship",
+      "name": "聯發科技博士生研究獎學金 (MediaTek PhD Fellowship)",
+      "category": "doctoral_fellowship",
+      "provider": "財團法人聯發科技教育基金會",
+      "official_url": "https://www.mediatekfoundation.org/fellowship",
+      "benefit_type": "每月 5 萬元，每年 60 萬元，至多補助 4 年 (最高 240 萬元)",
+      "value_estimate": "最高 NT$2,400,000",
+      "verification_method": "指導教授推薦，聯發科技產學合作委員會複審",
+      "target_audience": [
+        "電機、資訊、通訊、人工智慧領域博士生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於7月至8月受理報名；由系所推薦送件"
+    },
+    {
+      "id": "ent-mediatek-master-thesis-award",
+      "name": "聯發科技碩士論文獎",
+      "category": "thesis_award",
+      "provider": "財團法人聯發科技教育基金會",
+      "official_url": "https://www.mediatekfoundation.org/thesis-award",
+      "benefit_type": "優等獎 10 萬元，佳作 5 萬元；指導教授獲同額榮譽獎金",
+      "value_estimate": "最高 NT$100,000",
+      "verification_method": "應屆碩士畢業論文提交，專家評審團審查",
+      "target_audience": [
+        "資工、電機、電子相關應屆碩士畢業生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於7月中旬至8月中旬受理論文收件"
+    },
+    {
+      "id": "ent-foxconn-tech-award",
+      "name": "鴻海科技獎 (Foxconn Technology Award)",
+      "category": "doctoral_fellowship",
+      "provider": "鴻海教育基金會",
+      "official_url": "https://www.foxconnfoundation.org/technology-award",
+      "benefit_type": "每名獲獎學生 25 萬元獎學金",
+      "value_estimate": "NT$250,000",
+      "verification_method": "自薦並經指導教授背書，海選與專家決審",
+      "target_audience": [
+        "電動車、機器人、數位健康、AI、半導體、量子運算領域碩博士生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於8月至9月受理網路報名與專題研究報告上傳"
+    },
+    {
+      "id": "ent-foxconn-whale-scholarship",
+      "name": "鴻海獎學鯨大專生助學金 (Foxconn Educational Scholarship)",
+      "category": "living_hardship",
+      "provider": "鴻海教育基金會",
+      "official_url": "https://www.foxconnfoundation.org/whale-scholarship",
+      "benefit_type": "大專碩士組每名 1 萬至 5 萬元清寒與勵學助學金",
+      "value_estimate": "NT$50,000",
+      "verification_method": "線上申請並提供清寒證明或家境說明影音",
+      "target_audience": [
+        "大專校院與碩士班清寒或特殊境遇在學生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於9月至10月中旬開放線上申請與補件"
+    },
+    {
+      "id": "ent-ctci-research-scholarship",
+      "name": "中技社科技獎學金（科技研究獎）",
+      "category": "doctoral_fellowship",
+      "provider": "財團法人中技社",
+      "official_url": "https://www.ctci.org.tw/scholarship/research",
+      "benefit_type": "每名 15 萬元及獎牌一座",
+      "value_estimate": "NT$150,000",
+      "verification_method": "由各指定合作大學系所初選推薦送件",
+      "target_audience": [
+        "理工領域博士班三年級以上優秀研究生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年7月至9月由各校系所依名額推薦，造冊向中技社提出申請"
+    },
+    {
+      "id": "ent-ctci-creativity-scholarship",
+      "name": "中技社科技獎學金（創意獎）",
+      "category": "innovation_award",
+      "provider": "財團法人中技社",
+      "official_url": "https://www.ctci.org.tw/scholarship/creativity",
+      "benefit_type": "每隊最高 40 萬元創意獎學金",
+      "value_estimate": "NT$400,000",
+      "verification_method": "組隊報名（學生自由組隊並由學校指導教授指導）",
+      "target_audience": [
+        "大專校院大學部與碩博士學生創意團隊"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年7月至9月中旬受理創意專題提案書與成果說明"
+    },
+    {
+      "id": "ent-ctci-international-scholarship",
+      "name": "中技社科技獎學金（境外生研究獎）",
+      "category": "international_fellowship",
+      "provider": "財團法人中技社",
+      "official_url": "https://www.ctci.org.tw/scholarship/international",
+      "benefit_type": "每名 15 萬元科技研究獎學金",
+      "value_estimate": "NT$150,000",
+      "verification_method": "經指定大學系所審查推薦",
+      "target_audience": [
+        "在臺修讀碩博士學位之優秀境外外籍學生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年7月至9月由各大學國際事務處或系所依推薦名額統一報送"
+    },
+    {
+      "id": "ent-ctci-international-living-aid",
+      "name": "中技社科技獎學金（境外生生活助學金）",
+      "category": "living_hardship",
+      "provider": "財團法人中技社",
+      "official_url": "https://www.ctci.org.tw/scholarship/living",
+      "benefit_type": "每名 10 萬元生活助學金",
+      "value_estimate": "NT$100,000",
+      "verification_method": "經指定大學系所審查推薦清寒境外生",
+      "target_audience": [
+        "在臺修讀碩博士學位之清寒境外學生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年7月至9月由各大學系所完成初選後造冊向基金會申請"
+    },
+    {
+      "id": "ent-pan-wen-yuan-research-award",
+      "name": "潘文淵文教基金會 - 研究傑出獎",
+      "category": "research_award",
+      "provider": "財團法人潘文淵文教基金會 / 工業技術研究院",
+      "official_url": "https://pan.itri.org.tw/awards/research",
+      "benefit_type": "每位得獎者頒發獎金 50 萬元及獎座一座",
+      "value_estimate": "NT$500,000",
+      "verification_method": "國內外知名產官學研專家推薦，基金會專案評審",
+      "target_audience": [
+        "在電子、資訊、通訊領域有傑出研究成果之青年學者與研究生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於12月至翌年2月中旬辦理推薦與受理作業"
+    },
+    {
+      "id": "ent-pan-wen-yuan-fellowship",
+      "name": "潘文淵文教基金會 - 博士班學生出國研究獎學金",
+      "category": "mobility_fellowship",
+      "provider": "財團法人潘文淵文教基金會",
+      "official_url": "https://pan.itri.org.tw/fellowship/abroad",
+      "benefit_type": "補助出國研究機票與生活費每名 30 萬元",
+      "value_estimate": "NT$300,000",
+      "verification_method": "各大學工學院推薦，經基金會專家委員會面試",
+      "target_audience": [
+        "赴國外著名大學短期研究之電子資訊電機博士生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年約於1月至2月底由各校工學院彙整推薦"
+    },
+    {
+      "id": "ent-cathay-excellence-college",
+      "name": "國泰卓越獎助學金（大專組）",
+      "category": "living_hardship",
+      "provider": "財團法人國泰慈善基金會",
+      "official_url": "https://www.cathay-charity.org.tw/scholarship/college",
+      "benefit_type": "大專青年每名 6 萬元獎助學金",
+      "value_estimate": "NT$60,000",
+      "verification_method": "線上報名，檢附公益社會服務計畫或家境困難證明",
+      "target_audience": [
+        "大專在學生、具公益投入或清寒家庭學生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約9月中旬至10月下旬辦理網路線上報名"
+    },
+    {
+      "id": "ent-cathay-excellence-graduate",
+      "name": "國泰卓越獎助學金（碩士組卓越專案）",
+      "category": "innovation_award",
+      "provider": "財團法人國泰慈善基金會",
+      "official_url": "https://www.cathay-charity.org.tw/scholarship/graduate",
+      "benefit_type": "每組最高 10 萬元特色研究或社會實踐專案獎助",
+      "value_estimate": "NT$100,000",
+      "verification_method": "繳交特色提案計畫書，經專家小組複審評選",
+      "target_audience": [
+        "碩士班在學研究生（具特色社會影響力專案）"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約9月中旬至10月下旬收件"
+    },
+    {
+      "id": "ent-fubon-management-thesis-award",
+      "name": "富邦人壽管理碩士論文獎",
+      "category": "thesis_award",
+      "provider": "富邦人壽 / 社團法人中華民國管理科學學會",
+      "official_url": "https://www.fubon.org/thesis-award",
+      "benefit_type": "特優每名 10 萬元，優等 6 萬元，佳作 2 萬元",
+      "value_estimate": "最高 NT$100,000",
+      "verification_method": "應屆管院碩博士畢業生提交論文，經三階段專家盲審",
+      "target_audience": [
+        "商管、財金、企管、資管應屆碩博士生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於5月至7月初開放網路報名上傳論文全文"
+    },
+    {
+      "id": "ent-tsung-cho-chang-scholarship",
+      "name": "宗倬章先生教育基金會學生獎助學金",
+      "category": "living_hardship",
+      "provider": "財團法人宗倬章先生教育基金會",
+      "official_url": "https://www.tsung.org.tw/scholarship",
+      "benefit_type": "每名學生 4 萬至 6 萬元獎助學金",
+      "value_estimate": "NT$60,000",
+      "verification_method": "由各指定合作大學生活輔導組初審後推薦送件",
+      "target_audience": [
+        "工學院、電機學院大專及研究生清寒優秀學生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年第一學期約9月中旬至10月中旬由各校生輔組辦理推薦"
+    },
+    {
+      "id": "ent-hsing-tian-kong-elite-scholarship",
+      "name": "行天宮資優學生長期培育獎學金",
+      "category": "talent_cultivation",
+      "provider": "財團法人行天宮文教基金會",
+      "official_url": "https://www.ht.org.tw/scholarship/elite",
+      "benefit_type": "大專與碩士組每學期最高 8 萬至 12 萬元，長期培育至畢業",
+      "value_estimate": "最高 NT$240,000 / 年",
+      "verification_method": "由個人申請或學校推薦，經行天宮文教委員會審查與面談",
+      "target_audience": [
+        "在學業、體育、藝能、數理科學有卓越表現之資優學生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年分兩學期辦理：上半年3月至4月、下半年8月至9月收件"
+    },
+    {
+      "id": "ent-hsing-tian-kong-college-aid",
+      "name": "行天宮助學金（大專組）",
+      "category": "living_hardship",
+      "provider": "財團法人行天宮文教基金會",
+      "official_url": "https://www.ht.org.tw/scholarship/college-aid",
+      "benefit_type": "每名 1 萬元，家庭突遭變故者得專案核撥",
+      "value_estimate": "NT$10,000",
+      "verification_method": "檢附清寒證明或家庭變故報告，可由學校轉介或自薦",
+      "target_audience": [
+        "大專在學清寒或家庭遭逢變故學生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每學年分兩學期辦理：第1學期9月1日至9月30日、第2學期2月1日至3月10日"
+    },
+    {
+      "id": "ent-faos-conference-grant",
+      "name": "傑出人才發展基金會 (FAOS) - 優秀學生出國開會補助",
+      "category": "mobility_fellowship",
+      "provider": "財團法人傑出人才發展基金會",
+      "official_url": "https://www.faos.org.tw/apply/student/",
+      "benefit_type": "全額或定額補助出國機票與生活費，最高 8 萬至 12 萬元",
+      "value_estimate": "最高 NT$120,000",
+      "verification_method": "需已獲國際頂級學術會議論文發表接受函，經線上系統申辦",
+      "target_audience": [
+        "赴國外頂級國際研討會發表口頭論文之碩博士生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年分五梯次受理：2月、4月、6月、8月、10月之每月5日截止"
+    },
+    {
+      "id": "ent-google-phd-fellowship",
+      "name": "Google PhD Fellowship Program (East Asia / Taiwan)",
+      "category": "doctoral_fellowship",
+      "provider": "Google Research",
+      "official_url": "https://research.google/outreach/phd-fellowship/",
+      "benefit_type": "全額補助至多 2 年學費與高額津貼 (約每年 30,000 美元) + Google 導師",
+      "value_estimate": "最高約 NT$1,900,000",
+      "verification_method": "大學官方系所提名（每校有推薦名額上限），Google 全球評選",
+      "target_audience": [
+        "資工、資料科學、機器學習領域全職博士生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年約於3月至5月由各合作大學研發處或系所進行校內初選與統一提名"
+    },
+    {
+      "id": "ent-microsoft-research-fellowship",
+      "name": "Microsoft Research PhD Fellowship",
+      "category": "doctoral_fellowship",
+      "provider": "Microsoft Research",
+      "official_url": "https://www.microsoft.com/en-us/research/academic-program/phd-fellowship/",
+      "benefit_type": "資助學年學費與津貼 (每年約 42,000 美元) + 實習機會",
+      "value_estimate": "最高約 NT$1,300,000",
+      "verification_method": "大學系所提名推薦，微軟研究院專家委員會審核",
+      "target_audience": [
+        "計算機科學、電機及相關領域博士班二年級以上學生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年約於5月至6月由各校系所提名送件"
+    },
+    {
+      "id": "ent-nvidia-graduate-fellowship",
+      "name": "NVIDIA Graduate Fellowship Program",
+      "category": "doctoral_fellowship",
+      "provider": "NVIDIA",
+      "official_url": "https://www.nvidia.com/en-us/research/graduate-fellowship-program/",
+      "benefit_type": "每名高達 60,000 美元獎學金 + 暑期實習機會與 GPU 算力支援",
+      "value_estimate": "約 NT$1,900,000",
+      "verification_method": "學生自薦或指導教授背書，線上繳交提案與論文代表作",
+      "target_audience": [
+        "加速運算、AI、圖形學、系統架構領域博士班三年級以上研究生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於8月至9月中旬受理全球博士生線上申請"
+    },
+    {
+      "id": "ent-delta-netherlands-scholarship",
+      "name": "台達荷蘭環境獎學金",
+      "category": "mobility_fellowship",
+      "provider": "財團法人台達電子文教基金會",
+      "official_url": "https://www.delta-foundation.org.tw/scholarship/netherlands",
+      "benefit_type": "每名補助新台幣 20 萬至 30 萬元出國深造獎助金",
+      "value_estimate": "最高 NT$300,000",
+      "verification_method": "經書面審查與台達基金會甄選委員會面談",
+      "target_audience": [
+        "赴荷蘭攻讀環境、能源、永續相關碩博士學位之台灣青年"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於3月至4月中旬辦理線上申請與書面寄件"
+    },
+    {
+      "id": "ent-delta-young-environment-award",
+      "name": "台達青年環境獎學金",
+      "category": "mobility_fellowship",
+      "provider": "財團法人台達電子文教基金會",
+      "official_url": "https://www.delta-foundation.org.tw/scholarship/young",
+      "benefit_type": "赴海外進修或短期研習全額補助每名 25 萬元",
+      "value_estimate": "NT$250,000",
+      "verification_method": "個人提案、書面初審與決選面試",
+      "target_audience": [
+        "致力氣候變遷與綠色轉型之大專與研究所青年"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於4月至5月受理線上報名"
+    },
+    {
+      "id": "ent-cht-fang-scholarship",
+      "name": "中華電信方賢齊先生獎學金",
+      "category": "living_hardship",
+      "provider": "財團法人中華電信基金會",
+      "official_url": "https://www.chtf.org.tw/scholarship/fang",
+      "benefit_type": "每名 5 萬至 8 萬元勵學獎助金",
+      "value_estimate": "最高 NT$80,000",
+      "verification_method": "各大專校院電機、資工、通訊系所清寒優秀學生推薦",
+      "target_audience": [
+        "大專與碩士在學清寒優秀資通訊學生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於9月至10月初辦理線上申辦與學校複核送件"
+    },
+    {
+      "id": "ent-auo-aplus-fellowship",
+      "name": "友達光電 A+ 研發獎學金",
+      "category": "doctoral_fellowship",
+      "provider": "友達光電股份有限公司",
+      "official_url": "https://auo.com/zh-TW/careers/scholarship",
+      "benefit_type": "碩士生每年 18 萬元、博士生每年 36 萬元 + 實習保障與優先聘用",
+      "value_estimate": "最高 NT$720,000",
+      "verification_method": "學生自薦或教授推薦，友達技術委員會面試",
+      "target_audience": [
+        "光電、材料、化工、物理、機械、資電相關碩博士生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於9月至10月受理報名，由友達研發中心統一辦理徵選"
+    },
+    {
+      "id": "ent-auo-display-thesis-award",
+      "name": "友達光電前瞻顯示技術論文獎",
+      "category": "thesis_award",
+      "provider": "友達光電股份有限公司 / 台灣顯示器產業聯合總會",
+      "official_url": "https://auo.com/zh-TW/thesis-award",
+      "benefit_type": "首獎 20 萬元、特優 10 萬元、優等 5 萬元",
+      "value_estimate": "最高 NT$200,000",
+      "verification_method": "提交畢業或發表之顯示技術論文，專家委員會評選",
+      "target_audience": [
+        "顯示科技、Micro LED、智慧感測相關領域碩博士生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於6月至7月受理論文報名"
+    },
+    {
+      "id": "ent-advantech-tic100-award",
+      "name": "研華文教基金會 - TiC100 永續創新校園競賽獎助",
+      "category": "innovation_award",
+      "provider": "財團法人研華文教基金會",
+      "official_url": "https://www.tic100.org.tw/",
+      "benefit_type": "首獎 20 萬元、各組優勝團隊 10 萬元及孵化專案補助",
+      "value_estimate": "最高 NT$200,000",
+      "verification_method": "大專院校學生組隊參賽，企業出題與專家評審評分",
+      "target_audience": [
+        "大專及研究生團隊（物聯網、智慧醫療、永續創新專題）"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於2月至4月中旬受理提案報名，6月舉辦決賽"
+    },
+    {
+      "id": "ent-acer-digital-award",
+      "name": "宏碁基金會 - 宏碁數位創作獎",
+      "category": "innovation_award",
+      "provider": "財團法人宏碁基金會",
+      "official_url": "https://www.acerfoundation.org.tw/digital-award",
+      "benefit_type": "大專組金獎 15 萬元、銀獎 10 萬元、銅獎 5 萬元",
+      "value_estimate": "最高 NT$150,000",
+      "verification_method": "大專學生提交原創數位創作、互動設計或動畫遊戲作品",
+      "target_audience": [
+        "大專校院設計、資訊、傳播相關科系學生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於9月至11月受理線上報名與作品上傳"
+    },
+    {
+      "id": "ent-acer-smiling-award",
+      "name": "宏碁基金會 - 龍騰微笑智榮獎",
+      "category": "innovation_award",
+      "provider": "財團法人宏碁基金會",
+      "official_url": "https://www.acerfoundation.org.tw/smiling-award",
+      "benefit_type": "首獎最高 200 萬元創業培育基金、貳獎 100 萬元",
+      "value_estimate": "最高 NT$2,000,000",
+      "verification_method": "校園創新創業提案，經三階段創投與專家委員會審查",
+      "target_audience": [
+        "各大專校院師生組成之創新研發技術創業團隊"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於10月至12月受理初賽提案書繳交"
+    },
+    {
+      "id": "ent-trendmicro-cloud-intern-aid",
+      "name": "趨勢科技騰雲運算與資安實習研究補助",
+      "category": "research_award",
+      "provider": "趨勢科技股份有限公司",
+      "official_url": "https://www.trendmicro.com/zh_tw/about/careers/internship.html",
+      "benefit_type": "每月實習研究津貼 4 萬至 5 萬元 + 成果優異獎金 10 萬元",
+      "value_estimate": "約 NT$200,000",
+      "verification_method": "線上投遞履歷、資安挑戰賽與研發主管面試",
+      "target_audience": [
+        "資訊工程、資通安全、雲端系統相關碩博士生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於3月至5月受理暑期暨全學年實習研究員徵選"
+    },
+    {
+      "id": "ent-chimei-arts-award",
+      "name": "奇美文化基金會 - 奇美藝術獎",
+      "category": "arts_award",
+      "provider": "財團法人奇美文化基金會",
+      "official_url": "https://www.chimeimuseum.org/chimei-arts-award",
+      "benefit_type": "每月補助 3 萬元，為期一年 (共 36 萬元) + 獎座",
+      "value_estimate": "NT$360,000",
+      "verification_method": "具美術、音樂專長之在校青年，提交代表作品或演奏錄音審查",
+      "target_audience": [
+        "古典美術或古典音樂優秀大專與碩博士生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於10月至11月受理次年度獎助申請"
+    },
+    {
+      "id": "ent-lin-rong-san-literature-award",
+      "name": "林榮三文化公益基金會 - 林榮三文學獎",
+      "category": "literature_award",
+      "provider": "財團法人林榮三文化公益基金會",
+      "official_url": "https://www.ron-san.org.tw/literature-award",
+      "benefit_type": "短篇小說首獎 60 萬元、散文首獎 30 萬元、新詩首獎 20 萬元",
+      "value_estimate": "最高 NT$600,000",
+      "verification_method": "盲審評選原創未發表文學作品",
+      "target_audience": [
+        "具文采之青年學子與社會創作者"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於7月1日至7月31日受理郵寄收件"
+    },
+    {
+      "id": "ent-gigabyte-great-design-award",
+      "name": "技嘉教育基金會 - 奇想設計大賽獎助",
+      "category": "innovation_award",
+      "provider": "財團法人技嘉教育基金會",
+      "official_url": "https://www.gigabyte.org.tw/design-award",
+      "benefit_type": "金獎每隊 20 萬元、銀獎 10 萬元、銅獎 5 萬元",
+      "value_estimate": "最高 NT$200,000",
+      "verification_method": "大專學生組隊繳交工業設計或科技創新模型",
+      "target_audience": [
+        "大專校院工業設計、產品設計、科技互動系所學生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於10月至12月中旬受理報名，次年3月決賽"
+    },
+    {
+      "id": "ent-compal-rnd-fellowship",
+      "name": "仁寶電腦產學合作碩博士獎助學金",
+      "category": "doctoral_fellowship",
+      "provider": "仁寶電腦工業股份有限公司",
+      "official_url": "https://www.compal.com/careers/scholarship",
+      "benefit_type": "碩士生每年 12 萬元、博士生每年 24 萬元 + 留任激勵",
+      "value_estimate": "最高 NT$480,000",
+      "verification_method": "檢附在學成績與指導教授推薦，仁寶高階研發主管甄選",
+      "target_audience": [
+        "電機、機械、資工、通訊相關研究所學生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於8月至10月辦理校園申請收件"
+    },
+    {
+      "id": "ent-asus-youth-innovation-award",
+      "name": "華碩青年程式與永續創新專案",
+      "category": "innovation_award",
+      "provider": "華碩文教基金會 / 華碩電腦股份有限公司",
+      "official_url": "https://www.asusfoundation.org/youth-innovation",
+      "benefit_type": "每隊最高 15 萬元專案實踐基金與產品贊助",
+      "value_estimate": "NT$150,000",
+      "verification_method": "大專青年提出結合科技與社會永續之數位專案",
+      "target_audience": [
+        "各大專院校在校學生組隊"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於3月至5月受理提案報名"
+    },
+    {
+      "id": "ent-innolux-rnd-scholarship",
+      "name": "群創光電研發菁英獎學金",
+      "category": "doctoral_fellowship",
+      "provider": "群創光電股份有限公司",
+      "official_url": "https://www.innolux.com/careers/scholarship",
+      "benefit_type": "碩士生 15 萬元、博士生 30 萬元 + 保證研發就業機會",
+      "value_estimate": "最高 NT$600,000",
+      "verification_method": "經系所推薦或自薦，群創研發主管面談核定",
+      "target_audience": [
+        "電機、電子、光電、物理、化學相關碩博士生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於9月至10月中旬辦理校園徵選"
+    },
+    {
+      "id": "ent-realtek-top-rnd-fellowship",
+      "name": "瑞昱半導體碩博士頂尖研發獎學金",
+      "category": "doctoral_fellowship",
+      "provider": "瑞昱半導體股份有限公司",
+      "official_url": "https://www.realtek.com/zh-tw/careers/fellowships",
+      "benefit_type": "碩士每學年 15 萬元、博士每學年 30 萬元 (最高補助 3 年 90 萬元)",
+      "value_estimate": "最高 NT$900,000",
+      "verification_method": "系所教授推薦，瑞昱技術主管面談",
+      "target_audience": [
+        "電機、資訊、通訊、IC 設計碩博士研究生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於9月至10月開放申請"
+    },
+    {
+      "id": "ent-spil-semiconductor-scholarship",
+      "name": "矽品精密半導體封裝研發獎學金",
+      "category": "doctoral_fellowship",
+      "provider": "矽品精密工業股份有限公司",
+      "official_url": "https://www.spil.com.tw/careers/scholarship",
+      "benefit_type": "碩士每名 12 萬元、博士每名 24 萬元",
+      "value_estimate": "最高 NT$480,000",
+      "verification_method": "指導教授推薦，經矽品產學合作甄選會評核",
+      "target_audience": [
+        "材料、機械、化工、電機領域研究所在學生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於9月至10月由系所公告並收件"
+    },
+    {
+      "id": "ent-psmc-advanced-process-award",
+      "name": "力積電先進製程研發育成獎助",
+      "category": "doctoral_fellowship",
+      "provider": "力晶積成電子製造股份有限公司",
+      "official_url": "https://www.powerchip.com/careers/scholarship",
+      "benefit_type": "碩士生每年 12 萬元、博士生每年 24 萬元",
+      "value_estimate": "最高 NT$480,000",
+      "verification_method": "系所推薦，力積電晶圓製程研發處審查",
+      "target_audience": [
+        "半導體元件、微電子、物理、材料碩博士生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於8月至9月受理學校推薦名單"
+    },
+    {
+      "id": "ent-ase-environment-thesis-award",
+      "name": "日月光環境學術論文獎",
+      "category": "thesis_award",
+      "provider": "財團法人日月光文教基金會",
+      "official_url": "https://www.asefoundation.org.tw/environment-award",
+      "benefit_type": "博士論文每名 10 萬元、碩士論文每名 5 萬元",
+      "value_estimate": "最高 NT$100,000",
+      "verification_method": "提交與綠色製造、環境保護、水資源循環相關學位論文",
+      "target_audience": [
+        "環境工程、永續發展、化學、材料碩博士應屆畢業生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於7月至8月中旬受理論文收件"
+    },
+    {
+      "id": "ent-ase-women-stem-scholarship",
+      "name": "日月光大專女性工程人才培育獎學金",
+      "category": "talent_cultivation",
+      "provider": "財團法人日月光文教基金會",
+      "official_url": "https://www.asefoundation.org.tw/women-in-stem",
+      "benefit_type": "每名 5 萬至 8 萬元培育獎學金",
+      "value_estimate": "NT$80,000",
+      "verification_method": "各大專校院理工學院女性學生自薦，經評審委員會核定",
+      "target_audience": [
+        "大專與研究所工程、資電、半導體科系優秀女性在學學生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於9月至10月辦理年度徵選"
+    },
+    {
+      "id": "ent-mercy-foundation-scholarship",
+      "name": "恩慈大專優秀清寒助學金",
+      "category": "living_hardship",
+      "provider": "財團法人恩慈社會福利基金會",
+      "official_url": "https://www.mercy.org.tw/scholarship",
+      "benefit_type": "每名 2 萬至 3 萬元助學金",
+      "value_estimate": "NT$30,000",
+      "verification_method": "由各大學生輔組審核家境情況後造冊推薦",
+      "target_audience": [
+        "大專在校清寒優秀學生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年約於9月中旬至10月由學校生輔組受理申辦並統一報會"
+    },
+    {
+      "id": "ent-tzu-chi-college-sprout",
+      "name": "慈濟基金會新芽獎學金（大專組）",
+      "category": "living_hardship",
+      "provider": "財團法人中華民國佛教慈濟慈善事業基金會",
+      "official_url": "https://www.tzuchi.org.tw/sprout-college",
+      "benefit_type": "大專組每名 12,000 元勵學獎學金",
+      "value_estimate": "NT$12,000",
+      "verification_method": "慈濟社工訪視評估或由學校師長轉介清寒學生",
+      "target_audience": [
+        "大專在校低收、中低收或弱勢家庭自強學生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年約6月至8月由慈濟各分會社工及學校推薦造冊，10月至11月頒發"
+    },
+    {
+      "id": "ent-pu-ren-university-mentorship",
+      "name": "普仁青年關懷基金會 - 大學陪伴引導助學計畫",
+      "category": "living_hardship",
+      "provider": "財團法人普仁青年關懷基金會",
+      "official_url": "https://www.you-care.org.tw/university-aid",
+      "benefit_type": "每月補助 3,000 至 5,000 元生活津貼 (一年最高 6 萬元) + 志工導師",
+      "value_estimate": "最高 NT$60,000 / 年",
+      "verification_method": "社工家訪審核與面試甄選，需配合參與服務學習",
+      "target_audience": [
+        "家境清寒但積極正向之大專弱勢青年"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年約5月至7月由學校及社福機構轉介推薦"
+    },
+    {
+      "id": "ent-ccf-college-scholarship",
+      "name": "家扶基金會大專學生獎助學金",
+      "category": "living_hardship",
+      "provider": "財團法人台灣兒童暨家庭扶助基金會 (家扶)",
+      "official_url": "https://www.ccf.org.tw/scholarship-college",
+      "benefit_type": "公立大專每名 1 萬元、私立大專每名 2 萬元",
+      "value_estimate": "最高 NT$20,000",
+      "verification_method": "經家扶扶助個案社工審核在學成績與生活狀況",
+      "target_audience": [
+        "家扶輔導在案之大專院校弱勢家庭在學青年"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每學期開學後（約3月及9月）由各縣市家扶中心社工主動受理評估"
+    },
+    {
+      "id": "ent-tfrd-thesis-grant",
+      "name": "罕見疾病博碩士論文獎助金",
+      "category": "thesis_award",
+      "provider": "財團法人罕見疾病基金會",
+      "official_url": "https://www.tfrd.org.tw/tfrd/research_award",
+      "benefit_type": "博士論文每名 10 萬元、碩士論文每名 5 萬元",
+      "value_estimate": "最高 NT$100,000",
+      "verification_method": "提交與罕見疾病基礎醫學、臨床、公衛、社會福利相關之學位論文",
+      "target_audience": [
+        "大專校院醫藥、生科、社工、公衛等博碩士研究生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於8月至9月中旬受理論文全文寄送"
+    },
+    {
+      "id": "ent-tfrd-college-scholarship",
+      "name": "罕見疾病大專獎助學金",
+      "category": "living_hardship",
+      "provider": "財團法人罕見疾病基金會",
+      "official_url": "https://www.tfrd.org.tw/tfrd/college_scholarship",
+      "benefit_type": "每名 1 萬至 3 萬元獎學金（分設學業、傑出才藝、奮發向上等獎項）",
+      "value_estimate": "NT$30,000",
+      "verification_method": "罕病病友檢附診斷證明與在學證明申請",
+      "target_audience": [
+        "大專在校罹患罕見疾病之病友學生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於7月中旬至8月中旬受理郵寄申請"
+    },
+    {
+      "id": "ent-chong-you-elevator-scholarship",
+      "name": "崇友實業大專院校獎學金",
+      "category": "living_hardship",
+      "provider": "財團法人崇友文教基金會",
+      "official_url": "https://www.gfc.org.tw/scholarship",
+      "benefit_type": "每名 2 萬至 3 萬元勵學金",
+      "value_estimate": "NT$30,000",
+      "verification_method": "大專電機、機械、土木建築系所學生，經基金會審核",
+      "target_audience": [
+        "工程建築機電相關系所大專清寒優秀在校生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每學期辦理一次：第1學期9月收件、第2學期3月收件"
+    },
+    {
+      "id": "ent-chang-yung-fa-college-aid",
+      "name": "張榮發基金會清寒學生助學金",
+      "category": "living_hardship",
+      "provider": "財團法人張榮發基金會",
+      "official_url": "https://www.cyff.org.tw/scholarship",
+      "benefit_type": "大專生每學期 1 萬至 2 萬元",
+      "value_estimate": "最高 NT$40,000 / 年",
+      "verification_method": "經各級學校生輔處初核推薦，張榮發基金會派員訪查",
+      "target_audience": [
+        "家庭清寒無力負擔學雜費之大專在學生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每學期初（9月與3月）由學校輔導室或生輔組提出清冊"
+    },
+    {
+      "id": "ent-formosa-qin-lao-intern-aid",
+      "name": "勤勞學生暑期工讀暨助學專案",
+      "category": "living_hardship",
+      "provider": "財團法人王長庚公益信託 / 慶寶勤勞基金會",
+      "official_url": "https://www.qinlao.org.tw/internship",
+      "benefit_type": "每月依勞基法核給全額實習津貼 + 助學獎金 1 萬元",
+      "value_estimate": "約 NT$65,000",
+      "verification_method": "大專生申請媒合至社福機構實習工讀，基金會全額贊助津貼",
+      "target_audience": [
+        "大專在校弱勢或清寒學生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於4月至5月受理暑期工讀專案申請"
+    },
+    {
+      "id": "ent-eslite-culture-award",
+      "name": "誠品文化藝術基金會 - 人文創新獎助",
+      "category": "arts_award",
+      "provider": "財團法人誠品文化藝術基金會",
+      "official_url": "https://www.eslitefoundation.org.tw/innovation-award",
+      "benefit_type": "每案最高 10 萬至 15 萬元文化閱讀專案補助",
+      "value_estimate": "NT$150,000",
+      "verification_method": "提案計畫書審查，評核青年閱讀推廣與文化創新效益",
+      "target_audience": [
+        "大專及研究所人文社會社團與青年創作者"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於3月至4月受理年度閱讀扎根提案申請"
+    },
+    {
+      "id": "ent-sfi-gold-eagle-scholarship",
+      "name": "證券暨期貨金鷹獎學金",
+      "category": "academic_award",
+      "provider": "財團法人中華民國證券暨期貨市場發展基金會",
+      "official_url": "https://www.sfi.org.tw/scholarship/eagle",
+      "benefit_type": "每名 5 萬元獎學金及獎狀",
+      "value_estimate": "NT$50,000",
+      "verification_method": "經各大學商管財金學院推薦成績優異學生",
+      "target_audience": [
+        "財金、金融、經濟、商管系所大專與碩士優秀學生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年約於9月至10月由各校財金系所進行初選與推薦"
+    },
+    {
+      "id": "ent-foi-consumer-protection-award",
+      "name": "金融消費評議中心 - 金融消費者保護研究論文獎",
+      "category": "thesis_award",
+      "provider": "財團法人金融消費評議中心",
+      "official_url": "https://www.foi.org.tw/thesis-award",
+      "benefit_type": "優等獎 5 萬元、佳作 3 萬元",
+      "value_estimate": "最高 NT$50,000",
+      "verification_method": "繳交金融消費者保護、金融科技或保險爭議法制學位論文",
+      "target_audience": [
+        "法律、財金、商學相關研究所碩博士研究生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於7月至8月受理論文報名"
+    },
+    {
+      "id": "ent-esun-outstanding-fellowship",
+      "name": "玉山培育傑出人才獎學金",
+      "category": "talent_cultivation",
+      "provider": "財團法人玉山志工社會福利基金會 / 玉山金控",
+      "official_url": "https://www.esunfnd.org.tw/scholarship",
+      "benefit_type": "每學年每名 10 萬元，表現優異者得連續獎助",
+      "value_estimate": "最高 NT$200,000",
+      "verification_method": "各大專院校商學、管理、資工系所推薦優秀學生",
+      "target_audience": [
+        "企管、財金、資工、人工智慧領域大專高年級與碩士生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年約於8月至9月中旬由合作大學系所辦理初審並推薦"
+    },
+    {
+      "id": "ent-taishin-arts-student-review",
+      "name": "台新藝術獎學生評論獎助",
+      "category": "arts_award",
+      "provider": "財團法人台新銀行文化藝術基金會",
+      "official_url": "https://www.taishinart.org.tw/student-review",
+      "benefit_type": "每篇優秀評論 5,000 至 20,000 元獎助金",
+      "value_estimate": "NT$20,000",
+      "verification_method": "提交針對當年度視覺或表演藝術展演之原創評論",
+      "target_audience": [
+        "大專與研究所藝術、人文、戲劇、美學相關科系學生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年分季度收件評審"
+    },
+    {
+      "id": "ent-mega-bank-college-scholarship",
+      "name": "兆豐大專學生清寒與優秀獎學金",
+      "category": "living_hardship",
+      "provider": "財團法人兆豐銀行文教基金會",
+      "official_url": "https://www.megabank.com.tw/foundation/scholarship",
+      "benefit_type": "每名 2 萬元獎助學金",
+      "value_estimate": "NT$20,000",
+      "verification_method": "由指定大學生輔組審查推薦成績優異或清寒學生",
+      "target_audience": [
+        "大專在校財經、管理、法政科系優秀或清寒學生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年約於9月至10月由各校生活輔導組公告辦理"
+    },
+    {
+      "id": "ent-scsb-college-scholarship",
+      "name": "上海商銀大專獎學金",
+      "category": "academic_award",
+      "provider": "財團法人上海商業儲蓄銀行文教基金會",
+      "official_url": "https://www.scsb.org.tw/scholarship",
+      "benefit_type": "每名 15,000 至 20,000 元",
+      "value_estimate": "NT$20,000",
+      "verification_method": "由各大學商管系所推薦，經基金會核備",
+      "target_audience": [
+        "大專在校商學、金融、經濟系所優秀學生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年約於10月由各校系所初審造冊"
+    },
+    {
+      "id": "ent-csroc-outstanding-thesis-award",
+      "name": "中華民國電腦學會 (CSROC) - 傑出大專與碩士論文獎",
+      "category": "thesis_award",
+      "provider": "中華民國電腦學會",
+      "official_url": "https://www.csroc.org.tw/thesis-award",
+      "benefit_type": "特優每名 3 萬元、優等 1 萬元及獎狀",
+      "value_estimate": "最高 NT$30,000",
+      "verification_method": "電腦學會會員或指導教授推薦，提交資工應屆論文",
+      "target_audience": [
+        "資訊科學、軟體工程、網路運算領域應屆碩士與大專生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於8月至9月配合年度全國計算機會議 (NCS) 辦理論文徵選"
+    },
+    {
+      "id": "ent-iicm-best-degree-thesis-award",
+      "name": "中華民國資訊學會 (IICM) - 碩博士最佳學位論文獎",
+      "category": "thesis_award",
+      "provider": "中華民國資訊學會",
+      "official_url": "https://www.iicm.org.tw/thesis-award",
+      "benefit_type": "博士組第一名 5 萬元、碩士組第一名 3 萬元及獎牌",
+      "value_estimate": "最高 NT$50,000",
+      "verification_method": "資訊學會專家學者評審委員會三階段審查",
+      "target_audience": [
+        "資訊工程、資訊管理應屆碩博士畢業生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於8月至9月中旬受理論文線上提報"
+    },
+    {
+      "id": "ent-taai-best-thesis-award",
+      "name": "中華民國人工智慧學會 (TAAI) - 人工智慧學會博碩士論文獎",
+      "category": "thesis_award",
+      "provider": "中華民國人工智慧學會",
+      "official_url": "https://www.taai.org.tw/thesis-award",
+      "benefit_type": "博士最佳論文獎 3 萬元、碩士最佳論文獎 2 萬元",
+      "value_estimate": "最高 NT$30,000",
+      "verification_method": "配合 TAAI 國際年會辦理，學會專業審查",
+      "target_audience": [
+        "人工智慧、深度學習、機器學習應屆碩博士研究生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於8月至9月收件，於 TAAI 年會頒獎"
+    },
+    {
+      "id": "ent-ieee-taipei-best-thesis-award",
+      "name": "台灣電機電子工程學會 (IEEE Taipei Section) - 碩博士最佳論文獎",
+      "category": "thesis_award",
+      "provider": "IEEE Taipei Section",
+      "official_url": "https://www.ieee.org.tw/awards/best-thesis",
+      "benefit_type": "博士組每名 3 萬元、碩士組每名 2 萬元及 IEEE 國際獎牌",
+      "value_estimate": "最高 NT$30,000",
+      "verification_method": "IEEE 學生會員申請，IEEE 評審委員盲審",
+      "target_audience": [
+        "電機、資訊、通訊領域 IEEE 學生會員碩博士生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於8月至9月受理學位論文與代表性發表論文"
+    },
+    {
+      "id": "ent-tcc-communication-award",
+      "name": "台灣通訊學會 - 5G/6G 前瞻通訊創新研究論文獎",
+      "category": "thesis_award",
+      "provider": "台灣通訊學會",
+      "official_url": "https://www.tcc.org.tw/thesis-award",
+      "benefit_type": "第一名 3 萬元、優等 1 萬元",
+      "value_estimate": "最高 NT$30,000",
+      "verification_method": "學會專家委員會評審，需包含通訊標準或演算法研究",
+      "target_audience": [
+        "電信、通訊、無線電工程碩博士在學或應屆研究生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於9月至10月辦理論文收件"
+    },
+    {
+      "id": "ent-tsia-phd-award",
+      "name": "台灣半導體產業協會 (TSIA) - 半導體獎（博士研究生）",
+      "category": "doctoral_fellowship",
+      "provider": "台灣半導體產業協會",
+      "official_url": "https://www.tsia.org.tw/awards/phd",
+      "benefit_type": "每名得獎博士生獲頒 10 萬元獎學金及榮譽獎座",
+      "value_estimate": "NT$100,000",
+      "verification_method": "各大學系所推薦代表候選人，TSIA 理監事專家評選",
+      "target_audience": [
+        "半導體元件、材料、製程、IC 設計在學優秀博士生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年約於5月至6月由各大學電機工學院推薦提名"
+    },
+    {
+      "id": "ent-tsia-master-award",
+      "name": "台灣半導體產業協會 (TSIA) - 半導體獎（碩士研究生）",
+      "category": "academic_award",
+      "provider": "台灣半導體產業協會",
+      "official_url": "https://www.tsia.org.tw/awards/master",
+      "benefit_type": "每名得獎碩士生獲頒 5 萬元獎學金及榮譽獎座",
+      "value_estimate": "NT$50,000",
+      "verification_method": "各大學系所推薦優秀碩士代表，經協會專家委員會審定",
+      "target_audience": [
+        "半導體相關研究所優秀碩士研究生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年約於5月至6月由各校系所辦理校內初選推薦"
+    },
+    {
+      "id": "ent-tps-optics-thesis-award",
+      "name": "中華民國光電學會 (TPS) - 最佳碩博士論文獎",
+      "category": "thesis_award",
+      "provider": "中華民國光電學會",
+      "official_url": "https://www.tps.org.tw/thesis-award",
+      "benefit_type": "博士論文獎 3 萬元、碩士論文獎 2 萬元",
+      "value_estimate": "最高 NT$30,000",
+      "verification_method": "光電學會年會 OPTIC 發表與論文審查評選",
+      "target_audience": [
+        "光電科學、光機電工程應屆碩博士畢業生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於8月至9月中旬受理年會論文收件"
+    },
+    {
+      "id": "ent-pst-polymer-research-award",
+      "name": "中華民國高分子學會 - 傑出研究獎學金",
+      "category": "academic_award",
+      "provider": "中華民國高分子學會",
+      "official_url": "https://www.pst.org.tw/scholarship",
+      "benefit_type": "博士生每名 3 萬元、碩士生每名 15,000 元",
+      "value_estimate": "最高 NT$30,000",
+      "verification_method": "高分子年會論文競賽發表與口試評選",
+      "target_audience": [
+        "高分子科學、材料工程、化工在學碩博士生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於10月至11月受理高分子年會專題論文投遞"
+    },
+    {
+      "id": "ent-cslt-lee-fellowship",
+      "name": "中華民國化學會 (CSLT) - 李遠哲院士獎學金",
+      "category": "academic_award",
+      "provider": "社團法人中國化學會 (CSLT)",
+      "official_url": "https://chemistry.org.tw/awards/lee-fellowship",
+      "benefit_type": "每名 5 萬至 10 萬元獎學金及獎牌",
+      "value_estimate": "最高 NT$100,000",
+      "verification_method": "各大學化學系所主任推薦，化學會學術獎章委員會遴選",
+      "target_audience": [
+        "化學與化學工程領域表現優異之博士研究生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年約於7月至8月由各校化學系主任提名"
+    },
+    {
+      "id": "ent-samm-mechanics-thesis-award",
+      "name": "中華民國力學學會 - 最佳碩博士論文獎",
+      "category": "thesis_award",
+      "provider": "中華民國力學學會",
+      "official_url": "https://www.samm.org.tw/thesis-award",
+      "benefit_type": "博士論文獎 3 萬元、碩士論文獎 2 萬元",
+      "value_estimate": "最高 NT$30,000",
+      "verification_method": "全國力學會議發表與決選口試",
+      "target_audience": [
+        "機械、土木、航太、力學領域研究生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於8月至9月收件，配合全國力學年會評選"
+    },
+    {
+      "id": "ent-cice-civil-engineering-scholarship",
+      "name": "中華民國土木水利工程學會 - 優秀學生獎學金",
+      "category": "academic_award",
+      "provider": "社團法人中華民國土木水利工程學會",
+      "official_url": "https://www.cice.org.tw/scholarship",
+      "benefit_type": "每名 2 萬元獎學金及獎狀",
+      "value_estimate": "NT$20,000",
+      "verification_method": "各大學土木水利系所依名額推薦，學會核定",
+      "target_audience": [
+        "土木工程、水利工程、營建工程優秀大專生與研究生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年約於9月至10月由各校土木系所推薦"
+    },
+    {
+      "id": "ent-tbpa-biotech-thesis-award",
+      "name": "台灣生技產業聯盟 - 生物技術與生技產業潛力人才論文獎",
+      "category": "thesis_award",
+      "provider": "台灣生物產業發展協會",
+      "official_url": "https://www.taiwanbio.org.tw/thesis-award",
+      "benefit_type": "首獎 5 萬元、特優 3 萬元",
+      "value_estimate": "最高 NT$50,000",
+      "verification_method": "生技醫藥產業論文提交與產業專家評審",
+      "target_audience": [
+        "生技、生化、藥學、農學碩博士研究生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於5月至6月受理 BIO Asia-Taiwan 期間論文報名"
+    },
+    {
+      "id": "ent-precision-medicine-young-award",
+      "name": "台灣精準醫療產業協會 - 精準醫療青年科學家獎助",
+      "category": "research_award",
+      "provider": "台灣精準醫療產業協會",
+      "official_url": "https://www.tpma.org.tw/young-award",
+      "benefit_type": "每名 5 萬至 8 萬元研究獎勵金",
+      "value_estimate": "NT$80,000",
+      "verification_method": "大專與研究所青年繳交精準醫學、基因檢測相關研究成果",
+      "target_audience": [
+        "醫學、生技、生命科學碩博士研究生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於8月至9月受理申請"
+    },
+    {
+      "id": "ent-li-hsien-dandelion-aid",
+      "name": "財團法人立賢教育基金會 - 蒲公英大專生偏鄉陪伴服務獎助",
+      "category": "living_hardship",
+      "provider": "財團法人立賢教育基金會",
+      "official_url": "https://www.the-living-stone.org.tw/dandelion-aid",
+      "benefit_type": "每學期 15,000 至 20,000 元服務獎助金",
+      "value_estimate": "NT$20,000",
+      "verification_method": "提交偏鄉美育陪伴服務計畫，經基金會甄審面試",
+      "target_audience": [
+        "投入偏鄉教育與弱勢學童陪伴之大專在校生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每學期辦理一次：第1學期9月收件、第2學期2月收件"
+    },
+    {
+      "id": "ent-shin-lu-youth-empowerment",
+      "name": "心路社會福利基金會 - 身心障礙青年自立與升學獎助",
+      "category": "living_hardship",
+      "provider": "財團法人心路社會福利基金會",
+      "official_url": "https://www.syinlu.org.tw/scholarship",
+      "benefit_type": "每名 1 萬至 2 萬元升學獎助金",
+      "value_estimate": "NT$20,000",
+      "verification_method": "領有身心障礙證明之大專青年由學校資源教室推薦",
+      "target_audience": [
+        "大專在校領有身心障礙證明之學生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年約於9月至10月由各校資源教室通報彙整"
+    },
+    {
+      "id": "ent-maria-angel-scholarship",
+      "name": "瑪利亞社會福利基金會 - 瑪利亞天使培育助學金",
+      "category": "living_hardship",
+      "provider": "財團法人瑪利亞社會福利基金會",
+      "official_url": "https://www.maria.org.tw/scholarship",
+      "benefit_type": "每名 1 萬至 15,000 元助學金",
+      "value_estimate": "NT$15,000",
+      "verification_method": "經學校輔導室或社福機構轉介清寒身障大專生",
+      "target_audience": [
+        "大專在學身心障礙或清寒身障家庭子女"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年約於10月由社福機構轉介收件"
+    },
+    {
+      "id": "ent-eden-disability-college-aid",
+      "name": "伊甸社會福利基金會 - 伊甸大專身心障礙學生勵學金",
+      "category": "living_hardship",
+      "provider": "財團法人伊甸社會福利基金會",
+      "official_url": "https://www.eden.org.tw/scholarship",
+      "benefit_type": "每名 1 萬至 2 萬元",
+      "value_estimate": "NT$20,000",
+      "verification_method": "身心障礙大專青年自薦或由特教資源中心轉介",
+      "target_audience": [
+        "大專在學身心障礙優秀青年"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於9月至10月中旬受理申請"
+    },
+    {
+      "id": "ent-sunshine-burn-injury-scholarship",
+      "name": "陽光社會福利基金會 - 陽光獎助學金（燒傷暨顏損大專青年）",
+      "category": "living_hardship",
+      "provider": "財團法人陽光社會福利基金會",
+      "official_url": "https://www.sunshine.org.tw/scholarship",
+      "benefit_type": "大專生每名 1 萬至 2 萬元（分設學業優秀、升學、才藝等獎項）",
+      "value_estimate": "NT$20,000",
+      "verification_method": "領有重大傷病卡或顏面損傷證明之青年病友線上申辦",
+      "target_audience": [
+        "大專在校燒傷或顏損青年病友"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於9月1日至10月2日辦理網路與郵寄申辦"
+    },
+    {
+      "id": "ent-noordhoff-craniofacial-award",
+      "name": "羅慧夫顱顏基金會 - 得福獎助學金（顱顏青年大專碩士組）",
+      "category": "living_hardship",
+      "provider": "財團法人羅慧夫顱顏基金會",
+      "official_url": "https://www.nncf.org/scholarship",
+      "benefit_type": "大專組每名 1 萬元、碩士組每名 15,000 元",
+      "value_estimate": "NT$15,000",
+      "verification_method": "顱顏患者（唇顎裂等）在學生檢附病歷或診斷證明申請",
+      "target_audience": [
+        "大專與碩士在校先天性顱顏患者學生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於8月中旬至9月中旬受理申請"
+    },
+    {
+      "id": "ent-lcy-education-scholarship",
+      "name": "李長榮教育基金會 - 李長榮優秀學生獎學金",
+      "category": "doctoral_fellowship",
+      "provider": "財團法人李長榮教育基金會",
+      "official_url": "https://www.lcygroup.com/scholarship",
+      "benefit_type": "碩士每名 15 萬元、博士每名 30 萬元 + 冬令營學術交流",
+      "value_estimate": "最高 NT$300,000",
+      "verification_method": "化工、化學、材料領域研究所學生提報研究論文，經口試甄選",
+      "target_audience": [
+        "化學、化工、材料領域優秀碩博士研究生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於7月至8月中旬受理線上報名"
+    },
+    {
+      "id": "ent-police-children-scholarship",
+      "name": "白曉燕文教基金會 - 警察子女獎助學金",
+      "category": "living_hardship",
+      "provider": "財團法人白曉燕文教基金會",
+      "official_url": "https://www.swallow.org.tw/scholarship",
+      "benefit_type": "大專院校組每名 1 萬元",
+      "value_estimate": "NT$10,000",
+      "verification_method": "現職或殉職員警子女檢附在學證明與家長警職證明",
+      "target_audience": [
+        "各級警察機關編制內員警之大專在學子女"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每學期辦理一次：第1學期10月收件、第2學期3月收件"
+    },
+    {
+      "id": "ent-mediatek-girls-in-stem",
+      "name": "聯發科技教育基金會 - Girls in STEM 女性科技人才培育獎學金",
+      "category": "talent_cultivation",
+      "provider": "財團法人聯發科技教育基金會",
+      "official_url": "https://www.mediatekfoundation.org/girls-in-stem",
+      "benefit_type": "每名 10 萬元培育獎學金 + 聯發科女性主管 Mentor 制度",
+      "value_estimate": "NT$100,000",
+      "verification_method": "各大專理工科系優秀女性在校生自薦，基金會決選面試",
+      "target_audience": [
+        "大專在校電機、資訊、半導體科系女性優秀青年"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於9月至10月辦理年度徵選"
+    },
+    {
+      "id": "ent-auo-green-energy-award",
+      "name": "友達光電文教基金會 - 綠能永續跨領域專題獎助",
+      "category": "innovation_award",
+      "provider": "財團法人友達光電文教基金會",
+      "official_url": "https://auo.com/zh-TW/foundation/green-award",
+      "benefit_type": "每隊最高 15 萬元專案贊助金",
+      "value_estimate": "NT$150,000",
+      "verification_method": "提交綠能轉型、淨零碳排、循環經濟專題，專家評核",
+      "target_audience": [
+        "大專與研究所學生組隊"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於4月至5月受理提案"
+    },
+    {
+      "id": "ent-taipei-cement-low-carbon-award",
+      "name": "台泥永續環境基金會 - 低碳永續工程研究論文獎",
+      "category": "thesis_award",
+      "provider": "財團法人台泥永續環境基金會",
+      "official_url": "https://www.taiwancement.com/foundation/award",
+      "benefit_type": "優等獎 10 萬元、佳作 5 萬元",
+      "value_estimate": "最高 NT$100,000",
+      "verification_method": "提交碳捕捉、綠色建材、儲能科技相關學位論文",
+      "target_audience": [
+        "材料、化工、土木、環境工程應屆碩博士生"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於7月至8月受理論文投遞"
+    },
+    {
+      "id": "ent-china-steel-metal-scholarship",
+      "name": "中鋼集團教育基金會 - 中鋼金屬工程優秀學生獎助",
+      "category": "doctoral_fellowship",
+      "provider": "財團法人中鋼集團教育基金會",
+      "official_url": "https://www.csc.com.tw/foundation/scholarship",
+      "benefit_type": "碩士生每年 12 萬元、博士生每年 24 萬元",
+      "value_estimate": "最高 NT$480,000",
+      "verification_method": "指定大學材料、機械系所審查推薦，中鋼專家面審",
+      "target_audience": [
+        "鋼鐵金屬材料、機械製造工程碩博士研究生"
+      ],
+      "temporal_mode": "procedure_only",
+      "rule_kind": "text_rule",
+      "rule_summary": "每年約於9月至10月由各校材料系所辦理推薦"
+    },
+    {
+      "id": "ent-formosa-plastics-entrepreneurship",
+      "name": "台塑企業文物館暨王永慶青年創業獎助金",
+      "category": "innovation_award",
+      "provider": "台塑企業文物館 / 王永慶青年創業基金",
+      "official_url": "https://www.fpg.com.tw/entrepreneurship-award",
+      "benefit_type": "最高 30 萬元創業培育獎助金",
+      "value_estimate": "最高 NT$300,000",
+      "verification_method": "大專青年提出智能製造、綠色塑膠、醫療長照創業計畫書",
+      "target_audience": [
+        "大專在校與應屆畢業青年創業團隊"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於5月至6月受理創業計畫收件"
+    },
+    {
+      "id": "ent-fulbright-taiwan-fellowship",
+      "name": "學術交流基金會 (Fulbright Taiwan) - 赴美攻讀碩博士獎學金",
+      "category": "mobility_fellowship",
+      "provider": "學術交流基金會 (Fulbright Taiwan)",
+      "official_url": "https://www.fulbright.org.tw/graduate-fellowship",
+      "benefit_type": "每年補助生活費與學費約 30,000 美元 (至多獎助 2 年) + 赴美簽證支援",
+      "value_estimate": "約 NT$1,900,000",
+      "verification_method": "線上申請、繳交留學研究計畫書與推薦信，經美台委員會面試",
+      "target_audience": [
+        "赴美國攻讀碩士或博士學位之台灣優秀青年"
+      ],
+      "temporal_mode": "recurring",
+      "rule_kind": "recurring",
+      "rule_summary": "每年約於5月1日至8月1日受理線上報名申請"
+    }
+  ]
+}

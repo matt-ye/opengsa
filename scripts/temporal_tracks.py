@@ -115,6 +115,25 @@ _ENTERPRISE_MARKERS = (
     "普仁",
     "家扶",
     "罕見疾病",
+    "auo",
+    "realtek",
+    "innolux",
+    "compal",
+    "asus",
+    "trendmicro",
+    "spil",
+    "psmc",
+    "delta-foundation",
+    "chtf",
+    "esun",
+    "taishin",
+    "megabank",
+    "scsb",
+    "qinlao",
+    "taiwanbio",
+    "gfc",
+    "microsoft research",
+    "聯盟",
 )
 
 _GOV_MARKERS = (
@@ -184,7 +203,7 @@ def classify_source_track(item, profile=None):
         return "other"
 
     haystack = f"{sid} {url} {title}"
-    if any(m in haystack for m in _ENTERPRISE_MARKERS):
+    if sid.startswith("ent-") or any(m in haystack for m in _ENTERPRISE_MARKERS):
         return "enterprise"
 
     if any(m in haystack for m in _GOV_MARKERS):
