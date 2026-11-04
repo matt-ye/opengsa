@@ -5,8 +5,12 @@ import shutil
 import json
 import sys
 
-from export_wireframes import ROOT, export
-if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
+ROOT = Path(__file__).resolve().parents[1]
+for p in (ROOT, ROOT / "scripts"):
+    if str(p) not in sys.path:
+        sys.path.insert(0, str(p))
+
+from export_wireframes import export
 from scripts.build_review_workspace import candidate_preview_data
 from scripts.check_data import validate_candidate_snapshot
 from scripts.radar_metadata import radar_metadata
@@ -16,17 +20,74 @@ URL = "https://matt-ye.github.io/opengsa/"
 FEEDBACK = "https://github.com/matt-ye/opengsa/issues/new?template=preview-feedback.yml"
 
 
+def load_full_library(root=ROOT):
+    """Loads all 202 candidates across the 4 candidate bundles and combined observations."""
+    read = lambda name: json.loads((Path(root) / "data" / name).read_text(encoding="utf-8"))
+    bundle_files = [
+        "candidates/source-review.json",
+        "candidates/k12-scholarships.json",
+        "candidates/student-perks.json",
+        "candidates/enterprise-scholarships.json",
+    ]
+    obs_files = [
+        "temporal-observations.json",
+        "k12-temporal-observations.json",
+        "perks-temporal-observations.json",
+        "enterprise-temporal-observations.json",
+    ]
+    all_cands = []
+    for bf in bundle_files:
+        all_cands.extend(read(bf)["candidates"])
+
+    combined_records = {}
+    combined_batches = []
+    total_http = 0
+    for of in obs_files:
+        o_data = read(of)
+        combined_records.update(o_data["records"])
+        combined_batches.extend(o_data.get("batches", []))
+        total_http += o_data.get("http_requests", 0)
+
+    combined_bundle = {
+        "schema_version": "1.1.0-candidate",
+        "generated_at": "2026-11-04T00:00:00Z",
+        "as_of": "2026-11-04",
+        "timezone": "Asia/Taipei",
+        "model_enabled": False,
+        "model_calls": 0,
+        "official_data_modified": False,
+        "candidates": all_cands,
+    }
+    combined_obs = {
+        "version": "temporal-replay-1",
+        "observed_at": "2026-11-04T00:00:00Z",
+        "http_requests": total_http,
+        "model_calls": 0,
+        "published": False,
+        "batches": combined_batches,
+        "records": combined_records,
+    }
+    return combined_bundle, combined_obs
+
+
 def build(output):
     if output.exists() and any(output.iterdir()):
         raise ValueError("Output directory must be empty; existing files are preserved")
-    read=lambda name:json.loads((ROOT/'data'/name).read_text(encoding='utf-8'))
-    candidates,pilot,config=read('candidates/source-review.json'),read('pilot.json'),read('scan-sources.json')
-    errors=validate_candidate_snapshot(candidates,config)
-    if errors:raise ValueError('Invalid radar source snapshot: '+str(errors))
+    read = lambda name: json.loads((ROOT / "data" / name).read_text(encoding="utf-8"))
+    candidates, observations = load_full_library(ROOT)
+    pilot, config = read("pilot.json"), read("scan-sources.json")
+    errors = validate_candidate_snapshot(candidates, config)
+    if errors:
+        raise ValueError("Invalid radar source snapshot: " + str(errors))
     # Read-only discovery view. This does not confer human approval or modify
     # the complete-data pilot/ledger; unknown fields remain explicit in the UI.
-    export(output / "index.html",pilot_data=candidate_preview_data(candidates,pilot,config),radar_view=True,
-           radar_data=radar_metadata(candidates),chain_data=timeline_metadata(read('source-chains.json'),candidates))
+    export(
+        output / "index.html",
+        pilot_data=candidate_preview_data(candidates, pilot, config),
+        radar_view=True,
+        radar_data=radar_metadata(candidates, observations),
+        chain_data=timeline_metadata(read("source-chains.json"), candidates),
+    )
     page = output / "index.html"
     html = page.read_text(encoding="utf-8")
 
@@ -59,17 +120,14 @@ GitHub Pages託管可能保留連線紀錄，詳見<a href="https://docs.github.
 <a href="{FEEDBACK}">回報操作問題／建議</a>（需GitHub帳號，內容公開；請勿提交個資或私人申訴） · <a href="https://github.com/matt-ye/opengsa">原始碼與資料說明</a><br>
 雷達為自動整理的來源摘要，未知資訊導流原文，非人工資格核定。完整資料發布仍須獨立覆核；模型僅手動啟用，RSS／ICS尚未啟用。原創內容依專案授權，官方文件保留原權利。''')
     page.write_text(html, encoding="utf-8")
-    (output / "assets").mkdir()
-    shutil.copyfile(ROOT / "docs/assets/opengsa-social-preview.jpg", output / "assets/opengsa-social-preview.jpg")
-    (output / ".nojekyll").write_text("", encoding="utf-8")
+    assets = output / "assets"
+    assets.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(ROOT / "docs/assets/opengsa-social-preview.jpg", assets / "opengsa-social-preview.jpg")
+    (output / ".nojekyll").touch()
     print("Built public preview: index.html, assets/opengsa-social-preview.jpg, .nojekyll")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output", type=Path)
-    args = parser.parse_args()
-    try:
-        build(args.output)
-    except ValueError as error:
-        parser.error(str(error))
+    build(parser.parse_args().output)
