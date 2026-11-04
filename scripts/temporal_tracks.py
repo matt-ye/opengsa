@@ -179,6 +179,7 @@ def evaluate_incremental_diff(
     observed_attachment_hashes=None,
     include_refinement=False,
     force_recheck=False,
+    current_parser_sha256=None,
 ):
     """3-Stage Incremental Diff Gate for a single candidate.
 
@@ -239,11 +240,23 @@ def evaluate_incremental_diff(
     policy = record.get("policy") or {}
     mode = policy.get("submission_mode", "undetermined")
     if mode == "undetermined":
+        subkind = record.get("undetermined_subkind")
+        if (
+            subkind in ("regulation_without_schedule", "no_schedule_in_document")
+            and current_parser_sha256
+            and record.get("parser_sha256") == current_parser_sha256
+        ):
+            return {
+                **base,
+                "should_run": False,
+                "decision": "SKIP_UNCHANGED",
+                "reason": f"cooldown_{subkind}",
+            }
         return {
             **base,
             "should_run": True,
             "decision": "RUN_BACKFILL",
-            "reason": "submission_mode_undetermined",
+            "reason": f"submission_mode_undetermined_{subkind}" if subkind else "submission_mode_undetermined",
         }
 
     if include_refinement and mode in REFINEMENT_SUBMISSION_MODES:

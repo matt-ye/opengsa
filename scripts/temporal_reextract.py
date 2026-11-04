@@ -21,7 +21,7 @@ from scripts.scan_sources import Fetcher, ScanError, digest, node_get
 from scripts.verify_original_sources import prepare_public
 from scripts.document_ir import prepare_document
 from scripts.review_candidates import candidate_fingerprint
-from scripts.time_policy import policy_validator, project_time_policy
+from scripts.time_policy import policy_validator, project_time_policy, source_is_unsafe
 from scripts.semantic_facts import INJECTION, recurring_time, time_actor, discover_identity, labelled_date_clause
 from scripts.extract_candidates import (
     extract_from_in_memory_blocks, parse_date_range_from_text,
@@ -30,7 +30,81 @@ from scripts.extract_candidates import (
 
 VERSION = 'temporal-replay-1'
 ROUND_REQUEST_LIMIT = 200
-TIMING = re.compile(r'申請|受理|收件|截止|送件|報名|兌換|期限|期程|上課開始後|獎勵期間|applications?|deadline|rolling|verified\s+student|credit\s+awards?',re.I)
+TIMING = re.compile(r'申請|受理|收件|截止|送件|報名|兌換|期限|期程|時程|評選標準及程序|每學年頒獎一次|上課開始後|獎勵期間|applications?|apply\s+by|at\s+your\s+own\s+pace|deadline|rolling|verified\s+student|credit\s+awards?',re.I)
+UNDETERMINED_SUBKINDS = (
+    'unparsed_timing_clause',
+    'needs_linked_document',
+    'regulation_without_schedule',
+    'no_schedule_in_document',
+)
+
+
+def _scope_blocks_for_candidate(candidate, blocks, fresh_count):
+    """Scope shared multi-branch document blocks to the target candidate's branch."""
+    if fresh_count <= 1:
+        return blocks
+    pkey = candidate.get('program_key')
+    if pkey not in ('ntu-nstc-phd', 'ntu-moe-phd'):
+        return None
+    nstc_blocks, moe_blocks = [], []
+    current_branch = None
+    for b in blocks:
+        txt = b['text']
+        if INJECTION.search(txt):
+            continue
+        has_nstc = any(k in txt for k in ('國科會', '國家科學及技術委員會', '科技部'))
+        has_moe = '教育部' in txt
+        is_common = (
+            any(k in txt for k in ('在職', '專職', '重複', '修正', '修訂', '通過'))
+            and not has_nstc and not has_moe and '一至三年級' not in txt
+        )
+        if re.search(r'第[三四五六七八九十]+條', txt) and not has_nstc and not has_moe:
+            current_branch = None
+        if has_nstc and not has_moe:
+            current_branch = 'nstc'
+            nstc_blocks.append(b)
+        elif has_moe and not has_nstc:
+            current_branch = 'moe'
+            moe_blocks.append(b)
+        elif (has_nstc and has_moe) or is_common:
+            nstc_blocks.append(b)
+            moe_blocks.append(b)
+        else:
+            if current_branch == 'nstc':
+                nstc_blocks.append(b)
+            elif current_branch == 'moe':
+                moe_blocks.append(b)
+            else:
+                nstc_blocks.append(b)
+                moe_blocks.append(b)
+    return nstc_blocks if pkey == 'ntu-nstc-phd' else moe_blocks
+
+
+def classify_undetermined_subkind(candidate, blocks=None, diagnostics=None, links=None):
+    """Classify why an observation remained undetermined for incremental routing & audit."""
+    diags = diagnostics or []
+    if any(
+        d.get('has_deadline')
+        or (d.get('parsed_range') and any(d.get('parsed_range')))
+        or (isinstance(d.get('parsed_date'), list) and len(d['parsed_date']) >= 2 and d['parsed_date'][1])
+        for d in diags
+    ):
+        return 'unparsed_timing_clause'
+    parent_url = (candidate.get('source_metadata') or {}).get('url') or ''
+    parent_host = urlsplit(parent_url).hostname
+    for lk in (links or []):
+        lk_url = lk.get('url') or ''
+        lk_label = lk.get('label') or ''
+        if (
+            urlsplit(lk_url).hostname == parent_host
+            and (urlsplit(lk_url).path.lower().endswith('.pdf') or lk_label.lower().endswith('.pdf'))
+            and re.search(r'公告|辦法|要點|簡章|方案|須知|注意事項|notice|guideline', lk_label, re.I)
+        ):
+            return 'needs_linked_document'
+    title_and_url = f"{candidate.get('title', '')} {parent_url}"
+    if re.search(r'辦法|要點|規定|章程|規約|條文|policy|rule', title_and_url, re.I):
+        return 'regulation_without_schedule'
+    return 'no_schedule_in_document'
 
 
 def timing_contexts(blocks):
@@ -74,17 +148,20 @@ def extract_policy(candidate, blocks, profile, revision, observed):
     institution-as-student fallback. Unanchored month/day remains a text rule.
     """
     identity=discover_identity(blocks)
-    student_document=bool(identity and identity['kind']=='eligibility_clause' and identity['degrees'])
+    student_document=bool((identity and identity['kind']=='eligibility_clause' and identity['degrees']) or (any(re.search(r'學校電子郵件投件申請|線上報名表單',b['text']) for b in blocks if not INJECTION.search(b['text'])) and not any(re.search(r'學校彙|學院彙|系所彙整',b['text']) for b in blocks)))
     fresh = extract_from_in_memory_blocks(profile, blocks, revision, observed,
         url=candidate['source_metadata']['url'], extraction_strategy='rules_only')
     matches = [c for c in fresh if c['program_key'] == candidate['program_key']]
     selected = matches[0] if len(matches) == 1 else fresh[0] if len(fresh) == 1 else None
-    policy = project_time_policy(selected) if selected else {
+    cand_unsafe = source_is_unsafe(candidate) if 'verification' in candidate and 'gaps_and_conflicts' in candidate else False
+    policy = project_time_policy(selected, unsafe=cand_unsafe) if selected else {
         'version':'time-policy-1', 'submission_mode':'undetermined',
         'review_mode':'not_stated', 'rules':[], 'gaps':['time_not_projected']}
-    # Shared announcements with multiple branches require branch-aware parsing.
-    if len(fresh) > 1:
+    # Shared announcements with multiple branches use branch-scoped blocks when supported.
+    scoped_blocks = _scope_blocks_for_candidate(candidate, blocks, len(fresh))
+    if scoped_blocks is None:
         return policy
+    blocks = scoped_blocks
     rules = policy['rules']
     # Generic legacy clauses discarded extra deadlines sharing the same note.
     # Rebuild those from bounded contexts; retain the specialized rule branches.
@@ -118,6 +195,11 @@ def extract_policy(candidate, blocks, profile, revision, observed):
             en_summary = '來源明示受理起日' if en_stage == 'application_start' else '來源明示收件截止'
             en_actor = 'institution' if _univ_nomination else 'student'
             add(block, 'absolute', en_actor, en_stage, en_summary, iso_val, 'date')
+        for m_en_dl in re.finditer(r'(?:Apply\s+by|Application\s+deadline(?:\s*,?\s*including\s+recommendation\s+letters\s*,?\s*is)?)\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),\s*(20\d{2})', block['text'], re.I):
+            m_name, d_str, y_str = m_en_dl.groups()
+            iso_val = f"{int(y_str):04d}-{_en_months[m_name.lower()]:02d}-{int(d_str):02d}"
+            en_actor = 'institution' if _univ_nomination else 'student'
+            add(block, 'absolute', en_actor, 'submission', '來源明示收件截止', iso_val, 'date')
         # Sentences retain their own year and actor. Never join unrelated dates.
         for raw_clause in re.split(r'[。；;\n]', block['text']):
             clause = re.sub(r'\s+', '', raw_clause)
@@ -126,27 +208,29 @@ def extract_policy(candidate, blocks, profile, revision, observed):
             if re.search(r'隨到隨審|onarollingbasis', clause, re.I) and not re.search(r'不採|非|停止|暫停', clause):
                 add(block, 'review_cadence', 'other', 'review', '審查採隨到隨審；不等同全年受理')
                 policy['review_mode'] = 'rolling'
-            if not re.search(r'申請|受理|收件|送件|報名|兌換|期程|上課開始後|獎勵期間|apply|applications?|rolling|verifiedstudent|creditawards?', clause, re.I):
+            if not re.search(r'申請|受理|收件|送件|報名|兌換|期程|時程|評選標準及程序|每學年頒獎一次|上課開始後|獎勵期間|apply|applications?|atyourownpace|rolling|verifiedstudent|creditawards?', clause, re.I):
                 continue
             actor = time_actor(clause)
-            if re.search(r'同學|研究生|學生|青年|申請人|申請者|送(?:交|至).{0,12}(?:系辦|所辦)', clause):
+            if re.search(r'各系所彙整|系所彙整', clause):
+                actor = 'department'
+            elif re.search(r'同學|研究生|學生|青年|申請人|申請者|國科會甄選類別.*受理線上申請|送(?:交|至).{0,12}(?:系辦|所辦)', clause):
                 actor = 'student' if actor == 'unit' else actor
             if actor=='unit' and student_document and not re.search(r'學校|學院|系所|彙送|推薦名單|備函',clause):
                 actor='student'
             if re.search(r'不受理|停止受理|暫停受理|不得申請|不採隨', clause):
                 continue
-            if re.search(r'全年(?:均可|皆可|開放)?(?:受理|申請)|隨時(?:均可|皆可|可以|可)?(?:提出)?申請|常年受理|applications?(?:are)?accepted(?:year.round|onarollingbasis)|evaluate.*proposalsonarollingbasisthroughouttheyear|verifiedstudentsongithubeducationgetfreeaccess|reevaluatesyoureligibilityeverymonth', clause, re.I):
+            if re.search(r'全年(?:均可|皆可|開放)?(?:受理|申請)|隨時(?:均可|皆可|可以|可)?(?:提出)?申請|常年受理|applications?(?:are)?accepted(?:year.round|onarollingbasis)|evaluate.*proposalsonarollingbasisthroughouttheyear|verifiedstudentsongithubeducationgetfreeaccess|availabletoverifiedstudents|buildyourcloudskillsatyourownpace,onyourowntime,andcompletelyforfree|reevaluatesyoureligibilityeverymonth', clause, re.I):
                 add(block, 'continuous', actor if actor != 'unit' else 'student', 'submission', '來源明示常態受理；仍須核對資格及額度')
-            elif re.search(r'(?:申請|收件|受理).{0,60}(?:依|洽|由).{0,25}(?:各|所屬).{0,15}(?:院系所|系所|學院|研究所|中心|單位).{0,25}(?:公告|規定|訂定|自訂|確認)|(?:各|所屬)(?:系所|學院|研究所|中心)(?:[（(]處[)）])?(?:、研究中心)?自訂(?:審查|申請|收件)(?:程序)?|(?:申請|收件|截止)(?:時間|期限|時程|日期).{0,20}(?:逕洽|洽詢|請洽).{0,25}(?:院系所|系所|學院|研究所|中心|單位)|學校應依本部公告期程.{0,25}於指定期間內.{0,15}提出申請|課程將陸續開放請持續關注|自即日起陸續開辦.{0,45}查詢課程與報名', clause):
+            elif re.search(r'(?:申請|收件|受理).{0,60}(?:依|洽|由).{0,25}(?:各|所屬).{0,15}(?:院系所|系所|學院|研究所|中心|單位).{0,25}(?:公告|規定|訂定|自訂|確認|辦理|送院)|(?:各|所屬)(?:系所|學院|研究所|中心)(?:[（(]處[)）])?(?:、研究中心)?自訂(?:審查|申請|收件)(?:程序)?|學院受理學生申請及甄審|評選標準及程序[,，]?由各學院訂定施行細則|(?:申請|收件|截止)(?:時間|期限|時程|日期).{0,20}(?:逕洽|洽詢|請洽).{0,25}(?:院系所|系所|學院|研究所|中心|單位)|學校應依本部公告期程.{0,25}於指定期間內.{0,15}提出申請|課程將陸續開放請持續關注|自即日起陸續開辦.{0,120}查詢課程與報名', clause):
                 add(block, 'unit_announced', actor, 'submission', '申請收件時程由所屬單位另訂／公告')
-            if re.search(r'(?:每年|每學年|每學期).{0,25}(?:受理|申請|收件|上課開始後|獎勵期間結束前)|(?:申請|受理|收件)(?:時間|期間|期限)?[：:]?(?:每年|每學年|每學期)',clause) and not recurring_time(clause):
+            if re.search(r'(?:每年|每學年|每學期).{0,25}(?:受理|申請|收件|頒獎一次|上課開始後|獎勵期間結束前)|(?:申請|受理|收件)(?:時間|期間|期限)?[：:]?(?:每年|每學年|每學期)',clause) and not recurring_time(clause):
                 add(block,'recurring',actor,'submission','來源明示週期性受理；當期具體日期另查')
             if re.search(r'creditawards?mustbeactivatedwithin\d+daysoftheprojectstartdate', clause, re.I):
                 add(block, 'text_rule', 'student', 'submission', '核給額度須於計畫起日一定天數內啟用；受理期程依申請表單規定')
             # Existing specialized relative/calendar rules take precedence.
             if recurring_time(clause) or re.search(r'每年|每學年|每學期|會前|出國前|活動前|前.{0,5}(?:週|個月|天)', clause):
                 continue
-            if not re.search(r'申請期間|申請時程|申請時間|申請日期|受理期間|收件期間|報名期間|報名時間|申請期限|兌換期限|報名期限|申請截止|截止|(?:最遲)?應於.{0,80}(?:申請|送|繳)|請於.{0,80}(?:申請|送|繳)|從即日起至', clause):
+            if not re.search(r'申請期間|申請時程|申請時間|申請日期|受理期間|收件期間|收件日期|報名期間|報名時間|申請期限|兌換期限|報名期限|申請截止|截止|申請至|自(?:民國)?(?:20\d{2}|1\d{2})年.{0,30}止(?:受理|開放)|(?:最遲)?應於.{0,80}(?:申請|送|繳)|請於.{0,80}(?:申請|送|繳)|從即日起至|自公告日起至', clause):
                 continue
             if re.search(r'出國期間|活動期間|研修期間|培育期間|獎勵期間|公布結果', clause):
                 continue
@@ -174,7 +258,7 @@ def extract_policy(candidate, blocks, profile, revision, observed):
                             policy['submission_mode'] = 'conditional_deadline'
                             if 'personal_conditions_required' not in policy['gaps']:
                                 policy['gaps'].append('personal_conditions_required')
-                elif not value and re.search(r'截止|期限|期間|時程|時間|報名',clause):
+                elif not value and re.search(r'截止|期限|期間|時程|時間|報名|申請至|請於|應於',clause):
                     month_days=list(dict.fromkeys(re.findall(r'(?<!\d)(\d{1,2})[月/](\d{1,2})(?:日)?',clause)))
                     if month_days:
                         summary='來源列示月日：'+'、'.join(f'{int(m)}月{int(d)}日' for m,d in month_days if 1<=int(m)<=12 and 1<=int(d)<=31)
@@ -202,7 +286,7 @@ def extract_policy(candidate, blocks, profile, revision, observed):
     if not rules and policy['submission_mode'] not in ('automatic','reference'):
         policy['submission_mode']='undetermined'
     if rules:
-        policy['gaps']=[g for g in policy['gaps'] if g not in ('time_not_projected','student_window_not_recorded')]
+        policy['gaps']=[g for g in policy['gaps'] if g not in ('time_not_projected','student_window_not_recorded',*(('source_checks_failed',) if not cand_unsafe else ()))]
         if not any(r['actor']=='student' and r['stage']=='submission' for r in rules):
             policy['gaps'].append('student_window_not_recorded')
     policy_validator().validate(policy)
@@ -230,6 +314,11 @@ def replay(output, previous=None, transport=node_get, source_ids=None, retry_unc
     if state['version']!=VERSION or state['model_calls']!=0 or state['published'] or state['http_requests']>=max_round_requests:
         raise ValueError('invalid_round_state_or_exhausted_budget')
     audit={r['url']:r for r in read(ROOT/'data/source-expansion/original-source-verification.json')['records']}
+    q_snap_path = ROOT / 'data/source-chain-batches/radar-proposal-snapshots.json'
+    if q_snap_path.exists():
+        for snap in read(q_snap_path).get('documents', []):
+            if snap.get('status') == 'candidate_snapshot' and snap.get('url'):
+                audit.setdefault(snap['url'], {'url': snap['url'], 'content_verified': True})
     resolved_track=track_for_weekday() if track=='auto' else track
     urls={}
     if recheck and not source_ids:
@@ -238,7 +327,7 @@ def replay(output, previous=None, transport=node_get, source_ids=None, retry_unc
         if resolved_track and resolved_track!='all' and classify_source_track(c)!=resolved_track:
             continue
         old=state['records'].get(c['candidate_id'],{})
-        retry=(recheck and old.get('status')=='replayed') or (retry_unclassified and old.get('status')=='replayed' and old['policy']['submission_mode']=='undetermined' and not old.get('history'))
+        retry=(recheck and old.get('status') in ('replayed','blocked') and old.get('reason')!='robots_denied') or (retry_unclassified and old.get('status')=='replayed' and old['policy']['submission_mode']=='undetermined' and not old.get('history'))
         if (not old or retry) and (not source_ids or c['source_metadata']['source_id'] in source_ids):
             urls.setdefault(c['source_metadata']['url'],[]).append(c)
     output.mkdir(parents=True)
@@ -283,6 +372,10 @@ def replay(output, previous=None, transport=node_get, source_ids=None, retry_unc
                     'parsed_range':list(parse_date_range_from_text(b['text'])),
                     'parsed_date':list(parse_roc_or_iso_date_from_text(b['text'])),
                 } for b in timing_contexts(blocks) if TIMING.search(b['text'])][:30]
+                if policy.get('submission_mode') == 'undetermined':
+                    records[c['candidate_id']]['undetermined_subkind'] = classify_undetermined_subkind(
+                        c, blocks, records[c['candidate_id']]['diagnostics'], prepared.get('links', [])
+                    )
                 if on_document:
                     if skip_unchanged_model and baseline_observations:
                         diff_decision=evaluate_incremental_diff(c,observations=baseline_observations,observed_raw_sha256=raw_hash)

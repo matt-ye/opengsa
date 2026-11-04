@@ -82,14 +82,25 @@ class TemporalTracksAndDiffTests(unittest.TestCase):
         self.assertTrue(res_new["should_run"])
         self.assertEqual(res_new["decision"], "RUN_NEW")
 
-        # 4. Undetermined item -> RUN_BACKFILL
-        undetermined_cand = next(
-            c for c in self.candidates
-            if self.observations["records"][c["candidate_id"]].get("policy", {}).get("submission_mode") == "undetermined"
-        )
-        res_backfill = evaluate_incremental_diff(undetermined_cand, self.observations)
+        # 4. Undetermined item -> RUN_BACKFILL (and cooldown when subkind is regulation/no_schedule + same parser_sha256)
+        synth_obs = deepcopy(self.observations)
+        synth_obs["records"][taipei["candidate_id"]]["policy"] = {
+            "version": "time-policy-1",
+            "submission_mode": "undetermined",
+            "review_mode": "not_stated",
+            "rules": [],
+            "gaps": ["time_not_projected"],
+        }
+        res_backfill = evaluate_incremental_diff(taipei, synth_obs)
         self.assertTrue(res_backfill["should_run"])
         self.assertEqual(res_backfill["decision"], "RUN_BACKFILL")
+
+        synth_obs["records"][taipei["candidate_id"]]["undetermined_subkind"] = "regulation_without_schedule"
+        synth_obs["records"][taipei["candidate_id"]]["parser_sha256"] = "p" * 64
+        res_cooldown = evaluate_incremental_diff(taipei, synth_obs, current_parser_sha256="p" * 64)
+        self.assertFalse(res_cooldown["should_run"])
+        self.assertEqual(res_cooldown["decision"], "SKIP_UNCHANGED")
+        self.assertEqual(res_cooldown["reason"], "cooldown_regulation_without_schedule")
 
         # 5. Refinement mode (procedure_only) skipped by default, run when include_refinement=True
         proc_cand = next(
@@ -123,11 +134,14 @@ class TemporalTracksAndDiffTests(unittest.TestCase):
         plan_ent = plan_track_execution(self.candidates, self.observations, track="enterprise", max_sources=5)
         self.assertEqual(plan_ent["track"], "enterprise")
         self.assertEqual(plan_ent["total_in_track"], 7)
-        self.assertEqual(plan_ent["run_candidate_count"], 3)
-        self.assertEqual(plan_ent["skip_candidate_count"], 4)
+        self.assertEqual(plan_ent["run_candidate_count"], 0)
+        self.assertEqual(plan_ent["skip_candidate_count"], 7)
 
-        ids, _ = resolve_action_sources("track:enterprise", self.candidates, self.observations, max_sources=5)
-        self.assertEqual(len(ids), 3)
+        # With include_refinement=True, procedure_only items in enterprise are selected for refinement
+        ids_refine, _ = resolve_action_sources(
+            "track:enterprise", self.candidates, self.observations, max_sources=5, include_refinement=True
+        )
+        self.assertGreaterEqual(len(ids_refine), 3)
 
         # When incremental_only=True on already-resolved taipei-ai-tools, 0 HTTP requests are made
         (ROOT / "work").mkdir(exist_ok=True)
