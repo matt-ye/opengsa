@@ -324,7 +324,7 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
         api_key_env="OPENGSA_MODEL_API_KEY",
         api_key=None,
         mode="extract",
-        timeout=25,
+        timeout=90,
         max_calls=6,
         cache_dir=None,
         use_cache=True,
@@ -332,6 +332,7 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
         model_limits=None,
         count_tokens=None,
         field_scope=None,
+        provider_name="custom",
     ):
         super().__init__(mode=mode)
         self.base_url = (base_url or "").rstrip("/")
@@ -346,7 +347,14 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
         self.model_limits = model_limits
         self.count_tokens = count_tokens
         self.field_scope = tuple(field_scope or ())
+        self.provider_name = provider_name
         self.last_preparation = {}
+        self.last_rate_metadata = {}
+        self.transient_errors = 0
+        self.cooldown_until = 0.0
+        self.allow_transient_failover = False
+        self.on_chunk_callback = None
+        self.chunk_cache = None
         key = self._get_api_key()
         self.enabled = (mode in ("extract", "audit", "both")) and (bool(key) or allow_local_no_key) and bool(self.base_url) and bool(self.model)
 
@@ -360,26 +368,54 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
         if source.get("evidence_mode") == "hash_only" or "aca.ntu.edu.tw" in target_url:
             raise ModelPolicyError("hash_only_source_cannot_be_sent_to_external_service")
 
+    def _is_temporal_scope(self):
+        return bool(self.field_scope) and all(str(p).startswith("schedule.") for p in self.field_scope)
+
     def _sanitize_blocks(self, blocks, source=None):
         if source is not None:
             self._guard_hash_only(source)
         cleaned = []
         from scripts.document_ir import prepare_document
         units = blocks if all("unit_id" in b for b in blocks) else prepare_document(blocks)["units"]
+        temporal_only = self._is_temporal_scope()
+        strict_pii_skip = re.compile(r"名冊|姓名|學號|身分證|jsessionid|password|token=", re.I)
         for b in units:
             txt = normalized(b.get("text", ""))
-            if not txt or SKIP.search(txt):
+            if not txt:
                 continue
-            if CONTACT.search(txt):
-                parts = [p.strip() for p in re.split(r"[。；\n]", txt) if p.strip() and not CONTACT.search(p) and not SKIP.search(p)]
-                txt = "；".join(parts)
+            if temporal_only:
+                if strict_pii_skip.search(txt):
+                    continue
+                if CONTACT.search(txt):
+                    parts = [
+                        p.strip()
+                        for p in re.split(r"[。；\n]", txt)
+                        if p.strip()
+                        and (
+                            not CONTACT.search(p)
+                            or re.search(r"申請|受理|截止|期限|期間|\d{2,4}[年/.-]\d{1,2}", p)
+                        )
+                        and not strict_pii_skip.search(p)
+                    ]
+                    txt = "；".join(parts)
+            else:
+                if SKIP.search(txt):
+                    continue
+                if CONTACT.search(txt):
+                    parts = [p.strip() for p in re.split(r"[。；\n]", txt) if p.strip() and not CONTACT.search(p) and not SKIP.search(p)]
+                    txt = "；".join(parts)
             txt = PII_REDACT_RE.sub("[REDACTED]", txt).strip()
             if not txt:
                 continue
-            context = {k:b[k] for k in ("kind","section_path","headers","row_cells","structure_status") if k in b}
-            if CONTACT.search(json.dumps(context,ensure_ascii=False)) or SKIP.search(json.dumps(context,ensure_ascii=False)):
-                context = {"structure_status":"context_requires_manual_review"}
-            cleaned.append({"unit_id":b["unit_id"], "locator":b["unit_id"], "source_locator":b.get("source_locator",b["locator"]), "text":txt, **context})
+            context = {k: b[k] for k in ("kind", "section_path", "headers", "row_cells", "structure_status") if k in b}
+            if temporal_only:
+                if "headers" in context:
+                    context["headers"] = [PII_REDACT_RE.sub("[REDACTED]", str(h)) for h in context["headers"]]
+                if "row_cells" in context:
+                    context["row_cells"] = [PII_REDACT_RE.sub("[REDACTED]", str(c)) for c in context["row_cells"]]
+            elif CONTACT.search(json.dumps(context, ensure_ascii=False)) or SKIP.search(json.dumps(context, ensure_ascii=False)):
+                context = {"structure_status": "context_requires_manual_review"}
+            cleaned.append({"unit_id": b["unit_id"], "locator": b["unit_id"], "source_locator": b.get("source_locator", b["locator"]), "text": txt, **context})
         return cleaned
 
     def _build_messages(self, draft_candidate, sanitized_blocks, active_mode):
@@ -447,7 +483,7 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
                 '值僅用ISO日期或明示時刻的ISO+08:00；不得猜年份、把公告／購買／活動期間當申請期、'
                 '把機構期限當學生期限、或把年度最晚上限當每個人的真正截止。保留相對條件與例外，不明則uncertain。'
             )
-            rule_summary={k:rule_summary[k] for k in ('program_key','cycle','participants','steps')}
+            rule_summary={k:rule_summary[k] for k in ('program_key','cycle','steps')}
         sys_prompt += '\n跨來源萃取規則：'+INSTRUCTIONS
         # Table headers/row context can repeat for every text node. Share exact
         # duplicates within this request; preserve every text, locator and cell.
@@ -554,35 +590,52 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
             headers=headers,
             method="POST",
         )
-        interval=getattr(self,'minimum_request_interval_seconds',0)
-        remaining=getattr(self,'_last_request_started',-1000000)+interval-time.monotonic()
-        while remaining>0:
-            time.sleep(min(30,remaining))
-            remaining=self._last_request_started+interval-time.monotonic()
-        self._last_request_started=time.monotonic()
+        interval = getattr(self, "minimum_request_interval_seconds", 0)
+        # Dynamic header-driven pacing: if previous response reported low remaining tokens, wait for reset
+        meta = getattr(self, "last_rate_metadata", {}) or {}
+        rem_tok = meta.get("x-ratelimit-remaining-tokens")
+        if rem_tok is not None and str(rem_tok).isdigit() and int(rem_tok) < 2200:
+            reset_str = str(meta.get("x-ratelimit-reset-tokens") or "")
+            m_min = re.search(r"(\d+)\s*m(?!s)", reset_str)
+            m_sec = re.search(r"(\d+(?:\.\d+)?)\s*s", reset_str)
+            dynamic_wait = (int(m_min.group(1)) * 60 if m_min else 0) + (float(m_sec.group(1)) if m_sec else 15.0)
+            interval = max(interval, min(65.0, dynamic_wait + 1.0))
+        remaining = getattr(self, "_last_request_started", -1000000) + interval - time.monotonic()
+        while remaining > 0:
+            time.sleep(min(30, remaining))
+            remaining = self._last_request_started + interval - time.monotonic()
+        self._last_request_started = time.monotonic()
         t0 = time.perf_counter()
         try:
             self.calls += 1
-            with getattr(self,'request_open',urllib.request.urlopen)(req, timeout=self.timeout) as resp:
+            with getattr(self, "request_open", urllib.request.urlopen)(req, timeout=self.timeout) as resp:
                 body = json.loads(resp.read().decode("utf-8"))
-                self.last_rate_metadata=safe_rate_metadata(getattr(resp,'headers',None))
+                self.last_rate_metadata = safe_rate_metadata(getattr(resp, "headers", None))
             elapsed_ms = round((time.perf_counter() - t0) * 1000, 2)
             self.latencies_ms.append(elapsed_ms)
         except urllib.error.HTTPError as err:
-            try:self.last_rate_metadata=safe_rate_metadata(err.headers,err.read(8192))
-            except (OSError,AttributeError):self.last_rate_metadata=safe_rate_metadata(err.headers)
+            try:
+                self.last_rate_metadata = safe_rate_metadata(err.headers, err.read(8192))
+            except (OSError, AttributeError):
+                self.last_rate_metadata = safe_rate_metadata(err.headers)
             elapsed_ms = round((time.perf_counter() - t0) * 1000, 2)
             self.latencies_ms.append(elapsed_ms)
             if err.code == 429:
                 self.rate_limited_429 = True
-                return {"_skipped_reason":"http_429_deferred_no_retry"}
+                self.cooldown_until = time.monotonic() + 65.0
+                return {"_skipped_reason": "http_429_deferred_no_retry"}
             elif err.code in (401, 402, 403):
                 self.rate_limited_429 = True
                 return {"_skipped_reason": f"http_{err.code}_rate_limited"}
             else:
+                self.transient_errors += 1
+                self.cooldown_until = time.monotonic() + 30.0
                 return {"_skipped_reason": f"http_{err.code}"}
         except Exception as err:
-            self.rate_limited_429 = True
+            self.transient_errors += 1
+            self.cooldown_until = time.monotonic() + 30.0
+            if not getattr(self, "allow_transient_failover", False):
+                self.rate_limited_429 = True
             return {"_skipped_reason": f"error_{type(err).__name__}"}
 
         usage = body.get("usage") or {}
@@ -635,18 +688,37 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
         altered=[u['unit_id'] for u in source_units if
                  normalized(u['text'])!=admitted.get(u['unit_id'],{}).get('text') or
                  admitted.get(u['unit_id'],{}).get('structure_status')=='context_requires_manual_review']
-        # Privacy filtering is unchanged. A removed exception must not turn into
-        # an apparently complete model task. Only IDs/counts enter the report.
-        if altered:
+        temporal_only = self._is_temporal_scope()
+        # Privacy filtering is unchanged for general extraction. For temporal-only scope,
+        # PII redaction ([REDACTED]) and contact trimming do not block temporal extraction.
+        if altered and not temporal_only:
             self.last_preparation={'complete':False,'filtered_unit_ids':altered,
                                    'chunks_planned':0,'chunks_completed':0}
             return {'_skipped_reason':'source_sanitization_requires_review'}
+        if not sanitized:
+            self.last_preparation={'complete':False,'filtered_unit_ids':altered,
+                                   'chunks_planned':0,'chunks_completed':0}
+            return {'_skipped_reason':'no_sanitized_units'}
         document={'units':sanitized,'document_sha256':sha(sanitized)}
         if not self.model_limits or self.model_limits.get('model')!=self.model:
             return {'_skipped_reason':'model_capabilities_required'}
         # Global exclusions and definitions are shared context, never silently omitted.
-        background=[u for u in document['units'] if u.get('kind')=='heading' or
+        raw_background=[u for u in document['units'] if u.get('kind')=='heading' or
             re.search(r'但|除外|不得|不含|資格|申請對象|補助對象|適用|以下簡稱',u['text'])]
+        background = raw_background
+        if temporal_only and callable(self.count_tokens):
+            cap = self.model_limits.get('input_limit', 1800) - self.model_limits.get('safety_tokens', 200)
+            base_tokens = self.count_tokens(self._request_payload(draft_candidate, [], mode or self.mode))
+            max_bg_budget = min(cap - 450, base_tokens + 220)
+            bounded_bg = []
+            # Prioritize headings and concise exception clauses so shared context stays within micro-chunk budget
+            prioritized = sorted(raw_background, key=lambda u: (0 if u.get('kind') == 'heading' or len(u.get('text', '')) <= 120 else 1, len(u.get('text', ''))))
+            for cand_u in prioritized:
+                trial = bounded_bg + [cand_u]
+                trial_env = self._request_payload(draft_candidate, self._sanitize_blocks(trial, source), mode or self.mode)
+                if self.count_tokens(trial_env) <= max_bg_budget:
+                    bounded_bg.append(cand_u)
+            background = [u for u in raw_background if u in bounded_bg]
         def render(units):
             combined={(u['unit_id'],u.get('span_start'),u.get('span_end')):u for u in background}
             combined.update({(u['unit_id'],u.get('span_start'),u.get('span_end')):u for u in units})
@@ -655,15 +727,22 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
         except ValueError as error:return {'_skipped_reason':str(error)}
         self.last_preparation={'document_sha256':document['document_sha256'],
             'chunks_planned':len(chunks),'chunks_completed':0,'complete':False,
+            'redacted_unit_ids':altered if temporal_only else [],
             'input_tokens_by_chunk':[chunk['input_tokens'] for chunk in chunks]}
-        if len(chunks)>self.max_calls-self.calls:
+        cached_map = getattr(self, 'chunk_cache', None) or {}
+        uncached_count = sum(1 for c in chunks if c['chunk_id'] not in cached_map)
+        if uncached_count>self.max_calls-self.calls:
             return {'_skipped_reason':'model_call_budget_insufficient_for_complete_task'}
         result={'extracted_fields':[],'audit_findings':[]};seen={}
-        for chunk in chunks:
-            # The actual request is built from exactly the counted context + chunk.
-            combined={(u['unit_id'],u.get('span_start'),u.get('span_end')):u for u in background}
-            combined.update({(u['unit_id'],u.get('span_start'),u.get('span_end')):u for u in chunk['units']})
-            response=self._run_one(source,list(combined.values()),draft_candidate,mode)
+        for idx, chunk in enumerate(chunks):
+            cid = chunk['chunk_id']
+            if cid in cached_map:
+                response = deepcopy(cached_map[cid])
+            else:
+                # The actual request is built from exactly the counted context + chunk.
+                combined={(u['unit_id'],u.get('span_start'),u.get('span_end')):u for u in background}
+                combined.update({(u['unit_id'],u.get('span_start'),u.get('span_end')):u for u in chunk['units']})
+                response=self._run_one(source,list(combined.values()),draft_candidate,mode)
             if not response or any(k.startswith('_') for k in response):
                 return response or {'_skipped_reason':'model_chunk_failed'}
             if list(_LLM_SCHEMA_VALIDATOR.iter_errors(response)):
@@ -672,7 +751,10 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
                 for claim in response.get(key,[]):
                     path=claim.get('field_path')
                     if self.field_scope and path not in self.field_scope:return {'_skipped_reason':'model_field_scope_violation'}
-                    identity=(key,path)
+                    is_schedule = str(path or '').startswith('schedule.')
+                    if is_schedule and key == 'audit_findings' and claim.get('verdict') == 'uncertain' and not claim.get('quote'):
+                        continue
+                    identity = (key, path, claim.get('locator'), claim.get('value') if key == 'extracted_fields' else claim.get('llm_value')) if is_schedule else (key, path)
                     value=json.dumps(claim.get('value') if key=='extracted_fields' else
                         [claim.get('verdict'),claim.get('llm_value')],sort_keys=True,ensure_ascii=False)
                     if identity in seen:
@@ -680,6 +762,8 @@ class OpenAICompatibleAdapter(BaseModelAdapter):
                         continue
                     seen[identity]=value;result[key].append(claim)
             self.last_preparation['chunks_completed']+=1
+            if callable(getattr(self, 'on_chunk_callback', None)):
+                self.on_chunk_callback(idx, len(chunks), chunk, response)
         self.last_preparation['complete']=True
         return result
 
@@ -2409,7 +2493,8 @@ def _verify_quote_and_reparse(field_path, claimed_val, unit, currency, locator, 
         return False, "model_quote_empty_or_too_long", block, None
     norm_quote = normalized(quote)
     norm_block = normalized(block["text"])
-    if not norm_quote or norm_quote not in norm_block:
+    redacted_block = normalized(PII_REDACT_RE.sub("[REDACTED]", block["text"]))
+    if not norm_quote or (norm_quote not in norm_block and norm_quote not in redacted_block):
         return False, "model_quote_not_substring_of_block", block, None
 
     # 對日期類欄位執行確定性規則二次解析
