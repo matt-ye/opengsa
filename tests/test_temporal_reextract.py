@@ -262,6 +262,62 @@ class TemporalReplayTests(unittest.TestCase):
         self.assertEqual(modes.get('procedure_only', 0), 23)
         self.assertEqual(modes.get('undetermined', 0), 0)
 
+    def test_full_library_batch4_consolidation_and_pipeline_integrity(self):
+        bundle_pairs = [
+            ('data/candidates/source-review.json', 'data/temporal-observations.json'),
+            ('data/candidates/ai-tools-115.json', 'data/ai-tools-temporal-observations.json'),
+            ('data/candidates/k12-scholarships.json', 'data/k12-temporal-observations.json'),
+            ('data/candidates/student-perks.json', 'data/perks-temporal-observations.json'),
+            ('data/candidates/enterprise-scholarships.json', 'data/enterprise-temporal-observations.json'),
+        ]
+
+        total_candidates = 0
+        total_observations = 0
+        total_meta_records = 0
+        all_modes = {}
+        all_tracks = {}
+
+        from scripts.temporal_tracks import classify_source_track
+
+        for bundle_rel, obs_rel in bundle_pairs:
+            bundle = json.loads((ROOT / bundle_rel).read_text(encoding='utf-8'))
+            obs = json.loads((ROOT / obs_rel).read_text(encoding='utf-8'))
+
+            # Contract validation
+            errs = validate_temporal_snapshot(bundle, obs)
+            self.assertEqual(errs, [], f"Validation errors in {bundle_rel}: {errs}")
+
+            cands = bundle['candidates']
+            recs = obs['records']
+            self.assertEqual(len(cands), len(recs), f"Mismatch in count for {bundle_rel}")
+
+            total_candidates += len(cands)
+            total_observations += len(recs)
+
+            # Metadata transformation
+            meta = radar_metadata(bundle, obs)
+            total_meta_records += len(meta['records'])
+
+            for cand in cands:
+                t = classify_source_track(cand)
+                all_tracks[t] = all_tracks.get(t, 0) + 1
+
+            for rec in recs.values():
+                mode = rec.get('policy', {}).get('submission_mode')
+                all_modes[mode] = all_modes.get(mode, 0) + 1
+
+        self.assertEqual(total_candidates, 204)
+        self.assertEqual(total_observations, 204)
+        self.assertEqual(total_meta_records, 204)
+
+        # 0 undetermined across all 204 candidates
+        self.assertEqual(all_modes.get('undetermined', 0), 0)
+
+        # Full tracks coverage across gov, other, enterprise
+        self.assertGreater(all_tracks.get('gov', 0), 40)
+        self.assertGreater(all_tracks.get('other', 0), 50)
+        self.assertGreater(all_tracks.get('enterprise', 0), 90)
+
 
 if __name__=='__main__':
     unittest.main()
