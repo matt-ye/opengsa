@@ -780,3 +780,46 @@ test("搜尋擴充同義詞比對：搜尋論文／著作／醫學院均能精�
  const filteredByMed = core.filterItems(drafts, {query: "醫學院"});
  assert.ok(filteredByMed.some(x => x.id === "ntu-med-publication-115"), "filterItems 應包含醫學院著作獎");
 });
+
+
+test("Onboarding Tour 資料契約、步驟嚴格限制四步、狀態記憶與快捷鍵規範", () => {
+ assert.ok(Array.isArray(core.TOUR_STEPS), "TOUR_STEPS 應為陣列");
+ assert.equal(core.TOUR_STEPS.length, 4, "嚴格依據 Toutour 反模式規範：導覽步驟不得超過 4 步");
+
+ const expectedSelectors = ["#persona-bar", "#gantt-view", ".nav-links[role='tablist']", "#tab-rights"];
+ core.TOUR_STEPS.forEach((step, idx) => {
+  assert.equal(step.step, idx + 1);
+  assert.equal(step.selector, expectedSelectors[idx]);
+  assert.ok(step.title && step.title.length > 0, `步驟 ${idx+1} 應有標題`);
+  assert.ok(step.badge && step.badge.includes(`${idx+1} / 4`), `步驟 ${idx+1} 應有進度標籤`);
+  assert.ok(step.text && step.text.length > 10, `步驟 ${idx+1} 應有完整引導文字`);
+ });
+
+ // 狀態記憶測試 (使用自訂 mock storage)
+ const mockStorage = {
+  store: {},
+  getItem(k) { return this.store[k] || null; },
+  setItem(k, v) { this.store[k] = String(v); }
+ };
+
+ assert.equal(core.getTourCompleted(mockStorage), false, "初始狀態應為未完成");
+ core.setTourCompleted(true, mockStorage);
+ assert.equal(core.getTourCompleted(mockStorage), true, "寫入完成後應回傳 true");
+ core.setTourCompleted(false, mockStorage);
+ assert.equal(core.getTourCompleted(mockStorage), false, "重設後應回傳 false");
+
+ // 步驟獲取保護邊界
+ assert.equal(core.getTourStep(-1), null);
+ assert.equal(core.getTourStep(4), null);
+ assert.equal(core.getTourStep(0).title, "身分情境快篩");
+ assert.equal(core.getTourStep(3).title, "勞動權益防線與自測");
+
+ // 驗證 wireframes.html 靜態標籤結構
+ const html = fs.readFileSync(path.join(__dirname, "../docs/design/wireframes.html"), "utf8");
+ assert.ok(html.includes('id="btn-tour"'), "wireframes.html 應包含 header 導覽指南按鈕");
+ assert.ok(html.includes('id="floating-tour-btn"'), "wireframes.html 應包含行動端懸浮導覽按鈕");
+ assert.ok(html.includes('id="tour-overlay"'), "wireframes.html 應包含導覽 overlay 容器");
+ assert.ok(html.includes('id="tour-spotlight"'), "wireframes.html 應包含聚光燈 spotlight");
+ assert.ok(html.includes('id="tour-card"'), "wireframes.html 應包含導覽說明卡片");
+ assert.ok(html.includes('id="gantt-scroll-hint"'), "wireframes.html 應包含行動端甘特圖滑動提示");
+});

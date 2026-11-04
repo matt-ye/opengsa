@@ -529,7 +529,69 @@ function evaluateSubordination(checks={}){
  if(score===1) return {score:1,level:"review_needed",recommendedTiers:["TIER 01","TIER 02"],disclaimer,summary:"已勾選 1 項指標：具部分從屬或學習分流爭點。建議核對勞動部指導原則第 2～4 點及書面協議，確認工時與給付是否相符（2026 最低時薪 196 元）；必要時洽 TIER 01 系院或 TIER 02 校級窗口釐清。"+disclaimer};
  return {score,level:"high_subordination",recommendedTiers:["TIER 02","TIER 04","TIER 05"],disclaimer,summary:"已勾選 "+score+" 項指標：高度呈現人格、經濟或組織從屬性（常見「假學習真勞動」爭點）。依勞動部指導原則實質認定原則，若受指揮監督並提供勞務獲取對價，不能只按給付名稱排除適用保障；勞基法、2026最低工資與退休金須分別依關係、身分及進用依據確認。建議參考下方 TIER 02 校內申訴、TIER 04（地方主管機關勞檢／勞工局調解）或 TIER 05 高教工會。"+disclaimer};
 }
-const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,timePresentation,windowState,filterItems,partitionItems,clarity,groupDocuments,issueUrl,officialUrl,UNKNOWN_LABEL,unknownValue,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination,isNA,fieldText,resultText,methodText,startLabel,deadlineText,applyTimeline,timelineDates,itemMatchesQuery,parseUrlParams,serializeStateToParams};
+
+const TOUR_STEPS = [
+  {
+    step: 1,
+    tab: "search",
+    selector: "#persona-bar",
+    title: "身分情境快篩",
+    badge: "步驟 1 / 4",
+    text: "依就讀階段與需求（博士研究、生活補助、海外研討會、AI 工具等）一鍵套用，迅速鎖定最符合您的方案，省去翻找冗長公報的時間。",
+    placement: "bottom"
+  },
+  {
+    step: 2,
+    tab: "search",
+    selector: "#gantt-view",
+    title: "視覺甘特圖與提醒帶",
+    badge: "步驟 2 / 4",
+    text: "掌握時間節奏：實心色帶為正式受理期；斜線色帶為截止前 30 天準備提醒帶；紅色垂直虛線為今日進行線。手機版可左右滑動瀏覽。",
+    placement: "bottom"
+  },
+  {
+    step: 3,
+    tab: "search",
+    selector: ".nav-links[role='tablist']",
+    title: "四大多元功能分頁",
+    badge: "步驟 3 / 4",
+    text: "「找獎助」快速探索；「獎助詳情」支援雙方案並排比對（Compare Mode）；「我的時間軸」提供個人專屬行事曆與送件 Checklist！",
+    placement: "bottom"
+  },
+  {
+    step: 4,
+    tab: "rights",
+    selector: "#tab-rights",
+    title: "勞動權益防線與自測",
+    badge: "步驟 4 / 4",
+    text: "研究生兼任助理薪資與智慧財產權益專案防線：提供工資下限自測、勞雇從屬性判別指標、五級爭端救濟流程地圖與公務申訴管道。",
+    placement: "bottom"
+  }
+];
+
+let currentTourStep = 0;
+let isTourActive = false;
+
+function getTourCompleted(storage = (typeof localStorage !== "undefined" ? localStorage : null)) {
+  try {
+    return storage ? storage.getItem("opengsa_tour_completed") === "true" : false;
+  } catch (e) {
+    return false;
+  }
+}
+
+function setTourCompleted(completed = true, storage = (typeof localStorage !== "undefined" ? localStorage : null)) {
+  try {
+    if (storage) storage.setItem("opengsa_tour_completed", completed ? "true" : "false");
+  } catch (e) {}
+}
+
+function getTourStep(index) {
+  if (index < 0 || index >= TOUR_STEPS.length) return null;
+  return TOUR_STEPS[index];
+}
+
+const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,timePresentation,windowState,filterItems,partitionItems,clarity,groupDocuments,issueUrl,officialUrl,UNKNOWN_LABEL,unknownValue,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination,isNA,fieldText,resultText,methodText,startLabel,deadlineText,applyTimeline,timelineDates,itemMatchesQuery,parseUrlParams,serializeStateToParams,TOUR_STEPS,getTourCompleted,setTourCompleted,getTourStep,startTour,nextTourStep,prevTourStep,closeTour};
 if(typeof module!=="undefined" && module.exports) module.exports=api;
 if(typeof document==="undefined") return;
 
@@ -1456,5 +1518,174 @@ setRightsView(rightsView);
 const initialTarget=urlParams.tab||location.hash.slice(1);
 if(["search","detail","timeline","rights"].includes(initialTarget)) activatePanel(initialTarget,false,false);
 else if(!scrollToInternalTarget(initialTarget)) activatePanel("search",false,false);
+
+function renderTourStep(index) {
+  if (index < 0 || index >= TOUR_STEPS.length) return;
+  currentTourStep = index;
+  const step = TOUR_STEPS[index];
+
+  if (step.tab && activePanelId !== step.tab) {
+    activatePanel(step.tab, false, false);
+  }
+
+  const overlay = byId("tour-overlay");
+  const spotlight = byId("tour-spotlight");
+  const card = byId("tour-card");
+  const badge = byId("tour-badge");
+  const title = byId("tour-title");
+  const text = byId("tour-text");
+  const prevBtn = byId("tour-prev-btn");
+  const nextBtn = byId("tour-next-btn");
+
+  if (!overlay || !spotlight || !card) return;
+
+  overlay.hidden = false;
+  isTourActive = true;
+
+  if (badge) badge.textContent = step.badge;
+  if (title) title.textContent = step.title;
+  if (text) text.textContent = step.text;
+  if (prevBtn) prevBtn.disabled = index === 0;
+  if (nextBtn) nextBtn.textContent = index === TOUR_STEPS.length - 1 ? "完成導覽 🎉" : "下一步 →";
+
+  const targetEl = document.querySelector(step.selector);
+  if (targetEl) {
+    targetEl.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+    const rect = targetEl.getBoundingClientRect();
+    const pad = 8;
+    const top = Math.max(0, rect.top - pad);
+    const left = Math.max(0, rect.left - pad);
+    const width = Math.min(window.innerWidth - left, rect.width + pad * 2);
+    const height = rect.height + pad * 2;
+
+    spotlight.style.top = `${top}px`;
+    spotlight.style.left = `${left}px`;
+    spotlight.style.width = `${width}px`;
+    spotlight.style.height = `${height}px`;
+
+    const cardWidth = Math.min(380, window.innerWidth - 32);
+    let cardTop = top + height + 16;
+    let cardLeft = Math.max(16, Math.min(left + (width - cardWidth) / 2, window.innerWidth - cardWidth - 16));
+
+    if (cardTop + 240 > window.innerHeight) {
+      cardTop = Math.max(16, top - 240);
+    }
+    card.style.top = `${cardTop}px`;
+    card.style.left = `${cardLeft}px`;
+    card.style.width = `${cardWidth}px`;
+  } else {
+    spotlight.style.top = "50%";
+    spotlight.style.left = "50%";
+    spotlight.style.width = "0px";
+    spotlight.style.height = "0px";
+    card.style.top = "50%";
+    card.style.left = "50%";
+    card.style.transform = "translate(-50%, -50%)";
+  }
+
+  if (nextBtn) nextBtn.focus();
+}
+
+function startTour(stepIndex = 0) {
+  renderTourStep(stepIndex);
+}
+
+function nextTourStep() {
+  if (currentTourStep < TOUR_STEPS.length - 1) {
+    renderTourStep(currentTourStep + 1);
+  } else {
+    closeTour(true);
+  }
+}
+
+function prevTourStep() {
+  if (currentTourStep > 0) {
+    renderTourStep(currentTourStep - 1);
+  }
+}
+
+function closeTour(markCompleted = true) {
+  const overlay = byId("tour-overlay");
+  if (overlay) overlay.hidden = true;
+  isTourActive = false;
+  if (markCompleted) setTourCompleted(true);
+  const btnTour = byId("btn-tour");
+  if (btnTour) btnTour.focus();
+}
+
+// Wire tour UI buttons
+const btnTour = byId("btn-tour");
+if (btnTour) btnTour.addEventListener("click", () => startTour(0));
+const floatingTourBtn = byId("floating-tour-btn");
+if (floatingTourBtn) floatingTourBtn.addEventListener("click", () => startTour(0));
+const tourCloseBtn = byId("tour-close-btn");
+if (tourCloseBtn) tourCloseBtn.addEventListener("click", () => closeTour(true));
+const tourSkipBtn = byId("tour-skip-btn");
+if (tourSkipBtn) tourSkipBtn.addEventListener("click", () => closeTour(true));
+const tourPrevBtn = byId("tour-prev-btn");
+if (tourPrevBtn) tourPrevBtn.addEventListener("click", () => prevTourStep());
+const tourNextBtn = byId("tour-next-btn");
+if (tourNextBtn) tourNextBtn.addEventListener("click", () => nextTourStep());
+const tourBackdrop = byId("tour-backdrop");
+if (tourBackdrop) tourBackdrop.addEventListener("click", () => closeTour(true));
+
+// Global keyboard shortcuts
+window.addEventListener("keydown", (e) => {
+  if (isTourActive) {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      closeTour(true);
+    } else if (e.key === "ArrowRight" || e.key === "Enter") {
+      e.preventDefault();
+      nextTourStep();
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      prevTourStep();
+    }
+    return;
+  }
+
+  const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : "";
+  if (["input", "textarea", "select"].includes(activeTag)) {
+    if (e.key === "Escape") {
+      document.activeElement.blur();
+    }
+    return;
+  }
+
+  if (e.key === "?" || (e.shiftKey && e.key === "/")) {
+    e.preventDefault();
+    startTour(0);
+  } else if (e.key === "/") {
+    const sq = byId("search-query");
+    if (sq) {
+      e.preventDefault();
+      sq.focus();
+      sq.select();
+    }
+  } else if (["1", "2", "3", "4"].includes(e.key)) {
+    const panels = ["search", "detail", "timeline", "rights"];
+    const targetPanel = panels[parseInt(e.key, 10) - 1];
+    if (targetPanel) {
+      e.preventDefault();
+      activatePanel(targetPanel, true, true);
+    }
+  }
+});
+
+// Mobile scroll hint auto-dismissal
+const ganttScroll = document.querySelector(".gantt-scroll");
+const scrollHint = byId("gantt-scroll-hint");
+if (ganttScroll && scrollHint) {
+  ganttScroll.addEventListener("scroll", () => {
+    scrollHint.style.display = "none";
+  }, { once: true });
+}
+
+// Auto-launch if URL requests tour
+if (urlParams.tour === "1" || location.hash === "#tour") {
+  startTour(0);
+}
+
 render();
 }());
