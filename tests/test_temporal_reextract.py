@@ -11,7 +11,6 @@ from scripts.review_candidates import candidate_fingerprint
 from scripts.time_policy import calendar_is_ambiguous, validate_temporal_snapshot
 from tests.test_semantic_facts import blocks, extract
 
-
 class TemporalReplayTests(unittest.TestCase):
     def policy(self, *texts):
         source, candidate=extract()
@@ -200,6 +199,28 @@ class TemporalReplayTests(unittest.TestCase):
         self.assertNotIn('time_dates',item)
         broken=deepcopy(state);broken['http_requests']-=1
         self.assertIn('temporal_request_ledger_invalid',validate_temporal_snapshot(bundle,broken))
+
+    def test_k12_batch1_bundle_and_observations_are_complete(self):
+        k12_bundle = json.loads((ROOT / 'data/candidates/k12-scholarships.json').read_text(encoding='utf-8'))
+        k12_obs = json.loads((ROOT / 'data/k12-temporal-observations.json').read_text(encoding='utf-8'))
+        self.assertEqual(validate_temporal_snapshot(k12_bundle, k12_obs), [])
+        self.assertEqual(len(k12_bundle['candidates']), 25)
+        self.assertEqual(len(k12_obs['records']), 25)
+
+        meta = radar_metadata(k12_bundle, k12_obs)
+        records = meta['records']
+        self.assertEqual(len(records), 25)
+
+        modes = {}
+        for rec in k12_obs['records'].values():
+            mode = rec.get('policy', {}).get('submission_mode')
+            modes[mode] = modes.get(mode, 0) + 1
+
+        self.assertEqual(modes.get('recurring', 0), 14)
+        self.assertEqual(modes.get('procedure_only', 0), 6)
+        self.assertEqual(modes.get('continuous', 0), 3)
+        self.assertEqual(modes.get('reference', 0), 2)
+        self.assertEqual(modes.get('undetermined', 0), 0)
 
 
 if __name__=='__main__':
