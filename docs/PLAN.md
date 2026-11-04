@@ -176,6 +176,7 @@ flowchart TD
 - [x] 完成研討會五層補助網絡、千里馬/雙聯學位、碩博候選人博士後身分專屬獎助、斐陶斐/優秀青年推薦制度、助教 (TA) 多軌聘任 (EMITA) 與薪資級距深度盤點 (`docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md`)。
 - [x] 完成初版法源位階圖、勞動爭議從屬性自測、四型態比對矩陣與五類申訴救濟地圖 (`docs/RIGHTS-AND-LEGAL-FRAMEWORK.md`)。
 - [x] 完成資源整合四階段路線圖、UI/UX 響應式體檢、探索島情境快速篩選（`#persona-bar`）、權益島雙軌視角與公民科技政策島調研 (`docs/UX-AUDIT-AND-ISLAND-DESIGN.md`)。
+- [x] 完成學生身分（高中職、大專院校、碩博士）軟體、硬體、AI註冊帳戶、雲端算力與學習資源優惠全景調研與基準台帳 (`docs/STUDENT-SOFTWARE-HARDWARE-AND-AI-PERKS.md`, `data/student-perks-baseline.json`)。
 - [x] 執行 Phase 2 來源拓撲擴充：於 data/scan-sources.json 登錄千里馬、人力約用、教務處 TA、專題兼任上限 4 大來源，並建立候選萃取與測試；上限來源因錯接URL現已停用，不能視為四項全數支援。
 - [x] 升級研討會與赴外交流個人規劃器：擴充國科會千里馬赴國外研究方案（固定視窗推算、出國前一年收件基準），建立 Tab 2 獎助詳情至 Tab 4 上位法規與助教薪資跨分頁深度導覽，完成當時測試（完整數量以本輪驗收及最新CI為準）。
 - [ ] 確認資料契約、範圍與公開版本驗收。

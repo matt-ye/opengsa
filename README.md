@@ -175,6 +175,8 @@ flowchart TD
 | [公開預覽與部署](docs/DEPLOYMENT.md) | GitHub Pages發布、公開回饋、成品邊界、測試與回復 |
 | [長期維運與訂閱提案](docs/OPERATIONS-PLAN.md) | GitHub／D1分工、來源擷取、Agent檢核、成本、RSS與ICS；D1與訂閱尚未啟用 |
 | [首批來源及Actions設計](docs/INGESTION-POC.md) | 管線設計與已落地之結構化萃取、獨立檢核及差異覆核模組對照 |
+| [學生軟硬體與AI優惠調研](docs/STUDENT-SOFTWARE-HARDWARE-AND-AI-PERKS.md) | 學生身分可申請之軟體、硬體、AI、線上課程、文獻庫與生活優惠全景、驗證機制與避坑指南 |
+| [學生優惠基準台帳資料](data/student-perks-baseline.json) | 28 項學生身分軟硬體與 AI 優惠結構化 JSON 資料，供後續知識庫與工具推薦打底 |
 | [API查核與模型台帳](docs/API-AUDIT.md) | Secret對應、模型目錄、額度／效期、手動實測與成本限制 |
 | [自動來源掃描](docs/SCANNER.md) | 已實作的來源台帳試點、低頻排程、結構化候選萃取、獨立檢核與故障保留 |
 | [專案縮圖原始設計](docs/design/social-preview.html) | 已核可圖稿的可修改HTML；GitHub Social preview由使用者自行上傳 |
