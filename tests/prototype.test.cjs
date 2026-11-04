@@ -817,6 +817,7 @@ test("Onboarding Tour 資料契約、步驟嚴格限制四步、狀態記憶與�
  // 驗證 wireframes.html 靜態標籤結構
  const html = fs.readFileSync(path.join(__dirname, "../docs/design/wireframes.html"), "utf8");
  assert.ok(html.includes('id="btn-tour"'), "wireframes.html 應包含 header 導覽指南按鈕");
+ assert.ok(html.includes('id="search-tour-btn"'), "wireframes.html 應包含欄位處圓形 ? 閃爍按鈕");
  assert.ok(html.includes('id="floating-tour-btn"'), "wireframes.html 應包含行動端懸浮導覽按鈕");
  assert.ok(html.includes('id="tour-overlay"'), "wireframes.html 應包含導覽 overlay 容器");
  assert.ok(html.includes('id="tour-spotlight"'), "wireframes.html 應包含聚光燈 spotlight");

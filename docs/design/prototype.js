@@ -1616,6 +1616,8 @@ function closeTour(markCompleted = true) {
 // Wire tour UI buttons
 const btnTour = byId("btn-tour");
 if (btnTour) btnTour.addEventListener("click", () => startTour(0));
+const searchTourBtn = byId("search-tour-btn");
+if (searchTourBtn) searchTourBtn.addEventListener("click", () => startTour(0));
 const floatingTourBtn = byId("floating-tour-btn");
 if (floatingTourBtn) floatingTourBtn.addEventListener("click", () => startTour(0));
 const tourCloseBtn = byId("tour-close-btn");

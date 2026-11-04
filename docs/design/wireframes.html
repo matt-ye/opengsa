@@ -311,6 +311,12 @@ html{scroll-behavior:smooth}
   @keyframes pulseHint{0%,100%{opacity:0.85}50%{opacity:1;transform:scale(1.01)}}
 }
 
+
+.tour-circle-btn{width:30px;height:30px;min-width:30px;border-radius:50%;border:2px solid #5fa88f;background:#f0f7f3;color:var(--ink);font-size:14px;font-weight:800;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:10px;box-shadow:0 0 0 0 rgba(95,168,143,0.5);animation:gentlePulse 2.4s infinite ease-in-out;transition:transform .15s ease,background .15s ease,box-shadow .15s ease}
+.tour-circle-btn:hover{background:#dce8dd;transform:scale(1.1);animation:none;box-shadow:0 0 8px rgba(95,168,143,0.6)}
+.tour-circle-btn:focus-visible{outline:3px solid var(--rust);outline-offset:3px}
+@keyframes gentlePulse{0%{box-shadow:0 0 0 0 rgba(95,168,143,0.6);border-color:#5fa88f}50%{box-shadow:0 0 0 6px rgba(95,168,143,0);border-color:#2e7d62}100%{box-shadow:0 0 0 0 rgba(95,168,143,0);border-color:#5fa88f}}
+
 </style>
 </head>
 <body>
@@ -352,7 +358,7 @@ html{scroll-behavior:smooth}
 </div><button class="reset-button" id="reset-filters" type="button">清除條件</button></details>
 </aside>
 <div style="min-width:0">
-<div class="searchbar"><label for="search-query">搜尋名稱或資料 ID</label><input autocomplete="off" data-filter="query" id="search-query" placeholder="搜尋名稱或資料 ID…" type="search"/></div>
+<div class="searchbar"><label for="search-query">搜尋名稱或資料 ID</label><input autocomplete="off" data-filter="query" id="search-query" placeholder="搜尋名稱或資料 ID…" type="search"/><button id="search-tour-btn" type="button" class="tour-circle-btn" aria-label="開啟操作導覽指南 (快速鍵 ?)" title="點此開啟 30 秒操作導覽指南 (快速鍵 ?)">?</button></div>
 <details class="panel conference-planner" id="conference-planner">
 <summary>規劃我的研討會補助 · 多方案與甘特圖</summary>
 <p class="small">一場會議可逐一加入不同補助。同名、同日、同方案會更新既有規劃；這是試算，不代表符合資格或可兼領。</p>
