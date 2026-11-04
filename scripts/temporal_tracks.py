@@ -83,6 +83,12 @@ _AI_AND_TOOL_MARKERS = (
     "google-student",
     "cloud-credits",
     "perks",
+    "perk",
+    "jetbrains",
+    "github",
+    "notion",
+    "figma",
+    "student-pack",
 )
 
 _ENTERPRISE_MARKERS = (
