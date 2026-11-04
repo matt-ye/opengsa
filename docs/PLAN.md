@@ -1,5 +1,9 @@
 # 目前計畫與已接受決策
 
+2026-11-04 全庫四大批次來源萃取與時程政策整併（PR #50～#53）：[全庫萃取架構與管線說明](FULL-LIBRARY-EXTRACTION-PLAN.md)。完成四大批次全庫萃取（Batch 1: K-12 公部門與助學 25 方案、Batch 2: 學生福利與特惠 28 方案、Batch 3: 企業、基金會與學會獎助 85 方案、Batch 4: AI 工具 2 方案 + 既有 64 方案）。全庫 **204 筆候選方案與 204 筆時程觀測政策達成 1-to-1 精確覆蓋**，**undetermined = 0 筆（覆蓋率 100%）**。三軌排程路由、三層增量比對閘門與動態備援池架構上線；275 項單元測試、52 項線框測試 PASS；正式 pilot 與人工審核欄位零竄改，候選維持待審。
+
+2026-11-04 多層來源資訊鏈（Source Chains）全庫架構整合：跨教育階段與民間資助之深度調研報告收齊落盤。包含 [K-12 獎助全景與五層法源資訊鏈](K12-SCHOLARSHIP-LANDSCAPE-AND-SOURCE-CHAINS.md)（25 方案法律母法、要點、地方大學平台、初審代收）、[學生身分軟硬體、AI與學習資源優惠全景](STUDENT-SOFTWARE-HARDWARE-AND-AI-PERKS.md)（28 方案六大福利支柱與 6 種查驗途徑）、[企業、基金會與學會獎助全景與雙軌申辦鏈](ENTERPRISE-SCHOLARSHIP-LANDSCAPE-AND-SOURCE-CHAINS.md)（85 方案生輔組薦送 vs 線上直申）、[UI/UX 導覽教學與易用性升級調研](UI-UX-ONBOARDING-AND-SKILLS-STUDY.md) 及 [開源資助與生態系贊助策略](OPEN-SOURCE-GRANTS-AND-OPENAI-STRATEGY.md)。
+
 2026-11-03四階段時間重萃與甘特圖整合（接續PR44，分開立PR45～PR48）：見[Actions時間重萃、8組API備援池、Map-Reduce與甘特圖整合](ACTIONS-TEMPORAL-EXTRACTION.md)。完成(1)最外層三軌排程路由（週二五gov公部門30筆／週一四enterprise企業基金會7筆／週三六other AI工具與其他27筆）與三層增量比對閘門（未變動且已分型來源0 HTTP／0 Token跳過）；(2)8組API動態備援池（`ProviderFailoverPool`）、1500-token小分包、90s Timeout、PII `[REDACTED]`遮蔽解鎖與5大Lifecycle Hooks批次Harness（`TemporalBatchHarness`）；(3)母頁HTML＋子頁＋公告PDF無損彙整、跨Chunk Map-Reduce合成（`fixed_window`／`deadline_only`／`procedure_only`／`mixed`）並對接最新甘特圖Layout A預覽；(4)Actions 45分鐘Timeout、跨Run Checkpoint快取與64筆三軌盤點報告。排程仍維持`model_mode=off`，正式`pilot.json`與真人台帳不變。
 
 2026-11-03使用者核可使用GitHub Secrets API繼續：[手動Actions時間萃取](ACTIONS-TEMPORAL-EXTRACTION.md)接PR44。新增小批20源站HTTP／4推論的`temporal_replay`，先跑候選及台帳皆short_excerpt的臺北／新竹來源；其餘規則模式。模型提案獨立待審，輸出artifact而不自動套用、合併或上架；排程off、PR34保留。最新實測結果另記文件，不宣稱64筆都已由模型重萃。
