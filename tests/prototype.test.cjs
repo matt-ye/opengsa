@@ -735,3 +735,48 @@ test("跨Chunk與多文件Map-Reduce合成之fixed_window與學院里程碑可�
  assert.ok(geom.bar && geom.bar.width>0);
  assert.ok(geom.wait && geom.wait.width>0);
 });
+
+test("URL 狀態序列化與反序列化支援深層連結與稀疏編碼",()=>{
+ const parsed = core.parseUrlParams("?tab=detail&id=ntu-med-publication-115&q=%E8%AB%96%E6%96%87&cat=outcome_award&deg=phd&picks=a,b&compare=ntu-president-114", "");
+ assert.equal(parsed.tab, "detail");
+ assert.equal(parsed.id, "ntu-med-publication-115");
+ assert.equal(parsed.query, "論文");
+ assert.equal(parsed.category, "outcome_award");
+ assert.equal(parsed.degree, "phd");
+ assert.equal(parsed.compare, "ntu-president-114");
+ assert.deepEqual(parsed.picks, ["a", "b"]);
+
+ const serialized = core.serializeStateToParams({
+  tab: "detail",
+  mode: "draft",
+  view: "list",
+  query: "論文",
+  category: "outcome_award",
+  degree: "phd",
+  id: "ntu-med-publication-115",
+  compare: "ntu-president-114",
+  picks: ["a", "b"]
+ }, "demo");
+ assert.ok(serialized.includes("tab=detail"));
+ assert.ok(serialized.includes("mode=draft"));
+ assert.ok(serialized.includes("cat=outcome_award"));
+ assert.ok(serialized.includes("id=ntu-med-publication-115"));
+ assert.ok(serialized.includes("compare=ntu-president-114"));
+ assert.ok(serialized.includes("picks=a%2Cb"));
+});
+
+test("搜尋擴充同義詞比對：搜尋論文／著作／醫學院均能精確命中臺大醫學院研究生優秀著作獎",()=>{
+ const drafts = core.makeDrafts(pilot, "2026-11-04");
+ const medPub = drafts.find(x => x.id === "ntu-med-publication-115");
+ assert.ok(medPub, "臺大醫學院優秀著作獎應存在於 drafts 中");
+ assert.ok(core.itemMatchesQuery(medPub, "論文"), "搜尋「論文」應命中著作獎");
+ assert.ok(core.itemMatchesQuery(medPub, "著作"), "搜尋「著作」應命中著作獎");
+ assert.ok(core.itemMatchesQuery(medPub, "醫學院"), "搜尋「醫學院」應命中著作獎");
+ assert.ok(core.itemMatchesQuery(medPub, "成果獎"), "搜尋「成果獎」應命中著作獎");
+
+ const filteredByPaper = core.filterItems(drafts, {query: "論文"});
+ assert.ok(filteredByPaper.some(x => x.id === "ntu-med-publication-115"), "filterItems 應包含醫學院著作獎");
+
+ const filteredByMed = core.filterItems(drafts, {query: "醫學院"});
+ assert.ok(filteredByMed.some(x => x.id === "ntu-med-publication-115"), "filterItems 應包含醫學院著作獎");
+});

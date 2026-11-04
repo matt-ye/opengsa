@@ -105,11 +105,52 @@ function issueUrl(item){
  if(url.href.length>7500)url.searchParams.delete("source_url");
  return url.href;
 }
+function itemMatchesQuery(item, query) {
+ if(!query) return true;
+ const q = query.trim().toLocaleLowerCase();
+ if(!q) return true;
+ const isMed = item.id === "ntu-med-publication-115" || item.programKey === "ntu-med-publication";
+ const aliases = isMed ? " 優秀著作 優秀論文 論文 著作 醫學院 研究生 出版 publication paper 成果獎" : "";
+ const catLabel = (typeof labels !== "undefined" && labels.category && labels.category[item.category]) || "";
+ const srcLabel = (typeof labels !== "undefined" && labels.source && labels.source[item.source]) || "";
+ const haystack = (item.title + " " + item.id + " " + (item.cycle||"") + " " + (item.scope||"") + " " + catLabel + " " + srcLabel + aliases).toLocaleLowerCase();
+ return haystack.includes(q);
+}
+function parseUrlParams(searchStr, hashStr) {
+ const search = (searchStr || "").replace(/^\?/, "");
+ const params = new URLSearchParams(search);
+ const hash = (hashStr || "").replace(/^#/, "");
+ const res = {};
+ if (params.get("tab")) res.tab = params.get("tab");
+ else if (["search", "detail", "timeline", "rights"].includes(hash)) res.tab = hash;
+ if (params.get("q")) res.query = params.get("q");
+ if (params.get("cat")) res.category = params.get("cat");
+ if (params.get("deg")) res.degree = params.get("deg");
+ if (params.get("mode") && ["demo", "draft"].includes(params.get("mode"))) res.mode = params.get("mode");
+ if (params.get("view") && ["list", "gantt"].includes(params.get("view"))) res.view = params.get("view");
+ if (params.get("id")) res.id = params.get("id");
+ if (params.get("compare")) res.compare = params.get("compare");
+ if (params.get("picks")) res.picks = params.get("picks").split(",").filter(Boolean);
+ return res;
+}
+function serializeStateToParams(current, defaultMode="demo") {
+ const params = new URLSearchParams();
+ if (current.tab && current.tab !== "search") params.set("tab", current.tab);
+ if (current.mode && current.mode !== defaultMode) params.set("mode", current.mode);
+ if (current.view && current.view !== "gantt") params.set("view", current.view);
+ if (current.query) params.set("q", current.query);
+ if (current.category && current.category !== "all") params.set("cat", current.category);
+ if (current.degree && current.degree !== "all") params.set("deg", current.degree);
+ if (current.id) params.set("id", current.id);
+ if (current.compare) params.set("compare", current.compare);
+ if (current.picks && current.picks.length > 0) params.set("picks", current.picks.join(","));
+ return params.toString();
+}
 function partitionItems(items,filters){
  const matched=[],possible=[],unknownFields={};
  const query=(filters.query||"").trim().toLocaleLowerCase();
  for(const item of items){
-  if(query&&!(item.title+" "+item.id+" "+item.cycle).toLocaleLowerCase().includes(query))continue;
+  if(query && !itemMatchesQuery(item, query)) continue;
   const missing=[];let excluded=false;
   for(const key of ["category","source","degree","year","compatibility","hardship","application"]){
    const wanted=filters[key];if(!wanted||wanted==="all")continue;
@@ -294,7 +335,7 @@ function timelineDates(item){return [...(item.timeline?.baselines||[]).flatMap(b
 function filterItems(items, filters) {
  const query = (filters.query||"").trim().toLocaleLowerCase();
  return items.filter(item=>{
-  if(query && !(item.title+" "+item.id+" "+item.cycle).toLocaleLowerCase().includes(query)) return false;
+  if(query && !itemMatchesQuery(item, query)) return false;
   return ["category","source","degree","year","compatibility","hardship","application"].every(key=>{
    const wanted=filters[key];
    if(!wanted || wanted==="all") return true;
@@ -488,7 +529,7 @@ function evaluateSubordination(checks={}){
  if(score===1) return {score:1,level:"review_needed",recommendedTiers:["TIER 01","TIER 02"],disclaimer,summary:"已勾選 1 項指標：具部分從屬或學習分流爭點。建議核對勞動部指導原則第 2～4 點及書面協議，確認工時與給付是否相符（2026 最低時薪 196 元）；必要時洽 TIER 01 系院或 TIER 02 校級窗口釐清。"+disclaimer};
  return {score,level:"high_subordination",recommendedTiers:["TIER 02","TIER 04","TIER 05"],disclaimer,summary:"已勾選 "+score+" 項指標：高度呈現人格、經濟或組織從屬性（常見「假學習真勞動」爭點）。依勞動部指導原則實質認定原則，若受指揮監督並提供勞務獲取對價，不能只按給付名稱排除適用保障；勞基法、2026最低工資與退休金須分別依關係、身分及進用依據確認。建議參考下方 TIER 02 校內申訴、TIER 04（地方主管機關勞檢／勞工局調解）或 TIER 05 高教工會。"+disclaimer};
 }
-const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,timePresentation,windowState,filterItems,partitionItems,clarity,groupDocuments,issueUrl,officialUrl,UNKNOWN_LABEL,unknownValue,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination,isNA,fieldText,resultText,methodText,startLabel,deadlineText,applyTimeline,timelineDates};
+const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,timePresentation,windowState,filterItems,partitionItems,clarity,groupDocuments,issueUrl,officialUrl,UNKNOWN_LABEL,unknownValue,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination,isNA,fieldText,resultText,methodText,startLabel,deadlineText,applyTimeline,timelineDates,itemMatchesQuery,parseUrlParams,serializeStateToParams};
 if(typeof module!=="undefined" && module.exports) module.exports=api;
 if(typeof document==="undefined") return;
 
@@ -512,7 +553,7 @@ const rawById=new Map(pilot.opportunities.map(item=>[item.id,item]));
 const sourceById=new Map(pilot.sources.map(source=>[source.id,source]));
 const picked={demo:new Set(),draft:new Set()}, completed={demo:new Set(),draft:new Set()}, activeDetail={demo:null,draft:null};
 let sharedItems=[], personalRangeMode="recent", lastPersonalRange=null;
-let today=taipeiToday(), mode=reviewPreview||radarView?"draft":"demo", view="gantt", rangeMode="recent", offset=0, inspectedId=null, lastRange=null, centerPending=true, rightsView="overview", activePanelId="search";
+let today=taipeiToday(), mode=reviewPreview||radarView?"draft":"demo", view="gantt", rangeMode="recent", offset=0, inspectedId=null, lastRange=null, centerPending=true, rightsView="overview", activePanelId="search", detailScope="shared", detailSearchQuery="", activeCompareId=null;
 const scrollPositions={search:0,detail:0,timeline:0,rights:0};
 const state={query:"",category:"all",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all",application:"all",includeUnknown:true};
 function el(tag, cls, text) {
@@ -572,7 +613,7 @@ function selectedButtons(container,attribute,value) {
   button.setAttribute("aria-pressed",String(active));
  });
 }
-function activatePanel(id, focus=false) {
+function activatePanel(id, focus=false, updateUrl=true) {
  if(!["search","detail","timeline","rights"].includes(id)) id="search";
  if(activePanelId && byId(activePanelId) && !byId(activePanelId).hidden) scrollPositions[activePanelId]=window.scrollY;
  document.querySelectorAll('[role="tab"]').forEach(tab=>{
@@ -582,11 +623,32 @@ function activatePanel(id, focus=false) {
   if(active && focus) tab.focus();
  });
  document.querySelectorAll("main > .screen").forEach(panel=>{panel.hidden=panel.id!==id;});
- if(location.hash!=="#"+id) history.replaceState(null,"","#"+id);
  activePanelId=id;
+ if(updateUrl) updateUrlState(true);
  window.scrollTo({top:scrollPositions[id]||0,behavior:"instant"});
  if(id==="search" && lastRange) requestAnimationFrame(()=>centerToday(lastRange));
  if(id==="timeline" && lastPersonalRange) requestAnimationFrame(()=>centerToday(lastPersonalRange,"personal-gantt-grid"));
+}
+
+function updateUrlState(push=false) {
+ if (typeof window === "undefined" || !window.history) return;
+ const stateObj = {
+  tab: activePanelId,
+  mode,
+  view,
+  query: state.query,
+  category: state.category,
+  degree: state.degree,
+  id: activeDetail[mode],
+  compare: activeCompareId,
+  picks: Array.from(picked[mode])
+ };
+ const queryString = serializeStateToParams(stateObj, reviewPreview||radarView ? "draft" : "demo");
+ const newUrl = window.location.pathname + (queryString ? "?" + queryString : "") + (location.hash ? location.hash : "");
+ if (window.location.search !== (queryString ? "?" + queryString : "")) {
+  if (push) history.pushState(null, "", newUrl);
+  else history.replaceState(null, "", newUrl);
+ }
 }
 document.querySelector('[role="tablist"]').addEventListener("click",event=>{
  const tab=event.target.closest('[role="tab"]');
@@ -937,15 +999,134 @@ function factSection(title,paragraphs) {
  const section=el("section","panel detail-section");section.append(el("h3","",title));
  paragraphs.forEach(text=>section.append(el("p","",text)));return section;
 }
+function renderCompareCard(col, item) {
+ const raw = rawById.get(item.id);
+ col.append(el("div", "category", (labels.category[item.category] || item.category) + " · " + item.cycle));
+ col.append(el("h3", "", item.title));
+ radarSummary(col, item);
+ const pills = el("div", "pills");
+ itemTags(item).forEach(tag => pills.append(el("span", "pill", tag)));
+ col.append(pills);
+
+ const secEligibility = el("div", "compare-section");
+ secEligibility.append(el("h4", "", "📌 申請資格與對象"));
+ const degText = (item.degrees || []).map(x => labels.degree[x] || x).join("／") || "依主辦公告";
+ secEligibility.append(el("p", "small", "學位身分：" + degText));
+ if (raw?.eligibility?.year_limit) {
+  const y = raw.eligibility.year_limit;
+  secEligibility.append(el("p", "small", "年級限制：" + (item.year === "range" ? y.min + "–" + y.max + "年級" : item.year === "unlimited" ? "不限年級" : "依辦法核對")));
+ }
+ col.append(secEligibility);
+
+ const secBenefit = el("div", "compare-section");
+ secBenefit.append(el("h4", "", "💰 獎助給付與金額"));
+ secBenefit.append(el("p", "small", item.benefit || "依官方公告核定"));
+ col.append(secBenefit);
+
+ const secCompat = el("div", "compare-section");
+ secCompat.append(el("h4", "", "⚖️ 兼領與相容性限制"));
+ const compatText = raw?.compatibility?.note || (item.program?.compatibility) || (item.compatibility === "allowed" ? "原則可兼領（仍須核對他方規定）" : item.compatibility === "prohibited" ? "明示不得兼領" : "兼領規定待核對");
+ secCompat.append(el("p", "small", compatText));
+ col.append(secCompat);
+
+ const secTiming = el("div", "compare-section");
+ secTiming.append(el("h4", "", "📅 申請時程與期限"));
+ secTiming.append(el("p", "small", "學生截止：" + deadlineText(item)));
+ secTiming.append(el("p", "small", "申請開始：" + startLabel(item)));
+ secTiming.append(el("p", "small", "結果公告：" + resultText(item)));
+ col.append(secTiming);
+
+ const secRef = el("div", "compare-section");
+ secRef.append(el("h4", "", "🔗 官方來源與依據"));
+ if (item.url) {
+  const link = el("a", "source-link", "查看主辦官方網頁 ↗");
+  link.href = item.url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  secRef.append(link);
+ } else {
+  secRef.append(el("span", "quiet tiny", "官方連結載於條文備查台帳"));
+ }
+ col.append(secRef);
+}
+
+function renderComparisonView(content, itemA, itemB) {
+ const wrap = el("div", "compare-wrap");
+ const notice = el("div", "compare-notice", "💡 雙方案並排比對：兼領條款需雙方機關同時核准，請分別確認彼此之限制條款與年級限制。");
+ wrap.append(notice);
+ const grid = el("div", "compare-grid");
+ const colA = el("div", "compare-col");
+ colA.append(el("span", "compare-badge primary", "主檢視方案 A"));
+ renderCompareCard(colA, itemA);
+ const colB = el("div", "compare-col");
+ colB.append(el("span", "compare-badge target", "比對方案 B"));
+ renderCompareCard(colB, itemB);
+ grid.append(colA, colB);
+ wrap.append(grid);
+ content.append(wrap);
+}
+
 function drawDetail() {
- const select=byId("detail-option");select.replaceChildren();
- sharedItems.forEach(item=>{const option=el("option","",item.title);option.value=item.id;select.append(option);});
- if(!sharedItems.some(item=>item.id===activeDetail[mode])) activeDetail[mode]=sharedItems[0]?.id||null;
- select.value=activeDetail[mode]||"";
- const index=sharedItems.findIndex(item=>item.id===activeDetail[mode]);
- byId("detail-previous").disabled=index<=0;byId("detail-next").disabled=index<0||index>=sharedItems.length-1;
- const content=byId("detail-content");content.replaceChildren();
- const item=sharedItems[index];if(!item) return;
+ const select=byId("detail-option");
+ if(!select) return;
+ select.replaceChildren();
+
+ const currentAll = currentItems();
+ let candidates = detailScope === "all" ? currentAll : sharedItems;
+ if (detailSearchQuery) {
+  candidates = candidates.filter(item => itemMatchesQuery(item, detailSearchQuery));
+ }
+ if (activeDetail[mode] && !candidates.some(item => item.id === activeDetail[mode])) {
+  const currentTarget = currentAll.find(item => item.id === activeDetail[mode]);
+  if (currentTarget) candidates = [currentTarget, ...candidates];
+ }
+
+ candidates.forEach(item => {
+  const option = el("option", "", item.title);
+  option.value = item.id;
+  select.append(option);
+ });
+
+ if (!candidates.some(item => item.id === activeDetail[mode])) {
+  activeDetail[mode] = candidates[0]?.id || null;
+ }
+ select.value = activeDetail[mode] || "";
+ const index = candidates.findIndex(item => item.id === activeDetail[mode]);
+ if (byId("detail-previous")) byId("detail-previous").disabled = index <= 0;
+ if (byId("detail-next")) byId("detail-next").disabled = index < 0 || index >= candidates.length - 1;
+
+ if (byId("detail-shared-count")) byId("detail-shared-count").textContent = sharedItems.length;
+ if (byId("detail-all-count")) byId("detail-all-count").textContent = currentAll.length;
+
+ const compareSelect = byId("detail-compare-select");
+ if (compareSelect) {
+  compareSelect.replaceChildren();
+  const defaultOpt = el("option", "", "➕ 選擇第二個方案進行並排比對...");
+  defaultOpt.value = "";
+  compareSelect.append(defaultOpt);
+  currentAll.filter(x => x.id !== activeDetail[mode]).forEach(other => {
+   const opt = el("option", "", other.title);
+   opt.value = other.id;
+   compareSelect.append(opt);
+  });
+  compareSelect.value = activeCompareId || "";
+ }
+ if (byId("clear-compare-btn")) {
+  byId("clear-compare-btn").hidden = !activeCompareId;
+ }
+
+ const content = byId("detail-content");
+ if (!content) return;
+ content.replaceChildren();
+
+ const item = candidates[index] || currentAll.find(x => x.id === activeDetail[mode]);
+ if (!item) return;
+
+ const compareItem = activeCompareId ? currentAll.find(x => x.id === activeCompareId) : null;
+ if (compareItem) {
+  renderComparisonView(content, item, compareItem);
+  return;
+ }
  const raw=rawById.get(item.id), top=el("div","panel");
  top.append(el("div","category",labels.category[item.category]+" · "+item.cycle),el("h3","detail-title",item.title));
  if(raw)radarSummary(top,item);
@@ -1001,19 +1182,40 @@ function drawPlan() {
  byId("personal-today").textContent="今天 "+today.replaceAll("-","/");
  byId("personal-chart-range").textContent=iso(range.start).replaceAll("-","/")+" — "+iso(range.end).replaceAll("-","/")+" · 臺北時間";
  drawGantt(sharedItems,range,"personal-gantt-grid",openSharedDetail);
+
+ const pickSummary = byId("timeline-pick-summary");
+ if (pickSummary) {
+  pickSummary.textContent = "已收藏 " + picked[mode].size + " 項專屬方案" + (personalConferences.size ? " ＋ " + personalConferences.size + " 場研討會" : "");
+ }
+
  const cards=byId("plan-options");cards.replaceChildren();
+ let totalTasks = 0, completedTasks = 0;
  sharedItems.forEach(item=>{
   const card=el("article","card"), button=el("button","plan-title",item.title);button.type="button";button.addEventListener("click",()=>openSharedDetail(item));card.append(button);
   radarSummary(card,item);
   radarFact(card,"結果公告",resultText(item),item);
   card.append(el("p","tiny quiet",item.synthetic?"合成資料，僅供規劃示範。":"來源摘要；未明欄位請直接核對原文。"));
   const tasks=el("div","plan-tasks");
-  (isNA(item,"student_deadline")?["核對使用條件","確認開通／領取程序"]:["核對申請資格","確認學生收件時間","整理申請文件"]).forEach((text,index)=>{
+  const taskList = isNA(item,"student_deadline")?["核對使用條件","確認開通／領取程序"]:["核對申請資格","確認學生收件時間","整理申請文件"];
+  taskList.forEach((text,index)=>{
+   totalTasks++;
    const key=item.id+":"+index,label=el("label","task-item"),input=el("input");input.type="checkbox";input.checked=completed[mode].has(key);input.setAttribute("aria-label",item.title+"："+text);
-   input.addEventListener("change",()=>{if(input.checked) completed[mode].add(key);else completed[mode].delete(key);});
+   if (input.checked) completedTasks++;
+   input.addEventListener("change",()=>{
+    if(input.checked) completed[mode].add(key);else completed[mode].delete(key);
+    updatePlanProgress();
+   });
    label.append(input,el("span","",text));tasks.append(label);
   });card.append(tasks);cards.append(card);
  });
+
+ function updatePlanProgress() {
+  const done = Array.from(completed[mode]).length;
+  const prog = byId("plan-progress");
+  if (prog) prog.textContent = "已準備 " + done + " / " + totalTasks + " 項待辦";
+ }
+ updatePlanProgress();
+
  if(!byId("timeline").hidden && sharedItems.length) requestAnimationFrame(()=>centerToday(range,"personal-gantt-grid"));
 }
 function renderWorkspace() {
@@ -1030,6 +1232,7 @@ function renderWorkspace() {
  document.querySelectorAll("[data-open-detail]").forEach(button=>{button.textContent=selected.has(button.dataset.openDetail)?"查看詳情":"勾選並看詳情";});
  for(const name of ["detail","timeline"]){byId(name+"-empty").hidden=!!sharedItems.length;byId(name+"-workspace").hidden=!sharedItems.length;}
  drawDetail();drawPlan();
+updateUrlState(false);
 }
 function render() {
  const items=currentItems();
@@ -1162,9 +1365,96 @@ if(byId("subordination-reset")){
   updateSubordinationWizard();
  });
 }
+// Bind new Toolbar & Timeline Events
+if(byId("copy-share-link")){
+ byId("copy-share-link").addEventListener("click",()=>{
+  updateUrlState(false);
+  const url=window.location.href;
+  const showToast=()=>{
+   const toast=byId("share-toast");
+   if(toast){toast.hidden=false;setTimeout(()=>{toast.hidden=true;},2500);}
+  };
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+   navigator.clipboard.writeText(url).then(showToast).catch(showToast);
+  }else{showToast();}
+ });
+}
+if(byId("detail-scope-switch")){
+ byId("detail-scope-switch").addEventListener("click",event=>{
+  const btn=event.target.closest("[data-scope]");
+  if(!btn) return;
+  detailScope=btn.dataset.scope;
+  selectedButtons("#detail-scope-switch","scope",detailScope);
+  drawDetail();
+ });
+}
+if(byId("detail-search-input")){
+ byId("detail-search-input").addEventListener("input",event=>{
+  detailSearchQuery=event.target.value.trim();
+  drawDetail();
+ });
+}
+if(byId("detail-compare-select")){
+ byId("detail-compare-select").addEventListener("change",event=>{
+  activeCompareId=event.target.value||null;
+  updateUrlState(false);
+  drawDetail();
+ });
+}
+if(byId("clear-compare-btn")){
+ byId("clear-compare-btn").addEventListener("click",()=>{
+  activeCompareId=null;
+  updateUrlState(false);
+  drawDetail();
+ });
+}
+const pickAllFiltered=()=>{
+ const filtered=partitionItems(currentItems(),state).all;
+ filtered.forEach(item=>picked[mode].add(item.id));
+ renderWorkspace();
+ updateUrlState(false);
+};
+if(byId("timeline-pick-all-filtered")) byId("timeline-pick-all-filtered").addEventListener("click",pickAllFiltered);
+if(byId("timeline-empty-pick-all")) byId("timeline-empty-pick-all").addEventListener("click",pickAllFiltered);
+
+window.addEventListener("popstate",()=>{
+ const p=parseUrlParams(window.location.search,window.location.hash);
+ if(p.tab&&p.tab!==activePanelId) activatePanel(p.tab,false,false);
+ if(p.id) activeDetail[mode]=p.id;
+ if(p.compare!==undefined) activeCompareId=p.compare;
+ if(p.query!==undefined){
+  state.query=p.query;
+  const sq=byId("search-query");if(sq)sq.value=state.query;
+ }
+ if(p.category) state.category=p.category;
+ if(p.degree) state.degree=p.degree;
+ render();
+});
+
+// Read and apply URL parameters on initial startup
+const urlParams=parseUrlParams(window.location.search,window.location.hash);
+if(urlParams.mode) mode=urlParams.mode;
+if(urlParams.view) view=urlParams.view;
+if(urlParams.query!==undefined){
+ state.query=urlParams.query;
+ const sq=byId("search-query");if(sq)sq.value=state.query;
+}
+if(urlParams.category) state.category=urlParams.category;
+if(urlParams.degree) state.degree=urlParams.degree;
+if(urlParams.id){
+ activeDetail[mode]=urlParams.id;
+ if(rawById.has(urlParams.id)||urlParams.id.startsWith("ntu-")||urlParams.id.startsWith("nstc-")){
+  mode="draft";
+ }
+}
+if(urlParams.compare) activeCompareId=urlParams.compare;
+if(urlParams.picks&&urlParams.picks.length){
+ urlParams.picks.forEach(id=>picked[mode].add(id));
+}
+
 setRightsView(rightsView);
-const initialTarget=location.hash.slice(1);
-if(["search","detail","timeline","rights"].includes(initialTarget)) activatePanel(initialTarget);
-else if(!scrollToInternalTarget(initialTarget)) activatePanel("search");
+const initialTarget=urlParams.tab||location.hash.slice(1);
+if(["search","detail","timeline","rights"].includes(initialTarget)) activatePanel(initialTarget,false,false);
+else if(!scrollToInternalTarget(initialTarget)) activatePanel("search",false,false);
 render();
 }());
