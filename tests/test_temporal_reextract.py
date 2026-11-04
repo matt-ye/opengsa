@@ -222,6 +222,26 @@ class TemporalReplayTests(unittest.TestCase):
         self.assertEqual(modes.get('reference', 0), 2)
         self.assertEqual(modes.get('undetermined', 0), 0)
 
+    def test_student_perks_batch2_bundle_and_observations_are_complete(self):
+        perks_bundle = json.loads((ROOT / 'data/candidates/student-perks.json').read_text(encoding='utf-8'))
+        perks_obs = json.loads((ROOT / 'data/perks-temporal-observations.json').read_text(encoding='utf-8'))
+        self.assertEqual(validate_temporal_snapshot(perks_bundle, perks_obs), [])
+        self.assertEqual(len(perks_bundle['candidates']), 28)
+        self.assertEqual(len(perks_obs['records']), 28)
+
+        meta = radar_metadata(perks_bundle, perks_obs)
+        records = meta['records']
+        self.assertEqual(len(records), 28)
+
+        modes = {}
+        for rec in perks_obs['records'].values():
+            mode = rec.get('policy', {}).get('submission_mode')
+            modes[mode] = modes.get(mode, 0) + 1
+
+        self.assertEqual(modes.get('continuous', 0), 27)
+        self.assertEqual(modes.get('recurring', 0), 1)
+        self.assertEqual(modes.get('undetermined', 0), 0)
+
 
 if __name__=='__main__':
     unittest.main()
