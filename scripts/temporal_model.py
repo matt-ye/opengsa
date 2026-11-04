@@ -746,3 +746,206 @@ class TemporalBatchHarness:
             results.append(row)
         summary = self.post_batch_hook(results)
         return results, summary
+
+
+FIELD_TO_POLICY_STAGE = {
+    "schedule.application_start": ("student", "application_start", "來源明示受理起日"),
+    "schedule.student_deadline": ("student", "submission", "來源明示收件截止"),
+    "schedule.college_deadline": ("college", "submission", "來源明示學院彙送截止"),
+    "schedule.institution_deadline": ("institution", "submission", "來源明示機構彙送截止"),
+    "schedule.result_date": ("other", "result", "來源明示結果公布日"),
+}
+
+
+def aggregate_source_documents(parent_blocks, child_documents=None, parent_url=None, parent_raw_sha256=None):
+    """Aggregate blocks from parent HTML, linked child pages, and PDF attachments into a unified stream.
+
+    Returns (combined_blocks, block_doc_map, documents_metadata) so every block's locator maps
+    back to its exact document URL and revision_id for schema/time-policy.schema.json validation.
+    """
+    combined = []
+    block_doc_map = {}
+    documents_metadata = []
+    seen_locators = set()
+
+    for blk in parent_blocks or []:
+        b_copy = deepcopy(blk)
+        loc = b_copy["locator"]
+        seen_locators.add(loc)
+        block_doc_map[loc] = {"url": None, "revision_id": None}
+        combined.append(b_copy)
+
+    for doc_idx, doc in enumerate(child_documents or [], start=1):
+        doc_url = doc.get("url")
+        doc_rev = doc.get("revision_id")
+        doc_raw = doc.get("raw_sha256")
+        doc_fmt = doc.get("format", "pdf")
+        if doc_url and doc_rev and doc_raw:
+            meta_entry = {
+                "url": doc_url,
+                "revision_id": doc_rev,
+                "raw_sha256": doc_raw,
+                "format": doc_fmt,
+            }
+            if parent_url:
+                meta_entry["parent_url"] = parent_url
+            if parent_raw_sha256:
+                meta_entry["parent_raw_sha256"] = parent_raw_sha256
+            documents_metadata.append(meta_entry)
+
+        for blk in doc.get("blocks", []):
+            b_copy = deepcopy(blk)
+            raw_loc = b_copy["locator"]
+            loc = f"doc{doc_idx}:{raw_loc}" if raw_loc in seen_locators else raw_loc
+            seen_locators.add(loc)
+            b_copy["locator"] = loc
+            block_doc_map[loc] = {"url": doc_url, "revision_id": doc_rev}
+            combined.append(b_copy)
+
+    return combined, block_doc_map, documents_metadata
+
+
+def recompute_policy_submission_mode(policy):
+    """Recompute submission_mode and gaps from unified rules across chunks and documents."""
+    from scripts.time_policy import policy_validator
+
+    updated = deepcopy(policy)
+    rules = updated.get("rules", [])
+    if updated.get("submission_mode") not in (
+        "conditional_deadline",
+        "automatic",
+        "reference",
+        "event_relative",
+    ):
+        submission = [r for r in rules if r["stage"] not in ("review", "result")]
+        kinds = {r["kind"] for r in submission}
+        student_abs = [r for r in submission if r["actor"] == "student" and r["kind"] == "absolute"]
+        student_starts = {r["value"] for r in student_abs if r["stage"] == "application_start" and r.get("value")}
+        student_ends = {r["value"] for r in student_abs if r["stage"] == "submission" and r.get("value")}
+
+        if "recurring" in kinds:
+            updated["submission_mode"] = "recurring" if kinds == {"recurring"} else "mixed"
+        elif "continuous" in kinds or "unit_announced" in kinds:
+            updated["submission_mode"] = (
+                "continuous"
+                if kinds == {"continuous"}
+                else "unit_announced"
+                if kinds == {"unit_announced"}
+                else "mixed"
+            )
+        elif student_abs:
+            if len(student_starts) > 1 or len(student_ends) > 1:
+                updated["submission_mode"] = "mixed"
+            elif len(student_starts) == 1 and len(student_ends) == 1:
+                start_val = next(iter(student_starts))[:10]
+                end_val = next(iter(student_ends))[:10]
+                updated["submission_mode"] = "fixed_window" if start_val <= end_val else "mixed"
+            elif len(student_ends) == 1:
+                updated["submission_mode"] = "deadline_only"
+            elif len(student_starts) == 1:
+                updated["submission_mode"] = "start_only"
+        elif submission:
+            updated["submission_mode"] = "procedure_only" if kinds == {"absolute"} else "rule_text"
+        elif rules:
+            updated["submission_mode"] = "review_only" if any(r["stage"] == "review" for r in rules) else "procedure_only"
+
+    if not rules and updated.get("submission_mode") not in ("automatic", "reference"):
+        updated["submission_mode"] = "undetermined"
+
+    gaps = list(updated.get("gaps", []))
+    if rules:
+        gaps = [g for g in gaps if g not in ("time_not_projected", "student_window_not_recorded")]
+        if not any(r["actor"] == "student" and r["stage"] == "submission" for r in rules):
+            gaps.append("student_window_not_recorded")
+    updated["gaps"] = list(dict.fromkeys(gaps))
+    policy_validator().validate(updated)
+    return updated
+
+
+def merge_parent_and_child_policies(parent_policy, child_policy):
+    """Map-Reduce merge of parent HTML time-policy-1 and child/attachment PDF time-policy-1."""
+    merged = deepcopy(parent_policy)
+    rules = merged.setdefault("rules", [])
+    if child_policy.get("review_mode") not in (None, "not_stated") and merged.get("review_mode") == "not_stated":
+        merged["review_mode"] = child_policy["review_mode"]
+
+    for c_rule in child_policy.get("rules", []):
+        key = (c_rule["actor"], c_rule["stage"], c_rule["value"], c_rule["kind"])
+        existing = next(
+            (r for r in rules if (r["actor"], r["stage"], r["value"], r["kind"]) == key),
+            None,
+        )
+        if existing is None:
+            new_rule = deepcopy(c_rule)
+            new_rule["rule_id"] = f"merged/{len(rules)}"
+            rules.append(new_rule)
+        else:
+            for ref in c_rule.get("source_refs", []):
+                if ref not in existing["source_refs"]:
+                    existing["source_refs"].append(deepcopy(ref))
+
+    return recompute_policy_submission_mode(merged)
+
+
+def reconcile_verified_claims_to_policy(
+    policy,
+    verified_claims,
+    source_id,
+    parent_revision_id,
+    block_doc_map=None,
+):
+    """Map-Reduce Reconciler: fold locally quote-verified model claims across chunks/docs into time-policy-1."""
+    merged = deepcopy(policy)
+    rules = merged.setdefault("rules", [])
+    doc_lookup = block_doc_map or {}
+
+    for claim in verified_claims or []:
+        if claim.get("status") != "evidence_checked_pending_review":
+            continue
+        fpath = claim.get("field_path")
+        val = claim.get("value")
+        loc = claim.get("locator")
+        if fpath not in FIELD_TO_POLICY_STAGE or not val or not loc:
+            continue
+        default_actor, stage, summary = FIELD_TO_POLICY_STAGE[fpath]
+        actor = claim.get("actor") or default_actor
+        precision = "datetime" if "T" in str(val) else "date"
+
+        doc_info = doc_lookup.get(loc, {})
+        ref = {
+            "source": source_id,
+            "revision_id": doc_info.get("revision_id") or parent_revision_id,
+            "locator": loc,
+            "evidence_path": f"temporal_model_verified/{stage}",
+        }
+        if doc_info.get("url"):
+            ref["url"] = doc_info["url"]
+
+        existing = next(
+            (
+                r
+                for r in rules
+                if r["kind"] == "absolute"
+                and r["actor"] == actor
+                and r["stage"] == stage
+                and r["value"] == val
+            ),
+            None,
+        )
+        if existing is None:
+            rules.append({
+                "rule_id": f"model_verified/{len(rules)}",
+                "kind": "absolute",
+                "actor": actor,
+                "stage": stage,
+                "summary": summary,
+                "value": val,
+                "precision": precision,
+                "anchor_event": None,
+                "source_refs": [ref],
+            })
+        else:
+            if ref not in existing["source_refs"]:
+                existing["source_refs"].append(ref)
+
+    return recompute_policy_submission_mode(merged)
