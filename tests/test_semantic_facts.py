@@ -2,7 +2,7 @@
 from copy import deepcopy
 import unittest
 from scripts.semantic_facts import discover_identity,discover_organizations,recurring_time,INSTRUCTIONS
-from scripts.extract_candidates import extract_from_in_memory_blocks
+from scripts.extract_candidates import extract_from_in_memory_blocks,parse_roc_or_iso_date_from_text,parse_date_range_from_text,_enrich_semantic_facts
 from scripts.verify_candidates import verify_candidate
 from scripts.evaluate_deadlines import evaluate_eligibility,make_p1_profile
 from scripts.prepare_candidates import prepare_batch
@@ -19,6 +19,24 @@ def extract(sid='SYNTH-unseen-source',units=None):
 
 
 class SemanticFactsTests(unittest.TestCase):
+    def test_time_backfill_runs_after_identity_is_already_known(self):
+        source,cand=extract()
+        self.assertNotEqual(cand['eligibility']['identity']['text'],'身分條件請至來源定位核對')
+        _enrich_semantic_facts(cand,blocks('學生申請時間自115年6月1日至7月29日(星期三)早上8時止。'),source,'a'*64,'short_excerpt')
+        step=next(s for s in cand['schedule']['steps'] if s['deadline']['value'])
+        self.assertEqual(step['deadline']['value'],'2026-07-29T08:00:00+08:00')
+        self.assertEqual(cand['schedule']['application_start']['value'],'2026-06-01')
+
+    def test_application_year_and_weekday_do_not_erase_the_end_clock(self):
+        from scripts.verify_candidates import date_supported
+        text='國科會116年度補助案，申請時間自115年6月1日至7月29日(星期三)早上8時止'
+        self.assertEqual(parse_date_range_from_text(text),('2026-06-01','2026-07-29'))
+        self.assertEqual(parse_roc_or_iso_date_from_text('7月29日(星期三)早上8時',115),('datetime','2026-07-29T08:00:00+08:00'))
+        self.assertTrue(date_supported('2026-07-29',text))
+        self.assertFalse(date_supported('2027-07-29',text))
+        self.assertEqual(parse_date_range_from_text('2026年12月20日至12月1日'),(None,None))
+        self.assertFalse(date_supported('2026-07-29','115年度獎學金7月29日止'))
+
     def test_unseen_source_ids_share_content_rules_and_keep_roles(self):
         a=extract()[1];b=extract('SYNTH-different-organization')[1]
         self.assertEqual(a['eligibility']['identity']['text'],b['eligibility']['identity']['text'])

@@ -103,7 +103,7 @@ button:focus-visible,select:focus-visible,input:focus-visible,.gantt-scroll:focu
 .gantt-wait{position:absolute;top:36px;border-top:2px dashed #9cafbd;z-index:1}
 .gantt-notes{position:absolute;top:80px;left:8px;right:8px;font-size:10px;color:var(--muted);line-height:1.5}
 #gantt-view{min-width:0}
-#schedule-inspect{border-left:3px solid #416a9f;margin-top:16px}
+#schedule-inspect{border-left:3px solid #416a9f;margin-top:16px;position:relative;z-index:2;scroll-margin-top:calc(var(--nav-height,104px) + 12px)}
 #schedule-inspect p{margin:8px 0}
 #dates-table{margin-top:16px}
 #dates-table summary{cursor:pointer;font-size:13px;font-weight:700}
@@ -235,6 +235,50 @@ html{scroll-behavior:smooth}
 @media(max-width:1100px){#search .gantt-legend{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:800px){.chart-heading{display:block}.chart-heading h2{font-size:16px}.chart-time-fields label{align-items:flex-start;flex-direction:column}.chart-time-fields .checkbox-label{flex-direction:row;align-items:center}.chart-move{margin-top:0}.chart-header{gap:8px}.chart-legend summary small{display:none}}
 @media(max-width:400px){#search .gantt-legend{grid-template-columns:1fr}.chart-header{padding:12px}.chart-header .segmented button{padding:6px 9px}.chart-toolbar,.chart-caption{padding-left:12px;padding-right:12px}.chart-time-fields select{max-width:170px}}
+.header-controls{display:flex;align-items:center;justify-content:flex-end;gap:16px;flex-wrap:wrap;min-width:0}
+.header-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.header-action{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 12px;border:1px solid var(--ink);border-radius:7px;background:var(--white);color:var(--ink);font-size:13px;font-weight:700;line-height:1.5;text-decoration:none;white-space:nowrap}
+.header-action.primary{background:var(--ink);color:white}.header-action:hover{background:var(--green)}.header-action.primary:hover{background:#315d50}
+@media(max-width:800px){.header-controls{gap:8px}.header-controls .nav-links{max-width:none;flex-wrap:wrap}.header-action{font-size:12px;padding:7px 10px}}
+@media(max-width:500px){.header-controls,.header-actions{width:100%}.header-actions .header-action{flex:1}}
+/* Rights sections share the existing four-page navigation. */
+.rights-overview-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.rights-overview-grid .panel{display:flex;flex-direction:column}.rights-overview-grid h3{font-size:20px}
+.rights-shortcut{display:inline-block;margin-top:auto;padding-top:12px;font-weight:700}
+.pay-kind{font-weight:700}#rights [id]{scroll-margin-top:calc(var(--nav-height,90px) + 20px)}
+#rights [data-rights-section][hidden]{display:none}
+@media(max-width:800px){.rights-overview-grid{grid-template-columns:1fr}#rights-view-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}#rights-view-switch button{min-height:44px;text-align:center}#rights .table-scroll{max-width:100%;overscroll-behavior-inline:contain}}
+.time-policy{font-size:13px;line-height:1.65;margin:10px 0;overflow-wrap:anywhere}
+.time-label{display:flex;gap:8px;align-items:center;margin:0 0 8px}.time-label.known{color:var(--ink)}.time-label.pending{color:#85601f}
+.time-rule-list{padding-left:20px;margin:8px 0}.time-rule-list li{margin-bottom:8px}.time-policy summary{cursor:pointer;font-weight:700}
+.gantt-plot.rule-plot{background:#fff}.rule-plot .time-policy{position:relative;max-width:640px;margin:16px 18px 42px;padding:12px 16px;border:1px solid var(--line);border-radius:8px;background:#f6faf7;z-index:1}
+.rule-plot .time-policy .time-rule-list{margin-bottom:0}.gantt-plot.rule-plot .gantt-notes{position:relative;padding:0 18px 12px}
+.time-planner-link{display:inline-block;margin-top:6px;min-height:32px}
+.header-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.share-btn{padding:6px 12px;font-size:13px;border-radius:6px;border:1px solid #c2d3c6;background:#fff;color:var(--ink);cursor:pointer;font-weight:600}
+.share-btn:hover{background:#f0f5f1;border-color:var(--forest)}
+.share-toast{font-size:12px;color:var(--forest);background:#eaf4ed;padding:4px 8px;border-radius:4px;border:1px solid #c2d3c6;white-space:nowrap}
+.detail-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:12px 0 16px;padding:12px 14px;background:#f9fbf9;border:1px solid var(--line);border-radius:8px}
+.detail-search-wrap{flex:1 1 240px;min-width:200px}
+.detail-search-wrap input{width:100%;padding:8px 10px;font:inherit;font-size:13px;border:1px solid var(--line);border-radius:6px}
+.compare-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:10px 0}
+.compare-controls select{padding:7px 10px;font:inherit;font-size:13px;border:1px solid var(--line);border-radius:6px;background:#fff;max-width:320px}
+.compare-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+@media (max-width:768px){.compare-grid{grid-template-columns:1fr}}
+.compare-col{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px}
+.compare-col h3{font-size:18px;margin:0 0 8px;color:var(--forest)}
+.compare-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:700;margin-bottom:12px}
+.compare-badge.primary{background:#e8f1ec;color:var(--forest)}
+.compare-badge.target{background:#fef3e7;color:#b45309}
+.compare-section{margin:12px 0;padding-bottom:12px;border-bottom:1px solid #edf2ee}
+.compare-section:last-child{border-bottom:none}
+.compare-section h4{font-size:13px;font-weight:700;color:var(--muted);margin:0 0 4px}
+.compare-notice{padding:10px 14px;border-radius:6px;background:#fffbeb;border:1px solid #fde68a;font-size:13px;color:#92400e;margin-bottom:16px}
+.timeline-banner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:12px 16px;background:#f4f8f5;border:1px solid #d2e3d6;border-radius:8px;margin-bottom:16px}
+.timeline-banner p{margin:0;font-size:13px}
+.btn-pick-fav{border:1px solid var(--forest);color:var(--forest);background:#fff;border-radius:6px;padding:6px 10px;font-size:13px;font-weight:600;cursor:pointer}
+.btn-pick-fav.active{background:var(--forest);color:#fff}
+.plan-progress{font-size:13px;font-weight:700;color:var(--forest);margin:8px 0}
 </style>
 </head>
 <body>
@@ -242,15 +286,15 @@ html{scroll-behavior:smooth}
 <div class="review-strip">設計審閱稿 · 四分頁互動線框 · 資料快照 2026.10.28 · 所有獎助資料待獨立覆核，非申請建議</div>
 <header class="nav-wrap">
 <div class="nav"><a class="brand" href="#search">OpenGSA<small>Grant Scholarships Award</small></a>
-<nav aria-label="OpenGSA 功能分頁" class="nav-links" role="tablist"><button aria-controls="search" aria-selected="true" data-panel="search" id="tab-search" role="tab" tabindex="0">找獎助</button><button aria-controls="detail" aria-selected="false" data-panel="detail" id="tab-detail" role="tab" tabindex="-1">獎助詳情</button><button aria-controls="timeline" aria-selected="false" data-panel="timeline" id="tab-timeline" role="tab" tabindex="-1">我的時間軸</button><button aria-controls="rights" aria-selected="false" data-panel="rights" id="tab-rights" role="tab" tabindex="-1">權益與求助</button></nav></div>
+<div class="header-controls"><nav aria-label="OpenGSA 功能分頁" class="nav-links" role="tablist"><button aria-controls="search" aria-selected="true" data-panel="search" id="tab-search" role="tab" tabindex="0">找獎助</button><button aria-controls="detail" aria-selected="false" data-panel="detail" id="tab-detail" role="tab" tabindex="-1">獎助詳情</button><button aria-controls="timeline" aria-selected="false" data-panel="timeline" id="tab-timeline" role="tab" tabindex="-1">我的時間軸</button><button aria-controls="rights" aria-selected="false" data-panel="rights" id="tab-rights" role="tab" tabindex="-1">權益與求助</button></nav><nav aria-label="參與 OpenGSA" class="header-actions"><button id="copy-share-link" type="button" class="header-action share-btn" title="複製目前設定與篩選條件網址（不含敏感個資）">📋 分享此畫面</button><span id="share-toast" class="share-toast" role="status" aria-live="polite" hidden="">已複製分享網址</span><a class="header-action" href="https://github.com/matt-ye/opengsa/issues/new?template=preview-feedback.yml" target="_blank" rel="noopener noreferrer" title="在新分頁開啟 GitHub 回饋表單；需帳號，內容公開">提供回饋 ↗</a><a class="header-action primary" href="https://github.com/matt-ye/opengsa/issues/new?template=resource-source.yml" target="_blank" rel="noopener noreferrer" title="提供尚未收錄的獎學金、補助或研究資源；需 GitHub 帳號，內容公開">提供獎助來源 ↗</a></nav></div></div>
 </header>
 <main id="main">
 <section aria-labelledby="tab-search" class="screen" id="search" role="tabpanel">
-<div class="headline"><div><div class="screen-label">01 / DISCOVER · 找獎助</div><h1 id="search-title">把時間留給研究。</h1><p>先篩選值得了解的機會，再用清單或甘特圖看申請期間與結果公布日。</p></div><div class="status-note">互動原型 · 不進行個人資格核定</div></div>
+<div class="headline"><div><div class="screen-label">01 / DISCOVER · 獎助探索與快篩</div><h1 id="search-title">把時間留給研究。</h1><p>快速篩選值得了解的機會，一鍵【⭐ 收藏至個人時程】或【📄 查看完整條文】。</p></div><div class="status-note">互動原型 · 不進行個人資格核定</div></div>
 <div class="mode-row"><div aria-label="資料模式" class="segmented" id="mode-switch" role="group"><button aria-pressed="true" data-mode="demo" type="button">合成排程示範</button><button aria-pressed="false" data-mode="draft" type="button">來源草稿＋會議方案</button></div></div>
 <p class="synthetic-note" id="mode-note">合成資料，僅供互動設計。</p>
 <p class="small quiet">燈號描述來源資訊清晰度，非正確率、申請資格核定或受理保證。未知條件會另列為可能相關。核心四項：來源對應、年度／版本、時間規則、大致對象。</p>
-<label class="small">呈現方式 <select id="document-mode"><option value="documents">依來源文件顯示（保留各年度與版本）</option><option value="programs">依方案彙整（其他文件保留原文連結）</option></select></label>
+<details class="small"><summary>進階檢視：文件與方案</summary><label>呈現方式 <select id="document-mode"><option value="documents">依來源文件顯示（保留各年度與版本）</option><option value="programs">依方案彙整（其他文件保留原文連結）</option></select></label><p>預設保留各份來源；方案彙整只合併已有相同識別碼的文件，不拼接資格或期限。不同年度與梯次仍須核對。</p></details>
 <div aria-label="探索島情境快速篩選" class="persona-grid" id="persona-bar" role="group">
 <button aria-pressed="false" class="persona-tile" data-persona="phd_research" type="button"><span aria-hidden="true" class="hex-badge">博</span><span>博士研究專注<small>國科會／教育部博獎</small></span></button>
 <button aria-pressed="false" class="persona-tile" data-persona="living_support" type="button"><span aria-hidden="true" class="hex-badge">生</span><span>生活與學費減免<small>碩博減免與生活支持</small></span></button>
@@ -258,6 +302,7 @@ html{scroll-behavior:smooth}
 <button aria-pressed="false" class="persona-tile" data-persona="overseas_study" type="button"><span aria-hidden="true" class="hex-badge">外</span><span>境外移地研究<small>千里馬／遠學計畫</small></span></button>
 <button aria-pressed="false" class="persona-tile" data-persona="outcome_award" type="button"><span aria-hidden="true" class="hex-badge">獎</span><span>學術成果與榮譽<small>校長獎／優秀著作</small></span></button>
 <button aria-pressed="false" class="persona-tile" data-persona="ta_assistant" type="button"><span aria-hidden="true" class="hex-badge">聘</span><span>助教與兼任聘任<small>TA／EMITA／RA薪資</small></span></button>
+<button aria-pressed="false" class="persona-tile" data-persona="research_tools" type="button"><span aria-hidden="true" class="hex-badge">研</span><span>研究工具／AI／算力<small>工具訂閱／學生優惠／雲端額度</small></span></button>
 </div>
 <div class="layout">
 <aside aria-label="我的選項與篩選條件" class="panel filter" tabindex="0">
@@ -265,7 +310,7 @@ html{scroll-behavior:smooth}
 
 <details open=""><summary>篩選條件</summary><div class="filter-fields">
 <label>用途<select data-filter="category" id="filter-category"><option value="all">全部用途</option><option value="phd_research">博士研究</option><option value="living_tuition">生活／學費</option><option value="living_emergency">急難支持</option><option value="outcome_award">成果獎</option><option value="international_conference">國際會議</option><option value="overseas_research">境外研究</option><option value="indirect_support">聘任入口</option><option value="research_tools">研究工具／算力</option></select></label>
-<label>① 資助來源<select data-filter="source" id="filter-source"><option value="all">全部來源</option><option value="government">政府</option><option value="university">學校</option><option value="foundation">基金會</option><option value="enterprise">企業／產學</option><option value="research_institute">研究法人／中研院</option><option value="unknown">待確認</option></select></label>
+<label>① 方案來源<select data-filter="source" id="filter-source"><option value="all">全部來源</option><option value="government">政府</option><option value="university">學校</option><option value="foundation">基金會／學會</option><option value="enterprise">企業／產學</option><option value="research_institute">研究法人／中研院</option><option value="unknown">待確認</option></select></label><p class="tiny quiet">依方案名稱或有證據的資助單位分類；轉知網站不代表出資單位。</p>
 <label>② 學位身分<select data-filter="degree" id="filter-degree"><option value="all">碩士與博士</option><option value="master">碩士</option><option value="phd">博士</option><option value="candidate">博士候選人限定</option></select></label>
 <label>③ 年級限制<select data-filter="year" id="filter-year"><option value="all">全部</option><option value="unlimited">明示不限年級</option><option value="range">限定年級</option><option value="freshman">新生入學限定</option><option value="graduating">畢業／論文期限定</option><option value="unknown">待確認</option></select></label>
 <label>④ 是否可兼領<select data-filter="compatibility" id="filter-compatibility"><option value="all">全部</option><option value="allowed">可兼領（已查範圍）</option><option value="conditional">有條件</option><option value="prohibited">不可兼領</option><option value="unknown">待確認</option></select></label>
@@ -329,13 +374,18 @@ html{scroll-behavior:smooth}
 <p class="chart-foot">系所時程僅為範例；往年／估計區間供準備參考。實際資格、申請起訖與程序，以所屬系所及主辦單位最新公告為準。</p>
 </section>
 <aside aria-label="選取項目的時程摘要" aria-live="polite" class="panel" hidden="" id="schedule-inspect"></aside>
-<details id="dates-table"><summary>查看文字日期表</summary><div class="table-scroll"><table><caption class="tiny quiet">與目前篩選同步的日期；待確認不代表不限期。</caption><thead><tr><th scope="col">獎助項目</th><th scope="col">申請開始</th><th scope="col">學生截止</th><th scope="col">結果公布</th><th scope="col">其他程序</th></tr></thead><tbody id="date-rows"></tbody></table></div></details>
+<details id="dates-table"><summary>查看文字日期與規則表</summary><div class="table-scroll" role="region" tabindex="0" aria-label="獎助日期與時間規則，可水平捲動"><table><caption class="tiny quiet">與目前篩選同步；規則依角色分列，沒有確定日期時保留規則文字。</caption><thead><tr><th scope="col">獎助項目</th><th scope="col">申請開始</th><th scope="col">學生截止</th><th scope="col">結果公布</th><th scope="col">其他程序</th><th scope="col">時間類型／規則</th></tr></thead><tbody id="date-rows"></tbody></table></div></details>
 </div>
 </div>
 <noscript><p class="callout">此互動原型需啟用 JavaScript。靜態規劃與資料契約仍可於 repo 閱讀。</p></noscript>
 </section>
 <section aria-labelledby="tab-detail" class="screen" hidden="" id="detail" role="tabpanel">
-<div class="headline"><div><div class="screen-label">02 / UNDERSTAND · 獎助詳情</div><h2>從選項中，看懂申請規則。</h2><p>依第一頁的勾選項目列出詳情；尚未勾選時，先使用目前篩選結果。</p></div><a class="small" href="#search">← 回到找獎助</a></div>
+<div class="headline"><div><div class="screen-label">02 / UNDERSTAND · 方案詳情與條件比對</div><h2>從選項中，看懂申請規則與條文證據。</h2><p>可自由搜尋或比對全庫方案；條文短證據、兼領限制、名額金額與官方連結一目了然。</p></div><a class="small" href="#search">← 回到找獎助</a></div>
+<div class="detail-toolbar">
+<div class="detail-search-wrap"><input autocomplete="off" id="detail-search-input" placeholder="🔍 快速搜尋全庫方案（例如：醫學院、國科會、校長獎...）" type="search"/></div>
+<div class="segmented segmented-small" id="detail-scope-switch" role="group"><button aria-pressed="true" data-scope="shared" type="button">目前選項 (<span id="detail-shared-count">0</span>)</button><button aria-pressed="false" data-scope="all" type="button">全庫所有方案 (<span id="detail-all-count">0</span>)</button></div>
+<div class="compare-controls"><label for="detail-compare-select">雙方案並排比對：</label><select id="detail-compare-select"><option value="">➕ 選擇第二個方案進行並排比對...</option></select><button class="secondary" hidden="" id="clear-compare-btn" type="button">✕ 取消比對</button></div>
+</div>
 <p class="selection-context" id="detail-context"></p>
 <div class="panel empty-workspace" hidden="" id="detail-empty"><p>目前沒有可查看的選項。</p><a href="#search">回第一頁調整篩選 →</a></div>
 <div id="detail-workspace">
@@ -344,42 +394,61 @@ html{scroll-behavior:smooth}
 </div>
 </section>
 <section aria-labelledby="tab-timeline" class="screen" hidden="" id="timeline" role="tabpanel">
-<div class="headline"><div><div class="screen-label">03 / PREPARE · 我的時間軸</div><h2>為選定的機會，安排準備。</h2><p>與第二頁共用第一頁的選項，集中查看時程與準備待辦。</p></div><a class="small" href="#search">調整勾選項目 →</a></div>
+<div class="headline"><div><div class="screen-label">03 / PREPARE · 我的時程與行動規劃</div><h2>為選定的機會，安排專屬時間軸。</h2><p>集中呈現已收藏方案與出國研討會倒推時程，掌握申請期限與準備待辦。</p></div><a class="small" href="#search">調整勾選項目 →</a></div>
+<div class="timeline-banner" id="timeline-pick-banner">
+<div><strong>⭐ 個人專屬時程：</strong><span id="timeline-pick-summary">已收藏 0 項</span></div>
+<button class="secondary" id="timeline-pick-all-filtered" type="button">一鍵收藏第一頁目前篩選方案</button>
+</div>
 <p class="selection-context" id="timeline-context"></p>
-<div class="panel empty-workspace" hidden="" id="timeline-empty"><p>目前沒有可安排的選項。</p><a href="#search">回第一頁調整篩選 →</a></div>
+<div class="panel empty-workspace" hidden="" id="timeline-empty"><p>目前沒有可安排的選項。</p><div class="range-buttons"><button class="secondary" id="timeline-empty-pick-all" type="button">將目前篩選的方案全數加入</button><a href="#search">回第一頁調整篩選 →</a></div></div>
 <div id="timeline-workspace">
 <div class="range-controls"><label for="personal-range-mode">時間範圍 <select id="personal-range-mode"><option value="recent">今天前後90天</option><option value="fit">涵蓋選項的已知日期</option></select></label><span class="today-label" id="personal-today"></span><button class="secondary" id="personal-return-today" type="button">回到今天</button></div>
 <p class="tiny quiet" id="personal-chart-range"></p>
 <div aria-label="個人時間軸圖例" class="gantt-legend"><span class="legend-item">▱ 淺色底帶：往年參考／估計（非官方受理）</span><span class="legend-item">─ 公告至截止流程（非申請期）</span><span class="legend-item"><i aria-hidden="true" class="legend-bar"></i>申請期間</span><span class="legend-item"><i aria-hidden="true" class="legend-inferred"></i>推定受理起日</span><span class="legend-item"><i aria-hidden="true" class="legend-prep-window"></i>準備提醒期（截止前30天）</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond expected"></i>預定結果</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond"></i>結果公布</span><span class="legend-item"><i aria-hidden="true" class="legend-square"></i>其他程序</span><span class="legend-item">▱ 個人準備建議／空心節點待核</span><span class="legend-item"><i aria-hidden="true" class="legend-today"></i>今天</span></div>
 <div aria-label="使用中選項的時間軸，可水平捲動" class="gantt-scroll" role="region" tabindex="0"><div class="gantt-grid" id="personal-gantt-grid"></div></div>
 <p class="prototype-hint">點選項目或節點可前往第二頁。缺日期保留待確認，不影響下方待辦。</p>
-<div class="section-title"><h3>申請清單與準備待辦</h3></div>
+<div class="section-title"><h3>申請清單與準備待辦</h3><div class="plan-progress" id="plan-progress">已準備 0 項</div></div>
 <p class="tiny quiet">待辦進度僅暫存於本次瀏覽（重整後重設，不外傳任何個人紀錄）。</p>
 <div class="cards" id="plan-options"></div>
 </div>
 </section>
 <section aria-labelledby="tab-rights" class="screen" hidden="" id="rights" role="tabpanel">
 <div class="headline"><div><div class="screen-label">04 / KNOW YOUR RIGHTS · 權益與求助</div><h2 id="rights-title">安心研究，從看懂依據開始。</h2><p>先依教育部、勞動部原則釐清學習與僱傭關係，再分別查國科會計畫、臺大校務基金獎勵金與學校補充。經費來源、給付性質與適用法源一起看。</p></div></div>
-<div class="callout"><p><strong>核心原則：先確認僱用關係、經費與身分適用範圍，再核對法律、國科會補助條件及校規；「支給上限」不等於保證實領額度。</strong>本頁為獨立資源專區（初查：2026-10-29），不要求上傳私人契約，亦不代替正式個案裁決。</p></div>
-<div class="rights-toolbar">
-<div aria-label="權益島檢視切換" class="segmented" id="rights-view-switch" role="group">
-<button aria-pressed="true" data-rights-view="all" type="button">全部總覽</button>
-<button aria-pressed="false" data-rights-view="standards" type="button">📜 法規與給付標準</button>
-<button aria-pressed="false" data-rights-view="grievance" type="button">🗺️ 五類救濟與從屬性自測</button>
+<div class="callout"><p><strong>核心原則：先確認僱用關係、經費與身分適用範圍，再核對法律、國科會補助條件及校規；「支給上限」不等於保證實領額度。</strong>本頁為獨立資源專區（來源初查：2026-10-29；給付與連結補核：2026-11-02），不要求上傳私人契約，亦不代替正式個案裁決。</p></div>
+<div class="rights-toolbar"><div aria-label="權益主題切換" class="segmented" id="rights-view-switch" role="group">
+<button aria-controls="rights-overview-group" aria-pressed="true" data-rights-view="overview" type="button">重點總覽</button>
+<button aria-controls="rights-pay-group" aria-pressed="false" data-rights-view="pay" type="button">💰 聘任與給付</button>
+<button aria-controls="rights-standards-group" aria-pressed="false" data-rights-view="standards" type="button">📜 法規與保障</button>
+<button aria-controls="rights-grievance-group" aria-pressed="false" data-rights-view="grievance" type="button">🗺️ 求助與自測</button>
+</div><span class="result-meta">總覽提供入口；完整表格與工具依主題分開。</span></div>
+<div id="rights-overview-group" data-rights-section="overview">
+<div class="rights-overview-grid">
+<article class="panel"><div class="category">01 確認型態</div><h3>我是在受僱，還是參與學習？</h3><p>先核對實際工作、經費與契約，再比較勞僱型、學習型、專任與工讀。</p><a class="rights-shortcut" href="#work-matrix-title">看工作型態與保障 →</a></article>
+<article class="panel"><div class="category">02 核對給付</div><h3>最低額、參考區間、上限或增核？</h3><p>國科會計畫、一般 TA、EMITA 與校方上限各自適用。依制度查表，再向聘任單位確認。</p><a class="rights-shortcut" href="#ta-salary-title">看聘任與給付比較 →</a></article>
+<article class="panel"><div class="category">03 找到支援</div><h3>欠薪、超時或資格有爭議？</h3><p>自測協助整理爭點，五類窗口可依事件選擇；不要求先與指導教授協商。</p><a class="rights-shortcut" href="#subordination-wizard">前往求助與自測 →</a></article>
 </div>
-<span class="result-meta">可切換聚焦「法源與型態比對」或「從屬性自測與五類救濟地圖」</span>
+<article class="panel" style="margin-top:24px"><h3 id="rights-reading-title">延伸閱讀與完整資料</h3><p class="small">本頁聚焦聘任、給付與求助。獎助方案與時程請回到<a href="#search">找獎助</a>；出國會議可用<a href="#conference-planner">研討會補助規劃</a>。以下連結開啟 GitHub 文件，含尚待逐項查證的搜尋種子，請留意文件開頭的狀態說明。</p>
+<ul class="link-list"><li><a href="https://github.com/matt-ye/opengsa/blob/main/docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md">學術階段、出國補助、榮譽推薦與五類聘任路徑（規劃文件） ↗</a></li><li><a href="https://github.com/matt-ye/opengsa/blob/main/docs/RIGHTS-SOURCES.md">官方來源、版本與適用限制台帳 ↗</a></li><li><a href="https://github.com/matt-ye/opengsa/blob/main/docs/RIGHTS-AND-LEGAL-FRAMEWORK.md">工作身分、研究產出與救濟說明 ↗</a></li></ul></article>
 </div>
-<div id="rights-standards-group">
-<article aria-labelledby="hierarchy-map-title" class="panel" id="legal-hierarchy-map" style="margin-bottom:24px">
-<div class="category">法源位階地圖 / 上位法優於下位法</div>
-<h3 id="hierarchy-map-title">三層法源位階金字塔：法律、補助條件與校規，須分清效力及適用範圍。</h3>
-<p class="small">當實驗室口頭規定、系所細則與上位法規衝突時，依法律位階原則核對（點選下方連結可跳至對應表格）：</p>
-<div class="tier-grid">
-<div class="tier-card warn"><div class="tier-step">LEVEL 01 · 國家法律（強制底線）</div><h4>勞基法／最低工資法／大學法</h4><p><strong>勞動底線：</strong>時薪 ≥196元（最低工資法 §5）、全額工資與加班費（勞基法 §22,24）、適用勞退新制者由雇主另提繳至少6%（勞退條例 §14）、吹哨者保密與禁不利處分（勞基法 §74）。<br/><strong>學生權利：</strong>大學法 §33 申訴權、論文著作權依實際創作參與及相關約定判斷，非一律專屬學生、僑外生工作許可及學期中每週20小時限制依就服法 §50與適用身分核對。</p><p class="tiny" style="margin-top:10px"><a class="pill" href="#work-matrix-title" style="display:inline-block;padding:4px 10px;text-decoration:none">看四種型態比對 ↓</a></p></div>
-<div class="tier-card"><div class="tier-step">LEVEL 02 · 中央部會要點與指導原則</div><h4>國科會／教育部／勞動部</h4><p><strong>國科會：</strong>研究人力約用注意事項（FL028686，兼任至少 6,000元）、博士增核措施（1130048968號函，獲增核總額至少 16,000元）、千里馬（FL039188）、國際會議（FL038260）。<br/><strong>分流原則：</strong>教育部獎助生指導原則（GL001889）、勞動部兼任助理指導原則（FL077250，實質從屬性判定）。</p><p class="tiny" style="margin-top:10px"><a class="pill" href="#nstc-rights-title" style="display:inline-block;padding:4px 10px;text-decoration:none">看國科會給付表 ↓</a></p></div>
-<div class="tier-card"><div class="tier-step">LEVEL 03 · 大學校級規章與系所細則</div><h4>校務基金獎勵金／TA／支給上限</h4><p><strong>臺大規章：</strong>研究生獎勵金辦法（109年版）、計畫兼任支給上限表（碩2萬／博未具候選4.2萬／博候5萬）、教務處 TA 辦法（博8k–10k）、雙語中心 EMITA 計畫（碩9.5k／博12k）、學生申訴辦法。</p><p class="tiny" style="margin-top:10px"><a class="pill" href="#ta-salary-title" style="display:inline-block;padding:4px 10px;text-decoration:none">看 TA／RA 薪資級距表 ↓</a></p></div>
-</div>
-</article>
+<div id="rights-pay-group" data-rights-section="pay" hidden>
+<article class="panel" aria-labelledby="ta-routes-title"><div class="category">聘任管道 / 以臺大為例</div><h3 id="ta-routes-title">五類查核路徑：先找到聘任及經費窗口。</h3><p class="small">這是查找分類，並非五套互斥制度。EMITA 可經教務處、國際處或共教中心核定；學院與系所自聘須看個別公告，不推定全校有統一給付。</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="五類聘任查核路徑，可水平捲動"><table><caption>聘任入口與應確認事項</caption><thead><tr><th scope="col">路徑</th><th scope="col">從哪裡查</th><th scope="col">應確認事項</th><th scope="col">來源</th></tr></thead><tbody>
+<tr><th scope="row">研究生獎勵金</th><td>所屬系所／學院、生輔組</td><td>獎助金或勞僱型津貼、分配細則及聘約</td><td><a href="#ntu-award-rights-title">校級辦法摘要 ↓</a></td></tr>
+<tr><th scope="row">教務處／共教中心 TA</th><td>開課或教學單位</td><td>員額核定、認證、課程、工時與約定給付</td><td><a href="https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/教學助理業務常見Q%26A_24081312354518131.pdf">教務處 FAQ Q1、Q3（PDF） ↗</a> · <a href="https://cge.ntu.edu.tw/News_Content_n_68409_s_264301.html">115-1 通識 TA 說明 ↗</a></td></tr>
+<tr><th scope="row">EMITA 全英語教學助理</th><td>雙語教育中心及核定教學單位</td><td>英語／認證資格、補助名額與實際核定標準</td><td><a href="https://cbe.ntu.edu.tw/archives/15">培訓入口 ↗</a> · <a href="https://cbe.ntu.edu.tw/files/0ada7b2f164e1adc">實施計畫（PDF） ↗</a></td></tr>
+<tr><th scope="row">學院專案聘任</th><td>所屬學院當期公告或承辦</td><td>專案是否存在、經費、身分與契約；未逐案確認</td><td><a href="https://github.com/matt-ye/opengsa/blob/main/docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md">查找方向（規劃文件，非聘任公告） ↗</a></td></tr>
+<tr><th scope="row">系所自聘／實驗課輔</th><td>系所辦公室或開課單位</td><td>實際招募、預算及聘任條件；未逐案確認</td><td><a href="https://github.com/matt-ye/opengsa/blob/main/docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md">查找方向（規劃文件，非聘任公告） ↗</a></td></tr>
+</tbody></table></div></article>
+<article aria-labelledby="ta-salary-title" class="panel" style="margin-top:24px"><div class="category">給付比較 / 制度與身分分列</div><h3 id="ta-salary-title">TA／EMITA／RA 給付：每個金額都要連同適用條件閱讀。</h3><p class="small">新臺幣；以下按制度分類，不是一套由低到高的薪資階梯。學士級列作比較，博士候選人也不能把「上限」視為保證實領。</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="TA與RA給付比較，可水平捲動"><table><caption>給付金額、性質與官方依據</caption><thead><tr><th scope="col">聘任／方案</th><th scope="col">適用對象與金額</th><th scope="col">給付性質</th><th scope="col">條件與限制</th><th scope="col">官方來源／版本</th></tr></thead><tbody>
+<tr><th scope="row">臺大一般教務處 TA</th><td>學士 4,000–6,000／碩士 6,000–7,500／博士 8,000–10,000 元／月</td><td><span class="pay-kind">原則給付區間</span></td><td>限本制度核定；給付及工時須書面約定，工時與最低工資另核。</td><td><a href="https://www.dlc.ntu.edu.tw/wp-content/uploads/教務處教學助理制度獎勵金實施辦法.pdf">辦法第4條（PDF） ↗</a><br>111.6.2發布；第4條111.8.1施行。</td></tr>
+<tr><th scope="row">臺大 EMITA</th><td>學士 7,000／碩士 9,500／博士 12,000 元／月</td><td><span class="pay-kind">方案原則標準</span></td><td>實施計畫列原則標準；教務處 FAQ Q3 稱上限可調升至此額。須符合資格及核定，不是博士生通用下限。</td><td><a href="https://cbe.ntu.edu.tw/files/0ada7b2f164e1adc">實施計畫參、伍（PDF） ↗</a> · <a href="https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/教學助理業務常見Q%26A_24081312354518131.pdf">FAQ Q3 ↗</a><br>111.5.27通過；金額條款111.8.1施行。</td></tr>
+<tr><th scope="row">國科會學生兼任人員</th><td>至少 6,000 元／月</td><td><span class="pay-kind">計畫給付最低要求</span></td><td>限注意事項約用的學生兼任人員；僱傭關係另核適用工資與工時。</td><td><a href="#nstc-rights-title">國科會詳細表 ↓</a><br>注意事項第4點。</td></tr>
+<tr><th scope="row">國科會博士生增核</th><td>增核 10,000 元／月；領有增核者合計至少 16,000 元／月</td><td><span class="pay-kind">增核額＋附條件總額底線</span></td><td>須核計畫、約用與增核資格；不是所有博士生自動適用，也不自行與校方上限相加。</td><td><a href="#nstc-rights-title">原函、FAQ 與適用分支 ↓</a><br>113.7.15原函／FAQ第2題。</td></tr>
+<tr><th scope="row">臺大計畫兼任／研究獎助生</th><td>大專 12,000／碩士 20,000／博士未具候選資格 42,000／博士候選人 50,000 元／月</td><td><span class="pay-kind">支給上限</span></td><td>本表適用計畫；同一委補助單位合計。上限不是最低額，也不是保證實領。</td><td><a href="https://ord.ntu.edu.tw/WebUPD/ordntu/pm/國立臺灣大學計畫兼任助理及研究獎助生每月支給上限標準表_23121516034949938.pdf">上限標準表（PDF） ↗</a><br>112.12.15施行。</td></tr>
+<tr><th scope="row">國科會計畫專任人員</th><td>專科至少 30,400／學士至少 36,300／碩士級以上至少 41,500 元／月</td><td><span class="pay-kind">專任最低要求</span></td><td>在學原則不得擔任，進修例外另核；候選人資格不等於專任聘任。</td><td><a href="#nstc-rights-title">注意事項第3、4點 ↓</a><br>113.10.22修正；該次第4點修正114.1.1生效。</td></tr>
+<tr><th scope="row">適用最低工資的勞僱工作／工讀</th><td>2026年時薪至少 196 元；全時按月計酬至少 29,500 元</td><td><span class="pay-kind">法定工資底線</span></td><td>須核計酬及正常工時條件；不可用津貼額倒推可要求工時，其他年度另查。</td><td><a href="https://www.mol.gov.tw/1607/28690/2282/2284/2290/7121/">勞動部最低工資問答 ↗</a><br>115.1.1起金額；問答更新2026.4.21。</td></tr>
+</tbody></table></div><p class="source-note">官方文件補核：2026-11-02。此為有來源的閱讀摘要，未代填獨立人工覆核或個人給付核定。校方聘約與當期適用版本仍須確認。</p></article>
 <article aria-labelledby="nstc-rights-title" class="panel" style="margin-bottom:24px">
 <div class="category">主要依據 / 國科會補助專題研究計畫</div><h3 id="nstc-rights-title">先看國科會給付要求，再看學校怎麼訂。</h3>
 <p class="small"><a href="https://law.nstc.gov.tw/LawContent.aspx?id=FL028686">研究人力約用注意事項 ↗</a> · 修正：113年10月22日；依<a href="https://law.nstc.gov.tw/LawContentSource.aspx?id=FL028686">官方沿革</a>，第四點本次修正自114年1月1日生效。以下依約用身分分列，博士生還須查增核分支。</p>
@@ -391,25 +460,36 @@ html{scroll-behavior:smooth}
 <p class="source-note">一般及專任額度：注意事項第三、四及七點。博士增核：<a href="https://www.nstc.gov.tw/folksonomy/list/ced2afbb-f4d4-48b3-909f-247d5fbbe2f5?l=ch">國科會措施入口</a>、<a href="https://www.nstc.gov.tw/nstc/attachments/0a7ca0b3-2bb4-4d00-a175-45246024cf08">113年7月15日原函</a>及<a href="https://www.nstc.gov.tw/nstc/attachments/e3c16203-1b68-49bd-bf5d-ba1d12f6976e">FAQ第2題</a>。計畫給付要求與法定最低工資分別核對；本頁不以6000元換算可要求工時。</p>
 <details class="small"><summary>博士生增核：如何確認適用？</summary><ul class="muted-list"><li>先向計畫執行機構確認經費核定清單、博士生約用文件及實際給付項目；私人文件不需上傳OpenGSA。</li><li>113年8月1日（含）以後開始的計畫依申請書審查結果主動增核；較早計畫另循變更申請。新提案應併同編列，不能把「博士生」直接等同「已獲增核」。</li><li>原函要求增核經費專款專用。FAQ第6題另定未滿月的增核費用按日在職核算，第10題說明同一約用期間以補助一次為限。</li><li>10,000元是此措施的增核額，16,000元是領有增核者的最低每月總額。本輪未查得12,000元為國科會博士生通用下限；若屬校方、系所或其他方案，須另附原文與版本。</li></ul></details>
 </article>
+<article aria-labelledby="ntu-award-rights-title" class="panel" style="margin-top:24px"><div class="category">臺大校級 / 校務基金研究生獎勵金</div><h3 id="ntu-award-rights-title">獎助金與勞僱型津貼，先分清楚再查系所規則。</h3><p class="small"><a href="https://advisory.ntu.edu.tw/CMS/Page/211">生輔組相關辦法入口 ↗</a>目前連至<a href="https://sec.ntu.edu.tw/001/Upload/18/relfile/9760/24895/71247f3a-7b42-474b-962d-02481279dfef.pdf">研究生獎勵金實施辦法 ↗</a>（109年9月29日修正通過版）。這是校級辦法，與國科會計畫及博士生增核分開。</p><ul class="muted-list"><li><strong>第1、2條：經費與兩類給付。</strong>由校務基金編列預算，分獎助金與勞僱型兼任助理津貼，兩類得兼領；獎助金不附勞務負擔。系所得在校方年度額度內訂比例、金額、名額與條件，不代表可排除適用勞動法規。</li><li><strong>第5、8條：兼領與資訊公開。</strong>其他獎助兼領仍須核系所總額上限及另一方案限制；生輔組依作業期程公告年度額度、基數、各系所員額、分配與餘額。</li><li><strong>第9、10條：契約與學生參與。</strong>勞僱型須訂明工作、工時、工資等契約事項；系所與院方協調後，視需求邀學生代表訂細則，包含審查、申訴並送生輔組備查。</li></ul><p class="source-note">現行以生輔組 109 年修正版為準，實際發放額度依各系所當年度細則與聘約核定。</p></article>
+<article class="panel" style="margin-top:24px"><h3 id="campus-work-title">校內工讀與其他聘任機會</h3><p>先向實際招募單位確認工作、工時、計酬及保險；兼領限制另核目前獎助的條款。學院、系所與行政單位個別公告，不由本頁推定有職缺。</p><ul class="link-list"><li><a href="#work-matrix-title">比較工讀、兼任與學習型保障 →</a></li><li><a href="https://github.com/matt-ye/opengsa/blob/main/docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md">工讀與學術生涯延伸閱讀（含待查種子） ↗</a></li><li><a href="#search">回到找獎助與資源入口 →</a></li></ul></article>
+</div>
+<div id="rights-standards-group" data-rights-section="standards" hidden>
+<article aria-labelledby="hierarchy-map-title" class="panel" id="legal-hierarchy-map" style="margin-bottom:24px">
+<div class="category">法源位階地圖 / 上位法優於下位法</div>
+<h3 id="hierarchy-map-title">三層法源位階金字塔：法律、補助條件與校規，須分清效力及適用範圍。</h3>
+<p class="small">當實驗室口頭規定、系所細則與上位法規衝突時，依法律位階原則核對（點選下方連結可跳至對應表格）：</p>
+<div class="tier-grid">
+<div class="tier-card warn"><div class="tier-step">LEVEL 01 · 國家法律（強制底線）</div><h4>勞基法／最低工資法／大學法</h4><p><strong>勞動底線：</strong>時薪 ≥196元（最低工資法 §5）、全額工資與加班費（勞基法 §22,24）、適用勞退新制者由雇主另提繳至少6%（勞退條例 §14）、吹哨者保密與禁不利處分（勞基法 §74）。<br/><strong>學生權利：</strong>大學法 §33 申訴權、論文著作權依實際創作參與及相關約定判斷，非一律專屬學生、僑外生工作許可及學期中每週20小時限制依就服法 §50與適用身分核對。</p><p class="tiny" style="margin-top:10px"><a class="pill" href="#work-matrix-title" style="display:inline-block;padding:4px 10px;text-decoration:none">看四種型態比對 ↓</a></p></div>
+<div class="tier-card"><div class="tier-step">LEVEL 02 · 中央部會要點與指導原則</div><h4>國科會／教育部／勞動部</h4><p><strong>國科會：</strong>研究人力約用注意事項（FL028686，兼任至少 6,000元）、博士增核措施（1130048968號函，獲增核總額至少 16,000元）、千里馬（FL039188）、國際會議（FL038260）。<br/><strong>分流原則：</strong>教育部獎助生指導原則（GL001889）、勞動部兼任助理指導原則（FL077250，實質從屬性判定）。</p><p class="tiny" style="margin-top:10px"><a class="pill" href="#nstc-rights-title" style="display:inline-block;padding:4px 10px;text-decoration:none">看國科會給付表 ↓</a></p></div>
+<div class="tier-card"><div class="tier-step">LEVEL 03 · 大學校級規章與系所細則</div><h4>校務基金獎勵金／TA／支給上限</h4><p><strong>臺大規章：</strong>研究生獎勵金辦法（109年版）、計畫兼任支給上限表（碩2萬／博未具候選4.2萬／博候5萬）、教務處 TA 辦法（博8k–10k）、雙語中心 EMITA 計畫（原則標準，須核名額與條件）、學生申訴辦法。</p><p class="tiny" style="margin-top:10px"><a class="pill" href="#ta-salary-title" style="display:inline-block;padding:4px 10px;text-decoration:none">看 TA／RA 薪資級距表 ↓</a></p></div>
+</div>
+</article>
+
 <div class="topic-grid">
 <article class="panel"><div class="category">01 全國通用 / 學習與僱傭分流</div><h3>看實際關係，不只看給付名稱。</h3><p>勞動部指導原則第2點涵蓋受學校僱用、受指揮監督並以研究、教學或行政工作獲取報酬的學生。是否有僱傭關係，依人格從屬性、經濟從屬性及其他法令綜合判斷。</p><p>監督考核、勞務對價等是判斷因素；不能只憑固定給付，就直接認定一律適用勞基法。第3點另區分勞基法適用情形，須連同進用依據與實際工作核對。</p><ul class="link-list"><li><a href="https://edu.law.moe.gov.tw/LawContent.aspx?id=GL001889">教育部獎助生權益保障指導原則 ↗</a></li><li><a href="https://laws.mol.gov.tw/FLAW/PrintFLAWDAT0202.aspx?id=FL077250">勞動部兼任助理勞動權益保障指導原則 ↗</a> · <a href="https://www.mol.gov.tw/1607/28162/28296/28428/28430/28438/28440/29148/">官方PDF備援</a></li></ul><p class="tiny">國科會注意事項第3點是約用類別，第4點是費用與給付。一般TA與其他經費，另找適用制度；僱傭與勞基法適用不能只由款項名稱決定。</p></article>
-<article class="panel"><div class="category">02 勞動法規底線</div><h3>僱傭關係還要核對工資與工時。</h3><p>勞動部公告：115年1月1日起每小時最低工資196元；按月計酬且依法定正常工時上限履行勞務者，每月29,500元。部分工時須依實際計酬與工時核對。</p><a class="small" href="https://www.mol.gov.tw/1607/28162/28166/28180/28182/28188/29025/">勞動部最低工資說明 ↗</a><details class="small" style="margin-top:12px"><summary>查法源：給付、工時、退休金與申訴</summary><ul class="link-list"><li><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0030028">最低工資法第5條</a>：工資不得低於最低工資。</li><li><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0030001">勞基法</a>：第22、23條給付與明細；第24、30、32條加班及工時；第74條申訴及不利處分禁止。</li><li><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0030020">勞工退休金條例第7、14條</a>：先核適用身分，再查雇主提繳要求；保險另依約用注意事項第四點與各保險法規核對。</li></ul></details><p class="tiny" style="margin-top:12px">數額為2026年生效版摘要，不是研究津貼一律適用額度。新年度另記生效日；兼領另核雙方方案及契約。</p></article>
+<article class="panel"><div class="category">02 勞動法規底線</div><h3>僱傭關係還要核對工資與工時。</h3><p>勞動部公告：115年1月1日起每小時最低工資196元；按月計酬且依法定正常工時上限履行勞務者，每月29,500元。部分工時須依實際計酬與工時核對。</p><a class="small" href="https://www.mol.gov.tw/1607/28690/2282/2284/2290/7121/">勞動部最低工資說明 ↗</a><details class="small" style="margin-top:12px"><summary>查法源：給付、工時、退休金與申訴</summary><ul class="link-list"><li><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0030028">最低工資法第5條</a>：工資不得低於最低工資。</li><li><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0030001">勞基法</a>：第22、23條給付與明細；第24、30、32條加班及工時；第74條申訴及不利處分禁止。</li><li><a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0030020">勞工退休金條例第7、14條</a>：先核適用身分，再查雇主提繳要求；保險另依約用注意事項第四點與各保險法規核對。</li></ul></details><p class="tiny" style="margin-top:12px">數額為2026年生效版摘要，不是研究津貼一律適用額度。新年度另記生效日；兼領另核雙方方案及契約。</p></article>
 <article class="panel"><div class="category">03 學校補充 / 依校分列</div><h3>看清楚：最低額、參考表還是上限？</h3><ul class="link-list"><li><a href="https://www.personnel.ntu.edu.tw/News_n_101162_sms_79140.html">臺大人事室薪資標準 ↗</a>：區分博士後、專任、兼任及經費來源；專任參考表現列115年1月1日起版本。</li><li><a href="https://ord.ntu.edu.tw/WebUPD/ordntu/pm/國立臺灣大學計畫兼任助理及研究獎助生每月支給上限標準表_23121516034949938.pdf">臺大兼任助理／研究獎助生上限表 ↗</a>：112年12月15日起施行。博士班未取得候選人資格42,000元、已取得50,000元，均為<strong>每月上限</strong>，同一委補助單位合計。</li><li><a href="https://rd.usc.edu.tw/p/406-1048-4836,r147.php?Lang=zh-tw">實踐大學國科會計畫兼任助理標準 ↗</a>：跨校國科會計畫兼任助理標準參考（依各校研發處當期公告核對）。</li></ul><p class="tiny">校方上限不是保證可領額，也不能倒推最低工資或給付義務。須核對適用經費、身分、期間與契約。</p></article>
 <article class="panel"><div class="category">04 正式求助</div><h3>選擇適合問題的窗口。</h3><p>校內詢問、學生申訴、勞動諮詢、勞檢與調解分開。適用範圍與救濟期限須依正式程序查核。</p><ul class="link-list"><li><a href="https://advisory.ntu.edu.tw/CMS/Page/252">臺大學生申訴專區 ↗</a></li><li><a href="https://www.mol.gov.tw/1607/28690/89680/">勞動部勞資爭議資源與分流 ↗</a></li></ul></article>
 </div>
-<article aria-labelledby="ntu-award-rights-title" class="panel" style="margin-top:24px"><div class="category">臺大校級 / 校務基金研究生獎勵金</div><h3 id="ntu-award-rights-title">獎助金與勞僱型津貼，先分清楚再查系所規則。</h3><p class="small"><a href="https://advisory.ntu.edu.tw/CMS/Page/211">生輔組相關辦法入口 ↗</a>目前連至<a href="https://sec.ntu.edu.tw/001/Upload/18/relfile/9760/24895/71247f3a-7b42-474b-962d-02481279dfef.pdf">研究生獎勵金實施辦法 ↗</a>（109年9月29日修正通過版）。這是校級辦法，與國科會計畫及博士生增核分開。</p><ul class="muted-list"><li><strong>第1、2條：經費與兩類給付。</strong>由校務基金編列預算，分獎助金與勞僱型兼任助理津貼，兩類得兼領；獎助金不附勞務負擔。系所得在校方年度額度內訂比例、金額、名額與條件，不代表可排除適用勞動法規。</li><li><strong>第5、8條：兼領與資訊公開。</strong>其他獎助兼領仍須核系所總額上限及另一方案限制；生輔組依作業期程公告年度額度、基數、各系所員額、分配與餘額。</li><li><strong>第9、10條：契約與學生參與。</strong>勞僱型須訂明工作、工時、工資等契約事項；系所與院方協調後，視需求邀學生代表訂細則，包含審查、申訴並送生輔組備查。</li></ul><p class="source-note">現行以生輔組 109 年修正版為準，實際發放額度依各系所當年度細則與聘約核定。</p></article>
-<article aria-labelledby="ta-salary-title" class="panel" style="margin-top:24px">
-<div class="category">薪資級距與聘任管道 / 助教（TA／EMITA）與兼任研究助理（RA）</div><h3 id="ta-salary-title">助教（TA）與兼任助理（RA）：五大聘任管道與 4,000～50,000 元級距總表。</h3>
-<p class="small">依臺大《教務處教學助理制度獎勵金實施辦法》（111.6.2公布，第4點自111.8.1實施）、雙語教育中心《EMITA 實施計畫》、國科會注意事項及研發處支給上限表整理：</p>
-<div aria-label="助教與兼任助理薪資級距總表，可水平捲動" class="table-scroll" role="region" tabindex="0"><table><caption>TA／RA給付標準查核入口</caption><thead><tr><th scope="col">依據</th><th scope="col">查核重點</th></tr></thead><tbody><tr><th scope="row">適用最低工資的勞僱工作</th><td>2026年最低時薪196元、全時月薪29,500元；須核對工時、計酬、加班與身分，不由津貼額倒推可要求工時。</td></tr><tr><th scope="row">國科會計畫研究人力</th><td>依上方一般、博士增核及專任表分別核對；增核10,000元不是所有博士生的通用月薪。</td></tr><tr><th scope="row">學校／課程／系所聘任</th><td>一般TA、EMITA及系所助學金金額須查當期辦法、聘任公告與契約。尚未逐項覆核的金額不列為保障；臺大支給上限另見校方來源。</td></tr></tbody></table></div>
-</article>
+
+
 <article aria-labelledby="work-matrix-title" class="panel" style="margin-top:24px">
 <div class="category">全維度比對 / 四種校園工作與獎助型態</div><h3 id="work-matrix-title">勞僱型、學習型、專任與工讀：法源與保障一次核對。</h3>
 <p class="small">依《大學法》、教育部《專科以上學校獎助生權益保障指導原則》（GL001889）及勞動部《專科以上學校兼任助理勞動權益保障指導原則》（FL077250）整理。實務認定依<strong>實質從屬性（人格、經濟、組織從屬）</strong>，不因名義為「獎助金」而當然排除勞動法令。</p>
 <div aria-label="四種工作型態法規比對矩陣，可水平捲動" class="table-scroll" role="region" tabindex="0"><table><caption>校園四種工作與獎助型態比對表</caption><thead><tr><th scope="col">比對維度</th><th scope="col">勞僱型兼任助理 (RA/TA)</th><th scope="col">學習型研究獎助生</th><th scope="col">計畫專任研究助理</th><th scope="col">校內短期工讀生</th></tr></thead><tbody>
 <tr><th scope="row">主要法源</th><td>勞動基準法、勞動部指導原則、最低工資法</td><td>教育部獎助生權益保障指導原則、各校辦法</td><td>勞動基準法、國科會約用注意事項（FL028686）</td><td>勞動基準法、最低工資法、各校工讀要點</td></tr>
 <tr><th scope="row">核心性質</th><td>具勞務對價與指揮監督之研究／教學／行政工作</td><td>以學習或論文研究為主要目的之課程／畢業訓練</td><td>全時從事專題計畫執行（在學原則不得兼任，進修部等除外）</td><td>庶務行政、圖書館輪值、活動支援勞務</td></tr>
-<tr><th scope="row">最低工資與勞退</th><td>適用（2026時薪 ≥196元；適用勞退新制者雇主另提繳至少6%，不得內扣）</td><td>不適用最低工資法；國科會計畫兼任要求至少 6,000元／月（博士增核至少 16,000元）</td><td>適用（國科會最低：專科 30,400、學士 36,300、碩士以上 41,500元／月；勞退另核適用身分）</td><td>適用（2026時薪 ≥196元、全時月薪 ≥29,500元；勞退另核適用身分）</td></tr>
+<tr><th scope="row">最低工資與勞退</th><td>適用（2026時薪 ≥196元；適用勞退新制者雇主另提繳至少6%，不得內扣）</td><td>不適用最低工資法；適用國科會學生兼任要求至少6,000元／月；已核領博士增核者總額至少16,000元，非學習型一律適用</td><td>適用（國科會最低：專科 30,400、學士 36,300、碩士以上 41,500元／月；勞退另核適用身分）</td><td>適用（2026時薪 ≥196元、全時月薪 ≥29,500元；勞退另核適用身分）</td></tr>
 <tr><th scope="row">保險與智財權</th><td>依身分及進用依據核對勞保、就保、職災保險；職務著作依《著作權法》第11條契約約定</td><td>學校團保及職災保障；<strong>論文著作權依實際創作事實判斷；教授僅提供觀念指導不因此成為共同著作人</strong>（參照智財局論文著作權說明）</td><td>全額勞健保、災保；計畫產出依聘約與國科會規定歸屬</td><td>依適用規定核對勞保及職災保險（部分工時投保級距）</td></tr>
 <tr><th scope="row">爭議救濟管轄</th><td>地方勞工局調解、地方主管機關勞檢申訴或民事法院</td><td>依校規及處分救濟教示選擇申訴、訴願或司法途徑</td><td>地方勞工局勞資爭議調解、勞檢或法院</td><td>地方勞工局調解、地方主管機關勞檢申訴</td></tr>
 </tbody></table></div>
@@ -417,7 +497,7 @@ html{scroll-behavior:smooth}
 <div class="card-actions"><button class="secondary" id="jump-to-grievance" type="button">遇到欠薪、超時或「假學習真勞動」爭議？前往五類救濟與自測 →</button></div>
 </article>
 </div>
-<div id="rights-grievance-group" style="margin-top:24px">
+<div id="rights-grievance-group" data-rights-section="grievance" hidden>
 <section aria-labelledby="wizard-title" class="wizard-box" id="subordination-wizard">
 <div class="category">權益島互動工具 / 僅留存本次記憶體</div>
 <h3 id="wizard-title" style="margin:6px 0 8px">3 分鐘「從屬性與工作型態」爭點自我檢核</h3>

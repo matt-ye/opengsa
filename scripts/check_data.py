@@ -110,9 +110,10 @@ def validate_candidate_snapshot(bundle, config):
         elif meta["url"]!=sources[sid]["url"]:
             if meta.get("parent_url")!=sources[sid]["url"] or meta["url"] not in sources[sid].get("known_attachment_urls",[]):
                 errors.append("candidate attachment is not bound to its registered parent/URL")
-        if sid in sources and meta["evidence_mode"]!=sources[sid]["evidence_mode"]:
+        # A document may retain less than its source permits, never more.
+        if sid in sources and meta["evidence_mode"]!=sources[sid]["evidence_mode"] and not (meta["evidence_mode"]=="hash_only" and sources[sid]["evidence_mode"]=="short_excerpt"):
             errors.append("candidate evidence policy differs from its source profile")
-        if sid in sources and sources[sid]["evidence_mode"]=="hash_only":
+        if meta['evidence_mode']=='hash_only' or (sid in sources and sources[sid]["evidence_mode"]=="hash_only"):
             if any(e.get("excerpt") is not None for e in cand["field_evidence"]) or any(a.get("quote") is not None for a in cand["verification"].get("audit_findings",[])):
                 errors.append("hash_only source cannot retain excerpts or audit quotes")
         if cand["candidate_id"] in ids:errors.append("duplicate candidate id")
@@ -134,11 +135,28 @@ def main():
     candidate_paths=list((ROOT/"data/candidates").glob("*.json"))
     for path in candidate_paths:
         errors.extend(f"{path.name}: {e}" for e in validate_candidate_snapshot(read_json(path),read_json(ROOT/"data/scan-sources.json")))
+    if (ROOT/'data/temporal-observations.json').exists():
+        from scripts.time_policy import validate_temporal_snapshot
+        errors.extend(validate_temporal_snapshot(read_json(ROOT/'data/candidates/source-review.json'),read_json(ROOT/'data/temporal-observations.json')))
     from scripts.source_chains import timeline_metadata
     try:
         timeline_metadata(read_json(ROOT/'data/source-chains.json'),read_json(ROOT/'data/candidates/source-review.json'))
     except Exception as error:
         errors.append('source-chains: '+str(error))
+    if (ROOT/'data/source-chain-index.json').exists():
+        from scripts.export_source_chain_graph import load_graph
+        try:
+            load_graph()
+        except Exception as error:
+            errors.append('source-chain-index: '+str(error))
+    if (ROOT/'data/source-expansion/run-2026-11-01.json').exists():
+        from scripts.export_expansion_report import validate_artifacts
+        try:validate_artifacts(ROOT)
+        except Exception as error:errors.append('source-expansion: '+str(error))
+    if (ROOT/'data/source-expansion/original-source-verification.json').exists():
+        from scripts.close_source_verification import validate_report
+        try:validate_report(read_json(ROOT/'data/source-expansion/original-source-verification.json'),read_json(ROOT/'data/source-inventory.json'))
+        except Exception as error:errors.append('original-source-verification: '+str(error))
     if errors:
         for error in errors:
             print(error)
