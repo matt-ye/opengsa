@@ -169,6 +169,7 @@ flowchart TD
 | [企業與基金會獎助全景與申辦鏈](docs/ENTERPRISE-SCHOLARSHIP-LANDSCAPE-AND-SOURCE-CHAINS.md) | 85 筆民間與企業獎助雙軌申辦鏈（生輔組薦送 vs 線上直申）與防偽查核 |
 | [UI/UX 易用性升級與導覽研究](docs/UI-UX-ONBOARDING-AND-SKILLS-STUDY.md) | 網站導覽教學、可近性改進與參考開源 Skill 深度研究 |
 | [開源資助與生態系贊助策略](docs/OPEN-SOURCE-GRANTS-AND-OPENAI-STRATEGY.md) | 開源專案資助申請策略、OpenAI Grants 與長效營運規劃 |
+| [研究生與學生專用免費 AI API 全攻略](docs/FREE-AI-API-KEYS-GUIDE.md) | 8 組主流 LLM API（Groq, Gemini, NVIDIA, SambaNova 等）免費額度、申請資格與使用指南 |
 | [候選審查工作台](docs/REVIEW-WORKSPACE.md) | 未發布預覽、人工處置、重新核驗與資料 PR 草稿流程 |
 | [公開預覽與部署](docs/DEPLOYMENT.md) | GitHub Pages發布、公開回饋、成品邊界、測試與回復 |
 | [長期維運與訂閱提案](docs/OPERATIONS-PLAN.md) | GitHub／D1分工、來源擷取、Agent檢核、成本、RSS與ICS；D1與訂閱尚未啟用 |
