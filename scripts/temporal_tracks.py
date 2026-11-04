@@ -105,6 +105,10 @@ _ENTERPRISE_MARKERS = (
     "企業",
     "nvidia",
     "research.google",
+    "慈濟",
+    "普仁",
+    "家扶",
+    "罕見疾病",
 )
 
 _GOV_MARKERS = (
@@ -122,6 +126,18 @@ _GOV_MARKERS = (
     "市政府",
     "縣政府",
     "青年局",
+    "農業部",
+    "退輔會",
+    "原住民族委員會",
+    "原住民族",
+    "原民會",
+    "原民",
+    "國教署",
+    "k12ea",
+    "移民署",
+    "衛生福利部",
+    "學產基金",
+    "學產",
 )
 
 RESOLVED_SUBMISSION_MODES = frozenset({

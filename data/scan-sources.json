@@ -6,35 +6,78 @@
   "allowed_hosts": [
     "ac.ntu.edu.tw",
     "aws.amazon.com",
+    "cip.ntcu.edu.tw",
+    "coop.k12ea.gov.tw",
     "coph.ntu.edu.tw",
     "daas.sinica.edu.tw",
+    "dep.mohw.gov.tw",
     "dgservice.hccg.gov.tw",
     "docs.github.com",
+    "e-service.k12ea.gov.tw",
     "edu.google.com",
     "edu.law.moe.gov.tw",
     "education.github.com",
     "eecs.ntu.edu.tw",
+    "ep.k12ea.gov.tw",
+    "eservice.vac.gov.tw",
+    "fatraceschool.k12ea.gov.tw",
     "gice.ntu.edu.tw",
     "giee.ntu.edu.tw",
+    "helpdreams.moe.edu.tw",
+    "ifi.immigration.gov.tw",
+    "lae.mol.gov.tw",
+    "law.moj.gov.tw",
     "law.nstc.gov.tw",
+    "laws.mol.gov.tw",
     "liberal.ntu.edu.tw",
     "one.google.com",
     "ord.ntu.edu.tw",
+    "pea.nknu.edu.tw",
     "research.google",
+    "research.nvidia.com",
+    "rural.k12ea.gov.tw",
+    "scholarship.moa.gov.tw",
+    "scholarship.ncut.edu.tw",
+    "sp.immigration.gov.tw",
+    "special.moe.gov.tw",
+    "tw.tzuchi.org",
     "www.aca.ntu.edu.tw",
+    "www.ccf.org.tw",
+    "www.cip.gov.tw",
     "www.cm.nsysu.edu.tw",
+    "www.doe.gov.taipei",
+    "www.ece.moe.edu.tw",
+    "www.edu.tw",
     "www.eng.ntu.edu.tw",
+    "www.ey.gov.tw",
     "www.faos.org.tw",
+    "www.farmer.org.tw",
     "www.foxconnfoundation.org",
     "www.gov.tw",
+    "www.hpa.gov.tw",
+    "www.hsingtian.org.tw",
+    "www.ht.org.tw",
+    "www.immigration.gov.tw",
+    "www.k12ea.gov.tw",
+    "www.moa.gov.tw",
+    "www.mol.gov.tw",
     "www.nstc.gov.tw",
     "www.nvidia.com",
-    "research.nvidia.com",
+    "www.president.gov.tw",
+    "www.sfaa.gov.tw",
     "www.sinica.edu.tw",
     "www.studyabroad.moe.gov.tw",
+    "www.taiwanjobs.gov.tw",
+    "www.tfrd.org.tw",
     "www.tsmc.com",
+    "www.tzuchi.org.tw",
+    "www.vac.gov.tw",
+    "www.vndf.org.tw",
     "www.wda.gov.tw",
+    "www.yda.gov.tw",
+    "www.you-care.org.tw",
     "www.youth.ntpc.gov.tw",
+    "young.cloud.ncnu.edu.tw",
     "youth.gov.taipei",
     "youth.tycg.gov.tw"
   ],
@@ -986,6 +1029,381 @@
       "resource_kind": "scholarship",
       "scope": "ntu",
       "enabled": false
+    },
+    {
+      "id": "k12-moe-ece-subsidies",
+      "title": "我國少子女化對策計畫 —— 幼兒就學補助（公立、非營利、準公共幼兒園費用減免）",
+      "url": "https://www.ece.moe.edu.tw/",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "我國少子女化對策計畫"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：教育部國民及學前教育署 主管，階段：preschool",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-moe-childcare-stipend-2to5",
+      "title": "教育部 2 至未滿 5 歲育兒津貼",
+      "url": "https://e-service.k12ea.gov.tw/",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "教育部 2 至未滿 "
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：教育部國民及學前教育署 / 衛生福利部社會及家庭署 主管，階段：preschool",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-moe-low-income-preschool-aid",
+      "title": "低收入戶及中低收入戶幼童托教補助",
+      "url": "https://dep.mohw.gov.tw/DOSAASW/",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "低收入戶及中低收入戶"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：衛生福利部社會救助及社工司 / 各直轄市及縣市政府教育局 主管，階段：preschool",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-moe-scholarship-fund-low-income",
+      "title": "教育部學產基金設置低收入戶學生助學金",
+      "url": "https://scholarship.ncut.edu.tw/",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "教育部學產基金設置低"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：教育部國民及學前教育署（委託國立勤益科技大學學產基金專案辦公室辦理） 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-cip-indigenous-elementary-junior-aid",
+      "title": "原住民族委員會國民中小學清寒原住民學生助學金",
+      "url": "https://cip.ntcu.edu.tw/home",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "原住民族委員會國民中"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：原住民族委員會（委託國立臺中教育大學辦理） 主管，階段：elementary,junior_high",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-vac-veterans-children-education-aid",
+      "title": "國軍退除役官兵輔導委員會高中職以下榮民子女就學補助",
+      "url": "https://www.vac.gov.tw/",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "國軍退除役官兵輔導委"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：國軍退除役官兵輔導委員會 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-moe-military-civil-servant-bereaved-aid",
+      "title": "軍公教遺族就學費用優待",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0150009",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "軍公教遺族就學費用優"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：教育部國民及學前教育署 / 各主管教育行政機關 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-moe-disability-tuition-waiver",
+      "title": "身心障礙學生及身心障礙人士子女就學費用減免與獎助",
+      "url": "https://special.moe.gov.tw/",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "身心障礙學生及身心障"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：教育部國民及學前教育署原民特教組 / 各直轄市及縣市政府教育局 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-nia-new-immigrant-scholarship",
+      "title": "內政部移民署新住民及其子女培力與獎助（勵）學金計畫",
+      "url": "https://sp.immigration.gov.tw/",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "內政部移民署新住民及"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：內政部移民署（運用新住民發展基金） 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-moe-school-lunch-subsidy",
+      "title": "國民中小學清寒學生無力支付午餐費及代收代辦費補助",
+      "url": "https://fatraceschool.k12ea.gov.tw/",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "國民中小學清寒學生無"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：教育部國民及學前教育署 / 各直轄市及縣市政府教育局處 主管，階段：elementary,junior_high",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-moe-president-education-award",
+      "title": "教育部總統教育獎",
+      "url": "https://pea.nknu.edu.tw/",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "教育部總統教育獎"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：教育部國民及學前教育署（委託國立東華大學主辦專案） 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-moe-senior-high-free-tuition",
+      "title": "高級中等學校全面免學費方案（自112學年度第2學期起全面取消排富）",
+      "url": "https://ep.k12ea.gov.tw/",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "高級中等學校全面免學"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：教育部國民及學前教育署高級中等教育組 主管，階段：senior_high,vocational_high,five_year_junior_college_y1_y3",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-moe-special-circumstances-family-waiver",
+      "title": "特殊境遇家庭子女孫子女就學費用減免",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050075",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "特殊境遇家庭子女孫子"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：教育部國民及學前教育署 / 衛生福利部 主管，階段：senior_high,vocational_high,five_year_junior_college_y1_y3",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-mol-unemployed-workers-children-stipend",
+      "title": "勞動部失業勞工在學子女生活扶助金（高級中等學校組）",
+      "url": "https://lae.mol.gov.tw/",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "勞動部失業勞工在學子"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：勞動部勞動福祉退休司 主管，階段：senior_high,vocational_high,five_year_junior_college_y1_y3",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-moa-farmers-fishermen-children-scholarship",
+      "title": "農業部獎勵農漁民子女就學金（高級中等學校組）",
+      "url": "https://www.moa.gov.tw/",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "農業部獎勵農漁民子女"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：農業部農民輔導司 主管，階段：senior_high,vocational_high,five_year_junior_college_y1_y3",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-k12ea-indigenous-highschool-grant-and-meals",
+      "title": "高級中等學校原住民學生助學金及伙食費補助",
+      "url": "https://helpdreams.moe.edu.tw/",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "高級中等學校原住民學"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：教育部國民及學前教育署原民特教組 主管，階段：senior_high,vocational_high,five_year_junior_college_y1_y3",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-k12ea-cooperative-education-stipend",
+      "title": "高級中等學校建教合作學生生活津貼與學費全額補助",
+      "url": "https://coop.k12ea.gov.tw/",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "高級中等學校建教合作"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：教育部國民及學前教育署高中職組 / 勞動部 主管，階段：vocational_high",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-moe-youth-education-employment-savings",
+      "title": "教育部青年教育與就業儲蓄帳戶方案（高中職畢業生就業儲蓄津貼）",
+      "url": "https://young.cloud.ncnu.edu.tw/",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "教育部青年教育與就業"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：教育部青年發展署 / 勞動部勞動力發展署 主管，階段：senior_high,vocational_high",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-k12ea-remote-schools-transport-hostel",
+      "title": "偏遠地區學校及非山非市學生交通費與住宿補助",
+      "url": "https://rural.k12ea.gov.tw/",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "偏遠地區學校及非山非"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：教育部國民及學前教育署 主管，階段：elementary,junior_high,senior_high",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-hsing-tian-kong-scholarship",
+      "title": "財團法人行天宮文教發展促進基金會 —— 行天宮助學金",
+      "url": "https://www.ht.org.tw/",
+      "schedule_track": "enterprise",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "財團法人行天宮文教發"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：財團法人台北市行天宮文教發展促進基金會 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-you-care-pu-ren-mentorship-aid",
+      "title": "財團法人普仁青年關懷基金會 —— 大手拉小手助學計畫",
+      "url": "https://www.you-care.org.tw/",
+      "schedule_track": "enterprise",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "財團法人普仁青年關懷"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：財團法人普仁青年關懷基金會 主管，階段：junior_high,senior_high,vocational_high",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-tzu-chi-sprout-scholarship",
+      "title": "財團法人中華民國佛教慈濟慈善事業基金會 —— 慈濟新芽獎學金",
+      "url": "https://www.tzuchi.org.tw/",
+      "schedule_track": "enterprise",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "財團法人中華民國佛教"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：財團法人中華民國佛教慈濟慈善事業基金會 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-tfrd-rare-disorder-scholarship",
+      "title": "財團法人罕見疾病基金會 —— 罕見疾病獎助學金",
+      "url": "https://www.tfrd.org.tw/",
+      "schedule_track": "enterprise",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "財團法人罕見疾病基金"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：財團法人罕見疾病基金會 主管，階段：preschool,elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-ccf-taiwan-children-scholarship",
+      "title": "財團法人台灣兒童暨家庭扶助基金會 —— 扶助弱勢兒少獎助學金",
+      "url": "https://www.ccf.org.tw/",
+      "schedule_track": "enterprise",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "財團法人台灣兒童暨家"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：財團法人台灣兒童暨家庭扶助基金會（家扶基金會） 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "k12-foxconn-whale-vocational-scholarship",
+      "title": "財團法人鴻海教育基金會 —— 鴻海獎學鯨（高中職及技職專案組）",
+      "url": "https://www.foxconnfoundation.org/",
+      "schedule_track": "enterprise",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "財團法人鴻海教育基金"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "K-12 基準方案：財團法人鴻海教育基金會 主管，階段：senior_high,vocational_high,five_year_junior_college_y1_y3",
+      "pdf_include": [],
+      "max_pdfs": 0
     }
   ],
   "deferred_sources": [
