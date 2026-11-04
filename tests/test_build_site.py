@@ -13,6 +13,40 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class SiteBuildTests(unittest.TestCase):
+    def test_all_64_temporal_projections_render_without_fabricated_coordinates(self):
+        soup=BeautifulSoup(self.html,'html.parser')
+        payload={key:json.loads(soup.select_one('#'+tag).string) for key,tag in
+            [('pilot','pilot-data'),('radar','radar-data')]}
+        code=r'''
+const fs=require('node:fs'), assert=require('node:assert/strict');
+const core=require('./docs/design/prototype.js');
+const data=JSON.parse(fs.readFileSync(0,'utf8'));
+const items=core.makeDrafts(data.pilot,'2026-11-03',data.radar);
+assert.equal(items.length,64);
+for(const item of items){
+ const mode=core.timePresentation(item);
+ assert.ok(mode.label && !mode.label.includes('undefined'),item.id);
+ if(item.timePolicy?.gaps.includes('multiple_cycles_need_split')){
+  assert.equal(item.start.value,null);assert.equal(item.end.value,null);assert.equal(item.milestones.length,0);
+ }
+ if(['event_relative','recurring','continuous','unit_announced','review_only','reference','undetermined'].includes(mode.mode)){
+  assert.equal(item.start.value,null,item.id);assert.equal(item.end.value,null,item.id);
+ }
+ if(item.start.value&&item.end.value)assert.ok(item.start.value<=item.end.value,item.id);
+ const range=core.domain([item],'2026-11-03','fit'),g=core.geometry(item,range);
+ if(g.bar){assert.ok(Number.isFinite(g.bar.left)&&Number.isFinite(g.bar.width),item.id);assert.ok(g.bar.width>=0,item.id);}
+ assert.notEqual(item.rawState,'open',item.id); // no unreviewed replay auto-opens intake
+}
+for(const state of ['open','closed','upcoming','unknown','not_applicable']){
+ const actual=state==='upcoming'?'not_yet_open':state;
+ assert.ok(core.filterItems(items,{application:state}).every(i=>i.rawState===actual));
+}
+console.log('64 items: temporal labels, geometry, ambiguous years, intake filters PASS');
+'''
+        result=subprocess.run(['node','-e',code],cwd=ROOT,input=json.dumps(payload,ensure_ascii=False),
+            text=True,encoding='utf-8',capture_output=True)
+        self.assertEqual(result.returncode,0,result.stderr)
+
     @classmethod
     def setUpClass(cls):
         cls.temp = tempfile.TemporaryDirectory()
@@ -94,6 +128,14 @@ class SiteBuildTests(unittest.TestCase):
                 self.assertTrue(local.is_file(), str(local))
         self.assertIn('支給上限', rights.select_one('#rights-pay-group').get_text())
         self.assertNotIn('29025/', str(rights))  # Removed official URL returns 410.
+
+    def test_page_heading_and_timing_table_remain_semantic_in_the_build(self):
+        soup = BeautifulSoup(self.html, 'html.parser')
+        self.assertEqual(len(soup.select('main h1')), 1)
+        table = soup.select_one('#dates-table table')
+        self.assertEqual(len(table.select('thead th[scope="col"]')), 6)
+        self.assertIn('時間類型／規則', table.get_text())
+        self.assertIsNotNone(table.caption)
 
 
 if __name__ == "__main__":

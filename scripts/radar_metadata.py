@@ -1,5 +1,9 @@
 """Field visibility for the discovery view. No approvals, fetches or source text."""
 from scripts.verify_candidates import classify_review_gaps
+from scripts.review_candidates import candidate_fingerprint
+from scripts.time_policy import project_time_policy, source_is_unsafe, temporal_observation, calendar_is_ambiguous
+import json
+from pathlib import Path
 import re
 
 
@@ -23,16 +27,14 @@ def programme_source(candidate, organizations):
     return {'type':'unknown','basis':'unresolved','label':'未辨識方案來源，不以公告網站代填'}
 
 
-def radar_metadata(bundle):
+def radar_metadata(bundle, observations=None):
+    if observations is None:
+        path=Path(__file__).resolve().parents[1]/'data/temporal-observations.json'
+        observations=json.loads(path.read_text(encoding='utf-8')) if path.exists() else {}
     records={}
     for candidate in bundle['candidates']:
         gaps=classify_review_gaps(candidate)['source']
-        verification=candidate['verification']
-        unsafe=bool(verification['errors'] or candidate['gaps_and_conflicts']['conflicts'])
-        unsafe=unsafe or verification['status'] in ('failed_automated_checks','conflict_detected','needs_context')
-        unsafe=unsafe or any(verification['checks'].get(k) is not True for k in (
-            'schema_valid','evidence_supported','date_and_amount_units_valid',
-            'no_year_or_branch_mixing','negation_and_roles_valid','no_unresolved_conflicts'))
+        unsafe=source_is_unsafe(candidate)
         evidence=candidate['field_evidence']
         def supported(path):
             return not unsafe and any(e['field_path']==path or e['field_path'].startswith((path+'.',path+'/')) for e in evidence)
@@ -66,5 +68,31 @@ def radar_metadata(bundle):
             'known':known,'unsafe':unsafe,'unknown_reasons':gaps,
             'audience_kind':candidate['eligibility']['identity'].get('claim_kind','source_specific_summary'),
             'organizations':organizations,'time_steps':time_steps,
+            'time_policy':project_time_policy(candidate,unsafe),
             'programme_source':programme_source(candidate,organizations) if not unsafe else {'type':'unknown','basis':'unsafe','label':'來源檢核未通過'}}
+        observation=temporal_observation(candidate,observations)
+        attempt=observations.get('records',{}).get(candidate['candidate_id'],{})
+        if attempt.get('status')=='blocked' and attempt.get('candidate_sha256')==candidate_fingerprint(candidate):
+            reason='replay_deferred' if attempt.get('reason')=='run_budget_exhausted' else 'source_access_restricted'
+            records[candidate['candidate_id']]['time_policy']['gaps']=[reason]
+        if observation:
+            row=records[candidate['candidate_id']]
+            row['time_policy']=observation['policy']
+            row['time_observed_at']=observation['observed_at']
+            row['time_revision']=observation['revision_id']
+            row['time_dates']={}
+            # Multiple routes/deadlines stay rules, never collapse by min/max.
+            for key,stage in [('start','application_start'),('end','submission'),('result','result')]:
+                claims=[r for r in observation['policy']['rules'] if r['kind']=='absolute' and r['stage']==stage
+                        and (r['actor']=='student' if key!='result' else True)]
+                values={r['value'] for r in claims}
+                if len(values)==1 and not calendar_is_ambiguous(observation['policy']):
+                    is_dual=any(r.get('year_basis')=='dual_anchored' for r in claims)
+                    row['time_dates'][key]={'value':claims[0]['value'],'certainty':'inferred' if is_dual else 'confirmed',**(({'note':'依公告發布日與計畫年度雙重錨定（待核座標）'}) if is_dual else {})}
+            if calendar_is_ambiguous(observation['policy']):
+                row['time_policy']={**observation['policy'],'submission_mode':'mixed',
+                    'gaps':list(dict.fromkeys([*observation['policy']['gaps'],'multiple_cycles_need_split']))}
+            if (observation['policy']['submission_mode']=='fixed_window'
+                    and not all(k in row['time_dates'] for k in ('start','end'))):
+                row['time_policy']={**observation['policy'],'submission_mode':'mixed'}
     return {'version':'radar-1','records':records}

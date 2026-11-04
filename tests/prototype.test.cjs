@@ -8,6 +8,32 @@ const demo = core.makeDemo(today);
 const pilot = JSON.parse(fs.readFileSync(path.join(__dirname,"../data/pilot.json"),"utf8"));
 const conferenceData=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/conference-programs.json"),"utf8"));
 
+test("機構時間規則不依賴學生截止閘門，缺日期仍保留角色與來源",()=>{
+ const id=pilot.opportunities[0].id;
+ const policy={version:"time-policy-1",submission_mode:"event_relative",review_mode:"not_stated",gaps:["needs_event_date","student_window_not_recorded"],rules:[
+  {kind:"event_relative",actor:"institution",stage:"submission",summary:"SYNTH 會前兩個曆月",value:null,anchor_event:"conference_start",source_refs:[{locator:"SYNTH"}]}]};
+ const meta={url:"https://example.test/synth",revision:"SYNTH",observed_at:"2026-11-03T00:00:00+08:00",unsafe:false,known:{},organizations:{},time_steps:[],time_policy:policy};
+ const item=core.makeDrafts(pilot,"2026-11-03",{records:{[id]:meta}})[0];
+ assert.equal(item.end.value,null);assert.equal(item.timeRule,null);
+ assert.equal(item.rawState,core.makeDrafts(pilot,"2026-11-03")[0].rawState);
+ assert.equal(core.timePresentation(item).mode,"event_relative");
+ assert.equal(core.timePresentation(item).rules[0].actor,"institution");
+ assert.equal(core.timePresentation(item).rules[0].value,null);
+ assert.ok(core.timePresentation(item).gaps.some(s=>s.includes("所屬單位")));
+});
+
+test("條件上限保持條件標記，常態規則不補日期，來源衝突不顯示規則",()=>{
+ const base={start:{value:null},end:{value:null},result:{value:null},milestones:[],timePolicy:{submission_mode:"recurring",rules:[{kind:"recurring",actor:"unit",stage:"submission",value:null}],gaps:[]}};
+ assert.equal(core.timePresentation(base).mode,"recurring");
+ const conditional={...base,start:{value:"2026-01-01"},end:{value:"2026-11-10"},timePolicy:{...base.timePolicy,submission_mode:"conditional_deadline"}};
+ assert.equal(core.timePresentation(conditional).mode,"conditional_deadline");
+ const unsafe=core.timePresentation({...base,conflict:true});
+ assert.equal(unsafe.mode,"undetermined");assert.deepEqual(unsafe.rules,[]);
+ const example={...base,start:{value:"2026-06-01"},end:{value:"2026-06-30"},timeline:{isExample:true}};
+ assert.equal(core.timePresentation(example).mode,"fixed_window");
+ assert.equal(core.timePresentation(example).rules[0].actor,"unit");
+});
+
 test("地方時程全局綜覽依單位／梯次分列，範例與歷史不改全局受理",()=>{
  const item={id:"SYNTH",title:"SYNTH",start:{value:null},end:{value:null},result:{value:null},milestones:[],rawState:"unknown",application:"待確認",note:"SYNTH",degrees:[]};
  const data={documents:[{id:"d",url:"https://example.test/call",checked_on:"2026-07-01"}],records:{SYNTH:{contexts:[
@@ -663,4 +689,94 @@ test("地方工具補助須檢查個人相對期限，不以年度上限宣稱�
   assert.equal(core.windowState(row,"2026-12-01"),"closed");
   assert.equal(c.category,"research_tools");
  }
+});
+
+test("跨Chunk與多文件Map-Reduce合成之fixed_window與學院里程碑可投影至甘特圖",()=>{
+ const id=pilot.opportunities[0].id;
+ const policy={
+  version:"time-policy-1",
+  submission_mode:"fixed_window",
+  review_mode:"batch",
+  gaps:[],
+  rules:[
+   {rule_id:"model_verified/0",kind:"absolute",actor:"student",stage:"application_start",summary:"來源明示受理起日",value:"2026-06-01",precision:"date",anchor_event:null,source_refs:[{source:"s1",revision_id:"r1",locator:"HTML/p1",evidence_path:"temporal_model_verified/application_start"}]},
+   {rule_id:"model_verified/1",kind:"absolute",actor:"student",stage:"submission",summary:"來源明示收件截止",value:"2026-07-29T08:00:00+08:00",precision:"datetime",anchor_event:null,source_refs:[{source:"s1",revision_id:"r2",locator:"PDF/p2",evidence_path:"temporal_model_verified/submission",url:"https://example.test/call.pdf"}]},
+   {rule_id:"model_verified/2",kind:"absolute",actor:"college",stage:"submission",summary:"來源明示學院彙送截止",value:"2026-08-05",precision:"date",anchor_event:null,source_refs:[{source:"s1",revision_id:"r1",locator:"HTML/p2",evidence_path:"temporal_model_verified/submission"}]},
+   {rule_id:"model_verified/3",kind:"absolute",actor:"other",stage:"result",summary:"來源明示結果公布日",value:"2026-10-15",precision:"date",anchor_event:null,source_refs:[{source:"s1",revision_id:"r2",locator:"PDF/p3",evidence_path:"temporal_model_verified/result",url:"https://example.test/call.pdf"}]}
+  ]
+ };
+ const meta={
+  url:"https://example.test/synth",
+  revision:"r1",
+  observed_at:"2026-11-03T00:00:00+08:00",
+  unsafe:false,
+  known:{},
+  organizations:{},
+  time_steps:[],
+  time_policy:policy,
+  time_observed_at:"2026-11-03T00:00:00+08:00",
+  time_revision:"r1",
+  time_dates:{
+   start:{value:"2026-06-01",certainty:"confirmed"},
+   end:{value:"2026-07-29T08:00:00+08:00",certainty:"confirmed"},
+   result:{value:"2026-10-15",certainty:"confirmed"}
+  }
+ };
+ const item=core.makeDrafts(pilot,"2026-06-15",{records:{[id]:meta}})[0];
+ assert.equal(item.start.value,"2026-06-01");
+ assert.equal(item.end.value,"2026-07-29T08:00:00+08:00");
+ assert.equal(item.result.value,"2026-10-15");
+ assert.equal(item.milestones.length,1);
+ assert.equal(item.milestones[0].label,"學院截止");
+ assert.equal(item.milestones[0].value,"2026-08-05");
+ assert.equal(core.timePresentation(item).mode,"fixed_window");
+ const range=core.domain([item],"2026-06-15","fit");
+ const geom=core.geometry(item,range);
+ assert.ok(geom.bar && geom.bar.width>0);
+ assert.ok(geom.wait && geom.wait.width>0);
+});
+
+test("URL 狀態序列化與反序列化支援深層連結與稀疏編碼",()=>{
+ const parsed = core.parseUrlParams("?tab=detail&id=ntu-med-publication-115&q=%E8%AB%96%E6%96%87&cat=outcome_award&deg=phd&picks=a,b&compare=ntu-president-114", "");
+ assert.equal(parsed.tab, "detail");
+ assert.equal(parsed.id, "ntu-med-publication-115");
+ assert.equal(parsed.query, "論文");
+ assert.equal(parsed.category, "outcome_award");
+ assert.equal(parsed.degree, "phd");
+ assert.equal(parsed.compare, "ntu-president-114");
+ assert.deepEqual(parsed.picks, ["a", "b"]);
+
+ const serialized = core.serializeStateToParams({
+  tab: "detail",
+  mode: "draft",
+  view: "list",
+  query: "論文",
+  category: "outcome_award",
+  degree: "phd",
+  id: "ntu-med-publication-115",
+  compare: "ntu-president-114",
+  picks: ["a", "b"]
+ }, "demo");
+ assert.ok(serialized.includes("tab=detail"));
+ assert.ok(serialized.includes("mode=draft"));
+ assert.ok(serialized.includes("cat=outcome_award"));
+ assert.ok(serialized.includes("id=ntu-med-publication-115"));
+ assert.ok(serialized.includes("compare=ntu-president-114"));
+ assert.ok(serialized.includes("picks=a%2Cb"));
+});
+
+test("搜尋擴充同義詞比對：搜尋論文／著作／醫學院均能精確命中臺大醫學院研究生優秀著作獎",()=>{
+ const drafts = core.makeDrafts(pilot, "2026-11-04");
+ const medPub = drafts.find(x => x.id === "ntu-med-publication-115");
+ assert.ok(medPub, "臺大醫學院優秀著作獎應存在於 drafts 中");
+ assert.ok(core.itemMatchesQuery(medPub, "論文"), "搜尋「論文」應命中著作獎");
+ assert.ok(core.itemMatchesQuery(medPub, "著作"), "搜尋「著作」應命中著作獎");
+ assert.ok(core.itemMatchesQuery(medPub, "醫學院"), "搜尋「醫學院」應命中著作獎");
+ assert.ok(core.itemMatchesQuery(medPub, "成果獎"), "搜尋「成果獎」應命中著作獎");
+
+ const filteredByPaper = core.filterItems(drafts, {query: "論文"});
+ assert.ok(filteredByPaper.some(x => x.id === "ntu-med-publication-115"), "filterItems 應包含醫學院著作獎");
+
+ const filteredByMed = core.filterItems(drafts, {query: "醫學院"});
+ assert.ok(filteredByMed.some(x => x.id === "ntu-med-publication-115"), "filterItems 應包含醫學院著作獎");
 });
