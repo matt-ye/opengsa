@@ -881,7 +881,7 @@ def parse_roc_or_iso_date_from_text(text, default_roc_year=None):
 
     # 1. 檢查民國年月日 + 時間 (例如: 115/11/26下午5時, 115年7月29日早上8時, 115/7/31中午12時, 115年11月26日 17:00)
     dt_roc = re.search(
-        r"(1\d{2})\s*[年/.\-]\s*(\d{1,2})\s*[月/.\-]\s*(\d{1,2})\s*日?\s*(?:(上午|早上|下午|傍晚|中午)\s*(\d{1,2})\s*[時點](?:\s*(\d{1,2})\s*分)?|(\d{1,2}):(\d{2}))",
+        r"(1\d{2})\s*[年/.\-]\s*(\d{1,2})\s*[月/.\-]\s*(\d{1,2})\s*日?\s*(?:(上午|早上|下午|傍晚|中午)\s*(\d{1,2})\s*(?:[時點](?:\s*(\d{1,2})\s*分)?|[：:](\d{2}))|(\d{1,2})[：:](\d{2}))",
         clean,
     )
     if dt_roc:
@@ -891,14 +891,14 @@ def parse_roc_or_iso_date_from_text(text, default_roc_year=None):
         period = dt_roc.group(4)
         if dt_roc.group(5) is not None:
             hour = int(dt_roc.group(5))
-            minute = int(dt_roc.group(6) or 0)
+            minute = int(dt_roc.group(6) or dt_roc.group(7) or 0)
             if period in ("下午", "傍晚") and hour < 12:
                 hour += 12
             elif period in ("上午", "早上") and hour == 12:
                 hour = 0
         else:
-            hour = int(dt_roc.group(7))
-            minute = int(dt_roc.group(8))
+            hour = int(dt_roc.group(8))
+            minute = int(dt_roc.group(9))
         iso_dt = f"{year:04d}-{month:02d}-{day:02d}T{hour:02d}:{minute:02d}:00+08:00"
         if parse_taipei_datetime(iso_dt) is not None:
             return "datetime", iso_dt

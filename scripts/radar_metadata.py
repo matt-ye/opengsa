@@ -87,7 +87,8 @@ def radar_metadata(bundle, observations=None):
                         and (r['actor']=='student' if key!='result' else True)]
                 values={r['value'] for r in claims}
                 if len(values)==1 and not calendar_is_ambiguous(observation['policy']):
-                    row['time_dates'][key]={'value':claims[0]['value'],'certainty':'confirmed'}
+                    is_dual=any(r.get('year_basis')=='dual_anchored' for r in claims)
+                    row['time_dates'][key]={'value':claims[0]['value'],'certainty':'inferred' if is_dual else 'confirmed',**(({'note':'依公告發布日與計畫年度雙重錨定（待核座標）'}) if is_dual else {})}
             if calendar_is_ambiguous(observation['policy']):
                 row['time_policy']={**observation['policy'],'submission_mode':'mixed',
                     'gaps':list(dict.fromkeys([*observation['policy']['gaps'],'multiple_cycles_need_split']))}

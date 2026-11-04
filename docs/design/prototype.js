@@ -852,7 +852,7 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
   const button=el("button","row-title",item.title);button.type="button";button.addEventListener("click",()=>onInspect(item));
   label.append(button,el("div","tiny quiet",labels.category[item.category]+" · "+labels.source[item.source]));
   if(exampleNote)label.append(el("div","tiny quiet timeline-example",exampleNote+" · "+timelinePhase(item.timeline.phase)));
-  const labelDateDesc = item.personal ? "學生期限："+deadlineText(item) : (item.start.certainty==="inferred"?"推定起訖：":"")+startLabel(item)+" → "+deadlineText(item);
+  const labelDateDesc = item.personal ? "學生期限："+deadlineText(item) : (item.start.certainty==="inferred"||item.end.certainty==="inferred"?"推定起訖：":"")+startLabel(item)+" → "+deadlineText(item);
   if(item.start.value||item.end.value)label.append(el("div","tiny quiet",labelDateDesc));
   else label.append(sourceLink(timing.label,item));
   if(item.start.value||item.end.value)label.append(el("div","tiny quiet",timing.label));
@@ -887,15 +887,15 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
   }
   if(g.wait) {const wait=el("span","gantt-wait");wait.style.left=g.wait.left+"%";wait.style.width=g.wait.width+"%";wait.setAttribute("aria-hidden","true");plot.append(wait);}
   if(g.bar) {
-   const isInferred=item.start.certainty==="inferred";
+   const isInferred=item.start.certainty==="inferred"||item.end.certainty==="inferred";
    const bar=el("button","gantt-bar"+(isInferred?" inferred":""));
    bar.type="button";bar.style.left=g.bar.left+"%";bar.style.width=g.bar.width+"%";
-   bar.title=(exampleNote?exampleNote+"；":"")+(timing.mode==="conditional_deadline"?"外層受理區間（個人條件另核）：":isInferred?"推定受理期（依官方公告日推定）：":"申請期間：")+dateText(item.start.value)+" 至 "+dateText(item.end.value)+(isInferred?"（"+(item.start.note||"依官方公告發布日推定即日起受理")+"）":"");
+   bar.title=(exampleNote?exampleNote+"；":"")+(timing.mode==="conditional_deadline"?"外層受理區間（個人條件另核）：":isInferred?"推定受理期（依官方公告日推定）：":"申請期間：")+dateText(item.start.value)+" 至 "+dateText(item.end.value)+(isInferred?"（"+(item.start.note||item.end.note||"依官方公告發布日推定即日起受理")+"）":"");
    bar.setAttribute("aria-label",item.title+"，"+bar.title);bar.addEventListener("click",()=>onInspect(item));plot.append(bar);
   }
   const isStartInferred=item.start.certainty==="inferred";
   marker(plot,g.start,"start"+(isStartInferred?" inferred":""),(isStartInferred?"推定申請開始（依官方公告日）：":"申請開始：")+dateText(item.start.value)+(isStartInferred?"（"+(item.start.note||"")+"）":""),item,onInspect);
-  marker(plot,g.end,"end"+(item.personal?" estimated":""),"學生截止："+deadlineText(item),item,onInspect);
+  marker(plot,g.end,"end"+(item.personal?" estimated":item.end.certainty==="inferred"?" inferred":""),(item.end.certainty==="inferred"?"推定學生截止（待核座標）：":"學生截止：")+deadlineText(item),item,onInspect);
   marker(plot,g.result,"result "+(item.result.certainty==="expected"?"expected":""),(item.result.certainty==="expected"?"預定":"")+"結果公布："+resultText(item),item,onInspect);
   item.milestones.forEach(m=>{const p=position(m.value,range);if(p!==null&&p>=0&&p<100) marker(plot,p,"milestone"+(item.personal?" estimated":""),m.label+"："+dateText(m.value),item,onInspect);});
   const notes=[];

@@ -1,6 +1,6 @@
 {
   "version": "temporal-replay-1",
-  "http_requests": 27,
+  "http_requests": 40,
   "model_calls": 0,
   "published": false,
   "batches": [
@@ -37,6 +37,27 @@
         "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f"
       ],
       "observed_at": "2026-11-04T03:04:21+00:00"
+    },
+    {
+      "http_requests": 8,
+      "attempted_urls": [
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+        "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f",
+        "https://gice.ntu.edu.tw/shownews.php?ID=7062"
+      ],
+      "observed_at": "2026-11-04T04:14:01+00:00"
+    },
+    {
+      "http_requests": 5,
+      "attempted_urls": [
+        "https://gice.ntu.edu.tw/shownews.php?ID=7278",
+        "https://gice.ntu.edu.tw/shownews.php?ID=7061",
+        "https://gice.ntu.edu.tw/shownews.php?ID=7279",
+        "https://gice.ntu.edu.tw/shownews.php?ID=7282"
+      ],
+      "observed_at": "2026-11-04T04:14:18+00:00"
     }
   ],
   "records": {
@@ -3367,28 +3388,122 @@
       "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-04T03:03:39+00:00",
-      "raw_sha256": "575691878d13205a5acf82a29ad0266c6bd16118a037c17abb5024ff858e391f",
-      "revision_id": "414bc013caeb8bf4699558a61f2de4abb868d6bc62b7761bd7cc2fab87bc7cd8",
+      "observed_at": "2026-11-04T04:14:01+00:00",
+      "history": [
+        {
+          "candidate_sha256": "bf78e45c7ef82ecaac09b393db16b81ab34fee4f75b02d49145059222ace9f34",
+          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187",
+          "status": "replayed",
+          "reason": null,
+          "observed_at": "2026-11-04T03:03:39+00:00",
+          "raw_sha256": "575691878d13205a5acf82a29ad0266c6bd16118a037c17abb5024ff858e391f",
+          "revision_id": "414bc013caeb8bf4699558a61f2de4abb868d6bc62b7761bd7cc2fab87bc7cd8",
+          "format": "html",
+          "policy": {
+            "version": "time-policy-1",
+            "submission_mode": "rule_text",
+            "review_mode": "not_stated",
+            "rules": [
+              {
+                "rule_id": "replay/0",
+                "kind": "text_rule",
+                "actor": "student",
+                "stage": "submission",
+                "summary": "來源列示月日：3月25日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r299",
+                    "revision_id": "414bc013caeb8bf4699558a61f2de4abb868d6bc62b7761bd7cc2fab87bc7cd8",
+                    "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              }
+            ],
+            "gaps": []
+          },
+          "parser_sha256": "8db935983c568d462d492c8fba80d535acc78e20a86137f37a70052c05e2445e",
+          "diagnostics": [
+            {
+              "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
+              "has_deadline": false,
+              "has_student": true,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "date",
+                "2024-02-05"
+              ]
+            },
+            {
+              "locator": ".article-center / text-block 4",
+              "has_deadline": false,
+              "has_student": true,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": ".article-center / text-block 5 + .article-center / text-block 6 + .article-center / text-block 7 + .article-center / text-block 8",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": ".article-center / text-block 7 + .article-center / text-block 8 + .article-center / text-block 9 + .article-center / text-block 10",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            }
+          ]
+        }
+      ],
+      "raw_sha256": "443ab5c0c26252816ca65415dc7c4a221f7e6840edac74dca01f1d62c4481f4f",
+      "revision_id": "eceb93af989d1410be8fbe5d2ed8cc089c8715b34b9cff0ed995747282afe9ce",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "rule_text",
+        "submission_mode": "deadline_only",
         "review_mode": "not_stated",
         "rules": [
           {
             "rule_id": "replay/0",
-            "kind": "text_rule",
+            "kind": "absolute",
             "actor": "student",
             "stage": "submission",
-            "summary": "來源列示月日：3月25日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
+            "summary": "來源明示收件截止（依公告日與計畫年度雙重錨定，待核座標）",
+            "value": "2024-03-25T08:00:00+08:00",
+            "precision": "datetime",
+            "year_basis": "dual_anchored",
             "anchor_event": null,
             "source_refs": [
               {
                 "source": "discovery-r299",
-                "revision_id": "414bc013caeb8bf4699558a61f2de4abb868d6bc62b7761bd7cc2fab87bc7cd8",
+                "revision_id": "eceb93af989d1410be8fbe5d2ed8cc089c8715b34b9cff0ed995747282afe9ce",
                 "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
                 "evidence_path": "temporal_replay/submission"
               }
@@ -3397,7 +3512,7 @@
         ],
         "gaps": []
       },
-      "parser_sha256": "8db935983c568d462d492c8fba80d535acc78e20a86137f37a70052c05e2445e",
+      "parser_sha256": "cf8c25556e22a7460b97ea093d4dd95851dc5a6e21a4c20758da1aa7cb2cd360",
       "diagnostics": [
         {
           "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
@@ -7872,47 +7987,167 @@
       "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-04T03:03:39+00:00",
-      "raw_sha256": "ae11aaec1a8559f1ef0974c02e7284a4a65d1483cbbad6e236093e6fc5d3e0a4",
-      "revision_id": "541a94cc088d71954bdb11fec62f70cb6841a2eb08da4c1ff199e705fef42beb",
+      "observed_at": "2026-11-04T04:14:01+00:00",
+      "history": [
+        {
+          "candidate_sha256": "38bdc30715cb7958cb6764233d1859cb99c9dd52fd1e41e8bfb269a914cae548",
+          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216",
+          "status": "replayed",
+          "reason": null,
+          "observed_at": "2026-11-04T03:03:39+00:00",
+          "raw_sha256": "ae11aaec1a8559f1ef0974c02e7284a4a65d1483cbbad6e236093e6fc5d3e0a4",
+          "revision_id": "541a94cc088d71954bdb11fec62f70cb6841a2eb08da4c1ff199e705fef42beb",
+          "format": "html",
+          "policy": {
+            "version": "time-policy-1",
+            "submission_mode": "rule_text",
+            "review_mode": "not_stated",
+            "rules": [
+              {
+                "rule_id": "replay/0",
+                "kind": "text_rule",
+                "actor": "unit",
+                "stage": "submission",
+                "summary": "來源列示月日：3月25日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r306",
+                    "revision_id": "541a94cc088d71954bdb11fec62f70cb6841a2eb08da4c1ff199e705fef42beb",
+                    "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              },
+              {
+                "rule_id": "replay/1",
+                "kind": "text_rule",
+                "actor": "student",
+                "stage": "submission",
+                "summary": "來源列示月日：3月25日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r306",
+                    "revision_id": "541a94cc088d71954bdb11fec62f70cb6841a2eb08da4c1ff199e705fef42beb",
+                    "locator": ".article-center / text-block 5",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              }
+            ],
+            "gaps": []
+          },
+          "parser_sha256": "8db935983c568d462d492c8fba80d535acc78e20a86137f37a70052c05e2445e",
+          "diagnostics": [
+            {
+              "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "date",
+                "2025-01-10"
+              ]
+            },
+            {
+              "locator": ".article-center / text-block 4",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": ".article-center / text-block 5",
+              "has_deadline": false,
+              "has_student": true,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": ".article-center / text-block 6",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": ".article-center / text-block 8 + .article-center / text-block 9 + .article-center / text-block 10 + .article-center / text-block 11",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": ".article-center / text-block 12 + .article-center / text-block 13 + .article-center / text-block 14 + .article-center / text-block 15",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            }
+          ]
+        }
+      ],
+      "raw_sha256": "8536fb3e108907814f6f74270b6fc5977d27d6bdadc7c4ad1bec6f10c864917b",
+      "revision_id": "eb3676d595c41adc99174889cc0a7dfb81c4d8e7acc28f24613838d1449072a0",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "rule_text",
+        "submission_mode": "deadline_only",
         "review_mode": "not_stated",
         "rules": [
           {
             "rule_id": "replay/0",
-            "kind": "text_rule",
-            "actor": "unit",
-            "stage": "submission",
-            "summary": "來源列示月日：3月25日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "discovery-r306",
-                "revision_id": "541a94cc088d71954bdb11fec62f70cb6841a2eb08da4c1ff199e705fef42beb",
-                "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
-                "evidence_path": "temporal_replay/submission"
-              }
-            ]
-          },
-          {
-            "rule_id": "replay/1",
-            "kind": "text_rule",
+            "kind": "absolute",
             "actor": "student",
             "stage": "submission",
-            "summary": "來源列示月日：3月25日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
+            "summary": "來源明示收件截止（依公告日與計畫年度雙重錨定，待核座標）",
+            "value": "2025-03-25T12:00:00+08:00",
+            "precision": "datetime",
+            "year_basis": "dual_anchored",
             "anchor_event": null,
             "source_refs": [
               {
                 "source": "discovery-r306",
-                "revision_id": "541a94cc088d71954bdb11fec62f70cb6841a2eb08da4c1ff199e705fef42beb",
-                "locator": ".article-center / text-block 5",
+                "revision_id": "eb3676d595c41adc99174889cc0a7dfb81c4d8e7acc28f24613838d1449072a0",
+                "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
                 "evidence_path": "temporal_replay/submission"
               }
             ]
@@ -7920,7 +8155,7 @@
         ],
         "gaps": []
       },
-      "parser_sha256": "8db935983c568d462d492c8fba80d535acc78e20a86137f37a70052c05e2445e",
+      "parser_sha256": "cf8c25556e22a7460b97ea093d4dd95851dc5a6e21a4c20758da1aa7cb2cd360",
       "diagnostics": [
         {
           "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
@@ -8007,47 +8242,167 @@
       "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-04T03:03:39+00:00",
-      "raw_sha256": "0392d1820a752c19fe56caafa60643701bfab806860e2c632c23c8f0b8859113",
-      "revision_id": "ab6ec1856faca3822d3e808c14b7fb1481356ffd26d1d202b5e35381f8d4c7e4",
+      "observed_at": "2026-11-04T04:14:01+00:00",
+      "history": [
+        {
+          "candidate_sha256": "457842cd05546905b4fcfa071f97be1a51908557c5bcd641b1b85f9efac8c6e2",
+          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+          "status": "replayed",
+          "reason": null,
+          "observed_at": "2026-11-04T03:03:39+00:00",
+          "raw_sha256": "0392d1820a752c19fe56caafa60643701bfab806860e2c632c23c8f0b8859113",
+          "revision_id": "ab6ec1856faca3822d3e808c14b7fb1481356ffd26d1d202b5e35381f8d4c7e4",
+          "format": "html",
+          "policy": {
+            "version": "time-policy-1",
+            "submission_mode": "rule_text",
+            "review_mode": "not_stated",
+            "rules": [
+              {
+                "rule_id": "replay/0",
+                "kind": "text_rule",
+                "actor": "unit",
+                "stage": "submission",
+                "summary": "來源列示月日：3月24日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r310",
+                    "revision_id": "ab6ec1856faca3822d3e808c14b7fb1481356ffd26d1d202b5e35381f8d4c7e4",
+                    "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              },
+              {
+                "rule_id": "replay/1",
+                "kind": "text_rule",
+                "actor": "student",
+                "stage": "submission",
+                "summary": "來源列示月日：3月24日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r310",
+                    "revision_id": "ab6ec1856faca3822d3e808c14b7fb1481356ffd26d1d202b5e35381f8d4c7e4",
+                    "locator": ".article-center / text-block 5",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              }
+            ],
+            "gaps": []
+          },
+          "parser_sha256": "8db935983c568d462d492c8fba80d535acc78e20a86137f37a70052c05e2445e",
+          "diagnostics": [
+            {
+              "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "date",
+                "2026-02-09"
+              ]
+            },
+            {
+              "locator": ".article-center / text-block 4",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": ".article-center / text-block 5",
+              "has_deadline": false,
+              "has_student": true,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": ".article-center / text-block 6",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": ".article-center / text-block 8 + .article-center / text-block 9 + .article-center / text-block 10 + .article-center / text-block 11",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": ".article-center / text-block 12 + .article-center / text-block 13 + .article-center / text-block 14 + .article-center / text-block 15",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            }
+          ]
+        }
+      ],
+      "raw_sha256": "3b2dd3e21da9b1d0b2a14fd66b83d51d217a33bfb533579dfb5e8d6983e0bdd3",
+      "revision_id": "c205418d779676304c42fd3ae5db4590e040395e7a44c7443312d96ff08f960b",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "rule_text",
+        "submission_mode": "deadline_only",
         "review_mode": "not_stated",
         "rules": [
           {
             "rule_id": "replay/0",
-            "kind": "text_rule",
-            "actor": "unit",
-            "stage": "submission",
-            "summary": "來源列示月日：3月24日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "discovery-r310",
-                "revision_id": "ab6ec1856faca3822d3e808c14b7fb1481356ffd26d1d202b5e35381f8d4c7e4",
-                "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
-                "evidence_path": "temporal_replay/submission"
-              }
-            ]
-          },
-          {
-            "rule_id": "replay/1",
-            "kind": "text_rule",
+            "kind": "absolute",
             "actor": "student",
             "stage": "submission",
-            "summary": "來源列示月日：3月24日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
+            "summary": "來源明示收件截止（依公告日與計畫年度雙重錨定，待核座標）",
+            "value": "2026-03-24T12:00:00+08:00",
+            "precision": "datetime",
+            "year_basis": "dual_anchored",
             "anchor_event": null,
             "source_refs": [
               {
                 "source": "discovery-r310",
-                "revision_id": "ab6ec1856faca3822d3e808c14b7fb1481356ffd26d1d202b5e35381f8d4c7e4",
-                "locator": ".article-center / text-block 5",
+                "revision_id": "c205418d779676304c42fd3ae5db4590e040395e7a44c7443312d96ff08f960b",
+                "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
                 "evidence_path": "temporal_replay/submission"
               }
             ]
@@ -8055,7 +8410,7 @@
         ],
         "gaps": []
       },
-      "parser_sha256": "8db935983c568d462d492c8fba80d535acc78e20a86137f37a70052c05e2445e",
+      "parser_sha256": "cf8c25556e22a7460b97ea093d4dd95851dc5a6e21a4c20758da1aa7cb2cd360",
       "diagnostics": [
         {
           "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
@@ -9375,28 +9730,192 @@
       "url": "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-04T03:04:21+00:00",
-      "raw_sha256": "a8a1f5aaedcb228dad86a01580cd87256e55578f5ea6c71515f11228e82fb0e8",
-      "revision_id": "8906f0f44573dd9ea086dc0d57753f44fc9df9c14113c9545e53f80e373f6406",
+      "observed_at": "2026-11-04T04:14:01+00:00",
+      "history": [
+        {
+          "candidate_sha256": "229103993daaf6782b389bc078e76074ac78bfd100e8a75e51b6ff3392d551a2",
+          "url": "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f",
+          "status": "replayed",
+          "reason": null,
+          "observed_at": "2026-11-04T03:04:21+00:00",
+          "raw_sha256": "a8a1f5aaedcb228dad86a01580cd87256e55578f5ea6c71515f11228e82fb0e8",
+          "revision_id": "8906f0f44573dd9ea086dc0d57753f44fc9df9c14113c9545e53f80e373f6406",
+          "format": "html",
+          "policy": {
+            "version": "time-policy-1",
+            "submission_mode": "rule_text",
+            "review_mode": "not_stated",
+            "rules": [
+              {
+                "rule_id": "replay/0",
+                "kind": "text_rule",
+                "actor": "student",
+                "stage": "submission",
+                "summary": "來源列示月日：7月12日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r473",
+                    "revision_id": "8906f0f44573dd9ea086dc0d57753f44fc9df9c14113c9545e53f80e373f6406",
+                    "locator": ".content / text-block 10",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              },
+              {
+                "rule_id": "replay/1",
+                "kind": "text_rule",
+                "actor": "unit",
+                "stage": "submission",
+                "summary": "來源列示月日：6月12日、7月12日、7月14日、7月15日、7月17日、7月22日、7月23日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r473",
+                    "revision_id": "8906f0f44573dd9ea086dc0d57753f44fc9df9c14113c9545e53f80e373f6406",
+                    "locator": ".content / text-block 13 + .content / text-block 14 + .content / text-block 15 + .content / text-block 16",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              }
+            ],
+            "gaps": []
+          },
+          "parser_sha256": "8db935983c568d462d492c8fba80d535acc78e20a86137f37a70052c05e2445e",
+          "diagnostics": [
+            {
+              "locator": ".content / text-block 6",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": ".content / text-block 10",
+              "has_deadline": true,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": ".content / text-block 12",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": ".content / text-block 13 + .content / text-block 14 + .content / text-block 15 + .content / text-block 16",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": ".content / text-block 20 + .content / text-block 21",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": ".content / text-block 28",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": ".content / text-block 29",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": ".content / text-block 33",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            }
+          ]
+        }
+      ],
+      "raw_sha256": "67824bb70d8ff9139668c8eacbc55de16be8c4b9837688e4ebbfa449382a0ca6",
+      "revision_id": "0acadf442be4c7223f8e8e33c4cedfced33bbf88a1616011cb6df4df21623970",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "rule_text",
+        "submission_mode": "fixed_window",
         "review_mode": "not_stated",
         "rules": [
           {
             "rule_id": "replay/0",
-            "kind": "text_rule",
+            "kind": "absolute",
             "actor": "student",
             "stage": "submission",
-            "summary": "來源列示月日：7月12日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
+            "summary": "來源明示收件截止（依公告日與計畫年度雙重錨定，待核座標）",
+            "value": "2026-07-12",
+            "precision": "date",
+            "year_basis": "dual_anchored",
             "anchor_event": null,
             "source_refs": [
               {
                 "source": "discovery-r473",
-                "revision_id": "8906f0f44573dd9ea086dc0d57753f44fc9df9c14113c9545e53f80e373f6406",
+                "revision_id": "0acadf442be4c7223f8e8e33c4cedfced33bbf88a1616011cb6df4df21623970",
                 "locator": ".content / text-block 10",
                 "evidence_path": "temporal_replay/submission"
               }
@@ -9404,26 +9923,27 @@
           },
           {
             "rule_id": "replay/1",
-            "kind": "text_rule",
-            "actor": "unit",
-            "stage": "submission",
-            "summary": "來源列示月日：6月12日、7月12日、7月14日、7月15日、7月17日、7月22日、7月23日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
+            "kind": "absolute",
+            "actor": "student",
+            "stage": "application_start",
+            "summary": "來源明示受理起日（依公告日與計畫年度雙重錨定，待核座標）",
+            "value": "2026-06-12",
+            "precision": "date",
+            "year_basis": "dual_anchored",
             "anchor_event": null,
             "source_refs": [
               {
                 "source": "discovery-r473",
-                "revision_id": "8906f0f44573dd9ea086dc0d57753f44fc9df9c14113c9545e53f80e373f6406",
+                "revision_id": "0acadf442be4c7223f8e8e33c4cedfced33bbf88a1616011cb6df4df21623970",
                 "locator": ".content / text-block 13 + .content / text-block 14 + .content / text-block 15 + .content / text-block 16",
-                "evidence_path": "temporal_replay/submission"
+                "evidence_path": "temporal_replay/application_start"
               }
             ]
           }
         ],
         "gaps": []
       },
-      "parser_sha256": "8db935983c568d462d492c8fba80d535acc78e20a86137f37a70052c05e2445e",
+      "parser_sha256": "cf8c25556e22a7460b97ea093d4dd95851dc5a6e21a4c20758da1aa7cb2cd360",
       "diagnostics": [
         {
           "locator": ".content / text-block 6",
@@ -9829,67 +10349,193 @@
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7062",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:00:07+00:00",
+      "observed_at": "2026-11-04T04:14:01+00:00",
       "history": [
         {
           "candidate_sha256": "a11f365fbadf66dd81769795ca59b9e25523e8e6898470cf6e32400f49b43eb6",
           "url": "https://gice.ntu.edu.tw/shownews.php?ID=7062",
           "status": "replayed",
           "reason": null,
-          "observed_at": "2026-11-03T08:56:42+00:00",
+          "observed_at": "2026-11-03T09:00:07+00:00",
+          "history": [
+            {
+              "candidate_sha256": "a11f365fbadf66dd81769795ca59b9e25523e8e6898470cf6e32400f49b43eb6",
+              "url": "https://gice.ntu.edu.tw/shownews.php?ID=7062",
+              "status": "replayed",
+              "reason": null,
+              "observed_at": "2026-11-03T08:56:42+00:00",
+              "raw_sha256": "01218c18034fda7175063c10db44e407aa206c17ed4d74229bfff5eb0e0d22d6",
+              "revision_id": "b4a4e948cca1d59595c80b6d4ec95ad7a77c833d789ceb2df8c0e619bbeb2b64",
+              "format": "html",
+              "policy": {
+                "version": "time-policy-1",
+                "submission_mode": "undetermined",
+                "review_mode": "not_stated",
+                "rules": [],
+                "gaps": [
+                  "time_not_projected"
+                ]
+              }
+            }
+          ],
           "raw_sha256": "01218c18034fda7175063c10db44e407aa206c17ed4d74229bfff5eb0e0d22d6",
-          "revision_id": "b4a4e948cca1d59595c80b6d4ec95ad7a77c833d789ceb2df8c0e619bbeb2b64",
+          "revision_id": "7e34e6f9753362ee361cd70c9c5ca2845956864001b95c3f22f0f5b6711863f7",
           "format": "html",
           "policy": {
             "version": "time-policy-1",
-            "submission_mode": "undetermined",
+            "submission_mode": "rule_text",
             "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
+            "rules": [
+              {
+                "rule_id": "replay/0",
+                "kind": "text_rule",
+                "actor": "unit",
+                "stage": "submission",
+                "summary": "來源列示月日：6月12日、7月3日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r137",
+                    "revision_id": "7e34e6f9753362ee361cd70c9c5ca2845956864001b95c3f22f0f5b6711863f7",
+                    "locator": "body / text-block 1",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              },
+              {
+                "rule_id": "replay/1",
+                "kind": "text_rule",
+                "actor": "student",
+                "stage": "submission",
+                "summary": "來源列示月日：6月12日、7月3日、6月12日、7月3日、7月3日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r137",
+                    "revision_id": "7e34e6f9753362ee361cd70c9c5ca2845956864001b95c3f22f0f5b6711863f7",
+                    "locator": "body / text-block 11",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              }
+            ],
+            "gaps": []
+          },
+          "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+          "diagnostics": [
+            {
+              "locator": "body / text-block 1",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 2",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 9",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 10",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 11",
+              "has_deadline": false,
+              "has_student": true,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            }
+          ]
         }
       ],
       "raw_sha256": "01218c18034fda7175063c10db44e407aa206c17ed4d74229bfff5eb0e0d22d6",
-      "revision_id": "7e34e6f9753362ee361cd70c9c5ca2845956864001b95c3f22f0f5b6711863f7",
+      "revision_id": "5c639040973cc3226151b2a27103efa59db0f1b407eb5991e2a550338d39b152",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "rule_text",
+        "submission_mode": "fixed_window",
         "review_mode": "not_stated",
         "rules": [
           {
             "rule_id": "replay/0",
-            "kind": "text_rule",
-            "actor": "unit",
-            "stage": "submission",
-            "summary": "來源列示月日：6月12日、7月3日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
+            "kind": "absolute",
+            "actor": "student",
+            "stage": "application_start",
+            "summary": "來源明示受理起日（依公告日與計畫年度雙重錨定，待核座標）",
+            "value": "2025-06-12",
+            "precision": "date",
+            "year_basis": "dual_anchored",
             "anchor_event": null,
             "source_refs": [
               {
                 "source": "discovery-r137",
-                "revision_id": "7e34e6f9753362ee361cd70c9c5ca2845956864001b95c3f22f0f5b6711863f7",
+                "revision_id": "5c639040973cc3226151b2a27103efa59db0f1b407eb5991e2a550338d39b152",
                 "locator": "body / text-block 1",
-                "evidence_path": "temporal_replay/submission"
+                "evidence_path": "temporal_replay/application_start"
               }
             ]
           },
           {
             "rule_id": "replay/1",
-            "kind": "text_rule",
+            "kind": "absolute",
             "actor": "student",
             "stage": "submission",
-            "summary": "來源列示月日：6月12日、7月3日、6月12日、7月3日、7月3日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
+            "summary": "來源明示收件截止（依公告日與計畫年度雙重錨定，待核座標）",
+            "value": "2025-07-03T17:00:00+08:00",
+            "precision": "datetime",
+            "year_basis": "dual_anchored",
             "anchor_event": null,
             "source_refs": [
               {
                 "source": "discovery-r137",
-                "revision_id": "7e34e6f9753362ee361cd70c9c5ca2845956864001b95c3f22f0f5b6711863f7",
+                "revision_id": "5c639040973cc3226151b2a27103efa59db0f1b407eb5991e2a550338d39b152",
                 "locator": "body / text-block 11",
                 "evidence_path": "temporal_replay/submission"
               }
@@ -9898,7 +10544,7 @@
         ],
         "gaps": []
       },
-      "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+      "parser_sha256": "cf8c25556e22a7460b97ea093d4dd95851dc5a6e21a4c20758da1aa7cb2cd360",
       "diagnostics": [
         {
           "locator": "body / text-block 1",
@@ -9972,86 +10618,264 @@
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7278",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:00:07+00:00",
+      "observed_at": "2026-11-04T04:14:18+00:00",
       "history": [
         {
           "candidate_sha256": "65c13ed0ae797691d177fc8b5692a24960ff2f4c1dc8952e0f31fbe94e744ff7",
           "url": "https://gice.ntu.edu.tw/shownews.php?ID=7278",
           "status": "replayed",
           "reason": null,
-          "observed_at": "2026-11-03T08:57:20+00:00",
+          "observed_at": "2026-11-03T09:00:07+00:00",
+          "history": [
+            {
+              "candidate_sha256": "65c13ed0ae797691d177fc8b5692a24960ff2f4c1dc8952e0f31fbe94e744ff7",
+              "url": "https://gice.ntu.edu.tw/shownews.php?ID=7278",
+              "status": "replayed",
+              "reason": null,
+              "observed_at": "2026-11-03T08:57:20+00:00",
+              "raw_sha256": "2d7643c15adb8ff3b6989e8fd3ba1dc369e11b638f79dc3cfd276b80f0c4d558",
+              "revision_id": "5d5d1a477149fdea55c4b97c0f16cec4598292935cb9d35f9e2dd7d20a0fa30a",
+              "format": "html",
+              "policy": {
+                "version": "time-policy-1",
+                "submission_mode": "undetermined",
+                "review_mode": "not_stated",
+                "rules": [],
+                "gaps": [
+                  "time_not_projected"
+                ]
+              }
+            }
+          ],
           "raw_sha256": "2d7643c15adb8ff3b6989e8fd3ba1dc369e11b638f79dc3cfd276b80f0c4d558",
-          "revision_id": "5d5d1a477149fdea55c4b97c0f16cec4598292935cb9d35f9e2dd7d20a0fa30a",
+          "revision_id": "91a812d9153272f1d93bb7c538db99bc891250e396501959755a00c90d7fbe35",
           "format": "html",
           "policy": {
             "version": "time-policy-1",
-            "submission_mode": "undetermined",
+            "submission_mode": "rule_text",
             "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
+            "rules": [
+              {
+                "rule_id": "replay/0",
+                "kind": "text_rule",
+                "actor": "unit",
+                "stage": "submission",
+                "summary": "來源列示月日：6月15日、7月10日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r138",
+                    "revision_id": "91a812d9153272f1d93bb7c538db99bc891250e396501959755a00c90d7fbe35",
+                    "locator": "body / text-block 1",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              },
+              {
+                "rule_id": "replay/1",
+                "kind": "text_rule",
+                "actor": "student",
+                "stage": "submission",
+                "summary": "來源列示月日：6月15日、7月10日、6月15日、7月10日、7月10日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r138",
+                    "revision_id": "91a812d9153272f1d93bb7c538db99bc891250e396501959755a00c90d7fbe35",
+                    "locator": "body / text-block 11 + body / text-block 12 + body / text-block 13 + body / text-block 14",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              },
+              {
+                "rule_id": "replay/2",
+                "kind": "text_rule",
+                "actor": "student",
+                "stage": "submission",
+                "summary": "來源列示月日：6月15日、7月10日、7月10日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r138",
+                    "revision_id": "91a812d9153272f1d93bb7c538db99bc891250e396501959755a00c90d7fbe35",
+                    "locator": "body / text-block 12 + body / text-block 13 + body / text-block 14 + body / text-block 15",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              }
+            ],
+            "gaps": []
+          },
+          "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+          "diagnostics": [
+            {
+              "locator": "body / text-block 1",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 2",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 9",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 10",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 11 + body / text-block 12 + body / text-block 13 + body / text-block 14",
+              "has_deadline": false,
+              "has_student": true,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 12 + body / text-block 13 + body / text-block 14 + body / text-block 15",
+              "has_deadline": false,
+              "has_student": true,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 13 + body / text-block 14 + body / text-block 15 + body / text-block 16",
+              "has_deadline": false,
+              "has_student": true,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 16 + body / text-block 17 + body / text-block 18 + body / text-block 19",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 26",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            }
+          ]
         }
       ],
       "raw_sha256": "2d7643c15adb8ff3b6989e8fd3ba1dc369e11b638f79dc3cfd276b80f0c4d558",
-      "revision_id": "91a812d9153272f1d93bb7c538db99bc891250e396501959755a00c90d7fbe35",
+      "revision_id": "72012d6af4fe3187c7d8b493ab415de7bb6d3f8275d887f3361a8c655cf422f1",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "rule_text",
+        "submission_mode": "fixed_window",
         "review_mode": "not_stated",
         "rules": [
           {
             "rule_id": "replay/0",
-            "kind": "text_rule",
-            "actor": "unit",
-            "stage": "submission",
-            "summary": "來源列示月日：6月15日、7月10日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
+            "kind": "absolute",
+            "actor": "student",
+            "stage": "application_start",
+            "summary": "來源明示受理起日（依公告日與計畫年度雙重錨定，待核座標）",
+            "value": "2026-06-15",
+            "precision": "date",
+            "year_basis": "dual_anchored",
             "anchor_event": null,
             "source_refs": [
               {
                 "source": "discovery-r138",
-                "revision_id": "91a812d9153272f1d93bb7c538db99bc891250e396501959755a00c90d7fbe35",
+                "revision_id": "72012d6af4fe3187c7d8b493ab415de7bb6d3f8275d887f3361a8c655cf422f1",
                 "locator": "body / text-block 1",
-                "evidence_path": "temporal_replay/submission"
+                "evidence_path": "temporal_replay/application_start"
               }
             ]
           },
           {
             "rule_id": "replay/1",
-            "kind": "text_rule",
+            "kind": "absolute",
             "actor": "student",
             "stage": "submission",
-            "summary": "來源列示月日：6月15日、7月10日、6月15日、7月10日、7月10日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
+            "summary": "來源明示收件截止（依公告日與計畫年度雙重錨定，待核座標）",
+            "value": "2026-07-10T17:00:00+08:00",
+            "precision": "datetime",
+            "year_basis": "dual_anchored",
             "anchor_event": null,
             "source_refs": [
               {
                 "source": "discovery-r138",
-                "revision_id": "91a812d9153272f1d93bb7c538db99bc891250e396501959755a00c90d7fbe35",
+                "revision_id": "72012d6af4fe3187c7d8b493ab415de7bb6d3f8275d887f3361a8c655cf422f1",
                 "locator": "body / text-block 11 + body / text-block 12 + body / text-block 13 + body / text-block 14",
-                "evidence_path": "temporal_replay/submission"
-              }
-            ]
-          },
-          {
-            "rule_id": "replay/2",
-            "kind": "text_rule",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "來源列示月日：6月15日、7月10日、7月10日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "discovery-r138",
-                "revision_id": "91a812d9153272f1d93bb7c538db99bc891250e396501959755a00c90d7fbe35",
-                "locator": "body / text-block 12 + body / text-block 13 + body / text-block 14 + body / text-block 15",
                 "evidence_path": "temporal_replay/submission"
               }
             ]
@@ -10059,7 +10883,7 @@
         ],
         "gaps": []
       },
-      "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+      "parser_sha256": "cf8c25556e22a7460b97ea093d4dd95851dc5a6e21a4c20758da1aa7cb2cd360",
       "diagnostics": [
         {
           "locator": "body / text-block 1",
@@ -10275,67 +11099,219 @@
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7061",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:00:07+00:00",
+      "observed_at": "2026-11-04T04:14:18+00:00",
       "history": [
         {
           "candidate_sha256": "27bd2a30338165873c7e02a9624e4cd2a1511c00e05b61c1964897aea699778e",
           "url": "https://gice.ntu.edu.tw/shownews.php?ID=7061",
           "status": "replayed",
           "reason": null,
-          "observed_at": "2026-11-03T08:57:20+00:00",
+          "observed_at": "2026-11-03T09:00:07+00:00",
+          "history": [
+            {
+              "candidate_sha256": "27bd2a30338165873c7e02a9624e4cd2a1511c00e05b61c1964897aea699778e",
+              "url": "https://gice.ntu.edu.tw/shownews.php?ID=7061",
+              "status": "replayed",
+              "reason": null,
+              "observed_at": "2026-11-03T08:57:20+00:00",
+              "raw_sha256": "e2be170509b3d07a5416afbfc2667fc8f27cfeb533e1c0468ce54ca322a31eb1",
+              "revision_id": "8963b26157cff4c2bd79a48d0533c3b8567edaf3579d684212ebae5b31a0860b",
+              "format": "html",
+              "policy": {
+                "version": "time-policy-1",
+                "submission_mode": "undetermined",
+                "review_mode": "not_stated",
+                "rules": [],
+                "gaps": [
+                  "time_not_projected"
+                ]
+              }
+            }
+          ],
           "raw_sha256": "e2be170509b3d07a5416afbfc2667fc8f27cfeb533e1c0468ce54ca322a31eb1",
-          "revision_id": "8963b26157cff4c2bd79a48d0533c3b8567edaf3579d684212ebae5b31a0860b",
+          "revision_id": "d811201bc56e59ffdce8db58c138314b83ebad15788858c88c95b01ac377dbcf",
           "format": "html",
           "policy": {
             "version": "time-policy-1",
-            "submission_mode": "undetermined",
+            "submission_mode": "rule_text",
             "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
+            "rules": [
+              {
+                "rule_id": "replay/0",
+                "kind": "text_rule",
+                "actor": "unit",
+                "stage": "submission",
+                "summary": "來源列示月日：6月12日、7月3日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r136",
+                    "revision_id": "d811201bc56e59ffdce8db58c138314b83ebad15788858c88c95b01ac377dbcf",
+                    "locator": "body / text-block 1",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              },
+              {
+                "rule_id": "replay/1",
+                "kind": "text_rule",
+                "actor": "student",
+                "stage": "submission",
+                "summary": "來源列示月日：6月12日、7月3日、6月12日、7月3日、7月3日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r136",
+                    "revision_id": "d811201bc56e59ffdce8db58c138314b83ebad15788858c88c95b01ac377dbcf",
+                    "locator": "body / text-block 11",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              }
+            ],
+            "gaps": []
+          },
+          "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+          "diagnostics": [
+            {
+              "locator": "body / text-block 1",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 2",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 9",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 10",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 11",
+              "has_deadline": false,
+              "has_student": true,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 12 + body / text-block 13 + body / text-block 14 + body / text-block 15",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 20",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            }
+          ]
         }
       ],
       "raw_sha256": "e2be170509b3d07a5416afbfc2667fc8f27cfeb533e1c0468ce54ca322a31eb1",
-      "revision_id": "d811201bc56e59ffdce8db58c138314b83ebad15788858c88c95b01ac377dbcf",
+      "revision_id": "3be875ae097d503425416d741facaa2a7140104bc8dafc625c2838fd18ee209e",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "rule_text",
+        "submission_mode": "fixed_window",
         "review_mode": "not_stated",
         "rules": [
           {
             "rule_id": "replay/0",
-            "kind": "text_rule",
-            "actor": "unit",
-            "stage": "submission",
-            "summary": "來源列示月日：6月12日、7月3日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
+            "kind": "absolute",
+            "actor": "student",
+            "stage": "application_start",
+            "summary": "來源明示受理起日（依公告日與計畫年度雙重錨定，待核座標）",
+            "value": "2025-06-12",
+            "precision": "date",
+            "year_basis": "dual_anchored",
             "anchor_event": null,
             "source_refs": [
               {
                 "source": "discovery-r136",
-                "revision_id": "d811201bc56e59ffdce8db58c138314b83ebad15788858c88c95b01ac377dbcf",
+                "revision_id": "3be875ae097d503425416d741facaa2a7140104bc8dafc625c2838fd18ee209e",
                 "locator": "body / text-block 1",
-                "evidence_path": "temporal_replay/submission"
+                "evidence_path": "temporal_replay/application_start"
               }
             ]
           },
           {
             "rule_id": "replay/1",
-            "kind": "text_rule",
+            "kind": "absolute",
             "actor": "student",
             "stage": "submission",
-            "summary": "來源列示月日：6月12日、7月3日、6月12日、7月3日、7月3日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
+            "summary": "來源明示收件截止（依公告日與計畫年度雙重錨定，待核座標）",
+            "value": "2025-07-03T17:00:00+08:00",
+            "precision": "datetime",
+            "year_basis": "dual_anchored",
             "anchor_event": null,
             "source_refs": [
               {
                 "source": "discovery-r136",
-                "revision_id": "d811201bc56e59ffdce8db58c138314b83ebad15788858c88c95b01ac377dbcf",
+                "revision_id": "3be875ae097d503425416d741facaa2a7140104bc8dafc625c2838fd18ee209e",
                 "locator": "body / text-block 11",
                 "evidence_path": "temporal_replay/submission"
               }
@@ -10344,7 +11320,7 @@
         ],
         "gaps": []
       },
-      "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+      "parser_sha256": "cf8c25556e22a7460b97ea093d4dd95851dc5a6e21a4c20758da1aa7cb2cd360",
       "diagnostics": [
         {
           "locator": "body / text-block 1",
@@ -10444,86 +11420,264 @@
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7279",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:00:07+00:00",
+      "observed_at": "2026-11-04T04:14:18+00:00",
       "history": [
         {
           "candidate_sha256": "401e249279a43c9bf203d736f8893d0800c1f9fb52c1cd8137ca410bf29e0d99",
           "url": "https://gice.ntu.edu.tw/shownews.php?ID=7279",
           "status": "replayed",
           "reason": null,
-          "observed_at": "2026-11-03T08:57:20+00:00",
+          "observed_at": "2026-11-03T09:00:07+00:00",
+          "history": [
+            {
+              "candidate_sha256": "401e249279a43c9bf203d736f8893d0800c1f9fb52c1cd8137ca410bf29e0d99",
+              "url": "https://gice.ntu.edu.tw/shownews.php?ID=7279",
+              "status": "replayed",
+              "reason": null,
+              "observed_at": "2026-11-03T08:57:20+00:00",
+              "raw_sha256": "239de4c3ffab151202066683a4db5ece300a988c6c6a392afe4943b8327ec11e",
+              "revision_id": "f78e6bc4b91340f79d65470d0c5fc9bfb3336c2a2019bb21320d190d2fd27396",
+              "format": "html",
+              "policy": {
+                "version": "time-policy-1",
+                "submission_mode": "undetermined",
+                "review_mode": "not_stated",
+                "rules": [],
+                "gaps": [
+                  "time_not_projected"
+                ]
+              }
+            }
+          ],
           "raw_sha256": "239de4c3ffab151202066683a4db5ece300a988c6c6a392afe4943b8327ec11e",
-          "revision_id": "f78e6bc4b91340f79d65470d0c5fc9bfb3336c2a2019bb21320d190d2fd27396",
+          "revision_id": "8fe1790a2fd7a2f8e81098cd12cd2c772b2e537d6a44c9b396f47014b9504457",
           "format": "html",
           "policy": {
             "version": "time-policy-1",
-            "submission_mode": "undetermined",
+            "submission_mode": "rule_text",
             "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
+            "rules": [
+              {
+                "rule_id": "replay/0",
+                "kind": "text_rule",
+                "actor": "unit",
+                "stage": "submission",
+                "summary": "來源列示月日：6月15日、7月10日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r139",
+                    "revision_id": "8fe1790a2fd7a2f8e81098cd12cd2c772b2e537d6a44c9b396f47014b9504457",
+                    "locator": "body / text-block 1",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              },
+              {
+                "rule_id": "replay/1",
+                "kind": "text_rule",
+                "actor": "student",
+                "stage": "submission",
+                "summary": "來源列示月日：6月15日、7月10日、6月15日、7月10日、7月10日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r139",
+                    "revision_id": "8fe1790a2fd7a2f8e81098cd12cd2c772b2e537d6a44c9b396f47014b9504457",
+                    "locator": "body / text-block 11 + body / text-block 12 + body / text-block 13 + body / text-block 14",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              },
+              {
+                "rule_id": "replay/2",
+                "kind": "text_rule",
+                "actor": "student",
+                "stage": "submission",
+                "summary": "來源列示月日：6月15日、7月10日、7月10日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r139",
+                    "revision_id": "8fe1790a2fd7a2f8e81098cd12cd2c772b2e537d6a44c9b396f47014b9504457",
+                    "locator": "body / text-block 12 + body / text-block 13 + body / text-block 14 + body / text-block 15",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              }
+            ],
+            "gaps": []
+          },
+          "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+          "diagnostics": [
+            {
+              "locator": "body / text-block 1",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 2",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 9",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 10",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 11 + body / text-block 12 + body / text-block 13 + body / text-block 14",
+              "has_deadline": false,
+              "has_student": true,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 12 + body / text-block 13 + body / text-block 14 + body / text-block 15",
+              "has_deadline": false,
+              "has_student": true,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 13 + body / text-block 14 + body / text-block 15 + body / text-block 16",
+              "has_deadline": false,
+              "has_student": true,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 16 + body / text-block 17 + body / text-block 18 + body / text-block 19",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 27",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            }
+          ]
         }
       ],
       "raw_sha256": "239de4c3ffab151202066683a4db5ece300a988c6c6a392afe4943b8327ec11e",
-      "revision_id": "8fe1790a2fd7a2f8e81098cd12cd2c772b2e537d6a44c9b396f47014b9504457",
+      "revision_id": "427d809da9f4745d58995742654e66aa05fe372be020f3d6d9d5046b99fbfebe",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "rule_text",
+        "submission_mode": "fixed_window",
         "review_mode": "not_stated",
         "rules": [
           {
             "rule_id": "replay/0",
-            "kind": "text_rule",
-            "actor": "unit",
-            "stage": "submission",
-            "summary": "來源列示月日：6月15日、7月10日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
+            "kind": "absolute",
+            "actor": "student",
+            "stage": "application_start",
+            "summary": "來源明示受理起日（依公告日與計畫年度雙重錨定，待核座標）",
+            "value": "2026-06-15",
+            "precision": "date",
+            "year_basis": "dual_anchored",
             "anchor_event": null,
             "source_refs": [
               {
                 "source": "discovery-r139",
-                "revision_id": "8fe1790a2fd7a2f8e81098cd12cd2c772b2e537d6a44c9b396f47014b9504457",
+                "revision_id": "427d809da9f4745d58995742654e66aa05fe372be020f3d6d9d5046b99fbfebe",
                 "locator": "body / text-block 1",
-                "evidence_path": "temporal_replay/submission"
+                "evidence_path": "temporal_replay/application_start"
               }
             ]
           },
           {
             "rule_id": "replay/1",
-            "kind": "text_rule",
+            "kind": "absolute",
             "actor": "student",
             "stage": "submission",
-            "summary": "來源列示月日：6月15日、7月10日、6月15日、7月10日、7月10日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
+            "summary": "來源明示收件截止（依公告日與計畫年度雙重錨定，待核座標）",
+            "value": "2026-07-10T17:00:00+08:00",
+            "precision": "datetime",
+            "year_basis": "dual_anchored",
             "anchor_event": null,
             "source_refs": [
               {
                 "source": "discovery-r139",
-                "revision_id": "8fe1790a2fd7a2f8e81098cd12cd2c772b2e537d6a44c9b396f47014b9504457",
+                "revision_id": "427d809da9f4745d58995742654e66aa05fe372be020f3d6d9d5046b99fbfebe",
                 "locator": "body / text-block 11 + body / text-block 12 + body / text-block 13 + body / text-block 14",
-                "evidence_path": "temporal_replay/submission"
-              }
-            ]
-          },
-          {
-            "rule_id": "replay/2",
-            "kind": "text_rule",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "來源列示月日：6月15日、7月10日、7月10日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "discovery-r139",
-                "revision_id": "8fe1790a2fd7a2f8e81098cd12cd2c772b2e537d6a44c9b396f47014b9504457",
-                "locator": "body / text-block 12 + body / text-block 13 + body / text-block 14 + body / text-block 15",
                 "evidence_path": "temporal_replay/submission"
               }
             ]
@@ -10531,7 +11685,7 @@
         ],
         "gaps": []
       },
-      "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+      "parser_sha256": "cf8c25556e22a7460b97ea093d4dd95851dc5a6e21a4c20758da1aa7cb2cd360",
       "diagnostics": [
         {
           "locator": "body / text-block 1",
@@ -10657,41 +11811,508 @@
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:10:05+00:00",
+      "observed_at": "2026-11-04T04:14:18+00:00",
       "history": [
         {
           "candidate_sha256": "8291d042ae332ec3a52810a9eba79d81a44d4e8d8143f08116d03174850e521b",
           "url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
           "status": "replayed",
           "reason": null,
-          "observed_at": "2026-11-03T09:00:07+00:00",
+          "observed_at": "2026-11-03T09:10:05+00:00",
           "history": [
             {
               "candidate_sha256": "8291d042ae332ec3a52810a9eba79d81a44d4e8d8143f08116d03174850e521b",
               "url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
               "status": "replayed",
               "reason": null,
-              "observed_at": "2026-11-03T08:57:20+00:00",
+              "observed_at": "2026-11-03T09:00:07+00:00",
+              "history": [
+                {
+                  "candidate_sha256": "8291d042ae332ec3a52810a9eba79d81a44d4e8d8143f08116d03174850e521b",
+                  "url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
+                  "status": "replayed",
+                  "reason": null,
+                  "observed_at": "2026-11-03T08:57:20+00:00",
+                  "raw_sha256": "27b875e35a9ae1534379ac36389f9484875a6f1c9c8b44097c144fabc0e86443",
+                  "revision_id": "99aa9fafb0cefd197d5df3201d11593803a021272b064d8cd2c401acb7e02a37",
+                  "format": "html",
+                  "policy": {
+                    "version": "time-policy-1",
+                    "submission_mode": "undetermined",
+                    "review_mode": "not_stated",
+                    "rules": [],
+                    "gaps": [
+                      "time_not_projected"
+                    ]
+                  }
+                }
+              ],
               "raw_sha256": "27b875e35a9ae1534379ac36389f9484875a6f1c9c8b44097c144fabc0e86443",
-              "revision_id": "99aa9fafb0cefd197d5df3201d11593803a021272b064d8cd2c401acb7e02a37",
+              "revision_id": "d2e25e640d83774f41fe43381975edd7a7eb21315d701cb341f364c385923074",
               "format": "html",
               "policy": {
                 "version": "time-policy-1",
-                "submission_mode": "undetermined",
+                "submission_mode": "deadline_only",
                 "review_mode": "not_stated",
-                "rules": [],
-                "gaps": [
-                  "time_not_projected"
-                ]
-              }
+                "rules": [
+                  {
+                    "rule_id": "replay/0",
+                    "kind": "text_rule",
+                    "actor": "unit",
+                    "stage": "submission",
+                    "summary": "來源列示月日：6月22日、6月26日；年份與起訖角色須查原文",
+                    "value": null,
+                    "precision": "rule",
+                    "anchor_event": null,
+                    "source_refs": [
+                      {
+                        "source": "discovery-r140",
+                        "revision_id": "d2e25e640d83774f41fe43381975edd7a7eb21315d701cb341f364c385923074",
+                        "locator": "body / text-block 15 + body / text-block 16 + body / text-block 17 + body / text-block 18",
+                        "evidence_path": "temporal_replay/submission"
+                      }
+                    ]
+                  },
+                  {
+                    "rule_id": "replay/1",
+                    "kind": "absolute",
+                    "actor": "unit",
+                    "stage": "submission",
+                    "summary": "來源明示收件截止",
+                    "value": "2026-05-01",
+                    "precision": "date",
+                    "anchor_event": null,
+                    "source_refs": [
+                      {
+                        "source": "discovery-r140",
+                        "revision_id": "d2e25e640d83774f41fe43381975edd7a7eb21315d701cb341f364c385923074",
+                        "locator": "body / text-block 16 + body / text-block 17 + body / text-block 18 + body / text-block 19",
+                        "evidence_path": "temporal_replay/submission"
+                      }
+                    ]
+                  },
+                  {
+                    "rule_id": "replay/2",
+                    "kind": "absolute",
+                    "actor": "student",
+                    "stage": "submission",
+                    "summary": "來源明示收件截止",
+                    "value": "2026-05-01",
+                    "precision": "date",
+                    "anchor_event": null,
+                    "source_refs": [
+                      {
+                        "source": "discovery-r140",
+                        "revision_id": "d2e25e640d83774f41fe43381975edd7a7eb21315d701cb341f364c385923074",
+                        "locator": "body / text-block 18 + body / text-block 19 + body / text-block 20 + body / text-block 21",
+                        "evidence_path": "temporal_replay/submission"
+                      }
+                    ]
+                  }
+                ],
+                "gaps": []
+              },
+              "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+              "diagnostics": [
+                {
+                  "locator": "body / text-block 1",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 2",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 9",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 10",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 11 + body / text-block 12 + body / text-block 13",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 12 + body / text-block 13",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 13",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 14 + body / text-block 15 + body / text-block 16 + body / text-block 17",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 15 + body / text-block 16 + body / text-block 17 + body / text-block 18",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 16 + body / text-block 17 + body / text-block 18 + body / text-block 19",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "date",
+                    "2026-05-01"
+                  ]
+                },
+                {
+                  "locator": "body / text-block 17 + body / text-block 18 + body / text-block 19 + body / text-block 20",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "date",
+                    "2026-05-01"
+                  ]
+                },
+                {
+                  "locator": "body / text-block 18 + body / text-block 19 + body / text-block 20 + body / text-block 21",
+                  "has_deadline": false,
+                  "has_student": true,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "date",
+                    "2026-05-01"
+                  ]
+                },
+                {
+                  "locator": "body / text-block 20 + body / text-block 21 + body / text-block 22",
+                  "has_deadline": true,
+                  "has_student": true,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 21 + body / text-block 22",
+                  "has_deadline": true,
+                  "has_student": true,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 22",
+                  "has_deadline": true,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 23 + body / text-block 24",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 25",
+                  "has_deadline": false,
+                  "has_student": true,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 27",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 31 + body / text-block 32 + body / text-block 33 + body / text-block 34",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 33 + body / text-block 34 + body / text-block 35 + body / text-block 36",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 36 + body / text-block 37 + body / text-block 38",
+                  "has_deadline": true,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 37 + body / text-block 38",
+                  "has_deadline": true,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 39",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 44 + body / text-block 45",
+                  "has_deadline": true,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 45",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 46",
+                  "has_deadline": false,
+                  "has_student": true,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 47",
+                  "has_deadline": false,
+                  "has_student": true,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 49 + body / text-block 50 + body / text-block 51 + body / text-block 52",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 50 + body / text-block 51 + body / text-block 52",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                },
+                {
+                  "locator": "body / text-block 51 + body / text-block 52",
+                  "has_deadline": false,
+                  "has_student": false,
+                  "parsed_range": [
+                    null,
+                    null
+                  ],
+                  "parsed_date": [
+                    "unknown",
+                    null
+                  ]
+                }
+              ]
             }
           ],
           "raw_sha256": "27b875e35a9ae1534379ac36389f9484875a6f1c9c8b44097c144fabc0e86443",
-          "revision_id": "d2e25e640d83774f41fe43381975edd7a7eb21315d701cb341f364c385923074",
+          "revision_id": "705b2cdd7915d68518ce6f7e14a7bf46ea56e18d9d7c52dd8e888c51c193e827",
           "format": "html",
           "policy": {
             "version": "time-policy-1",
-            "submission_mode": "deadline_only",
+            "submission_mode": "rule_text",
             "review_mode": "not_stated",
             "rules": [
               {
@@ -10706,7 +12327,7 @@
                 "source_refs": [
                   {
                     "source": "discovery-r140",
-                    "revision_id": "d2e25e640d83774f41fe43381975edd7a7eb21315d701cb341f364c385923074",
+                    "revision_id": "705b2cdd7915d68518ce6f7e14a7bf46ea56e18d9d7c52dd8e888c51c193e827",
                     "locator": "body / text-block 15 + body / text-block 16 + body / text-block 17 + body / text-block 18",
                     "evidence_path": "temporal_replay/submission"
                   }
@@ -10714,17 +12335,17 @@
               },
               {
                 "rule_id": "replay/1",
-                "kind": "absolute",
+                "kind": "text_rule",
                 "actor": "unit",
                 "stage": "submission",
-                "summary": "來源明示收件截止",
-                "value": "2026-05-01",
-                "precision": "date",
+                "summary": "來源列示月日：6月22日、6月26日、5月1日、7月31日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
                 "anchor_event": null,
                 "source_refs": [
                   {
                     "source": "discovery-r140",
-                    "revision_id": "d2e25e640d83774f41fe43381975edd7a7eb21315d701cb341f364c385923074",
+                    "revision_id": "705b2cdd7915d68518ce6f7e14a7bf46ea56e18d9d7c52dd8e888c51c193e827",
                     "locator": "body / text-block 16 + body / text-block 17 + body / text-block 18 + body / text-block 19",
                     "evidence_path": "temporal_replay/submission"
                   }
@@ -10732,17 +12353,17 @@
               },
               {
                 "rule_id": "replay/2",
-                "kind": "absolute",
+                "kind": "text_rule",
                 "actor": "student",
                 "stage": "submission",
-                "summary": "來源明示收件截止",
-                "value": "2026-05-01",
-                "precision": "date",
+                "summary": "來源列示月日：6月22日、6月26日、5月1日、7月31日；年份與起訖角色須查原文",
+                "value": null,
+                "precision": "rule",
                 "anchor_event": null,
                 "source_refs": [
                   {
                     "source": "discovery-r140",
-                    "revision_id": "d2e25e640d83774f41fe43381975edd7a7eb21315d701cb341f364c385923074",
+                    "revision_id": "705b2cdd7915d68518ce6f7e14a7bf46ea56e18d9d7c52dd8e888c51c193e827",
                     "locator": "body / text-block 18 + body / text-block 19 + body / text-block 20 + body / text-block 21",
                     "evidence_path": "temporal_replay/submission"
                   }
@@ -10751,7 +12372,7 @@
             ],
             "gaps": []
           },
-          "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+          "parser_sha256": "0e2865fafbecdc17d0fcd8b6d2f0735bafd35f95804eb6082b045d71d4ff07b3",
           "diagnostics": [
             {
               "locator": "body / text-block 1",
@@ -11147,63 +12768,47 @@
         }
       ],
       "raw_sha256": "27b875e35a9ae1534379ac36389f9484875a6f1c9c8b44097c144fabc0e86443",
-      "revision_id": "705b2cdd7915d68518ce6f7e14a7bf46ea56e18d9d7c52dd8e888c51c193e827",
+      "revision_id": "95265fbd58f60f0f275f21ff4923d351183ebb86d7dd228d24e262be47477f32",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "rule_text",
+        "submission_mode": "fixed_window",
         "review_mode": "not_stated",
         "rules": [
           {
             "rule_id": "replay/0",
-            "kind": "text_rule",
-            "actor": "unit",
-            "stage": "submission",
-            "summary": "來源列示月日：6月22日、6月26日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
+            "kind": "absolute",
+            "actor": "student",
+            "stage": "application_start",
+            "summary": "來源明示受理起日（依公告日與計畫年度雙重錨定，待核座標）",
+            "value": "2026-06-22",
+            "precision": "date",
+            "year_basis": "dual_anchored",
             "anchor_event": null,
             "source_refs": [
               {
                 "source": "discovery-r140",
-                "revision_id": "705b2cdd7915d68518ce6f7e14a7bf46ea56e18d9d7c52dd8e888c51c193e827",
+                "revision_id": "95265fbd58f60f0f275f21ff4923d351183ebb86d7dd228d24e262be47477f32",
                 "locator": "body / text-block 15 + body / text-block 16 + body / text-block 17 + body / text-block 18",
-                "evidence_path": "temporal_replay/submission"
+                "evidence_path": "temporal_replay/application_start"
               }
             ]
           },
           {
             "rule_id": "replay/1",
-            "kind": "text_rule",
-            "actor": "unit",
-            "stage": "submission",
-            "summary": "來源列示月日：6月22日、6月26日、5月1日、7月31日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "discovery-r140",
-                "revision_id": "705b2cdd7915d68518ce6f7e14a7bf46ea56e18d9d7c52dd8e888c51c193e827",
-                "locator": "body / text-block 16 + body / text-block 17 + body / text-block 18 + body / text-block 19",
-                "evidence_path": "temporal_replay/submission"
-              }
-            ]
-          },
-          {
-            "rule_id": "replay/2",
-            "kind": "text_rule",
+            "kind": "absolute",
             "actor": "student",
             "stage": "submission",
-            "summary": "來源列示月日：6月22日、6月26日、5月1日、7月31日；年份與起訖角色須查原文",
-            "value": null,
-            "precision": "rule",
+            "summary": "來源明示收件截止（依公告日與計畫年度雙重錨定，待核座標）",
+            "value": "2026-06-26T17:00:00+08:00",
+            "precision": "datetime",
+            "year_basis": "dual_anchored",
             "anchor_event": null,
             "source_refs": [
               {
                 "source": "discovery-r140",
-                "revision_id": "705b2cdd7915d68518ce6f7e14a7bf46ea56e18d9d7c52dd8e888c51c193e827",
-                "locator": "body / text-block 18 + body / text-block 19 + body / text-block 20 + body / text-block 21",
+                "revision_id": "95265fbd58f60f0f275f21ff4923d351183ebb86d7dd228d24e262be47477f32",
+                "locator": "body / text-block 15 + body / text-block 16 + body / text-block 17 + body / text-block 18",
                 "evidence_path": "temporal_replay/submission"
               }
             ]
@@ -11211,7 +12816,7 @@
         ],
         "gaps": []
       },
-      "parser_sha256": "0e2865fafbecdc17d0fcd8b6d2f0735bafd35f95804eb6082b045d71d4ff07b3",
+      "parser_sha256": "cf8c25556e22a7460b97ea093d4dd95851dc5a6e21a4c20758da1aa7cb2cd360",
       "diagnostics": [
         {
           "locator": "body / text-block 1",
@@ -11335,8 +12940,8 @@
           "has_deadline": false,
           "has_student": false,
           "parsed_range": [
-            null,
-            null
+            "2026-05-01",
+            "2026-07-31"
           ],
           "parsed_date": [
             "date",
@@ -11348,8 +12953,8 @@
           "has_deadline": false,
           "has_student": false,
           "parsed_range": [
-            null,
-            null
+            "2026-05-01",
+            "2026-07-31"
           ],
           "parsed_date": [
             "date",
@@ -11361,8 +12966,8 @@
           "has_deadline": false,
           "has_student": true,
           "parsed_range": [
-            null,
-            null
+            "2026-05-01",
+            "2026-07-31"
           ],
           "parsed_date": [
             "date",

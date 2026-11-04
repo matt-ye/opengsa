@@ -3,7 +3,7 @@
   "as_of": "2026-11-04",
   "candidate_as_of": "2026-11-02",
   "items": 64,
-  "http_requests": 27,
+  "http_requests": 40,
   "model_calls": 0,
   "human_approvals": 0,
   "published": false,
@@ -22,11 +22,11 @@
     "conditional_deadline": 3,
     "recurring": 9,
     "event_relative": 3,
-    "fixed_window": 7,
+    "fixed_window": 13,
     "procedure_only": 11,
-    "rule_text": 10,
+    "deadline_only": 5,
     "continuous": 4,
-    "deadline_only": 2
+    "rule_text": 1
   },
   "latest_statuses": {
     "replayed": 64
@@ -550,10 +550,22 @@
       "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187",
       "latest_replay_status": "replayed",
       "reason": null,
-      "submission_mode": "rule_text",
-      "gantt_form": "時間規則卡，不虛構日曆座標",
-      "dates": {},
-      "absolute_rules": [],
+      "submission_mode": "deadline_only",
+      "gantt_form": "單一學生截止標記＋準備建議（非起日）",
+      "dates": {
+        "end": {
+          "value": "2024-03-25T08:00:00+08:00",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2024-03-25T08:00:00+08:00"
+        }
+      ],
       "gaps": [],
       "example_scopes": [],
       "attachment_urls": [],
@@ -1182,10 +1194,22 @@
       "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216",
       "latest_replay_status": "replayed",
       "reason": null,
-      "submission_mode": "rule_text",
-      "gantt_form": "時間規則卡，不虛構日曆座標",
-      "dates": {},
-      "absolute_rules": [],
+      "submission_mode": "deadline_only",
+      "gantt_form": "單一學生截止標記＋準備建議（非起日）",
+      "dates": {
+        "end": {
+          "value": "2025-03-25T12:00:00+08:00",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2025-03-25T12:00:00+08:00"
+        }
+      ],
       "gaps": [],
       "example_scopes": [],
       "attachment_urls": [],
@@ -1200,10 +1224,22 @@
       "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
       "latest_replay_status": "replayed",
       "reason": null,
-      "submission_mode": "rule_text",
-      "gantt_form": "時間規則卡，不虛構日曆座標",
-      "dates": {},
-      "absolute_rules": [],
+      "submission_mode": "deadline_only",
+      "gantt_form": "單一學生截止標記＋準備建議（非起日）",
+      "dates": {
+        "end": {
+          "value": "2026-03-24T12:00:00+08:00",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-03-24T12:00:00+08:00"
+        }
+      ],
       "gaps": [],
       "example_scopes": [],
       "attachment_urls": [],
@@ -1420,10 +1456,32 @@
       "url": "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f",
       "latest_replay_status": "replayed",
       "reason": null,
-      "submission_mode": "rule_text",
-      "gantt_form": "時間規則卡，不虛構日曆座標",
-      "dates": {},
-      "absolute_rules": [],
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條",
+      "dates": {
+        "start": {
+          "value": "2026-06-12",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        },
+        "end": {
+          "value": "2026-07-12",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-07-12"
+        },
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2026-06-12"
+        }
+      ],
       "gaps": [],
       "example_scopes": [],
       "attachment_urls": [],
@@ -1469,10 +1527,32 @@
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7062",
       "latest_replay_status": "replayed",
       "reason": null,
-      "submission_mode": "rule_text",
-      "gantt_form": "時間規則卡，不虛構日曆座標",
-      "dates": {},
-      "absolute_rules": [],
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條",
+      "dates": {
+        "start": {
+          "value": "2025-06-12",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        },
+        "end": {
+          "value": "2025-07-03T17:00:00+08:00",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2025-06-12"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2025-07-03T17:00:00+08:00"
+        }
+      ],
       "gaps": [],
       "example_scopes": [],
       "attachment_urls": [],
@@ -1487,10 +1567,32 @@
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7278",
       "latest_replay_status": "replayed",
       "reason": null,
-      "submission_mode": "rule_text",
-      "gantt_form": "時間規則卡，不虛構日曆座標；另有具名單位範例／參考層",
-      "dates": {},
-      "absolute_rules": [],
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條；另有具名單位範例／參考層",
+      "dates": {
+        "start": {
+          "value": "2026-06-15",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        },
+        "end": {
+          "value": "2026-07-10T17:00:00+08:00",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2026-06-15"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-07-10T17:00:00+08:00"
+        }
+      ],
       "gaps": [],
       "example_scopes": [
         "臺大電信所"
@@ -1555,10 +1657,32 @@
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7061",
       "latest_replay_status": "replayed",
       "reason": null,
-      "submission_mode": "rule_text",
-      "gantt_form": "時間規則卡，不虛構日曆座標；另有具名單位範例／參考層",
-      "dates": {},
-      "absolute_rules": [],
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條；另有具名單位範例／參考層",
+      "dates": {
+        "start": {
+          "value": "2025-06-12",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        },
+        "end": {
+          "value": "2025-07-03T17:00:00+08:00",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2025-06-12"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2025-07-03T17:00:00+08:00"
+        }
+      ],
       "gaps": [],
       "example_scopes": [
         "臺大電信所"
@@ -1575,10 +1699,32 @@
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7279",
       "latest_replay_status": "replayed",
       "reason": null,
-      "submission_mode": "rule_text",
-      "gantt_form": "時間規則卡，不虛構日曆座標；另有具名單位範例／參考層",
-      "dates": {},
-      "absolute_rules": [],
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條；另有具名單位範例／參考層",
+      "dates": {
+        "start": {
+          "value": "2026-06-15",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        },
+        "end": {
+          "value": "2026-07-10T17:00:00+08:00",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2026-06-15"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-07-10T17:00:00+08:00"
+        }
+      ],
       "gaps": [],
       "example_scopes": [
         "臺大電信所"
@@ -1595,10 +1741,32 @@
       "url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
       "latest_replay_status": "replayed",
       "reason": null,
-      "submission_mode": "rule_text",
-      "gantt_form": "時間規則卡，不虛構日曆座標；另有具名單位範例／參考層",
-      "dates": {},
-      "absolute_rules": [],
+      "submission_mode": "fixed_window",
+      "gantt_form": "學生固定申請長條；另有具名單位範例／參考層",
+      "dates": {
+        "start": {
+          "value": "2026-06-22",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        },
+        "end": {
+          "value": "2026-06-26T17:00:00+08:00",
+          "certainty": "inferred",
+          "note": "依公告發布日與計畫年度雙重錨定（待核座標）"
+        }
+      },
+      "absolute_rules": [
+        {
+          "actor": "student",
+          "stage": "application_start",
+          "value": "2026-06-22"
+        },
+        {
+          "actor": "student",
+          "stage": "submission",
+          "value": "2026-06-26T17:00:00+08:00"
+        }
+      ],
       "gaps": [],
       "example_scopes": [
         "臺大電信所"

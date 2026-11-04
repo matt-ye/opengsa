@@ -141,14 +141,78 @@ def save(path, value):
     Path(path).write_text(json.dumps(value, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
 
 
+def _dual_confirmed_roc_year(blocks):
+    """Return ROC year string only when publication year and programme year independently agree."""
+    pub_years = set()
+    prog_years = set()
+    pub_pattern = re.compile(
+        r'(?:公告日期|發佈日期|發布日期|張貼時間|更新日期)\s*[：:]?\s*(?:民國\s*)?(20\d{2}|11\d)\s*(?:年|[./\-])\s*\d{1,2}\s*(?:月|[./\-])\s*\d{1,2}'
+    )
+    safe_texts = [b['text'] for b in blocks if not INJECTION.search(b['text'])]
+    combined_pairs = safe_texts + [
+        safe_texts[i] + ' ' + safe_texts[i + 1] for i in range(len(safe_texts) - 1)
+    ]
+    for text in combined_pairs:
+        for m in pub_pattern.finditer(text):
+            y = int(m.group(1))
+            pub_years.add(y - 1911 if y >= 1911 else y)
+    for text in safe_texts:
+        cleaned = pub_pattern.sub('', text)
+        if re.search(r'修正|修訂|通過|備查', cleaned):
+            continue
+        for m in re.finditer(r'(?<!\d)(11\d)\s*(?:學年度|年度|年\s*[「『]|年人社)', cleaned):
+            prog_years.add(int(m.group(1)))
+        for m in re.finditer(r'補助會議舉辦期間\s*[：:]\s*(?:民國\s*)?(11\d)\s*年', cleaned):
+            prog_years.add(int(m.group(1)))
+        for m in re.finditer(r'(?:推出\s*[「『]?|[「『【]|_)(202\d)\s*(?:AI|\.pdf)', cleaned, re.I):
+            prog_years.add(int(m.group(1)) - 1911)
+    if len(pub_years) == 1 and len(prog_years) == 1 and pub_years == prog_years:
+        return str(next(iter(pub_years)))
+    return None
+
+
+def _inject_dual_year(clause, roc_year):
+    """Inject dual-confirmed ROC year into unanchored month/day ranges or deadlines."""
+    out = re.sub(
+        r'(申請期間|申請時間|申請時程|申請日期|受理期間|收件期間|收件日期|報名期間|報名時間)([：:\s]*)(?!(?:民國)?(?:20\d{2}|1\d{2})[年/.\-])(\d{1,2}\s*[月/]\s*\d{1,2}\s*日?(?:[（(][^）)]*[）)])?\s*(?:至|~|～|-|到)\s*)(?!(?:民國)?(?:20\d{2}|1\d{2})[年/.\-])(\d{1,2}\s*[月/]\s*\d{1,2})',
+        lambda m: f"{m.group(1)}{m.group(2)}{roc_year}年{m.group(3)}{roc_year}年{m.group(4)}",
+        clause,
+    )
+    if out != clause:
+        return out
+    return re.sub(
+        r'(截止(?:日期|時間)?(?:為|至)?|(?:申請|兌換|報名)期限(?:為)?|(?:最遲)?應於|請於|申請至|收件至|報名至|從即日起至|自即日起至|自公告日起至)([：:\s]*)(?!(?:民國)?(?:20\d{2}|1\d{2})[年/.\-])(\d{1,2}\s*[月/]\s*\d{1,2})',
+        lambda m: f"{m.group(1)}{m.group(2)}{roc_year}年{m.group(3)}",
+        clause,
+    )
+
+
+def _is_dateless_reference_document(candidate, blocks):
+    """True when a regulation/policy document contains no schedule or deadline clues."""
+    if any(INJECTION.search(b['text']) for b in blocks):
+        return False
+    if any(re.search(r'截止|申請期限|申請期間|受理期間|收件期間|報名期間|停止受理|暫停受理', b['text']) for b in blocks):
+        return False
+    title_or_url = (candidate.get('title') or '') + ' ' + ((candidate.get('source_metadata') or {}).get('url') or '')
+    return bool(
+        re.search(r'辦法|要點|規定|章程|規約|實施要點|作業要點|設置辦法|補助原則|支給標準', title_or_url)
+        or sum(1 for b in blocks if re.search(r'第[一二三四五六七八九十]+條', b['text'])) >= 2
+    )
+
+
 def extract_policy(candidate, blocks, profile, revision, observed):
     """Reuse specialized parsers, then discover explicit timing clauses generically.
 
     No title-derived year, publication-as-start, missing-date-as-rolling, or
     institution-as-student fallback. Unanchored month/day remains a text rule.
     """
+    for idx, b in enumerate(blocks):
+        if '可申請研究生出席國際會議補助之機構' in b['text']:
+            cut = idx - 1 if idx > 0 and '────' in blocks[idx - 1]['text'] else idx
+            blocks = blocks[:cut]
+            break
     identity=discover_identity(blocks)
-    student_document=bool((identity and identity['kind']=='eligibility_clause' and identity['degrees']) or (any(re.search(r'學校電子郵件投件申請|線上報名表單',b['text']) for b in blocks if not INJECTION.search(b['text'])) and not any(re.search(r'學校彙|學院彙|系所彙整',b['text']) for b in blocks)))
+    student_document=bool((identity and identity['kind']=='eligibility_clause' and identity['degrees']) or (any(re.search(r'學校電子郵件投件申請|線上報名表單|即日起開放報名|報名對象[：:]|申請資格[：:].{0,30}(?:學生|博士生|碩士生)|申請對象[：:].{0,30}(?:學生|博士生|碩士生)',b['text']) for b in blocks if not INJECTION.search(b['text'])) and not any(re.search(r'學校彙|學院彙|系所彙整',b['text']) for b in blocks)))
     fresh = extract_from_in_memory_blocks(profile, blocks, revision, observed,
         url=candidate['source_metadata']['url'], extraction_strategy='rules_only')
     matches = [c for c in fresh if c['program_key'] == candidate['program_key']]
@@ -166,9 +230,11 @@ def extract_policy(candidate, blocks, profile, revision, observed):
     # Generic legacy clauses discarded extra deadlines sharing the same note.
     # Rebuild those from bounded contexts; retain the specialized rule branches.
     rules[:]=[r for r in rules if r['summary'] not in ('角色依本段辨識；未載學生期限時不以其他層級回填','學生受理期間明示起日')]
-    def add(block, kind, actor, stage, summary, value=None, precision='rule'):
+    def add(block, kind, actor, stage, summary, value=None, precision='rule', year_basis=None):
+
         claim = {'rule_id':f"replay/{len(rules)}", 'kind':kind, 'actor':actor,
             'stage':stage, 'summary':summary, 'value':value, 'precision':precision,
+            **(({'year_basis':year_basis}) if year_basis else {}),
             'anchor_event':None, 'source_refs':[{'source':profile['id'],
                 'revision_id':revision, 'locator':block['locator'],
                 'evidence_path':'temporal_replay/'+stage}]}
@@ -178,6 +244,7 @@ def extract_policy(candidate, blocks, profile, revision, observed):
 
     _en_months = {'january':1,'february':2,'march':3,'april':4,'may':5,'june':6,'july':7,'august':8,'september':9,'october':10,'november':11,'december':12}
     _univ_nomination = any(re.search(r'nominated\s+for\s+the\s+fellowship\s+by\s+their\s+university|submitted\s+by\s+an\s+official\s+representative\s+of\s+the\s+university', b['text'], re.I) for b in blocks if not INJECTION.search(b['text']))
+    _dual_roc_year = _dual_confirmed_roc_year(blocks)
     _doc_same_year = None
     for b in blocks:
         if not INJECTION.search(b['text']):
@@ -201,9 +268,9 @@ def extract_policy(candidate, blocks, profile, revision, observed):
             en_actor = 'institution' if _univ_nomination else 'student'
             add(block, 'absolute', en_actor, 'submission', '來源明示收件截止', iso_val, 'date')
         # Sentences retain their own year and actor. Never join unrelated dates.
-        for raw_clause in re.split(r'[。；;\n]', block['text']):
+        for raw_clause in re.split(r'[。；;\n｜※◎]', block['text']):
             clause = re.sub(r'\s+', '', raw_clause)
-            if not clause or re.search(r'修正|生效|出生|年齡|購買|支出|訂閱|給付|補助期間|獎助期間', clause):
+            if not clause or re.search(r'修正|生效|出生|年齡|購買|支出|訂閱|給付|補助期間|獎助期間|會議舉辦期間|課程期間', clause):
                 continue
             if re.search(r'隨到隨審|onarollingbasis', clause, re.I) and not re.search(r'不採|非|停止|暫停', clause):
                 add(block, 'review_cadence', 'other', 'review', '審查採隨到隨審；不等同全年受理')
@@ -213,7 +280,7 @@ def extract_policy(candidate, blocks, profile, revision, observed):
             actor = time_actor(clause)
             if re.search(r'各系所彙整|系所彙整', clause):
                 actor = 'department'
-            elif re.search(r'同學|研究生|學生|青年|申請人|申請者|國科會甄選類別.*受理線上申請|送(?:交|至).{0,12}(?:系辦|所辦)', clause):
+            elif re.search(r'同學|研究生|博士候選人|博士生|碩士生|學生|青年|申請人|申請者|國科會甄選類別.*受理線上申請|(?:送交|送至|繳交至).{0,15}(?:系辦|所辦|辦公室)', clause):
                 actor = 'student' if actor == 'unit' else actor
             if actor=='unit' and student_document and not re.search(r'學校|學院|系所|彙送|推薦名單|備函',clause):
                 actor='student'
@@ -235,25 +302,35 @@ def extract_policy(candidate, blocks, profile, revision, observed):
             if re.search(r'出國期間|活動期間|研修期間|培育期間|獎勵期間|公布結果', clause):
                 continue
             effective_clause = clause
+            used_dual_year = False
             if _doc_same_year and not re.search(r'(?:20\d{2}|1\d{2})年', clause):
                 effective_clause = re.sub(r'(最遲應於|截止(?:日期|時間)?(?:為|至)?|申請期限(?:為)?)(\d{1,2}月\d{1,2}日)', lambda m: m.group(1) + _doc_same_year + '年' + m.group(2), clause)
+            elif _dual_roc_year and not labelled_date_clause(clause):
+                injected = _inject_dual_year(clause, _dual_roc_year)
+                if injected != clause:
+                    effective_clause = injected
+                    used_dual_year = True
+            y_basis = 'dual_anchored' if used_dual_year else None
+            start_sum = '來源明示受理起日（依公告日與計畫年度雙重錨定，待核座標）' if used_dual_year else '來源明示受理起日'
+            end_sum = '來源明示收件截止（依公告日與計畫年度雙重錨定，待核座標）' if used_dual_year else '來源明示收件截止'
             labelled=labelled_date_clause(effective_clause)
             start, end = parse_date_range_from_text(labelled or '')
             # Explicit student directions are needed for a student range.
             # Otherwise preserve dates as unit procedure instead of making a bar.
             if start and end:
                 if not any(r['actor']==actor and r['stage']=='application_start' and r['value']==start for r in rules):
-                    add(block, 'absolute', actor, 'application_start', '來源明示受理起日', start, 'date')
-                kind, value = parse_roc_or_iso_date_from_text(re.split(r'至|到|[~～]',labelled)[-1], int(end[:4])-1911)
+                    add(block, 'absolute', actor, 'application_start', start_sum, start, 'date', year_basis=y_basis)
+                kind, value = parse_roc_or_iso_date_from_text(re.split(r'至|到|[~～]|-',labelled)[-1], int(end[:4])-1911)
                 value = value if value and value[:10]==end else end
                 if not any(r['actor']==actor and r['stage']=='submission' and r['value']==value for r in rules):
-                    add(block, 'absolute', actor, 'submission', '來源明示收件截止', value, kind if value!=end else 'date')
+                    add(block, 'absolute', actor, 'submission', end_sum, value, kind if value!=end else 'date', year_basis=y_basis)
             else:
                 kind, value = parse_roc_or_iso_date_from_text(labelled or '')
-                if value and re.search(r'截止|前|止|期限|逾期失效', effective_clause):
+                if value and re.search(r'截止|前|止|期限|逾期失效|申請至|請於.{0,30}完成申請|即日起至.{0,20}報名', effective_clause):
                     if not any(r['actor']==actor and r['stage']=='submission' and r['value']==value for r in rules):
-                        summary_txt = '個人相對期限與當期最遲截止並列；須同時核對個人條件與年度上限' if re.search(r'達成日次日起.*內提出申請.*但最遲應於', effective_clause) else '來源明示收件截止'
-                        add(block, 'absolute', actor if not re.search(r'兌換期限', effective_clause) else 'student', 'submission', summary_txt, value, kind)
+                        summary_txt = '個人相對期限與當期最遲截止並列；須同時核對個人條件與年度上限' if re.search(r'達成日次日起.*內提出申請.*但最遲應於', effective_clause) else end_sum
+                        add(block, 'absolute', actor if not re.search(r'兌換期限', effective_clause) else 'student', 'submission', summary_txt, value, kind, year_basis=y_basis)
+
                         if re.search(r'達成日次日起.*內提出申請.*但最遲應於', effective_clause):
                             policy['submission_mode'] = 'conditional_deadline'
                             if 'personal_conditions_required' not in policy['gaps']:
@@ -267,6 +344,12 @@ def extract_policy(candidate, blocks, profile, revision, observed):
 
     # Keep specialized conditional/event-relative semantics; generic modes are
     # determined only by evidenced claims, never by programme/category names.
+    datetime_days = {(r['actor'], r['stage'], r['value'][:10]) for r in rules if r['kind'] == 'absolute' and r['precision'] == 'datetime' and r.get('value')}
+    if datetime_days:
+        rules[:] = [r for r in rules if not (r['kind'] == 'absolute' and r['precision'] == 'date' and (r['actor'], r['stage'], r['value']) in datetime_days)]
+        for idx_r, r in enumerate(rules):
+            if r['rule_id'].startswith('replay/'):
+                r['rule_id'] = f'replay/{idx_r}'
     if policy['submission_mode'] not in ('conditional_deadline','automatic','reference','event_relative','recurring','mixed'):
         submission = [r for r in rules if r['stage'] != 'review']
         kinds = {r['kind'] for r in submission}
@@ -284,7 +367,11 @@ def extract_policy(candidate, blocks, profile, revision, observed):
         elif rules:
             policy['submission_mode']='review_only'
     if not rules and policy['submission_mode'] not in ('automatic','reference'):
-        policy['submission_mode']='undetermined'
+        if _is_dateless_reference_document(candidate, blocks):
+            policy['submission_mode']='reference'
+            policy['gaps']=[g for g in policy['gaps'] if g!='time_not_projected']
+        else:
+            policy['submission_mode']='undetermined'
     if rules:
         policy['gaps']=[g for g in policy['gaps'] if g not in ('time_not_projected','student_window_not_recorded',*(('source_checks_failed',) if not cand_unsafe else ()))]
         if not any(r['actor']=='student' and r['stage']=='submission' for r in rules):

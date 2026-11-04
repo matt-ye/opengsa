@@ -104,6 +104,45 @@ class TemporalReplayTests(unittest.TestCase):
             self.assertNotIn('policy',record)
             self.assertNotIn('Disallow',(Path(d)/'batch/temporal-observations.json').read_text(encoding='utf-8'))
 
+    def test_dual_confirmed_year_anchors_month_day_into_inferred_range(self):
+        source, candidate = extract()
+        candidate['title'] = '【申請時程6/15-7/10】115學年度「國科會核配博士生獎學金」申請公告'
+        text_blocks = blocks(
+            '公告標題：【申請時程6/15-7/10】115學年度「國科會核配博士生獎學金」申請公告',
+            '張貼時間：民國115年06月15日',
+            '學生申請時程：6月15日(一)至7月10日(五)下午5:00止'
+        )
+        policy = extract_policy(candidate, text_blocks, source, 'b'*64, '2026-11-04T00:00:00Z')
+        self.assertEqual(policy['submission_mode'], 'fixed_window')
+        rules = policy['rules']
+        self.assertEqual(len(rules), 2)
+        start_rule = next(r for r in rules if r['stage'] == 'application_start')
+        end_rule = next(r for r in rules if r['stage'] == 'submission')
+        self.assertEqual(start_rule['value'], '2026-06-15')
+        self.assertEqual(start_rule['year_basis'], 'dual_anchored')
+        self.assertEqual(end_rule['value'], '2026-07-10T17:00:00+08:00')
+        self.assertEqual(end_rule['year_basis'], 'dual_anchored')
+        # Verify radar_metadata produces certainty='inferred'
+        rec = {'status': 'replayed', 'candidate_sha256': candidate_fingerprint(candidate),
+               'url': candidate['source_metadata']['url'], 'raw_sha256': 'a'*64,
+               'revision_id': 'b'*64, 'observed_at': '2026-11-04T00:00:00Z', 'policy': policy}
+        meta = radar_metadata({'candidates': [candidate]}, {'version': VERSION, 'records': {candidate['candidate_id']: rec}})['records'][candidate['candidate_id']]
+        self.assertEqual(meta['time_dates']['start']['certainty'], 'inferred')
+        self.assertEqual(meta['time_dates']['end']['certainty'], 'inferred')
+
+    def test_dateless_regulation_document_becomes_reference(self):
+        source, candidate = extract()
+        candidate['title'] = '國立臺灣大學博士生獎學金設置辦法'
+        text_blocks = blocks(
+            '國立臺灣大學博士生獎學金設置辦法',
+            '第一條 為鼓勵優秀人才就讀本校博士班，訂定國立臺灣大學博士生獎學金設置辦法。',
+            '第二條 博士生獎學金包括國科會博士生研究獎學金、教育部博士生獎學金。'
+        )
+        policy = extract_policy(candidate, text_blocks, source, 'b'*64, '2026-11-04T00:00:00Z')
+        self.assertEqual(policy['submission_mode'], 'reference')
+        self.assertEqual(policy['rules'], [])
+        self.assertNotIn('time_not_projected', policy['gaps'])
+
     def test_saved_real_inventory_and_request_ledger_are_complete(self):
         bundle=json.loads((ROOT/'data/candidates/source-review.json').read_text(encoding='utf-8'))
         state=json.loads((ROOT/'data/temporal-observations.json').read_text(encoding='utf-8'))
