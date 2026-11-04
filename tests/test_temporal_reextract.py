@@ -143,6 +143,52 @@ class TemporalReplayTests(unittest.TestCase):
         self.assertEqual(policy['rules'], [])
         self.assertNotIn('time_not_projected', policy['gaps'])
 
+    def test_dual_year_rejected_when_weekday_marker_contradicts(self):
+        source, candidate = extract()
+        candidate['title'] = '115學年度「國科會核配博士生獎學金」申請公告'
+        # 2026-06-15 is a Monday; the text claims Tuesday, so the year guess is unsafe.
+        policy = extract_policy(candidate, blocks(
+            '公告標題：115學年度「國科會核配博士生獎學金」申請公告',
+            '張貼時間：民國115年06月10日',
+            '學生申請時程：6月15日(二)至7月10日(五)下午5:00止'),
+            source, 'b'*64, '2026-11-04T00:00:00Z')
+        self.assertFalse(any(r.get('year_basis') == 'dual_anchored' for r in policy['rules']))
+        self.assertFalse(any(r['kind'] == 'absolute' for r in policy['rules']))
+
+    def test_dual_year_rejected_when_window_precedes_publication(self):
+        source, candidate = extract()
+        candidate['title'] = '115學年度第2學期「研究生獎學金」申請公告'
+        # December notice for a January window: same-year injection would land in the past.
+        policy = extract_policy(candidate, blocks(
+            '公告標題：115學年度第2學期「研究生獎學金」申請公告',
+            '張貼時間：民國115年12月20日',
+            '學生申請時程：1月5日至1月20日止'),
+            source, 'b'*64, '2026-11-04T00:00:00Z')
+        self.assertFalse(any(r.get('year_basis') == 'dual_anchored' for r in policy['rules']))
+        self.assertFalse(any(r['kind'] == 'absolute' and (r['value'] or '').startswith('2026-01') for r in policy['rules']))
+
+    def test_undetermined_cooldown_is_wired_into_production_planner(self):
+        from scripts.temporal_tracks import parser_fingerprint, plan_track_execution
+        source, candidate = extract()
+        rec = {'status': 'replayed', 'candidate_sha256': candidate_fingerprint(candidate),
+               'url': candidate['source_metadata']['url'], 'raw_sha256': 'a'*64,
+               'policy': {'submission_mode': 'undetermined', 'rules': [], 'gaps': []},
+               'undetermined_subkind': 'no_schedule_in_document'}
+        cooled = {'version': VERSION, 'records': {candidate['candidate_id']: {**rec, 'parser_sha256': parser_fingerprint()}}}
+        stale = {'version': VERSION, 'records': {candidate['candidate_id']: {**rec, 'parser_sha256': '0'*64}}}
+        plan = plan_track_execution([candidate], observations=cooled, track='all')
+        self.assertEqual(plan['selected_source_ids'], [])
+        plan = plan_track_execution([candidate], observations=stale, track='all')
+        self.assertEqual(plan['selected_source_ids'], [candidate['source_metadata']['source_id']])
+
+    def test_parser_fingerprint_ignores_crlf_checkout_differences(self):
+        from scripts.temporal_tracks import PARSER_FILES, parser_fingerprint
+        with tempfile.TemporaryDirectory() as d:
+            for name in PARSER_FILES:
+                (Path(d) / name).parent.mkdir(parents=True, exist_ok=True)
+                (Path(d) / name).write_bytes((ROOT / name).read_bytes().replace(b'\r\n', b'\n').replace(b'\n', b'\r\n'))
+            self.assertEqual(parser_fingerprint(d), parser_fingerprint())
+
     def test_saved_real_inventory_and_request_ledger_are_complete(self):
         bundle=json.loads((ROOT/'data/candidates/source-review.json').read_text(encoding='utf-8'))
         state=json.loads((ROOT/'data/temporal-observations.json').read_text(encoding='utf-8'))

@@ -187,11 +187,59 @@ def _inject_dual_year(clause, roc_year):
     )
 
 
+def _publication_dates(blocks):
+    """Explicit publication/posting dates (as date objects) found in safe blocks."""
+    from datetime import date as _date
+    found = []
+    pattern = re.compile(
+        r'(?:公告日期|發佈日期|發布日期|張貼時間|更新日期)\s*[：:]?\s*(?:民國\s*)?(20\d{2}|11\d)\s*(?:年|[./\-])\s*(\d{1,2})\s*(?:月|[./\-])\s*(\d{1,2})'
+    )
+    safe_texts = [b['text'] for b in blocks if not INJECTION.search(b['text'])]
+    for text in safe_texts + [safe_texts[i] + ' ' + safe_texts[i + 1] for i in range(len(safe_texts) - 1)]:
+        for m in pattern.finditer(text):
+            y = int(m.group(1))
+            try:
+                found.append(_date(y if y >= 1911 else y + 1911, int(m.group(2)), int(m.group(3))))
+            except ValueError:
+                continue
+    return found
+
+
+_WEEKDAYS = {'一': 0, '二': 1, '三': 2, '四': 3, '五': 4, '六': 5, '日': 6, '天': 6}
+
+
+def _dual_year_consistent(clause, roc_year, publication_dates):
+    """Reject a dual-anchored year when the source text contradicts it.
+
+    1. Any weekday marker next to a month/day, e.g. 6/15(一), must match.
+    2. The latest month/day in the clause must not precede the publication
+       date; a December notice for a January window belongs to the next year.
+    """
+    from datetime import date as _date
+    year = int(roc_year) + 1911
+    for m in re.finditer(r'(?<![\d/年.\-])(\d{1,2})\s*[月/]\s*(\d{1,2})\s*日?\s*[（(]\s*(?:星期|週|周)?\s*([一二三四五六日天])\s*[)）]', clause):
+        try:
+            if _date(year, int(m.group(1)), int(m.group(2))).weekday() != _WEEKDAYS[m.group(3)]:
+                return False
+        except ValueError:
+            return False
+    days = []
+    # Only month/days without their own year are the ones receiving the injected year.
+    for m in re.finditer(r'(?<![\d/年.\-])(\d{1,2})\s*[月/]\s*(\d{1,2})(?![\d/])', clause):
+        try:
+            days.append(_date(year, int(m.group(1)), int(m.group(2))))
+        except ValueError:
+            return False
+    if days and publication_dates and max(days) < min(publication_dates):
+        return False
+    return True
+
+
 def _is_dateless_reference_document(candidate, blocks):
     """True when a regulation/policy document contains no schedule or deadline clues."""
     if any(INJECTION.search(b['text']) for b in blocks):
         return False
-    if any(re.search(r'截止|申請期限|申請期間|受理期間|收件期間|報名期間|停止受理|暫停受理', b['text']) for b in blocks):
+    if any(re.search(r'截止|申請期限|申請期間|申請時間|申請時程|申請日期|受理期間|受理時間|收件期間|收件日期|報名期間|報名時間|停止受理|暫停受理|(?<!\d)\d{1,2}\s*[月/]\s*\d{1,2}\s*日?\s*(?:至|~|～|起|前|止)', b['text']) for b in blocks):
         return False
     title_or_url = (candidate.get('title') or '') + ' ' + ((candidate.get('source_metadata') or {}).get('url') or '')
     return bool(
@@ -245,6 +293,7 @@ def extract_policy(candidate, blocks, profile, revision, observed):
     _en_months = {'january':1,'february':2,'march':3,'april':4,'may':5,'june':6,'july':7,'august':8,'september':9,'october':10,'november':11,'december':12}
     _univ_nomination = any(re.search(r'nominated\s+for\s+the\s+fellowship\s+by\s+their\s+university|submitted\s+by\s+an\s+official\s+representative\s+of\s+the\s+university', b['text'], re.I) for b in blocks if not INJECTION.search(b['text']))
     _dual_roc_year = _dual_confirmed_roc_year(blocks)
+    _pub_dates = _publication_dates(blocks) if _dual_roc_year else []
     _doc_same_year = None
     for b in blocks:
         if not INJECTION.search(b['text']):
@@ -307,7 +356,7 @@ def extract_policy(candidate, blocks, profile, revision, observed):
                 effective_clause = re.sub(r'(最遲應於|截止(?:日期|時間)?(?:為|至)?|申請期限(?:為)?)(\d{1,2}月\d{1,2}日)', lambda m: m.group(1) + _doc_same_year + '年' + m.group(2), clause)
             elif _dual_roc_year and not labelled_date_clause(clause):
                 injected = _inject_dual_year(clause, _dual_roc_year)
-                if injected != clause:
+                if injected != clause and _dual_year_consistent(clause, _dual_roc_year, _pub_dates):
                     effective_clause = injected
                     used_dual_year = True
             y_basis = 'dual_anchored' if used_dual_year else None
@@ -388,7 +437,7 @@ def replay(output, previous=None, transport=node_get, source_ids=None, retry_unc
     Resume artifacts contain no original text. Previous attempts (including
     blocked reads) are never retried automatically or reset silently.
     """
-    from scripts.temporal_tracks import classify_source_track, evaluate_incremental_diff, track_for_weekday
+    from scripts.temporal_tracks import classify_source_track, evaluate_incremental_diff, parser_fingerprint, track_for_weekday
     output=Path(output).resolve()
     if not output.is_relative_to(ROOT/'work') or output.exists():
         raise ValueError('new_work_output_required')
@@ -445,7 +494,7 @@ def replay(output, previous=None, transport=node_get, source_ids=None, retry_unc
             raw_hash=digest(response['body'])
             prepared=prepare_public(response,config['allowed_hosts'])
             blocks=prepare_document(prepared['blocks'])['units']
-            parser_sha256=digest([digest(Path(__file__).read_bytes()),digest((ROOT/'scripts/extract_candidates.py').read_bytes()),digest((ROOT/'scripts/semantic_facts.py').read_bytes())])
+            parser_sha256=parser_fingerprint()
             revision=digest([url,raw_hash,VERSION,parser_sha256])
             for c in group:
                 profile={**deepcopy(profiles[c['source_metadata']['source_id']]),'url':url,'title':c['title'],
@@ -465,7 +514,7 @@ def replay(output, previous=None, transport=node_get, source_ids=None, retry_unc
                     )
                 if on_document:
                     if skip_unchanged_model and baseline_observations:
-                        diff_decision=evaluate_incremental_diff(c,observations=baseline_observations,observed_raw_sha256=raw_hash)
+                        diff_decision=evaluate_incremental_diff(c,observations=baseline_observations,observed_raw_sha256=raw_hash,current_parser_sha256=parser_sha256)
                         if not diff_decision['should_run']:
                             records[c['candidate_id']]['incremental_decision']=diff_decision['decision']
                             continue
