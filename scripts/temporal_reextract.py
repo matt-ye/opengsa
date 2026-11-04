@@ -30,7 +30,7 @@ from scripts.extract_candidates import (
 
 VERSION = 'temporal-replay-1'
 ROUND_REQUEST_LIMIT = 200
-TIMING = re.compile(r'申請|受理|收件|截止|送件|applications?|deadline',re.I)
+TIMING = re.compile(r'申請|受理|收件|截止|送件|報名|兌換|期限|期程|上課開始後|獎勵期間|applications?|deadline|rolling|verified\s+student|credit\s+awards?',re.I)
 
 
 def timing_contexts(blocks):
@@ -99,40 +99,61 @@ def extract_policy(candidate, blocks, profile, revision, observed):
                    (actor,stage,value,kind,summary) for r in rules):
             rules.append(claim)
 
+    _en_months = {'january':1,'february':2,'march':3,'april':4,'may':5,'june':6,'july':7,'august':8,'september':9,'october':10,'november':11,'december':12}
+    _univ_nomination = any(re.search(r'nominated\s+for\s+the\s+fellowship\s+by\s+their\s+university|submitted\s+by\s+an\s+official\s+representative\s+of\s+the\s+university', b['text'], re.I) for b in blocks if not INJECTION.search(b['text']))
+    _doc_same_year = None
+    for b in blocks:
+        if not INJECTION.search(b['text']):
+            m_sy = re.search(r'(1\d{2})\s*年\s*[（(]以下同[)）]', b['text'])
+            if m_sy:
+                _doc_same_year = m_sy.group(1)
+                break
     for block in timing_contexts(blocks):
         if INJECTION.search(block['text']):
             continue
-        text = re.sub(r'\s+', '', block['text'])
+        for m_en in re.finditer(r'Applications?\s+(open|close)[s]?\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),\s*(20\d{2})', block['text'], re.I):
+            verb, m_name, d_str, y_str = m_en.groups()
+            iso_val = f"{int(y_str):04d}-{_en_months[m_name.lower()]:02d}-{int(d_str):02d}"
+            en_stage = 'application_start' if verb.lower().startswith('open') else 'submission'
+            en_summary = '來源明示受理起日' if en_stage == 'application_start' else '來源明示收件截止'
+            en_actor = 'institution' if _univ_nomination else 'student'
+            add(block, 'absolute', en_actor, en_stage, en_summary, iso_val, 'date')
         # Sentences retain their own year and actor. Never join unrelated dates.
-        for clause in re.split(r'[。；;\n]', text):
+        for raw_clause in re.split(r'[。；;\n]', block['text']):
+            clause = re.sub(r'\s+', '', raw_clause)
             if not clause or re.search(r'修正|生效|出生|年齡|購買|支出|訂閱|給付|補助期間|獎助期間', clause):
                 continue
-            if re.search(r'隨到隨審', clause) and not re.search(r'不採|非|停止|暫停', clause):
+            if re.search(r'隨到隨審|onarollingbasis', clause, re.I) and not re.search(r'不採|非|停止|暫停', clause):
                 add(block, 'review_cadence', 'other', 'review', '審查採隨到隨審；不等同全年受理')
                 policy['review_mode'] = 'rolling'
-            if not re.search(r'申請|受理|收件|送件|apply|applications?', clause, re.I):
+            if not re.search(r'申請|受理|收件|送件|報名|兌換|期程|上課開始後|獎勵期間|apply|applications?|rolling|verifiedstudent|creditawards?', clause, re.I):
                 continue
             actor = time_actor(clause)
-            if re.search(r'同學|研究生|學生|申請人|申請者|送(?:交|至).{0,12}(?:系辦|所辦)', clause):
+            if re.search(r'同學|研究生|學生|青年|申請人|申請者|送(?:交|至).{0,12}(?:系辦|所辦)', clause):
                 actor = 'student' if actor == 'unit' else actor
             if actor=='unit' and student_document and not re.search(r'學校|學院|系所|彙送|推薦名單|備函',clause):
                 actor='student'
             if re.search(r'不受理|停止受理|暫停受理|不得申請|不採隨', clause):
                 continue
-            if re.search(r'全年(?:均可|皆可|開放)?(?:受理|申請)|隨時(?:均可|皆可|可以|可)?(?:提出)?申請|常年受理|applications?(?:are)?accepted(?:year.round|onarollingbasis)', clause, re.I):
-                add(block, 'continuous', actor, 'submission', '來源明示常態受理；仍須核對資格及額度')
-            elif re.search(r'(?:申請|收件|受理).{0,60}(?:依|洽|由).{0,25}(?:各|所屬).{0,12}(?:院系所|系所|學院|單位).{0,25}(?:公告|規定|訂定|自訂|確認)|(?:各|所屬)(?:系所|學院).{0,20}(?:自訂|訂定).{0,15}(?:申請|截止|收件)|(?:申請|收件)(?:時間|期限|時程).{0,20}(?:逕洽|洽詢).{0,15}(?:院系所|系所|學院|單位)', clause):
+            if re.search(r'全年(?:均可|皆可|開放)?(?:受理|申請)|隨時(?:均可|皆可|可以|可)?(?:提出)?申請|常年受理|applications?(?:are)?accepted(?:year.round|onarollingbasis)|evaluate.*proposalsonarollingbasisthroughouttheyear|verifiedstudentsongithubeducationgetfreeaccess|reevaluatesyoureligibilityeverymonth', clause, re.I):
+                add(block, 'continuous', actor if actor != 'unit' else 'student', 'submission', '來源明示常態受理；仍須核對資格及額度')
+            elif re.search(r'(?:申請|收件|受理).{0,60}(?:依|洽|由).{0,25}(?:各|所屬).{0,15}(?:院系所|系所|學院|研究所|中心|單位).{0,25}(?:公告|規定|訂定|自訂|確認)|(?:各|所屬)(?:系所|學院|研究所|中心)(?:[（(]處[)）])?(?:、研究中心)?自訂(?:審查|申請|收件)(?:程序)?|(?:申請|收件|截止)(?:時間|期限|時程|日期).{0,20}(?:逕洽|洽詢|請洽).{0,25}(?:院系所|系所|學院|研究所|中心|單位)|學校應依本部公告期程.{0,25}於指定期間內.{0,15}提出申請|課程將陸續開放請持續關注|自即日起陸續開辦.{0,45}查詢課程與報名', clause):
                 add(block, 'unit_announced', actor, 'submission', '申請收件時程由所屬單位另訂／公告')
-            if re.search(r'(?:每年|每學期).{0,20}(?:受理|申請|收件)|(?:申請|受理|收件).{0,15}(?:每年|每學期)',clause) and not recurring_time(clause):
+            if re.search(r'(?:每年|每學年|每學期).{0,25}(?:受理|申請|收件|上課開始後|獎勵期間結束前)|(?:申請|受理|收件)(?:時間|期間|期限)?[：:]?(?:每年|每學年|每學期)',clause) and not recurring_time(clause):
                 add(block,'recurring',actor,'submission','來源明示週期性受理；當期具體日期另查')
+            if re.search(r'creditawards?mustbeactivatedwithin\d+daysoftheprojectstartdate', clause, re.I):
+                add(block, 'text_rule', 'student', 'submission', '核給額度須於計畫起日一定天數內啟用；受理期程依申請表單規定')
             # Existing specialized relative/calendar rules take precedence.
-            if recurring_time(clause) or re.search(r'每年|每學期|會前|出國前|活動前|前.{0,5}(?:週|個月|天)', clause):
+            if recurring_time(clause) or re.search(r'每年|每學年|每學期|會前|出國前|活動前|前.{0,5}(?:週|個月|天)', clause):
                 continue
-            if not re.search(r'申請期間|申請時程|申請時間|受理期間|收件期間|申請期限|申請截止|截止|請於.{0,80}(?:申請|送|繳)', clause):
+            if not re.search(r'申請期間|申請時程|申請時間|申請日期|受理期間|收件期間|報名期間|報名時間|申請期限|兌換期限|報名期限|申請截止|截止|(?:最遲)?應於.{0,80}(?:申請|送|繳)|請於.{0,80}(?:申請|送|繳)|從即日起至', clause):
                 continue
             if re.search(r'出國期間|活動期間|研修期間|培育期間|獎勵期間|公布結果', clause):
                 continue
-            labelled=labelled_date_clause(clause)
+            effective_clause = clause
+            if _doc_same_year and not re.search(r'(?:20\d{2}|1\d{2})年', clause):
+                effective_clause = re.sub(r'(最遲應於|截止(?:日期|時間)?(?:為|至)?|申請期限(?:為)?)(\d{1,2}月\d{1,2}日)', lambda m: m.group(1) + _doc_same_year + '年' + m.group(2), clause)
+            labelled=labelled_date_clause(effective_clause)
             start, end = parse_date_range_from_text(labelled or '')
             # Explicit student directions are needed for a student range.
             # Otherwise preserve dates as unit procedure instead of making a bar.
@@ -145,10 +166,15 @@ def extract_policy(candidate, blocks, profile, revision, observed):
                     add(block, 'absolute', actor, 'submission', '來源明示收件截止', value, kind if value!=end else 'date')
             else:
                 kind, value = parse_roc_or_iso_date_from_text(labelled or '')
-                if value and re.search(r'截止|前|止|期限', clause):
+                if value and re.search(r'截止|前|止|期限|逾期失效', effective_clause):
                     if not any(r['actor']==actor and r['stage']=='submission' and r['value']==value for r in rules):
-                        add(block, 'absolute', actor, 'submission', '來源明示收件截止', value, kind)
-                elif not value and re.search(r'截止|期限|期間|時程|時間',clause):
+                        summary_txt = '個人相對期限與當期最遲截止並列；須同時核對個人條件與年度上限' if re.search(r'達成日次日起.*內提出申請.*但最遲應於', effective_clause) else '來源明示收件截止'
+                        add(block, 'absolute', actor if not re.search(r'兌換期限', effective_clause) else 'student', 'submission', summary_txt, value, kind)
+                        if re.search(r'達成日次日起.*內提出申請.*但最遲應於', effective_clause):
+                            policy['submission_mode'] = 'conditional_deadline'
+                            if 'personal_conditions_required' not in policy['gaps']:
+                                policy['gaps'].append('personal_conditions_required')
+                elif not value and re.search(r'截止|期限|期間|時程|時間|報名',clause):
                     month_days=list(dict.fromkeys(re.findall(r'(?<!\d)(\d{1,2})[月/](\d{1,2})(?:日)?',clause)))
                     if month_days:
                         summary='來源列示月日：'+'、'.join(f'{int(m)}月{int(d)}日' for m,d in month_days if 1<=int(m)<=12 and 1<=int(d)<=31)
@@ -226,7 +252,7 @@ def replay(output, previous=None, transport=node_get, source_ids=None, retry_unc
         save(output/'temporal-observations.json',state)
         return transport(url,headers,limit)
     fetcher=Fetcher({'allowed_hosts':config['allowed_hosts'],'max_requests':min(20,max_round_requests-state['http_requests']),
-        'max_run_seconds':180,'minimum_host_interval_seconds':3},transport=request)
+        'max_run_seconds':2400 if on_document else 180,'minimum_host_interval_seconds':3},transport=request)
     for url, group in list(urls.items())[:8]:
         batch['attempted_urls'].append(url)
         records={c['candidate_id']:{'candidate_sha256':candidate_fingerprint(c),'url':url,
@@ -300,7 +326,7 @@ def follow_attachments(output, previous, source_ids, transport=node_get, max_rou
         save(output/'temporal-observations.json',state)
         return transport(url,headers,limit)
     fetcher=Fetcher({'allowed_hosts':config['allowed_hosts'],'max_requests':min(20,max_round_requests-state['http_requests']),
-        'max_run_seconds':180,'minimum_host_interval_seconds':3},transport=request)
+        'max_run_seconds':2400 if on_document else 180,'minimum_host_interval_seconds':3},transport=request)
     for sid in source_ids:
         group=[c for c in candidates if c['source_metadata']['source_id']==sid]
         if len(group)!=1:
@@ -315,8 +341,8 @@ def follow_attachments(output, previous, source_ids, transport=node_get, max_rou
             if parent['status']!=200:raise ScanError('parent_http_'+str(parent['status']))
             prepared=prepare_public(parent,config['allowed_hosts'])
             links=[link for link in prepared['links'] if urlsplit(link['url']).hostname==urlsplit(parent_url).hostname
-                and urlsplit(link['url']).path.lower().endswith('.pdf')
-                and re.search(r'公告|辦法|要點|簡章|notice|guideline',link['label'],re.I)
+                and (urlsplit(link['url']).path.lower().endswith('.pdf') or link['label'].lower().endswith('.pdf'))
+                and re.search(r'公告|辦法|要點|簡章|方案|須知|注意事項|notice|guideline',link['label'],re.I)
                 and not re.search(r'申請表|申請書|推薦表|申請資料|名冊|名單|個資|同意書|附件[二三四五]',link['label'])]
             if not links:
                 raise ScanError('no_direct_announcement_pdf')

@@ -1,219 +1,86 @@
 {
   "version": "temporal-replay-1",
-  "http_requests": 200,
+  "http_requests": 66,
   "model_calls": 0,
   "published": false,
   "batches": [
     {
-      "http_requests": 14,
+      "http_requests": 4,
       "attempted_urls": [
-        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
-        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf",
-        "https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/%E6%95%99%E5%8B%99%E8%99%95%E6%95%99%E5%AD%B8%E5%8A%A9%E7%90%86%E5%88%B6%E5%BA%A6%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E6%A2%9D%E6%96%87-%E5%85%AC%E5%91%8A%E7%89%88.pdf",
         "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796",
-        "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
-        "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
-        "https://www.sinica.edu.tw/news_content/56/3434",
-        "https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf"
+        "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest"
       ],
-      "observed_at": "2026-11-03T08:53:10+00:00"
-    },
-    {
-      "http_requests": 12,
-      "attempted_urls": [
-        "https://www.aca.ntu.edu.tw/w/aca/GAADService_23091415501308264",
-        "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260",
-        "https://law.nstc.gov.tw/LawContent.aspx?id=FL039188",
-        "https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260",
-        "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383",
-        "https://www.faos.org.tw/Application/ApplicatStud.html",
-        "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368",
-        "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686"
-      ],
-      "observed_at": "2026-11-03T08:54:38+00:00"
-    },
-    {
-      "http_requests": 8,
-      "attempted_urls": [
-        "https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514",
-        "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL002336",
-        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_23091415525408652",
-        "https://www.cm.nsysu.edu.tw/p/404-1024-380732.php?Lang=zh-tw",
-        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187",
-        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24052211230185000",
-        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25051610035803840",
-        "https://www.foxconnfoundation.org/news/80479d881F20"
-      ],
-      "observed_at": "2026-11-03T08:54:57+00:00"
-    },
-    {
-      "http_requests": 15,
-      "attempted_urls": [
-        "https://aws.amazon.com/education/awseducate/",
-        "https://aws.amazon.com/research-credits/",
-        "https://coph.ntu.edu.tw/uploads/root/hsiaopc/NTUCPH_MASTER-1120923.pdf",
-        "https://coph.ntu.edu.tw/uploads/root/hsiaopc/linyaonanscolarship_1120110.pdf",
-        "https://edu.google.com/programs/credits/research/",
-        "https://education.github.com/pack",
-        "https://law.nstc.gov.tw/LawContent.aspx?id=FL039061",
-        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1768889444792"
-      ],
-      "observed_at": "2026-11-03T08:55:14+00:00"
-    },
-    {
-      "http_requests": 9,
-      "attempted_urls": [
-        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1786692862536",
-        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787024420703",
-        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787888998694",
-        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787889215831",
-        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1788249360727",
-        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609156448",
-        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609268938",
-        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1790153625329"
-      ],
-      "observed_at": "2026-11-03T08:55:47+00:00"
-    },
-    {
-      "http_requests": 14,
-      "attempted_urls": [
-        "https://one.google.com/offer/studentoffer8?hl=zh-TW",
-        "https://research.google/outreach/phd-fellowship/",
-        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf",
-        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216",
-        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
-        "https://www.nstc.gov.tw/sci/ch/detail/24ad4e4a-bd37-4ba0-9955-5b2e2ffd5ac6",
-        "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
-        "https://www.nvidia.com/en-us/research/graduate-fellowships/"
-      ],
-      "observed_at": "2026-11-03T08:56:12+00:00"
-    },
-    {
-      "http_requests": 17,
-      "attempted_urls": [
-        "https://www.sinica.edu.tw/cp/332",
-        "https://www.studyabroad.moe.gov.tw/ckfinder_upload/files/20211214073031.pdf",
-        "https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1617472",
-        "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students",
-        "https://www.wda.gov.tw/News_Content.aspx?n=31&s=19491&sms=10306",
-        "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f",
-        "https://youth.gov.taipei/announcement/latest-announcement/e3c5cee4-b81a-4a53-aa79-6cd8c654b02e",
-        "https://gice.ntu.edu.tw/shownews.php?ID=7062"
-      ],
-      "observed_at": "2026-11-03T08:56:42+00:00"
-    },
-    {
-      "http_requests": 8,
-      "attempted_urls": [
-        "https://gice.ntu.edu.tw/shownews.php?ID=7278",
-        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
-        "https://gice.ntu.edu.tw/shownews.php?ID=7061",
-        "https://gice.ntu.edu.tw/shownews.php?ID=7279",
-        "https://gice.ntu.edu.tw/shownews.php?ID=7282",
-        "https://gice.ntu.edu.tw/shownews.php?ID=7344"
-      ],
-      "observed_at": "2026-11-03T08:57:20+00:00"
-    },
-    {
-      "http_requests": 13,
-      "attempted_urls": [
-        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
-        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf",
-        "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
-        "https://www.sinica.edu.tw/news_content/56/3434",
-        "https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf",
-        "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL002336",
-        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_23091415525408652",
-        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187"
-      ],
-      "observed_at": "2026-11-03T08:58:22+00:00"
-    },
-    {
-      "http_requests": 9,
-      "attempted_urls": [
-        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1786692862536",
-        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787024420703",
-        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787888998694",
-        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787889215831",
-        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1788249360727",
-        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609156448",
-        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609268938",
-        "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1790153625329"
-      ],
-      "observed_at": "2026-11-03T08:59:42+00:00"
-    },
-    {
-      "http_requests": 12,
-      "attempted_urls": [
-        "https://law.nstc.gov.tw/LawContent.aspx?id=FL039061",
-        "https://www.sinica.edu.tw/cp/332",
-        "https://gice.ntu.edu.tw/shownews.php?ID=7062",
-        "https://gice.ntu.edu.tw/shownews.php?ID=7278",
-        "https://gice.ntu.edu.tw/shownews.php?ID=7061",
-        "https://gice.ntu.edu.tw/shownews.php?ID=7279",
-        "https://gice.ntu.edu.tw/shownews.php?ID=7282",
-        "https://gice.ntu.edu.tw/shownews.php?ID=7344"
-      ],
-      "observed_at": "2026-11-03T09:00:07+00:00"
-    },
-    {
-      "http_requests": 18,
-      "attempted_urls": [
-        "https://aws.amazon.com/education/awseducate/",
-        "https://aws.amazon.com/research-credits/",
-        "https://edu.google.com/programs/credits/research/",
-        "https://education.github.com/pack",
-        "https://one.google.com/offer/studentoffer8?hl=zh-TW",
-        "https://research.google/outreach/phd-fellowship/",
-        "https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1617472",
-        "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students"
-      ],
-      "observed_at": "2026-11-03T09:00:35+00:00"
+      "observed_at": "2026-11-03T15:48:55+00:00"
     },
     {
       "http_requests": 11,
       "attempted_urls": [
-        "https://coph.ntu.edu.tw/uploads/root/hsiaopc/NTUCPH_MASTER-1120923.pdf",
-        "https://coph.ntu.edu.tw/uploads/root/hsiaopc/linyaonanscolarship_1120110.pdf",
-        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216",
-        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+        "https://www.sinica.edu.tw/news_content/56/3434",
+        "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL002336",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_23091415525408652",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187",
+        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf"
+      ],
+      "observed_at": "2026-11-03T15:49:41+00:00"
+    },
+    {
+      "http_requests": 10,
+      "attempted_urls": [
         "https://www.nstc.gov.tw/sci/ch/detail/24ad4e4a-bd37-4ba0-9955-5b2e2ffd5ac6",
         "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+        "https://www.sinica.edu.tw/cp/332",
         "https://www.wda.gov.tw/News_Content.aspx?n=31&s=19491&sms=10306",
         "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f"
       ],
-      "observed_at": "2026-11-03T09:01:34+00:00"
-    },
-    {
-      "http_requests": 17,
-      "attempted_urls": [
-        "https://liberal.ntu.edu.tw/uploads/root/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91/%E8%B2%A1%E5%9C%98%E6%B3%95%E4%BA%BA%E5%AD%AB%E5%93%B2%E7%94%9F%E5%85%88%E7%94%9F%E5%AD%B8%E8%A1%93%E5%9F%BA%E9%87%91%E6%9C%83115%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A/%E8%B2%A1%E5%9C%98%E6%B3%95%E4%BA%BA%E5%AD%AB%E5%93%B2%E7%94%9F%E5%85%88%E7%94%9F%E5%AD%B8%E8%A1%93%E5%9F%BA%E9%87%91%E6%9C%83115%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A.pdf",
-        "https://liberal.ntu.edu.tw/uploads/root/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E8%B2%A1%E5%9C%98%E6%B3%95%E4%BA%BA%E4%BF%9E%E5%9C%8B%E8%8F%AF%E6%96%87%E6%95%99%E5%9F%BA%E9%87%91%E6%9C%83%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E8%B2%A1%E5%9C%98%E6%B3%95%E4%BA%BA%E4%BF%9E%E5%9C%8B%E8%8F%AF%E6%96%87%E6%95%99%E5%9F%BA%E9%87%91%E6%9C%83%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A.pdf",
-        "https://liberal.ntu.edu.tw/uploads/root/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E4%BE%AF%E6%B0%B8%E9%9B%84%E6%A0%A1%E5%8F%8B%E9%80%B2%E4%BF%AE%E7%A2%A9%E5%8D%9A%E5%A3%AB%E9%86%AB%E8%AD%B7%E4%BA%BA%E5%93%A1%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E4%BE%AF%E6%B0%B8%E9%9B%84%E6%A0%A1%E5%8F%8B%E9%80%B2%E4%BF%AE%E7%A2%A9%E5%8D%9A%E5%A3%AB%E9%86%AB%E8%AD%B7%E4%BA%BA%E5%93%A1%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A.pdf",
-        "https://liberal.ntu.edu.tw/uploads/root/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E6%96%87%E5%AD%B8%E9%99%A2%E7%B4%80%E5%BF%B5%E9%84%A7%E7%AB%8B%E7%99%BB%E5%85%88%E7%94%9F%E5%8F%8A%E9%84%A7%E5%8A%89%E6%B2%BB%E5%A6%B9%E5%A5%B3%E5%A3%AB%E6%B8%85%E5%AF%92%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E6%96%87%E5%AD%B8%E9%99%A2%E7%B4%80%E5%BF%B5%E9%84%A7%E7%AB%8B%E7%99%BB%E5%85%88%E7%94%9F%E5%8F%8A%E9%84%A7%E5%8A%89%E6%B2%BB%E5%A6%B9%E5%A5%B3%E5%A3%AB%E6%B8%85%E5%AF%92%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A.pdf",
-        "https://liberal.ntu.edu.tw/uploads/root/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E9%8C%A2%E6%80%9D%E4%BA%AE%E5%85%88%E7%94%9F%E7%B4%80%E5%BF%B5%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E9%8C%A2%E6%80%9D%E4%BA%AE%E5%85%88%E7%94%9F%E7%B4%80%E5%BF%B5%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A.pdf",
-        "https://liberal.ntu.edu.tw/uploads/root/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E6%96%87%E5%AD%B8%E9%99%A2%E5%9C%8B%E9%9A%9B%E5%AD%B8%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E6%96%87%E5%AD%B8%E9%99%A2%E5%9C%8B%E9%9A%9B%E5%AD%B8%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A.pdf",
-        "https://liberal.ntu.edu.tw/uploads/root/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E9%99%A2%E5%82%85%E6%96%AF%E5%B9%B4%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E9%99%A2%E5%82%85%E6%96%AF%E5%B9%B4%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A.pdf",
-        "https://liberal.ntu.edu.tw/uploads/root/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%8D%8E%E5%AD%B8%E9%87%91/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E4%BA%9E%E7%B4%B0%E4%BA%9E%E9%8A%80%E8%A1%8C%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E4%BA%9E%E7%B4%B0%E4%BA%9E%E9%8A%80%E8%A1%8C%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E5%85%AC%E5%91%8A.pdf"
-      ],
-      "kind": "linked_pdf",
-      "observed_at": "2026-11-03T09:03:59+00:00"
-    },
-    {
-      "http_requests": 14,
-      "attempted_urls": [],
-      "kind": "linked_pdf",
-      "observed_at": "2026-11-03T09:04:48+00:00"
+      "observed_at": "2026-11-03T15:50:05+00:00"
     },
     {
       "http_requests": 9,
       "attempted_urls": [
-        "https://www.sinica.edu.tw/news_content/56/3434",
-        "https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260",
-        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187",
-        "https://gice.ntu.edu.tw/shownews.php?ID=7282"
+        "https://www.nstc.gov.tw/nstc/attachments/8b000cff-36d5-4098-9550-3c926c751e9f",
+        "https://www.nstc.gov.tw/nstc/attachments/92025fc4-ec4f-4109-980a-03f23f91f41c"
       ],
-      "observed_at": "2026-11-03T09:10:05+00:00"
+      "kind": "linked_pdf",
+      "observed_at": "2026-11-03T15:50:27+00:00"
+    },
+    {
+      "http_requests": 5,
+      "attempted_urls": [
+        "https://www.cm.nsysu.edu.tw/p/404-1024-380732.php?Lang=zh-tw",
+        "https://www.foxconnfoundation.org/news/80479d881F20",
+        "https://research.google/outreach/phd-fellowship/",
+        "https://www.nvidia.com/en-us/research/graduate-fellowships/"
+      ],
+      "observed_at": "2026-11-03T15:50:47+00:00"
+    },
+    {
+      "http_requests": 14,
+      "attempted_urls": [
+        "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf",
+        "https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368",
+        "https://aws.amazon.com/education/awseducate/",
+        "https://aws.amazon.com/research-credits/",
+        "https://coph.ntu.edu.tw/uploads/root/hsiaopc/NTUCPH_MASTER-1120923.pdf",
+        "https://coph.ntu.edu.tw/uploads/root/hsiaopc/linyaonanscolarship_1120110.pdf",
+        "https://edu.google.com/programs/credits/research/"
+      ],
+      "observed_at": "2026-11-03T15:50:58+00:00"
+    },
+    {
+      "http_requests": 13,
+      "attempted_urls": [
+        "https://education.github.com/pack",
+        "https://one.google.com/offer/studentoffer8?hl=zh-TW",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216",
+        "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+        "https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1617472",
+        "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students",
+        "https://youth.gov.taipei/announcement/latest-announcement/e3c5cee4-b81a-4a53-aa79-6cd8c654b02e"
+      ],
+      "observed_at": "2026-11-03T15:51:26+00:00"
     }
   ],
   "records": {
@@ -222,30 +89,9 @@
       "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T08:58:22+00:00",
-      "history": [
-        {
-          "candidate_sha256": "2fbc0156ef722ba7f586775a7737c2c535b2defd3a8cc3f7c84f88cd304862ee",
-          "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:53:10+00:00",
-          "raw_sha256": "6911cd7a2425a039983b1c0161b3555d0b921ed63af1f9af10c1add74ce2eab2",
-          "revision_id": "99f9627c9319f92238e119a654ec5d934809dcc43973f7581979376275522269",
-          "format": "pdf",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
+      "observed_at": "2026-11-03T15:49:41+00:00",
       "raw_sha256": "6911cd7a2425a039983b1c0161b3555d0b921ed63af1f9af10c1add74ce2eab2",
-      "revision_id": "640bcf3169f0d1f7c64ad97758ea95ec0559fdd71113c1e6b5cffbe8cf2a345b",
+      "revision_id": "e80303cb6c0549763a9cb201c672709b1f1d58e554bd0617392495fa4470fb8a",
       "format": "pdf",
       "policy": {
         "version": "time-policy-1",
@@ -253,10 +99,10 @@
         "review_mode": "not_stated",
         "rules": [],
         "gaps": [
-          "time_rule_not_verified"
+          "time_not_projected"
         ]
       },
-      "parser_sha256": "488be8c06e68eb90f59b84166df323d21129c3230e5036e72189e543bb9b0a7a",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": "PDF page 1 + PDF page 1 + PDF page 1 + PDF page 1",
@@ -330,30 +176,9 @@
       "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T08:58:22+00:00",
-      "history": [
-        {
-          "candidate_sha256": "3d8b52f9abc60ffcea7748df54de77dbcd791744b621a63314894cb0444d0086",
-          "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:53:10+00:00",
-          "raw_sha256": "862c45ae87e19f0230614c5476d8f2f4b12c1cd6025aa6563352e4d871a4c430",
-          "revision_id": "0f2223e139d1fa54b9794bb51137f80dd0f2ce3e9768a0ff0fe2bcb161670797",
-          "format": "pdf",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
+      "observed_at": "2026-11-03T15:50:58+00:00",
       "raw_sha256": "862c45ae87e19f0230614c5476d8f2f4b12c1cd6025aa6563352e4d871a4c430",
-      "revision_id": "d1943988ce4797b51724fc4e4332c70429a63427f00b2424403180e7152f4ee6",
+      "revision_id": "c74f67f21b59488e21b94918642ffb8233649e5568ac9e3a3f1e6ff26854153a",
       "format": "pdf",
       "policy": {
         "version": "time-policy-1",
@@ -361,10 +186,10 @@
         "review_mode": "not_stated",
         "rules": [],
         "gaps": [
-          "time_rule_not_verified"
+          "time_not_projected"
         ]
       },
-      "parser_sha256": "488be8c06e68eb90f59b84166df323d21129c3230e5036e72189e543bb9b0a7a",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": "PDF page 1 + PDF page 1",
@@ -416,9 +241,9 @@
       "url": "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T08:53:10+00:00",
+      "observed_at": "2026-11-03T15:48:55+00:00",
       "raw_sha256": "2179931912428c8342fca07bacfbba3a4a87a91e81836f551003e07c1905b787",
-      "revision_id": "4daadd8d76a85e4b06f7aee7389a007835959a9b72eb9f8a30fe957acc2487ff",
+      "revision_id": "faffdea9267d13bc51ec6d430cddf99a7254451be9520a62a8110f82ea0fac48",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
@@ -437,15 +262,33 @@
             "source_refs": [
               {
                 "source": "taipei-ai-tools",
-                "revision_id": "4daadd8d76a85e4b06f7aee7389a007835959a9b72eb9f8a30fe957acc2487ff",
+                "revision_id": "faffdea9267d13bc51ec6d430cddf99a7254451be9520a62a8110f82ea0fac48",
                 "locator": "article / text-block 15",
                 "evidence_path": "schedule.steps/0/deadline"
               },
               {
                 "source": "taipei-ai-tools",
-                "revision_id": "4daadd8d76a85e4b06f7aee7389a007835959a9b72eb9f8a30fe957acc2487ff",
+                "revision_id": "faffdea9267d13bc51ec6d430cddf99a7254451be9520a62a8110f82ea0fac48",
                 "locator": "article / text-block 7",
                 "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          },
+          {
+            "rule_id": "replay/1",
+            "kind": "recurring",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "來源明示週期性受理；當期具體日期另查",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "taipei-ai-tools",
+                "revision_id": "faffdea9267d13bc51ec6d430cddf99a7254451be9520a62a8110f82ea0fac48",
+                "locator": "article / text-block 13 + article / text-block 14",
+                "evidence_path": "temporal_replay/submission"
               }
             ]
           }
@@ -453,16 +296,253 @@
         "gaps": [
           "personal_conditions_required"
         ]
-      }
+      },
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
+      "diagnostics": [
+        {
+          "locator": "article / text-block 2 + article / text-block 3",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 3",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 6 + article / text-block 7",
+          "has_deadline": true,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 9",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 13 + article / text-block 14",
+          "has_deadline": true,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 14",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 15",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 16",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 25 + article / text-block 26",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 26",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 29",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 30",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 32",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 36",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 37 + article / text-block 38",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 38",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 41",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 44",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ]
     },
     "cand-hsinchu-ai-tools-5067a675": {
       "candidate_sha256": "115cf0ab3051a26d58588aeaa071319e7914c7eda4dfb3c4b377310b69c90ee6",
       "url": "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T08:53:10+00:00",
+      "observed_at": "2026-11-03T15:48:55+00:00",
       "raw_sha256": "6cc7c0cf460a026d2bb98ad554f382b3f1d60a82ff1cefde5e32055d6ca377ff",
-      "revision_id": "ae0a2eb1b253d6e7658b9e090ff4acb4636db2189754088fbdc57a08cf8edd34",
+      "revision_id": "ef4526065fafff687b7168f42b02dd07dcc013243fd6ce646ddd9aaf88f6bfc7",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
@@ -481,7 +561,7 @@
             "source_refs": [
               {
                 "source": "hsinchu-ai-tools",
-                "revision_id": "ae0a2eb1b253d6e7658b9e090ff4acb4636db2189754088fbdc57a08cf8edd34",
+                "revision_id": "ef4526065fafff687b7168f42b02dd07dcc013243fd6ce646ddd9aaf88f6bfc7",
                 "locator": "main / text-block 9",
                 "evidence_path": "schedule.application_start"
               }
@@ -499,9 +579,27 @@
             "source_refs": [
               {
                 "source": "hsinchu-ai-tools",
-                "revision_id": "ae0a2eb1b253d6e7658b9e090ff4acb4636db2189754088fbdc57a08cf8edd34",
+                "revision_id": "ef4526065fafff687b7168f42b02dd07dcc013243fd6ce646ddd9aaf88f6bfc7",
                 "locator": "main / text-block 9",
                 "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          },
+          {
+            "rule_id": "replay/2",
+            "kind": "absolute",
+            "actor": "unit",
+            "stage": "submission",
+            "summary": "來源明示收件截止",
+            "value": "2026-04-02",
+            "precision": "date",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "hsinchu-ai-tools",
+                "revision_id": "ef4526065fafff687b7168f42b02dd07dcc013243fd6ce646ddd9aaf88f6bfc7",
+                "locator": "main / text-block 8 + main / text-block 9",
+                "evidence_path": "temporal_replay/submission"
               }
             ]
           }
@@ -509,37 +607,331 @@
         "gaps": [
           "personal_conditions_required"
         ]
-      }
+      },
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
+      "diagnostics": [
+        {
+          "locator": "main / text-block 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 8 + main / text-block 9",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "date",
+            "2026-04-02"
+          ]
+        },
+        {
+          "locator": "main / text-block 9",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "date",
+            "2026-04-02"
+          ]
+        },
+        {
+          "locator": "main / text-block 18",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 21",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 33",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 34",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 35",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 40",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 42",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 43",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 44",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 45",
+          "has_deadline": true,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "date",
+            "2026-08-14"
+          ]
+        },
+        {
+          "locator": "main / text-block 46",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 47",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 48",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 52",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 53",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 54",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 57",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "date",
+            "2026-08-14"
+          ]
+        },
+        {
+          "locator": "main / text-block 58",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 60",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 68",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 76",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ]
     },
     "cand-ntu-nstc-phd-115-43434c54": {
       "candidate_sha256": "2c185143889707564e16aed949f0da14fd7616b26bc1ee8c9a3c963fdea0c471",
       "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T08:58:22+00:00",
-      "history": [
-        {
-          "candidate_sha256": "2c185143889707564e16aed949f0da14fd7616b26bc1ee8c9a3c963fdea0c471",
-          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:53:10+00:00",
-          "raw_sha256": "2ca91dab044942972d4eaba18ac3690f0b1b1b4290331362db30f331e05131a0",
-          "revision_id": "9be06b171609e349108fb0ba236d37a809632865ace9cc5af70d1369b56a0dd6",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
-      "raw_sha256": "e8f5fa6d90d009384a8ad1e94249e6239f7273c1e1ba101ef6328b3ea93b6145",
-      "revision_id": "4ce4358cd6dbfe02d9aed4896065a50170185c43f4a1902e848a08fc1af15a9c",
+      "observed_at": "2026-11-03T15:49:41+00:00",
+      "raw_sha256": "8bf199520249d0f94c2e03b905ab2a368588f554d16e00ddc0dcbffab3aedaa1",
+      "revision_id": "c4b3c6fb2c78fae39abbac30a1f92cbf39af971803256bfe9a120c718e27ccc0",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
@@ -547,10 +939,10 @@
         "review_mode": "not_stated",
         "rules": [],
         "gaps": [
-          "unparsed_timing_clause"
+          "time_not_projected"
         ]
       },
-      "parser_sha256": "488be8c06e68eb90f59b84166df323d21129c3230e5036e72189e543bb9b0a7a",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": ".article-center / text-block 6 + .article-center / text-block 7 + .article-center / text-block 8 + .article-center / text-block 9",
@@ -606,6 +998,19 @@
         },
         {
           "locator": ".article-center / text-block 13 + .article-center / text-block 14",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".article-center / text-block 23",
           "has_deadline": false,
           "has_student": true,
           "parsed_range": [
@@ -736,6 +1141,19 @@
         },
         {
           "locator": ".article-center / text-block 58 + .article-center / text-block 59 + .article-center / text-block 60 + .article-center / text-block 61",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".article-center / text-block 68",
           "has_deadline": false,
           "has_student": true,
           "parsed_range": [
@@ -905,32 +1323,6 @@
         },
         {
           "locator": ".article-center / text-block 118 + .article-center / text-block 119 + .article-center / text-block 120 + .article-center / text-block 121",
-          "has_deadline": false,
-          "has_student": false,
-          "parsed_range": [
-            null,
-            null
-          ],
-          "parsed_date": [
-            "unknown",
-            null
-          ]
-        },
-        {
-          "locator": ".article-center / text-block 120 + .article-center / text-block 121 + .article-center / text-block 122 + .article-center / text-block 123",
-          "has_deadline": false,
-          "has_student": false,
-          "parsed_range": [
-            null,
-            null
-          ],
-          "parsed_date": [
-            "unknown",
-            null
-          ]
-        },
-        {
-          "locator": ".article-center / text-block 122 + .article-center / text-block 123 + .article-center / text-block 124 + .article-center / text-block 125",
           "has_deadline": false,
           "has_student": false,
           "parsed_range": [
@@ -949,30 +1341,9 @@
       "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T08:58:22+00:00",
-      "history": [
-        {
-          "candidate_sha256": "2d18f7a0e19cdb011a96d94bef163dc47aa4c7636546e4294c7cd9e738d00e38",
-          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:53:10+00:00",
-          "raw_sha256": "2ca91dab044942972d4eaba18ac3690f0b1b1b4290331362db30f331e05131a0",
-          "revision_id": "9be06b171609e349108fb0ba236d37a809632865ace9cc5af70d1369b56a0dd6",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
-      "raw_sha256": "e8f5fa6d90d009384a8ad1e94249e6239f7273c1e1ba101ef6328b3ea93b6145",
-      "revision_id": "4ce4358cd6dbfe02d9aed4896065a50170185c43f4a1902e848a08fc1af15a9c",
+      "observed_at": "2026-11-03T15:49:41+00:00",
+      "raw_sha256": "8bf199520249d0f94c2e03b905ab2a368588f554d16e00ddc0dcbffab3aedaa1",
+      "revision_id": "c4b3c6fb2c78fae39abbac30a1f92cbf39af971803256bfe9a120c718e27ccc0",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
@@ -980,10 +1351,10 @@
         "review_mode": "not_stated",
         "rules": [],
         "gaps": [
-          "unparsed_timing_clause"
+          "time_not_projected"
         ]
       },
-      "parser_sha256": "488be8c06e68eb90f59b84166df323d21129c3230e5036e72189e543bb9b0a7a",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": ".article-center / text-block 6 + .article-center / text-block 7 + .article-center / text-block 8 + .article-center / text-block 9",
@@ -1039,6 +1410,19 @@
         },
         {
           "locator": ".article-center / text-block 13 + .article-center / text-block 14",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".article-center / text-block 23",
           "has_deadline": false,
           "has_student": true,
           "parsed_range": [
@@ -1169,6 +1553,19 @@
         },
         {
           "locator": ".article-center / text-block 58 + .article-center / text-block 59 + .article-center / text-block 60 + .article-center / text-block 61",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".article-center / text-block 68",
           "has_deadline": false,
           "has_student": true,
           "parsed_range": [
@@ -1348,32 +1745,6 @@
             "unknown",
             null
           ]
-        },
-        {
-          "locator": ".article-center / text-block 120 + .article-center / text-block 121 + .article-center / text-block 122 + .article-center / text-block 123",
-          "has_deadline": false,
-          "has_student": false,
-          "parsed_range": [
-            null,
-            null
-          ],
-          "parsed_date": [
-            "unknown",
-            null
-          ]
-        },
-        {
-          "locator": ".article-center / text-block 122 + .article-center / text-block 123 + .article-center / text-block 124 + .article-center / text-block 125",
-          "has_deadline": false,
-          "has_student": false,
-          "parsed_range": [
-            null,
-            null
-          ],
-          "parsed_date": [
-            "unknown",
-            null
-          ]
         }
       ]
     },
@@ -1382,108 +1753,37 @@
       "url": "https://www.sinica.edu.tw/news_content/56/3434",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:10:05+00:00",
-      "history": [
-        {
-          "candidate_sha256": "34c1b952b5ffda75e433f17a189569738979bf9156bc60401b5254b45dd207d5",
-          "url": "https://www.sinica.edu.tw/news_content/56/3434",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:58:22+00:00",
-          "history": [
-            {
-              "candidate_sha256": "34c1b952b5ffda75e433f17a189569738979bf9156bc60401b5254b45dd207d5",
-              "url": "https://www.sinica.edu.tw/news_content/56/3434",
-              "status": "replayed",
-              "reason": null,
-              "observed_at": "2026-11-03T08:53:10+00:00",
-              "raw_sha256": "ff8e3d257f21322356435e31f8c2c46271528c2aae7061d287c980da2ec1862b",
-              "revision_id": "1adf3dfd32e4097f2404ea1233e9e2a78597c9cb8e823d4ea2c20fce5bcbef4c",
-              "format": "html",
-              "policy": {
-                "version": "time-policy-1",
-                "submission_mode": "undetermined",
-                "review_mode": "not_stated",
-                "rules": [],
-                "gaps": [
-                  "time_not_projected"
-                ]
-              }
-            }
-          ],
-          "raw_sha256": "1e223fdb096cba4405ef0bd4cf1006eb5081b2fe411ca82ee4a32f3382e60d7b",
-          "revision_id": "f33a1254fbd77e0fa6168dbeb3560b320b586411c0c4203eed62253a5dc68dd4",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "deadline_only",
-            "review_mode": "not_stated",
-            "rules": [
-              {
-                "rule_id": "replay/0",
-                "kind": "absolute",
-                "actor": "student",
-                "stage": "submission",
-                "summary": "來源明示收件截止",
-                "value": "2025-12-29",
-                "precision": "date",
-                "anchor_event": null,
-                "source_refs": [
-                  {
-                    "source": "sinica-phd-fellowship",
-                    "revision_id": "f33a1254fbd77e0fa6168dbeb3560b320b586411c0c4203eed62253a5dc68dd4",
-                    "locator": "[role=main] / text-block 2 + [role=main] / text-block 3 + [role=main] / text-block 4",
-                    "evidence_path": "temporal_replay/submission"
-                  }
-                ]
-              }
-            ],
-            "gaps": []
-          },
-          "parser_sha256": "488be8c06e68eb90f59b84166df323d21129c3230e5036e72189e543bb9b0a7a",
-          "diagnostics": [
-            {
-              "locator": "[role=main] / text-block 2 + [role=main] / text-block 3 + [role=main] / text-block 4",
-              "has_deadline": true,
-              "has_student": true,
-              "parsed_range": [
-                null,
-                null
-              ],
-              "parsed_date": [
-                "date",
-                "2025-12-29"
-              ]
-            },
-            {
-              "locator": "[role=main] / text-block 4",
-              "has_deadline": true,
-              "has_student": true,
-              "parsed_range": [
-                null,
-                null
-              ],
-              "parsed_date": [
-                "unknown",
-                null
-              ]
-            }
-          ]
-        }
-      ],
-      "raw_sha256": "2699e599eeb02bbc4eb13ef99e401fa3282a99fa6a1a2ae88d3d2d7315d7c15d",
-      "revision_id": "023159e6a0ca25692d6394578aa5ac530d4b0e23c38013fc116d44277a10e184",
+      "observed_at": "2026-11-03T15:49:41+00:00",
+      "raw_sha256": "b4f8ed7304b753c5bb1b2caf7b8c45bf4476c3c93a1e234a2bddffa6acb94ea7",
+      "revision_id": "4d24cd3b694500619c334dfeb635f1ad22a629ce02762a80099ea127f8fa511e",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "undetermined",
+        "submission_mode": "unit_announced",
         "review_mode": "not_stated",
-        "rules": [],
-        "gaps": [
-          "unparsed_timing_clause"
-        ]
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "unit_announced",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "申請收件時程由所屬單位另訂／公告",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "sinica-phd-fellowship",
+                "revision_id": "4d24cd3b694500619c334dfeb635f1ad22a629ce02762a80099ea127f8fa511e",
+                "locator": "[role=main] / text-block 2 + [role=main] / text-block 3 + [role=main] / text-block 4",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
+        "gaps": []
       },
-      "parser_sha256": "0e2865fafbecdc17d0fcd8b6d2f0735bafd35f95804eb6082b045d71d4ff07b3",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": "[role=main] / text-block 2 + [role=main] / text-block 3 + [role=main] / text-block 4",
@@ -1518,41 +1818,37 @@
       "url": "https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T08:58:22+00:00",
-      "history": [
-        {
-          "candidate_sha256": "37d6f9301b333267c38f63aa3c9d9919e1da8b1c067b54f87c466ae89b5793d7",
-          "url": "https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:53:10+00:00",
-          "raw_sha256": "7b0b2531fc677441ff2a4b39c25b8e60c4d64875ca8e93b5047931cd6efe76f6",
-          "revision_id": "75a5dabf35365cb725c1e46825fff3e7be048ca52be36ea6513a64e9b06ff2ff",
-          "format": "pdf",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
+      "observed_at": "2026-11-03T15:50:58+00:00",
       "raw_sha256": "7b0b2531fc677441ff2a4b39c25b8e60c4d64875ca8e93b5047931cd6efe76f6",
-      "revision_id": "ff7f05dc467e2a2de7cc3eb1dd9069641c432c63715dda64b645c90432b81080",
+      "revision_id": "eb0209bf262d088af0a7e76a1fb4a1e09eb731b29d92d595a4c1eedc74ae93fa",
       "format": "pdf",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "undetermined",
+        "submission_mode": "recurring",
         "review_mode": "not_stated",
-        "rules": [],
-        "gaps": [
-          "time_rule_not_verified"
-        ]
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "recurring",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "來源明示週期性受理；當期具體日期另查",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "ntu-eecs-scholarship",
+                "revision_id": "eb0209bf262d088af0a7e76a1fb4a1e09eb731b29d92d595a4c1eedc74ae93fa",
+                "locator": "PDF page 1 + PDF page 1 + PDF page 1",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
+        "gaps": []
       },
-      "parser_sha256": "488be8c06e68eb90f59b84166df323d21129c3230e5036e72189e543bb9b0a7a",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": "PDF page 1",
@@ -1582,6 +1878,19 @@
         },
         {
           "locator": "PDF page 1 + PDF page 1 + PDF page 1 + PDF page 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1 + PDF page 1 + PDF page 1",
           "has_deadline": false,
           "has_student": false,
           "parsed_range": [
@@ -2359,13 +2668,13 @@
       "url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T08:54:38+00:00",
-      "raw_sha256": "40846e2a7f45d1a553b401181d2fa69e1d96d41b267141b4a4cfc558ebbeebd3",
-      "revision_id": "d7a6f4941c8c4e859f39aa486c4a803a99e1620b5685a61f19e84bd23b3834bf",
+      "observed_at": "2026-11-03T15:50:58+00:00",
+      "raw_sha256": "a49a973c7664a10e30756f0198d6f4341f474d2e92187565f7d6f8910d6619f0",
+      "revision_id": "7582172ec5b978901dafae2f1a59c06c0ce113ef89f4166fb992a0b83d6e6d7a",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "procedure_only",
+        "submission_mode": "mixed",
         "review_mode": "not_stated",
         "rules": [
           {
@@ -2380,9 +2689,45 @@
             "source_refs": [
               {
                 "source": "ntu-president-award",
-                "revision_id": "d7a6f4941c8c4e859f39aa486c4a803a99e1620b5685a61f19e84bd23b3834bf",
+                "revision_id": "7582172ec5b978901dafae2f1a59c06c0ce113ef89f4166fb992a0b83d6e6d7a",
                 "locator": ".article-center / text-block 12",
                 "evidence_path": "schedule.steps/1/deadline"
+              }
+            ]
+          },
+          {
+            "rule_id": "replay/1",
+            "kind": "unit_announced",
+            "actor": "unit",
+            "stage": "submission",
+            "summary": "申請收件時程由所屬單位另訂／公告",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "ntu-president-award",
+                "revision_id": "7582172ec5b978901dafae2f1a59c06c0ce113ef89f4166fb992a0b83d6e6d7a",
+                "locator": ".article-center / text-block 11 + .article-center / text-block 12",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          },
+          {
+            "rule_id": "replay/2",
+            "kind": "text_rule",
+            "actor": "unit",
+            "stage": "submission",
+            "summary": "來源列示月日：7月8日、8月25日；年份與起訖角色須查原文",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "ntu-president-award",
+                "revision_id": "7582172ec5b978901dafae2f1a59c06c0ce113ef89f4166fb992a0b83d6e6d7a",
+                "locator": ".article-center / text-block 11 + .article-center / text-block 12",
+                "evidence_path": "temporal_replay/submission"
               }
             ]
           }
@@ -2390,7 +2735,62 @@
         "gaps": [
           "student_window_not_recorded"
         ]
-      }
+      },
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
+      "diagnostics": [
+        {
+          "locator": ".article-center / text-block 7",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".article-center / text-block 11 + .article-center / text-block 12",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            "2026-07-08",
+            "2026-08-25"
+          ],
+          "parsed_date": [
+            "date",
+            "2026-07-08"
+          ]
+        },
+        {
+          "locator": ".article-center / text-block 16",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".article-center / text-block 17",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ]
     },
     "cand-nstc-assistant-rule-38d1c24a": {
       "candidate_sha256": "ea66410ea248e36dba647a29bc22490032ace7509c59808fab8fd069a21c1fd6",
@@ -2431,41 +2831,39 @@
       "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL002336",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T08:58:22+00:00",
-      "history": [
-        {
-          "candidate_sha256": "4c6ec481f52eb1ffeac7a18f0dc37e5a0e01683ee22ffc319ed3c6f3597ae484",
-          "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL002336",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:54:57+00:00",
-          "raw_sha256": "6e7e702eb1083968e5d875e3b2b89f24f17b4eab65cb27c8fa5dfa9b7d3b01ae",
-          "revision_id": "0968960d8fa60bf4030393cb140040180a99a20ed9cca8dbda3d2975baf1a431",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
-      "raw_sha256": "f9a29763e9f497fd3879ea6d6f44e505ccd72825be5cddab2b0461758faf677f",
-      "revision_id": "0c6c89ad214d71eeec1f97231d713fa6aa89dc339830101221bd5f7aa11f7557",
+      "observed_at": "2026-11-03T15:49:41+00:00",
+      "raw_sha256": "b5fdc159ae1f47457e0c1c766042301519b49161603a4c19772bd3ebe8322e86",
+      "revision_id": "e21bdd968ea1bed15629054f0f65ffaa3d4c18449a29e8f57b7ceaa6bf5d34b6",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "undetermined",
+        "submission_mode": "unit_announced",
         "review_mode": "not_stated",
-        "rules": [],
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "unit_announced",
+            "actor": "unit",
+            "stage": "submission",
+            "summary": "申請收件時程由所屬單位另訂／公告",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r112",
+                "revision_id": "e21bdd968ea1bed15629054f0f65ffaa3d4c18449a29e8f57b7ceaa6bf5d34b6",
+                "locator": "[role=main] / text-block 37 + [role=main] / text-block 38",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
         "gaps": [
-          "time_rule_not_verified"
+          "student_window_not_recorded"
         ]
       },
-      "parser_sha256": "488be8c06e68eb90f59b84166df323d21129c3230e5036e72189e543bb9b0a7a",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": "[role=main] / text-block 26 + [role=main] / text-block 27 + [role=main] / text-block 28",
@@ -2570,6 +2968,19 @@
             "unknown",
             null
           ]
+        },
+        {
+          "locator": "[role=main] / text-block 99 + [role=main] / text-block 100",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
         }
       ]
     },
@@ -2578,30 +2989,9 @@
       "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_23091415525408652",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T08:58:22+00:00",
-      "history": [
-        {
-          "candidate_sha256": "1ae6b4c2549d4592e2177420715248626c99ac88a909fa5f5ede67b6998690c5",
-          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_23091415525408652",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:54:57+00:00",
-          "raw_sha256": "2730723ee247aeafc6efa00867de61ebd8562980d2ad7f0e2ce43dd1fec16493",
-          "revision_id": "9931ed62003ed7202fbe28eae4ff6401b09fac532405f6272dbaba810dd7a1e6",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
-      "raw_sha256": "b1fb62d3c3852ad9d4d5a8573dda57b948cdbd24a342e1cf089e150610a3737e",
-      "revision_id": "7cc354bc2bdd64510d3ddc089f894d91f2d5e9f592a5f021c1646712526f12ae",
+      "observed_at": "2026-11-03T15:49:41+00:00",
+      "raw_sha256": "9e7fa8c05136f82a19efcd555481f548c6ec0476b13b49e2eff29c1b0d7f0240",
+      "revision_id": "7a8ef4a5d34950457d1819fc987e765ea59776a71acf3ed7528d753e6399dc93",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
@@ -2609,10 +2999,10 @@
         "review_mode": "not_stated",
         "rules": [],
         "gaps": [
-          "unparsed_timing_clause"
+          "time_not_projected"
         ]
       },
-      "parser_sha256": "488be8c06e68eb90f59b84166df323d21129c3230e5036e72189e543bb9b0a7a",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": ".article-center / text-block 4",
@@ -2634,130 +3024,16 @@
       "url": "https://www.cm.nsysu.edu.tw/p/404-1024-380732.php?Lang=zh-tw",
       "status": "blocked",
       "reason": "previous_access_review_required",
-      "observed_at": "2026-11-03T08:54:57+00:00"
+      "observed_at": "2026-11-03T15:50:47+00:00"
     },
     "cand-discovery-r299-e1706d39": {
       "candidate_sha256": "bf78e45c7ef82ecaac09b393db16b81ab34fee4f75b02d49145059222ace9f34",
       "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:10:05+00:00",
-      "history": [
-        {
-          "candidate_sha256": "bf78e45c7ef82ecaac09b393db16b81ab34fee4f75b02d49145059222ace9f34",
-          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:58:22+00:00",
-          "history": [
-            {
-              "candidate_sha256": "bf78e45c7ef82ecaac09b393db16b81ab34fee4f75b02d49145059222ace9f34",
-              "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187",
-              "status": "replayed",
-              "reason": null,
-              "observed_at": "2026-11-03T08:54:57+00:00",
-              "raw_sha256": "4749d54b85335dcb69b672a89213bd00e99dde135c5c6153c3178bb9d9e39061",
-              "revision_id": "153c09624736eae6f730a94c08ce8ed3e7f8889b47357d3c985c267d47b061da",
-              "format": "html",
-              "policy": {
-                "version": "time-policy-1",
-                "submission_mode": "undetermined",
-                "review_mode": "not_stated",
-                "rules": [],
-                "gaps": [
-                  "time_not_projected"
-                ]
-              }
-            }
-          ],
-          "raw_sha256": "f202af5ef94c14766ab034746c804bc7263fc42177db70042d3588145539da84",
-          "revision_id": "e27d2d82a5ee594d30a1fd89997d26212b012489a00fa85826f4446cef78901c",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "deadline_only",
-            "review_mode": "not_stated",
-            "rules": [
-              {
-                "rule_id": "replay/0",
-                "kind": "absolute",
-                "actor": "student",
-                "stage": "submission",
-                "summary": "來源明示收件截止",
-                "value": "2024-02-05",
-                "precision": "date",
-                "anchor_event": null,
-                "source_refs": [
-                  {
-                    "source": "discovery-r299",
-                    "revision_id": "e27d2d82a5ee594d30a1fd89997d26212b012489a00fa85826f4446cef78901c",
-                    "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
-                    "evidence_path": "temporal_replay/submission"
-                  }
-                ]
-              }
-            ],
-            "gaps": []
-          },
-          "parser_sha256": "488be8c06e68eb90f59b84166df323d21129c3230e5036e72189e543bb9b0a7a",
-          "diagnostics": [
-            {
-              "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
-              "has_deadline": false,
-              "has_student": true,
-              "parsed_range": [
-                null,
-                null
-              ],
-              "parsed_date": [
-                "date",
-                "2024-02-05"
-              ]
-            },
-            {
-              "locator": ".article-center / text-block 4",
-              "has_deadline": false,
-              "has_student": true,
-              "parsed_range": [
-                null,
-                null
-              ],
-              "parsed_date": [
-                "unknown",
-                null
-              ]
-            },
-            {
-              "locator": ".article-center / text-block 5 + .article-center / text-block 6 + .article-center / text-block 7 + .article-center / text-block 8",
-              "has_deadline": false,
-              "has_student": false,
-              "parsed_range": [
-                null,
-                null
-              ],
-              "parsed_date": [
-                "unknown",
-                null
-              ]
-            },
-            {
-              "locator": ".article-center / text-block 7 + .article-center / text-block 8 + .article-center / text-block 9 + .article-center / text-block 10",
-              "has_deadline": false,
-              "has_student": false,
-              "parsed_range": [
-                null,
-                null
-              ],
-              "parsed_date": [
-                "unknown",
-                null
-              ]
-            }
-          ]
-        }
-      ],
-      "raw_sha256": "e04a142df6a5ffad45d46a5c41091cbe0af7d49838be8cd23d003863b68e50b3",
-      "revision_id": "3079f4fcc8dcbac59b3ee4b6800f0ecec17550fd528029248405e58e08798a23",
+      "observed_at": "2026-11-03T15:49:41+00:00",
+      "raw_sha256": "25f6b92234e66f127667b971ed3abaf7352d9a3ff7dbbd6c61e74c73deb90094",
+      "revision_id": "0ac6460a1f129464ba182969d9318df8bfa9f299d83f2071cf7963778a10978e",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
@@ -2765,10 +3041,10 @@
         "review_mode": "not_stated",
         "rules": [],
         "gaps": [
-          "unparsed_timing_clause"
+          "time_not_projected"
         ]
       },
-      "parser_sha256": "0e2865fafbecdc17d0fcd8b6d2f0735bafd35f95804eb6082b045d71d4ff07b3",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
@@ -3009,37 +3285,16 @@
       "url": "https://www.foxconnfoundation.org/news/80479d881F20",
       "status": "blocked",
       "reason": "previous_access_review_required",
-      "observed_at": "2026-11-03T08:54:57+00:00"
+      "observed_at": "2026-11-03T15:50:47+00:00"
     },
     "cand-discovery-r043-50ffd19e": {
       "candidate_sha256": "9b950691b94ce150d763e895cf045698c4cdec08f13b0915f62eb9d9ceb38c71",
       "url": "https://aws.amazon.com/education/awseducate/",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:00:35+00:00",
-      "history": [
-        {
-          "candidate_sha256": "9b950691b94ce150d763e895cf045698c4cdec08f13b0915f62eb9d9ceb38c71",
-          "url": "https://aws.amazon.com/education/awseducate/",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:55:14+00:00",
-          "raw_sha256": "bc3a7da439b412e831260c6e530562617d23bd82855112c2c726255c17b01557",
-          "revision_id": "b0ce3405ef1f897c59db353c4887b5f2518ffa95223ed46ca1dd19bbc68498c5",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
-      "raw_sha256": "1f2ce2f72abdabbeb0b62da5a2d2a682472cc1744cff3340a0312445e2938490",
-      "revision_id": "90b3c58c74a7100e43e0aea36ada8a80831ec5f094cb4883bbf2351dd5f3f3c3",
+      "observed_at": "2026-11-03T15:50:58+00:00",
+      "raw_sha256": "715f3764e779e6ed94bd5da4af1c24a593bd55284eca31dbe0ebb9d346df4730",
+      "revision_id": "57d4a2cde82d72c6d875d9c57f519aaaddf4e727648e7af862848635afd4420d",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
@@ -3047,10 +3302,10 @@
         "review_mode": "not_stated",
         "rules": [],
         "gaps": [
-          "time_rule_not_verified"
+          "time_not_projected"
         ]
       },
-      "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": "main / text-block 28",
@@ -3072,41 +3327,55 @@
       "url": "https://aws.amazon.com/research-credits/",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:00:35+00:00",
-      "history": [
-        {
-          "candidate_sha256": "de521deb627bebe0352050264b02aacc7636aa0acd068ad3062dfab2e15e76c7",
-          "url": "https://aws.amazon.com/research-credits/",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:55:14+00:00",
-          "raw_sha256": "8eb303d719c5e0fb2fcca738dd18e2b17d2ea09ddbd5b66ca991cf9d282396fd",
-          "revision_id": "849d90ede3ad796e90a3f8bcd462d9f9f65bc1ec757fa6f3a2246491dd364cb0",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
-      "raw_sha256": "32450d396d3f1fc49426ceb608d0dc0fcd207bd4537c579d32b7343c0e0877cb",
-      "revision_id": "20d10b0ff68abef43195db254e07c6177c44e8223439fe286a88dced3f82e81c",
+      "observed_at": "2026-11-03T15:50:58+00:00",
+      "raw_sha256": "a36dcb2084653cab4c8af15e4bd580b874b16f5a7c33a9f76efc869c27d1b310",
+      "revision_id": "8f181a2eed5da92174224e356a668d0e6d0b3b25fcaf07fbe54422d95e38f027",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "undetermined",
-        "review_mode": "not_stated",
-        "rules": [],
-        "gaps": [
-          "time_rule_not_verified"
-        ]
+        "submission_mode": "continuous",
+        "review_mode": "rolling",
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "review_cadence",
+            "actor": "other",
+            "stage": "review",
+            "summary": "審查採隨到隨審；不等同全年受理",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r044",
+                "revision_id": "8f181a2eed5da92174224e356a668d0e6d0b3b25fcaf07fbe54422d95e38f027",
+                "locator": "main / text-block 20 + main / text-block 21",
+                "evidence_path": "temporal_replay/review"
+              }
+            ]
+          },
+          {
+            "rule_id": "replay/1",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "來源明示常態受理；仍須核對資格及額度",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r044",
+                "revision_id": "8f181a2eed5da92174224e356a668d0e6d0b3b25fcaf07fbe54422d95e38f027",
+                "locator": "main / text-block 20 + main / text-block 21",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
+        "gaps": []
       },
-      "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": "main / text-block 12 + main / text-block 13",
@@ -3180,44 +3449,53 @@
       "url": "https://coph.ntu.edu.tw/uploads/root/hsiaopc/NTUCPH_MASTER-1120923.pdf",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:01:34+00:00",
-      "history": [
-        {
-          "candidate_sha256": "006b7c8d660bc1f77380ab106dc760dbb0dbc8438d4c203d9c835c50080fa712",
-          "url": "https://coph.ntu.edu.tw/uploads/root/hsiaopc/NTUCPH_MASTER-1120923.pdf",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:55:14+00:00",
-          "raw_sha256": "53bd67915e5ceee7e450cfbc64932fc9b2958708fab28eaa6412fc13093dea4d",
-          "revision_id": "cd21b99d99b0b7fb5d55ef2d777857ff68462f5ad6e31118e9b2324aae8f29cf",
-          "format": "pdf",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
+      "observed_at": "2026-11-03T15:50:58+00:00",
       "raw_sha256": "53bd67915e5ceee7e450cfbc64932fc9b2958708fab28eaa6412fc13093dea4d",
-      "revision_id": "5e39ff096b2fa569bef7f0d4fad2ee9cff2d2675159c556b73b2f56f4ce8b876",
+      "revision_id": "fbbc13ca37ef6f63a656ed547fe6e4c21d56a1ddc696de03182a5e04a0b0aab0",
       "format": "pdf",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "undetermined",
+        "submission_mode": "recurring",
         "review_mode": "not_stated",
-        "rules": [],
-        "gaps": [
-          "time_rule_not_verified"
-        ]
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "recurring",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "來源明示週期性受理；當期具體日期另查",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r055",
+                "revision_id": "fbbc13ca37ef6f63a656ed547fe6e4c21d56a1ddc696de03182a5e04a0b0aab0",
+                "locator": "PDF page 1 + PDF page 1 + PDF page 1",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
+        "gaps": []
       },
-      "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": "PDF page 1",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1 + PDF page 1 + PDF page 1",
           "has_deadline": false,
           "has_student": true,
           "parsed_range": [
@@ -3236,41 +3514,39 @@
       "url": "https://coph.ntu.edu.tw/uploads/root/hsiaopc/linyaonanscolarship_1120110.pdf",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:01:34+00:00",
-      "history": [
-        {
-          "candidate_sha256": "601b7a44eec95db89c37cca8fe0d9863ef2f859a60177ec677ed1f6b3cafbb4e",
-          "url": "https://coph.ntu.edu.tw/uploads/root/hsiaopc/linyaonanscolarship_1120110.pdf",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:55:14+00:00",
-          "raw_sha256": "e188b957eec3a83bec598d6d2568e865d7382ab6516eca2a3151068e74155244",
-          "revision_id": "09a1808211ac2c03004cf17ba4f6381841832992c8677e4208d88217b64d472b",
-          "format": "pdf",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
+      "observed_at": "2026-11-03T15:50:58+00:00",
       "raw_sha256": "e188b957eec3a83bec598d6d2568e865d7382ab6516eca2a3151068e74155244",
-      "revision_id": "0eee4ac6314658bbb34f63bf850d25a04d30b5eff32a45b3e2038d02ec6410dd",
+      "revision_id": "a44fe5255027227815ad86efa1181d4ce9c87fe36209dbcff6ffb12bb33e47c5",
       "format": "pdf",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "undetermined",
+        "submission_mode": "recurring",
         "review_mode": "not_stated",
-        "rules": [],
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "recurring",
+            "actor": "unit",
+            "stage": "submission",
+            "summary": "來源明示週期性受理；當期具體日期另查",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r057",
+                "revision_id": "a44fe5255027227815ad86efa1181d4ce9c87fe36209dbcff6ffb12bb33e47c5",
+                "locator": "PDF page 1",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
         "gaps": [
-          "time_rule_not_verified"
+          "student_window_not_recorded"
         ]
       },
-      "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": "PDF page 1 + PDF page 1",
@@ -3461,41 +3737,37 @@
       "url": "https://edu.google.com/programs/credits/research/",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:00:35+00:00",
-      "history": [
-        {
-          "candidate_sha256": "cf9b7f0cc5b046d32e28ec0717bfea6927bdc0409f983158a3c8e271c0b17480",
-          "url": "https://edu.google.com/programs/credits/research/",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:55:14+00:00",
-          "raw_sha256": "7f2e43e3920690b809384a9256d1b82e1d5dd0b103f05a3f3eb639dd0ed653f1",
-          "revision_id": "71b2ed94a689cba0267a6fce1aa66441094fc87af54eadf0a7d095401765fcfb",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
-      "raw_sha256": "e8d138a8c5ebcec4b45d7792425c3201dffcc6c256e4eadaf6a54cd46260e0bc",
-      "revision_id": "56dc76cf8f19307b059ebe4901af5acdc923a6bf9596b700a5907efe012ca3ce",
+      "observed_at": "2026-11-03T15:50:58+00:00",
+      "raw_sha256": "b27e98b17fcd171a40da0ac289c93a6df872fe43e001dcafb11fc1f90c394850",
+      "revision_id": "50ddfd5e3fe69e0abc2a9e480b4c1ce99f280fe067c1f2311d5af3dc88268817",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "undetermined",
+        "submission_mode": "rule_text",
         "review_mode": "not_stated",
-        "rules": [],
-        "gaps": [
-          "time_rule_not_verified"
-        ]
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "text_rule",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "核給額度須於計畫起日一定天數內啟用；受理期程依申請表單規定",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r110",
+                "revision_id": "50ddfd5e3fe69e0abc2a9e480b4c1ce99f280fe067c1f2311d5af3dc88268817",
+                "locator": "main / text-block 59",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
+        "gaps": []
       },
-      "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": "main / text-block 59",
@@ -3556,30 +3828,9 @@
       "url": "https://education.github.com/pack",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:00:35+00:00",
-      "history": [
-        {
-          "candidate_sha256": "de38ae10adbdda7d5cfad04a0f51965911cf703ead9790ae4bae299df349431a",
-          "url": "https://education.github.com/pack",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:55:14+00:00",
-          "raw_sha256": "716ba7bea8d70903746cc4acea75bd62e24bb8e4076fd9f3b29a44cc278e0343",
-          "revision_id": "f64e07a39150416a3db5e01e4122ca9e2f39a31536e71c2f496dfd91ccd010cf",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
-      "raw_sha256": "0c167ebdbc1ebfa08dbbd752e6be1bffeb45de059f34e15c9b89116f7796c7df",
-      "revision_id": "722b225745d1cc9a8c641f97abb532d1f7124d76be359b5f5b75d18ec0508ce8",
+      "observed_at": "2026-11-03T15:51:26+00:00",
+      "raw_sha256": "470a313e33f99e3b9e6d692d63f11b67f6f572a4de72183018ce867ae58296f6",
+      "revision_id": "3bb79272b302a506df3fd6c137fe7b7fbcfe98971fdcd3ae885c0404e4eeaba2",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
@@ -3587,10 +3838,10 @@
         "review_mode": "not_stated",
         "rules": [],
         "gaps": [
-          "time_rule_not_verified"
+          "time_not_projected"
         ]
       },
-      "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": "main / text-block 142",
@@ -3619,6 +3870,32 @@
           ]
         },
         {
+          "locator": "main / text-block 277",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 332",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
           "locator": "main / text-block 362",
           "has_deadline": false,
           "has_student": false,
@@ -3632,7 +3909,7 @@
           ]
         },
         {
-          "locator": "main / text-block 397",
+          "locator": "main / text-block 389",
           "has_deadline": false,
           "has_student": false,
           "parsed_range": [
@@ -3645,7 +3922,7 @@
           ]
         },
         {
-          "locator": "main / text-block 424",
+          "locator": "main / text-block 433",
           "has_deadline": false,
           "has_student": false,
           "parsed_range": [
@@ -3658,7 +3935,7 @@
           ]
         },
         {
-          "locator": "main / text-block 511",
+          "locator": "main / text-block 502",
           "has_deadline": false,
           "has_student": false,
           "parsed_range": [
@@ -3671,7 +3948,7 @@
           ]
         },
         {
-          "locator": "main / text-block 808",
+          "locator": "main / text-block 819",
           "has_deadline": false,
           "has_student": false,
           "parsed_range": [
@@ -3684,7 +3961,20 @@
           ]
         },
         {
-          "locator": "main / text-block 941",
+          "locator": "main / text-block 913",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 962",
           "has_deadline": false,
           "has_student": false,
           "parsed_range": [
@@ -5773,83 +6063,135 @@
       "url": "https://one.google.com/offer/studentoffer8?hl=zh-TW",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:00:35+00:00",
-      "history": [
-        {
-          "candidate_sha256": "79b3fb34742bba5c03036c835edbde8fbc9186ced8cd37377fe39ad761cfc30e",
-          "url": "https://one.google.com/offer/studentoffer8?hl=zh-TW",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:56:12+00:00",
-          "raw_sha256": "e89bead5ea18bd4bf54deea00d24e379062a2f018f6f4553959c98b56a810106",
-          "revision_id": "36f29209cf4241460cc403bd5f92f4b2eb3d3a9abdc2dd835b83a4b2ce4ee452",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
-      "raw_sha256": "0d1e77fae2127bc7192b22c641550bb2656e74897897f31437c0e8e9f2e1c9f5",
-      "revision_id": "15f0a7df5c88dd4ac5f0d52264aaed10355afc112d83c886609fc2f052cad791",
+      "observed_at": "2026-11-03T15:51:26+00:00",
+      "raw_sha256": "4d1db4e0d5da8538ad114d57a2d515e5eaf0b8d163c1836de24d7401538881cb",
+      "revision_id": "648c1c7c62da4b26e796b11d6e7763af3e896d87996baa2d22d28fb4637a9fce",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "undetermined",
+        "submission_mode": "deadline_only",
         "review_mode": "not_stated",
-        "rules": [],
-        "gaps": [
-          "time_rule_not_verified"
-        ]
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "absolute",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "來源明示收件截止",
+            "value": "2026-12-31",
+            "precision": "date",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r241",
+                "revision_id": "648c1c7c62da4b26e796b11d6e7763af3e896d87996baa2d22d28fb4637a9fce",
+                "locator": "main / text-block 7",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
+        "gaps": []
       },
-      "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
-      "diagnostics": []
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
+      "diagnostics": [
+        {
+          "locator": "main / text-block 4",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 7",
+          "has_deadline": true,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "date",
+            "2026-12-31"
+          ]
+        },
+        {
+          "locator": "main / text-block 9 + main / text-block 10",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ]
     },
     "cand-discovery-r270-26de7cd1": {
       "candidate_sha256": "eb61cfebfbee42702c01751482ab1f0e04ba68ceb1833250f535185c19bed4c0",
       "url": "https://research.google/outreach/phd-fellowship/",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:00:35+00:00",
-      "history": [
-        {
-          "candidate_sha256": "eb61cfebfbee42702c01751482ab1f0e04ba68ceb1833250f535185c19bed4c0",
-          "url": "https://research.google/outreach/phd-fellowship/",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:56:12+00:00",
-          "raw_sha256": "72f7d701dc4ddb289cc00bac436233dbecd2d28040fbe54ff384dfc7b8e7b1f1",
-          "revision_id": "c890c010c5bf7c3186a7fa5a65a5eb3af9bd01c90fa23f384ae8d1c40670edec",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
-      "raw_sha256": "72f7d701dc4ddb289cc00bac436233dbecd2d28040fbe54ff384dfc7b8e7b1f1",
-      "revision_id": "c19ab498346e03ad44ebf2d67ec7ec939fcb90c0c4cc34b08ed5c544fee08af3",
+      "observed_at": "2026-11-03T15:50:47+00:00",
+      "raw_sha256": "22ab6f0e0156307f40cb98755f34a9a17d1ac726ea4ea26fea4b5d24f237708a",
+      "revision_id": "ba32cd4257966e6609571c23fab2d367407f35bd98930d1f00986ee9077e8c81",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "undetermined",
+        "submission_mode": "procedure_only",
         "review_mode": "not_stated",
-        "rules": [],
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "absolute",
+            "actor": "institution",
+            "stage": "application_start",
+            "summary": "來源明示受理起日",
+            "value": "2026-03-05",
+            "precision": "date",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r270",
+                "revision_id": "ba32cd4257966e6609571c23fab2d367407f35bd98930d1f00986ee9077e8c81",
+                "locator": "main / text-block 17 + main / text-block 18 + main / text-block 19 + main / text-block 20",
+                "evidence_path": "temporal_replay/application_start"
+              }
+            ]
+          },
+          {
+            "rule_id": "replay/1",
+            "kind": "absolute",
+            "actor": "institution",
+            "stage": "submission",
+            "summary": "來源明示收件截止",
+            "value": "2026-04-30",
+            "precision": "date",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r270",
+                "revision_id": "ba32cd4257966e6609571c23fab2d367407f35bd98930d1f00986ee9077e8c81",
+                "locator": "main / text-block 17 + main / text-block 18 + main / text-block 19 + main / text-block 20",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
         "gaps": [
-          "time_rule_not_verified"
+          "student_window_not_recorded"
         ]
       },
-      "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": "main / text-block 17 + main / text-block 18 + main / text-block 19 + main / text-block 20",
@@ -6170,9 +6512,9 @@
       "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T08:56:12+00:00",
+      "observed_at": "2026-11-03T15:49:41+00:00",
       "raw_sha256": "0381a2354596495f85f31dfa04607972d693bb5e89213248bf64aad90487131f",
-      "revision_id": "a09ef7bef92d780aaca55ca0e5b8d814ff16de89d8294f8671539dc7cd3f80ce",
+      "revision_id": "3e57c2b39a06c5371996d6cf9240543581f83e4ae1ad941274ffefc80bc3dfd4",
       "format": "pdf",
       "policy": {
         "version": "time-policy-1",
@@ -6180,18 +6522,320 @@
         "review_mode": "not_stated",
         "rules": [],
         "gaps": [
-          "time_rule_not_verified"
+          "time_not_projected"
         ]
-      }
+      },
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
+      "diagnostics": [
+        {
+          "locator": "PDF page 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2 + PDF page 2",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2 + PDF page 2 + PDF page 2 + PDF page 2",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2 + PDF page 2 + PDF page 2",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 3 + PDF page 3 + PDF page 3 + PDF page 3",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 4 + PDF page 4 + PDF page 4 + PDF page 4",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 4 + PDF page 4 + PDF page 4 + PDF page 4",
+          "has_deadline": true,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 4",
+          "has_deadline": true,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 4 + PDF page 4",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 5 + PDF page 5 + PDF page 5",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 5 + PDF page 5",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 5 + PDF page 5",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 5",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 5",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 6 + PDF page 6 + PDF page 6 + PDF page 6",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 6 + PDF page 6 + PDF page 6",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 6",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 6",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 6 + PDF page 6 + PDF page 6",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 6 + PDF page 6",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 6",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ]
     },
     "cand-ntu-moe-phd-rule-5e314130": {
       "candidate_sha256": "d9de5943ed88facef20f3183648a323ee0941383e1a51d6d60e061d1bfc25ee2",
       "url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T08:56:12+00:00",
+      "observed_at": "2026-11-03T15:49:41+00:00",
       "raw_sha256": "0381a2354596495f85f31dfa04607972d693bb5e89213248bf64aad90487131f",
-      "revision_id": "a09ef7bef92d780aaca55ca0e5b8d814ff16de89d8294f8671539dc7cd3f80ce",
+      "revision_id": "3e57c2b39a06c5371996d6cf9240543581f83e4ae1ad941274ffefc80bc3dfd4",
       "format": "pdf",
       "policy": {
         "version": "time-policy-1",
@@ -6199,39 +6843,320 @@
         "review_mode": "not_stated",
         "rules": [],
         "gaps": [
-          "time_rule_not_verified"
+          "time_not_projected"
         ]
-      }
+      },
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
+      "diagnostics": [
+        {
+          "locator": "PDF page 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2 + PDF page 2",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2 + PDF page 2 + PDF page 2 + PDF page 2",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2 + PDF page 2 + PDF page 2",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 3 + PDF page 3 + PDF page 3 + PDF page 3",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 4 + PDF page 4 + PDF page 4 + PDF page 4",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 4 + PDF page 4 + PDF page 4 + PDF page 4",
+          "has_deadline": true,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 4",
+          "has_deadline": true,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 4 + PDF page 4",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 5 + PDF page 5 + PDF page 5",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 5 + PDF page 5",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 5 + PDF page 5",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 5",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 5",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 6 + PDF page 6 + PDF page 6 + PDF page 6",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 6 + PDF page 6 + PDF page 6",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 6",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 6",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 6 + PDF page 6 + PDF page 6",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 6 + PDF page 6",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 6",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ]
     },
     "cand-discovery-r306-b74be77d": {
       "candidate_sha256": "38bdc30715cb7958cb6764233d1859cb99c9dd52fd1e41e8bfb269a914cae548",
       "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:01:34+00:00",
-      "history": [
-        {
-          "candidate_sha256": "38bdc30715cb7958cb6764233d1859cb99c9dd52fd1e41e8bfb269a914cae548",
-          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:56:12+00:00",
-          "raw_sha256": "db0b15833dae0384ad839a9fa3b82a5f0af7f69d35518ccb3e15f0e85a52b4fd",
-          "revision_id": "4c15a88476d73186c4dea36cf27472a8e4a637481320d734668a4d71ddd69a22",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
-      "raw_sha256": "6e7c57ef926e39322df38d50323d76730ad6f15f91b1bcc89c18b08f00d91f08",
-      "revision_id": "256ad8e0fcd988652d58d0e465e331c43847ca018568fa19361f834c76c9b0cd",
+      "observed_at": "2026-11-03T15:51:26+00:00",
+      "raw_sha256": "e5514ffffa0b33f0505287e5de9b0f4a00ae4d9090b82970ca828ff02156dafe",
+      "revision_id": "9862b55d5ce6b6e0d36f84992270d91a35456aab7e37bcb8458fc6a80a0391db",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
@@ -6239,10 +7164,10 @@
         "review_mode": "not_stated",
         "rules": [],
         "gaps": [
-          "unparsed_timing_clause"
+          "time_not_projected"
         ]
       },
-      "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
@@ -6322,13 +7247,6 @@
             null
           ]
         }
-      ],
-      "attachment_attempts": [
-        {
-          "parent_url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216",
-          "status": "blocked",
-          "reason": "no_direct_announcement_pdf"
-        }
       ]
     },
     "cand-discovery-r310-7f19e415": {
@@ -6336,30 +7254,9 @@
       "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:01:34+00:00",
-      "history": [
-        {
-          "candidate_sha256": "457842cd05546905b4fcfa071f97be1a51908557c5bcd641b1b85f9efac8c6e2",
-          "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:56:12+00:00",
-          "raw_sha256": "6b314a25077595aeb240cb3a1032cef9d14f2d6113dbcf20e5fd48f2d5ccb1c4",
-          "revision_id": "b7e15a4984da454d0a2a2370dd89c9575848af80630b2908b2af87a8859d6b79",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
-      "raw_sha256": "9bb99dab25cb33f002a8b5e28cd5fccea15cef3304a09aa87201a12910ea1c4b",
-      "revision_id": "e0707f4ed8688e40423700074ef584f127648ccab71bd283b7c56be81db316ee",
+      "observed_at": "2026-11-03T15:51:26+00:00",
+      "raw_sha256": "22a61b169f82651f3f4e4a9f7b3c97bd60bb29b3ab228ab5a0c45f4d4c01287e",
+      "revision_id": "6f5cfde67aced0a7d1eb900e6d5116cd458c1c98197db60f88feee030f8a8b2a",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
@@ -6367,10 +7264,10 @@
         "review_mode": "not_stated",
         "rules": [],
         "gaps": [
-          "unparsed_timing_clause"
+          "time_not_projected"
         ]
       },
-      "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": ".article-center / text-block 2 + .article-center / text-block 3 + .article-center / text-block 4",
@@ -6450,13 +7347,6 @@
             null
           ]
         }
-      ],
-      "attachment_attempts": [
-        {
-          "parent_url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
-          "status": "blocked",
-          "reason": "no_direct_announcement_pdf"
-        }
       ]
     },
     "cand-discovery-r425-68009666": {
@@ -6464,41 +7354,40 @@
       "url": "https://www.nstc.gov.tw/sci/ch/detail/24ad4e4a-bd37-4ba0-9955-5b2e2ffd5ac6",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:01:34+00:00",
-      "history": [
-        {
-          "candidate_sha256": "859ebc8b63b8ac261bd931f98f7a529ebcb8b3b35a3f74b2a7aa8d9cdeb004ab",
-          "url": "https://www.nstc.gov.tw/sci/ch/detail/24ad4e4a-bd37-4ba0-9955-5b2e2ffd5ac6",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:56:12+00:00",
-          "raw_sha256": "0344de9090e7959a913a1d2bcb76cffbff11da4ee9548ee7817cee797f655701",
-          "revision_id": "fced55c0f04889983cc182bc6741ec21a2632a3f0b843f670462a9ccfcfe9d05",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
+      "observed_at": "2026-11-03T15:50:27+00:00",
       "raw_sha256": "0344de9090e7959a913a1d2bcb76cffbff11da4ee9548ee7817cee797f655701",
-      "revision_id": "65e743c50e4e5fa7eec72daf2ee48f4980b7d254fe3eadb077e0e16d46994620",
+      "revision_id": "c5d4cdc745435f488c9e0a838bf13bc601e14eff19482c7cf3b1cfba46581a86",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "undetermined",
+        "submission_mode": "recurring",
         "review_mode": "not_stated",
-        "rules": [],
+        "rules": [
+          {
+            "rule_id": "merged/0",
+            "kind": "recurring",
+            "actor": "institution",
+            "stage": "submission",
+            "summary": "來源明示週期性受理；當期具體日期另查",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r425",
+                "revision_id": "b1941c2d9e77d2b7f7e9bba274df777e798904cc5cbc1d5654e71237dd9ad895",
+                "locator": "PDF page 2 + PDF page 2",
+                "evidence_path": "temporal_replay/submission",
+                "url": "https://www.nstc.gov.tw/nstc/attachments/8b000cff-36d5-4098-9550-3c926c751e9f"
+              }
+            ]
+          }
+        ],
         "gaps": [
-          "needs_linked_document"
+          "student_window_not_recorded"
         ]
       },
-      "parser_sha256": "4af82740ea327b21c4dc0b09c737079610afa88731703aa0c69128283cf7c87f",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": "body / text-block 23",
@@ -6530,26 +7419,20 @@
       "attachment_attempts": [
         {
           "parent_url": "https://www.nstc.gov.tw/sci/ch/detail/24ad4e4a-bd37-4ba0-9955-5b2e2ffd5ac6",
-          "status": "blocked",
-          "reason": "no_direct_announcement_pdf"
+          "status": "read",
+          "url": "https://www.nstc.gov.tw/nstc/attachments/8b000cff-36d5-4098-9550-3c926c751e9f",
+          "submission_mode": "recurring"
         }
-      ]
-    },
-    "cand-discovery-r426-dff20b54": {
-      "candidate_sha256": "92ae8b61dcad2697e59da4e3769e5bbdc4e631c92c4aa87b55f9648c80851d44",
-      "url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
-      "status": "replayed",
-      "reason": null,
-      "observed_at": "2026-11-03T09:01:34+00:00",
+      ],
       "history": [
         {
-          "candidate_sha256": "92ae8b61dcad2697e59da4e3769e5bbdc4e631c92c4aa87b55f9648c80851d44",
-          "url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+          "candidate_sha256": "859ebc8b63b8ac261bd931f98f7a529ebcb8b3b35a3f74b2a7aa8d9cdeb004ab",
+          "url": "https://www.nstc.gov.tw/sci/ch/detail/24ad4e4a-bd37-4ba0-9955-5b2e2ffd5ac6",
           "status": "replayed",
           "reason": null,
-          "observed_at": "2026-11-03T08:56:12+00:00",
-          "raw_sha256": "a2d3eb6667a76797d17be89ebcc86ea6b790c7d26c6344e795d26e7fe5be429a",
-          "revision_id": "c6b797755ab08ef2dca30c321f51182261ee6faca52415114f82ff0ec8ce3bf0",
+          "observed_at": "2026-11-03T15:50:05+00:00",
+          "raw_sha256": "0344de9090e7959a913a1d2bcb76cffbff11da4ee9548ee7817cee797f655701",
+          "revision_id": "e4dcb76e461b74d79517abf52a48604213ac2c50e7be1f5b2e3c6f735880702b",
           "format": "html",
           "policy": {
             "version": "time-policy-1",
@@ -6559,22 +7442,168 @@
             "gaps": [
               "time_not_projected"
             ]
-          }
+          },
+          "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
+          "diagnostics": [
+            {
+              "locator": "body / text-block 23",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 45 + body / text-block 46 + body / text-block 47 + body / text-block 48",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            }
+          ],
+          "attachment_attempts": [
+            {
+              "parent_url": "https://www.nstc.gov.tw/sci/ch/detail/24ad4e4a-bd37-4ba0-9955-5b2e2ffd5ac6",
+              "status": "read",
+              "url": "https://www.nstc.gov.tw/nstc/attachments/8b000cff-36d5-4098-9550-3c926c751e9f",
+              "submission_mode": "recurring"
+            }
+          ]
         }
       ],
+      "documents": [
+        {
+          "url": "https://www.nstc.gov.tw/nstc/attachments/8b000cff-36d5-4098-9550-3c926c751e9f",
+          "revision_id": "b1941c2d9e77d2b7f7e9bba274df777e798904cc5cbc1d5654e71237dd9ad895",
+          "raw_sha256": "eeef346009c8529b7af04fc3c40cdcd54d26542109b42b09dfebc2c0659be031",
+          "parent_url": "https://www.nstc.gov.tw/sci/ch/detail/24ad4e4a-bd37-4ba0-9955-5b2e2ffd5ac6",
+          "parent_raw_sha256": "0344de9090e7959a913a1d2bcb76cffbff11da4ee9548ee7817cee797f655701",
+          "format": "pdf"
+        }
+      ]
+    },
+    "cand-discovery-r426-dff20b54": {
+      "candidate_sha256": "92ae8b61dcad2697e59da4e3769e5bbdc4e631c92c4aa87b55f9648c80851d44",
+      "url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-03T15:50:27+00:00",
       "raw_sha256": "a2d3eb6667a76797d17be89ebcc86ea6b790c7d26c6344e795d26e7fe5be429a",
-      "revision_id": "7014f749030c87d5be3bcd7418b50dd6d76a3b7a1940e7d9f9baa68149148feb",
+      "revision_id": "8aae781e6e4cb5634d44a2b2529bc4aeb1dcbfda5d5e7eabcd5114218d92856c",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "undetermined",
+        "submission_mode": "fixed_window",
         "review_mode": "not_stated",
-        "rules": [],
-        "gaps": [
-          "needs_linked_document"
-        ]
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "absolute",
+            "actor": "unit",
+            "stage": "application_start",
+            "summary": "來源明示受理起日",
+            "value": "2026-06-01",
+            "precision": "date",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r426",
+                "revision_id": "8aae781e6e4cb5634d44a2b2529bc4aeb1dcbfda5d5e7eabcd5114218d92856c",
+                "locator": "body / text-block 57",
+                "evidence_path": "temporal_replay/application_start"
+              }
+            ]
+          },
+          {
+            "rule_id": "replay/1",
+            "kind": "absolute",
+            "actor": "unit",
+            "stage": "submission",
+            "summary": "來源明示收件截止",
+            "value": "2026-07-31T12:00:00+08:00",
+            "precision": "datetime",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r426",
+                "revision_id": "8aae781e6e4cb5634d44a2b2529bc4aeb1dcbfda5d5e7eabcd5114218d92856c",
+                "locator": "body / text-block 57",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          },
+          {
+            "rule_id": "merged/2",
+            "kind": "absolute",
+            "actor": "student",
+            "stage": "application_start",
+            "summary": "來源明示受理起日",
+            "value": "2026-06-01",
+            "precision": "date",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r426",
+                "revision_id": "ca7636d9a65a7e66ba6626188cd2a6d3e79c9289eae31dea047fd45284b57a11",
+                "locator": "PDF page 1 + PDF page 1 + PDF page 1 + PDF page 1",
+                "evidence_path": "temporal_replay/application_start",
+                "url": "https://www.nstc.gov.tw/nstc/attachments/92025fc4-ec4f-4109-980a-03f23f91f41c"
+              }
+            ]
+          },
+          {
+            "rule_id": "merged/3",
+            "kind": "absolute",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "來源明示收件截止",
+            "value": "2026-07-31T12:00:00+08:00",
+            "precision": "datetime",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r426",
+                "revision_id": "ca7636d9a65a7e66ba6626188cd2a6d3e79c9289eae31dea047fd45284b57a11",
+                "locator": "PDF page 1 + PDF page 1 + PDF page 1 + PDF page 1",
+                "evidence_path": "temporal_replay/submission",
+                "url": "https://www.nstc.gov.tw/nstc/attachments/92025fc4-ec4f-4109-980a-03f23f91f41c"
+              }
+            ]
+          },
+          {
+            "rule_id": "merged/4",
+            "kind": "text_rule",
+            "actor": "institution",
+            "stage": "submission",
+            "summary": "來源列示月日：7月31日；年份與起訖角色須查原文",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r426",
+                "revision_id": "ca7636d9a65a7e66ba6626188cd2a6d3e79c9289eae31dea047fd45284b57a11",
+                "locator": "PDF page 2 + PDF page 2 + PDF page 2 + PDF page 2",
+                "evidence_path": "temporal_replay/submission",
+                "url": "https://www.nstc.gov.tw/nstc/attachments/92025fc4-ec4f-4109-980a-03f23f91f41c"
+              }
+            ]
+          }
+        ],
+        "gaps": []
       },
-      "parser_sha256": "4af82740ea327b21c4dc0b09c737079610afa88731703aa0c69128283cf7c87f",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": "body / text-block 23",
@@ -6658,8 +7687,166 @@
       "attachment_attempts": [
         {
           "parent_url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
-          "status": "blocked",
-          "reason": "no_direct_announcement_pdf"
+          "status": "read",
+          "url": "https://www.nstc.gov.tw/nstc/attachments/92025fc4-ec4f-4109-980a-03f23f91f41c",
+          "submission_mode": "fixed_window"
+        }
+      ],
+      "history": [
+        {
+          "candidate_sha256": "92ae8b61dcad2697e59da4e3769e5bbdc4e631c92c4aa87b55f9648c80851d44",
+          "url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+          "status": "replayed",
+          "reason": null,
+          "observed_at": "2026-11-03T15:50:05+00:00",
+          "raw_sha256": "a2d3eb6667a76797d17be89ebcc86ea6b790c7d26c6344e795d26e7fe5be429a",
+          "revision_id": "195ae8b19876d93dfba79c3bf93afd794b2ed786a7e6740c52471e1685c4e511",
+          "format": "html",
+          "policy": {
+            "version": "time-policy-1",
+            "submission_mode": "procedure_only",
+            "review_mode": "not_stated",
+            "rules": [
+              {
+                "rule_id": "replay/0",
+                "kind": "absolute",
+                "actor": "unit",
+                "stage": "application_start",
+                "summary": "來源明示受理起日",
+                "value": "2026-06-01",
+                "precision": "date",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r426",
+                    "revision_id": "195ae8b19876d93dfba79c3bf93afd794b2ed786a7e6740c52471e1685c4e511",
+                    "locator": "body / text-block 57",
+                    "evidence_path": "temporal_replay/application_start"
+                  }
+                ]
+              },
+              {
+                "rule_id": "replay/1",
+                "kind": "absolute",
+                "actor": "unit",
+                "stage": "submission",
+                "summary": "來源明示收件截止",
+                "value": "2026-07-31T12:00:00+08:00",
+                "precision": "datetime",
+                "anchor_event": null,
+                "source_refs": [
+                  {
+                    "source": "discovery-r426",
+                    "revision_id": "195ae8b19876d93dfba79c3bf93afd794b2ed786a7e6740c52471e1685c4e511",
+                    "locator": "body / text-block 57",
+                    "evidence_path": "temporal_replay/submission"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "student_window_not_recorded"
+            ]
+          },
+          "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
+          "diagnostics": [
+            {
+              "locator": "body / text-block 23",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 45 + body / text-block 46 + body / text-block 47 + body / text-block 48",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 55 + body / text-block 56",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 57",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                "2026-06-01",
+                "2026-07-31"
+              ],
+              "parsed_date": [
+                "datetime",
+                "2026-07-31T12:00:00+08:00"
+              ]
+            },
+            {
+              "locator": "body / text-block 71",
+              "has_deadline": false,
+              "has_student": true,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "unknown",
+                null
+              ]
+            },
+            {
+              "locator": "body / text-block 73 + body / text-block 74 + body / text-block 75 + body / text-block 76",
+              "has_deadline": false,
+              "has_student": false,
+              "parsed_range": [
+                null,
+                null
+              ],
+              "parsed_date": [
+                "date",
+                "2026-10-27"
+              ]
+            }
+          ],
+          "attachment_attempts": [
+            {
+              "parent_url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+              "status": "read",
+              "url": "https://www.nstc.gov.tw/nstc/attachments/92025fc4-ec4f-4109-980a-03f23f91f41c",
+              "submission_mode": "fixed_window"
+            }
+          ]
+        }
+      ],
+      "documents": [
+        {
+          "url": "https://www.nstc.gov.tw/nstc/attachments/92025fc4-ec4f-4109-980a-03f23f91f41c",
+          "revision_id": "ca7636d9a65a7e66ba6626188cd2a6d3e79c9289eae31dea047fd45284b57a11",
+          "raw_sha256": "c2b879bd0753445433bf7364c0a34dde2f1280ef561654dfeeae2039948ea556",
+          "parent_url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+          "parent_raw_sha256": "a2d3eb6667a76797d17be89ebcc86ea6b790c7d26c6344e795d26e7fe5be429a",
+          "format": "pdf"
         }
       ]
     },
@@ -6668,48 +7855,44 @@
       "url": "https://www.nvidia.com/en-us/research/graduate-fellowships/",
       "status": "blocked",
       "reason": "url_not_allowed",
-      "observed_at": "2026-11-03T08:56:12+00:00"
+      "observed_at": "2026-11-03T15:50:47+00:00"
     },
     "cand-discovery-r448-4a12438c": {
       "candidate_sha256": "7eea32a9a1ae20985fea984b8d5060ded6cdde4786827f64d44a1b799aacff52",
       "url": "https://www.sinica.edu.tw/cp/332",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:00:07+00:00",
-      "history": [
-        {
-          "candidate_sha256": "7eea32a9a1ae20985fea984b8d5060ded6cdde4786827f64d44a1b799aacff52",
-          "url": "https://www.sinica.edu.tw/cp/332",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:56:42+00:00",
-          "raw_sha256": "7fc17a3a24ee1f0e66d8be8bf6b0c4458229ae1e0796e56234c7aae5ebeda89f",
-          "revision_id": "ba79fb38a88d26c80c4cef95e529274370d8feb82238d53fcadd836c6aa9ba16",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
-      "raw_sha256": "7fc17a3a24ee1f0e66d8be8bf6b0c4458229ae1e0796e56234c7aae5ebeda89f",
-      "revision_id": "a910941663fbe14b0e4d6a8cf091471ee878342e88a4e222cfb0665fc50a2068",
+      "observed_at": "2026-11-03T15:50:05+00:00",
+      "raw_sha256": "8db009e75d9a50b1fd9796156860dd1e7d5c2834044b5c670d315adccdafd100",
+      "revision_id": "021749c030aa384a112fc91f1d4d0f1e737fdca072560af92f74c34ca94da80f",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "undetermined",
+        "submission_mode": "unit_announced",
         "review_mode": "not_stated",
-        "rules": [],
-        "gaps": [
-          "time_rule_not_verified"
-        ]
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "unit_announced",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "申請收件時程由所屬單位另訂／公告",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r448",
+                "revision_id": "021749c030aa384a112fc91f1d4d0f1e737fdca072560af92f74c34ca94da80f",
+                "locator": "[role=main] / text-block 26",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
+        "gaps": []
       },
-      "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": "[role=main] / text-block 16 + [role=main] / text-block 17",
@@ -6728,6 +7911,19 @@
           "locator": "[role=main] / text-block 18",
           "has_deadline": false,
           "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "[role=main] / text-block 19 + [role=main] / text-block 20 + [role=main] / text-block 21",
+          "has_deadline": true,
+          "has_student": false,
           "parsed_range": [
             null,
             null
@@ -6776,13 +7972,6 @@
             null
           ]
         }
-      ],
-      "attachment_attempts": [
-        {
-          "parent_url": "https://www.sinica.edu.tw/cp/332",
-          "status": "blocked",
-          "reason": "no_direct_announcement_pdf"
-        }
       ]
     },
     "cand-discovery-r456-9722f37d": {
@@ -6828,47 +8017,89 @@
       "url": "https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1617472",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:00:35+00:00",
-      "history": [
-        {
-          "candidate_sha256": "0f75f89f3a2b5611fd7799efd4134404fc40167d0da0c34bb0db86693b1040be",
-          "url": "https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1617472",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:56:42+00:00",
-          "raw_sha256": "e2f820c427447cbc1124a5373db28bf5017cc110a8572754455f2565d8d9191f",
-          "revision_id": "db650959d5e75dd6289374d470b0089cf2459808ea0c3df6869d0c502cfeec85",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
-      "raw_sha256": "e2f820c427447cbc1124a5373db28bf5017cc110a8572754455f2565d8d9191f",
-      "revision_id": "6dd3a60eef8cbdd984d0db705becc867404d3c17df1e45c2df98d1aacd1ec379",
+      "observed_at": "2026-11-03T15:51:26+00:00",
+      "raw_sha256": "f4be63f7b71c6b8a07e89baad16a461cf136380e559dacdc25acb03a4c2421f7",
+      "revision_id": "2b41e2cf82278ef5324b41eff8e042b42eedf697b9c3946347511b0a47d96544",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "undetermined",
+        "submission_mode": "unit_announced",
         "review_mode": "not_stated",
-        "rules": [],
-        "gaps": [
-          "time_rule_not_verified"
-        ]
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "unit_announced",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "申請收件時程由所屬單位另訂／公告",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r482",
+                "revision_id": "2b41e2cf82278ef5324b41eff8e042b42eedf697b9c3946347511b0a47d96544",
+                "locator": "main / text-block 19 + main / text-block 20 + main / text-block 21 + main / text-block 22",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
+        "gaps": []
       },
-      "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
-      "diagnostics": [],
-      "attachment_attempts": [
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
+      "diagnostics": [
         {
-          "parent_url": "https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1617472",
-          "status": "blocked",
-          "reason": "no_direct_announcement_pdf"
+          "locator": "main / text-block 9 + main / text-block 10 + main / text-block 11 + main / text-block 12",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 19 + main / text-block 20 + main / text-block 21 + main / text-block 22",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 20 + main / text-block 21 + main / text-block 22 + main / text-block 23",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 23 + main / text-block 24 + main / text-block 25 + main / text-block 26",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "date",
+            "2026-04-20"
+          ]
         }
       ]
     },
@@ -6877,42 +8108,77 @@
       "url": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:00:35+00:00",
-      "history": [
-        {
-          "candidate_sha256": "2fc0bd1ab7884f85cecf9ae187d87e9d5765823ca2bdc6c805146e5ef1eb6f76",
-          "url": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:56:42+00:00",
-          "raw_sha256": "acd2a22a445ba66be599661cb4873e1088079fc6fa2be86dd217ffe53e7485d5",
-          "revision_id": "a771c009120a7f82ddf4fc2bdf6dfe26037ec61a4c4235c1eb36bccd7df015d4",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "time_not_projected"
-            ]
-          }
-        }
-      ],
-      "raw_sha256": "acd2a22a445ba66be599661cb4873e1088079fc6fa2be86dd217ffe53e7485d5",
-      "revision_id": "d84e70775991d1a32dae37c5fb0f748bafaf57b9794f612d0ec0bc840e3c51f4",
+      "observed_at": "2026-11-03T15:51:26+00:00",
+      "raw_sha256": "17f45a52cbf941227cb7181a1156c0b13c09d5328b411d97caf9a54b82e45bb4",
+      "revision_id": "babbc9a83ea7b868254411420cd3d9c8d6ec77aa0b2759a5b90aa30564b41e00",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "undetermined",
+        "submission_mode": "continuous",
         "review_mode": "not_stated",
-        "rules": [],
-        "gaps": [
-          "time_rule_not_verified"
-        ]
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "來源明示常態受理；仍須核對資格及額度",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r090",
+                "revision_id": "babbc9a83ea7b868254411420cd3d9c8d6ec77aa0b2759a5b90aa30564b41e00",
+                "locator": "main / text-block 7 + main / text-block 8 + main / text-block 9",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
+        "gaps": []
       },
-      "parser_sha256": "ca29c9c0fc52deac6acb2268b17a61ea77d590bff6efdf69999b481b196d81f3",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
+        {
+          "locator": "main / text-block 3 + main / text-block 4",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 7 + main / text-block 8 + main / text-block 9",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 8 + main / text-block 9",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
         {
           "locator": "main / text-block 12 + main / text-block 13 + main / text-block 14",
           "has_deadline": false,
@@ -6933,30 +8199,9 @@
       "url": "https://www.wda.gov.tw/News_Content.aspx?n=31&s=19491&sms=10306",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T09:01:34+00:00",
-      "history": [
-        {
-          "candidate_sha256": "785583ae9c88d51c45e71fdb6425299ca9aa7169f1de9edc7ade0b63a9bdf6ce",
-          "url": "https://www.wda.gov.tw/News_Content.aspx?n=31&s=19491&sms=10306",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:56:42+00:00",
-          "raw_sha256": "bd8c7d1c2edb9f1a16bfb440a14fbec1668d80e52c245a007e5b6e5993a6ffe6",
-          "revision_id": "5d39fd2c278c1cc70fd3527bff1764e44f43116517390903f9596d2a8858cb67",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "source_checks_failed"
-            ]
-          }
-        }
-      ],
-      "raw_sha256": "2e3b8743a8df50fcbf401a1f56434fbe3428ccd572dac35c7c84b420c9a628f4",
-      "revision_id": "a4e936a8aa7a1a10ea5f6f85d21bf1ecf8e5522a496f203047c83e77d5f8ac09",
+      "observed_at": "2026-11-03T15:50:05+00:00",
+      "raw_sha256": "2b81fc30ae5a745ab0483f58fa22ae650bb12a28687a069e254d70d1d93fac52",
+      "revision_id": "9f3f69ec7eff99ad8ad1768414f94fe9464d4a58f569357f0b4273f3438ceb3d",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
@@ -6964,10 +8209,10 @@
         "review_mode": "not_stated",
         "rules": [],
         "gaps": [
-          "time_rule_not_verified"
+          "source_checks_failed"
         ]
       },
-      "parser_sha256": "4af82740ea327b21c4dc0b09c737079610afa88731703aa0c69128283cf7c87f",
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
       "diagnostics": [
         {
           "locator": "[role=main] / text-block 28",
@@ -6994,34 +8239,196 @@
             "unknown",
             null
           ]
+        },
+        {
+          "locator": "[role=main] / text-block 31",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ],
+      "attachment_attempts": [
+        {
+          "parent_url": "https://www.wda.gov.tw/News_Content.aspx?n=31&s=19491&sms=10306",
+          "status": "blocked",
+          "reason": "no_direct_announcement_pdf"
         }
       ]
     },
     "cand-discovery-r473-6beb562d": {
       "candidate_sha256": "229103993daaf6782b389bc078e76074ac78bfd100e8a75e51b6ff3392d551a2",
       "url": "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f",
-      "status": "blocked",
-      "reason": "run_budget_exhausted",
-      "observed_at": "2026-11-03T09:01:34+00:00",
-      "history": [
-        {
-          "candidate_sha256": "229103993daaf6782b389bc078e76074ac78bfd100e8a75e51b6ff3392d551a2",
-          "url": "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f",
-          "status": "replayed",
-          "reason": null,
-          "observed_at": "2026-11-03T08:56:42+00:00",
-          "raw_sha256": "6c529721af81aff050613a76aeec3a59400bb8aa3fcdd54257928d9ce21a8ff4",
-          "revision_id": "7c6d256c1945e6a4caf5b0a51d04b70ed38a85f6832474f004db2249da2129a8",
-          "format": "html",
-          "policy": {
-            "version": "time-policy-1",
-            "submission_mode": "undetermined",
-            "review_mode": "not_stated",
-            "rules": [],
-            "gaps": [
-              "source_checks_failed"
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-03T15:50:05+00:00",
+      "raw_sha256": "63b13aae1626aa8ce663c376529102c044bac854519c0dd5bb1506ecc6b9416a",
+      "revision_id": "1f88215c13753c2e83a7beb511b2197b8988baf8c06c5f352d2800cf5d7b2a5e",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "rule_text",
+        "review_mode": "not_stated",
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "text_rule",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "來源列示月日：7月12日；年份與起訖角色須查原文",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r473",
+                "revision_id": "1f88215c13753c2e83a7beb511b2197b8988baf8c06c5f352d2800cf5d7b2a5e",
+                "locator": ".content / text-block 10",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          },
+          {
+            "rule_id": "replay/1",
+            "kind": "text_rule",
+            "actor": "unit",
+            "stage": "submission",
+            "summary": "來源列示月日：6月12日、7月12日、7月14日、7月15日、7月17日、7月22日、7月23日；年份與起訖角色須查原文",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r473",
+                "revision_id": "1f88215c13753c2e83a7beb511b2197b8988baf8c06c5f352d2800cf5d7b2a5e",
+                "locator": ".content / text-block 13 + .content / text-block 14 + .content / text-block 15 + .content / text-block 16",
+                "evidence_path": "temporal_replay/submission"
+              }
             ]
           }
+        ],
+        "gaps": [
+          "source_checks_failed"
+        ]
+      },
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
+      "diagnostics": [
+        {
+          "locator": ".content / text-block 6",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 10",
+          "has_deadline": true,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 12",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 13 + .content / text-block 14 + .content / text-block 15 + .content / text-block 16",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 20 + .content / text-block 21",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 28",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 29",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 33",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ],
+      "attachment_attempts": [
+        {
+          "parent_url": "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f",
+          "status": "blocked",
+          "reason": "no_direct_announcement_pdf"
         }
       ]
     },
@@ -7030,24 +8437,291 @@
       "url": "https://youth.gov.taipei/announcement/latest-announcement/e3c5cee4-b81a-4a53-aa79-6cd8c654b02e",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-03T08:56:42+00:00",
-      "raw_sha256": "e70a0de5e8d12c361ac5b6e55841342479e3bdfdd57ac243b30d0368394f699b",
-      "revision_id": "d6e29426868dff29571dc0936707c01352cfd8ef4ad7834695affd1fa11a37e8",
+      "observed_at": "2026-11-03T15:51:26+00:00",
+      "raw_sha256": "ef15f14a63e7a7d918085d746def064fd4001f4faa0161668983ba01e8d5245b",
+      "revision_id": "84fb4f470b1c0e165f5c8329f551e9b767c35dec75180e36ea7e9d9c23dae3ae",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "undetermined",
+        "submission_mode": "conditional_deadline",
         "review_mode": "not_stated",
-        "rules": [],
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "recurring",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "來源明示週期性受理；當期具體日期另查",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r477",
+                "revision_id": "84fb4f470b1c0e165f5c8329f551e9b767c35dec75180e36ea7e9d9c23dae3ae",
+                "locator": "article / text-block 13 + article / text-block 14",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          },
+          {
+            "rule_id": "replay/1",
+            "kind": "absolute",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "個人相對期限與當期最遲截止並列；須同時核對個人條件與年度上限",
+            "value": "2026-11-10",
+            "precision": "date",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-r477",
+                "revision_id": "84fb4f470b1c0e165f5c8329f551e9b767c35dec75180e36ea7e9d9c23dae3ae",
+                "locator": "article / text-block 15",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
         "gaps": [
-          "time_rule_not_verified"
+          "personal_conditions_required"
         ]
       },
-      "attachment_attempts": [
+      "parser_sha256": "ec844c87cd2b826ebe631e069f5268a4fae1370b1b34bd3ff6ae4c348078c475",
+      "diagnostics": [
         {
-          "parent_url": "https://youth.gov.taipei/announcement/latest-announcement/e3c5cee4-b81a-4a53-aa79-6cd8c654b02e",
-          "status": "blocked",
-          "reason": "no_direct_announcement_pdf"
+          "locator": "article / text-block 2 + article / text-block 3",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 3",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 6 + article / text-block 7",
+          "has_deadline": true,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 9",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 13 + article / text-block 14",
+          "has_deadline": true,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 14",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 15",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 16",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 25 + article / text-block 26",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 26",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 29",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 30",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 32",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 36",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 37 + article / text-block 38",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 38",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 41",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "article / text-block 44",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
         }
       ]
     },
@@ -9028,15 +10702,9 @@
       ]
     }
   },
-  "limits": {
-    "round_requests": 200,
-    "micro_requests": 20,
-    "micro_seconds": 180,
-    "minimum_host_interval_seconds": 3
-  },
-  "notes": [
-    "本輪由160調整為200HTTP以驗同公告附件；台帳持續累加，未歸零。",
-    "重萃與規則校準不是獨立人工核准或盲測。",
-    "原文只在記憶體，沒有模型呼叫或正式候選改寫。"
-  ]
+  "baseline": {
+    "sha256": "b60bb47fe1746088f2b77451fbaaa92d81e3b3939e11ccbc85cf431c04cae280",
+    "previous_round_http_requests": 200,
+    "note": "Separate manual round; unchanged records retained with their own observed_at and revisions."
+  }
 }

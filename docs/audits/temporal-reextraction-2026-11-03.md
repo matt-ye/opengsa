@@ -1,71 +1,71 @@
-# 64筆時間重萃逐項檢核
+# 64筆時間重萃逐項檢核（含三軌排程與增量比對決策）
 
 離線投影檢查，不代表獨立人工核准；原文未存檔，模型0。
 既有單位範例仍有自己的年度／版本／適用範圍，不因本輪主頁觀察而回填學生資格或受理狀態。
 
-| # | 來源／項目 | 時間類別 | 甘特形式 | 後續 |
-|---|---|---|---|---|
-| 1 | [ntu-doctoral-funding：臺大學年度待核教育部博士生獎學金（第二梯次）](https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf) | undetermined | 待補原因與來源入口，不畫假區間；另有具名單位範例／參考層 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 2 | [ntu-president-award：臺大研究生校長獎（設置辦法依據）](https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf) | undetermined | 待補原因與來源入口，不畫假區間；另有具名單位範例／參考層 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 3 | [ntu-ta-policy：臺大教務處教學助理制度獎勵金實施辦法](https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/%E6%95%99%E5%8B%99%E8%99%95%E6%95%99%E5%AD%B8%E5%8A%A9%E7%90%86%E5%88%B6%E5%BA%A6%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E6%A2%9D%E6%96%87-%E5%85%AC%E5%91%8A%E7%89%88.pdf) | reference | 制度參考卡，不畫申請長條 | 保留當期來源連結；按規則及個人條件核對 |
-| 4 | [taipei-ai-tools：臺北市青年AI工具補助](https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796) | conditional_deadline | 年度上限／個人條件標記 | 保留當期來源連結；按規則及個人條件核對 |
-| 5 | [hsinchu-ai-tools：新竹市AI領航青年數位工具補助](https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest) | conditional_deadline | 年度上限／個人條件標記 | 保留當期來源連結；按規則及個人條件核對 |
-| 6 | [ntu-doctoral-funding：臺大115學年度國科會核配博士生獎學金](https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713) | undetermined | 待補原因與來源入口，不畫假區間；另有具名單位範例／參考層 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 7 | [ntu-doctoral-funding：臺大115學年度教育部博士生獎學金（第二梯次）](https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713) | undetermined | 待補原因與來源入口，不畫假區間；另有具名單位範例／參考層 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 8 | [sinica-phd-fellowship：中研院115年度人文社會科學博士候選人培育計畫公告](https://www.sinica.edu.tw/news_content/56/3434) | undetermined | 待補原因與來源入口，不畫假區間；另有具名單位範例／參考層 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 9 | [ntu-eecs-scholarship：臺大電資學院優秀博士生獎學金評選辦法](https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 10 | [discovery-r317：國科會博士生研究獎學金國科會甄選類](https://www.aca.ntu.edu.tw/w/aca/GAADService_23091415501308264) | mixed | 跨年度規則卡；分年核對後才畫座標 | 先分年度／梯次並核對收件角色 |
-| 11 | [nstc-conference-rule：國科會補助研究生出席國際學術會議（作業要點法源）](https://law.nstc.gov.tw/LawContent.aspx?id=FL038260) | event_relative | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
-| 12 | [nstc-abroad-dragon-rule：國科會博士生赴國外研究（千里馬）作業要點原文](https://law.nstc.gov.tw/LawContent.aspx?id=FL039188) | recurring | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
-| 13 | [ntu-yuanxue：臺大115年遠學計畫（博士生一般補助）](https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260) | mixed | 跨年度規則卡；分年核對後才畫座標 | 先分年度／梯次並核對收件角色 |
-| 14 | [nstc-ntu-conference：國科會補助研究生出席國際學術會議（臺大校內申請路徑）](https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383) | event_relative | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
-| 15 | [faos-student-conference：傑出人才發展基金會：優秀學生出國開會補助](https://www.faos.org.tw/Application/ApplicatStud.html) | event_relative | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
-| 16 | [ntu-president-award：臺大114學年度研究生校長獎](https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368) | procedure_only | 單位／行政時點標記；不代填學生期限；另有具名單位範例／參考層 | 保留當期來源連結；按規則及個人條件核對 |
-| 17 | [nstc-assistant-rule：國科會專題研究計畫研究人力約用注意事項原文](https://law.nstc.gov.tw/LawContent.aspx?id=FL028686) | reference | 制度參考卡，不畫申請長條 | 保留當期來源連結；按規則及個人條件核對 |
-| 18 | [ntu-ta-policy：臺大教務處教學助理制度獎勵金實施辦法](https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514) | reference | 制度參考卡，不畫申請長條 | 保留當期來源連結；按規則及個人條件核對 |
-| 19 | [discovery-r112：教育部主管法規共用系統-法規內容-教育部博士生獎學金補助計畫作業要點](https://edu.law.moe.gov.tw/LawContent.aspx?id=GL002336) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 20 | [discovery-r297：轉知「國科會博士生研究獎學金試辦方案」相關訊息](https://www.aca.ntu.edu.tw/w/aca/GAADNews_23091415525408652) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 21 | [discovery-q009：【元大文教基金會】115年元大優秀人才獎學金（9/8收件截止）  - 國立中山大學管理學院 College of Management, NSYSU](https://www.cm.nsysu.edu.tw/p/404-1024-380732.php?Lang=zh-tw) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期；previous_access_review_required |
-| 22 | [discovery-r299：本校國科會113年度獎勵人文與社會科學領域博士候選人撰寫博士論文申請至3/25(一)上午8時](https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 23 | [discovery-r301：國科會114年度補助博士生赴國外研究案，申請時間自113年6月1日至7月29日早上8時止](https://www.aca.ntu.edu.tw/w/aca/GAADNews_24052211230185000) | fixed_window | 學生固定申請長條 | 保留當期來源連結；按規則及個人條件核對 |
-| 24 | [discovery-r308：國科會115年度補助博士生赴國外研究案，申請時間自114年6月1日至7月28日(星期一)早上8時止](https://www.aca.ntu.edu.tw/w/aca/GAADNews_25051610035803840) | fixed_window | 學生固定申請長條 | 保留當期來源連結；按規則及個人條件核對 |
-| 25 | [discovery-q001：鴻海獎學鯨｜大專碩博組獎學金計畫｜助力弱勢生安心就學勇敢追夢](https://www.foxconnfoundation.org/news/80479d881F20) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期；previous_access_review_required |
-| 26 | [discovery-r043：AWS Educate](https://aws.amazon.com/education/awseducate/) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 27 | [discovery-r044：AWS Cloud Credit for Research](https://aws.amazon.com/research-credits/) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 28 | [discovery-r055：國立臺灣大學公共衛生學院碩士生學業表現優良獎勵要點](https://coph.ntu.edu.tw/uploads/root/hsiaopc/NTUCPH_MASTER-1120923.pdf) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 29 | [discovery-r057：林耀南獎助學金設置辦法](https://coph.ntu.edu.tw/uploads/root/hsiaopc/linyaonanscolarship_1120110.pdf) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 30 | [discovery-r110：Apply for Google Cloud research credits](https://edu.google.com/programs/credits/research/) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 31 | [discovery-r113：GitHub Student Developer Pack](https://education.github.com/pack) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 32 | [discovery-r182：國家科學及技術委員會主管法規共用系統-法規內容-國家科學及技術委員會獎勵人文與社會科學領域博士候選人撰寫博士論文作業要點](https://law.nstc.gov.tw/LawContent.aspx?id=FL039061) | recurring | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
-| 33 | [discovery-r192：國立臺灣大學文學院學生參與國際學術與教育活動獎學金事項說明](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1768889444792) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
-| 34 | [discovery-r193：財團法人孫哲生先生學術基金會115年度獎學金開放申請](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1786692862536) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
-| 35 | [discovery-r194：115學年度「財團法人俞國華文教基金會獎學金」開放申請](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787024420703) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
-| 36 | [discovery-r195：115學年度「國立臺灣大學侯永雄校友進修碩博士醫護人員獎學金」開放申請](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787888998694) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
-| 37 | [discovery-r196：115學年度「國立臺灣大學文學院紀念鄧立登先生及鄧劉治妹女士清寒獎助學金」開放申請](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787889215831) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
-| 38 | [discovery-r197：115學年度「錢思亮先生紀念獎學金」開放申請](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1788249360727) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
-| 39 | [discovery-r198：115學年度「國立臺灣大學文學院國際學生獎學金」開放申請](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609156448) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
-| 40 | [discovery-r199：115學年度中央研究院「傅斯年獎學金」開放申請](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609268938) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
-| 41 | [discovery-r200：115學年度「國立臺灣大學亞細亞銀行獎學金」開放申請](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1790153625329) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
-| 42 | [discovery-r241：Google AI 方案會員學生優惠條款](https://one.google.com/offer/studentoffer8?hl=zh-TW) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 43 | [discovery-r270：Google PhD fellowship program](https://research.google/outreach/phd-fellowship/) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 44 | [ntu-doctoral-funding：臺大國科會核配博士生獎學金（設置辦法條文快照）](https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf) | undetermined | 待補原因與來源入口，不畫假區間；另有具名單位範例／參考層 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 45 | [ntu-doctoral-funding：臺大教育部博士生獎學金（設置辦法條文快照）](https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf) | undetermined | 待補原因與來源入口，不畫假區間；另有具名單位範例／參考層 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 46 | [discovery-r306：114年人社論文獎勵申請相關資訊](https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 47 | [discovery-r310：115年人社論文獎勵申請相關資訊](https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 48 | [discovery-r425：115年國家科學及技術委員會博士生研究獎學金試辦方案](https://www.nstc.gov.tw/sci/ch/detail/24ad4e4a-bd37-4ba0-9955-5b2e2ffd5ac6) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 49 | [discovery-r426：補助博士生赴國外研究作業要點 (115年申請, 116年出國)](https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 50 | [discovery-r432：NVIDIA Research: Graduate Fellows & Fellowship Opportunities](https://www.nvidia.com/en-us/research/graduate-fellowships/) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期；url_not_allowed |
-| 51 | [discovery-r448：中央研究院 | 中央研究院人文社會科學博士候選人培育計畫要點](https://www.sinica.edu.tw/cp/332) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 52 | [discovery-r456：教育部鼓勵國內大專校院選送學生出國研修或國外專業實習補助要點](https://www.studyabroad.moe.gov.tw/ckfinder_upload/files/20211214073031.pdf) | recurring | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
-| 53 | [discovery-r482：【課程】桃園青年數位力正式啟動｜115年青年數位工具人才培育計畫開放報名](https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1617472) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 54 | [discovery-r090：Access GitHub Copilot for free as a student](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 55 | [discovery-r468：產業新尖兵計畫補助最高10萬元訓練費，每月再發8千元學習獎勵金！](https://www.wda.gov.tw/News_Content.aspx?n=31&s=19491&sms=10306) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 56 | [discovery-r473：新北青年局「AI實戰職涯營」開跑 全額補助6.6萬課程 助攻AWS國際雙認證 優先媒合熱門職缺](https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期；run_budget_exhausted |
-| 57 | [discovery-r477：青年AI工具補助計畫 - 臺北市政府青年局](https://youth.gov.taipei/announcement/latest-announcement/e3c5cee4-b81a-4a53-aa79-6cd8c654b02e) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
-| 58 | [discovery-r137：【申請時程6/12-7/3】114學年度「國科會核配博士生獎學金」申請公告](https://gice.ntu.edu.tw/shownews.php?ID=7062) | rule_text | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
-| 59 | [discovery-r138：【申請時程6/15-7/10】115學年度「國科會核配博士生獎學金」申請公告](https://gice.ntu.edu.tw/shownews.php?ID=7278) | rule_text | 時間規則卡，不虛構日曆座標；另有具名單位範例／參考層 | 保留當期來源連結；按規則及個人條件核對 |
-| 60 | [discovery-r312：國科會116年度補助博士生赴國外研究案，申請時間自115年6月1日至7月29日(星期三)早上8時止](https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878) | fixed_window | 學生固定申請長條 | 保留當期來源連結；按規則及個人條件核對 |
-| 61 | [discovery-r136：【申請時程6/12-7/3】114學年度「教育部博士生獎學金」申請公告](https://gice.ntu.edu.tw/shownews.php?ID=7061) | rule_text | 時間規則卡，不虛構日曆座標；另有具名單位範例／參考層 | 保留當期來源連結；按規則及個人條件核對 |
-| 62 | [discovery-r139：【申請時程6/15-7/10】115學年度「教育部博士生獎學金」申請公告](https://gice.ntu.edu.tw/shownews.php?ID=7279) | rule_text | 時間規則卡，不虛構日曆座標；另有具名單位範例／參考層 | 保留當期來源連結；按規則及個人條件核對 |
-| 63 | [discovery-r140：【6/22-6/26申請】電信所補助研究生出席國際會議經費申請 (5~7月會議)](https://gice.ntu.edu.tw/shownews.php?ID=7282) | rule_text | 時間規則卡，不虛構日曆座標；另有具名單位範例／參考層 | 保留當期來源連結；按規則及個人條件核對 |
-| 64 | [discovery-r141：【115.10.12(一)止】115學年度「教育部博士生獎學金」第二階段申請公告](https://gice.ntu.edu.tw/shownews.php?ID=7344) | deadline_only | 單一學生截止標記＋準備建議（非起日）；另有具名單位範例／參考層 | 保留當期來源連結；按規則及個人條件核對 |
+| # | 軌道 | 增量狀態 | 來源／項目 | 時間類別 | 甘特形式 | 後續 |
+|---|---|---|---|---|---|---|
+| 1 | `gov` | `RUN_BACKFILL` | [ntu-doctoral-funding：臺大學年度待核教育部博士生獎學金（第二梯次）](https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf) | undetermined | 待補原因與來源入口，不畫假區間；另有具名單位範例／參考層 | 續查附件／當期公告／適用單位；不補猜日期 |
+| 2 | `other` | `RUN_BACKFILL` | [ntu-president-award：臺大研究生校長獎（設置辦法依據）](https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf) | undetermined | 待補原因與來源入口，不畫假區間；另有具名單位範例／參考層 | 續查附件／當期公告／適用單位；不補猜日期 |
+| 3 | `other` | `SKIP_UNCHANGED` | [ntu-ta-policy：臺大教務處教學助理制度獎勵金實施辦法](https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/%E6%95%99%E5%8B%99%E8%99%95%E6%95%99%E5%AD%B8%E5%8A%A9%E7%90%86%E5%88%B6%E5%BA%A6%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E6%A2%9D%E6%96%87-%E5%85%AC%E5%91%8A%E7%89%88.pdf) | reference | 制度參考卡，不畫申請長條 | 保留當期來源連結；按規則及個人條件核對 |
+| 4 | `other` | `SKIP_UNCHANGED` | [taipei-ai-tools：臺北市青年AI工具補助](https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796) | conditional_deadline | 年度上限／個人條件標記 | 保留當期來源連結；按規則及個人條件核對 |
+| 5 | `other` | `SKIP_UNCHANGED` | [hsinchu-ai-tools：新竹市AI領航青年數位工具補助](https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest) | conditional_deadline | 年度上限／個人條件標記 | 保留當期來源連結；按規則及個人條件核對 |
+| 6 | `gov` | `RUN_BACKFILL` | [ntu-doctoral-funding：臺大115學年度國科會核配博士生獎學金](https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713) | undetermined | 待補原因與來源入口，不畫假區間；另有具名單位範例／參考層 | 續查附件／當期公告／適用單位；不補猜日期 |
+| 7 | `gov` | `RUN_BACKFILL` | [ntu-doctoral-funding：臺大115學年度教育部博士生獎學金（第二梯次）](https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713) | undetermined | 待補原因與來源入口，不畫假區間；另有具名單位範例／參考層 | 續查附件／當期公告／適用單位；不補猜日期 |
+| 8 | `gov` | `SKIP_UNCHANGED` | [sinica-phd-fellowship：中研院115年度人文社會科學博士候選人培育計畫公告](https://www.sinica.edu.tw/news_content/56/3434) | unit_announced | 時間規則卡，不虛構日曆座標；另有具名單位範例／參考層 | 保留當期來源連結；按規則及個人條件核對 |
+| 9 | `other` | `SKIP_UNCHANGED` | [ntu-eecs-scholarship：臺大電資學院優秀博士生獎學金評選辦法](https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf) | recurring | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 10 | `gov` | `SKIP_UNCHANGED` | [discovery-r317：國科會博士生研究獎學金國科會甄選類](https://www.aca.ntu.edu.tw/w/aca/GAADService_23091415501308264) | mixed | 跨年度規則卡；分年核對後才畫座標 | 先分年度／梯次並核對收件角色 |
+| 11 | `gov` | `SKIP_UNCHANGED` | [nstc-conference-rule：國科會補助研究生出席國際學術會議（作業要點法源）](https://law.nstc.gov.tw/LawContent.aspx?id=FL038260) | event_relative | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 12 | `gov` | `SKIP_UNCHANGED` | [nstc-abroad-dragon-rule：國科會博士生赴國外研究（千里馬）作業要點原文](https://law.nstc.gov.tw/LawContent.aspx?id=FL039188) | recurring | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 13 | `other` | `SKIP_UNCHANGED` | [ntu-yuanxue：臺大115年遠學計畫（博士生一般補助）](https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260) | mixed | 跨年度規則卡；分年核對後才畫座標 | 先分年度／梯次並核對收件角色 |
+| 14 | `gov` | `SKIP_UNCHANGED` | [nstc-ntu-conference：國科會補助研究生出席國際學術會議（臺大校內申請路徑）](https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383) | event_relative | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 15 | `enterprise` | `SKIP_UNCHANGED` | [faos-student-conference：傑出人才發展基金會：優秀學生出國開會補助](https://www.faos.org.tw/Application/ApplicatStud.html) | event_relative | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 16 | `other` | `SKIP_UNCHANGED` | [ntu-president-award：臺大114學年度研究生校長獎](https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368) | mixed | 單位／行政時點標記；不代填學生期限；另有具名單位範例／參考層 | 續查附件／當期公告／適用單位；不補猜日期 |
+| 17 | `gov` | `SKIP_UNCHANGED` | [nstc-assistant-rule：國科會專題研究計畫研究人力約用注意事項原文](https://law.nstc.gov.tw/LawContent.aspx?id=FL028686) | reference | 制度參考卡，不畫申請長條 | 保留當期來源連結；按規則及個人條件核對 |
+| 18 | `other` | `SKIP_UNCHANGED` | [ntu-ta-policy：臺大教務處教學助理制度獎勵金實施辦法](https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514) | reference | 制度參考卡，不畫申請長條 | 保留當期來源連結；按規則及個人條件核對 |
+| 19 | `gov` | `SKIP_UNCHANGED` | [discovery-r112：教育部主管法規共用系統-法規內容-教育部博士生獎學金補助計畫作業要點](https://edu.law.moe.gov.tw/LawContent.aspx?id=GL002336) | unit_announced | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 20 | `gov` | `RUN_BACKFILL` | [discovery-r297：轉知「國科會博士生研究獎學金試辦方案」相關訊息](https://www.aca.ntu.edu.tw/w/aca/GAADNews_23091415525408652) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
+| 21 | `enterprise` | `RUN_BACKFILL` | [discovery-q009：【元大文教基金會】115年元大優秀人才獎學金（9/8收件截止）  - 國立中山大學管理學院 College of Management, NSYSU](https://www.cm.nsysu.edu.tw/p/404-1024-380732.php?Lang=zh-tw) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期；previous_access_review_required |
+| 22 | `gov` | `RUN_BACKFILL` | [discovery-r299：本校國科會113年度獎勵人文與社會科學領域博士候選人撰寫博士論文申請至3/25(一)上午8時](https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
+| 23 | `gov` | `SKIP_UNCHANGED` | [discovery-r301：國科會114年度補助博士生赴國外研究案，申請時間自113年6月1日至7月29日早上8時止](https://www.aca.ntu.edu.tw/w/aca/GAADNews_24052211230185000) | fixed_window | 學生固定申請長條 | 保留當期來源連結；按規則及個人條件核對 |
+| 24 | `gov` | `SKIP_UNCHANGED` | [discovery-r308：國科會115年度補助博士生赴國外研究案，申請時間自114年6月1日至7月28日(星期一)早上8時止](https://www.aca.ntu.edu.tw/w/aca/GAADNews_25051610035803840) | fixed_window | 學生固定申請長條 | 保留當期來源連結；按規則及個人條件核對 |
+| 25 | `enterprise` | `RUN_BACKFILL` | [discovery-q001：鴻海獎學鯨｜大專碩博組獎學金計畫｜助力弱勢生安心就學勇敢追夢](https://www.foxconnfoundation.org/news/80479d881F20) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期；previous_access_review_required |
+| 26 | `other` | `RUN_BACKFILL` | [discovery-r043：AWS Educate](https://aws.amazon.com/education/awseducate/) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
+| 27 | `other` | `SKIP_UNCHANGED` | [discovery-r044：AWS Cloud Credit for Research](https://aws.amazon.com/research-credits/) | continuous | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 28 | `other` | `SKIP_UNCHANGED` | [discovery-r055：國立臺灣大學公共衛生學院碩士生學業表現優良獎勵要點](https://coph.ntu.edu.tw/uploads/root/hsiaopc/NTUCPH_MASTER-1120923.pdf) | recurring | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 29 | `other` | `SKIP_UNCHANGED` | [discovery-r057：林耀南獎助學金設置辦法](https://coph.ntu.edu.tw/uploads/root/hsiaopc/linyaonanscolarship_1120110.pdf) | recurring | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 30 | `other` | `SKIP_UNCHANGED` | [discovery-r110：Apply for Google Cloud research credits](https://edu.google.com/programs/credits/research/) | rule_text | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 31 | `other` | `RUN_BACKFILL` | [discovery-r113：GitHub Student Developer Pack](https://education.github.com/pack) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
+| 32 | `gov` | `SKIP_UNCHANGED` | [discovery-r182：國家科學及技術委員會主管法規共用系統-法規內容-國家科學及技術委員會獎勵人文與社會科學領域博士候選人撰寫博士論文作業要點](https://law.nstc.gov.tw/LawContent.aspx?id=FL039061) | recurring | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 33 | `other` | `SKIP_UNCHANGED` | [discovery-r192：國立臺灣大學文學院學生參與國際學術與教育活動獎學金事項說明](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1768889444792) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
+| 34 | `enterprise` | `SKIP_UNCHANGED` | [discovery-r193：財團法人孫哲生先生學術基金會115年度獎學金開放申請](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1786692862536) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
+| 35 | `enterprise` | `SKIP_UNCHANGED` | [discovery-r194：115學年度「財團法人俞國華文教基金會獎學金」開放申請](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787024420703) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
+| 36 | `other` | `SKIP_UNCHANGED` | [discovery-r195：115學年度「國立臺灣大學侯永雄校友進修碩博士醫護人員獎學金」開放申請](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787888998694) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
+| 37 | `other` | `SKIP_UNCHANGED` | [discovery-r196：115學年度「國立臺灣大學文學院紀念鄧立登先生及鄧劉治妹女士清寒獎助學金」開放申請](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787889215831) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
+| 38 | `other` | `SKIP_UNCHANGED` | [discovery-r197：115學年度「錢思亮先生紀念獎學金」開放申請](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1788249360727) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
+| 39 | `other` | `SKIP_UNCHANGED` | [discovery-r198：115學年度「國立臺灣大學文學院國際學生獎學金」開放申請](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609156448) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
+| 40 | `gov` | `SKIP_UNCHANGED` | [discovery-r199：115學年度中央研究院「傅斯年獎學金」開放申請](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609268938) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
+| 41 | `other` | `SKIP_UNCHANGED` | [discovery-r200：115學年度「國立臺灣大學亞細亞銀行獎學金」開放申請](https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1790153625329) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
+| 42 | `other` | `SKIP_UNCHANGED` | [discovery-r241：Google AI 方案會員學生優惠條款](https://one.google.com/offer/studentoffer8?hl=zh-TW) | deadline_only | 單一學生截止標記＋準備建議（非起日） | 保留當期來源連結；按規則及個人條件核對 |
+| 43 | `enterprise` | `SKIP_UNCHANGED` | [discovery-r270：Google PhD fellowship program](https://research.google/outreach/phd-fellowship/) | procedure_only | 單位／行政時點標記；不代填學生期限 | 保留當期來源連結；按規則及個人條件核對 |
+| 44 | `gov` | `RUN_BACKFILL` | [ntu-doctoral-funding：臺大國科會核配博士生獎學金（設置辦法條文快照）](https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf) | undetermined | 待補原因與來源入口，不畫假區間；另有具名單位範例／參考層 | 續查附件／當期公告／適用單位；不補猜日期 |
+| 45 | `gov` | `RUN_BACKFILL` | [ntu-doctoral-funding：臺大教育部博士生獎學金（設置辦法條文快照）](https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf) | undetermined | 待補原因與來源入口，不畫假區間；另有具名單位範例／參考層 | 續查附件／當期公告／適用單位；不補猜日期 |
+| 46 | `other` | `RUN_BACKFILL` | [discovery-r306：114年人社論文獎勵申請相關資訊](https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
+| 47 | `other` | `RUN_BACKFILL` | [discovery-r310：115年人社論文獎勵申請相關資訊](https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
+| 48 | `gov` | `SKIP_UNCHANGED` | [discovery-r425：115年國家科學及技術委員會博士生研究獎學金試辦方案](https://www.nstc.gov.tw/sci/ch/detail/24ad4e4a-bd37-4ba0-9955-5b2e2ffd5ac6) | recurring | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 49 | `gov` | `SKIP_UNCHANGED` | [discovery-r426：補助博士生赴國外研究作業要點 (115年申請, 116年出國)](https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942) | fixed_window | 學生固定申請長條 | 保留當期來源連結；按規則及個人條件核對 |
+| 50 | `enterprise` | `RUN_BACKFILL` | [discovery-r432：NVIDIA Research: Graduate Fellows & Fellowship Opportunities](https://www.nvidia.com/en-us/research/graduate-fellowships/) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期；url_not_allowed |
+| 51 | `gov` | `SKIP_UNCHANGED` | [discovery-r448：中央研究院 | 中央研究院人文社會科學博士候選人培育計畫要點](https://www.sinica.edu.tw/cp/332) | unit_announced | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 52 | `gov` | `SKIP_UNCHANGED` | [discovery-r456：教育部鼓勵國內大專校院選送學生出國研修或國外專業實習補助要點](https://www.studyabroad.moe.gov.tw/ckfinder_upload/files/20211214073031.pdf) | recurring | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 53 | `other` | `SKIP_UNCHANGED` | [discovery-r482：【課程】桃園青年數位力正式啟動｜115年青年數位工具人才培育計畫開放報名](https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1617472) | unit_announced | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 54 | `other` | `SKIP_UNCHANGED` | [discovery-r090：Access GitHub Copilot for free as a student](https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students) | continuous | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 55 | `gov` | `RUN_BACKFILL` | [discovery-r468：產業新尖兵計畫補助最高10萬元訓練費，每月再發8千元學習獎勵金！](https://www.wda.gov.tw/News_Content.aspx?n=31&s=19491&sms=10306) | undetermined | 待補原因與來源入口，不畫假區間 | 續查附件／當期公告／適用單位；不補猜日期 |
+| 56 | `gov` | `SKIP_UNCHANGED` | [discovery-r473：新北青年局「AI實戰職涯營」開跑 全額補助6.6萬課程 助攻AWS國際雙認證 優先媒合熱門職缺](https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f) | rule_text | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 57 | `other` | `SKIP_UNCHANGED` | [discovery-r477：青年AI工具補助計畫 - 臺北市政府青年局](https://youth.gov.taipei/announcement/latest-announcement/e3c5cee4-b81a-4a53-aa79-6cd8c654b02e) | conditional_deadline | 年度上限／個人條件標記 | 保留當期來源連結；按規則及個人條件核對 |
+| 58 | `gov` | `SKIP_UNCHANGED` | [discovery-r137：【申請時程6/12-7/3】114學年度「國科會核配博士生獎學金」申請公告](https://gice.ntu.edu.tw/shownews.php?ID=7062) | rule_text | 時間規則卡，不虛構日曆座標 | 保留當期來源連結；按規則及個人條件核對 |
+| 59 | `gov` | `SKIP_UNCHANGED` | [discovery-r138：【申請時程6/15-7/10】115學年度「國科會核配博士生獎學金」申請公告](https://gice.ntu.edu.tw/shownews.php?ID=7278) | rule_text | 時間規則卡，不虛構日曆座標；另有具名單位範例／參考層 | 保留當期來源連結；按規則及個人條件核對 |
+| 60 | `gov` | `SKIP_UNCHANGED` | [discovery-r312：國科會116年度補助博士生赴國外研究案，申請時間自115年6月1日至7月29日(星期三)早上8時止](https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878) | fixed_window | 學生固定申請長條 | 保留當期來源連結；按規則及個人條件核對 |
+| 61 | `gov` | `SKIP_UNCHANGED` | [discovery-r136：【申請時程6/12-7/3】114學年度「教育部博士生獎學金」申請公告](https://gice.ntu.edu.tw/shownews.php?ID=7061) | rule_text | 時間規則卡，不虛構日曆座標；另有具名單位範例／參考層 | 保留當期來源連結；按規則及個人條件核對 |
+| 62 | `gov` | `SKIP_UNCHANGED` | [discovery-r139：【申請時程6/15-7/10】115學年度「教育部博士生獎學金」申請公告](https://gice.ntu.edu.tw/shownews.php?ID=7279) | rule_text | 時間規則卡，不虛構日曆座標；另有具名單位範例／參考層 | 保留當期來源連結；按規則及個人條件核對 |
+| 63 | `other` | `SKIP_UNCHANGED` | [discovery-r140：【6/22-6/26申請】電信所補助研究生出席國際會議經費申請 (5~7月會議)](https://gice.ntu.edu.tw/shownews.php?ID=7282) | rule_text | 時間規則卡，不虛構日曆座標；另有具名單位範例／參考層 | 保留當期來源連結；按規則及個人條件核對 |
+| 64 | `gov` | `SKIP_UNCHANGED` | [discovery-r141：【115.10.12(一)止】115學年度「教育部博士生獎學金」第二階段申請公告](https://gice.ntu.edu.tw/shownews.php?ID=7344) | deadline_only | 單一學生截止標記＋準備建議（非起日）；另有具名單位範例／參考層 | 保留當期來源連結；按規則及個人條件核對 |

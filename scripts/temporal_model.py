@@ -42,7 +42,7 @@ FIELDS = (
 
 # Free-tier safe micro-chunking capabilities across all 8 providers:
 # input_limit=1500 (effective cap=1300 after safety_tokens=200), output_reserve=600
-MICRO_CHUNK_INPUT_LIMIT = 1500
+MICRO_CHUNK_INPUT_LIMIT = 2200
 MICRO_CHUNK_OUTPUT_RESERVE = 600
 MICRO_CHUNK_SAFETY_TOKENS = 200
 DEFAULT_HTTP_TIMEOUT = 90
@@ -343,6 +343,8 @@ def build_provider_pool_from_env(environ=None, tokenizer=None, mode=None, max_ca
         if name == "siliconflow" and not local_env.get("OPENGSA_SILICONFLOW_REGION"):
             # Per AGENTS.md: SiliconFlow is international cloud.siliconflow.com (region=com)
             local_env["OPENGSA_SILICONFLOW_REGION"] = "com"
+        if name == "gemini" and not local_env.get("OPENGSA_GEMINI_API_KEY") and local_env.get("GEMINI_API_KEY_AISTUDIO"):
+            local_env["OPENGSA_GEMINI_API_KEY"] = local_env["GEMINI_API_KEY_AISTUDIO"]
         try:
             base_url, model_name, key_env = provider_settings(name, local_env)
         except ValueError:
