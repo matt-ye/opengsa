@@ -1,5 +1,7 @@
 # API、模型與額度查核
 
+2026-11-03後續：[手動Actions時間萃取](ACTIONS-TEMPORAL-EXTRACTION.md)新增`operation=temporal_replay`，沿既有Secret與成本限制，配置Groq Qwen3.8的tokenizer／上限與時間欄位獨立檢核。舊`scan`選項未配置模型能力時仍可能回退規則；要驗本輪流程應選新操作。候選或台帳hash_only均不外送，其他provider能力／成本未確認不推論。當次實測另記於該文件，不以本頁10/30結果代替。
+
 查核日：2026-10-30（臺北）。已確認8組Repository Secrets存在；不讀出值、不寫入Git、不放在網站。所有API只供手動操作或本機評測，排程仍為`model_mode=off`。模型與端點的唯一設定在[model-providers.json](../data/model-providers.json)，非永久可用清單。
 
 ## 這次實際確認到哪裡

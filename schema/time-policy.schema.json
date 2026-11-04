@@ -6,10 +6,10 @@
   "required": ["version", "submission_mode", "review_mode", "rules", "gaps"],
   "properties": {
     "version": {"const": "time-policy-1"},
-    "submission_mode": {"enum": ["fixed_window", "deadline_only", "start_only", "event_relative", "recurring", "rule_text", "mixed", "procedure_only", "conditional_deadline", "automatic", "reference", "undetermined"]},
+    "submission_mode": {"enum": ["fixed_window", "deadline_only", "start_only", "event_relative", "recurring", "rule_text", "mixed", "procedure_only", "conditional_deadline", "automatic", "reference", "undetermined", "continuous", "unit_announced", "review_only"]},
     "review_mode": {"enum": ["not_stated", "rolling", "batch", "case_by_case"]},
     "rules": {"type": "array", "items": {"$ref": "#/$defs/rule"}},
-    "gaps": {"type": "array", "uniqueItems": true, "items": {"enum": ["source_checks_failed", "time_not_projected", "student_window_not_recorded", "needs_event_date", "calendar_unverified", "personal_conditions_required"]}}
+    "gaps": {"type": "array", "uniqueItems": true, "items": {"enum": ["source_checks_failed", "time_not_projected", "student_window_not_recorded", "needs_event_date", "calendar_unverified", "personal_conditions_required", "multiple_cycles_need_split", "needs_linked_document", "unparsed_timing_clause", "time_rule_not_verified", "replay_deferred", "source_access_restricted"]}}
   },
   "$defs": {
     "ref": {
@@ -20,6 +20,7 @@
         "revision_id": {"type": "string", "minLength": 1},
         "locator": {"type": "string", "minLength": 1},
         "evidence_path": {"type": "string", "minLength": 1}
+        ,"url": {"type": "string", "format": "uri", "pattern": "^https://"}
       }
     },
     "rule": {
@@ -27,12 +28,13 @@
       "required": ["rule_id", "kind", "stage", "actor", "summary", "value", "precision", "anchor_event", "source_refs"],
       "properties": {
         "rule_id": {"type": "string", "minLength": 1},
-        "kind": {"enum": ["absolute", "event_relative", "recurring", "text_rule"]},
-        "stage": {"enum": ["application_start", "submission", "supplement", "result"]},
+        "kind": {"enum": ["absolute", "event_relative", "recurring", "text_rule", "continuous", "unit_announced", "review_cadence"]},
+        "stage": {"enum": ["application_start", "submission", "supplement", "result", "review"]},
         "actor": {"enum": ["student", "department", "unit", "college", "university", "institution", "supplement", "other"]},
         "summary": {"type": "string", "minLength": 1},
         "value": {"type": ["string", "null"]},
         "precision": {"enum": ["date", "datetime", "rule"]},
+        "year_basis": {"enum": ["explicit", "dual_anchored"]},
         "anchor_event": {"enum": [null, "conference_start"]},
         "source_refs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/ref"}}
       },
