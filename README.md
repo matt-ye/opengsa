@@ -13,6 +13,14 @@
 
 ## 目前狀態
 
+2026-11-04 全庫四大批次來源萃取與時程政策整併（PR #50～#53）：[全庫萃取管線說明](docs/FULL-LIBRARY-EXTRACTION-PLAN.md)。納入四大批次（Batch 1: K-12 公部門與助學 25 方案、Batch 2: 學生福利與特惠 28 方案、Batch 3: 企業、基金會與學會獎助 85 方案、Batch 4: AI 工具 2 方案 + 既有 64 方案）。全庫 **204 筆候選方案與 204 筆時程觀測政策達成 1-to-1 精確覆蓋**，**undetermined = 0 筆（覆蓋率 100%）**。三軌排程路由（週二五公部門、週一四企業基金會、週三六福利與AI工具）、三層增量比對閘門與動態備援池上線；正式 pilot 與人工審核欄位未改，全數標註待審。
+
+2026-11-04 多層來源資訊鏈（Source Chains）全庫架構整合：[來源資訊鏈地圖](docs/source-chains/source-chain-map.html) · [Obsidian Canvas](docs/source-chains/source-chain-map.canvas)。全庫收錄跨教育階段與民間資助之深度調研報告：
+- [K-12 獎助全景與五層法源資訊鏈](docs/K12-SCHOLARSHIP-LANDSCAPE-AND-SOURCE-CHAINS.md)：梳理中央母法、部會作業要點、地方委辦平台、學校初審與憑證表單。
+- [學生身分軟硬體、AI與學習資源優惠全景](docs/STUDENT-SOFTWARE-HARDWARE-AND-AI-PERKS.md)：收錄六大福利支柱、6 種查驗途徑（SheerID/UNiDAYS/.edu.tw/GitHub Pack）與續期週期。
+- [企業、基金會與學會獎助全景與雙軌申辦鏈](docs/ENTERPRISE-SCHOLARSHIP-LANDSCAPE-AND-SOURCE-CHAINS.md)：分析 85 方案雙軌申辦（大學生輔組統一造冊薦送 vs 官方入口線上直申）、資格防偽與排他條款。
+- [UI/UX 導覽教學與易用性升級調研](docs/UI-UX-ONBOARDING-AND-SKILLS-STUDY.md) 及 [開源資助與生態系贊助策略](docs/OPEN-SOURCE-GRANTS-AND-OPENAI-STRATEGY.md)。
+
 2026-11-03手動Actions時間萃取支線：[操作與邊界](docs/ACTIONS-TEMPORAL-EXTRACTION.md)。既有workflow新增`temporal_replay`，可用GitHub Secrets對允許來源執行小批時間提案／盤查，最多20源站HTTP／4推論；受限來源維持規則模式。輸出待審JSON、模型報告及離線預覽artifact，不自動回寫repo或網站。新PR接PR44、不自行合併／部署，實測結果以該文件後續紀錄為準。
 
 2026-11-03時間重萃支線：[本輪方法、結果與限制](docs/TEMPORAL-REEXTRACTION.md)及[64項逐筆甘特形式檢核](docs/audits/temporal-reextraction-2026-11-03.md)。累計200HTTP、模型0；最新60項重萃完成、4項保留原因，32項已可分型、32項待補（不是正確率或可申請數）。補讀文學院8份公告PDF；學生日期、單位時點、相對／週期規則及跨年度待核分開呈現，不猜年份或自動宣稱受理中。候選／pilot／真人台帳未改，時間觀察獨立存JSON；附件重萃目前為手動CLI。本PR接PR43，不自行合併／部署；下方「未重萃」屬上一階段紀錄。
@@ -155,6 +163,14 @@ flowchart TD
 | 文件 | 用途 |
 |---|---|
 | [目前計畫](docs/PLAN.md) | 已核可範圍、階段、下一步與驗收 |
+| [全庫來源萃取與時程政策規劃](docs/FULL-LIBRARY-EXTRACTION-PLAN.md) | 全庫 204 方案四大批次萃取架構、三軌排程、超時防護與維運流程 |
+| [K-12 獎助全景與來源資訊鏈](docs/K12-SCHOLARSHIP-LANDSCAPE-AND-SOURCE-CHAINS.md) | 臺灣幼兒至高中職 25 方案五層法源、委辦大學平台與初審代收鏈路 |
+| [學生身分福利與特惠全景調研](docs/STUDENT-SOFTWARE-HARDWARE-AND-AI-PERKS.md) | 軟硬體、雲端算力、AI 帳號等 28 項福利與 6 種學生身分驗證途徑 |
+| [企業與基金會獎助全景與申辦鏈](docs/ENTERPRISE-SCHOLARSHIP-LANDSCAPE-AND-SOURCE-CHAINS.md) | 85 筆民間與企業獎助雙軌申辦鏈（生輔組薦送 vs 線上直申）與防偽查核 |
+| [UI/UX 易用性升級與導覽研究](docs/UI-UX-ONBOARDING-AND-SKILLS-STUDY.md) | 網站導覽教學、可近性改進與參考開源 Skill 深度研究 |
+| [開源資助與生態系贊助策略](docs/OPEN-SOURCE-GRANTS-AND-OPENAI-STRATEGY.md) | 開源專案資助申請策略、OpenAI Grants 與長效營運規劃 |
+| [研究生與學生專用免費 AI API 全攻略](docs/FREE-AI-API-KEYS-GUIDE.md) | 10 大主流 LLM API（Groq, Gemini, Cerebras, OpenRouter 等）免費額度、申請資格、避坑與使用指南 |
+| [免費學術文獻檢索 API 與自動化管線報告](docs/FREE-LITERATURE-SEARCH-APIS-RESEARCH.md) | PubMed, Europe PMC, OpenAlex, Semantic Scholar 等 8 大文獻 API 申請與聯邦檢索架構 |
 | [候選審查工作台](docs/REVIEW-WORKSPACE.md) | 未發布預覽、人工處置、重新核驗與資料 PR 草稿流程 |
 | [公開預覽與部署](docs/DEPLOYMENT.md) | GitHub Pages發布、公開回饋、成品邊界、測試與回復 |
 | [長期維運與訂閱提案](docs/OPERATIONS-PLAN.md) | GitHub／D1分工、來源擷取、Agent檢核、成本、RSS與ICS；D1與訂閱尚未啟用 |
