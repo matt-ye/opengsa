@@ -103,7 +103,7 @@ button:focus-visible,select:focus-visible,input:focus-visible,.gantt-scroll:focu
 .gantt-wait{position:absolute;top:36px;border-top:2px dashed #9cafbd;z-index:1}
 .gantt-notes{position:absolute;top:80px;left:8px;right:8px;font-size:10px;color:var(--muted);line-height:1.5}
 #gantt-view{min-width:0}
-#schedule-inspect{border-left:3px solid #416a9f;margin-top:16px}
+#schedule-inspect{border-left:3px solid #416a9f;margin-top:16px;position:relative;z-index:2;scroll-margin-top:calc(var(--nav-height,104px) + 12px)}
 #schedule-inspect p{margin:8px 0}
 #dates-table{margin-top:16px}
 #dates-table summary{cursor:pointer;font-size:13px;font-weight:700}
@@ -248,6 +248,37 @@ html{scroll-behavior:smooth}
 .pay-kind{font-weight:700}#rights [id]{scroll-margin-top:calc(var(--nav-height,90px) + 20px)}
 #rights [data-rights-section][hidden]{display:none}
 @media(max-width:800px){.rights-overview-grid{grid-template-columns:1fr}#rights-view-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}#rights-view-switch button{min-height:44px;text-align:center}#rights .table-scroll{max-width:100%;overscroll-behavior-inline:contain}}
+.time-policy{font-size:13px;line-height:1.65;margin:10px 0;overflow-wrap:anywhere}
+.time-label{display:flex;gap:8px;align-items:center;margin:0 0 8px}.time-label.known{color:var(--ink)}.time-label.pending{color:#85601f}
+.time-rule-list{padding-left:20px;margin:8px 0}.time-rule-list li{margin-bottom:8px}.time-policy summary{cursor:pointer;font-weight:700}
+.gantt-plot.rule-plot{background:#fff}.rule-plot .time-policy{position:relative;max-width:640px;margin:16px 18px 42px;padding:12px 16px;border:1px solid var(--line);border-radius:8px;background:#f6faf7;z-index:1}
+.rule-plot .time-policy .time-rule-list{margin-bottom:0}.gantt-plot.rule-plot .gantt-notes{position:relative;padding:0 18px 12px}
+.time-planner-link{display:inline-block;margin-top:6px;min-height:32px}
+.header-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.share-btn{padding:6px 12px;font-size:13px;border-radius:6px;border:1px solid #c2d3c6;background:#fff;color:var(--ink);cursor:pointer;font-weight:600}
+.share-btn:hover{background:#f0f5f1;border-color:var(--forest)}
+.share-toast{font-size:12px;color:var(--forest);background:#eaf4ed;padding:4px 8px;border-radius:4px;border:1px solid #c2d3c6;white-space:nowrap}
+.detail-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:12px 0 16px;padding:12px 14px;background:#f9fbf9;border:1px solid var(--line);border-radius:8px}
+.detail-search-wrap{flex:1 1 240px;min-width:200px}
+.detail-search-wrap input{width:100%;padding:8px 10px;font:inherit;font-size:13px;border:1px solid var(--line);border-radius:6px}
+.compare-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:10px 0}
+.compare-controls select{padding:7px 10px;font:inherit;font-size:13px;border:1px solid var(--line);border-radius:6px;background:#fff;max-width:320px}
+.compare-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+@media (max-width:768px){.compare-grid{grid-template-columns:1fr}}
+.compare-col{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px}
+.compare-col h3{font-size:18px;margin:0 0 8px;color:var(--forest)}
+.compare-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:700;margin-bottom:12px}
+.compare-badge.primary{background:#e8f1ec;color:var(--forest)}
+.compare-badge.target{background:#fef3e7;color:#b45309}
+.compare-section{margin:12px 0;padding-bottom:12px;border-bottom:1px solid #edf2ee}
+.compare-section:last-child{border-bottom:none}
+.compare-section h4{font-size:13px;font-weight:700;color:var(--muted);margin:0 0 4px}
+.compare-notice{padding:10px 14px;border-radius:6px;background:#fffbeb;border:1px solid #fde68a;font-size:13px;color:#92400e;margin-bottom:16px}
+.timeline-banner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:12px 16px;background:#f4f8f5;border:1px solid #d2e3d6;border-radius:8px;margin-bottom:16px}
+.timeline-banner p{margin:0;font-size:13px}
+.btn-pick-fav{border:1px solid var(--forest);color:var(--forest);background:#fff;border-radius:6px;padding:6px 10px;font-size:13px;font-weight:600;cursor:pointer}
+.btn-pick-fav.active{background:var(--forest);color:#fff}
+.plan-progress{font-size:13px;font-weight:700;color:var(--forest);margin:8px 0}
 </style>
 </head>
 <body>
@@ -255,11 +286,11 @@ html{scroll-behavior:smooth}
 <div class="review-strip">設計審閱稿 · 四分頁互動線框 · 資料快照 2026.10.28 · 所有獎助資料待獨立覆核，非申請建議</div>
 <header class="nav-wrap">
 <div class="nav"><a class="brand" href="#search">OpenGSA<small>Grant Scholarships Award</small></a>
-<div class="header-controls"><nav aria-label="OpenGSA 功能分頁" class="nav-links" role="tablist"><button aria-controls="search" aria-selected="true" data-panel="search" id="tab-search" role="tab" tabindex="0">找獎助</button><button aria-controls="detail" aria-selected="false" data-panel="detail" id="tab-detail" role="tab" tabindex="-1">獎助詳情</button><button aria-controls="timeline" aria-selected="false" data-panel="timeline" id="tab-timeline" role="tab" tabindex="-1">我的時間軸</button><button aria-controls="rights" aria-selected="false" data-panel="rights" id="tab-rights" role="tab" tabindex="-1">權益與求助</button></nav><nav aria-label="參與 OpenGSA" class="header-actions"><a class="header-action" href="https://github.com/matt-ye/opengsa/issues/new?template=preview-feedback.yml" target="_blank" rel="noopener noreferrer" title="在新分頁開啟 GitHub 回饋表單；需帳號，內容公開">提供回饋 ↗</a><a class="header-action primary" href="https://github.com/matt-ye/opengsa/issues/new?template=resource-source.yml" target="_blank" rel="noopener noreferrer" title="提供尚未收錄的獎學金、補助或研究資源；需 GitHub 帳號，內容公開">提供獎助來源 ↗</a></nav></div></div>
+<div class="header-controls"><nav aria-label="OpenGSA 功能分頁" class="nav-links" role="tablist"><button aria-controls="search" aria-selected="true" data-panel="search" id="tab-search" role="tab" tabindex="0">找獎助</button><button aria-controls="detail" aria-selected="false" data-panel="detail" id="tab-detail" role="tab" tabindex="-1">獎助詳情</button><button aria-controls="timeline" aria-selected="false" data-panel="timeline" id="tab-timeline" role="tab" tabindex="-1">我的時間軸</button><button aria-controls="rights" aria-selected="false" data-panel="rights" id="tab-rights" role="tab" tabindex="-1">權益與求助</button></nav><nav aria-label="參與 OpenGSA" class="header-actions"><button id="copy-share-link" type="button" class="header-action share-btn" title="複製目前設定與篩選條件網址（不含敏感個資）">📋 分享此畫面</button><span id="share-toast" class="share-toast" role="status" aria-live="polite" hidden="">已複製分享網址</span><a class="header-action" href="https://github.com/matt-ye/opengsa/issues/new?template=preview-feedback.yml" target="_blank" rel="noopener noreferrer" title="在新分頁開啟 GitHub 回饋表單；需帳號，內容公開">提供回饋 ↗</a><a class="header-action primary" href="https://github.com/matt-ye/opengsa/issues/new?template=resource-source.yml" target="_blank" rel="noopener noreferrer" title="提供尚未收錄的獎學金、補助或研究資源；需 GitHub 帳號，內容公開">提供獎助來源 ↗</a></nav></div></div>
 </header>
 <main id="main">
 <section aria-labelledby="tab-search" class="screen" id="search" role="tabpanel">
-<div class="headline"><div><div class="screen-label">01 / DISCOVER · 找獎助</div><h1 id="search-title">把時間留給研究。</h1><p>先篩選值得了解的機會，再用清單或甘特圖看申請期間與結果公布日。</p></div><div class="status-note">互動原型 · 不進行個人資格核定</div></div>
+<div class="headline"><div><div class="screen-label">01 / DISCOVER · 獎助探索與快篩</div><h1 id="search-title">把時間留給研究。</h1><p>快速篩選值得了解的機會，一鍵【⭐ 收藏至個人時程】或【📄 查看完整條文】。</p></div><div class="status-note">互動原型 · 不進行個人資格核定</div></div>
 <div class="mode-row"><div aria-label="資料模式" class="segmented" id="mode-switch" role="group"><button aria-pressed="true" data-mode="demo" type="button">合成排程示範</button><button aria-pressed="false" data-mode="draft" type="button">來源草稿＋會議方案</button></div></div>
 <p class="synthetic-note" id="mode-note">合成資料，僅供互動設計。</p>
 <p class="small quiet">燈號描述來源資訊清晰度，非正確率、申請資格核定或受理保證。未知條件會另列為可能相關。核心四項：來源對應、年度／版本、時間規則、大致對象。</p>
@@ -343,13 +374,18 @@ html{scroll-behavior:smooth}
 <p class="chart-foot">系所時程僅為範例；往年／估計區間供準備參考。實際資格、申請起訖與程序，以所屬系所及主辦單位最新公告為準。</p>
 </section>
 <aside aria-label="選取項目的時程摘要" aria-live="polite" class="panel" hidden="" id="schedule-inspect"></aside>
-<details id="dates-table"><summary>查看文字日期表</summary><div class="table-scroll"><table><caption class="tiny quiet">與目前篩選同步的日期；待確認不代表不限期。</caption><thead><tr><th scope="col">獎助項目</th><th scope="col">申請開始</th><th scope="col">學生截止</th><th scope="col">結果公布</th><th scope="col">其他程序</th></tr></thead><tbody id="date-rows"></tbody></table></div></details>
+<details id="dates-table"><summary>查看文字日期與規則表</summary><div class="table-scroll" role="region" tabindex="0" aria-label="獎助日期與時間規則，可水平捲動"><table><caption class="tiny quiet">與目前篩選同步；規則依角色分列，沒有確定日期時保留規則文字。</caption><thead><tr><th scope="col">獎助項目</th><th scope="col">申請開始</th><th scope="col">學生截止</th><th scope="col">結果公布</th><th scope="col">其他程序</th><th scope="col">時間類型／規則</th></tr></thead><tbody id="date-rows"></tbody></table></div></details>
 </div>
 </div>
 <noscript><p class="callout">此互動原型需啟用 JavaScript。靜態規劃與資料契約仍可於 repo 閱讀。</p></noscript>
 </section>
 <section aria-labelledby="tab-detail" class="screen" hidden="" id="detail" role="tabpanel">
-<div class="headline"><div><div class="screen-label">02 / UNDERSTAND · 獎助詳情</div><h2>從選項中，看懂申請規則。</h2><p>依第一頁的勾選項目列出詳情；尚未勾選時，先使用目前篩選結果。</p></div><a class="small" href="#search">← 回到找獎助</a></div>
+<div class="headline"><div><div class="screen-label">02 / UNDERSTAND · 方案詳情與條件比對</div><h2>從選項中，看懂申請規則與條文證據。</h2><p>可自由搜尋或比對全庫方案；條文短證據、兼領限制、名額金額與官方連結一目了然。</p></div><a class="small" href="#search">← 回到找獎助</a></div>
+<div class="detail-toolbar">
+<div class="detail-search-wrap"><input autocomplete="off" id="detail-search-input" placeholder="🔍 快速搜尋全庫方案（例如：醫學院、國科會、校長獎...）" type="search"/></div>
+<div class="segmented segmented-small" id="detail-scope-switch" role="group"><button aria-pressed="true" data-scope="shared" type="button">目前選項 (<span id="detail-shared-count">0</span>)</button><button aria-pressed="false" data-scope="all" type="button">全庫所有方案 (<span id="detail-all-count">0</span>)</button></div>
+<div class="compare-controls"><label for="detail-compare-select">雙方案並排比對：</label><select id="detail-compare-select"><option value="">➕ 選擇第二個方案進行並排比對...</option></select><button class="secondary" hidden="" id="clear-compare-btn" type="button">✕ 取消比對</button></div>
+</div>
 <p class="selection-context" id="detail-context"></p>
 <div class="panel empty-workspace" hidden="" id="detail-empty"><p>目前沒有可查看的選項。</p><a href="#search">回第一頁調整篩選 →</a></div>
 <div id="detail-workspace">
@@ -358,16 +394,20 @@ html{scroll-behavior:smooth}
 </div>
 </section>
 <section aria-labelledby="tab-timeline" class="screen" hidden="" id="timeline" role="tabpanel">
-<div class="headline"><div><div class="screen-label">03 / PREPARE · 我的時間軸</div><h2>為選定的機會，安排準備。</h2><p>與第二頁共用第一頁的選項，集中查看時程與準備待辦。</p></div><a class="small" href="#search">調整勾選項目 →</a></div>
+<div class="headline"><div><div class="screen-label">03 / PREPARE · 我的時程與行動規劃</div><h2>為選定的機會，安排專屬時間軸。</h2><p>集中呈現已收藏方案與出國研討會倒推時程，掌握申請期限與準備待辦。</p></div><a class="small" href="#search">調整勾選項目 →</a></div>
+<div class="timeline-banner" id="timeline-pick-banner">
+<div><strong>⭐ 個人專屬時程：</strong><span id="timeline-pick-summary">已收藏 0 項</span></div>
+<button class="secondary" id="timeline-pick-all-filtered" type="button">一鍵收藏第一頁目前篩選方案</button>
+</div>
 <p class="selection-context" id="timeline-context"></p>
-<div class="panel empty-workspace" hidden="" id="timeline-empty"><p>目前沒有可安排的選項。</p><a href="#search">回第一頁調整篩選 →</a></div>
+<div class="panel empty-workspace" hidden="" id="timeline-empty"><p>目前沒有可安排的選項。</p><div class="range-buttons"><button class="secondary" id="timeline-empty-pick-all" type="button">將目前篩選的方案全數加入</button><a href="#search">回第一頁調整篩選 →</a></div></div>
 <div id="timeline-workspace">
 <div class="range-controls"><label for="personal-range-mode">時間範圍 <select id="personal-range-mode"><option value="recent">今天前後90天</option><option value="fit">涵蓋選項的已知日期</option></select></label><span class="today-label" id="personal-today"></span><button class="secondary" id="personal-return-today" type="button">回到今天</button></div>
 <p class="tiny quiet" id="personal-chart-range"></p>
 <div aria-label="個人時間軸圖例" class="gantt-legend"><span class="legend-item">▱ 淺色底帶：往年參考／估計（非官方受理）</span><span class="legend-item">─ 公告至截止流程（非申請期）</span><span class="legend-item"><i aria-hidden="true" class="legend-bar"></i>申請期間</span><span class="legend-item"><i aria-hidden="true" class="legend-inferred"></i>推定受理起日</span><span class="legend-item"><i aria-hidden="true" class="legend-prep-window"></i>準備提醒期（截止前30天）</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond expected"></i>預定結果</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond"></i>結果公布</span><span class="legend-item"><i aria-hidden="true" class="legend-square"></i>其他程序</span><span class="legend-item">▱ 個人準備建議／空心節點待核</span><span class="legend-item"><i aria-hidden="true" class="legend-today"></i>今天</span></div>
 <div aria-label="使用中選項的時間軸，可水平捲動" class="gantt-scroll" role="region" tabindex="0"><div class="gantt-grid" id="personal-gantt-grid"></div></div>
 <p class="prototype-hint">點選項目或節點可前往第二頁。缺日期保留待確認，不影響下方待辦。</p>
-<div class="section-title"><h3>申請清單與準備待辦</h3></div>
+<div class="section-title"><h3>申請清單與準備待辦</h3><div class="plan-progress" id="plan-progress">已準備 0 項</div></div>
 <p class="tiny quiet">待辦進度僅暫存於本次瀏覽（重整後重設，不外傳任何個人紀錄）。</p>
 <div class="cards" id="plan-options"></div>
 </div>

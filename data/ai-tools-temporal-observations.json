@@ -1,0 +1,90 @@
+{
+  "version": "temporal-replay-1",
+  "http_requests": 0,
+  "model_calls": 0,
+  "published": false,
+  "batches": [
+    {
+      "http_requests": 0,
+      "attempted_urls": [],
+      "observed_at": "2026-11-04T00:00:00Z",
+      "track": "other"
+    }
+  ],
+  "records": {
+    "cand-taipei-ai-tools-52289fdc": {
+      "candidate_sha256": "c6dbbe283d9b64aaafb9287b262ca2f565b42d1a15740a4cdde29e8d68f88b04",
+      "url": "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-04T00:00:00Z",
+      "raw_sha256": "41526ebef3d34d8307d4a3e360fba5ce95b5cadc837ced1ac836135f998a8833",
+      "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "conditional_deadline",
+        "review_mode": "not_stated",
+        "rules": [
+          {
+            "rule_id": "taipei-ai-tools/0",
+            "kind": "event_relative",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "臺北市青年AI工具補助：個人相對期限與年度截止日（2026-11-10）",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "taipei-ai-tools",
+                "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+                "locator": ".wysiwyg .content / text-block 15",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
+        "gaps": []
+      },
+      "parser_sha256": "dff305dd37a82c1715f616fda95d25d0c86a9dd9fef67a0e7cfbd489dbcaa348"
+    },
+    "cand-hsinchu-ai-tools-a5cde54c": {
+      "candidate_sha256": "04908267514f79f16a3d0c52fee47fd05e29efa6f858b383bdcb71f588d61801",
+      "url": "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-04T00:00:00Z",
+      "raw_sha256": "9b1034be2724d1dacc0574d16349302bbc1afd1985dc9b5d48ff2e959acc1039",
+      "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "conditional_deadline",
+        "review_mode": "not_stated",
+        "rules": [
+          {
+            "rule_id": "hsinchu-ai-tools/0",
+            "kind": "event_relative",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "新竹市AI領航青年數位工具補助：個人相對期限與年度截止日（2026-11-30）",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "hsinchu-ai-tools",
+                "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+                "locator": "#mainContainer / text-block 7",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
+        "gaps": []
+      },
+      "parser_sha256": "dff305dd37a82c1715f616fda95d25d0c86a9dd9fef67a0e7cfbd489dbcaa348"
+    }
+  }
+}

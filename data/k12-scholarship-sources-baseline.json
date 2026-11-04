@@ -1,0 +1,1096 @@
+{
+  "version": "1.0.0-k12-baseline",
+  "as_of": "2026-11-01",
+  "description": "臺灣學前教育（幼兒園）至高級中等教育（國小、國中、高中職、五專前三年）公私立獎助學金與就學費用減免多層法源及官方來源基準台帳",
+  "programs_count": 25,
+  "programs": [
+    {
+      "id": "k12-moe-ece-subsidies",
+      "name": "我國少子女化對策計畫 —— 幼兒就學補助（公立、非營利、準公共幼兒園費用減免）",
+      "education_stages": ["preschool"],
+      "administering_agency": "教育部國民及學前教育署",
+      "legal_bases": [
+        {
+          "title": "幼兒教育及照顧法",
+          "articles": "第 7 條、第 43 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0070030"
+        },
+        {
+          "title": "教育部國民及學前教育署補助直轄市縣（市）政府推動學前教育作業要點",
+          "articles": "全條文",
+          "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL002047"
+        },
+        {
+          "title": "行政院少子女化對策計畫（107年至113年及接續方案）",
+          "articles": "擴展平價教保服務及就學補助章節",
+          "url": "https://www.ey.gov.tw/Page/5A8A0CB5B41DA11E/0fae6274-124b-4bfe-995b-b9d997d9e52c"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "全國教保資訊網 —— 幼兒就學補助專區",
+          "url": "https://www.ece.moe.edu.tw/"
+        },
+        {
+          "title": "教育部少子女化對策專區",
+          "url": "https://www.edu.tw/"
+        },
+        {
+          "title": "臺北市幼兒就學費用補助（一生育成方案）",
+          "url": "https://www.doe.gov.taipei/"
+        }
+      ],
+      "target_audience": ["滿2歲至入國民小學校前幼兒", "就讀公立/非營利/準公共幼兒園"],
+      "benefit_type": "就學費用差額補助／定額繳費上限",
+      "benefit_summary": "公立幼兒園家長每月繳費不超過1,000元（第2、3胎免費）；非營利幼兒園不超過2,000元（第2胎1,000元，第3胎免費）；準公共幼兒園不超過3,000元（第2胎2,000元，第3胎1,000元，低收/中低收免繳）。差額由政府直接補助幼兒園。",
+      "application_intake": "幼兒園就讀時直接減免，免家長個別向政府申請（差額由幼兒園向縣市政府造冊請領）",
+      "compatibility_restrictions": ["已領取就學補助者，同月份不得重複請領育兒津貼或托育補助"],
+      "chain_layers": ["中央法規（幼照法）", "國教署作業要點", "各縣市教育局教保科核定名冊", "合法立案幼兒園收退費系統"]
+    },
+    {
+      "id": "k12-moe-childcare-stipend-2to5",
+      "name": "教育部 2 至未滿 5 歲育兒津貼",
+      "education_stages": ["preschool"],
+      "administering_agency": "教育部國民及學前教育署 / 衛生福利部社會及家庭署",
+      "legal_bases": [
+        {
+          "title": "幼兒教育及照顧法",
+          "articles": "第 43 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0070030"
+        },
+        {
+          "title": "教育部育兒津貼發放作業要點",
+          "articles": "全條文",
+          "url": "https://edu.law.moe.gov.tw/"
+        },
+        {
+          "title": "衛生福利部育有未滿二歲兒童育兒津貼申領作業要點",
+          "articles": "銜接條款",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0070044"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "教育部幼兒育兒津貼線上申辦平臺",
+          "url": "https://e-service.k12ea.gov.tw/"
+        },
+        {
+          "title": "衛生福利部社會及家庭署育兒津貼專區",
+          "url": "https://www.sfaa.gov.tw/"
+        },
+        {
+          "title": "我的E政府 —— 育兒津貼申辦整合入口",
+          "url": "https://www.gov.tw/"
+        }
+      ],
+      "target_audience": ["2歲至未滿5歲幼兒", "由父母自行照顧或就讀一般私立幼兒園"],
+      "benefit_type": "現金津貼（按月匯入家長帳戶）",
+      "benefit_summary": "第一胎每月5,000元；第二胎每月6,000元；第三胎以上每月7,000元。",
+      "application_intake": "向幼兒戶籍所在地之鄉鎮市區公所申辦，或透過教育部線上申辦系統申請",
+      "compatibility_restrictions": ["幼兒就讀公共化（公立、非營利）或準公共幼兒園領有就學補助者不得重複請領", "已領取托育補助者不得重複請領"],
+      "chain_layers": ["中央政策（行政院少子女化對策）", "教育部發放作業要點", "鄉鎮市區公所民政/社政課審查", "內政部戶政系統身分勾稽"]
+    },
+    {
+      "id": "k12-moe-low-income-preschool-aid",
+      "name": "低收入戶及中低收入戶幼童托教補助",
+      "education_stages": ["preschool"],
+      "administering_agency": "衛生福利部社會救助及社工司 / 各直轄市及縣市政府教育局",
+      "legal_bases": [
+        {
+          "title": "社會救助法",
+          "articles": "第 16 條之 2",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050078"
+        },
+        {
+          "title": "低收入戶幼童托教補助辦法",
+          "articles": "全條文",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050170"
+        },
+        {
+          "title": "幼兒教育及照顧法",
+          "articles": "第 7 條第 3 項（優先照顧弱勢）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0070030"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "衛生福利部社會救助及社工司救助法規專區",
+          "url": "https://dep.mohw.gov.tw/DOSAASW/"
+        },
+        {
+          "title": "臺北市政府教育局學前教育科幼兒托教補助",
+          "url": "https://www.doe.gov.taipei/"
+        },
+        {
+          "title": "全國教保資訊網弱勢幼兒扶助專區",
+          "url": "https://www.ece.moe.edu.tw/"
+        }
+      ],
+      "target_audience": ["低收入戶幼童", "中低收入戶幼童", "就讀合法立案幼兒園"],
+      "benefit_type": "托教費用減免／定額現金補助",
+      "benefit_summary": "公立及非營利幼兒園完全免繳學費與雜費；私立幼兒園依各縣市政府標準每學期定額補助6,000至15,000元不等。",
+      "application_intake": "開學後由幼兒園統一造冊向幼兒戶籍所在地直轄市、縣（市）主管機關申請",
+      "compatibility_restrictions": ["已領有其他同性質政府就學費用補助者不得重複請領", "須具備有效年度低收/中低收入戶資格證明書"],
+      "chain_layers": ["母法（社會救助法、幼照法）", "中央托教補助辦法", "地方社會局核定低收身分", "幼兒園填報全國幼兒托教補助系統"]
+    },
+    {
+      "id": "k12-moe-scholarship-fund-low-income",
+      "name": "教育部學產基金設置低收入戶學生助學金",
+      "education_stages": ["elementary", "junior_high", "senior_high", "vocational_high", "five_year_junior_college_y1_y3"],
+      "administering_agency": "教育部國民及學前教育署（委託國立勤益科技大學學產基金專案辦公室辦理）",
+      "legal_bases": [
+        {
+          "title": "教育基本法",
+          "articles": "第 8 條第 2 項",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0020045"
+        },
+        {
+          "title": "教育部學產基金設置低收入戶學生助學金實施要點",
+          "articles": "第 3 點、第 4 點、第 6 點",
+          "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL000729"
+        },
+        {
+          "title": "學產基金收支保管及運用辦法",
+          "articles": "第 5 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0020038"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "教育部學產基金低收入戶學生助學金線上整合系統",
+          "url": "https://scholarship.ncut.edu.tw/"
+        },
+        {
+          "title": "教育部圓夢助學網 —— 學產基金助學金專區",
+          "url": "https://helpdreams.moe.edu.tw/"
+        },
+        {
+          "title": "教育部主管法規查詢系統",
+          "url": "https://edu.law.moe.gov.tw/"
+        }
+      ],
+      "target_audience": ["設籍臺灣及金馬低收入戶學生", "前一學期無記過處分", "高中職成績須及格（新生免審成績）"],
+      "benefit_type": "定額現金助學金（每學期發放）",
+      "benefit_summary": "國小每學期2,500元；國中每學期2,500元；高級中等學校及五專前三年每學期4,000元；公私立大學及五專後二年每學期5,000元。",
+      "application_intake": "於每學期開學初（上學期9月15日至10月15日；下學期2月15日至3月15日）由就讀學校教務處/學務處彙整向專案辦公室造冊申報",
+      "compatibility_restrictions": [
+        "嚴格排他：不得與公教人員子女教育補助、身障學生及身障人士子女就學費用減免、特教獎助金、軍公教遺族優待、原住民學生助學金、高中職免學費補助定額部分、失業勞工子女、農漁民子女就學金重複請領（重複者應繳回）"
+      ],
+      "chain_layers": ["中央學產基金作業要點", "國立勤益科大學產專案辦公室維運系統", "公私立學校承辦人員線上造冊與初審", "直轄市/縣市政府複審核定"]
+    },
+    {
+      "id": "k12-cip-indigenous-elementary-junior-aid",
+      "name": "原住民族委員會國民中小學清寒原住民學生助學金",
+      "education_stages": ["elementary", "junior_high"],
+      "administering_agency": "原住民族委員會（委託國立臺中教育大學辦理）",
+      "legal_bases": [
+        {
+          "title": "原住民族教育法",
+          "articles": "第 15 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0130001"
+        },
+        {
+          "title": "原住民族委員會辦理國民中小學清寒原住民學生助學金實施要點",
+          "articles": "全條文",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0130026"
+        },
+        {
+          "title": "原住民族基本法",
+          "articles": "第 10 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0130003"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "原住民族委員會國民中小學清寒原住民學生助學金平臺",
+          "url": "https://cip.ntcu.edu.tw/home"
+        },
+        {
+          "title": "原住民族委員會全球資訊網",
+          "url": "https://www.cip.gov.tw/"
+        },
+        {
+          "title": "教育部圓夢助學網 —— 原民會中小學清寒助學金",
+          "url": "https://helpdreams.moe.edu.tw/"
+        }
+      ],
+      "target_audience": ["具原住民身分學生", "就讀國內公私立國中小", "中低收入戶或家戶年所得總額在50萬元以下"],
+      "benefit_type": "定額現金助學金（分上下學期發放）",
+      "benefit_summary": "國小原住民學生每學期1,500元（全學年3,000元）；國中原住民學生每學期2,000元（全學年4,000元）。分為特殊狀況證明與一般清寒認定。",
+      "application_intake": "每年9月1日至9月30日向就讀學校教導處/學務處提出申請，由學校統一至國立臺中教育大學系統填報",
+      "compatibility_restrictions": [
+        "低收入戶原住民學生依法應優先申請教育部學產基金助學金；若不符學產基金申領條件者方可申請本項助學金",
+        "不得重複支領其他中央同性質就學現金補助"
+      ],
+      "chain_layers": ["原住民教育法母法", "原民會實施要點", "臺中教育大學專案系統", "公私立國中小導師及學務處初審與戶籍勾稽"]
+    },
+    {
+      "id": "k12-vac-veterans-children-education-aid",
+      "name": "國軍退除役官兵輔導委員會高中職以下榮民子女就學補助",
+      "education_stages": ["elementary", "junior_high", "senior_high", "vocational_high", "five_year_junior_college_y1_y3"],
+      "administering_agency": "國軍退除役官兵輔導委員會",
+      "legal_bases": [
+        {
+          "title": "國軍退除役官兵輔導條例",
+          "articles": "第 18 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=F0150001"
+        },
+        {
+          "title": "國軍退除役官兵輔導委員會高中職以下榮民子女就學補助申請作業要點",
+          "articles": "全條文（含所得門檻148萬元修正）",
+          "url": "https://www.vac.gov.tw/"
+        },
+        {
+          "title": "國軍退除役官兵輔導條例施行細則",
+          "articles": "第 11 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=F0150002"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "國軍退除役官兵輔導委員會全球資訊網 —— 就學補助專區",
+          "url": "https://www.vac.gov.tw/"
+        },
+        {
+          "title": "退輔會全球便民線上申辦服務系統",
+          "url": "https://eservice.vac.gov.tw/"
+        },
+        {
+          "title": "財團法人榮民榮眷基金會全球資訊網",
+          "url": "https://www.vndf.org.tw/"
+        }
+      ],
+      "target_audience": ["未支領軍公教月退休金之榮民或榮民遺眷之子女", "全戶最近一年度綜合所得總額未超過新臺幣148萬元", "就讀公私立小學至高中職正式生"],
+      "benefit_type": "定額就學現金補助（每學期發放）",
+      "benefit_summary": "國小每學期500元；國中每學期1,000元；公立高中職每學期3,000元；私立高中職每學期5,000元；五專前三年比照高中職標準。",
+      "application_intake": "每年上學期9月15日至10月25日、下學期2月15日至4月10日，由家長備齊在學證明向戶籍所在地縣市榮民服務處提出申請",
+      "compatibility_restrictions": ["已領取政府軍公教公費、子女教育補助費或其他同性質就學補助者不得重複申請"],
+      "chain_layers": ["退輔條例母法", "退輔會就學補助作業要點", "各縣市榮民服務處受理審查", "財政部財資中心家庭所得查核"]
+    },
+    {
+      "id": "k12-moe-military-civil-servant-bereaved-aid",
+      "name": "軍公教遺族就學費用優待",
+      "education_stages": ["elementary", "junior_high", "senior_high", "vocational_high", "five_year_junior_college_y1_y3"],
+      "administering_agency": "教育部國民及學前教育署 / 各主管教育行政機關",
+      "legal_bases": [
+        {
+          "title": "軍公教遺族就學費用優待條例",
+          "articles": "第 2 條、第 3 條、第 4 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0150009"
+        },
+        {
+          "title": "軍公教遺族就學費用優待條例施行細則",
+          "articles": "全條文",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0150010"
+        },
+        {
+          "title": "公務人員撫卹法 / 軍人撫卹條例",
+          "articles": "遺族就學優待授權條款",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=S0080003"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "全國法規資料庫 —— 軍公教遺族就學費用優待條例",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0150009"
+        },
+        {
+          "title": "教育部國民及學前教育署各級學校減免專區",
+          "url": "https://www.k12ea.gov.tw/"
+        },
+        {
+          "title": "教育部圓夢助學網 —— 公費就學優待專頁",
+          "url": "https://helpdreams.moe.edu.tw/"
+        }
+      ],
+      "target_audience": ["領有撫卹令之軍公教人員遺族", "就讀國內各級學校之正式在學生"],
+      "benefit_type": "公費給與（學雜費全免／半免、制服費、書籍費、主副食費）",
+      "benefit_summary": "作戰陣亡或因公殉職遺族享有「全公費」（免繳學雜費，並按期發給主食費、副食費、制服費與書籍費）；因病或意外死亡遺族享有「半公費」（學雜費減半，其他公費折半給與）。國民中小學階段免學費，核發副食費及各項公費代金。",
+      "application_intake": "新生入學時持國防部/銓敘部/主管機關撫卹令向就讀學校教務處提出申請，經學校函報主管教育行政機關核發優待證明書後終身（撫卹期限內）適用",
+      "compatibility_restrictions": ["已享有全部公費待遇者，不得重複領取其他政府公教就學獎助金"],
+      "chain_layers": ["中央母法優待條例", "國教署及直轄市教育局核准文號", "學校註冊繳費單抵扣系統", "國防部/銓敘部撫卹年限查驗"]
+    },
+    {
+      "id": "k12-moe-disability-tuition-waiver",
+      "name": "身心障礙學生及身心障礙人士子女就學費用減免與獎助",
+      "education_stages": ["elementary", "junior_high", "senior_high", "vocational_high", "five_year_junior_college_y1_y3"],
+      "administering_agency": "教育部國民及學前教育署原民特教組 / 各直轄市及縣市政府教育局",
+      "legal_bases": [
+        {
+          "title": "特殊教育法",
+          "articles": "第 28 條、第 38 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0080027"
+        },
+        {
+          "title": "身心障礙學生及身心障礙人士子女就學費用減免辦法",
+          "articles": "第 3 條、第 4 條、第 5 條",
+          "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL000732"
+        },
+        {
+          "title": "特殊教育學生獎補助辦法",
+          "articles": "全條文",
+          "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL000731"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "全國特殊教育資訊網",
+          "url": "https://special.moe.gov.tw/"
+        },
+        {
+          "title": "教育部主管法規查詢系統",
+          "url": "https://edu.law.moe.gov.tw/"
+        },
+        {
+          "title": "教育部國民及學前教育署特教組",
+          "url": "https://www.k12ea.gov.tw/"
+        }
+      ],
+      "target_audience": ["領有身心障礙證明之學生", "身心障礙人士之子女", "家戶年所得在220萬元以下（身障學生本人不受所得限制）"],
+      "benefit_type": "學雜費減免（重度全免、中度減免70%、輕度減免40%）及特殊教育獎學金",
+      "benefit_summary": "高級中等學校學雜費依障礙等級減免（極重度/重度全免、中度70%、輕度40%）；國中小階段雜費全免並補助實習材料代收代辦費；成績優異者每學年另核發特殊教育學生獎學金（高中職5,000至10,000元，國中小另定）。",
+      "application_intake": "每學期註冊時檢附身心障礙證明向學校教務處/特教組提出申請，由學校直接於繳費單扣減並上傳教育部查驗系統",
+      "compatibility_restrictions": ["已依其他規定享有政府學雜費減免者，不得重複領取本項減免（應擇一最優）"],
+      "chain_layers": ["特殊教育法", "教育部減免辦法", "衛生福利部身心障礙資格資訊庫介接", "各校學雜費減免核算造冊"]
+    },
+    {
+      "id": "k12-nia-new-immigrant-scholarship",
+      "name": "內政部移民署新住民及其子女培力與獎助（勵）學金計畫",
+      "education_stages": ["elementary", "junior_high", "senior_high", "vocational_high", "five_year_junior_college_y1_y3"],
+      "administering_agency": "內政部移民署（運用新住民發展基金）",
+      "legal_bases": [
+        {
+          "title": "入出國及移民法",
+          "articles": "第 38 條之 1",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0080132"
+        },
+        {
+          "title": "新住民發展基金補助作業要點",
+          "articles": "第 5 點、第 7 點",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0080178"
+        },
+        {
+          "title": "內政部辦理新住民及其子女培力與獎助（勵）學金計畫",
+          "articles": "當年度實施計畫全條文",
+          "url": "https://sp.immigration.gov.tw/"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "新住民及其子女培力與獎助（勵）學金線上系統",
+          "url": "https://sp.immigration.gov.tw/"
+        },
+        {
+          "title": "內政部移民署全球資訊網",
+          "url": "https://www.immigration.gov.tw/"
+        },
+        {
+          "title": "新住民培力發展資訊網",
+          "url": "https://ifi.immigration.gov.tw/"
+        }
+      ],
+      "target_audience": ["在臺合法居留新住民及其在學子女", "就讀公私立國小、國中、高中職", "分為優秀獎學金、清寒助學金、特殊才能獎勵金、總統教育獎獎勵金"],
+      "benefit_type": "定額現金獎勵金／助學金",
+      "benefit_summary": "國小組優秀獎學金每名3,000元，清寒助學金每名5,000元；國中組優秀獎學金每名4,000元，清寒助學金每名8,000元；高中職組優秀獎學金每名8,000元，清寒助學金每名12,000元；特殊才能與總統教育獎另外加計核發最高20,000元。",
+      "application_intake": "每年2月下旬至3月下旬由申請人先於線上系統填報並列印帶流水號申請表，連同佐證文件由學校初審彙整函送移民署",
+      "compatibility_restrictions": ["申請子女優秀或清寒獎助金者，同年度僅得擇一類別申請", "已領取政府其他同性質清寒助學金者須受總體規範限制"],
+      "chain_layers": ["入出國及移民法", "新住民發展基金管委會年度預算", "移民署專屬線上登錄系統", "各級學校推薦與移民署複審"]
+    },
+    {
+      "id": "k12-moe-school-lunch-subsidy",
+      "name": "國民中小學清寒學生無力支付午餐費及代收代辦費補助",
+      "education_stages": ["elementary", "junior_high"],
+      "administering_agency": "教育部國民及學前教育署 / 各直轄市及縣市政府教育局處",
+      "legal_bases": [
+        {
+          "title": "國民教育法",
+          "articles": "第 20 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0070001"
+        },
+        {
+          "title": "學校衛生法",
+          "articles": "第 23 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0070019"
+        },
+        {
+          "title": "教育部國民及學前教育署補助直轄市縣（市）政府辦理救助國民中小學清寒學生午餐經費要點",
+          "articles": "全條文",
+          "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL000966"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "教育部國民及學前教育署學校體育及衛生組",
+          "url": "https://www.k12ea.gov.tw/"
+        },
+        {
+          "title": "校園食材登錄平台 —— 清寒學生午餐專案",
+          "url": "https://fatraceschool.k12ea.gov.tw/"
+        },
+        {
+          "title": "臺北市政府教育局清寒學生午餐與學雜代辦費補助系統",
+          "url": "https://www.doe.gov.taipei/"
+        }
+      ],
+      "target_audience": ["低收入戶、中低收入戶學生", "家庭突發變故或經導師認定無力支付午餐費者", "涵蓋學期中上課日及寒暑假到校照護餐券"],
+      "benefit_type": "實物給付／全額餐費抵扣／安心午餐券（寒暑假）",
+      "benefit_summary": "學期中由政府全額負擔學校營養午餐供應費用；寒暑假期間發給餐券（每餐面額約65至70元，可於四大超商兌換熟食便當）。",
+      "application_intake": "開學初填寫無力支付午餐費調查表，向班導師及學務處提出，由學校召開審查委員會審核後造冊請款",
+      "compatibility_restrictions": ["由學校直接折抵午餐費用，不核發放現款；不與其他現金補助相衝突"],
+      "chain_layers": ["國民教育法義務教育精神", "中央國教署補助專項要點", "各縣市午餐收費標準", "學校午餐供應委員會審核與超商餐券介接"]
+    },
+    {
+      "id": "k12-moe-president-education-award",
+      "name": "教育部總統教育獎",
+      "education_stages": ["elementary", "junior_high", "senior_high", "vocational_high", "five_year_junior_college_y1_y3"],
+      "administering_agency": "教育部國民及學前教育署（委託國立東華大學主辦專案）",
+      "legal_bases": [
+        {
+          "title": "教育基本法",
+          "articles": "第 8 條第 1 項",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0020045"
+        },
+        {
+          "title": "教育部總統教育獎遴選要點",
+          "articles": "第 2 點、第 3 點、第 7 點",
+          "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL000728"
+        },
+        {
+          "title": "總統教育獎發展分組實施要點",
+          "articles": "全條文",
+          "url": "https://pea.nknu.edu.tw/"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "總統教育獎官方網站（專案推動辦公室）",
+          "url": "https://pea.nknu.edu.tw/"
+        },
+        {
+          "title": "教育部國民及學前教育署專題專區",
+          "url": "https://www.k12ea.gov.tw/"
+        },
+        {
+          "title": "總統府全球資訊網 —— 總統教育獎頒獎專區",
+          "url": "https://www.president.gov.tw/"
+        }
+      ],
+      "target_audience": ["處於逆境而力爭上游之在學學生", "具備孝行、服務、卓越才能、特殊才藝或身心障礙突破極限者", "分為國小組、國中組、高中組、大專組"],
+      "benefit_type": "國家級定額獎金、獎狀及獎座（由總統親自頒發）",
+      "benefit_summary": "大專組每名頒發獎金25萬元；高中職組每名頒發獎金20萬元；國中組每名頒發獎金15萬元；國小組每名頒發獎金15萬元。通過複選未入選決審者另獲頒「奮發向上獎」每名2萬元。",
+      "application_intake": "每年11月至12月由就讀學校推薦，經直轄市/縣市初審、教育部複審及實地訪視後決審公告",
+      "compatibility_restrictions": ["終身以獲獎一次為原則（跨不同學程階段得再次推薦，但評審標準更趨嚴格）"],
+      "chain_layers": ["中央遴選作業要點", "教育部專案委員會複審及到府訪視", "行政院及總統府頒獎程序", "獲獎學生長期追蹤陪伴輔導機制"]
+    },
+    {
+      "id": "k12-moe-senior-high-free-tuition",
+      "name": "高級中等學校全面免學費方案（自112學年度第2學期起全面取消排富）",
+      "education_stages": ["senior_high", "vocational_high", "five_year_junior_college_y1_y3"],
+      "administering_agency": "教育部國民及學前教育署高級中等教育組",
+      "legal_bases": [
+        {
+          "title": "高級中等教育法",
+          "articles": "第 56 條第 1 項",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0060043"
+        },
+        {
+          "title": "高級中等學校向學生收取費用辦法",
+          "articles": "第 3 條、第 4 條",
+          "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL000735"
+        },
+        {
+          "title": "教育部補助高級中等學校學生學費實施要點",
+          "articles": "第 2 點、第 3 點（全面免納學費條款）",
+          "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL000736"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "教育部國民及學前教育署高級中等學校免學費專區",
+          "url": "https://www.k12ea.gov.tw/"
+        },
+        {
+          "title": "高級中等學校助學補助線上整合查驗系統",
+          "url": "https://ep.k12ea.gov.tw/"
+        },
+        {
+          "title": "行政院全球資訊網 —— 青年教育權益與學雜費拉近專案",
+          "url": "https://www.ey.gov.tw/"
+        }
+      ],
+      "target_audience": ["具中華民國國籍學生", "就讀國內公私立高中、高職、綜合高中或五專前三年學生", "無所得門檻限制"],
+      "benefit_type": "法定學費全免（公私立全額補助學費差額）",
+      "benefit_summary": "公立高中職學生每學期免繳學費（約6,240元）；私立高中職學生每學期免繳學費（依學程別約24,423元至35,940元），學生註冊繳費單學費欄直接為0元，僅需繳納雜費及代收代辦費。",
+      "application_intake": "註冊時由學校端資訊系統統一透過國教署線上查驗系統審核學籍，學生免填表、免附所得稅清單，直接抵扣",
+      "compatibility_restrictions": [
+        "不包括重讀、延修及未具中華民國國籍者",
+        "已獲全額學費補助者，不得再請領農漁民子女就學金之學費補助部分"
+      ],
+      "chain_layers": ["母法高級中等教育法第56條", "國教署免學費實施要點", "教育部線上查驗平台（戶政/學籍介接）", "各公私立高中職註冊收費系統"]
+    },
+    {
+      "id": "k12-moe-special-circumstances-family-waiver",
+      "name": "特殊境遇家庭子女孫子女就學費用減免",
+      "education_stages": ["senior_high", "vocational_high", "five_year_junior_college_y1_y3"],
+      "administering_agency": "教育部國民及學前教育署 / 衛生福利部",
+      "legal_bases": [
+        {
+          "title": "特殊境遇家庭扶助條例",
+          "articles": "第 8 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050075"
+        },
+        {
+          "title": "特殊境遇家庭子女孫子女就讀高級中等以上學校學雜費減免辦法",
+          "articles": "第 3 條、第 4 條",
+          "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL000733"
+        },
+        {
+          "title": "教育部補助特殊境遇家庭子女孫子女就學費用作業要點",
+          "articles": "全條文",
+          "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL000734"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "全國法規資料庫 —— 特殊境遇家庭扶助條例",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050075"
+        },
+        {
+          "title": "教育部主管法規查詢系統",
+          "url": "https://edu.law.moe.gov.tw/"
+        },
+        {
+          "title": "教育部圓夢助學網 —— 特殊境遇就學減免專區",
+          "url": "https://helpdreams.moe.edu.tw/"
+        }
+      ],
+      "target_audience": ["符合特殊境遇家庭身分之子女或孫子女（如喪偶、非婚生子、遭家暴、配偶入獄/重傷病）", "就讀高級中等學校及五專前三年正式在學生"],
+      "benefit_type": "學雜費減免（按法定比例60%減免學費及雜費）",
+      "benefit_summary": "就讀高級中等學校者，減免學費及雜費之60%（因學費已由全面免學費方案全額負擔，實質減免雜費之60%及各項代收代辦費用）。",
+      "application_intake": "每學期註冊時檢附地方政府社會局核發之特殊境遇家庭身分認定公文，向學校教務處/註冊組提出抵扣申請",
+      "compatibility_restrictions": ["已享有政府其他各項就學費用全額減免或優待者，不得重複享有本減免"],
+      "chain_layers": ["特殊境遇家庭扶助條例母法", "教育部學雜費減免辦法", "縣市政府社會局社工訪查核定身分", "學校註冊繳費端減免造冊"]
+    },
+    {
+      "id": "k12-mol-unemployed-workers-children-stipend",
+      "name": "勞動部失業勞工在學子女生活扶助金（高級中等學校組）",
+      "education_stages": ["senior_high", "vocational_high", "five_year_junior_college_y1_y3"],
+      "administering_agency": "勞動部勞動福祉退休司",
+      "legal_bases": [
+        {
+          "title": "就業服務法",
+          "articles": "第 24 條第 1 項第 5 款",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0090001"
+        },
+        {
+          "title": "就業保險法",
+          "articles": "第 12 條第 3 項",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0050021"
+        },
+        {
+          "title": "勞動部辦理失業勞工子女就學補助實施要點（生活扶助金修正規範）",
+          "articles": "第 3 點、第 5 點",
+          "url": "https://laws.mol.gov.tw/FLAW/FLAWDAT01.aspx?id=FL015259"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "勞動部失業勞工子女就學補助線上申請系統",
+          "url": "https://lae.mol.gov.tw/"
+        },
+        {
+          "title": "勞動部全球資訊網 —— 就學補助專區",
+          "url": "https://www.mol.gov.tw/"
+        },
+        {
+          "title": "勞動部勞動力發展署就業服務專頁",
+          "url": "https://www.wda.gov.tw/"
+        }
+      ],
+      "target_audience": ["非自願離職失業勞工（失業期間達一定天數且領有失業給付）", "綜合所得總額在148萬元以下", "子女就讀公私立高中職"],
+      "benefit_type": "現金生活扶助金（每學期發放）",
+      "benefit_summary": "公立高中職每名4,000元；私立高中職每名6,000元。獨力負擔家計或子女有二人以上同時在學加給20%。",
+      "application_intake": "每年上學期9月中旬至10月中旬、下學期2月中旬至3月中旬，透過勞動部線上系統或向勞動力發展署各分署郵寄紙本申請",
+      "compatibility_restrictions": [
+        "重要新制：已改列生活扶助金，可與教育部高級中等學校免學費補助併領",
+        "不得與公教人員子女教育補助費或教育部學產基金低收入戶助學金重複請領"
+      ],
+      "chain_layers": ["就業服務法及就保法", "勞動部生活扶助金實施要點", "勞保局失業給付系統勾稽", "財政部財稅資料中心所得驗證"]
+    },
+    {
+      "id": "k12-moa-farmers-fishermen-children-scholarship",
+      "name": "農業部獎勵農漁民子女就學金（高級中等學校組）",
+      "education_stages": ["senior_high", "vocational_high", "five_year_junior_college_y1_y3"],
+      "administering_agency": "農業部農民輔導司",
+      "legal_bases": [
+        {
+          "title": "農業發展條例",
+          "articles": "第 67 條之 1",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=M0020001"
+        },
+        {
+          "title": "農業部獎勵農漁民子女就學金申請作業要點",
+          "articles": "第 2 點、第 3 點、第 4 點",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=M0020027"
+        },
+        {
+          "title": "農民健康保險條例",
+          "articles": "第 5 條（農保被保險人資格）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050021"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "農業部全球資訊網 —— 獎勵農漁民子女就學金專區",
+          "url": "https://www.moa.gov.tw/"
+        },
+        {
+          "title": "農業部獎勵農漁民子女就學金申辦管理系統",
+          "url": "https://scholarship.moa.gov.tw/"
+        },
+        {
+          "title": "中華民國農會農民福利專區",
+          "url": "https://www.farmer.org.tw/"
+        }
+      ],
+      "target_audience": ["農保被保險人、農會正會員或漁會甲類會員之子女", "家庭年綜合所得在120萬元以下", "前學期德行評量無記過處分", "就讀國內公私立高中職"],
+      "benefit_type": "定額現金就學金（每學期發放）",
+      "benefit_summary": "公立高級中等學校學生每名4,000元；私立高級中等學校學生每名6,500元。",
+      "application_intake": "每年上學期9月1日至10月15日、下學期3月1日至3月31日，向戶籍所在地基層農會、漁會提出申請",
+      "compatibility_restrictions": [
+        "嚴格排他條款：學生若已享有政府各類公費、學雜費全免或免納學費優待，原則上不得重複申領本就學金（依農業部作業要點第4點規定辦理）"
+      ],
+      "chain_layers": ["農業發展條例母法", "農業部獎勵要點", "基層農漁會初審與會員資格查核", "農會聯同農業部線上系統審定核撥"]
+    },
+    {
+      "id": "k12-k12ea-indigenous-highschool-grant-and-meals",
+      "name": "高級中等學校原住民學生助學金及伙食費補助",
+      "education_stages": ["senior_high", "vocational_high", "five_year_junior_college_y1_y3"],
+      "administering_agency": "教育部國民及學前教育署原民特教組",
+      "legal_bases": [
+        {
+          "title": "原住民族教育法",
+          "articles": "第 19 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0130001"
+        },
+        {
+          "title": "教育部國民及學前教育署補助高級中等學校原住民學生助學金及伙食費作業要點",
+          "articles": "第 3 點、第 4 點、第 5 點",
+          "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL000737"
+        },
+        {
+          "title": "高級中等教育法",
+          "articles": "第 56 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0060043"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "教育部國民及學前教育署原住民學生就學補助專區",
+          "url": "https://www.k12ea.gov.tw/"
+        },
+        {
+          "title": "全國高級中等學校原住民學生助學金申報系統",
+          "url": "https://ep.k12ea.gov.tw/"
+        },
+        {
+          "title": "教育部圓夢助學網 —— 高中原住民專案",
+          "url": "https://helpdreams.moe.edu.tw/"
+        }
+      ],
+      "target_audience": ["具原住民身分學生", "就讀公私立高級中等學校或五專前三年", "家戶年所得在規定基準內（伙食費補助針對全體清寒及山地偏遠原民生）"],
+      "benefit_type": "現金助學金及學校伙食費補助（每學期發放）",
+      "benefit_summary": "原住民助學金每學期每人11,000元；伙食費補助每學期每人約10,500元至12,000元（直接撥付學校餐廳或作為膳食費折抵）。",
+      "application_intake": "開學初備齊戶籍資料向就讀高中職學務處/教務處申請，學校造冊報國教署核銷",
+      "compatibility_restrictions": ["已領取其他中央部會同性質原住民全額獎助學金者不得重複請領"],
+      "chain_layers": ["原住民族教育法", "國教署補助要點", "內政部原住民身分連線查核", "高中職校內審查及學生伙食專戶撥款"]
+    },
+    {
+      "id": "k12-k12ea-cooperative-education-stipend",
+      "name": "高級中等學校建教合作學生生活津貼與學費全額補助",
+      "education_stages": ["vocational_high"],
+      "administering_agency": "教育部國民及學前教育署高中職組 / 勞動部",
+      "legal_bases": [
+        {
+          "title": "高級中等學校建教合作實施及建教生權益保障法",
+          "articles": "第 11 條、第 16 條、第 24 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0060041"
+        },
+        {
+          "title": "勞動基準法",
+          "articles": "第 21 條（基本工資不得低於法定標準規定）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0030001"
+        },
+        {
+          "title": "教育部國民及學前教育署補助高級中等學校辦理產學攜手合作計畫要點",
+          "articles": "全條文",
+          "url": "https://edu.law.moe.gov.tw/"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "全國高級中等學校建教合作資訊網",
+          "url": "https://coop.k12ea.gov.tw/"
+        },
+        {
+          "title": "教育部國民及學前教育署產學合作專頁",
+          "url": "https://www.k12ea.gov.tw/"
+        },
+        {
+          "title": "勞動部勞動條件及就業平等司 —— 建教生權益專區",
+          "url": "https://www.mol.gov.tw/"
+        }
+      ],
+      "target_audience": ["參與高級中等學校建教合作班學生", "在合作企業接受職業技能訓練之建教生"],
+      "benefit_type": "法定生活津貼（月領不得低於勞基法基本工資）及產學攜手獎勵金",
+      "benefit_summary": "建教生於機構訓練期間，合作機構每月給付生活津貼不得低於法定每月基本工資（目前月薪28,590元起，依當期標準調整）；學校上課期間由政府免除全額學雜費，產學攜手計畫另發給每月獎勵津貼（約5,000元）。",
+      "application_intake": "就讀技術型高中建教合作專班時，由學校、學生及建教機構三方簽訂建教合約，津貼由機構直接按月匯入建教生個人帳戶",
+      "compatibility_restrictions": ["生活津貼為機構受訓對價法定保障，不影響其他清寒就學補助之請領資格"],
+      "chain_layers": ["建教生權益保障法", "建教合作契約三方審查", "地方勞動局專案勞動檢查", "教育部建教合作考核委員會"]
+    },
+    {
+      "id": "k12-moe-youth-education-employment-savings",
+      "name": "教育部青年教育與就業儲蓄帳戶方案（高中職畢業生就業儲蓄津貼）",
+      "education_stages": ["senior_high", "vocational_high"],
+      "administering_agency": "教育部青年發展署 / 勞動部勞動力發展署",
+      "legal_bases": [
+        {
+          "title": "青年教育與就業儲蓄帳戶方案（行政院核定本）",
+          "articles": "方案全文",
+          "url": "https://young.cloud.ncnu.edu.tw/"
+        },
+        {
+          "title": "教育部推動青年教育與就業儲蓄帳戶方案補助要點",
+          "articles": "第 3 點、第 4 點",
+          "url": "https://edu.law.moe.gov.tw/"
+        },
+        {
+          "title": "勞動部青年就業領航計畫作業要點",
+          "articles": "全條文",
+          "url": "https://laws.mol.gov.tw/FLAW/FLAWDAT01.aspx?id=FL085025"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "青年教育與就業儲蓄帳戶方案官方網站",
+          "url": "https://young.cloud.ncnu.edu.tw/"
+        },
+        {
+          "title": "教育部青年發展署專案頁面",
+          "url": "https://www.yda.gov.tw/"
+        },
+        {
+          "title": "勞動部台灣就業通 —— 青年就業領航計畫",
+          "url": "https://www.taiwanjobs.gov.tw/"
+        }
+      ],
+      "target_audience": ["高級中等學校應屆畢業生", "參與青年就業領航計畫或青年體驗學習計畫者"],
+      "benefit_type": "儲蓄帳戶津貼（政府按月相對提撥現金匯入專戶）",
+      "benefit_summary": "參與就業之青年除領取企業薪資外，政府按月撥入「就學、就業及創業準備金」每月5,000元，勞動部另加發「穩定就業津貼」每月5,000元，合計每月補助10,000元，至多提撥3年（最高可獲360,000元準備金）。",
+      "application_intake": "高中職三年級下學期（每年3月至4月）向就讀高中職輔導室提出申請，通過審查後配對職缺媒合",
+      "compatibility_restrictions": ["參與就學就業儲蓄專案期間不得具備大專校院正式學籍", "未滿期離退者依比例結算儲蓄帳戶"],
+      "chain_layers": ["行政院跨部會指導計畫", "國立暨南國際大學方案專案推動辦公室", "高中職輔導室推薦", "臺灣銀行專屬虛擬專戶管理"]
+    },
+    {
+      "id": "k12-k12ea-remote-schools-transport-hostel",
+      "name": "偏遠地區學校及非山非市學生交通費與住宿補助",
+      "education_stages": ["elementary", "junior_high", "senior_high"],
+      "administering_agency": "教育部國民及學前教育署",
+      "legal_bases": [
+        {
+          "title": "偏遠地區學校教育發展條例",
+          "articles": "第 12 條、第 16 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0070046"
+        },
+        {
+          "title": "偏遠地區學校教育發展條例施行細則",
+          "articles": "第 7 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0070049"
+        },
+        {
+          "title": "教育部國民及學前教育署補助偏遠地區學校教育經費作業要點",
+          "articles": "全條文",
+          "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL001817"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "教育部國民及學前教育署偏鄉教育專區",
+          "url": "https://www.k12ea.gov.tw/"
+        },
+        {
+          "title": "偏遠地區學校教育資源網",
+          "url": "https://rural.k12ea.gov.tw/"
+        },
+        {
+          "title": "各縣市政府教育局處偏鄉教育服務專區",
+          "url": "https://www.gov.tw/"
+        }
+      ],
+      "target_audience": ["就讀經核定為偏遠、極偏、特偏或非山非市公立中小學及高中學生", "因交通不便需通學或住宿者"],
+      "benefit_type": "通學交通費定額補助／免費通學專車／學校宿舍費全額補助",
+      "benefit_summary": "補助學生上下學交通費每生每月500至1,500元，或由學校租賃免費通學交通車接送；住校生全額補助宿舍管理費、水電費與伙食補助金。",
+      "application_intake": "學期初由學校統一造冊向縣市政府教育局及國教署申請核定",
+      "compatibility_restrictions": ["由就讀學校提供公共交通或宿舍實物折抵，不扣抵其他現金清寒獎助金"],
+      "chain_layers": ["偏遠條例母法", "國教署偏鄉專案要點", "各縣市偏遠學校認定清冊", "各校通學車隊與舍監管理"]
+    },
+    {
+      "id": "k12-hsing-tian-kong-scholarship",
+      "name": "財團法人行天宮文教發展促進基金會 —— 行天宮助學金",
+      "education_stages": ["elementary", "junior_high", "senior_high", "vocational_high", "five_year_junior_college_y1_y3"],
+      "administering_agency": "財團法人台北市行天宮文教發展促進基金會",
+      "legal_bases": [
+        {
+          "title": "財團法人法",
+          "articles": "第 21 條（公益支出規定）",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=I0020030"
+        },
+        {
+          "title": "行天宮文教發展促進基金會行天宮助學金實施辦法",
+          "articles": "第 3 條、第 4 條",
+          "url": "https://www.ht.org.tw/"
+        },
+        {
+          "title": "行天宮急難濟助實施辦法",
+          "articles": "學生急難助學條款",
+          "url": "https://www.ht.org.tw/"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "行天宮文教發展促進基金會官方網站 —— 助學金專區",
+          "url": "https://www.ht.org.tw/"
+        },
+        {
+          "title": "行天宮五大志業全球資訊網",
+          "url": "https://www.hsingtian.org.tw/"
+        },
+        {
+          "title": "教育部圓夢助學網 —— 行天宮助學金專頁",
+          "url": "https://helpdreams.moe.edu.tw/"
+        }
+      ],
+      "target_audience": ["因家庭遭遇變故致就學困難之公私立在校學生", "具備清寒證明、突發變故證明或導師推薦函", "涵蓋國小、國中、高中職、大專校院"],
+      "benefit_type": "民間定額無償助學金（每學期發放）",
+      "benefit_summary": "國小組每名3,000元；國中組每名5,000元；高中職組每名8,000元；大專組每名10,000元。如遇重大急難事件得另案申辦行天宮學生急難濟助金最高20,000元。",
+      "application_intake": "每年3月上旬（下學期）及9月下旬（上學期），由學生檢附相關證明向學校提出，經學校審查彙總掛號郵寄行天宮基金會審查",
+      "compatibility_restrictions": ["民間慈善獎助，不限制兼領政府公費減免，但同一學期同戶以補助一人為原則"],
+      "chain_layers": ["財團法人法公益規章", "行天宮基金會年度預算與評審小組", "公私立各級學校代轉申請", "行天宮志工到府電訪抽驗"]
+    },
+    {
+      "id": "k12-you-care-pu-ren-mentorship-aid",
+      "name": "財團法人普仁青年關懷基金會 —— 大手拉小手助學計畫",
+      "education_stages": ["junior_high", "senior_high", "vocational_high"],
+      "administering_agency": "財團法人普仁青年關懷基金會",
+      "legal_bases": [
+        {
+          "title": "財團法人法",
+          "articles": "第 21 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=I0020030"
+        },
+        {
+          "title": "財團法人普仁青年關懷基金會大手拉小手助學計畫遴選簡章",
+          "articles": "全條文",
+          "url": "https://www.you-care.org.tw/"
+        },
+        {
+          "title": "普仁引導計畫實施準則",
+          "articles": "輔導員陪伴機制",
+          "url": "https://www.you-care.org.tw/"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "普仁青年關懷基金會官方網站",
+          "url": "https://www.you-care.org.tw/"
+        },
+        {
+          "title": "大手拉小手助學專案系統",
+          "url": "https://www.you-care.org.tw/program"
+        },
+        {
+          "title": "教育部圓夢助學網 —— 普仁大手拉小手專頁",
+          "url": "https://helpdreams.moe.edu.tw/"
+        }
+      ],
+      "target_audience": ["國中及高中職清寒弱勢家庭學生", "經合作夥伴學校輔導室推薦具備強烈向學意願者", "願意接受普仁志工長期陪伴輔導者"],
+      "benefit_type": "按月定額現金生活助學金（一年12個月不間斷發放）",
+      "benefit_summary": "國中生每月發放1,000元（全學年12,000元）；高中職生每月發放2,000元（全學年24,000元）。另提供寒暑假營隊、成長研習及志工一對一關懷陪伴。",
+      "application_intake": "每年3月至5月（各校徵案期），由基金會合作夥伴學校之輔導室篩選提出推薦，經普仁社工面談訪視後簽約納入",
+      "compatibility_restrictions": ["可與政府學雜費減免及其他獎學金兼領，但要求學生定期回饋成長自省心得"],
+      "chain_layers": ["基金會助學章程", "全臺合作公立國高中輔導室推薦名冊", "普仁訪視志工到宅訪談", "按月郵局撥款與雙軌社工追蹤"]
+    },
+    {
+      "id": "k12-tzu-chi-sprout-scholarship",
+      "name": "財團法人中華民國佛教慈濟慈善事業基金會 —— 慈濟新芽獎學金",
+      "education_stages": ["elementary", "junior_high", "senior_high", "vocational_high", "five_year_junior_college_y1_y3"],
+      "administering_agency": "財團法人中華民國佛教慈濟慈善事業基金會",
+      "legal_bases": [
+        {
+          "title": "財團法人法",
+          "articles": "第 21 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=I0020030"
+        },
+        {
+          "title": "佛教慈濟慈善事業基金會新芽獎學金實施辦法",
+          "articles": "第 2 條、第 4 條、第 5 條",
+          "url": "https://www.tzuchi.org.tw/"
+        },
+        {
+          "title": "慈濟慈善志業弱勢家庭長期扶助作業要點",
+          "articles": "就學輔導章節",
+          "url": "https://www.tzuchi.org.tw/"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "慈濟慈善事業基金會全球資訊網 —— 新芽獎學金專頁",
+          "url": "https://www.tzuchi.org.tw/"
+        },
+        {
+          "title": "慈濟全球志工服務網",
+          "url": "https://tw.tzuchi.org/"
+        },
+        {
+          "title": "教育部圓夢助學網 —— 慈濟新芽獎學金",
+          "url": "https://helpdreams.moe.edu.tw/"
+        }
+      ],
+      "target_audience": ["慈濟長期照顧戶、居家關懷戶子女，或經各級學校導師推薦之弱勢清寒家庭在校學生", "分為五大獎項：學習領域獎、進步獎、全勤獎、孝悌獎、特殊表現獎"],
+      "benefit_type": "民間年度定額現金獎勵金及獎狀",
+      "benefit_summary": "國小組每名3,000元；國中組每名5,000元；高中職組每名8,000元；大專組每名12,000元。每年秋季於全臺各慈濟靜思堂舉行大型公開表揚大會頒發。",
+      "application_intake": "每年6月至8月由學校導師或慈濟訪視志工填具推薦表，經慈濟全臺各分會社工員複評與家訪審定",
+      "compatibility_restrictions": ["每人每年限領取一項獎項；不排斥政府免學費或教育部學產基金助學金"],
+      "chain_layers": ["慈濟慈善事業基金會章則", "慈濟全臺各聯絡處社工與訪視團隊", "公私立各級學校提報推薦單", "全臺靜思堂實體頒獎典禮"]
+    },
+    {
+      "id": "k12-tfrd-rare-disorder-scholarship",
+      "name": "財團法人罕見疾病基金會 —— 罕見疾病獎助學金",
+      "education_stages": ["preschool", "elementary", "junior_high", "senior_high", "vocational_high", "five_year_junior_college_y1_y3"],
+      "administering_agency": "財團法人罕見疾病基金會",
+      "legal_bases": [
+        {
+          "title": "罕見疾病防治及藥物法",
+          "articles": "第 23 條、第 33 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0030018"
+        },
+        {
+          "title": "財團法人法",
+          "articles": "第 21 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=I0020030"
+        },
+        {
+          "title": "財團法人罕見疾病基金會罕見疾病獎助學金實施要點",
+          "articles": "全條文（含10項獎別）",
+          "url": "https://www.tfrd.org.tw/"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "財團法人罕見疾病基金會官方網站",
+          "url": "https://www.tfrd.org.tw/"
+        },
+        {
+          "title": "衛生福利部國民健康署罕見疾病資訊網",
+          "url": "https://www.hpa.gov.tw/"
+        },
+        {
+          "title": "教育部圓夢助學網 —— 罕病獎助學金專頁",
+          "url": "https://helpdreams.moe.edu.tw/"
+        }
+      ],
+      "target_audience": ["經衛福部公告之罕見疾病病友（持有重大傷病卡或診斷證明）", "就讀公私立幼兒園、國小、國中、高中職、大專校院至博碩士班學生", "涵蓋學業優秀、生活助學、特殊才能、國際進修等10項組別"],
+      "benefit_type": "病友定額獎勵金／就學助學金",
+      "benefit_summary": "學前組每名5,000元；國小組每名6,000元；國中組每名8,000元；高中職組每名10,000元；大專以上每名12,000至30,000元不等。另設友善特教師長獎與傑出才藝獎。",
+      "application_intake": "每年8月至9月由病友或家屬檢附罕見疾病診斷證明書、成績單向基金會研究企劃組掛號郵寄或線上系統申辦",
+      "compatibility_restrictions": ["可與政府特教學生獎助及各項學雜費減免併領；同一年度以領取一項罕病獎項為原則"],
+      "chain_layers": ["罕見疾病防治及藥物法母法", "衛福部國健署公告之罕見疾病名錄", "基金會醫學審查委員會查核", "每年頒獎典禮與長期病友支持服務網絡"]
+    },
+    {
+      "id": "k12-ccf-taiwan-children-scholarship",
+      "name": "財團法人台灣兒童暨家庭扶助基金會 —— 扶助弱勢兒少獎助學金",
+      "education_stages": ["elementary", "junior_high", "senior_high", "vocational_high", "five_year_junior_college_y1_y3"],
+      "administering_agency": "財團法人台灣兒童暨家庭扶助基金會（家扶基金會）",
+      "legal_bases": [
+        {
+          "title": "兒童及少年福利與權益保障法",
+          "articles": "第 23 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050001"
+        },
+        {
+          "title": "財團法人法",
+          "articles": "第 21 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=I0020030"
+        },
+        {
+          "title": "家扶基金會經濟弱勢兒少獎助學金發放作業準則",
+          "articles": "各分事務所發放細則",
+          "url": "https://www.ccf.org.tw/"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "家扶基金會官方網站 —— 獎助學金專區",
+          "url": "https://www.ccf.org.tw/"
+        },
+        {
+          "title": "家扶基金會全國各縣市家扶中心聯絡網",
+          "url": "https://www.ccf.org.tw/center"
+        },
+        {
+          "title": "教育部圓夢助學網 —— 家扶獎助學金專區",
+          "url": "https://helpdreams.moe.edu.tw/"
+        }
+      ],
+      "target_audience": ["家扶基金會全國受扶助家庭之國小、國中、高中職在學兒少", "學業成績或操行達標，或在體育、技藝方面有突出表現者"],
+      "benefit_type": "民間定額助學金（每學期發放）",
+      "benefit_summary": "國小組每學期每名1,000至3,000元；國中組每學期每名2,000至5,000元；高中職組每學期每名5,000至10,000元（依各地區家扶中心認養募款額度與學業表現分級發給）。",
+      "application_intake": "每學期開學後檢附前一學期成績單向家庭所屬之地方家扶中心社工員直接申請",
+      "compatibility_restrictions": ["限家扶有效受助兒少請領；可同時請領教育部各類減免補助"],
+      "chain_layers": ["兒少權益保障法", "家扶總會助學基金專款", "地方家扶中心社工專案評估", "扶助家庭定期追蹤訪問"]
+    },
+    {
+      "id": "k12-foxconn-whale-vocational-scholarship",
+      "name": "財團法人鴻海教育基金會 —— 鴻海獎學鯨（高中職及技職專案組）",
+      "education_stages": ["senior_high", "vocational_high", "five_year_junior_college_y1_y3"],
+      "administering_agency": "財團法人鴻海教育基金會",
+      "legal_bases": [
+        {
+          "title": "財團法人法",
+          "articles": "第 21 條",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=I0020030"
+        },
+        {
+          "title": "鴻海獎學鯨高中職暨大專校院申請簡章",
+          "articles": "高中職技職組評選章程",
+          "url": "https://www.foxconnfoundation.org/"
+        },
+        {
+          "title": "教育基本法",
+          "articles": "民間興學與公益獎助獎勵條款",
+          "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0020045"
+        }
+      ],
+      "official_portals": [
+        {
+          "title": "鴻海教育基金會官方網站 —— 獎學鯨專區",
+          "url": "https://www.foxconnfoundation.org/"
+        },
+        {
+          "title": "鴻海獎學鯨線上申請審查系統",
+          "url": "https://www.foxconnfoundation.org/plan/scholarship"
+        },
+        {
+          "title": "教育部圓夢助學網 —— 鴻海獎學鯨專頁",
+          "url": "https://helpdreams.moe.edu.tw/"
+        }
+      ],
+      "target_audience": ["高中、高職、綜合高中及五專前三年學生", "家境清寒（具低收、中低收、身障或家境困難證明）", "前一學期學業成績70分以上且具備奮鬥自強故事者"],
+      "benefit_type": "民間高額定額現金獎學金",
+      "benefit_summary": "高中職及技職組每名發放新臺幣30,000元整（全臺名額約100至200名）。",
+      "application_intake": "每年8月至10月由學生自行於鴻海教育基金會線上系統填報、上傳佐證自述並郵寄同意書，經評審委員會書面及面試審查",
+      "compatibility_restrictions": ["可兼領政府各項公費免學費及弱勢助學補助；獲獎者需參加基金會主辦之線上增能活動"],
+      "chain_layers": ["財團法人法", "鴻海教育基金會年度專案預算", "獨立評審委員初審與視訊評選", "基金會直接撥款學生帳戶"]
+    }
+  ]
+}
