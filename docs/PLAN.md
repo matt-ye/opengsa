@@ -1,5 +1,28 @@
 # 目前計畫與已接受決策
 
+## 2026-11-06 前端核心架構模組化與無障礙體驗深化規劃（Frontend Modularization & A11y Deepening Planning）
+
+- 詳見 [前端核心架構模組化與無障礙體驗深化規劃書](FRONTEND-MODULARIZATION-AND-A11Y-PLAN.md)。
+- 針對 `prototype.js`（1,930 行單體腳本）進行職責解耦，規劃 ES Modules 現代模組化架構，同時對標 WCAG 2.1 AA 無障礙標準。
+- **四大核心重構支柱**：
+  - **核心邏輯層與 UI 呈現層實體隔離**：
+    - `core/time-policy.js`：時程契約投影、30 天準備提醒帶、推定受理日（純演算法，無 DOM 相依）。
+    - `core/filter-engine.js`：多維度篩選交集、同義詞檢索字典。
+    - `core/state-store.js`：單一狀態中心、URL 參數雙向同步。
+    - `core/conference-calc.js`：研討會出國差旅倒推計算機。
+  - **UI 互動與無障礙元件解耦**：
+    - `ui/gantt-renderer.js`：64px 緊湊甘特圖、色帶、進行線繪製。
+    - `ui/card-renderer.js`：卡片渲染與雙方案並排比對表格。
+    - `ui/onboarding-tour.js`：Toutour 5 大情境感知子導覽系統。
+    - `ui/dialog-a11y.js`：WAI-ARIA Focus Trap、焦點返回與鍵盤監控。
+  - **無障礙（A11y）體驗深化**：
+    - 彈窗 Tab / Shift+Tab 焦點循環，Escape 關閉後精確返還觸發原點（Focus Restoration）。
+    - 甘特圖色帶附加 `aria-label` 完整時間語意描述，`aria-live="polite"` 即時宣告篩選結果與 Toast 訊息。
+  - **零打包建置工具（Zero Bundler Overhead）**：
+    - 採用現代瀏覽器原生 `<script type="module">`，保持純靜態發布優勢，`prototype.js` 提供外觀相容層，既有 63 項測試 100% 綠燈。
+
+---
+
 ## 2026-11-06 全站四分頁 RWD 響應式升級、甘特圖 64px 緊湊化、消滅死空白與 Toutour 專屬子導覽（PR #69）
 
 - **全站四分頁 RWD 響應式優化與甘特圖區域大幅放大**（[詳細手冊](UI-UX-ONBOARDING-AND-ROADMAP-TODO.md)）：
