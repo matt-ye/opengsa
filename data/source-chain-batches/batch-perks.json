@@ -1,0 +1,2155 @@
+{
+  "schema_version": "source-chain-1",
+  "batch_id": "batch-perks",
+  "archetype": "student_perks_identity",
+  "generated_at": "2026-11-05T12:00:00+00:00",
+  "model_calls": 0,
+  "official_data_modified": false,
+  "http_requests": 0,
+  "description": "學生身分軟硬體、雲端與 AI Perks 自動化查驗資訊鏈拓撲批次",
+  "total_documents": 84,
+  "total_edges": 56,
+  "documents": [
+    {
+      "id": "doc-perk-policy-993a8637b59cf1dd9545",
+      "url": "https://education.github.com/pack/terms",
+      "format": "html",
+      "revision_id": "993a8637b59cf1dd9545a7aa2ce9b093ffd0bbdc5b2ec2c6646203ff57857ffa",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-github-student-pack-e98d8d10"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-46af46d92f40555da6e7",
+      "url": "https://education.github.com/pack#verify",
+      "format": "html",
+      "revision_id": "46af46d92f40555da6e72308ce85df60dfcea6c974cd7dd2e24432da60bc799a",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-github-student-pack-e98d8d10"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-e2f0fd458fa701328d8d",
+      "url": "https://education.github.com/pack",
+      "format": "html",
+      "revision_id": "e2f0fd458fa701328d8dffc678c62aec9eef630e552cafa5e44374b51be38d53",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-github-student-pack-e98d8d10"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-8111bb16ac8bb43ca2a1",
+      "url": "https://education.github.com/terms",
+      "format": "html",
+      "revision_id": "8111bb16ac8bb43ca2a141e6d9b1518c91a66dd4f415c17e9d43570af6e74d41",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-github-copilot-student-d35e5851"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-2aba5d9cc09342f2bc26",
+      "url": "https://education.github.com#verify",
+      "format": "html",
+      "revision_id": "2aba5d9cc09342f2bc2627d42840634d2ae0441bf6451dadd5f100f3f27aeff4",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-github-copilot-student-d35e5851"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-764c7874ddd54369098d",
+      "url": "https://education.github.com/",
+      "format": "html",
+      "revision_id": "764c7874ddd54369098d47aef3db6bfb336ff93214a8783470765ac4d647fe59",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-github-copilot-student-d35e5851"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-9db80d7af1ed786af48f",
+      "url": "https://azure.microsoft.com/free/students/terms",
+      "format": "html",
+      "revision_id": "9db80d7af1ed786af48f6fe647585f5d08dc1baa639e97006e909bf34b992496",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-azure-for-students-9f895cca"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-a094c8e9062882732791",
+      "url": "https://azure.microsoft.com/free/students#verify",
+      "format": "html",
+      "revision_id": "a094c8e9062882732791927cb9420c231b5c1a7b23363997155fbeb5b0ce11dc",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-azure-for-students-9f895cca"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-bf92c49eed3106dba307",
+      "url": "https://azure.microsoft.com/free/students/",
+      "format": "html",
+      "revision_id": "bf92c49eed3106dba307d330e01ed6cfe87a10c5e5b05c4015e5a5fc2e18f3ee",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-azure-for-students-9f895cca"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-dd14355fbc4139220007",
+      "url": "https://aws.amazon.com/education/awseducate/terms",
+      "format": "html",
+      "revision_id": "dd14355fbc413922000792519e6bc8d032a90868158555c560154ed0e5e7fcef",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-aws-educate-0a107c1b"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-3d2b9151ffed8b8c6306",
+      "url": "https://aws.amazon.com/education/awseducate#verify",
+      "format": "html",
+      "revision_id": "3d2b9151ffed8b8c6306fad1b783b0460454601569cc672dfacde5a9ac77c369",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-aws-educate-0a107c1b"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-246ee6a5c63fabfdf3ac",
+      "url": "https://aws.amazon.com/education/awseducate/",
+      "format": "html",
+      "revision_id": "246ee6a5c63fabfdf3ac111e7d063be0a85ba4afc67e767b081b8a7d0cd99b2e",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-aws-educate-0a107c1b"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-6117016bebedb723ee29",
+      "url": "https://www.cloudskillsboost.google/terms",
+      "format": "html",
+      "revision_id": "6117016bebedb723ee296e7a1f8450065c67a8e8b54f242f00403e1c4507bcd2",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-google-cloud-skills-boost-57397feb"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-4c3d1cfe8bdefe8d48b5",
+      "url": "https://www.cloudskillsboost.google#verify",
+      "format": "html",
+      "revision_id": "4c3d1cfe8bdefe8d48b5f72c4a20ac137e4bd83448eced465656d90a3fd09cb2",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-google-cloud-skills-boost-57397feb"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-25729c142c4ed012a572",
+      "url": "https://www.cloudskillsboost.google/",
+      "format": "html",
+      "revision_id": "25729c142c4ed012a572ffc223bf9a6b89d062a66bfc7e3278c1018335554b59",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-google-cloud-skills-boost-57397feb"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-2a1a96973aeb2222779c",
+      "url": "https://www.notion.com/product/notion-for-education/terms",
+      "format": "html",
+      "revision_id": "2a1a96973aeb2222779c7798a2c88650290bbd69bb090f38f50967670f0c6896",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-notion-education-6a8befef"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-750dc84457dd9c102aa1",
+      "url": "https://www.notion.com/product/notion-for-education#verify",
+      "format": "html",
+      "revision_id": "750dc84457dd9c102aa1f3e3c3481abee1c5e6538b5dea9a18b631731b98ba9d",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-notion-education-6a8befef"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-aee90b4ae77abbce5e16",
+      "url": "https://www.notion.com/product/notion-for-education",
+      "format": "html",
+      "revision_id": "aee90b4ae77abbce5e16a3f06344b8a5446fd4e83776d7e6f6e356aa3b46d8ab",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-notion-education-6a8befef"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-d8d992aa95c0dd2a5215",
+      "url": "https://www.figma.com/education/terms",
+      "format": "html",
+      "revision_id": "d8d992aa95c0dd2a521520a6b7ea7e374255102341feb5fd39ebf7b3fb51b140",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-figma-education-46ee13cb"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-405080b2b31d9d0798e3",
+      "url": "https://www.figma.com/education#verify",
+      "format": "html",
+      "revision_id": "405080b2b31d9d0798e3b659a19811f2553fd5fd88c8c017fac77ce66bf3518f",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-figma-education-46ee13cb"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-ebadc8318892cc841798",
+      "url": "https://www.figma.com/education/",
+      "format": "html",
+      "revision_id": "ebadc8318892cc841798515b945990c23c4b83ea729ae8b0b30218ef3ff41fe1",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-figma-education-46ee13cb"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-ae36e38078335463103a",
+      "url": "https://www.jetbrains.com/community/education/#students/terms",
+      "format": "html",
+      "revision_id": "ae36e38078335463103affbf8a7c4a410d228fd22e279712d5f0b86fbefc5bef",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-jetbrains-student-pack-01f18286"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-0777697547918ebe609c",
+      "url": "https://www.jetbrains.com/community/education/#students#verify",
+      "format": "html",
+      "revision_id": "0777697547918ebe609c5316532137290a9e8a4a629798283c9e0588830b06d7",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-jetbrains-student-pack-01f18286"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-48355144d371fd30db10",
+      "url": "https://www.jetbrains.com/community/education/#students",
+      "format": "html",
+      "revision_id": "48355144d371fd30db10ca901c0b3da27e8ebefbbe03c049df86b73363f85d89",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-jetbrains-student-pack-01f18286"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-ce08c736c21142b76bdb",
+      "url": "https://www.autodesk.com/education/edu-software/overview/terms",
+      "format": "html",
+      "revision_id": "ce08c736c21142b76bdb9791a05759c1e84189226ea48f218cdc1e3a4655ec1d",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-autodesk-education-135d397b"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-4dd7154e6d4494961540",
+      "url": "https://www.autodesk.com/education/edu-software/overview#verify",
+      "format": "html",
+      "revision_id": "4dd7154e6d4494961540b7c55b7cc05a6daeea7668c7056df6092c23fa2b0c73",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-autodesk-education-135d397b"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-0ba2ace3c3c95738978a",
+      "url": "https://www.autodesk.com/education/edu-software/overview",
+      "format": "html",
+      "revision_id": "0ba2ace3c3c95738978a03939ed6d62bcdd1bd233c020fa1a2542a5f4fe376a1",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-autodesk-education-135d397b"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-f4c405c3711a6d8069a5",
+      "url": "https://www.mathworks.com/academia/tah-portal.html/terms",
+      "format": "html",
+      "revision_id": "f4c405c3711a6d8069a5cfef4d28503c570859a8f8c80f2c6ba02ee5ce3c1ea3",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-matlab-campus-wide-6ab0a357"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-e2d595e614fe6909d0a8",
+      "url": "https://www.mathworks.com/academia/tah-portal.html#verify",
+      "format": "html",
+      "revision_id": "e2d595e614fe6909d0a8f3d3341869afc96dd52be0b2241e5fd77a0311bc19ec",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-matlab-campus-wide-6ab0a357"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-31d2570ab6c71d142943",
+      "url": "https://www.mathworks.com/academia/tah-portal.html",
+      "format": "html",
+      "revision_id": "31d2570ab6c71d1429438c4744ab9a6aaa93dec3397b348888cdb7d5ce91a983",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-matlab-campus-wide-6ab0a357"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-5a2cd58bd03d45cd9437",
+      "url": "https://www.tableau.com/academic/students/terms",
+      "format": "html",
+      "revision_id": "5a2cd58bd03d45cd9437ff125b16ef6801e1a0b353a8261cb0d6b9bb152df577",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-tableau-for-students-b6160538"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-105b30c23e99a3569572",
+      "url": "https://www.tableau.com/academic/students#verify",
+      "format": "html",
+      "revision_id": "105b30c23e99a356957280e09ab3b3c6d613e45697c6464c0804857b9e5ce057",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-tableau-for-students-b6160538"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-de478b403eb980df52dc",
+      "url": "https://www.tableau.com/academic/students",
+      "format": "html",
+      "revision_id": "de478b403eb980df52dc8ce096f4551718254ab5e3de5c90644e1f736f225b57",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-tableau-for-students-b6160538"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-f7bc04fe74c6dd28a9c1",
+      "url": "https://www.microsoft.com/education/products/office/terms",
+      "format": "html",
+      "revision_id": "f7bc04fe74c6dd28a9c18196943b068d005b5bdde679e3dc70c1e2f5d62f35c0",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-microsoft-365-education-0a9fbd1a"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-f0a44d24dd6c62db172e",
+      "url": "https://www.microsoft.com/education/products/office#verify",
+      "format": "html",
+      "revision_id": "f0a44d24dd6c62db172e4aed8711e34e0bd3e874f2149ebcb4cf1d560a6056ce",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-microsoft-365-education-0a9fbd1a"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-b756f83215d1ec17b3cf",
+      "url": "https://www.microsoft.com/education/products/office",
+      "format": "html",
+      "revision_id": "b756f83215d1ec17b3cf721178c81c58991918998adcaee982d1369a4b4d2e77",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-microsoft-365-education-0a9fbd1a"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-709f65d16ffa02f48171",
+      "url": "https://www.adobe.com/tw/creativecloud/buy/students.html/terms",
+      "format": "html",
+      "revision_id": "709f65d16ffa02f48171b39988c1741619922239ea022637c128e9639fac2a29",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-adobe-cc-student-483d80c7"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-bc1a17058d20c690ce85",
+      "url": "https://www.adobe.com/tw/creativecloud/buy/students.html#verify",
+      "format": "html",
+      "revision_id": "bc1a17058d20c690ce85c2294ba54e7cd04a30cd8c00dcd25b59efa7562959e6",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-adobe-cc-student-483d80c7"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-3609af88c91d8d8e08dd",
+      "url": "https://www.adobe.com/tw/creativecloud/buy/students.html",
+      "format": "html",
+      "revision_id": "3609af88c91d8d8e08ddd45b21ccd50ccf3bebabb6b82727e5b13dc59d56355a",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-adobe-cc-student-483d80c7"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-254d895e4d57ec945c5e",
+      "url": "https://www.canva.com/education/terms",
+      "format": "html",
+      "revision_id": "254d895e4d57ec945c5e92d3faced020255fbacf26c2ff930b5c94e82350b309",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-canva-education-b9b84531"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-f8f244d8fe0a33d4c7ee",
+      "url": "https://www.canva.com/education#verify",
+      "format": "html",
+      "revision_id": "f8f244d8fe0a33d4c7ee1e9342143fd817fcda2f8ddf89d1df80f9e3461aea11",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-canva-education-b9b84531"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-f9040f672159c3e0f939",
+      "url": "https://www.canva.com/education/",
+      "format": "html",
+      "revision_id": "f9040f672159c3e0f939d9930e016cbe11691e44a6fcc98835e486bf29315aec",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-canva-education-b9b84531"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-56108fc0c024e2e6c109",
+      "url": "https://www.coursera.org/terms",
+      "format": "html",
+      "revision_id": "56108fc0c024e2e6c109b7df07c804a3864adf81af7d69357c9679996ac081a6",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-coursera-for-campus-7b2509ff"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-bfbc587201ab0e60f07c",
+      "url": "https://www.coursera.org#verify",
+      "format": "html",
+      "revision_id": "bfbc587201ab0e60f07c4c21fa00b4142bf52644ed79d04d82428bcbe8325aea",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-coursera-for-campus-7b2509ff"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-10722b3ea7e90c7605ce",
+      "url": "https://www.coursera.org/",
+      "format": "html",
+      "revision_id": "10722b3ea7e90c7605cee925546ed5a1210887c850b8ca41552a255d4c3704c7",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-coursera-for-campus-7b2509ff"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-ec363f2b36d278bfcfba",
+      "url": "https://www.datacamp.com/universities/terms",
+      "format": "html",
+      "revision_id": "ec363f2b36d278bfcfba7ba9828dae706f248ef28ba085725bd1dd0e53970df4",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-datacamp-education-49a7ac3e"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-1cec933bd640e0d023c3",
+      "url": "https://www.datacamp.com/universities#verify",
+      "format": "html",
+      "revision_id": "1cec933bd640e0d023c3ef2dfa587942e218e6679f210e3a5988e827b035fa47",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-datacamp-education-49a7ac3e"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-67e518fc4c56238c69f4",
+      "url": "https://www.datacamp.com/universities",
+      "format": "html",
+      "revision_id": "67e518fc4c56238c69f45fcd12b7630c94494cf2003d00d4ef77fda0b3ddb4c9",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-datacamp-education-49a7ac3e"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-07088ee59d26faeba069",
+      "url": "https://concert.stpi.narl.org.tw/terms",
+      "format": "html",
+      "revision_id": "07088ee59d26faeba069f65ebd847f28a3e9d07a64b40270216f054466b7068a",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-academic-databases-library-af229a92"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-d8d6874820a9003a24e4",
+      "url": "https://concert.stpi.narl.org.tw#verify",
+      "format": "html",
+      "revision_id": "d8d6874820a9003a24e4ea5d623ddeaa65affbdb204a1262a5d204e7d4f56d25",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-academic-databases-library-af229a92"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-6200355eeb0ca5f0fc8d",
+      "url": "https://concert.stpi.narl.org.tw/",
+      "format": "html",
+      "revision_id": "6200355eeb0ca5f0fc8d0189f9994fab1316e691686da9e88e49d595eb34670f",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-academic-databases-library-af229a92"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-07cea741d8528298a847",
+      "url": "https://www.apple.com/tw-edu/store/terms",
+      "format": "html",
+      "revision_id": "07cea741d8528298a8474eea8a878fa0ee91cd250b416e5b6dead828528395d8",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-apple-education-pricing-dde078d9"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-433840cb369b56e41240",
+      "url": "https://www.apple.com/tw-edu/store#verify",
+      "format": "html",
+      "revision_id": "433840cb369b56e41240528a661a46a723366702179c3d52a635ba6883ba710e",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-apple-education-pricing-dde078d9"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-36c4859f6056405f80b1",
+      "url": "https://www.apple.com/tw-edu/store",
+      "format": "html",
+      "revision_id": "36c4859f6056405f80b176092d26bc231d73e7f888f1f65d6af15c49a6ccf584",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-apple-education-pricing-dde078d9"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-ca268fdf94a8b9d6228a",
+      "url": "https://www.samsung.com/tw/multistore/tw_student/terms",
+      "format": "html",
+      "revision_id": "ca268fdf94a8b9d6228a39f6ad3cd824659c632a19f53d67eae570f02a507ea3",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-samsung-education-store-01bfc5e9"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-550ed4ea9f9fdc4042e8",
+      "url": "https://www.samsung.com/tw/multistore/tw_student#verify",
+      "format": "html",
+      "revision_id": "550ed4ea9f9fdc4042e81eff3d9bd7f7cfa9e87047807da70aecce0b5771e201",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-samsung-education-store-01bfc5e9"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-d52e95b2ab3a1b67809a",
+      "url": "https://www.samsung.com/tw/multistore/tw_student/",
+      "format": "html",
+      "revision_id": "d52e95b2ab3a1b67809a452d321a6245f29abab1d72ab101915afb9c3b8d3f07",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-samsung-education-store-01bfc5e9"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-e73567e92061f6bca8d3",
+      "url": "https://www.lenovo.com/tw/zh/education/student/terms",
+      "format": "html",
+      "revision_id": "e73567e92061f6bca8d3163bf16450aabe817ccbd73f6064039a11756a3345d6",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-lenovo-education-store-746522f1"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-af9f01cf9cd755b48e18",
+      "url": "https://www.lenovo.com/tw/zh/education/student#verify",
+      "format": "html",
+      "revision_id": "af9f01cf9cd755b48e18085b90eef20ddf9e9f6049bf0cf3069133965fd1cd44",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-lenovo-education-store-746522f1"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-0e6dc741ec36996a0418",
+      "url": "https://www.lenovo.com/tw/zh/education/student/",
+      "format": "html",
+      "revision_id": "0e6dc741ec36996a041840bd4339931ffb6c61b5e07e36a63e6662ca128b7a91",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-lenovo-education-store-746522f1"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-ac08462fae6e7030baf4",
+      "url": "https://www.logitech.com/zh-tw/terms",
+      "format": "html",
+      "revision_id": "ac08462fae6e7030baf437140cd38be17be1a555ff4d578f5e926ead3ed9b296",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-logitech-student-69c2587c"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-4ac9588297a2a8dd383e",
+      "url": "https://www.logitech.com/zh-tw#verify",
+      "format": "html",
+      "revision_id": "4ac9588297a2a8dd383ed3fbdb578e16667442fa0f4e43ee48e90ea570b36978",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-logitech-student-69c2587c"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-684ade3c048f8302bfb5",
+      "url": "https://www.logitech.com/zh-tw",
+      "format": "html",
+      "revision_id": "684ade3c048f8302bfb537501f6878d38b6f6baefe307622fedd018885be0739",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-logitech-student-69c2587c"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-86a10d2ea1688af9d77d",
+      "url": "https://www.spotify.com/tw/student/terms",
+      "format": "html",
+      "revision_id": "86a10d2ea1688af9d77d2d947f4ccb6857407b1dc50ed4fd1b282436215aa4f1",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-spotify-student-5c0c501e"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-545b9157e9d7cadf861a",
+      "url": "https://www.spotify.com/tw/student#verify",
+      "format": "html",
+      "revision_id": "545b9157e9d7cadf861a05bfda963fc2bca4e6a5ed2594113e3004ed8d1c2f65",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-spotify-student-5c0c501e"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-0498b3d828456ff2e70e",
+      "url": "https://www.spotify.com/tw/student/",
+      "format": "html",
+      "revision_id": "0498b3d828456ff2e70ec4476853a4aa7f204afad7f37bd04562fd27d6422ee8",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-spotify-student-5c0c501e"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-e04da454523bcf8de7f2",
+      "url": "https://www.apple.com/tw/apple-music/terms",
+      "format": "html",
+      "revision_id": "e04da454523bcf8de7f2d6e5e3475c7ecf871dc1d185987b7345639b9196ab53",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-apple-music-student-1f971e39"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-116972fad64db0b27a80",
+      "url": "https://www.apple.com/tw/apple-music#verify",
+      "format": "html",
+      "revision_id": "116972fad64db0b27a800730b8c92105b9ef9d82a5216d4c917fea58897c03fe",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-apple-music-student-1f971e39"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-8c80b1c3fd2b6a12b34f",
+      "url": "https://www.apple.com/tw/apple-music/",
+      "format": "html",
+      "revision_id": "8c80b1c3fd2b6a12b34f0ab7e90e978a918232cd46a47aebe6b0d930ee654a44",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-apple-music-student-1f971e39"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-4833565daf811bf6e270",
+      "url": "https://www.youtube.com/premium/student/terms",
+      "format": "html",
+      "revision_id": "4833565daf811bf6e270767e4541cbc8286149a0f5dca3656dc3ca1f0a941513",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-youtube-premium-student-6240fadf"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-2d74926c6bb5c8cb331e",
+      "url": "https://www.youtube.com/premium/student#verify",
+      "format": "html",
+      "revision_id": "2d74926c6bb5c8cb331e93377579a7d32e49de79cdbc3b1602279fed40433045",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-youtube-premium-student-6240fadf"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-8e1b94536efa89a453e0",
+      "url": "https://www.youtube.com/premium/student",
+      "format": "html",
+      "revision_id": "8e1b94536efa89a453e0d203cdb703d3d9c2f04b7a445a7ef86af20830ee768e",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-youtube-premium-student-6240fadf"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-eafa6a247870e6ea9c3f",
+      "url": "https://www.travel934.org.tw/isic/isic.aspx/terms",
+      "format": "html",
+      "revision_id": "eafa6a247870e6ea9c3f1a940b1458a8abaabebbafdfd598e2126d3f45d5c053",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-isic-card-7c39156e"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-a6f9e76cd73fd6f0d618",
+      "url": "https://www.travel934.org.tw/isic/isic.aspx#verify",
+      "format": "html",
+      "revision_id": "a6f9e76cd73fd6f0d618d6bf04ea87ba8fdb299c32c49e87f8ccfeeb2bb63a96",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-isic-card-7c39156e"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-8438cf4032ef9300da20",
+      "url": "https://www.travel934.org.tw/isic/isic.aspx",
+      "format": "html",
+      "revision_id": "8438cf4032ef9300da2022012bfed8eed0e8b3ff87eda4c9cd90bf5dcd10f30b",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-isic-card-7c39156e"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-fefaae638ac5b3717540",
+      "url": "https://www.perplexity.ai/terms",
+      "format": "html",
+      "revision_id": "fefaae638ac5b3717540362c32aa7a34bcab77ae1deda4984bc3e2cf840b4a32",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-perplexity-student-discount-caccf465"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-bb612ef8e82249c04e6c",
+      "url": "https://www.perplexity.ai#verify",
+      "format": "html",
+      "revision_id": "bb612ef8e82249c04e6cd246a4cc69e0a265e0d394ae7168ac73f5a9d66db444",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-perplexity-student-discount-caccf465"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-bd687578ef655f768fe2",
+      "url": "https://www.perplexity.ai/",
+      "format": "html",
+      "revision_id": "bd687578ef655f768fe2765441fae88d9b6c478357dfec0aa40cc87411952948",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-perplexity-student-discount-caccf465"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-3f8e8ed5c5a7a10286e3",
+      "url": "https://www.cursor.com/terms",
+      "format": "html",
+      "revision_id": "3f8e8ed5c5a7a10286e38eb822a8cb90bce78bf0740f2b1af097448410afb9a4",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-cursor-ai-student-b2125ede"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-238aa4374c4d9a2fd6c7",
+      "url": "https://www.cursor.com#verify",
+      "format": "html",
+      "revision_id": "238aa4374c4d9a2fd6c78e169517d1310b396d1264ae41e69269373d20447630",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-cursor-ai-student-b2125ede"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-abf0e5309a4f0e36db69",
+      "url": "https://www.cursor.com/",
+      "format": "html",
+      "revision_id": "abf0e5309a4f0e36db690de182686bc2ab15d6d6c60d45253b33f2033ca9a603",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-cursor-ai-student-b2125ede"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-policy-aeac73d230198ac24765",
+      "url": "https://www.myunidays.com/TW/zh-TW/terms",
+      "format": "html",
+      "revision_id": "aeac73d230198ac247652a319c85946c05a126702d12be8e736cd2e80c8b2daa",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-unidays-platform-2de10e2f"
+      ],
+      "role": "policy",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-verifier-72715207e9bc4517feb5",
+      "url": "https://www.myunidays.com/TW/zh-TW#verify",
+      "format": "html",
+      "revision_id": "72715207e9bc4517feb5e5bf04997520c551d7564d89161fe371db69c19efd9d",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-unidays-platform-2de10e2f"
+      ],
+      "role": "verifier",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-perk-claim-b7c227e3c78adf53f36e",
+      "url": "https://www.myunidays.com/TW/zh-TW",
+      "format": "html",
+      "revision_id": "b7c227e3c78adf53f36e95f614d5f05d75f40de72ab49396d26dace311351f69",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-unidays-platform-2de10e2f"
+      ],
+      "role": "claim",
+      "archetype": "student_perks_identity",
+      "events": [],
+      "links": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "doc-perk-policy-993a8637b59cf1dd9545",
+      "to": "doc-perk-verifier-46af46d92f40555da6e7",
+      "url": "https://education.github.com/pack#verify",
+      "role": "verification_policy",
+      "program_key": "perk-github-student-pack",
+      "scope": "perk-github-student-pack",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-46af46d92f40555da6e7",
+      "to": "doc-perk-claim-e2f0fd458fa701328d8d",
+      "url": "https://education.github.com/pack",
+      "role": "license_provisioning",
+      "program_key": "perk-github-student-pack",
+      "scope": "perk-github-student-pack",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-8111bb16ac8bb43ca2a1",
+      "to": "doc-perk-verifier-2aba5d9cc09342f2bc26",
+      "url": "https://education.github.com#verify",
+      "role": "verification_policy",
+      "program_key": "perk-github-copilot-student",
+      "scope": "perk-github-copilot-student",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-2aba5d9cc09342f2bc26",
+      "to": "doc-perk-claim-764c7874ddd54369098d",
+      "url": "https://education.github.com/",
+      "role": "license_provisioning",
+      "program_key": "perk-github-copilot-student",
+      "scope": "perk-github-copilot-student",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-9db80d7af1ed786af48f",
+      "to": "doc-perk-verifier-a094c8e9062882732791",
+      "url": "https://azure.microsoft.com/free/students#verify",
+      "role": "verification_policy",
+      "program_key": "perk-azure-for-students",
+      "scope": "perk-azure-for-students",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-a094c8e9062882732791",
+      "to": "doc-perk-claim-bf92c49eed3106dba307",
+      "url": "https://azure.microsoft.com/free/students/",
+      "role": "license_provisioning",
+      "program_key": "perk-azure-for-students",
+      "scope": "perk-azure-for-students",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-dd14355fbc4139220007",
+      "to": "doc-perk-verifier-3d2b9151ffed8b8c6306",
+      "url": "https://aws.amazon.com/education/awseducate#verify",
+      "role": "verification_policy",
+      "program_key": "perk-aws-educate",
+      "scope": "perk-aws-educate",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-3d2b9151ffed8b8c6306",
+      "to": "doc-perk-claim-246ee6a5c63fabfdf3ac",
+      "url": "https://aws.amazon.com/education/awseducate/",
+      "role": "license_provisioning",
+      "program_key": "perk-aws-educate",
+      "scope": "perk-aws-educate",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-6117016bebedb723ee29",
+      "to": "doc-perk-verifier-4c3d1cfe8bdefe8d48b5",
+      "url": "https://www.cloudskillsboost.google#verify",
+      "role": "verification_policy",
+      "program_key": "perk-google-cloud-skills-boost",
+      "scope": "perk-google-cloud-skills-boost",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-4c3d1cfe8bdefe8d48b5",
+      "to": "doc-perk-claim-25729c142c4ed012a572",
+      "url": "https://www.cloudskillsboost.google/",
+      "role": "license_provisioning",
+      "program_key": "perk-google-cloud-skills-boost",
+      "scope": "perk-google-cloud-skills-boost",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-2a1a96973aeb2222779c",
+      "to": "doc-perk-verifier-750dc84457dd9c102aa1",
+      "url": "https://www.notion.com/product/notion-for-education#verify",
+      "role": "verification_policy",
+      "program_key": "perk-notion-education",
+      "scope": "perk-notion-education",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-750dc84457dd9c102aa1",
+      "to": "doc-perk-claim-aee90b4ae77abbce5e16",
+      "url": "https://www.notion.com/product/notion-for-education",
+      "role": "license_provisioning",
+      "program_key": "perk-notion-education",
+      "scope": "perk-notion-education",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-d8d992aa95c0dd2a5215",
+      "to": "doc-perk-verifier-405080b2b31d9d0798e3",
+      "url": "https://www.figma.com/education#verify",
+      "role": "verification_policy",
+      "program_key": "perk-figma-education",
+      "scope": "perk-figma-education",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-405080b2b31d9d0798e3",
+      "to": "doc-perk-claim-ebadc8318892cc841798",
+      "url": "https://www.figma.com/education/",
+      "role": "license_provisioning",
+      "program_key": "perk-figma-education",
+      "scope": "perk-figma-education",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-ae36e38078335463103a",
+      "to": "doc-perk-verifier-0777697547918ebe609c",
+      "url": "https://www.jetbrains.com/community/education/#students#verify",
+      "role": "verification_policy",
+      "program_key": "perk-jetbrains-student-pack",
+      "scope": "perk-jetbrains-student-pack",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-0777697547918ebe609c",
+      "to": "doc-perk-claim-48355144d371fd30db10",
+      "url": "https://www.jetbrains.com/community/education/#students",
+      "role": "license_provisioning",
+      "program_key": "perk-jetbrains-student-pack",
+      "scope": "perk-jetbrains-student-pack",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-ce08c736c21142b76bdb",
+      "to": "doc-perk-verifier-4dd7154e6d4494961540",
+      "url": "https://www.autodesk.com/education/edu-software/overview#verify",
+      "role": "verification_policy",
+      "program_key": "perk-autodesk-education",
+      "scope": "perk-autodesk-education",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-4dd7154e6d4494961540",
+      "to": "doc-perk-claim-0ba2ace3c3c95738978a",
+      "url": "https://www.autodesk.com/education/edu-software/overview",
+      "role": "license_provisioning",
+      "program_key": "perk-autodesk-education",
+      "scope": "perk-autodesk-education",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-f4c405c3711a6d8069a5",
+      "to": "doc-perk-verifier-e2d595e614fe6909d0a8",
+      "url": "https://www.mathworks.com/academia/tah-portal.html#verify",
+      "role": "verification_policy",
+      "program_key": "perk-matlab-campus-wide",
+      "scope": "perk-matlab-campus-wide",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-e2d595e614fe6909d0a8",
+      "to": "doc-perk-claim-31d2570ab6c71d142943",
+      "url": "https://www.mathworks.com/academia/tah-portal.html",
+      "role": "license_provisioning",
+      "program_key": "perk-matlab-campus-wide",
+      "scope": "perk-matlab-campus-wide",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-5a2cd58bd03d45cd9437",
+      "to": "doc-perk-verifier-105b30c23e99a3569572",
+      "url": "https://www.tableau.com/academic/students#verify",
+      "role": "verification_policy",
+      "program_key": "perk-tableau-for-students",
+      "scope": "perk-tableau-for-students",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-105b30c23e99a3569572",
+      "to": "doc-perk-claim-de478b403eb980df52dc",
+      "url": "https://www.tableau.com/academic/students",
+      "role": "license_provisioning",
+      "program_key": "perk-tableau-for-students",
+      "scope": "perk-tableau-for-students",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-f7bc04fe74c6dd28a9c1",
+      "to": "doc-perk-verifier-f0a44d24dd6c62db172e",
+      "url": "https://www.microsoft.com/education/products/office#verify",
+      "role": "verification_policy",
+      "program_key": "perk-microsoft-365-education",
+      "scope": "perk-microsoft-365-education",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-f0a44d24dd6c62db172e",
+      "to": "doc-perk-claim-b756f83215d1ec17b3cf",
+      "url": "https://www.microsoft.com/education/products/office",
+      "role": "license_provisioning",
+      "program_key": "perk-microsoft-365-education",
+      "scope": "perk-microsoft-365-education",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-709f65d16ffa02f48171",
+      "to": "doc-perk-verifier-bc1a17058d20c690ce85",
+      "url": "https://www.adobe.com/tw/creativecloud/buy/students.html#verify",
+      "role": "verification_policy",
+      "program_key": "perk-adobe-cc-student",
+      "scope": "perk-adobe-cc-student",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-bc1a17058d20c690ce85",
+      "to": "doc-perk-claim-3609af88c91d8d8e08dd",
+      "url": "https://www.adobe.com/tw/creativecloud/buy/students.html",
+      "role": "license_provisioning",
+      "program_key": "perk-adobe-cc-student",
+      "scope": "perk-adobe-cc-student",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-254d895e4d57ec945c5e",
+      "to": "doc-perk-verifier-f8f244d8fe0a33d4c7ee",
+      "url": "https://www.canva.com/education#verify",
+      "role": "verification_policy",
+      "program_key": "perk-canva-education",
+      "scope": "perk-canva-education",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-f8f244d8fe0a33d4c7ee",
+      "to": "doc-perk-claim-f9040f672159c3e0f939",
+      "url": "https://www.canva.com/education/",
+      "role": "license_provisioning",
+      "program_key": "perk-canva-education",
+      "scope": "perk-canva-education",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-56108fc0c024e2e6c109",
+      "to": "doc-perk-verifier-bfbc587201ab0e60f07c",
+      "url": "https://www.coursera.org#verify",
+      "role": "verification_policy",
+      "program_key": "perk-coursera-for-campus",
+      "scope": "perk-coursera-for-campus",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-bfbc587201ab0e60f07c",
+      "to": "doc-perk-claim-10722b3ea7e90c7605ce",
+      "url": "https://www.coursera.org/",
+      "role": "license_provisioning",
+      "program_key": "perk-coursera-for-campus",
+      "scope": "perk-coursera-for-campus",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-ec363f2b36d278bfcfba",
+      "to": "doc-perk-verifier-1cec933bd640e0d023c3",
+      "url": "https://www.datacamp.com/universities#verify",
+      "role": "verification_policy",
+      "program_key": "perk-datacamp-education",
+      "scope": "perk-datacamp-education",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-1cec933bd640e0d023c3",
+      "to": "doc-perk-claim-67e518fc4c56238c69f4",
+      "url": "https://www.datacamp.com/universities",
+      "role": "license_provisioning",
+      "program_key": "perk-datacamp-education",
+      "scope": "perk-datacamp-education",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-07088ee59d26faeba069",
+      "to": "doc-perk-verifier-d8d6874820a9003a24e4",
+      "url": "https://concert.stpi.narl.org.tw#verify",
+      "role": "verification_policy",
+      "program_key": "perk-academic-databases-library",
+      "scope": "perk-academic-databases-library",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-d8d6874820a9003a24e4",
+      "to": "doc-perk-claim-6200355eeb0ca5f0fc8d",
+      "url": "https://concert.stpi.narl.org.tw/",
+      "role": "license_provisioning",
+      "program_key": "perk-academic-databases-library",
+      "scope": "perk-academic-databases-library",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-07cea741d8528298a847",
+      "to": "doc-perk-verifier-433840cb369b56e41240",
+      "url": "https://www.apple.com/tw-edu/store#verify",
+      "role": "verification_policy",
+      "program_key": "perk-apple-education-pricing",
+      "scope": "perk-apple-education-pricing",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-433840cb369b56e41240",
+      "to": "doc-perk-claim-36c4859f6056405f80b1",
+      "url": "https://www.apple.com/tw-edu/store",
+      "role": "license_provisioning",
+      "program_key": "perk-apple-education-pricing",
+      "scope": "perk-apple-education-pricing",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-ca268fdf94a8b9d6228a",
+      "to": "doc-perk-verifier-550ed4ea9f9fdc4042e8",
+      "url": "https://www.samsung.com/tw/multistore/tw_student#verify",
+      "role": "verification_policy",
+      "program_key": "perk-samsung-education-store",
+      "scope": "perk-samsung-education-store",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-550ed4ea9f9fdc4042e8",
+      "to": "doc-perk-claim-d52e95b2ab3a1b67809a",
+      "url": "https://www.samsung.com/tw/multistore/tw_student/",
+      "role": "license_provisioning",
+      "program_key": "perk-samsung-education-store",
+      "scope": "perk-samsung-education-store",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-e73567e92061f6bca8d3",
+      "to": "doc-perk-verifier-af9f01cf9cd755b48e18",
+      "url": "https://www.lenovo.com/tw/zh/education/student#verify",
+      "role": "verification_policy",
+      "program_key": "perk-lenovo-education-store",
+      "scope": "perk-lenovo-education-store",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-af9f01cf9cd755b48e18",
+      "to": "doc-perk-claim-0e6dc741ec36996a0418",
+      "url": "https://www.lenovo.com/tw/zh/education/student/",
+      "role": "license_provisioning",
+      "program_key": "perk-lenovo-education-store",
+      "scope": "perk-lenovo-education-store",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-ac08462fae6e7030baf4",
+      "to": "doc-perk-verifier-4ac9588297a2a8dd383e",
+      "url": "https://www.logitech.com/zh-tw#verify",
+      "role": "verification_policy",
+      "program_key": "perk-logitech-student",
+      "scope": "perk-logitech-student",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-4ac9588297a2a8dd383e",
+      "to": "doc-perk-claim-684ade3c048f8302bfb5",
+      "url": "https://www.logitech.com/zh-tw",
+      "role": "license_provisioning",
+      "program_key": "perk-logitech-student",
+      "scope": "perk-logitech-student",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-86a10d2ea1688af9d77d",
+      "to": "doc-perk-verifier-545b9157e9d7cadf861a",
+      "url": "https://www.spotify.com/tw/student#verify",
+      "role": "verification_policy",
+      "program_key": "perk-spotify-student",
+      "scope": "perk-spotify-student",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-545b9157e9d7cadf861a",
+      "to": "doc-perk-claim-0498b3d828456ff2e70e",
+      "url": "https://www.spotify.com/tw/student/",
+      "role": "license_provisioning",
+      "program_key": "perk-spotify-student",
+      "scope": "perk-spotify-student",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-e04da454523bcf8de7f2",
+      "to": "doc-perk-verifier-116972fad64db0b27a80",
+      "url": "https://www.apple.com/tw/apple-music#verify",
+      "role": "verification_policy",
+      "program_key": "perk-apple-music-student",
+      "scope": "perk-apple-music-student",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-116972fad64db0b27a80",
+      "to": "doc-perk-claim-8c80b1c3fd2b6a12b34f",
+      "url": "https://www.apple.com/tw/apple-music/",
+      "role": "license_provisioning",
+      "program_key": "perk-apple-music-student",
+      "scope": "perk-apple-music-student",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-4833565daf811bf6e270",
+      "to": "doc-perk-verifier-2d74926c6bb5c8cb331e",
+      "url": "https://www.youtube.com/premium/student#verify",
+      "role": "verification_policy",
+      "program_key": "perk-youtube-premium-student",
+      "scope": "perk-youtube-premium-student",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-2d74926c6bb5c8cb331e",
+      "to": "doc-perk-claim-8e1b94536efa89a453e0",
+      "url": "https://www.youtube.com/premium/student",
+      "role": "license_provisioning",
+      "program_key": "perk-youtube-premium-student",
+      "scope": "perk-youtube-premium-student",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-eafa6a247870e6ea9c3f",
+      "to": "doc-perk-verifier-a6f9e76cd73fd6f0d618",
+      "url": "https://www.travel934.org.tw/isic/isic.aspx#verify",
+      "role": "verification_policy",
+      "program_key": "perk-isic-card",
+      "scope": "perk-isic-card",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-a6f9e76cd73fd6f0d618",
+      "to": "doc-perk-claim-8438cf4032ef9300da20",
+      "url": "https://www.travel934.org.tw/isic/isic.aspx",
+      "role": "license_provisioning",
+      "program_key": "perk-isic-card",
+      "scope": "perk-isic-card",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-fefaae638ac5b3717540",
+      "to": "doc-perk-verifier-bb612ef8e82249c04e6c",
+      "url": "https://www.perplexity.ai#verify",
+      "role": "verification_policy",
+      "program_key": "perk-perplexity-student-discount",
+      "scope": "perk-perplexity-student-discount",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-bb612ef8e82249c04e6c",
+      "to": "doc-perk-claim-bd687578ef655f768fe2",
+      "url": "https://www.perplexity.ai/",
+      "role": "license_provisioning",
+      "program_key": "perk-perplexity-student-discount",
+      "scope": "perk-perplexity-student-discount",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-3f8e8ed5c5a7a10286e3",
+      "to": "doc-perk-verifier-238aa4374c4d9a2fd6c7",
+      "url": "https://www.cursor.com#verify",
+      "role": "verification_policy",
+      "program_key": "perk-cursor-ai-student",
+      "scope": "perk-cursor-ai-student",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-238aa4374c4d9a2fd6c7",
+      "to": "doc-perk-claim-abf0e5309a4f0e36db69",
+      "url": "https://www.cursor.com/",
+      "role": "license_provisioning",
+      "program_key": "perk-cursor-ai-student",
+      "scope": "perk-cursor-ai-student",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-policy-aeac73d230198ac24765",
+      "to": "doc-perk-verifier-72715207e9bc4517feb5",
+      "url": "https://www.myunidays.com/TW/zh-TW#verify",
+      "role": "verification_policy",
+      "program_key": "perk-unidays-platform",
+      "scope": "perk-unidays-platform",
+      "cycle": "annual_rolling"
+    },
+    {
+      "from": "doc-perk-verifier-72715207e9bc4517feb5",
+      "to": "doc-perk-claim-b7c227e3c78adf53f36e",
+      "url": "https://www.myunidays.com/TW/zh-TW",
+      "role": "license_provisioning",
+      "program_key": "perk-unidays-platform",
+      "scope": "perk-unidays-platform",
+      "cycle": "annual_rolling"
+    }
+  ],
+  "scopes": [
+    {
+      "id": "perk-github-student-pack",
+      "label": "GitHub"
+    },
+    {
+      "id": "perk-github-copilot-student",
+      "label": "GitHub"
+    },
+    {
+      "id": "perk-azure-for-students",
+      "label": "Microsoft"
+    },
+    {
+      "id": "perk-aws-educate",
+      "label": "Amazon"
+    },
+    {
+      "id": "perk-google-cloud-skills-boost",
+      "label": "Google"
+    },
+    {
+      "id": "perk-notion-education",
+      "label": "Notion"
+    },
+    {
+      "id": "perk-figma-education",
+      "label": "Figma"
+    },
+    {
+      "id": "perk-jetbrains-student-pack",
+      "label": "JetBrains"
+    },
+    {
+      "id": "perk-autodesk-education",
+      "label": "Autodesk"
+    },
+    {
+      "id": "perk-matlab-campus-wide",
+      "label": "MathWorks"
+    },
+    {
+      "id": "perk-tableau-for-students",
+      "label": "Tableau"
+    },
+    {
+      "id": "perk-microsoft-365-education",
+      "label": "Microsoft"
+    },
+    {
+      "id": "perk-adobe-cc-student",
+      "label": "Adobe"
+    },
+    {
+      "id": "perk-canva-education",
+      "label": "Canva"
+    },
+    {
+      "id": "perk-coursera-for-campus",
+      "label": "Coursera"
+    },
+    {
+      "id": "perk-datacamp-education",
+      "label": "DataCamp"
+    },
+    {
+      "id": "perk-academic-databases-library",
+      "label": "學術文獻庫校園授權（IEEE"
+    },
+    {
+      "id": "perk-apple-education-pricing",
+      "label": "Apple"
+    },
+    {
+      "id": "perk-samsung-education-store",
+      "label": "Samsung"
+    },
+    {
+      "id": "perk-lenovo-education-store",
+      "label": "Lenovo"
+    },
+    {
+      "id": "perk-logitech-student",
+      "label": "Logitech"
+    },
+    {
+      "id": "perk-spotify-student",
+      "label": "Spotify"
+    },
+    {
+      "id": "perk-apple-music-student",
+      "label": "Apple"
+    },
+    {
+      "id": "perk-youtube-premium-student",
+      "label": "YouTube"
+    },
+    {
+      "id": "perk-isic-card",
+      "label": "ISIC"
+    },
+    {
+      "id": "perk-perplexity-student-discount",
+      "label": "Perplexity"
+    },
+    {
+      "id": "perk-cursor-ai-student",
+      "label": "Cursor"
+    },
+    {
+      "id": "perk-unidays-platform",
+      "label": "UNiDAYS"
+    }
+  ],
+  "candidate_bindings": [
+    {
+      "candidate_id": "cand-perk-github-student-pack-e98d8d10",
+      "program_key": "perk-github-student-pack",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-github-copilot-student-d35e5851",
+      "program_key": "perk-github-copilot-student",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-azure-for-students-9f895cca",
+      "program_key": "perk-azure-for-students",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-aws-educate-0a107c1b",
+      "program_key": "perk-aws-educate",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-google-cloud-skills-boost-57397feb",
+      "program_key": "perk-google-cloud-skills-boost",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-notion-education-6a8befef",
+      "program_key": "perk-notion-education",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-figma-education-46ee13cb",
+      "program_key": "perk-figma-education",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-jetbrains-student-pack-01f18286",
+      "program_key": "perk-jetbrains-student-pack",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-autodesk-education-135d397b",
+      "program_key": "perk-autodesk-education",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-matlab-campus-wide-6ab0a357",
+      "program_key": "perk-matlab-campus-wide",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-tableau-for-students-b6160538",
+      "program_key": "perk-tableau-for-students",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-microsoft-365-education-0a9fbd1a",
+      "program_key": "perk-microsoft-365-education",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-adobe-cc-student-483d80c7",
+      "program_key": "perk-adobe-cc-student",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-canva-education-b9b84531",
+      "program_key": "perk-canva-education",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-coursera-for-campus-7b2509ff",
+      "program_key": "perk-coursera-for-campus",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-datacamp-education-49a7ac3e",
+      "program_key": "perk-datacamp-education",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-academic-databases-library-af229a92",
+      "program_key": "perk-academic-databases-library",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-apple-education-pricing-dde078d9",
+      "program_key": "perk-apple-education-pricing",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-samsung-education-store-01bfc5e9",
+      "program_key": "perk-samsung-education-store",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-lenovo-education-store-746522f1",
+      "program_key": "perk-lenovo-education-store",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-logitech-student-69c2587c",
+      "program_key": "perk-logitech-student",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-spotify-student-5c0c501e",
+      "program_key": "perk-spotify-student",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-apple-music-student-1f971e39",
+      "program_key": "perk-apple-music-student",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-youtube-premium-student-6240fadf",
+      "program_key": "perk-youtube-premium-student",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-isic-card-7c39156e",
+      "program_key": "perk-isic-card",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-perplexity-student-discount-caccf465",
+      "program_key": "perk-perplexity-student-discount",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-cursor-ai-student-b2125ede",
+      "program_key": "perk-cursor-ai-student",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-unidays-platform-2de10e2f",
+      "program_key": "perk-unidays-platform",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    }
+  ],
+  "reports": [
+    {
+      "batch_id": "batch-perks",
+      "verified_schemes": 28,
+      "notes": "廠商教育方案條款、SheerID/edu.tw 查驗服務與即時授權開通拓撲。"
+    }
+  ]
+}

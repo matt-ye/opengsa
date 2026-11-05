@@ -1,0 +1,407 @@
+{
+  "schema_version": "source-chain-1",
+  "batch_id": "batch-conference",
+  "archetype": "conference_travel_grant",
+  "generated_at": "2026-11-05T12:00:00+00:00",
+  "model_calls": 0,
+  "official_data_modified": false,
+  "http_requests": 0,
+  "description": "國際會議出席、赴外研討會與短期研究差旅補助五節點資訊鏈拓撲批次",
+  "total_documents": 15,
+  "total_edges": 10,
+  "documents": [
+    {
+      "id": "doc-conf-reg-85fdbcbd516c21b18970",
+      "url": "https://www.nstc.gov.tw/regulation",
+      "format": "html",
+      "revision_id": "85fdbcbd516c21b18970e9ad6692399e4126f76826881acd1e6ad0e2b37882f9",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-conf-nstc-ntu"
+      ],
+      "role": "regulation",
+      "archetype": "conference_travel_grant",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-conf-event-6f7bb7ae16ca2bacf9f9",
+      "url": "https://www.nstc.gov.tw/call-for-papers",
+      "format": "html",
+      "revision_id": "6f7bb7ae16ca2bacf9f91feb2cddeef7e4f37f7682f78cdefd0fe96c6d14f23b",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-conf-nstc-ntu"
+      ],
+      "role": "event_call",
+      "archetype": "conference_travel_grant",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-conf-set-82dcdd9dd8c06b3a0e7b",
+      "url": "https://www.nstc.gov.tw/settlement",
+      "format": "html",
+      "revision_id": "82dcdd9dd8c06b3a0e7b50cb1afc834e7b6da72058764799f3c9aec570ced327",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-conf-nstc-ntu"
+      ],
+      "role": "settlement",
+      "archetype": "conference_travel_grant",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-conf-reg-85fdbcbd516c21b18970",
+      "url": "https://www.nstc.gov.tw/regulation",
+      "format": "html",
+      "revision_id": "85fdbcbd516c21b18970e9ad6692399e4126f76826881acd1e6ad0e2b37882f9",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-conf-ntu-med-oia"
+      ],
+      "role": "regulation",
+      "archetype": "conference_travel_grant",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-conf-event-6f7bb7ae16ca2bacf9f9",
+      "url": "https://www.nstc.gov.tw/call-for-papers",
+      "format": "html",
+      "revision_id": "6f7bb7ae16ca2bacf9f91feb2cddeef7e4f37f7682f78cdefd0fe96c6d14f23b",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-conf-ntu-med-oia"
+      ],
+      "role": "event_call",
+      "archetype": "conference_travel_grant",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-conf-set-82dcdd9dd8c06b3a0e7b",
+      "url": "https://www.nstc.gov.tw/settlement",
+      "format": "html",
+      "revision_id": "82dcdd9dd8c06b3a0e7b50cb1afc834e7b6da72058764799f3c9aec570ced327",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-conf-ntu-med-oia"
+      ],
+      "role": "settlement",
+      "archetype": "conference_travel_grant",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-conf-reg-85fdbcbd516c21b18970",
+      "url": "https://www.nstc.gov.tw/regulation",
+      "format": "html",
+      "revision_id": "85fdbcbd516c21b18970e9ad6692399e4126f76826881acd1e6ad0e2b37882f9",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-conf-faos-student"
+      ],
+      "role": "regulation",
+      "archetype": "conference_travel_grant",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-conf-event-6f7bb7ae16ca2bacf9f9",
+      "url": "https://www.nstc.gov.tw/call-for-papers",
+      "format": "html",
+      "revision_id": "6f7bb7ae16ca2bacf9f91feb2cddeef7e4f37f7682f78cdefd0fe96c6d14f23b",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-conf-faos-student"
+      ],
+      "role": "event_call",
+      "archetype": "conference_travel_grant",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-conf-set-82dcdd9dd8c06b3a0e7b",
+      "url": "https://www.nstc.gov.tw/settlement",
+      "format": "html",
+      "revision_id": "82dcdd9dd8c06b3a0e7b50cb1afc834e7b6da72058764799f3c9aec570ced327",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-conf-faos-student"
+      ],
+      "role": "settlement",
+      "archetype": "conference_travel_grant",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-conf-reg-85fdbcbd516c21b18970",
+      "url": "https://www.nstc.gov.tw/regulation",
+      "format": "html",
+      "revision_id": "85fdbcbd516c21b18970e9ad6692399e4126f76826881acd1e6ad0e2b37882f9",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-conf-nstc-abroad-dragon"
+      ],
+      "role": "regulation",
+      "archetype": "conference_travel_grant",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-conf-event-6f7bb7ae16ca2bacf9f9",
+      "url": "https://www.nstc.gov.tw/call-for-papers",
+      "format": "html",
+      "revision_id": "6f7bb7ae16ca2bacf9f91feb2cddeef7e4f37f7682f78cdefd0fe96c6d14f23b",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-conf-nstc-abroad-dragon"
+      ],
+      "role": "event_call",
+      "archetype": "conference_travel_grant",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-conf-set-82dcdd9dd8c06b3a0e7b",
+      "url": "https://www.nstc.gov.tw/settlement",
+      "format": "html",
+      "revision_id": "82dcdd9dd8c06b3a0e7b50cb1afc834e7b6da72058764799f3c9aec570ced327",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-conf-nstc-abroad-dragon"
+      ],
+      "role": "settlement",
+      "archetype": "conference_travel_grant",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-conf-reg-85fdbcbd516c21b18970",
+      "url": "https://www.nstc.gov.tw/regulation",
+      "format": "html",
+      "revision_id": "85fdbcbd516c21b18970e9ad6692399e4126f76826881acd1e6ad0e2b37882f9",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-conf-custom-unit"
+      ],
+      "role": "regulation",
+      "archetype": "conference_travel_grant",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-conf-event-6f7bb7ae16ca2bacf9f9",
+      "url": "https://www.nstc.gov.tw/call-for-papers",
+      "format": "html",
+      "revision_id": "6f7bb7ae16ca2bacf9f91feb2cddeef7e4f37f7682f78cdefd0fe96c6d14f23b",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-conf-custom-unit"
+      ],
+      "role": "event_call",
+      "archetype": "conference_travel_grant",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-conf-set-82dcdd9dd8c06b3a0e7b",
+      "url": "https://www.nstc.gov.tw/settlement",
+      "format": "html",
+      "revision_id": "82dcdd9dd8c06b3a0e7b50cb1afc834e7b6da72058764799f3c9aec570ced327",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-conf-custom-unit"
+      ],
+      "role": "settlement",
+      "archetype": "conference_travel_grant",
+      "events": [],
+      "links": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "doc-conf-reg-85fdbcbd516c21b18970",
+      "to": "doc-conf-event-6f7bb7ae16ca2bacf9f9",
+      "url": "https://www.nstc.gov.tw/call-for-papers",
+      "role": "conference_eligibility",
+      "program_key": "nstc-ntu",
+      "scope": "nstc-ntu",
+      "cycle": "event_relative"
+    },
+    {
+      "from": "doc-conf-event-6f7bb7ae16ca2bacf9f9",
+      "to": "doc-conf-set-82dcdd9dd8c06b3a0e7b",
+      "url": "https://www.nstc.gov.tw/settlement",
+      "role": "post_travel_settlement",
+      "program_key": "nstc-ntu",
+      "scope": "nstc-ntu",
+      "cycle": "event_relative"
+    },
+    {
+      "from": "doc-conf-reg-85fdbcbd516c21b18970",
+      "to": "doc-conf-event-6f7bb7ae16ca2bacf9f9",
+      "url": "https://www.nstc.gov.tw/call-for-papers",
+      "role": "conference_eligibility",
+      "program_key": "ntu-med-oia",
+      "scope": "ntu-med-oia",
+      "cycle": "event_relative"
+    },
+    {
+      "from": "doc-conf-event-6f7bb7ae16ca2bacf9f9",
+      "to": "doc-conf-set-82dcdd9dd8c06b3a0e7b",
+      "url": "https://www.nstc.gov.tw/settlement",
+      "role": "post_travel_settlement",
+      "program_key": "ntu-med-oia",
+      "scope": "ntu-med-oia",
+      "cycle": "event_relative"
+    },
+    {
+      "from": "doc-conf-reg-85fdbcbd516c21b18970",
+      "to": "doc-conf-event-6f7bb7ae16ca2bacf9f9",
+      "url": "https://www.nstc.gov.tw/call-for-papers",
+      "role": "conference_eligibility",
+      "program_key": "faos-student",
+      "scope": "faos-student",
+      "cycle": "event_relative"
+    },
+    {
+      "from": "doc-conf-event-6f7bb7ae16ca2bacf9f9",
+      "to": "doc-conf-set-82dcdd9dd8c06b3a0e7b",
+      "url": "https://www.nstc.gov.tw/settlement",
+      "role": "post_travel_settlement",
+      "program_key": "faos-student",
+      "scope": "faos-student",
+      "cycle": "event_relative"
+    },
+    {
+      "from": "doc-conf-reg-85fdbcbd516c21b18970",
+      "to": "doc-conf-event-6f7bb7ae16ca2bacf9f9",
+      "url": "https://www.nstc.gov.tw/call-for-papers",
+      "role": "conference_eligibility",
+      "program_key": "nstc-abroad-dragon",
+      "scope": "nstc-abroad-dragon",
+      "cycle": "event_relative"
+    },
+    {
+      "from": "doc-conf-event-6f7bb7ae16ca2bacf9f9",
+      "to": "doc-conf-set-82dcdd9dd8c06b3a0e7b",
+      "url": "https://www.nstc.gov.tw/settlement",
+      "role": "post_travel_settlement",
+      "program_key": "nstc-abroad-dragon",
+      "scope": "nstc-abroad-dragon",
+      "cycle": "event_relative"
+    },
+    {
+      "from": "doc-conf-reg-85fdbcbd516c21b18970",
+      "to": "doc-conf-event-6f7bb7ae16ca2bacf9f9",
+      "url": "https://www.nstc.gov.tw/call-for-papers",
+      "role": "conference_eligibility",
+      "program_key": "custom-unit",
+      "scope": "custom-unit",
+      "cycle": "event_relative"
+    },
+    {
+      "from": "doc-conf-event-6f7bb7ae16ca2bacf9f9",
+      "to": "doc-conf-set-82dcdd9dd8c06b3a0e7b",
+      "url": "https://www.nstc.gov.tw/settlement",
+      "role": "post_travel_settlement",
+      "program_key": "custom-unit",
+      "scope": "custom-unit",
+      "cycle": "event_relative"
+    }
+  ],
+  "scopes": [
+    {
+      "id": "nstc-ntu",
+      "label": "國科會研究生國際會議"
+    },
+    {
+      "id": "ntu-med-oia",
+      "label": "臺大醫學院國際會議獎"
+    },
+    {
+      "id": "faos-student",
+      "label": "傑出人才發展基金會："
+    },
+    {
+      "id": "nstc-abroad-dragon",
+      "label": "國科會博士生赴國外研"
+    },
+    {
+      "id": "custom-unit",
+      "label": "其他院系所／學會補助"
+    }
+  ],
+  "candidate_bindings": [
+    {
+      "candidate_id": "cand-conf-nstc-ntu",
+      "program_key": "nstc-ntu",
+      "phase": "all",
+      "historical_baseline_allowed": false
+    },
+    {
+      "candidate_id": "cand-conf-ntu-med-oia",
+      "program_key": "ntu-med-oia",
+      "phase": "all",
+      "historical_baseline_allowed": false
+    },
+    {
+      "candidate_id": "cand-conf-faos-student",
+      "program_key": "faos-student",
+      "phase": "all",
+      "historical_baseline_allowed": false
+    },
+    {
+      "candidate_id": "cand-conf-nstc-abroad-dragon",
+      "program_key": "nstc-abroad-dragon",
+      "phase": "all",
+      "historical_baseline_allowed": false
+    },
+    {
+      "candidate_id": "cand-conf-custom-unit",
+      "program_key": "custom-unit",
+      "phase": "all",
+      "historical_baseline_allowed": false
+    }
+  ],
+  "reports": [
+    {
+      "batch_id": "batch-conference",
+      "verified_schemes": 5,
+      "notes": "差旅法規、論文接受函與返國出國報告核銷拓撲。"
+    }
+  ]
+}
