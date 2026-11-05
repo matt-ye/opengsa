@@ -1413,6 +1413,60 @@ if(byId("copy-share-link")){
   }else{showToast();}
  });
 }
+// Bind RSS Modal & Notification Dialog
+const rssDialog=byId("rss-dialog");
+const rssBtn=byId("rss-subscribe-btn");
+const rssCloseBtn=byId("rss-dialog-close");
+const rssDismissBtn=byId("rss-dialog-dismiss");
+
+if(rssBtn && rssDialog){
+ rssBtn.addEventListener("click",()=>{
+  if(typeof rssDialog.showModal==="function"){
+   rssDialog.showModal();
+  }
+ });
+}
+const closeRssDialog=()=>{
+ if(rssDialog && typeof rssDialog.close==="function"){
+  rssDialog.close();
+ }
+};
+if(rssCloseBtn) rssCloseBtn.addEventListener("click",closeRssDialog);
+if(rssDismissBtn) rssDismissBtn.addEventListener("click",closeRssDialog);
+if(rssDialog){
+ rssDialog.addEventListener("click",event=>{
+  const rect=rssDialog.getBoundingClientRect();
+  const inside=rect.top<=event.clientY && event.clientY<=rect.top+rect.height &&
+               rect.left<=event.clientX && event.clientX<=rect.left+rect.width;
+  if(!inside) closeRssDialog();
+ });
+}
+
+const showRssToast=msg=>{
+ const toast=byId("rss-toast");
+ if(toast){
+  if(msg) toast.textContent=msg;
+  toast.hidden=false;
+  setTimeout(()=>{toast.hidden=true;},2500);
+ }
+};
+
+const setupFeedCopy=(btnId,urlId)=>{
+ const btn=byId(btnId);
+ const input=byId(urlId);
+ if(!btn) return;
+ btn.addEventListener("click",()=>{
+  const text=(input&&input.value)||btn.dataset.copy||"";
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+   navigator.clipboard.writeText(text).then(()=>showRssToast("已複製 Feed 網址！")).catch(()=>showRssToast("已複製 Feed 網址！"));
+  }else{
+   showRssToast("已複製 Feed 網址！");
+  }
+ });
+};
+setupFeedCopy("copy-feed-main","feed-main-url");
+setupFeedCopy("copy-feed-deadlines","feed-deadlines-url");
+
 if(byId("detail-scope-switch")){
  byId("detail-scope-switch").addEventListener("click",event=>{
   const btn=event.target.closest("[data-scope]");
