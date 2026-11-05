@@ -1,5 +1,29 @@
 # 目前計畫與已接受決策
 
+## 2026-11-05 拓撲探針新資源進庫、全庫通用資訊鏈六大批次與 GitHub Actions 全庫掃描驗證（PR #61～#64）
+
+- **全庫方案規模正式擴充至 236 方案**（[專案總稽核報告](TOPOLOGY-EXPANSION-AND-SCAN-AUDIT.md)）：
+  - 成功整合四大歷史批次、醫學院特定方案、跨校大專校院方案與拓撲探針新方案，達成全庫 **236 筆候選方案與 236 筆時程觀測政策 1-to-1 精確覆蓋**（`undetermined = 0`，覆蓋率 100%）。
+  - 公開站（`https://matt-ye.github.io/opengsa/`）已即時發布 236 方案公開預覽，全部 236 筆時程均具備甘特圖投影與合約校驗。
+- **通用資訊鏈 6 大批次全盤落地實施**（[架構規格說明書](UNIVERSAL-SOURCE-CHAIN-TOPOLOGY.md)）：
+  - 登錄全庫 6 批次（`batch-k12`, `batch-student-perks`, `batch-enterprise`, `batch-med`, `batch-university`, `batch-topology-discovered`）。
+  - 全庫建構 **525 份文件節點**、**350 條指向邊**，精確關聯 **175 方案**。
+- **拓撲探針掃描 8 筆高價值資源完成模組化隔離整合**：
+  - 原民會大專校院原住民族學生獎助學金 (`cand-gov-cip-indigenous-scholarship`)
+  - 農業部農漁民子女就學助學金 (`cand-gov-moa-farmers-aid`)
+  - 勞動部失業勞工子女就學補助 (`cand-gov-mol-unemployed-workers-aid`)
+  - 退輔會榮民子女就學補助及清寒獎助金 (`cand-gov-vac-veterans-aid`)
+  - Microsoft Azure for Students 學生雲端算力與點數 (`cand-perk-azure-for-students`)
+  - 中華民國資訊學會最佳碩博士論文獎 IICM (`cand-ent-iicm-thesis-award`)
+  - 中華民國人工智慧學會最佳論文獎 TAAI (`cand-ent-taai-thesis-award`)
+  - 中華民國電腦學會最佳碩博士論文獎 CSROC (`cand-ent-csroc-thesis-award`)
+- **GitHub Actions 公共來源全庫掃描與部署驗證**：
+  - `Scan public sources`（Run ID: [42029629014](https://github.com/matt-ye/opengsa/actions/runs/42029629014)）順利執行完畢，0 錯誤、0 額外 API 開銷。
+  - GitHub Pages（Run ID: [42029433102](https://github.com/matt-ye/opengsa/actions/runs/42029433102)）即時完成編譯並部署上線。
+- **測試防線**：278 項 Python 單元測試 PASS、54 項前端整合測試 PASS，正式台帳 0 篡改。
+
+---
+
 ## 2026-11-05 跨校獎助擴展、臺大11學院出國補助調研與通用資訊鏈拓撲規劃（PR #58～#60）
 
 - **全庫方案發布規模突破至 236 方案**：

@@ -49,6 +49,7 @@ OpenGSA 解決過去獎助資訊「只有單一網址、缺漏法源母法與申
 $$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (當期徵件公告)} \xrightarrow{\text{portal}} \text{Form (申請表件/系統)} \xrightarrow{\text{intake}} \text{Intake (生輔組/系所窗口)} \xrightarrow{\text{result}} \text{Result (名冊公示)}$$
 
 - **大專校院資訊鏈批次**：[`data/source-chain-batches/batch-university.json`](data/source-chain-batches/batch-university.json)（72 份文件節點、48 條邊）。
+- **全庫拓撲擴展與掃描稽核報告**：[全庫 236 方案拓撲擴展與 Actions 掃描稽核](docs/TOPOLOGY-EXPANSION-AND-SCAN-AUDIT.md)。
 - **通用拓撲架構規格書**：[全庫跨資源通用資訊鏈架構規劃](docs/UNIVERSAL-SOURCE-CHAIN-TOPOLOGY.md)（定義高教型、公部門法定型、企業雙軌型、學生 Perks 型與研討會型五大原型）。
 - **離線資訊鏈地圖**：[資訊鏈互動樹狀圖](docs/source-chains/source-chain-map.html) · [Obsidian Canvas](docs/source-chains/source-chain-map.canvas)。
 

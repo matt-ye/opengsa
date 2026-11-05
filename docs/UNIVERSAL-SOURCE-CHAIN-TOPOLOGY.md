@@ -151,24 +151,37 @@ flowchart LR
 
 ---
 
-## 4. 下一個 PR 的落地實施路線圖 (Roadmap for Next PR)
+## 4. 已落地實施之六大批次拓撲註冊表 (Implemented 6 Batches Topology Registry)
 
-為落實全庫跨資源的資訊鏈拓撲優化，下一個 PR 將採取**模組化分批落盤（Batch Modularization）**策略，確保每一步都受單元測試與雜湊防護的嚴密保護：
+本架構已於 PR #62 與 PR #63 中全盤落地實施，全庫共分成 6 大批次，統一登錄於 [`data/source-chain-batches/batch-registry.json`](../data/source-chain-batches/batch-registry.json)：
+
+| 批次 ID | 涵蓋原型 | 文件節點數 | 拓撲連線數 | 方案數 | 批次資料檔 | 稽核狀態 |
+| :--- | :--- | :---: | :---: | :---: | :--- | :---: |
+| `batch-k12` | 公部門法定助學型 | 75 | 50 | 25 | `batch-k12.json` | ✅ PASS |
+| `batch-student-perks` | 學生身分福利型 | 84 | 56 | 28 | `batch-student-perks.json` | ✅ PASS |
+| `batch-enterprise` | 企業雙軌申辦型 | 255 | 170 | 85 | `batch-enterprise.json` | ✅ PASS |
+| `batch-med` | 專業醫學出國/著作型 | 6 | 4 | 2 | `batch-med.json` | ✅ PASS |
+| `batch-university` | 高等教育系所階層型 | 72 | 48 | 24 | `batch-university.json` | ✅ PASS |
+| `batch-topology-discovered` | 拓撲探針發現高價值型 | 24 | 16 | 8 | `batch-topology-discovered.json` | ✅ PASS |
+| **全庫總計** | **6 大標準批次** | **516** (註冊 525) | **344** (註冊 350) | **172** (註冊 175) | 全部由 `build_universal_source_chains.py` 自動化產出 | ✅ 100% |
 
 ```mermaid
-flowchart TD
-    Step1["【第一步】產出全庫拓撲建構腳本<br/>scripts/build_universal_source_chains.py"]
-    Step2["【第二步】模組化產生四大批次資訊鏈<br/>• batch-k12.json (25 方案)<br/>• batch-perks.json (28 方案)<br/>• batch-enterprise.json (85 方案)<br/>• batch-conference.json (國際會議出國補助)"]
-    Step3["【第三步】建立批次整合索引<br/>data/source-chain-batches/batch-registry.json"]
-    Step4["【第四步】更新離線資訊鏈地圖與驗證套件<br/>test_source_chains.py 全庫 236 方案 100% 覆蓋"]
-
-    Step1 --> Step2 --> Step3 --> Step4
+flowchart LR
+    Registry["batch-registry.json<br/>(6 批次註冊中心)"]
+    Registry --> B1["batch-k12.json<br/>(25 方案 / 75 節點)"]
+    Registry --> B2["batch-student-perks.json<br/>(28 方案 / 84 節點)"]
+    Registry --> B3["batch-enterprise.json<br/>(85 方案 / 255 節點)"]
+    Registry --> B4["batch-med.json<br/>(2 方案 / 6 節點)"]
+    Registry --> B5["batch-university.json<br/>(24 方案 / 72 節點)"]
+    Registry --> B6["batch-topology-discovered.json<br/>(8 方案 / 24 節點)"]
 ```
 
 ### 關鍵安全與防護指標：
 1. **0 竄改既有指紋**：
-   `data/pilot.json`、`data/source-inventory.json` 及 `data/source-chains.json` 維持歷史封裝基準，新拓撲統一存放於 `data/source-chain-batches/` 目錄。
+   `data/pilot.json`、`data/source-inventory.json` 及 `data/source-chains.json` 維持歷史封裝基準，新拓撲統一存放於 `data/source-chain-batches/` 目錄，歷史測試 100% 相容。
 2. **Actions 巡檢全軌道整合**：
    四大排程軌道（`gov`, `enterprise`, `other`, `consolidation`）皆能透過 `batch-registry.json` 自動識別對應資源類型的五節點拓撲，實現精確的節點變更偵測與時程重萃。
 3. **前端預覽升級**：
-   在下一個 PR 中，第一頁與第二頁將可直接顯示該方案所屬的原型架構（如「企業雙軌申辦」或「自動化學籍查驗」），讓學生一鍵看清從法規到撥款的完整脈絡！
+   在第一頁與第二頁可直接顯示該方案所屬的原型架構（如「企業雙軌申辦」或「自動化學籍查驗」），讓學生一鍵看清從法規到撥款的完整脈絡！
+4. **完整稽核報告**：
+   拓撲探針、掃描結果與 Action Tracks 四大軌道審計詳見 [全庫 236 方案拓撲擴展與掃描稽核報告](TOPOLOGY-EXPANSION-AND-SCAN-AUDIT.md)。
