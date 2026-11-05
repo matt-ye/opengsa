@@ -12,7 +12,7 @@
 在 PR #60 中，OpenGSA 為全台大專校院獎助成功落實了標準的五節點資訊鏈拓撲（`batch-university.json`）。  
 然而，使用者敏銳地指出：**資訊鏈拓撲關係不應僅限於大專校院，過去入庫的其他來源（公部門、企業、基金會、學生 Perks、國際會議出國補助等）亦存在嚴重的資訊鏈碎片化問題**。
 
-我們對全庫現有 **228 方案** 的資訊鏈健全度進行了全盤回溯盤查：
+我們對全庫現有 **236 方案** 的資訊鏈健全度進行了全盤回溯盤查：
 
 | 資源分類批次 | 方案數 | 當前資訊鏈現狀 | 結構性痛點與斷鏈缺口 |
 | :--- | :--- | :--- | :--- |
@@ -160,7 +160,7 @@ flowchart TD
     Step1["【第一步】產出全庫拓撲建構腳本<br/>scripts/build_universal_source_chains.py"]
     Step2["【第二步】模組化產生四大批次資訊鏈<br/>• batch-k12.json (25 方案)<br/>• batch-perks.json (28 方案)<br/>• batch-enterprise.json (85 方案)<br/>• batch-conference.json (國際會議出國補助)"]
     Step3["【第三步】建立批次整合索引<br/>data/source-chain-batches/batch-registry.json"]
-    Step4["【第四步】更新離線資訊鏈地圖與驗證套件<br/>test_source_chains.py 全庫 228 方案 100% 覆蓋"]
+    Step4["【第四步】更新離線資訊鏈地圖與驗證套件<br/>test_source_chains.py 全庫 236 方案 100% 覆蓋"]
 
     Step1 --> Step2 --> Step3 --> Step4
 ```
