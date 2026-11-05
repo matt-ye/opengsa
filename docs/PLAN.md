@@ -1,26 +1,24 @@
 # 目前計畫與已接受決策
 
-## 2026-11-06 UI/UX 與導覽體驗升級（Onboarding Guide & Cinematic Discovery）暨後續 TODO 規劃
+## 2026-11-06 全站四分頁 RWD 響應式升級、甘特圖 64px 緊湊化、消滅死空白與 Toutour 專屬子導覽（PR #69）
 
-- **首頁「❓ 快速指南」按鈕與原生 `<dialog>` 新手上手指南落地**（[詳細手冊](UI-UX-ONBOARDING-AND-ROADMAP-TODO.md)）：
-  - 遵循使用者自研之 `matt-ye/Toutour` 反模式審查規範：嚴格限制 $\le 4$ 步（探索快篩 ➔ 時程甘特圖 ➔ 跨頁收藏 ➔ 推播與權益），拒絕強迫阻塞彈窗（Default OFF，尊重使用者主動性）。
-  - 完整無障礙語意與導覽控制：提供膠囊步驟徽章、圓點進度條（Dots Indicator）、上一步/下一步/完成按鈕，以及一鍵跳轉至對應功能之深層捷徑。
-  - 支援 `Esc` 關閉、背景遮罩點擊關閉與焦點自動返回。
-- **行動端甘特圖橫向捲動提示（Mobile Scroll Hint）消除虛假底端**：
-  - 針對手機螢幕寬度（< 800px）甘特圖溢出盲區，自動浮現 `👈 手指左右滑動以檢視完整時程 👉` 提示膠囊。
-  - 偵測使用者水平滑動超過 30px 或點擊關閉按鈕後平滑淡出，並寫入 `sessionStorage` 避免重複打擾。
-- **全站鍵盤快速鍵矩陣（Global Hotkeys）實裝**：
-  - `?`：開啟/切換快速上手指南。
-  - `/`：將焦點移至搜尋輸入框 `#search-query` 並自動選取文字（表單輸入時自動防誤觸）。
-  - `1` ~ `4`：快速在四個島嶼分頁之間切換（1: 找獎助, 2: 詳情, 3: 時間軸, 4: 權益）。
-  - `Esc`：一鍵退出正在開啟的導覽或 RSS 彈窗。
-- **跨頁收藏動態微回饋（Cross-tab Toast Notification）**：
-  - 在卡片點擊「⭐ 收藏」或取消時，右上角浮現即時微提示（`⭐ 已將《方案名稱》加入個人時程`），2.5 秒後淡出，徹底解決使用者「勾選後不知第二/三頁已同步」的困惑。
+- **全站四分頁 RWD 響應式優化與甘特圖區域大幅放大**（[詳細手冊](UI-UX-ONBOARDING-AND-ROADMAP-TODO.md)）：
+  - **甘特圖列高 64px 緊湊瘦身**：將原 `min-height: 110px` 瘦身壓縮為 `64px`（桌面）/ `56px`（手機），單屏可見方案數量從 2~3 筆**直接翻倍至 6~8 筆**（可視密度提升 150%）。
+  - **容器自適應佔滿螢幕**：桌面端提升至 `78vh / calc(100vh - 170px)`，手機端提升至 `76vh`。
+  - **手機端欄寬比例重構**：左側固定標籤欄由 138px~165px 收窄至 `108px ~ 112px`，右側時間軸釋出 30% 以上可視空間。
+  - **徹底消除首頁底部懸空死空白**：收斂 `.screen` padding 為 `24px 0 20px`，`footer` padding 為 `20px 32px 28px`，右欄 Flex 垂直自然撐滿，卡片緊貼頁尾。
+  - **其餘分頁 RWD 優化**：Tab 2 工具列小螢幕彈性分組與 `min-height` 防空白；Tab 3 個人甘特圖同步緊湊化；Tab 4 四主題選單改為手機版橫向無縫滑動膠囊（Segmented Scroll）。
+- **Toutour 情境感知專屬子導覽體系（Context-Aware Sub-tours）落地**：
+  - 實裝 **5 大導覽體系**：`global`（全站 4 步總覽）、`search`（找獎助 4 步子導覽）、`detail`（詳情比對 4 步子導覽）、`timeline`（我的時程 4 步子導覽）、`rights`（權益求助 4 步子導覽）。
+  - 依當前所在分頁自動感知喚起對應子導覽，彈窗頂部提供 `#guide-tour-select` 隨時切換，每頁步數嚴格受控在 $\le 4$ 步（完全符合 Toutour 反模式防禦規範）。
+- **全站鍵盤快捷鍵矩陣（Global Hotkeys）與動態微回饋**：
+  - `?`（喚起當前分頁指南）、`/`（聚焦搜尋框）、`1`~`4`（切換四分頁）、`Esc`（退出彈窗）。
+  - 跨頁收藏動態 Toast：卡片點選「⭐ 收藏」即時彈出氣泡，2.5 秒後淡出。
 - **使用者指示後續兩大 Roadmap 方向正式列入 TODO**：
   - **TODO 1：自動的庫外資源檢索規劃（Autonomous External Discovery Probe）**：低頻公開探針（每週定時探測生輔組 RSS、政府開放資料平台 API `data.gov.tw`）、產出待審候選清冊 `data/discovery-candidates.json`，嚴格維持 `model_mode=off`、微批 HTTP 預算與真人審查閘門。
-  - **TODO 2：Code Review 與前端核心架構模組化（Modularization & A11y Deepening）**：重構 1,700+ 行之 `docs/design/prototype.js` 拆分獨立子模組（時程合約、篩選引擎、甘特圖渲染、導覽控制器、Toast 管理器），並補強 Dialog Focus Trap 與 Screen Reader 朗讀。
+  - **TODO 2：Code Review 與前端核心架構模組化（Modularization & A11y Deepening）**：重構 1,700+ 行之 `docs/design/prototype.js` 拆分獨立子模組，並補強 Dialog Focus Trap 與 Screen Reader 朗讀。
 - **測試防線擴展**：
-  - 前端整合測試擴充至 **61 項 100% PASS**（新增新手指南步數規範、HTML 語意結構與快捷鍵行為檢驗）。
+  - 前端整合測試擴充至 **63 項 100% PASS**（新增子導覽 5 大體系步數校驗、64px 列高防線、底部 padding 收斂與導覽切換器檢驗）。
   - Python 單元測試維持 **282 項 PASS**。
   - 正式台帳與候選資料 0 篡改，排程維持 model_mode=off。
 
