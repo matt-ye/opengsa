@@ -161,7 +161,9 @@
     "www.youtube.com",
     "young.cloud.ncnu.edu.tw",
     "youth.gov.taipei",
-    "youth.tycg.gov.tw"
+    "youth.tycg.gov.tw",
+    "www.mc.ntu.edu.tw",
+    "rd.mc.ntu.edu.tw"
   ],
   "max_requests": 20,
   "max_changed_documents": 5,
@@ -3633,13 +3635,41 @@
       "parser": "generic_html",
       "format": "html",
       "known_attachment_urls": []
+    },
+    {
+      "id": "ntu-med-oia",
+      "title": "國立臺灣大學醫學院醫學生出席國際會議及海外實習服務交換獎學金",
+      "url": "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296",
+      "body_selector": "body",
+      "required_markers": [
+        "醫學生出席國際會議及海外實習服務交換獎學金"
+      ],
+      "pdf_include": [],
+      "evidence_mode": "short_excerpt",
+      "enabled": false,
+      "max_pdfs": 0,
+      "review_note": "醫學院國際事務分處法規：國際會議出國補助會前四週送達",
+      "schedule_track": "gov",
+      "format": "html"
+    },
+    {
+      "id": "ntu-med-publication",
+      "title": "國立臺灣大學醫學院115學年度研究生優秀著作獎公告",
+      "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/news_txt.asp?pno=7296",
+      "body_selector": "body",
+      "required_markers": [
+        "研究生優秀著作獎"
+      ],
+      "pdf_include": [],
+      "evidence_mode": "short_excerpt",
+      "enabled": false,
+      "max_pdfs": 0,
+      "review_note": "醫學院研發分處：115學年度研究生優秀著作獎，截止日115/11/26 17:00",
+      "schedule_track": "gov",
+      "format": "html"
     }
   ],
   "deferred_sources": [
-    {
-      "url": "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296",
-      "reason": "HTML僅導覽，正文需動態渲染；本版不啟用瀏覽器爬蟲。"
-    },
     {
       "url": "https://my.ntu.edu.tw/fao/search.aspx",
       "reason": "登入限定，維持人工查閱，不擷取登入狀態。"
