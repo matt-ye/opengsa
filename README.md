@@ -16,7 +16,7 @@
 
 > **公開預覽網站即時發布中**：**[https://matt-ye.github.io/opengsa/](https://matt-ye.github.io/opengsa/)**  
 > **全庫方案覆蓋規模**：**236 方案**（1-to-1 精確時程政策覆蓋，`undetermined = 0`，覆蓋率 100%）  
-> **測試防線**：282 項 Python 單元測試 PASS · 58 項前端整合測試 PASS · GitHub Actions CI/CD 100% PASS
+> **測試防線**：282 項 Python 單元測試 PASS · 61 項前端整合測試 PASS · GitHub Actions CI/CD 100% PASS
 
 ### 1. 全庫七大獎助資源板塊 (236 方案)
 OpenGSA 目前收錄跨越教育階段、公部門、民間企業與高等教育學府的完整資源光譜：
@@ -116,6 +116,16 @@ $$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (生�
 - **擴展基準台帳**：[`data/student-perks-baseline.json`](data/student-perks-baseline.json) 正式擴展至 **40 項代表性核心方案**。
 - **新增 12 項高價值福利**：Overleaf Professional (LaTeX 雲端協作)、Grammarly for Education、EndNote & Zotero、Wolfram Mathematica & Alpha Pro、DigitalOcean ($200 額度)、Namecheap 免費域名、GitKraken / Docker Desktop、台灣高鐵大學生 5/75 折優惠、Miro for Education 視覺白板等。
 - 詳見深度報告：[全球與臺灣學生身分軟硬體、雲端與生活福利第二梯次擴展調研報告](docs/STUDENT-PERKS-EXPANSION-SURVEY.md)。
+
+---
+
+### 12. UI/UX 與導覽體驗升級（Onboarding Guide & Cinematic Discovery）
+為消除初次造訪學生面臨 236 方案之資訊過載與術語認知卡點，遵循使用者自研之 `Toutour` 10 大反模式審查規範與 `Cinematic UI` 電影分鏡美學，完成四重易用性防線升級：
+- **首頁「❓ 快速指南」原生 `<dialog>` 導覽**：預設 Default OFF（拒絕強迫阻塞彈窗），點擊或按 `?` 鍵喚出 4 步驟卡片流（1. 探索快篩 ➔ 2. 甘特圖時程 ➔ 3. 跨頁收藏 ➔ 4. 推播與權益），支援膠囊步驟徽章、圓點進度條與一鍵直達功能捷徑。
+- **行動端甘特圖橫向捲動提示（Scroll Hint）**：消滅手機（< 800px）寬表格之「虛假底端」誤區，手指滑動超 30px 或關閉後自動淡出，`sessionStorage` 記憶防打擾。
+- **全站鍵盤快捷鍵矩陣（Global Hotkeys）**：支援 `?`（喚起指南）、`/`（聚焦搜尋框）、`1`～`4`（切換四分頁）、`Esc`（退出彈窗）。
+- **跨頁收藏動態微回饋（Cross-tab Toast Notification）**：卡片點擊「⭐ 收藏」時右上方即時浮現氣泡，消除跨頁狀態盲區。
+- 詳見專案手冊：[快速上手指南、易用性升級與後續 Roadmap 規劃手冊](docs/UI-UX-ONBOARDING-AND-ROADMAP-TODO.md)。
 
 ---
 

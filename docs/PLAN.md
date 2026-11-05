@@ -1,5 +1,31 @@
 # 目前計畫與已接受決策
 
+## 2026-11-06 UI/UX 與導覽體驗升級（Onboarding Guide & Cinematic Discovery）暨後續 TODO 規劃
+
+- **首頁「❓ 快速指南」按鈕與原生 `<dialog>` 新手上手指南落地**（[詳細手冊](UI-UX-ONBOARDING-AND-ROADMAP-TODO.md)）：
+  - 遵循使用者自研之 `matt-ye/Toutour` 反模式審查規範：嚴格限制 $\le 4$ 步（探索快篩 ➔ 時程甘特圖 ➔ 跨頁收藏 ➔ 推播與權益），拒絕強迫阻塞彈窗（Default OFF，尊重使用者主動性）。
+  - 完整無障礙語意與導覽控制：提供膠囊步驟徽章、圓點進度條（Dots Indicator）、上一步/下一步/完成按鈕，以及一鍵跳轉至對應功能之深層捷徑。
+  - 支援 `Esc` 關閉、背景遮罩點擊關閉與焦點自動返回。
+- **行動端甘特圖橫向捲動提示（Mobile Scroll Hint）消除虛假底端**：
+  - 針對手機螢幕寬度（< 800px）甘特圖溢出盲區，自動浮現 `👈 手指左右滑動以檢視完整時程 👉` 提示膠囊。
+  - 偵測使用者水平滑動超過 30px 或點擊關閉按鈕後平滑淡出，並寫入 `sessionStorage` 避免重複打擾。
+- **全站鍵盤快速鍵矩陣（Global Hotkeys）實裝**：
+  - `?`：開啟/切換快速上手指南。
+  - `/`：將焦點移至搜尋輸入框 `#search-query` 並自動選取文字（表單輸入時自動防誤觸）。
+  - `1` ~ `4`：快速在四個島嶼分頁之間切換（1: 找獎助, 2: 詳情, 3: 時間軸, 4: 權益）。
+  - `Esc`：一鍵退出正在開啟的導覽或 RSS 彈窗。
+- **跨頁收藏動態微回饋（Cross-tab Toast Notification）**：
+  - 在卡片點擊「⭐ 收藏」或取消時，右上角浮現即時微提示（`⭐ 已將《方案名稱》加入個人時程`），2.5 秒後淡出，徹底解決使用者「勾選後不知第二/三頁已同步」的困惑。
+- **使用者指示後續兩大 Roadmap 方向正式列入 TODO**：
+  - **TODO 1：自動的庫外資源檢索規劃（Autonomous External Discovery Probe）**：低頻公開探針（每週定時探測生輔組 RSS、政府開放資料平台 API `data.gov.tw`）、產出待審候選清冊 `data/discovery-candidates.json`，嚴格維持 `model_mode=off`、微批 HTTP 預算與真人審查閘門。
+  - **TODO 2：Code Review 與前端核心架構模組化（Modularization & A11y Deepening）**：重構 1,700+ 行之 `docs/design/prototype.js` 拆分獨立子模組（時程合約、篩選引擎、甘特圖渲染、導覽控制器、Toast 管理器），並補強 Dialog Focus Trap 與 Screen Reader 朗讀。
+- **測試防線擴展**：
+  - 前端整合測試擴充至 **61 項 100% PASS**（新增新手指南步數規範、HTML 語意結構與快捷鍵行為檢驗）。
+  - Python 單元測試維持 **282 項 PASS**。
+  - 正式台帳與候選資料 0 篡改，排程維持 model_mode=off。
+
+---
+
 ## 2026-11-06 國際頂會專屬獎學金未顯示診斷、大專生輔組資訊鏈深化與學生 Perks 擴展
 
 - **國際頂級會議專屬獎助（Top Conference Travel Grants）未顯示原因深層診斷**（[診斷報告](TOP-CONFERENCE-TRAVEL-GRANTS-AND-DISCOVERY-DIAGNOSIS.md)）：

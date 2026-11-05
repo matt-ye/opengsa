@@ -63,6 +63,12 @@ function windowState(item,today) {
  return "unknown"; // An old open snapshot, inferred start or same-day time needs confirmation.
 }
 const UNKNOWN_LABEL="不明，請見來源";
+const guideStepTitles = [
+ "🎯 探索與快篩：一秒鎖定你的機會",
+ "⏳ 看懂時程甘特圖：掌握官方期限與備件時機",
+ "⭐ 收藏與跨頁行事曆：打造個人專屬排程",
+ "📡 主動推播與權益保障：隨時掌握更新與法規求助"
+];
 const timingLabels={fixed_window:"固定申請期",deadline_only:"截止已公告",start_only:"起日已公告",event_relative:"依活動日期計算",recurring:"常態月日規則",rule_text:"時間規則已載（計算方式待整理）",mixed:"多階段時間規則",procedure_only:"僅有行政程序",conditional_deadline:"年度上限＋個人條件",automatic:"免另行申請",reference:"制度參考",undetermined:"時間資訊待補",historical:"往年／月份參考"};
 Object.assign(timingLabels,{continuous:"常態受理（資格與額度另核）",unit_announced:"依所屬單位公告",review_only:"已載審查方式；受理期間另查"});
 timingLabels.procedure_only="已知單位／行政時點";
@@ -580,7 +586,7 @@ function evaluateSubordination(checks={}){
  if(score===1) return {score:1,level:"review_needed",recommendedTiers:["TIER 01","TIER 02"],disclaimer,summary:"已勾選 1 項指標：具部分從屬或學習分流爭點。建議核對勞動部指導原則第 2～4 點及書面協議，確認工時與給付是否相符（2026 最低時薪 196 元）；必要時洽 TIER 01 系院或 TIER 02 校級窗口釐清。"+disclaimer};
  return {score,level:"high_subordination",recommendedTiers:["TIER 02","TIER 04","TIER 05"],disclaimer,summary:"已勾選 "+score+" 項指標：高度呈現人格、經濟或組織從屬性（常見「假學習真勞動」爭點）。依勞動部指導原則實質認定原則，若受指揮監督並提供勞務獲取對價，不能只按給付名稱排除適用保障；勞基法、2026最低工資與退休金須分別依關係、身分及進用依據確認。建議參考下方 TIER 02 校內申訴、TIER 04（地方主管機關勞檢／勞工局調解）或 TIER 05 高教工會。"+disclaimer};
 }
-const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,timePresentation,windowState,filterItems,partitionItems,clarity,groupDocuments,issueUrl,officialUrl,UNKNOWN_LABEL,unknownValue,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination,isNA,fieldText,resultText,methodText,startLabel,deadlineText,applyTimeline,timelineDates,itemMatchesQuery,parseUrlParams,serializeStateToParams};
+const api={guideStepTitles,dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,timePresentation,windowState,filterItems,partitionItems,clarity,groupDocuments,issueUrl,officialUrl,UNKNOWN_LABEL,unknownValue,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination,isNA,fieldText,resultText,methodText,startLabel,deadlineText,applyTimeline,timelineDates,itemMatchesQuery,parseUrlParams,serializeStateToParams};
 if(typeof module!=="undefined" && module.exports) module.exports=api;
 if(typeof document==="undefined") return;
 
@@ -893,11 +899,11 @@ function pickControl(item,slot) {
  const label=el("label",slot==="gantt"?"row-pick":"item-pick");
  const input=el("input");input.type="checkbox";input.checked=picked[mode].has(item.id);input.dataset.pickId=item.id;
  input.setAttribute("aria-label","勾選 "+item.title);
- input.addEventListener("change",()=>{if(input.checked) picked[mode].add(item.id);else picked[mode].delete(item.id);renderWorkspace();});
+ input.addEventListener("change",()=>{if(input.checked){picked[mode].add(item.id);showGlobalToast("⭐ 已將《"+item.title+"》加入個人時程（已同步至【我的時間軸】）");}else{picked[mode].delete(item.id);showGlobalToast("已從個人時程移除《"+item.title+"》");}renderWorkspace();});
  label.append(input,el("span","","列入我的選項"));return label;
 }
 function chooseAndOpen(item) {
- picked[mode].add(item.id);activeDetail[mode]=item.id;renderWorkspace();activatePanel("detail");
+ picked[mode].add(item.id);activeDetail[mode]=item.id;renderWorkspace();activatePanel("detail");showGlobalToast("⭐ 已將《"+item.title+"》加入個人時程");
 }
 function openSharedDetail(item) {
  activeDetail[mode]=item.id;renderWorkspace();activatePanel("detail");
@@ -1468,6 +1474,22 @@ const showRssToast=msg=>{
  }
 };
 
+const showGlobalToast = (msg, duration = 2500) => {
+ const toast = byId("global-toast");
+ if (!toast) return;
+ toast.textContent = msg;
+ toast.hidden = false;
+ toast.classList.remove("show");
+ void toast.offsetWidth;
+ toast.classList.add("show");
+ if (toast._timer) clearTimeout(toast._timer);
+ toast._timer = setTimeout(() => {
+  toast.classList.remove("show");
+  setTimeout(() => { toast.hidden = true; }, 200);
+ }, duration);
+};
+
+
 const setupFeedCopy=(btnId,urlId)=>{
  const btn=byId(btnId);
  const input=byId(urlId);
@@ -1562,4 +1584,217 @@ const initialTarget=urlParams.tab||location.hash.slice(1);
 if(["search","detail","timeline","rights"].includes(initialTarget)) activatePanel(initialTarget,false,false);
 else if(!scrollToInternalTarget(initialTarget)) activatePanel("search",false,false);
 render();
+
+// ==========================================
+// Onboarding Guide Walkthrough (Toutour & Cinematic UI compliant)
+// ==========================================
+let currentGuideStep = 1;
+const guideDialog = byId("guide-dialog");
+const guideOpenBtn = byId("guide-open-btn");
+const guideCloseBtn = byId("guide-dialog-close");
+const guidePrevBtn = byId("guide-prev-btn");
+const guideNextBtn = byId("guide-next-btn");
+const guideFinishBtn = byId("guide-finish-btn");
+const guideStepBadge = byId("guide-step-badge");
+const guideDialogTitle = byId("guide-dialog-title");
+const guideSlides = document.querySelectorAll ? document.querySelectorAll(".guide-slide") : [];
+const guideDots = document.querySelectorAll ? document.querySelectorAll(".guide-dot") : [];
+
+const setGuideStep = (step) => {
+ if (step < 1) step = 1;
+ if (step > 4) step = 4;
+ currentGuideStep = step;
+
+ if (guideStepBadge) guideStepBadge.textContent = "第 " + step + " 步 / 共 4 步";
+ if (guideDialogTitle) guideDialogTitle.textContent = guideStepTitles[step - 1];
+
+ if (guideSlides && guideSlides.forEach) {
+  guideSlides.forEach((slide, idx) => {
+   const isActive = (idx === step - 1);
+   slide.hidden = !isActive;
+   slide.classList.toggle("active", isActive);
+  });
+ }
+
+ if (guideDots && guideDots.forEach) {
+  guideDots.forEach((dot, idx) => {
+   const isActive = (idx === step - 1);
+   dot.classList.toggle("active", isActive);
+   dot.setAttribute("aria-selected", isActive ? "true" : "false");
+  });
+ }
+
+ if (guidePrevBtn) guidePrevBtn.disabled = (step === 1);
+ if (guideNextBtn) guideNextBtn.hidden = (step === 4);
+ if (guideFinishBtn) guideFinishBtn.hidden = (step !== 4);
+};
+
+const openGuide = (step = 1) => {
+ if (guideDialog && typeof guideDialog.showModal === "function") {
+  setGuideStep(step);
+  guideDialog.showModal();
+ }
+};
+
+const closeGuide = () => {
+ if (guideDialog && typeof guideDialog.close === "function") {
+  guideDialog.close();
+  if (guideOpenBtn && typeof guideOpenBtn.focus === "function") guideOpenBtn.focus();
+ }
+};
+
+if (guideOpenBtn) guideOpenBtn.addEventListener("click", () => openGuide(1));
+if (guideCloseBtn) guideCloseBtn.addEventListener("click", closeGuide);
+if (guideFinishBtn) guideFinishBtn.addEventListener("click", closeGuide);
+
+if (guidePrevBtn) guidePrevBtn.addEventListener("click", () => setGuideStep(currentGuideStep - 1));
+if (guideNextBtn) guideNextBtn.addEventListener("click", () => setGuideStep(currentGuideStep + 1));
+
+if (guideDots && guideDots.forEach) {
+ guideDots.forEach(dot => {
+  dot.addEventListener("click", () => {
+   const target = parseInt(dot.dataset.stepTarget, 10);
+   if (!isNaN(target)) setGuideStep(target);
+  });
+ });
+}
+
+if (guideDialog) {
+ guideDialog.addEventListener("click", event => {
+  if (typeof guideDialog.getBoundingClientRect !== "function") return;
+  const rect = guideDialog.getBoundingClientRect();
+  const inside = rect.top <= event.clientY && event.clientY <= rect.top + rect.height &&
+                 rect.left <= event.clientX && event.clientX <= rect.left + rect.width;
+  if (!inside) closeGuide();
+ });
+}
+
+const bindGuideJump = (id, action) => {
+ const el = byId(id);
+ if (el) {
+  el.addEventListener("click", () => {
+   closeGuide();
+   action();
+  });
+ }
+};
+
+bindGuideJump("guide-jump-filters", () => {
+ activatePanel("search", true, false);
+ const pb = byId("persona-bar");
+ if (pb) {
+  if (typeof pb.scrollIntoView === "function") pb.scrollIntoView({ behavior: "smooth", block: "start" });
+  const firstBtn = pb.querySelector("button");
+  if (firstBtn && typeof firstBtn.focus === "function") firstBtn.focus();
+ }
+});
+
+bindGuideJump("guide-jump-gantt", () => {
+ activatePanel("search", true, false);
+ const gv = byId("gantt-view");
+ if (gv && typeof gv.scrollIntoView === "function") gv.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+bindGuideJump("guide-jump-timeline", () => {
+ activatePanel("timeline", true, false);
+});
+
+bindGuideJump("guide-jump-rss", () => {
+ if (rssDialog && typeof rssDialog.showModal === "function") {
+  rssDialog.showModal();
+ }
+});
+
+bindGuideJump("guide-jump-rights", () => {
+ activatePanel("rights", true, false);
+});
+
+// ==========================================
+// Gantt Horizontal Scroll Hint (Mobile UX optimization)
+// ==========================================
+const ganttScrollContainer = document.querySelector ? document.querySelector(".gantt-scroll") : null;
+const ganttScrollHint = byId("gantt-scroll-hint");
+const scrollHintDismissBtn = byId("scroll-hint-dismiss");
+
+if (ganttScrollHint && scrollHintDismissBtn) {
+ scrollHintDismissBtn.addEventListener("click", () => {
+  ganttScrollHint.classList.add("dismissed");
+  try { if (typeof sessionStorage !== "undefined") sessionStorage.setItem("opengsa_scroll_hint_seen", "1"); } catch(e) {}
+ });
+}
+
+if (ganttScrollContainer && ganttScrollHint) {
+ try {
+  if (typeof sessionStorage !== "undefined" && sessionStorage.getItem("opengsa_scroll_hint_seen") === "1") {
+   ganttScrollHint.classList.add("dismissed");
+  }
+ } catch(e) {}
+
+ ganttScrollContainer.addEventListener("scroll", () => {
+  if (ganttScrollContainer.scrollLeft > 30 && !ganttScrollHint.classList.contains("dismissed")) {
+   ganttScrollHint.classList.add("dismissed");
+   try { if (typeof sessionStorage !== "undefined") sessionStorage.setItem("opengsa_scroll_hint_seen", "1"); } catch(e) {}
+  }
+ }, { passive: true });
+}
+
+// ==========================================
+// Global Keyboard Shortcuts (Hotkeys)
+// ==========================================
+if (typeof window !== "undefined") {
+ window.addEventListener("keydown", event => {
+  const activeTag = document.activeElement ? (document.activeElement.tagName || "").toUpperCase() : "";
+  const isInputActive = ["INPUT", "TEXTAREA", "SELECT"].includes(activeTag) || (document.activeElement && document.activeElement.isContentEditable);
+
+  // Esc closes active dialogs
+  if (event.key === "Escape") {
+   if (guideDialog && guideDialog.open) {
+    closeGuide();
+    return;
+   }
+   if (rssDialog && rssDialog.open) {
+    closeRssDialog();
+    return;
+   }
+  }
+
+  if (isInputActive) return;
+  if (event.ctrlKey || event.altKey || event.metaKey) return;
+
+  // Key '?' opens Guide
+  if (event.key === "?" || (event.shiftKey && event.key === "/")) {
+   event.preventDefault();
+   openGuide(1);
+   return;
+  }
+
+  // Key '/' focuses search input
+  if (event.key === "/") {
+   const sq = byId("search-query");
+   if (sq) {
+    event.preventDefault();
+    activatePanel("search", true, false);
+    if (typeof sq.focus === "function") sq.focus();
+    if (typeof sq.select === "function") sq.select();
+   }
+   return;
+  }
+
+  // Keys '1' to '4' switch tabs
+  if (event.key === "1") {
+   event.preventDefault();
+   activatePanel("search", true, false);
+  } else if (event.key === "2") {
+   event.preventDefault();
+   activatePanel("detail", true, false);
+  } else if (event.key === "3") {
+   event.preventDefault();
+   activatePanel("timeline", true, false);
+  } else if (event.key === "4") {
+   event.preventDefault();
+   activatePanel("rights", true, false);
+  }
+ });
+}
+
 }());

@@ -856,3 +856,52 @@ test("情境按鈕擴充：k12_aid與abroad_all快速套用並正確還原", ()=
  assert.equal(abroadPersona.category, "all_abroad");
  assert.equal(core.activePersona(abroadPersona), "abroad_all");
 });
+
+test("新手上手指南規格：4 步驟嚴格受控（<= 4 步）、標題與導覽索引健全", ()=>{
+ assert.ok(Array.isArray(core.guideStepTitles));
+ assert.equal(core.guideStepTitles.length, 4, "導覽步驟嚴格遵循 Toutour 規範限制在 4 步以內");
+ assert.ok(core.guideStepTitles[0].includes("探索與快篩"));
+ assert.ok(core.guideStepTitles[1].includes("時程甘特圖"));
+ assert.ok(core.guideStepTitles[2].includes("收藏與跨頁行事曆"));
+ assert.ok(core.guideStepTitles[3].includes("推播與權益保障"));
+});
+
+test("HTML 語意結構防線：頁首快速指南按鈕、4 步驟導覽 Dialog、甘特圖滾動提示與全域 Toast 齊備", ()=>{
+ const fs = require("node:fs");
+ const html = fs.readFileSync("docs/design/wireframes.html", "utf-8");
+ 
+ // Header button
+ assert.ok(html.includes('id="guide-open-btn"'), "頁首必須包含快速上手指南按鈕");
+ assert.ok(html.includes("❓ 快速指南"));
+ 
+ // Guide Dialog & 4 steps
+ assert.ok(html.includes('id="guide-dialog"'), "必須包含指南 Dialog 容器");
+ assert.ok(html.includes('data-step="1"'));
+ assert.ok(html.includes('data-step="2"'));
+ assert.ok(html.includes('data-step="3"'));
+ assert.ok(html.includes('data-step="4"'));
+ 
+ // Stepper Buttons & Dots
+ assert.ok(html.includes('id="guide-prev-btn"'));
+ assert.ok(html.includes('id="guide-next-btn"'));
+ assert.ok(html.includes('id="guide-finish-btn"'));
+ assert.ok(html.includes('class="guide-dots"'));
+ 
+ // Gantt Scroll Hint for Mobile
+ assert.ok(html.includes('id="gantt-scroll-hint"'), "甘特圖必須掛載行動端橫向捲動提示");
+ assert.ok(html.includes('id="scroll-hint-dismiss"'));
+ 
+ // Global Toast
+ assert.ok(html.includes('id="global-toast"'), "必須包含全域微回饋 Toast 容器");
+});
+
+test("全域快捷鍵與無障礙宣告防線：支援 Escape / ? / 1~4 鍵盤行為定義", ()=>{
+ const fs = require("node:fs");
+ const js = fs.readFileSync("docs/design/prototype.js", "utf-8");
+ 
+ assert.ok(js.includes('event.key === "Escape"'), "必須監聽 Esc 關閉彈窗");
+ assert.ok(js.includes('event.key === "?"'), "必須支援按鍵 ? 喚起指南");
+ assert.ok(js.includes('event.key === "/"'), "必須支援按鍵 / 聚焦搜尋框");
+ assert.ok(js.includes('event.key === "1"'), "必須支援按鍵 1~4 切換分頁");
+ assert.ok(js.includes("showGlobalToast"), "必須包含全域微提示函式");
+});
