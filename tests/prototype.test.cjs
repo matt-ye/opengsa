@@ -856,3 +856,93 @@ test("情境按鈕擴充：k12_aid與abroad_all快速套用並正確還原", ()=
  assert.equal(abroadPersona.category, "all_abroad");
  assert.equal(core.activePersona(abroadPersona), "abroad_all");
 });
+
+test("新手上手指南規格：4 步驟嚴格受控（<= 4 步）、標題與導覽索引健全", ()=>{
+ assert.ok(Array.isArray(core.guideStepTitles));
+ assert.equal(core.guideStepTitles.length, 4, "導覽步驟嚴格遵循 Toutour 規範限制在 4 步以內");
+ assert.ok(core.guideStepTitles[0].includes("探索與快篩"));
+ assert.ok(core.guideStepTitles[1].includes("時程甘特圖"));
+ assert.ok(core.guideStepTitles[2].includes("收藏與跨頁行事曆"));
+ assert.ok(core.guideStepTitles[3].includes("推播與權益保障"));
+});
+
+test("HTML 語意結構防線：頁首快速指南按鈕、4 步驟導覽 Dialog、甘特圖滾動提示與全域 Toast 齊備", ()=>{
+ const fs = require("node:fs");
+ const html = fs.readFileSync("docs/design/wireframes.html", "utf-8");
+ 
+ // Header button
+ assert.ok(html.includes('id="guide-open-btn"'), "頁首必須包含快速上手指南按鈕");
+ assert.ok(html.includes("❓ 快速指南"));
+ 
+ // Guide Dialog & 4 steps
+ assert.ok(html.includes('id="guide-dialog"'), "必須包含指南 Dialog 容器");
+ assert.ok(html.includes('data-step="1"'));
+ assert.ok(html.includes('data-step="2"'));
+ assert.ok(html.includes('data-step="3"'));
+ assert.ok(html.includes('data-step="4"'));
+ 
+ // Stepper Buttons & Dots
+ assert.ok(html.includes('id="guide-prev-btn"'));
+ assert.ok(html.includes('id="guide-next-btn"'));
+ assert.ok(html.includes('id="guide-finish-btn"'));
+ assert.ok(html.includes('class="guide-dots"'));
+ 
+ // Gantt Scroll Hint for Mobile
+ assert.ok(html.includes('id="gantt-scroll-hint"'), "甘特圖必須掛載行動端橫向捲動提示");
+ assert.ok(html.includes('id="scroll-hint-dismiss"'));
+ 
+ // Global Toast
+ assert.ok(html.includes('id="global-toast"'), "必須包含全域微回饋 Toast 容器");
+});
+
+test("全域快捷鍵與無障礙宣告防線：支援 Escape / ? / 1~4 鍵盤行為定義", ()=>{
+ const fs = require("node:fs");
+ const js = fs.readFileSync("docs/design/prototype.js", "utf-8");
+ 
+ assert.ok(js.includes('event.key === "Escape"'), "必須監聽 Esc 關閉彈窗");
+ assert.ok(js.includes('event.key === "?"'), "必須支援按鍵 ? 喚起指南");
+ assert.ok(js.includes('event.key === "/"'), "必須支援按鍵 / 聚焦搜尋框");
+ assert.ok(js.includes('event.key === "1"'), "必須支援按鍵 1~4 切換分頁");
+ assert.ok(js.includes("showGlobalToast"), "必須包含全域微提示函式");
+});
+
+test("Toutour 情境感知專屬子導覽規格：5大導覽體系步數嚴格受控（<= 4 步）、資訊完整", ()=>{
+ assert.ok(core.subTours, "必須匯出 subTours 導覽體系");
+ const expectedTours = ["global", "search", "detail", "timeline", "rights"];
+ for (const key of expectedTours) {
+  const tour = core.subTours[key];
+  assert.ok(tour, "必須包含子導覽：" + key);
+  assert.ok(Array.isArray(tour.steps));
+  assert.ok(tour.steps.length <= 4, key + " 導覽步數必須嚴格受控在 4 步以內");
+  assert.ok(tour.steps.length >= 3, key + " 導覽步數至少 3 步");
+  tour.steps.forEach((step, idx) => {
+   assert.ok(step.title, key + " 步驟 " + (idx+1) + " 必須有標題");
+   assert.ok(step.desc, key + " 步驟 " + (idx+1) + " 必須有說明");
+   assert.ok(step.icon, key + " 步驟 " + (idx+1) + " 必須有圖標");
+   assert.ok(Array.isArray(step.features) && step.features.length >= 2, key + " 步驟 " + (idx+1) + " 必須包含特色清單");
+  });
+ }
+});
+
+test("RWD 響應式優化與甘特圖 64px 緊湊防線：消除底部死空白與手機端欄寬優化", ()=>{
+ const fs = require("node:fs");
+ const html = fs.readFileSync("docs/design/wireframes.html", "utf-8");
+ 
+ // 甘特圖緊湊列高 64px
+ assert.ok(html.includes("min-height:64px"), "甘特圖列高必須緊湊化為 64px 以提高單屏可視方案數");
+ 
+ // 消除底部空白
+ assert.ok(html.includes(".screen{border-bottom:0;padding:24px 0 20px}"), "首頁 screen 底部 padding 必須收斂為 20px");
+ assert.ok(html.includes("footer{max-width:1280px;margin:0 auto;padding:20px 32px 28px"), "footer padding 必須緊湊化消滅懸空");
+ 
+ // 手機端左欄收窄至 108px/112px
+ assert.ok(html.includes("--label-width:112px") || html.includes("--label-width:108px"), "手機端甘特圖標籤欄必須收窄以釋出日期軸空間");
+ 
+ // 導覽切換器
+ assert.ok(html.includes('id="guide-tour-select"'), "必須包含子導覽切換選單");
+ assert.ok(html.includes('value="global"'));
+ assert.ok(html.includes('value="search"'));
+ assert.ok(html.includes('value="detail"'));
+ assert.ok(html.includes('value="timeline"'));
+ assert.ok(html.includes('value="rights"'));
+});

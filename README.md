@@ -16,7 +16,7 @@
 
 > **公開預覽網站即時發布中**：**[https://matt-ye.github.io/opengsa/](https://matt-ye.github.io/opengsa/)**  
 > **全庫方案覆蓋規模**：**236 方案**（1-to-1 精確時程政策覆蓋，`undetermined = 0`，覆蓋率 100%）  
-> **測試防線**：282 項 Python 單元測試 PASS · 58 項前端整合測試 PASS · GitHub Actions CI/CD 100% PASS
+> **測試防線**：282 項 Python 單元測試 PASS · 63 項前端整合測試 PASS · GitHub Actions CI/CD 100% PASS
 
 ### 1. 全庫七大獎助資源板塊 (236 方案)
 OpenGSA 目前收錄跨越教育階段、公部門、民間企業與高等教育學府的完整資源光譜：
@@ -116,6 +116,17 @@ $$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (生�
 - **擴展基準台帳**：[`data/student-perks-baseline.json`](data/student-perks-baseline.json) 正式擴展至 **40 項代表性核心方案**。
 - **新增 12 項高價值福利**：Overleaf Professional (LaTeX 雲端協作)、Grammarly for Education、EndNote & Zotero、Wolfram Mathematica & Alpha Pro、DigitalOcean ($200 額度)、Namecheap 免費域名、GitKraken / Docker Desktop、台灣高鐵大學生 5/75 折優惠、Miro for Education 視覺白板等。
 - 詳見深度報告：[全球與臺灣學生身分軟硬體、雲端與生活福利第二梯次擴展調研報告](docs/STUDENT-PERKS-EXPANSION-SURVEY.md)。
+
+---
+
+### 12. 全站四分頁 RWD 響應式升級、甘特圖 64px 緊湊化與 Toutour 情境感知子導覽
+全面解決甘特圖可視空間侷促、首頁底部懸空死空白與各頁子導覽需求，遵循使用者自研之 `Toutour` 10 大反模式審查規範與 `Cinematic UI` 電影分鏡美學，完成五重防線升級：
+- **甘特圖 64px 緊湊列高與自適應擴展**：列高從 110px 壓縮至 **64px**（桌面）/ **56px**（手機），單屏可見方案翻倍（6~8 筆）；高度自適應佔滿螢幕（78vh 桌面 / 76vh 手機），手機左欄收窄至 108px 釋出 30% 日期軸空間。
+- **徹底消滅首頁底部死空白**：收斂 `.screen` 與 `footer` 的垂直 padding，右欄 Flex 垂直撐滿，卡片緊貼頁尾，徹底告別中空懸空的視覺斷層。
+- **Toutour 情境感知 5 大導覽體系**：提供 `global`（全站 4 步總覽）及 `search`、`detail`、`timeline`、`rights` 四大分頁專屬子導覽；點擊頁首 `❓ 快速指南` 或按 `?` 鍵時自動感知所在分頁精準彈出，每頁嚴格 $\le 4$ 步，支援頂部選單自由切換。
+- **其餘分頁 RWD 深度優化**：Tab 2 工具列小螢幕彈性分組與防空白、Tab 3 個人甘特圖緊湊化、Tab 4 四大主題改為手機版橫向無縫捲動膠囊（Segmented Scroll）。
+- **全站鍵盤快捷鍵矩陣與動態微回饋**：`?`（喚起當前分頁指南）、`/`（聚焦搜尋框）、`1`～`4`（切換四分頁）、`Esc`（退出彈窗）；跨頁收藏即時浮動 Toast。
+- 詳見專案手冊：[快速上手指南、全站四分頁 RWD 響應式升級與 Toutour 子導覽手冊](docs/UI-UX-ONBOARDING-AND-ROADMAP-TODO.md)。
 
 ---
 

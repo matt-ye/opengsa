@@ -63,6 +63,209 @@ function windowState(item,today) {
  return "unknown"; // An old open snapshot, inferred start or same-day time needs confirmation.
 }
 const UNKNOWN_LABEL="不明，請見來源";
+const subTours = {
+ global: {
+  id: "global",
+  name: "全站 4 步總覽",
+  badge: "全站宏觀指南",
+  steps: [
+   {
+    icon: "🎯",
+    title: "第一步：探索與快篩",
+    badge: "01 / 全站探索",
+    desc: "OpenGSA 收錄全台 236 項獎學金與福利。利用頂部情境標籤（碩博/出國/弱勢/算力）或左側多維度篩選，秒縮小目標範圍。",
+    features: ["情境標籤一鍵直達", "全教育階段身分篩選（大學部至 K-12）", "頂會與差旅同義詞比對"],
+    action: { label: "👉 前往情境與篩選", panel: "search", anchor: "persona-bar" }
+   },
+   {
+    icon: "⏳",
+    title: "第二步：看懂時程甘特圖",
+    badge: "02 / 時程解讀",
+    desc: "全台首創 100% 精確時程政策投影，64px 緊湊視野。綠色實心為受理期、斑駁條紋為截止前 30 天準備提醒帶、空心標記為推估日。",
+    features: ["實線正式受理期間", "截止前 30 天準備提醒帶", "垂直紅線標記今天"],
+    action: { label: "👉 前往時程甘特圖", panel: "search", anchor: "gantt-view" }
+   },
+   {
+    icon: "⭐",
+    title: "第三步：收藏與跨頁行事曆",
+    badge: "03 / 跨頁排程",
+    desc: "點選方案卡片上的「⭐ 收藏」，自動同步至【獎助詳情】進行多方案並排比對，並匯入【我的時間軸】安排待辦；亦可試算研討會補件時限。",
+    features: ["跨頁自動即時同步", "第二頁雙方案並排比對", "第三頁個人專屬時間軸"],
+    action: { label: "👉 查看我的時間軸", panel: "timeline" }
+   },
+   {
+    icon: "📡",
+    title: "第四步：主動推播與權益保障",
+    badge: "04 / 推播與救濟",
+    desc: "點擊頁首「📡 訂閱推播」免費取得雙軌 RSS 或透過 Follow.it 訂閱 Email。遇到研究助理薪資遲發、工時超標或著作權爭議，至【權益與求助】查閱五級救濟地圖與自測。",
+    features: ["雙軌 RSS 與 Email 推播", "五級法定救濟地圖", "從屬性勞僱關係自測"],
+    action: { label: "👉 前往權益求助", panel: "rights" }
+   }
+  ]
+ },
+ search: {
+  id: "search",
+  name: "找獎助與快篩指南",
+  badge: "找獎助 · 專屬子導覽",
+  steps: [
+   {
+    icon: "🏷️",
+    title: "情境標籤：一鍵鎖定身分",
+    badge: "找獎助 01",
+    desc: "點選上方「🎓 博士研究」、「✈️ 出國交流」、「🎒 弱勢助學」或「💻 學生福利」，一秒縮小目標，再次點擊即可還原。",
+    features: ["博士研究專注：國科會／教育部博獎", "出國交流與留學：國際會議／千里馬／遠學", "學生福利：40 項軟硬體、雲端與交通折扣"],
+    action: { label: "👉 瀏覽情境標籤", panel: "search", anchor: "persona-bar" }
+   },
+   {
+    icon: "🎛️",
+    title: "多維篩選：精準過濾條件",
+    badge: "找獎助 02",
+    desc: "左欄篩選器支援：學歷階段（碩博／大學部／高中職／國中小）、方案來源（政府／學校／企業／基金會）、兼領限制與受理狀態。",
+    features: ["杜絕身分排擠：大學部與 K-12 直達", "兼領合約檢核：明示不可兼領與有條件", "受理狀態：受理中／即將開放／已截止"],
+    action: { label: "👉 展開篩選卡", panel: "search", anchor: "filter-category" }
+   },
+   {
+    icon: "📊",
+    title: "甘特圖全景：掌握倒數節奏",
+    badge: "找獎助 03",
+    desc: "本輪升級 64px 緊湊列高，一屏同時綜覽 6~8 筆方案！實心長條為官方受理日，斑駁斜紋提醒提早 30 天準備推薦信與自傳，點擊長條即可查看完整時間政策。",
+    features: ["一屏可見數翻倍", "30 天準備提醒帶提早應對", "點擊色帶直達詳細公文依據"],
+    action: { label: "👉 檢視甘特圖", panel: "search", anchor: "gantt-view" }
+   },
+   {
+    icon: "🔍",
+    title: "同義詞搜尋與一鍵收藏",
+    badge: "找獎助 04",
+    desc: "搜尋框內建同義詞引擎，輸入「頂會」、「NeurIPS」、「CVPR」、「差旅補助」即可精確命中出國會議補助；在卡片點擊「⭐ 收藏」即刻跨頁同步。",
+    features: ["頂尖國際研討會同義詞比對", "一鍵加入個人時間軸", "右上角浮動 Toast 即時微回饋"],
+    action: { label: "👉 聚焦搜尋框", panel: "search", anchor: "search-query" }
+   }
+  ]
+ },
+ detail: {
+  id: "detail",
+  name: "方案詳情與條件比對指南",
+  badge: "方案詳情 · 專屬子導覽",
+  steps: [
+   {
+    icon: "📂",
+    title: "檢視範圍：全庫 vs 收藏清單",
+    badge: "詳情比對 01",
+    desc: "工具列支援切換「目前選項」與「全庫所有方案（236 筆）」，無論是否已收藏，都能隨時調閱全台任何一筆獎學金之完整條文。",
+    features: ["隨時查閱 236 筆方案條文", "過濾只看個人收藏項目", "輸入關鍵字即時全文過濾"],
+    action: { label: "👉 切換檢視範圍", panel: "detail", anchor: "detail-scope-switch" }
+   },
+   {
+    icon: "⚖️",
+    title: "雙方案並排：眼球橫向比對",
+    badge: "詳情比對 02",
+    desc: "點選「➕ 選擇第二個方案進行並排比對」，系統立即在右側展開對照卡片，橫向比對資助金額、名額、申請資格與給付方式。",
+    features: ["雙欄同步並排對照", "自動標記條文差異", "手機端支援橫向平滑滑動"],
+    action: { label: "👉 選擇比對方案", panel: "detail", anchor: "detail-compare-select" }
+   },
+   {
+    icon: "📑",
+    title: "條文短證據與母法依據",
+    badge: "詳情比對 03",
+    desc: "OpenGSA 堅持嚴謹合約：每筆方案均揭露母法設置辦法、當期公文條號與出資機關定位，絕不憑空捏造或拼接非當期條文。",
+    features: ["官方公文與法規章程精準引用", "明確標註兼領衝突與例外條款", "排除謠傳，回歸法條原意"],
+    action: { label: "👉 查看方案條文", panel: "detail", anchor: "detail-workspace" }
+   },
+   {
+    icon: "🔗",
+    title: "原文連結與公開回報",
+    badge: "詳情比對 04",
+    desc: "提供直達主管機關當期公告之官方外連；若發現主辦單位修訂辦法或開放新年度申請，可點擊「提供獎助來源」一鍵在 GitHub 公開回報。",
+    features: ["官方原站一鍵直達", "不收私人機密附件", "GitHub 公開 Issue 透明協作"],
+    action: { label: "👉 回到第一頁探索", panel: "search" }
+   }
+  ]
+ },
+ timeline: {
+  id: "timeline",
+  name: "我的時程與行動規劃指南",
+  badge: "我的時程 · 專屬子導覽",
+  steps: [
+   {
+    icon: "📅",
+    title: "個人專屬甘特圖看板",
+    badge: "我的時程 01",
+    desc: "這是一張完全專屬於你的個人時程表！僅繪製你在第一頁勾選收藏的心儀方案，採用 64px 緊湊列高，所有關鍵截止日一屏掌握。",
+    features: ["排除無關雜訊，只看已選機會", "自動標註各方案截止倒數", "支援今天前後 90 天與全覆蓋切換"],
+    action: { label: "👉 檢視個人甘特圖", panel: "timeline", anchor: "personal-gantt-grid" }
+   },
+   {
+    icon: "✈️",
+    title: "國際研討會差旅倒推機",
+    badge: "我的時程 02",
+    desc: "計劃出國發表論文？在第二頁輸入研討會首日，系統自動依國科會及校方規則（提前一個月首日彙送）倒推最晚校內送件與補件時程，並繪入甘特圖。",
+    features: ["支援國科會會議出國作業要點", "自動推算接受通知與補送緩衝", "個人試算資料僅記憶體暫存不外傳"],
+    action: { label: "👉 前往研討會試算", panel: "search", anchor: "conference-planner" }
+   },
+   {
+    icon: "✅",
+    title: "備件清單與進度追蹤",
+    badge: "我的時程 03",
+    desc: "下方「申請清單與準備待辦」將各方案拆解為推薦信、成績單、研究計畫等具體任務，以手風琴折疊卡呈現，勾選即可動態統計完成度。",
+    features: ["方案手風琴卡片節省手機版面", "待辦完成進度百分比即時計算", "暫存於本地瀏覽器，隱私 100% 安全"],
+    action: { label: "👉 檢視待辦清單", panel: "timeline", anchor: "plan-options" }
+   },
+   {
+    icon: "📋",
+    title: "一鍵分享與跨裝置接續",
+    badge: "我的時程 04",
+    desc: "點擊頁首「📋 分享此畫面」，系統自動將目前勾選的方案與篩選條件編碼進 URL，複製後貼給同儕或傳到手機即可無縫接續使用！",
+    features: ["URL 狀態稀疏編碼", "零個資、無 Cookie、無資料庫", "跨裝置無縫同步排程"],
+    action: { label: "👉 回到第一頁", panel: "search" }
+   }
+  ]
+ },
+ rights: {
+  id: "rights",
+  name: "權益防線與求助自測指南",
+  badge: "權益求助 · 專屬子導覽",
+  steps: [
+   {
+    icon: "🧭",
+    title: "四大主題導航專區",
+    badge: "權益求助 01",
+    desc: "研究生的勞動與學術權益守護庫：分為「重點總覽」、「💰 聘任與給付」、「📜 法規與保障」、「🗺️ 求助與自測」四大模組，手機端支援平滑滑動膠囊。",
+    features: ["重點總覽：快速辨識三部曲", "聘任給付：五類查核路徑與薪資行情", "法規保障：勞基法、退撫金與智財權"],
+    action: { label: "👉 切換主題選單", panel: "rights", anchor: "rights-view-switch" }
+   },
+   {
+    icon: "💵",
+    title: "薪資行情與法定最低標準",
+    badge: "權益求助 02",
+    desc: "對照國科會研究計畫兼任助理標準、一般 TA、EMITA 雙語助理支給上限，以及勞動部法定最低工資底線，清楚判斷自己是領「獎勵金」還是「工資」。",
+    features: ["國科會計畫給付區間比較", "校方自聘支給上限對照", "釐清勞僱型必須享有勞保勞退"],
+    action: { label: "👉 查看聘任給付表", panel: "rights", anchor: "ta-salary-title" }
+   },
+   {
+    icon: "🩺",
+    title: "從屬性自測：學習型 vs 勞僱型",
+    badge: "權益求助 03",
+    desc: "點選「求助與自測」，勾選差勤打卡、指揮監督、業務替代性等 8 項客觀指標，系統一鍵分析「實質受僱關係」，杜絕假學習真勞動。",
+    features: ["客觀司法判準指標檢核", "即時產出爭點分析報告", "蒐證四要件提示（排班表/截圖/帳戶）"],
+    action: { label: "👉 前往從屬性自測", panel: "rights", anchor: "subordination-wizard" }
+   },
+   {
+    icon: "🗺️",
+    title: "五級救濟地圖：精確求助窗口",
+    badge: "權益求助 04",
+    desc: "遇到超時、欠薪或處分爭議？救濟地圖清楚指引 Tier 1（系院）➔ Tier 2（學生申評會/性平）➔ Tier 3（主管機關/訴願）➔ Tier 4（勞工局勞檢）➔ Tier 5（工會支援），無需層層通報。",
+    features: ["依事件性質直選權責窗口", "涉及不利處分不強制系所協商", "附救濟時效與保密保障說明"],
+    action: { label: "👉 查看救濟地圖", panel: "rights", anchor: "grievance-map-title" }
+   }
+  ]
+ }
+};
+const guideStepTitles = [
+ "🎯 探索與快篩：一秒鎖定你的機會",
+ "⏳ 看懂時程甘特圖：掌握官方期限與備件時機",
+ "⭐ 收藏與跨頁行事曆：打造個人專屬排程",
+ "📡 主動推播與權益保障：隨時掌握更新與法規求助"
+];
 const timingLabels={fixed_window:"固定申請期",deadline_only:"截止已公告",start_only:"起日已公告",event_relative:"依活動日期計算",recurring:"常態月日規則",rule_text:"時間規則已載（計算方式待整理）",mixed:"多階段時間規則",procedure_only:"僅有行政程序",conditional_deadline:"年度上限＋個人條件",automatic:"免另行申請",reference:"制度參考",undetermined:"時間資訊待補",historical:"往年／月份參考"};
 Object.assign(timingLabels,{continuous:"常態受理（資格與額度另核）",unit_announced:"依所屬單位公告",review_only:"已載審查方式；受理期間另查"});
 timingLabels.procedure_only="已知單位／行政時點";
@@ -580,7 +783,7 @@ function evaluateSubordination(checks={}){
  if(score===1) return {score:1,level:"review_needed",recommendedTiers:["TIER 01","TIER 02"],disclaimer,summary:"已勾選 1 項指標：具部分從屬或學習分流爭點。建議核對勞動部指導原則第 2～4 點及書面協議，確認工時與給付是否相符（2026 最低時薪 196 元）；必要時洽 TIER 01 系院或 TIER 02 校級窗口釐清。"+disclaimer};
  return {score,level:"high_subordination",recommendedTiers:["TIER 02","TIER 04","TIER 05"],disclaimer,summary:"已勾選 "+score+" 項指標：高度呈現人格、經濟或組織從屬性（常見「假學習真勞動」爭點）。依勞動部指導原則實質認定原則，若受指揮監督並提供勞務獲取對價，不能只按給付名稱排除適用保障；勞基法、2026最低工資與退休金須分別依關係、身分及進用依據確認。建議參考下方 TIER 02 校內申訴、TIER 04（地方主管機關勞檢／勞工局調解）或 TIER 05 高教工會。"+disclaimer};
 }
-const api={dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,timePresentation,windowState,filterItems,partitionItems,clarity,groupDocuments,issueUrl,officialUrl,UNKNOWN_LABEL,unknownValue,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination,isNA,fieldText,resultText,methodText,startLabel,deadlineText,applyTimeline,timelineDates,itemMatchesQuery,parseUrlParams,serializeStateToParams};
+const api={subTours,guideStepTitles,dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,timePresentation,windowState,filterItems,partitionItems,clarity,groupDocuments,issueUrl,officialUrl,UNKNOWN_LABEL,unknownValue,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination,isNA,fieldText,resultText,methodText,startLabel,deadlineText,applyTimeline,timelineDates,itemMatchesQuery,parseUrlParams,serializeStateToParams};
 if(typeof module!=="undefined" && module.exports) module.exports=api;
 if(typeof document==="undefined") return;
 
@@ -893,11 +1096,11 @@ function pickControl(item,slot) {
  const label=el("label",slot==="gantt"?"row-pick":"item-pick");
  const input=el("input");input.type="checkbox";input.checked=picked[mode].has(item.id);input.dataset.pickId=item.id;
  input.setAttribute("aria-label","勾選 "+item.title);
- input.addEventListener("change",()=>{if(input.checked) picked[mode].add(item.id);else picked[mode].delete(item.id);renderWorkspace();});
+ input.addEventListener("change",()=>{if(input.checked){picked[mode].add(item.id);showGlobalToast("⭐ 已將《"+item.title+"》加入個人時程（已同步至【我的時間軸】）");}else{picked[mode].delete(item.id);showGlobalToast("已從個人時程移除《"+item.title+"》");}renderWorkspace();});
  label.append(input,el("span","","列入我的選項"));return label;
 }
 function chooseAndOpen(item) {
- picked[mode].add(item.id);activeDetail[mode]=item.id;renderWorkspace();activatePanel("detail");
+ picked[mode].add(item.id);activeDetail[mode]=item.id;renderWorkspace();activatePanel("detail");showGlobalToast("⭐ 已將《"+item.title+"》加入個人時程");
 }
 function openSharedDetail(item) {
  activeDetail[mode]=item.id;renderWorkspace();activatePanel("detail");
@@ -1468,6 +1671,22 @@ const showRssToast=msg=>{
  }
 };
 
+const showGlobalToast = (msg, duration = 2500) => {
+ const toast = byId("global-toast");
+ if (!toast) return;
+ toast.textContent = msg;
+ toast.hidden = false;
+ toast.classList.remove("show");
+ void toast.offsetWidth;
+ toast.classList.add("show");
+ if (toast._timer) clearTimeout(toast._timer);
+ toast._timer = setTimeout(() => {
+  toast.classList.remove("show");
+  setTimeout(() => { toast.hidden = true; }, 200);
+ }, duration);
+};
+
+
 const setupFeedCopy=(btnId,urlId)=>{
  const btn=byId(btnId);
  const input=byId(urlId);
@@ -1562,4 +1781,220 @@ const initialTarget=urlParams.tab||location.hash.slice(1);
 if(["search","detail","timeline","rights"].includes(initialTarget)) activatePanel(initialTarget,false,false);
 else if(!scrollToInternalTarget(initialTarget)) activatePanel("search",false,false);
 render();
+
+// ==========================================
+// Onboarding Guide Walkthrough (Toutour Context-Aware Sub-tours)
+// ==========================================
+let currentGuideTourKey = "search";
+let currentGuideStep = 1;
+const guideDialog = byId("guide-dialog");
+const guideOpenBtn = byId("guide-open-btn");
+const guideCloseBtn = byId("guide-dialog-close");
+const guidePrevBtn = byId("guide-prev-btn");
+const guideNextBtn = byId("guide-next-btn");
+const guideFinishBtn = byId("guide-finish-btn");
+const guideStepBadge = byId("guide-step-badge");
+const guideDialogTitle = byId("guide-dialog-title");
+const guideTourSelect = byId("guide-tour-select");
+const guideSlidesContainer = byId("guide-slides");
+const guideDotsContainer = document.querySelector ? document.querySelector(".guide-dots") : null;
+
+const renderGuideStep = (tourKey, step) => {
+ const tour = subTours[tourKey] || subTours.global;
+ const totalSteps = tour.steps.length;
+ if (step < 1) step = 1;
+ if (step > totalSteps) step = totalSteps;
+ currentGuideStep = step;
+ currentGuideTourKey = tourKey;
+
+ if (guideTourSelect && guideTourSelect.value !== tourKey) guideTourSelect.value = tourKey;
+
+ const currentItem = tour.steps[step - 1];
+ if (guideStepBadge) guideStepBadge.textContent = "第 " + step + " 步 / 共 " + totalSteps + " 步 · " + tour.badge;
+ if (guideDialogTitle) guideDialogTitle.textContent = currentItem.icon + " " + currentItem.title;
+
+ if (guideSlidesContainer) {
+  guideSlidesContainer.replaceChildren();
+  const slide = el("section", "guide-slide active");
+  slide.setAttribute("data-step", String(step));
+  slide.append(el("div", "guide-card-icon", currentItem.icon));
+  slide.append(el("h3", "", currentItem.title));
+  slide.append(el("p", "guide-desc", currentItem.desc));
+
+  const box = el("div", "guide-feature-box");
+  const list = el("ul", "guide-checklist");
+  currentItem.features.forEach(f => {
+   const li = el("li", "");
+   li.textContent = f;
+   list.append(li);
+  });
+  box.append(list);
+  slide.append(box);
+
+  if (currentItem.action) {
+   const row = el("div", "guide-action-row");
+   const actBtn = el("button", "guide-action-link", currentItem.action.label);
+   actBtn.type = "button";
+   actBtn.addEventListener("click", () => {
+    closeGuide();
+    if (currentItem.action.panel) activatePanel(currentItem.action.panel, true, false);
+    if (currentItem.action.anchor) {
+     const anchorEl = byId(currentItem.action.anchor);
+     if (anchorEl) {
+      if (typeof anchorEl.scrollIntoView === "function") anchorEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      const firstFocus = anchorEl.querySelector ? anchorEl.querySelector("button, select, input") : null;
+      if (firstFocus && typeof firstFocus.focus === "function") firstFocus.focus();
+     }
+    }
+   });
+   row.append(actBtn);
+   slide.append(row);
+  }
+  guideSlidesContainer.append(slide);
+ }
+
+ if (guideDotsContainer) {
+  guideDotsContainer.replaceChildren();
+  for (let s = 1; s <= totalSteps; s++) {
+   const dot = el("button", "guide-dot" + (s === step ? " active" : ""));
+   dot.type = "button";
+   dot.dataset.stepTarget = String(s);
+   dot.setAttribute("aria-label", "第 " + s + " 步");
+   dot.setAttribute("aria-selected", s === step ? "true" : "false");
+   dot.addEventListener("click", () => renderGuideStep(currentGuideTourKey, s));
+   guideDotsContainer.append(dot);
+  }
+ }
+
+ if (guidePrevBtn) guidePrevBtn.disabled = (step === 1);
+ if (guideNextBtn) guideNextBtn.hidden = (step === totalSteps);
+ if (guideFinishBtn) guideFinishBtn.hidden = (step !== totalSteps);
+};
+
+const openGuide = (requestedTourKey, step = 1) => {
+ const key = requestedTourKey || (["search", "detail", "timeline", "rights"].includes(activePanelId) ? activePanelId : "global");
+ if (guideDialog && typeof guideDialog.showModal === "function") {
+  renderGuideStep(key, step);
+  guideDialog.showModal();
+ }
+};
+
+const closeGuide = () => {
+ if (guideDialog && typeof guideDialog.close === "function") {
+  guideDialog.close();
+  if (guideOpenBtn && typeof guideOpenBtn.focus === "function") guideOpenBtn.focus();
+ }
+};
+
+if (guideTourSelect) {
+ guideTourSelect.addEventListener("change", event => {
+  renderGuideStep(event.target.value, 1);
+ });
+}
+
+if (guideOpenBtn) guideOpenBtn.addEventListener("click", () => openGuide(activePanelId, 1));
+if (guideCloseBtn) guideCloseBtn.addEventListener("click", closeGuide);
+if (guideFinishBtn) guideFinishBtn.addEventListener("click", closeGuide);
+
+if (guidePrevBtn) guidePrevBtn.addEventListener("click", () => renderGuideStep(currentGuideTourKey, currentGuideStep - 1));
+if (guideNextBtn) guideNextBtn.addEventListener("click", () => renderGuideStep(currentGuideTourKey, currentGuideStep + 1));
+
+if (guideDialog) {
+ guideDialog.addEventListener("click", event => {
+  if (typeof guideDialog.getBoundingClientRect !== "function") return;
+  const rect = guideDialog.getBoundingClientRect();
+  const inside = rect.top <= event.clientY && event.clientY <= rect.top + rect.height &&
+                 rect.left <= event.clientX && event.clientX <= rect.left + rect.width;
+  if (!inside) closeGuide();
+ });
+}
+
+// ==========================================
+// Gantt Horizontal Scroll Hint (Mobile UX optimization)
+// ==========================================
+const ganttScrollContainer = document.querySelector ? document.querySelector(".gantt-scroll") : null;
+const ganttScrollHint = byId("gantt-scroll-hint");
+const scrollHintDismissBtn = byId("scroll-hint-dismiss");
+
+if (ganttScrollHint && scrollHintDismissBtn) {
+ scrollHintDismissBtn.addEventListener("click", () => {
+  ganttScrollHint.classList.add("dismissed");
+  try { if (typeof sessionStorage !== "undefined") sessionStorage.setItem("opengsa_scroll_hint_seen", "1"); } catch(e) {}
+ });
+}
+
+if (ganttScrollContainer && ganttScrollHint) {
+ try {
+  if (typeof sessionStorage !== "undefined" && sessionStorage.getItem("opengsa_scroll_hint_seen") === "1") {
+   ganttScrollHint.classList.add("dismissed");
+  }
+ } catch(e) {}
+
+ ganttScrollContainer.addEventListener("scroll", () => {
+  if (ganttScrollContainer.scrollLeft > 30 && !ganttScrollHint.classList.contains("dismissed")) {
+   ganttScrollHint.classList.add("dismissed");
+   try { if (typeof sessionStorage !== "undefined") sessionStorage.setItem("opengsa_scroll_hint_seen", "1"); } catch(e) {}
+  }
+ }, { passive: true });
+}
+
+// ==========================================
+// Global Keyboard Shortcuts (Hotkeys)
+// ==========================================
+if (typeof window !== "undefined") {
+ window.addEventListener("keydown", event => {
+  const activeTag = document.activeElement ? (document.activeElement.tagName || "").toUpperCase() : "";
+  const isInputActive = ["INPUT", "TEXTAREA", "SELECT"].includes(activeTag) || (document.activeElement && document.activeElement.isContentEditable);
+
+  // Esc closes active dialogs
+  if (event.key === "Escape") {
+   if (guideDialog && guideDialog.open) {
+    closeGuide();
+    return;
+   }
+   if (rssDialog && rssDialog.open) {
+    closeRssDialog();
+    return;
+   }
+  }
+
+  if (isInputActive) return;
+  if (event.ctrlKey || event.altKey || event.metaKey) return;
+
+  // Key '?' opens Guide
+  if (event.key === "?" || (event.shiftKey && event.key === "/")) {
+   event.preventDefault();
+   openGuide(1);
+   return;
+  }
+
+  // Key '/' focuses search input
+  if (event.key === "/") {
+   const sq = byId("search-query");
+   if (sq) {
+    event.preventDefault();
+    activatePanel("search", true, false);
+    if (typeof sq.focus === "function") sq.focus();
+    if (typeof sq.select === "function") sq.select();
+   }
+   return;
+  }
+
+  // Keys '1' to '4' switch tabs
+  if (event.key === "1") {
+   event.preventDefault();
+   activatePanel("search", true, false);
+  } else if (event.key === "2") {
+   event.preventDefault();
+   activatePanel("detail", true, false);
+  } else if (event.key === "3") {
+   event.preventDefault();
+   activatePanel("timeline", true, false);
+  } else if (event.key === "4") {
+   event.preventDefault();
+   activatePanel("rights", true, false);
+  }
+ });
+}
+
 }());

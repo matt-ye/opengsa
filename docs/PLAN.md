@@ -1,5 +1,29 @@
 # 目前計畫與已接受決策
 
+## 2026-11-06 全站四分頁 RWD 響應式升級、甘特圖 64px 緊湊化、消滅死空白與 Toutour 專屬子導覽（PR #69）
+
+- **全站四分頁 RWD 響應式優化與甘特圖區域大幅放大**（[詳細手冊](UI-UX-ONBOARDING-AND-ROADMAP-TODO.md)）：
+  - **甘特圖列高 64px 緊湊瘦身**：將原 `min-height: 110px` 瘦身壓縮為 `64px`（桌面）/ `56px`（手機），單屏可見方案數量從 2~3 筆**直接翻倍至 6~8 筆**（可視密度提升 150%）。
+  - **容器自適應佔滿螢幕**：桌面端提升至 `78vh / calc(100vh - 170px)`，手機端提升至 `76vh`。
+  - **手機端欄寬比例重構**：左側固定標籤欄由 138px~165px 收窄至 `108px ~ 112px`，右側時間軸釋出 30% 以上可視空間。
+  - **徹底消除首頁底部懸空死空白**：收斂 `.screen` padding 為 `24px 0 20px`，`footer` padding 為 `20px 32px 28px`，右欄 Flex 垂直自然撐滿，卡片緊貼頁尾。
+  - **其餘分頁 RWD 優化**：Tab 2 工具列小螢幕彈性分組與 `min-height` 防空白；Tab 3 個人甘特圖同步緊湊化；Tab 4 四主題選單改為手機版橫向無縫滑動膠囊（Segmented Scroll）。
+- **Toutour 情境感知專屬子導覽體系（Context-Aware Sub-tours）落地**：
+  - 實裝 **5 大導覽體系**：`global`（全站 4 步總覽）、`search`（找獎助 4 步子導覽）、`detail`（詳情比對 4 步子導覽）、`timeline`（我的時程 4 步子導覽）、`rights`（權益求助 4 步子導覽）。
+  - 依當前所在分頁自動感知喚起對應子導覽，彈窗頂部提供 `#guide-tour-select` 隨時切換，每頁步數嚴格受控在 $\le 4$ 步（完全符合 Toutour 反模式防禦規範）。
+- **全站鍵盤快捷鍵矩陣（Global Hotkeys）與動態微回饋**：
+  - `?`（喚起當前分頁指南）、`/`（聚焦搜尋框）、`1`~`4`（切換四分頁）、`Esc`（退出彈窗）。
+  - 跨頁收藏動態 Toast：卡片點選「⭐ 收藏」即時彈出氣泡，2.5 秒後淡出。
+- **使用者指示後續兩大 Roadmap 方向正式列入 TODO**：
+  - **TODO 1：自動的庫外資源檢索規劃（Autonomous External Discovery Probe）**：低頻公開探針（每週定時探測生輔組 RSS、政府開放資料平台 API `data.gov.tw`）、產出待審候選清冊 `data/discovery-candidates.json`，嚴格維持 `model_mode=off`、微批 HTTP 預算與真人審查閘門。
+  - **TODO 2：Code Review 與前端核心架構模組化（Modularization & A11y Deepening）**：重構 1,700+ 行之 `docs/design/prototype.js` 拆分獨立子模組，並補強 Dialog Focus Trap 與 Screen Reader 朗讀。
+- **測試防線擴展**：
+  - 前端整合測試擴充至 **63 項 100% PASS**（新增子導覽 5 大體系步數校驗、64px 列高防線、底部 padding 收斂與導覽切換器檢驗）。
+  - Python 單元測試維持 **282 項 PASS**。
+  - 正式台帳與候選資料 0 篡改，排程維持 model_mode=off。
+
+---
+
 ## 2026-11-06 國際頂會專屬獎學金未顯示診斷、大專生輔組資訊鏈深化與學生 Perks 擴展
 
 - **國際頂級會議專屬獎助（Top Conference Travel Grants）未顯示原因深層診斷**（[診斷報告](TOP-CONFERENCE-TRAVEL-GRANTS-AND-DISCOVERY-DIAGNOSIS.md)）：
