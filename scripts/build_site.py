@@ -21,7 +21,7 @@ FEEDBACK = "https://github.com/matt-ye/opengsa/issues/new?template=preview-feedb
 
 
 def load_full_library(root=ROOT):
-    """Loads all 204 candidates across the 5 candidate bundles and combined observations."""
+    """Loads all 228 candidates across the 6 candidate bundles and combined observations."""
     read = lambda name: json.loads((Path(root) / "data" / name).read_text(encoding="utf-8"))
     bundle_files = [
         "candidates/source-review.json",
@@ -29,6 +29,7 @@ def load_full_library(root=ROOT):
         "candidates/student-perks.json",
         "candidates/enterprise-scholarships.json",
         "candidates/medical-scholarships.json",
+        "candidates/university-scholarships.json",
     ]
     obs_files = [
         "temporal-observations.json",
@@ -36,6 +37,7 @@ def load_full_library(root=ROOT):
         "perks-temporal-observations.json",
         "enterprise-temporal-observations.json",
         "medical-temporal-observations.json",
+        "university-temporal-observations.json",
     ]
     all_cands = []
     for bf in bundle_files:
