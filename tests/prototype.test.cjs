@@ -781,6 +781,27 @@ test("搜尋擴充同義詞比對：搜尋論文／著作／醫學院均能精�
  assert.ok(filteredByMed.some(x => x.id === "ntu-med-publication-115"), "filterItems 應包含醫學院著作獎");
 });
 
+test("搜尋擴充同義詞比對：搜尋頂會／頂級會議／Travel Grant／差旅補助精確命中研討會與出國方案",()=>{
+ const drafts = core.makeDrafts(pilot, "2026-11-04");
+ const nstcConf = drafts.find(x => x.id === "nstc-grad-conference-policy");
+ assert.ok(nstcConf, "國科會研討會補助應存在於 drafts 中");
+ assert.ok(core.itemMatchesQuery(nstcConf, "頂會"), "搜尋「頂會」應命中研討會補助");
+ assert.ok(core.itemMatchesQuery(nstcConf, "頂級會議"), "搜尋「頂級會議」應命中研討會補助");
+ assert.ok(core.itemMatchesQuery(nstcConf, "travel grant"), "搜尋「travel grant」應命中研討會補助");
+ assert.ok(core.itemMatchesQuery(nstcConf, "差旅補助"), "搜尋「差旅補助」應命中研討會補助");
+ assert.ok(core.itemMatchesQuery(nstcConf, "出國開會"), "搜尋「出國開會」應命中研討會補助");
+ assert.ok(core.itemMatchesQuery(nstcConf, "neurips"), "搜尋「neurips」應命中研討會補助");
+ assert.ok(core.itemMatchesQuery(nstcConf, "cvpr"), "搜尋「cvpr」應命中研討會補助");
+
+ const filteredByTopConf = core.filterItems(drafts, {query: "頂會"});
+ assert.ok(filteredByTopConf.some(x => x.id === "nstc-grad-conference-policy"), "filterItems 搜尋「頂會」應列出研討會補助");
+
+ const samplePerk = {id: "cand-perk-copilot", programKey: "perk-copilot", title: "GitHub Copilot Student", category: "research_tools"};
+ assert.ok(core.itemMatchesQuery(samplePerk, "perk"), "搜尋「perk」應命中福利方案");
+ assert.ok(core.itemMatchesQuery(samplePerk, "學生福利"), "搜尋「學生福利」應命中福利方案");
+ assert.ok(core.itemMatchesQuery(samplePerk, "教育版"), "搜尋「教育版」應命中福利方案");
+});
+
 test("全教育階段學歷與身分篩選：支援大學部、高中職與國中小幼兒，杜絕K-12方案被排擠", ()=>{
  const sample = [
   {id:"k12-high", title:"高中職免學費補助", audience:"適用教育階段: senior_high,vocational_high", degrees:[], rawState:"open", category:"living_tuition"},

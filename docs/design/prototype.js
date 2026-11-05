@@ -110,7 +110,24 @@ function itemMatchesQuery(item, query) {
  const q = query.trim().toLocaleLowerCase();
  if(!q) return true;
  const isMed = item.id === "ntu-med-publication-115" || item.programKey === "ntu-med-publication";
- const aliases = isMed ? " 優秀著作 優秀論文 論文 著作 醫學院 研究生 出版 publication paper 成果獎" : "";
+ const medAliases = isMed ? " 優秀著作 優秀論文 論文 著作 醫學院 研究生 出版 publication paper 成果獎" : "";
+ const isConf = item.category === "international_conference" ||
+   item.category === "all_abroad" ||
+   item.category === "overseas_research" ||
+   (item.title && /會議|研討會|出國|差旅|千里馬|conference|travel/i.test(item.title)) ||
+   (item.id && /conf|abroad|travel/i.test(item.id)) ||
+   (item.programKey && /conf|abroad|travel/i.test(item.programKey));
+ const confAliases = isConf ? " 頂會 頂級會議 國際會議 國際頂會 研討會 國際研討會 出國開會 差旅補助 差旅費 top conference travel grant student travel award ccf core a* neurips cvpr icml iclr acl emnlp siggraph sigcomm chi infocom" : "";
+ const isK12 = item.category === "all_k12" ||
+   (item.audience && /k12|elementary|junior_high|senior_high|vocational/i.test(item.audience)) ||
+   (item.title && /高中|高職|國中|國小|幼兒|清寒|弱勢/i.test(item.title));
+ const k12Aliases = isK12 ? " k-12 k12 高中 高職 國中 國小 清寒 弱勢 助學金 學費減免" : "";
+ const isPerk = item.category === "research_tools" ||
+   (item.id && item.id.includes("perk")) ||
+   (item.programKey && item.programKey.includes("perk")) ||
+   (item.title && /perk|copilot|azure|aws|github|jetbrains|notion|figma|overleaf|matlab|autodesk|高鐵/i.test(item.title));
+ const perkAliases = isPerk ? " perk perks 學生福利 學生優惠 教育版 免費軟體 雲端額度 算力 學生認證 sheerid unidays github pack" : "";
+ const aliases = medAliases + confAliases + k12Aliases + perkAliases;
  const catLabel = (typeof labels !== "undefined" && labels.category && labels.category[item.category]) || "";
  const srcLabel = (typeof labels !== "undefined" && labels.source && labels.source[item.source]) || "";
  const haystack = (item.title + " " + item.id + " " + (item.cycle||"") + " " + (item.scope||"") + " " + catLabel + " " + srcLabel + aliases).toLocaleLowerCase();

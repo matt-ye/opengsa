@@ -1,5 +1,31 @@
 # 目前計畫與已接受決策
 
+## 2026-11-06 國際頂會專屬獎學金未顯示診斷、大專生輔組資訊鏈深化與學生 Perks 擴展
+
+- **國際頂級會議專屬獎助（Top Conference Travel Grants）未顯示原因深層診斷**（[診斷報告](TOP-CONFERENCE-TRAVEL-GRANTS-AND-DISCOVERY-DIAGNOSIS.md)）：
+  - 核心根因深解：收錄層面未建卡、radarView 隔離 conferenceEntries、搜尋引擎缺少「頂會」「頂級會議」同義詞字典、事件相對期限（event_relative）無實體色帶。
+  - 前端搜尋同義詞升級：`docs/design/prototype.js` 擴充支援 `頂會`、`頂級會議`、`Top Conference`、`Travel Grant`、`差旅補助`、`出國開會`、`NeurIPS`、`CVPR`、`SIGGRAPH`、`ICML`，100% 精確命中出國會議方案。
+  - 頂會獎助基準清冊建立：產出 [`data/top-conference-travel-grants.json`](../data/top-conference-travel-grants.json)，收錄 12 項頂級會議獎助（NeurIPS, CVPR, ICML, ICLR, ACL, SIGGRAPH, SIGCOMM, CHI, INFOCOM, Google/MSR 與各大學頂會專款加碼）。
+  - 研究生頂會發表四步攻防策略：國科會機票 + 學校學院專款加碼 + 大會 Travel Grant + 科技巨頭贊助。
+
+- **全台公私立大專校院生輔組資訊鏈五節點閉環拓撲深化**（[規格說明書](UNIVERSITY-ASSISTANCE-OFFICES-DEEP-CHAIN.md)）：
+  - 打通全台 78 所大專校院（`U001`～`U078`）學務處生輔組與校園助學系統孤島。
+  - 升級為標準五節點閉環拓撲：Anchor (母法規章) ➔ Call (徵件公告) ➔ Form (線上系統/表件) ➔ Intake (初審收件窗口) ➔ Result (名冊去識別化公示與撥款)。
+  - 更新批次：[`data/source-chain-batches/batch-university.json`](../data/source-chain-batches/batch-university.json)（升級至 **120 份文件節點、96 條邊**）。
+  - 通用註冊表 [`data/source-chain-batches/batch-registry.json`](../data/source-chain-batches/batch-registry.json) 同步更新。
+
+- **學生身分福利（Student Perks）第二梯次擴展調研**（[專題報告](STUDENT-PERKS-EXPANSION-SURVEY.md)）：
+  - 擴展基準台帳 [`data/student-perks-baseline.json`](../data/student-perks-baseline.json) 至 **40 項代表性核心方案**。
+  - 新增 12 項高價值福利：Overleaf Professional (LaTeX 雲端協作)、Grammarly for Education、EndNote & Zotero、Wolfram Mathematica & Alpha Pro、DigitalOcean ($200 額度)、Namecheap 免費域名、GitKraken / Docker Desktop、台灣高鐵大學生 5/75 折優惠、Miro for Education 視覺白板等。
+
+- **自動化測試矩陣全面守護**：
+  - 前端整合測試擴展至 **58 項 PASS**（新增頂會同義詞檢索比對防線）。
+  - Python 單元測試維持 **282 項 PASS**。
+  - 通用資訊鏈註冊表拓撲完整性與無懸空邊測試 100% PASS。
+  - 正式台帳與候選資料 0 篡改，排程維持 model_mode=off。
+
+---
+
 ## 2026-11-05 主動推播通知與全教育階段篩選全景手冊暨成果整合（PR #67）
 
 - **兩大升級全景手冊統合落盤**（[整合規格手冊](PROACTIVE-NOTIFICATIONS-AND-FILTER-VISIBILITY-GUIDE.md)）：

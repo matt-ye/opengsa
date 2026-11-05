@@ -16,7 +16,7 @@
 
 > **公開預覽網站即時發布中**：**[https://matt-ye.github.io/opengsa/](https://matt-ye.github.io/opengsa/)**  
 > **全庫方案覆蓋規模**：**236 方案**（1-to-1 精確時程政策覆蓋，`undetermined = 0`，覆蓋率 100%）  
-> **測試防線**：282 項 Python 單元測試 PASS · 57 項前端整合測試 PASS · GitHub Actions CI/CD 100% PASS
+> **測試防線**：282 項 Python 單元測試 PASS · 58 項前端整合測試 PASS · GitHub Actions CI/CD 100% PASS
 
 ### 1. 全庫七大獎助資源板塊 (236 方案)
 OpenGSA 目前收錄跨越教育階段、公部門、民間企業與高等教育學府的完整資源光譜：
@@ -48,7 +48,7 @@ OpenGSA 目前收錄跨越教育階段、公部門、民間企業與高等教育
 OpenGSA 解決過去獎助資訊「只有單一網址、缺漏法源母法與申請系統」的斷鏈痛點，建立五節點標準拓撲：
 $$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (當期徵件公告)} \xrightarrow{\text{portal}} \text{Form (申請表件/系統)} \xrightarrow{\text{intake}} \text{Intake (生輔組/系所窗口)} \xrightarrow{\text{result}} \text{Result (名冊公示)}$$
 
-- **大專校院資訊鏈批次**：[`data/source-chain-batches/batch-university.json`](data/source-chain-batches/batch-university.json)（72 份文件節點、48 條邊）。
+- **大專校院資訊鏈批次**：[`data/source-chain-batches/batch-university.json`](data/source-chain-batches/batch-university.json)（120 份文件節點、96 條邊）。
 - **全庫拓撲擴展與掃描稽核報告**：[全庫 236 方案拓撲擴展與 Actions 掃描稽核](docs/TOPOLOGY-EXPANSION-AND-SCAN-AUDIT.md)。
 - **通用拓撲架構規格書**：[全庫跨資源通用資訊鏈架構規劃](docs/UNIVERSAL-SOURCE-CHAIN-TOPOLOGY.md)（定義高教型、公部門法定型、企業雙軌型、學生 Perks 型與研討會型五大原型）。
 - **離線資訊鏈地圖**：[資訊鏈互動樹狀圖](docs/source-chains/source-chain-map.html) · [Obsidian Canvas](docs/source-chains/source-chain-map.canvas)。
@@ -87,10 +87,35 @@ OpenGSA 支援標準 RSS 2.0 / Atom 1.0 訂閱頻道，隨 GitHub Pages 自動�
 ### 8. 全教育階段身分篩選、出國交流總覽與 K-12 可見度升級
 徹底解決學位選單過濾過窄導致 K-12 與大專方案隱沒，以及出國獎學金割裂分散之痛點：
 - **全教育階段 8 大維度覆蓋**：學歷選單支援全部學歷 (236)、大學部/大專 (120)、高中職/五專 (25+)、國中/國小/幼兒，並保留碩博與博士候選人。
-- **出國出訪與境外交流總覽 (ll_abroad)**：一鍵聚合國際會議發表 7 筆 + 境外留學研修 10 筆 + 旅費補助，共 19 筆出國獎助。
-- **各級教育與弱勢扶助總覽 (ll_k12)**：直達學產基金、高職免學費等共 33 筆基礎就學扶助。
+- **出國出訪與境外交流總覽 (all_abroad)**：一鍵聚合國際會議發表 7 筆 + 境外留學研修 10 筆 + 旅費補助，共 19 筆出國獎助。
+- **各級教育與弱勢扶助總覽 (all_k12)**：直達學產基金、高職免學費等共 33 筆基礎就學扶助。
 - **情境快速篩選列 (Persona Bar)**：新增「境」（出國交流 19 筆）與「助」（弱勢扶助 25 筆）專屬情境按鈕。
 - 詳見專題手冊：[主動推播通知與全教育階段篩選升級全景手冊](docs/PROACTIVE-NOTIFICATIONS-AND-FILTER-VISIBILITY-GUIDE.md) · [篩選器擴充規格書](docs/FILTER-EXPANSION-AND-VISIBILITY.md)。
+
+---
+
+### 9. 國際頂級會議專屬獎助（Top Conference Travel Grants）診斷與同義詞搜尋升級
+深入排查碩博士生頂尖研討會出國差旅獎助未顯示之四大根因（資料庫未收錄、radarView 隔離、搜尋缺少同義詞、相對期限無實體色帶），並完成升級：
+- **前端搜尋同義詞字典全面擴充**：搜尋引擎支援 `頂會`、`頂級會議`、`Top Conference`、`Travel Grant`、`差旅補助`、`出國開會`、`NeurIPS`、`CVPR`、`SIGGRAPH`、`ICML`，100% 精確命中研討會與出國補助。
+- **頂會專屬獎助基準清冊**：建立 [`data/top-conference-travel-grants.json`](data/top-conference-travel-grants.json)，完整收錄 12 項頂級會議獎助（NeurIPS Scholar Award, CVPR Travel Grant, ICML, ICLR, ACL, SIGGRAPH, SIGCOMM, CHI, INFOCOM, Google/MSR Travel Grants 與各大學院系頂會專款加碼）。
+- **研究生赴頂會發表四步連環攻防策略**：詳見專題報告：[國際頂級會議專屬學生獎助未顯示診斷與全景架構報告](docs/TOP-CONFERENCE-TRAVEL-GRANTS-AND-DISCOVERY-DIAGNOSIS.md)。
+
+---
+
+### 10. 公私立大專校院生輔組資訊鏈五節點閉環拓撲深化
+打通全台 78 所大專校院學務處生輔組與校園助學系統孤島，將 24 所代表性大學資訊鏈由 3 節點升級為完整的五節點閉環拓撲：
+$$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (生輔組徵件公告)} \xrightarrow{\text{portal}} \text{Form (助學系統/表件)} \xrightarrow{\text{intake}} \text{Intake (系所/生輔組窗口)} \xrightarrow{\text{result}} \text{Result (名冊公示與撥款)}$$
+- **更新大專校院拓撲批次**：[`data/source-chain-batches/batch-university.json`](data/source-chain-batches/batch-university.json)（**120 份文件節點、96 條流轉邊**）。
+- **全台 78 校名冊對接**：[`data/source-expansion/university-source-inventory.json`](data/source-expansion/university-source-inventory.json)（涵蓋國立頂大、國立科大、私立綜合大學、醫學大學與私立科大）。
+- 詳見專案規格書：[全台公私立大專校院生輔組資訊鏈深化拓撲規格書](docs/UNIVERSITY-ASSISTANCE-OFFICES-DEEP-CHAIN.md)。
+
+---
+
+### 11. 學生身分福利（Student Perks）第二梯次擴展調研
+深化學術寫作、科學運算、雲端部署與大專生軌道交通生活福利：
+- **擴展基準台帳**：[`data/student-perks-baseline.json`](data/student-perks-baseline.json) 正式擴展至 **40 項代表性核心方案**。
+- **新增 12 項高價值福利**：Overleaf Professional (LaTeX 雲端協作)、Grammarly for Education、EndNote & Zotero、Wolfram Mathematica & Alpha Pro、DigitalOcean ($200 額度)、Namecheap 免費域名、GitKraken / Docker Desktop、台灣高鐵大學生 5/75 折優惠、Miro for Education 視覺白板等。
+- 詳見深度報告：[全球與臺灣學生身分軟硬體、雲端與生活福利第二梯次擴展調研報告](docs/STUDENT-PERKS-EXPANSION-SURVEY.md)。
 
 ---
 

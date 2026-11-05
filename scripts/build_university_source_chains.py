@@ -127,7 +127,7 @@ def main():
             "historical_baseline_allowed": True
         })
 
-        # 3 documents per scheme:
+        # 5 standard topology documents per scheme:
         # doc 1: Portal / Call
         doc_call_id = make_doc_id(portal_url + "#call")
         doc_call = {
@@ -184,8 +184,46 @@ def main():
         }
         documents.append(doc_form)
 
-        # Edges
-        # rule -> call
+        # doc 4: Department / Assistance Office Intake
+        intake_url = portal_url.rstrip("/") + "/intake"
+        doc_intake_id = make_doc_id(intake_url + "#intake")
+        doc_intake = {
+            "id": doc_intake_id,
+            "url": intake_url,
+            "format": "html",
+            "revision_id": make_revision_id(intake_url + "_intake"),
+            "observed_at": "2026-11-05T00:00:00+00:00",
+            "status": "candidate_snapshot",
+            "evidence_mode": "hash_only",
+            "candidate_ids": [cid],
+            "role": "intake",
+            "archetype": "higher_education_university",
+            "events": [],
+            "links": []
+        }
+        documents.append(doc_intake)
+
+        # doc 5: Results & Verification (De-identified Public List)
+        result_url = portal_url.rstrip("/") + "/results"
+        doc_result_id = make_doc_id(result_url + "#result")
+        doc_result = {
+            "id": doc_result_id,
+            "url": result_url,
+            "format": "html",
+            "revision_id": make_revision_id(result_url + "_result"),
+            "observed_at": "2026-11-05T00:00:00+00:00",
+            "status": "candidate_snapshot",
+            "evidence_mode": "hash_only",
+            "candidate_ids": [cid],
+            "role": "result",
+            "archetype": "higher_education_university",
+            "events": [],
+            "links": []
+        }
+        documents.append(doc_result)
+
+        # Edges (Anchor -> Call -> Form -> Intake -> Result)
+        # 1. rule -> call
         edges.append({
             "from": doc_rule_id,
             "to": doc_call_id,
@@ -195,12 +233,32 @@ def main():
             "scope": pkey,
             "cycle": "114-115"
         })
-        # call -> form
+        # 2. call -> form
         edges.append({
             "from": doc_call_id,
             "to": doc_form_id,
             "url": form_url,
             "role": "application_portal",
+            "program_key": pkey,
+            "scope": pkey,
+            "cycle": "114-115"
+        })
+        # 3. form -> intake
+        edges.append({
+            "from": doc_form_id,
+            "to": doc_intake_id,
+            "url": intake_url,
+            "role": "document_submission",
+            "program_key": pkey,
+            "scope": pkey,
+            "cycle": "114-115"
+        })
+        # 4. intake -> result
+        edges.append({
+            "from": doc_intake_id,
+            "to": doc_result_id,
+            "url": result_url,
+            "role": "review_and_approval",
             "program_key": pkey,
             "scope": pkey,
             "cycle": "114-115"
