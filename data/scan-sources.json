@@ -4147,6 +4147,111 @@
       "parser": "generic_html",
       "format": "html",
       "known_attachment_urls": []
+    },
+    {
+      "id": "gov-cip-indigenous",
+      "title": "原住民族委員會大專校院原住民族學生獎助學金",
+      "url": "https://www.cip.gov.tw/zh-tw/news/data-list/1018/index.html",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "原住民族委員會大專校院原住民族學生獎助學金"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "通用拓撲探針發現來源：原住民族委員會大專校院原住民族學生獎助學金",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "gov-moa-farmers",
+      "title": "農業部農漁民子女就學助學金",
+      "url": "https://www.moa.gov.tw/theme_data.php?theme=news&sub_theme=hot&id=123",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "農業部農漁民子女就學助學金"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "通用拓撲探針發現來源：農業部農漁民子女就學助學金",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "gov-mol-unemployed-workers",
+      "title": "勞動部失業勞工子女就學補助",
+      "url": "https://www.mol.gov.tw/1607/28162/28166/28214/",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "勞動部失業勞工子女就學補助"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "通用拓撲探針發現來源：勞動部失業勞工子女就學補助",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "gov-vac-veterans",
+      "title": "國軍退除役官兵輔導委員會榮民子女就學補助及清寒獎助學金",
+      "url": "https://www.vac.gov.tw/cp-1797-3214-1.html",
+      "schedule_track": "gov",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "國軍退除役官兵輔導委員會榮民子女就學補助及清寒獎助學金"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "通用拓撲探針發現來源：國軍退除役官兵輔導委員會榮民子女就學補助及清寒獎助學金",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "ent-iicm-thesis-award",
+      "title": "中華民國資訊學會最佳碩博士論文獎",
+      "url": "https://www.iicm.org.tw/news_detail.php?id=88",
+      "schedule_track": "enterprise",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "中華民國資訊學會最佳碩博士論文獎"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "通用拓撲探針發現來源：中華民國資訊學會最佳碩博士論文獎",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "ent-taai-thesis-award",
+      "title": "中華民國人工智慧學會 TAAI 最佳碩博士論文獎",
+      "url": "https://www.taai.org.tw/awards/thesis",
+      "schedule_track": "enterprise",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "中華民國人工智慧學會"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "通用拓撲探針發現來源：中華民國人工智慧學會 TAAI 最佳碩博士論文獎",
+      "pdf_include": [],
+      "max_pdfs": 0
+    },
+    {
+      "id": "ent-csroc-thesis-award",
+      "title": "中華民國電腦學會最佳碩博士論文獎",
+      "url": "https://www.csroc.org.tw/news_detail.php?id=12",
+      "schedule_track": "enterprise",
+      "body_selector": "main, article, .content, #content, body",
+      "required_markers": [
+        "中華民國電腦學會最佳碩博士論文獎"
+      ],
+      "evidence_mode": "short_excerpt",
+      "known_attachment_urls": [],
+      "review_note": "通用拓撲探針發現來源：中華民國電腦學會最佳碩博士論文獎",
+      "pdf_include": [],
+      "max_pdfs": 0
     }
   ],
   "deferred_sources": [

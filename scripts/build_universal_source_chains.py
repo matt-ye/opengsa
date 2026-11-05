@@ -627,6 +627,16 @@ def main():
             "candidates": ent_cands
         },
         {
+            "batch_id": "batch-topology-discovered",
+            "file": "data/source-chain-batches/batch-topology-discovered.json",
+            "archetype": "universal_topology_probe",
+            "description": "通用拓撲探針發現之高價值法定助學、算力與學會論文獎 (8 方案)",
+            "schedule_track": "gov",
+            "documents": 24,
+            "edges": 16,
+            "candidates": 8
+        },
+        {
             "batch_id": "batch-conference",
             "file": "data/source-chain-batches/batch-conference.json",
             "archetype": "conference_travel_grant",

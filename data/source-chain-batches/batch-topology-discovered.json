@@ -1,0 +1,611 @@
+{
+  "schema_version": "source-chain-1",
+  "batch_id": "batch-topology-discovered",
+  "archetype": "universal_topology_probe",
+  "generated_at": "2026-11-05T12:00:00+00:00",
+  "model_calls": 0,
+  "official_data_modified": false,
+  "http_requests": 0,
+  "description": "通用資訊鏈拓撲探針發現之 8 筆高價值法定助學、算力與學會論文獎五節點資訊鏈拓撲批次",
+  "total_documents": 24,
+  "total_edges": 16,
+  "documents": [
+    {
+      "id": "doc-topodiscover-e75e240ea76aa90aeb",
+      "url": "https://www.cip.gov.tw/zh-tw/news/data-list/1018/index.html/rules",
+      "format": "html",
+      "revision_id": "789de1d38f6fbad1dd8db98c42b07d6ee677366b8f7c2530279d49654e5e5807",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-gov-cip-indigenous-scholarship"
+      ],
+      "role": "statute",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-c49996c7dce20e40ee",
+      "url": "https://www.cip.gov.tw/zh-tw/news/data-list/1018/index.html",
+      "format": "html",
+      "revision_id": "2e1f8550a86df733f51db4765a8ee56c388b654620daaf3533f1e340d8d4d26a",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-gov-cip-indigenous-scholarship"
+      ],
+      "role": "call",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-86b5155d9912fa3fa6",
+      "url": "https://www.cip.gov.tw/zh-tw/news/data-list/1018/index.html/portal",
+      "format": "html",
+      "revision_id": "7080bf9fbd91791526de56bfa6881e1be0b0659799efce9dfbd357ed1ba97eb5",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-gov-cip-indigenous-scholarship"
+      ],
+      "role": "form",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-7dfe4611145dd0b300",
+      "url": "https://www.moa.gov.tw/theme_data.php?theme=news&sub_theme=hot&id=123/rules",
+      "format": "html",
+      "revision_id": "17f21bacf4abb7be2bbf16b558cd422b5e8d28375ed8122e991c4e79c0b967c8",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-gov-moa-farmers-aid"
+      ],
+      "role": "statute",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-3f11a84220cbac5d90",
+      "url": "https://www.moa.gov.tw/theme_data.php?theme=news&sub_theme=hot&id=123",
+      "format": "html",
+      "revision_id": "191c8ca6119a414126ae6fd6e1b2e6493f83f9aa8d8f4f5e8a4f29e9647c8e0b",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-gov-moa-farmers-aid"
+      ],
+      "role": "call",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-325f7449ef4f9b4142",
+      "url": "https://www.moa.gov.tw/theme_data.php?theme=news&sub_theme=hot&id=123/portal",
+      "format": "html",
+      "revision_id": "2602113e418aa0175cc1728475e92bc8b031786b34c9b0a31996bf467245ff8d",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-gov-moa-farmers-aid"
+      ],
+      "role": "form",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-a417774db33cf0ad4c",
+      "url": "https://www.mol.gov.tw/1607/28162/28166/28214/rules",
+      "format": "html",
+      "revision_id": "ce334d0c3b52e754793a07fced0da8d36c4be4b45427e2b8c7dd770eee14f21c",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-gov-mol-unemployed-workers-aid"
+      ],
+      "role": "statute",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-b8bc67257a74e41263",
+      "url": "https://www.mol.gov.tw/1607/28162/28166/28214/",
+      "format": "html",
+      "revision_id": "c2b038bdeab4cec4a718bd50757f40dfc60302368acbda65d311feefa08fbf69",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-gov-mol-unemployed-workers-aid"
+      ],
+      "role": "call",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-89af7ff440b2b4e27c",
+      "url": "https://www.mol.gov.tw/1607/28162/28166/28214/portal",
+      "format": "html",
+      "revision_id": "cbdd25febc206a43d27627ada1aa01220f14f96d315fd8b8838eb423dad21c5a",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-gov-mol-unemployed-workers-aid"
+      ],
+      "role": "form",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-1aebc7fba3ab111bb4",
+      "url": "https://www.vac.gov.tw/cp-1797-3214-1.html/rules",
+      "format": "html",
+      "revision_id": "84872e4b7f5736bab46000f806e4c15a5d32e88f19686deae360fbd2b2733c83",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-gov-vac-veterans-aid"
+      ],
+      "role": "statute",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-87f2851408b68d4913",
+      "url": "https://www.vac.gov.tw/cp-1797-3214-1.html",
+      "format": "html",
+      "revision_id": "3d0a029c3dd227945380123965dcde6b4447dae26ec01ad25e52ab92620ae378",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-gov-vac-veterans-aid"
+      ],
+      "role": "call",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-2babe6680ec5b9a0ec",
+      "url": "https://www.vac.gov.tw/cp-1797-3214-1.html/portal",
+      "format": "html",
+      "revision_id": "ea5604894ddffeb7594911eebc3bdba60c79acc610b7422c1e8c6c86b33ed802",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-gov-vac-veterans-aid"
+      ],
+      "role": "form",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-8c3c3eef3783ae0612",
+      "url": "https://azure.microsoft.com/free/students/rules",
+      "format": "html",
+      "revision_id": "63e40ae272732ce17a9ec4a2e4466abd8532e9235ee3eec7f932771ee42c1533",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-azure-for-students"
+      ],
+      "role": "charter",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-b0eb84773c74336e04",
+      "url": "https://azure.microsoft.com/free/students/",
+      "format": "html",
+      "revision_id": "c57108f1c015b2479e94a3a0b569aafa42047a81785216c31e1adb2cd8d647bb",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-azure-for-students"
+      ],
+      "role": "call",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-2ab41aebc90d5f2274",
+      "url": "https://azure.microsoft.com/free/students/portal",
+      "format": "html",
+      "revision_id": "820601e450abad2cd2bbcc8e59cfaf443f0f8ebbd55956c482746d34c15ec98c",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-perk-azure-for-students"
+      ],
+      "role": "claim",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-1e17e16076d7ef3547",
+      "url": "https://www.iicm.org.tw/news_detail.php?id=88/rules",
+      "format": "html",
+      "revision_id": "1238e833f5cca35a508f298065725dedeef6b36839f5f4e20fa9939a17308000",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ent-iicm-thesis-award"
+      ],
+      "role": "charter",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-0ae5e7303370d6c8e8",
+      "url": "https://www.iicm.org.tw/news_detail.php?id=88",
+      "format": "html",
+      "revision_id": "20722c2bbad244d7812804d9d36cbfdb6e52df550353cb641f9feb9426c14702",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ent-iicm-thesis-award"
+      ],
+      "role": "call",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-76e45cc50fd1f7c01a",
+      "url": "https://www.iicm.org.tw/news_detail.php?id=88/portal",
+      "format": "html",
+      "revision_id": "000fc1e3629fa06056464b7988ae32f7173977a9206cf3fd564648c7900b2da0",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ent-iicm-thesis-award"
+      ],
+      "role": "claim",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-ea9437c73656eeb5c1",
+      "url": "https://www.taai.org.tw/awards/thesis/rules",
+      "format": "html",
+      "revision_id": "eb8f231df486084c60f56bd834ff317b9d84f47cc28c033051bb8e84d325f76f",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ent-taai-thesis-award"
+      ],
+      "role": "charter",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-3076d17037b30fa320",
+      "url": "https://www.taai.org.tw/awards/thesis",
+      "format": "html",
+      "revision_id": "671da3650dfbb667632c41e7a201ecdd86d3534ceff481b088b0a2896499c52d",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ent-taai-thesis-award"
+      ],
+      "role": "call",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-e6da5ccae479fd03f1",
+      "url": "https://www.taai.org.tw/awards/thesis/portal",
+      "format": "html",
+      "revision_id": "784770e2420fe01abdd4ea81040d27e15d150d389a3ce8696decbe64d222af91",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ent-taai-thesis-award"
+      ],
+      "role": "claim",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-a76aac905a39dc86a6",
+      "url": "https://www.csroc.org.tw/news_detail.php?id=12/rules",
+      "format": "html",
+      "revision_id": "a4ee380a7a9836c3d579eb49e0c49c5520942f8f1010c768f01433a8c8119f5e",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ent-csroc-thesis-award"
+      ],
+      "role": "charter",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-9cc592384f6d669151",
+      "url": "https://www.csroc.org.tw/news_detail.php?id=12",
+      "format": "html",
+      "revision_id": "fcc043be37e4cf2b362f7ee85ba63cf1b5b69deeaf1297e6a7e19a52eba5b718",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ent-csroc-thesis-award"
+      ],
+      "role": "call",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-topodiscover-d95e7fff267648cf88",
+      "url": "https://www.csroc.org.tw/news_detail.php?id=12/portal",
+      "format": "html",
+      "revision_id": "b87b2611619063e75db6c078778aff8b1d77fa48e3c1328fa796b34c1d2617f0",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-ent-csroc-thesis-award"
+      ],
+      "role": "claim",
+      "events": [],
+      "links": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "doc-topodiscover-e75e240ea76aa90aeb",
+      "to": "doc-topodiscover-c49996c7dce20e40ee",
+      "url": "https://www.cip.gov.tw/zh-tw/news/data-list/1018/index.html",
+      "role": "authoritative_rule",
+      "program_key": "gov-cip-indigenous",
+      "scope": "gov-cip-indigenous",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-topodiscover-c49996c7dce20e40ee",
+      "to": "doc-topodiscover-86b5155d9912fa3fa6",
+      "url": "https://www.cip.gov.tw/zh-tw/news/data-list/1018/index.html/portal",
+      "role": "submission_form",
+      "program_key": "gov-cip-indigenous",
+      "scope": "gov-cip-indigenous",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-topodiscover-7dfe4611145dd0b300",
+      "to": "doc-topodiscover-3f11a84220cbac5d90",
+      "url": "https://www.moa.gov.tw/theme_data.php?theme=news&sub_theme=hot&id=123",
+      "role": "authoritative_rule",
+      "program_key": "gov-moa-farmers",
+      "scope": "gov-moa-farmers",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-topodiscover-3f11a84220cbac5d90",
+      "to": "doc-topodiscover-325f7449ef4f9b4142",
+      "url": "https://www.moa.gov.tw/theme_data.php?theme=news&sub_theme=hot&id=123/portal",
+      "role": "submission_form",
+      "program_key": "gov-moa-farmers",
+      "scope": "gov-moa-farmers",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-topodiscover-a417774db33cf0ad4c",
+      "to": "doc-topodiscover-b8bc67257a74e41263",
+      "url": "https://www.mol.gov.tw/1607/28162/28166/28214/",
+      "role": "authoritative_rule",
+      "program_key": "gov-mol-unemployed-workers",
+      "scope": "gov-mol-unemployed-workers",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-topodiscover-b8bc67257a74e41263",
+      "to": "doc-topodiscover-89af7ff440b2b4e27c",
+      "url": "https://www.mol.gov.tw/1607/28162/28166/28214/portal",
+      "role": "submission_form",
+      "program_key": "gov-mol-unemployed-workers",
+      "scope": "gov-mol-unemployed-workers",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-topodiscover-1aebc7fba3ab111bb4",
+      "to": "doc-topodiscover-87f2851408b68d4913",
+      "url": "https://www.vac.gov.tw/cp-1797-3214-1.html",
+      "role": "authoritative_rule",
+      "program_key": "gov-vac-veterans",
+      "scope": "gov-vac-veterans",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-topodiscover-87f2851408b68d4913",
+      "to": "doc-topodiscover-2babe6680ec5b9a0ec",
+      "url": "https://www.vac.gov.tw/cp-1797-3214-1.html/portal",
+      "role": "submission_form",
+      "program_key": "gov-vac-veterans",
+      "scope": "gov-vac-veterans",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-topodiscover-8c3c3eef3783ae0612",
+      "to": "doc-topodiscover-b0eb84773c74336e04",
+      "url": "https://azure.microsoft.com/free/students/",
+      "role": "authoritative_rule",
+      "program_key": "perk-azure-for-students",
+      "scope": "perk-azure-for-students",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-topodiscover-b0eb84773c74336e04",
+      "to": "doc-topodiscover-2ab41aebc90d5f2274",
+      "url": "https://azure.microsoft.com/free/students/portal",
+      "role": "submission_form",
+      "program_key": "perk-azure-for-students",
+      "scope": "perk-azure-for-students",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-topodiscover-1e17e16076d7ef3547",
+      "to": "doc-topodiscover-0ae5e7303370d6c8e8",
+      "url": "https://www.iicm.org.tw/news_detail.php?id=88",
+      "role": "authoritative_rule",
+      "program_key": "ent-iicm-thesis-award",
+      "scope": "ent-iicm-thesis-award",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-topodiscover-0ae5e7303370d6c8e8",
+      "to": "doc-topodiscover-76e45cc50fd1f7c01a",
+      "url": "https://www.iicm.org.tw/news_detail.php?id=88/portal",
+      "role": "submission_form",
+      "program_key": "ent-iicm-thesis-award",
+      "scope": "ent-iicm-thesis-award",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-topodiscover-ea9437c73656eeb5c1",
+      "to": "doc-topodiscover-3076d17037b30fa320",
+      "url": "https://www.taai.org.tw/awards/thesis",
+      "role": "authoritative_rule",
+      "program_key": "ent-taai-thesis-award",
+      "scope": "ent-taai-thesis-award",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-topodiscover-3076d17037b30fa320",
+      "to": "doc-topodiscover-e6da5ccae479fd03f1",
+      "url": "https://www.taai.org.tw/awards/thesis/portal",
+      "role": "submission_form",
+      "program_key": "ent-taai-thesis-award",
+      "scope": "ent-taai-thesis-award",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-topodiscover-a76aac905a39dc86a6",
+      "to": "doc-topodiscover-9cc592384f6d669151",
+      "url": "https://www.csroc.org.tw/news_detail.php?id=12",
+      "role": "authoritative_rule",
+      "program_key": "ent-csroc-thesis-award",
+      "scope": "ent-csroc-thesis-award",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-topodiscover-9cc592384f6d669151",
+      "to": "doc-topodiscover-d95e7fff267648cf88",
+      "url": "https://www.csroc.org.tw/news_detail.php?id=12/portal",
+      "role": "submission_form",
+      "program_key": "ent-csroc-thesis-award",
+      "scope": "ent-csroc-thesis-award",
+      "cycle": "114-115"
+    }
+  ],
+  "scopes": [
+    {
+      "id": "gov-cip-indigenous",
+      "label": "原住民族委員會大"
+    },
+    {
+      "id": "gov-moa-farmers",
+      "label": "農業部農漁民子女"
+    },
+    {
+      "id": "gov-mol-unemployed-workers",
+      "label": "勞動部失業勞工子"
+    },
+    {
+      "id": "gov-vac-veterans",
+      "label": "國軍退除役官兵輔"
+    },
+    {
+      "id": "perk-azure-for-students",
+      "label": "Microsoft"
+    },
+    {
+      "id": "ent-iicm-thesis-award",
+      "label": "中華民國資訊學會"
+    },
+    {
+      "id": "ent-taai-thesis-award",
+      "label": "中華民國人工智慧學會"
+    },
+    {
+      "id": "ent-csroc-thesis-award",
+      "label": "中華民國電腦學會"
+    }
+  ],
+  "candidate_bindings": [
+    {
+      "candidate_id": "cand-gov-cip-indigenous-scholarship",
+      "program_key": "gov-cip-indigenous",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-gov-moa-farmers-aid",
+      "program_key": "gov-moa-farmers",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-gov-mol-unemployed-workers-aid",
+      "program_key": "gov-mol-unemployed-workers",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-gov-vac-veterans-aid",
+      "program_key": "gov-vac-veterans",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-perk-azure-for-students",
+      "program_key": "perk-azure-for-students",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-ent-iicm-thesis-award",
+      "program_key": "ent-iicm-thesis-award",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-ent-taai-thesis-award",
+      "program_key": "ent-taai-thesis-award",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-ent-csroc-thesis-award",
+      "program_key": "ent-csroc-thesis-award",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    }
+  ],
+  "reports": [
+    {
+      "batch_id": "batch-topology-discovered",
+      "verified_schemes": 8,
+      "notes": "涵蓋原民會、農業部、勞動部、退輔會、Azure算力與資訊/AI學會論文獎。"
+    }
+  ]
+}

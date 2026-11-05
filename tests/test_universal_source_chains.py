@@ -30,7 +30,8 @@ class UniversalSourceChainsTests(unittest.TestCase):
             "government_statutory",
             "student_perks_identity",
             "corporate_foundation_dual_track",
-            "conference_travel_grant"
+            "conference_travel_grant",
+            "universal_topology_probe"
         }
 
         for batch_meta in registry["batches"]:

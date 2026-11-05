@@ -30,6 +30,7 @@ def load_full_library(root=ROOT):
         "candidates/enterprise-scholarships.json",
         "candidates/medical-scholarships.json",
         "candidates/university-scholarships.json",
+        "candidates/topology-discovered-scholarships.json",
     ]
     obs_files = [
         "temporal-observations.json",
@@ -38,6 +39,7 @@ def load_full_library(root=ROOT):
         "enterprise-temporal-observations.json",
         "medical-temporal-observations.json",
         "university-temporal-observations.json",
+        "topology-discovered-temporal-observations.json",
     ]
     all_cands = []
     for bf in bundle_files:

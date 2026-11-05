@@ -16,7 +16,7 @@ from scripts.build_site import load_full_library
 
 
 class SiteBuildTests(unittest.TestCase):
-    def test_all_228_temporal_projections_render_without_fabricated_coordinates(self):
+    def test_all_236_temporal_projections_render_without_fabricated_coordinates(self):
         soup=BeautifulSoup(self.html,'html.parser')
         payload={key:json.loads(soup.select_one('#'+tag).string) for key,tag in
             [('pilot','pilot-data'),('radar','radar-data')]}
@@ -25,7 +25,7 @@ const fs=require('node:fs'), assert=require('node:assert/strict');
 const core=require('./docs/design/prototype.js');
 const data=JSON.parse(fs.readFileSync(0,'utf8'));
 const items=core.makeDrafts(data.pilot,'2026-11-03',data.radar);
-assert.equal(items.length,228);
+assert.equal(items.length,236);
 for(const item of items){
  const mode=core.timePresentation(item);
  assert.ok(mode.label && !mode.label.includes('undefined'),item.id);
@@ -44,7 +44,7 @@ for(const state of ['open','closed','upcoming','unknown','not_applicable']){
  const actual=state==='upcoming'?'not_yet_open':state;
  assert.ok(core.filterItems(items,{application:state}).every(i=>i.rawState===actual));
 }
-console.log('228 items: temporal labels, geometry, ambiguous years, intake filters PASS');
+console.log('236 items: temporal labels, geometry, ambiguous years, intake filters PASS');
 '''
         result=subprocess.run(['node','-e',code],cwd=ROOT,input=json.dumps(payload,ensure_ascii=False),
             text=True,encoding='utf-8',capture_output=True)
@@ -73,13 +73,13 @@ console.log('228 items: temporal labels, geometry, ambiguous years, intake filte
         full_bundle, _ = load_full_library(ROOT)
         candidates = full_bundle['candidates']
         self.assertEqual({o['id'] for o in snapshot['opportunities']},{c['candidate_id'] for c in candidates})
-        self.assertEqual(len(snapshot['opportunities']), 228)
+        self.assertEqual(len(snapshot['opportunities']), 236)
         self.assertEqual(len(snapshot['opportunities']),len(candidates))
         self.assertTrue(all(o['review']['status']=='draft' for o in snapshot['opportunities']))
         self.assertIn('data-radar-view="true"',self.html)
         metadata=re.search(r'<script id="radar-data" type="application/json">(.*?)</script>',self.html,re.S)
         self.assertEqual(set(json.loads(metadata[1])['records']),{c['candidate_id'] for c in candidates})
-        self.assertEqual(len(json.loads(metadata[1])['records']), 228)
+        self.assertEqual(len(json.loads(metadata[1])['records']), 236)
         conferences = re.search(r'<script id="conference-data" type="application/json">(.*?)</script>', self.html, re.S)
         self.assertEqual(json.loads(conferences[1]), json.loads((ROOT / "data/conference-programs.json").read_text(encoding="utf-8")))
         self.assertIn('name="robots" content="noindex, nofollow"', self.html)
