@@ -114,7 +114,7 @@ $$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (生�
 ### 11. 學生身分福利（Student Perks）第二梯次擴展調研
 深化學術寫作、科學運算、雲端部署與大專生軌道交通生活福利：
 - **擴展基準台帳**：[`data/student-perks-baseline.json`](data/student-perks-baseline.json) 正式擴展至 **40 項代表性核心方案**。
-- **新增 12 項高價值福利**：Overleaf Professional (LaTeX 雲端協作)、Grammarly for Education、EndNote & Zotero、Wolfram Mathematica & Alpha Pro、DigitalOcean ($200 額度)、Namecheap 免費域名、GitKraken / Docker Desktop、台灣高鐵大學生 5/75 折優惠、Apple BTS 返校專案加贈等。
+- **新增 12 項高價值福利**：Overleaf Professional (LaTeX 雲端協作)、Grammarly for Education、EndNote & Zotero、Wolfram Mathematica & Alpha Pro、DigitalOcean ($200 額度)、Namecheap 免費域名、GitKraken / Docker Desktop、台灣高鐵大學生 5/75 折優惠、Miro for Education 視覺白板等。
 - 詳見深度報告：[全球與臺灣學生身分軟硬體、雲端與生活福利第二梯次擴展調研報告](docs/STUDENT-PERKS-EXPANSION-SURVEY.md)。
 
 ---

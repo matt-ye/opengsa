@@ -16,7 +16,7 @@
 
 - **學生身分福利（Student Perks）第二梯次擴展調研**（[專題報告](STUDENT-PERKS-EXPANSION-SURVEY.md)）：
   - 擴展基準台帳 [`data/student-perks-baseline.json`](../data/student-perks-baseline.json) 至 **40 項代表性核心方案**。
-  - 新增 12 項高價值福利：Overleaf Professional (LaTeX 雲端協作)、Grammarly for Education、EndNote & Zotero、Wolfram Mathematica & Alpha Pro、DigitalOcean ($200 額度)、Namecheap 免費域名、GitKraken / Docker Desktop、台灣高鐵大學生 5/75 折優惠、Apple BTS 返校專案加贈等。
+  - 新增 12 項高價值福利：Overleaf Professional (LaTeX 雲端協作)、Grammarly for Education、EndNote & Zotero、Wolfram Mathematica & Alpha Pro、DigitalOcean ($200 額度)、Namecheap 免費域名、GitKraken / Docker Desktop、台灣高鐵大學生 5/75 折優惠、Miro for Education 視覺白板等。
 
 - **自動化測試矩陣全面守護**：
   - 前端整合測試擴展至 **58 項 PASS**（新增頂會同義詞檢索比對防線）。

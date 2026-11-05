@@ -630,21 +630,22 @@
       "renewal_cycle": "每學期於註冊後維持有效學籍即可享有"
     },
     {
-      "id": "perk-apple-back-to-school",
-      "category": "hardware_education_stores",
-      "name": "Apple BTS (Back to School) 返校專案加贈活動",
-      "provider": "Apple Inc. (台灣官網教育商店 / 直營店)",
-      "official_url": "https://www.apple.com/tw-edu/shop",
-      "benefit_type": "享有 Mac / iPad 教育優惠價外，額外贈送 Apple Pencil 或 AirPods",
-      "value_estimate": "額外省下約 NT$3,500 至 NT$6,500",
-      "verification_method": "UNiDAYS 平台認證在學學生身分，或直營店現場出示學生證與在學證明",
+      "id": "perk-miro-education",
+      "category": "creative_design_and_office",
+      "name": "Miro for Education（雲端視覺協作白板與研究架構圖教育版）",
+      "provider": "Miro",
+      "official_url": "https://miro.com/education/",
+      "benefit_type": "100% 完全免費 Education 專業團隊方案（原價約 $8/月，年省 NT$3,600）",
+      "value_estimate": "約 NT$3,600 / 年",
+      "verification_method": "以具備有效大專學籍之教育信箱（.edu / .edu.tw）線上申請，上傳學生證或在學證明",
       "target_audience": [
-        "高中職錄取準大專生",
-        "大專校院學生",
-        "碩博士研究生"
+        "大專院校學生",
+        "碩士研究生",
+        "博士班學生",
+        "學術研究團隊"
       ],
-      "summary": "每年 7 月中至 9 月底暑假返校季舉辦之年度最大硬體特惠，購買指定款 Mac 贈 AirPods、買 iPad 贈 Apple Pencil，並享有 AppleCare+ 8 折。",
-      "renewal_cycle": "每年夏季限定一梯次，每人每年限購一台 Mac 及一台 iPad"
+      "summary": "全球學術研究與設計思考領域最普及之雲端白板協同平台，提供無限白板畫布、無限外部協作者、Mermaid 流程圖繪製、文獻架構腦力激盪與論文發想討論看板。",
+      "renewal_cycle": "每年以教育信箱線上驗證續期"
     },
     {
       "id": "perk-asus-dell-education",

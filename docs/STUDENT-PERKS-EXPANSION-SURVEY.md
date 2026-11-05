@@ -169,15 +169,16 @@ flowchart TD
   - 乘車必須攜帶「蓋有當學期註冊章之實體學生證正本」；若為免蓋註冊章之學校，必須出示手機查驗之「在學證明書（電子版/紙本）」以備列車長查驗。
   - 罰則提醒：若未攜帶合格有效學生證件，將依規定補收票價差額並加收 50% 違約金。
 
-#### 10. Apple BTS (Back to School) 返校專案加贈活動
-- **官方連結**：[https://www.apple.com/tw-edu/shop](https://www.apple.com/tw-edu/shop)
-- **福利類型**：**教育優惠折扣價外，額外免費獲贈 Apple Pencil 或 AirPods 耳機**（價值 NT$3,500–$6,500）
+#### 10. Miro for Education（雲端視覺協作白板與研究架構圖）
+- **官方連結**：[https://miro.com/education/](https://miro.com/education/)
+- **福利類型**：**100% 完全免費 Education 專業團隊方案**（原價約 \$8/月，年省 NT\$3,600）
 - **核心亮點**：
-  - 每年約 7 月中旬至 9 月底暑假開學前限定舉辦。
-  - 購買指定 Mac（MacBook Air, MacBook Pro, iMac, Mac mini）額外贈送 AirPods（亦可加價升級 AirPods Pro）。
-  - 購買指定 iPad（iPad Air, iPad Pro）額外贈送 Apple Pencil（USB-C 或 Pro）。
-  - 同步享有 AppleCare+ 服務專案 8 折教育優惠。
-- **認證方式**：透過 UNiDAYS 平台認證學生教育身分；或親赴 Apple 直營門市（台北 101、A13 信義）出示有效學生證或錄取通知書現場購買。
+  - 專為學術研究、系統架構設計與教學討論打造之無界限雲端白板。
+  - 支援無限制白板數量（Unlimited Boards）、無限制外部瀏覽與編輯協作者。
+  - 內建豐富研究模板：論文研究流程圖、心智圖、使用者旅程圖、研究問題樹與敏捷看板。
+  - 完整匯出高解析向量圖（PDF/SVG），方便直接貼入 LaTeX 論文或研究簡報。
+  - *註：Apple 臺灣教育優惠與 Back to School (BTS) 返校加贈已完整收錄於第 18 項基準方案（`perk-apple-education-pricing`），全年常態教育價與暑期加贈一併涵蓋。*
+- **認證方式**：以具備有效大專學籍之教育信箱（.edu / .edu.tw）線上填報申請，檢附在學證明或學生證照片，通常於數小時至 24 小時內核准。
 
 #### 11. ASUS / Dell 學生教育商城與筆電專案折扣
 - **官方連結**：[https://www.asus.com/tw/store/events/education/](https://www.asus.com/tw/store/events/education/)
