@@ -1,5 +1,22 @@
 # 目前計畫與已接受決策
 
+## 2026-11-06 自動庫外資源檢索規劃（Autonomous External Discovery Probe Planning）
+
+- 詳見 [自動庫外資源檢索規劃架構書](AUTONOMOUS-DISCOVERY-PLAN.md)。
+- 建立主動式、低頻、自動發現新資源的機制，打破既有固定 13 排程來源的被動監聽邊界。
+- **四大核心原則與防線**：
+  - **零模型與零成本邊界**：探針全程維持純規則與開放 API，`model_mode=off`，0 LLM API 呼叫，0 外部推論開銷。
+  - **網路公民禮儀**：嚴格遵守 `robots.txt`、同站間隔 >= 3 秒、微批 <= 20 HTTP、180 秒強制超時。
+  - **候選隔離池與指紋純淨**：探針挖掘成果一律獨立寫入 `data/discovery/discovery-candidates.json`，絕不自動覆寫或竄改正式台帳（`pilot.json`, `source-inventory.json`, `source-chains.json`）。
+  - **Fuzzy 去重與規範化**：URL 去除行銷參數、名稱剔除年份雜訊計算 Levenshtein 距離，防止同一福利重複建卡。
+- **三大探索來源管道**：
+  - Channel 1：政府資料開放平台（`data.gov.tw`）教育部、國科會、農業部、原民會獎助開放資料集 API。
+  - Channel 2：全台 78 所公私立大專校院生輔組/學務處 RSS 與最新公告欄微批監聽。
+  - Channel 3：頂級國際學術會議（AI/CS/醫學頂會）學生差旅專款（Travel Grants）頁面。
+- **審查工作流與排程**：規劃每週日 09:17 低頻巡檢，偵測到高信心項目時自動發布待審 Issue，無縫對接桌面審查工作台（Review Workspace）。
+
+---
+
 ## 2026-11-06 全站四分頁 RWD 響應式升級、甘特圖 64px 緊湊化、消滅死空白與 Toutour 專屬子導覽（PR #69）
 
 - **全站四分頁 RWD 響應式優化與甘特圖區域大幅放大**（[詳細手冊](UI-UX-ONBOARDING-AND-ROADMAP-TODO.md)）：
