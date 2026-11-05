@@ -1,0 +1,246 @@
+{
+  "schema_version": "1.0.0-top-conference-travel-grants",
+  "as_of": "2026-11-06",
+  "description": "國際頂級學術會議（Top Conferences）專屬學生差旅獎助（Student Travel Grants / Scholar Awards）與國內頂會專案加碼基準清冊",
+  "total_grants_count": 12,
+  "categories": [
+    "ai_ml_nlp_cv",
+    "systems_graphics_hci_network",
+    "industry_sponsored",
+    "domestic_university_bonus"
+  ],
+  "grants": [
+    {
+      "id": "conf-neurips-travel-award",
+      "category": "ai_ml_nlp_cv",
+      "conference": "NeurIPS (Conference on Neural Information Processing Systems)",
+      "ranking": "CORE A* / CCF A",
+      "grant_name": "NeurIPS Scholar Award & Travel Support",
+      "provider": "NeurIPS Foundation",
+      "official_url": "https://neurips.cc/",
+      "funding_items": "大會註冊費全額減免 + 往返機票與指定住宿定額補助（約 $1,000 - $2,000 USD）",
+      "eligibility": "論文（Oral, Spotlight, Poster）經大會接受之在學碩士班、博士班研究生；第一作者及多元代表性（Underrepresented Groups）學生優先。",
+      "application_timing": "依論文接受通知（Notification of Acceptance）起約 2 至 3 週內於大會系統提出申請（約會前 45~60 天）。",
+      "required_documents": [
+        "論文編號與接受通知證明",
+        "指導教授支持函（說明實驗室經費缺口與差旅支持度）",
+        "差旅費用預算明細表（機票報價、住宿預估）",
+        "學生身分證明（在學證明書或學生證影本）"
+      ],
+      "co_funding_policy": "可與國內機關（如國科會研究生出國開會補助、學校配合款）搭配分攤；同項單據不得重複報銷。",
+      "summary": "全球機器學習最高殿堂 NeurIPS 專屬獎助，資助全球研究生親赴會場發表突破性成果。"
+    },
+    {
+      "id": "conf-cvpr-travel-grant",
+      "category": "ai_ml_nlp_cv",
+      "conference": "CVPR (IEEE/CVF Computer Vision and Pattern Recognition)",
+      "ranking": "CORE A* / CCF A",
+      "grant_name": "CVPR Student Travel Grant",
+      "provider": "Computer Vision Foundation (CVF) & IEEE Computer Society (PAMI TC)",
+      "official_url": "https://cvpr.thecvf.com/",
+      "funding_items": "大會註冊費免除 + 學生差旅補助（約 $750 - $1,500 USD）",
+      "eligibility": "電腦視覺頂會 CVPR 論文被接受之在學學生作者；第一作者口頭或海報發表者優先。",
+      "application_timing": "接受結果公告後，大會官網 Travel Grants 專區開放，通常截止於 Camera-Ready 完稿繳交期限前後。",
+      "required_documents": [
+        "CVPR Paper ID 及接受信",
+        "IEEE 或 CVF 學生會員編號",
+        "指導教授背書確認函",
+        "學生在學身分審核"
+      ],
+      "co_funding_policy": "採定額補助支票或 Wire Transfer 核發，可搭配國科會機票補助補足昂貴差旅生活費缺口。",
+      "summary": "電腦視覺旗艦頂會 CVPR 專屬補助，由 CVF 基金會與 IEEE TC-PAMI 共同出資支持青年學者。"
+    },
+    {
+      "id": "conf-icml-travel-award",
+      "category": "ai_ml_nlp_cv",
+      "conference": "ICML (International Conference on Machine Learning)",
+      "ranking": "CORE A* / CCF A",
+      "grant_name": "ICML Travel Award",
+      "provider": "International Machine Learning Society (IMLS)",
+      "official_url": "https://icml.cc/",
+      "funding_items": "大會免註冊費代碼 + 往返交通與住宿津貼（最高達 $2,000 USD）",
+      "eligibility": "正式註冊之在學研究生，論文獲 ICML 正會（Main Track）接受發表者。",
+      "application_timing": "論文接受通知發布後 14 天內線上填報。",
+      "required_documents": [
+        "IMLS 申請表單與論文接受確認函",
+        "經費自籌困難度與其他補助揭露表",
+        "指導教授簽名推薦函"
+      ],
+      "co_funding_policy": "需誠實揭露是否獲國科會、學校或產學計畫補助；差旅超額部分可由 ICML 補助款填補。",
+      "summary": "國際機器學習學會 IMLS 旗艦獎勵，提供給需要差旅支持之機器學習研究新生代。"
+    },
+    {
+      "id": "conf-iclr-financial-assistance",
+      "category": "ai_ml_nlp_cv",
+      "conference": "ICLR (International Conference on Learning Representations)",
+      "ranking": "CORE A* / CCF A",
+      "grant_name": "ICLR Financial Assistance & Travel Support",
+      "provider": "ICLR (OpenReview / ICLR Foundation)",
+      "official_url": "https://iclr.cc/",
+      "funding_items": "註冊費免除（Registration Waiver）或實體差旅津貼（Travel Subsidy）",
+      "eligibility": "ICLR 錄取論文之研究生作者，或具備具體研究貢獻之青年研究人員。",
+      "application_timing": "OpenReview 接受放榜後於大會入口網站申請，約會前 40 天截止審查。",
+      "required_documents": [
+        "OpenReview 論文連結與驗證帳號",
+        "學生身分證明文件",
+        "申請理由陳述（Statement of Need）"
+      ],
+      "co_funding_policy": "依申請人所在區域與經濟條件分級核定，不影響其他機構差旅申請資格。",
+      "summary": "表徵學習與深度學習頂級會議 ICLR 官方專屬資助，重點支持學生作者無障礙出席實體會議交流。"
+    },
+    {
+      "id": "conf-acl-emnlp-travel-grant",
+      "category": "ai_ml_nlp_cv",
+      "conference": "ACL / EMNLP (Association for Computational Linguistics)",
+      "ranking": "CORE A* / CCF A",
+      "grant_name": "ACL / EMNLP Student Travel Grants & D&I Subsidies",
+      "provider": "Association for Computational Linguistics (ACL)",
+      "official_url": "https://www.aclweb.org/",
+      "funding_items": "大會學生註冊費 + 旅費補助款（500 至 1,500 美元）",
+      "eligibility": "自然語言處理與計算語言學頂會主會或工作坊接受論文之學生作者；ACL 學生會員優先。",
+      "application_timing": "通知接受放榜後 2 週內透過 ACL Portal 投件。",
+      "required_documents": [
+        "ACL 論文接受信",
+        "ACL Student Membership 證明",
+        "指導教授支持證明"
+      ],
+      "co_funding_policy": "可與國內機關配合，若有差額未獲全額支應者優先核給。",
+      "summary": "自然語言處理最高國際學術組織 ACL 專款支持在學學生作者出席國際大會。"
+    },
+    {
+      "id": "conf-siggraph-travel-award",
+      "category": "systems_graphics_hci_network",
+      "conference": "ACM SIGGRAPH (Special Interest Group on Computer Graphics)",
+      "ranking": "CORE A* / CCF A",
+      "grant_name": "ACM SIGGRAPH Student Travel Award & Student Volunteers",
+      "provider": "ACM SIGGRAPH",
+      "official_url": "https://www.siggraph.org/",
+      "funding_items": "大會全通行證 (Full Conference Pass) + 定額差旅住宿補助（約 $800 - $1,200 USD）",
+      "eligibility": "大專校院在學學生，有論文、海報或藝術展演作品發表於 SIGGRAPH 者；或獲選為 Student Volunteer 志工學生。",
+      "application_timing": "論文接受放榜後約 2 週；志工計畫則於每年 2 月至 4 月開放申請。",
+      "required_documents": [
+        "SIGGRAPH 作品接受通知",
+        "ACM / SIGGRAPH 學生會員證",
+        "學生身分證明與履歷"
+      ],
+      "co_funding_policy": "得與校內頂尖會議補助或系所專案配合款整合使用。",
+      "summary": "電腦圖形與互動技術最高殿堂 SIGGRAPH 專屬獎助，結合發表贊助與國際志工參與網絡。"
+    },
+    {
+      "id": "conf-sigcomm-travel-grant",
+      "category": "systems_graphics_hci_network",
+      "conference": "ACM SIGCOMM (Data Communication)",
+      "ranking": "CORE A* / CCF A",
+      "grant_name": "ACM SIGCOMM Student Travel Grants",
+      "provider": "ACM SIGCOMM & Industry Sponsors",
+      "official_url": "https://www.sigcomm.org/",
+      "funding_items": "機票與住宿補助最高達 $1,500 USD + 免費註冊",
+      "eligibility": "電腦網路領域最高旗艦會議 SIGCOMM 之在學研究生發表者；非第一作者但具備網路前瞻研究潛力之博士生亦可申請。",
+      "application_timing": "會前約 60 天大會網站開放申請，通常於 6 月底至 7 月初截止。",
+      "required_documents": [
+        "申請人研究動機說明書（Statement of Purpose）",
+        "論文接受確認函（若有發表）",
+        "指導教授推薦函"
+      ],
+      "co_funding_policy": "專款直接扣抵住宿或以匯款核銷；可與國科會國際會議作業要點相容搭配。",
+      "summary": "電腦網路通訊領域最具聲望之頂尖會議專屬獎助，獲得產業界 Google、Cisco、Meta 聯合資助。"
+    },
+    {
+      "id": "conf-chi-travel-award",
+      "category": "systems_graphics_hci_network",
+      "conference": "ACM CHI (Human Factors in Computing Systems)",
+      "ranking": "CORE A* / CCF A",
+      "grant_name": "ACM SIGCHI Gary Marsden Travel Award & CHI Travel Grants",
+      "provider": "ACM SIGCHI",
+      "official_url": "https://sigchi.org/",
+      "funding_items": "差旅津貼高達 $2,500 USD（涵蓋機票、住宿、簽證費與大會註冊費）",
+      "eligibility": "人機互動 (HCI) 頂尖會議 CHI 論文或 Extended Abstracts 發表學生；全球各國人機互動研究青年學者。",
+      "application_timing": "每年分多輪收件（通常配合 CHI 論文接受日程於 1 月及 2 月收件）。",
+      "required_documents": [
+        "CHI 論文錄取證明",
+        "ACM SIGCHI 會員資格或註冊資料",
+        "詳細差旅經費試算表"
+      ],
+      "co_funding_policy": "專為克服高額跨國差旅門檻設立，特別優先資助自費負擔過高之博士生與碩士生。",
+      "summary": "全球人機互動最具指標性之 Gary Marsden 基金與 CHI 官方大會旅行獎助。"
+    },
+    {
+      "id": "conf-infocom-travel-grant",
+      "category": "systems_graphics_hci_network",
+      "conference": "IEEE INFOCOM (IEEE Conference on Computer Communications)",
+      "ranking": "CORE A* / CCF A",
+      "grant_name": "IEEE INFOCOM Student Travel Grants",
+      "provider": "IEEE Communications Society (ComSoc) & NSF",
+      "official_url": "https://infocom.ieee.org/",
+      "funding_items": "定額差旅補助款（$1,000 - $1,500 USD）",
+      "eligibility": "IEEE INFOCOM 正式論文在學學生作者；IEEE ComSoc 學生會員優先。",
+      "application_timing": "論文接受放榜後 3 週內開放線上申請。",
+      "required_documents": [
+        "IEEE 學生會員證",
+        "論文被接受證明",
+        "指導教授支持函"
+      ],
+      "co_funding_policy": "核定後於大會報到現場辦理核銷退款或提供受獎支票，可兼領國內機關差旅機票補助。",
+      "summary": "IEEE 通訊學會最具代表性之頂尖通訊會議學生差旅專款。"
+    },
+    {
+      "id": "conf-google-travel-grant",
+      "category": "industry_sponsored",
+      "conference": "Google Conference Scholarships (多元頂尖會議通用)",
+      "ranking": "頂尖學術會議 (Top-Tier Conferences)",
+      "grant_name": "Google Conference Travel Grant",
+      "provider": "Google Research / Google for Education",
+      "official_url": "https://buildyourfuture.withgoogle.com/scholarships/google-travel-scholarships",
+      "funding_items": "差旅補助金 $1,000 至 $3,000 USD（依出訪地區與會場距離核給）",
+      "eligibility": "在學之電腦科學、資訊工程或相關科技領域全職碩士生、博士生；受邀或論文獲各大頂會（NeurIPS, CVPR, ICML, ICLR, KDD, ACL, SIGCOMM 等）接受發表者；女性及少數代表性族群優先支持。",
+      "application_timing": "常態性分梯次受理，通常需於各研討會舉行前 2 至 3 個月提出線上申請。",
+      "required_documents": [
+        "個人學術履歷與成績單",
+        "研討會論文接受函（Acceptance Notification）",
+        "論文摘要與個人研究貢獻自述",
+        "預估差旅支出明細"
+      ],
+      "co_funding_policy": "屬企業直接獎助款，無特定排他條款，得與國科會、FAOS 或大學專案配合款併用。",
+      "summary": "科技巨頭 Google 全球支持青年學者赴頂會發表之頂級旗艦差旅獎助。"
+    },
+    {
+      "id": "conf-msr-travel-grant",
+      "category": "industry_sponsored",
+      "conference": "Microsoft Research Student Travel Grants (頂級會議發表)",
+      "ranking": "頂尖學術會議 (Top-Tier Conferences)",
+      "grant_name": "Microsoft Research Travel Grants",
+      "provider": "Microsoft Research (MSR)",
+      "official_url": "https://www.microsoft.com/en-us/research/academic-programs/",
+      "funding_items": "全額註冊費抵用金或 $1,000 - $2,500 USD 交通住宿贊助",
+      "eligibility": "從事電腦科學、AI、系統軟體相關研究且論文獲頂級會議（如 OSDI, SOSP, NeurIPS, CHI 等）接受之博士在學研究生。",
+      "application_timing": "由各研討會徵件網頁之 MSR 贊助入口或微軟學術合作計畫網頁申請。",
+      "required_documents": [
+        "論文接受編號與題目",
+        "博士在學證明",
+        "指導教授簡短推薦信"
+      ],
+      "co_funding_policy": "可與任何學術補助兼領，由大會秘書處直接折抵差旅單據。",
+      "summary": "微軟研究院長期贊助國際頂級系統、軟體工程與 AI 會議之青年學者獎勵專案。"
+    },
+    {
+      "id": "conf-domestic-univ-bonus",
+      "category": "domestic_university_bonus",
+      "conference": "國內頂尖公私立大學校院（臺大、清華、交大、成功等）",
+      "ranking": "CCF A 類 / CORE A* 頂級會議專屬",
+      "grant_name": "大學院系頂尖會議（CCF A / CORE A*）機票與註冊費專款加碼",
+      "provider": "各大學教務處 / 研發處 / 電資學院與工學院",
+      "official_url": "https://www.eecs.ntu.edu.tw/",
+      "funding_items": "加碼往返機票差額或大會註冊費專款（每案新臺幣 30,000 至 50,000 元）",
+      "eligibility": "國內大學在學碩博士生，以該校名義及第一作者身分發表於 CCF-A 類或 CORE A* 頂級國際會議（Oral Presentation 優先）。",
+      "application_timing": "依各校/各學院作業規範，通常於會議首日前 3 至 4 週檢附國科會申請紀錄送交學院辦公室辦理初審。",
+      "required_documents": [
+        "論文全文與正式接受函（明確標註 CCF-A / CORE A* 會議名稱）",
+        "已向國科會提出國際會議補助之申請表影本（校方要求優先向政府機關爭取）",
+        "指導教授同意推薦函與預算分攤表",
+        "學院專用出國發表加碼申請表"
+      ],
+      "co_funding_policy": "作為國科會補助款之「差額配合款」；國科會核准機票後，學院專款得補充註冊費與差旅生活費，實質減輕研究生自付負擔。",
+      "summary": "國內頂尖大學電資工學院針對發表頂會研究生的官方加碼機制，為出國開會最堅實之校方後盾。"
+    }
+  ]
+}

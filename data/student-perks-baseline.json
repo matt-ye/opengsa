@@ -1,8 +1,8 @@
 {
   "version": "1.0.0-student-perks",
-  "as_of": "2026-11-01",
-  "description": "全球與臺灣學生身分（高中職、大專院校、碩博士）軟體、硬體、AI註冊帳戶、雲端算力與學習資源優惠基準台帳",
-  "total_perks_count": 28,
+  "as_of": "2026-11-06",
+  "description": "臺灣與全球大專校院及研究生學生身分福利（Student Perks / Software Discounts）全景基準清冊，收錄 40 項核心方案。",
+  "total_perks_count": 40,
   "categories": [
     "ai_and_cloud_compute",
     "developer_and_engineering",
@@ -21,7 +21,11 @@
       "benefit_type": "100% 免費（全套總市值逾 $1,000 美元）",
       "value_estimate": "逾 NT$30,000 / 年",
       "verification_method": "GitHub Education 審查（需 .edu 信箱或上傳有效在學證明、學生證）",
-      "target_audience": ["高中職學生", "大專院校生", "碩博士生"],
+      "target_audience": [
+        "高中職學生",
+        "大專院校生",
+        "碩博士生"
+      ],
       "summary": "全球最強開發者學生福利，整合 JetBrains、GitHub Pro、Codespaces 每月 180 小時、Namecheap 免費網域、DigitalOcean $200 點數等 80+ 項頂級工具。",
       "renewal_cycle": "每年需重新驗證在學資格一次"
     },
@@ -34,7 +38,11 @@
       "benefit_type": "100% 免費（原價 $10/月）",
       "value_estimate": "約 NT$3,800 / 年",
       "verification_method": "通過 GitHub Education 學生身分驗證",
-      "target_audience": ["高中職學生", "大專院校生", "碩博士生"],
+      "target_audience": [
+        "高中職學生",
+        "大專院校生",
+        "碩博士生"
+      ],
       "summary": "2026 最新專屬 Copilot Student 方案，提供代碼自動補全無限次使用、每月 200 AI credits 對話額度與自動最佳模型調度，支援 VS Code、JetBrains 等主流 IDE。",
       "renewal_cycle": "依附於 GitHub Student Pack 有效期（每年續約）"
     },
@@ -47,7 +55,10 @@
       "benefit_type": "每年 $100 美元免費額度 + 12 個月免費服務（免信用卡）",
       "value_estimate": "約 NT$3,200 / 年",
       "verification_method": "學校組織電子郵件信箱（.edu / .edu.tw）驗證，無需綁定信用卡",
-      "target_audience": ["大專院校生", "碩博士生"],
+      "target_audience": [
+        "大專院校生",
+        "碩博士生"
+      ],
       "summary": "微軟專門為學生打造之無風險雲端環境，提供 $100 自由抵扣額度，可直接部署 Linux/Windows 虛擬機、Azure OpenAI Service (GPT-4o)、Cognitive Services 及資料庫。",
       "renewal_cycle": "每年在學身分有效即可重置獲取一次 $100 額度"
     },
@@ -60,7 +71,11 @@
       "benefit_type": "免費雲端沙盒實驗室與訓練課程（免信用卡）",
       "value_estimate": "約 NT$1,500 ~ 3,000",
       "verification_method": "學生電子郵件註冊或教師邀請碼",
-      "target_audience": ["高中職學生", "大專院校生", "碩博士生"],
+      "target_audience": [
+        "高中職學生",
+        "大專院校生",
+        "碩博士生"
+      ],
       "summary": "專為雲端初學者設計，提供無信用卡風險的 Hands-on 實務沙盒實驗室、Bedrock AI 模型操作環境、雲端架構師自學路徑及官方徽章。",
       "renewal_cycle": "在學期間有效"
     },
@@ -73,7 +88,10 @@
       "benefit_type": "免費 30~90 天全站通行證（Credits & Badges）",
       "value_estimate": "約 NT$1,800",
       "verification_method": "透過校園活動、Google Developer Student Clubs (GDSC) 或 .edu 帳號領取",
-      "target_audience": ["大專院校生", "碩博士生"],
+      "target_audience": [
+        "大專院校生",
+        "碩博士生"
+      ],
       "summary": "提供完整 Google Cloud 實戰實驗室，免自備 GCP 帳號與信用卡，直接在雲端操作 Vertex AI、Gemini API、BigQuery 與 Kubernetes，完成可獲得官方數位認證徽章。",
       "renewal_cycle": "活動期專案制"
     },
@@ -86,7 +104,12 @@
       "benefit_type": "100% 免費（原價 $10/月）",
       "value_estimate": "約 NT$3,800 / 年",
       "verification_method": "將 Notion 帳號登入信箱設定為 .edu 學校信箱後一鍵升級",
-      "target_audience": ["K-12 中小學及高中生", "大專院校生", "碩博士生", "教職員"],
+      "target_audience": [
+        "K-12 中小學及高中生",
+        "大專院校生",
+        "碩博士生",
+        "教職員"
+      ],
       "summary": "將個人工作區免費升級為 Plus 方案，享有無限頁面與區塊（Blocks）、無限制單檔上傳大小、90 天版本歷史記錄，並支援多裝置無縫同步，筆記與研究整理神器。",
       "renewal_cycle": "維持學校信箱綁定期間永久有效"
     },
@@ -99,7 +122,12 @@
       "benefit_type": "100% 免費（原價 $12~15/人/月）",
       "value_estimate": "約 NT$5,700 / 年",
       "verification_method": "SheerID 線上認證或上傳學生證在學證明",
-      "target_audience": ["高中職學生", "大專院校生", "碩博士生", "設計相關科系師生"],
+      "target_audience": [
+        "高中職學生",
+        "大專院校生",
+        "碩博士生",
+        "設計相關科系師生"
+      ],
       "summary": "全球業界主流 UI/UX 設計工具。學生可免費建立專業版團隊，享有無限專案、無限版本歷史、全團隊共用設計元件庫及完整的 Dev Mode 開發者檢查功能。",
       "renewal_cycle": "每年需重新驗證在學資格"
     },
@@ -112,7 +140,11 @@
       "benefit_type": "100% 免費（全套專業版原價 $289/首年、$689/年）",
       "value_estimate": "約 NT$9,000 ~ 20,000 / 年",
       "verification_method": "學校 .edu 電子郵件信箱、ISIC 國際學生證或 GitHub Student Pack 綁定",
-      "target_audience": ["高中職資訊科生", "大專院校生", "碩博士生"],
+      "target_audience": [
+        "高中職資訊科生",
+        "大專院校生",
+        "碩博士生"
+      ],
       "summary": "程式設計必備神器，免費提供 IntelliJ IDEA Ultimate, PyCharm Professional, WebStorm, CLion, GoLand, Rider, DataGrip 等全套十餘款專業級 IDE 旗艦授權。",
       "renewal_cycle": "每年需重新驗證一次，畢業後另享 25% 延續折扣"
     },
@@ -125,7 +157,11 @@
       "benefit_type": "100% 免費 1 年教育授權（可每年續期）",
       "value_estimate": "逾 NT$60,000 / 年",
       "verification_method": "SheerID 驗證（上傳學生證或在學證明）",
-      "target_audience": ["高中職工科生", "建築/機械/土木/動畫大專院校生", "碩博士生"],
+      "target_audience": [
+        "高中職工科生",
+        "建築/機械/土木/動畫大專院校生",
+        "碩博士生"
+      ],
       "summary": "工程與設計界標準軟體，免費提供 AutoCAD, Revit, Inventor, 3ds Max, Maya, Fusion 360 正版軟體下載，支援單機安裝與雲端渲染。",
       "renewal_cycle": "每年可重新驗證並延長 1 年"
     },
@@ -138,7 +174,9 @@
       "benefit_type": "100% 免費（由學校統籌採購全校授權）",
       "value_estimate": "逾 NT$15,000 / 年",
       "verification_method": "使用各校學生帳號（如 @ntu.edu.tw）登入 MathWorks 門戶關聯授權",
-      "target_audience": ["全臺國立與私立大專院校大學部及碩博士生"],
+      "target_audience": [
+        "全臺國立與私立大專院校大學部及碩博士生"
+      ],
       "summary": "臺灣包含臺大、清大、交大、成大、臺科大、北科大、政大、中央等多所大專院校均採購全校授權，學生可免費下載最新版 MATLAB/Simulink 及所有專業工具箱與線上培訓。",
       "renewal_cycle": "在校具備學籍期間自動有效"
     },
@@ -151,7 +189,10 @@
       "benefit_type": "100% 免費 1 年授權（原價 $75/月）",
       "value_estimate": "約 NT$28,000 / 年",
       "verification_method": "SheerID 上傳在學證明（需包含姓名、學校與當前學期年份）",
-      "target_audience": ["大專院校生", "商管/資料科學/資管碩博士生"],
+      "target_audience": [
+        "大專院校生",
+        "商管/資料科學/資管碩博士生"
+      ],
       "summary": "全球頂尖商業智慧（BI）與資料視覺化分析軟體，免費獲取個人版 Tableau Desktop 及 Tableau Prep Builder 序號，助攻資料分析與學術論文圖表製作。",
       "renewal_cycle": "每年可重新申請續約一次"
     },
@@ -164,7 +205,11 @@
       "benefit_type": "100% 免費（A3 / A5 校園授權）",
       "value_estimate": "約 NT$2,190 ~ 3,190 / 年",
       "verification_method": "使用學校發放之 Office 365 學生信箱（@o365.edu.tw 等）登入",
-      "target_audience": ["國小至高中職學生", "大專院校生", "碩博士生"],
+      "target_audience": [
+        "國小至高中職學生",
+        "大專院校生",
+        "碩博士生"
+      ],
       "summary": "提供正版 Office 桌面應用程式（Word, Excel, PowerPoint, OneNote）、雲端 Web 版，並享有高達 1TB 的個人 OneDrive 雲端儲存空間及 Teams 協作功能。",
       "renewal_cycle": "學校學籍有效期間均可持續使用"
     },
@@ -177,7 +222,12 @@
       "benefit_type": "教育折扣（原價約 6 折至 6.5 折）",
       "value_estimate": "每月省下約 NT$800 ~ 1,200",
       "verification_method": "購買時輸入 .edu.tw 信箱或上傳學生證在學證明",
-      "target_audience": ["年滿 13 歲以上學生", "高中職學生", "大專院校生", "傳播/影音/設計學院師生"],
+      "target_audience": [
+        "年滿 13 歲以上學生",
+        "高中職學生",
+        "大專院校生",
+        "傳播/影音/設計學院師生"
+      ],
       "summary": "包含 Photoshop, Illustrator, Premiere Pro, After Effects, InDesign 等 20 多款專業影像剪輯與平面設計軟體，並包含 100GB 雲端空間與 Adobe Fonts 字體庫。",
       "renewal_cycle": "每年需確認學生身分以維持特惠價格"
     },
@@ -190,7 +240,10 @@
       "benefit_type": "K-12 師生 100% 免費 / 大專學生特惠",
       "value_estimate": "約 NT$3,600 / 年",
       "verification_method": "中小學教育帳號認證或 SheerID",
-      "target_audience": ["K-12 幼兒園至高中職師生", "大專院校學生"],
+      "target_audience": [
+        "K-12 幼兒園至高中職師生",
+        "大專院校學生"
+      ],
       "summary": "簡易易上手的線上排版與海報簡報設計神器，提供數百萬款付費級精美範本、商用圖庫、一鍵去背、AI 圖像生成及 Magic Studio 設計工具。",
       "renewal_cycle": "在學期間有效"
     },
@@ -203,7 +256,11 @@
       "benefit_type": "校園合作方案全額免費 / 助學金可減免 75%~100% 課程與證書費用",
       "value_estimate": "每門課約省 NT$1,500 ~ 3,000",
       "verification_method": "學校信箱綁定校園專案，或在課程頁面點選「Financial Aid Available」提交自述申請",
-      "target_audience": ["大專院校生", "碩博士生", "自學者"],
+      "target_audience": [
+        "大專院校生",
+        "碩博士生",
+        "自學者"
+      ],
       "summary": "涵蓋史丹佛、耶魯、Google、IBM、Meta 開設之頂級線上課程。學生若無校園專屬授權，可透過填寫兩段 150 字學習動機與經濟狀況自述申請助學金，15 天內核准即可免費取得官方專業證書。",
       "renewal_cycle": "每門課程獨立申請"
     },
@@ -216,7 +273,10 @@
       "benefit_type": "教師申請課堂 100% 免費 / 學生個人方案享大幅折扣",
       "value_estimate": "約 NT$4,500 ~ 9,000",
       "verification_method": "教授課堂邀請碼，或透過 GitHub Student Developer Pack 領取免費體驗",
-      "target_audience": ["大專院校學生", "資料科學/統計/程式設計修課學生"],
+      "target_audience": [
+        "大專院校學生",
+        "資料科學/統計/程式設計修課學生"
+      ],
       "summary": "最受歡迎的資料科學實務平台，以瀏覽器即時撰寫 Python、R、SQL，提供資料工程、機器學習與商業數據分析實戰課程。",
       "renewal_cycle": "學期制（每學期約 6 個月，可由授課教師重新建立課堂展期）"
     },
@@ -229,7 +289,12 @@
       "benefit_type": "100% 免費全額下載（由政府及各大學每年耗資數億元集中採購）",
       "value_estimate": "每篇論文單買約 $30~45 美元（折合 NT$1,000~1,500），研究期間無價",
       "verification_method": "透過學校校園 IP、校內 Wi-Fi 或校外使用學校 SSL VPN / Proxy 連線",
-      "target_audience": ["大專院校大學部專題生", "碩士生", "博士生", "研究助理"],
+      "target_audience": [
+        "大專院校大學部專題生",
+        "碩士生",
+        "博士生",
+        "研究助理"
+      ],
       "summary": "研究生論文寫作最大寶庫。學生免付高昂單篇下載費，直接免費檢索下載 IEEE Xplore, ScienceDirect (Elsevier), SpringerLink, ACM Digital Library, Web of Science, 華藝線上圖書館等數千萬篇國際頂級期刊與研討會論文。",
       "renewal_cycle": "具備在校在學學籍期間均享完整存取權"
     },
@@ -242,7 +307,11 @@
       "benefit_type": "硬體教育價（約 9 折至 9.5 折）+ 返校季加贈耳機/觸控筆 + AppleCare+ 8 折",
       "value_estimate": "每筆硬體折省 NT$1,500 ~ 6,000 + 贈品價值約 NT$4,000 ~ 5,500",
       "verification_method": "全面採用 UNiDAYS 平台驗證大專院校在學身分（或直營店現場出示學生證/錄取證明）",
-      "target_audience": ["臺灣公私立大專院校學生（含準大一新生）", "學生家長（代子女購買）", "各級公私立幼兒園至大專教職員工"],
+      "target_audience": [
+        "臺灣公私立大專院校學生（含準大一新生）",
+        "學生家長（代子女購買）",
+        "各級公私立幼兒園至大專教職員工"
+      ],
       "summary": "全年可享 Mac 筆電（MacBook Air / Pro）、桌機（iMac / Mac mini）及 iPad 平板教育折扣。每年 7 月至 9 月返校季期間加碼贈送 AirPods 或 Apple Pencil，並享 AppleCare+ 服務 8 折保固。",
       "renewal_cycle": "每年設有購買數量限制（MacBook 每年限 1 台、iPad 限 2 台、Mac mini 限 1 台）"
     },
@@ -255,7 +324,10 @@
       "benefit_type": "專屬教育折扣（享官方定價 7 折至 8.5 折）",
       "value_estimate": "每件商品折省 NT$1,000 ~ 8,000 不等",
       "verification_method": "以國內大專院校之 .edu.tw 教育信箱直接註冊會員解鎖",
-      "target_audience": ["臺灣大專院校在學學生", "各級學校教職員"],
+      "target_audience": [
+        "臺灣大專院校在學學生",
+        "各級學校教職員"
+      ],
       "summary": "購買 Galaxy 智慧型手機、Galaxy Tab 旗艦平板、Galaxy Watch 智慧手錶、無線耳機及電腦螢幕享專屬優惠價，享有免運費、舊換新加碼折抵及指定商品分期零利率。",
       "renewal_cycle": "信箱有效期間可常態使用"
     },
@@ -268,7 +340,12 @@
       "benefit_type": "最高享 8 折至 8.5 折教育價，專屬客製化筆電升級折扣",
       "value_estimate": "每台筆電折省約 NT$2,000 ~ 6,000",
       "verification_method": "SheerID 平台驗證在學身分",
-      "target_audience": ["高中職學生", "大專院校生", "碩博士生", "教職員"],
+      "target_audience": [
+        "高中職學生",
+        "大專院校生",
+        "碩博士生",
+        "教職員"
+      ],
       "summary": "工程師最愛 ThinkPad 系列、電競 Legion 系列、輕薄 Yoga 系列筆電教育專享折扣，加購原廠延長保固（Premier Support）享大幅優惠，支援學生線上分期付款。",
       "renewal_cycle": "每年需通過 SheerID 驗證"
     },
@@ -281,7 +358,9 @@
       "benefit_type": "全館指定商品享 75 折至 8 折專屬折扣代碼",
       "value_estimate": "每筆訂單省下約 NT$500 ~ 2,000",
       "verification_method": "透過 UNiDAYS 或 Student Beans 取得單次折扣碼",
-      "target_audience": ["大專院校學生"],
+      "target_audience": [
+        "大專院校學生"
+      ],
       "summary": "滑鼠、機械鍵盤（如 MX Master 系列、G 系列電競周邊）、高畫質視訊鏡頭與抗噪耳機麥克風專屬學生優惠，居家上課與論文撰寫外接周邊利器。",
       "renewal_cycle": "每學期可領取專屬折扣代碼"
     },
@@ -294,7 +373,9 @@
       "benefit_type": "每月半價特惠（NT$75/月，原價 NT$149/月）",
       "value_estimate": "每年省下 NT$888",
       "verification_method": "SheerID 線上身分驗證（核對大專院校學籍）",
-      "target_audience": ["公私立大專院校及研究所合法註冊在學學生"],
+      "target_audience": [
+        "公私立大專院校及研究所合法註冊在學學生"
+      ],
       "summary": "享有 Spotify Premium 完整功能，包含無廣告干擾、高音質串流、離線音樂下載播放及無限次切換歌曲，全臺灣最受歡迎的學生串流方案之一。",
       "renewal_cycle": "最長可享 4 年（每 12 個月需重新通過 SheerID 審查驗證）"
     },
@@ -307,7 +388,10 @@
       "benefit_type": "每月特價 NT$70/月（原價 NT$150/月）+ 免費觀看 Apple TV+（原價 NT$250/月）",
       "value_estimate": "每年省下高達 NT$3,960",
       "verification_method": "UNiDAYS 平台驗證在學身分",
-      "target_audience": ["大專院校學生", "碩博士生"],
+      "target_audience": [
+        "大專院校學生",
+        "碩博士生"
+      ],
       "summary": "超高性價比神案！每月僅需 70 元即可暢聽超過 1 億首無損保真壓縮音訊與杜比全景聲音效，並且**直接免費隨附原價 250 元的 Apple TV+ 影音訂閱**。",
       "renewal_cycle": "最長可享 48 個月（每年需透過 UNiDAYS 重新認證）"
     },
@@ -320,7 +404,9 @@
       "benefit_type": "每月特價 NT$119/月（原價 NT$199/月）",
       "value_estimate": "每年省下 NT$960",
       "verification_method": "SheerID 平台驗證大專院校在學學籍",
-      "target_audience": ["大專院校具備正式學籍之全職學生"],
+      "target_audience": [
+        "大專院校具備正式學籍之全職學生"
+      ],
       "summary": "YouTube 影片全站免除所有廣告、支援手機鎖屏背景播放、影片離線下載儲存，並隨附 YouTube Music Premium 無廣告音樂串流服務。",
       "renewal_cycle": "最長可享 4 年（每年需透過 SheerID 重新驗證一次）"
     },
@@ -333,7 +419,12 @@
       "benefit_type": "全球與臺灣上萬家特約商店門票、機票與交通優惠",
       "value_estimate": "國內外旅遊及學術交流每年可省下數千至上萬元",
       "verification_method": "年滿 12 歲以上之在學學生，憑有效學生證、身分證及照片付費工本費申辦（約 NT$400）",
-      "target_audience": ["國中生", "高中職生", "大專院校生", "碩博士生"],
+      "target_audience": [
+        "國中生",
+        "高中職生",
+        "大專院校生",
+        "碩博士生"
+      ],
       "summary": "全球唯一聯合國教科文組織認可的國際共通學生證件。在臺灣可享國家兩廳院、各大公立博物館、遊樂區門票特惠；在國外享有青年學生專屬機票（STA Travel / 歐美長程線額外行李額）、歐洲各國火車通行證優惠、青年旅館及觀光景點門票半價。",
       "renewal_cycle": "卡片有效期限為一年（每年 9 月 1 日至次年 12 月 31 日）"
     },
@@ -346,7 +437,11 @@
       "benefit_type": "教育優惠（享每月約 75% 訂閱折扣，約 $10/月）",
       "value_estimate": "每年省下約 NT$3,800",
       "verification_method": "SheerID 驗證在學身分",
-      "target_audience": ["大專院校生", "碩博士生", "學術研究人員"],
+      "target_audience": [
+        "大專院校生",
+        "碩博士生",
+        "學術研究人員"
+      ],
       "summary": "新世代對話式 AI 搜尋引擎，整合即時網路檢索與精確學術論文來源引用（Academic Search Mode），Pro 版支援更先進的推理模型切換與無限次檔案上傳分析。",
       "renewal_cycle": "依訂閱期定期透過 SheerID 重新審驗"
     },
@@ -359,7 +454,10 @@
       "benefit_type": "教育版專屬 Pro 額度優惠 / 學生試用方案",
       "value_estimate": "約 NT$3,800 / 年",
       "verification_method": "以學校 .edu 官方電子郵件註冊並提出教育支持申請",
-      "target_audience": ["資訊/電機/軟體工程相關學生", "研究助理與開發者"],
+      "target_audience": [
+        "資訊/電機/軟體工程相關學生",
+        "研究助理與開發者"
+      ],
       "summary": "基於 VS Code 深度重構之 AI 原生整合開發環境，具備極強的專案全域代碼理解能力、多文件跨檔案重構與快速終端錯誤排解，為目前全球 AI 工程師使用頻率最高的 IDE 之一。",
       "renewal_cycle": "每年重新驗證"
     },
@@ -372,9 +470,214 @@
       "benefit_type": "免費學生專屬特惠驗證中心（集合上百家品牌折扣）",
       "value_estimate": "視個人購物消費需求節省 10% ~ 30%",
       "verification_method": "大專院校教育信箱註冊認證，或上傳註冊單證件",
-      "target_audience": ["公私立大專院校生", "碩博士生"],
+      "target_audience": [
+        "公私立大專院校生",
+        "碩博士生"
+      ],
       "summary": "臺灣 Apple 官方教育商店唯一指定之學生身分驗證平台，同時整合 Samsung、Nike、Ray-Ban、ASOS、Logitech 等國際時尚、運動與科技品牌之學生獨家優惠券。",
       "renewal_cycle": "每學年重新驗證一次學籍"
+    },
+    {
+      "id": "perk-overleaf-student",
+      "category": "creative_design_and_office",
+      "name": "Overleaf Professional for Students（雲端 LaTeX 協作教育授權）",
+      "provider": "Digital Science / Overleaf",
+      "official_url": "https://www.overleaf.com/edu",
+      "benefit_type": "100% 免費或大專校院全校授權（原價 $15/月，價值約 NT$5,800/年）",
+      "value_estimate": "約 NT$5,800 / 年",
+      "verification_method": "以具備合作授權之大學教育信箱（.edu / .edu.tw）註冊，或加入 IEEE 學生會員優惠",
+      "target_audience": [
+        "大專大學部專題生",
+        "碩士研究生",
+        "博士班學生",
+        "學術研究學者"
+      ],
+      "summary": "全球學術研究與期刊論文寫作標準雲端 LaTeX 工具，提供無限協作者即時共編、完整版本歷史回溯、Git 整合與數千套 IEEE/ACM/Springer 期刊論文模板。",
+      "renewal_cycle": "每年以在學信箱自動展期或隨學校合約有效"
+    },
+    {
+      "id": "perk-grammarly-student",
+      "category": "creative_design_and_office",
+      "name": "Grammarly for Education & QuillBot Student（學術英文寫作潤飾）",
+      "provider": "Grammarly / QuillBot",
+      "official_url": "https://www.grammarly.com/edu",
+      "benefit_type": "學校全校授權免費，或學生個人約 50% 折扣",
+      "value_estimate": "約 NT$4,500 / 年",
+      "verification_method": "校園單一登入 (SSO) 或教育信箱註冊認證",
+      "target_audience": [
+        "高中職學生",
+        "大專院校在學生",
+        "碩博士研究生"
+      ],
+      "summary": "英文學術期刊論文、研討會投稿與出國申請文書必備工具，提供語法錯誤即時修正、學術語調（Academic Tone）最佳化與防抄襲剽竊檢測功能。",
+      "renewal_cycle": "依就讀學校授權合約每學期或每年續期"
+    },
+    {
+      "id": "perk-endnote-student",
+      "category": "online_courses_and_academic",
+      "name": "EndNote & Zotero Storage（書目文獻管理工具教育授權）",
+      "provider": "Clarivate / Corporation for Digital Scholarship",
+      "official_url": "https://endnote.com/",
+      "benefit_type": "全台大專校院圖書館全校授權免費下載（市值約 NT$8,000）",
+      "value_estimate": "約 NT$8,000 / 次",
+      "verification_method": "登入各大學圖書館電子資源查詢系統或校園授權軟體專區直接下載",
+      "target_audience": [
+        "大專高年級專題生",
+        "碩士研究生",
+        "博士生"
+      ],
+      "summary": "全球學術界使用最廣泛之文獻書目管理軟體，與 Word 即時連動自動生成 APA/IEEE/Chicago 參考文獻格式；搭配 Zotero 享有教育機構群組協作空間。",
+      "renewal_cycle": "在學期間均可合法授權使用與更新版本"
+    },
+    {
+      "id": "perk-wolfram-mathematica",
+      "category": "developer_and_engineering",
+      "name": "Wolfram Mathematica & Wolfram|Alpha Pro（符號運算與科學計算）",
+      "provider": "Wolfram Research",
+      "official_url": "https://www.wolfram.com/mathematica/",
+      "benefit_type": "大專校院全校授權免費安裝使用（市值數萬元）",
+      "value_estimate": "約 NT$15,000 / 年",
+      "verification_method": "學校計算機中心 / 授權軟體專區以校園 Portal 帳號領取金鑰",
+      "target_audience": [
+        "理工學院學生",
+        "資電學院學生",
+        "數學與物理研究生"
+      ],
+      "summary": "全球頂尖科學運算、微積分、微分方程、符號推導與資料視覺化強大引擎，含 Wolfram|Alpha Pro 步驟解析（Step-by-step solutions）。",
+      "renewal_cycle": "每年由學校計中更新授權序號"
+    },
+    {
+      "id": "perk-digitalocean-student",
+      "category": "ai_and_cloud_compute",
+      "name": "DigitalOcean Student Cloud Credits（$200 雲端主機額度）",
+      "provider": "DigitalOcean",
+      "official_url": "https://www.digitalocean.com/",
+      "benefit_type": "$200 美元平台額度（有效期限 1 年）",
+      "value_estimate": "約 NT$6,500",
+      "verification_method": "透過 GitHub Student Developer Pack 領取專屬優惠碼",
+      "target_audience": [
+        "大專校院學生",
+        "碩博士研究生",
+        "開源專案開發者"
+      ],
+      "summary": "提供免高額帳單風險之雲端 VPS (Droplets)、託管資料庫與 Kubernetes 叢集，適合架設個人研究網站、模型微調 API 或展示學術成果系統。",
+      "renewal_cycle": "每組 GitHub Pack 帳號領取一次（為期 1 年）"
+    },
+    {
+      "id": "perk-namecheap-student",
+      "category": "developer_and_engineering",
+      "name": "Namecheap / Name.com Student Bundle（免費頂級域名與 SSL）",
+      "provider": "Namecheap / Name.com",
+      "official_url": "https://nc.me/",
+      "benefit_type": "1 年免費頂級域名（.me / .live）+ 1 年免費 SSL 數位證書",
+      "value_estimate": "約 NT$1,200 / 年",
+      "verification_method": "GitHub Student Developer Pack 或 .edu 信箱認證",
+      "target_audience": [
+        "高中職至博士班在校生"
+      ],
+      "summary": "學生建立個人學術首頁、研究作品集與技術部落格之必備方案，提供一年免註冊費頂級域名與安全憑證保護。",
+      "renewal_cycle": "第一年 100% 免費，次年可選擇平價續約或轉移"
+    },
+    {
+      "id": "perk-gitkraken-postman",
+      "category": "developer_and_engineering",
+      "name": "GitKraken Client Pro & Postman Student Program（開發與 API 工具）",
+      "provider": "GitKraken / Postman",
+      "official_url": "https://www.gitkraken.com/student-resources",
+      "benefit_type": "100% 完全免費 Pro 專業版授權",
+      "value_estimate": "約 NT$4,000 / 年",
+      "verification_method": "GitHub Student Pack 綁定或 Postman Student Program 學生徽章審核",
+      "target_audience": [
+        "資訊工程",
+        "軟體開發",
+        "資料科學研究生與學生"
+      ],
+      "summary": "全球最頂級之 Git 視覺化客戶端（支援 GitLens、Git Worktrees）與 API 開發除錯協同作業平台，大幅提升實驗室專案工程效率。",
+      "renewal_cycle": "每年透過教育身分續約"
+    },
+    {
+      "id": "perk-docker-education",
+      "category": "developer_and_engineering",
+      "name": "Docker Desktop for Education（容器化開發環境學生授權）",
+      "provider": "Docker Inc.",
+      "official_url": "https://www.docker.com/community/education/",
+      "benefit_type": "100% 免費商業環境豁免（個人、教育與非營利使用無限制）",
+      "value_estimate": "約 NT$3,000 / 年",
+      "verification_method": "學生與學術研究用途免另購授權，直接免費使用",
+      "target_audience": [
+        "大專生",
+        "研究生",
+        "AI/ML 研究員"
+      ],
+      "summary": "學術模型復現、微服務架構與實驗環境標準化之核心工具，確保研究代碼在任何機器上均能一致重現。",
+      "renewal_cycle": "學生身分期間常態免費用"
+    },
+    {
+      "id": "perk-thsr-student-discount",
+      "category": "streaming_and_lifestyle",
+      "name": "台灣高鐵大學生 5 折 / 75 折 / 88 折優惠乘車專案",
+      "provider": "台灣高速鐵路股份有限公司 (THSR)",
+      "official_url": "https://www.thsrc.com.tw/ArticleContent/530e8d3c-9fb4-4532-9724-4f81156a5c37",
+      "benefit_type": "指定離峰與返鄉車次 5 折、75 折或 88 折購票優惠",
+      "value_estimate": "每次往返臺北-左營省下約 NT$1,490",
+      "verification_method": "具國內公私立大專院校有效學籍之在學生，憑學生證或在學證明正本乘車驗票",
+      "target_audience": [
+        "公私立大專院校學士班學生",
+        "碩士研究生",
+        "博士班在學生"
+      ],
+      "summary": "大專校院在學生跨縣市求學、返鄉與出席研討會最實惠之交通福利，常態適用於指定車次標準車廂對號座。",
+      "renewal_cycle": "每學期於註冊後維持有效學籍即可享有"
+    },
+    {
+      "id": "perk-apple-back-to-school",
+      "category": "hardware_education_stores",
+      "name": "Apple BTS (Back to School) 返校專案加贈活動",
+      "provider": "Apple Inc. (台灣官網教育商店 / 直營店)",
+      "official_url": "https://www.apple.com/tw-edu/shop",
+      "benefit_type": "享有 Mac / iPad 教育優惠價外，額外贈送 Apple Pencil 或 AirPods",
+      "value_estimate": "額外省下約 NT$3,500 至 NT$6,500",
+      "verification_method": "UNiDAYS 平台認證在學學生身分，或直營店現場出示學生證與在學證明",
+      "target_audience": [
+        "高中職錄取準大專生",
+        "大專校院學生",
+        "碩博士研究生"
+      ],
+      "summary": "每年 7 月中至 9 月底暑假返校季舉辦之年度最大硬體特惠，購買指定款 Mac 贈 AirPods、買 iPad 贈 Apple Pencil，並享有 AppleCare+ 8 折。",
+      "renewal_cycle": "每年夏季限定一梯次，每人每年限購一台 Mac 及一台 iPad"
+    },
+    {
+      "id": "perk-asus-dell-education",
+      "category": "hardware_education_stores",
+      "name": "ASUS / Dell 學生教育商城與筆電專案折扣",
+      "provider": "ASUS / Dell Taiwan",
+      "official_url": "https://www.asus.com/tw/store/events/education/",
+      "benefit_type": "筆電、螢幕與桌機教育價 75 折至 85 折優惠",
+      "value_estimate": "每台筆電省下約 NT$3,000 至 NT$8,000",
+      "verification_method": "以學校教育信箱（.edu.tw）註冊學生會員，或上傳有效學生證",
+      "target_audience": [
+        "大專校院在學生",
+        "研究生"
+      ],
+      "summary": "針對工程、設計與商務科系學生量身打造之筆記型電腦教育優惠，提供專屬保固延長與學生贈品。",
+      "renewal_cycle": "在學期間每年享有定額購機優惠額度"
+    },
+    {
+      "id": "perk-tra-student-discount",
+      "category": "streaming_and_lifestyle",
+      "name": "臺鐵學生定期票與電子票證乘車優惠",
+      "provider": "國營臺灣鐵路股份有限公司 (TR)",
+      "official_url": "https://www.railway.gov.tw/",
+      "benefit_type": "學生定期票（30天/60天通用）約 5 折至 68 折優惠",
+      "value_estimate": "通學通勤每月節省約 NT$1,000 至 NT$2,500",
+      "verification_method": "各車站票務窗口出示蓋有註冊章之學生證或在學證明辦理",
+      "target_audience": [
+        "國高中職學生",
+        "大專院校學生",
+        "碩博在學生"
+      ],
+      "summary": "跨區通勤通學學生最經濟實惠之每日軌道交通選擇，搭乘區間車、復興號享有高額票價減免。",
+      "renewal_cycle": "依學期在學狀態辦理續期"
     }
   ]
 }
