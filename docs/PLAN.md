@@ -1,5 +1,14 @@
 # 目前計畫與已接受決策
 
+## 2026-11-05 主動推播通知與全教育階段篩選全景手冊暨成果整合（PR #67）
+
+- **兩大升級全景手冊統合落盤**（[整合規格手冊](PROACTIVE-NOTIFICATIONS-AND-FILTER-VISIBILITY-GUIDE.md)）：
+  - 統整 PR #65（雙軌 RSS 2.0、首頁彈窗小視窗、Follow.it 零個資 Email 代管）與 PR #66（全教育階段篩選、出國交流總覽 19 筆、K-12 扶助總覽 33 筆、Persona Bar 升級）。
+  - 全套自動化測試矩陣齊備：282 項 Python 單元測試 PASS、57 項前端整合測試 PASS。
+  - 正式台帳與候選資料 0 篡改，排程維持 model_mode=off。
+
+---
+
 ## 2026-11-05 網頁篩選器擴展與 K-12／出國獎助可見度升級（PR #66）
 
 - **全教育階段身分與學歷篩選維度擴充**（[規格說明書](FILTER-EXPANSION-AND-VISIBILITY.md)）：
