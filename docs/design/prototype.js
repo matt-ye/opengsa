@@ -3,9 +3,9 @@
 "use strict";
 const DAY = 86400000;
 const labels = {
- category: {living_tuition:"生活／學費",living_emergency:"急難支持",phd_research:"博士研究",outcome_award:"成果獎",international_conference:"國際會議",overseas_research:"境外研究",indirect_support:"聘任入口",research_tools:"研究工具／算力"},
+ category: {all_abroad:"出國與境外總覽",all_k12:"各級教育弱勢扶助",living_tuition:"生活／學費",living_emergency:"急難支持",phd_research:"博士研究",outcome_award:"成果獎",international_conference:"國際會議",overseas_research:"境外研究",indirect_support:"聘任入口",research_tools:"研究工具／算力"},
  source: {government:"政府",university:"學校",foundation:"基金會／學會",enterprise:"企業／產學",research_institute:"研究法人／中研院",unknown:"來源待查"},
- degree: {master:"碩士",phd:"博士",candidate:"博士候選人"},
+ degree: {all:"全部學歷與身分",master_phd:"碩士與博士",master:"碩士",phd:"博士",candidate:"博士候選人",undergraduate:"大學部／大專",senior_high:"高中職／五專",basic_k12:"國中小／幼兒"},
  year: {unlimited:"明示不限年級",range:"限定年級",freshman:"新生入學",graduating:"畢業／論文期",unknown:"年級待確認"},
  compatibility: {allowed:"可兼領（限已查範圍）",conditional:"兼領有條件",prohibited:"不可兼領",unknown:"兼領待確認"},
  hardship: {required:"清寒限定",not_exclusive:"非僅清寒",unknown:"清寒限定待確認"},
@@ -339,8 +339,40 @@ function filterItems(items, filters) {
   return ["category","source","degree","year","compatibility","hardship","application"].every(key=>{
    const wanted=filters[key];
    if(!wanted || wanted==="all") return true;
+   if(key==="category") {
+    if(wanted==="all_abroad" || wanted==="abroad_all") {
+     return item.category==="international_conference" ||
+            item.category==="overseas_research" ||
+            item.resourceKind==="travel_grant" ||
+            (item.title && /出國|境外|海外|國際會議/.test(item.title));
+    }
+    if(wanted==="all_k12" || wanted==="k12_all") {
+     return (item.id && item.id.includes("k12")) ||
+            (item.audience && /elementary|junior_high|senior_high|vocational|preschool/i.test(item.audience)) ||
+            (item.title && /小學|國中|高中|高職|幼兒|兒少|弱勢助學|就學助學金/.test(item.title));
+    }
+    const value=item[key];
+    if(Array.isArray(value)) return value.includes(wanted);
+    return value===wanted || (filters.includeUnknown && value==="unknown");
+   }
    if(key==="degree") {
     if(wanted==="candidate") return item.candidateMode==="required" || item.degrees?.includes("candidate");
+    if(wanted==="master_phd") return Array.isArray(item.degrees) && (item.degrees.includes("master") || item.degrees.includes("phd"));
+    if(wanted==="undergraduate") {
+     return (Array.isArray(item.degrees) && item.degrees.includes("undergraduate")) ||
+            (item.audience && /大學|學士|大專|undergraduate/i.test(item.audience)) ||
+            (item.title && /大學|學士|大專/i.test(item.title));
+    }
+    if(wanted==="senior_high") {
+     return (Array.isArray(item.degrees) && item.degrees.includes("senior_high")) ||
+            (item.audience && /senior_high|vocational|高中|高職|五專/i.test(item.audience)) ||
+            (item.title && /高中|高職|五專/i.test(item.title));
+    }
+    if(wanted==="basic_k12") {
+     return (Array.isArray(item.degrees) && (item.degrees.includes("elementary") || item.degrees.includes("junior_high") || item.degrees.includes("preschool"))) ||
+            (item.audience && /elementary|junior_high|preschool|國中|國小|幼兒|小學|幼兒園/i.test(item.audience)) ||
+            (item.title && /國中|國小|幼兒/i.test(item.title));
+    }
     return Array.isArray(item.degrees) && item.degrees.includes(wanted);
    }
    if(key==="application") {
@@ -499,8 +531,10 @@ function conferenceEntries(programs){
 const personaPresets={
  phd_research:{category:"phd_research",source:"all",degree:"phd",year:"all",compatibility:"all",hardship:"all"},
  living_support:{category:"living_tuition",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
+ abroad_all:{category:"all_abroad",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
  abroad_conf:{category:"international_conference",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
  overseas_study:{category:"overseas_research",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
+ k12_aid:{category:"all_k12",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
  outcome_award:{category:"outcome_award",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
  ta_assistant:{category:"indirect_support",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
  research_tools:{category:"research_tools",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"}

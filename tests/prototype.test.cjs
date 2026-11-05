@@ -780,3 +780,58 @@ test("搜尋擴充同義詞比對：搜尋論文／著作／醫學院均能精�
  const filteredByMed = core.filterItems(drafts, {query: "醫學院"});
  assert.ok(filteredByMed.some(x => x.id === "ntu-med-publication-115"), "filterItems 應包含醫學院著作獎");
 });
+
+test("全教育階段學歷與身分篩選：支援大學部、高中職與國中小幼兒，杜絕K-12方案被排擠", ()=>{
+ const sample = [
+  {id:"k12-high", title:"高中職免學費補助", audience:"適用教育階段: senior_high,vocational_high", degrees:[], rawState:"open", category:"living_tuition"},
+  {id:"k12-elem", title:"原住民小學清寒助學金", audience:"適用教育階段: elementary,junior_high", degrees:[], rawState:"open", category:"living_tuition"},
+  {id:"univ-ug", title:"大專校院優秀學士獎學金", audience:"大專大學部在學學生", degrees:[], rawState:"open", category:"living_tuition"},
+  {id:"grad-phd", title:"國科會博士生研究獎學金", audience:"博士班學生", degrees:["phd"], rawState:"open", category:"phd_research"},
+  {id:"grad-master", title:"碩士研究生獎助金", audience:"碩士班學生", degrees:["master"], rawState:"open", category:"living_tuition"}
+ ];
+
+ const seniorHighOnly = core.filterItems(sample, {degree:"senior_high"});
+ assert.deepEqual(seniorHighOnly.map(x=>x.id), ["k12-high"]);
+
+ const basicK12Only = core.filterItems(sample, {degree:"basic_k12"});
+ assert.deepEqual(basicK12Only.map(x=>x.id), ["k12-elem"]);
+
+ const ugOnly = core.filterItems(sample, {degree:"undergraduate"});
+ assert.deepEqual(ugOnly.map(x=>x.id), ["univ-ug"]);
+
+ const gradOnly = core.filterItems(sample, {degree:"master_phd"});
+ assert.deepEqual(gradOnly.map(x=>x.id), ["grad-phd", "grad-master"]);
+
+ const allItems = core.filterItems(sample, {degree:"all"});
+ assert.equal(allItems.length, 5);
+});
+
+test("出國出訪與國際交流總覽篩選：綜合國際會議與境外研究，一鍵綜覽全庫出國方案", ()=>{
+ const travelItems = [
+  {id:"conf-1", title:"國際會議出差發表補助", category:"international_conference", resourceKind:"travel_grant", rawState:"open"},
+  {id:"study-1", title:"千里馬赴國外研究補助", category:"overseas_research", resourceKind:"travel_grant", rawState:"open"},
+  {id:"award-1", title:"國內校長獎學金", category:"outcome_award", resourceKind:"award", rawState:"open"}
+ ];
+
+ const allAbroad = core.filterItems(travelItems, {category:"all_abroad"});
+ assert.deepEqual(allAbroad.map(x=>x.id), ["conf-1", "study-1"]);
+
+ const confOnly = core.filterItems(travelItems, {category:"international_conference"});
+ assert.deepEqual(confOnly.map(x=>x.id), ["conf-1"]);
+});
+
+test("情境按鈕擴充：k12_aid與abroad_all快速套用並正確還原", ()=>{
+ const base = {query:"", category:"all", source:"all", degree:"all", year:"all", compatibility:"all", hardship:"all", includeUnknown:false};
+ 
+ const k12Persona = core.applyPersona(base, "k12_aid");
+ assert.equal(k12Persona.category, "all_k12");
+ assert.equal(core.activePersona(k12Persona), "k12_aid");
+
+ const resetK12 = core.applyPersona(k12Persona, "k12_aid");
+ assert.equal(resetK12.category, "all");
+ assert.equal(core.activePersona(resetK12), null);
+
+ const abroadPersona = core.applyPersona(base, "abroad_all");
+ assert.equal(abroadPersona.category, "all_abroad");
+ assert.equal(core.activePersona(abroadPersona), "abroad_all");
+});
