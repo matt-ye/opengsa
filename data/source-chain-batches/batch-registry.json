@@ -1,0 +1,61 @@
+{
+  "schema_version": "source-chain-registry-1",
+  "updated_at": "2026-11-05T12:00:00+00:00",
+  "description": "OpenGSA 全庫跨資源通用資訊鏈（Universal Source Chains）拓撲批次總註冊表",
+  "total_batches": 5,
+  "total_documents": 501,
+  "total_edges": 334,
+  "total_schemes_covered": 167,
+  "batches": [
+    {
+      "batch_id": "batch-university",
+      "file": "data/source-chain-batches/batch-university.json",
+      "archetype": "higher_education_university",
+      "description": "全台大專校院與研究生專屬獎助五節點拓撲 (原型 A)",
+      "schedule_track": "other",
+      "documents": 72,
+      "edges": 48,
+      "candidates": 24
+    },
+    {
+      "batch_id": "batch-k12",
+      "file": "data/source-chain-batches/batch-k12.json",
+      "archetype": "government_statutory",
+      "description": "K-12 各級教育與公部門法定助學五節點拓撲 (原型 B)",
+      "schedule_track": "gov",
+      "documents": 75,
+      "edges": 50,
+      "candidates": 25
+    },
+    {
+      "batch_id": "batch-perks",
+      "file": "data/source-chain-batches/batch-perks.json",
+      "archetype": "student_perks_identity",
+      "description": "學生身分福利與 AI Perks 自動化查驗拓撲 (原型 D)",
+      "schedule_track": "other",
+      "documents": 84,
+      "edges": 56,
+      "candidates": 28
+    },
+    {
+      "batch_id": "batch-enterprise",
+      "file": "data/source-chain-batches/batch-enterprise.json",
+      "archetype": "corporate_foundation_dual_track",
+      "description": "企業、民間基金會與學會雙軌申辦拓撲 (原型 C)",
+      "schedule_track": "enterprise",
+      "documents": 255,
+      "edges": 170,
+      "candidates": 85
+    },
+    {
+      "batch_id": "batch-conference",
+      "file": "data/source-chain-batches/batch-conference.json",
+      "archetype": "conference_travel_grant",
+      "description": "國際會議出席與出國研討會差旅補助拓撲 (原型 E)",
+      "schedule_track": "gov",
+      "documents": 15,
+      "edges": 10,
+      "candidates": 5
+    }
+  ]
+}

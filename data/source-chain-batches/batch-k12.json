@@ -1,0 +1,1927 @@
+{
+  "schema_version": "source-chain-1",
+  "batch_id": "batch-k12",
+  "archetype": "government_statutory",
+  "generated_at": "2026-11-05T12:00:00+00:00",
+  "model_calls": 0,
+  "official_data_modified": false,
+  "http_requests": 0,
+  "description": "K-12 各級教育與公部門法定助學金五節點資訊鏈拓撲批次",
+  "total_documents": 75,
+  "total_edges": 50,
+  "documents": [
+    {
+      "id": "doc-k12-statute-51c561d9c68f2cc7630d",
+      "url": "https://www.ece.moe.edu.tw/statute",
+      "format": "html",
+      "revision_id": "51c561d9c68f2cc7630d897087edbc6855c362a13f1924bc45844d91cc584246",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-ece-subsidies-40978dfb"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-16dd0382f22ebbf1c6d9",
+      "url": "https://www.ece.moe.edu.tw/",
+      "format": "html",
+      "revision_id": "16dd0382f22ebbf1c6d9a27eccdca7073fe8ef1083ea9cb2f9aa650b7693a5e8",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-ece-subsidies-40978dfb"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-92c5fdabf2764826e039",
+      "url": "https://www.ece.moe.edu.tw/standard-forms",
+      "format": "html",
+      "revision_id": "92c5fdabf2764826e03963b399641ef09ac85c6cb17a7fc0c91fb8c130e0c033",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-ece-subsidies-40978dfb"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-a9839a96f4f58b7b4df3",
+      "url": "https://e-service.k12ea.gov.tw/statute",
+      "format": "html",
+      "revision_id": "a9839a96f4f58b7b4df363a18fd3d94e057e760d3b86ddacb06d06e857333712",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-childcare-stipend-2to5-8dcbb7b3"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-168eea9530d57fd8d799",
+      "url": "https://e-service.k12ea.gov.tw/",
+      "format": "html",
+      "revision_id": "168eea9530d57fd8d79951a503abe79ec19b29f99a95baf41d2e4c5fefe5b466",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-childcare-stipend-2to5-8dcbb7b3"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-5bed4cdc4981a649a504",
+      "url": "https://e-service.k12ea.gov.tw/standard-forms",
+      "format": "html",
+      "revision_id": "5bed4cdc4981a649a5049611b4e0001a1366454699684029ede21c73b03c7563",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-childcare-stipend-2to5-8dcbb7b3"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-8679e92bdbe3a7a24c8a",
+      "url": "https://dep.mohw.gov.tw/DOSAASW/statute",
+      "format": "html",
+      "revision_id": "8679e92bdbe3a7a24c8af2ac8645e11af8fa3175f1745101c8890234c4b7fc5b",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-low-income-preschool-aid-cae8c204"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-360e5a88dcd07b6406ca",
+      "url": "https://dep.mohw.gov.tw/DOSAASW/",
+      "format": "html",
+      "revision_id": "360e5a88dcd07b6406ca7c3ca88ff1d0b618da27c99f1972df2d40924f29fafa",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-low-income-preschool-aid-cae8c204"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-a271e006682fcd3c91c4",
+      "url": "https://dep.mohw.gov.tw/DOSAASW/standard-forms",
+      "format": "html",
+      "revision_id": "a271e006682fcd3c91c4609df7aa779cb7fd6ed51062e4cc9628c32cf7eadeb2",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-low-income-preschool-aid-cae8c204"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-0d1514273bab4919487a",
+      "url": "https://scholarship.ncut.edu.tw/statute",
+      "format": "html",
+      "revision_id": "0d1514273bab4919487aa6dc6af954baab2241e7492fe02c320db0accead4412",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-scholarship-fund-low-income-729b8e49"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-d963e747695d2b3c152f",
+      "url": "https://scholarship.ncut.edu.tw/",
+      "format": "html",
+      "revision_id": "d963e747695d2b3c152fcd90a6b2998c26296f907b26b219dd8b3c9b935fe138",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-scholarship-fund-low-income-729b8e49"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-e537a22dcd1ef285bb6b",
+      "url": "https://scholarship.ncut.edu.tw/standard-forms",
+      "format": "html",
+      "revision_id": "e537a22dcd1ef285bb6bec7ce9963d68d1c666bde0e28f3f26ce44e5f459a4a3",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-scholarship-fund-low-income-729b8e49"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-807b6583b92fdf7267e6",
+      "url": "https://cip.ntcu.edu.tw/home/statute",
+      "format": "html",
+      "revision_id": "807b6583b92fdf7267e6127e20a14b91373f0988fd3e53276ab666c74b8382f5",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-cip-indigenous-elementary-junior-aid-7cd98aed"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-51df7ad5dac19639bb04",
+      "url": "https://cip.ntcu.edu.tw/home",
+      "format": "html",
+      "revision_id": "51df7ad5dac19639bb045f5bae670b8307c66c30a9cebd7f612af80d22511421",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-cip-indigenous-elementary-junior-aid-7cd98aed"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-a49d6bdf9936276c870e",
+      "url": "https://cip.ntcu.edu.tw/home/standard-forms",
+      "format": "html",
+      "revision_id": "a49d6bdf9936276c870e917af07e1d9f12c65eb47d938ba087f2a7eb48ae54be",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-cip-indigenous-elementary-junior-aid-7cd98aed"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-c6cec3f1f15682df3655",
+      "url": "https://www.vac.gov.tw/statute",
+      "format": "html",
+      "revision_id": "c6cec3f1f15682df365571de53dc1c86597e748088197dba06db365934cea584",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-vac-veterans-children-education-aid-2db1e03d"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-2f7aeab94d8a419533a4",
+      "url": "https://www.vac.gov.tw/",
+      "format": "html",
+      "revision_id": "2f7aeab94d8a419533a48ac29962ae1c84e2571bc067951306b98096582b881b",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-vac-veterans-children-education-aid-2db1e03d"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-dcae602ee34f1676816c",
+      "url": "https://www.vac.gov.tw/standard-forms",
+      "format": "html",
+      "revision_id": "dcae602ee34f1676816cafc1d92aa5c51619146de58aea4b64006d547e3a573e",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-vac-veterans-children-education-aid-2db1e03d"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-ba2f28d3d2c524984918",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0150009/statute",
+      "format": "html",
+      "revision_id": "ba2f28d3d2c5249849186f9ac696b8af3436f29a9f0d211cda3e3fad0677de3e",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-military-civil-servant-bereaved-aid-7c8f4eca"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-4b1d6da43f7b19c1ed63",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0150009",
+      "format": "html",
+      "revision_id": "4b1d6da43f7b19c1ed63e3f6cc0cddf6cd30143e1783f24cb6d41521cd954d69",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-military-civil-servant-bereaved-aid-7c8f4eca"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-c0af401bb77f50faa19f",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0150009/standard-forms",
+      "format": "html",
+      "revision_id": "c0af401bb77f50faa19f161d800812316a5d38f0b52aa18fd8cff231898b569d",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-military-civil-servant-bereaved-aid-7c8f4eca"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-b56654c64c9c45dc8a56",
+      "url": "https://special.moe.gov.tw/statute",
+      "format": "html",
+      "revision_id": "b56654c64c9c45dc8a56f0e2409b89c4a5cdd495ecc421dede985732214f16a7",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-disability-tuition-waiver-609de122"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-1bd77f0ca71477d445ce",
+      "url": "https://special.moe.gov.tw/",
+      "format": "html",
+      "revision_id": "1bd77f0ca71477d445cec7eb54e31c755820d37a5e78e9c4de1f14a5a19a9e21",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-disability-tuition-waiver-609de122"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-a6951d4aa92e380448f2",
+      "url": "https://special.moe.gov.tw/standard-forms",
+      "format": "html",
+      "revision_id": "a6951d4aa92e380448f2d79aeb5518e4240946867e1749ecc66167ad35b43f99",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-disability-tuition-waiver-609de122"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-6a5a685e7482636db4cb",
+      "url": "https://sp.immigration.gov.tw/statute",
+      "format": "html",
+      "revision_id": "6a5a685e7482636db4cb57d049df44681e574b048ae6af67e4226e3b054e3703",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-nia-new-immigrant-scholarship-d2f76baf"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-67162661f9bd84ca5893",
+      "url": "https://sp.immigration.gov.tw/",
+      "format": "html",
+      "revision_id": "67162661f9bd84ca589391e5806d1371250dd91f5c8a02299a35937e621a4405",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-nia-new-immigrant-scholarship-d2f76baf"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-f3f7037a26cb3c0f8b76",
+      "url": "https://sp.immigration.gov.tw/standard-forms",
+      "format": "html",
+      "revision_id": "f3f7037a26cb3c0f8b764f9a00d7e266c09e4e6e807c4b40def8beacb1c45ec6",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-nia-new-immigrant-scholarship-d2f76baf"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-dbb5b239b5ce06597837",
+      "url": "https://fatraceschool.k12ea.gov.tw/statute",
+      "format": "html",
+      "revision_id": "dbb5b239b5ce065978377893f1b7a80ed13938e6f6f2f7286bc6fb554262a632",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-school-lunch-subsidy-35b9fafd"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-f7453babb3fe6d88821d",
+      "url": "https://fatraceschool.k12ea.gov.tw/",
+      "format": "html",
+      "revision_id": "f7453babb3fe6d88821d4014adab7b118457aa28c535019564db25d79168be23",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-school-lunch-subsidy-35b9fafd"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-1d79b8a201892e5c7d58",
+      "url": "https://fatraceschool.k12ea.gov.tw/standard-forms",
+      "format": "html",
+      "revision_id": "1d79b8a201892e5c7d58cdc4cc55b06b9b60e3b8e2394bcdd1b2f9ef74dd8525",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-school-lunch-subsidy-35b9fafd"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-8630cd44e7cefeffdc28",
+      "url": "https://pea.nknu.edu.tw/statute",
+      "format": "html",
+      "revision_id": "8630cd44e7cefeffdc287af60f5d3ef64f0b4b406fc3469bd550c323a7397b43",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-president-education-award-bfc4415c"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-94ade7fae73501cdfc86",
+      "url": "https://pea.nknu.edu.tw/",
+      "format": "html",
+      "revision_id": "94ade7fae73501cdfc8618e866e55ce56b95f1fe871b86a467308facfe5d0502",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-president-education-award-bfc4415c"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-3f6c7c0c32e0ee72b67e",
+      "url": "https://pea.nknu.edu.tw/standard-forms",
+      "format": "html",
+      "revision_id": "3f6c7c0c32e0ee72b67eddcce693a3ffaac17f1b36d612d2338366a48125c4aa",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-president-education-award-bfc4415c"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-87045a8f1f691352f0d7",
+      "url": "https://ep.k12ea.gov.tw/statute",
+      "format": "html",
+      "revision_id": "87045a8f1f691352f0d76e189b8f672cfa6508e65c23de58218af5a54719934a",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-senior-high-free-tuition-e139917f"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-c54237566108a68c2749",
+      "url": "https://ep.k12ea.gov.tw/",
+      "format": "html",
+      "revision_id": "c54237566108a68c2749a7fee2428c2655e23967b69001050f1b6bdeaa1fa090",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-senior-high-free-tuition-e139917f"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-155df90285a6281185c9",
+      "url": "https://ep.k12ea.gov.tw/standard-forms",
+      "format": "html",
+      "revision_id": "155df90285a6281185c95276a49b20d94e7395750d9c4ad0703f201a85802134",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-senior-high-free-tuition-e139917f"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-4bb212925c3b6ef37178",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050075/statute",
+      "format": "html",
+      "revision_id": "4bb212925c3b6ef37178992781904544dc6279743399cb55c5ac1ae41d894ff2",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-special-circumstances-family-waiver-1456e530"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-323c1f8bd1fa3e0386aa",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050075",
+      "format": "html",
+      "revision_id": "323c1f8bd1fa3e0386aa3678dd6ac35a3340736da1623b7d1e476d923fc7f2dd",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-special-circumstances-family-waiver-1456e530"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-223c10c2f5d9ac844e93",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050075/standard-forms",
+      "format": "html",
+      "revision_id": "223c10c2f5d9ac844e9386689cb387b9011299890b16bbdc347f767bf38ad708",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-special-circumstances-family-waiver-1456e530"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-ce5eadbe9a46ed0d8221",
+      "url": "https://lae.mol.gov.tw/statute",
+      "format": "html",
+      "revision_id": "ce5eadbe9a46ed0d8221a0df7a3b4a72540de1d438f8bfa2833560e1055b2921",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-mol-unemployed-workers-children-stipend-1080a27c"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-327c4d70f282a786dc40",
+      "url": "https://lae.mol.gov.tw/",
+      "format": "html",
+      "revision_id": "327c4d70f282a786dc40ce32ed448662fc4e186fdb03d6134c2e7c5cca6f784c",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-mol-unemployed-workers-children-stipend-1080a27c"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-3dc93ab72e4d870b0bc6",
+      "url": "https://lae.mol.gov.tw/standard-forms",
+      "format": "html",
+      "revision_id": "3dc93ab72e4d870b0bc67f1196052aee42eb1800a4af999f520372a83aade258",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-mol-unemployed-workers-children-stipend-1080a27c"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-7941c00ecfb5dda0ac7b",
+      "url": "https://www.moa.gov.tw/statute",
+      "format": "html",
+      "revision_id": "7941c00ecfb5dda0ac7bca9932c95b4fe6855a6c675f90842720abb3aa5b0202",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moa-farmers-fishermen-children-scholarship-ced2d2bf"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-150be9650cd24ab087d8",
+      "url": "https://www.moa.gov.tw/",
+      "format": "html",
+      "revision_id": "150be9650cd24ab087d859f672db2609727ff11fa30f0e81b20ca3d47e65ccf4",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moa-farmers-fishermen-children-scholarship-ced2d2bf"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-2b3df16056923c2c117d",
+      "url": "https://www.moa.gov.tw/standard-forms",
+      "format": "html",
+      "revision_id": "2b3df16056923c2c117de39f93d9d591379f8d267eca9cda898d65dc32715cf8",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moa-farmers-fishermen-children-scholarship-ced2d2bf"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-8e4cae9fb801132e9a00",
+      "url": "https://helpdreams.moe.edu.tw/statute",
+      "format": "html",
+      "revision_id": "8e4cae9fb801132e9a00ce4620cd094a281912ef2c318835e4663b9cf9dceae5",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-k12ea-indigenous-highschool-grant-and-meals-d51c376e"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-bb37e2acc89063dcfa56",
+      "url": "https://helpdreams.moe.edu.tw/",
+      "format": "html",
+      "revision_id": "bb37e2acc89063dcfa56273de5b2c7771b667e3ae41240a0f8ee84d86e09345f",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-k12ea-indigenous-highschool-grant-and-meals-d51c376e"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-7013e16f457e38409688",
+      "url": "https://helpdreams.moe.edu.tw/standard-forms",
+      "format": "html",
+      "revision_id": "7013e16f457e3840968893e479ddf9801815237321c0926bbde514a64bdef674",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-k12ea-indigenous-highschool-grant-and-meals-d51c376e"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-ad4b0d2469763e8d9664",
+      "url": "https://coop.k12ea.gov.tw/statute",
+      "format": "html",
+      "revision_id": "ad4b0d2469763e8d9664292497579891d3edc0d579010a3be8dd69c657baaf99",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-k12ea-cooperative-education-stipend-7992c342"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-df69dd97d3be40bdc736",
+      "url": "https://coop.k12ea.gov.tw/",
+      "format": "html",
+      "revision_id": "df69dd97d3be40bdc736e5913dca15b118db981550e6d565ada259355214f9a3",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-k12ea-cooperative-education-stipend-7992c342"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-06a4319b61d6cffacd6c",
+      "url": "https://coop.k12ea.gov.tw/standard-forms",
+      "format": "html",
+      "revision_id": "06a4319b61d6cffacd6c59344ae577102f634ee7653abcb06eb6b97625ea7428",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-k12ea-cooperative-education-stipend-7992c342"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-4efda609e512dd43f371",
+      "url": "https://young.cloud.ncnu.edu.tw/statute",
+      "format": "html",
+      "revision_id": "4efda609e512dd43f3717fd1d0c8e319ae9298e1d16576a0208601d7d38f37f4",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-youth-education-employment-savings-95808842"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-0b95e39a4a465773226d",
+      "url": "https://young.cloud.ncnu.edu.tw/",
+      "format": "html",
+      "revision_id": "0b95e39a4a465773226dff1e2468e9dd6856034608ec3d613e20413fb4a2c0ab",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-youth-education-employment-savings-95808842"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-0ece07884353d09a7ade",
+      "url": "https://young.cloud.ncnu.edu.tw/standard-forms",
+      "format": "html",
+      "revision_id": "0ece07884353d09a7adee7a8095af5e6b15f188ffac2009489fa2afe8a847551",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-moe-youth-education-employment-savings-95808842"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-339f7e8938da4516f931",
+      "url": "https://rural.k12ea.gov.tw/statute",
+      "format": "html",
+      "revision_id": "339f7e8938da4516f931059c2d65cd1fbd8a464f2c7bd72d8401e5efd53f0775",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-k12ea-remote-schools-transport-hostel-dadb681f"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-e01d41fce39238dee44a",
+      "url": "https://rural.k12ea.gov.tw/",
+      "format": "html",
+      "revision_id": "e01d41fce39238dee44a1afddcd201bab6e921c80de492deca061c1b13715bdf",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-k12ea-remote-schools-transport-hostel-dadb681f"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-75970b3c46014b521b78",
+      "url": "https://rural.k12ea.gov.tw/standard-forms",
+      "format": "html",
+      "revision_id": "75970b3c46014b521b78189291e18096788b09ae10240ca828e1cb29200ba390",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-k12ea-remote-schools-transport-hostel-dadb681f"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-568c43af426efd14e9da",
+      "url": "https://www.ht.org.tw/statute",
+      "format": "html",
+      "revision_id": "568c43af426efd14e9da36ab389ec7604fa2a143ab6524c32bd34dc85eb734b9",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-hsing-tian-kong-scholarship-2fc58a6b"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-5676649fe708b9d17883",
+      "url": "https://www.ht.org.tw/",
+      "format": "html",
+      "revision_id": "5676649fe708b9d1788316443f145d889eecc7dd5dcfca4658ab359dd565e244",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-hsing-tian-kong-scholarship-2fc58a6b"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-1193b5d122213909f75b",
+      "url": "https://www.ht.org.tw/standard-forms",
+      "format": "html",
+      "revision_id": "1193b5d122213909f75bc503fd72636e50e5b991ef3dd0f7adf6b36a2b1eca66",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-hsing-tian-kong-scholarship-2fc58a6b"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-ef02520d91cf7e90f30f",
+      "url": "https://www.you-care.org.tw/statute",
+      "format": "html",
+      "revision_id": "ef02520d91cf7e90f30f66e768aeaa2c9028ffd17cb845265c3ead123a10e3d3",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-you-care-pu-ren-mentorship-aid-72eacff7"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-59ae1c2cfbb57c670a70",
+      "url": "https://www.you-care.org.tw/",
+      "format": "html",
+      "revision_id": "59ae1c2cfbb57c670a70a602bc3716b8fcbe7b7ef88db5eed3a709f8cd7021c7",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-you-care-pu-ren-mentorship-aid-72eacff7"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-dd650eef99584aee4c8a",
+      "url": "https://www.you-care.org.tw/standard-forms",
+      "format": "html",
+      "revision_id": "dd650eef99584aee4c8a5ab06bcd0e1e98af71a3a95fd0d18e084667a65f4236",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-you-care-pu-ren-mentorship-aid-72eacff7"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-90638d15b72b9fe6c557",
+      "url": "https://www.tzuchi.org.tw/statute",
+      "format": "html",
+      "revision_id": "90638d15b72b9fe6c557c3b1dda97f6a15b4f9ca692ef117aa7e82d44d692749",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-tzu-chi-sprout-scholarship-6c912c99"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-8652a574c755ac8bb0cc",
+      "url": "https://www.tzuchi.org.tw/",
+      "format": "html",
+      "revision_id": "8652a574c755ac8bb0ccf50883520ccdb637b50dff44ff5684e754a235158e08",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-tzu-chi-sprout-scholarship-6c912c99"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-7166047b48a46fc0f11d",
+      "url": "https://www.tzuchi.org.tw/standard-forms",
+      "format": "html",
+      "revision_id": "7166047b48a46fc0f11dcd675ffd5ba2bedef38ada1f120b859982c236d1dc73",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-tzu-chi-sprout-scholarship-6c912c99"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-c3b3932fddc40a021303",
+      "url": "https://www.tfrd.org.tw/statute",
+      "format": "html",
+      "revision_id": "c3b3932fddc40a021303d274e1b960a01562b6b1d173b606a3054e04d01cf4a7",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-tfrd-rare-disorder-scholarship-0c9ab3b4"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-0dad620cb5d5f2995905",
+      "url": "https://www.tfrd.org.tw/",
+      "format": "html",
+      "revision_id": "0dad620cb5d5f299590575ce1338b9cf91fe456403289f1f97dfe1a04cb8ace7",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-tfrd-rare-disorder-scholarship-0c9ab3b4"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-548a5203c015fdf86894",
+      "url": "https://www.tfrd.org.tw/standard-forms",
+      "format": "html",
+      "revision_id": "548a5203c015fdf86894b17ffaa69affd4f03513db424336e07e3a7e726c7a50",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-tfrd-rare-disorder-scholarship-0c9ab3b4"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-5f2f7b5a72bbfc9b716d",
+      "url": "https://www.ccf.org.tw/statute",
+      "format": "html",
+      "revision_id": "5f2f7b5a72bbfc9b716d66285872f6f7eeef5e631c475611cd1bc0eb9f4822b9",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-ccf-taiwan-children-scholarship-dc5fee52"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-f97f40206228c0fe57e2",
+      "url": "https://www.ccf.org.tw/",
+      "format": "html",
+      "revision_id": "f97f40206228c0fe57e27fb2a383f2a27ab7ac682ee4f34bc20f3de9bced6c60",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-ccf-taiwan-children-scholarship-dc5fee52"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-d4303fefc5069fa9343f",
+      "url": "https://www.ccf.org.tw/standard-forms",
+      "format": "html",
+      "revision_id": "d4303fefc5069fa9343fff6fa73e5f7185f74c20d6c8d516efbb440ac4d7f301",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-ccf-taiwan-children-scholarship-dc5fee52"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-statute-aafdc500ef00ec27fb09",
+      "url": "https://www.foxconnfoundation.org/statute",
+      "format": "html",
+      "revision_id": "aafdc500ef00ec27fb0913b1c59911eaa34c79b7922c8f2b7df4f15d5e90700d",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-foxconn-whale-vocational-scholarship-c95036c0"
+      ],
+      "role": "statute",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-call-a46aefac34b175bbd73c",
+      "url": "https://www.foxconnfoundation.org/",
+      "format": "html",
+      "revision_id": "a46aefac34b175bbd73c673c714fc5f1c242e29f7088e66ff21c0b78036e8f1f",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-foxconn-whale-vocational-scholarship-c95036c0"
+      ],
+      "role": "call",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-k12-form-2b72a0c732caa5865059",
+      "url": "https://www.foxconnfoundation.org/standard-forms",
+      "format": "html",
+      "revision_id": "2b72a0c732caa58650599a38c0a198e49ab31c7e47bb2afab39f53d39cfe2444",
+      "observed_at": "2026-11-05T00:00:00+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-k12-foxconn-whale-vocational-scholarship-c95036c0"
+      ],
+      "role": "form",
+      "archetype": "government_statutory",
+      "events": [],
+      "links": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "doc-k12-statute-51c561d9c68f2cc7630d",
+      "to": "doc-k12-call-16dd0382f22ebbf1c6d9",
+      "url": "https://www.ece.moe.edu.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-moe-ece-subsidies",
+      "scope": "k12-moe-ece-subsidies",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-16dd0382f22ebbf1c6d9",
+      "to": "doc-k12-form-92c5fdabf2764826e039",
+      "url": "https://www.ece.moe.edu.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-moe-ece-subsidies",
+      "scope": "k12-moe-ece-subsidies",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-a9839a96f4f58b7b4df3",
+      "to": "doc-k12-call-168eea9530d57fd8d799",
+      "url": "https://e-service.k12ea.gov.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-moe-childcare-stipend-2to5",
+      "scope": "k12-moe-childcare-stipend-2to5",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-168eea9530d57fd8d799",
+      "to": "doc-k12-form-5bed4cdc4981a649a504",
+      "url": "https://e-service.k12ea.gov.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-moe-childcare-stipend-2to5",
+      "scope": "k12-moe-childcare-stipend-2to5",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-8679e92bdbe3a7a24c8a",
+      "to": "doc-k12-call-360e5a88dcd07b6406ca",
+      "url": "https://dep.mohw.gov.tw/DOSAASW/",
+      "role": "statutory_authority",
+      "program_key": "k12-moe-low-income-preschool-aid",
+      "scope": "k12-moe-low-income-preschool-aid",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-360e5a88dcd07b6406ca",
+      "to": "doc-k12-form-a271e006682fcd3c91c4",
+      "url": "https://dep.mohw.gov.tw/DOSAASW/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-moe-low-income-preschool-aid",
+      "scope": "k12-moe-low-income-preschool-aid",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-0d1514273bab4919487a",
+      "to": "doc-k12-call-d963e747695d2b3c152f",
+      "url": "https://scholarship.ncut.edu.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-moe-scholarship-fund-low-income",
+      "scope": "k12-moe-scholarship-fund-low-income",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-d963e747695d2b3c152f",
+      "to": "doc-k12-form-e537a22dcd1ef285bb6b",
+      "url": "https://scholarship.ncut.edu.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-moe-scholarship-fund-low-income",
+      "scope": "k12-moe-scholarship-fund-low-income",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-807b6583b92fdf7267e6",
+      "to": "doc-k12-call-51df7ad5dac19639bb04",
+      "url": "https://cip.ntcu.edu.tw/home",
+      "role": "statutory_authority",
+      "program_key": "k12-cip-indigenous-elementary-junior-aid",
+      "scope": "k12-cip-indigenous-elementary-junior-aid",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-51df7ad5dac19639bb04",
+      "to": "doc-k12-form-a49d6bdf9936276c870e",
+      "url": "https://cip.ntcu.edu.tw/home/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-cip-indigenous-elementary-junior-aid",
+      "scope": "k12-cip-indigenous-elementary-junior-aid",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-c6cec3f1f15682df3655",
+      "to": "doc-k12-call-2f7aeab94d8a419533a4",
+      "url": "https://www.vac.gov.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-vac-veterans-children-education-aid",
+      "scope": "k12-vac-veterans-children-education-aid",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-2f7aeab94d8a419533a4",
+      "to": "doc-k12-form-dcae602ee34f1676816c",
+      "url": "https://www.vac.gov.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-vac-veterans-children-education-aid",
+      "scope": "k12-vac-veterans-children-education-aid",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-ba2f28d3d2c524984918",
+      "to": "doc-k12-call-4b1d6da43f7b19c1ed63",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0150009",
+      "role": "statutory_authority",
+      "program_key": "k12-moe-military-civil-servant-bereaved-aid",
+      "scope": "k12-moe-military-civil-servant-bereaved-aid",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-4b1d6da43f7b19c1ed63",
+      "to": "doc-k12-form-c0af401bb77f50faa19f",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0150009/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-moe-military-civil-servant-bereaved-aid",
+      "scope": "k12-moe-military-civil-servant-bereaved-aid",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-b56654c64c9c45dc8a56",
+      "to": "doc-k12-call-1bd77f0ca71477d445ce",
+      "url": "https://special.moe.gov.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-moe-disability-tuition-waiver",
+      "scope": "k12-moe-disability-tuition-waiver",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-1bd77f0ca71477d445ce",
+      "to": "doc-k12-form-a6951d4aa92e380448f2",
+      "url": "https://special.moe.gov.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-moe-disability-tuition-waiver",
+      "scope": "k12-moe-disability-tuition-waiver",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-6a5a685e7482636db4cb",
+      "to": "doc-k12-call-67162661f9bd84ca5893",
+      "url": "https://sp.immigration.gov.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-nia-new-immigrant-scholarship",
+      "scope": "k12-nia-new-immigrant-scholarship",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-67162661f9bd84ca5893",
+      "to": "doc-k12-form-f3f7037a26cb3c0f8b76",
+      "url": "https://sp.immigration.gov.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-nia-new-immigrant-scholarship",
+      "scope": "k12-nia-new-immigrant-scholarship",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-dbb5b239b5ce06597837",
+      "to": "doc-k12-call-f7453babb3fe6d88821d",
+      "url": "https://fatraceschool.k12ea.gov.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-moe-school-lunch-subsidy",
+      "scope": "k12-moe-school-lunch-subsidy",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-f7453babb3fe6d88821d",
+      "to": "doc-k12-form-1d79b8a201892e5c7d58",
+      "url": "https://fatraceschool.k12ea.gov.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-moe-school-lunch-subsidy",
+      "scope": "k12-moe-school-lunch-subsidy",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-8630cd44e7cefeffdc28",
+      "to": "doc-k12-call-94ade7fae73501cdfc86",
+      "url": "https://pea.nknu.edu.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-moe-president-education-award",
+      "scope": "k12-moe-president-education-award",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-94ade7fae73501cdfc86",
+      "to": "doc-k12-form-3f6c7c0c32e0ee72b67e",
+      "url": "https://pea.nknu.edu.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-moe-president-education-award",
+      "scope": "k12-moe-president-education-award",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-87045a8f1f691352f0d7",
+      "to": "doc-k12-call-c54237566108a68c2749",
+      "url": "https://ep.k12ea.gov.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-moe-senior-high-free-tuition",
+      "scope": "k12-moe-senior-high-free-tuition",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-c54237566108a68c2749",
+      "to": "doc-k12-form-155df90285a6281185c9",
+      "url": "https://ep.k12ea.gov.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-moe-senior-high-free-tuition",
+      "scope": "k12-moe-senior-high-free-tuition",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-4bb212925c3b6ef37178",
+      "to": "doc-k12-call-323c1f8bd1fa3e0386aa",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050075",
+      "role": "statutory_authority",
+      "program_key": "k12-moe-special-circumstances-family-waiver",
+      "scope": "k12-moe-special-circumstances-family-waiver",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-323c1f8bd1fa3e0386aa",
+      "to": "doc-k12-form-223c10c2f5d9ac844e93",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050075/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-moe-special-circumstances-family-waiver",
+      "scope": "k12-moe-special-circumstances-family-waiver",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-ce5eadbe9a46ed0d8221",
+      "to": "doc-k12-call-327c4d70f282a786dc40",
+      "url": "https://lae.mol.gov.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-mol-unemployed-workers-children-stipend",
+      "scope": "k12-mol-unemployed-workers-children-stipend",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-327c4d70f282a786dc40",
+      "to": "doc-k12-form-3dc93ab72e4d870b0bc6",
+      "url": "https://lae.mol.gov.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-mol-unemployed-workers-children-stipend",
+      "scope": "k12-mol-unemployed-workers-children-stipend",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-7941c00ecfb5dda0ac7b",
+      "to": "doc-k12-call-150be9650cd24ab087d8",
+      "url": "https://www.moa.gov.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-moa-farmers-fishermen-children-scholarship",
+      "scope": "k12-moa-farmers-fishermen-children-scholarship",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-150be9650cd24ab087d8",
+      "to": "doc-k12-form-2b3df16056923c2c117d",
+      "url": "https://www.moa.gov.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-moa-farmers-fishermen-children-scholarship",
+      "scope": "k12-moa-farmers-fishermen-children-scholarship",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-8e4cae9fb801132e9a00",
+      "to": "doc-k12-call-bb37e2acc89063dcfa56",
+      "url": "https://helpdreams.moe.edu.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-k12ea-indigenous-highschool-grant-and-meals",
+      "scope": "k12-k12ea-indigenous-highschool-grant-and-meals",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-bb37e2acc89063dcfa56",
+      "to": "doc-k12-form-7013e16f457e38409688",
+      "url": "https://helpdreams.moe.edu.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-k12ea-indigenous-highschool-grant-and-meals",
+      "scope": "k12-k12ea-indigenous-highschool-grant-and-meals",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-ad4b0d2469763e8d9664",
+      "to": "doc-k12-call-df69dd97d3be40bdc736",
+      "url": "https://coop.k12ea.gov.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-k12ea-cooperative-education-stipend",
+      "scope": "k12-k12ea-cooperative-education-stipend",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-df69dd97d3be40bdc736",
+      "to": "doc-k12-form-06a4319b61d6cffacd6c",
+      "url": "https://coop.k12ea.gov.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-k12ea-cooperative-education-stipend",
+      "scope": "k12-k12ea-cooperative-education-stipend",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-4efda609e512dd43f371",
+      "to": "doc-k12-call-0b95e39a4a465773226d",
+      "url": "https://young.cloud.ncnu.edu.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-moe-youth-education-employment-savings",
+      "scope": "k12-moe-youth-education-employment-savings",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-0b95e39a4a465773226d",
+      "to": "doc-k12-form-0ece07884353d09a7ade",
+      "url": "https://young.cloud.ncnu.edu.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-moe-youth-education-employment-savings",
+      "scope": "k12-moe-youth-education-employment-savings",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-339f7e8938da4516f931",
+      "to": "doc-k12-call-e01d41fce39238dee44a",
+      "url": "https://rural.k12ea.gov.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-k12ea-remote-schools-transport-hostel",
+      "scope": "k12-k12ea-remote-schools-transport-hostel",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-e01d41fce39238dee44a",
+      "to": "doc-k12-form-75970b3c46014b521b78",
+      "url": "https://rural.k12ea.gov.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-k12ea-remote-schools-transport-hostel",
+      "scope": "k12-k12ea-remote-schools-transport-hostel",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-568c43af426efd14e9da",
+      "to": "doc-k12-call-5676649fe708b9d17883",
+      "url": "https://www.ht.org.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-hsing-tian-kong-scholarship",
+      "scope": "k12-hsing-tian-kong-scholarship",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-5676649fe708b9d17883",
+      "to": "doc-k12-form-1193b5d122213909f75b",
+      "url": "https://www.ht.org.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-hsing-tian-kong-scholarship",
+      "scope": "k12-hsing-tian-kong-scholarship",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-ef02520d91cf7e90f30f",
+      "to": "doc-k12-call-59ae1c2cfbb57c670a70",
+      "url": "https://www.you-care.org.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-you-care-pu-ren-mentorship-aid",
+      "scope": "k12-you-care-pu-ren-mentorship-aid",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-59ae1c2cfbb57c670a70",
+      "to": "doc-k12-form-dd650eef99584aee4c8a",
+      "url": "https://www.you-care.org.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-you-care-pu-ren-mentorship-aid",
+      "scope": "k12-you-care-pu-ren-mentorship-aid",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-90638d15b72b9fe6c557",
+      "to": "doc-k12-call-8652a574c755ac8bb0cc",
+      "url": "https://www.tzuchi.org.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-tzu-chi-sprout-scholarship",
+      "scope": "k12-tzu-chi-sprout-scholarship",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-8652a574c755ac8bb0cc",
+      "to": "doc-k12-form-7166047b48a46fc0f11d",
+      "url": "https://www.tzuchi.org.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-tzu-chi-sprout-scholarship",
+      "scope": "k12-tzu-chi-sprout-scholarship",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-c3b3932fddc40a021303",
+      "to": "doc-k12-call-0dad620cb5d5f2995905",
+      "url": "https://www.tfrd.org.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-tfrd-rare-disorder-scholarship",
+      "scope": "k12-tfrd-rare-disorder-scholarship",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-0dad620cb5d5f2995905",
+      "to": "doc-k12-form-548a5203c015fdf86894",
+      "url": "https://www.tfrd.org.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-tfrd-rare-disorder-scholarship",
+      "scope": "k12-tfrd-rare-disorder-scholarship",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-5f2f7b5a72bbfc9b716d",
+      "to": "doc-k12-call-f97f40206228c0fe57e2",
+      "url": "https://www.ccf.org.tw/",
+      "role": "statutory_authority",
+      "program_key": "k12-ccf-taiwan-children-scholarship",
+      "scope": "k12-ccf-taiwan-children-scholarship",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-f97f40206228c0fe57e2",
+      "to": "doc-k12-form-d4303fefc5069fa9343f",
+      "url": "https://www.ccf.org.tw/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-ccf-taiwan-children-scholarship",
+      "scope": "k12-ccf-taiwan-children-scholarship",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-statute-aafdc500ef00ec27fb09",
+      "to": "doc-k12-call-a46aefac34b175bbd73c",
+      "url": "https://www.foxconnfoundation.org/",
+      "role": "statutory_authority",
+      "program_key": "k12-foxconn-whale-vocational-scholarship",
+      "scope": "k12-foxconn-whale-vocational-scholarship",
+      "cycle": "114-115"
+    },
+    {
+      "from": "doc-k12-call-a46aefac34b175bbd73c",
+      "to": "doc-k12-form-2b72a0c732caa5865059",
+      "url": "https://www.foxconnfoundation.org/standard-forms",
+      "role": "school_submission_form",
+      "program_key": "k12-foxconn-whale-vocational-scholarship",
+      "scope": "k12-foxconn-whale-vocational-scholarship",
+      "cycle": "114-115"
+    }
+  ],
+  "scopes": [
+    {
+      "id": "k12-moe-ece-subsidies",
+      "label": "我國少子女化對策計畫"
+    },
+    {
+      "id": "k12-moe-childcare-stipend-2to5",
+      "label": "教育部"
+    },
+    {
+      "id": "k12-moe-low-income-preschool-aid",
+      "label": "低收入戶及中低收入戶"
+    },
+    {
+      "id": "k12-moe-scholarship-fund-low-income",
+      "label": "教育部學產基金設置低"
+    },
+    {
+      "id": "k12-cip-indigenous-elementary-junior-aid",
+      "label": "原住民族委員會國民中"
+    },
+    {
+      "id": "k12-vac-veterans-children-education-aid",
+      "label": "國軍退除役官兵輔導委"
+    },
+    {
+      "id": "k12-moe-military-civil-servant-bereaved-aid",
+      "label": "軍公教遺族就學費用優"
+    },
+    {
+      "id": "k12-moe-disability-tuition-waiver",
+      "label": "身心障礙學生及身心障"
+    },
+    {
+      "id": "k12-nia-new-immigrant-scholarship",
+      "label": "內政部移民署新住民及"
+    },
+    {
+      "id": "k12-moe-school-lunch-subsidy",
+      "label": "國民中小學清寒學生無"
+    },
+    {
+      "id": "k12-moe-president-education-award",
+      "label": "教育部總統教育獎"
+    },
+    {
+      "id": "k12-moe-senior-high-free-tuition",
+      "label": "高級中等學校全面免學"
+    },
+    {
+      "id": "k12-moe-special-circumstances-family-waiver",
+      "label": "特殊境遇家庭子女孫子"
+    },
+    {
+      "id": "k12-mol-unemployed-workers-children-stipend",
+      "label": "勞動部失業勞工在學子"
+    },
+    {
+      "id": "k12-moa-farmers-fishermen-children-scholarship",
+      "label": "農業部獎勵農漁民子女"
+    },
+    {
+      "id": "k12-k12ea-indigenous-highschool-grant-and-meals",
+      "label": "高級中等學校原住民學"
+    },
+    {
+      "id": "k12-k12ea-cooperative-education-stipend",
+      "label": "高級中等學校建教合作"
+    },
+    {
+      "id": "k12-moe-youth-education-employment-savings",
+      "label": "教育部青年教育與就業"
+    },
+    {
+      "id": "k12-k12ea-remote-schools-transport-hostel",
+      "label": "偏遠地區學校及非山非"
+    },
+    {
+      "id": "k12-hsing-tian-kong-scholarship",
+      "label": "財團法人行天宮文教發展促進基金會"
+    },
+    {
+      "id": "k12-you-care-pu-ren-mentorship-aid",
+      "label": "財團法人普仁青年關懷基金會"
+    },
+    {
+      "id": "k12-tzu-chi-sprout-scholarship",
+      "label": "財團法人中華民國佛教慈濟慈善事業基金會"
+    },
+    {
+      "id": "k12-tfrd-rare-disorder-scholarship",
+      "label": "財團法人罕見疾病基金會"
+    },
+    {
+      "id": "k12-ccf-taiwan-children-scholarship",
+      "label": "財團法人台灣兒童暨家庭扶助基金會"
+    },
+    {
+      "id": "k12-foxconn-whale-vocational-scholarship",
+      "label": "財團法人鴻海教育基金會"
+    }
+  ],
+  "candidate_bindings": [
+    {
+      "candidate_id": "cand-k12-moe-ece-subsidies-40978dfb",
+      "program_key": "k12-moe-ece-subsidies",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-moe-childcare-stipend-2to5-8dcbb7b3",
+      "program_key": "k12-moe-childcare-stipend-2to5",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-moe-low-income-preschool-aid-cae8c204",
+      "program_key": "k12-moe-low-income-preschool-aid",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-moe-scholarship-fund-low-income-729b8e49",
+      "program_key": "k12-moe-scholarship-fund-low-income",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-cip-indigenous-elementary-junior-aid-7cd98aed",
+      "program_key": "k12-cip-indigenous-elementary-junior-aid",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-vac-veterans-children-education-aid-2db1e03d",
+      "program_key": "k12-vac-veterans-children-education-aid",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-moe-military-civil-servant-bereaved-aid-7c8f4eca",
+      "program_key": "k12-moe-military-civil-servant-bereaved-aid",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-moe-disability-tuition-waiver-609de122",
+      "program_key": "k12-moe-disability-tuition-waiver",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-nia-new-immigrant-scholarship-d2f76baf",
+      "program_key": "k12-nia-new-immigrant-scholarship",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-moe-school-lunch-subsidy-35b9fafd",
+      "program_key": "k12-moe-school-lunch-subsidy",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-moe-president-education-award-bfc4415c",
+      "program_key": "k12-moe-president-education-award",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-moe-senior-high-free-tuition-e139917f",
+      "program_key": "k12-moe-senior-high-free-tuition",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-moe-special-circumstances-family-waiver-1456e530",
+      "program_key": "k12-moe-special-circumstances-family-waiver",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-mol-unemployed-workers-children-stipend-1080a27c",
+      "program_key": "k12-mol-unemployed-workers-children-stipend",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-moa-farmers-fishermen-children-scholarship-ced2d2bf",
+      "program_key": "k12-moa-farmers-fishermen-children-scholarship",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-k12ea-indigenous-highschool-grant-and-meals-d51c376e",
+      "program_key": "k12-k12ea-indigenous-highschool-grant-and-meals",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-k12ea-cooperative-education-stipend-7992c342",
+      "program_key": "k12-k12ea-cooperative-education-stipend",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-moe-youth-education-employment-savings-95808842",
+      "program_key": "k12-moe-youth-education-employment-savings",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-k12ea-remote-schools-transport-hostel-dadb681f",
+      "program_key": "k12-k12ea-remote-schools-transport-hostel",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-hsing-tian-kong-scholarship-2fc58a6b",
+      "program_key": "k12-hsing-tian-kong-scholarship",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-you-care-pu-ren-mentorship-aid-72eacff7",
+      "program_key": "k12-you-care-pu-ren-mentorship-aid",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-tzu-chi-sprout-scholarship-6c912c99",
+      "program_key": "k12-tzu-chi-sprout-scholarship",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-tfrd-rare-disorder-scholarship-0c9ab3b4",
+      "program_key": "k12-tfrd-rare-disorder-scholarship",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-ccf-taiwan-children-scholarship-dc5fee52",
+      "program_key": "k12-ccf-taiwan-children-scholarship",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-k12-foxconn-whale-vocational-scholarship-c95036c0",
+      "program_key": "k12-foxconn-whale-vocational-scholarship",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    }
+  ],
+  "reports": [
+    {
+      "batch_id": "batch-k12",
+      "verified_schemes": 25,
+      "notes": "公部門與各級教育助學，涵蓋母法設置要點、年度徵件公告與學校初審表件。"
+    }
+  ]
+}

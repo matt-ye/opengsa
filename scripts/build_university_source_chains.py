@@ -140,6 +140,7 @@ def main():
             "evidence_mode": "hash_only",
             "candidate_ids": [cid],
             "role": "call",
+            "archetype": "higher_education_university",
             "events": [],
             "links": []
         }
@@ -158,6 +159,7 @@ def main():
             "evidence_mode": "hash_only",
             "candidate_ids": [cid],
             "role": "anchor",
+            "archetype": "higher_education_university",
             "events": [],
             "links": []
         }
@@ -176,6 +178,7 @@ def main():
             "evidence_mode": "hash_only",
             "candidate_ids": [cid],
             "role": "form",
+            "archetype": "higher_education_university",
             "events": [],
             "links": []
         }
@@ -205,6 +208,8 @@ def main():
 
     chain_batch = {
         "schema_version": "source-chain-1",
+        "batch_id": "batch-university",
+        "archetype": "higher_education_university",
         "generated_at": "2026-11-05T12:00:00+00:00",
         "model_calls": 0,
         "official_data_modified": False,

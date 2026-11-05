@@ -1,5 +1,7 @@
 {
   "schema_version": "source-chain-1",
+  "batch_id": "batch-university",
+  "archetype": "higher_education_university",
   "generated_at": "2026-11-05T12:00:00+00:00",
   "model_calls": 0,
   "official_data_modified": false,
@@ -20,6 +22,7 @@
         "cand-univ-nthu-0001a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -35,6 +38,7 @@
         "cand-univ-nthu-0001a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -50,6 +54,7 @@
         "cand-univ-nthu-0001a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -65,6 +70,7 @@
         "cand-univ-nycu-0002a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -80,6 +86,7 @@
         "cand-univ-nycu-0002a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -95,6 +102,7 @@
         "cand-univ-nycu-0002a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -110,6 +118,7 @@
         "cand-univ-ncku-0003a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -125,6 +134,7 @@
         "cand-univ-ncku-0003a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -140,6 +150,7 @@
         "cand-univ-ncku-0003a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -155,6 +166,7 @@
         "cand-univ-nccu-0004a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -170,6 +182,7 @@
         "cand-univ-nccu-0004a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -185,6 +198,7 @@
         "cand-univ-nccu-0004a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -200,6 +214,7 @@
         "cand-univ-ncu-0005a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -215,6 +230,7 @@
         "cand-univ-ncu-0005a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -230,6 +246,7 @@
         "cand-univ-ncu-0005a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -245,6 +262,7 @@
         "cand-univ-nsysu-0006a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -260,6 +278,7 @@
         "cand-univ-nsysu-0006a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -275,6 +294,7 @@
         "cand-univ-nsysu-0006a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -290,6 +310,7 @@
         "cand-univ-nchu-0007a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -305,6 +326,7 @@
         "cand-univ-nchu-0007a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -320,6 +342,7 @@
         "cand-univ-nchu-0007a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -335,6 +358,7 @@
         "cand-univ-ccu-0008a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -350,6 +374,7 @@
         "cand-univ-ccu-0008a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -365,6 +390,7 @@
         "cand-univ-ccu-0008a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -380,6 +406,7 @@
         "cand-univ-ntnu-0009a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -395,6 +422,7 @@
         "cand-univ-ntnu-0009a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -410,6 +438,7 @@
         "cand-univ-ntnu-0009a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -425,6 +454,7 @@
         "cand-univ-ntpu-000aa12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -440,6 +470,7 @@
         "cand-univ-ntpu-000aa12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -455,6 +486,7 @@
         "cand-univ-ntpu-000aa12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -470,6 +502,7 @@
         "cand-univ-ntust-000ba12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -485,6 +518,7 @@
         "cand-univ-ntust-000ba12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -500,6 +534,7 @@
         "cand-univ-ntust-000ba12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -515,6 +550,7 @@
         "cand-univ-ntut-000ca12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -530,6 +566,7 @@
         "cand-univ-ntut-000ca12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -545,6 +582,7 @@
         "cand-univ-ntut-000ca12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -560,6 +598,7 @@
         "cand-univ-cgu-000da12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -575,6 +614,7 @@
         "cand-univ-cgu-000da12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -590,6 +630,7 @@
         "cand-univ-cgu-000da12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -605,6 +646,7 @@
         "cand-univ-tmu-000ea12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -620,6 +662,7 @@
         "cand-univ-tmu-000ea12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -635,6 +678,7 @@
         "cand-univ-tmu-000ea12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -650,6 +694,7 @@
         "cand-univ-kmu-000fa12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -665,6 +710,7 @@
         "cand-univ-kmu-000fa12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -680,6 +726,7 @@
         "cand-univ-kmu-000fa12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -695,6 +742,7 @@
         "cand-univ-cmu-0010a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -710,6 +758,7 @@
         "cand-univ-cmu-0010a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -725,6 +774,7 @@
         "cand-univ-cmu-0010a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -740,6 +790,7 @@
         "cand-univ-fju-0011a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -755,6 +806,7 @@
         "cand-univ-fju-0011a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -770,6 +822,7 @@
         "cand-univ-fju-0011a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -785,6 +838,7 @@
         "cand-univ-scu-0012a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -800,6 +854,7 @@
         "cand-univ-scu-0012a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -815,6 +870,7 @@
         "cand-univ-scu-0012a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -830,6 +886,7 @@
         "cand-univ-tku-0013a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -845,6 +902,7 @@
         "cand-univ-tku-0013a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -860,6 +918,7 @@
         "cand-univ-tku-0013a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -875,6 +934,7 @@
         "cand-univ-fcu-0014a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -890,6 +950,7 @@
         "cand-univ-fcu-0014a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -905,6 +966,7 @@
         "cand-univ-fcu-0014a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -920,6 +982,7 @@
         "cand-univ-yzu-0015a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -935,6 +998,7 @@
         "cand-univ-yzu-0015a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -950,6 +1014,7 @@
         "cand-univ-yzu-0015a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -965,6 +1030,7 @@
         "cand-univ-cycu-0016a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -980,6 +1046,7 @@
         "cand-univ-cycu-0016a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -995,6 +1062,7 @@
         "cand-univ-cycu-0016a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -1010,6 +1078,7 @@
         "cand-univ-thu-0017a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -1025,6 +1094,7 @@
         "cand-univ-thu-0017a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -1040,6 +1110,7 @@
         "cand-univ-thu-0017a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -1055,6 +1126,7 @@
         "cand-univ-ndhu-0018a12b"
       ],
       "role": "call",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -1070,6 +1142,7 @@
         "cand-univ-ndhu-0018a12b"
       ],
       "role": "anchor",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     },
@@ -1085,6 +1158,7 @@
         "cand-univ-ndhu-0018a12b"
       ],
       "role": "form",
+      "archetype": "higher_education_university",
       "events": [],
       "links": []
     }
