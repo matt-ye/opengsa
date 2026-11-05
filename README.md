@@ -74,8 +74,10 @@ $$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (當�
 
 ---
 
-### 7. 主動推播通知與 RSS 2.0 訂閱頻道
-OpenGSA 支援標準 RSS 2.0 / Atom 1.0 訂閱頻道，隨 GitHub Pages 自動建置，學生與研究團隊可直接使用 Feedly、NetNewsWire、Discord/Telegram Webhook 零伺服器成本訂閱：
+### 7. 主動推播通知、首頁彈窗與 Follow.it 整合
+OpenGSA 支援標準 RSS 2.0 / Atom 1.0 訂閱頻道，隨 GitHub Pages 自動建置。首頁頂端提供 **`[📡 訂閱推播]`** 按鈕與原生 `<dialog>` 小視窗，支援一鍵複製、直接開啟 XML 與免裝閱讀器的外部託管訂閱：
+- **首頁「📡 訂閱推播」小視窗**：點擊即可開啟原生彈窗，提供雙軌 Feed 複製、閱讀器訂閱指引與 Follow.it 串接。
+- **免裝軟體 · Email 訂閱（透過 Follow.it）**：整合 [Follow.it](https://follow.it/) 代管轉發，使用者可直接以電子郵件或 Telegram 接收推播，OpenGSA 伺服器零個資儲存。
 - **最新獎助公告頻道**：[`feed.xml`](https://matt-ye.github.io/opengsa/feed.xml)（全庫 236 方案最新動態）
 - **截止倒數專刊頻道**：[`feed-deadlines.xml`](https://matt-ye.github.io/opengsa/feed-deadlines.xml)（即將於近期截止之方案警訊）
 - 詳見專案規格書：[RSS 電子報與主動推播通知架構](docs/RSS-FEEDS-AND-NOTIFICATION-ARCHITECTURE.md)。

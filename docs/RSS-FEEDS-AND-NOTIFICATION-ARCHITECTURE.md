@@ -110,7 +110,37 @@ flowchart LR
 
 ---
 
-## 5. 學生端訂閱與外部通知串接指南
+## 5. 首頁視覺按鈕、原生彈窗小視窗與 Follow.it 整合架構
+
+為了讓所有造訪 OpenGSA 的學生與研究人員能以最直覺的方式訂閱，網站首頁頂端操作列配置了專屬 **`[📡 訂閱推播]`** 按鈕，點擊後觸發無障礙的原生 HTML5 `<dialog id="rss-dialog">` 小視窗：
+
+```mermaid
+flowchart TD
+    UserClick["使用者點擊首頁 [📡 訂閱推播] 按鈕"] --> Modal["彈出原生無障礙小視窗 (<dialog>)<br/>(支援 ESC 關閉、點擊遮罩關閉)"]
+    
+    Modal --> FollowItSec["✉️ 免裝閱讀器：Email 訂閱區塊<br/>(由外部服務 Follow.it 託管轉發)"]
+    Modal --> FeedMainSec["📡 軌道 1：全庫動態 Feed (236 方案)<br/>(含一鍵複製與直接開啟 XML)"]
+    Modal --> FeedDeadlinesSec["⏰ 軌道 2：30 天截止倒數 Feed<br/>(含一鍵複製與直接開啟 XML)"]
+    Modal --> GuideSec["💡 常用訂閱方式指引<br/>(Feedly / Slack / Discord / Outlook)"]
+
+    FollowItSec --> FormSubmit["表單 POST 提交至 api.follow.it/subscribe<br/>(新分頁開啟確認畫面，OpenGSA 零儲存信箱)"]
+    FollowItSec --> FollowItLink["直接開啟 follow.it/now 專屬頻道頁面<br/>(支援 Telegram / 桌面推播等多種接收模式)"]
+```
+
+### 5.1 Follow.it 零個資 Email 代管機制
+* **隱私與個資保護原則**：
+  OpenGSA 嚴格遵守「無分析追蹤、無個資入庫、零伺服器維護成本」規範。若自行收集信箱建立發信資料庫，將面臨巨大的個資法合規負擔與 SMTP 垃圾郵件防護成本。
+* **Follow.it 串接方式**：
+  1. **表單原生直通**：小視窗內建 `<form action="https://api.follow.it/subscribe" method="post" target="_blank">`，帶入 `resource="https://matt-ye.github.io/opengsa/feed.xml"`，使用者輸入 Email 按下送出後直接在外部新分頁完成訂閱確認，OpenGSA 伺服器完全不經手、不儲存任何 Email。
+  2. **頻道即時導向**：提供 `https://follow.it/now` 專屬連結，Follow.it 會自動藉由瀏覽器 Referer 讀取 OpenGSA 頁面中的 `<link rel="alternate" type="application/rss+xml">`，直接呈現 OpenGSA 獎助訂閱確認畫面。
+
+### 5.2 雙軌 Feed 複製與即時回饋
+* **一鍵複製**：提供 `[📋 複製]` 按鈕，點擊後調用 `navigator.clipboard.writeText()` 並觸發 2.5 秒的友善提示浮層（Toast），方便使用者直接將網址貼入任何 RSS 閱讀器或機器人。
+* **在新分頁開啟**：提供 `[開啟 ↗]` 連結，方便進階使用者或開發者檢視原始 XML 內容。
+
+---
+
+## 6. 學生端訂閱與外部通知串接指南
 
 學生可依喜好的日常通訊習慣，透過以下方式零成本接收推播：
 

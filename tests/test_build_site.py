@@ -110,7 +110,48 @@ console.log('236 items: temporal labels, geometry, ambiguous years, intake filte
             self.assertTrue((ROOT/'.github/ISSUE_TEMPLATE'/template).is_file())
             self.assertIsNone(link.find_parent(attrs={'role':'tablist'}))
             self.assertEqual(link['target'],'_blank');self.assertIn('noopener',link['rel'])
+        rss_btn = header.select_one('.header-actions #rss-subscribe-btn')
+        self.assertIsNotNone(rss_btn)
+        self.assertEqual(rss_btn.get_text(strip=True), '📡 訂閱推播')
+        self.assertIsNone(rss_btn.find_parent(attrs={'role': 'tablist'}))
         self.assertIsNone(soup.select_one('.review-strip a'))
+
+    def test_rss_modal_and_followit_integration(self):
+        soup = BeautifulSoup(self.html, 'html.parser')
+        dialog = soup.select_one('#rss-dialog')
+        self.assertIsNotNone(dialog)
+        self.assertEqual(dialog.name, 'dialog')
+
+        form = dialog.select_one('form[action="https://api.follow.it/subscribe"]')
+        self.assertIsNotNone(form)
+        self.assertEqual(form['method'].lower(), 'post')
+        self.assertEqual(form['target'], '_blank')
+        self.assertIn('noopener', form.get('rel', ''))
+        resource = form.select_one('input[name="resource"]')
+        self.assertIsNotNone(resource)
+        self.assertEqual(resource['value'], 'https://matt-ye.github.io/opengsa/feed.xml')
+        self.assertIsNotNone(form.select_one('input[name="email"][type="email"]'))
+
+        followit_link = dialog.select_one('a[href="https://follow.it/now"]')
+        self.assertIsNotNone(followit_link)
+        self.assertEqual(followit_link['target'], '_blank')
+
+        main_input = dialog.select_one('#feed-main-url')
+        self.assertIsNotNone(main_input)
+        self.assertEqual(main_input['value'], 'https://matt-ye.github.io/opengsa/feed.xml')
+        copy_main = dialog.select_one('#copy-feed-main')
+        self.assertIsNotNone(copy_main)
+        self.assertEqual(copy_main['data-copy'], 'https://matt-ye.github.io/opengsa/feed.xml')
+
+        deadlines_input = dialog.select_one('#feed-deadlines-url')
+        self.assertIsNotNone(deadlines_input)
+        self.assertEqual(deadlines_input['value'], 'https://matt-ye.github.io/opengsa/feed-deadlines.xml')
+        copy_deadlines = dialog.select_one('#copy-feed-deadlines')
+        self.assertIsNotNone(copy_deadlines)
+        self.assertEqual(copy_deadlines['data-copy'], 'https://matt-ye.github.io/opengsa/feed-deadlines.xml')
+
+        self.assertIsNotNone(dialog.select_one('#rss-dialog-close'))
+        self.assertIsNotNone(dialog.select_one('#rss-dialog-dismiss'))
 
     def test_rights_sections_and_all_fragment_or_document_links_resolve(self):
         soup = BeautifulSoup(self.html, 'html.parser')

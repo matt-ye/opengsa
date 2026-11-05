@@ -1,6 +1,14 @@
 # 目前計畫與已接受決策
 
-## 2026-11-05 RSS 2.0 / Atom 主動推播通知架構與雙軌 Feed 上線（PR #65）
+## 2026-11-05 RSS 2.0 主動推播、首頁彈窗小視窗與 Follow.it 整合（PR #65）
+
+- **首頁「📡 訂閱推播」視覺按鈕與原生 `<dialog>` 小視窗**：
+  - 首頁頂端配置原生無障礙按鈕與小視窗，支援 ESC 鍵關閉、點擊遮罩關閉、完整無障礙語意。
+  - 雙軌 Feed（全庫動態 236 方案 + 30 天截止倒數）支援一鍵複製網址（含 2.5 秒 Toast 提示）與直接在新分頁開啟 XML。
+  - 常用工具指引：整理 Feedly、Inoreader、NetNewsWire、Slack、Discord 與 Outlook 整合說明。
+- **Follow.it 零個資 Email / Telegram 訂閱託管整合**：
+  - 串接 `https://api.follow.it/subscribe`，直接在彈窗提供 Email 輸入框，送出後在新分頁完成訂閱，OpenGSA 本地零個資入庫、零伺服器維護成本。
+  - 提供 `https://follow.it/now` 專屬導向連結，自動偵測 Feed 供讀者選擇 Telegram 或桌面推播等多種接收模式。
 
 - **官方獎助發放單位 RSS 調研與全景台帳收錄**（[架構規格書](RSS-FEEDS-AND-NOTIFICATION-ARCHITECTURE.md)）：
   - 盤查國科會 (NSTC)、農業部 (MOA)、勞動部 (MOL)、原民會 (CIP)、教育部 (MOE) 與各大專校院生輔組 RSS。
