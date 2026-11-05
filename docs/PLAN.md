@@ -1,5 +1,16 @@
 # 目前計畫與已接受決策
 
+## 2026-11-05 RSS 2.0 / Atom 主動推播通知架構與雙軌 Feed 上線（PR #65）
+
+- **官方獎助發放單位 RSS 調研與全景台帳收錄**（[架構規格書](RSS-FEEDS-AND-NOTIFICATION-ARCHITECTURE.md)）：
+  - 盤查國科會 (NSTC)、農業部 (MOA)、勞動部 (MOL)、原民會 (CIP)、教育部 (MOE) 與各大專校院生輔組 RSS。
+  - 深度對比臺大電子報平台 (`epaper.ntu.edu.tw`)，確立維持 OpenGSA 零個資、零資料庫、純靜態架構，以標準 RSS/Atom 取代傳統 SMTP 發信清單。
+- **雙軌 RSS 2.0 Feed 產出與管線整合**：
+  - 建立 `scripts/build_feed.py`，隨站建置 `feed.xml`（236 方案）與 `feed-deadlines.xml`（截止倒數）。
+  - 單元測試套件擴充至 **281 項 PASS**，嚴格校驗 RFC 822 時間格式與防洩漏邊界。
+
+---
+
 ## 2026-11-05 拓撲探針新資源進庫、全庫通用資訊鏈六大批次與 GitHub Actions 全庫掃描驗證（PR #61～#64）
 
 - **全庫方案規模正式擴充至 236 方案**（[專案總稽核報告](TOPOLOGY-EXPANSION-AND-SCAN-AUDIT.md)）：

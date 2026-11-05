@@ -16,7 +16,7 @@
 
 > **公開預覽網站即時發布中**：**[https://matt-ye.github.io/opengsa/](https://matt-ye.github.io/opengsa/)**  
 > **全庫方案覆蓋規模**：**236 方案**（1-to-1 精確時程政策覆蓋，`undetermined = 0`，覆蓋率 100%）  
-> **測試防線**：278 項 Python 單元測試 PASS · 54 項前端整合測試 PASS · GitHub Actions CI/CD 100% PASS
+> **測試防線**：281 項 Python 單元測試 PASS · 54 項前端整合測試 PASS · GitHub Actions CI/CD 100% PASS
 
 ### 1. 全庫七大獎助資源板塊 (236 方案)
 OpenGSA 目前收錄跨越教育階段、公部門、民間企業與高等教育學府的完整資源光譜：
@@ -71,6 +71,14 @@ $$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (當�
   - `other` 軌道（週三、六 09:17 UTC+8）：學生 Perks、AI 工具與大專校院生輔組
   - `consolidation` 軌道（週日 09:17 UTC+8）：全庫時程聚合校驗
 - **增量閘門 (Incremental Diff Gate)**：未異動來源直接判定 `SKIP_UNCHANGED`（**0 HTTP / 0 Token**），嚴格落實 `model_mode=off`。
+
+---
+
+### 7. 主動推播通知與 RSS 2.0 訂閱頻道
+OpenGSA 支援標準 RSS 2.0 / Atom 1.0 訂閱頻道，隨 GitHub Pages 自動建置，學生與研究團隊可直接使用 Feedly、NetNewsWire、Discord/Telegram Webhook 零伺服器成本訂閱：
+- **最新獎助公告頻道**：[`feed.xml`](https://matt-ye.github.io/opengsa/feed.xml)（全庫 236 方案最新動態）
+- **截止倒數專刊頻道**：[`feed-deadlines.xml`](https://matt-ye.github.io/opengsa/feed-deadlines.xml)（即將於近期截止之方案警訊）
+- 詳見專案規格書：[RSS 電子報與主動推播通知架構](docs/RSS-FEEDS-AND-NOTIFICATION-ARCHITECTURE.md)。
 
 ---
 

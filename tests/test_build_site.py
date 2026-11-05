@@ -63,7 +63,7 @@ console.log('236 items: temporal labels, geometry, ambiguous years, intake filte
 
     def test_only_public_artifacts_are_published(self):
         files = {p.relative_to(self.output).as_posix() for p in self.output.rglob("*") if p.is_file()}
-        self.assertEqual(files, {"index.html", "assets/opengsa-social-preview.jpg", ".nojekyll"})
+        self.assertEqual(files, {"index.html", "assets/opengsa-social-preview.jpg", ".nojekyll", "feed.xml", "feed-deadlines.xml"})
         self.assertEqual((self.output / "assets/opengsa-social-preview.jpg").read_bytes(), (ROOT / "docs/assets/opengsa-social-preview.jpg").read_bytes())
 
     def test_preview_is_self_contained_and_uses_named_radar_snapshot(self):
