@@ -1,0 +1,554 @@
+{
+  "schema_version": "1.1.0-candidate",
+  "generated_at": "2026-11-04T00:00:00Z",
+  "as_of": "2026-11-04",
+  "timezone": "Asia/Taipei",
+  "model_enabled": false,
+  "model_calls": 0,
+  "official_data_modified": false,
+  "candidates": [
+    {
+      "candidate_id": "cand-ntu-med-oia-conference-40192a8b",
+      "opportunity_id": "ntu-med-oia",
+      "program_key": "ntu-med-oia",
+      "title": "臺大醫學院醫學生出席國際會議及海外實習服務交換獎學金",
+      "category": "international_conference",
+      "resource_kind": "travel_grant",
+      "scope": "ntu",
+      "cycle": {
+        "kind": "event_relative",
+        "label": "依個別會議首日計算",
+        "year_system": "none",
+        "year": null,
+        "term_or_round": null,
+        "branch": "醫學院國際事務處要點"
+      },
+      "participants": {
+        "applicant": "student",
+        "beneficiary": "student",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "NTU",
+        "college": "醫學院",
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "國立臺灣大學醫學院",
+          "refs": [
+            {
+              "source": "ntu-med-oia",
+              "locator": "第三點"
+            }
+          ]
+        },
+        "announcer": {
+          "text": "國立臺灣大學醫學院國際事務分處",
+          "refs": [
+            {
+              "source": "ntu-med-oia",
+              "locator": "首頁與第六點"
+            }
+          ]
+        },
+        "receiver": {
+          "text": "醫學院國際事務中心（會議前四週送達）",
+          "refs": [
+            {
+              "source": "ntu-med-oia",
+              "locator": "第六點"
+            }
+          ]
+        }
+      },
+      "eligibility": {
+        "degrees": [
+          "master",
+          "phd"
+        ],
+        "institution": "NTU",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "醫學院在學學生出國出席國際會議分支；同年度未獲本項補助，論文未由其他合著人申請本項經費",
+          "refs": [
+            {
+              "source": "ntu-med-oia",
+              "locator": "第三點（一）"
+            }
+          ]
+        },
+        "other_conditions": [
+          {
+            "text": "備正式邀請或接受證明；首次發表、摘要第一作者、指導教授列名及全文署名等要求。",
+            "refs": [
+              {
+                "source": "ntu-med-oia",
+                "locator": "第六點"
+              }
+            ]
+          }
+        ]
+      },
+      "benefit": {
+        "summary": "機票與生活費補助（依辦法核定上限）",
+        "items": [],
+        "refs": []
+      },
+      "compatibility": {
+        "mode": "conditional",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "領到本項最高額度者，不得重複領取教育部或其他機關同性質獎助；未達最高額度也不代表當然可兼領。",
+        "refs": [
+          {
+            "source": "ntu-med-oia",
+            "locator": "第六點（二）"
+          }
+        ]
+      },
+      "hardship": {
+        "mode": "unknown",
+        "note": "未限制清寒身分",
+        "refs": []
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "隨到隨審（會議前四週截止）"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "會議前四週送達國際事務中心",
+            "deadline": {
+              "kind": "relative",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "會議舉行首日四週前（減28日曆天）送達國際事務中心；備正式邀請或接受證明，未查得接受函補送條款。"
+            },
+            "refs": [
+              {
+                "source": "ntu-med-oia",
+                "locator": "第六點"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "依院方審查結果通知",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "days_before",
+          "anchor_event": "conference_start",
+          "agency_rule": null,
+          "student_rule": "會議舉行首日四週前（減28日曆天）送達國際事務中心",
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-11-04",
+        "reason": "依個別國際會議日期於四週前送達國際事務中心。",
+        "refs": [
+          {
+            "source": "ntu-med-oia",
+            "locator": "第六點"
+          }
+        ]
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "正文更新2026/08/20",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "ntu-med-oia",
+        "revision_id": "40192a8ba0c85c2b9a7123ef669e45c7198d7522a46c3b88019b882260e04d49",
+        "url": "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296",
+        "observed_at": "2026-11-04T00:00:00Z",
+        "evidence_mode": "short_excerpt",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.7.0",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "40192a8ba0c85c2b9a7123ef669e45c7198d7522a46c3b88019b882260e04d49"
+      },
+      "field_evidence": [
+        {
+          "field_path": "eligibility.identity",
+          "source": "ntu-med-oia",
+          "revision_id": "40192a8ba0c85c2b9a7123ef669e45c7198d7522a46c3b88019b882260e04d49",
+          "locator": "第三點（一）",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "醫學生出席國際會議",
+          "excerpt_sha256": "bce90031249a2755ed8d4970e39a34c0eb55174c98a34c6067c1ab51ef0c851d",
+          "source_block_sha256": "bce90031249a2755ed8d4970e39a34c0eb55174c98a34c6067c1ab51ef0c851d",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "schedule.steps/0/deadline",
+          "source": "ntu-med-oia",
+          "revision_id": "40192a8ba0c85c2b9a7123ef669e45c7198d7522a46c3b88019b882260e04d49",
+          "locator": "第六點",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "會議舉行首日四週前送達",
+          "excerpt_sha256": "5499f5ce645c9752de9588246e39db64c3324d351d8dc45b9068a372b880c432",
+          "source_block_sha256": "5499f5ce645c9752de9588246e39db64c3324d351d8dc45b9068a372b880c432",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [],
+        "conflicts": [],
+        "open_questions": [
+          "指定非原編輯者獨立覆核重大欄位（資格、金額、期限、兼領、法源版本）。"
+        ]
+      },
+      "evidence_status": "sufficient_for_draft",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.4.0",
+        "checked_at": "2026-11-04T00:00:00Z",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.7.0",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "paper",
+        "channels": [
+          "paper"
+        ],
+        "paper_delivery": "required",
+        "handwritten_signature": "unknown",
+        "deadline_basis": "received",
+        "note": "送達國際事務中心",
+        "refs": [
+          {
+            "source": "ntu-med-oia",
+            "locator": "第六點"
+          }
+        ]
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-ntu-med-publication-115-7296a12b",
+      "opportunity_id": "ntu-med-publication-115",
+      "program_key": "ntu-med-publication",
+      "title": "臺大醫學院115學年度研究生優秀著作獎",
+      "category": "outcome_award",
+      "resource_kind": "award",
+      "scope": "ntu",
+      "cycle": {
+        "kind": "academic_year",
+        "label": "115學年度",
+        "year_system": "roc",
+        "year": 115,
+        "term_or_round": null,
+        "branch": "醫學院研究生優秀著作獎辦法"
+      },
+      "participants": {
+        "applicant": "student",
+        "beneficiary": "student",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "NTU",
+        "college": "醫學院",
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "國立臺灣大學醫學院",
+          "refs": [
+            {
+              "source": "ntu-med-publication",
+              "locator": "辦法第一點"
+            }
+          ]
+        },
+        "announcer": {
+          "text": "國立臺灣大學醫學院研發分處",
+          "refs": [
+            {
+              "source": "ntu-med-publication",
+              "locator": "公告抬頭"
+            }
+          ]
+        },
+        "receiver": {
+          "text": "醫學院研發分處",
+          "refs": [
+            {
+              "source": "ntu-med-publication",
+              "locator": "公告申請手續"
+            }
+          ]
+        }
+      },
+      "eligibility": {
+        "degrees": [
+          "master",
+          "phd"
+        ],
+        "institution": "NTU",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "醫學院在學博碩士研究生，已正式發表優秀學術論文著作",
+          "refs": [
+            {
+              "source": "ntu-med-publication",
+              "locator": "資格規定"
+            }
+          ]
+        },
+        "other_conditions": [
+          {
+            "text": "論文須以臺大醫學院名義發表，且為第一作者或主要貢獻者。",
+            "refs": [
+              {
+                "source": "ntu-med-publication",
+                "locator": "資格規定"
+              }
+            ]
+          }
+        ]
+      },
+      "benefit": {
+        "summary": "獎狀與獎金（依當年度經費與審查結果核給）",
+        "items": [],
+        "refs": []
+      },
+      "compatibility": {
+        "mode": "unknown",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "同篇論文不得重複申請院內同性質獎勵",
+        "refs": []
+      },
+      "hardship": {
+        "mode": "unknown",
+        "note": "非清寒導向",
+        "refs": []
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "依公告發布日"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "向醫學院研發分處提出申請",
+            "deadline": {
+              "kind": "datetime",
+              "value": "2026-11-26T17:00:00+08:00",
+              "timezone": "Asia/Taipei",
+              "note": "115/11/26下午5時前向研發分處送件"
+            },
+            "refs": [
+              {
+                "source": "ntu-med-publication",
+                "locator": "截止時間條文"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "依院方評審委員會核定後公布",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "open",
+        "as_of": "2026-11-04",
+        "reason": "115/11/26 17:00 前收件中。",
+        "refs": [
+          {
+            "source": "ntu-med-publication",
+            "locator": "截止時間條文"
+          }
+        ]
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "115學年度當期公告",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "ntu-med-publication",
+        "revision_id": "7296a12bc0b98e1a8f673123456789abcdef0123456789abcdef0123456789ab",
+        "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/news_txt.asp?pno=7296",
+        "observed_at": "2026-11-04T00:00:00Z",
+        "evidence_mode": "short_excerpt",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.7.0",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "7296a12bc0b98e1a8f673123456789abcdef0123456789abcdef0123456789ab"
+      },
+      "field_evidence": [
+        {
+          "field_path": "eligibility.identity",
+          "source": "ntu-med-publication",
+          "revision_id": "7296a12bc0b98e1a8f673123456789abcdef0123456789abcdef0123456789ab",
+          "locator": "資格規定",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "研究生優秀著作獎",
+          "excerpt_sha256": "d00a032591a0420ad54089fa75066a325f35af37c1dbc2a71889771065532030",
+          "source_block_sha256": "d00a032591a0420ad54089fa75066a325f35af37c1dbc2a71889771065532030",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "schedule.steps/0/deadline",
+          "source": "ntu-med-publication",
+          "revision_id": "7296a12bc0b98e1a8f673123456789abcdef0123456789abcdef0123456789ab",
+          "locator": "截止時間條文",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "115/11/26下午5時止",
+          "excerpt_sha256": "cc0c83531d5f6796085acb3023dcb27f5f6c4980695257eb2a2237611772dc3d",
+          "source_block_sha256": "cc0c83531d5f6796085acb3023dcb27f5f6c4980695257eb2a2237611772dc3d",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [],
+        "conflicts": [],
+        "open_questions": [
+          "指定非原編輯者獨立覆核重大欄位（資格、金額、期限、兼領、法源版本）。"
+        ]
+      },
+      "evidence_status": "incomplete",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.4.0",
+        "checked_at": "2026-11-04T00:00:00Z",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.7.0",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "paper",
+        "channels": [
+          "paper"
+        ],
+        "paper_delivery": "required",
+        "handwritten_signature": "unknown",
+        "deadline_basis": "received",
+        "note": "送達研發分處",
+        "refs": [
+          {
+            "source": "ntu-med-publication",
+            "locator": "公告申請手續"
+          }
+        ]
+      },
+      "field_applicability": {}
+    }
+  ]
+}

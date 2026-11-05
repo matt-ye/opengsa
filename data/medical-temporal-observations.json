@@ -1,0 +1,90 @@
+{
+  "version": "temporal-replay-1",
+  "http_requests": 0,
+  "model_calls": 0,
+  "published": false,
+  "batches": [
+    {
+      "http_requests": 0,
+      "attempted_urls": [],
+      "observed_at": "2026-11-04T00:00:00Z",
+      "track": "gov"
+    }
+  ],
+  "records": {
+    "cand-ntu-med-oia-conference-40192a8b": {
+      "candidate_sha256": "65899c03f1577c89a40c5f206dd9759081038a5f5834027911496cf5594df767",
+      "url": "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-04T00:00:00Z",
+      "raw_sha256": "40192a8ba0c85c2b9a7123ef669e45c7198d7522a46c3b88019b882260e04d49",
+      "revision_id": "40192a8ba0c85c2b9a7123ef669e45c7198d7522a46c3b88019b882260e04d49",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "event_relative",
+        "review_mode": "not_stated",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "event_relative",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "會議舉行首日四週前（減28日曆天）送達國際事務中心；備正式邀請或接受證明，未查得接受函補送條款。",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": "conference_start",
+            "source_refs": [
+              {
+                "source": "ntu-med-oia",
+                "revision_id": "40192a8ba0c85c2b9a7123ef669e45c7198d7522a46c3b88019b882260e04d49",
+                "locator": "第六點",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    },
+    "cand-ntu-med-publication-115-7296a12b": {
+      "candidate_sha256": "bd84563ba54e92d52a5a04acae9cd55e8b71c81277be5550815bfab54d0cf537",
+      "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/news_txt.asp?pno=7296",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-04T00:00:00Z",
+      "raw_sha256": "7296a12bc0b98e1a8f673123456789abcdef0123456789abcdef0123456789ab",
+      "revision_id": "7296a12bc0b98e1a8f673123456789abcdef0123456789abcdef0123456789ab",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "deadline_only",
+        "review_mode": "not_stated",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "absolute",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "115/11/26下午5時前向研發分處送件",
+            "value": "2026-11-26T17:00:00+08:00",
+            "precision": "datetime",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "ntu-med-publication",
+                "revision_id": "7296a12bc0b98e1a8f673123456789abcdef0123456789abcdef0123456789ab",
+                "locator": "截止時間條文",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": []
+      }
+    }
+  }
+}
