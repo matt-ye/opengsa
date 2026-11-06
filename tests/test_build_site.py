@@ -121,6 +121,12 @@ console.log('254 items: temporal labels, geometry, ambiguous years, intake filte
         self.assertIsNone(rss_btn.find_parent(attrs={'role': 'tablist'}))
         self.assertIsNone(soup.select_one('.review-strip a'))
 
+    def test_mobile_header_and_compare_select_cannot_widen_page(self):
+        css=(ROOT/'docs/design/wireframes.html').read_text(encoding='utf-8')
+        breakpoint_at=css.index('@media(max-width:1160px){.nav{flex-wrap:wrap')
+        self.assertLess(css.rindex('flex-wrap:nowrap;flex-shrink:0}'),breakpoint_at,'不可在斷點之後以基底規則蓋回 nowrap')
+        self.assertIn('.compare-controls select{flex:1;min-width:0;',css)
+
     def test_rss_modal_and_followit_integration(self):
         soup = BeautifulSoup(self.html, 'html.parser')
         dialog = soup.select_one('#rss-dialog')
