@@ -467,6 +467,234 @@
           "needs_event_date"
         ]
       }
+    },
+    "cand-tpe-emergency-relief": {
+      "candidate_sha256": "a7396566ab3be49ca02220eea163d67e5724d7bf82430e20d0c220ae1cfe7d5e",
+      "url": "https://dosw.gov.taipei/",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "75fce962c4ac64e3538dbb8191fe873d40dedc33a679ce9aa6d6201c1d713b28",
+      "revision_id": "75fce962c4ac64e3538dbb8191fe873d40dedc33a679ce9aa6d6201c1d713b28",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "事實發生日起3個月內向公所社會課提出",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "tpe-dosw-emergency",
+                "revision_id": "75fce962c4ac64e3538dbb8191fe873d40dedc33a679ce9aa6d6201c1d713b28",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    },
+    "cand-ntpc-emergency-relief": {
+      "candidate_sha256": "2531c5cca3566879d58fcd7cd76040f28eab262fef04c6fdea13e221079481f2",
+      "url": "https://www.sw.ntpc.gov.tw/",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "043429a0910d197ada14043c4ff0ca011ef4752bd0379cbc74b87f6c65d9f82b",
+      "revision_id": "043429a0910d197ada14043c4ff0ca011ef4752bd0379cbc74b87f6c65d9f82b",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "變故發生日起3個月內向公所或社福中心提出",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "ntpc-sw-emergency",
+                "revision_id": "043429a0910d197ada14043c4ff0ca011ef4752bd0379cbc74b87f6c65d9f82b",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    },
+    "cand-sfaa-special-family": {
+      "candidate_sha256": "1c2ca9812c4ccb5ec53634e4a00a9f6d4f7a89c8f3dddc1570652b9f35b8e66c",
+      "url": "https://www.sfaa.gov.tw/",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "5afc30ec49df0e0e78bd22ab5832b90f617c9fddb3511e70cbb43856d4102d27",
+      "revision_id": "5afc30ec49df0e0e78bd22ab5832b90f617c9fddb3511e70cbb43856d4102d27",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "特殊境遇事由發生日起6個月內向公所社會課提出",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "sfaa-special-family",
+                "revision_id": "5afc30ec49df0e0e78bd22ab5832b90f617c9fddb3511e70cbb43856d4102d27",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    },
+    "cand-wrp-single-parent-aid": {
+      "candidate_sha256": "02c926f158246b10c678a8ae6048e74983e791571d682a7d4671d89ccca18d5e",
+      "url": "https://www.wrp.org.tw/",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "73dc8df99a1719dedf2cf4ce1793c051af48018e47f7bd9aa0529c32d7de07aa",
+      "revision_id": "73dc8df99a1719dedf2cf4ce1793c051af48018e47f7bd9aa0529c32d7de07aa",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "第1學期9月1日至10月10日；第2學期2月15日至3月25日",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "wrp-single-parent-aid",
+                "revision_id": "73dc8df99a1719dedf2cf4ce1793c051af48018e47f7bd9aa0529c32d7de07aa",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    },
+    "cand-ocac-compatriot-emergency": {
+      "candidate_sha256": "98c8c611ca2e541ee7269d968cd6309d24a1ebe1edd8acbc7874970480338c2b",
+      "url": "https://www.ocac.gov.tw/",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "8459a20a096d79ebca893b20e0d21459c817ab769b180325cb5097fa1c689f11",
+      "revision_id": "8459a20a096d79ebca893b20e0d21459c817ab769b180325cb5097fa1c689f11",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "傷病事實發生之日起2個月內由學校轉送僑委會",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "ocac-compatriot-emergency",
+                "revision_id": "8459a20a096d79ebca893b20e0d21459c817ab769b180325cb5097fa1c689f11",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    },
+    "cand-ntu-oia-international-emergency": {
+      "candidate_sha256": "ad787827baa5045e0e1a713489c111f718a02384abeac2218898a14b6a6f5f3f",
+      "url": "https://oia.ntu.edu.tw/",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "8057c385eb0f2f721d9b17e3a5574487c4a5deecab6547d9359b9f8d6e5c961a",
+      "revision_id": "8057c385eb0f2f721d9b17e3a5574487c4a5deecab6547d9359b9f8d6e5c961a",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "事故發生日起3個月內向國際事務處提出",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "ntu-oia-emergency",
+                "revision_id": "8057c385eb0f2f721d9b17e3a5574487c4a5deecab6547d9359b9f8d6e5c961a",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
     }
   }
 }

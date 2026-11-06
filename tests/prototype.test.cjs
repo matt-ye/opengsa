@@ -1001,3 +1001,49 @@ test("搜尋擴充同義詞比對：搜尋急難救助／學產基金／緊急�
  assert.ok(core.itemMatchesQuery(item, "救助金"), "搜尋救助金應命中");
  assert.ok(core.itemMatchesQuery(item, "變故"), "搜尋變故應命中");
 });
+
+test("急難救助情境按鈕與按鈕島規格：支援「急」急難救助卡一鍵快篩與點擊還原", () => {
+ const html = fs.readFileSync(path.join(__dirname, "../docs/design/wireframes.html"), "utf8");
+ assert.ok(html.includes('data-persona="emergency_relief"'), "persona-bar 必須包含 emergency_relief 按鈕");
+ assert.ok(html.includes('<span aria-hidden="true" class="hex-badge">急</span>'), "必須包含「急」字情境徽章");
+ assert.ok(core.personaPresets.emergency_relief, "personaPresets 必須註冊 emergency_relief");
+ assert.equal(core.personaPresets.emergency_relief.category, "living_emergency");
+ 
+ const base = {category: "all", source: "all", degree: "all", year: "all", compatibility: "all", hardship: "all"};
+ const applied = core.applyPersona(base, "emergency_relief");
+ assert.equal(applied.category, "living_emergency", "套用後 category 應為 living_emergency");
+ 
+ const toggled = core.applyPersona(applied, "emergency_relief");
+ assert.equal(toggled.category, "all", "再次點擊應還原為 all");
+});
+
+test("單親、特境、國際生與縣市急難擴充同義詞精確命中急難救助資源", () => {
+ const singleItem = {
+  id: "cand-sfaa-special-family",
+  title: "衛生福利部特殊境遇家庭扶助－緊急生活扶助與子女生活津貼",
+  category: "living_emergency",
+  programKey: "sfaa-special-family"
+ };
+ assert.ok(core.itemMatchesQuery(singleItem, "單親"), "搜尋單親應命中");
+ assert.ok(core.itemMatchesQuery(singleItem, "擔心"), "搜尋同音詞擔心應容錯命中");
+ assert.ok(core.itemMatchesQuery(singleItem, "特境"), "搜尋特境應命中");
+ assert.ok(core.itemMatchesQuery(singleItem, "特殊境遇"), "搜尋特殊境遇應命中");
+
+ const intlItem = {
+  id: "cand-ntu-oia-international-emergency",
+  title: "國立臺灣大學國際事務處國際學生急難救助金",
+  category: "living_emergency",
+  programKey: "ntu-oia-emergency"
+ };
+ assert.ok(core.itemMatchesQuery(intlItem, "國際生"), "搜尋國際生應命中");
+ assert.ok(core.itemMatchesQuery(intlItem, "外籍生"), "搜尋外籍生應命中");
+
+ const cityItem = {
+  id: "cand-ntpc-emergency-relief",
+  title: "新北市好日子愛心大平台急難救助與弱勢學生專案",
+  category: "living_emergency",
+  programKey: "ntpc-sw-emergency"
+ };
+ assert.ok(core.itemMatchesQuery(cityItem, "縣市急難"), "搜尋縣市急難應命中");
+ assert.ok(core.itemMatchesQuery(cityItem, "好日子"), "搜尋好日子應命中");
+});

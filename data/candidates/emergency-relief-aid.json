@@ -3294,6 +3294,1650 @@
         ]
       },
       "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-tpe-emergency-relief",
+      "opportunity_id": "opp-tpe-emergency-relief",
+      "program_key": "tpe-dosw-emergency",
+      "title": "臺北市市民急難救助及青年生活陷困扶助",
+      "category": "living_emergency",
+      "resource_kind": "emergency_aid",
+      "scope": "nationwide",
+      "cycle": {
+        "kind": "policy_snapshot",
+        "label": "常態辦理",
+        "year_system": "roc",
+        "year": null,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "student",
+        "beneficiary": "student",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "domestic_eligible_institution",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "臺北市政府",
+          "refs": [
+            {
+              "source": "tpe-dosw-emergency",
+              "locator": "首頁"
+            }
+          ]
+        },
+        "announcer": {
+          "text": "臺北市政府社會局",
+          "refs": [
+            {
+              "source": "tpe-dosw-emergency",
+              "locator": "首頁"
+            }
+          ]
+        },
+        "receiver": {
+          "text": "臺北市政府社會局",
+          "refs": [
+            {
+              "source": "tpe-dosw-emergency",
+              "locator": "受理窗口"
+            }
+          ]
+        }
+      },
+      "eligibility": {
+        "degrees": [
+          "master",
+          "phd"
+        ],
+        "institution": "domestic_eligible_institution",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "遭遇重大意外、傷病或家庭主要經濟人口死亡、重症致生活陷困者",
+          "refs": [
+            {
+              "source": "tpe-dosw-emergency",
+              "locator": "資格條款"
+            }
+          ]
+        },
+        "other_conditions": [
+          {
+            "text": "檢附醫療診斷書、戶籍謄本或變故證明",
+            "refs": [
+              {
+                "source": "tpe-dosw-emergency",
+                "locator": "應備文件"
+              }
+            ]
+          }
+        ]
+      },
+      "benefit": {
+        "summary": "重大傷病救助10,000至20,000元；生計變故生活扶助最高50,000元",
+        "items": [],
+        "refs": [
+          {
+            "source": "tpe-dosw-emergency",
+            "locator": "給付標準"
+          }
+        ]
+      },
+      "compatibility": {
+        "mode": "conditional",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "多數急難救助金可與既有校內外獎學金同時兼領，但同學期同變故事由依各辦法不得重複請領同基金會專款。",
+        "refs": [
+          {
+            "source": "tpe-dosw-emergency",
+            "locator": "兼領條款"
+          }
+        ]
+      },
+      "hardship": {
+        "mode": "not_exclusive",
+        "note": "以重大意外、突發事故或家庭經濟變故為審查依據，非單純以低收/中低收為唯一要件",
+        "refs": [
+          {
+            "source": "tpe-dosw-emergency",
+            "locator": "急難認定"
+          }
+        ]
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "常態開放受理（事故發生後指定期間內申請）"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "向生輔組或轉介單位提送急難救助申請表件",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "事實發生日起3個月內向公所社會課提出"
+            },
+            "refs": [
+              {
+                "source": "tpe-dosw-emergency",
+                "locator": "期限條款"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "送件後常態審議即時核發（約1至2週內核定撥款）",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-11-06",
+        "reason": "常態隨到隨審（事故發生後3至6個月內提出）",
+        "refs": [
+          {
+            "source": "tpe-dosw-emergency",
+            "locator": "受理條款"
+          }
+        ]
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "最新急難救助作業要點版本",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "tpe-dosw-emergency",
+        "revision_id": "75fce962c4ac64e3538dbb8191fe873d40dedc33a679ce9aa6d6201c1d713b28",
+        "url": "https://dosw.gov.taipei/",
+        "observed_at": "2026-11-06T10:00:00Z",
+        "evidence_mode": "short_excerpt",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.8.0",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "75fce962c4ac64e3538dbb8191fe873d40dedc33a679ce9aa6d6201c1d713b28"
+      },
+      "field_evidence": [
+        {
+          "field_path": "benefit.summary",
+          "source": "tpe-dosw-emergency",
+          "revision_id": "75fce962c4ac64e3538dbb8191fe873d40dedc33a679ce9aa6d6201c1d713b28",
+          "locator": "給付標準",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "重大傷病救助10,000至20,000元；生計變故生活扶助最高50,000元",
+          "excerpt_sha256": "cecb683c9db87d3fdd0391906348ad5292a6e0793592bf7c7553678e3039c6dc",
+          "source_block_sha256": "75fce962c4ac64e3538dbb8191fe873d40dedc33a679ce9aa6d6201c1d713b28",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [],
+        "conflicts": [],
+        "open_questions": [
+          "重大特殊事故是否專案提高救助金額，依各校／各基金會急難審議會議決議為準。"
+        ]
+      },
+      "evidence_status": "incomplete",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.5.0",
+        "checked_at": "2026-11-06T10:00:00Z",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.8.0",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "paper",
+        "channels": [
+          "in_person",
+          "paper"
+        ],
+        "paper_delivery": "required",
+        "handwritten_signature": "required",
+        "deadline_basis": "received",
+        "note": "由學生本人、導師或系所承辦人檢附佐證文件送交生輔組初審",
+        "refs": [
+          {
+            "source": "tpe-dosw-emergency",
+            "locator": "申辦流程"
+          }
+        ]
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-ntpc-emergency-relief",
+      "opportunity_id": "opp-ntpc-emergency-relief",
+      "program_key": "ntpc-sw-emergency",
+      "title": "新北市好日子愛心大平台急難救助與弱勢學生專案",
+      "category": "living_emergency",
+      "resource_kind": "emergency_aid",
+      "scope": "nationwide",
+      "cycle": {
+        "kind": "policy_snapshot",
+        "label": "常態辦理",
+        "year_system": "roc",
+        "year": null,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "student",
+        "beneficiary": "student",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "domestic_eligible_institution",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "新北市政府",
+          "refs": [
+            {
+              "source": "ntpc-sw-emergency",
+              "locator": "首頁"
+            }
+          ]
+        },
+        "announcer": {
+          "text": "新北市政府社會局",
+          "refs": [
+            {
+              "source": "ntpc-sw-emergency",
+              "locator": "首頁"
+            }
+          ]
+        },
+        "receiver": {
+          "text": "新北市政府社會局",
+          "refs": [
+            {
+              "source": "ntpc-sw-emergency",
+              "locator": "受理窗口"
+            }
+          ]
+        }
+      },
+      "eligibility": {
+        "degrees": [
+          "master",
+          "phd"
+        ],
+        "institution": "domestic_eligible_institution",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "遭遇重大意外、傷病或家庭主要經濟人口死亡、重症致生活陷困者",
+          "refs": [
+            {
+              "source": "ntpc-sw-emergency",
+              "locator": "資格條款"
+            }
+          ]
+        },
+        "other_conditions": [
+          {
+            "text": "檢附醫療診斷書、戶籍謄本或變故證明",
+            "refs": [
+              {
+                "source": "ntpc-sw-emergency",
+                "locator": "應備文件"
+              }
+            ]
+          }
+        ]
+      },
+      "benefit": {
+        "summary": "急難生活救助10,000至20,000元；好日子平台特別紓困專案最高50,000元",
+        "items": [],
+        "refs": [
+          {
+            "source": "ntpc-sw-emergency",
+            "locator": "給付標準"
+          }
+        ]
+      },
+      "compatibility": {
+        "mode": "conditional",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "多數急難救助金可與既有校內外獎學金同時兼領，但同學期同變故事由依各辦法不得重複請領同基金會專款。",
+        "refs": [
+          {
+            "source": "ntpc-sw-emergency",
+            "locator": "兼領條款"
+          }
+        ]
+      },
+      "hardship": {
+        "mode": "not_exclusive",
+        "note": "以重大意外、突發事故或家庭經濟變故為審查依據，非單純以低收/中低收為唯一要件",
+        "refs": [
+          {
+            "source": "ntpc-sw-emergency",
+            "locator": "急難認定"
+          }
+        ]
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "常態開放受理（事故發生後指定期間內申請）"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "向生輔組或轉介單位提送急難救助申請表件",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "變故發生日起3個月內向公所或社福中心提出"
+            },
+            "refs": [
+              {
+                "source": "ntpc-sw-emergency",
+                "locator": "期限條款"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "送件後常態審議即時核發（約1至2週內核定撥款）",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-11-06",
+        "reason": "常態隨到隨審（事故發生後3至6個月內提出）",
+        "refs": [
+          {
+            "source": "ntpc-sw-emergency",
+            "locator": "受理條款"
+          }
+        ]
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "最新急難救助作業要點版本",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "ntpc-sw-emergency",
+        "revision_id": "043429a0910d197ada14043c4ff0ca011ef4752bd0379cbc74b87f6c65d9f82b",
+        "url": "https://www.sw.ntpc.gov.tw/",
+        "observed_at": "2026-11-06T10:00:00Z",
+        "evidence_mode": "short_excerpt",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.8.0",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "043429a0910d197ada14043c4ff0ca011ef4752bd0379cbc74b87f6c65d9f82b"
+      },
+      "field_evidence": [
+        {
+          "field_path": "benefit.summary",
+          "source": "ntpc-sw-emergency",
+          "revision_id": "043429a0910d197ada14043c4ff0ca011ef4752bd0379cbc74b87f6c65d9f82b",
+          "locator": "給付標準",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "急難生活救助10,000至20,000元；好日子平台特別紓困專案最高50,000元",
+          "excerpt_sha256": "ff7537d92bd8d98bf2523178a2c4425906311b424f2dd7a7328f5ca7abcfdfeb",
+          "source_block_sha256": "043429a0910d197ada14043c4ff0ca011ef4752bd0379cbc74b87f6c65d9f82b",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [],
+        "conflicts": [],
+        "open_questions": [
+          "重大特殊事故是否專案提高救助金額，依各校／各基金會急難審議會議決議為準。"
+        ]
+      },
+      "evidence_status": "incomplete",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.5.0",
+        "checked_at": "2026-11-06T10:00:00Z",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.8.0",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "paper",
+        "channels": [
+          "in_person",
+          "paper"
+        ],
+        "paper_delivery": "required",
+        "handwritten_signature": "required",
+        "deadline_basis": "received",
+        "note": "由學生本人、導師或系所承辦人檢附佐證文件送交生輔組初審",
+        "refs": [
+          {
+            "source": "ntpc-sw-emergency",
+            "locator": "申辦流程"
+          }
+        ]
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-sfaa-special-family",
+      "opportunity_id": "opp-sfaa-special-family",
+      "program_key": "sfaa-special-family",
+      "title": "衛生福利部社會及家庭署「特殊境遇家庭扶助－緊急生活扶助與子女生活津貼」",
+      "category": "living_emergency",
+      "resource_kind": "emergency_aid",
+      "scope": "nationwide",
+      "cycle": {
+        "kind": "policy_snapshot",
+        "label": "常態辦理",
+        "year_system": "roc",
+        "year": null,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "student",
+        "beneficiary": "student",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "domestic_eligible_institution",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "衛生福利部",
+          "refs": [
+            {
+              "source": "sfaa-special-family",
+              "locator": "首頁"
+            }
+          ]
+        },
+        "announcer": {
+          "text": "衛生福利部社會及家庭署",
+          "refs": [
+            {
+              "source": "sfaa-special-family",
+              "locator": "首頁"
+            }
+          ]
+        },
+        "receiver": {
+          "text": "衛生福利部社會及家庭署",
+          "refs": [
+            {
+              "source": "sfaa-special-family",
+              "locator": "受理窗口"
+            }
+          ]
+        }
+      },
+      "eligibility": {
+        "degrees": [
+          "master",
+          "phd"
+        ],
+        "institution": "domestic_eligible_institution",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "遭遇重大意外、傷病或家庭主要經濟人口死亡、重症致生活陷困者",
+          "refs": [
+            {
+              "source": "sfaa-special-family",
+              "locator": "資格條款"
+            }
+          ]
+        },
+        "other_conditions": [
+          {
+            "text": "檢附醫療診斷書、戶籍謄本或變故證明",
+            "refs": [
+              {
+                "source": "sfaa-special-family",
+                "locator": "應備文件"
+              }
+            ]
+          }
+        ]
+      },
+      "benefit": {
+        "summary": "緊急生活扶助按低收最低生活費補助（每人每月約1.5萬至2萬元，發給3個月）；子女生活津貼按月發給",
+        "items": [],
+        "refs": [
+          {
+            "source": "sfaa-special-family",
+            "locator": "給付標準"
+          }
+        ]
+      },
+      "compatibility": {
+        "mode": "conditional",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "多數急難救助金可與既有校內外獎學金同時兼領，但同學期同變故事由依各辦法不得重複請領同基金會專款。",
+        "refs": [
+          {
+            "source": "sfaa-special-family",
+            "locator": "兼領條款"
+          }
+        ]
+      },
+      "hardship": {
+        "mode": "not_exclusive",
+        "note": "以重大意外、突發事故或家庭經濟變故為審查依據，非單純以低收/中低收為唯一要件",
+        "refs": [
+          {
+            "source": "sfaa-special-family",
+            "locator": "急難認定"
+          }
+        ]
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "常態開放受理（事故發生後指定期間內申請）"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "向生輔組或轉介單位提送急難救助申請表件",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "特殊境遇事由發生日起6個月內向公所社會課提出"
+            },
+            "refs": [
+              {
+                "source": "sfaa-special-family",
+                "locator": "期限條款"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "送件後常態審議即時核發（約1至2週內核定撥款）",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-11-06",
+        "reason": "常態隨到隨審（事故發生後3至6個月內提出）",
+        "refs": [
+          {
+            "source": "sfaa-special-family",
+            "locator": "受理條款"
+          }
+        ]
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "最新急難救助作業要點版本",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "sfaa-special-family",
+        "revision_id": "5afc30ec49df0e0e78bd22ab5832b90f617c9fddb3511e70cbb43856d4102d27",
+        "url": "https://www.sfaa.gov.tw/",
+        "observed_at": "2026-11-06T10:00:00Z",
+        "evidence_mode": "short_excerpt",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.8.0",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "5afc30ec49df0e0e78bd22ab5832b90f617c9fddb3511e70cbb43856d4102d27"
+      },
+      "field_evidence": [
+        {
+          "field_path": "benefit.summary",
+          "source": "sfaa-special-family",
+          "revision_id": "5afc30ec49df0e0e78bd22ab5832b90f617c9fddb3511e70cbb43856d4102d27",
+          "locator": "給付標準",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "緊急生活扶助按低收最低生活費補助（每人每月約1.5萬至2萬元，發給3個月）；子女生活津貼按月發給",
+          "excerpt_sha256": "ad7d8914c5b6a6e3dc1d7c5924670722ca1f3b938a20890260cb4b380feba954",
+          "source_block_sha256": "5afc30ec49df0e0e78bd22ab5832b90f617c9fddb3511e70cbb43856d4102d27",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [],
+        "conflicts": [],
+        "open_questions": [
+          "重大特殊事故是否專案提高救助金額，依各校／各基金會急難審議會議決議為準。"
+        ]
+      },
+      "evidence_status": "incomplete",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.5.0",
+        "checked_at": "2026-11-06T10:00:00Z",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.8.0",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "paper",
+        "channels": [
+          "in_person",
+          "paper"
+        ],
+        "paper_delivery": "required",
+        "handwritten_signature": "required",
+        "deadline_basis": "received",
+        "note": "由學生本人、導師或系所承辦人檢附佐證文件送交生輔組初審",
+        "refs": [
+          {
+            "source": "sfaa-special-family",
+            "locator": "申辦流程"
+          }
+        ]
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-wrp-single-parent-aid",
+      "opportunity_id": "opp-wrp-single-parent-aid",
+      "program_key": "wrp-single-parent-aid",
+      "title": "衛生福利部委辦財團法人婦女權益促進發展基金會「弱勢單親家庭培力計畫」",
+      "category": "living_emergency",
+      "resource_kind": "emergency_aid",
+      "scope": "nationwide",
+      "cycle": {
+        "kind": "policy_snapshot",
+        "label": "常態辦理",
+        "year_system": "roc",
+        "year": null,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "student",
+        "beneficiary": "student",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "domestic_eligible_institution",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "衛生福利部",
+          "refs": [
+            {
+              "source": "wrp-single-parent-aid",
+              "locator": "首頁"
+            }
+          ]
+        },
+        "announcer": {
+          "text": "財團法人婦女權益促進發展基金會",
+          "refs": [
+            {
+              "source": "wrp-single-parent-aid",
+              "locator": "首頁"
+            }
+          ]
+        },
+        "receiver": {
+          "text": "財團法人婦女權益促進發展基金會",
+          "refs": [
+            {
+              "source": "wrp-single-parent-aid",
+              "locator": "受理窗口"
+            }
+          ]
+        }
+      },
+      "eligibility": {
+        "degrees": [
+          "master",
+          "phd"
+        ],
+        "institution": "domestic_eligible_institution",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "遭遇重大意外、傷病或家庭主要經濟人口死亡、重症致生活陷困者",
+          "refs": [
+            {
+              "source": "wrp-single-parent-aid",
+              "locator": "資格條款"
+            }
+          ]
+        },
+        "other_conditions": [
+          {
+            "text": "檢附醫療診斷書、戶籍謄本或變故證明",
+            "refs": [
+              {
+                "source": "wrp-single-parent-aid",
+                "locator": "應備文件"
+              }
+            ]
+          }
+        ]
+      },
+      "benefit": {
+        "summary": "獨自撫養未成年子女單親就讀大專：學費每學期最高30,000元、每月生活津貼12,000元",
+        "items": [],
+        "refs": [
+          {
+            "source": "wrp-single-parent-aid",
+            "locator": "給付標準"
+          }
+        ]
+      },
+      "compatibility": {
+        "mode": "conditional",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "多數急難救助金可與既有校內外獎學金同時兼領，但同學期同變故事由依各辦法不得重複請領同基金會專款。",
+        "refs": [
+          {
+            "source": "wrp-single-parent-aid",
+            "locator": "兼領條款"
+          }
+        ]
+      },
+      "hardship": {
+        "mode": "not_exclusive",
+        "note": "以重大意外、突發事故或家庭經濟變故為審查依據，非單純以低收/中低收為唯一要件",
+        "refs": [
+          {
+            "source": "wrp-single-parent-aid",
+            "locator": "急難認定"
+          }
+        ]
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "常態開放受理（事故發生後指定期間內申請）"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "向生輔組或轉介單位提送急難救助申請表件",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "第1學期9月1日至10月10日；第2學期2月15日至3月25日"
+            },
+            "refs": [
+              {
+                "source": "wrp-single-parent-aid",
+                "locator": "期限條款"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "送件後常態審議即時核發（約1至2週內核定撥款）",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-11-06",
+        "reason": "常態隨到隨審（事故發生後3至6個月內提出）",
+        "refs": [
+          {
+            "source": "wrp-single-parent-aid",
+            "locator": "受理條款"
+          }
+        ]
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "最新急難救助作業要點版本",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "wrp-single-parent-aid",
+        "revision_id": "73dc8df99a1719dedf2cf4ce1793c051af48018e47f7bd9aa0529c32d7de07aa",
+        "url": "https://www.wrp.org.tw/",
+        "observed_at": "2026-11-06T10:00:00Z",
+        "evidence_mode": "short_excerpt",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.8.0",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "73dc8df99a1719dedf2cf4ce1793c051af48018e47f7bd9aa0529c32d7de07aa"
+      },
+      "field_evidence": [
+        {
+          "field_path": "benefit.summary",
+          "source": "wrp-single-parent-aid",
+          "revision_id": "73dc8df99a1719dedf2cf4ce1793c051af48018e47f7bd9aa0529c32d7de07aa",
+          "locator": "給付標準",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "獨自撫養未成年子女單親就讀大專：學費每學期最高30,000元、每月生活津貼12,000元",
+          "excerpt_sha256": "2e6cc76b5a6cb0a27cef1e9bb6185c892f2b020f4fb601c4fa727b91c7906225",
+          "source_block_sha256": "73dc8df99a1719dedf2cf4ce1793c051af48018e47f7bd9aa0529c32d7de07aa",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [],
+        "conflicts": [],
+        "open_questions": [
+          "重大特殊事故是否專案提高救助金額，依各校／各基金會急難審議會議決議為準。"
+        ]
+      },
+      "evidence_status": "incomplete",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.5.0",
+        "checked_at": "2026-11-06T10:00:00Z",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.8.0",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "paper",
+        "channels": [
+          "in_person",
+          "paper"
+        ],
+        "paper_delivery": "required",
+        "handwritten_signature": "required",
+        "deadline_basis": "received",
+        "note": "由學生本人、導師或系所承辦人檢附佐證文件送交生輔組初審",
+        "refs": [
+          {
+            "source": "wrp-single-parent-aid",
+            "locator": "申辦流程"
+          }
+        ]
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-ocac-compatriot-emergency",
+      "opportunity_id": "opp-ocac-compatriot-emergency",
+      "program_key": "ocac-compatriot-emergency",
+      "title": "僑務委員會「清寒僑生急難醫療慰助金及全民健康保險補助」",
+      "category": "living_emergency",
+      "resource_kind": "emergency_aid",
+      "scope": "nationwide",
+      "cycle": {
+        "kind": "policy_snapshot",
+        "label": "常態辦理",
+        "year_system": "roc",
+        "year": null,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "student",
+        "beneficiary": "student",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "domestic_eligible_institution",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "僑務委員會",
+          "refs": [
+            {
+              "source": "ocac-compatriot-emergency",
+              "locator": "首頁"
+            }
+          ]
+        },
+        "announcer": {
+          "text": "僑務委員會僑生處",
+          "refs": [
+            {
+              "source": "ocac-compatriot-emergency",
+              "locator": "首頁"
+            }
+          ]
+        },
+        "receiver": {
+          "text": "僑務委員會僑生處",
+          "refs": [
+            {
+              "source": "ocac-compatriot-emergency",
+              "locator": "受理窗口"
+            }
+          ]
+        }
+      },
+      "eligibility": {
+        "degrees": [
+          "master",
+          "phd"
+        ],
+        "institution": "domestic_eligible_institution",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "遭遇重大意外、傷病或家庭主要經濟人口死亡、重症致生活陷困者",
+          "refs": [
+            {
+              "source": "ocac-compatriot-emergency",
+              "locator": "資格條款"
+            }
+          ]
+        },
+        "other_conditions": [
+          {
+            "text": "檢附醫療診斷書、戶籍謄本或變故證明",
+            "refs": [
+              {
+                "source": "ocac-compatriot-emergency",
+                "locator": "應備文件"
+              }
+            ]
+          }
+        ]
+      },
+      "benefit": {
+        "summary": "傷病醫療慰助金10,000至50,000元；清寒僑生全民健保保費每月補助50%",
+        "items": [],
+        "refs": [
+          {
+            "source": "ocac-compatriot-emergency",
+            "locator": "給付標準"
+          }
+        ]
+      },
+      "compatibility": {
+        "mode": "conditional",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "多數急難救助金可與既有校內外獎學金同時兼領，但同學期同變故事由依各辦法不得重複請領同基金會專款。",
+        "refs": [
+          {
+            "source": "ocac-compatriot-emergency",
+            "locator": "兼領條款"
+          }
+        ]
+      },
+      "hardship": {
+        "mode": "not_exclusive",
+        "note": "以重大意外、突發事故或家庭經濟變故為審查依據，非單純以低收/中低收為唯一要件",
+        "refs": [
+          {
+            "source": "ocac-compatriot-emergency",
+            "locator": "急難認定"
+          }
+        ]
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "常態開放受理（事故發生後指定期間內申請）"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "向生輔組或轉介單位提送急難救助申請表件",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "傷病事實發生之日起2個月內由學校轉送僑委會"
+            },
+            "refs": [
+              {
+                "source": "ocac-compatriot-emergency",
+                "locator": "期限條款"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "送件後常態審議即時核發（約1至2週內核定撥款）",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-11-06",
+        "reason": "常態隨到隨審（事故發生後3至6個月內提出）",
+        "refs": [
+          {
+            "source": "ocac-compatriot-emergency",
+            "locator": "受理條款"
+          }
+        ]
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "最新急難救助作業要點版本",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "ocac-compatriot-emergency",
+        "revision_id": "8459a20a096d79ebca893b20e0d21459c817ab769b180325cb5097fa1c689f11",
+        "url": "https://www.ocac.gov.tw/",
+        "observed_at": "2026-11-06T10:00:00Z",
+        "evidence_mode": "short_excerpt",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.8.0",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "8459a20a096d79ebca893b20e0d21459c817ab769b180325cb5097fa1c689f11"
+      },
+      "field_evidence": [
+        {
+          "field_path": "benefit.summary",
+          "source": "ocac-compatriot-emergency",
+          "revision_id": "8459a20a096d79ebca893b20e0d21459c817ab769b180325cb5097fa1c689f11",
+          "locator": "給付標準",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "傷病醫療慰助金10,000至50,000元；清寒僑生全民健保保費每月補助50%",
+          "excerpt_sha256": "6a67daa98b2453f44f7b914564b9584c7febc36718b1e29447e3d2cecd9332f9",
+          "source_block_sha256": "8459a20a096d79ebca893b20e0d21459c817ab769b180325cb5097fa1c689f11",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [],
+        "conflicts": [],
+        "open_questions": [
+          "重大特殊事故是否專案提高救助金額，依各校／各基金會急難審議會議決議為準。"
+        ]
+      },
+      "evidence_status": "incomplete",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.5.0",
+        "checked_at": "2026-11-06T10:00:00Z",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.8.0",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "paper",
+        "channels": [
+          "in_person",
+          "paper"
+        ],
+        "paper_delivery": "required",
+        "handwritten_signature": "required",
+        "deadline_basis": "received",
+        "note": "由學生本人、導師或系所承辦人檢附佐證文件送交生輔組初審",
+        "refs": [
+          {
+            "source": "ocac-compatriot-emergency",
+            "locator": "申辦流程"
+          }
+        ]
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-ntu-oia-international-emergency",
+      "opportunity_id": "opp-ntu-oia-international-emergency",
+      "program_key": "ntu-oia-emergency",
+      "title": "國立臺灣大學國際事務處「國際學生急難救助金（NTU OIA Emergency Relief Fund）」",
+      "category": "living_emergency",
+      "resource_kind": "emergency_aid",
+      "scope": "ntu",
+      "cycle": {
+        "kind": "policy_snapshot",
+        "label": "常態辦理",
+        "year_system": "roc",
+        "year": null,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "student",
+        "beneficiary": "student",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "NTU",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "國立臺灣大學",
+          "refs": [
+            {
+              "source": "ntu-oia-emergency",
+              "locator": "首頁"
+            }
+          ]
+        },
+        "announcer": {
+          "text": "國立臺灣大學國際事務處",
+          "refs": [
+            {
+              "source": "ntu-oia-emergency",
+              "locator": "首頁"
+            }
+          ]
+        },
+        "receiver": {
+          "text": "國立臺灣大學國際事務處",
+          "refs": [
+            {
+              "source": "ntu-oia-emergency",
+              "locator": "受理窗口"
+            }
+          ]
+        }
+      },
+      "eligibility": {
+        "degrees": [
+          "master",
+          "phd"
+        ],
+        "institution": "NTU",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "遭遇重大意外、傷病或家庭主要經濟人口死亡、重症致生活陷困者",
+          "refs": [
+            {
+              "source": "ntu-oia-emergency",
+              "locator": "資格條款"
+            }
+          ]
+        },
+        "other_conditions": [
+          {
+            "text": "檢附醫療診斷書、戶籍謄本或變故證明",
+            "refs": [
+              {
+                "source": "ntu-oia-emergency",
+                "locator": "應備文件"
+              }
+            ]
+          }
+        ]
+      },
+      "benefit": {
+        "summary": "緊急醫療慰助10,000至30,000元；家庭重大變故或母國重大天災紓困金最高50,000元",
+        "items": [],
+        "refs": [
+          {
+            "source": "ntu-oia-emergency",
+            "locator": "給付標準"
+          }
+        ]
+      },
+      "compatibility": {
+        "mode": "conditional",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "多數急難救助金可與既有校內外獎學金同時兼領，但同學期同變故事由依各辦法不得重複請領同基金會專款。",
+        "refs": [
+          {
+            "source": "ntu-oia-emergency",
+            "locator": "兼領條款"
+          }
+        ]
+      },
+      "hardship": {
+        "mode": "not_exclusive",
+        "note": "以重大意外、突發事故或家庭經濟變故為審查依據，非單純以低收/中低收為唯一要件",
+        "refs": [
+          {
+            "source": "ntu-oia-emergency",
+            "locator": "急難認定"
+          }
+        ]
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "常態開放受理（事故發生後指定期間內申請）"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "向生輔組或轉介單位提送急難救助申請表件",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "事故發生日起3個月內向國際事務處提出"
+            },
+            "refs": [
+              {
+                "source": "ntu-oia-emergency",
+                "locator": "期限條款"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "送件後常態審議即時核發（約1至2週內核定撥款）",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-11-06",
+        "reason": "常態隨到隨審（事故發生後3至6個月內提出）",
+        "refs": [
+          {
+            "source": "ntu-oia-emergency",
+            "locator": "受理條款"
+          }
+        ]
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "最新急難救助作業要點版本",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "ntu-oia-emergency",
+        "revision_id": "8057c385eb0f2f721d9b17e3a5574487c4a5deecab6547d9359b9f8d6e5c961a",
+        "url": "https://oia.ntu.edu.tw/",
+        "observed_at": "2026-11-06T10:00:00Z",
+        "evidence_mode": "short_excerpt",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.8.0",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "8057c385eb0f2f721d9b17e3a5574487c4a5deecab6547d9359b9f8d6e5c961a"
+      },
+      "field_evidence": [
+        {
+          "field_path": "benefit.summary",
+          "source": "ntu-oia-emergency",
+          "revision_id": "8057c385eb0f2f721d9b17e3a5574487c4a5deecab6547d9359b9f8d6e5c961a",
+          "locator": "給付標準",
+          "evidence_mode": "short_excerpt",
+          "excerpt": "緊急醫療慰助10,000至30,000元；家庭重大變故或母國重大天災紓困金最高50,000元",
+          "excerpt_sha256": "40f20e651ba9e2f03dbb09d3f69c36385f7689014fbc668c9481bf31001cb02d",
+          "source_block_sha256": "8057c385eb0f2f721d9b17e3a5574487c4a5deecab6547d9359b9f8d6e5c961a",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [],
+        "conflicts": [],
+        "open_questions": [
+          "重大特殊事故是否專案提高救助金額，依各校／各基金會急難審議會議決議為準。"
+        ]
+      },
+      "evidence_status": "incomplete",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.5.0",
+        "checked_at": "2026-11-06T10:00:00Z",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.8.0",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "paper",
+        "channels": [
+          "in_person",
+          "paper"
+        ],
+        "paper_delivery": "required",
+        "handwritten_signature": "required",
+        "deadline_basis": "received",
+        "note": "由學生本人、導師或系所承辦人檢附佐證文件送交生輔組初審",
+        "refs": [
+          {
+            "source": "ntu-oia-emergency",
+            "locator": "申辦流程"
+          }
+        ]
+      },
+      "field_applicability": {}
     }
   ]
 }

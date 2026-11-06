@@ -1,13 +1,14 @@
 {
   "schema_version": "1.0.0",
   "updated_at": "2026-11-06T10:00:00+08:00",
-  "total_programs": 12,
+  "total_programs": 24,
   "description": "全台公私立大專校院、中央法定學產基金與全國主要慈善基金會學生急難救助金來源大盤點清冊",
   "tiers_count": {
-    "statutory_central": 3,
-    "national_university": 5,
+    "statutory_central": 6,
+    "national_university": 8,
     "private_university": 2,
-    "civic_foundation": 2
+    "civic_foundation": 3,
+    "local_government": 5
   },
   "programs": [
     {
@@ -373,6 +374,356 @@
         "醫療診斷書或重大災變證明文件"
       ],
       "applicant_role": "由就讀學校學務處生輔組或社工單位代為轉介申辦"
+    },
+    {
+      "code": "EMER-013",
+      "name": "臺北市市民急難救助及青年生活陷困扶助",
+      "short_name": "臺北市急難救助",
+      "tier": "local_government",
+      "organization": "臺北市政府社會局及各區公所社會課",
+      "target_students": [
+        "senior_high",
+        "undergraduate",
+        "master",
+        "phd",
+        "family"
+      ],
+      "source_url": "https://dosw.gov.taipei/",
+      "source_id": "tpe-dosw-emergency",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "重大傷病救助 10,000 至 20,000 元；主要負擔家計者死亡或重大失能最高 50,000 元",
+      "deadline_rule": "事實發生日起 3 個月內向戶籍所在地或居住地區公所社會課提出",
+      "qualifying_events": [
+        "戶籍設於臺北市且遭遇重大傷病或家庭突遭變故",
+        "家庭主要經濟來源中斷致在學子女無力維持生活"
+      ],
+      "required_documents": [
+        "急難救助申請表",
+        "3個月內全戶戶籍謄本",
+        "公私立教學醫院合格診斷證明書",
+        "醫療自費單據或死亡除戶謄本"
+      ],
+      "applicant_role": "學生或家屬向臺北市各區公所社會課臨櫃申辦"
+    },
+    {
+      "code": "EMER-014",
+      "name": "新北市好日子愛心大平台急難救助與弱勢學生專案",
+      "short_name": "新北好日子愛心急難",
+      "tier": "local_government",
+      "organization": "新北市政府社會局",
+      "target_students": [
+        "senior_high",
+        "undergraduate",
+        "master",
+        "phd",
+        "family"
+      ],
+      "source_url": "https://www.sw.ntpc.gov.tw/",
+      "source_id": "ntpc-sw-emergency",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "急難生活救助 10,000 至 20,000 元；好日子平台特別紓困專案最高 50,000 元",
+      "deadline_rule": "變故發生日起 3 個月內向區公所或社會福利服務中心申辦",
+      "qualifying_events": [
+        "設籍或居住新北市遭遇非預期緊急變故",
+        "家庭經濟支柱發生意外、重病或失業陷困"
+      ],
+      "required_documents": [
+        "新北市急難救助申請書",
+        "全戶戶籍證明文件",
+        "醫療診斷書或突發變故證明",
+        "低收/中低收或所得資料清單"
+      ],
+      "applicant_role": "學生或家屬逕洽新北市各區公所或各區社福中心提出"
+    },
+    {
+      "code": "EMER-015",
+      "name": "臺中市市民急難救助及川資救助專案",
+      "short_name": "臺中市急難救助",
+      "tier": "local_government",
+      "organization": "臺中市政府社會局",
+      "target_students": [
+        "senior_high",
+        "undergraduate",
+        "master",
+        "phd",
+        "family"
+      ],
+      "source_url": "https://www.society.taichung.gov.tw/",
+      "source_id": "taichung-society-emergency",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "一般急難救助 10,000 至 20,000 元；重大事故急難慰助金最高 30,000 元",
+      "deadline_rule": "事實發生日起 3 個月內向戶籍所在地區公所申請",
+      "qualifying_events": [
+        "設籍臺中市遭遇重大傷病住院或家庭突發重大變故",
+        "負擔主要生計者亡故、失蹤或重傷致無力負擔就學費用"
+      ],
+      "required_documents": [
+        "急難救助申請書",
+        "合格診斷證明書正本",
+        "戶籍證明文件",
+        "國稅局各類所得清單"
+      ],
+      "applicant_role": "逕向臺中市各區公所社會課送件辦理"
+    },
+    {
+      "code": "EMER-016",
+      "name": "高雄市市民急難救助金與弱勢學生慰難扶助",
+      "short_name": "高雄市急難救助",
+      "tier": "local_government",
+      "organization": "高雄市政府社會局",
+      "target_students": [
+        "senior_high",
+        "undergraduate",
+        "master",
+        "phd",
+        "family"
+      ],
+      "source_url": "https://socbu.kcg.gov.tw/",
+      "source_id": "kcg-socbu-emergency",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "急難醫療救助 10,000 至 20,000 元；喪葬及生活變故救助最高 35,000 元",
+      "deadline_rule": "事實發生日起 3 個月內向區公所社會課申辦",
+      "qualifying_events": [
+        "設籍高雄市之在學學生本人或主要照顧者發生重大變故",
+        "家庭突遭重大事故生活陷入絕境"
+      ],
+      "required_documents": [
+        "急難救助申請表",
+        "合格醫院診斷書及醫療單據",
+        "全戶現戶戶籍謄本",
+        "非自願失業或重大事故證明書"
+      ],
+      "applicant_role": "至戶籍地高雄市各區公所社會課臨櫃申請"
+    },
+    {
+      "code": "EMER-017",
+      "name": "桃園市市民急難救助金專案",
+      "short_name": "桃園市急難救助",
+      "tier": "local_government",
+      "organization": "桃園市政府社會局",
+      "target_students": [
+        "senior_high",
+        "undergraduate",
+        "master",
+        "phd",
+        "family"
+      ],
+      "source_url": "https://sab.tycg.gov.tw/",
+      "source_id": "tycg-sab-emergency",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "急難醫療救助最高 20,000 元；突發變故生活扶助最高 35,000 元",
+      "deadline_rule": "事實發生日起 3 個月內向公所提出",
+      "qualifying_events": [
+        "設籍桃園市學生本人遭遇重大傷病或家庭發生變故無力生活"
+      ],
+      "required_documents": [
+        "急難救助申請書",
+        "醫療診斷證明書正本",
+        "全戶戶籍謄本",
+        "經濟陷困證明文件"
+      ],
+      "applicant_role": "至桃園市各區公所社會課申辦"
+    },
+    {
+      "code": "EMER-018",
+      "name": "衛生福利部社會及家庭署「特殊境遇家庭扶助－緊急生活扶助與子女生活津貼」",
+      "short_name": "特殊境遇家庭緊急生活扶助",
+      "tier": "statutory_central",
+      "organization": "衛生福利部社會及家庭署",
+      "target_students": [
+        "preschool",
+        "elementary",
+        "junior_high",
+        "senior_high",
+        "undergraduate",
+        "master",
+        "family"
+      ],
+      "source_url": "https://www.sfaa.gov.tw/",
+      "source_id": "sfaa-special-family",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "緊急生活扶助按當地最低生活費補助（每人每月約 15,000 至 20,000 元，最高發給 3 個月）；子女生活津貼按月補助",
+      "deadline_rule": "符合特殊境遇事由發生日起 6 個月內提出申請",
+      "qualifying_events": [
+        "配偶死亡、失蹤、遺棄或入獄",
+        "遭受家庭暴力或獨自扶養18歲以下子女之單親家庭",
+        "家庭遭遇重大變故致生活陷於困境"
+      ],
+      "required_documents": [
+        "特殊境遇家庭扶助申請表",
+        "全戶最新各類所得清單及財產歸屬資料",
+        "全戶現戶戶籍謄本（記事不可省略）",
+        "配偶死亡/保護令/在監證明或重大變故證明"
+      ],
+      "applicant_role": "學生家長或成年在學學生向戶籍所在地區公所社會課提出，由社工訪視初審"
+    },
+    {
+      "code": "EMER-019",
+      "name": "衛生福利部委辦財團法人婦女權益促進發展基金會「弱勢單親家庭培力計畫」",
+      "short_name": "弱勢單親家庭培力計畫",
+      "tier": "statutory_central",
+      "organization": "衛生福利部委辦婦女權益促進發展基金會",
+      "target_students": [
+        "senior_high",
+        "vocational",
+        "undergraduate",
+        "master"
+      ],
+      "source_url": "https://www.wrp.org.tw/",
+      "source_id": "wrp-single-parent-aid",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "獨自撫養未成年子女之單親家長就讀大專：學費每學期最高 30,000 元、每月生活津貼 12,000 元",
+      "deadline_rule": "每學期定期受理（第1學期9月1日至10月10日；第2學期2月15日至3月25日）",
+      "qualifying_events": [
+        "獨自扶養未滿18歲子女就讀國內公私立高中職、大專校院及研究所",
+        "家庭總收入平均每人每月未達當年度低收入戶最低生活費2.5倍"
+      ],
+      "required_documents": [
+        "單親家庭培力計畫申請表",
+        "全戶戶籍謄本",
+        "學生證與學雜費繳費收據",
+        "全戶最新各類所得清單"
+      ],
+      "applicant_role": "由單親學生本人逕寄主辦基金會專案小組審查撥款"
+    },
+    {
+      "code": "EMER-020",
+      "name": "財團法人法律扶助基金會「弱勢家庭與急難法律扶助專案」",
+      "short_name": "弱勢家庭急難法扶專案",
+      "tier": "civic_foundation",
+      "organization": "財團法人法律扶助基金會",
+      "target_students": [
+        "senior_high",
+        "undergraduate",
+        "master",
+        "phd",
+        "family"
+      ],
+      "source_url": "https://www.laf.org.tw/",
+      "source_id": "laf-emergency-aid",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "全額補助律師酬金與訴訟規費（免費由公設/專職律師代理訴訟與調解），免除數萬元法律訴訟經濟重擔",
+      "deadline_rule": "常態全年受理，電話或線上預約審查隨到隨辦",
+      "qualifying_events": [
+        "學生或家庭遭遇重大變故、勞資爭議、家暴侵害、租屋糾紛或交通事故致生活陷入急難"
+      ],
+      "required_documents": [
+        "法扶申請表",
+        "近3個月全戶戶口名簿",
+        "低收/中低收或全戶所得清單",
+        "相關案件訴訟文書或報案三聯單"
+      ],
+      "applicant_role": "學生或家庭成員向法扶各縣市分會預約審查"
+    },
+    {
+      "code": "EMER-021",
+      "name": "僑務委員會「清寒僑生急難醫療慰助金及全民健康保險補助」",
+      "short_name": "清寒僑生急難醫療慰助金",
+      "tier": "statutory_central",
+      "organization": "僑務委員會僑生處",
+      "target_students": [
+        "senior_high",
+        "vocational",
+        "undergraduate",
+        "master",
+        "phd"
+      ],
+      "source_url": "https://www.ocac.gov.tw/",
+      "source_id": "ocac-compatriot-emergency",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "清寒僑生在學期間遭遇意外傷害或疾病住院，核發醫療慰助金 10,000 至 50,000 元；健保費每人每月補助 50%",
+      "deadline_rule": "傷病意外事實發生之日起 2 個月內經學校轉送僑務委員會",
+      "qualifying_events": [
+        "在臺就讀之清寒僑生遭遇重大疾病、意外事故住院醫療或身故"
+      ],
+      "required_documents": [
+        "僑務委員會僑生急難救助金申請表",
+        "清寒證明文件",
+        "公私立醫院診斷證明書正本與醫療費用收據正本",
+        "在學證明與居留證影本"
+      ],
+      "applicant_role": "學生備齊文件向就讀學校僑輔組/生輔組提報，由學校審查後函送僑委會"
+    },
+    {
+      "code": "EMER-022",
+      "name": "國立臺灣大學國際事務處「國際學生急難救助金（NTU OIA Emergency Relief Fund）」",
+      "short_name": "臺大國際學生急難金",
+      "tier": "national_university",
+      "organization": "國立臺灣大學國際事務處（OIA）",
+      "target_students": [
+        "undergraduate",
+        "master",
+        "phd"
+      ],
+      "source_url": "https://oia.ntu.edu.tw/",
+      "source_id": "ntu-oia-emergency",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "一般緊急醫療慰助 10,000 至 30,000 元；母國重大天災或家庭變故生活紓困金最高 50,000 元",
+      "deadline_rule": "重大變故或傷病發生日起 3 個月內向國際事務處提出",
+      "qualifying_events": [
+        "外籍學位生在臺期間遭遇突發重大傷病或意外",
+        "外籍學生母國遭逢重大戰亂、天災或經濟支柱身故致經濟斷絕"
+      ],
+      "required_documents": [
+        "OIA 急難救助申請表",
+        "護照與居留證（ARC）影本",
+        "合格醫院診斷書正本與醫療費用單據",
+        "突發重大變故說明與指導教授推薦信"
+      ],
+      "applicant_role": "至臺大禮賢樓國際事務處（OIA）學生輔導專案經理處送件"
+    },
+    {
+      "code": "EMER-023",
+      "name": "國立清華大學全球事務處「國際學生急難紓困助學金（NTHU OGA International Emergency Aid）」",
+      "short_name": "清大國際學生急難金",
+      "tier": "national_university",
+      "organization": "國立清華大學全球事務處（OGA）",
+      "target_students": [
+        "undergraduate",
+        "master",
+        "phd"
+      ],
+      "source_url": "https://oga.site.nthu.edu.tw/",
+      "source_id": "nthu-oga-emergency",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "緊急生活救助單次最高 30,000 元或每月生活補助 10,000 元（最長 3 個月）",
+      "deadline_rule": "緊急事故發生後隨到隨辦",
+      "qualifying_events": [
+        "清華國際學位生個人重大傷病或母國天災人禍致生活無以為繼"
+      ],
+      "required_documents": [
+        "清大OGA急難救助申請書",
+        "醫療單據或事故佐證",
+        "指導教授或系所主管訪視推薦表"
+      ],
+      "applicant_role": "至清大全球處國際學生組提出申請"
+    },
+    {
+      "code": "EMER-024",
+      "name": "國立成功大學國際事務處「境外生急難救助專款（NCKU OIA International Emergency Fund）」",
+      "short_name": "成大境外生急難金",
+      "tier": "national_university",
+      "organization": "國立成功大學國際事務處（OIA）",
+      "target_students": [
+        "undergraduate",
+        "master",
+        "phd"
+      ],
+      "source_url": "https://oia.ncku.edu.tw/",
+      "source_id": "ncku-oia-emergency",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "重大傷病及意外急難慰助金 10,000 至 30,000 元",
+      "deadline_rule": "事故發生日起 3 個月內向成大國際處提出",
+      "qualifying_events": [
+        "境外學位生（外籍生、僑生、陸生）遇重大傷病或突發事故致生活陷入絕境"
+      ],
+      "required_documents": [
+        "境外生急難救助申請書",
+        "醫院診斷證明與收據",
+        "在學證明與居留證影本",
+        "指導教授簽核表"
+      ],
+      "applicant_role": "至成大國際事務處國際學生組申辦"
     }
   ]
 }
