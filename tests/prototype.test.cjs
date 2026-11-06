@@ -1047,3 +1047,13 @@ test("單親、特境、國際生與縣市急難擴充同義詞精確命中急�
  assert.ok(core.itemMatchesQuery(cityItem, "縣市急難"), "搜尋縣市急難應命中");
  assert.ok(core.itemMatchesQuery(cityItem, "好日子"), "搜尋好日子應命中");
 });
+
+test("首頁標頭操作列 GitHub Star 按鈕規格：支援一鍵開新分頁直達專案庫按星", () => {
+ const html = fs.readFileSync(path.join(__dirname, "../docs/design/wireframes.html"), "utf8");
+ assert.ok(html.includes('id="github-star-btn"'), "標頭操作列必須包含 github-star-btn ID");
+ assert.ok(html.includes('href="https://github.com/matt-ye/opengsa"'), "必須導向專案開源 repo 網址");
+ assert.ok(html.includes('target="_blank"'), "必須於新分頁開啟");
+ assert.ok(html.includes('rel="noopener noreferrer"'), "必須具備安全連結屬性");
+ assert.ok(html.includes("⭐ GitHub Star ↗"), "按鈕標籤必須顯示 ⭐ GitHub Star ↗");
+ assert.ok(html.includes(".header-action.star-btn"), "必須具備專屬金色高亮樣式");
+});
