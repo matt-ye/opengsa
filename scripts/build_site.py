@@ -126,10 +126,9 @@ def build(output):
 </head>''')
     replace_once("設計審閱稿 · 四分頁互動線框 · 資料快照 2026.10.28 · 所有獎助資料待獨立覆核，非申請建議", '獎助雷達預覽 · 來源摘要，非即時資格核定 · ⚠ 不明，請見來源')
     replace_once("互動原型 · 不進行個人資格核定", "公開預覽 · 不進行個人資格核定")
-    replace_once("OpenGSA · MVP介面基礎審閱稿 0.8 · 無外部字型、無追蹤、無個資送出。<br/>原創線框內容依專案授權；官方文件各保留原權利。自動擷取及正式發布尚待驗證。", f'''OpenGSA · 公開預覽 0.9 · 個人條件與研討會輸入只留本次瀏覽，無分析追蹤程式。<br>
-GitHub Pages託管可能保留連線紀錄，詳見<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub隱私聲明</a>。<br>
-<a href="{FEEDBACK}">回報操作問題／建議</a>（需GitHub帳號，內容公開；請勿提交個資或私人申訴） · <a href="https://github.com/matt-ye/opengsa">原始碼與資料說明</a><br>
-雷達為自動整理的來源摘要，未知資訊導流原文，非人工資格核定。完整資料發布仍須獨立覆核；模型僅手動啟用；支援 <a href="{URL}feed.xml">全庫 RSS</a> 與 <a href="{URL}feed-deadlines.xml">截止倒數 RSS</a> 訂閱。原創內容依專案授權，官方文件保留原權利。''')
+    replace_once("OpenGSA · MVP介面基礎審閱稿 0.8 · 無外部字型、無追蹤、無個資送出。<br/>原創線框內容依專案授權；官方文件各保留原權利。自動擷取及正式發布尚待驗證。", f'''<p class="footer-links"><span>作者 <a href="https://mattye.dev/">葉淨維 Matt Ye</a></span><a href="https://github.com/matt-ye">GitHub</a><a href="https://github.com/matt-ye/opengsa">原始碼與資料說明</a><a href="{FEEDBACK}">回報問題</a><a href="{URL}feed.xml">全庫 RSS</a><a href="{URL}feed-deadlines.xml">截止倒數 RSS</a></p>
+<p>OpenGSA 公開預覽 0.9：自動整理的來源摘要，非資格核定，請以官方公告為準。</p>
+<p>個人條件與研討會輸入只留本次瀏覽，無分析追蹤程式；GitHub Pages託管可能保留連線紀錄（<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub隱私聲明</a>）。回報內容公開，請勿提交個資或私人申訴。原創內容依專案授權，官方文件保留原權利。</p>''')
     page.write_text(html, encoding="utf-8")
     assets = output / "assets"
     assets.mkdir(parents=True, exist_ok=True)

@@ -17,7 +17,7 @@
 
 /* 第二版：頁籤與共用篩選的時程探索 */
 [hidden]{display:none!important}
-button:not(:disabled),select,input{font:inherit}
+:where(button:not(:disabled),select,input){font:inherit}
 button:not(:disabled){cursor:pointer}
 button:focus-visible,select:focus-visible,input:focus-visible,.gantt-scroll:focus-visible{outline:3px solid var(--rust);outline-offset:4px}
 .nav-links[role=tablist]{gap:4px;flex-shrink:0;display:flex;align-items:center}
@@ -66,8 +66,8 @@ button:focus-visible,select:focus-visible,input:focus-visible,.gantt-scroll:focu
 .gantt-label{padding:8px 12px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--white);position:sticky;left:0;z-index:5;line-height:1.4;min-height:64px;display:flex;flex-direction:column;justify-content:center}
 .gantt-top .gantt-label{min-height:60px;background:#eaf0e8;font-size:12px;padding:8px 12px}
 #search .gantt-top{position:sticky;top:0;z-index:10;background:#f0f3ec}
-#search .gantt-scroll{overflow:auto;max-height:78vh;max-height:78dvh;overscroll-behavior:contain;min-height:460px}
-@media(min-width:801px){
+#search .gantt-scroll{overflow:auto;max-height:78vh;max-height:78dvh;min-height:460px}
+@media(min-width:1101px){
  #search .layout{grid-template-columns:220px minmax(0,1fr);gap:20px;align-items:stretch}
  #search .layout>div:nth-child(2){display:flex;flex-direction:column;min-height:100%}
  #search #results-panel{flex:1 1 auto;display:flex;flex-direction:column}
@@ -134,7 +134,7 @@ th{background:#eaf0e8}
 #empty-results{text-align:center;padding:42px 20px}
 #empty-results p{margin:0 0 12px}
 .prototype-hint{font-size:12px;color:var(--muted);margin:8px 0 0}
-@media(min-width:801px){#search .layout{grid-template-columns:214px minmax(0,1fr);gap:22px}#search .filter{padding:17px}#search .filter details>summary{font-size:14px;margin-bottom:14px}}
+@media(min-width:1101px){#search .layout{grid-template-columns:214px minmax(0,1fr);gap:22px}#search .filter{padding:17px}#search .filter details>summary{font-size:14px;margin-bottom:14px}}
 @media(max-width:800px){.nav-links[role=tablist]{gap:3px}.nav-links [role=tab]{padding:7px 8px;font-size:12px}.mode-row{align-items:start}.mode-row .segmented{flex-wrap:wrap}.filter-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px}.filter .checkbox-label{grid-column:1/-1}.filter h3{font-size:14px}.filter details>summary{font-size:14px;margin-bottom:12px}.view-row{gap:10px}#search .headline h1{font-size:29px}.gantt-grid{--label-width:112px;min-width:760px}.gantt-label{padding:6px 8px;font-size:12px}.gantt-plot{min-height:56px}.gantt-label{min-height:56px}#search .gantt-scroll{max-height:76vh;min-height:360px}.range-controls{align-items:start}.prototype-hint{font-size:11px}}
 @media(max-width:500px){.nav-links [role=tab]{font-size:11px;padding:7px 5px;flex:1}.nav-links[role=tablist]{width:100%}.filter-fields{grid-template-columns:1fr 1fr}.mode-row{display:block}.mode-row .result-meta{display:block;margin-top:8px}.view-row>.segmented{width:100%;justify-content:center}.view-row>.segmented button{flex:1}.range-controls{display:block}.range-buttons{margin-top:7px}}
 
@@ -165,7 +165,7 @@ th{background:#eaf0e8}
 @media(max-width:800px){.option-picker select{flex-basis:100%}.detail-title{font-size:22px}.plan-tasks{display:grid;grid-template-columns:1fr}.detail-section .facts{grid-template-columns:75px minmax(0,1fr)}}
 
 /* MVP基礎：桌面篩選隨捲動，短視窗可在卡片內捲動。 */
-@media(min-width:801px){#search .filter{position:sticky;top:calc(var(--nav-height,104px) + 12px);max-height:calc(100vh - var(--nav-height,104px) - 24px);max-height:calc(100dvh - var(--nav-height,104px) - 24px);overflow-y:auto;scrollbar-gutter:stable}}
+@media(min-width:1101px){#search .filter{position:sticky;top:calc(var(--nav-height,104px) + 12px);max-height:calc(100vh - var(--nav-height,104px) - 24px);max-height:calc(100dvh - var(--nav-height,104px) - 24px);overflow-y:auto;scrollbar-gutter:stable}}
 .filter:focus-visible{outline:3px solid var(--rust);outline-offset:3px}
 .conference-planner{margin:16px 0 22px}
 .conference-planner summary{cursor:pointer;font-size:16px;font-weight:700}
@@ -264,7 +264,7 @@ html{scroll-behavior:smooth}
 .header-action:hover{background:var(--green)}.header-action.primary:hover{background:#315d50}
 @media(max-width:1250px){.brand small{display:none}}
 @media(max-width:1160px){.nav{flex-wrap:wrap;height:auto;min-height:60px;padding:8px 16px;gap:8px}.header-controls{width:100%;justify-content:space-between;flex-wrap:wrap;gap:8px}.header-actions{width:100%;justify-content:flex-start;gap:5px;flex-wrap:wrap}}
-@media(max-width:800px){html{scroll-padding-top:calc(var(--nav-height,150px) + 8px)}.header-controls{gap:6px}.header-controls .nav-links{max-width:none;flex-wrap:wrap}.header-action,.share-btn,.rss-btn,.guide-btn{font-size:12px;padding:4px 8px;min-height:30px}.nav-links [role=tab]{font-size:12px;padding:4px 8px;min-height:30px}}
+@media(max-width:800px){.header-controls{gap:6px}.header-controls .nav-links{max-width:none;flex-wrap:wrap}.header-action,.share-btn,.rss-btn,.guide-btn{font-size:12px;padding:4px 8px;min-height:30px}.nav-links [role=tab]{font-size:12px;padding:4px 8px;min-height:30px}}
 @media(max-width:500px){.nav{flex-direction:column;align-items:stretch;height:auto;gap:6px}.brand small{white-space:nowrap;font-size:9px}.nav-links{max-width:none;width:100%;justify-content:space-between;gap:2px}.nav-links [role=tab]{font-size:11px;padding:4px 3px;flex:1;min-height:28px}.header-controls,.header-actions{width:100%}.header-actions{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-start}.header-actions .header-action{flex:initial;min-height:28px}}
 /* Rights sections share the existing four-page navigation. */
 .rights-overview-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
@@ -405,6 +405,89 @@ html{scroll-behavior:smooth}
  .compare-controls select{flex:1;min-width:0;max-width:none}
 }
 
+/* 2026-11 版面整理：集中放在樣式表最後，避免再被後面的基底規則蓋掉斷點。 */
+html{scroll-padding-top:0}
+#persona-bar{grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;margin:0 0 14px}
+.persona-tile{flex-direction:column;align-items:center;gap:6px;padding:10px 8px;text-align:center}
+#search .mode-row{flex-wrap:wrap;margin:0 0 8px}
+#search #mode-note{flex:1 1 320px;margin:0;padding:6px 12px}
+#search>.small.quiet{margin:0 0 6px}
+#search>details.small{margin:0 0 10px}
+.conference-planner:not([open]){display:none}
+.conference-planner{margin:0 0 14px;scroll-margin-top:calc(var(--nav-height,60px) + 12px)}
+.chart-header{padding:8px 12px;gap:8px 10px;flex-wrap:wrap;align-items:center}
+.chart-heading{flex:0 0 auto}
+.chart-header .searchbar{position:relative;flex:1 1 200px;min-width:0;margin:0;padding:0;border:0;background:none}
+.chart-header .searchbar::before{content:"🔍";position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:13px;line-height:1;pointer-events:none}
+.chart-header .searchbar input{display:block;min-height:34px;padding:5px 10px 5px 32px;border:1px solid #a9b9ae;border-radius:7px;font-size:13px}
+.add-conference{min-height:34px;padding:5px 12px;font-weight:700}
+.add-conference[aria-expanded=true]{background:var(--white);color:var(--ink)}
+.chart-header .segmented{flex:0 0 auto;width:auto}
+.chart-header .segmented button{padding:4px 10px}
+.chart-toolbar{position:relative;z-index:20;padding:6px 12px;gap:6px 12px;border-bottom:1px solid var(--line)}
+.chart-time-fields{gap:6px 12px;flex:1 1 auto;min-width:0}
+.chart-time-fields label,.chart-time-fields .checkbox-label{flex-direction:row;align-items:center}
+.chart-time-fields select{padding:3px 6px;min-height:30px;font-size:12px}
+.chart-caption{padding:0;display:contents}
+.chart-toolbar-end{display:flex;align-items:center;gap:8px;margin-left:auto}
+#search .chart-legend,.chart-legend{border:0;max-height:none;overflow:visible;background:none}
+.chart-legend summary{position:static;gap:6px;min-height:30px;padding:3px 9px;border:1px solid var(--line);border-radius:7px;background:#fff}
+.chart-legend summary small{display:none}
+.chart-legend summary::after{font-size:13px}
+.legend-panel{position:absolute;left:12px;right:12px;top:100%;margin-top:4px;max-height:60vh;max-height:60dvh;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 6px 18px rgba(32,63,55,.18)}
+#search .chart-hint,.legend-panel .chart-hint{padding:0 16px 12px}
+.chart-move button{padding:4px 9px;min-height:30px}
+.chart-foot{padding:6px 12px}
+#dates-table{margin-top:10px}
+.gantt-label{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;align-items:center;align-content:center;gap:0 10px}
+.gantt-label>*{flex:0 0 100%;min-width:0}
+.gantt-label>.row-pick,.gantt-label>.gantt-detail-link{flex:0 0 auto;order:-1;margin:0}
+.gantt-top .gantt-label{justify-content:center}
+#timeline .gantt-scroll{overflow:auto;max-height:calc(100vh - var(--nav-height,60px) - 24px);max-height:calc(100dvh - var(--nav-height,60px) - 24px);min-height:360px}
+#timeline .gantt-top{position:sticky;top:0;z-index:10;background:#f0f3ec}
+#timeline .range-controls{gap:8px 12px;margin-bottom:6px}
+#timeline .range-controls .tiny{margin:0}
+#timeline .chart-legend{margin:0 0 8px}
+#timeline .chart-legend summary{display:inline-flex}
+#timeline .chart-legend .gantt-legend{margin:8px 0 0}
+#plan-options{max-height:70vh;max-height:70dvh;overflow:auto}
+footer p{margin:0}
+.footer-links{display:flex;flex-wrap:wrap;gap:2px 14px;margin:0 0 6px;font-weight:600;color:var(--ink)}
+@media(min-width:1101px){
+ #search .gantt-grid,#timeline .gantt-grid{--label-width:280px;min-width:920px}
+ #search .filter{padding:12px 14px}
+ .filter label{margin:0 0 8px;font-size:12px}
+ .filter select{margin-top:3px;padding:3px 8px;min-height:32px}
+ .filter-fields>.tiny{margin:-3px 0 8px;font-size:11px;line-height:1.4}
+ #search .filter details>summary{margin-bottom:8px}
+ .filter h3{margin:0 0 4px}
+ .selection-manager p{margin:0 0 4px}
+}
+@media(max-width:1160px){
+ .header-controls{display:contents}
+ .brand{margin-right:auto}
+ .header-actions{order:1;width:auto;flex:1 1 auto;justify-content:flex-end}
+ .nav-links[role=tablist]{order:2;width:100%;justify-content:flex-start}
+}
+@media(max-width:1100px){
+ #search .layout{grid-template-columns:minmax(0,1fr);gap:14px}
+ #persona-bar{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .persona-tile{flex-direction:row;align-items:center;text-align:left}
+ .filter-fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 12px}
+ .filter-fields>.tiny,.filter .checkbox-label{grid-column:1/-1;order:1}
+ #search .gantt-scroll{max-height:calc(100vh - var(--nav-height,60px) - 24px);max-height:calc(100dvh - var(--nav-height,60px) - 24px);min-height:360px}
+}
+@media(max-width:800px){
+ .filter-fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #results-panel .chart-heading{display:flex;flex:1 1 100%}
+ .chart-header .searchbar{order:1;flex:1 1 100%}
+ .add-conference{order:2;flex:1 1 auto}
+ .chart-header .segmented{order:3}
+ .chart-header .searchbar input{font-size:16px}
+}
+@media(max-width:640px){#persona-bar{grid-template-columns:repeat(2,minmax(0,1fr))}.persona-tile{padding:8px}}
+@media(max-width:500px){.header-actions{width:100%;justify-content:flex-start}}
+
 </style>
 </head>
 <body>
@@ -417,8 +500,7 @@ html{scroll-behavior:smooth}
 <main id="main">
 <section aria-labelledby="tab-search" class="screen" id="search" role="tabpanel">
 <div class="headline"><div><div class="screen-label">01 / DISCOVER · 獎助探索與快篩</div><h1 id="search-title">把時間留給研究。</h1><p>快速篩選值得了解的機會，一鍵【⭐ 收藏至個人時程】或【📄 查看完整條文】。</p></div><div class="status-note">互動原型 · 不進行個人資格核定</div></div>
-<div class="mode-row"><div aria-label="資料模式" class="segmented" id="mode-switch" role="group"><button aria-pressed="true" data-mode="demo" type="button">合成排程示範</button><button aria-pressed="false" data-mode="draft" type="button">來源草稿＋會議方案</button></div></div>
-<p class="synthetic-note" id="mode-note">合成資料，僅供互動設計。</p>
+<div class="mode-row"><div aria-label="資料模式" class="segmented" id="mode-switch" role="group"><button aria-pressed="true" data-mode="demo" type="button">合成排程示範</button><button aria-pressed="false" data-mode="draft" type="button">來源草稿＋會議方案</button></div><p class="synthetic-note" id="mode-note">合成資料，僅供互動設計。</p></div>
 <p class="small quiet">燈號描述來源資訊清晰度，非正確率、申請資格核定或受理保證。未知條件會另列為可能相關。核心四項：來源對應、年度／版本、時間規則、大致對象。</p>
 <details class="small"><summary>進階檢視：文件與方案</summary><label>呈現方式 <select id="document-mode"><option value="documents">依來源文件顯示（保留各年度與版本）</option><option value="programs">依方案彙整（其他文件保留原文連結）</option></select></label><p>預設保留各份來源；方案彙整只合併已有相同識別碼的文件，不拼接資格或期限。不同年度與梯次仍須核對。</p></details>
 <div aria-label="探索島情境快速篩選" class="persona-grid" id="persona-bar" role="group">
@@ -447,9 +529,8 @@ html{scroll-behavior:smooth}
 </div><button class="reset-button" id="reset-filters" type="button">清除條件</button></details>
 </aside>
 <div style="min-width:0">
-<div class="searchbar"><label for="search-query">搜尋名稱或資料 ID</label><input autocomplete="off" data-filter="query" id="search-query" placeholder="搜尋名稱或資料 ID…" type="search"/></div>
 <details class="panel conference-planner" id="conference-planner">
-<summary>規劃我的研討會補助 · 多方案與甘特圖</summary>
+<summary>新增研討會：試算補助並加入甘特圖</summary>
 <p class="small">一場會議可逐一加入不同補助。同名、同日、同方案會更新既有規劃；這是試算，不代表符合資格或可兼領。</p>
 <div class="conference-fields">
 <label>補助方案<select aria-label="補助方案" id="conference-program"></select></label>
@@ -471,15 +552,13 @@ html{scroll-behavior:smooth}
 <details><summary>其他會議補助與報銷來源</summary><div id="conference-references"></div></details>
 </details>
 <section class="results-panel" id="results-panel" aria-label="獎助檢視">
-<div class="view-row chart-header"><div class="chart-heading"><h2>獎助時程</h2><span aria-live="polite" class="result-meta" id="result-count" role="status"></span></div><div aria-label="結果檢視" class="segmented" id="view-switch" role="group"><button aria-pressed="true" data-view="gantt" type="button">甘特圖</button><button aria-pressed="false" data-view="list" type="button">清單</button></div></div>
+<div class="view-row chart-header"><div class="chart-heading"><h2>獎助時程</h2><span aria-live="polite" class="result-meta" id="result-count" role="status"></span></div><div class="searchbar"><label for="search-query">搜尋獎助名稱或資料 ID</label><input autocomplete="off" data-filter="query" id="search-query" placeholder="搜尋獎助名稱，例如：國科會、校長獎" type="search"/></div><button aria-controls="conference-planner" aria-expanded="false" class="add-conference" id="conference-toggle" type="button">＋ 新增研討會</button><div aria-label="結果檢視" class="segmented" id="view-switch" role="group"><button aria-pressed="true" data-view="gantt" type="button">甘特圖</button><button aria-pressed="false" data-view="list" type="button">清單</button></div></div>
 <div id="gantt-view">
 <div class="chart-toolbar"><div class="chart-time-fields" id="timeline-controls">
 <label id="timeline-year-control" hidden>參考年度 <select id="timeline-year"></select></label>
 <label>時間範圍 <select id="range-mode"><option value="recent">今天前後 90 天</option><option value="fit">涵蓋所有已知日期</option></select></label>
 <label class="checkbox-label" id="timeline-baselines-control" hidden><input id="timeline-baselines" type="checkbox" checked>往年／估計底帶</label>
-</div><div class="range-buttons chart-move"><button aria-label="往前30天" class="secondary" id="previous-range" type="button">← 30 天</button><button class="secondary" id="return-today" type="button">今天</button><button aria-label="往後30天" class="secondary" id="next-range" type="button">30 天 →</button></div></div>
-<div class="chart-caption"><p class="tiny quiet" id="chart-range"></p><p class="tiny quiet" hidden="" id="outside-today">今天不在目前範圍，可按「今天」。</p></div>
-<details class="chart-legend" id="chart-legend"><summary><span>圖例與閱讀說明</span><small>實線為已知期間 · 淺色為歷史參考</small></summary>
+<div class="chart-caption"><p class="tiny quiet" id="chart-range"></p><p class="tiny quiet" hidden="" id="outside-today">今天不在目前範圍，可按「今天」。</p></div></div><div class="chart-toolbar-end"><details class="chart-legend" id="chart-legend"><summary><span>圖例與閱讀說明</span><small>實線為已知期間 · 淺色為歷史參考</small></summary><div class="legend-panel">
 <div aria-label="甘特圖圖例" class="gantt-legend">
 <span class="legend-item"><i aria-hidden="true" class="legend-bar"></i><span>申請起訖</span></span>
 <span class="legend-item"><i aria-hidden="true" class="legend-inferred"></i><span>推定受理起日</span></span>
@@ -492,10 +571,11 @@ html{scroll-behavior:smooth}
 <span class="legend-item"><i aria-hidden="true" class="legend-today"></i><span>今天進行線</span></span>
 <span class="legend-item"><i aria-hidden="true" class="legend-history"></i><span>往年參考／估計底帶</span></span>
 <span class="legend-item"><i aria-hidden="true" class="legend-personal"></i><span>個人準備建議／空心節點待核</span></span>
-</div><p class="legend-reading">淺色底帶、推定起日及準備提醒不等於官方受理期。全局顯示已找到的系所範例，各獎項旁及滑鼠提示會標明適用單位；不代表其他系所期限。參考年度僅用於檢視，不代表當年度已公告。</p></details>
+</div><p class="legend-reading">淺色底帶、推定起日及準備提醒不等於官方受理期。全局顯示已找到的系所範例，各獎項旁及滑鼠提示會標明適用單位；不代表其他系所期限。參考年度僅用於檢視，不代表當年度已公告。</p>
+<p class="prototype-hint chart-hint">圖內可上下捲動獎項、水平捲動日期；標題、日期軸與左側名稱固定。點選色帶或節點查看日期。</p>
+</div></details><div class="range-buttons chart-move"><button aria-label="往前30天" class="secondary" id="previous-range" type="button">← 30 天</button><button class="secondary" id="return-today" type="button">今天</button><button aria-label="往後30天" class="secondary" id="next-range" type="button">30 天 →</button></div></div></div>
 <div class="gantt-scroll-hint" id="gantt-scroll-hint" role="status" aria-live="polite"><span>👈 手指左右滑動以檢視完整時程 👉</span><button type="button" class="scroll-hint-dismiss" id="scroll-hint-dismiss" aria-label="關閉滑動提示">✕</button></div>
 <div aria-label="獎助申請甘特圖，可上下及水平捲動，標題與日期軸固定；下方另有文字日期表" class="gantt-scroll" role="region" tabindex="0"><div class="gantt-grid" id="gantt-grid"></div></div>
-<p class="prototype-hint chart-hint">圖內可上下捲動獎項、水平捲動日期；標題、日期軸與左側名稱固定。點選色帶或節點查看日期。</p>
 </div>
 <div hidden="" id="list-view"><div class="cards" id="result-cards"></div></div>
 <div class="panel" hidden="" id="empty-results"><p>沒有符合目前條件的項目。</p><button class="secondary" id="empty-reset" type="button">清除篩選，查看全部</button></div>
@@ -531,9 +611,10 @@ html{scroll-behavior:smooth}
 <p class="selection-context" id="timeline-context"></p>
 <div class="panel empty-workspace" hidden="" id="timeline-empty"><p>目前沒有可安排的選項。</p><div class="range-buttons"><button class="secondary" id="timeline-empty-pick-all" type="button">將目前篩選的方案全數加入</button><a href="#search">回第一頁調整篩選 →</a></div></div>
 <div id="timeline-workspace">
-<div class="range-controls"><label for="personal-range-mode">時間範圍 <select id="personal-range-mode"><option value="recent">今天前後90天</option><option value="fit">涵蓋選項的已知日期</option></select></label><span class="today-label" id="personal-today"></span><button class="secondary" id="personal-return-today" type="button">回到今天</button></div>
-<p class="tiny quiet" id="personal-chart-range"></p>
+<div class="range-controls"><label for="personal-range-mode">時間範圍 <select id="personal-range-mode"><option value="recent">今天前後90天</option><option value="fit">涵蓋選項的已知日期</option></select></label><span class="today-label" id="personal-today"></span><p class="tiny quiet" id="personal-chart-range"></p><button class="secondary" id="personal-return-today" type="button">回到今天</button></div>
+<details class="chart-legend"><summary><span>圖例</span></summary>
 <div aria-label="個人時間軸圖例" class="gantt-legend"><span class="legend-item">▱ 淺色底帶：往年參考／估計（非官方受理）</span><span class="legend-item">─ 公告至截止流程（非申請期）</span><span class="legend-item"><i aria-hidden="true" class="legend-bar"></i>申請期間</span><span class="legend-item"><i aria-hidden="true" class="legend-inferred"></i>推定受理起日</span><span class="legend-item"><i aria-hidden="true" class="legend-prep-window"></i>準備提醒期（截止前30天）</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond expected"></i>預定結果</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond"></i>結果公布</span><span class="legend-item"><i aria-hidden="true" class="legend-square"></i>其他程序</span><span class="legend-item">▱ 個人準備建議／空心節點待核</span><span class="legend-item"><i aria-hidden="true" class="legend-today"></i>今天</span></div>
+</details>
 <div aria-label="使用中選項的時間軸，可水平捲動" class="gantt-scroll" role="region" tabindex="0"><div class="gantt-grid" id="personal-gantt-grid"></div></div>
 <p class="prototype-hint">點選項目或節點可前往第二頁。缺日期保留待確認，不影響下方待辦。</p>
 <div class="section-title"><h3>我的專屬申請清單</h3><span class="result-meta" id="plan-count">已收錄 0 項方案</span></div>

@@ -830,8 +830,11 @@ function el(tag, cls, text) {
 }
 function axis(text,kind="") { return el("span","axis "+kind,text); }
 function updateNavHeight() {
- const height=Math.ceil(document.querySelector(".nav-wrap").getBoundingClientRect().height);
- document.documentElement.style.setProperty("--nav-height",height+"px");
+ const wrap=document.querySelector(".nav-wrap"), box=wrap.getBoundingClientRect();
+ // 標頭折行時只讓最下方的分頁列黏住，其餘隨頁面捲走，避免遮住內容。
+ const hidden=window.matchMedia("(max-width:1160px)").matches?Math.floor(document.querySelector(".nav-links").getBoundingClientRect().top-box.top):0;
+ wrap.style.top=-hidden+"px";
+ document.documentElement.style.setProperty("--nav-height",Math.ceil(box.height-hidden)+"px");
 }
 updateNavHeight();
 if(window.matchMedia("(max-width:800px)").matches)document.querySelector("#search .filter>details").open=false;
@@ -1007,7 +1010,7 @@ function timelineSummary(container,item){
   box.append(el("p","small",label+"："+b.start+"–"+b.end+"；參考"+b.sample_years.join("、")+"年，實際以當期公告為準。"));
  }
  if(!t.events.length)box.append(el("p","small","此參考年度尚無已讀取的當期地方公告；歷史底帶不代表已開放申請。"));
- const details=el("details");details.append(el("summary","來源資訊鏈（公告／辦法與格式）"));
+ const details=el("details");details.append(el("summary","","來源資訊鏈（公告／辦法與格式）"));
  const ids=new Set(t.documentIds);
  for(const r of chainData?.relations||[])if(ids.has(r.from))ids.add(r.to);
  for(const id of ids){
@@ -1046,7 +1049,7 @@ function radarSummary(container,item){
  if(missing.length)radarFact(container,missing.join("／"),null,item);
  container.append(radarLinks(item));
  if(item.relatedDocuments?.length){
-  const details=el("details");details.append(el("summary","相關公告／辦法（"+item.relatedDocuments.length+"份）"));
+  const details=el("details");details.append(el("summary","","相關公告／辦法（"+item.relatedDocuments.length+"份）"));
   for(const doc of item.relatedDocuments){const p=el("p","small");p.append(sourceLink(doc.title,item,doc.url));details.append(p);}container.append(details);
  }
 }
@@ -1613,6 +1616,13 @@ window.addEventListener("focus",refreshToday);
 window.addEventListener("resize",()=>{updateNavHeight();if(lastRange && view==="gantt" && !byId("search").hidden){const value=rangeMode==="fit"?timelineFocusValue(partitionItems(currentItems(),state).all):today;requestAnimationFrame(()=>centerToday(lastRange,"gantt-grid",value));}if(lastPersonalRange && !byId("timeline").hidden) requestAnimationFrame(()=>centerToday(lastPersonalRange,"personal-gantt-grid"));});
 for(const program of conferenceData.programs){const option=el("option","",program.title);option.value=program.id;byId("conference-program").append(option);}
 for(const ref of conferenceData.reference_sources){const row=el("p","small"),link=el("a","",ref.title+" ↗");link.href=ref.url;row.append(link,el("span","","："+ref.note));byId("conference-references").append(row);}
+byId("conference-toggle").addEventListener("click",()=>{
+ const planner=byId("conference-planner");planner.open=!planner.open;
+ if(planner.open){planner.scrollIntoView({behavior:"instant",block:"start"});byId("conference-program").focus({preventScroll:true});}
+});
+byId("conference-planner").addEventListener("toggle",event=>{
+ const toggle=byId("conference-toggle");toggle.setAttribute("aria-expanded",String(event.target.open));toggle.textContent=event.target.open?"收起研討會":"＋ 新增研討會";
+});
 byId("conference-planner").addEventListener("input",()=>{byId("conference-status").textContent="";renderConferencePlan();});
 byId("conference-program").addEventListener("change",renderConferencePlan);
 byId("conference-add").addEventListener("click",()=>{
@@ -1890,6 +1900,7 @@ const renderGuideStep = (tourKey, step) => {
     if (currentItem.action.anchor) {
      const anchorEl = byId(currentItem.action.anchor);
      if (anchorEl) {
+      if (anchorEl.tagName === "DETAILS") anchorEl.open = true;
       if (typeof anchorEl.scrollIntoView === "function") anchorEl.scrollIntoView({ behavior: "smooth", block: "start" });
       const firstFocus = anchorEl.querySelector ? anchorEl.querySelector("button, select, input") : null;
       if (firstFocus && typeof firstFocus.focus === "function") firstFocus.focus();
