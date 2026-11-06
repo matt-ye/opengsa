@@ -22,7 +22,7 @@ FEEDBACK = "https://github.com/matt-ye/opengsa/issues/new?template=preview-feedb
 
 
 def load_full_library(root=ROOT):
-    """Loads all 228 candidates across the 6 candidate bundles and combined observations."""
+    """Loads all 254 candidates across the 8 candidate bundles and combined observations."""
     read = lambda name: json.loads((Path(root) / "data" / name).read_text(encoding="utf-8"))
     bundle_files = [
         "candidates/source-review.json",
@@ -32,6 +32,7 @@ def load_full_library(root=ROOT):
         "candidates/medical-scholarships.json",
         "candidates/university-scholarships.json",
         "candidates/topology-discovered-scholarships.json",
+        "candidates/emergency-relief-aid.json",
     ]
     obs_files = [
         "temporal-observations.json",
@@ -41,6 +42,7 @@ def load_full_library(root=ROOT):
         "medical-temporal-observations.json",
         "university-temporal-observations.json",
         "topology-discovered-temporal-observations.json",
+        "emergency-relief-temporal-observations.json",
     ]
     all_cands = []
     for bf in bundle_files:
@@ -57,8 +59,8 @@ def load_full_library(root=ROOT):
 
     combined_bundle = {
         "schema_version": "1.1.0-candidate",
-        "generated_at": "2026-11-04T00:00:00Z",
-        "as_of": "2026-11-04",
+        "generated_at": "2026-11-06T00:00:00Z",
+        "as_of": "2026-11-06",
         "timezone": "Asia/Taipei",
         "model_enabled": False,
         "model_calls": 0,
@@ -67,7 +69,7 @@ def load_full_library(root=ROOT):
     }
     combined_obs = {
         "version": "temporal-replay-1",
-        "observed_at": "2026-11-04T00:00:00Z",
+        "observed_at": "2026-11-06T00:00:00Z",
         "http_requests": total_http,
         "model_calls": 0,
         "published": False,

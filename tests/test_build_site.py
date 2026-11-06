@@ -16,7 +16,7 @@ from scripts.build_site import load_full_library
 
 
 class SiteBuildTests(unittest.TestCase):
-    def test_all_236_temporal_projections_render_without_fabricated_coordinates(self):
+    def test_all_254_temporal_projections_render_without_fabricated_coordinates(self):
         soup=BeautifulSoup(self.html,'html.parser')
         payload={key:json.loads(soup.select_one('#'+tag).string) for key,tag in
             [('pilot','pilot-data'),('radar','radar-data')]}
@@ -25,7 +25,7 @@ const fs=require('node:fs'), assert=require('node:assert/strict');
 const core=require('./docs/design/prototype.js');
 const data=JSON.parse(fs.readFileSync(0,'utf8'));
 const items=core.makeDrafts(data.pilot,'2026-11-03',data.radar);
-assert.equal(items.length,236);
+assert.equal(items.length,254);
 for(const item of items){
  const mode=core.timePresentation(item);
  assert.ok(mode.label && !mode.label.includes('undefined'),item.id);
@@ -44,7 +44,7 @@ for(const state of ['open','closed','upcoming','unknown','not_applicable']){
  const actual=state==='upcoming'?'not_yet_open':state;
  assert.ok(core.filterItems(items,{application:state}).every(i=>i.rawState===actual));
 }
-console.log('236 items: temporal labels, geometry, ambiguous years, intake filters PASS');
+console.log('254 items: temporal labels, geometry, ambiguous years, intake filters PASS');
 '''
         result=subprocess.run(['node','-e',code],cwd=ROOT,input=json.dumps(payload,ensure_ascii=False),
             text=True,encoding='utf-8',capture_output=True)
@@ -73,13 +73,13 @@ console.log('236 items: temporal labels, geometry, ambiguous years, intake filte
         full_bundle, _ = load_full_library(ROOT)
         candidates = full_bundle['candidates']
         self.assertEqual({o['id'] for o in snapshot['opportunities']},{c['candidate_id'] for c in candidates})
-        self.assertEqual(len(snapshot['opportunities']), 236)
+        self.assertEqual(len(snapshot['opportunities']), 254)
         self.assertEqual(len(snapshot['opportunities']),len(candidates))
         self.assertTrue(all(o['review']['status']=='draft' for o in snapshot['opportunities']))
         self.assertIn('data-radar-view="true"',self.html)
         metadata=re.search(r'<script id="radar-data" type="application/json">(.*?)</script>',self.html,re.S)
         self.assertEqual(set(json.loads(metadata[1])['records']),{c['candidate_id'] for c in candidates})
-        self.assertEqual(len(json.loads(metadata[1])['records']), 236)
+        self.assertEqual(len(json.loads(metadata[1])['records']), 254)
         conferences = re.search(r'<script id="conference-data" type="application/json">(.*?)</script>', self.html, re.S)
         self.assertEqual(json.loads(conferences[1]), json.loads((ROOT / "data/conference-programs.json").read_text(encoding="utf-8")))
         self.assertIn('name="robots" content="noindex, nofollow"', self.html)
@@ -104,12 +104,14 @@ console.log('236 items: temporal labels, geometry, ambiguous years, intake filte
         tabs=header.select('[role="tab"]')
         self.assertEqual([t.get_text(strip=True) for t in tabs],['找獎助','獎助詳情','我的時間軸','權益與求助'])
         links=header.select('.header-actions a')
-        self.assertEqual([a.get_text(strip=True) for a in links],['提供回饋 ↗','提供獎助來源 ↗'])
-        for link,template in zip(links,['preview-feedback.yml','resource-source.yml']):
+        self.assertEqual([a.get_text(strip=True) for a in links],['提供回饋 ↗','提供獎助來源 ↗','⭐ GitHub Star ↗'])
+        for link,template in zip(links[:2],['preview-feedback.yml','resource-source.yml']):
             self.assertEqual(link['href'],'https://github.com/matt-ye/opengsa/issues/new?template='+template)
             self.assertTrue((ROOT/'.github/ISSUE_TEMPLATE'/template).is_file())
             self.assertIsNone(link.find_parent(attrs={'role':'tablist'}))
             self.assertEqual(link['target'],'_blank');self.assertIn('noopener',link['rel'])
+        self.assertEqual(links[2]['href'],'https://github.com/matt-ye/opengsa')
+        self.assertEqual(links[2]['target'],'_blank');self.assertIn('noopener',links[2]['rel'])
         rss_btn = header.select_one('.header-actions #rss-subscribe-btn')
         self.assertIsNotNone(rss_btn)
         self.assertEqual(rss_btn.get_text(strip=True), '📡 訂閱推播')
