@@ -1,6 +1,6 @@
 # GitHub Pages公開預覽
 
-2026-11-07使用者核可：公開網址改為 https://opengsa.mattye.dev/ （GitHub Pages自訂網域，DNS only），舊 github.io 網址由GitHub轉址；加入Cloudflare Web Analytics並整合至mattye.dev後台；維持noindex。取代下方2026-10-29「不修改DNS」之限制，該段保留為當時紀錄。
+2026-11-07使用者核可：公開網址改為 https://opengsa.mattye.dev/ （GitHub Pages自訂網域，經Cloudflare代理；.dev瀏覽器強制HTTPS，DNS only在憑證發出前會中斷，2026-11-07實測約一小時），舊 github.io 網址由GitHub轉址；加入Cloudflare Web Analytics並整合至mattye.dev後台；維持noindex。取代下方2026-10-29「不修改DNS」之限制，該段保留為當時紀錄。
 
 2026-11-01雷達版建置改讀19筆候選快照作可讀摘要，預設文件檢視，另可彙整13組方案；不把原候選標成人工核准。正式pilot與真人台帳不變，舊文「僅10筆來源草稿／合成預設」為歷史階段。未知與Issue回報規則見[RADAR-VIEW.md](RADAR-VIEW.md)。本版仍需PR合併與main部署後才生效。
 
