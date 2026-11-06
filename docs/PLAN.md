@@ -1,5 +1,26 @@
 # 目前計畫與已接受決策
 
+## 2026-11-06 全台學生急難救助金來源大盤點、資訊鏈拓撲與五步因應指南（PR #73）
+
+- **全台學生急難救助金資源大盤點**（[專題報告](EMERGENCY-RELIEF-FUNDS-EXPANSION-SURVEY.md)）：
+  - 響應使用者對突發家庭變故與學生急難救助金需求之觀察（參照 [`臺大學務處生輔組 HTML/118`](https://advisory.ntu.edu.tw/CMS/HTML/118)），補足庫中此類別之極度匱乏。
+  - 盤查 **25 項全台核心急難救助管道**（[`data/source-expansion/emergency-relief-sources.json`](../data/source-expansion/emergency-relief-sources.json)），涵蓋中央法定學產基金、公私立大專校院生輔組與主要慈善基金會。
+  - 梳理「**四層級立體防護網**」：第一層校內急難金 ➔ 第二層教育部學產基金 ➔ 第三層行天宮/富邦/慈濟基金會 ➔ 第四層衛福部急難紓困與公所社會課。
+  - 提出學生突遭變故之「**五步緊急應對指南與申辦攻防地圖**」（即時通報 ➔ 校內急難金 1~2 週速審 ➔ 轉報學產基金 ➔ 基金會轉介 ➔ 地方社會安全網）。
+- **結構化候選卡池與時間政策觀測落盤**：
+  - 產出 12 筆具指標性急難救助方案待審卡池：[`data/candidates/emergency-relief-aid.json`](../data/candidates/emergency-relief-aid.json)。
+  - 產出專屬時間觀測檔：[`data/emergency-relief-temporal-observations.json`](../data/emergency-relief-temporal-observations.json)，捕捉 `continuous` 隨到隨審與 `needs_event_date` 缺口。
+- **資訊鏈五節點拓撲閉環批次整合**：
+  - 建立 [`data/source-chain-batches/batch-emergency-relief.json`](../data/source-chain-batches/batch-emergency-relief.json)（60 份文件節點、48 條邊、12 條候選綁定），完整打通 Anchor ➔ Call ➔ Form ➔ Intake ➔ Result 五節點。
+  - 登記至批次總表 [`data/source-chain-batches/batch-registry.json`](../data/source-chain-batches/batch-registry.json)。
+- **前端搜尋同義詞強化與測試防線**：
+  - `docs/design/prototype.js` 擴充支援 `急難`、`急難救助`、`急難救助金`、`救助金`、`學產基金`、`緊急紓困`、`變故`、`emergency relief` 等關鍵字檢索。
+  - `tests/prototype.test.cjs` 擴展至 **66 項 PASS**。
+  - Python 單元測試維持 **282 項 PASS**。
+  - 守則遵循：新增 profile 標註 `"enabled": false`，模型 0，正式台帳 0 竄改。
+
+---
+
 ## 2026-11-06 甘特圖資訊卡浮動彈窗化、名稱導向修復與申請區無效勾選框清理（PR #72）
 
 - **甘特圖時程預覽卡浮動彈窗化（Modal Popover）與遮擋修復**（[詳細手冊](GANTT-INSPECTOR-MODAL-AND-TASK-CLEANUP.md)）：

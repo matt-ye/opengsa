@@ -1,0 +1,378 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-11-06T10:00:00+08:00",
+  "total_programs": 12,
+  "description": "全台公私立大專校院、中央法定學產基金與全國主要慈善基金會學生急難救助金來源大盤點清冊",
+  "tiers_count": {
+    "statutory_central": 3,
+    "national_university": 5,
+    "private_university": 2,
+    "civic_foundation": 2
+  },
+  "programs": [
+    {
+      "code": "EMER-001",
+      "name": "教育部學產基金設置急難慰問金",
+      "short_name": "教育部學產急難金",
+      "tier": "statutory_central",
+      "organization": "教育部國民及學前教育署",
+      "target_students": [
+        "preschool",
+        "elementary",
+        "junior_high",
+        "senior_high",
+        "vocational",
+        "undergraduate",
+        "master",
+        "phd"
+      ],
+      "source_url": "https://helpdreams.moe.edu.tw/Home/EmergencyAid",
+      "source_id": "moe-student-aid-emergency",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "學生本人身故 50,000 元；父母或監護人重傷 10,000 至 20,000 元；死亡 20,000 元；重大災害專案核給",
+      "deadline_rule": "重大變故或事實發生日起 3 個月內提出（各級學校初審後轉報）",
+      "qualifying_events": [
+        "學生本人重傷、身故",
+        "父母或主要生計者重大傷病、身故",
+        "重大天災水火受災致就學困難"
+      ],
+      "required_documents": [
+        "學產急難慰問金申請表",
+        "3個月內全戶戶籍謄本或新式戶口名簿",
+        "公私立醫院診斷證明書或重大傷病卡",
+        "死亡證明書或除戶謄本",
+        "受災證明書（村里長或消防機關開具）"
+      ],
+      "applicant_role": "由就讀學校學務處生輔組/導師代向教育部提報，不得向教育部直接送件"
+    },
+    {
+      "code": "EMER-002",
+      "name": "衛生福利部急難救助與弱勢急難紓困方案",
+      "short_name": "衛福部急難救助",
+      "tier": "statutory_central",
+      "organization": "衛生福利部社會救助及社工司",
+      "target_students": [
+        "undergraduate",
+        "master",
+        "phd",
+        "family"
+      ],
+      "source_url": "https://dep.mohw.gov.tw/dosw/cp-674-7221-115.html",
+      "source_id": "mohw-emergency-relief",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "急難救助 10,000 至 30,000 元，重大事故或通報急難紓困最高 50,000 元（地方公所訪視速核）",
+      "deadline_rule": "事實發生日起 3 個月內，向戶籍地或居住地公所社會課提出",
+      "qualifying_events": [
+        "負擔家庭主要生計者死亡、失蹤或罹患重傷病",
+        "非自願性失業無力負擔家庭基本生活與學費",
+        "其他遭遇重大變故致生活陷於絕境"
+      ],
+      "required_documents": [
+        "急難救助申請書",
+        "全戶全人口所得及財產證明",
+        "重大傷病卡或醫療診斷證明",
+        "非自願離職證明或重大變故切結書"
+      ],
+      "applicant_role": "學生本人或家庭成員向戶籍所在地或居住地鄉鎮市區公所申辦"
+    },
+    {
+      "code": "EMER-003",
+      "name": "勞動部職業災害勞工子女就學補助與生活急難救助",
+      "short_name": "勞動部職災急難金",
+      "tier": "statutory_central",
+      "organization": "勞動部職業安全衛生署",
+      "target_students": [
+        "senior_high",
+        "vocational",
+        "undergraduate",
+        "master",
+        "phd"
+      ],
+      "source_url": "https://laws.mol.gov.tw/FLAW/PrintFLAWDAT0202.aspx?id=FL077250",
+      "source_id": "mol-occupational-aid",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "職災就學補助公立大專 12,000 元、私立大專 29,000 元；重大職災生活急難慰問金最高 100,000 元",
+      "deadline_rule": "每學期定期受理（第一學期10月底，第二學期3月底），重大職災急難隨到隨辦",
+      "qualifying_events": [
+        "勞工遭遇職業災害致死亡或失能，其子女就讀國內公私立高中職、大專校院"
+      ],
+      "required_documents": [
+        "就學補助申請表",
+        "勞保職災認定給付證明",
+        "在學證明書",
+        "全戶最新各類所得資料"
+      ],
+      "applicant_role": "勞工本人或學生逕向勞動部或職安署各分署提出"
+    },
+    {
+      "code": "EMER-004",
+      "name": "國立臺灣大學學生急難救助金",
+      "short_name": "臺大學生急難金",
+      "tier": "national_university",
+      "organization": "國立臺灣大學學務處學生生活輔導組",
+      "target_students": [
+        "undergraduate",
+        "master",
+        "phd"
+      ],
+      "source_url": "https://advisory.ntu.edu.tw/CMS/HTML/118",
+      "source_id": "ntu-advisory-emergency",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "學生本人重病/意外 10,000 至 30,000 元；家計變故生活扶助 20,000 至 50,000 元；重大身故慰問金最高 100,000 元",
+      "deadline_rule": "事故發生日起 3 個月內，重大特殊事故經導師或輔導員訪視得專案簽核",
+      "qualifying_events": [
+        "學生在學期間發生傷病或意外事故",
+        "學生直系尊親屬或主要負擔家計者死亡或重大傷病",
+        "家庭突遭水火風災或其他不可抗力之重大變故"
+      ],
+      "required_documents": [
+        "急難救助申請書（經導師簽註意見）",
+        "公私立教學醫院合格診斷證明書",
+        "醫療收據正本或重大傷病卡影本",
+        "全戶戶籍謄本或新式戶口名簿",
+        "低收/中低收/家庭突發變故證明"
+      ],
+      "applicant_role": "學生向生輔組或各學院心輔專員/生輔承辦人提出，常態隨到隨審"
+    },
+    {
+      "code": "EMER-005",
+      "name": "國立清華大學學生急難救助金",
+      "short_name": "清大學生急難金",
+      "tier": "national_university",
+      "organization": "國立清華大學學務處生活輔導組",
+      "target_students": [
+        "undergraduate",
+        "master",
+        "phd"
+      ],
+      "source_url": "https://sa.site.nthu.edu.tw/",
+      "source_id": "nthu-sa-emergency",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "一般傷病急難 5,000 至 20,000 元；家庭變故或喪葬扶助 20,000 至 50,000 元；急難救助審議會專案審定",
+      "deadline_rule": "事實發生日起 3 個月內向生活輔導組提出",
+      "qualifying_events": [
+        "學生本人重傷病住院或意外受災",
+        "學生家庭遭逢重大事故致無力繳納學雜費生活費",
+        "主要經濟支柱亡故或重大傷病"
+      ],
+      "required_documents": [
+        "清華學生急難救助申請表",
+        "合格醫療機構診斷證明與自付費用單據",
+        "3個月內戶籍謄本",
+        "導師/指導教授訪視推薦表"
+      ],
+      "applicant_role": "學生或所屬系所系主任/導師代為向生輔組提請"
+    },
+    {
+      "code": "EMER-006",
+      "name": "國立成功大學學生急難救助金",
+      "short_name": "成大學生急難金",
+      "tier": "national_university",
+      "organization": "國立成功大學學務處學生生活輔導組",
+      "target_students": [
+        "undergraduate",
+        "master",
+        "phd"
+      ],
+      "source_url": "https://assistance-osa.ncku.edu.tw/",
+      "source_id": "ncku-osa-emergency",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "急難生活救助金 10,000 至 30,000 元；重大事故急難慰問金最高 50,000 元",
+      "deadline_rule": "重大事由發生日起 3 個月內向生輔組提出申請",
+      "qualifying_events": [
+        "學生本人遭遇意外傷害、重大疾病",
+        "家庭生計負擔者身故、罹患重病、非自願失業或失蹤",
+        "其他重大不可歸責之急難事故"
+      ],
+      "required_documents": [
+        "成大學生急難救助申請書",
+        "醫院診斷證明書與醫療費用單據",
+        "全戶戶籍謄本",
+        "國稅局最新綜合所得資料清單"
+      ],
+      "applicant_role": "由導師或系所輔導人員協助初核後送生輔組專案審查"
+    },
+    {
+      "code": "EMER-007",
+      "name": "國立陽明交通大學學生急難救助金",
+      "short_name": "陽明交大學生急難金",
+      "tier": "national_university",
+      "organization": "國立陽明交通大學學務處衛生保健組/生活輔導組",
+      "target_students": [
+        "undergraduate",
+        "master",
+        "phd"
+      ],
+      "source_url": "https://osa.nycu.edu.tw/",
+      "source_id": "nycu-osa-emergency",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "一般急難慰問 10,000 至 30,000 元；特別專案救助最高 60,000 元（校友及愛心捐款專戶）",
+      "deadline_rule": "事故發生日起 3 個月內提出（特殊個案經審議會得延長至6個月）",
+      "qualifying_events": [
+        "學生在學期間發生傷病需緊急醫療救助",
+        "家庭經濟支柱身故、重傷殘或遭重大災變",
+        "頓失經濟來源致學業中輟之虞"
+      ],
+      "required_documents": [
+        "陽明交大學生急難救助申請書",
+        "公私立教學醫院合格診斷證明書",
+        "全戶現戶戶籍謄本",
+        "急難變故具體佐證或切結書"
+      ],
+      "applicant_role": "向所屬校區生輔組窗口送件，經審核小組會議決議撥款"
+    },
+    {
+      "code": "EMER-008",
+      "name": "國立政治大學學生急難救助金",
+      "short_name": "政大學生急難金",
+      "tier": "national_university",
+      "organization": "國立政治大學學務處學生生活資源組",
+      "target_students": [
+        "undergraduate",
+        "master",
+        "phd"
+      ],
+      "source_url": "https://osa.nccu.edu.tw/",
+      "source_id": "nccu-osa-emergency",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "急難慰助金 10,000 至 40,000 元；特殊重大急難專案最高 80,000 元",
+      "deadline_rule": "事實發生日起 3 個月內提出",
+      "qualifying_events": [
+        "學生本人傷病住院或意外受災",
+        "學生家庭主要負擔者重大傷亡或家庭生計中斷",
+        "其他突發性嚴重影響生活與就學之變故"
+      ],
+      "required_documents": [
+        "政大學生急難慰助金申請表",
+        "醫院開具之診斷證明與收據",
+        "全戶戶籍謄本（記事不省略）",
+        "導師訪視輔導紀錄表"
+      ],
+      "applicant_role": "至政大學務處生資組送件，常態受理即時慰助"
+    },
+    {
+      "code": "EMER-009",
+      "name": "天主教輔仁大學學生急難救助金",
+      "short_name": "輔大學生急難金",
+      "tier": "private_university",
+      "organization": "天主教輔仁大學學務處學生生活輔導組",
+      "target_students": [
+        "undergraduate",
+        "master",
+        "phd"
+      ],
+      "source_url": "https://life.dsa.fju.edu.tw/",
+      "source_id": "fju-life-emergency",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "一般急難慰助 10,000 至 20,000 元；家庭重大變故扶助金 20,000 至 50,000 元",
+      "deadline_rule": "事故發生之日起 3 個月內提出",
+      "qualifying_events": [
+        "學生本人重傷病住院醫療",
+        "主要負擔家庭生計之父母重大傷亡、失業",
+        "重大天然災害或意外受創"
+      ],
+      "required_documents": [
+        "輔仁大學急難救助申請表",
+        "公私立區域醫院診斷證明書與醫療單據",
+        "3個月內全戶戶籍謄本",
+        "系教官或導師訪視輔導推薦表"
+      ],
+      "applicant_role": "至輔大學務處生輔組申辦，隨到隨審及時發放"
+    },
+    {
+      "code": "EMER-010",
+      "name": "淡江大學學生急難救助金",
+      "short_name": "淡江學生急難金",
+      "tier": "private_university",
+      "organization": "淡江大學學務處生活輔導組",
+      "target_students": [
+        "undergraduate",
+        "master",
+        "phd"
+      ],
+      "source_url": "https://spirit.tku.edu.tw/",
+      "source_id": "tku-spirit-emergency",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "急難救助 10,000 至 30,000 元，校友與各界善款專案最高 50,000 元",
+      "deadline_rule": "變故發生日起 3 個月內向生活輔導組提出",
+      "qualifying_events": [
+        "學生重大傷病或意外需緊急醫療支應",
+        "父母雙亡或主要生計負擔者亡故重病",
+        "家庭遭遇重大火災水災致無家可歸"
+      ],
+      "required_documents": [
+        "淡大學生急難救助申請表",
+        "診斷證明書正本與醫療收據",
+        "全戶戶口名簿影本",
+        "村里長或急難證明文件"
+      ],
+      "applicant_role": "經系導師及系主任簽註後送生輔組核定"
+    },
+    {
+      "code": "EMER-011",
+      "name": "財團法人行天宮文教發展基金會「行天宮學生急難濟助」",
+      "short_name": "行天宮學生急難濟助",
+      "tier": "civic_foundation",
+      "organization": "財團法人行天宮文教發展基金會",
+      "target_students": [
+        "elementary",
+        "junior_high",
+        "senior_high",
+        "vocational",
+        "undergraduate",
+        "master",
+        "phd"
+      ],
+      "source_url": "https://www.ht.org.tw/religion178.htm",
+      "source_id": "hsingtian-emergency-grant",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "學生就學急難濟助最高 30,000 至 50,000 元；家庭急難濟助 20,000 至 50,000 元；醫療急難依單據專案審核",
+      "deadline_rule": "重大變故發生之日起 6 個月內提出（常年受理，隨到隨審）",
+      "qualifying_events": [
+        "學生本人遭遇傷病意外需醫療救助",
+        "學生主要照顧者身故、重大傷病、非自願失業致家庭無經濟來源",
+        "家庭突遭重大災害致無法繼續就學"
+      ],
+      "required_documents": [
+        "行天宮急難濟助申請書（需學校用印或社工轉介）",
+        "3個月內全戶戶籍謄本（記事不可省略）",
+        "公私立醫院診斷證明書正本與醫療費用收據",
+        "死亡證明書或重大變故證明",
+        "低收/中低收/國稅局所得財產證明"
+      ],
+      "applicant_role": "一律由就讀學校學務處生輔組、輔導室或合格社會福利機構轉介申辦，不接受個人逕寄"
+    },
+    {
+      "code": "EMER-012",
+      "name": "財團法人富邦慈善基金會「急難救助學生專案」",
+      "short_name": "富邦急難救助專案",
+      "tier": "civic_foundation",
+      "organization": "財團法人富邦慈善基金會",
+      "target_students": [
+        "elementary",
+        "junior_high",
+        "senior_high",
+        "undergraduate",
+        "master",
+        "phd"
+      ],
+      "source_url": "https://www.fuboncharity.org.tw/",
+      "source_id": "fubon-emergency-aid",
+      "evidence_mode": "short_excerpt",
+      "relief_amount": "急難救助金 10,000 至 30,000 元；特殊重大急難專案最高 50,000 元",
+      "deadline_rule": "事故發生日起 3 個月內由學校轉介申請",
+      "qualifying_events": [
+        "學生本人重病、重大傷殘或突發重大意外",
+        "家庭生計主要負擔者重大傷亡失能，無力支付就學相關費用",
+        "天災地變家庭重創生活陷入絕境"
+      ],
+      "required_documents": [
+        "富邦慈善基金會急難救助轉介表",
+        "學校生輔組或社工師訪視評估報告",
+        "全戶戶籍謄本",
+        "醫療診斷書或重大災變證明文件"
+      ],
+      "applicant_role": "由就讀學校學務處生輔組或社工單位代為轉介申辦"
+    }
+  ]
+}

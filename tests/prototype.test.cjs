@@ -984,3 +984,20 @@ test("甘特圖名稱導向與申請區無效勾選框清理：提供查看詳�
  assert.ok(!js.includes('el("div","plan-tasks")'), "必須移除無用之 plan-tasks 容器");
  assert.ok(js.includes('✕ 從時間軸移除'), "申請清單卡片必須提供一鍵從時間軸移除按鈕");
 });
+
+
+test("搜尋擴充同義詞比對：搜尋急難救助／學產基金／緊急紓困精確命中生活與急難方案", () => {
+ const item = {
+  id: "cand-moe-student-aid-emergency",
+  title: "教育部學產基金設置急難慰問金",
+  category: "living_emergency",
+  programKey: "moe-student-aid-emergency"
+ };
+ assert.ok(core.itemMatchesQuery(item, "急難"), "搜尋急難應命中");
+ assert.ok(core.itemMatchesQuery(item, "急難救助"), "搜尋急難救助應命中");
+ assert.ok(core.itemMatchesQuery(item, "學產基金"), "搜尋學產基金應命中");
+ assert.ok(core.itemMatchesQuery(item, "緊急紓困"), "搜尋緊急紓困應命中");
+ assert.ok(core.itemMatchesQuery(item, "emergency relief"), "搜尋英文 emergency relief 應命中");
+ assert.ok(core.itemMatchesQuery(item, "救助金"), "搜尋救助金應命中");
+ assert.ok(core.itemMatchesQuery(item, "變故"), "搜尋變故應命中");
+});

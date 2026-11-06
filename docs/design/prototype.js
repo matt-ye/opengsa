@@ -330,7 +330,12 @@ function itemMatchesQuery(item, query) {
    (item.programKey && item.programKey.includes("perk")) ||
    (item.title && /perk|copilot|azure|aws|github|jetbrains|notion|figma|overleaf|matlab|autodesk|高鐵/i.test(item.title));
  const perkAliases = isPerk ? " perk perks 學生福利 學生優惠 教育版 免費軟體 雲端額度 算力 學生認證 sheerid unidays github pack" : "";
- const aliases = medAliases + confAliases + k12Aliases + perkAliases;
+ const isEmergency = item.category === "living_emergency" ||
+   (item.title && /急難|救助|慰問|紓困|學產/i.test(item.title)) ||
+   (item.id && /emergency|relief/i.test(item.id)) ||
+   (item.programKey && /emergency|relief/i.test(item.programKey));
+ const emergencyAliases = isEmergency ? " 急難 急難救助 急難救助金 救助金 慰問金 緊急紓困 學產基金 變故 傷病 emergency relief emergency aid 弱勢救助 生活救助" : "";
+ const aliases = medAliases + confAliases + k12Aliases + perkAliases + emergencyAliases;
  const catLabel = (typeof labels !== "undefined" && labels.category && labels.category[item.category]) || "";
  const srcLabel = (typeof labels !== "undefined" && labels.source && labels.source[item.source]) || "";
  const haystack = (item.title + " " + item.id + " " + (item.cycle||"") + " " + (item.scope||"") + " " + catLabel + " " + srcLabel + aliases).toLocaleLowerCase();

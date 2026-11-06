@@ -1,0 +1,472 @@
+{
+  "version": "temporal-replay-1",
+  "http_requests": 0,
+  "model_calls": 0,
+  "published": false,
+  "batches": [
+    {
+      "http_requests": 0,
+      "attempted_urls": [],
+      "observed_at": "2026-11-06T10:00:00Z",
+      "track": "living_emergency"
+    }
+  ],
+  "records": {
+    "cand-moe-student-aid-emergency": {
+      "candidate_sha256": "b40ea2d481f162b0f93d6a90ff71544aed034d8089d05f3ffd1b2fb6de2c80df",
+      "url": "https://helpdreams.moe.edu.tw/Home/EmergencyAid",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "df2c8c1f2ba037d88950d8fb8d54c6b28fa1bfcb26997163aa9368ed4bc6389b",
+      "revision_id": "df2c8c1f2ba037d88950d8fb8d54c6b28fa1bfcb26997163aa9368ed4bc6389b",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "事實發生日起3個月內由學校轉報",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "moe-student-aid-emergency",
+                "revision_id": "df2c8c1f2ba037d88950d8fb8d54c6b28fa1bfcb26997163aa9368ed4bc6389b",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    },
+    "cand-mohw-emergency-relief": {
+      "candidate_sha256": "f7c13d7d0cea4cd3f5b6dd852647b849bd7a2e4b0287ad727500a1698da7588b",
+      "url": "https://dep.mohw.gov.tw/dosw/cp-674-7221-115.html",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "1a07199527852bb466f6ffac2b4651d2028eee55221ee33c6e3e1d573e429fef",
+      "revision_id": "1a07199527852bb466f6ffac2b4651d2028eee55221ee33c6e3e1d573e429fef",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "事實發生日起3個月內向戶籍地公所提出",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "mohw-emergency-relief",
+                "revision_id": "1a07199527852bb466f6ffac2b4651d2028eee55221ee33c6e3e1d573e429fef",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    },
+    "cand-ntu-emergency-aid": {
+      "candidate_sha256": "7c2c54879fb2bbbd4271b335b4fdbe750da41dc365988f33aef7f8086499db0e",
+      "url": "https://advisory.ntu.edu.tw/CMS/HTML/118",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "2dd615fca1a9443edf3231e65bebca81b1ef2330873ba6aece51a3e555797f84",
+      "revision_id": "2dd615fca1a9443edf3231e65bebca81b1ef2330873ba6aece51a3e555797f84",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "事故發生日起3個月內向生輔組提出",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "ntu-advisory-emergency",
+                "revision_id": "2dd615fca1a9443edf3231e65bebca81b1ef2330873ba6aece51a3e555797f84",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    },
+    "cand-nthu-emergency-relief": {
+      "candidate_sha256": "6b0ffaf242a512c01df37e0cf88cebbd304a457e59fdda74417cf04c2885bfda",
+      "url": "https://sa.site.nthu.edu.tw/",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "77dee307c405ce91c088bedf664814ce90960f906e2cff33a519e363f5daaa58",
+      "revision_id": "77dee307c405ce91c088bedf664814ce90960f906e2cff33a519e363f5daaa58",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "事實發生日起3個月內向生活輔導組提出",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "nthu-sa-emergency",
+                "revision_id": "77dee307c405ce91c088bedf664814ce90960f906e2cff33a519e363f5daaa58",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    },
+    "cand-ncku-emergency-aid": {
+      "candidate_sha256": "903e8ac46f6a134b477c8bab574f665151abc048a65ebe8f7f32c35adfdfadee",
+      "url": "https://assistance-osa.ncku.edu.tw/",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "bcc70c224331d78acbe89b95c55334cb7879ff0afc0384ea8cab6b4975ab06d3",
+      "revision_id": "bcc70c224331d78acbe89b95c55334cb7879ff0afc0384ea8cab6b4975ab06d3",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "事由發生日起3個月內向生輔組提出",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "ncku-osa-emergency",
+                "revision_id": "bcc70c224331d78acbe89b95c55334cb7879ff0afc0384ea8cab6b4975ab06d3",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    },
+    "cand-nycu-emergency-relief": {
+      "candidate_sha256": "e5d9850acde6ec0ad677a455f5071610dd01a8cd709bd8bda693524ab9350215",
+      "url": "https://osa.nycu.edu.tw/",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "9a15122b6071b3983d8b1933ecaf28636903016230c4b829b67473df58bc5149",
+      "revision_id": "9a15122b6071b3983d8b1933ecaf28636903016230c4b829b67473df58bc5149",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "事故發生日起3個月內提出",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "nycu-osa-emergency",
+                "revision_id": "9a15122b6071b3983d8b1933ecaf28636903016230c4b829b67473df58bc5149",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    },
+    "cand-nccu-emergency-aid": {
+      "candidate_sha256": "be0a46a706a13662306c514dfa247d5294825e1a5eef159641c008a11513716f",
+      "url": "https://osa.nccu.edu.tw/",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "fbc7c84c0db013c0db12365e51b222deb3b8e448a27420f75f7adb2f6ef4d92a",
+      "revision_id": "fbc7c84c0db013c0db12365e51b222deb3b8e448a27420f75f7adb2f6ef4d92a",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "事實發生日起3個月內向生資組提出",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "nccu-osa-emergency",
+                "revision_id": "fbc7c84c0db013c0db12365e51b222deb3b8e448a27420f75f7adb2f6ef4d92a",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    },
+    "cand-fju-emergency-relief": {
+      "candidate_sha256": "6e15b6576cee4592fd591ab8d4496ae89d8d3619852f4c2599ecf4a77e3a7402",
+      "url": "https://life.dsa.fju.edu.tw/",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "774af52be0bbc5d856a14b6d31a09ea65c862dcb8a2fabb00ca18f3581fb0fce",
+      "revision_id": "774af52be0bbc5d856a14b6d31a09ea65c862dcb8a2fabb00ca18f3581fb0fce",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "事故發生之日起3個月內提出",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "fju-life-emergency",
+                "revision_id": "774af52be0bbc5d856a14b6d31a09ea65c862dcb8a2fabb00ca18f3581fb0fce",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    },
+    "cand-tku-emergency-aid": {
+      "candidate_sha256": "79e0e6af5135545f2e9c226d7e7326370512bd19a9a8961e0c697130073c6ef4",
+      "url": "https://spirit.tku.edu.tw/",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "9f60b603ff3fdf1e7579b43cd2207e28f032d5b15b17f63f4aa36702db36066c",
+      "revision_id": "9f60b603ff3fdf1e7579b43cd2207e28f032d5b15b17f63f4aa36702db36066c",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "變故發生日起3個月內向生輔組提出",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "tku-spirit-emergency",
+                "revision_id": "9f60b603ff3fdf1e7579b43cd2207e28f032d5b15b17f63f4aa36702db36066c",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    },
+    "cand-hsingtian-emergency-grant": {
+      "candidate_sha256": "50a611b2f0029d45c1c0a6fdad596fc96b2b0ee80fb175b77595dfddbd1b4a2f",
+      "url": "https://www.ht.org.tw/religion178.htm",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "89a1bb21aa92c371b27e78d6672a23da04f39a4b32dc527a19c7143d1758e4ae",
+      "revision_id": "89a1bb21aa92c371b27e78d6672a23da04f39a4b32dc527a19c7143d1758e4ae",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "重大變故發生日起6個月內由學校轉介申請",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "hsingtian-emergency-grant",
+                "revision_id": "89a1bb21aa92c371b27e78d6672a23da04f39a4b32dc527a19c7143d1758e4ae",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    },
+    "cand-fubon-emergency-aid": {
+      "candidate_sha256": "e2cadb559b814a86e02495460226fa32900f2e06405056976b6ccbf7f244aa86",
+      "url": "https://www.fuboncharity.org.tw/",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "3c7fca65b3024a79f06e0921228200df9a3590314eda0b01b2a5de05ede07176",
+      "revision_id": "3c7fca65b3024a79f06e0921228200df9a3590314eda0b01b2a5de05ede07176",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "事故發生日起3個月內由學校生輔組轉介",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "fubon-emergency-aid",
+                "revision_id": "3c7fca65b3024a79f06e0921228200df9a3590314eda0b01b2a5de05ede07176",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    },
+    "cand-tzuchi-emergency-relief": {
+      "candidate_sha256": "baa70adeb3347362f338929023e31cb4e2fd9437c3065cbff79a2fe232fc532e",
+      "url": "https://www.tzuchi.org.tw/",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-06T10:00:00Z",
+      "raw_sha256": "3aad5db27219e1213a655c80c8cc50fab419eb483d16e9885f9cc23c739471b5",
+      "revision_id": "3aad5db27219e1213a655c80c8cc50fab419eb483d16e9885f9cc23c739471b5",
+      "format": "html",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "continuous",
+        "review_mode": "case_by_case",
+        "rules": [
+          {
+            "rule_id": "schedule.steps/0/deadline",
+            "kind": "continuous",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "常年受理，隨報隨訪即時援助",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "tzuchi-emergency-relief",
+                "revision_id": "3aad5db27219e1213a655c80c8cc50fab419eb483d16e9885f9cc23c739471b5",
+                "locator": "期限條款",
+                "evidence_path": "schedule.steps/0/deadline"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "needs_event_date"
+        ]
+      }
+    }
+  }
+}
