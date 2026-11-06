@@ -30,7 +30,7 @@ class RSSFeedTests(unittest.TestCase):
         cls.temp_dir.cleanup()
 
     def test_main_feed_structure_and_coverage(self):
-        """Verifies that feed.xml is valid RSS 2.0 and covers all 236 schemes."""
+        """Verifies that feed.xml is valid RSS 2.0 and covers all 254 schemes."""
         self.assertTrue(self.main_file.exists())
         tree = ET.parse(self.main_file)
         root = tree.getroot()
@@ -47,7 +47,7 @@ class RSSFeedTests(unittest.TestCase):
         self.assertIsInstance(parsed_build_date, datetime)
 
         items = channel.findall("item")
-        self.assertEqual(len(items), 236, "All 236 candidates must be present in the main feed")
+        self.assertEqual(len(items), 254, "All 254 candidates must be present in the main feed")
 
         for item in items:
             title = item.find("title").text
@@ -80,7 +80,7 @@ class RSSFeedTests(unittest.TestCase):
 
         items = channel.findall("item")
         self.assertGreater(len(items), 0, "Must contain items with confirmed deadlines")
-        self.assertLessEqual(len(items), 236)
+        self.assertLessEqual(len(items), 254)
 
         for item in items:
             title = item.find("title").text
