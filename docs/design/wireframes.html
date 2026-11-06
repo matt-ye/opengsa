@@ -471,13 +471,16 @@ footer p{margin:0}
 }
 @media(max-width:1100px){
  #search .layout{grid-template-columns:minmax(0,1fr);gap:14px}
- #persona-bar{grid-template-columns:repeat(4,minmax(0,1fr))}
- .persona-tile{flex-direction:row;align-items:center;text-align:left}
  .filter-fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 12px}
  .filter-fields>.tiny,.filter .checkbox-label{grid-column:1/-1;order:1}
  #search .gantt-scroll{max-height:calc(100vh - var(--nav-height,60px) - 24px);max-height:calc(100dvh - var(--nav-height,60px) - 24px);min-height:360px}
 }
+@media(max-width:900px){
+ #persona-bar{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .persona-tile{flex-direction:row;align-items:center;text-align:left}
+}
 @media(max-width:800px){
+ .legend-panel{max-height:40vh;max-height:40dvh}
  .filter-fields{grid-template-columns:repeat(2,minmax(0,1fr))}
  #results-panel .chart-heading{display:flex;flex:1 1 100%}
  .chart-header .searchbar{order:1;flex:1 1 100%}
@@ -486,7 +489,7 @@ footer p{margin:0}
  .chart-header .searchbar input{font-size:16px}
 }
 @media(max-width:640px){#persona-bar{grid-template-columns:repeat(2,minmax(0,1fr))}.persona-tile{padding:8px}}
-@media(max-width:500px){.header-actions{width:100%;justify-content:flex-start}}
+@media(max-width:500px){.header-actions{width:100%;justify-content:flex-start}.nav-links [role=tab]{min-height:36px}}
 
 </style>
 </head>

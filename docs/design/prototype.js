@@ -837,7 +837,7 @@ function updateNavHeight() {
  document.documentElement.style.setProperty("--nav-height",Math.ceil(box.height-hidden)+"px");
 }
 updateNavHeight();
-if(window.matchMedia("(max-width:800px)").matches)document.querySelector("#search .filter>details").open=false;
+if(window.matchMedia("(max-width:1100px)").matches)document.querySelector("#search .filter>details").open=false;
 if(typeof ResizeObserver!=="undefined") new ResizeObserver(updateNavHeight).observe(document.querySelector(".nav-wrap"));
 function renderConferencePlan() {
  const output=byId("conference-output"), start=byId("conference-start").value, notice=byId("conference-notice").value;
