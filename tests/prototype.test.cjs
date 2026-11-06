@@ -946,3 +946,41 @@ test("RWD 響應式優化與甘特圖 64px 緊湊防線：消除底部死空白�
  assert.ok(html.includes('value="timeline"'));
  assert.ok(html.includes('value="rights"'));
 });
+
+test("甘特圖資訊卡浮動彈窗與關閉機制：在甘特圖上跳出、點按遮罩/按鈕/Esc可關閉，不遮擋排版", () => {
+ const html = fs.readFileSync("docs/design/wireframes.html", "utf-8");
+ const js = fs.readFileSync("docs/design/prototype.js", "utf-8");
+
+ // 1. wireframes.html 語意與樣式
+ assert.ok(html.includes('id="inspect-backdrop"'), "必須包含浮動資訊卡之遮罩層 #inspect-backdrop");
+ assert.ok(html.includes('id="schedule-inspect" role="dialog" aria-modal="true"'), "時程預覽卡必須具備 dialog 語意與 aria-modal");
+ assert.ok(html.includes(".inspect-close-btn"), "必須包含關閉按鈕樣式");
+ assert.ok(html.includes(".inspect-backdrop"), "必須包含遮罩層樣式");
+ assert.ok(html.includes("position:fixed;top:50%;left:50%;transform:translate(-50%,-50%)"), "資訊卡必須居中浮動於甘特圖上方，不擠壓版面");
+
+ // 2. prototype.js 互動行為
+ assert.ok(typeof core.closeInspect === "function", "必須匯出 closeInspect 關閉函式");
+ assert.ok(js.includes('btn-inspect-detail'), "浮動卡必須包含前往詳情按鈕");
+ assert.ok(js.includes('btn-inspect-dismiss'), "浮動卡必須包含關閉預覽按鈕");
+ assert.ok(js.includes('inspectCloseBtn'), "關閉按鈕必須綁定關閉事件");
+ assert.ok(js.includes('inspectBackdrop.addEventListener("click", closeInspect)'), "點擊遮罩必須關閉浮動卡片");
+ assert.ok(!js.includes('box.scrollIntoView({behavior:"instant",block:"start"})'), "開啟預覽卡片時絕對不得觸發 scrollIntoView 造成頁面跳動");
+});
+
+test("甘特圖名稱導向與申請區無效勾選框清理：提供查看詳情超連結、移除Tab 3無作用checkbox", () => {
+ const html = fs.readFileSync("docs/design/wireframes.html", "utf-8");
+ const js = fs.readFileSync("docs/design/prototype.js", "utf-8");
+
+ // 1. 甘特圖名稱導向
+ assert.ok(html.includes(".gantt-detail-link"), "甘特圖標籤欄必須包含直達詳情連結樣式");
+ assert.ok(js.includes('el("a","gantt-detail-link","查看詳情 →")'), "甘特圖項目旁必須提供查看詳情直達連結");
+ assert.ok(js.includes('titleLink.href="#detail"'), "預覽卡標題必須連結至 #detail");
+
+ // 2. 申請區無效 checkbox 清理
+ assert.ok(!html.includes('id="plan-progress"'), "必須移除無效待辦進度條 id=plan-progress");
+ assert.ok(html.includes('id="plan-count"'), "申請區標題應改為已收錄方案計數器 id=plan-count");
+ assert.ok(!js.includes('["核對申請資格","確認學生收件時間","整理申請文件"]'), "必須徹底移除無作用之三項核對勾選清單");
+ assert.ok(!js.includes('["核對使用條件","確認開通／領取程序"]'), "必須徹底移除無作用之 N/A 勾選清單");
+ assert.ok(!js.includes('el("div","plan-tasks")'), "必須移除無用之 plan-tasks 容器");
+ assert.ok(js.includes('✕ 從時間軸移除'), "申請清單卡片必須提供一鍵從時間軸移除按鈕");
+});

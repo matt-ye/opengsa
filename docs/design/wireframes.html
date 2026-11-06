@@ -106,8 +106,25 @@ button:focus-visible,select:focus-visible,input:focus-visible,.gantt-scroll:focu
 .gantt-wait{position:absolute;top:27px;border-top:2px dashed #9cafbd;z-index:1}
 .gantt-notes{position:absolute;top:44px;left:8px;right:8px;font-size:10px;color:var(--muted);line-height:1.4}
 #gantt-view{min-width:0}
-#schedule-inspect{border-left:3px solid #416a9f;margin-top:16px;position:relative;z-index:2;scroll-margin-top:calc(var(--nav-height,104px) + 12px)}
+.inspect-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.5);backdrop-filter:blur(3px);z-index:120;animation:inspect-fade .15s ease-out}
+#schedule-inspect{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:125;max-width:640px;width:calc(100% - 32px);max-height:85vh;max-height:85dvh;overflow-y:auto;background:var(--white);border:2px solid var(--forest);border-radius:16px;box-shadow:0 24px 60px rgba(15,23,42,.3);padding:24px 26px;margin:0;animation:inspect-pop-in .18s ease-out}
 #schedule-inspect p{margin:8px 0}
+@keyframes inspect-pop-in{from{opacity:0;transform:translate(-50%,-46%) scale(0.96)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes inspect-fade{from{opacity:0}to{opacity:1}}
+.inspect-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:14px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.inspect-header-content{display:flex;flex-direction:column;gap:4px;min-width:0}
+.inspect-header-content .section-badge{display:inline-block;font-size:11px;font-weight:700;color:var(--rust);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+.inspect-title-link{font-size:18px;font-weight:700;color:var(--forest);text-decoration:none;line-height:1.4;overflow-wrap:anywhere}
+.inspect-title-link:hover{text-decoration:underline;color:#1b3c33}
+.inspect-close-btn{background:transparent;border:0;font-size:22px;line-height:1;color:var(--muted);cursor:pointer;padding:4px 8px;border-radius:6px;transition:all .15s;flex-shrink:0}
+.inspect-close-btn:hover{background:var(--paper);color:var(--ink)}
+.inspect-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.btn-inspect-detail{background:var(--forest);color:#fff;border:1px solid var(--forest);border-radius:7px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;transition:background .15s}
+.btn-inspect-detail:hover{background:#1b3c33}
+.btn-inspect-dismiss{background:var(--paper);border:1px solid var(--line);color:var(--ink);padding:9px 16px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer}
+.btn-inspect-dismiss:hover{background:#e5eae3}
+.gantt-detail-link{font-size:11px;color:var(--forest);font-weight:600;text-decoration:underline;text-underline-offset:2px;display:inline-block;margin-top:2px;white-space:nowrap}
+.gantt-detail-link:hover{color:#1b3c33;text-decoration-thickness:2px}
 #dates-table{margin-top:16px}
 #dates-table summary{cursor:pointer;font-size:13px;font-weight:700}
 .table-scroll{overflow:auto;margin-top:10px;border:1px solid var(--line);border-radius:8px}
@@ -479,7 +496,8 @@ html{scroll-behavior:smooth}
 <div class="panel" hidden="" id="empty-results"><p>沒有符合目前條件的項目。</p><button class="secondary" id="empty-reset" type="button">清除篩選，查看全部</button></div>
 <p class="chart-foot">系所時程僅為範例；往年／估計區間供準備參考。實際資格、申請起訖與程序，以所屬系所及主辦單位最新公告為準。</p>
 </section>
-<aside aria-label="選取項目的時程摘要" aria-live="polite" class="panel" hidden="" id="schedule-inspect"></aside>
+<div id="inspect-backdrop" class="inspect-backdrop" hidden></div>
+<aside aria-label="選取項目的時程摘要" aria-live="polite" class="panel inspect-dialog" hidden="" id="schedule-inspect" role="dialog" aria-modal="true"></aside>
 <details id="dates-table"><summary>查看文字日期與規則表</summary><div class="table-scroll" role="region" tabindex="0" aria-label="獎助日期與時間規則，可水平捲動"><table><caption class="tiny quiet">與目前篩選同步；規則依角色分列，沒有確定日期時保留規則文字。</caption><thead><tr><th scope="col">獎助項目</th><th scope="col">申請開始</th><th scope="col">學生截止</th><th scope="col">結果公布</th><th scope="col">其他程序</th><th scope="col">時間類型／規則</th></tr></thead><tbody id="date-rows"></tbody></table></div></details>
 </div>
 </div>
@@ -513,8 +531,7 @@ html{scroll-behavior:smooth}
 <div aria-label="個人時間軸圖例" class="gantt-legend"><span class="legend-item">▱ 淺色底帶：往年參考／估計（非官方受理）</span><span class="legend-item">─ 公告至截止流程（非申請期）</span><span class="legend-item"><i aria-hidden="true" class="legend-bar"></i>申請期間</span><span class="legend-item"><i aria-hidden="true" class="legend-inferred"></i>推定受理起日</span><span class="legend-item"><i aria-hidden="true" class="legend-prep-window"></i>準備提醒期（截止前30天）</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond expected"></i>預定結果</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond"></i>結果公布</span><span class="legend-item"><i aria-hidden="true" class="legend-square"></i>其他程序</span><span class="legend-item">▱ 個人準備建議／空心節點待核</span><span class="legend-item"><i aria-hidden="true" class="legend-today"></i>今天</span></div>
 <div aria-label="使用中選項的時間軸，可水平捲動" class="gantt-scroll" role="region" tabindex="0"><div class="gantt-grid" id="personal-gantt-grid"></div></div>
 <p class="prototype-hint">點選項目或節點可前往第二頁。缺日期保留待確認，不影響下方待辦。</p>
-<div class="section-title"><h3>申請清單與準備待辦</h3><div class="plan-progress" id="plan-progress">已準備 0 項</div></div>
-<p class="tiny quiet">待辦進度僅暫存於本次瀏覽（重整後重設，不外傳任何個人紀錄）。</p>
+<div class="section-title"><h3>我的專屬申請清單</h3><span class="result-meta" id="plan-count">已收錄 0 項方案</span></div>
 <div class="cards" id="plan-options"></div>
 </div>
 </section>

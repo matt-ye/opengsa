@@ -783,7 +783,7 @@ function evaluateSubordination(checks={}){
  if(score===1) return {score:1,level:"review_needed",recommendedTiers:["TIER 01","TIER 02"],disclaimer,summary:"已勾選 1 項指標：具部分從屬或學習分流爭點。建議核對勞動部指導原則第 2～4 點及書面協議，確認工時與給付是否相符（2026 最低時薪 196 元）；必要時洽 TIER 01 系院或 TIER 02 校級窗口釐清。"+disclaimer};
  return {score,level:"high_subordination",recommendedTiers:["TIER 02","TIER 04","TIER 05"],disclaimer,summary:"已勾選 "+score+" 項指標：高度呈現人格、經濟或組織從屬性（常見「假學習真勞動」爭點）。依勞動部指導原則實質認定原則，若受指揮監督並提供勞務獲取對價，不能只按給付名稱排除適用保障；勞基法、2026最低工資與退休金須分別依關係、身分及進用依據確認。建議參考下方 TIER 02 校內申訴、TIER 04（地方主管機關勞檢／勞工局調解）或 TIER 05 高教工會。"+disclaimer};
 }
-const api={subTours,guideStepTitles,dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,timePresentation,windowState,filterItems,partitionItems,clarity,groupDocuments,issueUrl,officialUrl,UNKNOWN_LABEL,unknownValue,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination,isNA,fieldText,resultText,methodText,startLabel,deadlineText,applyTimeline,timelineDates,itemMatchesQuery,parseUrlParams,serializeStateToParams};
+const api={closeInspect,subTours,guideStepTitles,dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,timePresentation,windowState,filterItems,partitionItems,clarity,groupDocuments,issueUrl,officialUrl,UNKNOWN_LABEL,unknownValue,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination,isNA,fieldText,resultText,methodText,startLabel,deadlineText,applyTimeline,timelineDates,itemMatchesQuery,parseUrlParams,serializeStateToParams};
 if(typeof module!=="undefined" && module.exports) module.exports=api;
 if(typeof document==="undefined") return;
 
@@ -1069,10 +1069,36 @@ function renderTimePolicy(container,item,expanded=false){
  }
  container.append(box);
 }
+function closeInspect() {
+ const box=byId("schedule-inspect");
+ if(box) box.hidden=true;
+ const backdrop=byId("inspect-backdrop");
+ if(backdrop) backdrop.hidden=true;
+ inspectedId=null;
+}
 function inspect(item) {
  inspectedId=item.id;
  const box=byId("schedule-inspect");box.replaceChildren();
- box.append(el("strong","",item.title));
+ 
+ const header=el("div","inspect-header");
+ const headerContent=el("div","inspect-header-content");
+ headerContent.append(el("span","section-badge","時程與方案摘要預覽"));
+ const titleLink=el("a","inspect-title-link",item.title+" ↗");
+ titleLink.href="#detail";
+ titleLink.title="前往《"+item.title+"》完整說明頁面";
+ titleLink.addEventListener("click",(e)=>{
+  e.preventDefault();
+  closeInspect();
+  chooseAndOpen(item);
+ });
+ headerContent.append(titleLink);
+ const inspectCloseBtn=el("button","inspect-close-btn","✕");
+ inspectCloseBtn.type="button";
+ inspectCloseBtn.setAttribute("aria-label","關閉時程預覽卡片");
+ inspectCloseBtn.addEventListener("click",closeInspect);
+ header.append(headerContent,inspectCloseBtn);
+ box.append(header);
+
  timelineSummary(box,item);
  renderTimePolicy(box,item,true);
  if(!item.timePolicy?.rules?.length){
@@ -1083,14 +1109,25 @@ function inspect(item) {
  item.milestones.forEach(m=>box.append(el("p","small",m.label+"："+dateText(m.value))));
  box.append(el("p","tiny quiet",item.synthetic?"合成排程，全部為虛構日期。":item.note));
  box.append(radarLinks(item));
- const more=el("button","secondary",picked[mode].has(item.id)?"查看詳情":"勾選並看詳情");more.type="button";more.dataset.openDetail=item.id;
- more.addEventListener("click",()=>chooseAndOpen(item));box.append(more);
- const wasHidden=box.hidden;
+
+ const actions=el("div","inspect-actions");
+ const detailBtn=el("button","btn-inspect-detail secondary",picked[mode].has(item.id)?"📄 前往此獎學金說明頁面（看完整詳情）→":"⭐ 收藏並前往完整說明頁面 →");
+ detailBtn.type="button";
+ detailBtn.dataset.openDetail=item.id;
+ detailBtn.addEventListener("click",()=>{
+  closeInspect();
+  chooseAndOpen(item);
+ });
+ const dismissBtn=el("button","btn-inspect-dismiss","✕ 關閉預覽");
+ dismissBtn.type="button";
+ dismissBtn.addEventListener("click",closeInspect);
+ actions.append(detailBtn,dismissBtn);
+ box.append(actions);
+
  box.hidden=false;
- if(wasHidden && typeof box.getBoundingClientRect==="function"){
-  const rect=box.getBoundingClientRect();
-  if(rect.top<180 || rect.bottom>window.innerHeight) box.scrollIntoView({behavior:"instant",block:"start"});
- }
+ const backdrop=byId("inspect-backdrop");
+ if(backdrop) backdrop.hidden=false;
+ inspectCloseBtn.focus();
 }
 function pickControl(item,slot) {
  const label=el("label",slot==="gantt"?"row-pick":"item-pick");
@@ -1165,8 +1202,9 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
   if(exampleNote)row.title=exampleNote+" · "+timelinePhase(item.timeline.phase);
   const label=el("div","gantt-label");
   if(gridId==="gantt-grid") label.append(pickControl(item,"gantt"));
-  const button=el("button","row-title",item.title);button.type="button";button.addEventListener("click",()=>onInspect(item));
-  label.append(button,el("div","tiny quiet",labels.category[item.category]+" · "+labels.source[item.source]));
+  const button=el("button","row-title",item.title);button.type="button";button.title="點擊在甘特圖上查看時程預覽";button.addEventListener("click",()=>onInspect(item));
+  const detailLink=el("a","gantt-detail-link","查看詳情 →");detailLink.href="#detail";detailLink.title="直接前往《"+item.title+"》完整說明頁面";detailLink.addEventListener("click",(e)=>{e.preventDefault();chooseAndOpen(item);});
+  label.append(button,detailLink,el("div","tiny quiet",labels.category[item.category]+" · "+labels.source[item.source]));
   if(exampleNote)label.append(el("div","tiny quiet timeline-example",exampleNote+" · "+timelinePhase(item.timeline.phase)));
   const labelDateDesc = item.personal ? "學生期限："+deadlineText(item) : (item.start.certainty==="inferred"||item.end.certainty==="inferred"?"推定起訖：":"")+startLabel(item)+" → "+deadlineText(item);
   if(item.start.value||item.end.value)label.append(el("div","tiny quiet",labelDateDesc));
@@ -1443,32 +1481,31 @@ function drawPlan() {
  }
 
  const cards=byId("plan-options");cards.replaceChildren();
- let totalTasks = 0, completedTasks = 0;
  sharedItems.forEach(item=>{
-  const card=el("article","card"), button=el("button","plan-title",item.title);button.type="button";button.addEventListener("click",()=>openSharedDetail(item));card.append(button);
+  const card=el("article","card"), button=el("button","plan-title",item.title);button.type="button";button.title="點擊查看《"+item.title+"》完整說明";button.addEventListener("click",()=>openSharedDetail(item));card.append(button);
   radarSummary(card,item);
   radarFact(card,"結果公告",resultText(item),item);
   card.append(el("p","tiny quiet",item.synthetic?"合成資料，僅供規劃示範。":"來源摘要；未明欄位請直接核對原文。"));
-  const tasks=el("div","plan-tasks");
-  const taskList = isNA(item,"student_deadline")?["核對使用條件","確認開通／領取程序"]:["核對申請資格","確認學生收件時間","整理申請文件"];
-  taskList.forEach((text,index)=>{
-   totalTasks++;
-   const key=item.id+":"+index,label=el("label","task-item"),input=el("input");input.type="checkbox";input.checked=completed[mode].has(key);input.setAttribute("aria-label",item.title+"："+text);
-   if (input.checked) completedTasks++;
-   input.addEventListener("change",()=>{
-    if(input.checked) completed[mode].add(key);else completed[mode].delete(key);
-    updatePlanProgress();
-   });
-   label.append(input,el("span","",text));tasks.append(label);
-  });card.append(tasks);cards.append(card);
+  const actions=el("div","card-actions");
+  const detailBtn=el("button","secondary","📄 查看完整條文與說明");
+  detailBtn.type="button";
+  detailBtn.addEventListener("click",()=>openSharedDetail(item));
+  const removeBtn=el("button","secondary","✕ 從時間軸移除");
+  removeBtn.type="button";
+  removeBtn.addEventListener("click",()=>{
+   picked[mode].delete(item.id);
+   showGlobalToast("已從個人時程移除《"+item.title+"》");
+   renderWorkspace();
+  });
+  actions.append(detailBtn,removeBtn);
+  card.append(actions);
+  cards.append(card);
  });
 
- function updatePlanProgress() {
-  const done = Array.from(completed[mode]).length;
-  const prog = byId("plan-progress");
-  if (prog) prog.textContent = "已準備 " + done + " / " + totalTasks + " 項待辦";
+ const planCount = byId("plan-count");
+ if (planCount) {
+  planCount.textContent = "已收錄 " + sharedItems.length + " 項方案";
  }
- updatePlanProgress();
 
  if(!byId("timeline").hidden && sharedItems.length) requestAnimationFrame(()=>centerToday(range,"personal-gantt-grid"));
 }
@@ -1894,6 +1931,8 @@ if (guideTourSelect) {
 
 if (guideOpenBtn) guideOpenBtn.addEventListener("click", () => openGuide(activePanelId, 1));
 if (guideCloseBtn) guideCloseBtn.addEventListener("click", closeGuide);
+const inspectBackdrop = byId("inspect-backdrop");
+if (inspectBackdrop) inspectBackdrop.addEventListener("click", closeInspect);
 if (guideFinishBtn) guideFinishBtn.addEventListener("click", closeGuide);
 
 if (guidePrevBtn) guidePrevBtn.addEventListener("click", () => renderGuideStep(currentGuideTourKey, currentGuideStep - 1));
@@ -1948,6 +1987,11 @@ if (typeof window !== "undefined") {
 
   // Esc closes active dialogs
   if (event.key === "Escape") {
+   const inspectBox = byId("schedule-inspect");
+   if (inspectBox && !inspectBox.hidden) {
+    closeInspect();
+    return;
+   }
    if (guideDialog && guideDialog.open) {
     closeGuide();
     return;
