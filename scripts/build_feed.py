@@ -13,7 +13,7 @@ import json
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-SITE_URL = "https://matt-ye.github.io/opengsa/"
+SITE_URL = "https://opengsa.mattye.dev/"
 FEED_URL = f"{SITE_URL}feed.xml"
 DEADLINES_FEED_URL = f"{SITE_URL}feed-deadlines.xml"
 TAIPEI_TZ = timezone(timedelta(hours=8))

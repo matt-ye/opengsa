@@ -1,5 +1,7 @@
 # OpenGSA 工作規則
 
+- 2026-11-07最新核可：使用者決定公開網址改為opengsa.mattye.dev（GitHub Pages自訂網域），加入Cloudflare Web Analytics並整合至mattye.dev後台，維持noindex，由代理以瀏覽器操作DNS。Web Analytics為本次核可之新增第三方服務，範圍僅瀏覽量統計（`spa:false`），不擴及事件追蹤。RSS深層連結`?id=`修正另開PR。部署見docs/DEPLOYMENT.md。
+
 - 2026-11-03最新核可：使用者要求繼續，使用GitHub Secrets中的API，詢問／授權以Actions完成目前重整的時間萃取。新增既有workflow的手動temporal_replay操作；小批最多8來源／20源站HTTP／4推論，與上一輪200HTTP另列台帳。先測臺北／新竹等候選與台帳皆short_excerpt來源；hash_only（包含候選保守標記）不外送，不因key存在放寬。僅Groq既有免費帳戶政策及已確認模型能力可推論，其餘成本／能力未知只查目錄。模型意見獨立待審，不自動套用；排程維持off，不合併／部署。本輪另PR接PR44，PR34不動。
 
 - 本輪執行補充：初輪重讀發現多筆母頁只有附件入口，為完成使用者要求的時間重萃，加入有界附件追蹤，整輪上限由160調整為200HTTP（沿同一台帳累計，不歸零；微批20不變）。僅追同一公告的正式公告／辦法PDF，母頁與附件分別存hash／revision／URL／定位，不抓申請表、名冊或任意站外連結；附件失敗不冒稱時間完整。

@@ -654,7 +654,7 @@ html{scroll-behavior:smooth}
 <div class="dialog-header">
 <div>
 <h2 id="rss-dialog-title">📡 訂閱 OpenGSA 獎助更新</h2>
-<p class="dialog-subtitle">主動掌握全台大專與各教育階段獎學金、研究補助與截止提醒 · 零個資、無追蹤</p>
+<p class="dialog-subtitle">主動掌握全台大專與各教育階段獎學金、研究補助與截止提醒 · RSS 免帳號、零個資</p>
 </div>
 <button id="rss-dialog-close" type="button" class="dialog-close-btn" aria-label="關閉彈窗">✕</button>
 </div>
@@ -664,7 +664,7 @@ html{scroll-behavior:smooth}
 <h3 id="followit-title">✉️ 免裝閱讀器：Email / Telegram 訂閱（透過 Follow.it）</h3>
 <p class="small quiet">適合不想安裝 RSS 軟體、希望直接用電子郵件接收的使用者。OpenGSA 完全不記錄您的信箱，由外部免費服務 Follow.it 提供轉發代管：</p>
 <form action="https://api.follow.it/subscribe" method="post" target="_blank" rel="noopener noreferrer" class="followit-form">
-<input type="hidden" name="resource" value="https://matt-ye.github.io/opengsa/feed.xml"/>
+<input type="hidden" name="resource" value="https://opengsa.mattye.dev/feed.xml"/>
 <div class="followit-input-row">
 <input type="email" name="email" placeholder="請輸入您的 Email 地址…" required aria-label="訂閱電子信箱" class="dialog-input"/>
 <button type="submit" class="dialog-submit-btn">透過 Follow.it 訂閱 ↗</button>
@@ -684,9 +684,9 @@ html{scroll-behavior:smooth}
 <span class="tiny quiet">依最新公告與辦法修訂推播，含各級教育階段與補助細節</span>
 </div>
 <div class="feed-input-group">
-<input readonly type="text" id="feed-main-url" value="https://matt-ye.github.io/opengsa/feed.xml" class="dialog-url-input"/>
-<button type="button" class="feed-copy-btn" id="copy-feed-main" data-copy="https://matt-ye.github.io/opengsa/feed.xml">📋 複製</button>
-<a href="https://matt-ye.github.io/opengsa/feed.xml" target="_blank" rel="noopener noreferrer" class="feed-open-link">開啟 ↗</a>
+<input readonly type="text" id="feed-main-url" value="https://opengsa.mattye.dev/feed.xml" class="dialog-url-input"/>
+<button type="button" class="feed-copy-btn" id="copy-feed-main" data-copy="https://opengsa.mattye.dev/feed.xml">📋 複製</button>
+<a href="https://opengsa.mattye.dev/feed.xml" target="_blank" rel="noopener noreferrer" class="feed-open-link">開啟 ↗</a>
 </div>
 </div>
 <div class="feed-item">
@@ -695,9 +695,9 @@ html{scroll-behavior:smooth}
 <span class="tiny quiet">動態篩選即日起 30 天內即將收件截止項目，推播倒數天數與指引</span>
 </div>
 <div class="feed-input-group">
-<input readonly type="text" id="feed-deadlines-url" value="https://matt-ye.github.io/opengsa/feed-deadlines.xml" class="dialog-url-input"/>
-<button type="button" class="feed-copy-btn" id="copy-feed-deadlines" data-copy="https://matt-ye.github.io/opengsa/feed-deadlines.xml">📋 複製</button>
-<a href="https://matt-ye.github.io/opengsa/feed-deadlines.xml" target="_blank" rel="noopener noreferrer" class="feed-open-link">開啟 ↗</a>
+<input readonly type="text" id="feed-deadlines-url" value="https://opengsa.mattye.dev/feed-deadlines.xml" class="dialog-url-input"/>
+<button type="button" class="feed-copy-btn" id="copy-feed-deadlines" data-copy="https://opengsa.mattye.dev/feed-deadlines.xml">📋 複製</button>
+<a href="https://opengsa.mattye.dev/feed-deadlines.xml" target="_blank" rel="noopener noreferrer" class="feed-open-link">開啟 ↗</a>
 </div>
 </div>
 </section>
