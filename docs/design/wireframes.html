@@ -255,12 +255,16 @@ html{scroll-behavior:smooth}
 @media(max-width:1100px){#search .gantt-legend{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:800px){.chart-heading{display:block}.chart-heading h2{font-size:16px}.chart-time-fields label{align-items:flex-start;flex-direction:column}.chart-time-fields .checkbox-label{flex-direction:row;align-items:center}.chart-move{margin-top:0}.chart-header{gap:8px}.chart-legend summary small{display:none}}
 @media(max-width:400px){#search .gantt-legend{grid-template-columns:1fr}.chart-header{padding:12px}.chart-header .segmented button{padding:6px 9px}.chart-toolbar,.chart-caption{padding-left:12px;padding-right:12px}.chart-time-fields select{max-width:170px}}
-.header-controls{display:flex;align-items:center;justify-content:flex-end;gap:16px;flex-wrap:wrap;min-width:0}
-.header-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.header-action{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 12px;border:1px solid var(--ink);border-radius:7px;background:var(--white);color:var(--ink);font-size:13px;font-weight:700;line-height:1.5;text-decoration:none;white-space:nowrap}
-.header-action.primary{background:var(--ink);color:white}.header-action.star-btn{background:#fffdf0;border-color:#eab308;color:#854d0e}.header-action.star-btn:hover{background:#fef08a;border-color:#ca8a04}.header-action:hover{background:var(--green)}.header-action.primary:hover{background:#315d50}
-@media(max-width:800px){.header-controls{gap:8px}.header-controls .nav-links{max-width:none;flex-wrap:wrap}.header-action{font-size:12px;padding:7px 10px}}
-@media(max-width:500px){.header-controls,.header-actions{width:100%}.header-actions .header-action{flex:1}}
+.header-controls{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex-wrap:wrap;min-width:0;flex:1 1 auto}
+.header-actions{display:flex;align-items:center;gap:6px 8px;flex-wrap:wrap;justify-content:flex-end}
+.header-action{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:6px 12px;border:1px solid var(--ink);border-radius:6px;background:var(--white);color:var(--ink);font-size:13px;font-weight:700;line-height:1.4;text-decoration:none;white-space:nowrap}
+.header-action.primary{background:var(--ink);color:white}
+.header-action.star-btn{background:#fefce8;border:1.5px solid #d97706;color:#854d0e;box-shadow:0 1px 3px rgba(217,119,6,.15);display:inline-flex;align-items:center;gap:5px;transition:all .15s ease}
+.header-action.star-btn:hover{background:#fef08a;border-color:#b45309;color:#713f12;box-shadow:0 2px 6px rgba(217,119,6,.28);transform:translateY(-1px)}
+.header-action:hover{background:var(--green)}.header-action.primary:hover{background:#315d50}
+@media(max-width:960px){.nav{padding:10px 16px;gap:8px}.header-controls{width:100%;justify-content:space-between;gap:8px}.header-actions{width:100%;justify-content:flex-start;gap:6px}}
+@media(max-width:800px){.header-controls{gap:8px}.header-controls .nav-links{max-width:none;flex-wrap:wrap}.header-action,.share-btn,.rss-btn,.guide-btn{font-size:12px;padding:5px 9px;min-height:32px}}
+@media(max-width:500px){.nav{flex-direction:column;align-items:stretch;gap:8px}.brand small{white-space:nowrap;font-size:10px}.nav-links{max-width:none;width:100%;justify-content:space-between;gap:4px}.nav-links [role=tab]{font-size:11px;padding:6px 4px;flex:1;min-height:34px}.header-controls,.header-actions{width:100%}.header-actions{display:flex;flex-wrap:wrap;gap:5px 6px;justify-content:flex-start}.header-actions .header-action{flex:initial;min-height:32px}}
 /* Rights sections share the existing four-page navigation. */
 .rights-overview-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .rights-overview-grid .panel{display:flex;flex-direction:column}.rights-overview-grid h3{font-size:20px}
@@ -275,10 +279,10 @@ html{scroll-behavior:smooth}
 .rule-plot .time-policy .time-rule-list{margin-bottom:0}.gantt-plot.rule-plot .gantt-notes{position:relative;padding:0 18px 12px}
 .time-planner-link{display:inline-block;margin-top:6px;min-height:32px}
 .header-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.share-btn{padding:6px 12px;font-size:13px;border-radius:6px;border:1px solid #c2d3c6;background:#fff;color:var(--ink);cursor:pointer;font-weight:600}
+.share-btn{padding:6px 12px;font-size:13px;border-radius:6px;border:1px solid #c2d3c6;background:#fff;color:var(--ink);cursor:pointer;font-weight:600;min-height:36px;display:inline-flex;align-items:center}
 .share-btn:hover{background:#f0f5f1;border-color:var(--forest)}
 .share-toast{font-size:12px;color:var(--forest);background:#eaf4ed;padding:4px 8px;border-radius:4px;border:1px solid #c2d3c6;white-space:nowrap}
-.rss-btn{padding:6px 12px;font-size:13px;border-radius:6px;border:1px solid #c2d3c6;background:#fff;color:var(--ink);cursor:pointer;font-weight:600}
+.rss-btn{padding:6px 12px;font-size:13px;border-radius:6px;border:1px solid #c2d3c6;background:#fff;color:var(--ink);cursor:pointer;font-weight:600;min-height:36px;display:inline-flex;align-items:center}
 .rss-btn:hover{background:#f0f5f1;border-color:var(--forest)}
 .rss-dialog{border:1px solid var(--ink);border-radius:14px;padding:24px;max-width:620px;width:calc(100% - 32px);background:var(--white);color:var(--ink);box-shadow:0 16px 40px rgba(32,63,55,.18);margin:auto;position:fixed;inset:0;z-index:100;max-height:90vh;overflow-y:auto}
 .rss-dialog::backdrop{background:rgba(32,63,55,.45);backdrop-filter:blur(2px)}
@@ -344,7 +348,7 @@ html{scroll-behavior:smooth}
 .guide-tour-select:focus-visible{outline:2px solid var(--forest)}
 
 /* 新手快速上手指南（Toutour & Cinematic UI）與導覽體驗 */
-.guide-btn{padding:6px 12px;font-size:13px;border-radius:6px;border:1px solid #c2d3c6;background:#fff;color:var(--forest);cursor:pointer;font-weight:700;display:inline-flex;align-items:center;gap:4px;transition:all .15s ease}
+.guide-btn{padding:6px 12px;font-size:13px;border-radius:6px;border:1px solid #c2d3c6;background:#fff;color:var(--forest);cursor:pointer;font-weight:700;display:inline-flex;align-items:center;gap:4px;transition:all .15s ease;min-height:36px}
 .guide-btn:hover{background:#edf5ee;border-color:var(--forest);color:#1c3931}
 .guide-dialog{border:1px solid var(--ink);border-radius:16px;padding:24px 28px;max-width:680px;width:calc(100% - 32px);background:var(--white);color:var(--ink);box-shadow:0 20px 48px rgba(15,23,42,.22);margin:auto;position:fixed;inset:0;z-index:110;max-height:92vh;overflow-y:auto}
 .guide-dialog::backdrop{background:rgba(15,23,42,.65);backdrop-filter:blur(3px)}
