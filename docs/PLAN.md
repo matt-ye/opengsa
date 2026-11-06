@@ -1,5 +1,37 @@
 # 目前計畫與已接受決策
 
+## 2026-11-06 全台學生急難救助金全盤擴充、資訊鏈拓撲、首頁按鈕島與萃取入庫架構（PR #73）
+
+- **全台學生急難救助金資源大盤點與全景擴充**（[專題報告](EMERGENCY-RELIEF-FUNDS-EXPANSION-SURVEY.md)）：
+  - 響應使用者對突發家庭變故與學生急難救助金需求之觀察（參照 [`臺大學務處生輔組 HTML/118`](https://advisory.ntu.edu.tw/CMS/HTML/118)），補足庫中此類別之極度匱乏。
+  - **深化擴充三大面向**：
+    1. **各縣市地方政府**：臺北市市民急難救助、新北市好日子愛心大平台、臺中市市民急難、高雄市急難救助金、桃園市市民急難救助。
+    2. **單親／特殊境遇家庭**：衛生福利部社會及家庭署特殊境遇家庭扶助（緊急生活扶助/子女生活津貼）、婦女權益基金會「弱勢單親家庭培力計畫」學費及生活津貼、法律扶助基金會弱勢專案。
+    3. **國際生／僑生專案**：僑務委員會清寒僑生急難醫療慰助金、臺大 OIA 國際學生急難救助金、清大 OGA 國際學生急難助學金、成大 OIA 境外生急難慰助金。
+  - 盤查 **24+ 項全台核心急難救助管道**（[`data/source-expansion/emergency-relief-sources.json`](../data/source-expansion/emergency-relief-sources.json)），涵蓋中央法定學產基金、公私立大專校院生輔組、各縣市地方政府、單親扶助與主要慈善基金會。
+  - 梳理「**五大維度立體防護網**」：第一層校內急難金 ➔ 第二層教育部學產基金 ➔ 第三層行天宮/富邦/慈濟基金會 ➔ 第四層地方公所急難安全網 ➔ 第五層單親特境與境外生專案。
+  - 提出學生突遭變故之「**五步緊急應對指南與申辦攻防地圖**」（即時通報 ➔ 校內急難金 1~2 週速審 ➔ 轉報學產基金/僑委會 ➔ 基金會轉介 ➔ 地方社會安全網/單親培力）。
+- **首頁情境按鈕島升級：新增「急 - 急難救助卡」**：
+  - 首頁探索島快捷列（`#persona-bar`）新增專屬 `<button data-persona="emergency_relief">`，具備顯眼紅底白字「**急**」情境六角徽章。
+  - 一鍵直達：點擊後自動將用途下拉切換至 `living_emergency`，瞬間快篩出全台學產基金、校內急難、縣市紓困、單親與民間基金會專案；再次點擊即取消還原。
+  - 快速上手指南（Toutour）第一步同步連動更新，標註「🚨 急難救助」專用情境標籤。
+- **納入目前庫中與觸發補充萃取架構規劃**：
+  - 規劃六階段入庫管線：來源登錄 ➔ 確定性規則萃取（事故相對期限/初核轉介/金額級距） ➔ 候選卡池隔離（`review.status="pending"`） ➔ 時間政策觀測 ➔ 5節點資訊鏈拓撲閉環 ➔ 人工審查工作台核可晉級。
+  - 支援離線 CLI 指令（`scripts/build_emergency_relief_expansion.py`）與手動有界 GitHub Actions dispatch（model_mode=off，預算受控）。
+- **結構化候選卡池與時間政策觀測落盤**：
+  - 產出 18 筆具指標性急難救助方案待審卡池：[`data/candidates/emergency-relief-aid.json`](../data/candidates/emergency-relief-aid.json)。
+  - 產出專屬時間觀測檔：[`data/emergency-relief-temporal-observations.json`](../data/emergency-relief-temporal-observations.json)，捕捉 `continuous` 隨到隨審與 `needs_event_date` 缺口。
+- **資訊鏈五節點拓撲閉環批次整合**：
+  - 建立 [`data/source-chain-batches/batch-emergency-relief.json`](../data/source-chain-batches/batch-emergency-relief.json)（90 份文件節點、72 條邊、18 條候選綁定），完整打通 Anchor ➔ Call ➔ Form ➔ Intake ➔ Result 五節點。
+  - 登記至批次總表 [`data/source-chain-batches/batch-registry.json`](../data/source-chain-batches/batch-registry.json)。
+- **前端搜尋同義詞強化與測試防線**：
+  - `docs/design/prototype.js` 擴充支援 `急難`、`急難救助`、`急難救助金`、`救助金`、`學產基金`、`緊急紓困`、`變故`、`emergency relief`、`單親`、`擔心`（同音容錯）、`特境`、`特殊境遇`、`國際生`、`僑生`、`外籍生`、`境外生`、`縣市急難`、`好日子`、`培力` 等關鍵字檢索。
+  - `tests/prototype.test.cjs` 擴展至 **68 項 100% PASS**。
+  - Python 單元測試維持 **282 項 PASS**。
+  - 守則遵循：新增 profile 標註 `"enabled": false`，模型 0，正式台帳 0 竄改。
+
+---
+
 ## 2026-11-06 甘特圖資訊卡浮動彈窗化、名稱導向修復與申請區無效勾選框清理（PR #72）
 
 - **甘特圖時程預覽卡浮動彈窗化（Modal Popover）與遮擋修復**（[詳細手冊](GANTT-INSPECTOR-MODAL-AND-TASK-CLEANUP.md)）：

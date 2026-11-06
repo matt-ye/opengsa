@@ -330,7 +330,12 @@ function itemMatchesQuery(item, query) {
    (item.programKey && item.programKey.includes("perk")) ||
    (item.title && /perk|copilot|azure|aws|github|jetbrains|notion|figma|overleaf|matlab|autodesk|高鐵/i.test(item.title));
  const perkAliases = isPerk ? " perk perks 學生福利 學生優惠 教育版 免費軟體 雲端額度 算力 學生認證 sheerid unidays github pack" : "";
- const aliases = medAliases + confAliases + k12Aliases + perkAliases;
+ const isEmergency = item.category === "living_emergency" ||
+   (item.title && /急難|救助|慰問|紓困|學產|單親|特境|國際生|僑生|外籍生/i.test(item.title)) ||
+   (item.id && /emergency|relief|special-family|single-parent|compatriot/i.test(item.id)) ||
+   (item.programKey && /emergency|relief|special-family|single-parent|compatriot/i.test(item.programKey));
+ const emergencyAliases = isEmergency ? " 急難 急難救助 急難救助金 救助金 慰問金 緊急紓困 學產基金 變故 傷病 emergency relief emergency aid 弱勢救助 生活救助 單親 擔心 特境 特殊境遇 國際生 僑生 外籍生 境外生 各縣市 縣市急難 好日子 培力 學產金" : "";
+ const aliases = medAliases + confAliases + k12Aliases + perkAliases + emergencyAliases;
  const catLabel = (typeof labels !== "undefined" && labels.category && labels.category[item.category]) || "";
  const srcLabel = (typeof labels !== "undefined" && labels.source && labels.source[item.source]) || "";
  const haystack = (item.title + " " + item.id + " " + (item.cycle||"") + " " + (item.scope||"") + " " + catLabel + " " + srcLabel + aliases).toLocaleLowerCase();
@@ -571,6 +576,12 @@ function filterItems(items, filters) {
             (item.audience && /elementary|junior_high|senior_high|vocational|preschool/i.test(item.audience)) ||
             (item.title && /小學|國中|高中|高職|幼兒|兒少|弱勢助學|就學助學金/.test(item.title));
     }
+    if(wanted==="living_emergency" || wanted==="emergency_relief") {
+     return item.category==="living_emergency" ||
+            item.resourceKind==="emergency_aid" ||
+            (item.id && item.id.includes("emergency")) ||
+            (item.title && /急難|救助|紓困|變故|學產|撫卹|傷病|慰助|慰問|災助|單親|特境/.test(item.title));
+    }
     const value=item[key];
     if(Array.isArray(value)) return value.includes(wanted);
     return value===wanted || (filters.includeUnknown && value==="unknown");
@@ -751,6 +762,7 @@ function conferenceEntries(programs){
 const personaPresets={
  phd_research:{category:"phd_research",source:"all",degree:"phd",year:"all",compatibility:"all",hardship:"all"},
  living_support:{category:"living_tuition",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
+ emergency_relief:{category:"living_emergency",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
  abroad_all:{category:"all_abroad",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
  abroad_conf:{category:"international_conference",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
  overseas_study:{category:"overseas_research",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all"},
