@@ -68,6 +68,9 @@ console.log('254 items: temporal labels, geometry, ambiguous years, intake filte
 
     def test_preview_is_self_contained_and_uses_named_radar_snapshot(self):
         self.assertNotIn('<script src=', self.html)
+        # 外部腳本只允許分析 beacon；spa:false 避免把站內網址變動（含搜尋條件）逐次送出。
+        self.assertEqual(re.findall(r'<script[^>]*\ssrc="([^"]+)"', self.html), ['https://static.cloudflareinsights.com/beacon.min.js'])
+        self.assertIn('"spa":false', self.html)
         embedded = re.search(r'<script id="pilot-data" type="application/json">(.*?)</script>', self.html, re.S)
         snapshot=json.loads(embedded[1])
         full_bundle, _ = load_full_library(ROOT)
@@ -83,8 +86,8 @@ console.log('254 items: temporal labels, geometry, ambiguous years, intake filte
         conferences = re.search(r'<script id="conference-data" type="application/json">(.*?)</script>', self.html, re.S)
         self.assertEqual(json.loads(conferences[1]), json.loads((ROOT / "data/conference-programs.json").read_text(encoding="utf-8")))
         self.assertIn('name="robots" content="noindex, nofollow"', self.html)
-        self.assertIn('property="og:image" content="https://matt-ye.github.io/opengsa/assets/opengsa-social-preview.jpg"', self.html)
-        self.assertIn('href="https://matt-ye.github.io/opengsa/"', self.html)
+        self.assertIn('property="og:image" content="https://opengsa.mattye.dev/assets/opengsa-social-preview.jpg"', self.html)
+        self.assertIn('href="https://opengsa.mattye.dev/"', self.html)
         self.assertIn('獎助雷達預覽 · 來源摘要，非即時資格核定', self.html)
         self.assertIn('issues/new?template=preview-feedback.yml', self.html)
         self.assertIn('請勿提交個資或私人申訴', self.html)
@@ -131,7 +134,7 @@ console.log('254 items: temporal labels, geometry, ambiguous years, intake filte
         self.assertIn('noopener', form.get('rel', ''))
         resource = form.select_one('input[name="resource"]')
         self.assertIsNotNone(resource)
-        self.assertEqual(resource['value'], 'https://matt-ye.github.io/opengsa/feed.xml')
+        self.assertEqual(resource['value'], 'https://opengsa.mattye.dev/feed.xml')
         self.assertIsNotNone(form.select_one('input[name="email"][type="email"]'))
 
         followit_link = dialog.select_one('a[href="https://follow.it/now"]')
@@ -140,17 +143,17 @@ console.log('254 items: temporal labels, geometry, ambiguous years, intake filte
 
         main_input = dialog.select_one('#feed-main-url')
         self.assertIsNotNone(main_input)
-        self.assertEqual(main_input['value'], 'https://matt-ye.github.io/opengsa/feed.xml')
+        self.assertEqual(main_input['value'], 'https://opengsa.mattye.dev/feed.xml')
         copy_main = dialog.select_one('#copy-feed-main')
         self.assertIsNotNone(copy_main)
-        self.assertEqual(copy_main['data-copy'], 'https://matt-ye.github.io/opengsa/feed.xml')
+        self.assertEqual(copy_main['data-copy'], 'https://opengsa.mattye.dev/feed.xml')
 
         deadlines_input = dialog.select_one('#feed-deadlines-url')
         self.assertIsNotNone(deadlines_input)
-        self.assertEqual(deadlines_input['value'], 'https://matt-ye.github.io/opengsa/feed-deadlines.xml')
+        self.assertEqual(deadlines_input['value'], 'https://opengsa.mattye.dev/feed-deadlines.xml')
         copy_deadlines = dialog.select_one('#copy-feed-deadlines')
         self.assertIsNotNone(copy_deadlines)
-        self.assertEqual(copy_deadlines['data-copy'], 'https://matt-ye.github.io/opengsa/feed-deadlines.xml')
+        self.assertEqual(copy_deadlines['data-copy'], 'https://opengsa.mattye.dev/feed-deadlines.xml')
 
         self.assertIsNotNone(dialog.select_one('#rss-dialog-close'))
         self.assertIsNotNone(dialog.select_one('#rss-dialog-dismiss'))

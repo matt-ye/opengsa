@@ -1,5 +1,7 @@
 # GitHub Pages公開預覽
 
+2026-11-07使用者核可：公開網址改為 https://opengsa.mattye.dev/ （GitHub Pages自訂網域，DNS only），舊 github.io 網址由GitHub轉址；加入Cloudflare Web Analytics並整合至mattye.dev後台；維持noindex。取代下方2026-10-29「不修改DNS」之限制，該段保留為當時紀錄。
+
 2026-11-01雷達版建置改讀19筆候選快照作可讀摘要，預設文件檢視，另可彙整13組方案；不把原候選標成人工核准。正式pilot與真人台帳不變，舊文「僅10筆來源草稿／合成預設」為歷史階段。未知與Issue回報規則見[RADAR-VIEW.md](RADAR-VIEW.md)。本版仍需PR合併與main部署後才生效。
 
 2026-10-29使用者核可：PR #1合併規劃與原型，PR #2上架公開預覽供分享回饋。目的網址為 https://matt-ye.github.io/opengsa/ ，不修改個人首頁或DNS。正式服務及資料覆核門檻仍依[目前計畫](PLAN.md)。
@@ -40,7 +42,7 @@ python -m http.server 8771 --bind 127.0.0.1 --directory dist/site
 
 分享縮圖使用專案圖，Open Graph URL固定公開預覽位置，不用個人照片。預覽加上noindex／nofollow，暫不主動進搜尋索引；這不是存取控制，任何知道網址的人都能瀏覽及分享。
 
-個人條件、勾選、待辦與會議輸入只留本次瀏覽記憶體，重整後重設；沒有分析追蹤程式。GitHub Pages託管仍可能保留連線紀錄，頁尾連結[GitHub隱私聲明](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement)。
+個人條件、勾選、待辦與會議輸入只留本次瀏覽記憶體，重整後重設。Cloudflare Web Analytics僅統計瀏覽量（`spa:false`，每次載入一筆）：不使用Cookie或localStorage，送出位置已移除查詢參數；2026-11-07攔截實測，網址中的搜尋、學位與已選項目皆未出現在送出內容。GitHub Pages託管與Cloudflare仍可能保留連線紀錄，頁尾連結雙方隱私聲明。
 
 ## 驗收與回復
 

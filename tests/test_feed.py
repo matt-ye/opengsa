@@ -57,7 +57,7 @@ class RSSFeedTests(unittest.TestCase):
             desc = item.find("description").text
 
             self.assertTrue(title and len(title.strip()) > 0)
-            self.assertTrue(link.startswith("https://matt-ye.github.io/opengsa/?id="))
+            self.assertTrue(link.startswith("https://opengsa.mattye.dev/?id="))
             self.assertTrue(guid and len(guid.strip()) > 0)
             self.assertTrue(desc and "【身分資格】" in desc)
 
