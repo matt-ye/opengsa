@@ -44,7 +44,7 @@ def process(request, output, transport=node_get, progress=print):
     report = output / "report"
     summary = export_report(inventory, state, report)
     bundle, profiles = read(report / "structured-candidates.json"), read(report / "source-profiles.json")
-    result = {"schema_version": "source-intake-result-1", "issue": request["issue"], "url": url, "http_requests": state["http_requests"], "model_calls": 0,
+    result = {"schema_version": "source-intake-result-1", "issue": request["issue"], "url": url, "already_registered": bool(request.get("already_registered")), "http_requests": state["http_requests"], "model_calls": 0,
               "records": [{"url": r["url"], "status": r["status"], "disposition": r.get("disposition")} for r in state["records"].values()],
               "links_skipped": sum(r.get("links_skipped", 0) for r in state["records"].values()),
               "candidates": [{"title": c["title"], "status": c["verification"]["status"]} for c in bundle["candidates"]],
@@ -56,7 +56,11 @@ def process(request, output, transport=node_get, progress=print):
 
 
 def comment(result, run_url=None):
-    lines = [f"來源處理完成：`{result['url']}`。沒有呼叫模型，也沒有改動網站資料。", "", "| 文件 | 結果 |", "|---|---|"]
+    lines = [f"來源處理完成：`{result['url']}`。沒有呼叫模型，也沒有改動網站資料。", ""]
+    if result.get("already_registered"):
+        # 提案只取代 source-review.json 裡同網址的卡；其他候選檔的舊卡還在。
+        lines.extend(["**這個網址已登記過。** 套用提案前請確認其他候選檔沒有同網址的舊卡，否則會有兩張。", ""])
+    lines.extend(["| 文件 | 結果 |", "|---|---|"])
     for record in result["records"]:
         lines.append(f"| `{record['url']}` | {DISPOSITIONS.get(record['disposition'], '無法處理：' + safe_text(record['status']))} |")
     if result["candidates"]:
