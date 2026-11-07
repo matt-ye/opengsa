@@ -47,8 +47,12 @@ def load_full_library(root=ROOT):
         "emergency-relief-temporal-observations.json",
     ]
     all_cands = []
+    # 快照日跟著資料走：寫死的話，任何比它新的候選都會讓建置失敗。
+    as_of = ""
     for bf in bundle_files:
-        all_cands.extend(read(bf)["candidates"])
+        bundle = read(bf)
+        all_cands.extend(bundle["candidates"])
+        as_of = max(as_of, bundle["as_of"])
 
     combined_records = {}
     combined_batches = []
@@ -61,8 +65,8 @@ def load_full_library(root=ROOT):
 
     combined_bundle = {
         "schema_version": "1.1.0-candidate",
-        "generated_at": "2026-11-06T00:00:00Z",
-        "as_of": "2026-11-06",
+        "generated_at": f"{as_of}T00:00:00Z",
+        "as_of": as_of,
         "timezone": "Asia/Taipei",
         "model_enabled": False,
         "model_calls": 0,
@@ -71,7 +75,7 @@ def load_full_library(root=ROOT):
     }
     combined_obs = {
         "version": "temporal-replay-1",
-        "observed_at": "2026-11-06T00:00:00Z",
+        "observed_at": f"{as_of}T00:00:00Z",
         "http_requests": total_http,
         "model_calls": 0,
         "published": False,

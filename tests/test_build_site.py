@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -16,7 +17,7 @@ from scripts.build_site import load_full_library
 
 
 class SiteBuildTests(unittest.TestCase):
-    def test_all_254_temporal_projections_render_without_fabricated_coordinates(self):
+    def test_all_temporal_projections_render_without_fabricated_coordinates(self):
         soup=BeautifulSoup(self.html,'html.parser')
         payload={key:json.loads(soup.select_one('#'+tag).string) for key,tag in
             [('pilot','pilot-data'),('radar','radar-data')]}
@@ -25,7 +26,7 @@ const fs=require('node:fs'), assert=require('node:assert/strict');
 const core=require('./docs/design/prototype.js');
 const data=JSON.parse(fs.readFileSync(0,'utf8'));
 const items=core.makeDrafts(data.pilot,'2026-11-03',data.radar);
-assert.equal(items.length,254);
+assert.equal(items.length,Object.keys(data.radar.records).length);
 for(const item of items){
  const mode=core.timePresentation(item);
  assert.ok(mode.label && !mode.label.includes('undefined'),item.id);
@@ -44,7 +45,7 @@ for(const state of ['open','closed','upcoming','unknown','not_applicable']){
  const actual=state==='upcoming'?'not_yet_open':state;
  assert.ok(core.filterItems(items,{application:state}).every(i=>i.rawState===actual));
 }
-console.log('254 items: temporal labels, geometry, ambiguous years, intake filters PASS');
+console.log(items.length+' items: temporal labels, geometry, ambiguous years, intake filters PASS');
 '''
         result=subprocess.run(['node','-e',code],cwd=ROOT,input=json.dumps(payload,ensure_ascii=False),
             text=True,encoding='utf-8',capture_output=True)
@@ -76,13 +77,11 @@ console.log('254 items: temporal labels, geometry, ambiguous years, intake filte
         full_bundle, _ = load_full_library(ROOT)
         candidates = full_bundle['candidates']
         self.assertEqual({o['id'] for o in snapshot['opportunities']},{c['candidate_id'] for c in candidates})
-        self.assertEqual(len(snapshot['opportunities']), 254)
         self.assertEqual(len(snapshot['opportunities']),len(candidates))
         self.assertTrue(all(o['review']['status']=='draft' for o in snapshot['opportunities']))
         self.assertIn('data-radar-view="true"',self.html)
         metadata=re.search(r'<script id="radar-data" type="application/json">(.*?)</script>',self.html,re.S)
         self.assertEqual(set(json.loads(metadata[1])['records']),{c['candidate_id'] for c in candidates})
-        self.assertEqual(len(json.loads(metadata[1])['records']), 254)
         conferences = re.search(r'<script id="conference-data" type="application/json">(.*?)</script>', self.html, re.S)
         self.assertEqual(json.loads(conferences[1]), json.loads((ROOT / "data/conference-programs.json").read_text(encoding="utf-8")))
         self.assertIn('name="robots" content="noindex, nofollow"', self.html)
@@ -154,6 +153,18 @@ console.log('254 items: temporal labels, geometry, ambiguous years, intake filte
         self.assertIn('全部來源摘要',soup.select_one('#detail-scope-switch [data-scope="all"]').get_text())
         guide=soup.select_one('#guide-dialog').get_text()
         self.assertNotRegex(guide,r'\d{2,}\s*(筆|項)')
+
+    def test_snapshot_date_follows_newest_bundle(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            shutil.copytree(ROOT/'data/candidates',root/'data/candidates')
+            for path in (ROOT/'data').glob('*temporal-observations.json'):
+                shutil.copy(path,root/'data'/path.name)
+            path=root/'data/candidates/source-review.json'
+            bundle=json.loads(path.read_text(encoding='utf-8'));bundle['as_of']='2099-01-02'
+            path.write_text(json.dumps(bundle,ensure_ascii=False),encoding='utf-8')
+            combined,_=load_full_library(root)
+        self.assertEqual(combined['as_of'],'2099-01-02')
 
     def test_generated_summaries_put_text_in_content_not_class(self):
         js=(ROOT/'docs/design/prototype.js').read_text(encoding='utf-8')
