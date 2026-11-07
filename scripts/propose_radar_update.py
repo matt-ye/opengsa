@@ -5,6 +5,7 @@ from copy import deepcopy
 import difflib
 import json
 from pathlib import Path
+import re
 import sys
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -19,8 +20,13 @@ from scripts.audit_sources import canonical_url
 ACCEPT={'passed_automated_checks','passed_with_gaps'}
 HAND_BASELINE='data/known-hand-authored-candidates.json'
 
+def same_program(left,right):
+    """標題互相包含才算同一方案；太短的通稱（例如「獎學金」）不算。"""
+    left,right=(re.sub(r'\W+','',title).casefold() for title in (left,right))
+    return min(len(left),len(right))>=6 and (left in right or right in left)
+
 def retire_hand_cards(good,replaced_urls=()):
-    """新卡取代同網址的手寫卡。同網址牽涉多個方案時（例如同校首頁的急難金和獎學金）不自動刪，交給人判斷。"""
+    """新卡取代同網址、同方案的手寫卡。同網址不代表同方案（同校首頁可能有急難金和獎學金），認不出來就不刪，交給人判斷。"""
     baseline=read(ROOT/HAND_BASELINE);known=set(baseline['candidate_ids'])
     targets={canonical_url(c['source_metadata']['url']) for c in good}|({canonical_url(u) for u in replaced_urls} if good else set())
     bundles={};at_url=defaultdict(list)
@@ -33,11 +39,12 @@ def retire_hand_cards(good,replaced_urls=()):
     for url,cards in sorted(at_url.items()):
         hand=[(rel,card) for rel,card in cards if card['candidate_id'] in known]
         if not hand:continue
-        if len({card['program_key'] for _,card in hand})>1:
-            manual.extend({'url':url,'candidate_id':card['candidate_id'],'title':card['title']} for _,card in hand)
-            continue
         for rel,card in hand:
-            retired.append({'url':url,'candidate_id':card['candidate_id'],'title':card['title'],'bundle':rel})
+            row={'url':url,'candidate_id':card['candidate_id'],'title':card['title']}
+            if len({other['program_key'] for _,other in hand})==1 and any(same_program(card['title'],new['title']) for new in good):
+                retired.append({**row,'bundle':rel})
+            else:
+                manual.append(row)
     gone={row['candidate_id'] for row in retired}
     for rel in {row['bundle'] for row in retired}:
         files[rel]={**bundles[rel],'candidates':[c for c in bundles[rel]['candidates'] if c['candidate_id'] not in gone]}

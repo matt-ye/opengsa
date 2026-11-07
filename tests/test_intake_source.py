@@ -5,6 +5,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from urllib.parse import urlsplit
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -97,6 +98,19 @@ class IntakeSourceTests(unittest.TestCase):
             subprocess.run([sys.executable, str(ROOT / "scripts/intake_source.py"), "--event", str(path), "--output", str(Path(tmp) / "out")], check=True, capture_output=True)
             self.assertEqual(json.loads((Path(tmp) / "out/request.json").read_text(encoding="utf-8"))["reason"], "invalid_url")
             self.assertIn("未處理", (Path(tmp) / "out/comment.md").read_text(encoding="utf-8"))
+
+    def test_hand_written_inventory_title_is_not_used_to_name_a_home_page(self):
+        config = json.loads((ROOT / "data/scan-sources.json").read_text(encoding="utf-8"))
+        url = canonical_url(next(s for s in config["sources"] if s.get("automation") == "not_enabled" and s["url"].startswith("https://") and urlsplit(s["url"]).path in ("", "/"))["url"])
+        page = ("<html><head><title>首頁</title></head><body><p>" + "校園公告與各項服務說明。" * 20 + "</p></body></html>").encode()
+        def transport(target, headers, limit):
+            if target.endswith("/robots.txt"):
+                return {"status": 200, "headers": {"content-type": "text/plain"}, "body": b"User-agent: *\nAllow: /\n"}
+            return {"status": 200, "headers": {"content-type": "text/html"}, "body": page}
+        with tempfile.TemporaryDirectory() as tmp:
+            result = process({"issue": 7, "url": url, "category": "scholarship"}, Path(tmp), transport=transport, progress=lambda *a, **k: None)
+        self.assertEqual(result["candidates"], [])
+        self.assertIsNone(result["proposal"])
 
     def test_owner_approval_runs_a_source_whose_profile_is_disabled(self):
         config = json.loads((ROOT / "data/scan-sources.json").read_text(encoding="utf-8"))

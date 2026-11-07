@@ -27,6 +27,7 @@ SOURCE_ID = "synthetic-foundation-2026"
 TITLE = "合成基金會115學年度研究生獎學金"
 INTAKE_TITLE = "合成丁基金會115學年度研究生獎學金"
 REPLACE_TITLE = "合成己基金會115學年度研究生獎學金"
+REPLACE_CYCLE = "115學年度"
 PROFILE = {"id": SOURCE_ID, "title": TITLE, "url": f"{BASE}/news/phd-2026", "body_selector": "article", "required_markers": ["申請資格"],
            "pdf_include": [], "max_pdfs": 0, "review_note": "合成來源，端到端測試用。", "evidence_mode": "short_excerpt",
            "category": "phd_research", "resource_kind": "scholarship", "scope": "nationwide"}
@@ -174,10 +175,13 @@ class SourceIntakeE2ETests(unittest.TestCase):
         urls = {}
         for card in cards:
             urls.setdefault(card["source_metadata"]["url"], []).append(card)
-        cls.hand_card = next(rows[0] for url, rows in sorted(urls.items()) if len(rows) == 1 and rows[0]["candidate_id"] in known and urlsplit(url).path not in ("", "/"))
+        cls.hand_card = next(rows[0] for url, rows in sorted(urls.items()) if len(rows) == 1 and rows[0]["candidate_id"] in known and urlsplit(url).path not in ("", "/") and "獎學金" in rows[0]["title"])
         url = cls.hand_card["source_metadata"]["url"]
         pages = read(cls.pages / "map.json")
-        pages[canonical_url(url)] = "replace.html"
+        # 假頁換成同一方案的名稱：不同方案的新卡不該取代手寫卡。
+        page = (cls.pages / "replace.html").read_text(encoding="utf-8").replace(REPLACE_TITLE, cls.hand_card["title"] + REPLACE_CYCLE)
+        (cls.pages / "replace-live.html").write_text(page, encoding="utf-8")
+        pages[canonical_url(url)] = "replace-live.html"
         save(cls.pages / "map.json", pages)
         save(cls.repo / "work/replace.json", {"status": "accepted", "issue": 9, "url": canonical_url(url), "category": "scholarship", "already_registered": True})
         if not cls.sh("replace.run", "scripts/run_source_intake.py", "--request", "work/replace.json", "--output", "work/replace"):
@@ -305,8 +309,7 @@ class SourceIntakeE2ETests(unittest.TestCase):
         summary = read(self.repo / "work/replace/result.json")["proposal"]
         self.assertEqual([r["candidate_id"] for r in summary["retired_hand_cards"]], [self.hand_card["candidate_id"]])
         page, feed = self.site("replace")
-        self.assertIn(REPLACE_TITLE, feed)
-        self.assertNotIn(self.hand_card["title"], feed)
+        self.assertIn(self.hand_card["title"] + REPLACE_CYCLE, feed)
         self.assertNotIn(self.hand_card["candidate_id"], page)
         self.assertNotIn(self.hand_card["candidate_id"], read(self.repo / "data/known-hand-authored-candidates.json")["candidate_ids"])
 
