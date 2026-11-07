@@ -135,7 +135,7 @@ $$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (生�
 
 - **[開啟公開預覽網站](https://opengsa.mattye.dev/)**
 - **[提供使用回饋](https://github.com/matt-ye/opengsa/issues/new?template=preview-feedback.yml)**
-- **[回報新獎助來源](https://github.com/matt-ye/opengsa/issues/new?template=source-submission.yml)**（歡迎提供各大學、企業或基金會之公開獎助依據）
+- **[回報新獎助來源](https://github.com/matt-ye/opengsa/issues/new?template=resource-source.yml)**（歡迎提供各大學、企業或基金會之公開獎助依據）
 
 ---
 
