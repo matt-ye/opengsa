@@ -9,7 +9,7 @@ from unittest.mock import patch
 from pypdf import PdfWriter
 from pypdf.generic import DictionaryObject, NameObject, DecodedStreamObject
 from scripts.scan_sources import (ROOT, VERSION, Fetcher, ScanError, digest, evidence_mentions,
-                                 html_document, markdown_report, pdf_document, robots_policy, safe_url, read_any_source, resolved_revisions, scan, scan_and_extract)
+                                 html_document, markdown_report, pdf_document, robots_policy, safe_url, read_any_source, resolved_revisions, scan, scan_and_extract, validate_config)
 
 CONFIG = json.loads((ROOT / "data/scan-sources.json").read_text(encoding="utf-8"))
 
@@ -343,6 +343,19 @@ class ScannerTests(unittest.TestCase):
         self.assertEqual([status for status,_ in out],['transport_error','transport_error','failure_cooldown','transport_error','failure_cooldown'])
         self.assertEqual(out[2][1],0)
         self.assertEqual(state['failures'][self.config()['sources'][0]['url']]['count'],3)
+
+    def test_repeated_failures_are_listed_in_the_report(self):
+        out,state=self.dead_source_rounds(5)
+        report={'http_requests':0,'changed_documents':0,'pending_candidates':0,'documents':[]}
+        self.assertIn('連續失敗 3 次以上',markdown_report(state,report))
+        _,once=self.dead_source_rounds(1)
+        self.assertNotIn('連續失敗',markdown_report(once,report))
+
+    def test_request_limit_is_capped_at_the_temporary_value(self):
+        config=self.config();config['max_requests']=50
+        validate_config(config)
+        config['max_requests']=51
+        with self.assertRaises(ValueError):validate_config(config)
 
     def test_recovered_source_clears_its_failure_record(self):
         config=self.config();source=config['sources'][0];_,state=self.dead_source_rounds(1)
