@@ -112,6 +112,13 @@ class RadarProposalTests(unittest.TestCase):
             with self.subTest(title=title):
                 self.assertEqual(distinct_named_cards([self.card(title,'https://a.test/x')])[1],[])
 
+    def test_clause_testimonial_and_form_documents_are_not_cards(self):
+        for title,url in (('七、本辦法如有未盡事宜處，由本會解釋之。','https://a.test/x'),('某宗親會獎助學金（獲奬人感言）','https://a.test/x'),
+                ('其他獎學金設置要點','https://a.test/x'),('長庚大學-長庚中文站台-獎助學金','https://a.test/x'),('申請獎學金','https://a.test/x'),
+                ('短期獎學金','https://a.test/2026/shinsehyo_list1.pdf'),('短期獎學金','https://a.test/8.houkokusho_list5.pdf'),('甲獎學金流程','https://a.test/x'),('甲要點修正對照表','https://a.test/x'),('甲獎學金','https://a.test/%E7%94%B3%E8%AB%8B%E8%A1%A8.pdf')):
+            with self.subTest(title=title):
+                self.assertEqual(distinct_named_cards([self.card(title,url)])[0],[])
+
     def test_different_program_on_the_same_url_is_left_for_a_person(self):
         url,cards=self.hand_url(1);bundle,config,_=self.fixture()
         files,summary=prepare(bundle,config,replaced_urls=[url])

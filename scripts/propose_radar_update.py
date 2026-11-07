@@ -18,7 +18,7 @@ from scripts.source_chains import candidate_bindings,candidate_documents,timelin
 from scripts.export_source_chain_graph import load_graph,export as export_graph
 from scripts.expand_sources import read,save,now
 from scripts.audit_sources import canonical_url
-from urllib.parse import urlsplit
+from urllib.parse import unquote,urlsplit
 
 ACCEPT={'passed_automated_checks','passed_with_gaps'}
 HAND_BASELINE='data/known-hand-authored-candidates.json'
@@ -63,7 +63,11 @@ def merge_temporal(merged,good,temporal,observed):
     return result,len(records)
 
 # 標題只是頁面或專區名稱，看不出是哪個方案（附件沒有自己的標題時會沿用列表頁的）。
-GENERIC_TITLE=re.compile(r'一覽表?|資訊網|專區|相關辦法|獎助學金與補助|^(?:::: )?(?:校內外|校內|校外|研究生)?獎(?:助)?學金(?:資訊|公告)?(?:\s|$|[-－|｜])|[|｜]\s*獎助學金公告|^└')
+# 條文片段、心得與得獎名單也不是方案名稱。
+GENERIC_TITLE=re.compile(r'一覽表?|資訊網|專區|相關辦法|獎助學金與補助|各項獎(?:助)?學金|站台-|獎(?:助)?學金資訊$|^其他獎|感言|[得獲]獎名單'
+    r'|^[一二三四五六七八九十]+、|^(?:::: )?(?:校內外|校內|校外|研究生|申請)?獎(?:助)?學金(?:資訊|公告)?(?:\s|$|[-－|｜])|[|｜]\s*獎助學金公告|^└')
+# 申請表、報告書、流程圖、修正對照表都只是附件，不是方案說明。
+FORM_DOCUMENT=re.compile(r'申請[表書]|報名表|推薦表|報告書|對照表|流程|shinsehyo|houkokusho|application[-_ ]?form',re.I)
 
 def distinct_named_cards(cards):
     """同一份文件只留一張（同一 PDF 可能從多個入口讀到），同網站同標題也只留一張（常是同方案的申請表、報告表）；
@@ -73,6 +77,7 @@ def distinct_named_cards(cards):
     for card in sorted(cards,key=lambda c:bool(re.search(r'\.(?:pdf|docx?|odt)$',urlsplit(c['source_metadata']['url']).path,re.I))):
         meta=card['source_metadata'];title=re.sub(r'\W+','',card['title']).casefold()
         reason=('generic_title' if GENERIC_TITLE.search(card['title']) else
+                'form_document' if FORM_DOCUMENT.search(card['title']+unquote(urlsplit(meta['url']).path)) else
                 'same_document' if canonical_url(meta['url']) in seen else
                 'same_title_same_site' if (urlsplit(meta['url']).hostname,title) in seen else None)
         if reason:

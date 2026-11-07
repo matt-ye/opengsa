@@ -18,6 +18,43 @@ def extract(sid='SYNTH-unseen-source',units=None):
     return source,result
 
 
+class WithheldGenericFieldsTests(unittest.TestCase):
+    """未知來源的文件：分不清的欄位留白。案例來自真實頁面抽查，內容為合成。"""
+    def amounts(self,*texts):
+        _,cand=extract(units=blocks('SYNTH 獎學金申請辦法',*texts))
+        return [(i['amount_min'],i['amount_max']) for i in cand['benefit']['items']],cand
+
+    def test_a_donation_or_income_limit_is_not_the_award(self):
+        for line in ('本獎學金由某君捐贈新臺幣一千萬元設立。','基金新臺幣600,000元。','家庭年所得總額未超過新臺幣1,140,000元者。','每年捐贈美金1,500元。'):
+            with self.subTest(line=line):
+                self.assertEqual(self.amounts(line)[0],[])
+        found,_=self.amounts('本獎學金由某君捐贈新臺幣一千萬元設立。','每名新臺幣參萬元整。')
+        self.assertEqual(found,[(30000,30000)])
+
+    def test_several_amounts_are_left_to_the_source(self):
+        found,cand=self.amounts('碩士生每名2萬元。','博士生每名3萬元。')
+        self.assertEqual(found,[])
+        self.assertEqual(cand['benefit']['summary'],'金額請見來源')
+        self.assertIn('unextracted:benefit',cand['gaps_and_conflicts']['missing_fields'])
+        self.assertFalse([e for e in cand['field_evidence'] if e['field_path'].startswith('benefit.')])
+
+    def test_money_without_award_context_is_ignored(self):
+        self.assertEqual(self.amounts('報名費新臺幣1,000元。')[0],[])
+
+    def test_degrees_stay_empty_when_the_document_also_covers_other_levels(self):
+        _,cand=extract(units=blocks('申請資格：就讀碩士班或博士班之在學學生。','大學部學生另依第五點辦理。'))
+        self.assertEqual(cand['eligibility']['degrees'],[])
+        self.assertEqual(cand['eligibility']['identity']['text'],'身分條件請至來源定位核對')
+        _,cand=extract(units=blocks('申請資格：就讀碩士班或博士班之在學學生。'))
+        self.assertEqual(cand['eligibility']['degrees'],['master','phd'])
+
+    def test_nationality_stays_unknown_when_foreign_students_are_mentioned(self):
+        _,cand=extract(units=blocks('申請人須具中華民國國籍。','外籍生持護照亦可申請。'))
+        self.assertEqual(cand['eligibility']['nationality'],'unknown')
+        _,cand=extract(units=blocks('申請人須具中華民國國籍。'))
+        self.assertEqual(cand['eligibility']['nationality'],'roc_only')
+
+
 class SemanticFactsTests(unittest.TestCase):
     def test_time_backfill_runs_after_identity_is_already_known(self):
         source,cand=extract()

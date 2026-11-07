@@ -42,6 +42,24 @@ def degree_terms(text):
     return degrees
 
 
+# 通用規則分不出來就留白，讀者看來源。規則來自 2026-11-08 對真實頁面的抽查：
+# 捐款本金、所得上限被當獎助金額，「碩、博士」被套到其實也收大學生的方案。
+AWARD_CLAUSE=re.compile(r'每[名人生位組]|每學[年期]|每月|獎學金|獎助金|助學金|獎勵金|獎金|獎額|補助|核發|發給|頒發')
+NOT_AWARD_CLAUSE=re.compile(r'捐|基金(?!會)|本金|孳息|所得|收入|財產|存款|總額|美金|美元|匯率|報名費|保證金|經費|預算|貸款')
+MONEY_TOKEN=re.compile(r'(?<![0-9,.])([0-9,]+(?:\.\d+)?[萬千仟百佰]?|[一二兩三四五六七八九零〇壹貳參肆伍陸柒捌玖十拾百佰千仟萬]+)元')
+OTHER_LEVELS=re.compile(r'學士|大學部|大學生|大專|高中|高職|專科|國中|國小|二技|四技|五專')
+NON_ROC_ALLOWED=re.compile(r'外籍|外國|僑生|陸生|港澳|護照|境外')
+
+
+def award_clauses(blocks):
+    """(block, 子句, 金額字樣) for clauses that read as money paid to a student, not a donation or an income limit."""
+    for block in blocks:
+        for clause in re.split(r'[。；;，\n]|,(?!\d)',compact(block['text'])):
+            tokens=MONEY_TOKEN.findall(clause)
+            if tokens and AWARD_CLAUSE.search(clause) and not NOT_AWARD_CLAUSE.search(clause):
+                yield block,clause,tokens
+
+
 def discover_identity(blocks):
     options=[]
     for text,units in safe_units(blocks):
