@@ -559,7 +559,7 @@ footer p{margin:0}
 <div id="gantt-view">
 <div class="chart-toolbar"><div class="chart-time-fields" id="timeline-controls">
 <label id="timeline-year-control" hidden>參考年度 <select id="timeline-year"></select></label>
-<label>時間範圍 <select id="range-mode"><option value="recent">今天前後 90 天</option><option value="fit">涵蓋所有已知日期</option></select></label>
+<label>時間範圍 <select id="range-mode"><option value="recent">近 90 天</option><option value="fit">涵蓋所有已知日期</option></select></label>
 <label class="checkbox-label" id="timeline-baselines-control" hidden><input id="timeline-baselines" type="checkbox" checked>往年／估計底帶</label>
 <div class="chart-caption"><p class="tiny quiet" id="chart-range"></p><p class="tiny quiet" hidden="" id="outside-today">今天不在目前範圍，可按「今天」。</p></div></div><div class="chart-toolbar-end"><details class="chart-legend" id="chart-legend"><summary><span>圖例與閱讀說明</span><small>實線為已知期間 · 淺色為歷史參考</small></summary><div class="legend-panel">
 <div aria-label="甘特圖圖例" class="gantt-legend">
@@ -614,7 +614,7 @@ footer p{margin:0}
 <p class="selection-context" id="timeline-context"></p>
 <div class="panel empty-workspace" hidden="" id="timeline-empty"><p>目前沒有可安排的選項。</p><div class="range-buttons"><button class="secondary" id="timeline-empty-pick-all" type="button">將目前篩選的方案全數加入</button><a href="#search">回第一頁調整篩選 →</a></div></div>
 <div id="timeline-workspace">
-<div class="range-controls"><label for="personal-range-mode">時間範圍 <select id="personal-range-mode"><option value="recent">今天前後90天</option><option value="fit">涵蓋選項的已知日期</option></select></label><span class="today-label" id="personal-today"></span><p class="tiny quiet" id="personal-chart-range"></p><button class="secondary" id="personal-return-today" type="button">回到今天</button></div>
+<div class="range-controls"><label for="personal-range-mode">時間範圍 <select id="personal-range-mode"><option value="recent">近 90 天</option><option value="fit">涵蓋選項的已知日期</option></select></label><span class="today-label" id="personal-today"></span><p class="tiny quiet" id="personal-chart-range"></p><button class="secondary" id="personal-return-today" type="button">回到今天</button></div>
 <details class="chart-legend"><summary><span>圖例</span></summary>
 <div aria-label="個人時間軸圖例" class="gantt-legend"><span class="legend-item">▱ 淺色底帶：往年參考／估計（非官方受理）</span><span class="legend-item">─ 公告至截止流程（非申請期）</span><span class="legend-item"><i aria-hidden="true" class="legend-bar"></i>申請期間</span><span class="legend-item"><i aria-hidden="true" class="legend-inferred"></i>推定受理起日</span><span class="legend-item"><i aria-hidden="true" class="legend-prep-window"></i>準備提醒期（截止前30天）</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond expected"></i>預定結果</span><span class="legend-item"><i aria-hidden="true" class="legend-diamond"></i>結果公布</span><span class="legend-item"><i aria-hidden="true" class="legend-square"></i>其他程序</span><span class="legend-item">▱ 個人準備建議／空心節點待核</span><span class="legend-item"><i aria-hidden="true" class="legend-today"></i>今天</span></div>
 </details>
@@ -764,7 +764,7 @@ footer p{margin:0}
 <h3 id="rss-feeds-title">📡 雙軌 RSS 訂閱頻道（適用 Feedly / Slack / 閱讀器）</h3>
 <div class="feed-item">
 <div class="feed-item-info">
-<strong>軌道 1 · 全庫獎助動態頻道（236 筆方案）</strong>
+<strong>軌道 1 · 全庫獎助動態頻道（<span id="feed-library-count"></span> 筆方案）</strong>
 <span class="tiny quiet">依最新公告與辦法修訂推播，含各級教育階段與補助細節</span>
 </div>
 <div class="feed-input-group">
@@ -824,10 +824,10 @@ footer p{margin:0}
 <section class="guide-slide active" data-step="1" aria-labelledby="guide-s1-title">
 <div class="guide-card-icon">🎯</div>
 <h3 id="guide-s1-title">一鍵篩選身分與情境</h3>
-<p class="guide-desc">OpenGSA 全庫已收錄 <strong>254 項獎學金、福利與急難救助</strong>。初次造訪請善用頂部<strong>情境快捷列</strong>或左欄<strong>多維度篩選卡</strong>：</p>
+<p class="guide-desc">OpenGSA 全庫收錄<strong>獎學金、福利與急難救助</strong>。初次造訪請善用頂部<strong>情境快捷列</strong>或<strong>多維度篩選卡</strong>：</p>
 <div class="guide-feature-box">
 <ul class="guide-checklist">
-<li><strong>情境標籤</strong>：點選「🎓 博士研究」、「✈️ 出國交流」、「🎒 弱勢助學」、「🚨 急難救助」或「💻 學生福利」瞬間聚焦目標。</li>
+<li><strong>情境標籤</strong>：點選「博士研究專注」、「出國交流與留學」、「各級教育弱勢扶助」、「急難救助與變故」或「研究工具／AI／算力」瞬間聚焦目標。</li>
 <li><strong>精準條件</strong>：自選學歷階段（碩博／大學部／K-12）、兼領限制（可兼領／有條件）與受理狀態。</li>
 <li><strong>頂會與同義詞搜尋</strong>：輸入「NeurIPS」、「CVPR」、「差旅補助」即可直達相關專款。</li>
 </ul>
@@ -839,7 +839,7 @@ footer p{margin:0}
 <section class="guide-slide" data-step="2" aria-labelledby="guide-s2-title" hidden>
 <div class="guide-card-icon">⏳</div>
 <h3 id="guide-s2-title">看懂真實時程甘特圖</h3>
-<p class="guide-desc">擺脫壓線焦慮！甘特圖提供<strong>全台首創 100% 精確時程政策投影</strong>，視覺化呈現關鍵節點：</p>
+<p class="guide-desc">擺脫壓線焦慮！甘特圖依<strong>來源摘要投影時程</strong>，未確認的日期會標示請見來源，視覺化呈現關鍵節點：</p>
 <div class="guide-feature-box">
 <ul class="guide-checklist">
 <li><strong>綠色實心長條</strong>：官方正式受理申請期間。</li>
@@ -858,9 +858,9 @@ footer p{margin:0}
 <p class="guide-desc">將感興趣的機會打造成專屬待辦清單，四個分頁全面連動：</p>
 <div class="guide-feature-box">
 <ul class="guide-checklist">
-<li><strong>跨頁同步</strong>：在清單或甘特圖點擊「⭐ 收藏」，自動同步至【獎助詳情】與【我的時間軸】。</li>
+<li><strong>跨頁同步</strong>：勾選方案，或在方案說明按「⭐ 收藏」，自動同步至【獎助詳情】與【我的時間軸】。</li>
 <li><strong>多方案比對</strong>：在【獎助詳情】同時展開兩項方案，比對資助金額、資格限制與給付方式。</li>
-<li><strong>國際研討會試算</strong>：第二頁內建差旅試算機，輸入會議首日即可推算校內與國科會備件時限。</li>
+<li><strong>國際研討會試算</strong>：在第一頁按「＋ 新增研討會」，輸入會議首日即可推算校內與國科會備件時限。</li>
 </ul>
 </div>
 <div class="guide-action-row">
@@ -874,7 +874,7 @@ footer p{margin:0}
 <div class="guide-feature-box">
 <ul class="guide-checklist">
 <li><strong>雙軌推播</strong>：點擊頁首「📡 訂閱推播」免費取得全庫 RSS、30 天截止倒數，或用 Follow.it 訂閱 Email。</li>
-<li><strong>五級救濟地圖</strong>：至【權益與求助】查閱兼任助理、TA、國科會計畫勞動法規與最低工資標準。</li>
+<li><strong>五類求助窗口</strong>：至【權益與求助】查閱兼任助理、TA、國科會計畫勞動法規與最低工資標準。</li>
 <li><strong>從屬性自測</strong>：一鍵檢核「真學習或假勞動」，提供明確法定申訴與救濟路徑。</li>
 </ul>
 </div>

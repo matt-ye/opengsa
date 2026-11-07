@@ -2,7 +2,7 @@
 """Build RSS 2.0 and Atom feeds for OpenGSA public scholarship radar.
 
 Generates:
-1. feed.xml: Comprehensive feed of all 236 schemes and recent revisions.
+1. feed.xml: Comprehensive feed of all schemes and recent revisions.
 2. feed-deadlines.xml: Focused feed of schemes with confirmed/impending deadlines.
 """
 from datetime import datetime, timezone, timedelta

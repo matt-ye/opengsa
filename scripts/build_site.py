@@ -24,7 +24,7 @@ FEEDBACK = "https://github.com/matt-ye/opengsa/issues/new?template=preview-feedb
 
 
 def load_full_library(root=ROOT):
-    """Loads all 254 candidates across the 8 candidate bundles and combined observations."""
+    """Loads all candidates across the 8 candidate bundles and combined observations."""
     read = lambda name: json.loads((Path(root) / "data" / name).read_text(encoding="utf-8"))
     bundle_files = [
         "candidates/source-review.json",
