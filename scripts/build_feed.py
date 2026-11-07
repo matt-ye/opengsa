@@ -13,6 +13,11 @@ import json
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.radar_metadata import known_hand_authored
+
 SITE_URL = "https://opengsa.mattye.dev/"
 FEED_URL = f"{SITE_URL}feed.xml"
 DEADLINES_FEED_URL = f"{SITE_URL}feed-deadlines.xml"
@@ -62,6 +67,7 @@ def build_feeds(output_dir: Path, candidates: list[dict], observations: dict) ->
     now = datetime.now(TAIPEI_TZ)
 
     records = observations.get("records", {})
+    hand_authored = known_hand_authored()
     all_feed_items = []
     deadlines_feed_items = []
 
@@ -76,6 +82,8 @@ def build_feeds(output_dir: Path, candidates: list[dict], observations: dict) ->
         benefit_text = cand.get("benefit", {}).get("text", "獎助內容詳見官方簡章")
         ident = cand.get("eligibility", {}).get("identity", {}).get("text", "資格條件請見來源公告")
         desc = f"【身分資格】{ident} ｜ 【獎助內容】{benefit_text}"
+        if cid in hand_authored:
+            desc = f"⚠ 尚未經來源查證，請以官方公告為準。{desc}"
 
         rec = records.get(cid, {})
         obs_time_str = rec.get("observed_at") or cand.get("source_metadata", {}).get("observed_at")

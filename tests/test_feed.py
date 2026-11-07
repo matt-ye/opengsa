@@ -14,6 +14,7 @@ if str(ROOT) not in sys.path:
 
 from scripts.build_feed import build_feeds
 from scripts.build_site import load_full_library
+from scripts.radar_metadata import known_hand_authored
 
 
 class RSSFeedTests(unittest.TestCase):
@@ -80,6 +81,13 @@ class RSSFeedTests(unittest.TestCase):
                 self.assertEqual(query["tab"], ["detail"])
                 self.assertIn(query["id"][0], page_ids)
                 self.assertTrue(item.find("guid").text.startswith(query["id"][0]))
+
+    def test_hand_authored_items_carry_a_warning_and_extracted_items_do_not(self):
+        known = known_hand_authored()
+        items = ET.parse(self.main_file).getroot().find("channel").findall("item")
+        for item in items:
+            warned = item.find("description").text.startswith("⚠ 尚未經來源查證")
+            self.assertEqual(warned, item.find("guid").text in known, item.find("guid").text)
 
     def test_deadlines_feed_filtering_and_formatting(self):
         """Verifies that feed-deadlines.xml contains only verified deadlines with countdown markers."""

@@ -1057,3 +1057,13 @@ test("首頁標頭操作列 GitHub Star 按鈕規格：支援一鍵開新分頁�
  assert.ok(html.includes("⭐ GitHub Star ↗"), "按鈕標籤必須顯示 ⭐ GitHub Star ↗");
  assert.ok(html.includes(".header-action.star-btn"), "必須具備專屬金色高亮樣式");
 });
+
+test("hand-authored items are labelled and extracted items are not",()=>{
+ const pilot=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/pilot.json"),"utf8"));
+ const id=pilot.opportunities[0].id;
+ const base={url:"https://example.edu/x",revision:"a".repeat(64),observed_at:"2026-11-01T00:00:00Z",known:{},unsafe:false,unknown_reasons:[],organizations:{},time_steps:[]};
+ const warned=core.makeDrafts(pilot,"2026-11-03",{records:{[id]:{...base,unverified_source:true}}})[0];
+ const plain=core.makeDrafts(pilot,"2026-11-03",{records:{[id]:base}})[0];
+ assert.equal(warned.unverifiedSource,true);
+ assert.equal(plain.unverifiedSource,false);
+});
