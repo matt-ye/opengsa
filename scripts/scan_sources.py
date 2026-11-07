@@ -268,7 +268,7 @@ def html_document(data, source, url, hosts):
         structures = structures[start:]
     text = normalized(" ".join(lines))
     compact = re.sub(r"\s+", "", text)
-    if len(text) < 80 or any(re.sub(r"\s+", "", term) not in compact for term in source["required_markers"]):
+    if len(text) < source.get("min_text_chars", 80) or any(re.sub(r"\s+", "", term) not in compact for term in source["required_markers"]):
         raise ScanError("required_marker_missing")
     # 序號是此版萃取正文的定位，非原HTML原始碼行號。
     blocks = [{"locator": f"{source['body_selector']} / text-block {i}", "text": line, **meta}

@@ -50,7 +50,12 @@ def dates(text, year):
     return result
 
 
-def discover_links(raw, url, hosts, selector=None):
+# 提交流程要從入口頁往下找公告與附件，所以比預設寬；既有批次不受影響。
+BROAD_LINK = re.compile(r'獎|助學金|補助|公告|簡章|招生|徵|scholarship|fellowship|grant|award', re.I)
+DOCUMENT_LINK = re.compile(r'\.(?:pdf|docx?|odt)$', re.I)
+
+
+def discover_links(raw, url, hosts, selector=None, limit=8, broad=False):
     """Parse literal public links, including window.open; never execute source JS."""
     soup = BeautifulSoup(raw, 'html.parser')
     roots = soup.select(selector) if selector else soup.select('article, main, .article-center') or [soup.body or soup]
@@ -63,7 +68,8 @@ def discover_links(raw, url, hosts, selector=None):
             attachment = a.find_parent(class_='file-download-multiple')
             if attachment:
                 label = attachment.get_text(' ', strip=True)
-            if not re.search(r'辦法|要點|申請|徵件|補助|獎學金|計畫|登記|查詢|表單|須知|流程', label):
+            matched = re.search(r'辦法|要點|申請|徵件|補助|獎學金|計畫|登記|查詢|表單|須知|流程', label) or (broad and BROAD_LINK.search(label))
+            if not matched and not broad:
                 continue
             href = a.get('href', '')
             if href in ('', '#'):
@@ -77,10 +83,12 @@ def discover_links(raw, url, hosts, selector=None):
                 continue
             if target == safe_url(url, hosts):
                 continue
+            if not matched and not DOCUMENT_LINK.search(urlsplit(target).path):
+                continue
             role = 'policy' if re.search(r'辦法|要點', label) else 'related_call'
             found[target] = {'url': target, 'role': role, 'label': label[:100]}
     # Real attachments precede menu/list links so a bounded page budget is useful.
-    return sorted(found.values(), key=lambda link: not bool(re.search(r'\.pdf|\.docx?|Download|attachments/|filedownload',link['url'],re.I)))[:8]
+    return sorted(found.values(), key=lambda link: not bool(re.search(r'\.pdf|\.docx?|Download|attachments/|filedownload',link['url'],re.I)))[:limit]
 
 
 def publication(soup, blocks, url=None):
