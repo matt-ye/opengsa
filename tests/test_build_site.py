@@ -140,7 +140,7 @@ console.log('254 items: temporal labels, geometry, ambiguous years, intake filte
         self.assertEqual(toggle['aria-controls'],'conference-planner')
         self.assertIsNotNone(soup.select_one('#chart-legend .legend-panel .gantt-legend'))
         footer=soup.select_one('footer')
-        self.assertEqual(footer.select_one('a[href="https://mattye.dev/"]').get_text(strip=True),'葉淨維 Matt Ye')
+        self.assertEqual(footer.select_one('a[href="https://mattye.dev/"]').get_text(strip=True),'Matt Ye')
         self.assertIsNotNone(footer.select_one('a[href="https://github.com/matt-ye"]'))
 
     def test_guide_and_feed_text_take_library_count_from_data(self):
@@ -150,6 +150,8 @@ console.log('254 items: temporal labels, geometry, ambiguous years, intake filte
         self.assertIn('{count}',tours)
         soup=BeautifulSoup(self.html,'html.parser')
         self.assertEqual(soup.select_one('#feed-library-count').get_text(),'','RSS 筆數由資料填入')
+        self.assertIn('" 筆來源摘要"',js,'全庫數量統一稱為來源摘要')
+        self.assertIn('全部來源摘要',soup.select_one('#detail-scope-switch [data-scope="all"]').get_text())
         guide=soup.select_one('#guide-dialog').get_text()
         self.assertNotRegex(guide,r'\d{2,}\s*(筆|項)')
 
