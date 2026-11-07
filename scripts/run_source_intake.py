@@ -15,7 +15,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from scripts.expand_sources import INTAKE_OPTIONS, export_report, initial_state, read, run_batch, save
 from scripts.audit_sources import canonical_url
-from scripts.propose_radar_update import write_proposal
+from scripts.propose_radar_update import HAND_BASELINE, write_proposal
 from scripts.scan_sources import node_get
 
 BATCH = "B1"
@@ -30,10 +30,19 @@ def safe_text(value, limit=80):
     return text[:limit] or "（無標題）"
 
 
+def hand_source_ids():
+    known = set(read(ROOT / HAND_BASELINE)["candidate_ids"])
+    return {card["source_metadata"]["source_id"] for path in (ROOT / "data/candidates").glob("*.json")
+            for card in read(path)["candidates"] if card["candidate_id"] in known}
+
+
 def process(request, output, transport=node_get, progress=print):
     output = Path(output)
     config = read(ROOT / "data/scan-sources.json")
     url = request["url"]
+    # 手寫卡的 profile（標記字、選擇器）沒有驗證過，不拿來判斷真實頁面。
+    # automation=not_enabled 是人工清單，只有手寫標題、沒有抽取設定；留著會把網站首頁命名成那個方案。
+    config["sources"] = [source for source in config["sources"] if source["id"] not in hand_source_ids() and source.get("automation") != "not_enabled"]
     # 維護者已核可這個網址，即使舊 profile 是停用狀態也要跑；不影響排程設定。
     config["sources"] = [{**source, "enabled": True} if canonical_url(source["url"]) == url else deepcopy(source) for source in config["sources"]]
     inventory = {"as_of": None, "rows": [{"id": f"ISSUE-{request['issue']}", "url": url, "title": "", "batch": BATCH, "category": request["category"],
@@ -50,7 +59,7 @@ def process(request, output, transport=node_get, progress=print):
               "candidates": [{"title": c["title"], "status": c["verification"]["status"]} for c in bundle["candidates"]],
               "proposal": None, "published": False, "official_data_modified": False, "expansion_summary": summary["statuses"]}
     if any(c["verification"]["status"] in ACCEPTED for c in bundle["candidates"]):
-        result["proposal"] = write_proposal(bundle, profiles, output / "proposal")
+        result["proposal"] = write_proposal(bundle, profiles, output / "proposal", replaced_urls=[url])
     save(output / "result.json", result)
     return result
 
@@ -58,8 +67,7 @@ def process(request, output, transport=node_get, progress=print):
 def comment(result, run_url=None):
     lines = [f"來源處理完成：`{result['url']}`。沒有呼叫模型，也沒有改動網站資料。", ""]
     if result.get("already_registered"):
-        # 提案只取代 source-review.json 裡同網址的卡；其他候選檔的舊卡還在。
-        lines.extend(["**這個網址已登記過。** 套用提案前請確認其他候選檔沒有同網址的舊卡，否則會有兩張。", ""])
+        lines.extend(["這個網址已登記過。", ""])
     lines.extend(["| 文件 | 結果 |", "|---|---|"])
     for record in result["records"]:
         lines.append(f"| `{record['url']}` | {DISPOSITIONS.get(record['disposition'], '無法處理：' + safe_text(record['status']))} |")
@@ -71,6 +79,11 @@ def comment(result, run_url=None):
         lines.extend([f"**沒有處理完：** 還有 {result['links_skipped']} 個連結超過單次上限，沒有抓取。", ""])
     if result["proposal"]:
         lines.append(f"已產生待審提案（{result['proposal']['accepted_for_radar_proposal']} 筆）。**還沒上架**：需要人工看過、套用提案並合併 PR。")
+        retired, manual = result["proposal"]["retired_hand_cards"], result["proposal"]["needs_manual_retire"]
+        if retired:
+            lines.extend(["", f"提案會取代 {len(retired)} 張手寫卡：" + "、".join(safe_text(row["title"], 40) for row in retired) + "。"])
+        if manual:
+            lines.extend(["", f"**要人工判斷：** 這個網址有 {len(manual)} 張手寫卡認不出是不是同一方案，提案沒有動它們：" + "、".join(safe_text(row["title"], 40) for row in manual) + "。"])
     else:
         lines.append("這次沒有可提案的候選，網站不會有變動。")
     if run_url:

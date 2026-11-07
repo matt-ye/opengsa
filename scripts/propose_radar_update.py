@@ -5,6 +5,7 @@ from copy import deepcopy
 import difflib
 import json
 from pathlib import Path
+import re
 import sys
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -14,10 +15,43 @@ from scripts.check_data import validate_candidate_snapshot
 from scripts.source_chains import candidate_bindings,candidate_documents,timeline_metadata
 from scripts.export_source_chain_graph import load_graph,export as export_graph
 from scripts.expand_sources import read,save,now
+from scripts.audit_sources import canonical_url
 
 ACCEPT={'passed_automated_checks','passed_with_gaps'}
+HAND_BASELINE='data/known-hand-authored-candidates.json'
 
-def prepare(incoming,config,observations=None):
+def same_program(left,right):
+    """標題互相包含才算同一方案；太短的通稱（例如「獎學金」）不算。"""
+    left,right=(re.sub(r'\W+','',title).casefold() for title in (left,right))
+    return min(len(left),len(right))>=6 and (left in right or right in left)
+
+def retire_hand_cards(good,replaced_urls=()):
+    """新卡取代同網址、同方案的手寫卡。同網址不代表同方案（同校首頁可能有急難金和獎學金），認不出來就不刪，交給人判斷。"""
+    baseline=read(ROOT/HAND_BASELINE);known=set(baseline['candidate_ids'])
+    targets={canonical_url(c['source_metadata']['url']) for c in good}|({canonical_url(u) for u in replaced_urls} if good else set())
+    bundles={};at_url=defaultdict(list)
+    for path in sorted((ROOT/'data/candidates').glob('*.json')):
+        bundle=read(path);rel='data/candidates/'+path.name;bundles[rel]=bundle
+        for card in bundle['candidates']:
+            url=canonical_url(card['source_metadata']['url'])
+            if url in targets:at_url[url].append((rel,card))
+    retired,manual,files=[],[],{}
+    for url,cards in sorted(at_url.items()):
+        hand=[(rel,card) for rel,card in cards if card['candidate_id'] in known]
+        if not hand:continue
+        for rel,card in hand:
+            row={'url':url,'candidate_id':card['candidate_id'],'title':card['title']}
+            if len({other['program_key'] for _,other in hand})==1 and any(same_program(card['title'],new['title']) for new in good):
+                retired.append({**row,'bundle':rel})
+            else:
+                manual.append(row)
+    gone={row['candidate_id'] for row in retired}
+    for rel in {row['bundle'] for row in retired}:
+        files[rel]={**bundles[rel],'candidates':[c for c in bundles[rel]['candidates'] if c['candidate_id'] not in gone]}
+    if gone:files[HAND_BASELINE]={**baseline,'candidate_ids':[i for i in baseline['candidate_ids'] if i not in gone]}
+    return files,retired,manual
+
+def prepare(incoming,config,observations=None,replaced_urls=()):
     errors=validate_candidate_snapshot(incoming,config)
     if errors:raise ValueError('invalid_incoming_candidates: '+str(errors)[:300])
     base=read(ROOT/'data/candidates/source-review.json')
@@ -33,6 +67,8 @@ def prepare(incoming,config,observations=None):
     errors=validate_candidate_snapshot(merged,config)
     if errors:raise ValueError('invalid_merged_candidates: '+str(errors)[:300])
     files={'data/candidates/source-review.json':merged}
+    retired_files,retired,manual=retire_hand_cards(good,replaced_urls)
+    files.update(retired_files)
     oldconfig=read(ROOT/'data/scan-sources.json');profiles={p['id']:p for p in oldconfig['sources']}
     needed={c['source_metadata']['source_id'] for c in merged['candidates']}
     for p in config['sources']:
@@ -109,13 +145,14 @@ def prepare(incoming,config,observations=None):
         'withheld_failed_checks':len(incoming['candidates'])-len(good),'retained_old_candidates':len(keep),
         'proposed_candidates':len(merged['candidates']),'replaced_urls':sorted(urls),'invalidated_timeline_documents':sorted(invalid_docs),
         'byte_identical_rebound_documents':sorted({key[0] for key in rebound}-invalid_docs),
+        'retired_hand_cards':retired,'needs_manual_retire':manual,
         'human_approvals':0,'published':False,'scheduled_sources_enabled':0}
     return files,summary
 
-def write_proposal(incoming,config,output,preview=True,observations=None):
+def write_proposal(incoming,config,output,preview=True,observations=None,replaced_urls=()):
     output=Path(output)
     if output.exists() and any(output.iterdir()):raise ValueError('proposal_output_must_be_empty')
-    files,summary=prepare(incoming,config,observations);output.mkdir(parents=True,exist_ok=True);patches=[]
+    files,summary=prepare(incoming,config,observations,replaced_urls);output.mkdir(parents=True,exist_ok=True);patches=[]
     for path,value in files.items():
         text=json.dumps(value,ensure_ascii=False,indent=2)+'\n'
         old=(ROOT/path).read_text(encoding='utf-8') if (ROOT/path).exists() else ''

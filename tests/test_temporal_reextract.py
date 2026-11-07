@@ -204,62 +204,48 @@ class TemporalReplayTests(unittest.TestCase):
         k12_bundle = json.loads((ROOT / 'data/candidates/k12-scholarships.json').read_text(encoding='utf-8'))
         k12_obs = json.loads((ROOT / 'data/k12-temporal-observations.json').read_text(encoding='utf-8'))
         self.assertEqual(validate_temporal_snapshot(k12_bundle, k12_obs), [])
-        self.assertEqual(len(k12_bundle['candidates']), 25)
-        self.assertEqual(len(k12_obs['records']), 25)
 
         meta = radar_metadata(k12_bundle, k12_obs)
         records = meta['records']
-        self.assertEqual(len(records), 25)
+        self.assertEqual(len(records), len(k12_bundle['candidates']))
 
         modes = {}
         for rec in k12_obs['records'].values():
             mode = rec.get('policy', {}).get('submission_mode')
             modes[mode] = modes.get(mode, 0) + 1
 
-        self.assertEqual(modes.get('recurring', 0), 14)
-        self.assertEqual(modes.get('procedure_only', 0), 6)
-        self.assertEqual(modes.get('continuous', 0), 3)
-        self.assertEqual(modes.get('reference', 0), 2)
         self.assertEqual(modes.get('undetermined', 0), 0)
 
     def test_student_perks_batch2_bundle_and_observations_are_complete(self):
         perks_bundle = json.loads((ROOT / 'data/candidates/student-perks.json').read_text(encoding='utf-8'))
         perks_obs = json.loads((ROOT / 'data/perks-temporal-observations.json').read_text(encoding='utf-8'))
         self.assertEqual(validate_temporal_snapshot(perks_bundle, perks_obs), [])
-        self.assertEqual(len(perks_bundle['candidates']), 28)
-        self.assertEqual(len(perks_obs['records']), 28)
 
         meta = radar_metadata(perks_bundle, perks_obs)
         records = meta['records']
-        self.assertEqual(len(records), 28)
+        self.assertEqual(len(records), len(perks_bundle['candidates']))
 
         modes = {}
         for rec in perks_obs['records'].values():
             mode = rec.get('policy', {}).get('submission_mode')
             modes[mode] = modes.get(mode, 0) + 1
 
-        self.assertEqual(modes.get('continuous', 0), 27)
-        self.assertEqual(modes.get('recurring', 0), 1)
         self.assertEqual(modes.get('undetermined', 0), 0)
 
     def test_enterprise_batch3_bundle_and_observations_are_complete(self):
         ent_bundle = json.loads((ROOT / 'data/candidates/enterprise-scholarships.json').read_text(encoding='utf-8'))
         ent_obs = json.loads((ROOT / 'data/enterprise-temporal-observations.json').read_text(encoding='utf-8'))
         self.assertEqual(validate_temporal_snapshot(ent_bundle, ent_obs), [])
-        self.assertEqual(len(ent_bundle['candidates']), 85)
-        self.assertEqual(len(ent_obs['records']), 85)
 
         meta = radar_metadata(ent_bundle, ent_obs)
         records = meta['records']
-        self.assertEqual(len(records), 85)
+        self.assertEqual(len(records), len(ent_bundle['candidates']))
 
         modes = {}
         for rec in ent_obs['records'].values():
             mode = rec.get('policy', {}).get('submission_mode')
             modes[mode] = modes.get(mode, 0) + 1
 
-        self.assertEqual(modes.get('recurring', 0), 62)
-        self.assertEqual(modes.get('procedure_only', 0), 23)
         self.assertEqual(modes.get('undetermined', 0), 0)
 
     def test_full_library_batch4_consolidation_and_pipeline_integrity(self):

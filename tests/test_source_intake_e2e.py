@@ -12,8 +12,13 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from scripts.audit_sources import canonical_url
+
 FIXTURES = ROOT / "tests/fixtures/source-intake"
 NESTED = "OPENGSA_INTAKE_E2E_NESTED"
 HOST = "scholarship.opengsa-synthetic.example"
@@ -21,6 +26,8 @@ BASE = f"https://{HOST}"
 SOURCE_ID = "synthetic-foundation-2026"
 TITLE = "合成基金會115學年度研究生獎學金"
 INTAKE_TITLE = "合成丁基金會115學年度研究生獎學金"
+REPLACE_TITLE = "合成己基金會115學年度研究生獎學金"
+REPLACE_CYCLE = "115學年度"
 PROFILE = {"id": SOURCE_ID, "title": TITLE, "url": f"{BASE}/news/phd-2026", "body_selector": "article", "required_markers": ["申請資格"],
            "pdf_include": [], "max_pdfs": 0, "review_note": "合成來源，端到端測試用。", "evidence_mode": "short_excerpt",
            "category": "phd_research", "resource_kind": "scholarship", "scope": "nationwide"}
@@ -137,7 +144,7 @@ class SourceIntakeE2ETests(unittest.TestCase):
             return
         cls.updated_cards = cls.synthetic_cards()
         cls.review_after_update = len(read(cls.repo / "data/candidates/source-review.json")["candidates"])
-        if not cls.intake_round(base):
+        if not cls.intake_round(base) or not cls.replace_round(base):
             return
         # 新增、更新、提交都套用後才重跑全部測試：寫死總數或版本的測試會在這裡現形。
         cls.sh("update.unittest", "-m", "unittest", "discover", "-s", "tests")
@@ -159,6 +166,33 @@ class SourceIntakeE2ETests(unittest.TestCase):
         for gate, cmd in GATES.items():
             cls.sh(f"intake.{gate}", *cmd)
         return cls.sh("intake.build_site", "scripts/build_site.py", base / "site-intake")
+
+    @classmethod
+    def replace_round(cls, base):
+        """提交一個已有手寫卡的網址（只有這個方案），假頁回傳新內容；手寫卡要被提案取代。"""
+        known = set(read(cls.repo / "data/known-hand-authored-candidates.json")["candidate_ids"])
+        cards = [c for path in sorted((cls.repo / "data/candidates").glob("*.json")) for c in read(path)["candidates"]]
+        urls = {}
+        for card in cards:
+            urls.setdefault(card["source_metadata"]["url"], []).append(card)
+        cls.hand_card = next(rows[0] for url, rows in sorted(urls.items()) if len(rows) == 1 and rows[0]["candidate_id"] in known and urlsplit(url).path not in ("", "/") and "獎學金" in rows[0]["title"])
+        url = cls.hand_card["source_metadata"]["url"]
+        pages = read(cls.pages / "map.json")
+        # 假頁換成同一方案的名稱：不同方案的新卡不該取代手寫卡。
+        page = (cls.pages / "replace.html").read_text(encoding="utf-8").replace(REPLACE_TITLE, cls.hand_card["title"] + REPLACE_CYCLE)
+        (cls.pages / "replace-live.html").write_text(page, encoding="utf-8")
+        pages[canonical_url(url)] = "replace-live.html"
+        save(cls.pages / "map.json", pages)
+        save(cls.repo / "work/replace.json", {"status": "accepted", "issue": 9, "url": canonical_url(url), "category": "scholarship", "already_registered": True})
+        if not cls.sh("replace.run", "scripts/run_source_intake.py", "--request", "work/replace.json", "--output", "work/replace"):
+            return False
+        if not (cls.repo / "work/replace/proposal/repo").exists():
+            cls.results["replace.proposal"] = (1, (cls.repo / "work/replace/result.json").read_text(encoding="utf-8")[-1500:])
+            return False
+        shutil.copytree(cls.repo / "work/replace/proposal/repo", cls.repo, dirs_exist_ok=True)
+        for gate, cmd in GATES.items():
+            cls.sh(f"replace.{gate}", *cmd)
+        return cls.sh("replace.build_site", "scripts/build_site.py", base / "site-replace")
 
     @classmethod
     def synthetic_cards(cls):
@@ -256,13 +290,27 @@ class SourceIntakeE2ETests(unittest.TestCase):
         self.assertEqual(by_url[f"{BASE}/files/a.pdf"], "named_candidates_pending")
         self.assertEqual([c["title"] for c in result["candidates"]], ["合成戊基金會115學年度研究生獎學金"])
 
+    def test_submission_replaces_the_hand_card_on_the_same_url(self):
+        self.assert_step("replace.run")
+        for gate in GATES:
+            self.assert_step(f"replace.{gate}")
+        self.assert_step("replace.build_site")
+        summary = read(self.repo / "work/replace/result.json")["proposal"]
+        self.assertEqual([r["candidate_id"] for r in summary["retired_hand_cards"]], [self.hand_card["candidate_id"]])
+        page, feed = self.site("replace")
+        self.assertIn(self.hand_card["title"] + REPLACE_CYCLE, feed)
+        self.assertNotIn(self.hand_card["candidate_id"], page)
+        self.assertNotIn(self.hand_card["candidate_id"], read(self.repo / "data/known-hand-authored-candidates.json")["candidate_ids"])
+
     def test_whole_suite_passes_with_the_applied_data(self):
         self.assert_step("update.unittest")
 
-    def test_flow_never_leaves_the_synthetic_host(self):
+    def test_flow_never_leaves_the_mock_transport(self):
+        # 假傳輸不連外；這裡確認沒有請求是地圖外的頁面（robots.txt 除外，假傳輸一律回 404）。
         urls = set((self.pages / "requests.log").read_text(encoding="utf-8").splitlines())
         self.assertTrue(urls)
-        self.assertEqual({u for u in urls if not u.startswith(BASE + "/")}, set())
+        known = set(read(self.pages / "map.json"))
+        self.assertEqual({u for u in urls if u not in known and not u.endswith("/robots.txt")}, set())
 
     # ---- 已知斷點：修好後會變成 unexpected success，到時拿掉 expectedFailure。----
 
