@@ -18,7 +18,7 @@ if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from bs4 import BeautifulSoup
 from scripts.audit_sources import canonical_url
 from scripts.scan_sources import Fetcher,ScanError,node_get,digest,safe_url,html_document,pdf_document,SKIP
-from scripts.source_chains import discover_links,publication
+from scripts.source_chains import DOCUMENT_LINK,discover_links,publication
 from scripts.document_ir import prepare_document,document_manifest,VERSION as IR_VERSION
 from scripts.extract_candidates import extract_from_in_memory_blocks,DisabledModelAdapter,EXTRACTOR_VERSION
 from scripts.semantic_facts import discover_identity
@@ -29,8 +29,8 @@ RESOURCE=re.compile(r'獎學金|獎助學金|論文獎|著作獎|培育計畫|�
 INDEX=re.compile(r'^(?:最新消息|最新公告|獎學金|獎助學金|學生獎學金|學生事務|相關辦法|法規|首頁|獎(?:助)?學金(?:資訊|公告|公告資訊網|申請辦法)|news|scholarships?)$',re.I)
 INFORMATION=re.compile(r'說明會|發放訊息|發放通知|QA整理|影片.*簡報|(?:Q\s*&\s*A|FAQ)',re.I)
 # 全庫擴展的預設界限；提交流程要從入口頁往下走，放寬連結範圍，並把附件也當成可能的方案文件。
-DEFAULT_OPTIONS={'follow_roles':('policy',),'max_children':8,'link_limit':8,'broad_links':False,'document_candidates':False}
-INTAKE_OPTIONS={'follow_roles':('policy','related_call'),'max_children':40,'link_limit':None,'broad_links':True,'document_candidates':True}
+DEFAULT_OPTIONS={'follow_roles':('policy',),'max_children':8,'link_limit':8,'broad_links':False,'document_candidates':False,'group_documents':False}
+INTAKE_OPTIONS={'follow_roles':('policy','related_call'),'max_children':40,'link_limit':None,'broad_links':True,'document_candidates':True,'group_documents':True}
 INDEX_LINK_COUNT=3
 ADMIN=re.compile(r'教師(?:評審|評鑑|遴選)|院長選任|校長遴選|經費稽核委員會|預算分配委員會|電腦中心設置')
 
@@ -197,6 +197,8 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
                     model_adapter=DisabledModelAdapter(),extraction_strategy='rules_only')
                 state['profiles'][profile['id']]=profile
                 for candidate in candidates:
+                    # 公告連到的辦法或附件屬於同一方案。只共用方案代號，各文件的欄位不拼接。
+                    if row.get('parent_program_key'):candidate['program_key']=row['parent_program_key']
                     state['candidates'][candidate['candidate_id']]=candidate;record['candidate_ids'].append(candidate['candidate_id'])
                 record['disposition']='named_candidates_pending'
             else:record['disposition']='source_document_or_discovery_only'
@@ -209,7 +211,10 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
                     if len([r for r in state['new_sources'].values() if r.get('root_url')==row.get('root_url',url)])>=options['max_children']:
                         record['links_skipped']+=1
                         continue
-                    new={'id':'D'+digest(child)[:16],'url':child,'batch':batch,'category':row['category'],'title':link['label'],'parent_title':prepared['title'],
+                    # 連到別的網頁可能是別的方案，只有辦法和附件才算同一方案。
+                    same_program=options['group_documents'] and record['candidate_ids'] and (link['role']=='policy' or DOCUMENT_LINK.search(urlsplit(child).path))
+                    parent_program=state['candidates'][record['candidate_ids'][0]]['program_key'] if same_program else None
+                    new={'id':'D'+digest(child)[:16],'url':child,'batch':batch,'category':row['category'],'title':link['label'],'parent_title':prepared['title'],'parent_program_key':parent_program,
                          'root_url':row.get('root_url',url),'depth':record['depth']+1,'restrictions':[],'access_gate':'fresh_policy_and_profile_check_required'}
                     state['new_sources'][child]=new;rows.append(new)
         except (ScanError,ValueError,KeyError,zipfile.BadZipFile,ET.ParseError,TimeoutError) as error:

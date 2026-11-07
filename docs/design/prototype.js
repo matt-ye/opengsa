@@ -411,6 +411,16 @@ function groupDocuments(items){
   return {...primary,relatedDocuments:docs.filter(d=>d.id!==primary.id).map(d=>({id:d.id,title:d.title,url:d.url,cycle:d.cycle}))};
  });
 }
+// 依文件檢視時也要看得到同方案的其他文件；欄位仍各自獨立，不拼接。
+function linkDocuments(items){
+ const groups=new Map();
+ for(const item of items){if(item.personal||item.synthetic||!item.programKey)continue;if(!groups.has(item.programKey))groups.set(item.programKey,[]);groups.get(item.programKey).push(item);}
+ return items.map(item=>{
+  if(item.personal||item.synthetic)return item;
+  const others=(groups.get(item.programKey)||[]).filter(d=>d.id!==item.id);
+  return others.length?{...item,relatedDocuments:others.map(d=>({id:d.id,title:d.title,url:d.url,cycle:d.cycle}))}:item;
+ });
+}
 function makeDrafts(pilot,asOf=taipeiToday(),radarData=null) {
  const funding = {
   "ntu-tuition-115-1":"government","ntu-emergency-policy":"university",
@@ -796,7 +806,7 @@ function evaluateSubordination(checks={}){
  if(score===1) return {score:1,level:"review_needed",recommendedTiers:["TIER 01","TIER 02"],disclaimer,summary:"已勾選 1 項指標：具部分從屬或學習分流爭點。建議核對勞動部指導原則第 2～4 點及書面協議，確認工時與給付是否相符（2026 最低時薪 196 元）；必要時洽 TIER 01 系院或 TIER 02 校級窗口釐清。"+disclaimer};
  return {score,level:"high_subordination",recommendedTiers:["TIER 02","TIER 04","TIER 05"],disclaimer,summary:"已勾選 "+score+" 項指標：高度呈現人格、經濟或組織從屬性（常見「假學習真勞動」爭點）。依勞動部指導原則實質認定原則，若受指揮監督並提供勞務獲取對價，不能只按給付名稱排除適用保障；勞基法、2026最低工資與退休金須分別依關係、身分及進用依據確認。建議參考下方 TIER 02 校內申訴、TIER 04（地方主管機關勞檢／勞工局調解）或 TIER 05 高教工會。"+disclaimer};
 }
-const api={closeInspect,subTours,guideStepTitles,dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,timePresentation,windowState,filterItems,partitionItems,clarity,groupDocuments,issueUrl,officialUrl,UNKNOWN_LABEL,unknownValue,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination,isNA,fieldText,resultText,methodText,startLabel,deadlineText,applyTimeline,timelineDates,itemMatchesQuery,parseUrlParams,serializeStateToParams};
+const api={linkDocuments,closeInspect,subTours,guideStepTitles,dayNumber,iso,taipeiToday,addDays,makeDemo,makeDrafts,timePresentation,windowState,filterItems,partitionItems,clarity,groupDocuments,issueUrl,officialUrl,UNKNOWN_LABEL,unknownValue,workspaceItems,domain,position,centerScroll,geometry,noticeWindow,conferencePlan,monthsBefore,makeConferenceItem,conferenceEntries,personaPresets,activePersona,applyPersona,evaluateSubordination,isNA,fieldText,resultText,methodText,startLabel,deadlineText,applyTimeline,timelineDates,itemMatchesQuery,parseUrlParams,serializeStateToParams};
 if(typeof module!=="undefined" && module.exports) module.exports=api;
 if(typeof document==="undefined") return;
 
@@ -813,7 +823,7 @@ const personalConferences=new Map();
 function scoped(items){return items.map(item=>applyTimeline(item,chainData,"examples",timelineYear,showBaselines,today));}
 function currentItems(){return [...scoped(mode==="demo"?makeDemo(today):documentMode==="documents"?documentDrafts:drafts),...personalConferences.values()];}
 function allItems(){return [...scoped(mode==="demo"?makeDemo(today):documentDrafts),...personalConferences.values()];}
-const documentDrafts=[...makeDrafts(pilot,taipeiToday(),radarData),...(reviewPreview||radarView?[]:conferenceEntries(conferenceData.programs))];
+const documentDrafts=linkDocuments([...makeDrafts(pilot,taipeiToday(),radarData),...(reviewPreview||radarView?[]:conferenceEntries(conferenceData.programs))]);
 const drafts=groupDocuments(documentDrafts);
 let documentMode="documents";
 const rawById=new Map(pilot.opportunities.map(item=>[item.id,item]));

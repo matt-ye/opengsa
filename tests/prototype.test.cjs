@@ -1067,3 +1067,14 @@ test("hand-authored items are labelled and extracted items are not",()=>{
  assert.equal(warned.unverifiedSource,true);
  assert.equal(plain.unverifiedSource,false);
 });
+
+test("同方案的文件互相列為相關文件，欄位不拼接，個人與無方案項目不連結", () => {
+ const items = [{id:"a",programKey:"p",title:"公告",url:"u1",cycle:"115",amount:1},{id:"b",programKey:"p",title:"辦法",url:"u2",cycle:"115"},{id:"c",programKey:"q",title:"他案"},{id:"d",title:"無方案"},{id:"e",programKey:"p",personal:true,title:"個人"}];
+ const linked = core.linkDocuments(items);
+ assert.deepEqual(linked[0].relatedDocuments.map(d => d.id), ["b"]);
+ assert.deepEqual(linked[1].relatedDocuments.map(d => d.id), ["a"]);
+ assert.equal(linked[1].amount, undefined);
+ assert.equal(linked[2].relatedDocuments, undefined);
+ assert.equal(linked[3].relatedDocuments, undefined);
+ assert.equal(linked[4].relatedDocuments, undefined);
+});

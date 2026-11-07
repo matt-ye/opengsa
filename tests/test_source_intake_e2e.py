@@ -275,7 +275,18 @@ class SourceIntakeE2ETests(unittest.TestCase):
         result = self.enumerate_source("index", "/scholarships")
         self.assertEqual(result["records"][0]["disposition"], "source_document_or_discovery_only")
         self.assertEqual({c["title"] for c in result["candidates"]}, {"合成甲基金會115年度研究生獎學金", "合成乙基金會115年度清寒獎助學金", "合成丙基金會博士生論文獎"})
+        # 索引頁列的是不同方案，不能併成一個。
+        self.assertEqual(len({c["program_key"] for c in result["candidates"]}), 3)
         self.assertEqual(result["links_skipped"], 0)
+
+    def test_announcement_and_its_policy_share_one_program(self):
+        self.assert_step("intake.run")
+        rows = read(self.repo / "work/intake/result.json")["candidates"]
+        self.assertEqual(len(rows), 2)
+        self.assertEqual(len({row["program_key"] for row in rows}), 1)
+        self.assertIn("歸成 1 個方案", (self.repo / "work/intake/comment.md").read_text(encoding="utf-8"))
+        stored = {c["title"]: c for c in read(self.repo / "data/candidates/source-review.json")["candidates"]}
+        self.assertEqual(stored[INTAKE_TITLE]["program_key"], rows[0]["program_key"])
 
     def test_page_with_contact_details_still_extracts_and_keeps_none_of_them(self):
         result = self.enumerate_source("contact", "/news/a")
@@ -313,11 +324,6 @@ class SourceIntakeE2ETests(unittest.TestCase):
         self.assertEqual({u for u in urls if u not in known and not u.endswith("/robots.txt")}, set())
 
     # ---- 已知斷點：修好後會變成 unexpected success，到時拿掉 expectedFailure。----
-
-    @unittest.expectedFailure
-    def test_gap_step7_announcement_and_its_policy_are_one_card(self):
-        self.require("intake.run")
-        self.assertEqual(len(read(self.repo / "work/intake/result.json")["candidates"]), 1)
 
     @unittest.expectedFailure
     def test_gap_step9_proposal_carries_time_records(self):
