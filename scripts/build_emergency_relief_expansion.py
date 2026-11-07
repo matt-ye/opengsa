@@ -10,6 +10,8 @@ Updates:
 5. data/scan-sources.json (registers allowed_hosts and sources)
 6. data/source-chain-batches/batch-registry.json (registers emergency relief batch)
 """
+raise SystemExit("已停用：本腳本寫定候選內容、未從來源萃取，重跑會蓋掉資料。候選只能由萃取流程產生。")
+
 import hashlib
 import json
 from pathlib import Path

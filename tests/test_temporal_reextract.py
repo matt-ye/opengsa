@@ -289,14 +289,16 @@ class TemporalReplayTests(unittest.TestCase):
 
             cands = bundle['candidates']
             recs = obs['records']
-            self.assertEqual(len(cands), len(recs), f"Mismatch in count for {bundle_rel}")
-
             total_candidates += len(cands)
             total_observations += len(recs)
 
             # Metadata transformation
             meta = radar_metadata(bundle, obs)
             total_meta_records += len(meta['records'])
+            # 尚未回放的新候選可以沒有時間紀錄，但不得出現日期。
+            for cand in cands:
+                if cand['candidate_id'] not in recs:
+                    self.assertNotIn('time_dates', meta['records'][cand['candidate_id']])
 
             for cand in cands:
                 t = classify_source_track(cand)
@@ -306,11 +308,10 @@ class TemporalReplayTests(unittest.TestCase):
                 mode = rec.get('policy', {}).get('submission_mode')
                 all_modes[mode] = all_modes.get(mode, 0) + 1
 
-        self.assertEqual(total_candidates, 204)
-        self.assertEqual(total_observations, 204)
-        self.assertEqual(total_meta_records, 204)
+        self.assertEqual(total_meta_records, total_candidates)
+        self.assertGreater(total_observations, 0)
 
-        # 0 undetermined across all 204 candidates
+        # 0 undetermined across all recorded candidates
         self.assertEqual(all_modes.get('undetermined', 0), 0)
 
         # Full tracks coverage across gov, other, enterprise

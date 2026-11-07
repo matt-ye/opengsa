@@ -15,6 +15,7 @@ from scripts.temporal_tracks import (
     track_for_weekday,
 )
 from scripts.run_temporal_action import resolve_action_sources, run
+from scripts.review_candidates import candidate_fingerprint
 from scripts.temporal_reextract import ROOT, read
 
 
@@ -28,16 +29,14 @@ class TemporalTracksAndDiffTests(unittest.TestCase):
     def candidate(self, sid):
         return deepcopy(next(c for c in self.candidates if c["source_metadata"]["source_id"] == sid))
 
-    def test_all_64_candidates_partition_cleanly_into_three_tracks(self):
+    def test_all_candidates_partition_cleanly_into_three_tracks(self):
         counts = {"gov": 0, "enterprise": 0, "other": 0}
         for c in self.candidates:
             t = classify_source_track(c)
             self.assertIn(t, counts)
             counts[t] += 1
-        self.assertEqual(sum(counts.values()), 64)
-        self.assertEqual(counts["gov"], 30)
-        self.assertEqual(counts["enterprise"], 7)
-        self.assertEqual(counts["other"], 27)
+        self.assertEqual(sum(counts.values()), len(self.candidates))
+        self.assertTrue(all(counts.values()), counts)
         # Specific representative checks
         self.assertEqual(classify_source_track(self.candidate("sinica-phd-fellowship")), "gov")
         self.assertEqual(classify_source_track(self.candidate("faos-student-conference")), "enterprise")
@@ -131,11 +130,15 @@ class TemporalTracksAndDiffTests(unittest.TestCase):
         self.assertEqual(len(reused_new_rev), 0)
 
     def test_track_execution_planner_and_incremental_action_skip(self):
-        plan_ent = plan_track_execution(self.candidates, self.observations, track="enterprise", max_sources=5)
+        # 只看已有時間紀錄的候選；新進候選尚未回放，本來就該排入執行。
+        observed = [c for c in self.candidates if self.observations["records"].get(c["candidate_id"], {}).get("candidate_sha256") == candidate_fingerprint(c)]
+        expected = sum(classify_source_track(c) == "enterprise" for c in observed)
+        self.assertGreater(expected, 0)
+        plan_ent = plan_track_execution(observed, self.observations, track="enterprise", max_sources=5)
         self.assertEqual(plan_ent["track"], "enterprise")
-        self.assertEqual(plan_ent["total_in_track"], 7)
+        self.assertEqual(plan_ent["total_in_track"], expected)
         self.assertEqual(plan_ent["run_candidate_count"], 0)
-        self.assertEqual(plan_ent["skip_candidate_count"], 7)
+        self.assertEqual(plan_ent["skip_candidate_count"], expected)
 
         # With include_refinement=True, procedure_only items in enterprise are selected for refinement
         ids_refine, _ = resolve_action_sources(

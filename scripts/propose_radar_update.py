@@ -12,7 +12,7 @@ if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from scripts.scan_sources import digest
 from scripts.check_data import validate_candidate_snapshot
 from scripts.source_chains import candidate_bindings,candidate_documents,timeline_metadata
-from scripts.export_source_chain_graph import load_graph
+from scripts.export_source_chain_graph import load_graph,export as export_graph
 from scripts.expand_sources import read,save,now
 
 ACCEPT={'passed_automated_checks','passed_with_gaps'}
@@ -122,6 +122,13 @@ def write_proposal(incoming,config,output,preview=True,observations=None):
         if old and json.loads(old)==value:continue
         save(output/'repo'/path,value)
         patches.extend(difflib.unified_diff(old.splitlines(True),text.splitlines(True),fromfile='a/'+path,tofile='b/'+path))
+    # 已提交的資訊鏈圖要和資料一致（CI會比對），所以跟著提案一起更新。
+    diagrams=output/'repo/docs/source-chains'
+    export_graph(diagrams,files['data/source-chain-index.json'],reader=lambda path:files[path] if path in files else read(ROOT/path))
+    for file in sorted(diagrams.iterdir()):
+        path='docs/source-chains/'+file.name
+        old=(ROOT/path).read_text(encoding='utf-8') if (ROOT/path).exists() else ''
+        patches.extend(difflib.unified_diff(old.splitlines(True),file.read_text(encoding='utf-8').splitlines(True),fromfile='a/'+path,tofile='b/'+path))
     (output/'data-pr.patch').write_text(''.join(patches),encoding='utf-8')
     save(output/'summary.json',summary)
     save(output/'snapshot-base.json',{'files':{p:digest((ROOT/p).read_bytes()) if (ROOT/p).exists() else None for p in files},'generated_at':now()})

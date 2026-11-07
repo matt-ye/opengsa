@@ -14,6 +14,7 @@ if str(ROOT) not in sys.path:
 
 from scripts.build_feed import build_feeds
 from scripts.build_site import load_full_library
+from scripts.radar_metadata import known_hand_authored
 
 
 class RSSFeedTests(unittest.TestCase):
@@ -31,7 +32,7 @@ class RSSFeedTests(unittest.TestCase):
         cls.temp_dir.cleanup()
 
     def test_main_feed_structure_and_coverage(self):
-        """Verifies that feed.xml is valid RSS 2.0 and covers all 254 schemes."""
+        """Verifies that feed.xml is valid RSS 2.0 and covers every candidate."""
         self.assertTrue(self.main_file.exists())
         tree = ET.parse(self.main_file)
         root = tree.getroot()
@@ -48,7 +49,7 @@ class RSSFeedTests(unittest.TestCase):
         self.assertIsInstance(parsed_build_date, datetime)
 
         items = channel.findall("item")
-        self.assertEqual(len(items), 254, "All 254 candidates must be present in the main feed")
+        self.assertEqual(len(items), len(self.candidates["candidates"]), "Every candidate must be present in the main feed")
 
         for item in items:
             title = item.find("title").text
@@ -81,6 +82,13 @@ class RSSFeedTests(unittest.TestCase):
                 self.assertIn(query["id"][0], page_ids)
                 self.assertTrue(item.find("guid").text.startswith(query["id"][0]))
 
+    def test_hand_authored_items_carry_a_warning_and_extracted_items_do_not(self):
+        known = known_hand_authored()
+        items = ET.parse(self.main_file).getroot().find("channel").findall("item")
+        for item in items:
+            warned = item.find("description").text.startswith("⚠ 尚未經來源查證")
+            self.assertEqual(warned, item.find("guid").text in known, item.find("guid").text)
+
     def test_deadlines_feed_filtering_and_formatting(self):
         """Verifies that feed-deadlines.xml contains only verified deadlines with countdown markers."""
         self.assertTrue(self.deadlines_file.exists())
@@ -91,7 +99,7 @@ class RSSFeedTests(unittest.TestCase):
 
         items = channel.findall("item")
         self.assertGreater(len(items), 0, "Must contain items with confirmed deadlines")
-        self.assertLessEqual(len(items), 254)
+        self.assertLessEqual(len(items), len(self.candidates["candidates"]))
 
         for item in items:
             title = item.find("title").text

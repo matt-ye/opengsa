@@ -7,6 +7,12 @@ from pathlib import Path
 import re
 
 
+def known_hand_authored():
+    """尚未經來源萃取的候選；網站要標示，不可當成已確認資料。"""
+    path=Path(__file__).resolve().parents[1]/'data/known-hand-authored-candidates.json'
+    return set(json.loads(path.read_text(encoding='utf-8'))['candidate_ids'])
+
+
 def programme_source(candidate, organizations):
     """Classify named scheme provenance, never the forwarding website or a student's eligibility."""
     patterns={
@@ -32,6 +38,7 @@ def radar_metadata(bundle, observations=None):
         path=Path(__file__).resolve().parents[1]/'data/temporal-observations.json'
         observations=json.loads(path.read_text(encoding='utf-8')) if path.exists() else {}
     records={}
+    hand_authored=known_hand_authored()
     for candidate in bundle['candidates']:
         gaps=classify_review_gaps(candidate)['source']
         unsafe=source_is_unsafe(candidate)
@@ -66,6 +73,7 @@ def radar_metadata(bundle, observations=None):
             'revision':candidate['source_metadata']['revision_id'],
             'observed_at':candidate['source_metadata']['observed_at'],
             'known':known,'unsafe':unsafe,'unknown_reasons':gaps,
+            'unverified_source':candidate['candidate_id'] in hand_authored,
             'audience_kind':candidate['eligibility']['identity'].get('claim_kind','source_specific_summary'),
             'organizations':organizations,'time_steps':time_steps,
             'time_policy':project_time_policy(candidate,unsafe),
@@ -88,7 +96,7 @@ def radar_metadata(bundle, observations=None):
                 values={r['value'] for r in claims}
                 if len(values)==1 and not calendar_is_ambiguous(observation['policy']):
                     is_dual=any(r.get('year_basis')=='dual_anchored' for r in claims)
-                    row['time_dates'][key]={'value':claims[0]['value'],'certainty':'inferred' if is_dual else 'confirmed',**(({'note':'依公告發布日與計畫年度雙重錨定（待核座標）'}) if is_dual else {})}
+                    row['time_dates'][key]={'value':claims[0]['value'],'certainty':'tentative' if row['unverified_source'] else 'inferred' if is_dual else 'confirmed',**(({'note':'依公告發布日與計畫年度雙重錨定（待核座標）'}) if is_dual else {})}
             if calendar_is_ambiguous(observation['policy']):
                 row['time_policy']={**observation['policy'],'submission_mode':'mixed',
                     'gaps':list(dict.fromkeys([*observation['policy']['gaps'],'multiple_cycles_need_split']))}

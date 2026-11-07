@@ -11,6 +11,8 @@ Schemes (all URLs strictly matching allowed_hosts in data/scan-sources.json):
 7. ent-taai-thesis: 中華民國人工智慧學會 TAAI 最佳論文獎 (www.taai.org.tw)
 8. ent-csroc-thesis: 中華民國電腦學會最佳碩博士論文獎 (www.csroc.org.tw)
 """
+raise SystemExit("已停用：本腳本寫定候選內容、未從來源萃取，重跑會蓋掉資料。候選只能由萃取流程產生。")
+
 from pathlib import Path
 from copy import deepcopy
 import hashlib

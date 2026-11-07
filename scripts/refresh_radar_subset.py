@@ -135,7 +135,10 @@ def finalize_proposal(output):
     from scripts.source_chains import timeline_metadata
     output=Path(output);proposed=output/'proposal/repo';patch=[]
     def current(path):return read(proposed/path if (proposed/path).exists() else ROOT/path)
-    for file in sorted(proposed.rglob('*.json')):
+    # 參考窗補進資料後，資訊鏈圖要重產一次，否則和提案資料不一致。
+    from scripts.export_source_chain_graph import export as export_graph
+    export_graph(proposed/'docs/source-chains',current('data/source-chain-index.json'),reader=current)
+    for file in sorted(f for f in proposed.rglob('*') if f.is_file()):
         path=file.relative_to(proposed).as_posix()
         old=(ROOT/path).read_text(encoding='utf-8') if (ROOT/path).exists() else ''
         patch.extend(difflib.unified_diff(old.splitlines(True),file.read_text(encoding='utf-8').splitlines(True),fromfile='a/'+path,tofile='b/'+path))
