@@ -123,6 +123,20 @@ class IntakeSourceTests(unittest.TestCase):
         root = state["records"]["https://example.test/index"]
         self.assertEqual((root["links_found"], root["links_skipped"], len(state["new_sources"])), (3, 2, 1))
 
+    def test_linked_web_page_stays_its_own_program_but_attachment_joins(self):
+        page = '<main><h1>甲獎學金</h1><p>申請資格：國內大學碩士班在學學生，前一學年成績優良者均可提出申請，名額有限。</p><a href="/r.pdf">附件</a><a href="/other">乙獎學金</a></main>'.encode()
+        calls = []
+        def transport(target, headers, limit):
+            calls.append(target)
+            return {"status": 200, "headers": {"content-type": "text/html"}, "body": page} if target.endswith("/a") else {"status": 404, "headers": {}, "body": b""}
+        inventory = {"rows": [{"id": "R", "url": "https://example.test/a", "title": "", "batch": "B1", "category": "scholarship", "restrictions": []}]}
+        with tempfile.TemporaryDirectory() as tmp:
+            state = run_batch(inventory, initial_state(inventory), "B1", Path(tmp) / "state.json", {"sources": []}, transport=transport, progress=lambda *a, **k: None, options=INTAKE_OPTIONS)
+        program = next(iter(state["candidates"].values()))["program_key"]
+        children = state["new_sources"]
+        self.assertEqual(children["https://example.test/r.pdf"]["parent_program_key"], program)
+        self.assertIsNone(children["https://example.test/other"]["parent_program_key"])
+
     def test_comment_neutralises_text_taken_from_the_page(self):
         result = {"links_skipped": 2, "url": "https://example.test/a", "records": [{"url": "https://example.test/a", "status": "read", "disposition": "named_candidates_pending"}],
                   "candidates": [{"title": "獎學金 @someone `x` [連結](https://evil.test) <b>|", "status": "passed_with_gaps"}], "proposal": None}

@@ -55,7 +55,7 @@ def process(request, output, transport=node_get, progress=print):
     result = {"schema_version": "source-intake-result-1", "issue": request["issue"], "url": url, "already_registered": bool(request.get("already_registered")), "http_requests": state["http_requests"], "model_calls": 0,
               "records": [{"url": r["url"], "status": r["status"], "disposition": r.get("disposition")} for r in state["records"].values()],
               "links_skipped": sum(r.get("links_skipped", 0) for r in state["records"].values()),
-              "candidates": [{"title": c["title"], "status": c["verification"]["status"]} for c in bundle["candidates"]],
+              "candidates": [{"title": c["title"], "status": c["verification"]["status"], "program_key": c["program_key"]} for c in bundle["candidates"]],
               "proposal": None, "published": False, "official_data_modified": False, "expansion_summary": summary["statuses"]}
     if any(c["verification"]["status"] in ACCEPTED for c in bundle["candidates"]):
         result["proposal"] = write_proposal(bundle, profiles, output / "proposal", replaced_urls=[url])
@@ -73,6 +73,8 @@ def comment(result, run_url=None):
     if result["candidates"]:
         lines.extend(["", "| 候選 | 自動檢核 |", "|---|---|"])
         lines.extend(f"| {safe_text(c['title'])} | {c['status']} |" for c in result["candidates"])
+        programs = len({c.get("program_key") for c in result["candidates"]})
+        lines.extend(["", f"共 {len(result['candidates'])} 份文件，歸成 {programs} 個方案。"])
     lines.append("")
     if result["links_skipped"]:
         lines.extend([f"**沒有處理完：** 還有 {result['links_skipped']} 個連結超過單次上限，沒有抓取。", ""])
