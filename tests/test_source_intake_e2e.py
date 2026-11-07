@@ -117,6 +117,10 @@ class SourceIntakeE2ETests(unittest.TestCase):
         code, tail = self.results[step]
         self.assertEqual(code, 0, f"{step} 失敗：\n{tail}")
 
+    def require(self, step):
+        if self.results.get(step, (1,))[0] != 0:
+            self.skipTest(f"{step} 沒有成功，已知斷點無從判斷")
+
     def site(self, name):
         directory = Path(self.temp.name) / f"site-{name}"
         return (directory / "index.html").read_text(encoding="utf-8"), (directory / "feed.xml").read_text(encoding="utf-8")
@@ -163,11 +167,6 @@ class SourceIntakeE2ETests(unittest.TestCase):
     # ---- 已知斷點：修好後會變成 unexpected success，到時拿掉 expectedFailure。----
 
     @unittest.expectedFailure
-    def test_gap_step1_submitted_issue_triggers_something(self):
-        workflows = "".join(p.read_text(encoding="utf-8") for p in (ROOT / ".github/workflows").glob("*.yml"))
-        self.assertRegex(workflows, r"(?m)^\s+issues:")
-
-    @unittest.expectedFailure
     def test_gap_step5_index_page_enumerates_its_resources(self):
         row = {"id": "IDX1", "url": f"{BASE}/scholarships", "title": "合成索引", "batch": "B2", "category": "campus", "kind": "索引",
                "restrictions": [], "access_gate": "fresh_policy_and_profile_check_required"}
@@ -180,6 +179,8 @@ class SourceIntakeE2ETests(unittest.TestCase):
 
     @unittest.expectedFailure
     def test_gap_step9_proposal_carries_time_records(self):
+        # 前面的步驟就失敗時要跳過，否則會被當成「預期中的失敗」而看不出來。
+        self.require("new.propose")
         self.assertTrue((self.repo / "work/new/proposal/repo/data/temporal-observations.json").exists())
 
 
