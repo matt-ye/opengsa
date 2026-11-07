@@ -5,7 +5,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
-from scripts.propose_radar_update import ROOT,prepare,same_program,write_proposal,read
+from scripts.propose_radar_update import ROOT,prepare,same_program,split_site_ready,write_proposal,read
 from scripts.expand_sources import prepare_response,profile_for
 from scripts.extract_candidates import extract_from_in_memory_blocks
 from scripts.scan_sources import digest
@@ -69,6 +69,25 @@ class RadarProposalTests(unittest.TestCase):
         bundle_path=summary['retired_hand_cards'][0]['bundle']
         self.assertNotIn(cards[0]['candidate_id'],[c['candidate_id'] for c in files[bundle_path]['candidates']])
         self.assertEqual(len(files[bundle_path]['candidates']),len(read(ROOT/bundle_path)['candidates'])-len(cards))
+
+    def test_card_breaking_the_site_contract_is_withheld_and_the_rest_continue(self):
+        bundle,config,_=self.fixture()
+        good=bundle['candidates'][0];bad=deepcopy(good);bad['candidate_id']='cand-bad'
+        from scripts.build_review_workspace import candidate_preview_data
+        def fussy(data,*args):
+            if data['candidates'][0]['candidate_id']=='cand-bad':raise ValueError('contract')
+            return candidate_preview_data(data,*args)
+        with patch('scripts.build_review_workspace.candidate_preview_data',fussy):
+            ready,withheld=split_site_ready([good,bad],bundle,config)
+        self.assertEqual([c['candidate_id'] for c in ready],[good['candidate_id']])
+        self.assertEqual([r['candidate_id'] for r in withheld],['cand-bad'])
+
+    def test_year_range_without_a_base_date_still_fits_the_site_contract(self):
+        bundle,config,_=self.fixture()
+        card=bundle['candidates'][0]
+        card['eligibility']['year_limit']={'mode':'range','min':1,'max':3,'assessed_at':None,'refs':deepcopy(card['eligibility']['identity']['refs'])}
+        ready,withheld=split_site_ready([card],bundle,config)
+        self.assertEqual((len(ready),withheld),(1,[]))
 
     def test_different_program_on_the_same_url_is_left_for_a_person(self):
         url,cards=self.hand_url(1);bundle,config,_=self.fixture()
