@@ -33,7 +33,7 @@
 表單明確允許交「轉知頁、索引」（`resource-source.yml:22`）。假頁列了三筆獎助公告：
 
 - **`expand_sources`：** 三個連結只留一個，0 張卡，也沒有往下抓。
-  - 原因 1：`source_chains.py:67` 的關鍵字沒有「獎助學金」「論文獎」，另外兩個連結被濾掉。
+  - 原因 1：`source_chains.py:66` 的關鍵字沒有「獎助學金」「論文獎」，另外兩個連結被濾掉。
   - 原因 2：留下的連結角色是 `related_call`，而 `expand_sources.py:194` 只跟 `policy`。
 - **`scan`（通用 profile）：** 索引頁本身變成一張卡，狀態 `passed_with_gaps`。這個狀態在提案閘門內（`propose_radar_update.py:18`），所以會進提案。
 
