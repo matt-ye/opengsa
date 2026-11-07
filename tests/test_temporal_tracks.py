@@ -29,6 +29,14 @@ class TemporalTracksAndDiffTests(unittest.TestCase):
     def candidate(self, sid):
         return deepcopy(next(c for c in self.candidates if c["source_metadata"]["source_id"] == sid))
 
+    def test_recurring_mode_never_carries_a_student_date(self):
+        # 時間軸對 recurring 不畫座標；同時有明確學生日期就該判成 mixed。
+        for cid, record in self.observations["records"].items():
+            policy = record.get("policy") or {}
+            if policy.get("submission_mode") == "recurring":
+                with self.subTest(candidate=cid):
+                    self.assertFalse([r for r in policy["rules"] if r["kind"] == "absolute" and r["actor"] == "student" and r.get("value")])
+
     def test_all_candidates_partition_cleanly_into_three_tracks(self):
         counts = {"gov": 0, "enterprise": 0, "other": 0}
         for c in self.candidates:
@@ -130,8 +138,10 @@ class TemporalTracksAndDiffTests(unittest.TestCase):
         self.assertEqual(len(reused_new_rev), 0)
 
     def test_track_execution_planner_and_incremental_action_skip(self):
-        # 只看已有時間紀錄的候選；新進候選尚未回放，本來就該排入執行。
-        observed = [c for c in self.candidates if self.observations["records"].get(c["candidate_id"], {}).get("candidate_sha256") == candidate_fingerprint(c)]
+        # 只看已有時間紀錄且已判定的候選；新進候選尚未回放、時間仍待補的要回填，本來就該排入執行。
+        records = self.observations["records"]
+        observed = [c for c in self.candidates if records.get(c["candidate_id"], {}).get("candidate_sha256") == candidate_fingerprint(c)
+                    and records[c["candidate_id"]]["policy"]["submission_mode"] != "undetermined"]
         expected = sum(classify_source_track(c) == "enterprise" for c in observed)
         self.assertGreater(expected, 0)
         plan_ent = plan_track_execution(observed, self.observations, track="enterprise", max_sources=5)
