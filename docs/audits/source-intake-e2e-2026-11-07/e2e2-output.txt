@@ -1,0 +1,172 @@
+
+### A 全部 unittest（套用提案後） exit=1
+----------------------------------------------------------------
+Ran 292 tests in 33.857s
+
+FAILED (failures=9, errors=1)
+
+### A 失敗清單
+{
+ "count": 10,
+ "items": [
+  "ERROR test_build_site.setUpClass",
+  "FAIL test_card_import.test_import_is_not_a_human_approval_or_formal_release",
+  "FAIL test_card_import.test_synthetic_profiles_cover_current_cards_without_approvals",
+  "FAIL test_feed.test_main_feed_structure_and_coverage",
+  "FAIL test_source_chain_graph.test_committed_diagrams_match_structured_sources",
+  "FAIL test_temporal_reextract.test_full_library_batch4_consolidation_and_pipeline_integrity",
+  "FAIL test_temporal_tracks.test_all_64_candidates_partition_cleanly_into_three_tracks",
+  "FAIL test_temporal_tracks.test_track_execution_planner_and_incremental_action_skip",
+  "FAIL test_time_policy.test_all_64_project_without_mutation_or_intake_state_changes",
+  "FAIL test_verify_candidate_sources.test_collect_covers_every_candidate"
+ ]
+}
+
+### A 失敗訊息
+{
+ "msgs": [
+  "65 != 64",
+  "255 != 254 : All 254 candidates must be present in the main feed",
+  "65 != 64 : Mismatch in count for data/candidates/source-review.json",
+  "65 != 64",
+  "8 != 7",
+  "65 != 64",
+  "257 != 256"
+ ]
+}
+
+### B 寫死日期
+{
+ "lines": [
+  "\"generated_at\": \"2026-11-06T00:00:00Z\",",
+  "\"as_of\": \"2026-11-06\",",
+  "\"observed_at\": \"2026-11-06T00:00:00Z\","
+ ]
+}
+
+### B build_site（副本改 as_of 後，未經人工審核） exit=0
+Exported: index.html
+Built public preview: index.html, feed.xml, feed-deadlines.xml, assets/opengsa-social-preview.jpg, .nojekyll
+
+### B 上架結果（未審核）
+{
+ "built": true,
+ "title_in_page": 4,
+ "title_in_feed": 1,
+ "feed_items": 255,
+ "radar_records": 255,
+ "synthetic_radar": "{\"cand-synthetic-foundation-2026-c46d146f\": {\"url\": \"https://scholarship.opengsa-synthetic.example/news/phd-2026\", \"revision\": \"c46d146f90a95d5139d603f9092c3627e9b4926b965502a3a423f07cda605ed0\", \"observed_at\": \"2026-11-07T08:00:50+00:00\", \"known\": {\"audience\": true, \"year\": false, \"candidate\": false, \"compatibility\": false, \"hardship\": false, \"start\": false, \"result\": false, \"benefit\": true, \"method\": false, \"deadline\": false}, \"unsafe\": false, \"unknown_reasons\": [], \"unverified_source\": false, "
+}
+
+### C 駁回寫入台帳後 build_site exit=0
+Exported: index.html
+Built public preview: index.html, feed.xml, feed-deadlines.xml, assets/opengsa-social-preview.jpg, .nojekyll
+
+### C 駁回後網站
+{
+ "built": true,
+ "title_in_page": 4,
+ "title_in_feed": 1,
+ "feed_items": 255,
+ "radar_records": 255,
+ "synthetic_radar": "{\"cand-synthetic-foundation-2026-c46d146f\": {\"url\": \"https://scholarship.opengsa-synthetic.example/news/phd-2026\", \"revision\": \"c46d146f90a95d5139d603f9092c3627e9b4926b965502a3a423f07cda605ed0\", \"observed_at\": \"2026-11-07T08:00:50+00:00\", \"known\": {\"audience\": true, \"year\": false, \"candidate\": false, \"compatibility\": false, \"hardship\": false, \"start\": false, \"result\": false, \"benefit\": true, \"method\": false, \"deadline\": false}, \"unsafe\": false, \"unknown_reasons\": [], \"unverified_source\": false, "
+}
+
+### C 候選狀態
+{
+ "review": {
+  "status": "pending",
+  "editor": "extractor-1.8.0",
+  "independent_reviewer": null,
+  "reviewed_on": null,
+  "ledger_action": "unreviewed",
+  "promotion_ready": false
+ },
+ "verification": "passed_automated_checks"
+}
+
+### D 提案差異
+{
+ "base_records": 64,
+ "proposed_records": 65,
+ "new_has_synth": true
+}
+
+### D 套用時間提案 check_data exit=0
+PASS: 10 samples, 17 sources; reviews={'draft': 10}
+PASS: 9 pending candidate bundle(s), schema/source/excerpt bounds only
+Shape/reference checks only. No eligibility engine, external-link check, or publication approval.
+
+### D 套用時間提案 build_site exit=0
+Exported: index.html
+Built public preview: index.html, feed.xml, feed-deadlines.xml, assets/opengsa-social-preview.jpg, .nojekyll
+
+### D 網站（有時間記錄）
+{
+ "built": true,
+ "title_in_page": 4,
+ "title_in_feed": 1,
+ "feed_items": 255,
+ "radar_records": 255,
+ "synthetic_radar": "{\"cand-synthetic-foundation-2026-c46d146f\": {\"url\": \"https://scholarship.opengsa-synthetic.example/news/phd-2026\", \"revision\": \"c46d146f90a95d5139d603f9092c3627e9b4926b965502a3a423f07cda605ed0\", \"observed_at\": \"2026-11-07T08:00:50+00:00\", \"known\": {\"audience\": true, \"year\": false, \"candidate\": false, \"compatibility\": false, \"hardship\": false, \"start\": false, \"result\": false, \"benefit\": true, \"method\": false, \"deadline\": false}, \"unsafe\": false, \"unknown_reasons\": [], \"unverified_source\": false, "
+}
+
+### E 提案對資訊鏈
+{
+ "programs_before": 58,
+ "programs_after": 59,
+ "dropped": [],
+ "rules_before": 6,
+ "rules_after": 6,
+ "bindings_before": 64,
+ "bindings_after": 65,
+ "synthetic_bound": true,
+ "status_before": [
+  "candidate_snapshot",
+  "changed",
+  "discovered_not_read",
+  "unchanged"
+ ],
+ "recheck_before": 0
+}
+
+### F expand 索引頁 exit=0
+IDX1 B2 read requests=2
+{"version": "expansion-1", "generated_at": "2026-11-07T08:04:00+00:00", "http_requests": 2, "request_count_scope": "attempts reserved before transport, includes robots/retries/preflight; may include interrupted attempts", "batch_requests": {"B2": 2}, "model_calls": 0, "official_data_modified": false, "human_approvals": 0, "inventory_urls": 1, "source_records": 1, "new_sources": 0, "candidate_count": 0, "statuses": {"read": 1}, "remaining": []}
+
+### F expand 列舉結果
+{
+ "records": [
+  {
+   "url": "https://scholarship.opengsa-synthetic.example/scholarships",
+   "status": "read",
+   "disposition": "source_document_or_discovery_only"
+  }
+ ],
+ "links": [
+  {
+   "url": "https://scholarship.opengsa-synthetic.example/news/a",
+   "role": "related_call",
+   "label": "合成甲基金會115年度研究生獎學金"
+  }
+ ],
+ "discovered": [],
+ "candidates": 0
+}
+
+### G scan 索引頁（通用 profile） exit=0
+{"http_requests": 2, "changed_documents": 1, "pending_candidates": 1, "model_calls": 0, "official_data_modified": false}
+
+### G 索引頁被當成
+{
+ "count": 1,
+ "rows": [
+  {
+   "title": "合成索引",
+   "status": "passed_with_gaps",
+   "errors": [],
+   "benefit": "金額、幣別與發放頻率待核對",
+   "state": "unknown"
+  }
+ ]
+}
