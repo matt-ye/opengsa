@@ -6,6 +6,7 @@ import sys
 import tempfile
 import unittest
 from unittest.mock import patch
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -13,8 +14,8 @@ if str(ROOT) not in sys.path:
 from scripts.expand_sources import INTAKE_OPTIONS, initial_state, run_batch
 from scripts.run_hand_replacement import build_proposal, hand_targets, run, spread
 
-PAGE = ("<article><h1>合成甲基金會115學年度研究生獎學金</h1><p>申請資格：國內大學碩士班、博士班在學學生。</p>"
-        "<p>獎助金額：每名新臺幣五萬元。</p><p>申請期間：自115年3月1日起至115年4月15日止。</p></article>").encode()
+PAGE = ("<article><h1>{title}</h1><p>申請資格：國內大學碩士班、博士班在學學生。</p>"
+        "<p>獎助金額：每名新臺幣五萬元。</p><p>申請期間：自115年3月1日起至115年4月15日止。</p></article>")
 
 
 def row(url):
@@ -63,11 +64,12 @@ class HandReplacementTests(unittest.TestCase):
 
     def test_only_sources_with_a_candidate_replace_their_hand_card(self, _):
         targets = hand_targets()
-        single = [t for t in targets if len({c["program_key"] for c in t["cards"]}) == 1 and t["url"].startswith("https://")][:2]
+        single = [t for t in targets if len({c["program_key"] for c in t["cards"]}) == 1 and t["url"].startswith("https://")
+                  and urlsplit(t["url"]).path not in ("", "/") and "獎學金" in t["cards"][0]["title"]][:2]
         hit, miss = single
         def transport(url, headers, limit):
             if url == hit["url"]:
-                return {"status": 200, "headers": {"content-type": "text/html"}, "body": PAGE}
+                return {"status": 200, "headers": {"content-type": "text/html"}, "body": PAGE.format(title=hit["cards"][0]["title"]).encode()}
             return {"status": 404, "headers": {}, "body": b""}
         with tempfile.TemporaryDirectory() as tmp:
             run(tmp, single, transport=transport, spacing=0, progress=lambda *a, **k: None)

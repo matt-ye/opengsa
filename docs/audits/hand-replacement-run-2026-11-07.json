@@ -1,0 +1,3261 @@
+{
+ "as_of": "2026-11-07",
+ "model_calls": 0,
+ "sources": 183,
+ "hand_cards": 190,
+ "http_requests": 712,
+ "links_skipped": 667,
+ "cards_by_outcome": {
+  "read_no_candidate": 56,
+  "root_unreadable:http_404": 41,
+  "root_unreadable:transport_error": 31,
+  "root_unreadable:url_not_allowed": 14,
+  "root_unreadable:http_403_host_paused": 9,
+  "new_candidates": 8,
+  "root_unreadable:required_marker_missing": 8,
+  "root_unreadable:robots_not_plain_rules": 8,
+  "root_unreadable:robots_denied": 6,
+  "root_unreadable:host_paused": 5,
+  "root_unreadable:body_selector_changed": 1,
+  "root_unreadable:http_410": 1,
+  "root_unreadable:login_form_not_processed": 1,
+  "root_unreadable:robots_unavailable": 1
+ },
+ "rows": [
+  {
+   "url": "https://assistance-osa.ncku.edu.tw/",
+   "outcome": "new_candidates",
+   "root_status": "read",
+   "links_found": 9,
+   "links_skipped": 24,
+   "http_requests": 23,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ncku-emergency-aid",
+     "title": "國立成功大學學生急難救助金",
+     "bundle": "emergency-relief-aid",
+     "proposal": "needs_person"
+    },
+    {
+     "candidate_id": "cand-univ-ncku-0003a12b",
+     "title": "成功大學優秀研究生獎助學金與博生獎勵",
+     "bundle": "university-scholarships",
+     "proposal": "needs_person"
+    }
+   ],
+   "candidates": [
+    {
+     "title": "葉文冠教授紀念獎學金",
+     "status": "passed_with_gaps",
+     "url": "https://assistance-osa.ncku.edu.tw/p/412-1051-28653.php?Lang=zh-tw"
+    }
+   ]
+  },
+  {
+   "url": "https://aws.amazon.com/education/awseducate/",
+   "outcome": "new_candidates",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-aws-educate-0a107c1b",
+     "title": "Amazon AWS Educate & AWS Academy",
+     "bundle": "student-perks",
+     "proposal": "retire"
+    }
+   ],
+   "candidates": [
+    {
+     "title": "AWS Educate",
+     "status": "passed_with_gaps",
+     "url": "https://aws.amazon.com/education/awseducate/"
+    }
+   ]
+  },
+  {
+   "url": "https://education.github.com/pack",
+   "outcome": "new_candidates",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-github-student-pack-e98d8d10",
+     "title": "GitHub Student Developer Pack（GitHub 學生開發者大禮包）",
+     "bundle": "student-perks",
+     "proposal": "retire"
+    }
+   ],
+   "candidates": [
+    {
+     "title": "GitHub Student Developer Pack",
+     "status": "passed_with_gaps",
+     "url": "https://education.github.com/pack"
+    }
+   ]
+  },
+  {
+   "url": "https://research.google/outreach/phd-fellowship/",
+   "outcome": "new_candidates",
+   "root_status": "read",
+   "links_found": 1,
+   "links_skipped": 0,
+   "http_requests": 4,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-google-phd-fellowship-89543111",
+     "title": "Google PhD Fellowship Program (East Asia / Taiwan)",
+     "bundle": "enterprise-scholarships",
+     "proposal": "retire"
+    }
+   ],
+   "candidates": [
+    {
+     "title": "Google PhD fellowship program",
+     "status": "passed_with_gaps",
+     "url": "https://research.google/outreach/phd-fellowship/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.cgu.edu.tw/ch/Contents?nodeId=4684",
+   "outcome": "new_candidates",
+   "root_status": "read",
+   "links_found": 22,
+   "links_skipped": 92,
+   "http_requests": 25,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-cgu-000da12b",
+     "title": "長庚大學耕心優秀研究生與台塑企業產學獎助金",
+     "bundle": "university-scholarships",
+     "proposal": "needs_person"
+    }
+   ],
+   "candidates": [
+    {
+     "title": "長庚大學-教務處-教學助理獎助學金",
+     "status": "passed_with_gaps",
+     "url": "https://www.cgu.edu.tw/academic/Contents?nodeId=10853"
+    },
+    {
+     "title": "長庚大學-長庚中文站台-獎助學金",
+     "status": "passed_with_gaps",
+     "url": "https://www.cgu.edu.tw/oia-ch/Subject?nodeId=15728"
+    },
+    {
+     "title": "長庚大學-招生資訊網-碩士班培育獎助學金（適用115學年度起入學）",
+     "status": "failed_automated_checks",
+     "url": "https://www.cgu.edu.tw/recruit/Contents?nodeId=822"
+    },
+    {
+     "title": "長庚大學-招生資訊網-博士班龍躍博海500萬獎學金",
+     "status": "failed_automated_checks",
+     "url": "https://www.cgu.edu.tw/recruit/Contents?nodeId=260"
+    },
+    {
+     "title": "長庚大學-招生資訊網-博士班精進獎助學金（適用115學年度起入學）",
+     "status": "failed_automated_checks",
+     "url": "https://www.cgu.edu.tw/recruit/Contents?nodeId=261"
+    }
+   ]
+  },
+  {
+   "url": "https://www.foxconnfoundation.org/",
+   "outcome": "new_candidates",
+   "root_status": "read",
+   "links_found": 56,
+   "links_skipped": 108,
+   "http_requests": 22,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-foxconn-whale-vocational-scholarship-c95036c0",
+     "title": "財團法人鴻海教育基金會 —— 鴻海獎學鯨（高中職及技職專案組）",
+     "bundle": "k12-scholarships",
+     "proposal": "needs_person"
+    }
+   ],
+   "candidates": [
+    {
+     "title": "2026 鴻海科技獎申請辦法｜碩博士論文獎金最高 25 萬，享實習與業師指導",
+     "status": "passed_automated_checks",
+     "url": "https://www.foxconnfoundation.org/plan/technology_award/"
+    }
+   ]
+  },
+  {
+   "url": "https://www.yzu.edu.tw/admin/st/",
+   "outcome": "new_candidates",
+   "root_status": "read",
+   "links_found": 11,
+   "links_skipped": 0,
+   "http_requests": 22,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-yzu-0015a12b",
+     "title": "元智大學有庠碩博士優秀入學獎學金",
+     "bundle": "university-scholarships",
+     "proposal": "needs_person"
+    }
+   ],
+   "candidates": [
+    {
+     "title": "【生輔組公告】三重東區扶輪社獎助學金",
+     "status": "passed_with_gaps",
+     "url": "https://www.yzu.edu.tw/admin/st/index.php/tw/s-news-tw/7173-st-lgs20261106-1430-01"
+    },
+    {
+     "title": "【生輔組公告】財團法人綠產業發展教育基金會急難救助暨優秀學生獎學金",
+     "status": "failed_automated_checks",
+     "url": "https://www.yzu.edu.tw/admin/st/index.php/tw/s-news-tw/7169-st-lgs20261103-1430-01"
+    },
+    {
+     "title": "【生輔組公告】南投縣政府補助公私立大專院校及高級中等以下學校學生出國學習獎助學金",
+     "status": "passed_with_gaps",
+     "url": "https://www.yzu.edu.tw/admin/st/index.php/tw/s-news-tw/7165-st-lgs20261030-1530-01"
+    },
+    {
+     "title": "【生輔組公告】元智大學各界捐贈學生獎助學金",
+     "status": "failed_automated_checks",
+     "url": "https://www.yzu.edu.tw/admin/st/index.php/tw/s-news-tw/7162-st-lgs20260126-1430-03"
+    },
+    {
+     "title": "【生輔組公告】上洋清寒學生獎學金",
+     "status": "failed_automated_checks",
+     "url": "https://www.yzu.edu.tw/admin/st/index.php/tw/s-news-tw/7161-st-lgs20261028-1400-02"
+    }
+   ]
+  },
+  {
+   "url": "https://ag-osa.nsysu.edu.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 11,
+   "links_skipped": 64,
+   "http_requests": 23,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-nsysu-0006a12b",
+     "title": "中山大學西灣優秀學生與研究生卓越獎學金",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://assistance.sa.ntnu.edu.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 3,
+   "links_skipped": 0,
+   "http_requests": 15,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-ntnu-0009a12b",
+     "title": "臺灣師範大學優秀研究生獎勵與拔尖計畫",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://azure.microsoft.com/free/students/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 3,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-azure-for-students-9f895cca",
+     "title": "Microsoft Azure for Students（學生雲端服務與 OpenAI 額度）",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    },
+    {
+     "candidate_id": "cand-perk-azure-for-students",
+     "title": "Microsoft Azure for Students 教育雲端算力與開發者點數",
+     "bundle": "topology-discovered-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://dep.mohw.gov.tw/DOSAASW/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 4,
+   "links_skipped": 0,
+   "http_requests": 7,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-moe-low-income-preschool-aid-cae8c204",
+     "title": "低收入戶及中低收入戶幼童托教補助",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://dosw.gov.taipei/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-tpe-emergency-relief",
+     "title": "臺北市市民急難救助及青年生活陷困扶助",
+     "bundle": "emergency-relief-aid",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://guide.cmu.edu.tw/page/64",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 51,
+   "links_skipped": 31,
+   "http_requests": 23,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-cmu-0010a12b",
+     "title": "中國醫藥大學優秀博碩士研究生獎助學金",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://life.dsa.fju.edu.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 4,
+   "links_skipped": 0,
+   "http_requests": 8,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-fju-emergency-relief",
+     "title": "天主教輔仁大學學生急難救助金",
+     "bundle": "emergency-relief-aid",
+     "proposal": "unchanged"
+    },
+    {
+     "candidate_id": "cand-univ-fju-0011a12b",
+     "title": "輔仁大學耕莘優秀研究生獎助學金與全額獎學金",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://military.ncu.edu.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 4,
+   "links_skipped": 0,
+   "http_requests": 7,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-ncu-0005a12b",
+     "title": "中央大學松果研究生獎助金與拔尖獎學金",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://oia.ntu.edu.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ntu-oia-international-emergency",
+     "title": "國立臺灣大學國際事務處「國際學生急難救助金（NTU OIA Emergency Relief Fund）」",
+     "bundle": "emergency-relief-aid",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://osa.nccu.edu.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 66,
+   "links_skipped": 275,
+   "http_requests": 24,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-nccu-emergency-aid",
+     "title": "國立政治大學學生急難救助金",
+     "bundle": "emergency-relief-aid",
+     "proposal": "unchanged"
+    },
+    {
+     "candidate_id": "cand-univ-nccu-0004a12b",
+     "title": "政治大學指南優秀研究生獎學金與人文卓越獎勵",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://osa.ntut.edu.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 4,
+   "links_skipped": 0,
+   "http_requests": 8,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-ntut-000ca12b",
+     "title": "臺北科技大學優秀博碩士研究生入學與研發獎學金",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://osa.nycu.edu.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 50,
+   "links_skipped": 38,
+   "http_requests": 24,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-nycu-emergency-relief",
+     "title": "國立陽明交通大學學生急難救助金",
+     "bundle": "emergency-relief-aid",
+     "proposal": "unchanged"
+    },
+    {
+     "candidate_id": "cand-univ-nycu-0002a12b",
+     "title": "陽明交通大學學術卓越研究生獎學金",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://osa.tmu.edu.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 4,
+   "links_skipped": 0,
+   "http_requests": 12,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-tmu-000ea12b",
+     "title": "臺北醫學大學優秀生醫研究生與研發獎學金",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://rb005.ndhu.edu.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-ndhu-0018a12b",
+     "title": "東華大學東區優秀博碩士研究生獎助金",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://sa.site.nthu.edu.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-nthu-emergency-relief",
+     "title": "國立清華大學學生急難救助金",
+     "bundle": "emergency-relief-aid",
+     "proposal": "unchanged"
+    },
+    {
+     "candidate_id": "cand-univ-nthu-0001a12b",
+     "title": "清華大學校長獎學金與優秀研究生學術獎勵",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://sa.tku.edu.tw/spirit/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 11,
+   "links_skipped": 0,
+   "http_requests": 21,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-tku-0013a12b",
+     "title": "淡江大學優秀研究生與熊貓講座學術獎助金",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://scholarship.ncut.edu.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-moe-scholarship-fund-low-income-729b8e49",
+     "title": "教育部學產基金設置低收入戶學生助學金",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://sp.immigration.gov.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-nia-new-immigrant-scholarship-d2f76baf",
+     "title": "內政部移民署新住民及其子女培力與獎助（勵）學金計畫",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://student.fcu.edu.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-fcu-0014a12b",
+     "title": "逢甲大學築夢優秀研究生與產學合作獎勵金",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://student.ntust.edu.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-ntust-000ba12b",
+     "title": "臺灣科技大學碩博士研究生卓越獎學金",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://web-ch.scu.edu.tw/life/web_page/10497",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 3,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-scu-0012a12b",
+     "title": "東吳大學卓越研究生與校友文教獎學金",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.adobe.com/tw/creativecloud/buy/students.html",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 3,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-adobe-cc-student-483d80c7",
+     "title": "Adobe Creative Cloud 學生與教師特惠方案",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.apple.com/tw-edu/store",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-apple-education-pricing-dde078d9",
+     "title": "Apple 臺灣教育優惠與 Back to School（BTS 返校專案）",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.apple.com/tw/apple-music/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-apple-music-student-1f971e39",
+     "title": "Apple Music 學生方案（附贈 Apple TV+ 免費看）",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.ccf.org.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-ccf-taiwan-children-scholarship-dc5fee52",
+     "title": "財團法人台灣兒童暨家庭扶助基金會 —— 扶助弱勢兒少獎助學金",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.coursera.org/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-coursera-for-campus-7b2509ff",
+     "title": "Coursera for Campus & 助學金計畫（Financial Aid）",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.csroc.org.tw/news_detail.php?id=12",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 3,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-csroc-thesis-award",
+     "title": "中華民國電腦學會最佳碩博士論文獎",
+     "bundle": "topology-discovered-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.ece.moe.edu.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 3,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-moe-ece-subsidies-40978dfb",
+     "title": "我國少子女化對策計畫 —— 幼兒就學補助（公立、非營利、準公共幼兒園費用減免）",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.faos.org.tw/apply/student/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-faos-conference-grant-2c7ca55a",
+     "title": "傑出人才發展基金會 (FAOS) - 優秀學生出國開會補助",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.figma.com/education/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-figma-education-46ee13cb",
+     "title": "Figma for Education（Figma Professional 專業版免費）",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.fpg.com.tw/entrepreneurship-award",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 1,
+   "links_skipped": 0,
+   "http_requests": 4,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-formosa-plastics-entrepreneurship-42e619df",
+     "title": "台塑企業文物館暨王永慶青年創業獎助金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.fuboncharity.org.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 3,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-fubon-emergency-aid",
+     "title": "財團法人富邦慈善基金會「急難救助學生專案」",
+     "bundle": "emergency-relief-aid",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.ht.org.tw/religion178.htm",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 6,
+   "links_skipped": 0,
+   "http_requests": 6,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-hsingtian-emergency-grant",
+     "title": "財團法人行天宮文教發展基金會「行天宮學生急難濟助」",
+     "bundle": "emergency-relief-aid",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.jetbrains.com/community/education/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 3,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-jetbrains-student-pack-01f18286",
+     "title": "JetBrains Free Educational Licenses（All Products Pack）",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 11,
+   "links_skipped": 0,
+   "http_requests": 16,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ntu-med-oia-conference-40192a8b",
+     "title": "臺大醫學院醫學生出席國際會議及海外實習服務交換獎學金",
+     "bundle": "medical-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.microsoft.com/education/products/office",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 3,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-microsoft-365-education-0a9fbd1a",
+     "title": "Microsoft 365 Education（Word / Excel / PowerPoint / 1TB OneDrive）",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.microsoft.com/en-us/research/academic-program/phd-fellowship/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-microsoft-research-fellowship-61459559",
+     "title": "Microsoft Research PhD Fellowship",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.moa.gov.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 11,
+   "links_skipped": 0,
+   "http_requests": 23,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-moa-farmers-fishermen-children-scholarship-ced2d2bf",
+     "title": "農業部獎勵農漁民子女就學金（高級中等學校組）",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.moa.gov.tw/theme_data.php?theme=news&sub_theme=hot&id=123",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 11,
+   "links_skipped": 0,
+   "http_requests": 24,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-gov-moa-farmers-aid",
+     "title": "農業部農漁民子女就學助學金",
+     "bundle": "topology-discovered-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.myunidays.com/TW/zh-TW",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-unidays-platform-2de10e2f",
+     "title": "UNiDAYS 學生身分認證平台與合作品牌特惠",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.nncf.org/scholarship",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 3,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-noordhoff-craniofacial-award-4c26f49f",
+     "title": "羅慧夫顱顏基金會 - 得福獎助學金（顱顏青年大專碩士組）",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.notion.com/product/notion-for-education",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-notion-education-6a8befef",
+     "title": "Notion for Education（Notion Plus 方案個人免費）",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.osa.nchu.edu.tw/osa/laa/index.php",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 1,
+   "links_skipped": 0,
+   "http_requests": 3,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-nchu-0007a12b",
+     "title": "中興大學優秀博碩士研究生獎勵金",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.realtek.com/zh-tw/careers/fellowships",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 3,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-realtek-top-rnd-fellowship-2dc7a995",
+     "title": "瑞昱半導體碩博士頂尖研發獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.sfaa.gov.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 13,
+   "links_skipped": 16,
+   "http_requests": 23,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-sfaa-special-family",
+     "title": "衛生福利部社會及家庭署「特殊境遇家庭扶助－緊急生活扶助與子女生活津貼」",
+     "bundle": "emergency-relief-aid",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.spotify.com/tw/student/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-spotify-student-5c0c501e",
+     "title": "Spotify Premium 學生方案",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.sw.ntpc.gov.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 11,
+   "links_skipped": 19,
+   "http_requests": 23,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ntpc-emergency-relief",
+     "title": "新北市好日子愛心大平台急難救助與弱勢學生專案",
+     "bundle": "emergency-relief-aid",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.tableau.com/academic/students",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-tableau-for-students-b6160538",
+     "title": "Tableau for Students（Tableau Desktop & Prep 專業版）",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.wrp.org.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-wrp-single-parent-aid",
+     "title": "衛生福利部委辦財團法人婦女權益促進發展基金會「弱勢單親家庭培力計畫」",
+     "bundle": "emergency-relief-aid",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.you-care.org.tw/",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 9,
+   "links_skipped": 0,
+   "http_requests": 25,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-you-care-pu-ren-mentorship-aid-72eacff7",
+     "title": "財團法人普仁青年關懷基金會 —— 大手拉小手助學計畫",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.youtube.com/premium/student",
+   "outcome": "read_no_candidate",
+   "root_status": "read",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-youtube-premium-student-6240fadf",
+     "title": "YouTube Premium 學生方案",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.tfrd.org.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "body_selector_changed",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-tfrd-rare-disorder-scholarship-0c9ab3b4",
+     "title": "財團法人罕見疾病基金會 —— 罕見疾病獎助學金",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.ctci.org.tw/scholarship/creativity",
+   "outcome": "root_unreadable",
+   "root_status": "host_paused",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 0,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-ctci-creativity-scholarship-18f1cfee",
+     "title": "中技社科技獎學金（創意獎）",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.ctci.org.tw/scholarship/international",
+   "outcome": "root_unreadable",
+   "root_status": "host_paused",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 0,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-ctci-international-scholarship-341d40e9",
+     "title": "中技社科技獎學金（境外生研究獎）",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.ctci.org.tw/scholarship/living",
+   "outcome": "root_unreadable",
+   "root_status": "host_paused",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 0,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-ctci-international-living-aid-b4af3092",
+     "title": "中技社科技獎學金（境外生生活助學金）",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.taai.org.tw/awards/thesis",
+   "outcome": "root_unreadable",
+   "root_status": "host_paused",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 0,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-taai-thesis-award",
+     "title": "中華民國人工智慧學會 TAAI 最佳碩博士論文獎",
+     "bundle": "topology-discovered-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.tzuchi.org.tw/sprout-college",
+   "outcome": "root_unreadable",
+   "root_status": "host_paused",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 0,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-tzu-chi-college-sprout-65f29d0c",
+     "title": "慈濟基金會新芽獎學金（大專組）",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.autodesk.com/education/edu-software/overview",
+   "outcome": "root_unreadable",
+   "root_status": "http_403_host_paused",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-autodesk-education-135d397b",
+     "title": "Autodesk Education Community（AutoCAD / Maya / Fusion 360 免費）",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.canva.com/education/",
+   "outcome": "root_unreadable",
+   "root_status": "http_403_host_paused",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-canva-education-b9b84531",
+     "title": "Canva for Education / Canva 學生方案",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.datacamp.com/universities",
+   "outcome": "root_unreadable",
+   "root_status": "http_403_host_paused",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-datacamp-education-49a7ac3e",
+     "title": "DataCamp Classrooms & Student Discount",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.eden.org.tw/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "http_403_host_paused",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-eden-disability-college-aid-cd6c960a",
+     "title": "伊甸社會福利基金會 - 伊甸大專身心障礙學生勵學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.mathworks.com/academia/tah-portal.html",
+   "outcome": "root_unreadable",
+   "root_status": "http_403_host_paused",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-matlab-campus-wide-6ab0a357",
+     "title": "MathWorks MATLAB & Simulink Campus-Wide License（校園全校授權）",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.ocac.gov.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "http_403_host_paused",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ocac-compatriot-emergency",
+     "title": "僑務委員會「清寒僑生急難醫療慰助金及全民健康保險補助」",
+     "bundle": "emergency-relief-aid",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.perplexity.ai/",
+   "outcome": "root_unreadable",
+   "root_status": "http_403_host_paused",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-perplexity-student-discount-caccf465",
+     "title": "Perplexity Pro 學生優惠方案",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.tpma.org.tw/young-award",
+   "outcome": "root_unreadable",
+   "root_status": "http_403_host_paused",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-precision-medicine-young-award-d61e8946",
+     "title": "台灣精準醫療產業協會 - 精準醫療青年科學家獎助",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.tsmc.com/chinese/careers/fellowships",
+   "outcome": "root_unreadable",
+   "root_status": "http_403_host_paused",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-tsmc-phd-fellowship-881c712f",
+     "title": "台積電博士生獎學金 (TSMC PhD Fellowship)",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://chemistry.org.tw/awards/lee-fellowship",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-cslt-lee-fellowship-9b0a559d",
+     "title": "中華民國化學會 (CSLT) - 李遠哲院士獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://dep.mohw.gov.tw/dosw/cp-674-7221-115.html",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-mohw-emergency-relief",
+     "title": "衛生福利部急難救助與弱勢急難紓困方案",
+     "bundle": "emergency-relief-aid",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://pan.itri.org.tw/awards/research",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-pan-wen-yuan-research-award-f1a6a009",
+     "title": "潘文淵文教基金會 - 研究傑出獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://pan.itri.org.tw/fellowship/abroad",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-pan-wen-yuan-fellowship-78b0319d",
+     "title": "潘文淵文教基金會 - 博士班學生出國研究獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.acerfoundation.org.tw/digital-award",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-acer-digital-award-bf0e3227",
+     "title": "宏碁基金會 - 宏碁數位創作獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.acerfoundation.org.tw/smiling-award",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-acer-smiling-award-3bd2fdd0",
+     "title": "宏碁基金會 - 龍騰微笑智榮獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.ccf.org.tw/scholarship-college",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-ccf-college-scholarship-deba82ae",
+     "title": "家扶基金會大專學生獎助學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.chimeimuseum.org/chimei-arts-award",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-chimei-arts-award-9a2872ff",
+     "title": "奇美文化基金會 - 奇美藝術獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.chtf.org.tw/scholarship/fang",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-cht-fang-scholarship-209dcd8d",
+     "title": "中華電信方賢齊先生獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.cip.gov.tw/zh-tw/news/data-list/1018/index.html",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-gov-cip-indigenous-scholarship",
+     "title": "原住民族委員會大專校院原住民族學生獎助學金",
+     "bundle": "topology-discovered-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.compal.com/careers/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 3,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-compal-rnd-fellowship-ca4a3cc4",
+     "title": "仁寶電腦產學合作碩博士獎助學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.csroc.org.tw/thesis-award",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-csroc-outstanding-thesis-award-d6e945cc",
+     "title": "中華民國電腦學會 (CSROC) - 傑出大專與碩士論文獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.cyff.org.tw/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-chang-yung-fa-college-aid-ae2f428d",
+     "title": "張榮發基金會清寒學生助學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.eslitefoundation.org.tw/innovation-award",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-eslite-culture-award-41017a0e",
+     "title": "誠品文化藝術基金會 - 人文創新獎助",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.foi.org.tw/thesis-award",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-foi-consumer-protection-award-15fc4495",
+     "title": "金融消費評議中心 - 金融消費者保護研究論文獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.foxconnfoundation.org/technology-award",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-foxconn-tech-award-ef65c9fb",
+     "title": "鴻海科技獎 (Foxconn Technology Award)",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.foxconnfoundation.org/whale-scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-foxconn-whale-scholarship-020490dd",
+     "title": "鴻海獎學鯨大專生助學金 (Foxconn Educational Scholarship)",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.fulbright.org.tw/graduate-fellowship",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-fulbright-taiwan-fellowship-d85f9bb6",
+     "title": "學術交流基金會 (Fulbright Taiwan) - 赴美攻讀碩博士獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.gfc.org.tw/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-chong-you-elevator-scholarship-ce2115ab",
+     "title": "崇友實業大專院校獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.gigabyte.org.tw/design-award",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-gigabyte-great-design-award-ce45dca1",
+     "title": "技嘉教育基金會 - 奇想設計大賽獎助",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.ht.org.tw/scholarship/college-aid",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-hsing-tian-kong-college-aid-d97fb06d",
+     "title": "行天宮助學金（大專組）",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.ht.org.tw/scholarship/elite",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-hsing-tian-kong-elite-scholarship-92dd370a",
+     "title": "行天宮資優學生長期培育獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.lenovo.com/tw/zh/education/student/",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-lenovo-education-store-746522f1",
+     "title": "Lenovo 臺灣聯想學生與教師教育商城",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.maria.org.tw/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-maria-angel-scholarship-61d18baa",
+     "title": "瑪利亞社會福利基金會 - 瑪利亞天使培育助學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.mediatekfoundation.org/fellowship",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-mediatek-phd-fellowship-b2f8efec",
+     "title": "聯發科技博士生研究獎學金 (MediaTek PhD Fellowship)",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.mediatekfoundation.org/girls-in-stem",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-mediatek-girls-in-stem-61477d9d",
+     "title": "聯發科技教育基金會 - Girls in STEM 女性科技人才培育獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.mediatekfoundation.org/thesis-award",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-mediatek-master-thesis-award-ff35346b",
+     "title": "聯發科技碩士論文獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.megabank.com.tw/foundation/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-mega-bank-college-scholarship-d3decf65",
+     "title": "兆豐大專學生清寒與優秀獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.mercy.org.tw/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-mercy-foundation-scholarship-26c83aed",
+     "title": "恩慈大專優秀清寒助學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.nvidia.com/en-us/research/graduate-fellowship-program/",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-nvidia-graduate-fellowship-7a5951dc",
+     "title": "NVIDIA Graduate Fellowship Program",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.powerchip.com/careers/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-psmc-advanced-process-award-d51666ca",
+     "title": "力積電先進製程研發育成獎助",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.pst.org.tw/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-pst-polymer-research-award-83cffe20",
+     "title": "中華民國高分子學會 - 傑出研究獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.sunshine.org.tw/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-sunshine-burn-injury-scholarship-d8075e8f",
+     "title": "陽光社會福利基金會 - 陽光獎助學金（燒傷暨顏損大專青年）",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.syinlu.org.tw/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-shin-lu-youth-empowerment-dc97696e",
+     "title": "心路社會福利基金會 - 身心障礙青年自立與升學獎助",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.taishinart.org.tw/student-review",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-taishin-arts-student-review-0b2a25f8",
+     "title": "台新藝術獎學生評論獎助",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.tfrd.org.tw/tfrd/college_scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-tfrd-college-scholarship-84d03569",
+     "title": "罕見疾病大專獎助學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.tfrd.org.tw/tfrd/research_award",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-tfrd-thesis-grant-fc08b512",
+     "title": "罕見疾病博碩士論文獎助金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.trendmicro.com/zh_tw/about/careers/internship.html",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-trendmicro-cloud-intern-aid-d5657e6e",
+     "title": "趨勢科技騰雲運算與資安實習研究補助",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.tsia.org.tw/awards/master",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-tsia-master-award-ffc6a422",
+     "title": "台灣半導體產業協會 (TSIA) - 半導體獎（碩士研究生）",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.tsia.org.tw/awards/phd",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-tsia-phd-award-a28912a0",
+     "title": "台灣半導體產業協會 (TSIA) - 半導體獎（博士研究生）",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.you-care.org.tw/university-aid",
+   "outcome": "root_unreadable",
+   "root_status": "http_404",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-pu-ren-university-mentorship-a08ea367",
+     "title": "普仁青年關懷基金會 - 大學陪伴引導助學計畫",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.mol.gov.tw/1607/28162/28166/28214/",
+   "outcome": "root_unreadable",
+   "root_status": "http_410",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-gov-mol-unemployed-workers-aid",
+     "title": "勞動部失業勞工子女就學補助",
+     "bundle": "topology-discovered-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://osa.kmu.edu.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "login_form_not_processed",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 3,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-kmu-000fa12b",
+     "title": "高雄醫學大學勵志優秀博碩士研究生獎助學金",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://fatraceschool.k12ea.gov.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "required_marker_missing",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-moe-school-lunch-subsidy-35b9fafd",
+     "title": "國民中小學清寒學生無力支付午餐費及代收代辦費補助",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/news_txt.asp?pno=7296",
+   "outcome": "root_unreadable",
+   "root_status": "required_marker_missing",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ntu-med-publication-115-7296a12b",
+     "title": "臺大醫學院115學年度研究生優秀著作獎",
+     "bundle": "medical-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://special.moe.gov.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "required_marker_missing",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-moe-disability-tuition-waiver-609de122",
+     "title": "身心障礙學生及身心障礙人士子女就學費用減免與獎助",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.ht.org.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "required_marker_missing",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-hsing-tian-kong-scholarship-2fc58a6b",
+     "title": "財團法人行天宮文教發展促進基金會 —— 行天宮助學金",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.logitech.com/zh-tw",
+   "outcome": "root_unreadable",
+   "root_status": "required_marker_missing",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-logitech-student-69c2587c",
+     "title": "Logitech 羅技官方教育優惠折扣",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.travel934.org.tw/isic/isic.aspx",
+   "outcome": "root_unreadable",
+   "root_status": "required_marker_missing",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-isic-card-7c39156e",
+     "title": "ISIC 國際學生證（International Student Identity Card）",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.vac.gov.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "required_marker_missing",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 3,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-vac-veterans-children-education-aid-2db1e03d",
+     "title": "國軍退除役官兵輔導委員會高中職以下榮民子女就學補助",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.vac.gov.tw/cp-1797-3214-1.html",
+   "outcome": "root_unreadable",
+   "root_status": "required_marker_missing",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 4,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-gov-vac-veterans-aid",
+     "title": "國軍退除役官兵輔導委員會榮民子女就學補助及清寒獎助學金",
+     "bundle": "topology-discovered-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://ep.k12ea.gov.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "robots_denied",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-moe-senior-high-free-tuition-e139917f",
+     "title": "高級中等學校全面免學費方案（自112學年度第2學期起全面取消排富）",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050075",
+   "outcome": "root_unreadable",
+   "root_status": "robots_denied",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-moe-special-circumstances-family-waiver-1456e530",
+     "title": "特殊境遇家庭子女孫子女就學費用減免",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0150009",
+   "outcome": "root_unreadable",
+   "root_status": "robots_denied",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-moe-military-civil-servant-bereaved-aid-7c8f4eca",
+     "title": "軍公教遺族就學費用優待",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.csc.com.tw/foundation/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "robots_denied",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-china-steel-metal-scholarship-2e49f528",
+     "title": "中鋼集團教育基金會 - 中鋼金屬工程優秀學生獎助",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.samsung.com/tw/multistore/tw_student/",
+   "outcome": "root_unreadable",
+   "root_status": "robots_denied",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-samsung-education-store-01bfc5e9",
+     "title": "Samsung 臺灣三星學生教育商城",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://young.cloud.ncnu.edu.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "robots_denied",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-moe-youth-education-employment-savings-95808842",
+     "title": "教育部青年教育與就業儲蓄帳戶方案（高中職畢業生就業儲蓄津貼）",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://advisory.ntu.edu.tw/CMS/HTML/118",
+   "outcome": "root_unreadable",
+   "root_status": "robots_not_plain_rules",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ntu-emergency-aid",
+     "title": "國立臺灣大學學生急難救助金",
+     "bundle": "emergency-relief-aid",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://cip.ntcu.edu.tw/home",
+   "outcome": "root_unreadable",
+   "root_status": "robots_not_plain_rules",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-cip-indigenous-elementary-junior-aid-7cd98aed",
+     "title": "原住民族委員會國民中小學清寒原住民學生助學金",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://e-service.k12ea.gov.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "robots_not_plain_rules",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-moe-childcare-stipend-2to5-8dcbb7b3",
+     "title": "教育部 2 至未滿 5 歲育兒津貼",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.ctci.org.tw/scholarship/research",
+   "outcome": "root_unreadable",
+   "root_status": "robots_not_plain_rules",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-ctci-research-scholarship-f27aafbe",
+     "title": "中技社科技獎學金（科技研究獎）",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.sfi.org.tw/scholarship/eagle",
+   "outcome": "root_unreadable",
+   "root_status": "robots_not_plain_rules",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-sfi-gold-eagle-scholarship-4fe898c4",
+     "title": "證券暨期貨金鷹獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.taai.org.tw/thesis-award",
+   "outcome": "root_unreadable",
+   "root_status": "robots_not_plain_rules",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-taai-best-thesis-award-e1ae5a23",
+     "title": "中華民國人工智慧學會 (TAAI) - 人工智慧學會博碩士論文獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.tzuchi.org.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "robots_not_plain_rules",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-tzuchi-emergency-relief",
+     "title": "財團法人中華民國佛教慈濟慈善事業基金會「急難就學援助」",
+     "bundle": "emergency-relief-aid",
+     "proposal": "unchanged"
+    },
+    {
+     "candidate_id": "cand-k12-tzu-chi-sprout-scholarship-6c912c99",
+     "title": "財團法人中華民國佛教慈濟慈善事業基金會 —— 慈濟新芽獎學金",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.thu.edu.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "robots_unavailable",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-thu-0017a12b",
+     "title": "東海大學博雅博碩士優秀研究生獎勵金",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://auo.com/zh-TW/careers/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-auo-aplus-fellowship-798e0903",
+     "title": "友達光電 A+ 研發獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://auo.com/zh-TW/foundation/green-award",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-auo-green-energy-award-09b848cd",
+     "title": "友達光電文教基金會 - 綠能永續跨領域專題獎助",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://auo.com/zh-TW/thesis-award",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-auo-display-thesis-award-a0fae27c",
+     "title": "友達光電前瞻顯示技術論文獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://coop.k12ea.gov.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-k12ea-cooperative-education-stipend-7992c342",
+     "title": "高級中等學校建教合作學生生活津貼與學費全額補助",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://helpdreams.moe.edu.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-k12ea-indigenous-highschool-grant-and-meals-d51c376e",
+     "title": "高級中等學校原住民學生助學金及伙食費補助",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://helpdreams.moe.edu.tw/Home/EmergencyAid",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-moe-student-aid-emergency",
+     "title": "教育部學產基金設置急難慰問金",
+     "bundle": "emergency-relief-aid",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://lae.mol.gov.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-mol-unemployed-workers-children-stipend-1080a27c",
+     "title": "勞動部失業勞工在學子女生活扶助金（高級中等學校組）",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://pea.nknu.edu.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-moe-president-education-award-bfc4415c",
+     "title": "教育部總統教育獎",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://rural.k12ea.gov.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-k12-k12ea-remote-schools-transport-hostel-dadb681f",
+     "title": "偏遠地區學校及非山非市學生交通費與住宿補助",
+     "bundle": "k12-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://spirit.tku.edu.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-tku-emergency-aid",
+     "title": "淡江大學學生急難救助金",
+     "bundle": "emergency-relief-aid",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://studaff.ccu.edu.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-ccu-0008a12b",
+     "title": "中正大學研究生學術卓越獎學金",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.asefoundation.org.tw/environment-award",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-ase-environment-thesis-award-31835beb",
+     "title": "日月光環境學術論文獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.asefoundation.org.tw/women-in-stem",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-ase-women-stem-scholarship-5a49be4c",
+     "title": "日月光大專女性工程人才培育獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.cathay-charity.org.tw/scholarship/college",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-cathay-excellence-college-6fd550f2",
+     "title": "國泰卓越獎助學金（大專組）",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.cathay-charity.org.tw/scholarship/graduate",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-cathay-excellence-graduate-75dfe2a1",
+     "title": "國泰卓越獎助學金（碩士組卓越專案）",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.cice.org.tw/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-cice-civil-engineering-scholarship-28a8c487",
+     "title": "中華民國土木水利工程學會 - 優秀學生獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.cycu.edu.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 4,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-cycu-0016a12b",
+     "title": "中原大學優秀碩博士獎學金與全額學費補助",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.esunfnd.org.tw/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-esun-outstanding-fellowship-c1266e4c",
+     "title": "玉山培育傑出人才獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.fubon.org/thesis-award",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-fubon-management-thesis-award-a8c60a86",
+     "title": "富邦人壽管理碩士論文獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.iicm.org.tw/news_detail.php?id=88",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-iicm-thesis-award",
+     "title": "中華民國資訊學會最佳碩博士論文獎",
+     "bundle": "topology-discovered-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.iicm.org.tw/thesis-award",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-iicm-best-degree-thesis-award-1be115a5",
+     "title": "中華民國資訊學會 (IICM) - 碩博士最佳學位論文獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.lcygroup.com/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-lcy-education-scholarship-c47320f3",
+     "title": "李長榮教育基金會 - 李長榮優秀學生獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.qinlao.org.tw/internship",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-formosa-qin-lao-intern-aid-c7f5c781",
+     "title": "勤勞學生暑期工讀暨助學專案",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.ron-san.org.tw/literature-award",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-lin-rong-san-literature-award-8ea527dd",
+     "title": "林榮三文化公益基金會 - 林榮三文學獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.samm.org.tw/thesis-award",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-samm-mechanics-thesis-award-63420eea",
+     "title": "中華民國力學學會 - 最佳碩博士論文獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.scsb.org.tw/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-scsb-college-scholarship-9b153120",
+     "title": "上海商銀大專獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.swallow.org.tw/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-police-children-scholarship-43248266",
+     "title": "白曉燕文教基金會 - 警察子女獎助學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.tcc.org.tw/thesis-award",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-tcc-communication-award-c5c68d41",
+     "title": "台灣通訊學會 - 5G/6G 前瞻通訊創新研究論文獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.the-living-stone.org.tw/dandelion-aid",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-li-hsien-dandelion-aid-ee93a725",
+     "title": "財團法人立賢教育基金會 - 蒲公英大專生偏鄉陪伴服務獎助",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.tps.org.tw/thesis-award",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-tps-optics-thesis-award-17699d77",
+     "title": "中華民國光電學會 (TPS) - 最佳碩博士論文獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.tsung.org.tw/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "transport_error",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-tsung-cho-chang-scholarship-85b7570b",
+     "title": "宗倬章先生教育基金會學生獎助學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://concert.stpi.narl.org.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "url_not_allowed",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-academic-databases-library-af229a92",
+     "title": "學術文獻庫校園授權（IEEE Xplore / ScienceDirect / ACM / 華藝線上）",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://education.github.com/",
+   "outcome": "root_unreadable",
+   "root_status": "url_not_allowed",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 2,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-github-copilot-student-d35e5851",
+     "title": "GitHub Copilot Student（學生免費 AI 寫程式助手）",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.asusfoundation.org/youth-innovation",
+   "outcome": "root_unreadable",
+   "root_status": "url_not_allowed",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-asus-youth-innovation-award-89557049",
+     "title": "華碩青年程式與永續創新專案",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.cloudskillsboost.google/",
+   "outcome": "root_unreadable",
+   "root_status": "url_not_allowed",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-google-cloud-skills-boost-57397feb",
+     "title": "Google Cloud Skills Boost for Students (含 Gemini/Vertex AI Labs)",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.cursor.com/",
+   "outcome": "root_unreadable",
+   "root_status": "url_not_allowed",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-perk-cursor-ai-student-b2125ede",
+     "title": "Cursor AI Code Editor 教育優惠方案",
+     "bundle": "student-perks",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.delta-foundation.org.tw/scholarship/netherlands",
+   "outcome": "root_unreadable",
+   "root_status": "url_not_allowed",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-delta-netherlands-scholarship-ac8da9b6",
+     "title": "台達荷蘭環境獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.delta-foundation.org.tw/scholarship/young",
+   "outcome": "root_unreadable",
+   "root_status": "url_not_allowed",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-delta-young-environment-award-5efe85e3",
+     "title": "台達青年環境獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.ieee.org.tw/awards/best-thesis",
+   "outcome": "root_unreadable",
+   "root_status": "url_not_allowed",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-ieee-taipei-best-thesis-award-2c236a80",
+     "title": "台灣電機電子工程學會 (IEEE Taipei Section) - 碩博士最佳論文獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.innolux.com/careers/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "url_not_allowed",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 3,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-innolux-rnd-scholarship-0434ddb5",
+     "title": "群創光電研發菁英獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.ntpu.edu.tw/admin/a8/org/a8-2/index.php",
+   "outcome": "root_unreadable",
+   "root_status": "url_not_allowed",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-univ-ntpu-000aa12b",
+     "title": "臺北大學三峽優秀研究生學術獎助金",
+     "bundle": "university-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.spil.com.tw/careers/scholarship",
+   "outcome": "root_unreadable",
+   "root_status": "url_not_allowed",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-spil-semiconductor-scholarship-6d274b41",
+     "title": "矽品精密半導體封裝研發獎學金",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.taiwanbio.org.tw/thesis-award",
+   "outcome": "root_unreadable",
+   "root_status": "url_not_allowed",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-tbpa-biotech-thesis-award-dc07e4de",
+     "title": "台灣生技產業聯盟 - 生物技術與生技產業潛力人才論文獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.taiwancement.com/foundation/award",
+   "outcome": "root_unreadable",
+   "root_status": "url_not_allowed",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-taipei-cement-low-carbon-award-2288553c",
+     "title": "台泥永續環境基金會 - 低碳永續工程研究論文獎",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  },
+  {
+   "url": "https://www.tic100.org.tw/",
+   "outcome": "root_unreadable",
+   "root_status": "url_not_allowed",
+   "links_found": 0,
+   "links_skipped": 0,
+   "http_requests": 1,
+   "hand_cards": [
+    {
+     "candidate_id": "cand-ent-advantech-tic100-award-b05340f3",
+     "title": "研華文教基金會 - TiC100 永續創新校園競賽獎助",
+     "bundle": "enterprise-scholarships",
+     "proposal": "unchanged"
+    }
+   ],
+   "candidates": []
+  }
+ ]
+}
