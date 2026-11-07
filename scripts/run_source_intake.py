@@ -36,7 +36,7 @@ def hand_source_ids():
             for card in read(path)["candidates"] if card["candidate_id"] in known}
 
 
-def process(request, output, transport=node_get, progress=print):
+def process(request, output, transport=node_get, progress=print, options=INTAKE_OPTIONS, propose=True):
     output = Path(output)
     config = read(ROOT / "data/scan-sources.json")
     url = request["url"]
@@ -49,7 +49,7 @@ def process(request, output, transport=node_get, progress=print):
                                           "kind": "提交", "restrictions": [], "access_gate": "owner_approved_submission"}]}
     save(output / "inventory.json", inventory)
     state = initial_state(inventory)
-    run_batch(inventory, state, BATCH, output / "state.json", config, transport=transport, progress=progress, options=INTAKE_OPTIONS)
+    run_batch(inventory, state, BATCH, output / "state.json", config, transport=transport, progress=progress, options=options)
     report = output / "report"
     summary = export_report(inventory, state, report)
     bundle, profiles = read(report / "structured-candidates.json"), read(report / "source-profiles.json")
@@ -58,7 +58,7 @@ def process(request, output, transport=node_get, progress=print):
               "links_skipped": sum(r.get("links_skipped", 0) for r in state["records"].values()),
               "candidates": [{"title": c["title"], "status": c["verification"]["status"], "program_key": c["program_key"]} for c in bundle["candidates"]],
               "proposal": None, "published": False, "official_data_modified": False, "expansion_summary": summary["statuses"]}
-    if any(c["verification"]["status"] in ACCEPTED for c in bundle["candidates"]):
+    if propose and any(c["verification"]["status"] in ACCEPTED for c in bundle["candidates"]):
         result["proposal"] = write_proposal(bundle, profiles, output / "proposal", replaced_urls=[url])
     save(output / "result.json", result)
     return result

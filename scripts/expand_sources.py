@@ -7,6 +7,7 @@ from io import BytesIO
 import json
 from pathlib import Path
 import re
+import subprocess
 import sys
 import time
 from urllib.parse import urlsplit
@@ -217,7 +218,7 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
                     new={'id':'D'+digest(child)[:16],'url':child,'batch':batch,'category':row['category'],'title':link['label'],'parent_title':prepared['title'],'parent_program_key':parent_program,
                          'root_url':row.get('root_url',url),'depth':record['depth']+1,'restrictions':[],'access_gate':'fresh_policy_and_profile_check_required'}
                     state['new_sources'][child]=new;rows.append(new)
-        except (ScanError,ValueError,KeyError,zipfile.BadZipFile,ET.ParseError,TimeoutError) as error:
+        except (ScanError,ValueError,KeyError,zipfile.BadZipFile,ET.ParseError,TimeoutError,subprocess.TimeoutExpired) as error:
             reason=str(error) if isinstance(error,ScanError) else type(error).__name__
             record.update(status=reason)
             if DENIED.search(reason) and reason!='robots_denied':state['host_pauses'][host]=reason
