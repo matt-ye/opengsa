@@ -127,6 +127,36 @@ console.log('254 items: temporal labels, geometry, ambiguous years, intake filte
         self.assertLess(css.rindex('flex-wrap:nowrap;flex-shrink:0}'),breakpoint_at,'不可在斷點之後以基底規則蓋回 nowrap')
         self.assertIn('.compare-controls select{flex:1;min-width:0;',css)
 
+    def test_layout_rules_stay_effective_and_primary_controls_share_chart_header(self):
+        css=(ROOT/'docs/design/wireframes.html').read_text(encoding='utf-8')
+        self.assertIn(':where(button:not(:disabled),select,input){font:inherit}',css,'全域字型重設不可蓋掉按鈕字級')
+        self.assertNotIn('overscroll-behavior:contain',css,'圖表捲到底要能接著捲頁面')
+        for columns,rule in ((8,'#persona-bar{grid-template-columns:repeat(8,'),(4,'#persona-bar{grid-template-columns:repeat(4,'),(2,'#persona-bar{grid-template-columns:repeat(2,')):
+            self.assertIn(rule,css,f'情境卡片應整除為 {columns} 欄，避免落單')
+        soup=BeautifulSoup(self.html,'html.parser')
+        header=soup.select_one('#results-panel .chart-header')
+        self.assertIsNotNone(header.select_one('#search-query'))
+        toggle=header.select_one('#conference-toggle')
+        self.assertEqual(toggle['aria-controls'],'conference-planner')
+        self.assertIsNotNone(soup.select_one('#chart-legend .legend-panel .gantt-legend'))
+        footer=soup.select_one('footer')
+        self.assertEqual(footer.select_one('a[href="https://mattye.dev/"]').get_text(strip=True),'葉淨維 Matt Ye')
+        self.assertIsNotNone(footer.select_one('a[href="https://github.com/matt-ye"]'))
+
+    def test_guide_and_feed_text_take_library_count_from_data(self):
+        js=(ROOT/'docs/design/prototype.js').read_text(encoding='utf-8')
+        tours=js[js.index('const subTours'):js.index('const guideStepTitles')]
+        self.assertNotRegex(tours,r'\d{2,}\s*(筆|項)','導覽文案的數量要用 {count}，不可寫死')
+        self.assertIn('{count}',tours)
+        soup=BeautifulSoup(self.html,'html.parser')
+        self.assertEqual(soup.select_one('#feed-library-count').get_text(),'','RSS 筆數由資料填入')
+        guide=soup.select_one('#guide-dialog').get_text()
+        self.assertNotRegex(guide,r'\d{2,}\s*(筆|項)')
+
+    def test_generated_summaries_put_text_in_content_not_class(self):
+        js=(ROOT/'docs/design/prototype.js').read_text(encoding='utf-8')
+        self.assertNotRegex(js,r'el\("summary","[^"]')
+
     def test_rss_modal_and_followit_integration(self):
         soup = BeautifulSoup(self.html, 'html.parser')
         dialog = soup.select_one('#rss-dialog')

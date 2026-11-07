@@ -73,7 +73,7 @@ const subTours = {
     icon: "🎯",
     title: "第一步：探索與快篩",
     badge: "01 / 全站探索",
-    desc: "OpenGSA 收錄全台 236 項獎學金與福利。利用頂部情境標籤（碩博/出國/弱勢/算力）或左側多維度篩選，秒縮小目標範圍。",
+    desc: "OpenGSA 全庫已收錄 {count} 筆獎學金、福利與急難救助來源摘要。利用頂部情境標籤（碩博/出國/弱勢/算力）或多維度篩選，秒縮小目標範圍。",
     features: ["情境標籤一鍵直達", "全教育階段身分篩選（大學部至 K-12）", "頂會與差旅同義詞比對"],
     action: { label: "👉 前往情境與篩選", panel: "search", anchor: "persona-bar" }
    },
@@ -81,7 +81,7 @@ const subTours = {
     icon: "⏳",
     title: "第二步：看懂時程甘特圖",
     badge: "02 / 時程解讀",
-    desc: "全台首創 100% 精確時程政策投影，64px 緊湊視野。綠色實心為受理期、斑駁條紋為截止前 30 天準備提醒帶、空心標記為推估日。",
+    desc: "依來源摘要投影時程，未確認的日期會標示請見來源。綠色實心為受理期、斑駁條紋為截止前 30 天準備提醒帶、空心標記為推估日。",
     features: ["實線正式受理期間", "截止前 30 天準備提醒帶", "垂直紅線標記今天"],
     action: { label: "👉 前往時程甘特圖", panel: "search", anchor: "gantt-view" }
    },
@@ -89,7 +89,7 @@ const subTours = {
     icon: "⭐",
     title: "第三步：收藏與跨頁行事曆",
     badge: "03 / 跨頁排程",
-    desc: "點選方案卡片上的「⭐ 收藏」，自動同步至【獎助詳情】進行多方案並排比對，並匯入【我的時間軸】安排待辦；亦可試算研討會補件時限。",
+    desc: "勾選方案或按「列入我的選項」，自動同步至【獎助詳情】進行多方案並排比對，並匯入【我的時間軸】安排待辦；亦可試算研討會補件時限。",
     features: ["跨頁自動即時同步", "第二頁雙方案並排比對", "第三頁個人專屬時間軸"],
     action: { label: "👉 查看我的時間軸", panel: "timeline" }
    },
@@ -97,8 +97,8 @@ const subTours = {
     icon: "📡",
     title: "第四步：主動推播與權益保障",
     badge: "04 / 推播與救濟",
-    desc: "點擊頁首「📡 訂閱推播」免費取得雙軌 RSS 或透過 Follow.it 訂閱 Email。遇到研究助理薪資遲發、工時超標或著作權爭議，至【權益與求助】查閱五級救濟地圖與自測。",
-    features: ["雙軌 RSS 與 Email 推播", "五級法定救濟地圖", "從屬性勞僱關係自測"],
+    desc: "點擊頁首「📡 訂閱推播」免費取得雙軌 RSS 或透過 Follow.it 訂閱 Email。遇到研究助理薪資遲發、工時超標或著作權爭議，至【權益與求助】查閱五類求助窗口與自測。",
+    features: ["雙軌 RSS 與 Email 推播", "五類求助窗口", "從屬性勞僱關係自測"],
     action: { label: "👉 前往權益求助", panel: "rights" }
    }
   ]
@@ -112,15 +112,15 @@ const subTours = {
     icon: "🏷️",
     title: "情境標籤：一鍵鎖定身分",
     badge: "找獎助 01",
-    desc: "點選上方「🎓 博士研究」、「✈️ 出國交流」、「🎒 弱勢助學」或「💻 學生福利」，一秒縮小目標，再次點擊即可還原。",
-    features: ["博士研究專注：國科會／教育部博獎", "出國交流與留學：國際會議／千里馬／遠學", "學生福利：40 項軟硬體、雲端與交通折扣"],
+    desc: "點選上方「博士研究專注」、「出國交流與留學」、「各級教育弱勢扶助」或「研究工具／AI／算力」等情境，一秒縮小目標，再次點擊即可還原。",
+    features: ["博士研究專注：國科會／教育部博獎", "出國交流與留學：國際會議／千里馬／遠學", "研究工具／AI／算力：工具訂閱、學生優惠與雲端額度"],
     action: { label: "👉 瀏覽情境標籤", panel: "search", anchor: "persona-bar" }
    },
    {
     icon: "🎛️",
     title: "多維篩選：精準過濾條件",
     badge: "找獎助 02",
-    desc: "左欄篩選器支援：學歷階段（碩博／大學部／高中職／國中小）、方案來源（政府／學校／企業／基金會）、兼領限制與受理狀態。",
+    desc: "篩選卡支援：學歷階段（碩博／大學部／高中職／國中小）、方案來源（政府／學校／企業／基金會）、兼領限制與受理狀態。",
     features: ["杜絕身分排擠：大學部與 K-12 直達", "兼領合約檢核：明示不可兼領與有條件", "受理狀態：受理中／即將開放／已截止"],
     action: { label: "👉 展開篩選卡", panel: "search", anchor: "filter-category" }
    },
@@ -128,15 +128,15 @@ const subTours = {
     icon: "📊",
     title: "甘特圖全景：掌握倒數節奏",
     badge: "找獎助 03",
-    desc: "本輪升級 64px 緊湊列高，一屏同時綜覽 6~8 筆方案！實心長條為官方受理日，斑駁斜紋提醒提早 30 天準備推薦信與自傳，點擊長條即可查看完整時間政策。",
-    features: ["一屏可見數翻倍", "30 天準備提醒帶提早應對", "點擊色帶直達詳細公文依據"],
+    desc: "實心長條為官方受理日，斑駁斜紋提醒提早 30 天準備推薦信與自傳，點擊長條即可查看完整時間政策。",
+    features: ["標題與日期軸固定，捲動不迷路", "30 天準備提醒帶提早應對", "點擊色帶直達詳細公文依據"],
     action: { label: "👉 檢視甘特圖", panel: "search", anchor: "gantt-view" }
    },
    {
     icon: "🔍",
     title: "同義詞搜尋與一鍵收藏",
     badge: "找獎助 04",
-    desc: "搜尋框內建同義詞引擎，輸入「頂會」、「NeurIPS」、「CVPR」、「差旅補助」即可精確命中出國會議補助；在卡片點擊「⭐ 收藏」即刻跨頁同步。",
+    desc: "搜尋框內建同義詞引擎，輸入「頂會」、「NeurIPS」、「CVPR」、「差旅補助」即可精確命中出國會議補助；在清單卡片按「列入我的選項」即刻跨頁同步。",
     features: ["頂尖國際研討會同義詞比對", "一鍵加入個人時間軸", "右上角浮動 Toast 即時微回饋"],
     action: { label: "👉 聚焦搜尋框", panel: "search", anchor: "search-query" }
    }
@@ -151,8 +151,8 @@ const subTours = {
     icon: "📂",
     title: "檢視範圍：全庫 vs 收藏清單",
     badge: "詳情比對 01",
-    desc: "工具列支援切換「目前選項」與「全庫所有方案（236 筆）」，無論是否已收藏，都能隨時調閱全台任何一筆獎學金之完整條文。",
-    features: ["隨時查閱 236 筆方案條文", "過濾只看個人收藏項目", "輸入關鍵字即時全文過濾"],
+    desc: "工具列支援切換「目前選項」與「全庫所有方案（{count} 筆）」，無論是否已收藏，都能隨時調閱全台任何一筆獎學金之完整條文。",
+    features: ["隨時查閱 {count} 筆方案條文", "過濾只看個人收藏項目", "輸入關鍵字即時全文過濾"],
     action: { label: "👉 切換檢視範圍", panel: "detail", anchor: "detail-scope-switch" }
    },
    {
@@ -160,7 +160,7 @@ const subTours = {
     title: "雙方案並排：眼球橫向比對",
     badge: "詳情比對 02",
     desc: "點選「➕ 選擇第二個方案進行並排比對」，系統立即在右側展開對照卡片，橫向比對資助金額、名額、申請資格與給付方式。",
-    features: ["雙欄同步並排對照", "自動標記條文差異", "手機端支援橫向平滑滑動"],
+    features: ["雙欄同步並排對照", "資格、金額與給付方式逐項對照", "手機端支援橫向平滑滑動"],
     action: { label: "👉 選擇比對方案", panel: "detail", anchor: "detail-compare-select" }
    },
    {
@@ -190,15 +190,15 @@ const subTours = {
     icon: "📅",
     title: "個人專屬甘特圖看板",
     badge: "我的時程 01",
-    desc: "這是一張完全專屬於你的個人時程表！僅繪製你在第一頁勾選收藏的心儀方案，採用 64px 緊湊列高，所有關鍵截止日一屏掌握。",
-    features: ["排除無關雜訊，只看已選機會", "自動標註各方案截止倒數", "支援今天前後 90 天與全覆蓋切換"],
+    desc: "這是一張完全專屬於你的個人時程表！僅繪製你在第一頁勾選收藏的心儀方案，集中掌握關鍵截止日。",
+    features: ["排除無關雜訊，只看已選機會", "自動標註各方案截止倒數", "支援近 90 天與涵蓋已知日期切換"],
     action: { label: "👉 檢視個人甘特圖", panel: "timeline", anchor: "personal-gantt-grid" }
    },
    {
     icon: "✈️",
     title: "國際研討會差旅倒推機",
     badge: "我的時程 02",
-    desc: "計劃出國發表論文？在第二頁輸入研討會首日，系統自動依國科會及校方規則（提前一個月首日彙送）倒推最晚校內送件與補件時程，並繪入甘特圖。",
+    desc: "計劃出國發表論文？在第一頁按「＋ 新增研討會」，輸入研討會首日，系統自動依國科會及校方規則（提前一個月首日彙送）倒推最晚校內送件與補件時程，並繪入甘特圖。",
     features: ["支援國科會會議出國作業要點", "自動推算接受通知與補送緩衝", "個人試算資料僅記憶體暫存不外傳"],
     action: { label: "👉 前往研討會試算", panel: "search", anchor: "conference-planner" }
    },
@@ -207,7 +207,7 @@ const subTours = {
     title: "備件清單與進度追蹤",
     badge: "我的時程 03",
     desc: "下方「申請清單與準備待辦」將各方案拆解為推薦信、成績單、研究計畫等具體任務，以手風琴折疊卡呈現，勾選即可動態統計完成度。",
-    features: ["方案手風琴卡片節省手機版面", "待辦完成進度百分比即時計算", "暫存於本地瀏覽器，隱私 100% 安全"],
+    features: ["方案手風琴卡片節省手機版面", "待辦完成進度百分比即時計算", "只留本次瀏覽，重新整理即清除"],
     action: { label: "👉 檢視待辦清單", panel: "timeline", anchor: "plan-options" }
    },
    {
@@ -245,15 +245,15 @@ const subTours = {
     icon: "🩺",
     title: "從屬性自測：學習型 vs 勞僱型",
     badge: "權益求助 03",
-    desc: "點選「求助與自測」，勾選差勤打卡、指揮監督、業務替代性等 8 項客觀指標，系統一鍵分析「實質受僱關係」，杜絕假學習真勞動。",
-    features: ["客觀司法判準指標檢核", "即時產出爭點分析報告", "蒐證四要件提示（排班表/截圖/帳戶）"],
+    desc: "點選「求助與自測」，勾選固定排班與差勤、勞務報酬對價、指揮監督、無關修業的庶務等客觀指標，系統一鍵分析「實質受僱關係」，杜絕假學習真勞動。",
+    features: ["客觀司法判準指標檢核", "即時產出爭點分析報告", "蒐證四要件提示（排班表/截圖/入帳明細/課程大綱）"],
     action: { label: "👉 前往從屬性自測", panel: "rights", anchor: "subordination-wizard" }
    },
    {
     icon: "🗺️",
-    title: "五級救濟地圖：精確求助窗口",
+    title: "五類求助窗口：依事件直選",
     badge: "權益求助 04",
-    desc: "遇到超時、欠薪或處分爭議？救濟地圖清楚指引 Tier 1（系院）➔ Tier 2（學生申評會/性平）➔ Tier 3（主管機關/訴願）➔ Tier 4（勞工局勞檢）➔ Tier 5（工會支援），無需層層通報。",
+    desc: "遇到超時、欠薪或處分爭議？求助窗口清楚指引 Tier 1（系院）➔ Tier 2（學生申評會/性平）➔ Tier 3（主管機關/訴願）➔ Tier 4（勞工局勞檢）➔ Tier 5（工會支援），無需層層通報。",
     features: ["依事件性質直選權責窗口", "涉及不利處分不強制系所協商", "附救濟時效與保密保障說明"],
     action: { label: "👉 查看救濟地圖", panel: "rights", anchor: "grievance-map-title" }
    }
@@ -830,11 +830,14 @@ function el(tag, cls, text) {
 }
 function axis(text,kind="") { return el("span","axis "+kind,text); }
 function updateNavHeight() {
- const height=Math.ceil(document.querySelector(".nav-wrap").getBoundingClientRect().height);
- document.documentElement.style.setProperty("--nav-height",height+"px");
+ const wrap=document.querySelector(".nav-wrap"), box=wrap.getBoundingClientRect();
+ // 標頭折行時只讓最下方的分頁列黏住，其餘隨頁面捲走，避免遮住內容。
+ const hidden=window.matchMedia("(max-width:1160px)").matches?Math.floor(document.querySelector(".nav-links").getBoundingClientRect().top-box.top):0;
+ wrap.style.top=-hidden+"px";
+ document.documentElement.style.setProperty("--nav-height",Math.ceil(box.height-hidden)+"px");
 }
 updateNavHeight();
-if(window.matchMedia("(max-width:800px)").matches)document.querySelector("#search .filter>details").open=false;
+if(window.matchMedia("(max-width:1100px)").matches)document.querySelector("#search .filter>details").open=false;
 if(typeof ResizeObserver!=="undefined") new ResizeObserver(updateNavHeight).observe(document.querySelector(".nav-wrap"));
 function renderConferencePlan() {
  const output=byId("conference-output"), start=byId("conference-start").value, notice=byId("conference-notice").value;
@@ -1007,7 +1010,7 @@ function timelineSummary(container,item){
   box.append(el("p","small",label+"："+b.start+"–"+b.end+"；參考"+b.sample_years.join("、")+"年，實際以當期公告為準。"));
  }
  if(!t.events.length)box.append(el("p","small","此參考年度尚無已讀取的當期地方公告；歷史底帶不代表已開放申請。"));
- const details=el("details");details.append(el("summary","來源資訊鏈（公告／辦法與格式）"));
+ const details=el("details");details.append(el("summary","","來源資訊鏈（公告／辦法與格式）"));
  const ids=new Set(t.documentIds);
  for(const r of chainData?.relations||[])if(ids.has(r.from))ids.add(r.to);
  for(const id of ids){
@@ -1046,7 +1049,7 @@ function radarSummary(container,item){
  if(missing.length)radarFact(container,missing.join("／"),null,item);
  container.append(radarLinks(item));
  if(item.relatedDocuments?.length){
-  const details=el("details");details.append(el("summary","相關公告／辦法（"+item.relatedDocuments.length+"份）"));
+  const details=el("details");details.append(el("summary","","相關公告／辦法（"+item.relatedDocuments.length+"份）"));
   for(const doc of item.relatedDocuments){const p=el("p","small");p.append(sourceLink(doc.title,item,doc.url));details.append(p);}container.append(details);
  }
 }
@@ -1613,6 +1616,13 @@ window.addEventListener("focus",refreshToday);
 window.addEventListener("resize",()=>{updateNavHeight();if(lastRange && view==="gantt" && !byId("search").hidden){const value=rangeMode==="fit"?timelineFocusValue(partitionItems(currentItems(),state).all):today;requestAnimationFrame(()=>centerToday(lastRange,"gantt-grid",value));}if(lastPersonalRange && !byId("timeline").hidden) requestAnimationFrame(()=>centerToday(lastPersonalRange,"personal-gantt-grid"));});
 for(const program of conferenceData.programs){const option=el("option","",program.title);option.value=program.id;byId("conference-program").append(option);}
 for(const ref of conferenceData.reference_sources){const row=el("p","small"),link=el("a","",ref.title+" ↗");link.href=ref.url;row.append(link,el("span","","："+ref.note));byId("conference-references").append(row);}
+byId("conference-toggle").addEventListener("click",()=>{
+ const planner=byId("conference-planner");planner.open=!planner.open;
+ if(planner.open){planner.scrollIntoView({behavior:"instant",block:"start"});byId("conference-program").focus({preventScroll:true});}
+});
+byId("conference-planner").addEventListener("toggle",event=>{
+ const toggle=byId("conference-toggle");toggle.setAttribute("aria-expanded",String(event.target.open));toggle.textContent=event.target.open?"收起研討會":"＋ 新增研討會";
+});
 byId("conference-planner").addEventListener("input",()=>{byId("conference-status").textContent="";renderConferencePlan();});
 byId("conference-program").addEventListener("change",renderConferencePlan);
 byId("conference-add").addEventListener("click",()=>{
@@ -1848,6 +1858,9 @@ const guideTourSelect = byId("guide-tour-select");
 const guideSlidesContainer = byId("guide-slides");
 const guideDotsContainer = document.querySelector ? document.querySelector(".guide-dots") : null;
 
+// 全庫筆數一律取自實際資料，文案不寫死，避免擴充資料後又變舊數字。
+const withLibraryCount = text => text.replaceAll("{count}", String(documentDrafts.length));
+if (byId("feed-library-count")) byId("feed-library-count").textContent = String(documentDrafts.length);
 const renderGuideStep = (tourKey, step) => {
  const tour = subTours[tourKey] || subTours.global;
  const totalSteps = tour.steps.length;
@@ -1868,13 +1881,13 @@ const renderGuideStep = (tourKey, step) => {
   slide.setAttribute("data-step", String(step));
   slide.append(el("div", "guide-card-icon", currentItem.icon));
   slide.append(el("h3", "", currentItem.title));
-  slide.append(el("p", "guide-desc", currentItem.desc));
+  slide.append(el("p", "guide-desc", withLibraryCount(currentItem.desc)));
 
   const box = el("div", "guide-feature-box");
   const list = el("ul", "guide-checklist");
   currentItem.features.forEach(f => {
    const li = el("li", "");
-   li.textContent = f;
+   li.textContent = withLibraryCount(f);
    list.append(li);
   });
   box.append(list);
@@ -1890,8 +1903,13 @@ const renderGuideStep = (tourKey, step) => {
     if (currentItem.action.anchor) {
      const anchorEl = byId(currentItem.action.anchor);
      if (anchorEl) {
+      if (anchorEl.tagName === "DETAILS") anchorEl.open = true;
+      const rightsSection = anchorEl.closest ? anchorEl.closest("[data-rights-section]") : null;
+      if (rightsSection) setRightsView(rightsSection.dataset.rightsSection);
+      const closedParent = anchorEl.closest ? anchorEl.closest("details:not([open])") : null;
+      if (closedParent) closedParent.open = true;
       if (typeof anchorEl.scrollIntoView === "function") anchorEl.scrollIntoView({ behavior: "smooth", block: "start" });
-      const firstFocus = anchorEl.querySelector ? anchorEl.querySelector("button, select, input") : null;
+      const firstFocus = anchorEl.matches && anchorEl.matches("button, select, input") ? anchorEl : anchorEl.querySelector ? anchorEl.querySelector("button, select, input") : null;
       if (firstFocus && typeof firstFocus.focus === "function") firstFocus.focus();
      }
     }
@@ -1952,7 +1970,8 @@ if (guideNextBtn) guideNextBtn.addEventListener("click", () => renderGuideStep(c
 
 if (guideDialog) {
  guideDialog.addEventListener("click", event => {
-  if (typeof guideDialog.getBoundingClientRect !== "function") return;
+  // 導覽按鈕已先關閉視窗時，矩形為 0，不可再判定成點背景而搶走焦點。
+  if (!guideDialog.open || typeof guideDialog.getBoundingClientRect !== "function") return;
   const rect = guideDialog.getBoundingClientRect();
   const inside = rect.top <= event.clientY && event.clientY <= rect.top + rect.height &&
                  rect.left <= event.clientX && event.clientX <= rect.left + rect.width;
