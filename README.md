@@ -15,15 +15,15 @@
 ## 🚀 最新專案狀態 (Latest Status)
 
 > **公開預覽網站即時發布中**：**[https://opengsa.mattye.dev/](https://opengsa.mattye.dev/)**  
-> **全庫方案覆蓋規模**：**128 筆來源摘要**（1-to-1 精確時程政策覆蓋，`undetermined = 0`，覆蓋率 100%）  
+> **全庫方案覆蓋規模**：**224 筆來源摘要**（1-to-1 精確時程政策覆蓋，`undetermined = 0`，覆蓋率 100%）  
 > **測試防線**：Python 單元測試與前端整合測試由 GitHub Actions 每次執行
 
-### 1. 全庫八大獎助資源板塊 (128 筆來源摘要)
+### 1. 全庫八大獎助資源板塊 (224 筆來源摘要)
 OpenGSA 目前收錄跨越教育階段、公部門、民間企業與高等教育學府的完整資源光譜：
-1. **碩博士研究生與核心研究獎助 (64 筆)**：國科會博士生研究獎學金、教育部產學博班、校長獎學金、傑出論文成果獎等。
+1. **研究生、校內與民間獎助（來源審核中，163 筆）**：國科會博士生研究獎學金、教育部產學博班、校長獎學金、傑出論文成果獎，以及各校公告的校內外獎學金與民間基金會獎助等。
 2. **K-12 各級教育與公部門助學 (8 筆)**：學產基金、教育部清寒弱勢助學、地方政府急難救助金等（[專題報告](docs/K12-SCHOLARSHIP-LANDSCAPE-AND-SOURCE-CHAINS.md)）。
-3. **學生身分軟硬體、雲端與 AI Perks (15 筆)**：GitHub Student Pack、Notion AI、JetBrains、AWS Educate 等（[專題報告](docs/STUDENT-SOFTWARE-HARDWARE-AND-AI-PERKS.md)）。
-4. **企業、民間基金會與學會獎助 (6 筆)**：台積電、鴻海獎學鯨、行天宮、宗倬章、各專門學會獎助等（[專題報告](docs/ENTERPRISE-SCHOLARSHIP-LANDSCAPE-AND-SOURCE-CHAINS.md)）。
+3. **學生身分軟硬體、雲端與 AI Perks (13 筆)**：GitHub Student Pack、Notion AI、JetBrains、AWS Educate 等（[專題報告](docs/STUDENT-SOFTWARE-HARDWARE-AND-AI-PERKS.md)）。
+4. **企業、民間基金會與學會獎助 (5 筆)**：台積電、鴻海獎學鯨、行天宮、宗倬章、各專門學會獎助等（[專題報告](docs/ENTERPRISE-SCHOLARSHIP-LANDSCAPE-AND-SOURCE-CHAINS.md)）。
 5. **醫學與特定專業出國/論文獎助 (1 筆)**：臺大醫學院學生出國補助辦法、醫學院研究生優秀著作獎（[專題報告](docs/MED-SCHOLARSHIPS-AUDIT.md)）。
 6. **全台跨校大專校院代表性研究生獎助 (19 筆)**：清華、交大、成大、政大、中央、中山、中興、中正、師大、臺北大學等 24 所代表性高教學府（[專題報告](docs/TAIWAN-UNIVERSITIES-SCHOLARSHIP-EXPANSION.md)）。
 7. **中央跨部會法定助學、算力與全國學會論文獎 (3 筆)**：原民會、農業部、勞動部、退輔會就學補助，Azure for Students 算力點數，資訊學會 (IICM)、人工智慧學會 (TAAI)、電腦學會 (CSROC) 碩博士最佳論文獎。
