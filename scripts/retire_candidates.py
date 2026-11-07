@@ -70,6 +70,12 @@ def retire(ids, root=ROOT):
             batch = retire_from_batch(batch, ids, programs)
             save(path, batch)
             entry.update(documents=batch["total_documents"], edges=batch["total_edges"], candidates=len(batch["candidate_bindings"]))
+    # 沒有卡片在用的來源不再排程掃描，否則連不上的網址會一直吃掉每輪的請求額度。
+    config_path = root / "data/scan-sources.json"
+    config = read(config_path)
+    used = {c["source_metadata"]["source_id"] for path in (root / "data/candidates").glob("*.json") for c in read(path)["candidates"]}
+    orphaned = {c["source_metadata"]["source_id"] for c in found} - used
+    save(config_path, {**config, "sources": [{**s, "enabled": False} if s["id"] in orphaned else s for s in config["sources"]]})
     save(registry_path, {**registry, "total_documents": sum(e["documents"] for e in registry["batches"]), "total_edges": sum(e["edges"] for e in registry["batches"]),
                          "total_schemes_covered": sum(e["candidates"] for e in registry["batches"])})
     return found
