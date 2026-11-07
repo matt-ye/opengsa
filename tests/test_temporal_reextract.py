@@ -297,8 +297,8 @@ class TemporalReplayTests(unittest.TestCase):
         self.assertEqual(total_meta_records, total_candidates)
         self.assertGreater(total_observations, 0)
 
-        # 0 undetermined across all recorded candidates
-        self.assertEqual(all_modes.get('undetermined', 0), 0)
+        # 來源沒載明時程就是 undetermined，不補值；這裡不再要求數量為 0。
+        self.assertTrue(all_modes)
 
         # Full tracks coverage across gov, other, enterprise
         self.assertGreater(all_tracks.get('gov', 0), 0)
