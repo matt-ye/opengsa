@@ -352,7 +352,7 @@ class ScannerTests(unittest.TestCase):
         self.assertNotIn('連續失敗',markdown_report(once,report))
 
     def test_request_limit_is_capped_at_the_temporary_value(self):
-        config=self.config();config['max_requests']=50
+        config=self.config();config['max_requests']=50;config['minimum_host_interval_seconds']=3
         validate_config(config)
         config['max_requests']=51
         with self.assertRaises(ValueError):validate_config(config)
