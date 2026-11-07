@@ -9,6 +9,7 @@ from scripts.propose_radar_update import ROOT,prepare,write_proposal,read
 from scripts.expand_sources import prepare_response,profile_for
 from scripts.extract_candidates import extract_from_in_memory_blocks
 from scripts.scan_sources import digest
+from scripts.audit_sources import canonical_url
 from tests.test_expansion import HTML,row
 
 class RadarProposalTests(unittest.TestCase):
@@ -48,6 +49,38 @@ class RadarProposalTests(unittest.TestCase):
             expected=Path(tmp)/'expected';export(expected,overlay('data/source-chain-index.json'),reader=overlay)
             for name in ('source-chain-map.html','source-chain-map.canvas'):
                 self.assertEqual((repo/'docs/source-chains'/name).read_text(encoding='utf-8'),(expected/name).read_text(encoding='utf-8'))
+
+    def hand_url(self,programs):
+        known=set(read(ROOT/'data/known-hand-authored-candidates.json')['candidate_ids']);at={}
+        for path in (ROOT/'data/candidates').glob('*.json'):
+            for card in read(path)['candidates']:
+                if card['candidate_id'] in known:at.setdefault(canonical_url(card['source_metadata']['url']),[]).append(card)
+        return next((url,cards) for url,cards in sorted(at.items()) if len({c['program_key'] for c in cards})==programs)
+
+    def test_new_card_retires_the_hand_card_on_the_same_url(self):
+        url,cards=self.hand_url(1);bundle,config,_=self.fixture()
+        files,summary=prepare(bundle,config,replaced_urls=[url])
+        self.assertEqual({r['candidate_id'] for r in summary['retired_hand_cards']},{c['candidate_id'] for c in cards})
+        self.assertEqual(summary['needs_manual_retire'],[])
+        baseline=files['data/known-hand-authored-candidates.json']['candidate_ids']
+        self.assertFalse({c['candidate_id'] for c in cards}&set(baseline))
+        self.assertEqual(len(baseline),len(read(ROOT/'data/known-hand-authored-candidates.json')['candidate_ids'])-len(cards))
+        bundle_path=summary['retired_hand_cards'][0]['bundle']
+        self.assertNotIn(cards[0]['candidate_id'],[c['candidate_id'] for c in files[bundle_path]['candidates']])
+        self.assertEqual(len(files[bundle_path]['candidates']),len(read(ROOT/bundle_path)['candidates'])-len(cards))
+
+    def test_shared_url_across_programs_is_left_for_a_person(self):
+        url,cards=self.hand_url(2);bundle,config,_=self.fixture()
+        files,summary=prepare(bundle,config,replaced_urls=[url])
+        self.assertEqual(summary['retired_hand_cards'],[])
+        self.assertEqual({r['candidate_id'] for r in summary['needs_manual_retire']},{c['candidate_id'] for c in cards})
+        self.assertNotIn('data/known-hand-authored-candidates.json',files)
+
+    def test_no_accepted_card_retires_nothing(self):
+        url,_=self.hand_url(1);bundle,config,_=self.fixture()
+        bundle['candidates'][0]['verification']['status']='failed_automated_checks'
+        _,summary=prepare(bundle,config,replaced_urls=[url])
+        self.assertEqual(summary['retired_hand_cards'],[])
 
     def test_failed_checks_withheld_and_approval_claim_rejected(self):
         bundle,config,_=self.fixture();bundle['candidates'][0]['verification']['status']='failed_automated_checks'
