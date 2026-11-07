@@ -8,6 +8,8 @@ Generates:
 Updates:
 4. data/scan-sources.json (registers allowed_hosts and sources)
 """
+raise SystemExit("已停用：本腳本的網址、金額與截止日都是寫定值，重跑會蓋掉 2026-11-07 驗證過的名冊與候選。")
+
 import hashlib
 import json
 from pathlib import Path

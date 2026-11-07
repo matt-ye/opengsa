@@ -13,7 +13,7 @@
   ],
   "records": {
     "cand-univ-nthu-0001a12b": {
-      "candidate_sha256": "3e4442d33ad3ec0fcdfa8a1aab104cc4d5dfa8acb3377aeb75a0babcd5dccab7",
+      "candidate_sha256": "20895b1723c107926b253ce47daf5a8cf157c75ae1bd6a56a4066be2fe0ea2aa",
       "url": "https://sa.site.nthu.edu.tw/",
       "status": "replayed",
       "reason": null,
@@ -23,33 +23,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-nthu",
-                "revision_id": "355d004b86a7581b7cf0b76de122e00f13cc98bf006b8ce1ca930aef6f2fa137",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-nycu-0002a12b": {
-      "candidate_sha256": "fa83fa00fdac2096367ed7957a00c6e25e478d2c9345ce58091e93da30894fee",
+      "candidate_sha256": "f2770c58b7f3b96128a271ee2167717263d83f8866e73da3123abdb63ccb727d",
       "url": "https://osa.nycu.edu.tw/",
       "status": "replayed",
       "reason": null,
@@ -59,33 +42,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-nycu",
-                "revision_id": "0e08f5cbde79095839c523bc13cb22287889e0d66562dbfa55086d4a5a0f846a",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-ncku-0003a12b": {
-      "candidate_sha256": "30088e335b21055af0848656cc8a3538d7a58091a7c9906c6919e8ffe547a2ef",
+      "candidate_sha256": "e9a920a91c23534b3da6c3998e8ee16caabdd205bcb57a3a6f57b9194ad7660b",
       "url": "https://assistance-osa.ncku.edu.tw/",
       "status": "replayed",
       "reason": null,
@@ -95,33 +61,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-ncku",
-                "revision_id": "7ffe6c8b52c5c6f9ed940b13245bb0ccd3f3740757a34696fbe260fdacb880fb",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-nccu-0004a12b": {
-      "candidate_sha256": "a9645248739740e8c787a4a93998df1f91319d3b11aa92bfd0de330604db7c7a",
+      "candidate_sha256": "f4bfeebd023ef4b0e687a7e1be44064f86eb0cd52e0109aa8b7da06b549e7cf9",
       "url": "https://osa.nccu.edu.tw/",
       "status": "replayed",
       "reason": null,
@@ -131,33 +80,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-nccu",
-                "revision_id": "706cd9962d8e4f91d8ddcf4b132d4c1287a40dd7e8eca49a1a0986f6f8f4afe4",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-ncu-0005a12b": {
-      "candidate_sha256": "d1689307e31403215790c6f8486bfdd7684c248639278a91b733aed2a086493c",
+      "candidate_sha256": "1493681c6bc79873ad8d578aea8b66632e3f741d794e6e90ae73e95a795fdb94",
       "url": "https://military.ncu.edu.tw/",
       "status": "replayed",
       "reason": null,
@@ -167,33 +99,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-ncu",
-                "revision_id": "1ba9c1943d1d4046c50c3a00b4de9eb9d420c1574d219e3cfb980639f0669eeb",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-nsysu-0006a12b": {
-      "candidate_sha256": "3f1a8ab2bbb64fce3474f97f4d87a01d85d8990e8b6346cd686fbc9ec831f16a",
+      "candidate_sha256": "7e273546dfecfbd4de0438acaea806261461489c8386bfbd46ad3d15255d4fd3",
       "url": "https://ag-osa.nsysu.edu.tw/",
       "status": "replayed",
       "reason": null,
@@ -203,33 +118,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-nsysu",
-                "revision_id": "4250c46518f9d719ffd0432ef9cb009c3d89cc598c0020201fe275c5eae2d69c",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-nchu-0007a12b": {
-      "candidate_sha256": "4ae2685c28f8540ea188dbef0242a325162e34360d8c52d5a5a737c78c3dab48",
+      "candidate_sha256": "64ebb337c68e8a173837a1799ef1e014a41835a7554a5e871283bbafeb2b57c4",
       "url": "https://www.osa.nchu.edu.tw/osa/laa/index.php",
       "status": "replayed",
       "reason": null,
@@ -239,33 +137,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-nchu",
-                "revision_id": "15ef4cafb811c9468cb454d900901b171fd8a6796ad2f3cfa20b47765887d67a",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-ccu-0008a12b": {
-      "candidate_sha256": "2644afd3f3cd5f15b8d0a845884df794948c2b4e2c43965fe51d762258b12f70",
+      "candidate_sha256": "3a1d1499b1d1d5e940cf7098ff3e3044128ca91e04b76b2ee79e9676fcdd0044",
       "url": "https://studaff.ccu.edu.tw/",
       "status": "replayed",
       "reason": null,
@@ -275,33 +156,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-ccu",
-                "revision_id": "6ab62d540b1f790a2ea3b7ddb3f61dec9b00ce7aa13e43011102e01db29dd968",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-ntnu-0009a12b": {
-      "candidate_sha256": "0e9f3f29d0df68884765d065ca78867c37c8393f83c6f7147981a785416eb535",
+      "candidate_sha256": "55ed08dcd91f47c8362e8c6d729fd04226415ba6b772aaaeebdad7dc40a0ae0d",
       "url": "https://assistance.sa.ntnu.edu.tw/",
       "status": "replayed",
       "reason": null,
@@ -311,33 +175,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-ntnu",
-                "revision_id": "1607744fb943bedde8642c8085b95c50c40b91dad441b1c397aa9cd907bd543a",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-ntpu-000aa12b": {
-      "candidate_sha256": "a6a5ba0ba18ce151bce48b67a3d4231335d283d6bac86468c0a42491ea203728",
+      "candidate_sha256": "97afdf3741b84c765304e0a95e211959bd4147e06994f188f9f8e020700bcc5f",
       "url": "https://www.ntpu.edu.tw/admin/a8/org/a8-2/index.php",
       "status": "replayed",
       "reason": null,
@@ -347,33 +194,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-ntpu",
-                "revision_id": "d91a23da0fbce713e6594eae0ab519cf0ef2a782ecf430b50fa364e0774adb45",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-ntust-000ba12b": {
-      "candidate_sha256": "941802034e2c4c363bb1ad6728075888b5207e4b2d5805bf1cd880ad56081dd1",
+      "candidate_sha256": "3b588ca9e6db43823b6c814082dc9edf1323805e746704ab5141a62e18a31663",
       "url": "https://student.ntust.edu.tw/",
       "status": "replayed",
       "reason": null,
@@ -383,33 +213,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-ntust",
-                "revision_id": "4db1334c4527da2d5a81ad45ffd9f7e703f866a3ec95e3b7aecd044b81928f59",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-ntut-000ca12b": {
-      "candidate_sha256": "c1277edf13234c86db49ed25d6795dead82c305297520f9e9f39b603b7cb3c5e",
+      "candidate_sha256": "2fa9be4bff068cb5a2cd5448c874887866c23064b7e2b565265dd235074398b0",
       "url": "https://osa.ntut.edu.tw/",
       "status": "replayed",
       "reason": null,
@@ -419,34 +232,17 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-ntut",
-                "revision_id": "d2a2202033468ed46a62ff748f169abcd9c1570c8b037d1b96d766c4c2ed347e",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-cgu-000da12b": {
-      "candidate_sha256": "0880e35e10a297443a50a35cd093bbc3c4d9f7db4d7e72e7c6c2be7a2aace2d8",
-      "url": "https://studentaffairs.cgu.edu.tw/",
+      "candidate_sha256": "1166123feb1bd084ebb26c81b7a1c65573f1588d01980bd2393d18ecca55d382",
+      "url": "https://www.cgu.edu.tw/ch/Contents?nodeId=4684",
       "status": "replayed",
       "reason": null,
       "observed_at": "2026-11-04T00:00:00Z",
@@ -455,33 +251,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-cgu",
-                "revision_id": "95ab631e022e52c7c1658a0d8f57b8c6ddb55b07e5ee7406398f95b375bc43cb",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-tmu-000ea12b": {
-      "candidate_sha256": "a45eb6d22eb35337ecc340e57afa80d04718da7d00387255adf524a0083fe6b2",
+      "candidate_sha256": "68de92e92495f0a9bec7451398d3aca4fe29aad78d3698547eeaffa46482ca1b",
       "url": "https://osa.tmu.edu.tw/",
       "status": "replayed",
       "reason": null,
@@ -491,33 +270,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-tmu",
-                "revision_id": "b0b9f8c9e9266af45a61149fcab53759130aa75ec2a70db30a3744ad650994fd",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-kmu-000fa12b": {
-      "candidate_sha256": "f5708693efb808ddafa7aa10e860b60088d2ba1a01826374b9398a2a8894ada9",
+      "candidate_sha256": "5c25d46de819a01c6ac97648b978bae53dc8aeea5421320ccf08ecd5eccdab58",
       "url": "https://osa.kmu.edu.tw/",
       "status": "replayed",
       "reason": null,
@@ -527,34 +289,17 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-kmu",
-                "revision_id": "36f748c1743d3246fafebca39c2c9bdc39a2162132b6961ad3dfff2fe6ba5395",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-cmu-0010a12b": {
-      "candidate_sha256": "ae2792035b3519d132463ff9b50896385f6d72b02825bf87c85f07ef58944ab9",
-      "url": "https://adm08.cmu.edu.tw/",
+      "candidate_sha256": "5ea5e8349a18f45d312542c7474de663f80fc2aa613d1fbeb5bc70d89bb2b3e3",
+      "url": "https://guide.cmu.edu.tw/page/64",
       "status": "replayed",
       "reason": null,
       "observed_at": "2026-11-04T00:00:00Z",
@@ -563,33 +308,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-cmu",
-                "revision_id": "786e95e48160a5eb86ff5ff3e2e423076f3bbf140f4a8c573cc630b030e34241",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-fju-0011a12b": {
-      "candidate_sha256": "4efeabca1e456438cbe0fb81ec9930758f72bf948e1df6c5b2fbaf4582b27242",
+      "candidate_sha256": "98b0a839eb21fd27093faa4268b516485b440a1e19bcacce7db3d578bd923350",
       "url": "https://life.dsa.fju.edu.tw/",
       "status": "replayed",
       "reason": null,
@@ -599,33 +327,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-fju",
-                "revision_id": "6103564a108f850479dcbd3fb02e218a9e117b5ce0e408a8da7fa045bd0ed96b",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-scu-0012a12b": {
-      "candidate_sha256": "1a85fb258975870a7b84640b0d0938a73fc1fb8eaa64982057763f48d08973b3",
+      "candidate_sha256": "e8f888ad0e429aa1d5121b28ae9e95b36beea7d0e6a2ff472cd8dc55496fb342",
       "url": "https://web-ch.scu.edu.tw/life/web_page/10497",
       "status": "replayed",
       "reason": null,
@@ -635,33 +346,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-scu",
-                "revision_id": "45c699a2a7319b76877269f22b7472040d700ebc225892b5ef91e210fdf13a9d",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-tku-0013a12b": {
-      "candidate_sha256": "db356c98952334443f9198dde883fac7d9a8c6dadb43624f33f6b580014f1d3f",
+      "candidate_sha256": "dcf7ff74f86b3c8a93814be7834a66212974f5be5b42661c76ff0bb2dc723a5b",
       "url": "https://sa.tku.edu.tw/spirit/",
       "status": "replayed",
       "reason": null,
@@ -671,33 +365,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-tku",
-                "revision_id": "0c55e023a255e0aed2c00913ea7baec81c200109ab6445bc75372706f4e0a449",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-fcu-0014a12b": {
-      "candidate_sha256": "d8126fefca51714fc00218a3804a5ffcd229a3f9aed4142ae15c86511aed032a",
+      "candidate_sha256": "a230b9ea726476549e3e85b3f6893a6ea372a99d5d425a6db413a9a14041fab1",
       "url": "https://student.fcu.edu.tw/",
       "status": "replayed",
       "reason": null,
@@ -707,33 +384,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-fcu",
-                "revision_id": "1febe120a9c5a61bdf0acd9b60316de28290ce5ab5373c24d66ded1bc81b4155",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-yzu-0015a12b": {
-      "candidate_sha256": "268a7145043390788d565fb16dc067f7a2db0e899ca0516f06baec131e49fe77",
+      "candidate_sha256": "3b191895a2ef122fa23263d9872726aa83f782aa978a694e49ab68966b61043e",
       "url": "https://www.yzu.edu.tw/admin/st/",
       "status": "replayed",
       "reason": null,
@@ -743,34 +403,17 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-yzu",
-                "revision_id": "53bd02ed0d4043c103a89f15656d788446e457f4b80bfd15117cb0c062e5cec2",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-cycu-0016a12b": {
-      "candidate_sha256": "c8230a605b1557ebd679ddcf5eb762d4b028e066dbd1b3901e916b53fd699552",
-      "url": "https://life.cycu.edu.tw/",
+      "candidate_sha256": "6324ed9fb5bc74fc60242fdab4b63bf4f71af515552b03ba1403e9d64aeb7f5e",
+      "url": "https://www.cycu.edu.tw/",
       "status": "replayed",
       "reason": null,
       "observed_at": "2026-11-04T00:00:00Z",
@@ -779,34 +422,17 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-cycu",
-                "revision_id": "e82546702cbd3a533bd69b0799796ce727733d45deaf9288e71e8dc369c4b463",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-thu-0017a12b": {
-      "candidate_sha256": "cbec7b43278844420fbd4125a209ed9a8883a324e636a3f4a5623bdbe5f613ce",
-      "url": "https://deca.thu.edu.tw/",
+      "candidate_sha256": "02b64f8e9f771f000daa1acd6140531c216b6b1c5f721265a2d59e6afbd750c8",
+      "url": "https://www.thu.edu.tw/",
       "status": "replayed",
       "reason": null,
       "observed_at": "2026-11-04T00:00:00Z",
@@ -815,33 +441,16 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-thu",
-                "revision_id": "7728b6a10a985facd97fb94054d5db2ebb0780244f5a5bf7535a2f0269452122",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     },
     "cand-univ-ndhu-0018a12b": {
-      "candidate_sha256": "9e9d994379e43eb7546af49607bddaa27598b626059c7a21e1d0ddc5bbdaaf78",
+      "candidate_sha256": "e93031a2c1ea307fd7d7dc8554922efe59319e532dd37e0278baced771848813",
       "url": "https://rb005.ndhu.edu.tw/",
       "status": "replayed",
       "reason": null,
@@ -851,29 +460,12 @@
       "format": "html",
       "policy": {
         "version": "time-policy-1",
-        "submission_mode": "fixed_window",
+        "submission_mode": "undetermined",
         "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "absolute",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "115/10/15各校收件截止",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "univ-ndhu",
-                "revision_id": "19de25ad97b8f0d61e051f8ecd6cd262d1fe2b999edc82e712f4a435d8c37809",
-                "locator": "截止條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": []
+        "rules": [],
+        "gaps": [
+          "time_rule_not_verified"
+        ]
       }
     }
   }

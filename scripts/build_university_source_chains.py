@@ -35,7 +35,7 @@ def main():
     inventory_rows = []
     for idx, u in enumerate(universities, start=1):
         uid = f"U{idx:03d}"
-        target_url = u.get("scholarship_portal_url") or u.get("assistance_office_url") or u.get("student_affairs_url")
+        target_url = u.get("link_url") or u.get("scholarship_portal_url") or u.get("assistance_office_url") or u.get("student_affairs_url")
         p_keys = []
         matching_cand = [c for c in candidates if u["short_name"] in c["title"] or u["name"] in c["title"]]
         if matching_cand:
@@ -65,8 +65,9 @@ def main():
                 }
             ],
             "parents": [],
-            "last_observation": "2026-11-05",
-            "observation_status": "verified_university_portal",
+            "last_observation": u.get("link_checked_on", "2026-11-05"),
+            "observation_status": u.get("link_status", "link_unverified"),
+            "link_note": u.get("link_note", ""),
             "previous_queue_state": "verified_link",
             "format_actual": "html",
             "format_hint": "html",
