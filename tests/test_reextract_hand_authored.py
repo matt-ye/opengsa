@@ -10,6 +10,7 @@ if str(ROOT) not in sys.path:
 from scripts.extract_candidates import MockModelAdapter, OpenAICompatibleAdapter
 from scripts.temporal_model import VERIFIED_MODELS_BY_HOST, VERIFIED_PROVIDER_CAPABILITIES
 from scripts.reextract_hand_authored import (
+    MODEL_ROUND,
     SameSiteHosts,
     configure_model,
     known_candidates,
@@ -109,7 +110,8 @@ class RunTests(unittest.TestCase):
 
     def test_row_that_never_called_the_model_stays_pending(self):
         self.assertTrue(model_pending({"status": "extracted", "model_attempted": True, "model_calls": 0}))
-        self.assertFalse(model_pending({"status": "extracted", "model_calls": 2}))
+        self.assertTrue(model_pending({"status": "extracted", "model_calls": 2}))
+        self.assertFalse(model_pending({"status": "extracted", "model_round": MODEL_ROUND}))
         self.assertFalse(model_pending({"status": "extracted", "model_skipped": "source_sanitization_requires_review"}))
         self.assertFalse(model_pending({"status": "source_unavailable"}))
 
@@ -127,6 +129,7 @@ class RunTests(unittest.TestCase):
         configure_model(adapter)
         self.assertEqual(adapter.field_scope, ())
         self.assertEqual(adapter.model_limits["model"], adapter.model)
+        self.assertEqual(adapter.model_limits["input_limit"], 6000)
 
     def test_budget_leaves_rest_for_next_run(self):
         rows = [candidate(f"c{n}", f"https://s{n}.org.tw/p") for n in range(3)]

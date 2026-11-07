@@ -27,6 +27,7 @@ from scripts.temporal_model import (
     VERIFIED_MODELS_BY_HOST,
     VERIFIED_PROVIDER_CAPABILITIES,
     _configure_single_adapter,
+    build_model_limits,
     install_tokenizer,
     make_token_counter,
 )
@@ -36,6 +37,9 @@ BODY_LIMIT = 10 * 1024 * 1024
 UNAVAILABLE_PAGE = re.compile(r"404|not found|找不到|頁面不存在|查無|無此頁|請先登入|please log ?in|error page", re.I)
 CONTENT_SELECTORS = ("main", "article", "[role=main]", "#content", ".content")
 MODEL_RETRY_STATUSES = ("extracted", "failed_checks")  # 這些頁面抓得到內容，模型才有東西可讀
+MODEL_ROUND = 2  # 調整模型設定後加一，讓先前的結果重跑
+PRIVACY_SKIP = "source_sanitization_requires_review"
+MODEL_INPUT_LIMIT = 6000  # 時間萃取的2200對全欄位太小：共用上下文就會超過預算
 MIN_NAME_MATCH = 4
 MIN_CONTENT_CHARS = 80  # html_document對更短的內容回報解析失敗
 
@@ -136,8 +140,10 @@ def known_candidates(root=ROOT):
 
 
 def model_pending(row):
-    """還沒真的呼叫過模型，也沒有明確被跳過，就要再跑。"""
-    return row["status"] in MODEL_RETRY_STATUSES and not row.get("model_calls") and not row.get("model_skipped")
+    """這一回合還沒處理過就要再跑；隱私過濾擋下的不重試，那不是額度問題。"""
+    if row.get("model_skipped") == PRIVACY_SKIP:
+        return False
+    return row["status"] in MODEL_RETRY_STATUSES and row.get("model_round") != MODEL_ROUND
 
 
 def configure_model(adapter):
@@ -158,6 +164,8 @@ def configure_model(adapter):
         tokenizer = Tokenizer.from_file(str(path))
     _configure_single_adapter(adapter, provider, spec, make_token_counter(tokenizer), max_calls=24)
     adapter.field_scope = ()
+    adapter.model_limits = build_model_limits(adapter.model, context_limit=spec["context_limit"],
+                                              output_limit=spec["output_limit"], input_limit=MODEL_INPUT_LIMIT)
     return adapter
 
 
@@ -184,6 +192,7 @@ def run(candidates, config, previous, transport=None, on_progress=None, now=None
         if adapter and (adapter.rate_limited_429 or adapter.calls >= adapter.max_calls):
             break
         calls_before = adapter.calls if adapter else 0
+        rejected_before = adapter.rejected_claims if adapter else 0
         sid = candidate["source_metadata"]["source_id"]
         # 通用預設：不要求標記、不追PDF；已登記的profile設定優先。
         source = {"id": sid, "title": candidate["title"], "url": candidate["source_metadata"]["url"],
@@ -201,6 +210,14 @@ def run(candidates, config, previous, transport=None, on_progress=None, now=None
             if adapter.rate_limited_429:
                 break
             row["model_calls"] = adapter.calls - calls_before
+            row["model_round"] = MODEL_ROUND
+            # 只記數量與進度，不保存模型回覆或來源原文。
+            row["model_rejected_claims"] = adapter.rejected_claims - rejected_before
+            prep = adapter.last_preparation or {}
+            row["model_chunks"] = [prep.get("chunks_completed"), prep.get("chunks_planned")]
+            row["model_tokens_total"] = adapter.total_tokens
+            accepted = (row.get("candidate") or {}).get("field_evidence", [])
+            row["model_accepted_claims"] = sum(e.get("extraction_method") == "model_adapter" for e in accepted)
             reason = row.get("model_skip_reason")
             if not row["model_calls"] and reason == "model_call_budget_insufficient_for_complete_task" and adapter.calls:
                 break  # 這一輪額度不夠完整讀這份文件，留到額度全滿的下一輪。
