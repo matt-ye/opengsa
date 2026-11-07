@@ -7,8 +7,18 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from scripts.extract_candidates import MockModelAdapter
-from scripts.reextract_hand_authored import SameSiteHosts, known_candidates, longest_common_run, page_problem, run
+from scripts.extract_candidates import MockModelAdapter, OpenAICompatibleAdapter
+from scripts.temporal_model import VERIFIED_MODELS_BY_HOST, VERIFIED_PROVIDER_CAPABILITIES
+from scripts.reextract_hand_authored import (
+    SameSiteHosts,
+    configure_model,
+    known_candidates,
+    longest_common_run,
+    model_pending,
+    model_skip_reason,
+    page_problem,
+    run,
+)
 
 CONFIG = {"max_requests": 20, "minimum_host_interval_seconds": 0, "max_run_seconds": 180, "sources": []}
 PAGE = """<html><head><title>甲基金會獎學金</title></head><body>
@@ -85,9 +95,8 @@ class RunTests(unittest.TestCase):
                     "cand-c": {"url": url, "status": "source_unavailable"}}
         rows = [candidate("cand-a"), candidate("cand-b"), candidate("cand-c")]
         results, _ = run(rows, CONFIG, previous, transport_for({url: (200, PAGE)}), adapter=adapter)
-        self.assertTrue(results["cand-a"]["model_attempted"])
-        self.assertGreaterEqual(adapter.calls, 1)
-        self.assertNotIn("model_attempted", results["cand-b"])
+        self.assertGreaterEqual(results["cand-a"]["model_calls"], 1)
+        self.assertNotIn("model_calls", results["cand-b"])
         self.assertEqual(results["cand-c"]["status"], "source_unavailable")
 
     def test_rate_limit_keeps_previous_row_for_retry(self):
@@ -97,6 +106,27 @@ class RunTests(unittest.TestCase):
         previous = {"cand-a": {"url": url, "status": "extracted"}}
         results, _ = run([candidate("cand-a")], CONFIG, previous, transport_for({url: (200, PAGE)}), adapter=adapter)
         self.assertEqual(results["cand-a"], previous["cand-a"])
+
+    def test_row_that_never_called_the_model_stays_pending(self):
+        self.assertTrue(model_pending({"status": "extracted", "model_attempted": True, "model_calls": 0}))
+        self.assertFalse(model_pending({"status": "extracted", "model_calls": 2}))
+        self.assertFalse(model_pending({"status": "extracted", "model_skipped": "source_sanitization_requires_review"}))
+        self.assertFalse(model_pending({"status": "source_unavailable"}))
+
+    def test_skip_reason_is_read_from_verifier_warnings(self):
+        self.assertEqual(model_skip_reason(["x", "model_skipped:source_sanitization_requires_review"]),
+                         "source_sanitization_requires_review")
+        self.assertEqual(model_skip_reason(["external_model_skipped_for_hash_only_source"]), "hash_only_source")
+        self.assertIsNone(model_skip_reason([]))
+
+    def test_general_extraction_is_not_limited_to_temporal_fields(self):
+        # 選不需下載tokenizer的供應商，測試才不連網。
+        host, model = next(key for key, name in VERIFIED_MODELS_BY_HOST.items()
+                           if not VERIFIED_PROVIDER_CAPABILITIES[name].get("uses_qwen_tokenizer"))
+        adapter = OpenAICompatibleAdapter(base_url=f"https://{host}/v1", model=model, api_key="synthetic", mode="extract")
+        configure_model(adapter)
+        self.assertEqual(adapter.field_scope, ())
+        self.assertEqual(adapter.model_limits["model"], adapter.model)
 
     def test_budget_leaves_rest_for_next_run(self):
         rows = [candidate(f"c{n}", f"https://s{n}.org.tw/p") for n in range(3)]

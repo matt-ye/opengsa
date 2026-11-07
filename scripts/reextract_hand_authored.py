@@ -23,6 +23,13 @@ if str(ROOT) not in sys.path:
 from scripts.check_provenance import BASELINE, problems
 from scripts.extract_candidates import create_model_adapter_from_env, extract_from_in_memory_blocks
 from scripts.scan_sources import Fetcher, ScanError, digest, html_document, pdf_document
+from scripts.temporal_model import (
+    VERIFIED_MODELS_BY_HOST,
+    VERIFIED_PROVIDER_CAPABILITIES,
+    _configure_single_adapter,
+    install_tokenizer,
+    make_token_counter,
+)
 
 OUTPUT = ROOT / "work/reextract/results.json"
 BODY_LIMIT = 10 * 1024 * 1024
@@ -113,6 +120,7 @@ def reextract(fetcher, candidate, source, now, adapter=None):
     passed = fresh["verification"]["status"] != "failed_automated_checks" and not found
     row = {"status": "extracted" if passed else "failed_checks", "revision_id": revision, "page_title": heading[:80],
            "problems": found[:5], "verification": fresh["verification"]["status"],
+           "model_skip_reason": model_skip_reason(fresh["verification"].get("warnings", [])),
            "evidence": len(fresh["field_evidence"]), "extra_documents": len(extracted) - 1}
     if passed:
         row["candidate"] = fresh
@@ -128,7 +136,38 @@ def known_candidates(root=ROOT):
 
 
 def model_pending(row):
-    return row["status"] in MODEL_RETRY_STATUSES and not row.get("model_attempted")
+    """還沒真的呼叫過模型，也沒有明確被跳過，就要再跑。"""
+    return row["status"] in MODEL_RETRY_STATUSES and not row.get("model_calls") and not row.get("model_skipped")
+
+
+def configure_model(adapter):
+    """通用萃取也要先設定模型容量與token計數，否則每份文件都會被model_capabilities_required跳過。
+
+    field_scope留空：這是全欄位萃取，不是只看時間；隱私過濾因此維持嚴格，不放寬。
+    """
+    host = urlsplit(adapter.base_url).hostname
+    provider = VERIFIED_MODELS_BY_HOST.get((host, adapter.model))
+    if not provider:
+        raise SystemExit(f"model_unavailable: 未核實的模型 {adapter.model}")
+    spec = VERIFIED_PROVIDER_CAPABILITIES[provider]
+    tokenizer = None
+    if spec.get("uses_qwen_tokenizer"):
+        path = ROOT / "work/tokenizers/qwen3.8-27b.json"
+        install_tokenizer(path)
+        from tokenizers import Tokenizer
+        tokenizer = Tokenizer.from_file(str(path))
+    _configure_single_adapter(adapter, provider, spec, make_token_counter(tokenizer), max_calls=24)
+    adapter.field_scope = ()
+    return adapter
+
+
+def model_skip_reason(warnings):
+    for warning in warnings:
+        if warning.startswith("model_skipped:"):
+            return warning.split(":", 1)[1]
+    if "external_model_skipped_for_hash_only_source" in warnings:
+        return "hash_only_source"
+    return None
 
 
 def run(candidates, config, previous, transport=None, on_progress=None, now=None, adapter=None):
@@ -161,7 +200,12 @@ def run(candidates, config, previous, transport=None, on_progress=None, now=None
         if adapter:
             if adapter.rate_limited_429:
                 break
-            row.update(model_attempted=True, model_calls=adapter.calls - calls_before)
+            row["model_calls"] = adapter.calls - calls_before
+            reason = row.get("model_skip_reason")
+            if not row["model_calls"] and reason == "model_call_budget_insufficient_for_complete_task" and adapter.calls:
+                break  # 這一輪額度不夠完整讀這份文件，留到額度全滿的下一輪。
+            if not row["model_calls"]:
+                row["model_skipped"] = reason or row["status"]
         results[cid] = row
         if on_progress:
             on_progress(results, fetcher.count)
@@ -191,6 +235,7 @@ def main():
         adapter = create_model_adapter_from_env()
         if not adapter.enabled:
             raise SystemExit("model_unavailable: 模型未啟用，不以純規則充當模型結果")
+        configure_model(adapter)
     base_calls = previous.get("model_calls", 0)
     previous["results"] = {k: v for k, v in previous.get("results", {}).items() if v["status"] not in args.retry_status}
     args.output.parent.mkdir(parents=True, exist_ok=True)
