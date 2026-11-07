@@ -1,0 +1,1058 @@
+{
+  "http_requests_total": 448,
+  "model_calls": 0,
+  "urls_total": 242,
+  "urls_done": 242,
+  "dead_hosts": {
+    "helpdreams.moe.edu.tw": "transport_error",
+    "spirit.tku.edu.tw": "transport_error",
+    "www.cathay-charity.org.tw": "transport_error",
+    "www.fubon.org": "transport_error",
+    "www.tsung.org.tw": "transport_error",
+    "auo.com": "transport_error",
+    "www.ron-san.org.tw": "transport_error",
+    "www.asefoundation.org.tw": "transport_error",
+    "www.qinlao.org.tw": "transport_error",
+    "www.esunfnd.org.tw": "transport_error",
+    "www.scsb.org.tw": "transport_error",
+    "www.iicm.org.tw": "transport_error",
+    "www.tcc.org.tw": "transport_error",
+    "www.tps.org.tw": "transport_error",
+    "www.samm.org.tw": "transport_error",
+    "www.cice.org.tw": "transport_error",
+    "www.the-living-stone.org.tw": "transport_error",
+    "www.lcygroup.com": "transport_error",
+    "www.swallow.org.tw": "transport_error",
+    "pea.nknu.edu.tw": "transport_error",
+    "lae.mol.gov.tw": "transport_error",
+    "coop.k12ea.gov.tw": "transport_error",
+    "rural.k12ea.gov.tw": "transport_error",
+    "studaff.ccu.edu.tw": "transport_error",
+    "www.cycu.edu.tw": "transport_error",
+    "www.thu.edu.tw": "robots_unavailable"
+  },
+  "results": {
+    "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796": {
+      "status": 200,
+      "final_url": "https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796",
+      "title": "青年AI工具補助計畫 - 臺北市政府青年局"
+    },
+    "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest": {
+      "status": 200,
+      "final_url": "https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest",
+      "title": "數位申辦平台"
+    },
+    "https://helpdreams.moe.edu.tw/Home/EmergencyAid": {
+      "status": "transport_error"
+    },
+    "https://dep.mohw.gov.tw/dosw/cp-674-7221-115.html": {
+      "status": 404,
+      "final_url": "https://dep.mohw.gov.tw/dosw/cp-674-7221-115.html"
+    },
+    "https://advisory.ntu.edu.tw/CMS/HTML/118": {
+      "status": "robots_not_plain_rules"
+    },
+    "https://sa.site.nthu.edu.tw/": {
+      "status": 200,
+      "final_url": "https://sa.site.nthu.edu.tw/",
+      "title": "生活輔導組"
+    },
+    "https://assistance-osa.ncku.edu.tw/": {
+      "status": 200,
+      "final_url": "https://assistance-osa.ncku.edu.tw/",
+      "title": "NCKU, 成功大學-生活輔導組"
+    },
+    "https://osa.nycu.edu.tw/": {
+      "status": 200,
+      "final_url": "https://osa.nycu.edu.tw/",
+      "title": "國立陽明交通大學學生事務處"
+    },
+    "https://osa.nccu.edu.tw/": {
+      "status": 200,
+      "final_url": "https://osa.nccu.edu.tw/tw/",
+      "title": "Home - NCCU Office of Student Affairs : 國立政治大學 學務處"
+    },
+    "https://life.dsa.fju.edu.tw/": {
+      "status": 200,
+      "final_url": "https://life.dsa.fju.edu.tw/",
+      "title": "輔仁大學學務處生活輔導組"
+    },
+    "https://spirit.tku.edu.tw/": {
+      "status": "transport_error"
+    },
+    "https://www.ht.org.tw/religion178.htm": {
+      "status": 200,
+      "final_url": "https://www.ht.org.tw/religion178.htm",
+      "title": "五大志業∣行天宮五大志業網"
+    },
+    "https://www.fuboncharity.org.tw/": {
+      "status": 200,
+      "final_url": "https://www.fuboncharity.org.tw/chinese/index",
+      "title": "富邦慈善基金會"
+    },
+    "https://www.tzuchi.org.tw/": {
+      "status": "robots_not_plain_rules"
+    },
+    "https://dosw.gov.taipei/": {
+      "status": 200,
+      "final_url": "https://dosw.gov.taipei/",
+      "title": "臺北市政府社會局"
+    },
+    "https://www.sw.ntpc.gov.tw/": {
+      "status": 200,
+      "final_url": "https://www.sw.ntpc.gov.tw/",
+      "title": "新北市政府社會局"
+    },
+    "https://www.sfaa.gov.tw/": {
+      "status": 200,
+      "final_url": "https://www.sfaa.gov.tw/",
+      "title": "社家署全球資訊網⠀"
+    },
+    "https://www.wrp.org.tw/": {
+      "status": 200,
+      "final_url": "https://www.wrp.org.tw/",
+      "title": "財團法人婦女權益促進發展基金會>首頁"
+    },
+    "https://www.ocac.gov.tw/": {
+      "status": "http_403_host_paused"
+    },
+    "https://oia.ntu.edu.tw/": {
+      "status": 200,
+      "final_url": "https://oia.ntu.edu.tw/",
+      "title": "國立臺灣大學 國際事務處"
+    },
+    "https://www.tsmc.com/chinese/careers/fellowships": {
+      "status": "http_403_host_paused"
+    },
+    "https://www.mediatekfoundation.org/fellowship": {
+      "status": 404,
+      "final_url": "https://www.mediatekfoundation.org/fellowship"
+    },
+    "https://www.mediatekfoundation.org/thesis-award": {
+      "status": 404,
+      "final_url": "https://www.mediatekfoundation.org/thesis-award"
+    },
+    "https://www.foxconnfoundation.org/technology-award": {
+      "status": 404,
+      "final_url": "https://www.foxconnfoundation.org/technology-award"
+    },
+    "https://www.foxconnfoundation.org/whale-scholarship": {
+      "status": 404,
+      "final_url": "https://www.foxconnfoundation.org/whale-scholarship"
+    },
+    "https://www.ctci.org.tw/scholarship/research": {
+      "status": "robots_not_plain_rules"
+    },
+    "https://www.ctci.org.tw/scholarship/creativity": {
+      "status": "robots_not_plain_rules"
+    },
+    "https://www.ctci.org.tw/scholarship/international": {
+      "status": "robots_not_plain_rules"
+    },
+    "https://www.ctci.org.tw/scholarship/living": {
+      "status": "robots_not_plain_rules"
+    },
+    "https://pan.itri.org.tw/awards/research": {
+      "status": 404,
+      "final_url": "https://pan.itri.org.tw/awards/research"
+    },
+    "https://pan.itri.org.tw/fellowship/abroad": {
+      "status": 404,
+      "final_url": "https://pan.itri.org.tw/fellowship/abroad"
+    },
+    "https://www.cathay-charity.org.tw/scholarship/college": {
+      "status": "transport_error"
+    },
+    "https://www.cathay-charity.org.tw/scholarship/graduate": {
+      "status": "transport_error"
+    },
+    "https://www.fubon.org/thesis-award": {
+      "status": "transport_error"
+    },
+    "https://www.tsung.org.tw/scholarship": {
+      "status": "transport_error"
+    },
+    "https://www.ht.org.tw/scholarship/elite": {
+      "status": 404,
+      "final_url": "https://www.ht.org.tw/scholarship/elite"
+    },
+    "https://www.ht.org.tw/scholarship/college-aid": {
+      "status": 404,
+      "final_url": "https://www.ht.org.tw/scholarship/college-aid"
+    },
+    "https://www.faos.org.tw/apply/student/": {
+      "status": 200,
+      "final_url": "https://www.faos.org.tw/apply/student/",
+      "title": "傑出人才發展基金會\n             :: 優秀學生出國開會申請補助線上登記表"
+    },
+    "https://research.google/outreach/phd-fellowship/": {
+      "status": 200,
+      "final_url": "https://research.google/programs-and-events/phd-fellowship/",
+      "title": "Google PhD fellowship program"
+    },
+    "https://www.microsoft.com/en-us/research/academic-program/phd-fellowship/": {
+      "status": 200,
+      "final_url": "https://www.microsoft.com/en-us/research/academic-program/phd-fellowship/",
+      "title": "Microsoft Research PhD Fellowship - Microsoft Research"
+    },
+    "https://www.nvidia.com/en-us/research/graduate-fellowship-program/": {
+      "status": 404,
+      "final_url": "https://www.nvidia.com/en-us/research/graduate-fellowship-program/"
+    },
+    "https://www.delta-foundation.org.tw/scholarship/netherlands": {
+      "status": "url_not_allowed"
+    },
+    "https://www.delta-foundation.org.tw/scholarship/young": {
+      "status": "url_not_allowed"
+    },
+    "https://www.chtf.org.tw/scholarship/fang": {
+      "status": 404,
+      "final_url": "https://www.chtf.org.tw/scholarship/fang"
+    },
+    "https://auo.com/zh-TW/careers/scholarship": {
+      "status": "transport_error"
+    },
+    "https://auo.com/zh-TW/thesis-award": {
+      "status": "transport_error"
+    },
+    "https://www.tic100.org.tw/": {
+      "status": "url_not_allowed"
+    },
+    "https://www.acerfoundation.org.tw/digital-award": {
+      "status": 404,
+      "final_url": "https://www.acerfoundation.org.tw/digital-award"
+    },
+    "https://www.acerfoundation.org.tw/smiling-award": {
+      "status": 404,
+      "final_url": "https://www.acerfoundation.org.tw/smiling-award"
+    },
+    "https://www.trendmicro.com/zh_tw/about/careers/internship.html": {
+      "status": 404,
+      "final_url": "https://www.trendmicro.com/zh_tw/about/careers/internship.html"
+    },
+    "https://www.chimeimuseum.org/chimei-arts-award": {
+      "status": 404,
+      "final_url": "https://www.chimeimuseum.org/chimei-arts-award"
+    },
+    "https://www.ron-san.org.tw/literature-award": {
+      "status": "transport_error"
+    },
+    "https://www.gigabyte.org.tw/design-award": {
+      "status": 404,
+      "final_url": "https://www.gigabyte.org.tw/design-award"
+    },
+    "https://www.compal.com/careers/scholarship": {
+      "status": 404,
+      "final_url": "https://www.compal.com/careers/scholarship/"
+    },
+    "https://www.asusfoundation.org/youth-innovation": {
+      "status": "url_not_allowed"
+    },
+    "https://www.innolux.com/careers/scholarship": {
+      "status": "url_not_allowed"
+    },
+    "https://www.realtek.com/zh-tw/careers/fellowships": {
+      "status": 200,
+      "final_url": "https://www.realtek.com/Article/Index?menu_id=422",
+      "title": "瑞昱人才招募｜加入瑞昱，探索職涯發展機會"
+    },
+    "https://www.spil.com.tw/careers/scholarship": {
+      "status": "url_not_allowed"
+    },
+    "https://www.powerchip.com/careers/scholarship": {
+      "status": 404,
+      "final_url": "https://www.powerchip.com/careers/scholarship"
+    },
+    "https://www.asefoundation.org.tw/environment-award": {
+      "status": "transport_error"
+    },
+    "https://www.asefoundation.org.tw/women-in-stem": {
+      "status": "transport_error"
+    },
+    "https://www.mercy.org.tw/scholarship": {
+      "status": 404,
+      "final_url": "https://www.mercy.org.tw/scholarship"
+    },
+    "https://www.tzuchi.org.tw/sprout-college": {
+      "status": "robots_not_plain_rules"
+    },
+    "https://www.you-care.org.tw/university-aid": {
+      "status": 404,
+      "final_url": "https://www.you-care.org.tw/university-aid"
+    },
+    "https://www.ccf.org.tw/scholarship-college": {
+      "status": 404,
+      "final_url": "https://www.ccf.org.tw/scholarship-college"
+    },
+    "https://www.tfrd.org.tw/tfrd/research_award": {
+      "status": 404,
+      "final_url": "https://www.tfrd.org.tw/tfrd/research_award"
+    },
+    "https://www.tfrd.org.tw/tfrd/college_scholarship": {
+      "status": 404,
+      "final_url": "https://www.tfrd.org.tw/tfrd/college_scholarship"
+    },
+    "https://www.gfc.org.tw/scholarship": {
+      "status": 404,
+      "final_url": "https://www.gfc.org.tw/scholarship"
+    },
+    "https://www.cyff.org.tw/scholarship": {
+      "status": 404,
+      "final_url": "https://www.cyff.org.tw/scholarship"
+    },
+    "https://www.qinlao.org.tw/internship": {
+      "status": "transport_error"
+    },
+    "https://www.eslitefoundation.org.tw/innovation-award": {
+      "status": 404,
+      "final_url": "https://www.eslitefoundation.org.tw/innovation-award"
+    },
+    "https://www.sfi.org.tw/scholarship/eagle": {
+      "status": "robots_not_plain_rules"
+    },
+    "https://www.foi.org.tw/thesis-award": {
+      "status": 404,
+      "final_url": "https://www.foi.org.tw/thesis-award"
+    },
+    "https://www.esunfnd.org.tw/scholarship": {
+      "status": "transport_error"
+    },
+    "https://www.taishinart.org.tw/student-review": {
+      "status": 404,
+      "final_url": "https://www.taishinart.org.tw/student-review"
+    },
+    "https://www.megabank.com.tw/foundation/scholarship": {
+      "status": 404,
+      "final_url": "https://www.megabank.com.tw/foundation/scholarship"
+    },
+    "https://www.scsb.org.tw/scholarship": {
+      "status": "transport_error"
+    },
+    "https://www.csroc.org.tw/thesis-award": {
+      "status": 404,
+      "final_url": "https://www.csroc.org.tw/thesis-award"
+    },
+    "https://www.iicm.org.tw/thesis-award": {
+      "status": "transport_error"
+    },
+    "https://www.taai.org.tw/thesis-award": {
+      "status": "robots_not_plain_rules"
+    },
+    "https://www.ieee.org.tw/awards/best-thesis": {
+      "status": "url_not_allowed"
+    },
+    "https://www.tcc.org.tw/thesis-award": {
+      "status": "transport_error"
+    },
+    "https://www.tsia.org.tw/awards/phd": {
+      "status": 404,
+      "final_url": "https://www.tsia.org.tw/awards/phd"
+    },
+    "https://www.tsia.org.tw/awards/master": {
+      "status": 404,
+      "final_url": "https://www.tsia.org.tw/awards/master"
+    },
+    "https://www.tps.org.tw/thesis-award": {
+      "status": "transport_error"
+    },
+    "https://www.pst.org.tw/scholarship": {
+      "status": 404,
+      "final_url": "https://www.pst.org.tw/scholarship"
+    },
+    "https://chemistry.org.tw/awards/lee-fellowship": {
+      "status": 404,
+      "final_url": "https://chemistry.org.tw/awards/lee-fellowship"
+    },
+    "https://www.samm.org.tw/thesis-award": {
+      "status": "transport_error"
+    },
+    "https://www.cice.org.tw/scholarship": {
+      "status": "transport_error"
+    },
+    "https://www.taiwanbio.org.tw/thesis-award": {
+      "status": "url_not_allowed"
+    },
+    "https://www.tpma.org.tw/young-award": {
+      "status": "http_403_host_paused"
+    },
+    "https://www.the-living-stone.org.tw/dandelion-aid": {
+      "status": "transport_error"
+    },
+    "https://www.syinlu.org.tw/scholarship": {
+      "status": 404,
+      "final_url": "https://www.syinlu.org.tw/scholarship"
+    },
+    "https://www.maria.org.tw/scholarship": {
+      "status": 404,
+      "final_url": "https://www.maria.org.tw/scholarship"
+    },
+    "https://www.eden.org.tw/scholarship": {
+      "status": "http_403_host_paused"
+    },
+    "https://www.sunshine.org.tw/scholarship": {
+      "status": 404,
+      "final_url": "https://www.sunshine.org.tw/scholarship"
+    },
+    "https://www.nncf.org/scholarship": {
+      "status": 200,
+      "final_url": "https://www.nncf.org/",
+      "title": "財團法人羅慧夫顱顏基金會::"
+    },
+    "https://www.lcygroup.com/scholarship": {
+      "status": "transport_error"
+    },
+    "https://www.swallow.org.tw/scholarship": {
+      "status": "transport_error"
+    },
+    "https://www.mediatekfoundation.org/girls-in-stem": {
+      "status": 404,
+      "final_url": "https://www.mediatekfoundation.org/girls-in-stem"
+    },
+    "https://auo.com/zh-TW/foundation/green-award": {
+      "status": "transport_error"
+    },
+    "https://www.taiwancement.com/foundation/award": {
+      "status": "url_not_allowed"
+    },
+    "https://www.csc.com.tw/foundation/scholarship": {
+      "status": "robots_denied"
+    },
+    "https://www.fpg.com.tw/entrepreneurship-award": {
+      "status": 200,
+      "final_url": "https://www.fpg.com.tw/tw",
+      "title": "台塑企業"
+    },
+    "https://www.fulbright.org.tw/graduate-fellowship": {
+      "status": 404,
+      "final_url": "https://www.fulbright.org.tw/graduate-fellowship"
+    },
+    "https://www.ece.moe.edu.tw/": {
+      "status": 200,
+      "final_url": "https://www.ece.moe.edu.tw/ch/",
+      "title": "中文版-全國教保資訊網"
+    },
+    "https://e-service.k12ea.gov.tw/": {
+      "status": "robots_not_plain_rules"
+    },
+    "https://dep.mohw.gov.tw/DOSAASW/": {
+      "status": 200,
+      "final_url": "https://dep.mohw.gov.tw/DOSAASW/mp-103.html",
+      "title": "社會救助及社工司"
+    },
+    "https://scholarship.ncut.edu.tw/": {
+      "status": 200,
+      "final_url": "https://scholarship.ncut.edu.tw/",
+      "title": "國立勤益科技大學 - 學生獎助學金資訊系統"
+    },
+    "https://cip.ntcu.edu.tw/home": {
+      "status": "robots_not_plain_rules"
+    },
+    "https://www.vac.gov.tw/": {
+      "status": 200,
+      "final_url": "https://www.vac.gov.tw/",
+      "title": "國軍退除役官兵輔導委員會"
+    },
+    "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0150009": {
+      "status": "robots_denied"
+    },
+    "https://special.moe.gov.tw/": {
+      "status": 200,
+      "final_url": "https://special.moe.gov.tw/",
+      "title": "教育部全國特殊教育資訊網"
+    },
+    "https://sp.immigration.gov.tw/": {
+      "status": 200,
+      "final_url": "https://sp.immigration.gov.tw/",
+      "title": "網頁標題"
+    },
+    "https://fatraceschool.k12ea.gov.tw/": {
+      "status": 200,
+      "final_url": "https://fatraceschool.k12ea.gov.tw/",
+      "title": ""
+    },
+    "https://pea.nknu.edu.tw/": {
+      "status": "transport_error"
+    },
+    "https://ep.k12ea.gov.tw/": {
+      "status": "robots_denied"
+    },
+    "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050075": {
+      "status": "robots_denied"
+    },
+    "https://lae.mol.gov.tw/": {
+      "status": "transport_error"
+    },
+    "https://www.moa.gov.tw/": {
+      "status": 200,
+      "final_url": "https://www.moa.gov.tw/",
+      "title": "農業部"
+    },
+    "https://helpdreams.moe.edu.tw/": {
+      "status": "transport_error"
+    },
+    "https://coop.k12ea.gov.tw/": {
+      "status": "transport_error"
+    },
+    "https://young.cloud.ncnu.edu.tw/": {
+      "status": "robots_denied"
+    },
+    "https://rural.k12ea.gov.tw/": {
+      "status": "transport_error"
+    },
+    "https://www.ht.org.tw/": {
+      "status": 200,
+      "final_url": "https://www.ht.org.tw/",
+      "title": "行天宮五大志業網 / HSING TIAN KONG"
+    },
+    "https://www.you-care.org.tw/": {
+      "status": 200,
+      "final_url": "https://www.you-care.org.tw/",
+      "title": "財團法人普仁青年關懷基金會>首頁"
+    },
+    "https://www.tfrd.org.tw/": {
+      "status": 200,
+      "final_url": "https://www.tfrd.org.tw/",
+      "title": ""
+    },
+    "https://www.ccf.org.tw/": {
+      "status": 200,
+      "final_url": "https://www.ccf.org.tw/",
+      "title": "首頁 ｜ 家扶基金會"
+    },
+    "https://www.foxconnfoundation.org/": {
+      "status": 200,
+      "final_url": "https://www.foxconnfoundation.org/",
+      "title": "鴻海教育基金會-首頁"
+    },
+    "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296": {
+      "status": 200,
+      "final_url": "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296",
+      "title": "Office of International Affairs"
+    },
+    "https://rd.mc.ntu.edu.tw/bomrd/ntu2/news_txt.asp?pno=7296": {
+      "status": 200,
+      "final_url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/news_txt.asp?pno=7296",
+      "title": "台大醫學院-研發分處"
+    },
+    "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf": {
+      "status": 200,
+      "final_url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADService/1151015_%E6%95%99%E8%82%B2%E9%83%A8%E5%8D%9A%E7%8D%8E%E7%AC%AC%E4%BA%8C%E6%A2%AF%E7%94%B3%E8%AB%8B.pdf",
+      "title": ""
+    },
+    "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf": {
+      "status": 200,
+      "final_url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E7%A0%94%E7%A9%B6%E7%94%9F%E6%A0%A1%E9%95%B7%E7%8D%8E%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%95_23040710344382101.pdf",
+      "title": ""
+    },
+    "https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/%E6%95%99%E5%8B%99%E8%99%95%E6%95%99%E5%AD%B8%E5%8A%A9%E7%90%86%E5%88%B6%E5%BA%A6%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E6%A2%9D%E6%96%87-%E5%85%AC%E5%91%8A%E7%89%88.pdf": {
+      "status": 200,
+      "final_url": "https://www.aca.ntu.edu.tw/WebUPD/aca/SecretariatService/%E6%95%99%E5%8B%99%E8%99%95%E6%95%99%E5%AD%B8%E5%8A%A9%E7%90%86%E5%88%B6%E5%BA%A6%E7%8D%8E%E5%8B%B5%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E6%A2%9D%E6%96%87-%E5%85%AC%E5%91%8A%E7%89%88.pdf",
+      "title": ""
+    },
+    "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713": {
+      "status": 200,
+      "final_url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211271211713",
+      "title": "校級博士生獎學金(含國科會核配及教育部博士生獎學金) - 國立臺灣大學教務處"
+    },
+    "https://www.sinica.edu.tw/news_content/56/3434": {
+      "status": 200,
+      "final_url": "https://www.sinica.edu.tw/news_content/56/3434",
+      "title": "中央研究院-115年度「人文社會科學博士候選人培育計畫」自即日起受理申請"
+    },
+    "https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf": {
+      "status": 200,
+      "final_url": "https://eecs.ntu.edu.tw/uploads/asset/data/6875c5db1d41c829c9b3c899/%E9%9B%BB%E8%B3%87%E5%AD%B8%E9%99%A2%E5%84%AA%E7%A7%80%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A9%95%E9%81%B8%E8%BE%A6%E6%B3%95_114.pdf",
+      "title": ""
+    },
+    "https://www.aca.ntu.edu.tw/w/aca/GAADService_23091415501308264": {
+      "status": 200,
+      "final_url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23091415501308264",
+      "title": "國科會博士生研究獎學金國科會甄選類 - 國立臺灣大學教務處"
+    },
+    "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260": {
+      "status": 200,
+      "final_url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL038260",
+      "title": "國家科學及技術委員會主管法規共用系統-法規內容-國家科學及技術委員會補助國內研究生出席國際學術會議作業要點"
+    },
+    "https://law.nstc.gov.tw/LawContent.aspx?id=FL039188": {
+      "status": 200,
+      "final_url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039188",
+      "title": "國家科學及技術委員會主管法規共用系統-法規內容-國家科學及技術委員會補助博士生赴國外研究作業要點"
+    },
+    "https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260": {
+      "status": 200,
+      "final_url": "https://ord.ntu.edu.tw/w/ordntu/GW_20072012192817260",
+      "title": "遠學計畫 - 研發處首頁"
+    },
+    "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383": {
+      "status": 200,
+      "final_url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_21071211044877383",
+      "title": "國科會補助出席國際會議 - 國立臺灣大學教務處"
+    },
+    "https://www.faos.org.tw/Application/ApplicatStud.html": {
+      "status": 200,
+      "final_url": "https://www.faos.org.tw/Application/ApplicatStud.html",
+      "title": "傑出人才發展基金會"
+    },
+    "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368": {
+      "status": 200,
+      "final_url": "https://www.aca.ntu.edu.tw/w/aca/GAADService_23060908295960368",
+      "title": "研究生校長獎 - 國立臺灣大學教務處"
+    },
+    "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686": {
+      "status": 200,
+      "final_url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL028686",
+      "title": "國家科學及技術委員會主管法規共用系統-法規內容-國家科學及技術委員會補助專題研究計畫研究人力約用注意事項"
+    },
+    "https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514": {
+      "status": 200,
+      "final_url": "https://www.aca.ntu.edu.tw/w/aca/SecretariatService_21070717324321514",
+      "title": "基礎暨專業課程教學助理與教務處主政高教深耕計畫經費兼任助理 - 國立臺灣大學教務處"
+    },
+    "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL002336": {
+      "status": 200,
+      "final_url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL002336",
+      "title": "教育部主管法規共用系統-法規內容-教育部博士生獎學金補助計畫作業要點"
+    },
+    "https://www.aca.ntu.edu.tw/w/aca/GAADNews_23091415525408652": {
+      "status": 200,
+      "final_url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_23091415525408652",
+      "title": "轉知「國科會博士生研究獎學金試辦方案」相關訊息 - 國立臺灣大學教務處"
+    },
+    "https://www.cm.nsysu.edu.tw/p/404-1024-380732.php?Lang=zh-tw": {
+      "status": 200,
+      "final_url": "https://www.cm.nsysu.edu.tw/p/404-1024-380732.php?Lang=zh-tw",
+      "title": "【元大文教基金會】115年元大優秀人才獎學金（9/8收件截止）  - 國立中山大學管理學院 College of Management, NSYSU"
+    },
+    "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187": {
+      "status": 200,
+      "final_url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24020514350023187",
+      "title": "本校國科會113年度獎勵人文與社會科學領域博士候選人撰寫博士論文申請至3/25(一)上午8時 - 國立臺灣大學教務處"
+    },
+    "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24052211230185000": {
+      "status": 200,
+      "final_url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_24052211230185000",
+      "title": "國科會114年度補助博士生赴國外研究案，申請時間自113年6月1日至7月29日早上8時止 - 國立臺灣大學教務處"
+    },
+    "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25051610035803840": {
+      "status": 200,
+      "final_url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25051610035803840",
+      "title": "國科會115年度補助博士生赴國外研究案，申請時間自114年6月1日至7月28日(星期一)早上8時止 - 國立臺灣大學教務處"
+    },
+    "https://www.foxconnfoundation.org/news/80479d881F20": {
+      "status": 200,
+      "final_url": "https://www.foxconnfoundation.org/news/80479d881F20",
+      "title": "鴻海教育基金會-最新消息-鴻海獎學鯨｜大專碩博組獎學金計畫｜助力弱勢生安心就學勇敢追夢"
+    },
+    "https://aws.amazon.com/education/awseducate/": {
+      "status": 200,
+      "final_url": "https://aws.amazon.com/education/awseducate/",
+      "title": "AWS Educate - Cloud Skills for Education- AWS"
+    },
+    "https://aws.amazon.com/research-credits/": {
+      "status": 200,
+      "final_url": "https://aws.amazon.com/government-education/research-and-technical-computing/cloud-credit-for-research/",
+      "title": "AWS Cloud Credit for Research | AWS"
+    },
+    "https://coph.ntu.edu.tw/uploads/root/hsiaopc/NTUCPH_MASTER-1120923.pdf": {
+      "status": 200,
+      "final_url": "https://coph.ntu.edu.tw/uploads/root/hsiaopc/NTUCPH_MASTER-1120923.pdf",
+      "title": ""
+    },
+    "https://coph.ntu.edu.tw/uploads/root/hsiaopc/linyaonanscolarship_1120110.pdf": {
+      "status": 200,
+      "final_url": "https://coph.ntu.edu.tw/uploads/root/hsiaopc/linyaonanscolarship_1120110.pdf",
+      "title": ""
+    },
+    "https://edu.google.com/programs/credits/research/": {
+      "status": 200,
+      "final_url": "https://edu.google.com/programs/credits/research/",
+      "title": "Research Credits | Google for Education"
+    },
+    "https://education.github.com/pack": {
+      "status": 200,
+      "final_url": "https://education.github.com/pack",
+      "title": "GitHub Student Developer Pack - GitHub Education"
+    },
+    "https://law.nstc.gov.tw/LawContent.aspx?id=FL039061": {
+      "status": 200,
+      "final_url": "https://law.nstc.gov.tw/LawContent.aspx?id=FL039061",
+      "title": "國家科學及技術委員會主管法規共用系統-法規內容-國家科學及技術委員會獎勵人文與社會科學領域博士候選人撰寫博士論文作業要點"
+    },
+    "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1768889444792": {
+      "status": 200,
+      "final_url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1768889444792",
+      "title": "國立臺灣大學文學院"
+    },
+    "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1786692862536": {
+      "status": 200,
+      "final_url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1786692862536",
+      "title": "國立臺灣大學文學院"
+    },
+    "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787024420703": {
+      "status": 200,
+      "final_url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787024420703",
+      "title": "國立臺灣大學文學院"
+    },
+    "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787888998694": {
+      "status": 200,
+      "final_url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787888998694",
+      "title": "國立臺灣大學文學院"
+    },
+    "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787889215831": {
+      "status": 200,
+      "final_url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1787889215831",
+      "title": "國立臺灣大學文學院"
+    },
+    "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1788249360727": {
+      "status": 200,
+      "final_url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1788249360727",
+      "title": "國立臺灣大學文學院"
+    },
+    "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609156448": {
+      "status": 200,
+      "final_url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609156448",
+      "title": "國立臺灣大學文學院"
+    },
+    "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609268938": {
+      "status": 200,
+      "final_url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1789609268938",
+      "title": "國立臺灣大學文學院"
+    },
+    "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1790153625329": {
+      "status": 200,
+      "final_url": "https://liberal.ntu.edu.tw/web/student/student_in.jsp?dm_id=DM1656910432608&np_id=NP1790153625329",
+      "title": "國立臺灣大學文學院"
+    },
+    "https://one.google.com/offer/studentoffer8?hl=zh-TW": {
+      "status": 200,
+      "final_url": "https://one.google.com/offer/studentoffer8?hl=zh-TW",
+      "title": "Google One 學生特價優惠條款"
+    },
+    "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf": {
+      "status": 200,
+      "final_url": "https://www.aca.ntu.edu.tw/WebUPD/aca/GAADRules/%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E5%A4%A7%E5%AD%B8%E5%8D%9A%E5%A3%AB%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A8%AD%E7%BD%AE%E8%BE%A6%E6%B3%951140423.pdf",
+      "title": ""
+    },
+    "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216": {
+      "status": 200,
+      "final_url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_25011016132563216",
+      "title": "114年人社論文獎勵申請相關資訊 - 國立臺灣大學教務處"
+    },
+    "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454": {
+      "status": 200,
+      "final_url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26020916123732454",
+      "title": "115年人社論文獎勵申請相關資訊 - 國立臺灣大學教務處"
+    },
+    "https://www.nstc.gov.tw/sci/ch/detail/24ad4e4a-bd37-4ba0-9955-5b2e2ffd5ac6": {
+      "status": 200,
+      "final_url": "https://www.nstc.gov.tw/sci/ch/detail/24ad4e4a-bd37-4ba0-9955-5b2e2ffd5ac6",
+      "title": "國家科學及技術委員會-最新公告-115年國家科學及技術委員會博士生研究獎學金試辦方案-科教發展及國際合作處"
+    },
+    "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942": {
+      "status": 200,
+      "final_url": "https://www.nstc.gov.tw/sci/ch/detail/9fea56ff-9a28-4304-abb3-192109491942",
+      "title": "國家科學及技術委員會-一般性及專案型國際交流方案補助-補助博士生赴國外研究作業要點 (115年申請, 116年出國)-科教發展及國際合作處"
+    },
+    "https://www.nvidia.com/en-us/research/graduate-fellowships/": {
+      "status": "url_not_allowed"
+    },
+    "https://www.sinica.edu.tw/cp/332": {
+      "status": 200,
+      "final_url": "https://www.sinica.edu.tw/cp/332",
+      "title": "中央研究院-中央研究院人文社會科學博士候選人培育計畫要點"
+    },
+    "https://www.studyabroad.moe.gov.tw/ckfinder_upload/files/20211214073031.pdf": {
+      "status": 200,
+      "final_url": "https://www.studyabroad.moe.gov.tw/ckfinder_upload/files/20211214073031.pdf",
+      "title": ""
+    },
+    "https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1617472": {
+      "status": 200,
+      "final_url": "https://youth.tycg.gov.tw/News_Content.aspx?n=5622&s=1617472",
+      "title": "【課程】桃園青年數位力正式啟動｜115年青年數位工具人才培育計畫開放報名"
+    },
+    "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students": {
+      "status": 200,
+      "final_url": "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/enable-copilot/set-up-for-students",
+      "title": "Access GitHub Copilot for free as a student - GitHub Docs"
+    },
+    "https://www.wda.gov.tw/News_Content.aspx?n=31&s=19491&sms=10306": {
+      "status": 200,
+      "final_url": "https://www.wda.gov.tw/News_Content.aspx?n=31&s=19491&sms=10306",
+      "title": "產業新尖兵計畫補助最高10萬元訓練費，每月再發8千元學習獎勵金！"
+    },
+    "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f": {
+      "status": 200,
+      "final_url": "https://www.youth.ntpc.gov.tw/youth/ch/app/news/view?id=104&module=headnews&serno=e4415b82-9eca-45ca-aee5-d91edc32610f",
+      "title": "最新消息-新北青年局「AI實戰職涯營」開跑 全額補助6.6萬課程 助攻AWS國際雙認證 優先媒合熱門職缺-新北市青年局"
+    },
+    "https://youth.gov.taipei/announcement/latest-announcement/e3c5cee4-b81a-4a53-aa79-6cd8c654b02e": {
+      "status": 200,
+      "final_url": "https://youth.gov.taipei/announcement/latest-announcement/e3c5cee4-b81a-4a53-aa79-6cd8c654b02e",
+      "title": "青年AI工具補助計畫 - 臺北市政府青年局"
+    },
+    "https://gice.ntu.edu.tw/shownews.php?ID=7062": {
+      "status": 200,
+      "final_url": "https://gice.ntu.edu.tw/shownews.php?ID=7062",
+      "title": "電信所公告"
+    },
+    "https://gice.ntu.edu.tw/shownews.php?ID=7278": {
+      "status": 200,
+      "final_url": "https://gice.ntu.edu.tw/shownews.php?ID=7278",
+      "title": "電信所公告"
+    },
+    "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878": {
+      "status": 200,
+      "final_url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
+      "title": "國科會116年度補助博士生赴國外研究案，申請時間自115年6月1日至7月29日(星期三)早上8時止 - 國立臺灣大學教務處"
+    },
+    "https://gice.ntu.edu.tw/shownews.php?ID=7061": {
+      "status": 200,
+      "final_url": "https://gice.ntu.edu.tw/shownews.php?ID=7061",
+      "title": "電信所公告"
+    },
+    "https://gice.ntu.edu.tw/shownews.php?ID=7279": {
+      "status": 200,
+      "final_url": "https://gice.ntu.edu.tw/shownews.php?ID=7279",
+      "title": "電信所公告"
+    },
+    "https://gice.ntu.edu.tw/shownews.php?ID=7282": {
+      "status": 200,
+      "final_url": "https://gice.ntu.edu.tw/shownews.php?ID=7282",
+      "title": "電信所公告"
+    },
+    "https://gice.ntu.edu.tw/shownews.php?ID=7344": {
+      "status": 200,
+      "final_url": "https://gice.ntu.edu.tw/shownews.php?ID=7344",
+      "title": "電信所公告"
+    },
+    "https://education.github.com/": {
+      "status": "url_not_allowed"
+    },
+    "https://azure.microsoft.com/free/students/": {
+      "status": 200,
+      "final_url": "https://azure.microsoft.com/en-us/free/students/",
+      "title": "Azure for Students | Microsoft Azure"
+    },
+    "https://www.cloudskillsboost.google/": {
+      "status": "url_not_allowed"
+    },
+    "https://www.notion.com/product/notion-for-education": {
+      "status": 200,
+      "final_url": "https://www.notion.com/product/notion-for-education",
+      "title": "Notion for Education"
+    },
+    "https://www.figma.com/education/": {
+      "status": 200,
+      "final_url": "https://www.figma.com/education/",
+      "title": "Figma for Education | Free tools"
+    },
+    "https://www.jetbrains.com/community/education/#students": {
+      "status": 200,
+      "final_url": "https://www.jetbrains.com/academy/student-pack/",
+      "title": "Free JetBrains Student Pack"
+    },
+    "https://www.autodesk.com/education/edu-software/overview": {
+      "status": "http_403_host_paused"
+    },
+    "https://www.mathworks.com/academia/tah-portal.html": {
+      "status": "http_403_host_paused"
+    },
+    "https://www.tableau.com/academic/students": {
+      "status": 200,
+      "final_url": "https://www.tableau.com/academic/students",
+      "title": "Tableau for Students | Tableau"
+    },
+    "https://www.microsoft.com/education/products/office": {
+      "status": 200,
+      "final_url": "https://www.microsoft.com/zh-tw/education/products/office",
+      "title": "免費的學校用 Microsoft Office 365 | Microsoft 教育版"
+    },
+    "https://www.adobe.com/tw/creativecloud/buy/students.html": {
+      "status": 200,
+      "final_url": "https://www.adobe.com/tw/education/students/creativecloud.html",
+      "title": "適用於學生與教師的 Adobe Creative Cloud Pro | Adobe Creative Cloud"
+    },
+    "https://www.canva.com/education/": {
+      "status": 200,
+      "final_url": "https://www.canva.com/education/",
+      "title": "Education Solutions for K–12 & Higher Ed"
+    },
+    "https://www.coursera.org/": {
+      "status": 200,
+      "final_url": "https://www.coursera.org/",
+      "title": "Coursera | Online Courses, Certificates, & Degrees"
+    },
+    "https://www.datacamp.com/universities": {
+      "status": "http_403_host_paused"
+    },
+    "https://concert.stpi.narl.org.tw/": {
+      "status": "url_not_allowed"
+    },
+    "https://www.apple.com/tw-edu/store": {
+      "status": 200,
+      "final_url": "https://www.apple.com/tw-edu/store",
+      "title": "教育優惠價與學生折扣 - 教育 - Apple（台灣）"
+    },
+    "https://www.samsung.com/tw/multistore/tw_student/": {
+      "status": "robots_denied"
+    },
+    "https://www.lenovo.com/tw/zh/education/student/": {
+      "status": 404,
+      "final_url": "https://www.lenovo.com/tw/zh/education/student/"
+    },
+    "https://www.logitech.com/zh-tw": {
+      "status": 200,
+      "final_url": "https://www.logitech.com/zh-tw",
+      "title": "羅技台灣"
+    },
+    "https://www.spotify.com/tw/student/": {
+      "status": 200,
+      "final_url": "https://www.spotify.com/tw/student/",
+      "title": "學生優惠 Premium - Spotify (TW)"
+    },
+    "https://www.apple.com/tw/apple-music/": {
+      "status": 200,
+      "final_url": "https://www.apple.com/tw/apple-music/",
+      "title": "Apple Music - Apple (台灣)"
+    },
+    "https://www.youtube.com/premium/student": {
+      "status": 200,
+      "final_url": "https://www.youtube.com/premium/student",
+      "title": "YouTube Premium"
+    },
+    "https://www.travel934.org.tw/isic/isic.aspx": {
+      "status": 200,
+      "final_url": "https://www.travel934.org.tw/isic/isic.aspx",
+      "title": "travel934.org.tw"
+    },
+    "https://www.perplexity.ai/": {
+      "status": "http_403_host_paused"
+    },
+    "https://www.cursor.com/": {
+      "status": "url_not_allowed"
+    },
+    "https://www.myunidays.com/TW/zh-TW": {
+      "status": 200,
+      "final_url": "https://www.myunidays.com/TW/zh-TW",
+      "title": "UNiDAYS - 為學生提供快速、免費、獨家的折扣"
+    },
+    "https://www.cip.gov.tw/zh-tw/news/data-list/1018/index.html": {
+      "status": 404,
+      "final_url": "https://www.cip.gov.tw/zh-tw/news/data-list/1018/index.html"
+    },
+    "https://www.moa.gov.tw/theme_data.php?theme=news&sub_theme=hot&id=123": {
+      "status": 200,
+      "final_url": "https://www.moa.gov.tw/index.php?error_id=J009",
+      "title": "農業部"
+    },
+    "https://www.mol.gov.tw/1607/28162/28166/28214/": {
+      "status": 410,
+      "final_url": "https://www.mol.gov.tw/1607/28162/28166/28214/"
+    },
+    "https://www.vac.gov.tw/cp-1797-3214-1.html": {
+      "status": 200,
+      "final_url": "https://www.vac.gov.tw",
+      "title": "國軍退除役官兵輔導委員會"
+    },
+    "https://www.iicm.org.tw/news_detail.php?id=88": {
+      "status": "transport_error"
+    },
+    "https://www.taai.org.tw/awards/thesis": {
+      "status": "robots_not_plain_rules"
+    },
+    "https://www.csroc.org.tw/news_detail.php?id=12": {
+      "status": 200,
+      "final_url": "https://www.csroc.org.tw/index.jsp",
+      "title": "CSROC中華民國電腦學會 2025"
+    },
+    "https://military.ncu.edu.tw/": {
+      "status": 200,
+      "final_url": "https://military.ncu.edu.tw/",
+      "title": "國立中央大學生活輔導組"
+    },
+    "https://ag-osa.nsysu.edu.tw/": {
+      "status": 200,
+      "final_url": "https://ag-osa.nsysu.edu.tw/",
+      "title": "學生事務處-校園生活與職涯發展組"
+    },
+    "https://www.osa.nchu.edu.tw/osa/laa/index.php": {
+      "status": 200,
+      "final_url": "https://www.osa.nchu.edu.tw/osa/laa/index.php",
+      "title": "國立中興大學學生事務處 生活輔導組 首頁"
+    },
+    "https://studaff.ccu.edu.tw/": {
+      "status": "transport_error"
+    },
+    "https://assistance.sa.ntnu.edu.tw/": {
+      "status": 200,
+      "final_url": "https://assistance.sa.ntnu.edu.tw/",
+      "title": "國立臺灣師範大學- 生活輔導組"
+    },
+    "https://www.ntpu.edu.tw/admin/a8/org/a8-2/index.php": {
+      "status": "url_not_allowed"
+    },
+    "https://student.ntust.edu.tw/": {
+      "status": 200,
+      "final_url": "https://student.ntust.edu.tw/",
+      "title": "國立臺灣科技大學-學生事務處"
+    },
+    "https://osa.ntut.edu.tw/": {
+      "status": 200,
+      "final_url": "https://osa.ntut.edu.tw/",
+      "title": "學務處"
+    },
+    "https://www.cgu.edu.tw/ch/Contents?nodeId=4684": {
+      "status": 200,
+      "final_url": "https://www.cgu.edu.tw/ch/Contents?nodeId=4684",
+      "title": "長庚大學 獎助學金"
+    },
+    "https://osa.tmu.edu.tw/": {
+      "status": 200,
+      "final_url": "https://osa.tmu.edu.tw/",
+      "title": "臺北醫學大學 學務處"
+    },
+    "https://osa.kmu.edu.tw/": {
+      "status": 200,
+      "final_url": "https://osa.kmu.edu.tw/index.php/zh-tw/",
+      "title": "高雄醫學大學 學生事務處 - 首頁"
+    },
+    "https://guide.cmu.edu.tw/page/64": {
+      "status": 200,
+      "final_url": "https://guide.cmu.edu.tw/page/64",
+      "title": "弱勢助學專區 | 中國醫藥大學 軍訓暨生活輔導組"
+    },
+    "https://web-ch.scu.edu.tw/life/web_page/10497": {
+      "status": 200,
+      "final_url": "https://web-ch.scu.edu.tw/life/web_page/10497",
+      "title": "德育中心 - 115學年度新生甄選序號表含筆試面試教室等相關資訊(115.05.08.公告)"
+    },
+    "https://sa.tku.edu.tw/spirit/": {
+      "status": 200,
+      "final_url": "https://sa.tku.edu.tw/spirit/",
+      "title": "學生事務處"
+    },
+    "https://student.fcu.edu.tw/": {
+      "status": 200,
+      "final_url": "https://student.fcu.edu.tw/",
+      "title": "首頁 | 逢甲大學-學生事務處"
+    },
+    "https://www.yzu.edu.tw/admin/st/": {
+      "status": 200,
+      "final_url": "https://www.yzu.edu.tw/admin/st/index.php/tw/",
+      "title": "元智大學 Yuan Ze University - 學務處 - 學務處"
+    },
+    "https://www.cycu.edu.tw/": {
+      "status": "transport_error"
+    },
+    "https://www.thu.edu.tw/": {
+      "status": "robots_unavailable"
+    },
+    "https://rb005.ndhu.edu.tw/": {
+      "status": 200,
+      "final_url": "https://rb005.ndhu.edu.tw/",
+      "title": "東華大學 學生事務處 NDHU Office of Student Affairs"
+    }
+  }
+}
