@@ -38,6 +38,17 @@ class RadarProposalTests(unittest.TestCase):
             self.assertTrue((output/'data-pr.patch').read_text(encoding='utf-8').startswith('--- a/data/'))
             self.assertFalse(summary['published'])
 
+    def test_proposal_keeps_committed_diagrams_in_step_with_its_data(self):
+        from scripts.export_source_chain_graph import export
+        bundle,config,_=self.fixture()
+        with TemporaryDirectory() as tmp:
+            output=Path(tmp)/'proposal';write_proposal(bundle,config,output,preview=False)
+            repo=output/'repo'
+            def overlay(path):return read(repo/path if (repo/path).exists() else ROOT/path)
+            expected=Path(tmp)/'expected';export(expected,overlay('data/source-chain-index.json'),reader=overlay)
+            for name in ('source-chain-map.html','source-chain-map.canvas'):
+                self.assertEqual((repo/'docs/source-chains'/name).read_text(encoding='utf-8'),(expected/name).read_text(encoding='utf-8'))
+
     def test_failed_checks_withheld_and_approval_claim_rejected(self):
         bundle,config,_=self.fixture();bundle['candidates'][0]['verification']['status']='failed_automated_checks'
         files,summary=prepare(bundle,config);self.assertEqual(files['data/candidates/source-review.json']['candidates'],read(ROOT/'data/candidates/source-review.json')['candidates'])

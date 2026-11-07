@@ -19,10 +19,10 @@ class TimePolicyTests(unittest.TestCase):
     def candidate(self, source_id):
         return deepcopy(next(c for c in self.bundle['candidates'] if c['source_metadata']['source_id'] == source_id))
 
-    def test_all_64_project_without_mutation_or_intake_state_changes(self):
+    def test_all_candidates_project_without_mutation_or_intake_state_changes(self):
         before = deepcopy(self.bundle)
         records = radar_metadata(self.bundle,observations={})['records']
-        self.assertEqual(len(records), 64)
+        self.assertEqual(len(records), len(self.bundle['candidates']))
         for candidate in self.bundle['candidates']:
             policy = records[candidate['candidate_id']]['time_policy']
             policy_validator().validate(policy)

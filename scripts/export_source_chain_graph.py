@@ -120,8 +120,8 @@ def canvas(graph):
         raise ValueError('canvas_reference_or_identity_error')
     return {'nodes':nodes,'edges':edges}
 
-def export(output,index=None):
-    graph=load_graph(index);output=Path(output);output.mkdir(parents=True,exist_ok=True)
+def export(output,index=None,reader=None):
+    graph=load_graph(index,reader);output=Path(output);output.mkdir(parents=True,exist_ok=True)
     template=(ROOT/'docs/design/source-chain-map.template.html').read_text(encoding='utf-8')
     payload=json.dumps(graph,ensure_ascii=False).replace('<','\\u003c')
     (output/'source-chain-map.html').write_text(template.replace('/*GRAPH_DATA*/',payload),encoding='utf-8')

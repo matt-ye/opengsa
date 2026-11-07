@@ -1,4 +1,5 @@
 """候選來源連線檢查：記錄狀態、遵守預算、不連網。"""
+import json
 from pathlib import Path
 import subprocess
 import sys
@@ -48,7 +49,8 @@ class SourceCheckTests(unittest.TestCase):
 
     def test_collect_covers_every_candidate(self):
         total = sum(len(rows) for rows in collect().values())
-        self.assertEqual(total, 256)
+        expected = sum(len(json.loads(p.read_text(encoding="utf-8"))["candidates"]) for p in (ROOT / "data/candidates").glob("*.json"))
+        self.assertEqual(total, expected)
 
 
 if __name__ == "__main__":
