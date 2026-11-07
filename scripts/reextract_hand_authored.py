@@ -213,7 +213,7 @@ def run(candidates, config, previous, transport=None, on_progress=None, now=None
             row["model_round"] = MODEL_ROUND
             # 只記數量與進度，不保存模型回覆或來源原文。
             row["model_rejected_claims"] = adapter.rejected_claims - rejected_before
-            prep = adapter.last_preparation or {}
+            prep = getattr(adapter, "last_preparation", None) or {}
             row["model_chunks"] = [prep.get("chunks_completed"), prep.get("chunks_planned")]
             row["model_tokens_total"] = adapter.total_tokens
             accepted = (row.get("candidate") or {}).get("field_evidence", [])
