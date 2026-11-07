@@ -3,6 +3,7 @@ from datetime import datetime
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 import tempfile
+from urllib.parse import parse_qs, urlsplit
 import unittest
 import xml.etree.ElementTree as ET
 import sys
@@ -57,7 +58,7 @@ class RSSFeedTests(unittest.TestCase):
             desc = item.find("description").text
 
             self.assertTrue(title and len(title.strip()) > 0)
-            self.assertTrue(link.startswith("https://opengsa.mattye.dev/?id="))
+            self.assertTrue(link.startswith("https://opengsa.mattye.dev/?tab=detail&id="))
             self.assertTrue(guid and len(guid.strip()) > 0)
             self.assertTrue(desc and "【身分資格】" in desc)
 
@@ -69,6 +70,16 @@ class RSSFeedTests(unittest.TestCase):
             for text in (title, link, guid, desc):
                 self.assertNotIn("undefined", text)
                 self.assertNotIn("None", text)
+
+    def test_item_links_open_the_matching_document_on_the_page(self):
+        """The page keys each document by candidate_id; any other id silently opens a different item."""
+        page_ids = {cand["candidate_id"] for cand in self.candidates["candidates"]}
+        for feed_file in (self.main_file, self.deadlines_file):
+            for item in ET.parse(feed_file).getroot().find("channel").findall("item"):
+                query = parse_qs(urlsplit(item.find("link").text).query)
+                self.assertEqual(query["tab"], ["detail"])
+                self.assertIn(query["id"][0], page_ids)
+                self.assertTrue(item.find("guid").text.startswith(query["id"][0]))
 
     def test_deadlines_feed_filtering_and_formatting(self):
         """Verifies that feed-deadlines.xml contains only verified deadlines with countdown markers."""

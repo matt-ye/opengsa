@@ -69,8 +69,8 @@ def build_feeds(output_dir: Path, candidates: list[dict], observations: dict) ->
         cid = cand.get("candidate_id") or cand.get("id")
         title = cand.get("title", "未命名獎助方案")
         cat = cand.get("category", "other")
-        opp_id = cand.get("opportunity_id") or cand.get("program_key") or cid
-        item_link = f"{SITE_URL}?id={opp_id}"
+        # 頁面每筆文件以 candidate_id 為鍵，一個方案可能有多份文件；帶 tab 才會直接開到詳情頁。
+        item_link = f"{SITE_URL}?tab=detail&id={cid}"
 
         # Benefit and eligibility summary
         benefit_text = cand.get("benefit", {}).get("text", "獎助內容詳見官方簡章")
