@@ -1,0 +1,1328 @@
+{
+  "checked_on": "2026-11-07",
+  "http_requests": 504,
+  "model_calls": 0,
+  "rows": [
+    {
+      "id": "U001",
+      "name": "國立政治大學",
+      "status": "link_official_site_only",
+      "url": "https://www.nccu.edu.tw/",
+      "note": "政大「獎助生團體保險申請流程」單一事項頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://osa.nccu.edu.tw/tw/%E7%94%9F%E6%B4%BB%E4%BA%8B%E5%8B%99%E6%9A%A8%E5%83%91%E7%94%9F%E8%BC%94%E5%B0%8E%E7%B5%84/%E5%AD%B8%E7%94%9F%E7%94%9F%E6%B4%BB%E4%BA%8B%E5%8B%99/%E5%AD%B8%E7%94%9F%E5%9C%98%E9%AB%94%E5%B9%B3%E5%AE%89%E4%BF%9D%E9%9A%AA/%E7%8D%8E%E5%8A%A9%E7%94%9F%E5%9C%98%E9%AB%94%E4%BF%9D%E9%9A%AA%E7%94%B3%E8%AB%8B%E6%B5%81%E7%A8%8B",
+      "review_verdict": "wrong_level",
+      "review_note": "政大「獎助生團體保險申請流程」單一事項頁",
+      "checks": {
+        "https://osa.nccu.edu.tw/tw/student-life-and-extracurricular-activities/scholarships-and-grants": 404,
+        "https://osa.nccu.edu.tw/tw/student-life-and-extracurricular-activities": 404,
+        "https://osa.nccu.edu.tw/": 200,
+        "https://osa.nccu.edu.tw/tw/生活事務暨僑生輔導組/學生生活事務/學生團體平安保險/獎助生團體保險申請流程": 200
+      }
+    },
+    {
+      "id": "U002",
+      "name": "國立清華大學",
+      "status": "link_related_program",
+      "url": "https://sa.site.nthu.edu.tw/p/412-1480-21746.php?Lang=zh-tw",
+      "note": "清華生輔組站內「專案獎助學金」子分類頁（旭日、朱順一等專案），非整體獎助學金入口",
+      "crawler_level": "portal",
+      "crawler_url": "https://sa.site.nthu.edu.tw/p/412-1480-21746.php?Lang=zh-tw",
+      "review_verdict": "wrong_level",
+      "review_note": "清華生輔組站內「專案獎助學金」子分類頁（旭日、朱順一等專案），非整體獎助學金入口",
+      "checks": {
+        "https://meo110.wwlc.nthu.edu.tw/": "robots_not_plain_rules",
+        "https://sa.site.nthu.edu.tw/": 200,
+        "https://sa.site.nthu.edu.tw/p/412-1480-21746.php?Lang=zh-tw": 200
+      }
+    },
+    {
+      "id": "U003",
+      "name": "國立臺灣大學",
+      "status": "link_official_site_only",
+      "url": "https://www.ntu.edu.tw/",
+      "note": "臺大學務處「學生住宿服務」頁，與獎助學金無關",
+      "crawler_level": "assistance",
+      "crawler_url": "https://osa.ntu.edu.tw/services/accommodation",
+      "review_verdict": "wrong_level",
+      "review_note": "臺大學務處「學生住宿服務」頁，與獎助學金無關",
+      "checks": {
+        "https://advisory.ntu.edu.tw/CMS/Page/36": "robots_not_plain_rules",
+        "https://advisory.ntu.edu.tw/": "robots_not_plain_rules",
+        "https://osa.ntu.edu.tw/": 200,
+        "https://osa.ntu.edu.tw/services/accommodation": 200,
+        "https://osa_dorm.ntu.edu.tw/": 200,
+        "https://gocfs.ntu.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U004",
+      "name": "國立臺灣師範大學",
+      "status": "link_related_program",
+      "url": "https://assistance.sa.ntnu.edu.tw/ministry-edu-1/",
+      "note": "「不利處境學生助學金」單一方案頁（生輔組站內）",
+      "crawler_level": "portal",
+      "crawler_url": "https://assistance.sa.ntnu.edu.tw/ministry-edu-1/",
+      "review_verdict": "wrong_level",
+      "review_note": "「不利處境學生助學金」單一方案頁（生輔組站內）",
+      "checks": {
+        "https://assistance2.sa.ntnu.edu.tw/?page_id=31": "transport_error",
+        "https://assistance.sa.ntnu.edu.tw/": 200,
+        "https://assistance.sa.ntnu.edu.tw/ministry-edu-1/": 200
+      }
+    },
+    {
+      "id": "U005",
+      "name": "國立成功大學",
+      "status": "link_portal",
+      "url": "https://assistance-osa.ncku.edu.tw/p/412-1051-2563.php?Lang=zh-tw",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://assistance-osa.ncku.edu.tw/p/412-1051-2563.php?Lang=zh-tw",
+      "review_verdict": "ok",
+      "review_note": "成大生輔組「獎學金申請」專區（含查詢系統與各獎學金要點）",
+      "checks": {
+        "https://assistance-osa.ncku.edu.tw/p/412-1051-16327.php": 404,
+        "https://assistance-osa.ncku.edu.tw/": 200,
+        "https://assistance-osa.ncku.edu.tw/p/412-1051-2563.php?Lang=zh-tw": 200
+      }
+    },
+    {
+      "id": "U006",
+      "name": "國立中興大學",
+      "status": "link_portal",
+      "url": "https://www.osa.nchu.edu.tw/osa/laa/scholarship.html",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://www.osa.nchu.edu.tw/osa/laa/scholarship.html",
+      "review_verdict": "ok",
+      "review_note": "中興生輔組「獎助學金」專頁",
+      "checks": {
+        "https://www.osa.nchu.edu.tw/osa/laa/scholarship.html": 200
+      }
+    },
+    {
+      "id": "U007",
+      "name": "國立陽明交通大學",
+      "status": "link_office",
+      "url": "https://osa.nycu.edu.tw/osa/ch/app/data/list?module=nycu0090&id=3681",
+      "note": "陽明交大學務處「最新消息」列表，非獎助學金入口",
+      "crawler_level": "portal",
+      "crawler_url": "https://osa.nycu.edu.tw/osa/ch/app/data/list?module=nycu0090&id=3681",
+      "review_verdict": "wrong_level",
+      "review_note": "陽明交大學務處「最新消息」列表，非獎助學金入口",
+      "checks": {
+        "https://sasystem.nycu.edu.tw/scholarship/index2": "transport_error",
+        "https://osa.nycu.edu.tw/aid-and-life/": 200,
+        "https://osa.nycu.edu.tw/osa/ch/app/data/list?module=nycu0090&id=3681": 200
+      }
+    },
+    {
+      "id": "U008",
+      "name": "國立中央大學",
+      "status": "link_related_program",
+      "url": "https://military.ncu.edu.tw/graduate_scholarship.php",
+      "note": "中央大學生輔組「研究生獎助學金」，僅研究生單一類別",
+      "crawler_level": "portal",
+      "crawler_url": "https://military.ncu.edu.tw/graduate_scholarship.php",
+      "review_verdict": "wrong_level",
+      "review_note": "中央大學生輔組「研究生獎助學金」，僅研究生單一類別",
+      "checks": {
+        "https://military.ncu.edu.tw/aid/": 404,
+        "https://military.ncu.edu.tw/": 200,
+        "https://cis.ncu.edu.tw/Scholarship": "robots_denied",
+        "https://military.ncu.edu.tw/graduate_scholarship.php": 200
+      }
+    },
+    {
+      "id": "U009",
+      "name": "國立中山大學",
+      "status": "link_related_program",
+      "url": "https://ag-osa.nsysu.edu.tw/p/412-1087-4298.php?Lang=zh-tw",
+      "note": "中山學務處「學雜費減免」單一項目頁，非獎助學金入口",
+      "crawler_level": "portal",
+      "crawler_url": "https://ag-osa.nsysu.edu.tw/p/412-1087-4298.php?Lang=zh-tw",
+      "review_verdict": "wrong_level",
+      "review_note": "中山學務處「學雜費減免」單一項目頁，非獎助學金入口",
+      "checks": {
+        "https://ag-osa.nsysu.edu.tw/p/412-1087-16880.php": 404,
+        "https://ag-osa.nsysu.edu.tw/": 200,
+        "https://ag-osa.nsysu.edu.tw/p/412-1087-4298.php?Lang=zh-tw": 200
+      }
+    },
+    {
+      "id": "U010",
+      "name": "國立臺灣海洋大學",
+      "status": "link_portal",
+      "url": "https://stu.ntou.edu.tw/p/412-1023-7797.php?Lang=zh-tw",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://stu.ntou.edu.tw/p/412-1023-7797.php?Lang=zh-tw",
+      "review_verdict": "ok",
+      "review_note": "海大生輔組「獎學金」頁（內容短，僅依標題與選單判斷屬獎助學金區，未確認涵蓋範圍）",
+      "checks": {
+        "https://stu.ntou.edu.tw/p/412-1023-8874.php": 404,
+        "https://stu.ntou.edu.tw/": 200,
+        "https://stu.ntou.edu.tw/p/412-1023-7797.php?Lang=zh-tw": 200
+      }
+    },
+    {
+      "id": "U011",
+      "name": "國立中正大學",
+      "status": "link_official_site_only",
+      "url": "https://www.ccu.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.ccu.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://studaff.ccu.edu.tw/p/412-1017-1520.php": "transport_error",
+        "https://studaff.ccu.edu.tw/": "transport_error",
+        "https://www.ccu.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U012",
+      "name": "國立高雄師範大學",
+      "status": "link_unverified",
+      "url": "https://www.nknu.edu.tw/",
+      "note": "本次未能以工具驗證，網址待人工查",
+      "crawler_level": null,
+      "crawler_url": null,
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://c.nknu.edu.tw/osa/laa/scholarship/": 404,
+        "https://c.nknu.edu.tw/osa/laa/": 404,
+        "https://c.nknu.edu.tw/osa/": 404,
+        "https://www.nknu.edu.tw/": "url_not_allowed"
+      }
+    },
+    {
+      "id": "U013",
+      "name": "國立彰化師範大學",
+      "status": "link_official_site_only",
+      "url": "https://www.ncue.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.ncue.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://student.ncue.edu.tw/guidance/scholarship/": "transport_error",
+        "https://student.ncue.edu.tw/guidance/": "transport_error",
+        "https://student.ncue.edu.tw/": "transport_error",
+        "https://www.ncue.edu.tw/": 200,
+        "https://www.ncue.edu.tw/p/406-1000-35006,r93.php?Lang=zh-tw": 404
+      }
+    },
+    {
+      "id": "U014",
+      "name": "國立臺北大學",
+      "status": "link_unverified",
+      "url": "https://www.ntpu.edu.tw/",
+      "note": "本次未能以工具驗證，網址待人工查",
+      "crawler_level": null,
+      "crawler_url": null,
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://www.ntpu.edu.tw/admin/a8/org/a8-2/scholarship.php": "url_not_allowed",
+        "https://www.ntpu.edu.tw/admin/a8/org/a8-2/index.php": "url_not_allowed",
+        "https://www.ntpu.edu.tw/admin/a8/": "url_not_allowed",
+        "https://www.ntpu.edu.tw/": "url_not_allowed"
+      }
+    },
+    {
+      "id": "U015",
+      "name": "國立嘉義大學",
+      "status": "link_portal",
+      "url": "https://website.ncyu.edu.tw/life/Subject?nodeId=55082",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://website.ncyu.edu.tw/life/Subject?nodeId=55082",
+      "review_verdict": "ok",
+      "review_note": "嘉大生輔組「校外各項獎助學金」；僅校外獎學金公告彙整，範圍偏窄",
+      "checks": {
+        "https://www.ncyu.edu.tw/student/laa/scholarship/": 200,
+        "https://www.ncyu.edu.tw/student/laa/": 200,
+        "https://caring.ncyu.edu.tw/": 200,
+        "https://dormfix.ncyu.edu.tw/": 200,
+        "https://www.ncyu.edu.tw/student/": 200,
+        "https://website.ncyu.edu.tw/life/Subject?nodeId=55082": 200
+      }
+    },
+    {
+      "id": "U016",
+      "name": "國立高雄大學",
+      "status": "link_official_site_only",
+      "url": "https://www.nuk.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.nuk.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://osa.nuk.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.nuk.edu.tw/laa/": "transport_error",
+        "https://osa.nuk.edu.tw/": "transport_error",
+        "https://www.nuk.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U017",
+      "name": "國立東華大學",
+      "status": "link_portal",
+      "url": "https://rb005.ndhu.edu.tw/p/403-1005-402.php",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://rb005.ndhu.edu.tw/p/403-1005-402.php",
+      "review_verdict": "ok",
+      "review_note": "東華學務處「獎助學金申請最新公告」公告列表；屬獎助學金專區但偏公告清單",
+      "checks": {
+        "https://rb005.ndhu.edu.tw/p/412-1005-2114.php": 404,
+        "https://rb005.ndhu.edu.tw/": 200,
+        "https://rb005.ndhu.edu.tw/p/403-1005-402.php": 200
+      }
+    },
+    {
+      "id": "U018",
+      "name": "國立暨南國際大學",
+      "status": "link_official_site_only",
+      "url": "https://www.ncnu.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.ncnu.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://osa.ncnu.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.ncnu.edu.tw/laa/": "transport_error",
+        "https://osa.ncnu.edu.tw/": "transport_error",
+        "https://www.ncnu.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U019",
+      "name": "國立臺東大學",
+      "status": "link_official_site_only",
+      "url": "https://www.nttu.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.nttu.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://dsa.nttu.edu.tw/laa/scholarship/": "transport_error",
+        "https://dsa.nttu.edu.tw/laa/": "transport_error",
+        "https://dsa.nttu.edu.tw/": "transport_error",
+        "https://www.nttu.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U020",
+      "name": "國立宜蘭大學",
+      "status": "link_official_site_only",
+      "url": "https://www.niu.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.niu.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://niuosa.niu.edu.tw/laa/scholarship/": "transport_error",
+        "https://niuosa.niu.edu.tw/laa/": "transport_error",
+        "https://niuosa.niu.edu.tw/": "transport_error",
+        "https://www.niu.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U021",
+      "name": "國立聯合大學",
+      "status": "link_portal",
+      "url": "https://stua04.nuu.edu.tw/p/412-1036-84.php",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://stua04.nuu.edu.tw/p/412-1036-84.php",
+      "review_verdict": "ok",
+      "review_note": "聯合大學課指組「獎助學金措施」頁",
+      "checks": {
+        "https://osa.nuu.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.nuu.edu.tw/laa/": "transport_error",
+        "https://osa.nuu.edu.tw/": "transport_error",
+        "https://www.nuu.edu.tw/": 200,
+        "https://stua04.nuu.edu.tw/p/412-1036-84.php": 200
+      }
+    },
+    {
+      "id": "U022",
+      "name": "國立臺南大學",
+      "status": "link_office",
+      "url": "https://osa.nutn.edu.tw/index.php?group=sa2&option=module&lang=cht&task=showlist&id=469&index=6",
+      "note": "臺南大學生輔組首頁／助學措施所在頁，實為 assistance 而非獎助學金入口",
+      "crawler_level": "portal",
+      "crawler_url": "https://osa.nutn.edu.tw/index.php?group=sa2&option=module&lang=cht&task=showlist&id=469&index=6",
+      "review_verdict": "wrong_level",
+      "review_note": "臺南大學生輔組首頁／助學措施所在頁，實為 assistance 而非獎助學金入口",
+      "checks": {
+        "https://osa.nutn.edu.tw/laa/scholarship/": 404,
+        "https://osa.nutn.edu.tw/laa/": 404,
+        "https://osa.nutn.edu.tw/": 200,
+        "https://osa.nutn.edu.tw/index.php?group=sa2&option=module&lang=cht&task=showlist&id=469&index=6": 200
+      }
+    },
+    {
+      "id": "U023",
+      "name": "國立臺北教育大學",
+      "status": "link_official_site_only",
+      "url": "https://www.ntue.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.ntue.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://osa.ntue.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.ntue.edu.tw/laa/": "transport_error",
+        "https://osa.ntue.edu.tw/": "transport_error",
+        "https://www.ntue.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U024",
+      "name": "國立臺中教育大學",
+      "status": "link_official_site_only",
+      "url": "https://www.ntcu.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.ntcu.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://cip.ntcu.edu.tw/": "robots_not_plain_rules",
+        "https://osa.ntcu.edu.tw/laa/": "transport_error",
+        "https://osa.ntcu.edu.tw/": "transport_error",
+        "https://www.ntcu.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U025",
+      "name": "國立金門大學",
+      "status": "link_related_program",
+      "url": "https://osa.nqu.edu.tw/p/404-1002-3155.php?Lang=zh-tw",
+      "note": "金門大學「不利處境」單一方案頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://osa.nqu.edu.tw/p/404-1002-3155.php?Lang=zh-tw",
+      "review_verdict": "wrong_level",
+      "review_note": "金門大學「不利處境」單一方案頁",
+      "checks": {
+        "https://osa.nqu.edu.tw/laa/scholarship/": 404,
+        "https://osa.nqu.edu.tw/laa/": 404,
+        "https://osa.nqu.edu.tw/": 200,
+        "https://osa.nqu.edu.tw/p/404-1002-3155.php?Lang=zh-tw": 200
+      }
+    },
+    {
+      "id": "U026",
+      "name": "國立屏東大學",
+      "status": "link_official_site_only",
+      "url": "https://www.nptu.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.nptu.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://osa.nptu.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.nptu.edu.tw/laa/": "transport_error",
+        "https://osa.nptu.edu.tw/": "transport_error",
+        "https://www.nptu.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U027",
+      "name": "臺北市立大學",
+      "status": "link_office",
+      "url": "https://service.utaipei.edu.tw/index.php",
+      "note": "學務或生輔單位頁，非獎助專區",
+      "crawler_level": "assistance",
+      "crawler_url": "https://service.utaipei.edu.tw/index.php",
+      "review_verdict": "ok",
+      "review_note": "北市大學務處生輔暨校安組首頁",
+      "checks": {
+        "https://student.utaipei.edu.tw/laa/scholarship/": 404,
+        "https://student.utaipei.edu.tw/laa/": 404,
+        "https://student.utaipei.edu.tw/": 200,
+        "https://service.utaipei.edu.tw/index.php": 200,
+        "https://advisory.utaipei.edu.tw/index.php": 200,
+        "https://service.utaipei.edu.tw/p/412-1034-4.php?Lang=zh-tw": 200
+      }
+    },
+    {
+      "id": "U028",
+      "name": "國立臺灣科技大學",
+      "status": "link_related_program",
+      "url": "https://student.ntust.edu.tw/p/412-1053-8426.php?Lang=zh-tw",
+      "note": "臺科大「生活助學金申請」單一方案頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://student.ntust.edu.tw/p/412-1053-8426.php?Lang=zh-tw",
+      "review_verdict": "wrong_level",
+      "review_note": "臺科大「生活助學金申請」單一方案頁",
+      "checks": {
+        "https://scholarship.ntust.edu.tw/": "transport_error",
+        "https://student.ntust.edu.tw/p/412-1053-8321.php": 200,
+        "https://student.ntust.edu.tw/p/412-1053-8426.php?Lang=zh-tw": 200
+      }
+    },
+    {
+      "id": "U029",
+      "name": "國立雲林科技大學",
+      "status": "link_portal",
+      "url": "https://asx.yuntech.edu.tw/index.php/2020-02-26-09-23-21/item/297-2021-08-03-01-05-54",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://asx.yuntech.edu.tw/index.php/2020-02-26-09-23-21/item/297-2021-08-03-01-05-54",
+      "review_verdict": "ok",
+      "review_note": "雲科大學務處「校內/外獎助學金」頁",
+      "checks": {
+        "https://osa.yuntech.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.yuntech.edu.tw/laa/": "transport_error",
+        "https://osa.yuntech.edu.tw/": "transport_error",
+        "https://www.yuntech.edu.tw/": 200,
+        "https://asx.yuntech.edu.tw/": 200,
+        "https://asx.yuntech.edu.tw/index.php/2020-02-26-09-23-21/item/297-2021-08-03-01-05-54": 200
+      }
+    },
+    {
+      "id": "U030",
+      "name": "國立屏東科技大學",
+      "status": "link_portal",
+      "url": "https://osa.npust.edu.tw/regulations/scholarship/",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://osa.npust.edu.tw/regulations/scholarship/",
+      "review_verdict": "ok",
+      "review_note": "屏科大課指組「獎助學金」頁",
+      "checks": {
+        "https://osa.npust.edu.tw/laa/scholarship/": 200
+      }
+    },
+    {
+      "id": "U031",
+      "name": "國立臺北科技大學",
+      "status": "link_related_program",
+      "url": "https://osa.ntut.edu.tw/p/404-1041-138641.php?Lang=zh-tw",
+      "note": "北科大「特殊教育獎補助金說明」單一方案頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://osa.ntut.edu.tw/p/404-1041-138641.php?Lang=zh-tw",
+      "review_verdict": "wrong_level",
+      "review_note": "北科大「特殊教育獎補助金說明」單一方案頁",
+      "checks": {
+        "https://osa.ntut.edu.tw/laa/scholarship_platform/": 404,
+        "https://osa.ntut.edu.tw/laa/": 404,
+        "https://osa.ntut.edu.tw/": 200,
+        "https://osa.ntut.edu.tw/p/404-1041-138641.php?Lang=zh-tw": 200
+      }
+    },
+    {
+      "id": "U032",
+      "name": "國立虎尾科技大學",
+      "status": "link_related_program",
+      "url": "https://www.nfu.edu.tw/zh_tw/about/nfurd/rirc",
+      "note": "虎尾科大研發處下「國際交流與獎助學金」，非學務單位的獎助學金入口",
+      "crawler_level": "portal",
+      "crawler_url": "https://www.nfu.edu.tw/zh_tw/about/nfurd/rirc",
+      "review_verdict": "wrong_level",
+      "review_note": "虎尾科大研發處下「國際交流與獎助學金」，非學務單位的獎助學金入口",
+      "checks": {
+        "https://student.nfu.edu.tw/laa/scholarship/": "transport_error",
+        "https://student.nfu.edu.tw/laa/": "transport_error",
+        "https://student.nfu.edu.tw/": "transport_error",
+        "https://www.nfu.edu.tw/": 200,
+        "https://www.nfu.edu.tw/zh_tw/about/nfurd/rirc": 200
+      }
+    },
+    {
+      "id": "U033",
+      "name": "國立澎湖科技大學",
+      "status": "link_official_site_only",
+      "url": "https://www.npu.edu.tw/",
+      "note": "澎湖科大全文檢索查詢頁（搜尋結果頁），不是入口",
+      "crawler_level": "portal",
+      "crawler_url": "https://www.npu.edu.tw/search/index.aspx?Parser=99%2C11%2C81%2C%2C%2C%2C%2C%2C%2C%2C%2C%2C%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91",
+      "review_verdict": "wrong_level",
+      "review_note": "澎湖科大全文檢索查詢頁（搜尋結果頁），不是入口",
+      "checks": {
+        "https://osa.npu.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.npu.edu.tw/laa/": "transport_error",
+        "https://osa.npu.edu.tw/": "transport_error",
+        "https://www.npu.edu.tw/": 200,
+        "https://www.npu.edu.tw/search/index.aspx?Parser=99,11,81,,,,,,,,,,%e7%8d%8e%e5%8a%a9%e5%ad%b8%e9%87%91": 200
+      }
+    },
+    {
+      "id": "U034",
+      "name": "國立勤益科技大學",
+      "status": "link_portal",
+      "url": "https://scholarship.ncut.edu.tw/",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://scholarship.ncut.edu.tw/",
+      "review_verdict": "ok",
+      "review_note": "勤益科大「學生獎助學金資訊系統」入口（內容由前端渲染，僅見標題與簡介）",
+      "checks": {
+        "https://scholarship.ncut.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U035",
+      "name": "國立臺北護理健康大學",
+      "status": "link_portal",
+      "url": "https://assistance-osa.ntunhs.edu.tw/p/412-1042-3369.php?Lang=zh-tw",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://assistance-osa.ntunhs.edu.tw/p/412-1042-3369.php?Lang=zh-tw",
+      "review_verdict": "ok",
+      "review_note": "北護「助學措施(學務處)」生輔組頁",
+      "checks": {
+        "https://osa.ntunhs.edu.tw/laa/scholarship/": 404,
+        "https://osa.ntunhs.edu.tw/laa/": 404,
+        "https://osa.ntunhs.edu.tw/": 200,
+        "https://assistance-osa.ntunhs.edu.tw/p/412-1042-3369.php?Lang=zh-tw": 200
+      }
+    },
+    {
+      "id": "U036",
+      "name": "國立高雄餐旅大學",
+      "status": "link_portal",
+      "url": "https://student.nkuht.edu.tw/p/404-1005-4954.php",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://student.nkuht.edu.tw/p/404-1005-4954.php",
+      "review_verdict": "ok",
+      "review_note": "高餐「校內外獎助學金」頁",
+      "checks": {
+        "https://student.nkuht.edu.tw/laa/scholarship/": 404,
+        "https://student.nkuht.edu.tw/laa/": 404,
+        "https://student.nkuht.edu.tw/": 200,
+        "https://student.nkuht.edu.tw/p/404-1005-4954.php": 200
+      }
+    },
+    {
+      "id": "U037",
+      "name": "國立臺灣藝術大學",
+      "status": "link_portal",
+      "url": "https://osa.ntua.edu.tw/article.aspx?category=97",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://osa.ntua.edu.tw/article.aspx?category=97",
+      "review_verdict": "ok",
+      "review_note": "藝大學務處「獎助學金」文章分類頁",
+      "checks": {
+        "https://osa.ntua.edu.tw/laa/scholarship/": 404,
+        "https://osa.ntua.edu.tw/laa/": 404,
+        "https://osa.ntua.edu.tw/": 200,
+        "https://osa.ntua.edu.tw/article.aspx?category=97": 200
+      }
+    },
+    {
+      "id": "U038",
+      "name": "國立臺北商業大學",
+      "status": "link_official_site_only",
+      "url": "https://www.ntub.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.ntub.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://osa.ntub.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.ntub.edu.tw/laa/": "transport_error",
+        "https://osa.ntub.edu.tw/": "transport_error",
+        "https://www.ntub.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U039",
+      "name": "國立高雄科技大學",
+      "status": "link_official_site_only",
+      "url": "https://acad.nkust.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://acad.nkust.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://acad.nkust.edu.tw/laa/scholarship/": 404,
+        "https://acad.nkust.edu.tw/laa/": 404,
+        "https://acad.nkust.edu.tw/": 200,
+        "https://www.nkust.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U040",
+      "name": "東海大學",
+      "status": "link_unverified",
+      "url": "https://www.thu.edu.tw/",
+      "note": "本次未能以工具驗證，網址待人工查",
+      "crawler_level": null,
+      "crawler_url": null,
+      "review_verdict": "no_proposal",
+      "review_note": "爬蟲未提出網址（level=null），不在48筆內，未檢查",
+      "checks": {
+        "https://deca.thu.edu.tw/scholarship/": "transport_error",
+        "https://deca.thu.edu.tw/laa/": "transport_error",
+        "https://deca.thu.edu.tw/": "transport_error",
+        "https://www.thu.edu.tw/": "robots_unavailable"
+      }
+    },
+    {
+      "id": "U041",
+      "name": "東吳大學",
+      "status": "link_related_program",
+      "url": "https://web-ch.scu.edu.tw/life/web_page/2472",
+      "note": "東吳德育中心「急難救助（緊急紓困）」單一項目頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://web-ch.scu.edu.tw/life/web_page/2472",
+      "review_verdict": "wrong_level",
+      "review_note": "東吳德育中心「急難救助（緊急紓困）」單一項目頁",
+      "checks": {
+        "https://web-ch.scu.edu.tw/life/web_page/10497": 200,
+        "https://web-ch.scu.edu.tw/life/web_page/2472": 200
+      }
+    },
+    {
+      "id": "U042",
+      "name": "輔仁大學",
+      "status": "link_related_program",
+      "url": "https://life.dsa.fju.edu.tw/resource.jsp?labelID=36",
+      "note": "輔大生輔組「不利處境學生助學計畫」單一方案頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://life.dsa.fju.edu.tw/resource.jsp?labelID=36",
+      "review_verdict": "wrong_level",
+      "review_note": "輔大生輔組「不利處境學生助學計畫」單一方案頁",
+      "checks": {
+        "https://life.dsa.fju.edu.tw/index.php?c=scholarship": 404,
+        "https://life.dsa.fju.edu.tw/": 200,
+        "https://life.dsa.fju.edu.tw/resource.jsp?labelID=36": 200
+      }
+    },
+    {
+      "id": "U043",
+      "name": "中國文化大學",
+      "status": "link_official_site_only",
+      "url": "https://www.pccu.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.pccu.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://staff.pccu.edu.tw/~cuap/scholarship/": "transport_error",
+        "https://staff.pccu.edu.tw/~cuap/": "transport_error",
+        "https://www.pccu.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U044",
+      "name": "淡江大學",
+      "status": "link_office",
+      "url": "https://sa.tku.edu.tw/spirit/",
+      "note": "學務或生輔單位頁，非獎助專區",
+      "crawler_level": "student_affairs",
+      "crawler_url": "https://sa.tku.edu.tw/spirit/",
+      "review_verdict": "ok",
+      "review_note": "淡江學務處首頁",
+      "checks": {
+        "https://sa.tku.edu.tw/spirit/scholarship/": 404,
+        "https://sa.tku.edu.tw/spirit/": 200,
+        "https://sa.tku.edu.tw/": 200,
+        "https://www.tku.edu.tw/": "robots_not_plain_rules"
+      }
+    },
+    {
+      "id": "U045",
+      "name": "逢甲大學",
+      "status": "link_related_program",
+      "url": "https://student.fcu.edu.tw/%E4%B8%8D%E5%88%A9%E8%99%95%E5%A2%83%E5%8A%A9%E5%AD%B8/",
+      "note": "逢甲「不利處境助學(原弱勢)」單一方案頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://student.fcu.edu.tw/%E4%B8%8D%E5%88%A9%E8%99%95%E5%A2%83%E5%8A%A9%E5%AD%B8/",
+      "review_verdict": "wrong_level",
+      "review_note": "逢甲「不利處境助學(原弱勢)」單一方案頁",
+      "checks": {
+        "https://student.fcu.edu.tw/scholarship/": 404,
+        "https://student.fcu.edu.tw/": 200,
+        "https://student.fcu.edu.tw/%e4%b8%8d%e5%88%a9%e8%99%95%e5%a2%83%e5%8a%a9%e5%ad%b8/": 200
+      }
+    },
+    {
+      "id": "U046",
+      "name": "中原大學",
+      "status": "link_unverified",
+      "url": "https://www.cycu.edu.tw/",
+      "note": "本次未能以工具驗證，網址待人工查",
+      "crawler_level": null,
+      "crawler_url": null,
+      "review_verdict": "no_proposal",
+      "review_note": "爬蟲未提出網址（level=null），不在48筆內，未檢查",
+      "checks": {
+        "https://life.cycu.edu.tw/scholarship/": "transport_error",
+        "https://life.cycu.edu.tw/": "transport_error",
+        "https://www.cycu.edu.tw/": "transport_error"
+      }
+    },
+    {
+      "id": "U047",
+      "name": "靜宜大學",
+      "status": "link_portal",
+      "url": "https://c030.pu.edu.tw/p/412-1063-5585.php?Lang=zh-tw",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://c030.pu.edu.tw/p/412-1063-5585.php?Lang=zh-tw",
+      "review_verdict": "ok",
+      "review_note": "靜宜校安生輔中心「安心助學」專區",
+      "checks": {
+        "https://osa.pu.edu.tw/laa/scholarship/": 404,
+        "https://osa.pu.edu.tw/laa/": 404,
+        "https://osa.pu.edu.tw/": 200,
+        "https://c030.pu.edu.tw/p/412-1063-5585.php?Lang=zh-tw": 200
+      }
+    },
+    {
+      "id": "U048",
+      "name": "大同大學",
+      "status": "link_official_site_only",
+      "url": "https://www.ttu.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.ttu.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://student.ttu.edu.tw/laa/scholarship/": "transport_error",
+        "https://student.ttu.edu.tw/laa/": "transport_error",
+        "https://student.ttu.edu.tw/": "transport_error",
+        "https://www.ttu.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U049",
+      "name": "元智大學",
+      "status": "link_portal",
+      "url": "https://www.yzu.edu.tw/admin/st/index.php/tw/2016-03-25-05-42-29/2016-06-27-08-12-01",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://www.yzu.edu.tw/admin/st/index.php/tw/2016-03-25-05-42-29/2016-06-27-08-12-01",
+      "review_verdict": "ok",
+      "review_note": "元智學務處「校內助學金」頁（列多項助學金）",
+      "checks": {
+        "https://www.yzu.edu.tw/admin/st/index.php/tw/scholarship": 404,
+        "https://www.yzu.edu.tw/admin/st/": 200,
+        "https://www.yzu.edu.tw/admin/st/index.php/tw/2016-03-25-05-42-29/2016-06-27-08-12-01": 200
+      }
+    },
+    {
+      "id": "U050",
+      "name": "義守大學",
+      "status": "link_portal",
+      "url": "https://sa1.isu.edu.tw/page/preview-MwWDFfUTmCjA",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://sa1.isu.edu.tw/page/preview-MwWDFfUTmCjA",
+      "review_verdict": "ok",
+      "review_note": "義守學務處「各項學生獎補助」頁",
+      "checks": {
+        "https://www.isu.edu.tw/osa/laa/scholarship/": 200,
+        "https://sa1.isu.edu.tw/page/preview-MwWDFfUTmCjA": 200
+      }
+    },
+    {
+      "id": "U051",
+      "name": "華梵大學",
+      "status": "link_official_site_only",
+      "url": "https://www.hfu.edu.tw/",
+      "note": "華梵「113~114學年度大一新生覺之教育獎學金公告」單篇公告",
+      "crawler_level": "portal",
+      "crawler_url": "https://sa.hfu.edu.tw/p/406-1008-1479%2Cr148.php",
+      "review_verdict": "wrong_level",
+      "review_note": "華梵「113~114學年度大一新生覺之教育獎學金公告」單篇公告",
+      "checks": {
+        "https://osa.hfu.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.hfu.edu.tw/laa/": "transport_error",
+        "https://osa.hfu.edu.tw/": "transport_error",
+        "https://www.hfu.edu.tw/": 200,
+        "https://sa.hfu.edu.tw/2dt1/recruit.php?Sn=351": 404,
+        "https://sa.hfu.edu.tw/p/406-1008-1479,r148.php": 200
+      }
+    },
+    {
+      "id": "U052",
+      "name": "長庚大學",
+      "status": "link_portal",
+      "url": "https://www.cgu.edu.tw/ch/Contents?nodeId=4684",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://www.cgu.edu.tw/ch/Contents?nodeId=4684",
+      "review_verdict": "ok",
+      "review_note": "長庚「獎助學金」總頁，分大學部／碩／博／國際生並連至各單位",
+      "checks": {
+        "https://studentaffairs.cgu.edu.tw/p/412-1012-3211.php": "transport_error",
+        "https://studentaffairs.cgu.edu.tw/": "transport_error",
+        "https://www.cgu.edu.tw/": 200,
+        "https://www.cgu.edu.tw/ch/Contents?nodeId=4684": 200
+      }
+    },
+    {
+      "id": "U053",
+      "name": "長榮大學",
+      "status": "link_unverified",
+      "url": "https://www.cjcu.edu.tw/",
+      "note": "本次未能以工具驗證，網址待人工查",
+      "crawler_level": null,
+      "crawler_url": null,
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://osa.cjcu.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.cjcu.edu.tw/laa/": "transport_error",
+        "https://osa.cjcu.edu.tw/": "transport_error",
+        "https://www.cjcu.edu.tw/": "robots_not_plain_rules"
+      }
+    },
+    {
+      "id": "U054",
+      "name": "慈濟大學",
+      "status": "link_portal",
+      "url": "https://www.tcu.edu.tw/p/412-1033-4825.php",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://www.tcu.edu.tw/p/412-1033-4825.php",
+      "review_verdict": "ok",
+      "review_note": "慈濟「助學圓夢」頁",
+      "checks": {
+        "https://osa.tcu.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.tcu.edu.tw/laa/": "transport_error",
+        "https://osa.tcu.edu.tw/": "transport_error",
+        "https://www.tcu.edu.tw/": 200,
+        "https://www.tcu.edu.tw/p/412-1033-4825.php": 200
+      }
+    },
+    {
+      "id": "U055",
+      "name": "銘傳大學",
+      "status": "link_office",
+      "url": "https://student.mcu.edu.tw/home/%E6%A5%AD%E5%8B%99%E8%81%B7%E6%8E%8C/%E6%A5%AD%E5%8B%99%E8%81%B7%E6%8E%8C_%E7%94%9F%E6%B4%BB%E8%BC%94%E5%B0%8E%E7%B5%84/",
+      "note": "學務或生輔單位頁，非獎助專區",
+      "crawler_level": "assistance",
+      "crawler_url": "https://student.mcu.edu.tw/home/%E6%A5%AD%E5%8B%99%E8%81%B7%E6%8E%8C/%E6%A5%AD%E5%8B%99%E8%81%B7%E6%8E%8C_%E7%94%9F%E6%B4%BB%E8%BC%94%E5%B0%8E%E7%B5%84/",
+      "review_verdict": "ok",
+      "review_note": "銘傳學務處生活輔導組頁",
+      "checks": {
+        "https://student.mcu.edu.tw/laa/scholarship/": 404,
+        "https://student.mcu.edu.tw/laa/": 404,
+        "https://student.mcu.edu.tw/": 200,
+        "https://student.mcu.edu.tw/home/%e6%a5%ad%e5%8b%99%e8%81%b7%e6%8e%8c/%e6%a5%ad%e5%8b%99%e8%81%b7%e6%8e%8c_%e7%94%9f%e6%b4%bb%e8%bc%94%e5%b0%8e%e7%b5%84/": 200,
+        "https://student.mcu.edu.tw/home/%e6%a5%ad%e5%8b%99%e8%81%b7%e6%8e%8c/%e6%a5%ad%e5%8b%99%e8%81%b7%e6%8e%8c_%e4%bd%8f%e5%ae%bf%e6%9c%8d%e5%8b%99%e7%b5%84/": 200,
+        "https://student.mcu.edu.tw/%e6%a5%ad%e5%8b%99%e8%81%b7%e6%8e%8c_%e7%94%9f%e6%b4%bb%e8%bc%94%e5%b0%8e%e7%b5%84/": 200
+      }
+    },
+    {
+      "id": "U056",
+      "name": "世新大學",
+      "status": "link_office",
+      "url": "https://osa.web.shu.edu.tw/%E7%94%9F%E8%BC%94%E7%B5%84%E9%A6%96%E9%A0%81/",
+      "note": "世新生輔組首頁，實為 assistance 而非獎助學金入口",
+      "crawler_level": "portal",
+      "crawler_url": "https://osa.web.shu.edu.tw/%E7%94%9F%E8%BC%94%E7%B5%84%E9%A6%96%E9%A0%81/",
+      "review_verdict": "wrong_level",
+      "review_note": "世新生輔組首頁，實為 assistance 而非獎助學金入口",
+      "checks": {
+        "https://osa.shu.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.shu.edu.tw/laa/": "transport_error",
+        "https://osa.shu.edu.tw/": "transport_error",
+        "https://www.shu.edu.tw/": 200,
+        "https://osa.web.shu.edu.tw/%E7%94%9F%E8%BC%94%E7%B5%84%E9%A6%96%E9%A0%81/%E5%BC%B1%E5%8B%A2%E5%AD%B8%E7%94%9F%E5%8A%A9%E5%AD%B8%E8%A8%88%E7%95%AB/": 404,
+        "https://osa.web.shu.edu.tw/%E7%94%9F%E8%BC%94%E7%B5%84%E9%A6%96%E9%A0%81/": 200
+      }
+    },
+    {
+      "id": "U057",
+      "name": "大葉大學",
+      "status": "link_official_site_only",
+      "url": "https://www.dyu.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.dyu.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://sa.dyu.edu.tw/laa/scholarship/": "robots_not_plain_rules",
+        "https://sa.dyu.edu.tw/laa/": "robots_not_plain_rules",
+        "https://sa.dyu.edu.tw/": "robots_not_plain_rules",
+        "https://www.dyu.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U058",
+      "name": "實踐大學",
+      "status": "link_official_site_only",
+      "url": "https://www.usc.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.usc.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://sa.usc.edu.tw/laa/scholarship/": "transport_error",
+        "https://sa.usc.edu.tw/laa/": "transport_error",
+        "https://sa.usc.edu.tw/": "transport_error",
+        "https://www.usc.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U059",
+      "name": "南華大學",
+      "status": "link_official_site_only",
+      "url": "https://www.nhu.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.nhu.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://osa.nhu.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.nhu.edu.tw/laa/": "transport_error",
+        "https://osa.nhu.edu.tw/": "transport_error",
+        "https://www.nhu.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U060",
+      "name": "玄奘大學",
+      "status": "link_official_site_only",
+      "url": "https://www.hcu.edu.tw/hcu/zh-tw",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.hcu.edu.tw/hcu/zh-tw",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://osa.hcu.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.hcu.edu.tw/laa/": "transport_error",
+        "https://osa.hcu.edu.tw/": "transport_error",
+        "https://www.hcu.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U061",
+      "name": "佛光大學",
+      "status": "link_unverified",
+      "url": "https://www.fgu.edu.tw/",
+      "note": "本次未能以工具驗證，網址待人工查",
+      "crawler_level": null,
+      "crawler_url": null,
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://osa.fgu.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.fgu.edu.tw/laa/": "transport_error",
+        "https://osa.fgu.edu.tw/": "transport_error",
+        "https://www.fgu.edu.tw/": "url_not_allowed"
+      }
+    },
+    {
+      "id": "U062",
+      "name": "高雄醫學大學",
+      "status": "link_portal",
+      "url": "https://osa.kmu.edu.tw/index.php/zh-tw/%E7%94%9F%E8%BC%94%E7%B5%84/%E6%A0%A1%E5%85%A7%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://osa.kmu.edu.tw/index.php/zh-tw/%E7%94%9F%E8%BC%94%E7%B5%84/%E6%A0%A1%E5%85%A7%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91",
+      "review_verdict": "ok",
+      "review_note": "高醫生輔組「校內獎助學金」頁（含校內外選單）",
+      "checks": {
+        "https://osa.kmu.edu.tw/laa/scholarship/": 404,
+        "https://osa.kmu.edu.tw/laa/": 404,
+        "https://osa.kmu.edu.tw/": 200,
+        "https://osa.kmu.edu.tw/index.php/zh-tw/生輔組/校內獎助學金": 200
+      }
+    },
+    {
+      "id": "U063",
+      "name": "中國醫藥大學",
+      "status": "link_related_program",
+      "url": "https://guide.cmu.edu.tw/page/64",
+      "note": "中國醫藥大學生輔組「弱勢助學專區」，僅不利處境類；同站另有「校內就學獎助學金專區」「校外獎學金專區」",
+      "crawler_level": "portal",
+      "crawler_url": "https://guide.cmu.edu.tw/page/64",
+      "review_verdict": "wrong_level",
+      "review_note": "中國醫藥大學生輔組「弱勢助學專區」，僅不利處境類；同站另有「校內就學獎助學金專區」「校外獎學金專區」",
+      "checks": {
+        "https://adm08.cmu.edu.tw/scholarship/": "transport_error",
+        "https://adm08.cmu.edu.tw/": "transport_error",
+        "https://www.cmu.edu.tw/": 200,
+        "https://cmusof.cmu.edu.tw": 200,
+        "https://guide.cmu.edu.tw/gallery": 200,
+        "https://guide.cmu.edu.tw/page/64": 200
+      }
+    },
+    {
+      "id": "U064",
+      "name": "臺北醫學大學",
+      "status": "link_portal",
+      "url": "https://osa.tmu.edu.tw/front/Office_Of_Student_Affairs/0513/pages.php?ID=e01baca6ca51758148258d5dbca7b4bc",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://osa.tmu.edu.tw/front/Office_Of_Student_Affairs/0513/pages.php?ID=e01baca6ca51758148258d5dbca7b4bc",
+      "review_verdict": "ok",
+      "review_note": "北醫學務處「就學獎補助款專區」",
+      "checks": {
+        "https://osa.tmu.edu.tw/aid/scholarship/": 404,
+        "https://osa.tmu.edu.tw/aid/": 404,
+        "https://osa.tmu.edu.tw/": 200,
+        "https://osa.tmu.edu.tw/redirect.php?ID=0513": 200
+      }
+    },
+    {
+      "id": "U065",
+      "name": "中山醫學大學",
+      "status": "link_portal",
+      "url": "https://osa.csmu.edu.tw/p/412-1011-1880.php?Lang=zh-tw",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://osa.csmu.edu.tw/p/412-1011-1880.php?Lang=zh-tw",
+      "review_verdict": "ok",
+      "review_note": "中山醫學務處「助學措施」頁",
+      "checks": {
+        "https://osa.csmu.edu.tw/laa/scholarship/": 404,
+        "https://osa.csmu.edu.tw/laa/": 404,
+        "https://osa.csmu.edu.tw/": 200,
+        "https://osa.csmu.edu.tw/p/412-1011-3106.php": 200,
+        "https://osa.csmu.edu.tw/p/412-1011-1880.php?Lang=zh-tw": 200
+      }
+    },
+    {
+      "id": "U066",
+      "name": "馬偕醫學院",
+      "status": "link_unverified",
+      "url": "https://www.mmc.edu.tw/",
+      "note": "本次未能以工具驗證，網址待人工查",
+      "crawler_level": null,
+      "crawler_url": null,
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://osa.mmc.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.mmc.edu.tw/laa/": "transport_error",
+        "https://osa.mmc.edu.tw/": "transport_error",
+        "https://www.mmc.edu.tw/": "robots_not_plain_rules"
+      }
+    },
+    {
+      "id": "U067",
+      "name": "朝陽科技大學",
+      "status": "link_official_site_only",
+      "url": "https://www.cyut.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.cyut.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://stafof.cyut.edu.tw/laa/scholarship/": "http_403_host_paused",
+        "https://stafof.cyut.edu.tw/laa/": "http_403_host_paused",
+        "https://stafof.cyut.edu.tw/": "http_403_host_paused",
+        "https://www.cyut.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U068",
+      "name": "南臺科技大學",
+      "status": "link_related_program",
+      "url": "https://osa.stust.edu.tw/tc/node/moneyQandA-1",
+      "note": "南臺科大「僑生獎助學金Q&A」單一對象問答頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://osa.stust.edu.tw/tc/node/moneyQandA-1",
+      "review_verdict": "wrong_level",
+      "review_note": "南臺科大「僑生獎助學金Q&A」單一對象問答頁",
+      "checks": {
+        "https://osa.stust.edu.tw/laa/scholarship/": 200,
+        "https://osa.stust.edu.tw/tc/node/moneyQandA-1": 200
+      }
+    },
+    {
+      "id": "U069",
+      "name": "萬能科技大學",
+      "status": "link_official_site_only",
+      "url": "https://www.vnu.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.vnu.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://osa.vnu.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.vnu.edu.tw/laa/": "transport_error",
+        "https://osa.vnu.edu.tw/": "transport_error",
+        "https://www.vnu.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U070",
+      "name": "致理科技大學",
+      "status": "link_official_site_only",
+      "url": "https://www.chihlee.edu.tw/",
+      "note": "僅驗證到官網，獎助頁待人工查",
+      "crawler_level": "official_website",
+      "crawler_url": "https://www.chihlee.edu.tw/",
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://osa.chihlee.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.chihlee.edu.tw/laa/": "transport_error",
+        "https://osa.chihlee.edu.tw/": "transport_error",
+        "https://www.chihlee.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U071",
+      "name": "崑山科技大學",
+      "status": "link_unverified",
+      "url": "https://web.ksu.edu.tw/",
+      "note": "本次未能以工具驗證，網址待人工查",
+      "crawler_level": null,
+      "crawler_url": null,
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://osa.ksu.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.ksu.edu.tw/laa/": "transport_error",
+        "https://osa.ksu.edu.tw/": "transport_error",
+        "https://web.ksu.edu.tw/": "url_not_allowed"
+      }
+    },
+    {
+      "id": "U072",
+      "name": "嘉南藥理大學",
+      "status": "link_unverified",
+      "url": "https://www.cnu.edu.tw/",
+      "note": "本次未能以工具驗證，網址待人工查",
+      "crawler_level": null,
+      "crawler_url": null,
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://osa.cnu.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.cnu.edu.tw/laa/": "transport_error",
+        "https://osa.cnu.edu.tw/": "transport_error",
+        "https://www.cnu.edu.tw/": "robots_not_plain_rules"
+      }
+    },
+    {
+      "id": "U073",
+      "name": "樹德科技大學",
+      "status": "link_unverified",
+      "url": "https://www.stu.edu.tw/",
+      "note": "本次未能以工具驗證，網址待人工查",
+      "crawler_level": null,
+      "crawler_url": null,
+      "review_verdict": null,
+      "review_note": null,
+      "checks": {
+        "https://osa.stu.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.stu.edu.tw/laa/": "transport_error",
+        "https://osa.stu.edu.tw/": "transport_error",
+        "https://www.stu.edu.tw/": "robots_unavailable"
+      }
+    },
+    {
+      "id": "U074",
+      "name": "明志科技大學",
+      "status": "link_related_program",
+      "url": "https://sa.mcut.edu.tw/p/412-1009-667.php?Lang=zh-tw",
+      "note": "明志科大「不利處境助學及學生人數」單一方案頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://sa.mcut.edu.tw/p/412-1009-667.php?Lang=zh-tw",
+      "review_verdict": "wrong_level",
+      "review_note": "明志科大「不利處境助學及學生人數」單一方案頁",
+      "checks": {
+        "https://sa.mcut.edu.tw/laa/scholarship/": 404,
+        "https://sa.mcut.edu.tw/laa/": 404,
+        "https://sa.mcut.edu.tw/": 200,
+        "https://sa.mcut.edu.tw/p/412-1009-667.php?Lang=zh-tw": 200
+      }
+    },
+    {
+      "id": "U075",
+      "name": "龍華科技大學",
+      "status": "link_office",
+      "url": "https://stulife.lhu.edu.tw/",
+      "note": "學務或生輔單位頁，非獎助專區",
+      "crawler_level": "assistance",
+      "crawler_url": "https://stulife.lhu.edu.tw/",
+      "review_verdict": "ok",
+      "review_note": "龍華學務處生輔組首頁",
+      "checks": {
+        "https://www.lhu.edu.tw/osa/laa/scholarship/": 404,
+        "https://www.lhu.edu.tw/osa/laa/": 404,
+        "https://www.lhu.edu.tw/osa/": 404,
+        "https://www.lhu.edu.tw/": 200,
+        "https://osa.lhu.edu.tw": 200,
+        "https://stulife.lhu.edu.tw/": 200
+      }
+    },
+    {
+      "id": "U076",
+      "name": "弘光科技大學",
+      "status": "link_official_site_only",
+      "url": "https://www.hk.edu.tw/",
+      "note": "弘光公關組「募款專區」，是募款頁非獎助學金入口",
+      "crawler_level": "portal",
+      "crawler_url": "https://pr.hk.edu.tw/%E5%8B%9F%E6%AC%BE%E5%B0%88%E5%8D%80/",
+      "review_verdict": "wrong_level",
+      "review_note": "弘光公關組「募款專區」，是募款頁非獎助學金入口",
+      "checks": {
+        "https://osa.hk.edu.tw/laa/scholarship/": "transport_error",
+        "https://osa.hk.edu.tw/laa/": "transport_error",
+        "https://osa.hk.edu.tw/": "transport_error",
+        "https://www.hk.edu.tw/": 200,
+        "https://pr.hk.edu.tw/%E5%8B%9F%E6%AC%BE%E5%B0%88%E5%8D%80/": 200
+      }
+    },
+    {
+      "id": "U077",
+      "name": "正修科技大學",
+      "status": "link_related_program",
+      "url": "https://osa.csu.edu.tw/p/412-1069-421.php?Lang=zh-tw",
+      "note": "正修「不利處境學生助學計畫」單一方案頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://osa.csu.edu.tw/p/412-1069-421.php?Lang=zh-tw",
+      "review_verdict": "wrong_level",
+      "review_note": "正修「不利處境學生助學計畫」單一方案頁",
+      "checks": {
+        "https://osa.csu.edu.tw/laa/scholarship/": 404,
+        "https://osa.csu.edu.tw/laa/": 404,
+        "https://osa.csu.edu.tw/": 200,
+        "https://osa.csu.edu.tw/p/412-1069-421.php?Lang=zh-tw": 200
+      }
+    },
+    {
+      "id": "U078",
+      "name": "文藻外語大學",
+      "status": "link_portal",
+      "url": "https://d005.wzu.edu.tw/category/136608",
+      "note": "獎助入口頁",
+      "crawler_level": "portal",
+      "crawler_url": "https://d005.wzu.edu.tw/category/136608",
+      "review_verdict": "ok",
+      "review_note": "文藻生輔組「各項助學措施」頁",
+      "checks": {
+        "https://d005.wzu.edu.tw/scholarship/": "url_not_allowed",
+        "https://d005.wzu.edu.tw/": 200,
+        "https://d005.wzu.edu.tw/category/136608": 200
+      }
+    }
+  ]
+}

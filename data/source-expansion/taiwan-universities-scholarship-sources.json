@@ -20,8 +20,8 @@
       "region": "north",
       "official_website": "https://www.nccu.edu.tw/",
       "student_affairs_url": "https://osa.nccu.edu.tw/",
-      "assistance_office_url": "https://osa.nccu.edu.tw/tw/student-life-and-extracurricular-activities",
-      "scholarship_portal_url": "https://osa.nccu.edu.tw/tw/student-life-and-extracurricular-activities/scholarships-and-grants",
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "指南研究生獎學金",
         "優秀博碩士入學獎學金",
@@ -29,7 +29,12 @@
         "各類外包代辦獎助"
       ],
       "graduate_stipend_program": "教育部博士生獎學金配合加碼，每名每月至少 40,000 元",
-      "announcement_format": "iNCCU 校園資訊系統 + 學務處公佈欄"
+      "announcement_format": "iNCCU 校園資訊系統 + 學務處公佈欄",
+      "link_url": "https://www.nccu.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "政大「獎助生團體保險申請流程」單一事項頁",
+      "previous_portal_url": "https://osa.nccu.edu.tw/tw/student-life-and-extracurricular-activities/scholarships-and-grants"
     },
     {
       "code": "0002",
@@ -40,7 +45,7 @@
       "official_website": "https://www.nthu.edu.tw/",
       "student_affairs_url": "https://dsa.site.nthu.edu.tw/",
       "assistance_office_url": "https://sa.site.nthu.edu.tw/",
-      "scholarship_portal_url": "https://meo110.wwlc.nthu.edu.tw/",
+      "scholarship_portal_url": null,
       "key_programs": [
         "清華大學校長獎學金",
         "優秀研究生學術獎學金",
@@ -48,7 +53,12 @@
         "旭日獎學金"
       ],
       "graduate_stipend_program": "校長獎學金與教育部/國科會方案整合，每月 40,000 至 70,000 元",
-      "announcement_format": "清華助學系統 + 生輔組定期公告"
+      "announcement_format": "清華助學系統 + 生輔組定期公告",
+      "link_url": "https://sa.site.nthu.edu.tw/p/412-1480-21746.php?Lang=zh-tw",
+      "link_status": "link_related_program",
+      "link_checked_on": "2026-11-07",
+      "link_note": "清華生輔組站內「專案獎助學金」子分類頁（旭日、朱順一等專案），非整體獎助學金入口",
+      "previous_portal_url": "https://meo110.wwlc.nthu.edu.tw/"
     },
     {
       "code": "0003",
@@ -58,8 +68,8 @@
       "region": "north",
       "official_website": "https://www.ntu.edu.tw/",
       "student_affairs_url": "https://osa.ntu.edu.tw/",
-      "assistance_office_url": "https://advisory.ntu.edu.tw/",
-      "scholarship_portal_url": "https://advisory.ntu.edu.tw/CMS/Page/36",
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "臺大校長獎學金",
         "優秀研究生獎勵金",
@@ -67,7 +77,12 @@
         "醫學院優秀論文獎"
       ],
       "graduate_stipend_program": "校長獎學金最高每月 40,000 至 50,000 元，整合國科會/教育部博士生補貼",
-      "announcement_format": "生輔組各類獎助金專區 + 學生專區校務系統"
+      "announcement_format": "生輔組各類獎助金專區 + 學生專區校務系統",
+      "link_url": "https://www.ntu.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "臺大學務處「學生住宿服務」頁，與獎助學金無關",
+      "previous_portal_url": "https://advisory.ntu.edu.tw/CMS/Page/36"
     },
     {
       "code": "0004",
@@ -78,7 +93,7 @@
       "official_website": "https://www.ntnu.edu.tw/",
       "student_affairs_url": "https://www.sa.ntnu.edu.tw/",
       "assistance_office_url": "https://assistance.sa.ntnu.edu.tw/",
-      "scholarship_portal_url": "https://assistance2.sa.ntnu.edu.tw/?page_id=31",
+      "scholarship_portal_url": null,
       "key_programs": [
         "師大優秀博碩士獎勵金",
         "拔尖研究生獎學金",
@@ -86,7 +101,12 @@
         "出國研修獎助"
       ],
       "graduate_stipend_program": "教育部博士生補助計畫每月 40,000 元，校內專案加碼每月最高 30,000 元",
-      "announcement_format": "學務處生輔組獎助學金資訊專頁"
+      "announcement_format": "學務處生輔組獎助學金資訊專頁",
+      "link_url": "https://assistance.sa.ntnu.edu.tw/ministry-edu-1/",
+      "link_status": "link_related_program",
+      "link_checked_on": "2026-11-07",
+      "link_note": "「不利處境學生助學金」單一方案頁（生輔組站內）",
+      "previous_portal_url": "https://assistance2.sa.ntnu.edu.tw/?page_id=31"
     },
     {
       "code": "0005",
@@ -97,7 +117,7 @@
       "official_website": "https://www.ncku.edu.tw/",
       "student_affairs_url": "https://osa.ncku.edu.tw/",
       "assistance_office_url": "https://assistance-osa.ncku.edu.tw/",
-      "scholarship_portal_url": "https://assistance-osa.ncku.edu.tw/p/412-1051-16327.php",
+      "scholarship_portal_url": "https://assistance-osa.ncku.edu.tw/p/412-1051-2563.php?Lang=zh-tw",
       "key_programs": [
         "成大優秀研究生獎助學金",
         "校內外獎學金系統",
@@ -105,7 +125,12 @@
         "清寒安心助學金"
       ],
       "graduate_stipend_program": "全校博生獎學金獲教育部核定高額補助，結合教授配合款每人每月 40,000 至 50,000 元",
-      "announcement_format": "生輔組校內外獎學金公告專區 + 成功入口單一簽入"
+      "announcement_format": "生輔組校內外獎學金公告專區 + 成功入口單一簽入",
+      "link_url": "https://assistance-osa.ncku.edu.tw/p/412-1051-2563.php?Lang=zh-tw",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://assistance-osa.ncku.edu.tw/p/412-1051-16327.php"
     },
     {
       "code": "0006",
@@ -124,7 +149,12 @@
         "校內外代辦獎助"
       ],
       "graduate_stipend_program": "配合教育部博生方案與農科/生醫產學合作加碼，月津貼 40,000 元起",
-      "announcement_format": "學務處生輔組獎助學金申請公告區"
+      "announcement_format": "學務處生輔組獎助學金申請公告區",
+      "link_url": "https://www.osa.nchu.edu.tw/osa/laa/scholarship.html",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://www.osa.nchu.edu.tw/osa/laa/scholarship.html"
     },
     {
       "code": "0007",
@@ -135,7 +165,7 @@
       "official_website": "https://www.nycu.edu.tw/",
       "student_affairs_url": "https://osa.nycu.edu.tw/",
       "assistance_office_url": "https://osa.nycu.edu.tw/aid-and-life/",
-      "scholarship_portal_url": "https://sasystem.nycu.edu.tw/scholarship/index2",
+      "scholarship_portal_url": null,
       "key_programs": [
         "陽明交大學術卓越獎學金",
         "半導體與生醫優秀研究生獎助",
@@ -143,7 +173,12 @@
         "思源獎學金"
       ],
       "graduate_stipend_program": "教育部與國科會博生獎學金每名每月至少 40,000 元，理工/醫學重點產學加碼達 60,000 元",
-      "announcement_format": "校外獎助學金申請系統 (VPN/校內網) + 學務處公佈欄"
+      "announcement_format": "校外獎助學金申請系統 (VPN/校內網) + 學務處公佈欄",
+      "link_url": "https://osa.nycu.edu.tw/osa/ch/app/data/list?module=nycu0090&id=3681",
+      "link_status": "link_office",
+      "link_checked_on": "2026-11-07",
+      "link_note": "陽明交大學務處「最新消息」列表，非獎助學金入口",
+      "previous_portal_url": "https://sasystem.nycu.edu.tw/scholarship/index2"
     },
     {
       "code": "0008",
@@ -154,7 +189,7 @@
       "official_website": "https://www.ncu.edu.tw/",
       "student_affairs_url": "https://osa.ncu.edu.tw/",
       "assistance_office_url": "https://military.ncu.edu.tw/",
-      "scholarship_portal_url": "https://military.ncu.edu.tw/aid/",
+      "scholarship_portal_url": null,
       "key_programs": [
         "中央松果研究生獎助金",
         "拔尖優秀研究生獎勵",
@@ -162,7 +197,12 @@
         "急難救助金"
       ],
       "graduate_stipend_program": "教育部博生計畫結合校院配合款，非在職博生每月 40,000 元",
-      "announcement_format": "NCU Portal 獎助學金暨工讀管理系統"
+      "announcement_format": "NCU Portal 獎助學金暨工讀管理系統",
+      "link_url": "https://military.ncu.edu.tw/graduate_scholarship.php",
+      "link_status": "link_related_program",
+      "link_checked_on": "2026-11-07",
+      "link_note": "中央大學生輔組「研究生獎助學金」，僅研究生單一類別",
+      "previous_portal_url": "https://military.ncu.edu.tw/aid/"
     },
     {
       "code": "0009",
@@ -173,7 +213,7 @@
       "official_website": "https://www.nsysu.edu.tw/",
       "student_affairs_url": "https://osa.nsysu.edu.tw/",
       "assistance_office_url": "https://ag-osa.nsysu.edu.tw/",
-      "scholarship_portal_url": "https://ag-osa.nsysu.edu.tw/p/412-1087-16880.php",
+      "scholarship_portal_url": null,
       "key_programs": [
         "西灣優秀學生與研究生獎學金",
         "優秀博碩士新生入學獎勵",
@@ -181,7 +221,12 @@
         "西灣清寒助學金"
       ],
       "graduate_stipend_program": "教育部博士生計畫核撥每月 40,000 元，校方額外提供優秀博生每月 25,000 元西灣補助",
-      "announcement_format": "校園生活與職涯發展組獎助學金專區"
+      "announcement_format": "校園生活與職涯發展組獎助學金專區",
+      "link_url": "https://ag-osa.nsysu.edu.tw/p/412-1087-4298.php?Lang=zh-tw",
+      "link_status": "link_related_program",
+      "link_checked_on": "2026-11-07",
+      "link_note": "中山學務處「學雜費減免」單一項目頁，非獎助學金入口",
+      "previous_portal_url": "https://ag-osa.nsysu.edu.tw/p/412-1087-16880.php"
     },
     {
       "code": "0012",
@@ -192,14 +237,19 @@
       "official_website": "https://www.ntou.edu.tw/",
       "student_affairs_url": "https://osa.ntou.edu.tw/",
       "assistance_office_url": "https://stu.ntou.edu.tw/",
-      "scholarship_portal_url": "https://stu.ntou.edu.tw/p/412-1023-8874.php",
+      "scholarship_portal_url": "https://stu.ntou.edu.tw/p/412-1023-7797.php?Lang=zh-tw",
       "key_programs": [
         "海洋海事優秀研究生獎學金",
         "校內獎助學金",
         "航運與造船產業獎勵金"
       ],
       "graduate_stipend_program": "教育部博士生培育計畫補助每月 40,000 元",
-      "announcement_format": "學務處生輔組網頁公告"
+      "announcement_format": "學務處生輔組網頁公告",
+      "link_url": "https://stu.ntou.edu.tw/p/412-1023-7797.php?Lang=zh-tw",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://stu.ntou.edu.tw/p/412-1023-8874.php"
     },
     {
       "code": "0013",
@@ -208,9 +258,9 @@
       "category": "national_university",
       "region": "central",
       "official_website": "https://www.ccu.edu.tw/",
-      "student_affairs_url": "https://studaff.ccu.edu.tw/",
-      "assistance_office_url": "https://studaff.ccu.edu.tw/p/412-1017-1520.php",
-      "scholarship_portal_url": "https://studaff.ccu.edu.tw/p/412-1017-1520.php",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "中正大學研究生學術卓越獎學金",
         "學業優秀獎學金",
@@ -218,7 +268,12 @@
         "校友總會獎助"
       ],
       "graduate_stipend_program": "教育部博生計畫結合校院配合款，每人每月 40,000 元",
-      "announcement_format": "學務處生輔組獎學金公告"
+      "announcement_format": "學務處生輔組獎學金公告",
+      "link_url": "https://www.ccu.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://studaff.ccu.edu.tw/p/412-1017-1520.php"
     },
     {
       "code": "0014",
@@ -227,16 +282,21 @@
       "category": "national_university",
       "region": "south",
       "official_website": "https://www.nknu.edu.tw/",
-      "student_affairs_url": "https://c.nknu.edu.tw/osa/",
-      "assistance_office_url": "https://c.nknu.edu.tw/osa/laa/",
-      "scholarship_portal_url": "https://c.nknu.edu.tw/osa/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "高師大研究生優秀獎勵金",
         "師資培育培育獎助",
         "清寒優秀學生助學金"
       ],
       "graduate_stipend_program": "配合教育部博生政策與教育人文領域拔尖補助",
-      "announcement_format": "學務處生輔組公告專區"
+      "announcement_format": "學務處生輔組公告專區",
+      "link_url": "https://www.nknu.edu.tw/",
+      "link_status": "link_unverified",
+      "link_checked_on": "2026-11-07",
+      "link_note": "本次未能以工具驗證，網址待人工查",
+      "previous_portal_url": "https://c.nknu.edu.tw/osa/laa/scholarship/"
     },
     {
       "code": "0015",
@@ -245,16 +305,21 @@
       "category": "national_university",
       "region": "central",
       "official_website": "https://www.ncue.edu.tw/",
-      "student_affairs_url": "https://student.ncue.edu.tw/",
-      "assistance_office_url": "https://student.ncue.edu.tw/guidance/",
-      "scholarship_portal_url": "https://student.ncue.edu.tw/guidance/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "彰師大優秀博碩士獎學金",
         "技職與科技教育專案獎助",
         "各項校內外清寒獎勵"
       ],
       "graduate_stipend_program": "教育部博生計畫核定專案津貼",
-      "announcement_format": "學務處生輔組公告"
+      "announcement_format": "學務處生輔組公告",
+      "link_url": "https://www.ncue.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://student.ncue.edu.tw/guidance/scholarship/"
     },
     {
       "code": "0017",
@@ -263,9 +328,9 @@
       "category": "national_university",
       "region": "north",
       "official_website": "https://www.ntpu.edu.tw/",
-      "student_affairs_url": "https://www.ntpu.edu.tw/admin/a8/",
-      "assistance_office_url": "https://www.ntpu.edu.tw/admin/a8/org/a8-2/index.php",
-      "scholarship_portal_url": "https://www.ntpu.edu.tw/admin/a8/org/a8-2/scholarship.php",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "三峽優秀研究生學術獎助金",
         "法商優秀學生獎學金",
@@ -273,7 +338,12 @@
         "校友基金會獎助"
       ],
       "graduate_stipend_program": "教育部博士生獎勵每月 40,000 元，校方配合提供法商社科優秀專案獎勵",
-      "announcement_format": "生輔組獎學金專頁"
+      "announcement_format": "生輔組獎學金專頁",
+      "link_url": "https://www.ntpu.edu.tw/",
+      "link_status": "link_unverified",
+      "link_checked_on": "2026-11-07",
+      "link_note": "本次未能以工具驗證，網址待人工查",
+      "previous_portal_url": "https://www.ntpu.edu.tw/admin/a8/org/a8-2/scholarship.php"
     },
     {
       "code": "0018",
@@ -284,14 +354,19 @@
       "official_website": "https://www.ncyu.edu.tw/",
       "student_affairs_url": "https://www.ncyu.edu.tw/student/",
       "assistance_office_url": "https://www.ncyu.edu.tw/student/laa/",
-      "scholarship_portal_url": "https://www.ncyu.edu.tw/student/laa/scholarship/",
+      "scholarship_portal_url": "https://website.ncyu.edu.tw/life/Subject?nodeId=55082",
       "key_programs": [
         "嘉大優秀研究生獎勵",
         "農生醫工程特色獎勵金",
         "清寒助學金"
       ],
       "graduate_stipend_program": "教育部博生方案每月 40,000 元",
-      "announcement_format": "學務處生輔組網頁"
+      "announcement_format": "學務處生輔組網頁",
+      "link_url": "https://website.ncyu.edu.tw/life/Subject?nodeId=55082",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://www.ncyu.edu.tw/student/laa/scholarship/"
     },
     {
       "code": "0019",
@@ -300,15 +375,20 @@
       "category": "national_university",
       "region": "south",
       "official_website": "https://www.nuk.edu.tw/",
-      "student_affairs_url": "https://osa.nuk.edu.tw/",
-      "assistance_office_url": "https://osa.nuk.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.nuk.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "高雄大學優秀博碩士獎助金",
         "法政與工程卓越獎學金"
       ],
       "graduate_stipend_program": "教育部博生計畫補助",
-      "announcement_format": "生輔組系統"
+      "announcement_format": "生輔組系統",
+      "link_url": "https://www.nuk.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://osa.nuk.edu.tw/laa/scholarship/"
     },
     {
       "code": "0020",
@@ -319,14 +399,19 @@
       "official_website": "https://www.ndhu.edu.tw/",
       "student_affairs_url": "https://osa.ndhu.edu.tw/",
       "assistance_office_url": "https://rb005.ndhu.edu.tw/",
-      "scholarship_portal_url": "https://rb005.ndhu.edu.tw/p/412-1005-2114.php",
+      "scholarship_portal_url": "https://rb005.ndhu.edu.tw/p/403-1005-402.php",
       "key_programs": [
         "東華東區優秀博碩士研究生獎勵金",
         "原住民學生學術獎勵",
         "綠色科技與環境特色獎學金"
       ],
       "graduate_stipend_program": "教育部博生獎學金補助每月 40,000 元",
-      "announcement_format": "生活輔導組專區公告"
+      "announcement_format": "生活輔導組專區公告",
+      "link_url": "https://rb005.ndhu.edu.tw/p/403-1005-402.php",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://rb005.ndhu.edu.tw/p/412-1005-2114.php"
     },
     {
       "code": "0021",
@@ -335,15 +420,20 @@
       "category": "national_university",
       "region": "central",
       "official_website": "https://www.ncnu.edu.tw/",
-      "student_affairs_url": "https://osa.ncnu.edu.tw/",
-      "assistance_office_url": "https://osa.ncnu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.ncnu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "暨大東南亞與區域研究研究生獎學金",
         "清寒優秀學生助學金"
       ],
       "graduate_stipend_program": "教育部博生計畫補助每月 40,000 元",
-      "announcement_format": "學務處網頁"
+      "announcement_format": "學務處網頁",
+      "link_url": "https://www.ncnu.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://osa.ncnu.edu.tw/laa/scholarship/"
     },
     {
       "code": "0030",
@@ -352,15 +442,20 @@
       "category": "national_university",
       "region": "east",
       "official_website": "https://www.nttu.edu.tw/",
-      "student_affairs_url": "https://dsa.nttu.edu.tw/",
-      "assistance_office_url": "https://dsa.nttu.edu.tw/laa/",
-      "scholarship_portal_url": "https://dsa.nttu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "東大優秀研究生獎勵",
         "東部綠色農業與南島文化特色獎助"
       ],
       "graduate_stipend_program": "教育部博生補助每人每月 40,000 元",
-      "announcement_format": "學務處網頁"
+      "announcement_format": "學務處網頁",
+      "link_url": "https://www.nttu.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://dsa.nttu.edu.tw/laa/scholarship/"
     },
     {
       "code": "0031",
@@ -369,15 +464,20 @@
       "category": "national_university",
       "region": "east",
       "official_website": "https://www.niu.edu.tw/",
-      "student_affairs_url": "https://niuosa.niu.edu.tw/",
-      "assistance_office_url": "https://niuosa.niu.edu.tw/laa/",
-      "scholarship_portal_url": "https://niuosa.niu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "宜大優秀研究生入學獎勵",
         "生物資源與綠色科技獎助金"
       ],
       "graduate_stipend_program": "教育部博生補助計畫",
-      "announcement_format": "學務處公告"
+      "announcement_format": "學務處公告",
+      "link_url": "https://www.niu.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://niuosa.niu.edu.tw/laa/scholarship/"
     },
     {
       "code": "0032",
@@ -386,15 +486,20 @@
       "category": "national_university",
       "region": "central",
       "official_website": "https://www.nuu.edu.tw/",
-      "student_affairs_url": "https://osa.nuu.edu.tw/",
-      "assistance_office_url": "https://osa.nuu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.nuu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": "https://stua04.nuu.edu.tw/p/412-1036-84.php",
       "key_programs": [
         "聯大優秀研究生獎勵金",
         "客家研究與工程特色獎學金"
       ],
       "graduate_stipend_program": "教育部博生方案核定補助",
-      "announcement_format": "生輔組公告"
+      "announcement_format": "生輔組公告",
+      "link_url": "https://stua04.nuu.edu.tw/p/412-1036-84.php",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://osa.nuu.edu.tw/laa/scholarship/"
     },
     {
       "code": "0036",
@@ -404,14 +509,19 @@
       "region": "south",
       "official_website": "https://www.nutn.edu.tw/",
       "student_affairs_url": "https://osa.nutn.edu.tw/",
-      "assistance_office_url": "https://osa.nutn.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.nutn.edu.tw/laa/scholarship/",
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "南大優秀研究生學術獎學金",
         "文教科技優秀學生獎勵"
       ],
       "graduate_stipend_program": "教育部博生方案核定補助",
-      "announcement_format": "學務處公告"
+      "announcement_format": "學務處公告",
+      "link_url": "https://osa.nutn.edu.tw/index.php?group=sa2&option=module&lang=cht&task=showlist&id=469&index=6",
+      "link_status": "link_office",
+      "link_checked_on": "2026-11-07",
+      "link_note": "臺南大學生輔組首頁／助學措施所在頁，實為 assistance 而非獎助學金入口",
+      "previous_portal_url": "https://osa.nutn.edu.tw/laa/scholarship/"
     },
     {
       "code": "0037",
@@ -420,16 +530,21 @@
       "category": "national_university",
       "region": "north",
       "official_website": "https://www.ntue.edu.tw/",
-      "student_affairs_url": "https://osa.ntue.edu.tw/",
-      "assistance_office_url": "https://osa.ntue.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.ntue.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "國北教大優秀博碩士獎學金",
         "師資培育公費與獎學金",
         "清寒優秀學生助學金"
       ],
       "graduate_stipend_program": "教育部博生方案核定補助",
-      "announcement_format": "學務處生輔組公告"
+      "announcement_format": "學務處生輔組公告",
+      "link_url": "https://www.ntue.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://osa.ntue.edu.tw/laa/scholarship/"
     },
     {
       "code": "0039",
@@ -438,16 +553,21 @@
       "category": "national_university",
       "region": "central",
       "official_website": "https://www.ntcu.edu.tw/",
-      "student_affairs_url": "https://osa.ntcu.edu.tw/",
-      "assistance_office_url": "https://osa.ntcu.edu.tw/laa/",
-      "scholarship_portal_url": "https://cip.ntcu.edu.tw/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "中教大優秀研究生獎勵金",
         "原住民族學生獎學金專案",
         "清寒勤學助學金"
       ],
       "graduate_stipend_program": "教育部博生方案補助",
-      "announcement_format": "原住民族學生資源專區 + 學務處公告"
+      "announcement_format": "原住民族學生資源專區 + 學務處公告",
+      "link_url": "https://www.ntcu.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://cip.ntcu.edu.tw/"
     },
     {
       "code": "1076",
@@ -457,15 +577,20 @@
       "region": "islands",
       "official_website": "https://www.nqu.edu.tw/",
       "student_affairs_url": "https://osa.nqu.edu.tw/",
-      "assistance_office_url": "https://osa.nqu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.nqu.edu.tw/laa/scholarship/",
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "金門縣政府就學津貼與交通券",
         "金大優秀博碩士入學獎勵",
         "僑生與陸生特色獎勵"
       ],
       "graduate_stipend_program": "教育部博生計畫補助每月 40,000 元",
-      "announcement_format": "學務處公告"
+      "announcement_format": "學務處公告",
+      "link_url": "https://osa.nqu.edu.tw/p/404-1002-3155.php?Lang=zh-tw",
+      "link_status": "link_related_program",
+      "link_checked_on": "2026-11-07",
+      "link_note": "金門大學「不利處境」單一方案頁",
+      "previous_portal_url": "https://osa.nqu.edu.tw/laa/scholarship/"
     },
     {
       "code": "1080",
@@ -474,15 +599,20 @@
       "category": "national_university",
       "region": "south",
       "official_website": "https://www.nptu.edu.tw/",
-      "student_affairs_url": "https://osa.nptu.edu.tw/",
-      "assistance_office_url": "https://osa.nptu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.nptu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "屏大優秀博碩士研究生獎勵",
         "在地青年與地方創生獎學金"
       ],
       "graduate_stipend_program": "教育部博生計畫核撥",
-      "announcement_format": "學務處生輔組公告"
+      "announcement_format": "學務處生輔組公告",
+      "link_url": "https://www.nptu.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://osa.nptu.edu.tw/laa/scholarship/"
     },
     {
       "code": "1079",
@@ -492,15 +622,20 @@
       "region": "north",
       "official_website": "https://www.utaipei.edu.tw/",
       "student_affairs_url": "https://student.utaipei.edu.tw/",
-      "assistance_office_url": "https://student.utaipei.edu.tw/laa/",
-      "scholarship_portal_url": "https://student.utaipei.edu.tw/laa/scholarship/",
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "北市大優秀研究生獎勵金",
         "體育與藝術菁英學生獎學金",
         "臺北市政府公務獎勵"
       ],
       "graduate_stipend_program": "教育部博生方案與臺北市政府教育局專案補助",
-      "announcement_format": "學務處生輔組公告"
+      "announcement_format": "學務處生輔組公告",
+      "link_url": "https://service.utaipei.edu.tw/index.php",
+      "link_status": "link_office",
+      "link_checked_on": "2026-11-07",
+      "link_note": "學務或生輔單位頁，非獎助專區",
+      "previous_portal_url": "https://student.utaipei.edu.tw/laa/scholarship/"
     },
     {
       "code": "0022",
@@ -511,7 +646,7 @@
       "official_website": "https://www.ntust.edu.tw/",
       "student_affairs_url": "https://student.ntust.edu.tw/",
       "assistance_office_url": "https://student.ntust.edu.tw/p/412-1053-8321.php",
-      "scholarship_portal_url": "https://scholarship.ntust.edu.tw/",
+      "scholarship_portal_url": null,
       "key_programs": [
         "臺科大碩博士研究生卓越獎學金",
         "國際優秀研究生獎學金",
@@ -519,7 +654,12 @@
         "產學合作研發獎助金"
       ],
       "graduate_stipend_program": "教育部博生方案核撥每月 40,000 元，校方額外依產學能量加碼達每月 50,000 至 60,000 元",
-      "announcement_format": "臺科大獎學金申請系統"
+      "announcement_format": "臺科大獎學金申請系統",
+      "link_url": "https://student.ntust.edu.tw/p/412-1053-8426.php?Lang=zh-tw",
+      "link_status": "link_related_program",
+      "link_checked_on": "2026-11-07",
+      "link_note": "臺科大「生活助學金申請」單一方案頁",
+      "previous_portal_url": "https://scholarship.ntust.edu.tw/"
     },
     {
       "code": "0023",
@@ -528,16 +668,21 @@
       "category": "national_tech",
       "region": "central",
       "official_website": "https://www.yuntech.edu.tw/",
-      "student_affairs_url": "https://osa.yuntech.edu.tw/",
-      "assistance_office_url": "https://osa.yuntech.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.yuntech.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": "https://asx.yuntech.edu.tw/index.php/2020-02-26-09-23-21/item/297-2021-08-03-01-05-54",
       "key_programs": [
         "雲科大優秀研究生學術獎勵",
         "設計與工程卓越獎學金",
         "清寒勵學助學金"
       ],
       "graduate_stipend_program": "教育部博士生計畫每名每月 40,000 元",
-      "announcement_format": "學務處生輔組公告"
+      "announcement_format": "學務處生輔組公告",
+      "link_url": "https://asx.yuntech.edu.tw/index.php/2020-02-26-09-23-21/item/297-2021-08-03-01-05-54",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://osa.yuntech.edu.tw/laa/scholarship/"
     },
     {
       "code": "0024",
@@ -548,13 +693,18 @@
       "official_website": "https://www.npust.edu.tw/",
       "student_affairs_url": "https://osa.npust.edu.tw/",
       "assistance_office_url": "https://osa.npust.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.npust.edu.tw/laa/scholarship/",
+      "scholarship_portal_url": "https://osa.npust.edu.tw/regulations/scholarship/",
       "key_programs": [
         "屏科大農林漁牧優秀研究生獎學金",
         "熱帶農業特色獎勵金"
       ],
       "graduate_stipend_program": "教育部博生計畫補助",
-      "announcement_format": "學務處公告"
+      "announcement_format": "學務處公告",
+      "link_url": "https://osa.npust.edu.tw/regulations/scholarship/",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://osa.npust.edu.tw/laa/scholarship/"
     },
     {
       "code": "0025",
@@ -564,15 +714,20 @@
       "region": "north",
       "official_website": "https://www.ntut.edu.tw/",
       "student_affairs_url": "https://osa.ntut.edu.tw/",
-      "assistance_office_url": "https://osa.ntut.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.ntut.edu.tw/laa/scholarship_platform/",
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "北科大優秀博碩士研究生入學獎學金",
         "工程研發成果獎勵金",
         "文教基金會校外代辦獎助"
       ],
       "graduate_stipend_program": "教育部博生培育計畫補助每月 40,000 元，校內專案每學期加發 30,000 至 60,000 元",
-      "announcement_format": "北科大學務處獎助學金平台"
+      "announcement_format": "北科大學務處獎助學金平台",
+      "link_url": "https://osa.ntut.edu.tw/p/404-1041-138641.php?Lang=zh-tw",
+      "link_status": "link_related_program",
+      "link_checked_on": "2026-11-07",
+      "link_note": "北科大「特殊教育獎補助金說明」單一方案頁",
+      "previous_portal_url": "https://osa.ntut.edu.tw/laa/scholarship_platform/"
     },
     {
       "code": "0033",
@@ -581,15 +736,20 @@
       "category": "national_tech",
       "region": "central",
       "official_website": "https://www.nfu.edu.tw/",
-      "student_affairs_url": "https://student.nfu.edu.tw/",
-      "assistance_office_url": "https://student.nfu.edu.tw/laa/",
-      "scholarship_portal_url": "https://student.nfu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "虎科大精密機械與智慧製造研究生獎學金",
         "航空電子專案獎助"
       ],
       "graduate_stipend_program": "教育部博生補助核發",
-      "announcement_format": "學務處生輔組網頁"
+      "announcement_format": "學務處生輔組網頁",
+      "link_url": "https://www.nfu.edu.tw/zh_tw/about/nfurd/rirc",
+      "link_status": "link_related_program",
+      "link_checked_on": "2026-11-07",
+      "link_note": "虎尾科大研發處下「國際交流與獎助學金」，非學務單位的獎助學金入口",
+      "previous_portal_url": "https://student.nfu.edu.tw/laa/scholarship/"
     },
     {
       "code": "0042",
@@ -598,15 +758,20 @@
       "category": "national_tech",
       "region": "islands",
       "official_website": "https://www.npu.edu.tw/",
-      "student_affairs_url": "https://osa.npu.edu.tw/",
-      "assistance_office_url": "https://osa.npu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.npu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "海洋養殖與風能特色獎學金",
         "澎湖縣就讀學生獎助"
       ],
       "graduate_stipend_program": "教育部專案補助",
-      "announcement_format": "學務處網頁"
+      "announcement_format": "學務處網頁",
+      "link_url": "https://www.npu.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "澎湖科大全文檢索查詢頁（搜尋結果頁），不是入口",
+      "previous_portal_url": "https://osa.npu.edu.tw/laa/scholarship/"
     },
     {
       "code": "0043",
@@ -623,7 +788,12 @@
         "校內獎助學金系統"
       ],
       "graduate_stipend_program": "教育部博生培育方案補助每月 40,000 元",
-      "announcement_format": "勤益科大專屬獎助學金系統"
+      "announcement_format": "勤益科大專屬獎助學金系統",
+      "link_url": "https://scholarship.ncut.edu.tw/",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://scholarship.ncut.edu.tw/"
     },
     {
       "code": "0046",
@@ -633,15 +803,20 @@
       "region": "north",
       "official_website": "https://www.ntunhs.edu.tw/",
       "student_affairs_url": "https://osa.ntunhs.edu.tw/",
-      "assistance_office_url": "https://osa.ntunhs.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.ntunhs.edu.tw/laa/scholarship/",
+      "assistance_office_url": null,
+      "scholarship_portal_url": "https://assistance-osa.ntunhs.edu.tw/p/412-1042-3369.php?Lang=zh-tw",
       "key_programs": [
         "護理健康優秀研究生獎勵金",
         "高齡長照專案獎助",
         "醫療機構公費助學金"
       ],
       "graduate_stipend_program": "教育部博生計畫核定補助",
-      "announcement_format": "生輔組公告"
+      "announcement_format": "生輔組公告",
+      "link_url": "https://assistance-osa.ntunhs.edu.tw/p/412-1042-3369.php?Lang=zh-tw",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://osa.ntunhs.edu.tw/laa/scholarship/"
     },
     {
       "code": "0047",
@@ -651,14 +826,19 @@
       "region": "south",
       "official_website": "https://www.nkuht.edu.tw/",
       "student_affairs_url": "https://student.nkuht.edu.tw/",
-      "assistance_office_url": "https://student.nkuht.edu.tw/laa/",
-      "scholarship_portal_url": "https://student.nkuht.edu.tw/laa/scholarship/",
+      "assistance_office_url": null,
+      "scholarship_portal_url": "https://student.nkuht.edu.tw/p/404-1005-4954.php",
       "key_programs": [
         "餐旅管理與廚藝優秀研究生獎學金",
         "觀光產業公費培育獎助"
       ],
       "graduate_stipend_program": "教育部專案補助",
-      "announcement_format": "學務處網頁"
+      "announcement_format": "學務處網頁",
+      "link_url": "https://student.nkuht.edu.tw/p/404-1005-4954.php",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://student.nkuht.edu.tw/laa/scholarship/"
     },
     {
       "code": "0052",
@@ -668,14 +848,19 @@
       "region": "north",
       "official_website": "https://www.ntua.edu.tw/",
       "student_affairs_url": "https://osa.ntua.edu.tw/",
-      "assistance_office_url": "https://osa.ntua.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.ntua.edu.tw/laa/scholarship/",
+      "assistance_office_url": null,
+      "scholarship_portal_url": "https://osa.ntua.edu.tw/article.aspx?category=97",
       "key_programs": [
         "臺藝大藝術創作優秀研究生獎勵金",
         "文化部跨界藝術獎助"
       ],
       "graduate_stipend_program": "教育部博生計畫補助",
-      "announcement_format": "學務處生輔組網頁"
+      "announcement_format": "學務處生輔組網頁",
+      "link_url": "https://osa.ntua.edu.tw/article.aspx?category=97",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://osa.ntua.edu.tw/laa/scholarship/"
     },
     {
       "code": "1075",
@@ -684,15 +869,20 @@
       "category": "national_tech",
       "region": "north",
       "official_website": "https://www.ntub.edu.tw/",
-      "student_affairs_url": "https://osa.ntub.edu.tw/",
-      "assistance_office_url": "https://osa.ntub.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.ntub.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "北商大優秀商管研究生獎勵金",
         "金融科技創新獎學金"
       ],
       "graduate_stipend_program": "教育部博生培育補助",
-      "announcement_format": "學務處生輔組公告"
+      "announcement_format": "學務處生輔組公告",
+      "link_url": "https://www.ntub.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://osa.ntub.edu.tw/laa/scholarship/"
     },
     {
       "code": "1081",
@@ -702,15 +892,20 @@
       "region": "south",
       "official_website": "https://www.nkust.edu.tw/",
       "student_affairs_url": "https://acad.nkust.edu.tw/",
-      "assistance_office_url": "https://acad.nkust.edu.tw/laa/",
-      "scholarship_portal_url": "https://acad.nkust.edu.tw/laa/scholarship/",
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "高科大優秀博碩士研究生獎勵金",
         "半導體與海事工程專案獎助",
         "清寒築夢助學金"
       ],
       "graduate_stipend_program": "教育部博生計畫補助每月 40,000 元",
-      "announcement_format": "學務系統校內外獎助公告"
+      "announcement_format": "學務系統校內外獎助公告",
+      "link_url": "https://acad.nkust.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://acad.nkust.edu.tw/laa/scholarship/"
     },
     {
       "code": "015",
@@ -719,9 +914,9 @@
       "category": "private_university",
       "region": "central",
       "official_website": "https://www.thu.edu.tw/",
-      "student_affairs_url": "https://deca.thu.edu.tw/",
-      "assistance_office_url": "https://deca.thu.edu.tw/laa/",
-      "scholarship_portal_url": "https://deca.thu.edu.tw/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "東海博雅博碩士優秀研究生獎勵金",
         "直升碩士班全額學雜費減免",
@@ -729,7 +924,12 @@
         "校友急難救助金"
       ],
       "graduate_stipend_program": "教育部博生方案每月 40,000 元，校方配合獎學金提供全免學雜費",
-      "announcement_format": "學務處生輔組獎學金專頁"
+      "announcement_format": "學務處生輔組獎學金專頁",
+      "link_url": "https://www.thu.edu.tw/",
+      "link_status": "link_unverified",
+      "link_checked_on": "2026-11-07",
+      "link_note": "本次未能以工具驗證，網址待人工查",
+      "previous_portal_url": "https://deca.thu.edu.tw/scholarship/"
     },
     {
       "code": "016",
@@ -740,7 +940,7 @@
       "official_website": "https://www.scu.edu.tw/",
       "student_affairs_url": "https://scu-osa.scu.edu.tw/",
       "assistance_office_url": "https://web-ch.scu.edu.tw/life/web_page/10497",
-      "scholarship_portal_url": "https://web-ch.scu.edu.tw/life/web_page/10497",
+      "scholarship_portal_url": null,
       "key_programs": [
         "東吳卓越研究生獎學金",
         "法學院優秀碩博士獎助",
@@ -748,7 +948,12 @@
         "德育獎助學金"
       ],
       "graduate_stipend_program": "教育部博士生計畫每名每月 40,000 元，法商重點學院各所額外配有專案研究助理津貼",
-      "announcement_format": "德育中心獎助學金專區 + 東吳電子化校園系統"
+      "announcement_format": "德育中心獎助學金專區 + 東吳電子化校園系統",
+      "link_url": "https://web-ch.scu.edu.tw/life/web_page/2472",
+      "link_status": "link_related_program",
+      "link_checked_on": "2026-11-07",
+      "link_note": "東吳德育中心「急難救助（緊急紓困）」單一項目頁",
+      "previous_portal_url": "https://web-ch.scu.edu.tw/life/web_page/10497"
     },
     {
       "code": "017",
@@ -759,7 +964,7 @@
       "official_website": "https://www.fju.edu.tw/",
       "student_affairs_url": "https://life.dsa.fju.edu.tw/",
       "assistance_office_url": "https://life.dsa.fju.edu.tw/",
-      "scholarship_portal_url": "https://life.dsa.fju.edu.tw/index.php?c=scholarship",
+      "scholarship_portal_url": null,
       "key_programs": [
         "輔大耕莘優秀研究生獎助學金",
         "新生入學全額獎學金",
@@ -767,7 +972,12 @@
         "教宗若望保祿二世獎勵金"
       ],
       "graduate_stipend_program": "教育部博士生培育計畫補助每月 40,000 元，校內提供全額學雜費減免及生活補助",
-      "announcement_format": "學務處生活輔導組獎學金專區"
+      "announcement_format": "學務處生活輔導組獎學金專區",
+      "link_url": "https://life.dsa.fju.edu.tw/resource.jsp?labelID=36",
+      "link_status": "link_related_program",
+      "link_checked_on": "2026-11-07",
+      "link_note": "輔大生輔組「不利處境學生助學計畫」單一方案頁",
+      "previous_portal_url": "https://life.dsa.fju.edu.tw/index.php?c=scholarship"
     },
     {
       "code": "018",
@@ -776,16 +986,21 @@
       "category": "private_university",
       "region": "north",
       "official_website": "https://www.pccu.edu.tw/",
-      "student_affairs_url": "https://staff.pccu.edu.tw/~cuap/",
-      "assistance_office_url": "https://staff.pccu.edu.tw/~cuap/",
-      "scholarship_portal_url": "https://staff.pccu.edu.tw/~cuap/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "華岡優秀研究生入學獎學金",
         "文藝傳播與地學特色獎助",
         "各項校友捐贈獎學金"
       ],
       "graduate_stipend_program": "教育部博生計畫補助",
-      "announcement_format": "學生事務處生輔組網頁"
+      "announcement_format": "學生事務處生輔組網頁",
+      "link_url": "https://www.pccu.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://staff.pccu.edu.tw/~cuap/scholarship/"
     },
     {
       "code": "019",
@@ -796,7 +1011,7 @@
       "official_website": "https://www.tku.edu.tw/",
       "student_affairs_url": "https://sa.tku.edu.tw/",
       "assistance_office_url": "https://sa.tku.edu.tw/spirit/",
-      "scholarship_portal_url": "https://sa.tku.edu.tw/spirit/scholarship/",
+      "scholarship_portal_url": null,
       "key_programs": [
         "淡江優秀研究生與熊貓講座學術獎助金",
         "優秀博碩士新生獎勵",
@@ -804,7 +1019,12 @@
         "校內急難濟助"
       ],
       "graduate_stipend_program": "教育部博生計畫每名每月 40,000 元，校友基金配合提撥補助",
-      "announcement_format": "淡江學務系統獎學金專區"
+      "announcement_format": "淡江學務系統獎學金專區",
+      "link_url": "https://sa.tku.edu.tw/spirit/",
+      "link_status": "link_office",
+      "link_checked_on": "2026-11-07",
+      "link_note": "學務或生輔單位頁，非獎助專區",
+      "previous_portal_url": "https://sa.tku.edu.tw/spirit/scholarship/"
     },
     {
       "code": "020",
@@ -815,7 +1035,7 @@
       "official_website": "https://www.fcu.edu.tw/",
       "student_affairs_url": "https://affairs.fcu.edu.tw/",
       "assistance_office_url": "https://student.fcu.edu.tw/",
-      "scholarship_portal_url": "https://student.fcu.edu.tw/scholarship/",
+      "scholarship_portal_url": null,
       "key_programs": [
         "逢甲築夢優秀研究生獎助學金",
         "產學深耕企業專案獎勵",
@@ -823,7 +1043,12 @@
         "築夢勵志助學金"
       ],
       "graduate_stipend_program": "教育部博生計畫每名每月 40,000 元，工學院/資訊學院產學企業專案配合加碼每月 10,000 至 20,000 元",
-      "announcement_format": "MyFCU 個人入口網 + 生輔組校內獎學金專區"
+      "announcement_format": "MyFCU 個人入口網 + 生輔組校內獎學金專區",
+      "link_url": "https://student.fcu.edu.tw/%E4%B8%8D%E5%88%A9%E8%99%95%E5%A2%83%E5%8A%A9%E5%AD%B8/",
+      "link_status": "link_related_program",
+      "link_checked_on": "2026-11-07",
+      "link_note": "逢甲「不利處境助學(原弱勢)」單一方案頁",
+      "previous_portal_url": "https://student.fcu.edu.tw/scholarship/"
     },
     {
       "code": "021",
@@ -832,9 +1057,9 @@
       "category": "private_university",
       "region": "north",
       "official_website": "https://www.cycu.edu.tw/",
-      "student_affairs_url": "https://life.cycu.edu.tw/",
-      "assistance_office_url": "https://life.cycu.edu.tw/",
-      "scholarship_portal_url": "https://life.cycu.edu.tw/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "中原優秀碩博士全額學費補助金",
         "全人教育博碩士優秀入學獎勵",
@@ -842,7 +1067,12 @@
         "校友關懷助學金"
       ],
       "graduate_stipend_program": "教育部博生方案每月 40,000 元，首年學雜費全免並加發專案研究助學金",
-      "announcement_format": "學務處生活輔導組獎學金專頁"
+      "announcement_format": "學務處生活輔導組獎學金專頁",
+      "link_url": "https://www.cycu.edu.tw/",
+      "link_status": "link_unverified",
+      "link_checked_on": "2026-11-07",
+      "link_note": "本次未能以工具驗證，網址待人工查",
+      "previous_portal_url": "https://life.cycu.edu.tw/scholarship/"
     },
     {
       "code": "025",
@@ -852,15 +1082,20 @@
       "region": "central",
       "official_website": "https://www.pu.edu.tw/",
       "student_affairs_url": "https://osa.pu.edu.tw/",
-      "assistance_office_url": "https://osa.pu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.pu.edu.tw/laa/scholarship/",
+      "assistance_office_url": null,
+      "scholarship_portal_url": "https://c030.pu.edu.tw/p/412-1063-5585.php?Lang=zh-tw",
       "key_programs": [
         "靜宜主顧優秀博碩士獎學金",
         "外語與生技特色獎勵",
         "清寒博愛助學金"
       ],
       "graduate_stipend_program": "教育部博生方案核定補助",
-      "announcement_format": "學務處網頁"
+      "announcement_format": "學務處網頁",
+      "link_url": "https://c030.pu.edu.tw/p/412-1063-5585.php?Lang=zh-tw",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://osa.pu.edu.tw/laa/scholarship/"
     },
     {
       "code": "026",
@@ -869,16 +1104,21 @@
       "category": "private_university",
       "region": "north",
       "official_website": "https://www.ttu.edu.tw/",
-      "student_affairs_url": "https://student.ttu.edu.tw/",
-      "assistance_office_url": "https://student.ttu.edu.tw/laa/",
-      "scholarship_portal_url": "https://student.ttu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "大同尚志獎學金",
         "大同公司工學優秀研究生獎勵",
         "設計與工程新秀獎助"
       ],
       "graduate_stipend_program": "尚志協志基金會加碼優秀博碩士生全額學雜費與生活補助",
-      "announcement_format": "生輔組網頁"
+      "announcement_format": "生輔組網頁",
+      "link_url": "https://www.ttu.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://student.ttu.edu.tw/laa/scholarship/"
     },
     {
       "code": "028",
@@ -889,14 +1129,19 @@
       "official_website": "https://www.yzu.edu.tw/",
       "student_affairs_url": "https://www.yzu.edu.tw/admin/st/",
       "assistance_office_url": "https://www.yzu.edu.tw/admin/st/",
-      "scholarship_portal_url": "https://www.yzu.edu.tw/admin/st/index.php/tw/scholarship",
+      "scholarship_portal_url": "https://www.yzu.edu.tw/admin/st/index.php/tw/2016-03-25-05-42-29/2016-06-27-08-12-01",
       "key_programs": [
         "元智有庠碩博士優秀入學獎學金",
         "遠東集團產學專案獎助",
         "優秀博士生全免學費與高額生活津貼"
       ],
       "graduate_stipend_program": "教育部博生計畫補助每月 40,000 元，遠東企業加碼配合提供博士生全額獎學金",
-      "announcement_format": "學務處生輔組獎學金資訊專區"
+      "announcement_format": "學務處生輔組獎學金資訊專區",
+      "link_url": "https://www.yzu.edu.tw/admin/st/index.php/tw/2016-03-25-05-42-29/2016-06-27-08-12-01",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://www.yzu.edu.tw/admin/st/index.php/tw/scholarship"
     },
     {
       "code": "029",
@@ -907,14 +1152,19 @@
       "official_website": "https://www.isu.edu.tw/",
       "student_affairs_url": "https://www.isu.edu.tw/osa/",
       "assistance_office_url": "https://www.isu.edu.tw/osa/laa/",
-      "scholarship_portal_url": "https://www.isu.edu.tw/osa/laa/scholarship/",
+      "scholarship_portal_url": "https://sa1.isu.edu.tw/page/preview-MwWDFfUTmCjA",
       "key_programs": [
         "義聯集團產業培育獎學金",
         "優秀博碩士新生獎勵金",
         "智慧醫療與科技專案獎助"
       ],
       "graduate_stipend_program": "義聯集團公費產學專案合作",
-      "announcement_format": "生輔組公告"
+      "announcement_format": "生輔組公告",
+      "link_url": "https://sa1.isu.edu.tw/page/preview-MwWDFfUTmCjA",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://www.isu.edu.tw/osa/laa/scholarship/"
     },
     {
       "code": "030",
@@ -923,16 +1173,21 @@
       "category": "private_university",
       "region": "north",
       "official_website": "https://www.hfu.edu.tw/",
-      "student_affairs_url": "https://osa.hfu.edu.tw/",
-      "assistance_office_url": "https://osa.hfu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.hfu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "華梵品德獎學金",
         "覺之優秀研究生全額學雜費獎助",
         "清寒慈悲助學金"
       ],
       "graduate_stipend_program": "校內專案學雜費減免與專案助學金",
-      "announcement_format": "學務處公告"
+      "announcement_format": "學務處公告",
+      "link_url": "https://www.hfu.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "華梵「113~114學年度大一新生覺之教育獎學金公告」單篇公告",
+      "previous_portal_url": "https://osa.hfu.edu.tw/laa/scholarship/"
     },
     {
       "code": "032",
@@ -941,9 +1196,9 @@
       "category": "private_university",
       "region": "north",
       "official_website": "https://www.cgu.edu.tw/",
-      "student_affairs_url": "https://studentaffairs.cgu.edu.tw/",
-      "assistance_office_url": "https://studentaffairs.cgu.edu.tw/p/412-1012-3211.php",
-      "scholarship_portal_url": "https://studentaffairs.cgu.edu.tw/p/412-1012-3211.php",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": "https://www.cgu.edu.tw/ch/Contents?nodeId=4684",
       "key_programs": [
         "長庚耕心優秀研究生獎助金",
         "台塑企業產學優秀研究生獎學金",
@@ -951,7 +1206,12 @@
         "全額學費補助方案"
       ],
       "graduate_stipend_program": "教育部博生計畫補助每月 40,000 元，台塑企業與長庚醫院加碼，理工/生醫博生每月最高可領 40,000 至 50,000 元",
-      "announcement_format": "學務處生活輔導組校內外獎助學金專區"
+      "announcement_format": "學務處生活輔導組校內外獎助學金專區",
+      "link_url": "https://www.cgu.edu.tw/ch/Contents?nodeId=4684",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://studentaffairs.cgu.edu.tw/p/412-1012-3211.php"
     },
     {
       "code": "033",
@@ -960,15 +1220,20 @@
       "category": "private_university",
       "region": "south",
       "official_website": "https://www.cjcu.edu.tw/",
-      "student_affairs_url": "https://osa.cjcu.edu.tw/",
-      "assistance_office_url": "https://osa.cjcu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.cjcu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "長榮大學優秀博碩士獎勵金",
         "環境永續與社會創新獎助"
       ],
       "graduate_stipend_program": "教育部博生方案核定補助",
-      "announcement_format": "學務處公告"
+      "announcement_format": "學務處公告",
+      "link_url": "https://www.cjcu.edu.tw/",
+      "link_status": "link_unverified",
+      "link_checked_on": "2026-11-07",
+      "link_note": "本次未能以工具驗證，網址待人工查",
+      "previous_portal_url": "https://osa.cjcu.edu.tw/laa/scholarship/"
     },
     {
       "code": "034",
@@ -977,16 +1242,21 @@
       "category": "private_university",
       "region": "east",
       "official_website": "https://www.tcu.edu.tw/",
-      "student_affairs_url": "https://osa.tcu.edu.tw/",
-      "assistance_office_url": "https://osa.tcu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.tcu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": "https://www.tcu.edu.tw/p/412-1033-4825.php",
       "key_programs": [
         "慈濟慈善志業優秀博碩士獎學金",
         "醫學與生科拔尖獎勵金",
         "全額無息就學貸款與生活津貼"
       ],
       "graduate_stipend_program": "教育部博生方案與慈濟慈善基金會配合，每人每月 40,000 元",
-      "announcement_format": "學務處生輔組網頁"
+      "announcement_format": "學務處生輔組網頁",
+      "link_url": "https://www.tcu.edu.tw/p/412-1033-4825.php",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://osa.tcu.edu.tw/laa/scholarship/"
     },
     {
       "code": "1109",
@@ -996,15 +1266,20 @@
       "region": "north",
       "official_website": "https://www.mcu.edu.tw/",
       "student_affairs_url": "https://student.mcu.edu.tw/",
-      "assistance_office_url": "https://student.mcu.edu.tw/laa/",
-      "scholarship_portal_url": "https://student.mcu.edu.tw/laa/scholarship/",
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "銘傳優秀博碩士研究生入學獎學金",
         "商管與傳播實務獎勵",
         "清寒就學補助金"
       ],
       "graduate_stipend_program": "教育部博生培育計畫補助",
-      "announcement_format": "銘傳校內外獎學金系統"
+      "announcement_format": "銘傳校內外獎學金系統",
+      "link_url": "https://student.mcu.edu.tw/home/%E6%A5%AD%E5%8B%99%E8%81%B7%E6%8E%8C/%E6%A5%AD%E5%8B%99%E8%81%B7%E6%8E%8C_%E7%94%9F%E6%B4%BB%E8%BC%94%E5%B0%8E%E7%B5%84/",
+      "link_status": "link_office",
+      "link_checked_on": "2026-11-07",
+      "link_note": "學務或生輔單位頁，非獎助專區",
+      "previous_portal_url": "https://student.mcu.edu.tw/laa/scholarship/"
     },
     {
       "code": "1110",
@@ -1013,16 +1288,21 @@
       "category": "private_university",
       "region": "north",
       "official_website": "https://www.shu.edu.tw/",
-      "student_affairs_url": "https://osa.shu.edu.tw/",
-      "assistance_office_url": "https://osa.shu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.shu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "世新舍我優秀博碩士獎學金",
         "新聞傳播與新媒體研發獎助金",
         "校友文教基金助學金"
       ],
       "graduate_stipend_program": "教育部博生計畫補助",
-      "announcement_format": "學務處生輔組公告"
+      "announcement_format": "學務處生輔組公告",
+      "link_url": "https://osa.web.shu.edu.tw/%E7%94%9F%E8%BC%94%E7%B5%84%E9%A6%96%E9%A0%81/",
+      "link_status": "link_office",
+      "link_checked_on": "2026-11-07",
+      "link_note": "世新生輔組首頁，實為 assistance 而非獎助學金入口",
+      "previous_portal_url": "https://osa.shu.edu.tw/laa/scholarship/"
     },
     {
       "code": "1111",
@@ -1031,15 +1311,20 @@
       "category": "private_university",
       "region": "central",
       "official_website": "https://www.dyu.edu.tw/",
-      "student_affairs_url": "https://sa.dyu.edu.tw/",
-      "assistance_office_url": "https://sa.dyu.edu.tw/laa/",
-      "scholarship_portal_url": "https://sa.dyu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "大葉產學優秀研究生獎學金",
         "生物科技與工程獎勵金"
       ],
       "graduate_stipend_program": "教育部專案補助",
-      "announcement_format": "學務處網頁"
+      "announcement_format": "學務處網頁",
+      "link_url": "https://www.dyu.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://sa.dyu.edu.tw/laa/scholarship/"
     },
     {
       "code": "1117",
@@ -1048,16 +1333,21 @@
       "category": "private_university",
       "region": "north",
       "official_website": "https://www.usc.edu.tw/",
-      "student_affairs_url": "https://sa.usc.edu.tw/",
-      "assistance_office_url": "https://sa.usc.edu.tw/laa/",
-      "scholarship_portal_url": "https://sa.usc.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "實踐設計學院優秀研究生獎學金",
         "民生與管理專案獎助金",
         "清寒勵學助學金"
       ],
       "graduate_stipend_program": "教育部博生方案核撥",
-      "announcement_format": "學務處公告"
+      "announcement_format": "學務處公告",
+      "link_url": "https://www.usc.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://sa.usc.edu.tw/laa/scholarship/"
     },
     {
       "code": "1125",
@@ -1066,16 +1356,21 @@
       "category": "private_university",
       "region": "central",
       "official_website": "https://www.nhu.edu.tw/",
-      "student_affairs_url": "https://osa.nhu.edu.tw/",
-      "assistance_office_url": "https://osa.nhu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.nhu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "佛光山比照國立大學收費獎學金",
         "南華優秀研究生入學獎勵",
         "生死學與永續發展獎助"
       ],
       "graduate_stipend_program": "佛光山百萬人興學基金補助全額或半額學費",
-      "announcement_format": "學務處公告"
+      "announcement_format": "學務處公告",
+      "link_url": "https://www.nhu.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://osa.nhu.edu.tw/laa/scholarship/"
     },
     {
       "code": "1126",
@@ -1084,15 +1379,20 @@
       "category": "private_university",
       "region": "north",
       "official_website": "https://www.hcu.edu.tw/",
-      "student_affairs_url": "https://osa.hcu.edu.tw/",
-      "assistance_office_url": "https://osa.hcu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.hcu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "玄奘慈雲優秀學生獎學金",
         "社會科學優秀研究生獎助"
       ],
       "graduate_stipend_program": "校內專案學雜費優惠補助",
-      "announcement_format": "學務處公告"
+      "announcement_format": "學務處公告",
+      "link_url": "https://www.hcu.edu.tw/hcu/zh-tw",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://osa.hcu.edu.tw/laa/scholarship/"
     },
     {
       "code": "1127",
@@ -1101,15 +1401,20 @@
       "category": "private_university",
       "region": "east",
       "official_website": "https://www.fgu.edu.tw/",
-      "student_affairs_url": "https://osa.fgu.edu.tw/",
-      "assistance_office_url": "https://osa.fgu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.fgu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "佛光山比照國立大學收費公費方案",
         "佛光卓越博碩士研究生獎助金"
       ],
       "graduate_stipend_program": "佛光山教團全額學費補助方案",
-      "announcement_format": "學務處公告"
+      "announcement_format": "學務處公告",
+      "link_url": "https://www.fgu.edu.tw/",
+      "link_status": "link_unverified",
+      "link_checked_on": "2026-11-07",
+      "link_note": "本次未能以工具驗證，網址待人工查",
+      "previous_portal_url": "https://osa.fgu.edu.tw/laa/scholarship/"
     },
     {
       "code": "022",
@@ -1119,8 +1424,8 @@
       "region": "south",
       "official_website": "https://www.kmu.edu.tw/",
       "student_affairs_url": "https://osa.kmu.edu.tw/",
-      "assistance_office_url": "https://osa.kmu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.kmu.edu.tw/laa/scholarship/",
+      "assistance_office_url": null,
+      "scholarship_portal_url": "https://osa.kmu.edu.tw/index.php/zh-tw/%E7%94%9F%E8%BC%94%E7%B5%84/%E6%A0%A1%E5%85%A7%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91",
       "key_programs": [
         "高醫勵志優秀博碩士研究生獎助學金",
         "醫學與藥學前瞻研究獎勵",
@@ -1128,7 +1433,12 @@
         "清寒起飛助學金"
       ],
       "graduate_stipend_program": "教育部博生計畫補助每月 40,000 元，高醫附屬醫院體系額外加碼研發津貼",
-      "announcement_format": "學務處生活輔導組專區"
+      "announcement_format": "學務處生活輔導組專區",
+      "link_url": "https://osa.kmu.edu.tw/index.php/zh-tw/%E7%94%9F%E8%BC%94%E7%B5%84/%E6%A0%A1%E5%85%A7%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://osa.kmu.edu.tw/laa/scholarship/"
     },
     {
       "code": "023",
@@ -1137,9 +1447,9 @@
       "category": "private_medical",
       "region": "central",
       "official_website": "https://www.cmu.edu.tw/",
-      "student_affairs_url": "https://adm08.cmu.edu.tw/",
-      "assistance_office_url": "https://adm08.cmu.edu.tw/",
-      "scholarship_portal_url": "https://adm08.cmu.edu.tw/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "中國醫優秀博碩士研究生獎助學金",
         "中醫藥與生物科技拔尖獎金",
@@ -1147,7 +1457,12 @@
         "附設醫院體系培訓獎勵"
       ],
       "graduate_stipend_program": "教育部博生方案核撥每月 40,000 元，醫療體系產學研發配合款每月 25,000 至 40,000 元",
-      "announcement_format": "學務處生輔組獎學金專頁"
+      "announcement_format": "學務處生輔組獎學金專頁",
+      "link_url": "https://guide.cmu.edu.tw/page/64",
+      "link_status": "link_related_program",
+      "link_checked_on": "2026-11-07",
+      "link_note": "中國醫藥大學生輔組「弱勢助學專區」，僅不利處境類；同站另有「校內就學獎助學金專區」「校外獎學金專區」",
+      "previous_portal_url": "https://adm08.cmu.edu.tw/scholarship/"
     },
     {
       "code": "024",
@@ -1157,8 +1472,8 @@
       "region": "north",
       "official_website": "https://www.tmu.edu.tw/",
       "student_affairs_url": "https://osa.tmu.edu.tw/",
-      "assistance_office_url": "https://osa.tmu.edu.tw/aid/",
-      "scholarship_portal_url": "https://osa.tmu.edu.tw/aid/scholarship/",
+      "assistance_office_url": null,
+      "scholarship_portal_url": "https://osa.tmu.edu.tw/front/Office_Of_Student_Affairs/0513/pages.php?ID=e01baca6ca51758148258d5dbca7b4bc",
       "key_programs": [
         "北醫優秀生醫研究生與研發獎學金",
         "生醫創新創業獎勵金",
@@ -1166,7 +1481,12 @@
         "校友文教助學專案"
       ],
       "graduate_stipend_program": "教育部博生計畫補助每月 40,000 元，北醫醫療體系加碼每月 30,000 至 50,000 元",
-      "announcement_format": "北醫大學務處獎助學金專區"
+      "announcement_format": "北醫大學務處獎助學金專區",
+      "link_url": "https://osa.tmu.edu.tw/front/Office_Of_Student_Affairs/0513/pages.php?ID=e01baca6ca51758148258d5dbca7b4bc",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://osa.tmu.edu.tw/aid/scholarship/"
     },
     {
       "code": "027",
@@ -1176,15 +1496,20 @@
       "region": "central",
       "official_website": "https://www.csmu.edu.tw/",
       "student_affairs_url": "https://osa.csmu.edu.tw/",
-      "assistance_office_url": "https://osa.csmu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.csmu.edu.tw/laa/scholarship/",
+      "assistance_office_url": null,
+      "scholarship_portal_url": "https://osa.csmu.edu.tw/p/412-1011-1880.php?Lang=zh-tw",
       "key_programs": [
         "中山醫優秀醫學研究生獎勵金",
         "口腔醫學與公共衛生研發獎助",
         "附設醫院人才培育方案"
       ],
       "graduate_stipend_program": "教育部博生方案補助每月 40,000 元",
-      "announcement_format": "學務處網頁公告"
+      "announcement_format": "學務處網頁公告",
+      "link_url": "https://osa.csmu.edu.tw/p/412-1011-1880.php?Lang=zh-tw",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://osa.csmu.edu.tw/laa/scholarship/"
     },
     {
       "code": "1131",
@@ -1193,16 +1518,21 @@
       "category": "private_medical",
       "region": "north",
       "official_website": "https://www.mmc.edu.tw/",
-      "student_affairs_url": "https://osa.mmc.edu.tw/",
-      "assistance_office_url": "https://osa.mmc.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.mmc.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "馬偕優秀研究生獎勵金",
         "馬偕紀念醫院公費培育方案",
         "偏鄉醫療特色獎助"
       ],
       "graduate_stipend_program": "馬偕醫院體系全額學雜費與實習補助",
-      "announcement_format": "學務處公告"
+      "announcement_format": "學務處公告",
+      "link_url": "https://www.mmc.edu.tw/",
+      "link_status": "link_unverified",
+      "link_checked_on": "2026-11-07",
+      "link_note": "本次未能以工具驗證，網址待人工查",
+      "previous_portal_url": "https://osa.mmc.edu.tw/laa/scholarship/"
     },
     {
       "code": "039",
@@ -1211,16 +1541,21 @@
       "category": "private_tech",
       "region": "central",
       "official_website": "https://www.cyut.edu.tw/",
-      "student_affairs_url": "https://stafof.cyut.edu.tw/",
-      "assistance_office_url": "https://stafof.cyut.edu.tw/laa/",
-      "scholarship_portal_url": "https://stafof.cyut.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "朝陽菁英優秀博碩士獎學金",
         "航空學院與資訊學院產學專案獎助",
         "清寒向陽助學金"
       ],
       "graduate_stipend_program": "教育部博生培育補助與校內獎學金減免學費",
-      "announcement_format": "學務處生輔組網頁"
+      "announcement_format": "學務處生輔組網頁",
+      "link_url": "https://www.cyut.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://stafof.cyut.edu.tw/laa/scholarship/"
     },
     {
       "code": "056",
@@ -1231,14 +1566,19 @@
       "official_website": "https://www.stust.edu.tw/",
       "student_affairs_url": "https://osa.stust.edu.tw/",
       "assistance_office_url": "https://osa.stust.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.stust.edu.tw/laa/scholarship/",
+      "scholarship_portal_url": null,
       "key_programs": [
         "南臺優秀博碩士研究生學術獎勵",
         "統一企業與產學合作培訓獎金",
         "拔尖菁英獎學金"
       ],
       "graduate_stipend_program": "教育部博生方案核撥，校內結合產學配合款提供研發生活津貼",
-      "announcement_format": "學務處生輔組公告"
+      "announcement_format": "學務處生輔組公告",
+      "link_url": "https://osa.stust.edu.tw/tc/node/moneyQandA-1",
+      "link_status": "link_related_program",
+      "link_checked_on": "2026-11-07",
+      "link_note": "南臺科大「僑生獎助學金Q&A」單一對象問答頁",
+      "previous_portal_url": "https://osa.stust.edu.tw/laa/scholarship/"
     },
     {
       "code": "057",
@@ -1247,15 +1587,20 @@
       "category": "private_tech",
       "region": "north",
       "official_website": "https://www.vnu.edu.tw/",
-      "student_affairs_url": "https://osa.vnu.edu.tw/",
-      "assistance_office_url": "https://osa.vnu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.vnu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "航空精密機械優秀研究生獎勵",
         "桃園在地產業實習獎助"
       ],
       "graduate_stipend_program": "教育部專案補助",
-      "announcement_format": "學務處網頁"
+      "announcement_format": "學務處網頁",
+      "link_url": "https://www.vnu.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://osa.vnu.edu.tw/laa/scholarship/"
     },
     {
       "code": "05K",
@@ -1264,15 +1609,20 @@
       "category": "private_tech",
       "region": "north",
       "official_website": "https://www.chihlee.edu.tw/",
-      "student_affairs_url": "https://osa.chihlee.edu.tw/",
-      "assistance_office_url": "https://osa.chihlee.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.chihlee.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "商務科技優秀研究生獎學金",
         "金融創新產學獎助"
       ],
       "graduate_stipend_program": "教育部補助方案",
-      "announcement_format": "學務處網頁"
+      "announcement_format": "學務處網頁",
+      "link_url": "https://www.chihlee.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "僅驗證到官網，獎助頁待人工查",
+      "previous_portal_url": "https://osa.chihlee.edu.tw/laa/scholarship/"
     },
     {
       "code": "1124",
@@ -1281,15 +1631,20 @@
       "category": "private_tech",
       "region": "south",
       "official_website": "https://web.ksu.edu.tw/",
-      "student_affairs_url": "https://osa.ksu.edu.tw/",
-      "assistance_office_url": "https://osa.ksu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.ksu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "崑山綠能與車輛工程優秀博碩士獎學金",
         "校內獎助學金"
       ],
       "graduate_stipend_program": "教育部博士生計畫核定補助",
-      "announcement_format": "學務系統公告"
+      "announcement_format": "學務系統公告",
+      "link_url": "https://web.ksu.edu.tw/",
+      "link_status": "link_unverified",
+      "link_checked_on": "2026-11-07",
+      "link_note": "本次未能以工具驗證，網址待人工查",
+      "previous_portal_url": "https://osa.ksu.edu.tw/laa/scholarship/"
     },
     {
       "code": "1125",
@@ -1298,15 +1653,20 @@
       "category": "private_tech",
       "region": "south",
       "official_website": "https://www.cnu.edu.tw/",
-      "student_affairs_url": "https://osa.cnu.edu.tw/",
-      "assistance_office_url": "https://osa.cnu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.cnu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "藥學與民生科技研究生優秀獎助金",
         "藥廠產學公費培訓獎勵"
       ],
       "graduate_stipend_program": "教育部專案補助",
-      "announcement_format": "學務處生輔組公告"
+      "announcement_format": "學務處生輔組公告",
+      "link_url": "https://www.cnu.edu.tw/",
+      "link_status": "link_unverified",
+      "link_checked_on": "2026-11-07",
+      "link_note": "本次未能以工具驗證，網址待人工查",
+      "previous_portal_url": "https://osa.cnu.edu.tw/laa/scholarship/"
     },
     {
       "code": "1127",
@@ -1315,15 +1675,20 @@
       "category": "private_tech",
       "region": "south",
       "official_website": "https://www.stu.edu.tw/",
-      "student_affairs_url": "https://osa.stu.edu.tw/",
-      "assistance_office_url": "https://osa.stu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.stu.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "設計與資訊優秀研究生獎勵金",
         "文創設計菁英獎助"
       ],
       "graduate_stipend_program": "教育部專案補助",
-      "announcement_format": "學務處網頁"
+      "announcement_format": "學務處網頁",
+      "link_url": "https://www.stu.edu.tw/",
+      "link_status": "link_unverified",
+      "link_checked_on": "2026-11-07",
+      "link_note": "本次未能以工具驗證，網址待人工查",
+      "previous_portal_url": "https://osa.stu.edu.tw/laa/scholarship/"
     },
     {
       "code": "1128",
@@ -1333,15 +1698,20 @@
       "region": "north",
       "official_website": "https://www.mcut.edu.tw/",
       "student_affairs_url": "https://sa.mcut.edu.tw/",
-      "assistance_office_url": "https://sa.mcut.edu.tw/laa/",
-      "scholarship_portal_url": "https://sa.mcut.edu.tw/laa/scholarship/",
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "台塑企業工讀優秀研究生獎助",
         "明志優秀博碩士全額免學費與高額津貼",
         "前瞻材料研發獎勵"
       ],
       "graduate_stipend_program": "台塑企業出資全額補助學費並提供每月生活津貼與就業保障",
-      "announcement_format": "學務處公告"
+      "announcement_format": "學務處公告",
+      "link_url": "https://sa.mcut.edu.tw/p/412-1009-667.php?Lang=zh-tw",
+      "link_status": "link_related_program",
+      "link_checked_on": "2026-11-07",
+      "link_note": "明志科大「不利處境助學及學生人數」單一方案頁",
+      "previous_portal_url": "https://sa.mcut.edu.tw/laa/scholarship/"
     },
     {
       "code": "1129",
@@ -1350,15 +1720,20 @@
       "category": "private_tech",
       "region": "north",
       "official_website": "https://www.lhu.edu.tw/",
-      "student_affairs_url": "https://www.lhu.edu.tw/osa/",
-      "assistance_office_url": "https://www.lhu.edu.tw/osa/laa/",
-      "scholarship_portal_url": "https://www.lhu.edu.tw/osa/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "半導體封測研發優秀研究生獎學金",
         "工程卓越獎助金"
       ],
       "graduate_stipend_program": "教育部博生計畫核撥",
-      "announcement_format": "學務處公告"
+      "announcement_format": "學務處公告",
+      "link_url": "https://stulife.lhu.edu.tw/",
+      "link_status": "link_office",
+      "link_checked_on": "2026-11-07",
+      "link_note": "學務或生輔單位頁，非獎助專區",
+      "previous_portal_url": "https://www.lhu.edu.tw/osa/laa/scholarship/"
     },
     {
       "code": "1132",
@@ -1367,15 +1742,20 @@
       "category": "private_tech",
       "region": "central",
       "official_website": "https://www.hk.edu.tw/",
-      "student_affairs_url": "https://osa.hk.edu.tw/",
-      "assistance_office_url": "https://osa.hk.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.hk.edu.tw/laa/scholarship/",
+      "student_affairs_url": null,
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "護理醫療優秀研究生獎助",
         "民生創新特色獎學金"
       ],
       "graduate_stipend_program": "教育部專案補助",
-      "announcement_format": "學務處網頁"
+      "announcement_format": "學務處網頁",
+      "link_url": "https://www.hk.edu.tw/",
+      "link_status": "link_official_site_only",
+      "link_checked_on": "2026-11-07",
+      "link_note": "弘光公關組「募款專區」，是募款頁非獎助學金入口",
+      "previous_portal_url": "https://osa.hk.edu.tw/laa/scholarship/"
     },
     {
       "code": "1133",
@@ -1385,14 +1765,19 @@
       "region": "south",
       "official_website": "https://www.csu.edu.tw/",
       "student_affairs_url": "https://osa.csu.edu.tw/",
-      "assistance_office_url": "https://osa.csu.edu.tw/laa/",
-      "scholarship_portal_url": "https://osa.csu.edu.tw/laa/scholarship/",
+      "assistance_office_url": null,
+      "scholarship_portal_url": null,
       "key_programs": [
         "工程精準檢測優秀研究生獎勵",
         "產學深耕獎助學金"
       ],
       "graduate_stipend_program": "教育部專案補助",
-      "announcement_format": "學務處公告"
+      "announcement_format": "學務處公告",
+      "link_url": "https://osa.csu.edu.tw/p/412-1069-421.php?Lang=zh-tw",
+      "link_status": "link_related_program",
+      "link_checked_on": "2026-11-07",
+      "link_note": "正修「不利處境學生助學計畫」單一方案頁",
+      "previous_portal_url": "https://osa.csu.edu.tw/laa/scholarship/"
     },
     {
       "code": "1134",
@@ -1403,13 +1788,18 @@
       "official_website": "https://www.wzu.edu.tw/",
       "student_affairs_url": "https://d005.wzu.edu.tw/",
       "assistance_office_url": "https://d005.wzu.edu.tw/",
-      "scholarship_portal_url": "https://d005.wzu.edu.tw/scholarship/",
+      "scholarship_portal_url": "https://d005.wzu.edu.tw/category/136608",
       "key_programs": [
         "文藻跨國外語優秀研究生獎助金",
         "國際談判與外交特色獎勵"
       ],
       "graduate_stipend_program": "教育部專案補助",
-      "announcement_format": "學務處生輔組網頁"
+      "announcement_format": "學務處生輔組網頁",
+      "link_url": "https://d005.wzu.edu.tw/category/136608",
+      "link_status": "link_portal",
+      "link_checked_on": "2026-11-07",
+      "link_note": "獎助入口頁",
+      "previous_portal_url": "https://d005.wzu.edu.tw/scholarship/"
     }
   ]
 }

@@ -1,5 +1,13 @@
 # 目前計畫與已接受決策
 
+## 2026-11-07 修正 78 校名冊與大學候選的寫定資料
+
+- 名冊網址逐校連線驗證，狀態改為如實標記（`link_portal`、`link_office`、`link_related_program`、`link_official_site_only`、`link_unverified`），逐校結果見 `docs/audits/university-roster-verification-2026-11-07.json`。
+- 使用者決定清除 24 筆大學候選寫定的截止日；其中 4 筆來源失效者（長庚、中國醫、中原、東海）另清金額並更換來源網址。
+- `scripts/build_taiwan_universities_expansion.py` 已停用，避免重跑時蓋回寫定資料。候選的方案名稱、資格、其餘金額與 `verification` 狀態仍未對來源查核。
+
+---
+
 ## 2026-11-06 全台學生急難救助金全盤擴充、資訊鏈拓撲、首頁按鈕島與萃取入庫架構（PR #73）
 
 - **全台學生急難救助金資源大盤點與全景擴充**（[專題報告](EMERGENCY-RELIEF-FUNDS-EXPANSION-SURVEY.md)）：
