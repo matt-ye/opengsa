@@ -128,7 +128,9 @@ def publish(output, branch, title, repository, token, runner=subprocess.run):
     if result["status"] != "ready":
         return result
     remote = f"https://x-access-token:{token}@github.com/{repository}.git"
-    runner(["git", "push", "--force", remote, f"HEAD:refs/heads/{branch}"], cwd=ROOT, check=True, capture_output=True)
+    # 指令裡有權杖：不用 check=True，例外訊息會印出整行指令。
+    if runner(["git", "push", "--force", remote, f"HEAD:refs/heads/{branch}"], cwd=ROOT, capture_output=True).returncode:
+        raise RuntimeError("git_push_failed")
     env = {**os.environ, "GH_TOKEN": token}
     body = str(output / "pr-body.md")
     listed = runner(["gh", "pr", "list", "--repo", repository, "--head", branch, "--state", "open", "--json", "url"], env=env, capture_output=True, text=True)
@@ -141,7 +143,7 @@ def publish(output, branch, title, repository, token, runner=subprocess.run):
         if created.returncode == 0:
             result["pr_url"] = created.stdout.strip()
         else:
-            # repo 設定不允許 Actions 開 PR 時走這裡。維護者開的 PR 會正常跑 CI。
+            # 通常是 repo 設定不允許 Actions 開 PR。維護者開的 PR 會正常跑 CI。
             result["compare_url"] = f"https://github.com/{repository}/compare/main...{branch}?expand=1"
     (output / "result.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return result
@@ -154,7 +156,7 @@ def comment(result):
         return "沒有需要更新的資料，沒有開 PR。\n"
     if result.get("pr_url"):
         return f"已開資料 PR：{result['pr_url']}。**還沒上架**，要人工看過並合併。\n"
-    return f"分支已推送，但 Actions 沒有權限開 PR。請從這裡開：{result['compare_url']}\n**還沒上架**，要人工看過並合併。\n"
+    return f"分支已推送，但 Actions 沒有開成 PR（通常是 repo 設定不允許）。請從這裡開：{result['compare_url']}\n**還沒上架**，要人工看過並合併。\n"
 
 
 def main():
@@ -174,6 +176,9 @@ def main():
         result = {"new_hosts": apply_proposal(args.proposal)}
     else:
         result = prepare(args.proposal, args.output, args.label)
+        # 檢查沒過時不會走到 --publish，留言要在這裡寫好。
+        if result["status"] != "ready":
+            (args.output / "comment.md").write_text(comment(result), encoding="utf-8")
     print(json.dumps(result, ensure_ascii=False))
     if result.get("status") == "gates_failed":
         sys.exit(1)

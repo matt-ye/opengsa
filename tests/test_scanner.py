@@ -8,7 +8,7 @@ from unittest.mock import patch
 
 from pypdf import PdfWriter
 from pypdf.generic import DictionaryObject, NameObject, DecodedStreamObject
-from scripts.scan_sources import (ROOT, VERSION, Fetcher, ScanError, digest, evidence_mentions,
+from scripts.scan_sources import (MAX_REFETCH_ATTEMPTS, ROOT, VERSION, Fetcher, ScanError, digest, evidence_mentions,
                                  html_document, markdown_report, pdf_document, robots_policy, safe_url, read_any_source, resolved_revisions, scan, scan_and_extract, validate_config)
 
 CONFIG = json.loads((ROOT / "data/scan-sources.json").read_text(encoding="utf-8"))
@@ -108,6 +108,20 @@ class PendingContextTests(unittest.TestCase):
         self.assertNotEqual(page, self.page)
         _, _, bundle, _, _ = self.run_round(state, page=page, config=tight)
         self.assertEqual(self.statuses(bundle), ["needs_context"])
+
+    def test_item_that_never_extracts_stops_taking_requests_and_is_read_again_later(self):
+        state, _, _, _, _ = self.run_round(None)
+        state.pop("extractions")
+        tight = {**self.config, "max_requests": 2}
+        page = self.page.replace("115年4月15日".encode(), "115年5月20日".encode())
+        for _ in range(MAX_REFETCH_ATTEMPTS):
+            self.assertEqual(len(state["pending"]), 1)
+            state, report, _, _, _ = self.run_round(state, page=page, config=tight)
+        self.assertEqual((state["pending"], report["abandoned_pending"]), ({}, [self.URL]))
+        # 雜湊忘掉了，下一輪正常額度讀到就重新成卡。
+        state, _, bundle, _, _ = self.run_round(state, page=page)
+        self.assertNotIn("needs_context", self.statuses(bundle))
+        self.assertEqual(len(state["pending"]), 1)
 
     def test_stored_extraction_is_dropped_when_the_extractor_changes(self):
         state, _, _, _, _ = self.run_round(None)
@@ -361,6 +375,14 @@ class ScannerTests(unittest.TestCase):
         config=self.config();source=config['sources'][0];_,state=self.dead_source_rounds(1)
         def transport(url,*args): return response(status=404) if url.endswith('robots.txt') else response(fixture(source))
         state,_=scan(config,state,self.fetcher(config,transport))
+        self.assertEqual(state['failures'],{})
+
+    def test_running_out_of_budget_is_not_the_source_failing(self):
+        config=self.config();config['max_requests']=1
+        source=config['sources'][0]
+        def transport(url,*args): return response(status=404) if url.endswith('robots.txt') else response(fixture(source))
+        state,report=scan(config,None,self.fetcher(config,transport))
+        self.assertEqual((report['http_requests'],report['documents'][0]['status']),(1,'run_budget_exhausted'))
         self.assertEqual(state['failures'],{})
 
     def test_unreachable_host_is_not_retried_for_its_other_sources(self):

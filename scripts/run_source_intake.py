@@ -24,9 +24,9 @@ DISPOSITIONS = {"named_candidates_pending": "已產生候選", "source_document_
 
 
 def safe_text(value, limit=80):
-    """網頁標題是外部內容，進 Issue 留言前去掉提及、連結與表格語法。"""
+    """網頁標題是外部內容，進 Issue 留言或 PR 前去掉提及、連結與表格語法。# 也換掉，「Fixes #5」合併時會關掉 Issue。"""
     text = re.sub(r"\s+", " ", str(value or "")).strip()
-    text = re.sub(r"[`|<>\[\]]", "", text).replace("@", "＠")
+    text = re.sub(r"[`|<>\[\]]", "", text).replace("@", "＠").replace("#", "＃")
     return text[:limit] or "（無標題）"
 
 
