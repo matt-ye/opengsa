@@ -102,7 +102,7 @@ PASS: source configuration and review ledger (offline)
 _cleanly_into_three_tracks)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "C:\Users\wiwi4\AppData\Local\Temp\claude\8e5edddd72d9da71\e750cd0b-2b14-40b1-9add-2f7ba80660c8\scratchpad\e2e\run\repo\tests\test_temporal_tracks.py", line 37, in test_all_64_candidates_partition_cleanly_into_three_tracks
+  File "<repo>\tests\test_temporal_tracks.py", line 37, in test_all_64_candidates_partition_cleanly_into_three_tracks
     self.assertEqual(sum(counts.values()), 64)
     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
 AssertionError: 65 != 64
@@ -111,7 +111,7 @@ AssertionError: 65 != 64
 FAIL: test_track_execution_planner_and_incremental_action_skip (test_temporal_tracks.TemporalTracksAndDiffTests.test_track_execution_planner_and_incremental_action_skip)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "C:\Users\wiwi4\AppData\Local\Temp\claude\8e5edddd72d9da71\e750cd0b-2b14-40b1-9add-2f7ba80660c8\scratchpad\e2e\run\repo\tests\test_temporal_tracks.py", line 136, in test_track_execution_planner_and_incremental_action_skip
+  File "<repo>\tests\test_temporal_tracks.py", line 136, in test_track_execution_planner_and_incremental_action_skip
     self.assertEqual(plan_ent["total_in_track"], 7)
     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 AssertionError: 8 != 7
@@ -120,7 +120,7 @@ AssertionError: 8 != 7
 FAIL: test_all_64_project_without_mutation_or_intake_state_changes (test_time_policy.TimePolicyTests.test_all_64_project_without_mutation_or_intake_state_changes)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "C:\Users\wiwi4\AppData\Local\Temp\claude\8e5edddd72d9da71\e750cd0b-2b14-40b1-9add-2f7ba80660c8\scratchpad\e2e\run\repo\tests\test_time_policy.py", line 25, in test_all_64_project_without_mutation_or_intake_state_changes
+  File "<repo>\tests\test_time_policy.py", line 25, in test_all_64_project_without_mutation_or_intake_state_changes
     self.assertEqual(len(records), 64)
     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
 AssertionError: 65 != 64
@@ -129,7 +129,7 @@ AssertionError: 65 != 64
 FAIL: test_collect_covers_every_candidate (test_verify_candidate_sources.SourceCheckTests.test_collect_covers_every_candidate)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "C:\Users\wiwi4\AppData\Local\Temp\claude\8e5edddd72d9da71\e750cd0b-2b14-40b1-9add-2f7ba80660c8\scratchpad\e2e\run\repo\tests\test_verify_candidate_sources.py", line 51, in test_collect_covers_every_candidate
+  File "<repo>\tests\test_verify_candidate_sources.py", line 51, in test_collect_covers_every_candidate
     self.assertEqual(total, 256)
     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
 AssertionError: 257 != 256
