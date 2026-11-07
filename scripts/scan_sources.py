@@ -36,6 +36,10 @@ KINDS = {
 REFETCH_RESERVE = 6
 # 連續失敗的來源輪到時略過幾次：第 1 次失敗不略過，之後 1、3，最多 4。略過不花請求。
 MAX_FAILURE_SKIPS = 4
+# 重抓這麼多次還抽不到內容就放棄，不再佔佇列和額度；忘掉雜湊，下次輪到會重新當成變更。
+MAX_REFETCH_ATTEMPTS = 3
+# 重抓內文也需要時間；掃描要留這些秒數給它，否則保留的請求數用不到。
+REFETCH_RESERVE_SECONDS = 30
 # 連續失敗達這個次數才在報告上提醒；一兩次多半是對方網站暫時的問題。
 FAILURE_ALERT_COUNT = 3
 
@@ -407,8 +411,8 @@ def scan(config, previous=None, fetcher=None, resolved=None):
             report["retained_previous"] = bool(old)
             if kind == "html" and deferred_index is None and report["status"] in ("run_budget_exhausted", "changed_document_budget_deferred"):
                 deferred_index = sources.index(source)
-            # 只有真的花了請求而失敗才算；輪不到、被同主機連累、佇列滿都不是來源的問題。
-            if fetcher.count > spent and report["status"] != "review_backlog_full":
+            # 只有真的花了請求而失敗才算；輪不到、額度用完、被同主機連累、佇列滿都不是來源的問題。
+            if fetcher.count > spent and report["status"] not in ("review_backlog_full", "run_budget_exhausted"):
                 count = (failure or {}).get("count", 0) + 1
                 state["failures"][original_url] = {"count": count, "status": report["status"], "last_failed_at": now,
                                                    "skips_left": min(2 ** (count - 1) - 1, MAX_FAILURE_SKIPS)}
@@ -512,7 +516,8 @@ def scan_and_extract(config, previous, fetcher, resolved, reviews_payload, pilot
     known = (previous or {}).get("extractions", {})
     waiting = [p for key, p in (previous or {}).get("pending", {}).items() if known.get(key, {}).get("extractor") != EXTRACTOR_VERSION]
     reserve = min(REFETCH_RESERVE, 2 * len(waiting))
-    fetcher.config = {**config, "max_requests": config["max_requests"] - reserve}
+    fetcher.config = {**config, "max_requests": config["max_requests"] - reserve,
+                      "max_run_seconds": max(config["max_run_seconds"] - REFETCH_RESERVE_SECONDS, 1) if reserve else config["max_run_seconds"]}
     state, report = scan(config, previous, fetcher=fetcher, resolved=resolved)
     fetcher.config = config
     if on_scanned:
@@ -539,9 +544,17 @@ def scan_and_extract(config, previous, fetcher, resolved, reviews_payload, pilot
     for candidate in verified_bundle["candidates"]:
         if candidate["verification"]["status"] != "needs_context":
             fresh.setdefault(candidate["source_metadata"]["revision_id"], []).append(candidate)
+    abandoned = []
     for stub in todo:
-        if stub["id"] not in fresh:
-            stub["refetch_attempts"] = stub.get("refetch_attempts", 0) + 1
+        if stub["id"] in fresh:
+            continue
+        stub["refetch_attempts"] = stub.get("refetch_attempts", 0) + 1
+        if stub["refetch_attempts"] >= MAX_REFETCH_ATTEMPTS:
+            state["pending"].pop(stub["id"])
+            state["documents"].pop(stub["url"], None)
+            abandoned.append(stub["url"])
+    report["abandoned_pending"] = abandoned
+    verified_bundle["candidates"] = [c for c in verified_bundle["candidates"] if c["source_metadata"]["revision_id"] in state["pending"]]
     # 上一輪抽好的卡沒有內文可重驗，但人工處置要照最新台帳。
     reviews_by_revision = {}
     for entry in reviews_payload["reviews"]:
