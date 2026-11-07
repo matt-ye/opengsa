@@ -223,6 +223,7 @@ class SourceIntakeE2ETests(unittest.TestCase):
 
     @unittest.expectedFailure
     def test_gap_step7_announcement_and_its_policy_are_one_card(self):
+        self.require("intake.run")
         self.assertEqual(len(read(self.repo / "work/intake/result.json")["candidates"]), 1)
 
     @unittest.expectedFailure

@@ -34,6 +34,8 @@ jobs:
       - name: Validate the approved submission (no source GET)
         run: python scripts/intake_source.py --event "$GITHUB_EVENT_PATH" --output work/intake
       - name: Read and extract this source only (rules only, no secrets or models)
+        # 比 job 上限短，逾時後後面的步驟還來得及上傳與回報。
+        timeout-minutes: 17
         run: python scripts/run_source_intake.py --request work/intake/request.json --output work/intake
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         if: always()

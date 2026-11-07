@@ -117,6 +117,7 @@ class IntakeSourceTests(unittest.TestCase):
         self.assertNotIn("[連結]", text)
         self.assertNotIn("<b>", text)
         self.assertIn("網站不會有變動", text)
+        self.assertIn("已登記過", run_comment({**result, "already_registered": True}))
 
     def test_workflow_keeps_public_input_out_of_commands_and_cannot_push(self):
         workflow = (ROOT / ".github/workflows/source-intake.yml").read_text(encoding="utf-8")
