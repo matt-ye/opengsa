@@ -9,7 +9,7 @@ from unittest.mock import patch
 from pypdf import PdfWriter
 from pypdf.generic import DictionaryObject, NameObject, DecodedStreamObject
 from scripts.scan_sources import (ROOT, VERSION, Fetcher, ScanError, digest, evidence_mentions,
-                                 html_document, markdown_report, pdf_document, robots_policy, safe_url, scan)
+                                 html_document, markdown_report, pdf_document, robots_policy, safe_url, scan, scan_and_extract)
 
 CONFIG = json.loads((ROOT / "data/scan-sources.json").read_text(encoding="utf-8"))
 
@@ -38,6 +38,85 @@ def text_pdf():
     page[NameObject('/Contents')] = stream
     output = BytesIO();writer.write(output)
     return output.getvalue()
+
+
+class PendingContextTests(unittest.TestCase):
+    """待審項目不能因為錯過當輪就永遠變成 needs_context。全為合成假頁。"""
+    URL = "https://scholarship.opengsa-synthetic.example/news/phd-2026"
+
+    def setUp(self):
+        self.page = (ROOT / "tests/fixtures/source-intake/announcement.html").read_bytes()
+        self.source = {"id": "synthetic-foundation-2026", "title": "合成基金會115學年度研究生獎學金", "url": self.URL, "body_selector": "article", "required_markers": ["申請資格"],
+                       "pdf_include": [], "max_pdfs": 0, "review_note": "合成來源。", "evidence_mode": "short_excerpt", "category": "phd_research", "resource_kind": "scholarship", "scope": "nationwide"}
+        self.config = {**deepcopy(CONFIG), "sources": [self.source], "allowed_hosts": ["scholarship.opengsa-synthetic.example"], "minimum_host_interval_seconds": 0}
+        self.pilot = json.loads((ROOT / "data/pilot.json").read_text(encoding="utf-8"))
+        self.requests = []
+
+    def run_round(self, previous, page=None, config=None):
+        def transport(url, headers, limit):
+            self.requests.append(url)
+            if url.endswith("robots.txt"):
+                return response(status=404)
+            return response(page if page is not None else self.page) if page != b"" else response(status=500)
+        config = config or self.config
+        fetcher = Fetcher(config, transport=transport, sleeper=lambda seconds: None)
+        return scan_and_extract(config, previous, fetcher, set(), json.loads((ROOT / "data/scan-reviews.json").read_text(encoding="utf-8")), self.pilot)
+
+    def statuses(self, bundle):
+        return [c["verification"]["status"] for c in bundle["candidates"]]
+
+    def test_card_read_once_stays_proposable_when_the_source_is_down_later(self):
+        state, _, first, _, _ = self.run_round(None)
+        self.assertIn(self.statuses(first)[0], ("passed_automated_checks", "passed_with_gaps"))
+        self.requests.clear()
+        state, _, later, summary, _ = self.run_round(state, page=b"")
+        self.assertEqual(self.statuses(later), self.statuses(first))
+        self.assertEqual(summary["carried_forward_candidates"], 1)
+        self.assertNotIn("needs_context", self.statuses(later))
+
+    def test_new_revision_replaces_the_old_one_for_the_same_url(self):
+        state, _, _, _, _ = self.run_round(None)
+        page = self.page.replace("115年4月15日".encode(), "115年5月20日".encode())
+        state, _, bundle, _, _ = self.run_round(state, page=page)
+        self.assertEqual(len(state["pending"]), 1)
+        self.assertEqual(len(bundle["candidates"]), 1)
+        self.assertIn("2026-05-20", json.dumps(bundle["candidates"][0]["schedule"], ensure_ascii=False))
+
+    def test_old_state_without_extraction_is_refetched_within_the_reserve(self):
+        state, _, _, _, _ = self.run_round(None)
+        state.pop("extractions")
+        # 掃描沒有額度了，只剩保留給待審項目的請求。
+        tight = {**self.config, "max_requests": 2}
+        self.requests.clear()
+        _, report, bundle, _, _ = self.run_round(state, config=tight)
+        self.assertNotIn("needs_context", self.statuses(bundle))
+        self.assertEqual(report["http_requests"], 2)
+
+    def test_counter_change_alone_is_not_a_stale_revision(self):
+        state, _, _, _, _ = self.run_round(None)
+        state.pop("extractions")
+        tight = {**self.config, "max_requests": 2}
+        page = self.page.replace(b"</body>", b"<!-- visitor 12345 --></body>")
+        _, _, bundle, _, _ = self.run_round(state, page=page, config=tight)
+        self.assertNotIn("needs_context", self.statuses(bundle))
+
+    def test_changed_page_is_not_extracted_under_the_old_revision(self):
+        state, _, _, _, _ = self.run_round(None)
+        state.pop("extractions")
+        tight = {**self.config, "max_requests": 2}
+        page = self.page.replace("115年4月15日".encode(), "115年5月20日".encode())
+        self.assertNotEqual(page, self.page)
+        _, _, bundle, _, _ = self.run_round(state, page=page, config=tight)
+        self.assertEqual(self.statuses(bundle), ["needs_context"])
+
+    def test_stored_extraction_is_dropped_when_the_extractor_changes(self):
+        state, _, _, _, _ = self.run_round(None)
+        for value in state["extractions"].values():
+            value["extractor"] = "older"
+        tight = {**self.config, "max_requests": 2}
+        _, _, bundle, summary, _ = self.run_round(state, config=tight)
+        self.assertEqual(summary["carried_forward_candidates"], 0)
+        self.assertNotIn("needs_context", self.statuses(bundle))
 
 
 class ScannerTests(unittest.TestCase):

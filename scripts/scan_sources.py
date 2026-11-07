@@ -32,6 +32,10 @@ KINDS = {
 }
 
 
+# 待審項目重抓內文保留的請求數（robots＋頁面，約 3 份）。掃描本身至少還有 14 次。
+REFETCH_RESERVE = 6
+
+
 class ScanError(Exception):
     pass
 
@@ -111,6 +115,7 @@ class Fetcher:
         self.last, self.robots, self.blocked, self.delays, self.robots_checks = {}, {}, {}, {}, {}
         self.in_memory_blocks = {}
         self.in_memory_raw_sha256 = {}
+        self.in_memory_semantic_sha256 = {}
 
     def request(self, url, headers, limit):
         url = safe_url(url, self.config["allowed_hosts"])
@@ -307,6 +312,11 @@ def evidence_mentions(blocks, mode="short_excerpt"):
     return facts
 
 
+def semantic_digest(blocks, attachments):
+    """頁面內文的指紋。計數器、時間戳這類只動原始位元組的變化不算內容改變。"""
+    return digest([[normalized(b["text"]) for b in blocks], attachments])
+
+
 def scan(config, previous=None, fetcher=None, resolved=None):
     previous = previous or {"documents": {}, "pending": {}}
     state = deepcopy(previous)
@@ -353,7 +363,9 @@ def scan(config, previous=None, fetcher=None, resolved=None):
                 if hasattr(fetcher, "in_memory_blocks"):
                     fetcher.in_memory_blocks[original_url] = blocks
                     fetcher.in_memory_raw_sha256[original_url] = digest(response["body"])
-                semantic = digest([[normalized(b["text"]) for b in blocks], attachments])
+                semantic = semantic_digest(blocks, attachments)
+                if hasattr(fetcher, "in_memory_semantic_sha256"):
+                    fetcher.in_memory_semantic_sha256[original_url] = semantic
                 document = {"raw_sha256": digest(response["body"]), "semantic_sha256": semantic,
                             "etag": response["headers"].get("etag"), "last_modified": response["headers"].get("last-modified"),
                             "attachments": attachments, "last_checked_at": now, "final_url": response["url"], "profile_sha256": profile}
@@ -368,6 +380,8 @@ def scan(config, previous=None, fetcher=None, resolved=None):
                                  "evidence_mode": source.get("evidence_mode", "short_excerpt"),
                                  "review_note": source["review_note"]}
                     if revision not in resolved:
+                        # 來源已是新版本，舊版本不能再當成待審內容提案。
+                        state["pending"] = {key: item for key, item in state["pending"].items() if item.get("url") != original_url}
                         state["pending"][revision] = candidate
             else:
                 raise ScanError(f"http_{status}")
@@ -431,6 +445,61 @@ def validate_config(config):
             if not urlsplit(url).path.lower().endswith(".pdf"):raise ValueError("Known attachments must be PDF URLs")
 
 
+def scan_and_extract(config, previous, fetcher, resolved, reviews_payload, pilot_data, on_scanned=None):
+    """掃描後把所有待審項目轉成結構化候選。
+
+    內文只留在當輪記憶體，所以當輪抽到的結果（結構化候選，不是原文）存進 state，下一輪直接沿用。
+    還沒抽到的（例如舊 state 留下的）在保留的請求額度內重抓，內容已改就等掃描產生新版本。
+    """
+    from scripts.extract_candidates import EXTRACTOR_VERSION, refetch_and_extract_candidates
+    from scripts.review_candidates import apply_review_ledger, build_review_report
+    known = (previous or {}).get("extractions", {})
+    waiting = [p for key, p in (previous or {}).get("pending", {}).items() if known.get(key, {}).get("extractor") != EXTRACTOR_VERSION]
+    reserve = min(REFETCH_RESERVE, 2 * len(waiting))
+    fetcher.config = {**config, "max_requests": config["max_requests"] - reserve}
+    state, report = scan(config, previous, fetcher=fetcher, resolved=resolved)
+    fetcher.config = config
+    if on_scanned:
+        on_scanned(state)
+    kept = {key: value for key, value in state.get("extractions", {}).items()
+            if key in state["pending"] and value.get("extractor") == EXTRACTOR_VERSION}
+    todo = sorted((p for key, p in state["pending"].items() if key not in kept), key=lambda p: p.get("refetch_attempts", 0))
+    bundle, refetch_statuses = refetch_and_extract_candidates(
+        todo,
+        config,
+        fetcher=fetcher,
+        as_of=datetime.fromisoformat(report["observed_at"]).astimezone(timezone(timedelta(hours=8))).date().isoformat(),
+        in_memory_blocks_by_url=fetcher.in_memory_blocks,
+    )
+    verified_bundle, review_summary, review_md = build_review_report(
+        bundle,
+        pilot_data,
+        scan_report=report,
+        reviews_data=reviews_payload,
+        refetch_statuses=refetch_statuses,
+        in_memory_blocks_by_source=fetcher.in_memory_blocks,
+    )
+    fresh = {}
+    for candidate in verified_bundle["candidates"]:
+        if candidate["verification"]["status"] != "needs_context":
+            fresh.setdefault(candidate["source_metadata"]["revision_id"], []).append(candidate)
+    for stub in todo:
+        if stub["id"] not in fresh:
+            stub["refetch_attempts"] = stub.get("refetch_attempts", 0) + 1
+    # 上一輪抽好的卡沒有內文可重驗，但人工處置要照最新台帳。
+    reviews_by_revision = {}
+    for entry in reviews_payload["reviews"]:
+        reviews_by_revision.setdefault(entry["revision_id"], []).append(entry)
+    carried = [apply_review_ledger(candidate, reviews_by_revision) for value in kept.values() for candidate in value["candidates"]]
+    verified_bundle["candidates"] = verified_bundle["candidates"] + carried
+    review_summary["carried_forward_candidates"] = len(carried)
+    if carried:
+        review_md += f"\n另有 {len(carried)} 筆沿用先前讀到的內容，這輪沒有重新抓取。\n"
+    state["extractions"] = {**kept, **{key: {"extractor": EXTRACTOR_VERSION, "candidates": rows} for key, rows in fresh.items()}}
+    report["http_requests"] = fetcher.count
+    return state, report, verified_bundle, review_summary, review_md
+
+
 def run():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=ROOT / "data/scan-sources.json")
@@ -453,6 +522,13 @@ def run():
     old = json.loads(args.state.read_text(encoding="utf-8")) if args.state.exists() else None
     if old and old.get("version") != VERSION:
         parser.error("State version differs; preserve it and select a new state path")
+
+    def persist(state):
+        args.state.parent.mkdir(parents=True, exist_ok=True)
+        temp = args.state.with_suffix(".new.json")
+        temp.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
+        temp.replace(args.state)
+
     resolved = set()
     for review in reviews_payload["reviews"]:
         if review["action"] == "applied" or review.get("candidate_id"):
@@ -460,35 +536,13 @@ def run():
         resolved.add(review["revision_id"])
         if old:
             old.get("pending", {}).pop(review["revision_id"], None)
-    fetcher = Fetcher(config)
-    state, report = scan(config, old, fetcher=fetcher, resolved=resolved)
-    args.state.parent.mkdir(parents=True, exist_ok=True)
-    temp = args.state.with_suffix(".new.json")
-    temp.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
-    temp.replace(args.state)
+    pilot_data = json.loads((ROOT / "data/pilot.json").read_text(encoding="utf-8"))
+    state, report, verified_bundle, review_summary, review_md = scan_and_extract(
+        config, old, Fetcher(config), resolved, reviews_payload, pilot_data, on_scanned=persist)
+    persist(state)
     args.output.mkdir(parents=True, exist_ok=True)
-    (args.output / "scan-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     (args.output / "candidates.json").write_text(json.dumps(list(state["pending"].values()), ensure_ascii=False, indent=2), encoding="utf-8")
     (args.output / "summary.md").write_text(markdown_report(state, report), encoding="utf-8")
-    from scripts.extract_candidates import refetch_and_extract_candidates
-    from scripts.review_candidates import build_review_report
-    pilot_data = json.loads((ROOT / "data/pilot.json").read_text(encoding="utf-8"))
-    bundle, refetch_statuses = refetch_and_extract_candidates(
-        list(state["pending"].values()),
-        config,
-        fetcher=fetcher,
-        as_of=datetime.fromisoformat(report["observed_at"]).astimezone(timezone(timedelta(hours=8))).date().isoformat(),
-        in_memory_blocks_by_url=fetcher.in_memory_blocks,
-        allow_network_refetch=False,
-    )
-    verified_bundle, review_summary, review_md = build_review_report(
-        bundle,
-        pilot_data,
-        scan_report=report,
-        reviews_data=reviews_payload,
-        refetch_statuses=refetch_statuses,
-        in_memory_blocks_by_source=fetcher.in_memory_blocks,
-    )
     (args.output / "structured-candidates.json").write_text(json.dumps(verified_bundle, ensure_ascii=False, indent=2), encoding="utf-8")
     (args.output / "review-diff.json").write_text(json.dumps(review_summary, ensure_ascii=False, indent=2), encoding="utf-8")
     (args.output / "model-usage.json").write_text(json.dumps(review_summary.get("model_usage", {}), ensure_ascii=False, indent=2), encoding="utf-8")
