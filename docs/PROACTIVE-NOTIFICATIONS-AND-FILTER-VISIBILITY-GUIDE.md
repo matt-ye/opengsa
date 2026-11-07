@@ -17,7 +17,7 @@ OpenGSA 致力於讓台灣學生「把時間留給研究，把獎助檢索交給
 
 ```mermaid
 flowchart TD
-    Site["OpenGSA 靜態站點 (GitHub Pages)<br/>https://matt-ye.github.io/opengsa/"] --> TopBtn["首頁頂端操作列<br/>[📡 訂閱推播] 按鈕"]
+    Site["OpenGSA 靜態站點 (GitHub Pages)<br/>https://opengsa.mattye.dev/"] --> TopBtn["首頁頂端操作列<br/>[📡 訂閱推播] 按鈕"]
     
     TopBtn --> Dialog["原生無障礙彈窗小視窗 (<dialog id='rss-dialog'>)<br/>• 支援 ESC 鍵關閉 / 遮罩點擊關閉 / 鍵盤導航<br/>• 零追蹤、無 Cookies、無個資收集"]
     
@@ -35,13 +35,13 @@ flowchart TD
 
 | 頻道名稱 | 發布檔案路徑 | 公開訂閱網址 | 涵蓋範疇與推播重點 |
 | :--- | :--- | :--- | :--- |
-| **全庫獎助動態頻道** | `dist/site/feed.xml` | `https://matt-ye.github.io/opengsa/feed.xml` | 收錄全庫 236 筆方案，依最新官方公告與修訂日推播；內含身分資格、金額、官方原文連結。 |
-| **30 天截止倒數提醒** | `dist/site/feed-deadlines.xml` | `https://matt-ye.github.io/opengsa/feed-deadlines.xml` | 動態篩選即日起 30 天內即將截止的項目，冠以 `⏱️ [即將截止]` 前綴，推播倒數天數與送件指引。 |
+| **全庫獎助動態頻道** | `dist/site/feed.xml` | `https://opengsa.mattye.dev/feed.xml` | 收錄全庫 236 筆方案，依最新官方公告與修訂日推播；內含身分資格、金額、官方原文連結。 |
+| **30 天截止倒數提醒** | `dist/site/feed-deadlines.xml` | `https://opengsa.mattye.dev/feed-deadlines.xml` | 動態篩選即日起 30 天內即將截止的項目，冠以 `⏱️ [即將截止]` 前綴，推播倒數天數與送件指引。 |
 
 ### 2.2 Follow.it 零個資 Email 訂閱代管機制
 * **個資零儲存原則**：OpenGSA 嚴守開源公益純靜態架構，不在伺服器端儲存讀者電子郵件，免除資安外洩風險與 SMTP 發信成本。
 * **外部無縫橋接**：
-  - 彈窗小視窗直接內嵌 `<form action="https://api.follow.it/subscribe" method="post" target="_blank">`，帶入 `resource="https://matt-ye.github.io/opengsa/feed.xml"`。
+  - 彈窗小視窗直接內嵌 `<form action="https://api.follow.it/subscribe" method="post" target="_blank">`，帶入 `resource="https://opengsa.mattye.dev/feed.xml"`。
   - 使用者在彈窗輸入 Email 送出後，直接在外部新分頁由 Follow.it 完成寄件驗證。
   - 亦提供 `https://follow.it/now` 專屬導向連結，讀者可自選以 Telegram 機器人或桌面推播接收通知。
 
