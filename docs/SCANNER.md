@@ -68,6 +68,8 @@ repo 設定 `can_approve_pull_request_reviews` 關閉時 Actions 開不了 PR，
 
 ## 上架與駁回（2026-11-08 使用者決定）
 
+提案前會去掉重複：同一份文件只留一張，同網站同標題只留一張；標題只是頁面或專區名稱的不成卡。這些都列在提案摘要的 `dropped_not_distinct`。
+
 - **未審的卡直接上網站**，重點是快。卡片列出來源；不確定的欄位不猜，連到來源網站。
 - **駁回的卡下架**：`python scripts/dismiss_candidate.py --candidate-id ... --reason ... --problem-source extraction`。寫進台帳後，網站與 RSS 下一次建置就不顯示。卡片留在候選檔，原因和 `problem_source`（`source_page`、`extraction`、`wrong_url`、`not_a_program`、`other`）留在台帳，之後用來改進萃取腳本。
 - **目前只有 repo owner 核准提交與駁回。** 讓核准更方便是未來規劃，這輪不做。

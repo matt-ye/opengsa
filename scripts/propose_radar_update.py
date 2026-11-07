@@ -18,6 +18,7 @@ from scripts.source_chains import candidate_bindings,candidate_documents,timelin
 from scripts.export_source_chain_graph import load_graph,export as export_graph
 from scripts.expand_sources import read,save,now
 from scripts.audit_sources import canonical_url
+from urllib.parse import urlsplit
 
 ACCEPT={'passed_automated_checks','passed_with_gaps'}
 HAND_BASELINE='data/known-hand-authored-candidates.json'
@@ -28,25 +29,18 @@ def same_program(left,right):
     return min(len(left),len(right))>=6 and (left in right or right in left)
 
 def retire_hand_cards(good,replaced_urls=()):
-    """新卡取代同網址、同方案的手寫卡。同網址不代表同方案（同校首頁可能有急難金和獎學金），認不出來就不刪，交給人判斷。"""
+    """新卡取代同方案的手寫卡，不論舊卡的網址（舊網址常是錯的）。同網址不代表同方案（同校首頁可能有急難金和獎學金），認不出來就不刪，交給人判斷。"""
     baseline=read(ROOT/HAND_BASELINE);known=set(baseline['candidate_ids'])
     targets={canonical_url(c['source_metadata']['url']) for c in good}|({canonical_url(u) for u in replaced_urls} if good else set())
-    bundles={};at_url=defaultdict(list)
+    bundles={};retired,manual,files=[],[],{}
     for path in sorted((ROOT/'data/candidates').glob('*.json')):
         bundle=read(path);rel='data/candidates/'+path.name;bundles[rel]=bundle
         for card in bundle['candidates']:
+            if card['candidate_id'] not in known:continue
             url=canonical_url(card['source_metadata']['url'])
-            if url in targets:at_url[url].append((rel,card))
-    retired,manual,files=[],[],{}
-    for url,cards in sorted(at_url.items()):
-        hand=[(rel,card) for rel,card in cards if card['candidate_id'] in known]
-        if not hand:continue
-        for rel,card in hand:
             row={'url':url,'candidate_id':card['candidate_id'],'title':card['title']}
-            if len({other['program_key'] for _,other in hand})==1 and any(same_program(card['title'],new['title']) for new in good):
-                retired.append({**row,'bundle':rel})
-            else:
-                manual.append(row)
+            if any(same_program(card['title'],new['title']) for new in good):retired.append({**row,'bundle':rel})
+            elif url in targets:manual.append(row)
     gone={row['candidate_id'] for row in retired}
     for rel in {row['bundle'] for row in retired}:
         files[rel]={**bundles[rel],'candidates':[c for c in bundles[rel]['candidates'] if c['candidate_id'] not in gone]}
@@ -68,6 +62,26 @@ def merge_temporal(merged,good,temporal,observed):
     if errors:raise ValueError('invalid_temporal_records: '+str(errors)[:300])
     return result,len(records)
 
+# 標題只是頁面或專區名稱，看不出是哪個方案（附件沒有自己的標題時會沿用列表頁的）。
+GENERIC_TITLE=re.compile(r'一覽表?|資訊網|專區|相關辦法|獎助學金與補助|^(?:::: )?(?:校內外|校內|校外|研究生)?獎(?:助)?學金(?:資訊|公告)?(?:\s|$|[-－|｜])|[|｜]\s*獎助學金公告|^└')
+
+def distinct_named_cards(cards):
+    """同一份文件只留一張（同一 PDF 可能從多個入口讀到），同網站同標題也只留一張（常是同方案的申請表、報告表）；
+    標題看不出方案的不成卡。都列在提案摘要，不是靜默丟棄。"""
+    kept,seen,dropped=[],set(),[]
+    # 網頁優先於附件，內容通常比表格完整。
+    for card in sorted(cards,key=lambda c:bool(re.search(r'\.(?:pdf|docx?|odt)$',urlsplit(c['source_metadata']['url']).path,re.I))):
+        meta=card['source_metadata'];title=re.sub(r'\W+','',card['title']).casefold()
+        reason=('generic_title' if GENERIC_TITLE.search(card['title']) else
+                'same_document' if canonical_url(meta['url']) in seen else
+                'same_title_same_site' if (urlsplit(meta['url']).hostname,title) in seen else None)
+        if reason:
+            dropped.append({'candidate_id':card['candidate_id'],'title':card['title'],'url':meta['url'],'reason':reason})
+            continue
+        seen|={canonical_url(meta['url']),(urlsplit(meta['url']).hostname,title)}
+        kept.append(card)
+    return kept,dropped
+
 def split_site_ready(cards,incoming,config):
     """一張卡不符合網站資料規格，不能讓整批提案和網站建置一起失敗；扣下來並列出原因。"""
     from scripts.build_review_workspace import candidate_preview_data
@@ -85,6 +99,7 @@ def prepare(incoming,config,observations=None,replaced_urls=(),temporal=None):
     if errors:raise ValueError('invalid_incoming_candidates: '+str(errors)[:300])
     base=read(ROOT/'data/candidates/source-review.json')
     good=[deepcopy(c) for c in incoming['candidates'] if c['verification']['status'] in ACCEPT]
+    good,dropped=distinct_named_cards(good)
     good,withheld_contract=split_site_ready(good,incoming,config)
     if any(c['review']['promotion_ready'] or c['review'].get('independent_reviewer') for c in good):raise ValueError('automatic_approval_not_allowed')
     urls={c['source_metadata']['url'] for c in good}
@@ -174,7 +189,7 @@ def prepare(incoming,config,observations=None,replaced_urls=(),temporal=None):
     load_graph(index,reader=lambda path:files[path] if path in files else original(path))
     timeline_metadata(files['data/source-chains.json'],merged)
     summary={'incoming':len(incoming['candidates']),'accepted_for_radar_proposal':len(good),
-        'withheld_failed_checks':len(incoming['candidates'])-len(good)-len(withheld_contract),'withheld_site_contract':withheld_contract,'retained_old_candidates':len(keep),
+        'withheld_failed_checks':len(incoming['candidates'])-len(good)-len(withheld_contract)-len(dropped),'dropped_not_distinct':dropped,'withheld_site_contract':withheld_contract,'retained_old_candidates':len(keep),
         'proposed_candidates':len(merged['candidates']),'replaced_urls':sorted(urls),'invalidated_timeline_documents':sorted(invalid_docs),
         'byte_identical_rebound_documents':sorted({key[0] for key in rebound}-invalid_docs),
         'retired_hand_cards':retired,'needs_manual_retire':manual,'temporal_records':temporal_count,
