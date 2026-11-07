@@ -89,7 +89,7 @@ const subTours = {
     icon: "⭐",
     title: "第三步：收藏與跨頁行事曆",
     badge: "03 / 跨頁排程",
-    desc: "勾選方案，或在方案說明按「⭐ 收藏」，自動同步至【獎助詳情】進行多方案並排比對，並匯入【我的時間軸】安排待辦；亦可試算研討會補件時限。",
+    desc: "勾選方案或按「列入我的選項」，自動同步至【獎助詳情】進行多方案並排比對，並匯入【我的時間軸】安排待辦；亦可試算研討會補件時限。",
     features: ["跨頁自動即時同步", "第二頁雙方案並排比對", "第三頁個人專屬時間軸"],
     action: { label: "👉 查看我的時間軸", panel: "timeline" }
    },
@@ -136,7 +136,7 @@ const subTours = {
     icon: "🔍",
     title: "同義詞搜尋與一鍵收藏",
     badge: "找獎助 04",
-    desc: "搜尋框內建同義詞引擎，輸入「頂會」、「NeurIPS」、「CVPR」、「差旅補助」即可精確命中出國會議補助；在卡片點擊「⭐ 收藏」即刻跨頁同步。",
+    desc: "搜尋框內建同義詞引擎，輸入「頂會」、「NeurIPS」、「CVPR」、「差旅補助」即可精確命中出國會議補助；在清單卡片按「列入我的選項」即刻跨頁同步。",
     features: ["頂尖國際研討會同義詞比對", "一鍵加入個人時間軸", "右上角浮動 Toast 即時微回饋"],
     action: { label: "👉 聚焦搜尋框", panel: "search", anchor: "search-query" }
    }
@@ -246,7 +246,7 @@ const subTours = {
     title: "從屬性自測：學習型 vs 勞僱型",
     badge: "權益求助 03",
     desc: "點選「求助與自測」，勾選固定排班與差勤、勞務報酬對價、指揮監督、無關修業的庶務等客觀指標，系統一鍵分析「實質受僱關係」，杜絕假學習真勞動。",
-    features: ["客觀司法判準指標檢核", "即時產出爭點分析報告", "蒐證四要件提示（排班表/截圖/帳戶）"],
+    features: ["客觀司法判準指標檢核", "即時產出爭點分析報告", "蒐證四要件提示（排班表/截圖/入帳明細/課程大綱）"],
     action: { label: "👉 前往從屬性自測", panel: "rights", anchor: "subordination-wizard" }
    },
    {
@@ -1909,7 +1909,7 @@ const renderGuideStep = (tourKey, step) => {
       const closedParent = anchorEl.closest ? anchorEl.closest("details:not([open])") : null;
       if (closedParent) closedParent.open = true;
       if (typeof anchorEl.scrollIntoView === "function") anchorEl.scrollIntoView({ behavior: "smooth", block: "start" });
-      const firstFocus = anchorEl.querySelector ? anchorEl.querySelector("button, select, input") : null;
+      const firstFocus = anchorEl.matches && anchorEl.matches("button, select, input") ? anchorEl : anchorEl.querySelector ? anchorEl.querySelector("button, select, input") : null;
       if (firstFocus && typeof firstFocus.focus === "function") firstFocus.focus();
      }
     }
