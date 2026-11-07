@@ -32,10 +32,12 @@ KINDS = {
 }
 
 
-# 待審項目重抓內文保留的請求數（robots＋頁面，約 3 份）。掃描本身至少還有 14 次。
+# 待審項目重抓內文保留的請求數（robots＋頁面，約 3 份）。其餘都給掃描。
 REFETCH_RESERVE = 6
 # 連續失敗的來源輪到時略過幾次：第 1 次失敗不略過，之後 1、3，最多 4。略過不花請求。
 MAX_FAILURE_SKIPS = 4
+# 連續失敗達這個次數才在報告上提醒；一兩次多半是對方網站暫時的問題。
+FAILURE_ALERT_COUNT = 3
 
 
 class ScanError(Exception):
@@ -430,6 +432,10 @@ def markdown_report(state, report):
              f"HTTP {report['http_requests']}次；變更{report['changed_documents']}份；待覆核{report['pending_candidates']}筆；模型呼叫0次。",
              "", "| 來源 | 類型 | 狀態 |", "|---|---|---|"]
     lines.extend(f"| {cell(d['source_id'])} | {d['kind']} | {cell(d['status'])} |" for d in report["documents"])
+    repeated = {url: item for url, item in state.get("failures", {}).items() if item["count"] >= FAILURE_ALERT_COUNT}
+    if repeated:
+        lines.extend(["", f"## 連續失敗 {FAILURE_ALERT_COUNT} 次以上（來源可能已搬移，請確認）", "", "| 來源URL | 次數 | 最後狀態 |", "|---|---|---|"])
+        lines.extend(f"| {cell(url)} | {item['count']} | {cell(item['status'])} |" for url, item in sorted(repeated.items()))
     lines.extend(["", "## 待覆核欄位線索", "", "| 來源URL | 欄位 | 原文短證據 | 定位 |", "|---|---|---|---|"])
     for candidate in state["pending"].values():
         for fact in candidate["facts"]:
@@ -438,7 +444,8 @@ def markdown_report(state, report):
 
 
 def validate_config(config):
-    if not (0 < config["max_requests"] <= 20 and 0 < config["max_changed_documents"] <= 5
+    # 請求上限 50 是 2026-11-08 使用者決定的暫時值（原本 20）；主機間隔與 robots 規則不變。
+    if not (0 < config["max_requests"] <= 50 and 0 < config["max_changed_documents"] <= 5
             and 0 < config["max_pending_candidates"] <= 24 and config["minimum_host_interval_seconds"] >= 3
             and 0 < config["max_run_seconds"] <= 180):
         raise ValueError("Configuration exceeds the bounded scan policy")

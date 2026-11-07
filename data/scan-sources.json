@@ -210,7 +210,7 @@
     "youth.gov.taipei",
     "youth.tycg.gov.tw"
   ],
-  "max_requests": 20,
+  "max_requests": 50,
   "max_changed_documents": 5,
   "max_pending_candidates": 24,
   "minimum_host_interval_seconds": 3,
