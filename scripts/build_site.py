@@ -15,6 +15,7 @@ from scripts.build_review_workspace import candidate_preview_data
 from scripts.build_feed import SITE_URL, build_feeds
 from scripts.check_data import validate_candidate_snapshot
 from scripts.radar_metadata import known_hand_authored, radar_metadata
+from scripts.review_candidates import dismissed_candidate_ids
 from scripts.source_chains import timeline_metadata
 
 URL = SITE_URL
@@ -55,6 +56,11 @@ def load_full_library(root=ROOT):
         bundle = read(bf)
         all_cands.extend(bundle["candidates"])
         as_of = max(as_of, bundle["as_of"])
+
+    # 未審的卡照常上網站；駁回的卡下架。下架只看台帳，卡片留在候選檔供日後改進萃取。
+    ledger = Path(root) / "data/scan-reviews.json"
+    gone = dismissed_candidate_ids(all_cands, json.loads(ledger.read_text(encoding="utf-8"))) if ledger.exists() else set()
+    all_cands = [card for card in all_cands if card["candidate_id"] not in gone]
 
     combined_records = {}
     combined_batches = []

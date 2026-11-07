@@ -1350,9 +1350,9 @@ function renderCompareCard(col, item) {
 
  const secTiming = el("div", "compare-section");
  secTiming.append(el("h4", "", "📅 申請時程與期限"));
- secTiming.append(el("p", "small", "學生截止：" + deadlineText(item)));
- secTiming.append(el("p", "small", "申請開始：" + startLabel(item)));
- secTiming.append(el("p", "small", "結果公告：" + resultText(item)));
+ radarFact(secTiming,"學生截止",deadlineText(item),item);
+ radarFact(secTiming,"申請開始",startLabel(item),item);
+ radarFact(secTiming,"結果公告",resultText(item),item);
  col.append(secTiming);
 
  const secRef = el("div", "compare-section");

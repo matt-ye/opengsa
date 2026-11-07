@@ -147,6 +147,8 @@ class SourceIntakeE2ETests(unittest.TestCase):
             return
         # 新增、更新、提交都套用後才重跑全部測試：寫死總數或版本的測試會在這裡現形。
         cls.sh("update.unittest", "-m", "unittest", "discover", "-s", "tests")
+        # 排在全測之後：有測試假設台帳是空的。
+        cls.dismiss_round(base)
 
     @classmethod
     def intake_round(cls, base):
@@ -192,6 +194,16 @@ class SourceIntakeE2ETests(unittest.TestCase):
         for gate, cmd in GATES.items():
             cls.sh(f"replace.{gate}", *cmd)
         return cls.sh("replace.build_site", "scripts/build_site.py", base / "site-replace")
+
+    @classmethod
+    def dismiss_round(cls, base):
+        """駁回一張卡：照常建置，卡片留在候選檔，網站和 RSS 不再顯示。"""
+        cls.dismissed = cls.synthetic_cards()[0]
+        if not cls.sh("dismiss.run", "scripts/dismiss_candidate.py", "--candidate-id", cls.dismissed["candidate_id"], "--reason", "合成：日期抽錯", "--problem-source", "extraction"):
+            return False
+        for gate, cmd in GATES.items():
+            cls.sh(f"dismiss.{gate}", *cmd)
+        return cls.sh("dismiss.build_site", "scripts/build_site.py", base / "site-dismiss")
 
     @classmethod
     def synthetic_cards(cls):
@@ -311,6 +323,20 @@ class SourceIntakeE2ETests(unittest.TestCase):
         self.assertIn(self.hand_card["title"] + REPLACE_CYCLE, feed)
         self.assertNotIn(self.hand_card["candidate_id"], page)
         self.assertNotIn(self.hand_card["candidate_id"], read(self.repo / "data/known-hand-authored-candidates.json")["candidate_ids"])
+
+    def test_dismissed_card_leaves_the_site_and_feed_and_keeps_its_reason(self):
+        for gate in GATES:
+            self.assert_step(f"dismiss.{gate}")
+        self.assert_step("dismiss.build_site")
+        card = self.dismissed
+        page, feed = self.site("dismiss")
+        self.assertNotIn(card["candidate_id"], page)
+        self.assertNotIn(card["title"], feed)
+        # 未審的其他卡還在。
+        self.assertIn(INTAKE_TITLE, feed)
+        entry = read(self.repo / "data/scan-reviews.json")["reviews"][-1]
+        self.assertEqual((entry["candidate_id"], entry["action"], entry["problem_source"]), (card["candidate_id"], "dismissed", "extraction"))
+        self.assertIn(card["candidate_id"], [c["candidate_id"] for c in read(self.repo / "data/candidates/source-review.json")["candidates"]])
 
     def test_whole_suite_passes_with_the_applied_data(self):
         self.assert_step("update.unittest")

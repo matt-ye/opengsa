@@ -58,6 +58,9 @@
           "candidate_sha256": {
             "type": "string",
             "pattern": "^[a-f0-9]{64}$"
+          },
+          "problem_source": {
+            "enum": ["source_page", "extraction", "wrong_url", "not_a_program", "other"]
           }
         },
         "allOf": [

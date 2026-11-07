@@ -26,6 +26,15 @@ from scripts.verify_candidates import verify_bundle
 from jsonschema import Draft202012Validator, FormatChecker
 
 
+def dismissed_candidate_ids(candidates, payload):
+    """駁回的卡：指定卡片，或整份文件版本都駁回。noted、applied 不影響上架。"""
+    entries = [r for r in payload.get("reviews", []) if r["action"] == "dismissed"]
+    named = {r["candidate_id"] for r in entries if r.get("candidate_id")}
+    whole = {(r["revision_id"], r["source_id"]) for r in entries if not r.get("candidate_id")}
+    return {c["candidate_id"] for c in candidates
+            if c["candidate_id"] in named or (c["source_metadata"]["revision_id"], c["source_metadata"]["source_id"]) in whole}
+
+
 def validate_review_ledger(payload):
     schema = json.loads((ROOT / "schema/scan-reviews.schema.json").read_text(encoding="utf-8"))
     errors = list(Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(payload))
