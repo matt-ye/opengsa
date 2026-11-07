@@ -1970,7 +1970,8 @@ if (guideNextBtn) guideNextBtn.addEventListener("click", () => renderGuideStep(c
 
 if (guideDialog) {
  guideDialog.addEventListener("click", event => {
-  if (typeof guideDialog.getBoundingClientRect !== "function") return;
+  // 導覽按鈕已先關閉視窗時，矩形為 0，不可再判定成點背景而搶走焦點。
+  if (!guideDialog.open || typeof guideDialog.getBoundingClientRect !== "function") return;
   const rect = guideDialog.getBoundingClientRect();
   const inside = rect.top <= event.clientY && event.clientY <= rect.top + rect.height &&
                  rect.left <= event.clientX && event.clientX <= rect.left + rect.width;
