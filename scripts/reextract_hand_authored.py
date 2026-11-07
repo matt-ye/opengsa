@@ -21,13 +21,14 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.check_provenance import BASELINE, problems
-from scripts.extract_candidates import extract_from_in_memory_blocks
+from scripts.extract_candidates import create_model_adapter_from_env, extract_from_in_memory_blocks
 from scripts.scan_sources import Fetcher, ScanError, digest, html_document, pdf_document
 
 OUTPUT = ROOT / "work/reextract/results.json"
 BODY_LIMIT = 10 * 1024 * 1024
 UNAVAILABLE_PAGE = re.compile(r"404|not found|找不到|頁面不存在|查無|無此頁|請先登入|please log ?in|error page", re.I)
 CONTENT_SELECTORS = ("main", "article", "[role=main]", "#content", ".content")
+MODEL_RETRY_STATUSES = ("extracted", "failed_checks")  # 這些頁面抓得到內容，模型才有東西可讀
 MIN_NAME_MATCH = 4
 MIN_CONTENT_CHARS = 80  # html_document對更短的內容回報解析失敗
 
@@ -71,7 +72,7 @@ def content_source(source, body):
     return {**source, "body_selector": "body"}
 
 
-def reextract(fetcher, candidate, source, now):
+def reextract(fetcher, candidate, source, now, adapter=None):
     """回傳單筆結果；預算用完往外丟，留到下一輪。"""
     url = candidate["source_metadata"]["url"]
     is_pdf = source.get("format") == "pdf" or urlsplit(url).path.lower().endswith(".pdf")
@@ -102,7 +103,7 @@ def reextract(fetcher, candidate, source, now):
     if problem:
         return {"status": "page_mismatch", "reason": problem, "revision_id": revision, "page_title": heading[:80]}
     extracted = extract_from_in_memory_blocks(source, blocks, revision_id=revision, observed_at=now,
-                                              url=response["url"])
+                                              url=response["url"], model_adapter=adapter)
     if not extracted:
         return {"status": "no_extraction", "revision_id": revision, "page_title": heading[:80]}
     fresh = deepcopy(extracted[0])
@@ -126,7 +127,11 @@ def known_candidates(root=ROOT):
     return rows
 
 
-def run(candidates, config, previous, transport=None, on_progress=None, now=None):
+def model_pending(row):
+    return row["status"] in MODEL_RETRY_STATUSES and not row.get("model_attempted")
+
+
+def run(candidates, config, previous, transport=None, on_progress=None, now=None, adapter=None):
     now = now or datetime.now(timezone.utc).isoformat(timespec="seconds")
     settings = {**config, "allowed_hosts": SameSiteHosts()}
     fetcher = Fetcher(settings, transport) if transport else Fetcher(settings)
@@ -134,8 +139,12 @@ def run(candidates, config, previous, transport=None, on_progress=None, now=None
     results = dict(previous)
     for candidate in candidates:
         cid = candidate["candidate_id"]
-        if cid in results:
+        if cid in results and not (adapter and model_pending(results[cid])):
             continue
+        # 額度或流量上限到了就停：不能讓這一筆靜默退回純規則，又被記成模型跑過。
+        if adapter and (adapter.rate_limited_429 or adapter.calls >= adapter.max_calls):
+            break
+        calls_before = adapter.calls if adapter else 0
         sid = candidate["source_metadata"]["source_id"]
         # 通用預設：不要求標記、不追PDF；已登記的profile設定優先。
         source = {"id": sid, "title": candidate["title"], "url": candidate["source_metadata"]["url"],
@@ -146,9 +155,14 @@ def run(candidates, config, previous, transport=None, on_progress=None, now=None
                   "resource_kind": candidate.get("resource_kind", "scholarship"),
                   "scope": candidate.get("scope", "nationwide")}
         try:
-            results[cid] = {"url": candidate["source_metadata"]["url"], **reextract(fetcher, candidate, source, now)}
+            row = {"url": candidate["source_metadata"]["url"], **reextract(fetcher, candidate, source, now, adapter)}
         except ScanError:
             break
+        if adapter:
+            if adapter.rate_limited_429:
+                break
+            row.update(model_attempted=True, model_calls=adapter.calls - calls_before)
+        results[cid] = row
         if on_progress:
             on_progress(results, fetcher.count)
     return results, fetcher.count
@@ -158,30 +172,40 @@ def summarize(results, total):
     counts = {}
     for row in results.values():
         counts[row["status"]] = counts.get(row["status"], 0) + 1
-    return {"candidates_total": total, "candidates_done": len(results), "by_status": counts}
+    return {"candidates_total": total, "candidates_done": len(results), "by_status": counts,
+            "model_pending": sum(model_pending(row) for row in results.values())}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=OUTPUT)
     parser.add_argument("--retry-status", action="append", default=[], help="重跑這些狀態的候選")
+    parser.add_argument("--model-round", action="store_true", help="用模型重跑抓得到內容的候選；模型不可用就失敗")
     args = parser.parse_args()
     candidates = known_candidates()
     config = json.loads((ROOT / "data/scan-sources.json").read_text(encoding="utf-8"))
     previous = json.loads(args.output.read_text(encoding="utf-8")) if args.output.exists() else {}
     base = previous.get("http_requests_total", 0)
+    adapter = None
+    if args.model_round:
+        adapter = create_model_adapter_from_env()
+        if not adapter.enabled:
+            raise SystemExit("model_unavailable: 模型未啟用，不以純規則充當模型結果")
+    base_calls = previous.get("model_calls", 0)
     previous["results"] = {k: v for k, v in previous.get("results", {}).items() if v["status"] not in args.retry_status}
     args.output.parent.mkdir(parents=True, exist_ok=True)
 
     def save(results, used):
-        report = {"http_requests_total": base + used, "model_calls": 0, "published": False,
+        report = {"http_requests_total": base + used, "model_calls": base_calls + (adapter.calls if adapter else 0),
+                  "published": False,
                   "summary": summarize(results, len(candidates)), "results": results}
         args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         return report
 
-    results, used = run(candidates, config, previous.get("results", {}), on_progress=save)
+    results, used = run(candidates, config, previous.get("results", {}), on_progress=save, adapter=adapter)
     report = save(results, used)
-    print(json.dumps({"http_requests_total": report["http_requests_total"], **report["summary"]}, ensure_ascii=False))
+    print(json.dumps({"http_requests_total": report["http_requests_total"], "model_calls": report["model_calls"],
+                      **report["summary"]}, ensure_ascii=False))
 
 
 if __name__ == "__main__":

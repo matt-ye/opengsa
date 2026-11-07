@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from scripts.extract_candidates import MockModelAdapter
 from scripts.reextract_hand_authored import SameSiteHosts, known_candidates, longest_common_run, page_problem, run
 
 CONFIG = {"max_requests": 20, "minimum_host_interval_seconds": 0, "max_run_seconds": 180, "sources": []}
@@ -76,6 +77,26 @@ class RunTests(unittest.TestCase):
         row = {**candidate(), "category": "phd_research", "scope": "local", "resource_kind": "scholarship"}
         results, _ = run([row], config, {}, transport_for({url: (200, PAGE)}))
         self.assertFalse([p for p in results["cand-a"].get("problems", []) if p.startswith("schema/")])
+
+    def test_model_round_retries_only_fetched_pages_and_stops_at_its_budget(self):
+        adapter = MockModelAdapter(mode="extract", max_calls=1)
+        url = "https://a.org.tw/s"
+        previous = {"cand-a": {"url": url, "status": "extracted"}, "cand-b": {"url": url, "status": "extracted"},
+                    "cand-c": {"url": url, "status": "source_unavailable"}}
+        rows = [candidate("cand-a"), candidate("cand-b"), candidate("cand-c")]
+        results, _ = run(rows, CONFIG, previous, transport_for({url: (200, PAGE)}), adapter=adapter)
+        self.assertTrue(results["cand-a"]["model_attempted"])
+        self.assertGreaterEqual(adapter.calls, 1)
+        self.assertNotIn("model_attempted", results["cand-b"])
+        self.assertEqual(results["cand-c"]["status"], "source_unavailable")
+
+    def test_rate_limit_keeps_previous_row_for_retry(self):
+        adapter = MockModelAdapter(mode="extract", max_calls=5)
+        adapter.rate_limited_429 = True
+        url = "https://a.org.tw/s"
+        previous = {"cand-a": {"url": url, "status": "extracted"}}
+        results, _ = run([candidate("cand-a")], CONFIG, previous, transport_for({url: (200, PAGE)}), adapter=adapter)
+        self.assertEqual(results["cand-a"], previous["cand-a"])
 
     def test_budget_leaves_rest_for_next_run(self):
         rows = [candidate(f"c{n}", f"https://s{n}.org.tw/p") for n in range(3)]
