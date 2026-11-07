@@ -1,4 +1,4 @@
-"""建立 GitHub Pages 公開預覽；只輸出明列的網站成品。"""
+"""建立公開預覽（GitHub Pages＋自訂網域）；只輸出明列的網站成品。"""
 import argparse
 from pathlib import Path
 import shutil
@@ -12,17 +12,19 @@ for p in (ROOT, ROOT / "scripts"):
 
 from export_wireframes import export
 from scripts.build_review_workspace import candidate_preview_data
-from scripts.build_feed import build_feeds
+from scripts.build_feed import SITE_URL, build_feeds
 from scripts.check_data import validate_candidate_snapshot
 from scripts.radar_metadata import radar_metadata
 from scripts.source_chains import timeline_metadata
 
-URL = "https://matt-ye.github.io/opengsa/"
+URL = SITE_URL
+# Cloudflare Web Analytics 的公開 site token（本來就會出現在頁面原始碼，不是密鑰）。
+CF_ANALYTICS_TOKEN = "842cdb275d8b43219c0c0a2a55063852"
 FEEDBACK = "https://github.com/matt-ye/opengsa/issues/new?template=preview-feedback.yml"
 
 
 def load_full_library(root=ROOT):
-    """Loads all 228 candidates across the 6 candidate bundles and combined observations."""
+    """Loads all candidates across the 8 candidate bundles and combined observations."""
     read = lambda name: json.loads((Path(root) / "data" / name).read_text(encoding="utf-8"))
     bundle_files = [
         "candidates/source-review.json",
@@ -32,6 +34,7 @@ def load_full_library(root=ROOT):
         "candidates/medical-scholarships.json",
         "candidates/university-scholarships.json",
         "candidates/topology-discovered-scholarships.json",
+        "candidates/emergency-relief-aid.json",
     ]
     obs_files = [
         "temporal-observations.json",
@@ -41,6 +44,7 @@ def load_full_library(root=ROOT):
         "medical-temporal-observations.json",
         "university-temporal-observations.json",
         "topology-discovered-temporal-observations.json",
+        "emergency-relief-temporal-observations.json",
     ]
     all_cands = []
     for bf in bundle_files:
@@ -57,8 +61,8 @@ def load_full_library(root=ROOT):
 
     combined_bundle = {
         "schema_version": "1.1.0-candidate",
-        "generated_at": "2026-11-04T00:00:00Z",
-        "as_of": "2026-11-04",
+        "generated_at": "2026-11-06T00:00:00Z",
+        "as_of": "2026-11-06",
         "timezone": "Asia/Taipei",
         "model_enabled": False,
         "model_calls": 0,
@@ -67,7 +71,7 @@ def load_full_library(root=ROOT):
     }
     combined_obs = {
         "version": "temporal-replay-1",
-        "observed_at": "2026-11-04T00:00:00Z",
+        "observed_at": "2026-11-06T00:00:00Z",
         "http_requests": total_http,
         "model_calls": 0,
         "published": False,
@@ -121,13 +125,13 @@ def build(output):
 <meta property="og:image:height" content="640">
 <meta property="og:image:alt" content="OpenGSA：把時間留給研究，研究與安心生活">
 <meta name="twitter:card" content="summary_large_image">
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token":"{CF_ANALYTICS_TOKEN}","spa":false}}'></script>
 </head>''')
     replace_once("設計審閱稿 · 四分頁互動線框 · 資料快照 2026.10.28 · 所有獎助資料待獨立覆核，非申請建議", '獎助雷達預覽 · 來源摘要，非即時資格核定 · ⚠ 不明，請見來源')
     replace_once("互動原型 · 不進行個人資格核定", "公開預覽 · 不進行個人資格核定")
-    replace_once("OpenGSA · MVP介面基礎審閱稿 0.8 · 無外部字型、無追蹤、無個資送出。<br/>原創線框內容依專案授權；官方文件各保留原權利。自動擷取及正式發布尚待驗證。", f'''OpenGSA · 公開預覽 0.9 · 個人條件與研討會輸入只留本次瀏覽，無分析追蹤程式。<br>
-GitHub Pages託管可能保留連線紀錄，詳見<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub隱私聲明</a>。<br>
-<a href="{FEEDBACK}">回報操作問題／建議</a>（需GitHub帳號，內容公開；請勿提交個資或私人申訴） · <a href="https://github.com/matt-ye/opengsa">原始碼與資料說明</a><br>
-雷達為自動整理的來源摘要，未知資訊導流原文，非人工資格核定。完整資料發布仍須獨立覆核；模型僅手動啟用；支援 <a href="{URL}feed.xml">全庫 RSS</a> 與 <a href="{URL}feed-deadlines.xml">截止倒數 RSS</a> 訂閱。原創內容依專案授權，官方文件保留原權利。''')
+    replace_once("OpenGSA · MVP介面基礎審閱稿 0.8 · 無外部字型、無追蹤、無個資送出。<br/>原創線框內容依專案授權；官方文件各保留原權利。自動擷取及正式發布尚待驗證。", f'''<p class="footer-links"><span>作者 <a href="https://mattye.dev/">Matt Ye</a></span><a href="https://github.com/matt-ye">GitHub</a><a href="https://github.com/matt-ye/opengsa">原始碼與資料說明</a><a href="{FEEDBACK}">回報問題</a><a href="{URL}feed.xml">全庫 RSS</a><a href="{URL}feed-deadlines.xml">截止倒數 RSS</a></p>
+<p>OpenGSA 公開預覽 0.9：自動整理的來源摘要，非資格核定，請以官方公告為準。</p>
+<p>個人條件與研討會輸入只留本次瀏覽。以Cloudflare Web Analytics統計瀏覽量：不使用Cookie，不記錄網址查詢參數（搜尋與篩選條件）。GitHub Pages託管與Cloudflare可能保留連線紀錄（<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub隱私聲明</a>、<a href="https://www.cloudflare.com/privacypolicy/">Cloudflare隱私政策</a>）。回報內容公開，請勿提交個資或私人申訴。原創內容依專案授權，官方文件保留原權利。</p>''')
     page.write_text(html, encoding="utf-8")
     assets = output / "assets"
     assets.mkdir(parents=True, exist_ok=True)

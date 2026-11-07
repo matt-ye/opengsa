@@ -1,19 +1,60 @@
 # 目前計畫與已接受決策
 
-## 2026-11-06 自動庫外資源檢索規劃（Autonomous External Discovery Probe Planning）
+## 2026-11-07 庫外資源檢索：先修 78 校名冊（依實測改寫）
 
-- 詳見 [自動庫外資源檢索規劃架構書](AUTONOMOUS-DISCOVERY-PLAN.md)。
-- 建立主動式、低頻、自動發現新資源的機制，打破既有固定 13 排程來源的被動監聽邊界。
-- **四大核心原則與防線**：
-  - **零模型與零成本邊界**：探針全程維持純規則與開放 API，`model_mode=off`，0 LLM API 呼叫，0 外部推論開銷。
-  - **網路公民禮儀**：嚴格遵守 `robots.txt`、同站間隔 >= 3 秒、微批 <= 20 HTTP、180 秒強制超時。
-  - **候選隔離池與指紋純淨**：探針挖掘成果一律獨立寫入 `data/discovery/discovery-candidates.json`，絕不自動覆寫或竄改正式台帳（`pilot.json`, `source-inventory.json`, `source-chains.json`）。
-  - **Fuzzy 去重與規範化**：URL 去除行銷參數、名稱剔除年份雜訊計算 Levenshtein 距離，防止同一福利重複建卡。
-- **三大探索來源管道**：
-  - Channel 1：政府資料開放平台（`data.gov.tw`）教育部、國科會、農業部、原民會獎助開放資料集 API。
-  - Channel 2：全台 78 所公私立大專校院生輔組/學務處 RSS 與最新公告欄微批監聽。
-  - Channel 3：頂級國際學術會議（AI/CS/醫學頂會）學生差旅專款（Travel Grants）頁面。
-- **審查工作流與排程**：規劃每週日 09:17 低頻巡檢，偵測到高信心項目時自動發布待審 Issue，無縫對接桌面審查工作台（Review Workspace）。
+- 詳見 [庫外資源檢索規劃](AUTONOMOUS-DISCOVERY-PLAN.md)。試跑 `scripts/probe_school_rss.py` 顯示 78 校有 57 校名冊網址連不到有效頁面（404 有 28 校、網域解析不到 29 校），能判定的 7 校只有 1 校宣告 feed。
+- 先修名冊，暫不排程、不自動開 Issue、不寫入候選；生輔組維持人工查核。原 TODO 2 的前端模組化規劃（PR #71）已關閉，日後大改某段邏輯時再抽出該段純函式。
+
+---
+
+## 2026-11-06 全台學生急難救助金全盤擴充、資訊鏈拓撲、首頁按鈕島與萃取入庫架構（PR #73）
+
+- **全台學生急難救助金資源大盤點與全景擴充**（[專題報告](EMERGENCY-RELIEF-FUNDS-EXPANSION-SURVEY.md)）：
+  - 響應使用者對突發家庭變故與學生急難救助金需求之觀察（參照 [`臺大學務處生輔組 HTML/118`](https://advisory.ntu.edu.tw/CMS/HTML/118)），補足庫中此類別之極度匱乏。
+  - **深化擴充三大面向**：
+    1. **各縣市地方政府**：臺北市市民急難救助、新北市好日子愛心大平台、臺中市市民急難、高雄市急難救助金、桃園市市民急難救助。
+    2. **單親／特殊境遇家庭**：衛生福利部社會及家庭署特殊境遇家庭扶助（緊急生活扶助/子女生活津貼）、婦女權益基金會「弱勢單親家庭培力計畫」學費及生活津貼、法律扶助基金會弱勢專案。
+    3. **國際生／僑生專案**：僑務委員會清寒僑生急難醫療慰助金、臺大 OIA 國際學生急難救助金、清大 OGA 國際學生急難助學金、成大 OIA 境外生急難慰助金。
+  - 盤查 **24+ 項全台核心急難救助管道**（[`data/source-expansion/emergency-relief-sources.json`](../data/source-expansion/emergency-relief-sources.json)），涵蓋中央法定學產基金、公私立大專校院生輔組、各縣市地方政府、單親扶助與主要慈善基金會。
+  - 梳理「**五大維度立體防護網**」：第一層校內急難金 ➔ 第二層教育部學產基金 ➔ 第三層行天宮/富邦/慈濟基金會 ➔ 第四層地方公所急難安全網 ➔ 第五層單親特境與境外生專案。
+  - 提出學生突遭變故之「**五步緊急應對指南與申辦攻防地圖**」（即時通報 ➔ 校內急難金 1~2 週速審 ➔ 轉報學產基金/僑委會 ➔ 基金會轉介 ➔ 地方社會安全網/單親培力）。
+- **首頁情境按鈕島升級：新增「急 - 急難救助卡」**：
+  - 首頁探索島快捷列（`#persona-bar`）新增專屬 `<button data-persona="emergency_relief">`，具備顯眼紅底白字「**急**」情境六角徽章。
+  - 一鍵直達：點擊後自動將用途下拉切換至 `living_emergency`，瞬間快篩出全台學產基金、校內急難、縣市紓困、單親與民間基金會專案；再次點擊即取消還原。
+  - 快速上手指南（Toutour）第一步同步連動更新，標註「🚨 急難救助」專用情境標籤。
+- **納入目前庫中與觸發補充萃取架構規劃**：
+  - 規劃六階段入庫管線：來源登錄 ➔ 確定性規則萃取（事故相對期限/初核轉介/金額級距） ➔ 候選卡池隔離（`review.status="pending"`） ➔ 時間政策觀測 ➔ 5節點資訊鏈拓撲閉環 ➔ 人工審查工作台核可晉級。
+  - 支援離線 CLI 指令（`scripts/build_emergency_relief_expansion.py`）與手動有界 GitHub Actions dispatch（model_mode=off，預算受控）。
+- **結構化候選卡池與時間政策觀測落盤**：
+  - 產出 18 筆具指標性急難救助方案待審卡池：[`data/candidates/emergency-relief-aid.json`](../data/candidates/emergency-relief-aid.json)。
+  - 產出專屬時間觀測檔：[`data/emergency-relief-temporal-observations.json`](../data/emergency-relief-temporal-observations.json)，捕捉 `continuous` 隨到隨審與 `needs_event_date` 缺口。
+- **資訊鏈五節點拓撲閉環批次整合**：
+  - 建立 [`data/source-chain-batches/batch-emergency-relief.json`](../data/source-chain-batches/batch-emergency-relief.json)（90 份文件節點、72 條邊、18 條候選綁定），完整打通 Anchor ➔ Call ➔ Form ➔ Intake ➔ Result 五節點。
+  - 登記至批次總表 [`data/source-chain-batches/batch-registry.json`](../data/source-chain-batches/batch-registry.json)。
+- **前端搜尋同義詞強化與測試防線**：
+  - `docs/design/prototype.js` 擴充支援 `急難`、`急難救助`、`急難救助金`、`救助金`、`學產基金`、`緊急紓困`、`變故`、`emergency relief`、`單親`、`擔心`（同音容錯）、`特境`、`特殊境遇`、`國際生`、`僑生`、`外籍生`、`境外生`、`縣市急難`、`好日子`、`培力` 等關鍵字檢索。
+  - `tests/prototype.test.cjs` 擴展至 **68 項 100% PASS**。
+  - Python 單元測試維持 **282 項 PASS**。
+  - 守則遵循：新增 profile 標註 `"enabled": false`，模型 0，正式台帳 0 竄改。
+
+---
+
+## 2026-11-06 甘特圖資訊卡浮動彈窗化、名稱導向修復與申請區無效勾選框清理（PR #72）
+
+- **甘特圖時程預覽卡浮動彈窗化（Modal Popover）與遮擋修復**（[詳細手冊](GANTT-INSPECTOR-MODAL-AND-TASK-CLEANUP.md)）：
+  - **杜絕版面滾動與遮擋**：徹底移除 `scrollIntoView`，將 `#schedule-inspect` 由頁面流元素升級為 `position: fixed` 居中浮動彈窗（`z-index: 125`），附帶半透明毛玻璃遮罩 `#inspect-backdrop`。
+  - **四重關閉途徑齊備**：支援右上角 ✕ 按鈕、底部「✕ 關閉預覽」按鈕、點擊遮罩背景、按全域鍵盤 `Escape` 立即關閉。
+- **甘特圖方案名稱導向雙軌化**：
+  - 甘特圖左側列名下方新增 `<a href="#detail" class="gantt-detail-link">查看詳情 →</a>` 直達超連結，滿足點擊直接跳轉 Tab 2（`#detail`）之操作預期。
+  - 浮動彈窗標題與主按鈕均支援一鍵直達 Tab 2 完整說明頁。
+- **Tab 3 申請區無效 Checkbox 徹底清理**：
+  - 徹底移除無作用之 5 項靜態 Checkbox（「核對申請資格」、「確認學生收件時間」、「整理申請文件」等）與 `.plan-tasks` 容器，消除誤以為已完成申請之困擾。
+  - 升級為實用卡片操作列：「📄 查看完整條文與說明」與「✕ 從時間軸移除」（連動 Toast 提示），標題改為「我的專屬申請清單」及計數器 `#plan-count`。
+- **全站超連結與內部錨點全面查核**：全站 63 處內部錨點與外部連結全數驗證通過。
+- **測試防線擴展**：
+  - 前端整合測試擴展至 **65 項 100% PASS**（新增浮動彈窗行為與申請區清理防線）。
+  - Python 單元測試維持 **282 項 PASS**。
+  - PR #70（庫外探針規劃）與 PR #71（前端模組化規劃）依指示維持暫緩。
 
 ---
 

@@ -946,3 +946,114 @@ test("RWD 響應式優化與甘特圖 64px 緊湊防線：消除底部死空白�
  assert.ok(html.includes('value="timeline"'));
  assert.ok(html.includes('value="rights"'));
 });
+
+test("甘特圖資訊卡浮動彈窗與關閉機制：在甘特圖上跳出、點按遮罩/按鈕/Esc可關閉，不遮擋排版", () => {
+ const html = fs.readFileSync("docs/design/wireframes.html", "utf-8");
+ const js = fs.readFileSync("docs/design/prototype.js", "utf-8");
+
+ // 1. wireframes.html 語意與樣式
+ assert.ok(html.includes('id="inspect-backdrop"'), "必須包含浮動資訊卡之遮罩層 #inspect-backdrop");
+ assert.ok(html.includes('id="schedule-inspect" role="dialog" aria-modal="true"'), "時程預覽卡必須具備 dialog 語意與 aria-modal");
+ assert.ok(html.includes(".inspect-close-btn"), "必須包含關閉按鈕樣式");
+ assert.ok(html.includes(".inspect-backdrop"), "必須包含遮罩層樣式");
+ assert.ok(html.includes("position:fixed;top:50%;left:50%;transform:translate(-50%,-50%)"), "資訊卡必須居中浮動於甘特圖上方，不擠壓版面");
+
+ // 2. prototype.js 互動行為
+ assert.ok(typeof core.closeInspect === "function", "必須匯出 closeInspect 關閉函式");
+ assert.ok(js.includes('btn-inspect-detail'), "浮動卡必須包含前往詳情按鈕");
+ assert.ok(js.includes('btn-inspect-dismiss'), "浮動卡必須包含關閉預覽按鈕");
+ assert.ok(js.includes('inspectCloseBtn'), "關閉按鈕必須綁定關閉事件");
+ assert.ok(js.includes('inspectBackdrop.addEventListener("click", closeInspect)'), "點擊遮罩必須關閉浮動卡片");
+ assert.ok(!js.includes('box.scrollIntoView({behavior:"instant",block:"start"})'), "開啟預覽卡片時絕對不得觸發 scrollIntoView 造成頁面跳動");
+});
+
+test("甘特圖名稱導向與申請區無效勾選框清理：提供查看詳情超連結、移除Tab 3無作用checkbox", () => {
+ const html = fs.readFileSync("docs/design/wireframes.html", "utf-8");
+ const js = fs.readFileSync("docs/design/prototype.js", "utf-8");
+
+ // 1. 甘特圖名稱導向
+ assert.ok(html.includes(".gantt-detail-link"), "甘特圖標籤欄必須包含直達詳情連結樣式");
+ assert.ok(js.includes('el("a","gantt-detail-link","查看詳情 →")'), "甘特圖項目旁必須提供查看詳情直達連結");
+ assert.ok(js.includes('titleLink.href="#detail"'), "預覽卡標題必須連結至 #detail");
+
+ // 2. 申請區無效 checkbox 清理
+ assert.ok(!html.includes('id="plan-progress"'), "必須移除無效待辦進度條 id=plan-progress");
+ assert.ok(html.includes('id="plan-count"'), "申請區標題應改為已收錄方案計數器 id=plan-count");
+ assert.ok(!js.includes('["核對申請資格","確認學生收件時間","整理申請文件"]'), "必須徹底移除無作用之三項核對勾選清單");
+ assert.ok(!js.includes('["核對使用條件","確認開通／領取程序"]'), "必須徹底移除無作用之 N/A 勾選清單");
+ assert.ok(!js.includes('el("div","plan-tasks")'), "必須移除無用之 plan-tasks 容器");
+ assert.ok(js.includes('✕ 從時間軸移除'), "申請清單卡片必須提供一鍵從時間軸移除按鈕");
+});
+
+
+test("搜尋擴充同義詞比對：搜尋急難救助／學產基金／緊急紓困精確命中生活與急難方案", () => {
+ const item = {
+  id: "cand-moe-student-aid-emergency",
+  title: "教育部學產基金設置急難慰問金",
+  category: "living_emergency",
+  programKey: "moe-student-aid-emergency"
+ };
+ assert.ok(core.itemMatchesQuery(item, "急難"), "搜尋急難應命中");
+ assert.ok(core.itemMatchesQuery(item, "急難救助"), "搜尋急難救助應命中");
+ assert.ok(core.itemMatchesQuery(item, "學產基金"), "搜尋學產基金應命中");
+ assert.ok(core.itemMatchesQuery(item, "緊急紓困"), "搜尋緊急紓困應命中");
+ assert.ok(core.itemMatchesQuery(item, "emergency relief"), "搜尋英文 emergency relief 應命中");
+ assert.ok(core.itemMatchesQuery(item, "救助金"), "搜尋救助金應命中");
+ assert.ok(core.itemMatchesQuery(item, "變故"), "搜尋變故應命中");
+});
+
+test("急難救助情境按鈕與按鈕島規格：支援「急」急難救助卡一鍵快篩與點擊還原", () => {
+ const html = fs.readFileSync(path.join(__dirname, "../docs/design/wireframes.html"), "utf8");
+ assert.ok(html.includes('data-persona="emergency_relief"'), "persona-bar 必須包含 emergency_relief 按鈕");
+ assert.ok(html.includes('<span aria-hidden="true" class="hex-badge">急</span>'), "必須包含「急」字情境徽章");
+ assert.ok(core.personaPresets.emergency_relief, "personaPresets 必須註冊 emergency_relief");
+ assert.equal(core.personaPresets.emergency_relief.category, "living_emergency");
+ 
+ const base = {category: "all", source: "all", degree: "all", year: "all", compatibility: "all", hardship: "all"};
+ const applied = core.applyPersona(base, "emergency_relief");
+ assert.equal(applied.category, "living_emergency", "套用後 category 應為 living_emergency");
+ 
+ const toggled = core.applyPersona(applied, "emergency_relief");
+ assert.equal(toggled.category, "all", "再次點擊應還原為 all");
+});
+
+test("單親、特境、國際生與縣市急難擴充同義詞精確命中急難救助資源", () => {
+ const singleItem = {
+  id: "cand-sfaa-special-family",
+  title: "衛生福利部特殊境遇家庭扶助－緊急生活扶助與子女生活津貼",
+  category: "living_emergency",
+  programKey: "sfaa-special-family"
+ };
+ assert.ok(core.itemMatchesQuery(singleItem, "單親"), "搜尋單親應命中");
+ assert.ok(core.itemMatchesQuery(singleItem, "擔心"), "搜尋同音詞擔心應容錯命中");
+ assert.ok(core.itemMatchesQuery(singleItem, "特境"), "搜尋特境應命中");
+ assert.ok(core.itemMatchesQuery(singleItem, "特殊境遇"), "搜尋特殊境遇應命中");
+
+ const intlItem = {
+  id: "cand-ntu-oia-international-emergency",
+  title: "國立臺灣大學國際事務處國際學生急難救助金",
+  category: "living_emergency",
+  programKey: "ntu-oia-emergency"
+ };
+ assert.ok(core.itemMatchesQuery(intlItem, "國際生"), "搜尋國際生應命中");
+ assert.ok(core.itemMatchesQuery(intlItem, "外籍生"), "搜尋外籍生應命中");
+
+ const cityItem = {
+  id: "cand-ntpc-emergency-relief",
+  title: "新北市好日子愛心大平台急難救助與弱勢學生專案",
+  category: "living_emergency",
+  programKey: "ntpc-sw-emergency"
+ };
+ assert.ok(core.itemMatchesQuery(cityItem, "縣市急難"), "搜尋縣市急難應命中");
+ assert.ok(core.itemMatchesQuery(cityItem, "好日子"), "搜尋好日子應命中");
+});
+
+test("首頁標頭操作列 GitHub Star 按鈕規格：支援一鍵開新分頁直達專案庫按星", () => {
+ const html = fs.readFileSync(path.join(__dirname, "../docs/design/wireframes.html"), "utf8");
+ assert.ok(html.includes('id="github-star-btn"'), "標頭操作列必須包含 github-star-btn ID");
+ assert.ok(html.includes('href="https://github.com/matt-ye/opengsa"'), "必須導向專案開源 repo 網址");
+ assert.ok(html.includes('target="_blank"'), "必須於新分頁開啟");
+ assert.ok(html.includes('rel="noopener noreferrer"'), "必須具備安全連結屬性");
+ assert.ok(html.includes("⭐ GitHub Star ↗"), "按鈕標籤必須顯示 ⭐ GitHub Star ↗");
+ assert.ok(html.includes(".header-action.star-btn"), "必須具備專屬金色高亮樣式");
+});

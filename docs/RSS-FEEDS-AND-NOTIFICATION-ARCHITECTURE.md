@@ -93,18 +93,18 @@ flowchart LR
 ### 4.1 雙軌 Feed 定位與規格
 
 1. **全庫動態頻道 (`feed.xml`)**：
-   - **發布網址**：`https://matt-ye.github.io/opengsa/feed.xml`
+   - **發布網址**：`https://opengsa.mattye.dev/feed.xml`
    - **條目內容**：收錄全庫 236 筆方案，依最新觀測/修訂日期排序。
    - **內文結構**：
      - `<title>`：方案完整名稱與官方單位
-     - `<link>`：`https://matt-ye.github.io/opengsa/?id={program_id}`（支援直接深層連結）
+     - `<link>`：`https://opengsa.mattye.dev/?id={program_id}`（支援直接深層連結）
      - `<description>`：結構化呈現【身分資格】與【獎助內容】
      - `<category>`：方案分類（如 `phd_research`, `living_tuition`, `overseas_research` 等）
      - `<guid isPermaLink="false">`：方案唯一候選代碼
      - `<pubDate>`：RFC 822 標準格式
 
 2. **截止倒數警訊頻道 (`feed-deadlines.xml`)**：
-   - **發布網址**：`https://matt-ye.github.io/opengsa/feed-deadlines.xml`
+   - **發布網址**：`https://opengsa.mattye.dev/feed-deadlines.xml`
    - **條目內容**：僅篩選具備**結構化學生截止日**之方案，並加上 `⏱️ [即將截止]` 視覺前綴。
    - **內文結構**：標明申請截止日期與倒數注意事項，讓學生或研究室公告機器人一目了然。
 
@@ -129,9 +129,9 @@ flowchart TD
 
 ### 5.1 Follow.it 零個資 Email 代管機制
 * **隱私與個資保護原則**：
-  OpenGSA 嚴格遵守「無分析追蹤、無個資入庫、零伺服器維護成本」規範。若自行收集信箱建立發信資料庫，將面臨巨大的個資法合規負擔與 SMTP 垃圾郵件防護成本。
+  OpenGSA 嚴格遵守「無個資入庫、零伺服器維護成本」規範（瀏覽量統計僅用不含Cookie與查詢參數的Cloudflare Web Analytics，見DEPLOYMENT）。若自行收集信箱建立發信資料庫，將面臨巨大的個資法合規負擔與 SMTP 垃圾郵件防護成本。
 * **Follow.it 串接方式**：
-  1. **表單原生直通**：小視窗內建 `<form action="https://api.follow.it/subscribe" method="post" target="_blank">`，帶入 `resource="https://matt-ye.github.io/opengsa/feed.xml"`，使用者輸入 Email 按下送出後直接在外部新分頁完成訂閱確認，OpenGSA 伺服器完全不經手、不儲存任何 Email。
+  1. **表單原生直通**：小視窗內建 `<form action="https://api.follow.it/subscribe" method="post" target="_blank">`，帶入 `resource="https://opengsa.mattye.dev/feed.xml"`，使用者輸入 Email 按下送出後直接在外部新分頁完成訂閱確認，OpenGSA 伺服器完全不經手、不儲存任何 Email。
   2. **頻道即時導向**：提供 `https://follow.it/now` 專屬連結，Follow.it 會自動藉由瀏覽器 Referer 讀取 OpenGSA 頁面中的 `<link rel="alternate" type="application/rss+xml">`，直接呈現 OpenGSA 獎助訂閱確認畫面。
 
 ### 5.2 雙軌 Feed 複製與即時回饋
@@ -145,11 +145,11 @@ flowchart TD
 學生可依喜好的日常通訊習慣，透過以下方式零成本接收推播：
 
 1. **RSS 閱讀器訂閱**：
-   - 複製 `https://matt-ye.github.io/opengsa/feed.xml` 或 `feed-deadlines.xml`。
+   - 複製 `https://opengsa.mattye.dev/feed.xml` 或 `feed-deadlines.xml`。
    - 貼入 Feedly, Inoreader, NetNewsWire (Mac/iOS), Readwise Reader 等任意閱讀器。
 2. **通訊軟體 Webhook 推播**：
    - **Discord**：利用 MonitoRSS 或 Zapier，將 RSS 連結綁定至研究室 Discord 頻道的 Webhook。
-   - **Telegram**：加入 `@FeedManBot` 或 `@AchnodFX_RSSBot`，輸入 `/sub https://matt-ye.github.io/opengsa/feed-deadlines.xml` 即可於群組自動收報。
+   - **Telegram**：加入 `@FeedManBot` 或 `@AchnodFX_RSSBot`，輸入 `/sub https://opengsa.mattye.dev/feed-deadlines.xml` 即可於群組自動收報。
 3. **無伺服器 Email 電子報轉寄**：
    - 若學生習慣在電子信箱收信，可使用免費的 [Follow.it](https://follow.it/) 或 [Mailbrew]，貼上 OpenGSA RSS 網址並填入個人 Email，即可每日或每週自動收到格式優美的 Email 獎助摘要！
 

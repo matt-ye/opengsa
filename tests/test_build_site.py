@@ -16,7 +16,7 @@ from scripts.build_site import load_full_library
 
 
 class SiteBuildTests(unittest.TestCase):
-    def test_all_236_temporal_projections_render_without_fabricated_coordinates(self):
+    def test_all_254_temporal_projections_render_without_fabricated_coordinates(self):
         soup=BeautifulSoup(self.html,'html.parser')
         payload={key:json.loads(soup.select_one('#'+tag).string) for key,tag in
             [('pilot','pilot-data'),('radar','radar-data')]}
@@ -25,7 +25,7 @@ const fs=require('node:fs'), assert=require('node:assert/strict');
 const core=require('./docs/design/prototype.js');
 const data=JSON.parse(fs.readFileSync(0,'utf8'));
 const items=core.makeDrafts(data.pilot,'2026-11-03',data.radar);
-assert.equal(items.length,236);
+assert.equal(items.length,254);
 for(const item of items){
  const mode=core.timePresentation(item);
  assert.ok(mode.label && !mode.label.includes('undefined'),item.id);
@@ -44,7 +44,7 @@ for(const state of ['open','closed','upcoming','unknown','not_applicable']){
  const actual=state==='upcoming'?'not_yet_open':state;
  assert.ok(core.filterItems(items,{application:state}).every(i=>i.rawState===actual));
 }
-console.log('236 items: temporal labels, geometry, ambiguous years, intake filters PASS');
+console.log('254 items: temporal labels, geometry, ambiguous years, intake filters PASS');
 '''
         result=subprocess.run(['node','-e',code],cwd=ROOT,input=json.dumps(payload,ensure_ascii=False),
             text=True,encoding='utf-8',capture_output=True)
@@ -68,23 +68,26 @@ console.log('236 items: temporal labels, geometry, ambiguous years, intake filte
 
     def test_preview_is_self_contained_and_uses_named_radar_snapshot(self):
         self.assertNotIn('<script src=', self.html)
+        # 外部腳本只允許分析 beacon；spa:false 避免把站內網址變動（含搜尋條件）逐次送出。
+        self.assertEqual(re.findall(r'<script[^>]*\ssrc="([^"]+)"', self.html), ['https://static.cloudflareinsights.com/beacon.min.js'])
+        self.assertIn('"spa":false', self.html)
         embedded = re.search(r'<script id="pilot-data" type="application/json">(.*?)</script>', self.html, re.S)
         snapshot=json.loads(embedded[1])
         full_bundle, _ = load_full_library(ROOT)
         candidates = full_bundle['candidates']
         self.assertEqual({o['id'] for o in snapshot['opportunities']},{c['candidate_id'] for c in candidates})
-        self.assertEqual(len(snapshot['opportunities']), 236)
+        self.assertEqual(len(snapshot['opportunities']), 254)
         self.assertEqual(len(snapshot['opportunities']),len(candidates))
         self.assertTrue(all(o['review']['status']=='draft' for o in snapshot['opportunities']))
         self.assertIn('data-radar-view="true"',self.html)
         metadata=re.search(r'<script id="radar-data" type="application/json">(.*?)</script>',self.html,re.S)
         self.assertEqual(set(json.loads(metadata[1])['records']),{c['candidate_id'] for c in candidates})
-        self.assertEqual(len(json.loads(metadata[1])['records']), 236)
+        self.assertEqual(len(json.loads(metadata[1])['records']), 254)
         conferences = re.search(r'<script id="conference-data" type="application/json">(.*?)</script>', self.html, re.S)
         self.assertEqual(json.loads(conferences[1]), json.loads((ROOT / "data/conference-programs.json").read_text(encoding="utf-8")))
         self.assertIn('name="robots" content="noindex, nofollow"', self.html)
-        self.assertIn('property="og:image" content="https://matt-ye.github.io/opengsa/assets/opengsa-social-preview.jpg"', self.html)
-        self.assertIn('href="https://matt-ye.github.io/opengsa/"', self.html)
+        self.assertIn('property="og:image" content="https://opengsa.mattye.dev/assets/opengsa-social-preview.jpg"', self.html)
+        self.assertIn('href="https://opengsa.mattye.dev/"', self.html)
         self.assertIn('獎助雷達預覽 · 來源摘要，非即時資格核定', self.html)
         self.assertIn('issues/new?template=preview-feedback.yml', self.html)
         self.assertIn('請勿提交個資或私人申訴', self.html)
@@ -104,17 +107,57 @@ console.log('236 items: temporal labels, geometry, ambiguous years, intake filte
         tabs=header.select('[role="tab"]')
         self.assertEqual([t.get_text(strip=True) for t in tabs],['找獎助','獎助詳情','我的時間軸','權益與求助'])
         links=header.select('.header-actions a')
-        self.assertEqual([a.get_text(strip=True) for a in links],['提供回饋 ↗','提供獎助來源 ↗'])
-        for link,template in zip(links,['preview-feedback.yml','resource-source.yml']):
+        self.assertEqual([a.get_text(strip=True) for a in links],['提供回饋 ↗','提供獎助來源 ↗','⭐ GitHub Star ↗'])
+        for link,template in zip(links[:2],['preview-feedback.yml','resource-source.yml']):
             self.assertEqual(link['href'],'https://github.com/matt-ye/opengsa/issues/new?template='+template)
             self.assertTrue((ROOT/'.github/ISSUE_TEMPLATE'/template).is_file())
             self.assertIsNone(link.find_parent(attrs={'role':'tablist'}))
             self.assertEqual(link['target'],'_blank');self.assertIn('noopener',link['rel'])
+        self.assertEqual(links[2]['href'],'https://github.com/matt-ye/opengsa')
+        self.assertEqual(links[2]['target'],'_blank');self.assertIn('noopener',links[2]['rel'])
         rss_btn = header.select_one('.header-actions #rss-subscribe-btn')
         self.assertIsNotNone(rss_btn)
         self.assertEqual(rss_btn.get_text(strip=True), '📡 訂閱推播')
         self.assertIsNone(rss_btn.find_parent(attrs={'role': 'tablist'}))
         self.assertIsNone(soup.select_one('.review-strip a'))
+
+    def test_mobile_header_and_compare_select_cannot_widen_page(self):
+        css=(ROOT/'docs/design/wireframes.html').read_text(encoding='utf-8')
+        breakpoint_at=css.index('@media(max-width:1160px){.nav{flex-wrap:wrap')
+        self.assertLess(css.rindex('flex-wrap:nowrap;flex-shrink:0}'),breakpoint_at,'不可在斷點之後以基底規則蓋回 nowrap')
+        self.assertIn('.compare-controls select{flex:1;min-width:0;',css)
+
+    def test_layout_rules_stay_effective_and_primary_controls_share_chart_header(self):
+        css=(ROOT/'docs/design/wireframes.html').read_text(encoding='utf-8')
+        self.assertIn(':where(button:not(:disabled),select,input){font:inherit}',css,'全域字型重設不可蓋掉按鈕字級')
+        self.assertNotIn('overscroll-behavior:contain',css,'圖表捲到底要能接著捲頁面')
+        for columns,rule in ((8,'#persona-bar{grid-template-columns:repeat(8,'),(4,'#persona-bar{grid-template-columns:repeat(4,'),(2,'#persona-bar{grid-template-columns:repeat(2,')):
+            self.assertIn(rule,css,f'情境卡片應整除為 {columns} 欄，避免落單')
+        soup=BeautifulSoup(self.html,'html.parser')
+        header=soup.select_one('#results-panel .chart-header')
+        self.assertIsNotNone(header.select_one('#search-query'))
+        toggle=header.select_one('#conference-toggle')
+        self.assertEqual(toggle['aria-controls'],'conference-planner')
+        self.assertIsNotNone(soup.select_one('#chart-legend .legend-panel .gantt-legend'))
+        footer=soup.select_one('footer')
+        self.assertEqual(footer.select_one('a[href="https://mattye.dev/"]').get_text(strip=True),'Matt Ye')
+        self.assertIsNotNone(footer.select_one('a[href="https://github.com/matt-ye"]'))
+
+    def test_guide_and_feed_text_take_library_count_from_data(self):
+        js=(ROOT/'docs/design/prototype.js').read_text(encoding='utf-8')
+        tours=js[js.index('const subTours'):js.index('const guideStepTitles')]
+        self.assertNotRegex(tours,r'\d{2,}\s*(筆|項)','導覽文案的數量要用 {count}，不可寫死')
+        self.assertIn('{count}',tours)
+        soup=BeautifulSoup(self.html,'html.parser')
+        self.assertEqual(soup.select_one('#feed-library-count').get_text(),'','RSS 筆數由資料填入')
+        self.assertIn('" 筆來源摘要"',js,'全庫數量統一稱為來源摘要')
+        self.assertIn('全部來源摘要',soup.select_one('#detail-scope-switch [data-scope="all"]').get_text())
+        guide=soup.select_one('#guide-dialog').get_text()
+        self.assertNotRegex(guide,r'\d{2,}\s*(筆|項)')
+
+    def test_generated_summaries_put_text_in_content_not_class(self):
+        js=(ROOT/'docs/design/prototype.js').read_text(encoding='utf-8')
+        self.assertNotRegex(js,r'el\("summary","[^"]')
 
     def test_rss_modal_and_followit_integration(self):
         soup = BeautifulSoup(self.html, 'html.parser')
@@ -129,7 +172,7 @@ console.log('236 items: temporal labels, geometry, ambiguous years, intake filte
         self.assertIn('noopener', form.get('rel', ''))
         resource = form.select_one('input[name="resource"]')
         self.assertIsNotNone(resource)
-        self.assertEqual(resource['value'], 'https://matt-ye.github.io/opengsa/feed.xml')
+        self.assertEqual(resource['value'], 'https://opengsa.mattye.dev/feed.xml')
         self.assertIsNotNone(form.select_one('input[name="email"][type="email"]'))
 
         followit_link = dialog.select_one('a[href="https://follow.it/now"]')
@@ -138,17 +181,17 @@ console.log('236 items: temporal labels, geometry, ambiguous years, intake filte
 
         main_input = dialog.select_one('#feed-main-url')
         self.assertIsNotNone(main_input)
-        self.assertEqual(main_input['value'], 'https://matt-ye.github.io/opengsa/feed.xml')
+        self.assertEqual(main_input['value'], 'https://opengsa.mattye.dev/feed.xml')
         copy_main = dialog.select_one('#copy-feed-main')
         self.assertIsNotNone(copy_main)
-        self.assertEqual(copy_main['data-copy'], 'https://matt-ye.github.io/opengsa/feed.xml')
+        self.assertEqual(copy_main['data-copy'], 'https://opengsa.mattye.dev/feed.xml')
 
         deadlines_input = dialog.select_one('#feed-deadlines-url')
         self.assertIsNotNone(deadlines_input)
-        self.assertEqual(deadlines_input['value'], 'https://matt-ye.github.io/opengsa/feed-deadlines.xml')
+        self.assertEqual(deadlines_input['value'], 'https://opengsa.mattye.dev/feed-deadlines.xml')
         copy_deadlines = dialog.select_one('#copy-feed-deadlines')
         self.assertIsNotNone(copy_deadlines)
-        self.assertEqual(copy_deadlines['data-copy'], 'https://matt-ye.github.io/opengsa/feed-deadlines.xml')
+        self.assertEqual(copy_deadlines['data-copy'], 'https://opengsa.mattye.dev/feed-deadlines.xml')
 
         self.assertIsNotNone(dialog.select_one('#rss-dialog-close'))
         self.assertIsNotNone(dialog.select_one('#rss-dialog-dismiss'))

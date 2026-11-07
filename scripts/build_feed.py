@@ -2,7 +2,7 @@
 """Build RSS 2.0 and Atom feeds for OpenGSA public scholarship radar.
 
 Generates:
-1. feed.xml: Comprehensive feed of all 236 schemes and recent revisions.
+1. feed.xml: Comprehensive feed of all schemes and recent revisions.
 2. feed-deadlines.xml: Focused feed of schemes with confirmed/impending deadlines.
 """
 from datetime import datetime, timezone, timedelta
@@ -13,7 +13,7 @@ import json
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-SITE_URL = "https://matt-ye.github.io/opengsa/"
+SITE_URL = "https://opengsa.mattye.dev/"
 FEED_URL = f"{SITE_URL}feed.xml"
 DEADLINES_FEED_URL = f"{SITE_URL}feed-deadlines.xml"
 TAIPEI_TZ = timezone(timedelta(hours=8))
@@ -69,8 +69,8 @@ def build_feeds(output_dir: Path, candidates: list[dict], observations: dict) ->
         cid = cand.get("candidate_id") or cand.get("id")
         title = cand.get("title", "未命名獎助方案")
         cat = cand.get("category", "other")
-        opp_id = cand.get("opportunity_id") or cand.get("program_key") or cid
-        item_link = f"{SITE_URL}?id={opp_id}"
+        # 頁面每筆文件以 candidate_id 為鍵，一個方案可能有多份文件；帶 tab 才會直接開到詳情頁。
+        item_link = f"{SITE_URL}?tab=detail&id={cid}"
 
         # Benefit and eligibility summary
         benefit_text = cand.get("benefit", {}).get("text", "獎助內容詳見官方簡章")
