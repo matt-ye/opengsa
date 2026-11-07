@@ -130,6 +130,8 @@ jobs:
     if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.operation == 'scan')
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    outputs:
+      has_proposal: ${{ steps.proposal.outputs.has_proposal }}
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
@@ -200,7 +202,11 @@ jobs:
 
       - name: Prepare radar candidate update and offline preview
         if: always() && hashFiles('work/scanner/report/structured-candidates.json') != ''
-        run: python scripts/propose_radar_update.py --candidates work/scanner/report/structured-candidates.json --temporal work/scanner/report/temporal-records.json --output work/radar-proposal
+        id: proposal
+        shell: bash
+        run: |
+          python scripts/propose_radar_update.py --candidates work/scanner/report/structured-candidates.json --temporal work/scanner/report/temporal-records.json --output work/radar-proposal
+          python -c "import json;print('has_proposal='+str(json.load(open('work/radar-proposal/summary.json',encoding='utf-8'))['accepted_for_radar_proposal']>0).lower())" >> "$GITHUB_OUTPUT"
       - name: Preserve radar proposal and preview
         if: always() && hashFiles('work/scanner/report/structured-candidates.json') != ''
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
@@ -209,6 +215,40 @@ jobs:
           path: work/radar-proposal/
           retention-days: 14
           if-no-files-found: error
+
+  data-pr:
+    needs: scan
+    if: ${{ always() && needs.scan.outputs.has_proposal == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    # 全 workflow 唯一有寫入權限的 job。
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      # 不把權杖留在磁碟上：提案內容來自公開網站，檢查階段碰不到寫入權限。
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      - run: python -m pip install -r requirements-dev.txt
+      - uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6
+        with:
+          name: radar-data-proposal-${{ github.run_id }}
+          path: work/radar-proposal
+      - name: Apply the proposal and run the same checks as CI (no token)
+        run: |
+          python scripts/open_data_pr.py --proposal work/radar-proposal --output work/data-pr --label "排程掃描"
+      - name: Push the branch and open the data PR (never merges)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python scripts/open_data_pr.py --publish --output work/data-pr --branch data/radar-proposal --title "data: 排程掃描的待審提案"
 
   review-workspace:
     if: github.event_name == 'workflow_dispatch' && inputs.operation == 'review_workspace'

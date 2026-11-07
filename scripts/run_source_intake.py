@@ -1,6 +1,6 @@
 """處理一筆已核可的提交：只跑該來源，不等排程輪轉，也不佔待審佇列。
 
-輸出只留在 --output（提案、預覽、留言）。不寫正式資料、不呼叫模型；上架仍須人工套用提案並合併 PR。
+輸出只留在 --output（提案、預覽、留言）。不寫正式資料、不呼叫模型；資料 PR 由 open_data_pr.py 另外開，上架仍須人工合併。
 """
 import argparse
 from copy import deepcopy
@@ -80,7 +80,7 @@ def comment(result, run_url=None):
     if result["links_skipped"]:
         lines.extend([f"**沒有處理完：** 還有 {result['links_skipped']} 個連結超過單次上限，沒有抓取。", ""])
     if result["proposal"]:
-        lines.append(f"已產生待審提案（{result['proposal']['accepted_for_radar_proposal']} 筆）。**還沒上架**：需要人工看過、套用提案並合併 PR。")
+        lines.append(f"已產生待審提案（{result['proposal']['accepted_for_radar_proposal']} 筆）。**還沒上架**：接下來會開資料 PR，要人工看過並合併。")
         retired, manual = result["proposal"]["retired_hand_cards"], result["proposal"]["needs_manual_retire"]
         if retired:
             lines.extend(["", f"提案會取代 {len(retired)} 張手寫卡：" + "、".join(safe_text(row["title"], 40) for row in retired) + "。"])

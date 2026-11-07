@@ -60,6 +60,12 @@ python scripts/review_candidates.py --candidates work/scanner/report/candidates.
 
 時間與資格分開：缺必要學校、候選人或年級條件時不當符合；未結構化限制仍需人工核對。網站依臺北今天重算可確認窗口，舊快照的open不直接冒充今日開放；推定／未知起日不當正式開放日。結果確定程度、補送角色、結構化金額、國籍／就業／否定條件在候選轉pilot時保留。
 
+## 自動開資料 PR
+
+`scripts/open_data_pr.py` 把提案變成資料 PR，由 `scan-sources.yml` 和 `source-intake.yml` 的 `data-pr` job 執行，只有這個 job 有寫入權限。檢查階段不帶權杖；提案只能改 `data/` 和 `docs/source-chains/`；只推 `data/` 開頭的分支；不會合併，合併才是上架。公開提交的新網域不進 `allowed_hosts`，要排程巡檢由維護者另外加。
+
+repo 設定 `can_approve_pull_request_reviews` 關閉時 Actions 開不了 PR，會改留比較連結，由維護者自己開（這樣 CI 也會跑）。
+
 ## 人工台帳與PR匯出
 
 [data/scan-reviews.json](../data/scan-reviews.json)依[台帳Schema](../schema/scan-reviews.schema.json)版本1.1.0驗證。目前正式reviews為空；舊合成紀錄已移入明示測試fixture。

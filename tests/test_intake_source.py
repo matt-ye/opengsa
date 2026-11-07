@@ -162,11 +162,16 @@ class IntakeSourceTests(unittest.TestCase):
         self.assertIn("還有 2 個連結", text)
         self.assertIn("已登記過", run_comment({**result, "already_registered": True}))
 
-    def test_workflow_keeps_public_input_out_of_commands_and_cannot_push(self):
+    def test_workflow_keeps_public_input_out_of_commands_and_limits_write_access(self):
         workflow = (ROOT / ".github/workflows/source-intake.yml").read_text(encoding="utf-8")
         self.assertNotRegex(workflow, r"github\.event\.issue\.(body|title)")
         self.assertIn("github.event.sender.login == github.repository_owner", workflow)
-        self.assertNotIn("contents: write", workflow)
+        # 抓取公開網頁的 job 沒有寫入權限；開 PR 的 job 排在它後面，權杖也不留在磁碟上。
+        intake, data_pr = workflow.split("\n  data-pr:")
+        self.assertNotIn("contents: write", intake)
+        self.assertIn("contents: write", data_pr)
+        self.assertIn("needs: intake", data_pr)
+        self.assertEqual(data_pr.count("persist-credentials: false"), 1)
         self.assertNotIn("secrets.", workflow)
         self.assertNotIn("OPENGSA_MODEL", workflow)
 
