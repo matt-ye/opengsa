@@ -20,11 +20,12 @@ HOST = "scholarship.opengsa-synthetic.example"
 BASE = f"https://{HOST}"
 SOURCE_ID = "synthetic-foundation-2026"
 TITLE = "合成基金會115學年度研究生獎學金"
+INTAKE_TITLE = "合成丁基金會115學年度研究生獎學金"
 PROFILE = {"id": SOURCE_ID, "title": TITLE, "url": f"{BASE}/news/phd-2026", "body_selector": "article", "required_markers": ["申請資格"],
            "pdf_include": [], "max_pdfs": 0, "review_note": "合成來源，端到端測試用。", "evidence_mode": "short_excerpt",
            "category": "phd_research", "resource_kind": "scholarship", "scope": "nationwide"}
 PAGES = {f"{BASE}/news/phd-2026": "announcement.html", f"{BASE}/policy/rules": "policy.html", f"{BASE}/scholarships": "index.html",
-         f"{BASE}/news/a": "news-a.html", f"{BASE}/news/b": "news-b.html", f"{BASE}/news/c": "news-c.html"}
+         f"{BASE}/news/intake-2026": "intake.html", f"{BASE}/news/a": "news-a.html", f"{BASE}/news/b": "news-b.html", f"{BASE}/news/c": "news-c.html"}
 GATES = {"check_data": ["scripts/check_data.py"], "check_provenance": ["scripts/check_provenance.py"], "check_config": ["scripts/scan_sources.py", "--check-config"]}
 
 
@@ -102,10 +103,32 @@ class SourceIntakeE2ETests(unittest.TestCase):
             return
         page = cls.pages / "announcement.html"
         page.write_text(page.read_text(encoding="utf-8").replace("115年4月15日", "115年5月20日"), encoding="utf-8")
-        if cls.round("update", base, preview=False):
-            cls.updated_cards = cls.synthetic_cards()
-            # 新增與更新都套用後才重跑全部測試：寫死總數或版本的測試會在這裡現形。
-            cls.sh("update.unittest", "-m", "unittest", "discover", "-s", "tests")
+        if not cls.round("update", base, preview=False):
+            return
+        cls.updated_cards = cls.synthetic_cards()
+        cls.review_after_update = len(read(cls.repo / "data/candidates/source-review.json")["candidates"])
+        if not cls.intake_round(base):
+            return
+        # 新增、更新、提交都套用後才重跑全部測試：寫死總數或版本的測試會在這裡現形。
+        cls.sh("update.unittest", "-m", "unittest", "discover", "-s", "tests")
+
+    @classmethod
+    def intake_round(cls, base):
+        """第 1 到 11 步：owner 核可 Issue，只跑該來源，再人工套用提案。"""
+        body = f"### 資源名稱\n\n任意 @someone 名稱\n\n### 公開來源網址\n\n{BASE}/news/intake-2026\n\n### 資源類型\n\n獎學金／研究獎助\n"
+        save(base / "event.json", {"action": "labeled", "label": {"name": "source-approved"}, "sender": {"login": "owner"},
+                                   "repository": {"owner": {"login": "owner"}}, "issue": {"number": 7, "body": body}})
+        if not cls.sh("intake.validate", "scripts/intake_source.py", "--event", base / "event.json", "--output", "work/intake"):
+            return False
+        if not cls.sh("intake.run", "scripts/run_source_intake.py", "--request", "work/intake/request.json", "--output", "work/intake"):
+            return False
+        if not (cls.repo / "work/intake/proposal/repo").exists():
+            cls.results["intake.proposal"] = (1, (cls.repo / "work/intake/result.json").read_text(encoding="utf-8")[-1500:])
+            return False
+        shutil.copytree(cls.repo / "work/intake/proposal/repo", cls.repo, dirs_exist_ok=True)
+        for gate, cmd in GATES.items():
+            cls.sh(f"intake.{gate}", *cmd)
+        return cls.sh("intake.build_site", "scripts/build_site.py", base / "site-intake")
 
     @classmethod
     def synthetic_cards(cls):
@@ -148,9 +171,30 @@ class SourceIntakeE2ETests(unittest.TestCase):
         self.assertEqual(len(self.updated_cards), 1)
         self.assertNotEqual(self.updated_cards[0]["candidate_id"], self.new_cards[0]["candidate_id"])
         self.assertIn("2026-05-20", json.dumps(self.updated_cards[0]["schedule"], ensure_ascii=False))
-        self.assertEqual(len(read(self.repo / "data/candidates/source-review.json")["candidates"]), self.base_review + 1)
+        self.assertEqual(self.review_after_update, self.base_review + 1)
         _, feed = self.site("update")
         self.assertEqual(feed.count("<item>"), self.base_total + 1)
+
+    def test_approved_issue_runs_alone_and_reaches_the_site_after_manual_apply(self):
+        self.assert_step("intake.run")
+        result = read(self.repo / "work/intake/result.json")
+        self.assertEqual((result["model_calls"], result["published"]), (0, False))
+        self.assertEqual(result["records"][0]["disposition"], "named_candidates_pending")
+        self.assertIn(INTAKE_TITLE, [c["title"] for c in result["candidates"]])
+        # 新來源不會被加進排程，名稱欄的提交內容也不會出現在留言。
+        source = next(s for s in read(self.repo / "data/scan-sources.json")["sources"] if s["url"] == f"{BASE}/news/intake-2026")
+        self.assertIs(source["enabled"], False)
+        text = (self.repo / "work/intake/comment.md").read_text(encoding="utf-8")
+        self.assertIn("還沒上架", text)
+        self.assertNotIn("@someone", text)
+        card = next(c for c in read(self.repo / "data/candidates/source-review.json")["candidates"] if c["title"] == INTAKE_TITLE)
+        self.assertEqual(card["review"]["status"], "pending")
+        for gate in GATES:
+            self.assert_step(f"intake.{gate}")
+        self.assert_step("intake.build_site")
+        page, feed = self.site("intake")
+        self.assertIn(INTAKE_TITLE, page)
+        self.assertIn(INTAKE_TITLE, feed)
 
     def test_whole_suite_passes_with_the_applied_data(self):
         self.assert_step("update.unittest")
@@ -172,6 +216,10 @@ class SourceIntakeE2ETests(unittest.TestCase):
         self.assert_step("gap.expand")
         titles = {c["title"] for c in read(self.repo / "work/x/report/structured-candidates.json")["candidates"]}
         self.assertEqual(len(titles), 3, titles)
+
+    @unittest.expectedFailure
+    def test_gap_step7_announcement_and_its_policy_are_one_card(self):
+        self.assertEqual(len(read(self.repo / "work/intake/result.json")["candidates"]), 1)
 
     @unittest.expectedFailure
     def test_gap_step9_proposal_carries_time_records(self):

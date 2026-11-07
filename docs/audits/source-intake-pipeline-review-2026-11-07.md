@@ -151,4 +151,5 @@
 |---|---|---|---|
 | 1 | 建置日期與測試總數改由資料決定 | 已合併 | [#87](https://github.com/matt-ye/opengsa/pull/87) |
 | 2 | 合成流程改成 CI 測試，尚未打通的環節標成已知斷點 | 已合併 | [#89](https://github.com/matt-ye/opengsa/pull/89) |
-| 6 | 提交入口：owner 加標籤後驗證網址 | 已開 PR，待使用者看 | 第 6 項 |
+| 6 | 提交入口：owner 加標籤後驗證網址 | 已開 PR，待使用者看 | [#90](https://github.com/matt-ye/opengsa/pull/90) |
+| 7 | 單一來源管線：核可後只跑該來源並產生提案 | 已開 PR，待使用者看 | 第 7 項 |

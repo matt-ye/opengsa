@@ -1,0 +1,91 @@
+"""處理一筆已核可的提交：只跑該來源，不等排程輪轉，也不佔待審佇列。
+
+輸出只留在 --output（提案、預覽、留言）。不寫正式資料、不呼叫模型；上架仍須人工套用提案並合併 PR。
+"""
+import argparse
+from copy import deepcopy
+import json
+import os
+from pathlib import Path
+import re
+import sys
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from scripts.expand_sources import export_report, initial_state, read, run_batch, save
+from scripts.audit_sources import canonical_url
+from scripts.propose_radar_update import write_proposal
+from scripts.scan_sources import node_get
+
+BATCH = "B1"
+ACCEPTED = ("passed_automated_checks", "passed_with_gaps")
+DISPOSITIONS = {"named_candidates_pending": "已產生候選", "source_document_or_discovery_only": "可讀取，但不像單一方案公告，未產生候選"}
+
+
+def safe_text(value, limit=80):
+    """網頁標題是外部內容，進 Issue 留言前去掉提及、連結與表格語法。"""
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    text = re.sub(r"[`|<>\[\]]", "", text).replace("@", "＠")
+    return text[:limit] or "（無標題）"
+
+
+def process(request, output, transport=node_get, progress=print):
+    output = Path(output)
+    config = read(ROOT / "data/scan-sources.json")
+    url = request["url"]
+    # 維護者已核可這個網址，即使舊 profile 是停用狀態也要跑；不影響排程設定。
+    config["sources"] = [{**source, "enabled": True} if canonical_url(source["url"]) == url else deepcopy(source) for source in config["sources"]]
+    inventory = {"as_of": None, "rows": [{"id": f"ISSUE-{request['issue']}", "url": url, "title": "", "batch": BATCH, "category": request["category"],
+                                          "kind": "提交", "restrictions": [], "access_gate": "owner_approved_submission"}]}
+    save(output / "inventory.json", inventory)
+    state = initial_state(inventory)
+    run_batch(inventory, state, BATCH, output / "state.json", config, transport=transport, progress=progress)
+    report = output / "report"
+    summary = export_report(inventory, state, report)
+    bundle, profiles = read(report / "structured-candidates.json"), read(report / "source-profiles.json")
+    result = {"schema_version": "source-intake-result-1", "issue": request["issue"], "url": url, "http_requests": state["http_requests"], "model_calls": 0,
+              "records": [{"url": r["url"], "status": r["status"], "disposition": r.get("disposition")} for r in state["records"].values()],
+              "candidates": [{"title": c["title"], "status": c["verification"]["status"]} for c in bundle["candidates"]],
+              "proposal": None, "published": False, "official_data_modified": False, "expansion_summary": summary["statuses"]}
+    if any(c["verification"]["status"] in ACCEPTED for c in bundle["candidates"]):
+        result["proposal"] = write_proposal(bundle, profiles, output / "proposal")
+    save(output / "result.json", result)
+    return result
+
+
+def comment(result, run_url=None):
+    lines = [f"來源處理完成：`{result['url']}`。沒有呼叫模型，也沒有改動網站資料。", "", "| 文件 | 結果 |", "|---|---|"]
+    for record in result["records"]:
+        lines.append(f"| `{record['url']}` | {DISPOSITIONS.get(record['disposition'], '無法處理：' + safe_text(record['status']))} |")
+    if result["candidates"]:
+        lines.extend(["", "| 候選 | 自動檢核 |", "|---|---|"])
+        lines.extend(f"| {safe_text(c['title'])} | {c['status']} |" for c in result["candidates"])
+    lines.append("")
+    if result["proposal"]:
+        lines.append(f"已產生待審提案（{result['proposal']['accepted_for_radar_proposal']} 筆）。**還沒上架**：需要人工看過、套用提案並合併 PR。")
+    else:
+        lines.append("這次沒有可提案的候選，網站不會有變動。")
+    if run_url:
+        lines.append(f"\n提案與預覽：{run_url}（artifact 保留 14 天）")
+    return "\n".join(lines) + "\n"
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--request", type=Path, required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+    request = read(args.request)
+    if request["status"] != "accepted":
+        print("skip: submission was rejected")
+        return
+    result = process(request, args.output)
+    repository, run_id = os.environ.get("GITHUB_REPOSITORY"), os.environ.get("GITHUB_RUN_ID")
+    run_url = f"https://github.com/{repository}/actions/runs/{run_id}" if repository and run_id else None
+    (args.output / "comment.md").write_text(comment(result, run_url), encoding="utf-8")
+    print(json.dumps({key: result[key] for key in ("http_requests", "model_calls", "published")}, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    main()

@@ -104,7 +104,8 @@ def comment(request=None, reason=None):
     if reason:
         return f"來源未處理：{REASONS[reason]}\n"
     note = "這個網址已登記過。" if request["already_registered"] else "這是新網址。"
-    return f"已收到核可，來源網址：`{request['url']}`。{note}\n\n這一步只驗證網址，沒有抓取，也沒有改動網站資料。\n"
+    # 後續抓取若中斷，留言會停在這段，所以要說清楚沒有完成。
+    return f"已收到核可，來源網址：`{request['url']}`。{note}\n\n抓取與萃取沒有完成，請看 Actions 紀錄。網站資料沒有改動。\n"
 
 
 def main():

@@ -9,6 +9,8 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
+from scripts.audit_sources import canonical_url
+from scripts.run_source_intake import comment as run_comment, process
 from scripts.intake_source import APPROVAL_LABEL, CATEGORIES, IntakeRejected, build_request, comment, form_fields, validated_url
 
 BODY = """### 資源名稱
@@ -81,12 +83,34 @@ class IntakeSourceTests(unittest.TestCase):
             self.assertEqual(json.loads((Path(tmp) / "out/request.json").read_text(encoding="utf-8"))["reason"], "invalid_url")
             self.assertIn("未處理", (Path(tmp) / "out/comment.md").read_text(encoding="utf-8"))
 
+    def test_owner_approval_runs_a_source_whose_profile_is_disabled(self):
+        config = json.loads((ROOT / "data/scan-sources.json").read_text(encoding="utf-8"))
+        url = canonical_url(next(s for s in config["sources"] if s.get("enabled") is False and s["url"].startswith("https://"))["url"])
+        def transport(target, headers, limit):
+            return {"status": 404, "headers": {}, "body": b""}
+        request = {"issue": 7, "url": url, "category": "scholarship"}
+        with tempfile.TemporaryDirectory() as tmp:
+            result = process(request, Path(tmp), transport=transport, progress=lambda *a, **k: None)
+        self.assertEqual(result["records"][0]["status"], "http_404")
+        self.assertIsNone(result["proposal"])
+        self.assertEqual(result["model_calls"], 0)
+
+    def test_comment_neutralises_text_taken_from_the_page(self):
+        result = {"url": "https://example.test/a", "records": [{"url": "https://example.test/a", "status": "read", "disposition": "named_candidates_pending"}],
+                  "candidates": [{"title": "獎學金 @someone `x` [連結](https://evil.test) <b>|", "status": "passed_with_gaps"}], "proposal": None}
+        text = run_comment(result)
+        self.assertNotIn("@someone", text)
+        self.assertNotIn("[連結]", text)
+        self.assertNotIn("<b>", text)
+        self.assertIn("網站不會有變動", text)
+
     def test_workflow_keeps_public_input_out_of_commands_and_cannot_push(self):
         workflow = (ROOT / ".github/workflows/source-intake.yml").read_text(encoding="utf-8")
         self.assertNotRegex(workflow, r"github\.event\.issue\.(body|title)")
         self.assertIn("github.event.sender.login == github.repository_owner", workflow)
         self.assertNotIn("contents: write", workflow)
         self.assertNotIn("secrets.", workflow)
+        self.assertNotIn("OPENGSA_MODEL", workflow)
 
 
 if __name__ == "__main__":
