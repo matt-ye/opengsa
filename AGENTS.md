@@ -1,5 +1,6 @@
 # OpenGSA 工作規則
 
+- 2026-11-07最新核可：使用者同意關閉PR71並依實測重寫PR70；庫外檢索先修78校名冊，暫不排程、不自動開Issue、不寫入候選。生輔組維持人工。見docs/AUTONOMOUS-DISCOVERY-PLAN.md。
 - 2026-11-07最新核可：使用者要求照docs/audits/source-intake-pipeline-review-2026-11-07.md逐段修流程，每段一個PR，記錄修正狀況、方法、原因；每段等使用者同意才合併與做下一段。未授權觸發正式來源掃描或呼叫模型。
 
 - **候選只能由萃取流程產生**：不得手寫或用腳本寫定候選內容、雜湊與`field_evidence`；連不上來源就標未確認，不得補值。2026-11-07查核發現190／256筆為手寫（見docs/audits/candidate-provenance-2026-11-07.md），CI以`scripts/check_provenance.py`把關，基準清單只減不增。

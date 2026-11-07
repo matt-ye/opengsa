@@ -1,5 +1,9 @@
 # 目前計畫與已接受決策
 
+## 2026-11-07 庫外資源檢索：先修 78 校名冊（依實測改寫）
+
+- 詳見 [庫外資源檢索規劃](AUTONOMOUS-DISCOVERY-PLAN.md)。試跑 `scripts/probe_school_rss.py` 顯示 78 校有 57 校名冊網址連不到有效頁面（404 有 28 校、網域解析不到 29 校），能判定的 7 校只有 1 校宣告 feed。
+- 先修名冊，暫不排程、不自動開 Issue、不寫入候選；生輔組維持人工查核。原 TODO 2 的前端模組化規劃（PR #71）已關閉，日後大改某段邏輯時再抽出該段純函式。
 ## 2026-11-07 修正 78 校名冊與大學候選的寫定資料
 
 - 名冊網址逐校連線驗證，狀態改為如實標記（`link_portal`、`link_office`、`link_related_program`、`link_official_site_only`、`link_unverified`），逐校結果見 `docs/audits/university-roster-verification-2026-11-07.json`。

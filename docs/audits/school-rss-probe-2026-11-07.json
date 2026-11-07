@@ -1,0 +1,486 @@
+{
+  "model_calls": 0,
+  "summary": {
+    "schools_total": 78,
+    "schools_done": 78,
+    "by_status": {
+      "page_unavailable": 28,
+      "skipped": 43,
+      "no_feed": 6,
+      "feed_found": 1
+    }
+  },
+  "results": {
+    "U001": {
+      "name": "國立政治大學",
+      "url": "https://osa.nccu.edu.tw/tw/student-life-and-extracurricular-activities/scholarships-and-grants",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U002": {
+      "name": "國立清華大學",
+      "url": "https://meo110.wwlc.nthu.edu.tw/",
+      "status": "skipped",
+      "reason": "robots_not_plain_rules"
+    },
+    "U003": {
+      "name": "國立臺灣大學",
+      "url": "https://advisory.ntu.edu.tw/CMS/Page/36",
+      "status": "skipped",
+      "reason": "robots_not_plain_rules"
+    },
+    "U004": {
+      "name": "國立臺灣師範大學",
+      "url": "https://assistance2.sa.ntnu.edu.tw/?page_id=31",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U005": {
+      "name": "國立成功大學",
+      "url": "https://assistance-osa.ncku.edu.tw/p/412-1051-16327.php",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U006": {
+      "name": "國立中興大學",
+      "url": "https://www.osa.nchu.edu.tw/osa/laa/scholarship.html",
+      "status": "no_feed",
+      "other_host_links": 0
+    },
+    "U007": {
+      "name": "國立陽明交通大學",
+      "url": "https://sasystem.nycu.edu.tw/scholarship/index2",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U008": {
+      "name": "國立中央大學",
+      "url": "https://military.ncu.edu.tw/aid/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U009": {
+      "name": "國立中山大學",
+      "url": "https://ag-osa.nsysu.edu.tw/p/412-1087-16880.php",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U010": {
+      "name": "國立臺灣海洋大學",
+      "url": "https://stu.ntou.edu.tw/p/412-1023-8874.php",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U011": {
+      "name": "國立中正大學",
+      "url": "https://studaff.ccu.edu.tw/p/412-1017-1520.php",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U012": {
+      "name": "國立高雄師範大學",
+      "url": "https://c.nknu.edu.tw/osa/laa/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U013": {
+      "name": "國立彰化師範大學",
+      "url": "https://student.ncue.edu.tw/guidance/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U014": {
+      "name": "國立臺北大學",
+      "url": "https://www.ntpu.edu.tw/admin/a8/org/a8-2/scholarship.php",
+      "status": "skipped",
+      "reason": "url_not_allowed"
+    },
+    "U015": {
+      "name": "國立嘉義大學",
+      "url": "https://www.ncyu.edu.tw/student/laa/scholarship/",
+      "status": "no_feed",
+      "other_host_links": 0
+    },
+    "U016": {
+      "name": "國立高雄大學",
+      "url": "https://osa.nuk.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U017": {
+      "name": "國立東華大學",
+      "url": "https://rb005.ndhu.edu.tw/p/412-1005-2114.php",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U018": {
+      "name": "國立暨南國際大學",
+      "url": "https://osa.ncnu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U019": {
+      "name": "國立臺東大學",
+      "url": "https://dsa.nttu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U020": {
+      "name": "國立宜蘭大學",
+      "url": "https://niuosa.niu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U021": {
+      "name": "國立聯合大學",
+      "url": "https://osa.nuu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U022": {
+      "name": "國立臺南大學",
+      "url": "https://osa.nutn.edu.tw/laa/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U023": {
+      "name": "國立臺北教育大學",
+      "url": "https://osa.ntue.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U024": {
+      "name": "國立臺中教育大學",
+      "url": "https://cip.ntcu.edu.tw/",
+      "status": "skipped",
+      "reason": "robots_not_plain_rules"
+    },
+    "U025": {
+      "name": "國立金門大學",
+      "url": "https://osa.nqu.edu.tw/laa/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U026": {
+      "name": "國立屏東大學",
+      "url": "https://osa.nptu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U027": {
+      "name": "臺北市立大學",
+      "url": "https://student.utaipei.edu.tw/laa/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U028": {
+      "name": "國立臺灣科技大學",
+      "url": "https://scholarship.ntust.edu.tw/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U029": {
+      "name": "國立雲林科技大學",
+      "url": "https://osa.yuntech.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U030": {
+      "name": "國立屏東科技大學",
+      "url": "https://osa.npust.edu.tw/laa/scholarship/",
+      "status": "feed_found",
+      "feed_url": "https://osa.npust.edu.tw/feed/",
+      "items": 5,
+      "keyword_items": 0
+    },
+    "U031": {
+      "name": "國立臺北科技大學",
+      "url": "https://osa.ntut.edu.tw/laa/scholarship_platform/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U032": {
+      "name": "國立虎尾科技大學",
+      "url": "https://student.nfu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U033": {
+      "name": "國立澎湖科技大學",
+      "url": "https://osa.npu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U034": {
+      "name": "國立勤益科技大學",
+      "url": "https://scholarship.ncut.edu.tw/",
+      "status": "no_feed",
+      "other_host_links": 0
+    },
+    "U035": {
+      "name": "國立臺北護理健康大學",
+      "url": "https://osa.ntunhs.edu.tw/laa/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U036": {
+      "name": "國立高雄餐旅大學",
+      "url": "https://student.nkuht.edu.tw/laa/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U037": {
+      "name": "國立臺灣藝術大學",
+      "url": "https://osa.ntua.edu.tw/laa/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U038": {
+      "name": "國立臺北商業大學",
+      "url": "https://osa.ntub.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U039": {
+      "name": "國立高雄科技大學",
+      "url": "https://acad.nkust.edu.tw/laa/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U040": {
+      "name": "東海大學",
+      "url": "https://deca.thu.edu.tw/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U041": {
+      "name": "東吳大學",
+      "url": "https://web-ch.scu.edu.tw/life/web_page/10497",
+      "status": "no_feed",
+      "other_host_links": 0
+    },
+    "U042": {
+      "name": "輔仁大學",
+      "url": "https://life.dsa.fju.edu.tw/index.php?c=scholarship",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U043": {
+      "name": "中國文化大學",
+      "url": "https://staff.pccu.edu.tw/~cuap/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U044": {
+      "name": "淡江大學",
+      "url": "https://sa.tku.edu.tw/spirit/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U045": {
+      "name": "逢甲大學",
+      "url": "https://student.fcu.edu.tw/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U046": {
+      "name": "中原大學",
+      "url": "https://life.cycu.edu.tw/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U047": {
+      "name": "靜宜大學",
+      "url": "https://osa.pu.edu.tw/laa/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U048": {
+      "name": "大同大學",
+      "url": "https://student.ttu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U049": {
+      "name": "元智大學",
+      "url": "https://www.yzu.edu.tw/admin/st/index.php/tw/scholarship",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U050": {
+      "name": "義守大學",
+      "url": "https://www.isu.edu.tw/osa/laa/scholarship/",
+      "status": "no_feed",
+      "other_host_links": 0
+    },
+    "U051": {
+      "name": "華梵大學",
+      "url": "https://osa.hfu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U052": {
+      "name": "長庚大學",
+      "url": "https://studentaffairs.cgu.edu.tw/p/412-1012-3211.php",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U053": {
+      "name": "長榮大學",
+      "url": "https://osa.cjcu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U054": {
+      "name": "慈濟大學",
+      "url": "https://osa.tcu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U055": {
+      "name": "銘傳大學",
+      "url": "https://student.mcu.edu.tw/laa/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U056": {
+      "name": "世新大學",
+      "url": "https://osa.shu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U057": {
+      "name": "大葉大學",
+      "url": "https://sa.dyu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "robots_not_plain_rules"
+    },
+    "U058": {
+      "name": "實踐大學",
+      "url": "https://sa.usc.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U059": {
+      "name": "南華大學",
+      "url": "https://osa.nhu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U060": {
+      "name": "玄奘大學",
+      "url": "https://osa.hcu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U061": {
+      "name": "佛光大學",
+      "url": "https://osa.fgu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U062": {
+      "name": "高雄醫學大學",
+      "url": "https://osa.kmu.edu.tw/laa/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U063": {
+      "name": "中國醫藥大學",
+      "url": "https://adm08.cmu.edu.tw/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U064": {
+      "name": "臺北醫學大學",
+      "url": "https://osa.tmu.edu.tw/aid/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U065": {
+      "name": "中山醫學大學",
+      "url": "https://osa.csmu.edu.tw/laa/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U066": {
+      "name": "馬偕醫學院",
+      "url": "https://osa.mmc.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U067": {
+      "name": "朝陽科技大學",
+      "url": "https://stafof.cyut.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "http_403_host_paused"
+    },
+    "U068": {
+      "name": "南臺科技大學",
+      "url": "https://osa.stust.edu.tw/laa/scholarship/",
+      "status": "no_feed",
+      "other_host_links": 0
+    },
+    "U069": {
+      "name": "萬能科技大學",
+      "url": "https://osa.vnu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U070": {
+      "name": "致理科技大學",
+      "url": "https://osa.chihlee.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U071": {
+      "name": "崑山科技大學",
+      "url": "https://osa.ksu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U072": {
+      "name": "嘉南藥理大學",
+      "url": "https://osa.cnu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U073": {
+      "name": "樹德科技大學",
+      "url": "https://osa.stu.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U074": {
+      "name": "明志科技大學",
+      "url": "https://sa.mcut.edu.tw/laa/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U075": {
+      "name": "龍華科技大學",
+      "url": "https://www.lhu.edu.tw/osa/laa/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U076": {
+      "name": "弘光科技大學",
+      "url": "https://osa.hk.edu.tw/laa/scholarship/",
+      "status": "skipped",
+      "reason": "transport_error"
+    },
+    "U077": {
+      "name": "正修科技大學",
+      "url": "https://osa.csu.edu.tw/laa/scholarship/",
+      "status": "page_unavailable",
+      "reason": "http_404"
+    },
+    "U078": {
+      "name": "文藻外語大學",
+      "url": "https://d005.wzu.edu.tw/scholarship/",
+      "status": "skipped",
+      "reason": "url_not_allowed"
+    }
+  },
+  "probed_on": "2026-11-07"
+}
