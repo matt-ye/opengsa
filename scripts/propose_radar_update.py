@@ -12,6 +12,8 @@ ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from scripts.scan_sources import digest
 from scripts.check_data import validate_candidate_snapshot
+from scripts.review_candidates import candidate_fingerprint
+from scripts.time_policy import validate_temporal_snapshot
 from scripts.source_chains import candidate_bindings,candidate_documents,timeline_metadata
 from scripts.export_source_chain_graph import load_graph,export as export_graph
 from scripts.expand_sources import read,save,now
@@ -51,7 +53,22 @@ def retire_hand_cards(good,replaced_urls=()):
     if gone:files[HAND_BASELINE]={**baseline,'candidate_ids':[i for i in baseline['candidate_ids'] if i not in gone]}
     return files,retired,manual
 
-def prepare(incoming,config,observations=None,replaced_urls=()):
+def merge_temporal(merged,good,temporal,observed):
+    """當輪的時間紀錄和卡片一起進提案。只收同一版本內容讀到的；已被取代的卡，舊紀錄一併移除。"""
+    records={}
+    for card in good:
+        record=(temporal or {}).get(card['candidate_id'])
+        if record and record.get('card_revision_id')==card['source_metadata']['revision_id']:
+            records[card['candidate_id']]={**record,'candidate_sha256':candidate_fingerprint(card)}
+    if not records:return None,0
+    base=read(ROOT/'data/temporal-observations.json');alive={c['candidate_id'] for c in merged['candidates']}
+    batch={'http_requests':0,'kind':'same_round','attempted_urls':sorted({r['url'] for r in records.values()}),'observed_at':observed}
+    result={**base,'batches':base['batches']+[batch],'records':{**{k:v for k,v in base['records'].items() if k in alive},**records}}
+    errors=validate_temporal_snapshot(merged,result)
+    if errors:raise ValueError('invalid_temporal_records: '+str(errors)[:300])
+    return result,len(records)
+
+def prepare(incoming,config,observations=None,replaced_urls=(),temporal=None):
     errors=validate_candidate_snapshot(incoming,config)
     if errors:raise ValueError('invalid_incoming_candidates: '+str(errors)[:300])
     base=read(ROOT/'data/candidates/source-review.json')
@@ -67,6 +84,8 @@ def prepare(incoming,config,observations=None,replaced_urls=()):
     errors=validate_candidate_snapshot(merged,config)
     if errors:raise ValueError('invalid_merged_candidates: '+str(errors)[:300])
     files={'data/candidates/source-review.json':merged}
+    observed,temporal_count=merge_temporal(merged,good,temporal,incoming['generated_at'])
+    if observed:files['data/temporal-observations.json']=observed
     retired_files,retired,manual=retire_hand_cards(good,replaced_urls)
     files.update(retired_files)
     oldconfig=read(ROOT/'data/scan-sources.json');profiles={p['id']:p for p in oldconfig['sources']}
@@ -145,14 +164,14 @@ def prepare(incoming,config,observations=None,replaced_urls=()):
         'withheld_failed_checks':len(incoming['candidates'])-len(good),'retained_old_candidates':len(keep),
         'proposed_candidates':len(merged['candidates']),'replaced_urls':sorted(urls),'invalidated_timeline_documents':sorted(invalid_docs),
         'byte_identical_rebound_documents':sorted({key[0] for key in rebound}-invalid_docs),
-        'retired_hand_cards':retired,'needs_manual_retire':manual,
+        'retired_hand_cards':retired,'needs_manual_retire':manual,'temporal_records':temporal_count,
         'human_approvals':0,'published':False,'scheduled_sources_enabled':0}
     return files,summary
 
-def write_proposal(incoming,config,output,preview=True,observations=None,replaced_urls=()):
+def write_proposal(incoming,config,output,preview=True,observations=None,replaced_urls=(),temporal=None):
     output=Path(output)
     if output.exists() and any(output.iterdir()):raise ValueError('proposal_output_must_be_empty')
-    files,summary=prepare(incoming,config,observations,replaced_urls);output.mkdir(parents=True,exist_ok=True);patches=[]
+    files,summary=prepare(incoming,config,observations,replaced_urls,temporal);output.mkdir(parents=True,exist_ok=True);patches=[]
     for path,value in files.items():
         text=json.dumps(value,ensure_ascii=False,indent=2)+'\n'
         old=(ROOT/path).read_text(encoding='utf-8') if (ROOT/path).exists() else ''
@@ -178,8 +197,8 @@ def write_proposal(incoming,config,output,preview=True,observations=None,replace
     return summary
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--candidates',type=Path,required=True);p.add_argument('--config',type=Path,default=ROOT/'data/scan-sources.json');p.add_argument('--output',type=Path,required=True);p.add_argument('--no-preview',action='store_true');p.add_argument('--observations',type=Path);args=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--candidates',type=Path,required=True);p.add_argument('--config',type=Path,default=ROOT/'data/scan-sources.json');p.add_argument('--output',type=Path,required=True);p.add_argument('--no-preview',action='store_true');p.add_argument('--observations',type=Path);p.add_argument('--temporal',type=Path,help='掃描當輪產出的時間紀錄');args=p.parse_args()
     if args.output.resolve().is_relative_to(ROOT/'data'):p.error('proposal must remain outside data')
-    print(json.dumps(write_proposal(read(args.candidates),read(args.config),args.output,not args.no_preview,read(args.observations) if args.observations else None),ensure_ascii=False))
+    print(json.dumps(write_proposal(read(args.candidates),read(args.config),args.output,not args.no_preview,read(args.observations) if args.observations else None,temporal=read(args.temporal) if args.temporal and args.temporal.exists() else None),ensure_ascii=False))
 
 if __name__=='__main__':main()

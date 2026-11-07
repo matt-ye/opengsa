@@ -1,7 +1,7 @@
 """新來源到上架的離線端到端測試：在 repo 副本跑真實指令，傳輸換成本機假頁。
 
 通過代表「已登記的來源」能一路走到網站與 RSS，不代表流程已自動化。
-尚未打通的環節寫成 expectedFailure；修好時測試會回報 unexpected success，到時拿掉標記。
+
 """
 import json
 import os
@@ -118,7 +118,7 @@ class SourceIntakeE2ETests(unittest.TestCase):
         if not cls.sh(f"{name}.scan", "scripts/scan_sources.py", "--config", base / "only.json", "--state", "work/state.json", "--output", report):
             return False
         args = ["--no-preview"] if not preview else []
-        if not cls.sh(f"{name}.propose", "scripts/propose_radar_update.py", "--candidates", f"{report}/structured-candidates.json", "--output", proposal, *args):
+        if not cls.sh(f"{name}.propose", "scripts/propose_radar_update.py", "--candidates", f"{report}/structured-candidates.json", "--temporal", f"{report}/temporal-records.json", "--output", proposal, *args):
             return False
         # 目前沒有套用指令，照 PR-DRAFT.md 把 repo/ 蓋回去。
         shutil.copytree(cls.repo / proposal / "repo", cls.repo, dirs_exist_ok=True)
@@ -323,13 +323,24 @@ class SourceIntakeE2ETests(unittest.TestCase):
         known = set(read(self.pages / "map.json"))
         self.assertEqual({u for u in urls if u not in known and not u.endswith("/robots.txt")}, set())
 
-    # ---- 已知斷點：修好後會變成 unexpected success，到時拿掉 expectedFailure。----
+    def test_proposal_carries_time_records_from_the_same_round(self):
+        self.assert_step("new.propose")
+        self.assert_step("new.scan")
+        records = read(self.repo / "work/new/proposal/repo/data/temporal-observations.json")["records"]
+        record = records[self.new_cards[0]["candidate_id"]]
+        self.assertEqual(record["policy"]["submission_mode"], "fixed_window")
+        self.assertEqual(read(self.repo / "work/new/report/scan-report.json")["http_requests"], 2)
+        page, _ = self.site("new")
+        self.assertIn("2026-04-15", page)
 
-    @unittest.expectedFailure
-    def test_gap_step9_proposal_carries_time_records(self):
-        # 前面的步驟就失敗時要跳過，否則會被當成「預期中的失敗」而看不出來。
-        self.require("new.propose")
-        self.assertTrue((self.repo / "work/new/proposal/repo/data/temporal-observations.json").exists())
+    def test_clean_page_dates_belong_to_the_student_and_gaps_are_reported(self):
+        card = self.new_cards[0]
+        self.assertEqual(card["schedule"]["application_start"]["value"], "2026-03-01")
+        self.assertTrue(any(s["actor"] == "student" and s["deadline"]["value"] == "2026-04-15" for s in card["schedule"]["steps"]))
+        # 假頁寫了兼領限制，但規則還抽不出來；要明說，不能回報沒有缺漏。
+        self.assertEqual(card["compatibility"]["mode"], "unknown")
+        self.assertIn("unextracted:compatibility", card["gaps_and_conflicts"]["missing_fields"])
+        self.assertEqual(card["verification"]["status"], "passed_with_gaps")
 
 
 if __name__ == "__main__":

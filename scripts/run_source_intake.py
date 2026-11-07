@@ -59,7 +59,7 @@ def process(request, output, transport=node_get, progress=print, options=INTAKE_
               "candidates": [{"title": c["title"], "status": c["verification"]["status"], "program_key": c["program_key"]} for c in bundle["candidates"]],
               "proposal": None, "published": False, "official_data_modified": False, "expansion_summary": summary["statuses"]}
     if propose and any(c["verification"]["status"] in ACCEPTED for c in bundle["candidates"]):
-        result["proposal"] = write_proposal(bundle, profiles, output / "proposal", replaced_urls=[url])
+        result["proposal"] = write_proposal(bundle, profiles, output / "proposal", replaced_urls=[url], temporal=read(report / "temporal-records.json"))
     save(output / "result.json", result)
     return result
 

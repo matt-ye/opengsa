@@ -107,7 +107,7 @@ def build_proposal(output, targets, preview=True):
     """彙整候選成一份提案。只有真的抽到候選的來源，才會取代它的手寫卡。"""
     output = Path(output)
     candidates, profiles, config = {}, {}, read(ROOT / "data/scan-sources.json")
-    replaced, base = [], None
+    replaced, base, temporal = [], None, {}
     for row in outcomes(output, targets):
         report = source_dir(output, row["url"]) / "report"
         if not (report / "structured-candidates.json").exists():
@@ -118,6 +118,8 @@ def build_proposal(output, targets, preview=True):
         if accepted:
             replaced.append(row["url"])
         candidates.update({c["candidate_id"]: c for c in bundle["candidates"]})
+        if (report / "temporal-records.json").exists():
+            temporal.update(read(report / "temporal-records.json"))
         state = read(source_dir(output, row["url"]) / "state.json")
         profiles.update(state["profiles"])
         config["allowed_hosts"] = sorted(set(config["allowed_hosts"]) | {urlsplit(p["url"]).hostname for p in state["profiles"].values()})
@@ -125,7 +127,7 @@ def build_proposal(output, targets, preview=True):
         raise ValueError("no_candidates_to_propose")
     known = {source["id"] for source in config["sources"]}
     config["sources"] = config["sources"] + [p for key, p in profiles.items() if key not in known]
-    return write_proposal({**base, "candidates": list(candidates.values())}, config, output / "proposal", preview=preview, replaced_urls=replaced)
+    return write_proposal({**base, "candidates": list(candidates.values())}, config, output / "proposal", preview=preview, replaced_urls=replaced, temporal=temporal)
 
 
 def main():

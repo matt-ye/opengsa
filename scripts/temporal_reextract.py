@@ -22,7 +22,7 @@ from scripts.verify_original_sources import prepare_public
 from scripts.document_ir import prepare_document
 from scripts.review_candidates import candidate_fingerprint
 from scripts.time_policy import policy_validator, project_time_policy, source_is_unsafe
-from scripts.semantic_facts import INJECTION, recurring_time, time_actor, discover_identity, labelled_date_clause
+from scripts.semantic_facts import INJECTION, recurring_time, time_actor, is_student_document, labelled_date_clause
 from scripts.extract_candidates import (
     extract_from_in_memory_blocks, parse_date_range_from_text,
     parse_roc_or_iso_date_from_text,
@@ -259,8 +259,7 @@ def extract_policy(candidate, blocks, profile, revision, observed):
             cut = idx - 1 if idx > 0 and '────' in blocks[idx - 1]['text'] else idx
             blocks = blocks[:cut]
             break
-    identity=discover_identity(blocks)
-    student_document=bool((identity and identity['kind']=='eligibility_clause' and identity['degrees']) or (any(re.search(r'學校電子郵件投件申請|線上報名表單|即日起開放報名|報名對象[：:]|申請資格[：:].{0,30}(?:學生|博士生|碩士生)|申請對象[：:].{0,30}(?:學生|博士生|碩士生)',b['text']) for b in blocks if not INJECTION.search(b['text'])) and not any(re.search(r'學校彙|學院彙|系所彙整',b['text']) for b in blocks)))
+    student_document=is_student_document(blocks)
     fresh = extract_from_in_memory_blocks(profile, blocks, revision, observed,
         url=candidate['source_metadata']['url'], extraction_strategy='rules_only')
     matches = [c for c in fresh if c['program_key'] == candidate['program_key']]
@@ -429,6 +428,35 @@ def extract_policy(candidate, blocks, profile, revision, observed):
     return policy
 
 
+def timing_diagnostics(blocks):
+    return [{
+        'locator':b['locator'],'has_deadline':bool(re.search(r'截止|期限',b['text'])),
+        'has_student':bool(re.search(r'學生|同學|申請人|申請者',b['text'])),
+        'parsed_range':list(parse_date_range_from_text(b['text'])),
+        'parsed_date':list(parse_roc_or_iso_date_from_text(b['text'])),
+    } for b in timing_contexts(blocks) if TIMING.search(b['text'])][:30]
+
+
+def same_round_record(candidate, blocks, raw_sha256, profile, observed):
+    """用抽卡當輪的內文判斷時間，不多發請求。只留判斷結果與定位，內文不離開記憶體。
+
+    綁定卡片內容的雜湊要等提案時才算，所以這裡只記它來自哪個版本。
+    """
+    from scripts.temporal_tracks import parser_fingerprint
+    url=candidate['source_metadata']['url'];parser_sha256=parser_fingerprint()
+    revision=digest([url,raw_sha256,VERSION,parser_sha256])
+    units=prepare_document(blocks)['units']
+    profile={**deepcopy(profile),'url':url,'title':candidate['title'],'category':candidate['category'],
+        'resource_kind':candidate['resource_kind'],'scope':candidate['scope'],'evidence_mode':'hash_only'}
+    record={'url':url,'status':'replayed','reason':None,'observed_at':observed,'raw_sha256':raw_sha256,'revision_id':revision,
+        'format':'pdf' if urlsplit(url).path.lower().endswith('.pdf') else 'html','parser_sha256':parser_sha256,
+        'card_revision_id':candidate['source_metadata']['revision_id'],
+        'policy':extract_policy(candidate,units,profile,revision,observed),'diagnostics':timing_diagnostics(units)}
+    if record['policy'].get('submission_mode')=='undetermined':
+        record['undetermined_subkind']=classify_undetermined_subkind(candidate,units,record['diagnostics'],[])
+    return record
+
+
 def replay(output, previous=None, transport=node_get, source_ids=None, retry_unclassified=False, recheck=False,
            max_round_requests=ROUND_REQUEST_LIMIT, on_document=None, track=None,
            baseline_observations=None, skip_unchanged_model=False):
@@ -502,12 +530,7 @@ def replay(output, previous=None, transport=node_get, source_ids=None, retry_unc
                 policy=extract_policy(c,blocks,profile,revision,batch['observed_at'])
                 records[c['candidate_id']].update(status='replayed',reason=None,raw_sha256=raw_hash,
                     revision_id=revision,format=prepared['kind'],policy=policy,parser_sha256=parser_sha256)
-                records[c['candidate_id']]['diagnostics']=[{
-                    'locator':b['locator'],'has_deadline':bool(re.search(r'截止|期限',b['text'])),
-                    'has_student':bool(re.search(r'學生|同學|申請人|申請者',b['text'])),
-                    'parsed_range':list(parse_date_range_from_text(b['text'])),
-                    'parsed_date':list(parse_roc_or_iso_date_from_text(b['text'])),
-                } for b in timing_contexts(blocks) if TIMING.search(b['text'])][:30]
+                records[c['candidate_id']]['diagnostics']=timing_diagnostics(blocks)
                 if policy.get('submission_mode') == 'undetermined':
                     records[c['candidate_id']]['undetermined_subkind'] = classify_undetermined_subkind(
                         c, blocks, records[c['candidate_id']]['diagnostics'], prepared.get('links', [])

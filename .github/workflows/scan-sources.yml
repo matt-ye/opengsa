@@ -200,7 +200,7 @@ jobs:
 
       - name: Prepare radar candidate update and offline preview
         if: always() && hashFiles('work/scanner/report/structured-candidates.json') != ''
-        run: python scripts/propose_radar_update.py --candidates work/scanner/report/structured-candidates.json --output work/radar-proposal
+        run: python scripts/propose_radar_update.py --candidates work/scanner/report/structured-candidates.json --temporal work/scanner/report/temporal-records.json --output work/radar-proposal
       - name: Preserve radar proposal and preview
         if: always() && hashFiles('work/scanner/report/structured-candidates.json') != ''
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
