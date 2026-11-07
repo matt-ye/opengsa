@@ -73,7 +73,7 @@ const subTours = {
     icon: "🎯",
     title: "第一步：探索與快篩",
     badge: "01 / 全站探索",
-    desc: "OpenGSA 全庫已收錄 {count} 筆獎學金、福利與急難救助來源摘要。利用頂部情境標籤（碩博/出國/弱勢/算力）或多維度篩選，秒縮小目標範圍。",
+    desc: "OpenGSA 全庫已收錄 {count} 筆來源摘要，涵蓋獎學金、福利與急難救助。利用頂部情境標籤（碩博/出國/弱勢/算力）或多維度篩選，秒縮小目標範圍。",
     features: ["情境標籤一鍵直達", "全教育階段身分篩選（大學部至 K-12）", "頂會與差旅同義詞比對"],
     action: { label: "👉 前往情境與篩選", panel: "search", anchor: "persona-bar" }
    },
@@ -151,8 +151,8 @@ const subTours = {
     icon: "📂",
     title: "檢視範圍：全庫 vs 收藏清單",
     badge: "詳情比對 01",
-    desc: "工具列支援切換「目前選項」與「全庫所有方案（{count} 筆）」，無論是否已收藏，都能隨時調閱全台任何一筆獎學金之完整條文。",
-    features: ["隨時查閱 {count} 筆方案條文", "過濾只看個人收藏項目", "輸入關鍵字即時全文過濾"],
+    desc: "工具列支援切換「目前選項」與「全部來源摘要（{count} 筆）」，無論是否已收藏，都能隨時調閱全台任何一筆獎學金之完整條文。",
+    features: ["隨時查閱 {count} 筆來源摘要", "過濾只看個人收藏項目", "輸入關鍵字即時全文過濾"],
     action: { label: "👉 切換檢視範圍", panel: "detail", anchor: "detail-scope-switch" }
    },
    {
@@ -1546,7 +1546,8 @@ function render() {
  partition.active=Object.entries(state).some(([key,value])=>key!=="includeUnknown"&&value!=="all"&&Boolean(value));
  if(lastRange && rangeMode==="fit" && (lastRange.start!==range.start || lastRange.end!==range.end)) centerPending=true;
  lastRange=range;
- byId("result-count").textContent=partition.active?"符合已知篩選 "+partition.matched.length+" 項；可能相關／待確認 "+partition.possible.length+" 項（共 "+items.length+" 項）":items.length+" 項來源摘要（"+new Set(items.map(x=>x.programKey||x.id)).size+" 組方案）";
+ const countUnit=documentMode==="programs"?" 組方案":" 筆來源摘要";
+ byId("result-count").textContent=partition.active?"符合已知篩選 "+partition.matched.length+" 筆；可能相關／待確認 "+partition.possible.length+" 筆（共 "+items.length+countUnit+"）":items.length+countUnit;
  byId("mode-note").textContent=mode==="demo"
   ? "合成示範模式：日期與標籤僅供介面體驗，非正式公告。"
   : "獎助雷達來源摘要；未明資訊請至來源確認。文件檢視保留各年度，方案彙整不混合不同文件的欄位。";

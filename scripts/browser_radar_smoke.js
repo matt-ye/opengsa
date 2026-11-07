@@ -52,13 +52,13 @@ async (page) => {
  await page.locator('#document-mode').selectOption('documents');
  await page.locator('#filter-year').selectOption('unlimited');
  const yearText=await page.locator('#result-count').textContent();
- if(!yearText.includes('符合已知篩選 0 項；可能相關／待確認 17 項'))throw new Error('unknown year mixed '+yearText);
+ if(!yearText.includes('符合已知篩選 0 筆；可能相關／待確認 17 筆'))throw new Error('unknown year mixed '+yearText);
  await page.locator('#filter-unknown').uncheck();
  if(await page.locator('#result-cards article.card').count()!==0)throw new Error('strict filter includes unknown');
  await page.getByRole('button',{name:'清除條件',exact:true}).click();
  await page.locator('#filter-compatibility').selectOption('allowed');
  const compText=await page.locator('#result-count').textContent();
- if(!compText.includes('符合已知篩選 0 項；可能相關／待確認 7 項'))throw new Error('unknown compatibility mixed '+compText);
+ if(!compText.includes('符合已知篩選 0 筆；可能相關／待確認 7 筆'))throw new Error('unknown compatibility mixed '+compText);
  await page.getByRole('button',{name:'清除條件',exact:true}).click();
  await page.setViewportSize({width:1280,height:900});
  await page.locator('#result-cards article.card').first().scrollIntoViewIfNeeded();
