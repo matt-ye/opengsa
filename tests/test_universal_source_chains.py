@@ -17,9 +17,10 @@ class UniversalSourceChainsTests(unittest.TestCase):
 
         self.assertEqual(registry["schema_version"], "source-chain-registry-1")
         self.assertGreaterEqual(registry["total_batches"], 5)
-        self.assertGreaterEqual(registry["total_documents"], 500)
-        self.assertGreaterEqual(registry["total_edges"], 300)
-        self.assertGreaterEqual(registry["total_schemes_covered"], 160)
+        # 總數隨資料變動：只要求和各批次加總一致，不鎖固定下限。
+        self.assertEqual(registry["total_documents"], sum(b["documents"] for b in registry["batches"]))
+        self.assertEqual(registry["total_edges"], sum(b["edges"] for b in registry["batches"]))
+        self.assertEqual(registry["total_schemes_covered"], sum(b["candidates"] for b in registry["batches"]))
 
     def test_all_registered_batches_exist_and_consistent(self):
         with open(self.registry_path, "r", encoding="utf-8") as f:

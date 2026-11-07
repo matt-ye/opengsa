@@ -12,43 +12,6 @@
     }
   ],
   "records": {
-    "cand-gov-cip-indigenous-scholarship": {
-      "candidate_sha256": "436e756561c29cfa6ad08986f47f9922cb754dbca50d2e87ee0116b68cd72165",
-      "url": "https://www.cip.gov.tw/zh-tw/news/data-list/1018/index.html",
-      "status": "replayed",
-      "reason": null,
-      "observed_at": "2026-11-04T00:00:00Z",
-      "raw_sha256": "f35f69ca437959ba2f7ea29206cb70f190a179dd3878214cdfc82c456c815235",
-      "revision_id": "9882c34219ae951e3bee601423863a9ab855d7301907c0029e0d3093c0b9186d",
-      "format": "html",
-      "policy": {
-        "version": "time-policy-1",
-        "submission_mode": "fixed_window",
-        "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "gov-cip-indigenous/submission",
-            "kind": "fixed_window",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "每學年第一學期 9 月中至 10 月中、第二學期 2 月中至 3 月中向學校申辦",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "gov-cip-indigenous",
-                "revision_id": "9882c34219ae951e3bee601423863a9ab855d7301907c0029e0d3093c0b9186d",
-                "locator": "official_schedule",
-                "evidence_path": "temporal_replay/submission"
-              }
-            ]
-          }
-        ],
-        "gaps": []
-      },
-      "parser_sha256": "dff305dd37a82c1715f616fda95d25d0c86a9dd9fef67a0e7cfbd489dbcaa348"
-    },
     "cand-gov-moa-farmers-aid": {
       "candidate_sha256": "989b86b9f2d0632ae77b7e791ce8a8fd9d031bd411bd9d080407514b26061f5a",
       "url": "https://www.moa.gov.tw/theme_data.php?theme=news&sub_theme=hot&id=123",
@@ -86,80 +49,6 @@
       },
       "parser_sha256": "dff305dd37a82c1715f616fda95d25d0c86a9dd9fef67a0e7cfbd489dbcaa348"
     },
-    "cand-gov-mol-unemployed-workers-aid": {
-      "candidate_sha256": "4b97aaa9044ce968e5236dae1b0c44e9060cf3bbe6ee9b5c484a37188bc0d747",
-      "url": "https://www.mol.gov.tw/1607/28162/28166/28214/",
-      "status": "replayed",
-      "reason": null,
-      "observed_at": "2026-11-04T00:00:00Z",
-      "raw_sha256": "f987201412681b59060a1b6c5a13561e33d6a85f1b4018d38bf9781eab0b045b",
-      "revision_id": "f92c662aa8a8ff530b647a89a8a5910a7caf8fb8e087630f99b483bb9886e99f",
-      "format": "html",
-      "policy": {
-        "version": "time-policy-1",
-        "submission_mode": "fixed_window",
-        "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "gov-mol-unemployed-workers/submission",
-            "kind": "fixed_window",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "每年 2 月中至 3 月中、9 月中至 10 月中受理申請",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "gov-mol-unemployed-workers",
-                "revision_id": "f92c662aa8a8ff530b647a89a8a5910a7caf8fb8e087630f99b483bb9886e99f",
-                "locator": "official_schedule",
-                "evidence_path": "temporal_replay/submission"
-              }
-            ]
-          }
-        ],
-        "gaps": []
-      },
-      "parser_sha256": "dff305dd37a82c1715f616fda95d25d0c86a9dd9fef67a0e7cfbd489dbcaa348"
-    },
-    "cand-gov-vac-veterans-aid": {
-      "candidate_sha256": "a9ca7d1c8ded644c040c166db40b05c2dda1ff76ecbfe9ad49d1e03172054f73",
-      "url": "https://www.vac.gov.tw/cp-1797-3214-1.html",
-      "status": "replayed",
-      "reason": null,
-      "observed_at": "2026-11-04T00:00:00Z",
-      "raw_sha256": "931eda69eb9a35f6fe40c694176d6830e73557b78db969cb5366cae2fb35a0d4",
-      "revision_id": "fe46fce7e3a5cc42bdceca7110cc6421c292136e29a859b8bebfdb30c64c3a1a",
-      "format": "html",
-      "policy": {
-        "version": "time-policy-1",
-        "submission_mode": "fixed_window",
-        "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "gov-vac-veterans/submission",
-            "kind": "fixed_window",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "每年 3 月 1 日至 3 月 31 日、9 月 15 日至 10 月 15 日受理",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "gov-vac-veterans",
-                "revision_id": "fe46fce7e3a5cc42bdceca7110cc6421c292136e29a859b8bebfdb30c64c3a1a",
-                "locator": "official_schedule",
-                "evidence_path": "temporal_replay/submission"
-              }
-            ]
-          }
-        ],
-        "gaps": []
-      },
-      "parser_sha256": "dff305dd37a82c1715f616fda95d25d0c86a9dd9fef67a0e7cfbd489dbcaa348"
-    },
     "cand-perk-azure-for-students": {
       "candidate_sha256": "e0e0c5ca0cc1af97d5f8c312a7a0aed7eb31196109f7a70a177275b2cdbd3ffb",
       "url": "https://azure.microsoft.com/free/students/",
@@ -187,80 +76,6 @@
               {
                 "source": "perk-azure-for-students",
                 "revision_id": "7b162ac3ccc46f7bbb88df3f6a29ff0f3d15292abd57150c1052702e8673ca50",
-                "locator": "official_schedule",
-                "evidence_path": "temporal_replay/submission"
-              }
-            ]
-          }
-        ],
-        "gaps": []
-      },
-      "parser_sha256": "dff305dd37a82c1715f616fda95d25d0c86a9dd9fef67a0e7cfbd489dbcaa348"
-    },
-    "cand-ent-iicm-thesis-award": {
-      "candidate_sha256": "023a1940d11252db7b3d29bf79680af4934b7d1a44dd3c7132a876b151b68209",
-      "url": "https://www.iicm.org.tw/news_detail.php?id=88",
-      "status": "replayed",
-      "reason": null,
-      "observed_at": "2026-11-04T00:00:00Z",
-      "raw_sha256": "7cb59d48df3e1567fbc049095bffa97929d89abea31e9d0655837fa3a74ccaa2",
-      "revision_id": "5c41a08061edb50db1d67f9fb99251017f86cf433b500d6b572c20ded68a1dea",
-      "format": "html",
-      "policy": {
-        "version": "time-policy-1",
-        "submission_mode": "fixed_window",
-        "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "ent-iicm-thesis-award/submission",
-            "kind": "fixed_window",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "每年 7 月 1 日至 8 月 15 日受理申請",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "ent-iicm-thesis-award",
-                "revision_id": "5c41a08061edb50db1d67f9fb99251017f86cf433b500d6b572c20ded68a1dea",
-                "locator": "official_schedule",
-                "evidence_path": "temporal_replay/submission"
-              }
-            ]
-          }
-        ],
-        "gaps": []
-      },
-      "parser_sha256": "dff305dd37a82c1715f616fda95d25d0c86a9dd9fef67a0e7cfbd489dbcaa348"
-    },
-    "cand-ent-taai-thesis-award": {
-      "candidate_sha256": "e49a99faa53ac8b32d9a2df1cdc49c3e93c4273f4945943835bbd622bd011355",
-      "url": "https://www.taai.org.tw/awards/thesis",
-      "status": "replayed",
-      "reason": null,
-      "observed_at": "2026-11-04T00:00:00Z",
-      "raw_sha256": "e3a660ba228182dcaddc4ec4dfdc6541f6fdc993a0381df9921a6de070c1e51b",
-      "revision_id": "5dcc493b7cfac6ae91f90f1c2130a72b4dd321f0034385b0e1da13168c8cf35d",
-      "format": "html",
-      "policy": {
-        "version": "time-policy-1",
-        "submission_mode": "fixed_window",
-        "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "ent-taai-thesis-award/submission",
-            "kind": "fixed_window",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "每年 8 月 15 日至 9 月 15 日受理論文送件",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "ent-taai-thesis-award",
-                "revision_id": "5dcc493b7cfac6ae91f90f1c2130a72b4dd321f0034385b0e1da13168c8cf35d",
                 "locator": "official_schedule",
                 "evidence_path": "temporal_replay/submission"
               }

@@ -7,249 +7,9 @@
   "official_data_modified": false,
   "http_requests": 0,
   "description": "全台學生急難救助金五節點資訊鏈拓撲批次（中央法定學產、指標公私立大學校院與主要慈善基金會）",
-  "total_documents": 90,
-  "total_edges": 72,
+  "total_documents": 60,
+  "total_edges": 48,
   "documents": [
-    {
-      "id": "doc-moe-student-aid-emergency-anchor",
-      "url": "https://helpdreams.moe.edu.tw/Home/EmergencyAid",
-      "format": "html",
-      "revision_id": "920a29f78e33dc19c4b86138b0a312645d599e85526fe926dc34d3705315bbf1",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-moe-student-aid-emergency"
-      ],
-      "role": "anchor",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-moe-student-aid-emergency-call",
-      "url": "https://helpdreams.moe.edu.tw/Home/EmergencyAid",
-      "format": "html",
-      "revision_id": "b591674e477817aaf70381df3c3fef406ca0cea8fe09c5b92dff7c77948a3696",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-moe-student-aid-emergency"
-      ],
-      "role": "call",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-moe-student-aid-emergency-form",
-      "url": "https://helpdreams.moe.edu.tw/Home/EmergencyAid",
-      "format": "html",
-      "revision_id": "d64ac07adc91a49c38948684a29329b18a6eb238c742b65093250ede4b1aa07d",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-moe-student-aid-emergency"
-      ],
-      "role": "form",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-moe-student-aid-emergency-intake",
-      "url": "https://helpdreams.moe.edu.tw/Home/EmergencyAid",
-      "format": "html",
-      "revision_id": "673163eaca804f354477efd8322f33e52b9a584bbf75dc9e20c6eb2ac2e29f22",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-moe-student-aid-emergency"
-      ],
-      "role": "intake",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-moe-student-aid-emergency-result",
-      "url": "https://helpdreams.moe.edu.tw/Home/EmergencyAid",
-      "format": "html",
-      "revision_id": "9cafa8c0fc98979eee35bad9a70fd10a1e404d510d19870adf68ca1e91bec96f",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-moe-student-aid-emergency"
-      ],
-      "role": "result",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-mohw-emergency-relief-anchor",
-      "url": "https://dep.mohw.gov.tw/dosw/cp-674-7221-115.html",
-      "format": "html",
-      "revision_id": "589e089f701081ef536ecfcd140a70392333306be1fbd614c31a289da810bad1",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-mohw-emergency-relief"
-      ],
-      "role": "anchor",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-mohw-emergency-relief-call",
-      "url": "https://dep.mohw.gov.tw/dosw/cp-674-7221-115.html",
-      "format": "html",
-      "revision_id": "fc640ef8489b73681146f50bc16154c1274be51536b558d2c238cb5a5902954a",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-mohw-emergency-relief"
-      ],
-      "role": "call",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-mohw-emergency-relief-form",
-      "url": "https://dep.mohw.gov.tw/dosw/cp-674-7221-115.html",
-      "format": "html",
-      "revision_id": "a402bf84b3178489c5e4b31fe7d16181a1c8f80cde0aa76f19fe077966f4b5a6",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-mohw-emergency-relief"
-      ],
-      "role": "form",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-mohw-emergency-relief-intake",
-      "url": "https://dep.mohw.gov.tw/dosw/cp-674-7221-115.html",
-      "format": "html",
-      "revision_id": "f7e744258239b369090eb24f200d4458e99421746013b60c7cbef3593803a3d6",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-mohw-emergency-relief"
-      ],
-      "role": "intake",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-mohw-emergency-relief-result",
-      "url": "https://dep.mohw.gov.tw/dosw/cp-674-7221-115.html",
-      "format": "html",
-      "revision_id": "ddf9578e44999664c5eb13c68341f7ed56e74874d1c429c48cc905c05e36affb",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-mohw-emergency-relief"
-      ],
-      "role": "result",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-ntu-advisory-emergency-anchor",
-      "url": "https://advisory.ntu.edu.tw/CMS/HTML/118",
-      "format": "html",
-      "revision_id": "28aa5499cf58349e55bbfc2a7dc8508c92da08cdc7c23a21d18926ff2c13b1fc",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ntu-emergency-aid"
-      ],
-      "role": "anchor",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-ntu-advisory-emergency-call",
-      "url": "https://advisory.ntu.edu.tw/CMS/HTML/118",
-      "format": "html",
-      "revision_id": "c3d286fd7d7911a2873f582a2f3403bee58993388a8b2c55bfca87027297b45d",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ntu-emergency-aid"
-      ],
-      "role": "call",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-ntu-advisory-emergency-form",
-      "url": "https://advisory.ntu.edu.tw/CMS/HTML/118",
-      "format": "html",
-      "revision_id": "5a048d34d4954225a3fa4730f053bc54b1fdbed7e448bf474ab5c8ede61410b7",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ntu-emergency-aid"
-      ],
-      "role": "form",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-ntu-advisory-emergency-intake",
-      "url": "https://advisory.ntu.edu.tw/CMS/HTML/118",
-      "format": "html",
-      "revision_id": "ed1d33e09957315874fb5321de7d4eb72ec1b3440a52496ae65a2c86ee0ec676",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ntu-emergency-aid"
-      ],
-      "role": "intake",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-ntu-advisory-emergency-result",
-      "url": "https://advisory.ntu.edu.tw/CMS/HTML/118",
-      "format": "html",
-      "revision_id": "ad868006ca57c321057e5a44d3c50e9e4980ef3ac231499cce5e0fe56ad1a3b9",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ntu-emergency-aid"
-      ],
-      "role": "result",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
     {
       "id": "doc-nthu-sa-emergency-anchor",
       "url": "https://sa.site.nthu.edu.tw/",
@@ -651,86 +411,6 @@
       "links": []
     },
     {
-      "id": "doc-tku-spirit-emergency-anchor",
-      "url": "https://spirit.tku.edu.tw/",
-      "format": "html",
-      "revision_id": "fbf700512fc93b77c07ca741b24fe8a1fd632de667e28728782690520b860e39",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-tku-emergency-aid"
-      ],
-      "role": "anchor",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-tku-spirit-emergency-call",
-      "url": "https://spirit.tku.edu.tw/",
-      "format": "html",
-      "revision_id": "1d32951d0a9611d1901d956739bbf62c8cc10fc4e675605388ca5ebb02e5f196",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-tku-emergency-aid"
-      ],
-      "role": "call",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-tku-spirit-emergency-form",
-      "url": "https://spirit.tku.edu.tw/",
-      "format": "html",
-      "revision_id": "bda7801b0064930d00574efd50e3b8c4c264a71642cfc82a28fd21e1f0695a27",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-tku-emergency-aid"
-      ],
-      "role": "form",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-tku-spirit-emergency-intake",
-      "url": "https://spirit.tku.edu.tw/",
-      "format": "html",
-      "revision_id": "32662499dfb39ed9f4955c9e3934de3430327c4ae6228b86cf9984209180db6b",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-tku-emergency-aid"
-      ],
-      "role": "intake",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-tku-spirit-emergency-result",
-      "url": "https://spirit.tku.edu.tw/",
-      "format": "html",
-      "revision_id": "4168caa5654b05fa829c48f4316fba5581dc3a2aef45d996a0a2f5b5efb198af",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-tku-emergency-aid"
-      ],
-      "role": "result",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
       "id": "doc-hsingtian-emergency-grant-anchor",
       "url": "https://www.ht.org.tw/religion178.htm",
       "format": "html",
@@ -884,86 +564,6 @@
       "evidence_mode": "hash_only",
       "candidate_ids": [
         "cand-fubon-emergency-aid"
-      ],
-      "role": "result",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-tzuchi-emergency-relief-anchor",
-      "url": "https://www.tzuchi.org.tw/",
-      "format": "html",
-      "revision_id": "a5c6f9405d2deb434c21a97d1c181dc019d864e2db994629e449e98cfce5b9ac",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-tzuchi-emergency-relief"
-      ],
-      "role": "anchor",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-tzuchi-emergency-relief-call",
-      "url": "https://www.tzuchi.org.tw/",
-      "format": "html",
-      "revision_id": "fb3c8bff261681549bd5749794fb7a0ca91bed9754d5041c1c2185ae94ca67f9",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-tzuchi-emergency-relief"
-      ],
-      "role": "call",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-tzuchi-emergency-relief-form",
-      "url": "https://www.tzuchi.org.tw/",
-      "format": "html",
-      "revision_id": "ed0f1269f3b014d061655a909d258798d96d29f4ec2cab6cef4d6fef77fc35c8",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-tzuchi-emergency-relief"
-      ],
-      "role": "form",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-tzuchi-emergency-relief-intake",
-      "url": "https://www.tzuchi.org.tw/",
-      "format": "html",
-      "revision_id": "f330a0d41bc2527019bf0a6513d7a6ddaf1d900d77e3487741cd873a6511a0bd",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-tzuchi-emergency-relief"
-      ],
-      "role": "intake",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-tzuchi-emergency-relief-result",
-      "url": "https://www.tzuchi.org.tw/",
-      "format": "html",
-      "revision_id": "8ada6091ea7a8f9ac6a252ab1940dd31241edae7809afec0edfeb9bf8f9ba2e3",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-tzuchi-emergency-relief"
       ],
       "role": "result",
       "archetype": "government_statutory",
@@ -1291,86 +891,6 @@
       "links": []
     },
     {
-      "id": "doc-ocac-compatriot-emergency-anchor",
-      "url": "https://www.ocac.gov.tw/",
-      "format": "html",
-      "revision_id": "d234d117eeb136a160892768066f99d1c91fa986367f7b7a5b91d2fcf1eff38d",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ocac-compatriot-emergency"
-      ],
-      "role": "anchor",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-ocac-compatriot-emergency-call",
-      "url": "https://www.ocac.gov.tw/",
-      "format": "html",
-      "revision_id": "b951134ced1cd373d25ed466f881b5d75b6e540fa7ac698704c3227cbd93b992",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ocac-compatriot-emergency"
-      ],
-      "role": "call",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-ocac-compatriot-emergency-form",
-      "url": "https://www.ocac.gov.tw/",
-      "format": "html",
-      "revision_id": "bd4a959582cfd018407e571bd14b46367e004959fcfcbc9163e7aafe104e3abc",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ocac-compatriot-emergency"
-      ],
-      "role": "form",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-ocac-compatriot-emergency-intake",
-      "url": "https://www.ocac.gov.tw/",
-      "format": "html",
-      "revision_id": "6af7b3bb6e748c48197f492b352ade6c199a9f59c503d3fb4507e81354e7d191",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ocac-compatriot-emergency"
-      ],
-      "role": "intake",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-ocac-compatriot-emergency-result",
-      "url": "https://www.ocac.gov.tw/",
-      "format": "html",
-      "revision_id": "e5838e27e93622665aa8968c8f11d75575471c578bb795e8eec9998770bdefef",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ocac-compatriot-emergency"
-      ],
-      "role": "result",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
       "id": "doc-ntu-oia-emergency-anchor",
       "url": "https://oia.ntu.edu.tw/",
       "format": "html",
@@ -1452,66 +972,6 @@
     }
   ],
   "edges": [
-    {
-      "from": "doc-moe-student-aid-emergency-anchor",
-      "to": "doc-moe-student-aid-emergency-call",
-      "type": "authorizes"
-    },
-    {
-      "from": "doc-moe-student-aid-emergency-call",
-      "to": "doc-moe-student-aid-emergency-form",
-      "type": "requires"
-    },
-    {
-      "from": "doc-moe-student-aid-emergency-form",
-      "to": "doc-moe-student-aid-emergency-intake",
-      "type": "submits_to"
-    },
-    {
-      "from": "doc-moe-student-aid-emergency-intake",
-      "to": "doc-moe-student-aid-emergency-result",
-      "type": "reviews"
-    },
-    {
-      "from": "doc-mohw-emergency-relief-anchor",
-      "to": "doc-mohw-emergency-relief-call",
-      "type": "authorizes"
-    },
-    {
-      "from": "doc-mohw-emergency-relief-call",
-      "to": "doc-mohw-emergency-relief-form",
-      "type": "requires"
-    },
-    {
-      "from": "doc-mohw-emergency-relief-form",
-      "to": "doc-mohw-emergency-relief-intake",
-      "type": "submits_to"
-    },
-    {
-      "from": "doc-mohw-emergency-relief-intake",
-      "to": "doc-mohw-emergency-relief-result",
-      "type": "reviews"
-    },
-    {
-      "from": "doc-ntu-advisory-emergency-anchor",
-      "to": "doc-ntu-advisory-emergency-call",
-      "type": "authorizes"
-    },
-    {
-      "from": "doc-ntu-advisory-emergency-call",
-      "to": "doc-ntu-advisory-emergency-form",
-      "type": "requires"
-    },
-    {
-      "from": "doc-ntu-advisory-emergency-form",
-      "to": "doc-ntu-advisory-emergency-intake",
-      "type": "submits_to"
-    },
-    {
-      "from": "doc-ntu-advisory-emergency-intake",
-      "to": "doc-ntu-advisory-emergency-result",
-      "type": "reviews"
-    },
     {
       "from": "doc-nthu-sa-emergency-anchor",
       "to": "doc-nthu-sa-emergency-call",
@@ -1613,26 +1073,6 @@
       "type": "reviews"
     },
     {
-      "from": "doc-tku-spirit-emergency-anchor",
-      "to": "doc-tku-spirit-emergency-call",
-      "type": "authorizes"
-    },
-    {
-      "from": "doc-tku-spirit-emergency-call",
-      "to": "doc-tku-spirit-emergency-form",
-      "type": "requires"
-    },
-    {
-      "from": "doc-tku-spirit-emergency-form",
-      "to": "doc-tku-spirit-emergency-intake",
-      "type": "submits_to"
-    },
-    {
-      "from": "doc-tku-spirit-emergency-intake",
-      "to": "doc-tku-spirit-emergency-result",
-      "type": "reviews"
-    },
-    {
       "from": "doc-hsingtian-emergency-grant-anchor",
       "to": "doc-hsingtian-emergency-grant-call",
       "type": "authorizes"
@@ -1670,26 +1110,6 @@
     {
       "from": "doc-fubon-emergency-aid-intake",
       "to": "doc-fubon-emergency-aid-result",
-      "type": "reviews"
-    },
-    {
-      "from": "doc-tzuchi-emergency-relief-anchor",
-      "to": "doc-tzuchi-emergency-relief-call",
-      "type": "authorizes"
-    },
-    {
-      "from": "doc-tzuchi-emergency-relief-call",
-      "to": "doc-tzuchi-emergency-relief-form",
-      "type": "requires"
-    },
-    {
-      "from": "doc-tzuchi-emergency-relief-form",
-      "to": "doc-tzuchi-emergency-relief-intake",
-      "type": "submits_to"
-    },
-    {
-      "from": "doc-tzuchi-emergency-relief-intake",
-      "to": "doc-tzuchi-emergency-relief-result",
       "type": "reviews"
     },
     {
@@ -1773,26 +1193,6 @@
       "type": "reviews"
     },
     {
-      "from": "doc-ocac-compatriot-emergency-anchor",
-      "to": "doc-ocac-compatriot-emergency-call",
-      "type": "authorizes"
-    },
-    {
-      "from": "doc-ocac-compatriot-emergency-call",
-      "to": "doc-ocac-compatriot-emergency-form",
-      "type": "requires"
-    },
-    {
-      "from": "doc-ocac-compatriot-emergency-form",
-      "to": "doc-ocac-compatriot-emergency-intake",
-      "type": "submits_to"
-    },
-    {
-      "from": "doc-ocac-compatriot-emergency-intake",
-      "to": "doc-ocac-compatriot-emergency-result",
-      "type": "reviews"
-    },
-    {
       "from": "doc-ntu-oia-emergency-anchor",
       "to": "doc-ntu-oia-emergency-call",
       "type": "authorizes"
@@ -1825,24 +1225,6 @@
   ],
   "candidate_bindings": [
     {
-      "candidate_id": "cand-moe-student-aid-emergency",
-      "program_key": "moe-student-aid-emergency",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
-      "candidate_id": "cand-mohw-emergency-relief",
-      "program_key": "mohw-emergency-relief",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
-      "candidate_id": "cand-ntu-emergency-aid",
-      "program_key": "ntu-advisory-emergency",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
       "candidate_id": "cand-nthu-emergency-relief",
       "program_key": "nthu-sa-emergency",
       "phase": "all",
@@ -1873,12 +1255,6 @@
       "historical_baseline_allowed": true
     },
     {
-      "candidate_id": "cand-tku-emergency-aid",
-      "program_key": "tku-spirit-emergency",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
       "candidate_id": "cand-hsingtian-emergency-grant",
       "program_key": "hsingtian-emergency-grant",
       "phase": "all",
@@ -1887,12 +1263,6 @@
     {
       "candidate_id": "cand-fubon-emergency-aid",
       "program_key": "fubon-emergency-aid",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
-      "candidate_id": "cand-tzuchi-emergency-relief",
-      "program_key": "tzuchi-emergency-relief",
       "phase": "all",
       "historical_baseline_allowed": true
     },
@@ -1917,12 +1287,6 @@
     {
       "candidate_id": "cand-wrp-single-parent-aid",
       "program_key": "wrp-single-parent-aid",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
-      "candidate_id": "cand-ocac-compatriot-emergency",
-      "program_key": "ocac-compatriot-emergency",
       "phase": "all",
       "historical_baseline_allowed": true
     },

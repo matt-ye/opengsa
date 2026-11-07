@@ -7,8 +7,8 @@
   "official_data_modified": false,
   "http_requests": 0,
   "description": "跨校代表性大專校院研究生獎助五節點資訊鏈拓撲批次",
-  "total_documents": 120,
-  "total_edges": 96,
+  "total_documents": 95,
+  "total_edges": 76,
   "documents": [
     {
       "id": "doc-univ-4bb19702801b249267dfa102",
@@ -571,86 +571,6 @@
       "links": []
     },
     {
-      "id": "doc-univ-77a4624577de1595ad57a610",
-      "url": "https://studaff.ccu.edu.tw/",
-      "format": "html",
-      "revision_id": "fc79a810e29530601d9343304bd0e3d87a6add0919406dee4c79923af0c7acac",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-ccu-0008a12b"
-      ],
-      "role": "call",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-d8644839f4347912d2cfb50b",
-      "url": "https://studaff.ccu.edu.tw/rules",
-      "format": "html",
-      "revision_id": "37205780bcf8f881546407ceba57ba0fe24e5a02e5bdb33c244a62e1545e083c",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-ccu-0008a12b"
-      ],
-      "role": "anchor",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-931d6939fe7e528204773c23",
-      "url": "https://studaff.ccu.edu.tw/portal",
-      "format": "html",
-      "revision_id": "fad097da28a1a5eb7c510d9712e2601658d6ed6986f69a9f12ad50e7e90d8883",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-ccu-0008a12b"
-      ],
-      "role": "form",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-61144bbcafaa0352477e2a90",
-      "url": "https://studaff.ccu.edu.tw/intake",
-      "format": "html",
-      "revision_id": "7afff25cf2ec89a1c497c5c2a5d9949a008e4eafa66f3affff9236e6687376f0",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-ccu-0008a12b"
-      ],
-      "role": "intake",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-6baf3c8fba8655677659ecd2",
-      "url": "https://studaff.ccu.edu.tw/results",
-      "format": "html",
-      "revision_id": "7f74dd877797a0662964fcc1917fd2390f71d83decf6320f4273fedb62775365",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-ccu-0008a12b"
-      ],
-      "role": "result",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
       "id": "doc-univ-12b83adbca94879eb7e934a8",
       "url": "https://assistance.sa.ntnu.edu.tw/",
       "format": "html",
@@ -724,86 +644,6 @@
       "evidence_mode": "hash_only",
       "candidate_ids": [
         "cand-univ-ntnu-0009a12b"
-      ],
-      "role": "result",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-fcf254eed534809d0b6902ae",
-      "url": "https://www.ntpu.edu.tw/admin/a8/org/a8-2/index.php",
-      "format": "html",
-      "revision_id": "698c0856bfd1e0b872f2237d8013355218f645934c097f80844b5d2b680382e1",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-ntpu-000aa12b"
-      ],
-      "role": "call",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-9add94cb96c0f6634d643abc",
-      "url": "https://www.ntpu.edu.tw/admin/a8/org/a8-2/index.php/rules",
-      "format": "html",
-      "revision_id": "25e6a771cc0b3af92950110844739df2fe1db6dd6a94faa5b93b845e19b90fff",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-ntpu-000aa12b"
-      ],
-      "role": "anchor",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-0b5d896e7ae15618f1d83582",
-      "url": "https://www.ntpu.edu.tw/admin/a8/org/a8-2/index.php/portal",
-      "format": "html",
-      "revision_id": "2092d8b06b4e1509afa438a9638b170925f9d05a77c61925e7b2d3ec825e5fcd",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-ntpu-000aa12b"
-      ],
-      "role": "form",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-6a4bfbb9146e569dced3ac94",
-      "url": "https://www.ntpu.edu.tw/admin/a8/org/a8-2/index.php/intake",
-      "format": "html",
-      "revision_id": "d39a5885978e2792afddadc9a46362b9e6b743c7bee49354ac26c64ead1a201e",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-ntpu-000aa12b"
-      ],
-      "role": "intake",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-b00b7aa3358f97d94af8dd5c",
-      "url": "https://www.ntpu.edu.tw/admin/a8/org/a8-2/index.php/results",
-      "format": "html",
-      "revision_id": "88de1eb6656cee5f03fd755ee76f5074f8583f8f16aa27bc22c6b75ddf1f5112",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-ntpu-000aa12b"
       ],
       "role": "result",
       "archetype": "higher_education_university",
@@ -1124,86 +964,6 @@
       "evidence_mode": "hash_only",
       "candidate_ids": [
         "cand-univ-tmu-000ea12b"
-      ],
-      "role": "result",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-a210696ec34d920f5568ae3a",
-      "url": "https://osa.kmu.edu.tw/",
-      "format": "html",
-      "revision_id": "20f054cd9de564d340de3f9fb7dd83d95e5c6d6b919f3497ed1a386db553fc3b",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-kmu-000fa12b"
-      ],
-      "role": "call",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-19ba41028b65a59f1739b766",
-      "url": "https://osa.kmu.edu.tw/rules",
-      "format": "html",
-      "revision_id": "f117cc2bc23c59075843e29072847429ee829f58a8f4311ece1a92eb7a945dbe",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-kmu-000fa12b"
-      ],
-      "role": "anchor",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-7cb893d9dbf21eaf031136ad",
-      "url": "https://osa.kmu.edu.tw/portal",
-      "format": "html",
-      "revision_id": "875c0bc0817e54556ceb14c3162a5832f2774ebf7908f2b8bd4d702cf11ed8e2",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-kmu-000fa12b"
-      ],
-      "role": "form",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-7df7822ebaf6cf0f7b53af20",
-      "url": "https://osa.kmu.edu.tw/intake",
-      "format": "html",
-      "revision_id": "c7f9a00d4e4c8f8bb9d45d03fa633a50cee0370fb34463347b12c3492a1bd95a",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-kmu-000fa12b"
-      ],
-      "role": "intake",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-668c66335359dab851c6563f",
-      "url": "https://osa.kmu.edu.tw/results",
-      "format": "html",
-      "revision_id": "cb2e5399d194a0fe0aba26b51f5ef7e21ef668a2d4c95e3302563ac75fe6dafa",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-kmu-000fa12b"
       ],
       "role": "result",
       "archetype": "higher_education_university",
@@ -1691,166 +1451,6 @@
       "links": []
     },
     {
-      "id": "doc-univ-18c1bf9608e49f46fe5d8f59",
-      "url": "https://life.cycu.edu.tw/",
-      "format": "html",
-      "revision_id": "96895701d7e9bcff185d48bd12e2beff69bc1a35181d3bc70cbbbbbdfef72457",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-cycu-0016a12b"
-      ],
-      "role": "call",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-f89738bbe032b32e1e5d889c",
-      "url": "https://life.cycu.edu.tw/rules",
-      "format": "html",
-      "revision_id": "1632807f6000007243815b577e88e6efcb6da460196ef5f70a96454eeeffa771",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-cycu-0016a12b"
-      ],
-      "role": "anchor",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-8689589ca17e3bdb75e68f57",
-      "url": "https://life.cycu.edu.tw/portal",
-      "format": "html",
-      "revision_id": "3fa9f6300f2f39272de204b0e0a7b208d96255d888294e76f56445773d992bbb",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-cycu-0016a12b"
-      ],
-      "role": "form",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-b7d915d1e9b73092f468c0b5",
-      "url": "https://life.cycu.edu.tw/intake",
-      "format": "html",
-      "revision_id": "74d2bee3943c21b435782bbb6208da4d50eea43d43b218021800bd09dd949abd",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-cycu-0016a12b"
-      ],
-      "role": "intake",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-fe8e04ab289d6abec16f7241",
-      "url": "https://life.cycu.edu.tw/results",
-      "format": "html",
-      "revision_id": "360eaf9cfcdb9bf3ec078b25b3be7bdf1b2d954c75c802556523698f5cfadb48",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-cycu-0016a12b"
-      ],
-      "role": "result",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-13577aa46d832fc63d355d69",
-      "url": "https://deca.thu.edu.tw/",
-      "format": "html",
-      "revision_id": "20652594208b9397e530413c3980bb7ff71d44a95b6f4663f150b25b93e5b6e7",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-thu-0017a12b"
-      ],
-      "role": "call",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-4045f66777e1cecb2b1b2a1b",
-      "url": "https://deca.thu.edu.tw/rules",
-      "format": "html",
-      "revision_id": "a8985817e2d20603cf7fdcae7483454362ef403c72854fb503d52220d9e37076",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-thu-0017a12b"
-      ],
-      "role": "anchor",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-d1102f81ba05f97f286c5f4f",
-      "url": "https://deca.thu.edu.tw/portal",
-      "format": "html",
-      "revision_id": "f14d3a0fe6909f36dd6079614e79f5343acf6b57d97230e97593d7490445971d",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-thu-0017a12b"
-      ],
-      "role": "form",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-3b81f63e079d578a02f4315c",
-      "url": "https://deca.thu.edu.tw/intake",
-      "format": "html",
-      "revision_id": "c47b602955c94a02825764f3892bf4e0a86efa49e70f8ab9b541692beac4c1d4",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-thu-0017a12b"
-      ],
-      "role": "intake",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-univ-696e39a17903d2249fd4c5ca",
-      "url": "https://deca.thu.edu.tw/results",
-      "format": "html",
-      "revision_id": "1e96a2ce50fd46cb7018d17718bb1962b3d120000db5cd29ce1ca8f0cdcb0d59",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-univ-thu-0017a12b"
-      ],
-      "role": "result",
-      "archetype": "higher_education_university",
-      "events": [],
-      "links": []
-    },
-    {
       "id": "doc-univ-f3acbc1a7109f1a0774dc887",
       "url": "https://rb005.ndhu.edu.tw/",
       "format": "html",
@@ -2185,42 +1785,6 @@
       "cycle": "114-115"
     },
     {
-      "from": "doc-univ-d8644839f4347912d2cfb50b",
-      "to": "doc-univ-77a4624577de1595ad57a610",
-      "url": "https://studaff.ccu.edu.tw/",
-      "role": "authoritative_rule",
-      "program_key": "univ-ccu",
-      "scope": "univ-ccu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-77a4624577de1595ad57a610",
-      "to": "doc-univ-931d6939fe7e528204773c23",
-      "url": "https://studaff.ccu.edu.tw/portal",
-      "role": "application_portal",
-      "program_key": "univ-ccu",
-      "scope": "univ-ccu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-931d6939fe7e528204773c23",
-      "to": "doc-univ-61144bbcafaa0352477e2a90",
-      "url": "https://studaff.ccu.edu.tw/intake",
-      "role": "document_submission",
-      "program_key": "univ-ccu",
-      "scope": "univ-ccu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-61144bbcafaa0352477e2a90",
-      "to": "doc-univ-6baf3c8fba8655677659ecd2",
-      "url": "https://studaff.ccu.edu.tw/results",
-      "role": "review_and_approval",
-      "program_key": "univ-ccu",
-      "scope": "univ-ccu",
-      "cycle": "114-115"
-    },
-    {
       "from": "doc-univ-9085c870deff47dc8ed287a9",
       "to": "doc-univ-12b83adbca94879eb7e934a8",
       "url": "https://assistance.sa.ntnu.edu.tw/",
@@ -2254,42 +1818,6 @@
       "role": "review_and_approval",
       "program_key": "univ-ntnu",
       "scope": "univ-ntnu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-9add94cb96c0f6634d643abc",
-      "to": "doc-univ-fcf254eed534809d0b6902ae",
-      "url": "https://www.ntpu.edu.tw/admin/a8/org/a8-2/index.php",
-      "role": "authoritative_rule",
-      "program_key": "univ-ntpu",
-      "scope": "univ-ntpu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-fcf254eed534809d0b6902ae",
-      "to": "doc-univ-0b5d896e7ae15618f1d83582",
-      "url": "https://www.ntpu.edu.tw/admin/a8/org/a8-2/index.php/portal",
-      "role": "application_portal",
-      "program_key": "univ-ntpu",
-      "scope": "univ-ntpu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-0b5d896e7ae15618f1d83582",
-      "to": "doc-univ-6a4bfbb9146e569dced3ac94",
-      "url": "https://www.ntpu.edu.tw/admin/a8/org/a8-2/index.php/intake",
-      "role": "document_submission",
-      "program_key": "univ-ntpu",
-      "scope": "univ-ntpu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-6a4bfbb9146e569dced3ac94",
-      "to": "doc-univ-b00b7aa3358f97d94af8dd5c",
-      "url": "https://www.ntpu.edu.tw/admin/a8/org/a8-2/index.php/results",
-      "role": "review_and_approval",
-      "program_key": "univ-ntpu",
-      "scope": "univ-ntpu",
       "cycle": "114-115"
     },
     {
@@ -2434,42 +1962,6 @@
       "role": "review_and_approval",
       "program_key": "univ-tmu",
       "scope": "univ-tmu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-19ba41028b65a59f1739b766",
-      "to": "doc-univ-a210696ec34d920f5568ae3a",
-      "url": "https://osa.kmu.edu.tw/",
-      "role": "authoritative_rule",
-      "program_key": "univ-kmu",
-      "scope": "univ-kmu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-a210696ec34d920f5568ae3a",
-      "to": "doc-univ-7cb893d9dbf21eaf031136ad",
-      "url": "https://osa.kmu.edu.tw/portal",
-      "role": "application_portal",
-      "program_key": "univ-kmu",
-      "scope": "univ-kmu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-7cb893d9dbf21eaf031136ad",
-      "to": "doc-univ-7df7822ebaf6cf0f7b53af20",
-      "url": "https://osa.kmu.edu.tw/intake",
-      "role": "document_submission",
-      "program_key": "univ-kmu",
-      "scope": "univ-kmu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-7df7822ebaf6cf0f7b53af20",
-      "to": "doc-univ-668c66335359dab851c6563f",
-      "url": "https://osa.kmu.edu.tw/results",
-      "role": "review_and_approval",
-      "program_key": "univ-kmu",
-      "scope": "univ-kmu",
       "cycle": "114-115"
     },
     {
@@ -2689,78 +2181,6 @@
       "cycle": "114-115"
     },
     {
-      "from": "doc-univ-f89738bbe032b32e1e5d889c",
-      "to": "doc-univ-18c1bf9608e49f46fe5d8f59",
-      "url": "https://life.cycu.edu.tw/",
-      "role": "authoritative_rule",
-      "program_key": "univ-cycu",
-      "scope": "univ-cycu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-18c1bf9608e49f46fe5d8f59",
-      "to": "doc-univ-8689589ca17e3bdb75e68f57",
-      "url": "https://life.cycu.edu.tw/portal",
-      "role": "application_portal",
-      "program_key": "univ-cycu",
-      "scope": "univ-cycu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-8689589ca17e3bdb75e68f57",
-      "to": "doc-univ-b7d915d1e9b73092f468c0b5",
-      "url": "https://life.cycu.edu.tw/intake",
-      "role": "document_submission",
-      "program_key": "univ-cycu",
-      "scope": "univ-cycu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-b7d915d1e9b73092f468c0b5",
-      "to": "doc-univ-fe8e04ab289d6abec16f7241",
-      "url": "https://life.cycu.edu.tw/results",
-      "role": "review_and_approval",
-      "program_key": "univ-cycu",
-      "scope": "univ-cycu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-4045f66777e1cecb2b1b2a1b",
-      "to": "doc-univ-13577aa46d832fc63d355d69",
-      "url": "https://deca.thu.edu.tw/",
-      "role": "authoritative_rule",
-      "program_key": "univ-thu",
-      "scope": "univ-thu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-13577aa46d832fc63d355d69",
-      "to": "doc-univ-d1102f81ba05f97f286c5f4f",
-      "url": "https://deca.thu.edu.tw/portal",
-      "role": "application_portal",
-      "program_key": "univ-thu",
-      "scope": "univ-thu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-d1102f81ba05f97f286c5f4f",
-      "to": "doc-univ-3b81f63e079d578a02f4315c",
-      "url": "https://deca.thu.edu.tw/intake",
-      "role": "document_submission",
-      "program_key": "univ-thu",
-      "scope": "univ-thu",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-univ-3b81f63e079d578a02f4315c",
-      "to": "doc-univ-696e39a17903d2249fd4c5ca",
-      "url": "https://deca.thu.edu.tw/results",
-      "role": "review_and_approval",
-      "program_key": "univ-thu",
-      "scope": "univ-thu",
-      "cycle": "114-115"
-    },
-    {
       "from": "doc-univ-2577d17188d44d1d9e4393b7",
       "to": "doc-univ-f3acbc1a7109f1a0774dc887",
       "url": "https://rb005.ndhu.edu.tw/",
@@ -2827,16 +2247,8 @@
       "label": "中興大學優秀"
     },
     {
-      "id": "univ-ccu",
-      "label": "中正大學研究"
-    },
-    {
       "id": "univ-ntnu",
       "label": "臺灣師範大學"
-    },
-    {
-      "id": "univ-ntpu",
-      "label": "臺北大學三峽"
     },
     {
       "id": "univ-ntust",
@@ -2853,10 +2265,6 @@
     {
       "id": "univ-tmu",
       "label": "臺北醫學大學"
-    },
-    {
-      "id": "univ-kmu",
-      "label": "高雄醫學大學"
     },
     {
       "id": "univ-cmu",
@@ -2881,14 +2289,6 @@
     {
       "id": "univ-yzu",
       "label": "元智大學有庠"
-    },
-    {
-      "id": "univ-cycu",
-      "label": "中原大學優秀"
-    },
-    {
-      "id": "univ-thu",
-      "label": "東海大學博雅"
     },
     {
       "id": "univ-ndhu",
@@ -2939,20 +2339,8 @@
       "historical_baseline_allowed": true
     },
     {
-      "candidate_id": "cand-univ-ccu-0008a12b",
-      "program_key": "univ-ccu",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
       "candidate_id": "cand-univ-ntnu-0009a12b",
       "program_key": "univ-ntnu",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
-      "candidate_id": "cand-univ-ntpu-000aa12b",
-      "program_key": "univ-ntpu",
       "phase": "all",
       "historical_baseline_allowed": true
     },
@@ -2977,12 +2365,6 @@
     {
       "candidate_id": "cand-univ-tmu-000ea12b",
       "program_key": "univ-tmu",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
-      "candidate_id": "cand-univ-kmu-000fa12b",
-      "program_key": "univ-kmu",
       "phase": "all",
       "historical_baseline_allowed": true
     },
@@ -3023,18 +2405,6 @@
       "historical_baseline_allowed": true
     },
     {
-      "candidate_id": "cand-univ-cycu-0016a12b",
-      "program_key": "univ-cycu",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
-      "candidate_id": "cand-univ-thu-0017a12b",
-      "program_key": "univ-thu",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
       "candidate_id": "cand-univ-ndhu-0018a12b",
       "program_key": "univ-ndhu",
       "phase": "all",
@@ -3044,7 +2414,7 @@
   "reports": [
     {
       "batch_id": "batch-university",
-      "verified_schemes": 24,
+      "verified_schemes": 19,
       "notes": "全台高校生輔組與獎助入口拓撲鏈，各校母法、徵件與表件入口嚴格隔離於正式 pilot 雜湊保護之外。"
     }
   ]

@@ -145,25 +145,6 @@
         ]
       }
     },
-    "cand-univ-ccu-0008a12b": {
-      "candidate_sha256": "3a1d1499b1d1d5e940cf7098ff3e3044128ca91e04b76b2ee79e9676fcdd0044",
-      "url": "https://studaff.ccu.edu.tw/",
-      "status": "replayed",
-      "reason": null,
-      "observed_at": "2026-11-04T00:00:00Z",
-      "raw_sha256": "6ab62d540b1f790a2ea3b7ddb3f61dec9b00ce7aa13e43011102e01db29dd968",
-      "revision_id": "6ab62d540b1f790a2ea3b7ddb3f61dec9b00ce7aa13e43011102e01db29dd968",
-      "format": "html",
-      "policy": {
-        "version": "time-policy-1",
-        "submission_mode": "undetermined",
-        "review_mode": "not_stated",
-        "rules": [],
-        "gaps": [
-          "time_rule_not_verified"
-        ]
-      }
-    },
     "cand-univ-ntnu-0009a12b": {
       "candidate_sha256": "55ed08dcd91f47c8362e8c6d729fd04226415ba6b772aaaeebdad7dc40a0ae0d",
       "url": "https://assistance.sa.ntnu.edu.tw/",
@@ -172,25 +153,6 @@
       "observed_at": "2026-11-04T00:00:00Z",
       "raw_sha256": "1607744fb943bedde8642c8085b95c50c40b91dad441b1c397aa9cd907bd543a",
       "revision_id": "1607744fb943bedde8642c8085b95c50c40b91dad441b1c397aa9cd907bd543a",
-      "format": "html",
-      "policy": {
-        "version": "time-policy-1",
-        "submission_mode": "undetermined",
-        "review_mode": "not_stated",
-        "rules": [],
-        "gaps": [
-          "time_rule_not_verified"
-        ]
-      }
-    },
-    "cand-univ-ntpu-000aa12b": {
-      "candidate_sha256": "97afdf3741b84c765304e0a95e211959bd4147e06994f188f9f8e020700bcc5f",
-      "url": "https://www.ntpu.edu.tw/admin/a8/org/a8-2/index.php",
-      "status": "replayed",
-      "reason": null,
-      "observed_at": "2026-11-04T00:00:00Z",
-      "raw_sha256": "d91a23da0fbce713e6594eae0ab519cf0ef2a782ecf430b50fa364e0774adb45",
-      "revision_id": "d91a23da0fbce713e6594eae0ab519cf0ef2a782ecf430b50fa364e0774adb45",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
@@ -267,25 +229,6 @@
       "observed_at": "2026-11-04T00:00:00Z",
       "raw_sha256": "b0b9f8c9e9266af45a61149fcab53759130aa75ec2a70db30a3744ad650994fd",
       "revision_id": "b0b9f8c9e9266af45a61149fcab53759130aa75ec2a70db30a3744ad650994fd",
-      "format": "html",
-      "policy": {
-        "version": "time-policy-1",
-        "submission_mode": "undetermined",
-        "review_mode": "not_stated",
-        "rules": [],
-        "gaps": [
-          "time_rule_not_verified"
-        ]
-      }
-    },
-    "cand-univ-kmu-000fa12b": {
-      "candidate_sha256": "5c25d46de819a01c6ac97648b978bae53dc8aeea5421320ccf08ecd5eccdab58",
-      "url": "https://osa.kmu.edu.tw/",
-      "status": "replayed",
-      "reason": null,
-      "observed_at": "2026-11-04T00:00:00Z",
-      "raw_sha256": "36f748c1743d3246fafebca39c2c9bdc39a2162132b6961ad3dfff2fe6ba5395",
-      "revision_id": "36f748c1743d3246fafebca39c2c9bdc39a2162132b6961ad3dfff2fe6ba5395",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
@@ -400,44 +343,6 @@
       "observed_at": "2026-11-04T00:00:00Z",
       "raw_sha256": "53bd02ed0d4043c103a89f15656d788446e457f4b80bfd15117cb0c062e5cec2",
       "revision_id": "53bd02ed0d4043c103a89f15656d788446e457f4b80bfd15117cb0c062e5cec2",
-      "format": "html",
-      "policy": {
-        "version": "time-policy-1",
-        "submission_mode": "undetermined",
-        "review_mode": "not_stated",
-        "rules": [],
-        "gaps": [
-          "time_rule_not_verified"
-        ]
-      }
-    },
-    "cand-univ-cycu-0016a12b": {
-      "candidate_sha256": "6324ed9fb5bc74fc60242fdab4b63bf4f71af515552b03ba1403e9d64aeb7f5e",
-      "url": "https://www.cycu.edu.tw/",
-      "status": "replayed",
-      "reason": null,
-      "observed_at": "2026-11-04T00:00:00Z",
-      "raw_sha256": "e82546702cbd3a533bd69b0799796ce727733d45deaf9288e71e8dc369c4b463",
-      "revision_id": "e82546702cbd3a533bd69b0799796ce727733d45deaf9288e71e8dc369c4b463",
-      "format": "html",
-      "policy": {
-        "version": "time-policy-1",
-        "submission_mode": "undetermined",
-        "review_mode": "not_stated",
-        "rules": [],
-        "gaps": [
-          "time_rule_not_verified"
-        ]
-      }
-    },
-    "cand-univ-thu-0017a12b": {
-      "candidate_sha256": "02b64f8e9f771f000daa1acd6140531c216b6b1c5f721265a2d59e6afbd750c8",
-      "url": "https://www.thu.edu.tw/",
-      "status": "replayed",
-      "reason": null,
-      "observed_at": "2026-11-04T00:00:00Z",
-      "raw_sha256": "7728b6a10a985facd97fb94054d5db2ebb0780244f5a5bf7535a2f0269452122",
-      "revision_id": "7728b6a10a985facd97fb94054d5db2ebb0780244f5a5bf7535a2f0269452122",
       "format": "html",
       "policy": {
         "version": "time-policy-1",
