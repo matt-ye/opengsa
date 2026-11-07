@@ -66,7 +66,7 @@ $$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (當�
 ---
 
 ### 6. GitHub Actions 來源巡檢
-- **排程掃描**：週一到週六 09:17（UTC+8，GitHub 不保證準時），週日沒有排程。每輪接著上一輪的位置往下讀，最多 20 次 HTTP，不分軌道，模型固定關閉。沒有變動的來源用 ETag／Last-Modified 判斷，仍會發出請求。
+- **排程掃描**：週一到週六 09:17（UTC+8，GitHub 不保證準時），週日沒有排程。每輪接著上一輪的位置往下讀，請求數有上限（`data/scan-sources.json` 的 `max_requests`），不分軌道，模型固定關閉。沒有變動的來源用 ETag／Last-Modified 判斷，仍會發出請求。
 - **手動時間重萃（`temporal_replay`）**：只由 owner 手動觸發。`gov`、`enterprise`、`other` 分軌和增量閘門（未異動來源判定 `SKIP_UNCHANGED`，0 HTTP）都只在這裡生效，排程不經過。
 - **產出**：掃描結果是待審提案，存成 Actions artifact；排程不會改動網站資料。
 
