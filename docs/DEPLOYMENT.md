@@ -42,7 +42,7 @@ python -m http.server 8771 --bind 127.0.0.1 --directory dist/site
 
 分享縮圖使用專案圖，Open Graph URL固定公開預覽位置，不用個人照片。預覽加上noindex／nofollow，暫不主動進搜尋索引；這不是存取控制，任何知道網址的人都能瀏覽及分享。
 
-個人條件、勾選、待辦與會議輸入只留本次瀏覽記憶體，重整後重設。Cloudflare Web Analytics僅統計瀏覽量（`spa:false`，每次載入一筆）：不使用Cookie或localStorage，送出位置已移除查詢參數；2026-11-07攔截實測，網址中的搜尋、學位與已選項目皆未出現在送出內容。GitHub Pages託管與Cloudflare仍可能保留連線紀錄，頁尾連結雙方隱私聲明。
+個人條件、勾選、待辦與會議輸入只留本次瀏覽記憶體，重整後重設。Cloudflare Web Analytics僅統計瀏覽量（`spa:false`，每次載入一筆）：不使用Cookie或localStorage，送出位置已移除查詢參數；2026-11-07攔截實測，網址中的搜尋、學位與已選項目皆未出現在送出內容。Google Analytics（`G-GEFSZXE0RE`，資源「個人網站流量」下的串流「OpenGSA」）會使用Cookie辨識回訪瀏覽器，統計瀏覽量與外連點擊；2026-11-07攔截實測：載入時的第一筆page_view一律帶原始網址（含搜尋條件），`page_location`、`send_page_view:false`與關閉加強型評估都擋不住，只有串流的「遮蓋資料」有效。因此串流必須維持：遮蓋網址查詢參數開啟，鍵為`q, cat, deg, id, mode, picks, tab, view, compare`（值變成`(redacted)`，鍵名仍會送出）；加強型評估關閉。程式另把其餘事件的網址與外連`link_url`去掉查詢參數。新增網址參數時要先到GA4後台加鍵，`tests/test_build_site.py`會擋下遺漏。GitHub Pages託管與Cloudflare仍可能保留連線紀錄，頁尾連結雙方隱私聲明。
 
 ## 驗收與回復
 
