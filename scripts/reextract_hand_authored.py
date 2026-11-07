@@ -140,7 +140,11 @@ def run(candidates, config, previous, transport=None, on_progress=None, now=None
         # 通用預設：不要求標記、不追PDF；已登記的profile設定優先。
         source = {"id": sid, "title": candidate["title"], "url": candidate["source_metadata"]["url"],
                   "evidence_mode": "short_excerpt", "body_selector": "body", "required_markers": [],
-                  "pdf_include": [], "max_pdfs": 0, **profiles.get(sid, {})}
+                  "pdf_include": [], "max_pdfs": 0, **profiles.get(sid, {}),
+                  # 部分手加profile的分類值不合schema；分類沿用候選，不影響內容欄位。
+                  "category": candidate.get("category", "phd_research"),
+                  "resource_kind": candidate.get("resource_kind", "scholarship"),
+                  "scope": candidate.get("scope", "nationwide")}
         try:
             results[cid] = {"url": candidate["source_metadata"]["url"], **reextract(fetcher, candidate, source, now)}
         except ScanError:
@@ -160,11 +164,13 @@ def summarize(results, total):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=OUTPUT)
+    parser.add_argument("--retry-status", action="append", default=[], help="重跑這些狀態的候選")
     args = parser.parse_args()
     candidates = known_candidates()
     config = json.loads((ROOT / "data/scan-sources.json").read_text(encoding="utf-8"))
     previous = json.loads(args.output.read_text(encoding="utf-8")) if args.output.exists() else {}
     base = previous.get("http_requests_total", 0)
+    previous["results"] = {k: v for k, v in previous.get("results", {}).items() if v["status"] not in args.retry_status}
     args.output.parent.mkdir(parents=True, exist_ok=True)
 
     def save(results, used):

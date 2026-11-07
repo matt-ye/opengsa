@@ -70,6 +70,13 @@ class RunTests(unittest.TestCase):
             self.assertEqual(row["candidate"]["source_metadata"]["revision_id"], row["revision_id"])
             self.assertNotIn("8,000", row["candidate"]["benefit"]["summary"])
 
+    def test_invalid_profile_category_does_not_fail_schema(self):
+        url = "https://a.org.tw/s"
+        config = {**CONFIG, "sources": [{"id": "s-a", "category": "scholarship", "scope": "school"}]}
+        row = {**candidate(), "category": "phd_research", "scope": "local", "resource_kind": "scholarship"}
+        results, _ = run([row], config, {}, transport_for({url: (200, PAGE)}))
+        self.assertFalse([p for p in results["cand-a"].get("problems", []) if p.startswith("schema/")])
+
     def test_budget_leaves_rest_for_next_run(self):
         rows = [candidate(f"c{n}", f"https://s{n}.org.tw/p") for n in range(3)]
         first, used = run(rows, {**CONFIG, "max_requests": 4}, {}, transport_for({}))
