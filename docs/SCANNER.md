@@ -105,3 +105,13 @@ noted／dismissed是文件層級佇列處置；帶candidate_id的處置只影響
 ## 來源資訊鏈的手動掃描（PR31）
 
 `data/source-chain-sources.json`為有限補鏈配置，`data/source-chains.json`為待審文件／關係／事件快照，依`schema/source-chains.schema.json`驗證；不修改既有完整候選／正式pilot。HTML／文字PDF已支持，其他格式與未讀連結明示延期；全文不存repo，hash_only沒有摘錄。新手動operation=source_chains無Secrets／模型，不自動回存或發布。地方／梯次、實際／歷史／預估分別呈現，完整說明見[SOURCE-CHAINS-AND-TIMELINE.md](SOURCE-CHAINS-AND-TIMELINE.md)。
+
+## 來源狀態檔（status/）
+
+排程掃描後，`status` job 會把每個來源的狀態寫成 `status/pipeline.csv` 和 `status/pipeline.json`。兩份資料相同，只是格式不同，正在並行比較哪種比較好用。
+
+- CSV 一列一個來源，欄位有 `source_id`、`host`、`enabled`、`status`、`failures`、`pending`、`attachments`、`revision`。`status` 的值是 `ok`（上次讀到）、`not_checked`（還沒輪到）、`disabled`，或上次失敗的原因。
+- JSON 多了完整網址，還有資訊鏈：每個來源連到的附件，各自的狀態與內容雜湊。
+- 檔案裡沒有執行時間，只有內容雜湊的前 12 碼。來源沒有變，檔案就不會變，也就不會產生提交。
+- 這兩個檔案只由 bot 寫入，人工修改會在下一輪被蓋掉。用 `GITHUB_TOKEN` 推送的提交不會觸發網站重新部署。
+- GitHub 只把 512 KB 以下的 CSV 顯示成表格。實測 269 個來源時，CSV 是 17 KB（每列約 64 位元組），JSON 是 76 KB（每個來源約 284 位元組）。照這個比例，1000 個來源大約是 CSV 65 KB、JSON 290 KB。

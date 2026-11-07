@@ -221,7 +221,7 @@ jobs:
     if: ${{ always() && needs.scan.outputs.has_proposal == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    # 全 workflow 唯一有寫入權限的 job。
+    # 有寫入權限的只有這個 job 和 status；兩者都不抓公開網頁。
     permissions:
       contents: write
       pull-requests: write
@@ -249,6 +249,44 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           python scripts/open_data_pr.py --publish --output work/data-pr --branch data/radar-proposal --title "data: 排程掃描的待審提案"
+
+  status:
+    needs: scan
+    # 掃描失敗也要寫：失敗原因本來就是狀態的一部分。
+    if: ${{ always() && needs.scan.result != 'skipped' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    # 只寫 status/ 兩個檔案。用 GITHUB_TOKEN 推的提交不會觸發網站重新部署。
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
+      # 只讀這一輪存的狀態；沒有就不寫，不拿舊的充數。
+      - name: Restore this run's scan state
+        uses: actions/cache/restore@caa296126883cff596d87d8935842f9db880ef25 # v5
+        with:
+          path: work/scanner/state.json
+          key: source-scan-v2-main-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Write status/pipeline.csv and status/pipeline.json
+        run: python scripts/pipeline_status.py
+      - name: Commit only when the content changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          if [ -z "$(git status --porcelain -- status)" ]; then
+            echo "來源狀態沒有變動，不提交。"
+            exit 0
+          fi
+          git add -- status
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "status: 更新來源狀態"
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main \
+            || echo "::warning::main 在這輪期間有新提交，狀態沒推上去；下一輪會重寫。"
 
   review-workspace:
     if: github.event_name == 'workflow_dispatch' && inputs.operation == 'review_workspace'
