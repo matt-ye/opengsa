@@ -7,6 +7,7 @@ import ipaddress
 import json
 from pathlib import Path
 import re
+import socket
 import sys
 from urllib.parse import urlsplit
 
@@ -56,6 +57,25 @@ def form_fields(body):
     return {key: value for key, value in cleaned.items() if value and value != "_No response_"}
 
 
+def looks_public(host):
+    """擋內部位址。瀏覽器式解析會把 127.1、0x7f.1 當 IP，也會把全形數字與句點轉成半形，所以只收純 ASCII 網域。"""
+    if not re.fullmatch(r"[a-z0-9-]+(\.[a-z0-9-]+)+", host):
+        return False
+    # 最後一段是數字或 0x 開頭，會被當成 IPv4。
+    if re.fullmatch(r"\d+|0x[0-9a-f]*", host.rsplit(".", 1)[-1]) or host.endswith(LOCAL_SUFFIXES):
+        return False
+    return resolves_public(host)
+
+
+def resolves_public(host):
+    """解析得到內部位址就拒絕（例如 127.0.0.1.nip.io）。解析失敗不算內部，之後抓取自然會失敗。"""
+    try:
+        addresses = {info[4][0] for info in socket.getaddrinfo(host, 443)}
+    except OSError:
+        return True
+    return all(ipaddress.ip_address(address.split("%")[0]).is_global for address in addresses)
+
+
 def validated_url(raw):
     """回傳可抓取的網址；公開輸入一律先過這裡。"""
     raw = (raw or "").strip()
@@ -70,12 +90,7 @@ def validated_url(raw):
         raise IntakeRejected("invalid_url") from error
     if not host:
         raise IntakeRejected("invalid_url")
-    try:
-        ipaddress.ip_address(host)
-        raise IntakeRejected("private_host")
-    except ValueError:
-        pass
-    if "." not in host or host == "localhost" or host.endswith(LOCAL_SUFFIXES):
+    if not looks_public(host):
         raise IntakeRejected("private_host")
     if parts.scheme != "https" or parts.username or parts.password or parts.port not in (None, 443):
         raise IntakeRejected("invalid_url")

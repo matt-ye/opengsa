@@ -5,6 +5,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -68,12 +69,25 @@ class IntakeSourceTests(unittest.TestCase):
         cases = {"http://example.test/a": "invalid_url", "https://user:pw@example.test/a": "invalid_url", "https://example.test:8443/a": "invalid_url",
                  "https://example.test/a b": "invalid_url", "ftp://example.test/a": "invalid_url", "not a url": "invalid_url", "": "missing_url", "https://": "invalid_url",
                  "https://127.0.0.1/a": "private_host", "https://[::1]/a": "private_host", "https://169.254.169.254/latest": "private_host",
+                 "https://127.1/a": "private_host", "https://0x7f.1/a": "private_host", "https://0177.0.0.1/a": "private_host", "https://2130706433/a": "private_host",
+                 "https://localhost./a": "private_host", "https://a.localhost./a": "private_host", "https://metadata.google.internal./x": "private_host",
+                 "https://169.254.169.254./x": "private_host", "https://１２７.０.０.１/a": "private_host", "https://127。0。0。1/a": "private_host",
                  "https://localhost/a": "private_host", "https://intranet/a": "private_host", "https://svc.internal/a": "private_host",
                  "https://example.test/login": "restricted_url", "https://example.test/a?token=abc": "restricted_url", "https://example.test/名冊.pdf": "restricted_url"}
         for raw, reason in cases.items():
             with self.subTest(raw), self.assertRaises(IntakeRejected) as caught:
                 validated_url(raw)
             self.assertEqual(str(caught.exception), reason)
+
+    def test_host_resolving_to_an_internal_address_is_rejected(self):
+        answer = lambda address: [(2, 1, 6, "", (address, 443))]
+        with patch("socket.getaddrinfo", return_value=answer("127.0.0.1")), self.assertRaises(IntakeRejected) as caught:
+            validated_url("https://127.0.0.1.nip.test/a")
+        self.assertEqual(str(caught.exception), "private_host")
+        with patch("socket.getaddrinfo", return_value=answer("93.184.216.34")):
+            self.assertEqual(validated_url("https://public.test/a"), "https://public.test/a")
+        with patch("socket.getaddrinfo", side_effect=OSError):
+            self.assertEqual(validated_url("https://unresolved.test/a"), "https://unresolved.test/a")
 
     def test_cli_writes_a_comment_for_rejected_submissions(self):
         with tempfile.TemporaryDirectory() as tmp:
