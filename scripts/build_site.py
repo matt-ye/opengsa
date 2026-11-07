@@ -20,6 +20,8 @@ from scripts.source_chains import timeline_metadata
 URL = SITE_URL
 # Cloudflare Web Analytics 的公開 site token（本來就會出現在頁面原始碼，不是密鑰）。
 CF_ANALYTICS_TOKEN = "842cdb275d8b43219c0c0a2a55063852"
+# GA4 評估 ID（公開，串流「OpenGSA」，資源「個人網站流量」）。
+GA4_MEASUREMENT_ID = "G-GEFSZXE0RE"
 FEEDBACK = "https://github.com/matt-ye/opengsa/issues/new?template=preview-feedback.yml"
 
 
@@ -130,12 +132,27 @@ def build(output):
 <meta property="og:image:alt" content="OpenGSA：把時間留給研究，研究與安心生活">
 <meta name="twitter:card" content="summary_large_image">
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token":"{CF_ANALYTICS_TOKEN}","spa":false}}'></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_MEASUREMENT_ID}"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}
+gtag('js',new Date());
+// 網址查詢參數含搜尋與篩選條件。第一筆page_view不受下面的設定影響（2026-11-07攔截實測），
+// 真正擋住它的是GA4串流的「遮蓋資料」（見docs/DEPLOYMENT.md）；這裡處理其餘事件。
+var cleanUrl=function(u){{return u.split(/[?#]/)[0];}};
+var gaPage={{page_location:cleanUrl(location.href),page_referrer:cleanUrl(document.referrer)}};
+gtag('set',gaPage);
+gtag('config','{GA4_MEASUREMENT_ID}',gaPage);
+document.addEventListener('click',function(e){{
+  var a=e.target.closest&&e.target.closest('a[href^="http"]');
+  if(a&&a.host!==location.host)gtag('event','click',{{link_url:cleanUrl(a.href),link_domain:a.hostname,outbound:true}});
+}},true);
+</script>
 </head>''')
     replace_once("設計審閱稿 · 四分頁互動線框 · 資料快照 2026.10.28 · 所有獎助資料待獨立覆核，非申請建議", '獎助雷達預覽 · 來源摘要，非即時資格核定 · ⚠ 不明，請見來源')
     replace_once("互動原型 · 不進行個人資格核定", "公開預覽 · 不進行個人資格核定")
     replace_once("OpenGSA · MVP介面基礎審閱稿 0.8 · 無外部字型、無追蹤、無個資送出。<br/>原創線框內容依專案授權；官方文件各保留原權利。自動擷取及正式發布尚待驗證。", f'''<p class="footer-links"><span>作者 <a href="https://mattye.dev/">Matt Ye</a></span><a href="https://github.com/matt-ye">GitHub</a><a href="https://github.com/matt-ye/opengsa">原始碼與資料說明</a><a href="{FEEDBACK}">回報問題</a><a href="{URL}feed.xml">全庫 RSS</a><a href="{URL}feed-deadlines.xml">截止倒數 RSS</a></p>
 <p>OpenGSA 公開預覽 0.9：自動整理的來源摘要，非資格核定，請以官方公告為準。目前有{len(known_hand_authored())}筆標示「未經來源查證」的資料尚未從來源萃取，內容可能有誤。</p>
-<p>個人條件與研討會輸入只留本次瀏覽。以Cloudflare Web Analytics統計瀏覽量：不使用Cookie，不記錄網址查詢參數（搜尋與篩選條件）。GitHub Pages託管與Cloudflare可能保留連線紀錄（<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub隱私聲明</a>、<a href="https://www.cloudflare.com/privacypolicy/">Cloudflare隱私政策</a>）。回報內容公開，請勿提交個資或私人申訴。原創內容依專案授權，官方文件保留原權利。</p>''')
+<p>個人條件與研討會輸入只留本次瀏覽。以Cloudflare Web Analytics與Google Analytics統計瀏覽量及外連點擊：<a href="https://policies.google.com/privacy">Google Analytics</a>會使用Cookie辨識回訪瀏覽器；兩者皆不記錄你輸入的搜尋與篩選內容。GitHub Pages託管與Cloudflare可能保留連線紀錄（<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub隱私聲明</a>、<a href="https://www.cloudflare.com/privacypolicy/">Cloudflare隱私政策</a>）。回報內容公開，請勿提交個資或私人申訴。原創內容依專案授權，官方文件保留原權利。</p>''')
     page.write_text(html, encoding="utf-8")
     assets = output / "assets"
     assets.mkdir(parents=True, exist_ok=True)

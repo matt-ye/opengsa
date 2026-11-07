@@ -10,7 +10,9 @@
 
 - 2026-11-07最新介面核可：使用者要求整理全站版面。情境卡片同列；搜尋與「新增研討會」併入圖表標題列，研討會表單改由該按鈕展開；時間控制與圖例併成一列（圖例仍預設收合）；1100px以下篩選移到圖表上方；標頭折行時只黏住分頁列；圖表捲到底可接著捲頁面；第三頁圖表與清單改內部捲動；頁尾濃縮並加作者網頁與GitHub；導覽與RSS的全庫筆數改由資料帶入，導覽中與實際介面不符的文字一併校正。維持2026-11-01圖表內部捲動、標題與日期軸固定的核可；不動資料、資格文字與來源邊界。修改走PR，未授權合併。
 
-- 2026-11-07最新核可：使用者決定公開網址改為opengsa.mattye.dev（GitHub Pages自訂網域），加入Cloudflare Web Analytics並整合至mattye.dev後台，維持noindex，由代理以瀏覽器操作DNS。Web Analytics為本次核可之新增第三方服務，範圍僅瀏覽量統計（`spa:false`），不擴及事件追蹤。RSS深層連結`?id=`修正另開PR。部署見docs/DEPLOYMENT.md。
+- 2026-11-07最新核可：使用者決定加入GA4（`G-GEFSZXE0RE`，個人網站流量資源下另開串流「OpenGSA」），取代下一筆「不擴及事件追蹤」。使用Cookie，範圍僅瀏覽量與自送的外連點擊。串流的「遮蓋資料」必須涵蓋所有網址參數、加強型評估不得開啟，否則搜尋條件會原樣送出（2026-11-07攔截實測，見docs/DEPLOYMENT.md）；新增網址參數前要先到GA4後台加鍵。頁尾已如實揭露。
+
+- 2026-11-07核可：使用者決定公開網址改為opengsa.mattye.dev（GitHub Pages自訂網域），加入Cloudflare Web Analytics並整合至mattye.dev後台，維持noindex，由代理以瀏覽器操作DNS。Web Analytics為本次核可之新增第三方服務，範圍僅瀏覽量統計（`spa:false`），不擴及事件追蹤。RSS深層連結`?id=`修正另開PR。部署見docs/DEPLOYMENT.md。
 
 - 2026-11-03最新核可：使用者要求繼續，使用GitHub Secrets中的API，詢問／授權以Actions完成目前重整的時間萃取。新增既有workflow的手動temporal_replay操作；小批最多8來源／20源站HTTP／4推論，與上一輪200HTTP另列台帳。先測臺北／新竹等候選與台帳皆short_excerpt來源；hash_only（包含候選保守標記）不外送，不因key存在放寬。僅Groq既有免費帳戶政策及已確認模型能力可推論，其餘成本／能力未知只查目錄。模型意見獨立待審，不自動套用；排程維持off，不合併／部署。本輪另PR接PR44，PR34不動。
 

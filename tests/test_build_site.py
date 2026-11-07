@@ -62,6 +62,15 @@ console.log(items.length+' items: temporal labels, geometry, ambiguous years, in
     def tearDownClass(cls):
         cls.temp.cleanup()
 
+    def test_every_url_param_is_redacted_in_ga4(self):
+        # GA4 串流「遮蓋資料」已設定的鍵。新增網址參數時，要先到 GA4 後台加上，再更新這裡；
+        # 漏了的話，學生輸入的內容會原樣送給 Google。
+        redacted = {"q", "cat", "deg", "id", "mode", "picks", "tab", "view", "compare"}
+        source = (ROOT / "docs/design/prototype.js").read_text(encoding="utf-8")
+        used = set(re.findall(r'\bparams\.(?:get|set)\("([^"]+)"', source))
+        self.assertTrue(used)
+        self.assertLessEqual(used, redacted)
+
     def test_only_public_artifacts_are_published(self):
         files = {p.relative_to(self.output).as_posix() for p in self.output.rglob("*") if p.is_file()}
         self.assertEqual(files, {"index.html", "assets/opengsa-social-preview.jpg", ".nojekyll", "feed.xml", "feed-deadlines.xml"})
@@ -69,9 +78,13 @@ console.log(items.length+' items: temporal labels, geometry, ambiguous years, in
 
     def test_preview_is_self_contained_and_uses_named_radar_snapshot(self):
         self.assertNotIn('<script src=', self.html)
-        # 外部腳本只允許分析 beacon；spa:false 避免把站內網址變動（含搜尋條件）逐次送出。
-        self.assertEqual(re.findall(r'<script[^>]*\ssrc="([^"]+)"', self.html), ['https://static.cloudflareinsights.com/beacon.min.js'])
+        # 外部腳本只允許兩個分析工具；spa:false 避免把站內網址變動（含搜尋條件）逐次送出。
+        self.assertEqual(re.findall(r'<script[^>]*\ssrc="([^"]+)"', self.html), ['https://static.cloudflareinsights.com/beacon.min.js', 'https://www.googletagmanager.com/gtag/js?id=G-GEFSZXE0RE'])
         self.assertIn('"spa":false', self.html)
+        # GA4 送出的網址不得含查詢參數（搜尋與篩選條件）
+        self.assertIn("page_location:cleanUrl(location.href)", self.html)
+        self.assertIn("page_referrer:cleanUrl(document.referrer)", self.html)
+        self.assertIn("link_url:cleanUrl(a.href)", self.html)
         embedded = re.search(r'<script id="pilot-data" type="application/json">(.*?)</script>', self.html, re.S)
         snapshot=json.loads(embedded[1])
         full_bundle, _ = load_full_library(ROOT)
