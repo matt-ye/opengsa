@@ -57,4 +57,4 @@ Brave、SearXNG等只列探索選項，未啟用。免費軟體不等於自架�
 
 開源資助的官方入口、申請草稿及擴展藍圖集中於[資助與擴展評估](OPENAI-CODEX-FUND-APPLICATION-AND-EXPANSION.md)。沒有送出申請、承諾獲獎或啟用付費。
 
-可研究[Open States](https://github.com/openstates/openstates-scrapers)、[changedetection.io](https://github.com/dgtlmoon/changedetection.io)、[CourtListener](https://github.com/freelawproject/courtlistener)的抓取與異動處理；這些是參照入口，不宣稱已驗證其部署成本或可直接套用。導入前仍需審核授權、依賴與實際需求。
+可研究[Open States](https://github.com/openstates/openstates-scrapers)、[changedetection.io](https://github.com/dgtlmoon/changedetection.io)、[CourtListener](https://github.com/freelawproject/courtlistener)的抓取與異動處理；這些是參照入口，不宣稱已驗證其部署成本或可直接套用。導入前仍需審核授權、依賴與實際需求。2026-11-08 的查核結果見[類似專案研究](SIMILAR-PROJECTS-RESEARCH.md)。
