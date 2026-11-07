@@ -41,7 +41,8 @@ def process(request, output, transport=node_get, progress=print, options=INTAKE_
     config = read(ROOT / "data/scan-sources.json")
     url = request["url"]
     # 手寫卡的 profile（標記字、選擇器）沒有驗證過，不拿來判斷真實頁面。
-    config["sources"] = [source for source in config["sources"] if source["id"] not in hand_source_ids()]
+    # automation=not_enabled 是人工清單，只有手寫標題、沒有抽取設定；留著會把網站首頁命名成那個方案。
+    config["sources"] = [source for source in config["sources"] if source["id"] not in hand_source_ids() and source.get("automation") != "not_enabled"]
     # 維護者已核可這個網址，即使舊 profile 是停用狀態也要跑；不影響排程設定。
     config["sources"] = [{**source, "enabled": True} if canonical_url(source["url"]) == url else deepcopy(source) for source in config["sources"]]
     inventory = {"as_of": None, "rows": [{"id": f"ISSUE-{request['issue']}", "url": url, "title": "", "batch": BATCH, "category": request["category"],
@@ -84,7 +85,7 @@ def comment(result, run_url=None):
         if retired:
             lines.extend(["", f"提案會取代 {len(retired)} 張手寫卡：" + "、".join(safe_text(row["title"], 40) for row in retired) + "。"])
         if manual:
-            lines.extend(["", f"**要人工判斷：** 這個網址有 {len(manual)} 張手寫卡屬於不同方案，提案沒有動它們：" + "、".join(safe_text(row["title"], 40) for row in manual) + "。"])
+            lines.extend(["", f"**要人工判斷：** 這個網址有 {len(manual)} 張手寫卡認不出是不是同一方案，提案沒有動它們：" + "、".join(safe_text(row["title"], 40) for row in manual) + "。"])
     else:
         lines.append("這次沒有可提案的候選，網站不會有變動。")
     if run_url:

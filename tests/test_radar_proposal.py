@@ -5,7 +5,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
-from scripts.propose_radar_update import ROOT,prepare,write_proposal,read
+from scripts.propose_radar_update import ROOT,prepare,same_program,write_proposal,read
 from scripts.expand_sources import prepare_response,profile_for
 from scripts.extract_candidates import extract_from_in_memory_blocks
 from scripts.scan_sources import digest
@@ -59,6 +59,7 @@ class RadarProposalTests(unittest.TestCase):
 
     def test_new_card_retires_the_hand_card_on_the_same_url(self):
         url,cards=self.hand_url(1);bundle,config,_=self.fixture()
+        bundle['candidates'][0]['title']=cards[0]['title']
         files,summary=prepare(bundle,config,replaced_urls=[url])
         self.assertEqual({r['candidate_id'] for r in summary['retired_hand_cards']},{c['candidate_id'] for c in cards})
         self.assertEqual(summary['needs_manual_retire'],[])
@@ -68,6 +69,18 @@ class RadarProposalTests(unittest.TestCase):
         bundle_path=summary['retired_hand_cards'][0]['bundle']
         self.assertNotIn(cards[0]['candidate_id'],[c['candidate_id'] for c in files[bundle_path]['candidates']])
         self.assertEqual(len(files[bundle_path]['candidates']),len(read(ROOT/bundle_path)['candidates'])-len(cards))
+
+    def test_different_program_on_the_same_url_is_left_for_a_person(self):
+        url,cards=self.hand_url(1);bundle,config,_=self.fixture()
+        files,summary=prepare(bundle,config,replaced_urls=[url])
+        self.assertEqual(summary['retired_hand_cards'],[])
+        self.assertEqual({r['candidate_id'] for r in summary['needs_manual_retire']},{c['candidate_id'] for c in cards})
+        self.assertNotIn('data/known-hand-authored-candidates.json',files)
+
+    def test_same_program_needs_a_real_title_match(self):
+        self.assertTrue(same_program('Google PhD fellowship program','Google PhD Fellowship Program (East Asia / Taiwan)'))
+        self.assertFalse(same_program('國立中山大學學生急難救助金','中山大學西灣優秀學生與研究生卓越獎學金'))
+        self.assertFalse(same_program('獎學金','財團法人某基金會獎學金'))
 
     def test_shared_url_across_programs_is_left_for_a_person(self):
         url,cards=self.hand_url(2);bundle,config,_=self.fixture()
