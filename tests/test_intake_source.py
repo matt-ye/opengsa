@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from scripts.audit_sources import canonical_url
+from scripts.expand_sources import INTAKE_OPTIONS, initial_state, run_batch
 from scripts.run_source_intake import comment as run_comment, process
 from scripts.intake_source import APPROVAL_LABEL, CATEGORIES, IntakeRejected, build_request, comment, form_fields, validated_url
 
@@ -95,14 +96,28 @@ class IntakeSourceTests(unittest.TestCase):
         self.assertIsNone(result["proposal"])
         self.assertEqual(result["model_calls"], 0)
 
+    def test_links_over_the_cap_are_counted_not_silently_dropped(self):
+        index = ("<main><h1>公告</h1>" + "".join(f'<a href="/n/{i}">第{i}筆獎學金</a>' for i in range(3)) + "</main>").encode()
+        def transport(target, headers, limit):
+            if target.endswith("/index"):
+                return {"status": 200, "headers": {"content-type": "text/html"}, "body": index}
+            return {"status": 404, "headers": {}, "body": b""}
+        inventory = {"rows": [{"id": "R", "url": "https://example.test/index", "title": "", "batch": "B1", "category": "scholarship", "restrictions": []}]}
+        with tempfile.TemporaryDirectory() as tmp:
+            state = run_batch(inventory, initial_state(inventory), "B1", Path(tmp) / "state.json", {"sources": []}, transport=transport,
+                              progress=lambda *a, **k: None, options={**INTAKE_OPTIONS, "max_children": 1})
+        root = state["records"]["https://example.test/index"]
+        self.assertEqual((root["links_found"], root["links_skipped"], len(state["new_sources"])), (3, 2, 1))
+
     def test_comment_neutralises_text_taken_from_the_page(self):
-        result = {"url": "https://example.test/a", "records": [{"url": "https://example.test/a", "status": "read", "disposition": "named_candidates_pending"}],
+        result = {"links_skipped": 2, "url": "https://example.test/a", "records": [{"url": "https://example.test/a", "status": "read", "disposition": "named_candidates_pending"}],
                   "candidates": [{"title": "獎學金 @someone `x` [連結](https://evil.test) <b>|", "status": "passed_with_gaps"}], "proposal": None}
         text = run_comment(result)
         self.assertNotIn("@someone", text)
         self.assertNotIn("[連結]", text)
         self.assertNotIn("<b>", text)
         self.assertIn("網站不會有變動", text)
+        self.assertIn("還有 2 個連結", text)
 
     def test_workflow_keeps_public_input_out_of_commands_and_cannot_push(self):
         workflow = (ROOT / ".github/workflows/source-intake.yml").read_text(encoding="utf-8")

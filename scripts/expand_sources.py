@@ -28,6 +28,10 @@ DENIED=re.compile(r'robots_|http_403|http_429|service_retry_after')
 RESOURCE=re.compile(r'獎學金|獎助學金|論文獎|著作獎|培育計畫|研究獎勵|人社論文獎勵|撰寫博士論文|補助博士生赴國外研究|出席.*會議.*補助|(?:scholarship|fellowship|travel grant)',re.I)
 INDEX=re.compile(r'^(?:最新消息|最新公告|獎學金|獎助學金|學生獎學金|學生事務|相關辦法|法規|首頁|獎(?:助)?學金(?:資訊|公告|公告資訊網|申請辦法)|news|scholarships?)$',re.I)
 INFORMATION=re.compile(r'說明會|發放訊息|發放通知|QA整理|影片.*簡報|(?:Q\s*&\s*A|FAQ)',re.I)
+# 全庫擴展的預設界限；提交流程要從入口頁往下走，放寬連結範圍，並把附件也當成可能的方案文件。
+DEFAULT_OPTIONS={'follow_roles':('policy',),'max_children':8,'link_limit':8,'broad_links':False,'document_candidates':False}
+INTAKE_OPTIONS={'follow_roles':('policy','related_call'),'max_children':40,'link_limit':None,'broad_links':True,'document_candidates':True}
+INDEX_LINK_COUNT=3
 ADMIN=re.compile(r'教師(?:評審|評鑑|遴選)|院長選任|校長遴選|經費稽核委員會|預算分配委員會|電腦中心設置')
 
 def read(path):return json.loads(Path(path).read_text(encoding='utf-8-sig'))
@@ -59,7 +63,7 @@ def office_blocks(raw,kind):
         if text:blocks.append({'locator':kind.upper()+' paragraph '+str(len(blocks)+1),'text':text,'kind':'paragraph','structure_status':'office_layout_unverified'})
     return blocks
 
-def prepare_response(response,profile,hosts):
+def prepare_response(response,profile,hosts,link_limit=8,broad_links=False):
     raw=response['body'];ctype=response['headers'].get('content-type','').lower();url=response['url']
     soup=None;links=[];published=None;title=None
     if raw.startswith(b'%PDF'):
@@ -75,6 +79,8 @@ def prepare_response(response,profile,hosts):
         for form in soup.select('form'):form.unwrap()
         selector=profile.get('body_selector') or next((s for s in ('article','.article-center','main','[role=main]','#content','.content') if soup.select_one(s)),'body')
         source={'body_selector':selector,'required_markers':profile.get('required_markers',[]),'pdf_include':[],'max_pdfs':0}
+        # 提交流程要看短頁：公告可能只有一句話加附件，字數少不代表沒有內容。
+        if broad_links:source['min_text_chars']=1
         blocks,_=html_document(str(soup).encode(),source,url,hosts)
         roots=soup.select(selector)
         heading=next((r.select_one('h1') for r in roots if r.select_one('h1')),None)
@@ -86,17 +92,17 @@ def prepare_response(response,profile,hosts):
                 if RESOURCE.search(n.get_text(' ',strip=True)) and not INDEX.fullmatch(n.get_text(' ',strip=True)) and len(n.get_text(' ',strip=True))<=200))
             if len(options)==1:title=options[0]
         if SKIP.search(title):raise ScanError('private_or_result_title_not_processed')
-        links=discover_links(raw,url,hosts,selector)
+        links=discover_links(raw,url,hosts,selector,limit=link_limit,broad=broad_links)
         links=[l for l in links if not SKIP.search(l['label']) and not ADMIN.search(l['label'])]
         pub=publication(soup,blocks,url);published=pub if pub[0] else None
     else:raise ScanError('format_parser_deferred')
-    if not blocks or sum(len(b['text']) for b in blocks)<80:raise ScanError('insufficient_document_text')
+    if not blocks or (sum(len(b['text']) for b in blocks)<80 and not broad_links):raise ScanError('insufficient_document_text')
     return {'kind':kind,'blocks':blocks,'links':links,'title':title,'publication':published}
 
-def named_candidate(row,prepared,known):
+def named_candidate(row,prepared,known,documents=False):
     if known:return True
     title=prepared['title'] or ''
-    if row['category'] in ('rights','agency','startup','unclassified') or prepared['kind']!='html':return False
+    if row['category'] in ('rights','agency','startup','unclassified') or (prepared['kind']!='html' and not documents):return False
     if urlsplit(row['url']).path=='/' or INDEX.fullmatch(title) or ADMIN.search(title) or INFORMATION.search(title):return False
     claim=discover_identity(prepared['blocks'])
     return bool(RESOURCE.search(title) and claim and claim['kind']=='eligibility_clause')
@@ -123,7 +129,7 @@ def initial_state(inventory,preflight=0):
         'http_requests':preflight,'preflight_http_requests':preflight,'batch_requests':{},'records':{},'new_sources':{},'relations':[],
         'host_pauses':{},'candidates':{},'profiles':{},'model_calls':0,'official_data_modified':False}
 
-def run_batch(inventory,state,batch,state_path,config,transport=node_get,progress=print):
+def run_batch(inventory,state,batch,state_path,config,transport=node_get,progress=print,options=DEFAULT_OPTIONS):
     if state['pipeline_sha256']!=fingerprint() or state['inventory_sha256']!=digest(inventory):raise ValueError('pipeline_or_inventory_changed_use_new_state')
     if batch not in [f'B{i}' for i in range(1,9)]:raise ValueError('unsupported_batch')
     rows=[deepcopy(r) for r in inventory['rows'] if r['batch']==batch]
@@ -168,14 +174,21 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
             safe_url(url,hosts)
             response=fetcher.get(url,{},10*1024*1024)
             if response['status']!=200:raise ScanError('http_'+str(response['status']))
-            prepared=prepare_response(response,p or {},hosts)
+            prepared=prepare_response(response,p or {},hosts,link_limit=options['link_limit'],broad_links=options['broad_links'])
+            if options['document_candidates'] and not prepared['title']:
+                # 附件沒有網頁標題：連結文字像方案名稱就用它，否則沿用連到它的公告標題。
+                label=row.get('title') or ''
+                prepared['title']=label if RESOURCE.search(label) else row.get('parent_title') or label
             ir=prepare_document(prepared['blocks']);revision=digest([url,digest(response['body']),fingerprint()])
             record.update(status='read',format=prepared['kind'],title=prepared['title'],final_url=response['url'],
                 raw_sha256=digest(response['body']),revision_id=revision,document_manifest=document_manifest(ir),links=prepared['links'])
             if prepared['publication']:
                 value,ref=prepared['publication'];record['events']=[{'kind':'announcement','value':value,'actor':'announcer','locator':ref['locator'],
                     'block_sha256':digest(ref['text'].encode()),'document_revision':revision,'review_status':'pending'}]
-            if named_candidate(row,prepared,p):
+            # 列出多個方案的頁面是索引，要往下走，本身不成卡。
+            index_like=options['broad_links'] and sum(bool(RESOURCE.search(l['label'])) for l in prepared['links'])>=INDEX_LINK_COUNT
+            record['links_found'],record['links_skipped']=len(prepared['links']),0
+            if not index_like and named_candidate(row,prepared,p,documents=options['document_candidates']):
                 profile=profile_for(row,prepared,p)
                 # Strictest retention for expansion: even existing short_excerpt profiles use hash-only here.
                 profile['evidence_mode']='hash_only'
@@ -191,9 +204,12 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
             for link in prepared['links']:
                 child=canonical_url(link['url']);relation={'from_url':url,'to_url':child,'role':link['role'],'label':link['label'],'origin':'observed_link','revision_id':revision}
                 if relation not in state['relations']:state['relations'].append(relation)
-                if (record['depth']<2 and link['role']=='policy' and child not in {r['url'] for r in inventory['rows']}
-                        and child not in state['new_sources'] and len([r for r in state['new_sources'].values() if r.get('root_url')==row.get('root_url',url)])<8):
-                    new={'id':'D'+digest(child)[:16],'url':child,'batch':batch,'category':row['category'],'title':link['label'],
+                if (record['depth']<2 and link['role'] in options['follow_roles'] and child not in {r['url'] for r in inventory['rows']}
+                        and child not in state['new_sources']):
+                    if len([r for r in state['new_sources'].values() if r.get('root_url')==row.get('root_url',url)])>=options['max_children']:
+                        record['links_skipped']+=1
+                        continue
+                    new={'id':'D'+digest(child)[:16],'url':child,'batch':batch,'category':row['category'],'title':link['label'],'parent_title':prepared['title'],
                          'root_url':row.get('root_url',url),'depth':record['depth']+1,'restrictions':[],'access_gate':'fresh_policy_and_profile_check_required'}
                     state['new_sources'][child]=new;rows.append(new)
         except (ScanError,ValueError,KeyError,zipfile.BadZipFile,ET.ParseError,TimeoutError) as error:

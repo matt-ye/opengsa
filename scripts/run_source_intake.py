@@ -13,7 +13,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-from scripts.expand_sources import export_report, initial_state, read, run_batch, save
+from scripts.expand_sources import INTAKE_OPTIONS, export_report, initial_state, read, run_batch, save
 from scripts.audit_sources import canonical_url
 from scripts.propose_radar_update import write_proposal
 from scripts.scan_sources import node_get
@@ -40,12 +40,13 @@ def process(request, output, transport=node_get, progress=print):
                                           "kind": "提交", "restrictions": [], "access_gate": "owner_approved_submission"}]}
     save(output / "inventory.json", inventory)
     state = initial_state(inventory)
-    run_batch(inventory, state, BATCH, output / "state.json", config, transport=transport, progress=progress)
+    run_batch(inventory, state, BATCH, output / "state.json", config, transport=transport, progress=progress, options=INTAKE_OPTIONS)
     report = output / "report"
     summary = export_report(inventory, state, report)
     bundle, profiles = read(report / "structured-candidates.json"), read(report / "source-profiles.json")
     result = {"schema_version": "source-intake-result-1", "issue": request["issue"], "url": url, "http_requests": state["http_requests"], "model_calls": 0,
               "records": [{"url": r["url"], "status": r["status"], "disposition": r.get("disposition")} for r in state["records"].values()],
+              "links_skipped": sum(r.get("links_skipped", 0) for r in state["records"].values()),
               "candidates": [{"title": c["title"], "status": c["verification"]["status"]} for c in bundle["candidates"]],
               "proposal": None, "published": False, "official_data_modified": False, "expansion_summary": summary["statuses"]}
     if any(c["verification"]["status"] in ACCEPTED for c in bundle["candidates"]):
@@ -62,6 +63,8 @@ def comment(result, run_url=None):
         lines.extend(["", "| 候選 | 自動檢核 |", "|---|---|"])
         lines.extend(f"| {safe_text(c['title'])} | {c['status']} |" for c in result["candidates"])
     lines.append("")
+    if result["links_skipped"]:
+        lines.extend([f"**沒有處理完：** 還有 {result['links_skipped']} 個連結超過單次上限，沒有抓取。", ""])
     if result["proposal"]:
         lines.append(f"已產生待審提案（{result['proposal']['accepted_for_radar_proposal']} 筆）。**還沒上架**：需要人工看過、套用提案並合併 PR。")
     else:

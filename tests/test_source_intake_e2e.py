@@ -25,7 +25,7 @@ PROFILE = {"id": SOURCE_ID, "title": TITLE, "url": f"{BASE}/news/phd-2026", "bod
            "pdf_include": [], "max_pdfs": 0, "review_note": "合成來源，端到端測試用。", "evidence_mode": "short_excerpt",
            "category": "phd_research", "resource_kind": "scholarship", "scope": "nationwide"}
 PAGES = {f"{BASE}/news/phd-2026": "announcement.html", f"{BASE}/policy/rules": "policy.html", f"{BASE}/scholarships": "index.html",
-         f"{BASE}/news/intake-2026": "intake.html", f"{BASE}/news/a": "news-a.html", f"{BASE}/news/b": "news-b.html", f"{BASE}/news/c": "news-c.html"}
+         f"{BASE}/news/intake-2026": "intake.html", f"{BASE}/news/thin": "thin.html", f"{BASE}/files/a.pdf": "a.pdf", f"{BASE}/news/a": "news-a.html", f"{BASE}/news/b": "news-b.html", f"{BASE}/news/c": "news-c.html"}
 GATES = {"check_data": ["scripts/check_data.py"], "check_provenance": ["scripts/check_provenance.py"], "check_config": ["scripts/scan_sources.py", "--check-config"]}
 
 
@@ -38,6 +38,35 @@ def save(path, value):
     Path(path).write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+PDF_LINES = ["一、申請資格：國內大學碩士班、博士班在學學生。", "二、獎助金額：每名新臺幣四萬元。", "三、申請期間：自115年3月1日起至115年4月1日止，逾期不受理。", "四、應備文件：申請表與成績單。"]
+
+
+def text_pdf(lines):
+    """產生可抽文字的最小 PDF：repo 沒有 PDF 產生套件，中文靠 ToUnicode 對照表。"""
+    chars = sorted(set("".join(lines)))
+    cid = {char: index + 1 for index, char in enumerate(chars)}
+    show = "".join(f"<{''.join(f'{cid[c]:04X}' for c in line)}> Tj 0 -20 Td " for line in lines)
+    content = f"BT /F1 12 Tf 72 720 Td {show}ET".encode()
+    pairs = "".join(f"<{cid[c]:04X}> <{ord(c):04X}>\n" for c in chars)
+    cmap = (f"/CIDInit /ProcSet findresource begin 12 dict begin begincmap /CMapName /Synthetic def /CMapType 2 def "
+            f"1 begincodespacerange <0000> <FFFF> endcodespacerange {len(chars)} beginbfchar\n{pairs}endbfchar endcmap end end").encode()
+    objects = [b"<< /Type /Catalog /Pages 2 0 R >>", b"<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
+               b"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>",
+               b"<< /Length %d >>\nstream\n%s\nendstream" % (len(content), content),
+               b"<< /Type /Font /Subtype /Type0 /BaseFont /Synthetic /Encoding /Identity-H /DescendantFonts [6 0 R] /ToUnicode 7 0 R >>",
+               b"<< /Type /Font /Subtype /CIDFontType2 /BaseFont /Synthetic /CIDSystemInfo << /Registry (Adobe) /Ordering (Identity) /Supplement 0 >> >>",
+               b"<< /Length %d >>\nstream\n%s\nendstream" % (len(cmap), cmap)]
+    out, offsets = bytearray(b"%PDF-1.4\n"), []
+    for number, body in enumerate(objects, 1):
+        offsets.append(len(out))
+        out += b"%d 0 obj\n%s\nendobj\n" % (number, body)
+    start = len(out)
+    out += b"xref\n0 %d\n0000000000 65535 f \n" % (len(objects) + 1)
+    out += b"".join(b"%010d 00000 n \n" % offset for offset in offsets)
+    out += b"trailer\n<< /Size %d /Root 1 0 R >>\nstartxref\n%d\n%%%%EOF\n" % (len(objects) + 1, start)
+    return bytes(out)
+
+
 @unittest.skipIf(os.environ.get(NESTED), "副本內重跑全部測試時不再巢狀執行自己")
 class SourceIntakeE2ETests(unittest.TestCase):
     @classmethod
@@ -47,6 +76,7 @@ class SourceIntakeE2ETests(unittest.TestCase):
         cls.repo, cls.pages = base / "repo", base / "pages"
         shutil.copytree(ROOT, cls.repo, ignore=shutil.ignore_patterns(".git", "work", "dist", "__pycache__", "node_modules"))
         shutil.copytree(FIXTURES, cls.pages)
+        (cls.pages / "a.pdf").write_bytes(text_pdf(PDF_LINES))
         shutil.copy(FIXTURES / "mock_http_get.cjs", cls.repo / "scripts/http_get.cjs")
         save(cls.pages / "map.json", PAGES)
         # 不帶任何金鑰，模型一律關閉。
@@ -196,6 +226,32 @@ class SourceIntakeE2ETests(unittest.TestCase):
         self.assertIn(INTAKE_TITLE, page)
         self.assertIn(INTAKE_TITLE, feed)
 
+    def enumerate_source(self, name, path):
+        request = {"status": "accepted", "issue": 8, "url": f"{BASE}{path}", "category": "scholarship"}
+        save(self.repo / f"work/{name}.json", request)
+        self.sh(f"{name}.run", "scripts/run_source_intake.py", "--request", f"work/{name}.json", "--output", f"work/{name}")
+        self.assert_step(f"{name}.run")
+        return read(self.repo / f"work/{name}/result.json")
+
+    def test_index_page_enumerates_its_resources_and_is_not_a_card(self):
+        result = self.enumerate_source("index", "/scholarships")
+        self.assertEqual(result["records"][0]["disposition"], "source_document_or_discovery_only")
+        self.assertEqual({c["title"] for c in result["candidates"]}, {"合成甲基金會115年度研究生獎學金", "合成乙基金會115年度清寒獎助學金", "合成丙基金會博士生論文獎"})
+        self.assertEqual(result["links_skipped"], 0)
+
+    def test_page_with_contact_details_still_extracts_and_keeps_none_of_them(self):
+        result = self.enumerate_source("contact", "/news/a")
+        self.assertEqual([c["title"] for c in result["candidates"]], ["合成甲基金會115年度研究生獎學金"])
+        stored = (self.repo / "work/contact/report/structured-candidates.json").read_text(encoding="utf-8")
+        self.assertNotIn("02-1234-5678", stored)
+
+    def test_thin_page_with_pdf_attachment_extracts_from_the_pdf(self):
+        result = self.enumerate_source("thin", "/news/thin")
+        by_url = {r["url"]: r["disposition"] for r in result["records"]}
+        self.assertEqual(by_url[f"{BASE}/news/thin"], "source_document_or_discovery_only")
+        self.assertEqual(by_url[f"{BASE}/files/a.pdf"], "named_candidates_pending")
+        self.assertEqual([c["title"] for c in result["candidates"]], ["合成戊基金會115學年度研究生獎學金"])
+
     def test_whole_suite_passes_with_the_applied_data(self):
         self.assert_step("update.unittest")
 
@@ -205,17 +261,6 @@ class SourceIntakeE2ETests(unittest.TestCase):
         self.assertEqual({u for u in urls if not u.startswith(BASE + "/")}, set())
 
     # ---- 已知斷點：修好後會變成 unexpected success，到時拿掉 expectedFailure。----
-
-    @unittest.expectedFailure
-    def test_gap_step5_index_page_enumerates_its_resources(self):
-        row = {"id": "IDX1", "url": f"{BASE}/scholarships", "title": "合成索引", "batch": "B2", "category": "campus", "kind": "索引",
-               "restrictions": [], "access_gate": "fresh_policy_and_profile_check_required"}
-        inventory = Path(self.temp.name) / "inventory.json"
-        save(inventory, {"as_of": "2026-11-07", "rows": [row]})
-        self.sh("gap.expand", "scripts/expand_sources.py", "--inventory", inventory, "--batch", "B2", "--state", "work/x/state.json", "--output", "work/x/report")
-        self.assert_step("gap.expand")
-        titles = {c["title"] for c in read(self.repo / "work/x/report/structured-candidates.json")["candidates"]}
-        self.assertEqual(len(titles), 3, titles)
 
     @unittest.expectedFailure
     def test_gap_step7_announcement_and_its_policy_are_one_card(self):
