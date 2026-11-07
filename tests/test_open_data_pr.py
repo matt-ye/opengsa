@@ -6,11 +6,12 @@ import sys
 import tempfile
 import unittest
 from types import SimpleNamespace
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-from scripts.open_data_pr import apply_proposal, comment, pr_body, prepare, proposal_files, publish, run_gates
+from scripts.open_data_pr import apply_proposal, comment, main, pr_body, prepare, proposal_files, publish, run_gates
 
 
 def write(path, value):
@@ -113,10 +114,27 @@ class OpenDataPrTests(unittest.TestCase):
         self.assertIn("還沒上架", comment(result))
 
     def test_body_neutralises_page_titles(self):
-        summary = {**SUMMARY, "retired_hand_cards": [{"title": "@someone [連結](http://x) `code`"}]}
+        summary = {**SUMMARY, "retired_hand_cards": [{"title": "@someone [連結](http://x) `code` Fixes #5"}]}
         body = pr_body(summary, [], "測試")
         self.assertNotIn("@someone", body)
         self.assertNotIn("[連結]", body)
+        self.assertNotIn("#5", body)
+
+    def test_failed_push_does_not_show_the_token(self):
+        out = self.base / "out"
+        write(out / "result.json", {"status": "ready", "new_hosts": []})
+        with self.assertRaises(RuntimeError) as caught:
+            publish(out, "data/radar-proposal", "t", "o/r", "secret-token", lambda *a, **k: SimpleNamespace(returncode=1))
+        self.assertNotIn("secret-token", str(caught.exception))
+
+    def test_cli_writes_a_comment_when_gates_fail(self):
+        out = self.base / "out"
+        out.mkdir(parents=True, exist_ok=True)
+        argv = ["open_data_pr.py", "--proposal", str(self.proposal), "--output", str(out)]
+        with patch("sys.argv", argv), patch("scripts.open_data_pr.prepare", return_value={"status": "gates_failed", "failed_gate": "unittest"}):
+            with self.assertRaises(SystemExit):
+                main()
+        self.assertIn("沒有開 PR", (out / "comment.md").read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":
