@@ -25,3 +25,50 @@ topology-discovered-scholarships：cand-perk-azure-for-students、cand-gov-moa-f
 ## 順手修的問題
 
 撤卡時，沒有其他卡在用的來源只會被設成停用。手寫卡的來源設定（標題、選擇器）沒驗證過：卡撤掉後，提交流程不再把它當成手寫來源排除；有人提交同一個網址時，流程會重新啟用這份設定，把學校首頁命名成那個方案。現在撤手寫卡時，它的來源另外標成 `automation: not_enabled`，提交流程會排除這類來源。
+
+## 急難救助與具體方案：改網址重跑（2026-11-08）
+
+27 張卡由代理逐張找官方方案頁：23 張找到（其中 1 張只有清單頁），4 張找不到。找到的 23 個網址都重跑了萃取流程（模型關閉，181 次請求）。
+
+| 結果 | 張數 | 處理 |
+|---|---|---|
+| 抽出候選，且是同一方案 | 3 | 撤下手寫卡。FAOS 出國開會補助和羅慧夫獎助學金，上一輪研究批次已經有流程產生的卡。這次重抓到的新版本沒有納入，因為換版本會撤下 FAOS 已核對過的兩條時程規則，等人重新核對；家扶的手寫卡名稱「扶助弱勢兒少獎助學金」不存在，官方對應的是新加入的「韌世代獎助學金」 |
+| 找不到官方方案頁 | 4 | 撤下：臺大國際處國際學生急難救助金（國際處沒有自辦這個方案）、瑞昱碩博士獎學金（官網招募頁沒有獎學金）、台塑王永慶青年創業獎助金（網址被拒、官網查無）、電腦學會最佳碩博士論文獎（學會獎項清單沒有這個獎） |
+| 方案頁讀得到，但沒有成卡 | 20 | 保留，等補萃取方式 |
+
+### 為什麼 20 頁沒有成卡
+
+流程只在頁面標題含獎學金類字眼（`獎學金`、`獎助學金`、`論文獎`、`scholarship`、`fellowship` 等，見 `scripts/expand_sources.py` 的 `RESOURCE`），而且內文有資格條款時才成卡。急難救助、慰助、濟助、就學金、補助這類頁面的標題不含這些字，所以讀到了也只被當成來源文件。另外：
+- 政大的子頁被 robots 擋。
+- 社家署的法規頁也被 robots 擋。
+- 新北市的頁面要登入。
+- 輔仁的附件放在沒有網域的 IP 位址上。
+
+這些卡的手寫名稱也有對不上官方方案的，例如富邦「急難救助學生專案」、臺北市「青年生活陷困扶助」、新北市「弱勢學生專案」，官方都只有一般的急難救助。
+
+### 剩下 20 張的正確方案頁
+
+下次補萃取方式時從這裡重跑。
+
+| 手寫卡 | 官方名稱 | 方案頁 |
+|---|---|---|
+| 國立清華大學學生急難救助金 | 校內急難扶助（急難慰助） | https://sa.site.nthu.edu.tw/p/404-1480-164600.php?Lang=zh-tw |
+| 國立成功大學學生急難救助金 | 國立成功大學學生緊急紓困及家庭急難慰助金 | https://military-osa.ncku.edu.tw/p/412-1055-6820.php?Lang=zh-tw |
+| 國立陽明交通大學學生急難救助金 | 急難濟助 | https://osa.nycu.edu.tw/osa/ch/app/artwebsite/view?module=artwebsite&id=3948&serno=147df800-75ea-4f88-b6e7-fa54a08fb8fb |
+| 國立政治大學學生急難救助金 | 校內急難慰助（急難慰問金／急難救助金） | https://osa.nccu.edu.tw/tw/%E7%94%9F%E6%B4%BB%E4%BA%8B%E5%8B%99%E6%9A%A8%E5%83%91%E7%94%9F%E8%BC%94%E5%B0%8E%E7%B5%84/%E5%AD%B8%E7%94%9F%E5%8A%A9%E5%AD%B8%E6%8E%AA%E6%96%BD/%E6%80%A5%E9%9B%A3%E6%85%B0%E5%8A%A9/%E6%80%A5%E9%9B%A3%E6%85%B0%E5%8A%A9 |
+| 天主教輔仁大學學生急難救助金 | 輔仁大學學生急難救助金 | https://life.dsa.fju.edu.tw/resource.jsp?labelID=34 |
+| 財團法人行天宮文教發展基金會「行天宮學生急難濟助」 | 行天宮急難濟助（含學生急難濟助） | https://www.ht.org.tw/religion2666.htm |
+| 財團法人富邦慈善基金會「急難救助學生專案」 | 急難救助 | https://www.fuboncharity.org.tw/chinese/help/index |
+| 臺北市市民急難救助及青年生活陷困扶助 | 急難救助 | https://dosw.gov.taipei/cp.aspx?n=0BF751F1B9F07AA1 |
+| 新北市好日子愛心大平台急難救助與弱勢學生專案 | 申請急難救助 | https://service.ntpc.gov.tw/eservice/CaseData.action?itemId=110019 |
+| 衛生福利部社會及家庭署「特殊境遇家庭扶助－緊急生活扶助與子女生活津貼」 | 特殊境遇家庭扶助條例（緊急生活扶助、子女生活津貼等） | https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=D0050075 |
+| 衛生福利部委辦財團法人婦女權益促進發展基金會「弱勢單親家庭培力計畫」 | 單親培力計畫 | https://www.wrp.org.tw/OnePage.aspx?mid=39&id=85 |
+| Microsoft Research PhD Fellowship | Microsoft Research PhD Fellowship | https://www.microsoft.com/en-us/research/academic-program/phd-fellowship/ |
+| 我國少子女化對策計畫 —— 幼兒就學補助（公立、非營利、準公共幼兒園費用減免） | 公立、非營利幼兒園 (費用減免); 準公共幼兒園 | https://www.ece.moe.edu.tw/ch/subsidy/public-non-profit/index.html |
+| 低收入戶及中低收入戶幼童托教補助 | 準公共幼兒園 (低收入戶及中低收入戶子女免繳每月費用)（只有清單頁） | https://www.ece.moe.edu.tw/ch/subsidy/zgg-1/ |
+| 教育部學產基金設置低收入戶學生助學金 | 教育部學產基金設置低收入戶學生助學金實施要點 | https://edu.law.moe.gov.tw/LawContent.aspx?id=GL000019 |
+| 內政部移民署新住民及其子女培力與獎助（勵）學金計畫 | 新住民及子女培力與獎助(勵)學金計畫 | https://ifi.immigration.gov.tw/wSite/ct?xItem=101733&ctNode=37277&mp=1 |
+| 農業部獎勵農漁民子女就學金（高級中等學校組） | 獎勵農漁民子女就學金 | https://m.moa.gov.tw/Subsidy/Detail/8 |
+| 財團法人普仁青年關懷基金會 —— 大手拉小手助學計畫 | 大手拉小手 助學計畫 | https://www.you-care.org.tw/OnePage.aspx?mid=46 |
+| 財團法人鴻海教育基金會 —— 鴻海獎學鯨（高中職及技職專案組） | 鴻海獎學鯨 (高中職組) | https://www.foxconnfoundation.org/news/7b09cc55fbc5 |
+| 臺大醫學院醫學生出席國際會議及海外實習服務交換獎學金 | 醫學生出席國際會議及海外實習服務交換獎學金 | https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296 |

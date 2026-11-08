@@ -2574,6 +2574,12 @@
       "program_key": "discovery-d2a53da2cfc4acb3d",
       "phase": "all",
       "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-dd4c25ed2dab836dc-4b73b6cc",
+      "program_key": "discovery-dd4c25ed2dab836dc",
+      "phase": "all",
+      "historical_baseline_allowed": true
     }
   ],
   "http_requests": 15,

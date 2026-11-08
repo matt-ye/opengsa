@@ -74,13 +74,13 @@ class HandReplacementTests(unittest.TestCase):
         targets = hand_targets()
         single = [t for t in targets if len({c["program_key"] for c in t["cards"]}) == 1 and t["url"].startswith("https://")
                   and urlsplit(t["url"]).path not in ("", "/")]
-        # 命中的頁面要用含「獎學金」的標題才會成卡；沒命中的只要是另一個來源就好，不綁剩下幾張手寫卡。
-        hit = next(t for t in single if "獎學金" in t["cards"][0]["title"])
-        miss = next(t for t in single if t is not hit)
+        # 頁面標題要含「獎學金」才會成卡；手寫卡標題沒有就補在後面，仍認得出是同一方案。不綁剩下哪幾張手寫卡。
+        hit, miss = single[:2]
         single = [hit, miss]
+        title = hit["cards"][0]["title"] + ("" if "獎學金" in hit["cards"][0]["title"] else "獎學金")
         def transport(url, headers, limit):
             if url == hit["url"]:
-                return {"status": 200, "headers": {"content-type": "text/html"}, "body": PAGE.format(title=hit["cards"][0]["title"]).encode()}
+                return {"status": 200, "headers": {"content-type": "text/html"}, "body": PAGE.format(title=title).encode()}
             return {"status": 404, "headers": {}, "body": b""}
         with tempfile.TemporaryDirectory() as tmp:
             run(tmp, single, transport=transport, spacing=0, progress=lambda *a, **k: None)

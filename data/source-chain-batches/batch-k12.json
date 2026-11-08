@@ -7,8 +7,8 @@
   "official_data_modified": false,
   "http_requests": 0,
   "description": "K-12 各級教育與公部門法定助學金五節點資訊鏈拓撲批次",
-  "total_documents": 24,
-  "total_edges": 16,
+  "total_documents": 21,
+  "total_edges": 14,
   "documents": [
     {
       "id": "doc-k12-statute-51c561d9c68f2cc7630d",
@@ -299,54 +299,6 @@
       "links": []
     },
     {
-      "id": "doc-k12-statute-5f2f7b5a72bbfc9b716d",
-      "url": "https://www.ccf.org.tw/statute",
-      "format": "html",
-      "revision_id": "5f2f7b5a72bbfc9b716d66285872f6f7eeef5e631c475611cd1bc0eb9f4822b9",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-k12-ccf-taiwan-children-scholarship-dc5fee52"
-      ],
-      "role": "statute",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-k12-call-f97f40206228c0fe57e2",
-      "url": "https://www.ccf.org.tw/",
-      "format": "html",
-      "revision_id": "f97f40206228c0fe57e27fb2a383f2a27ab7ac682ee4f34bc20f3de9bced6c60",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-k12-ccf-taiwan-children-scholarship-dc5fee52"
-      ],
-      "role": "call",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-k12-form-d4303fefc5069fa9343f",
-      "url": "https://www.ccf.org.tw/standard-forms",
-      "format": "html",
-      "revision_id": "d4303fefc5069fa9343fff6fa73e5f7185f74c20d6c8d516efbb440ac4d7f301",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-k12-ccf-taiwan-children-scholarship-dc5fee52"
-      ],
-      "role": "form",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
       "id": "doc-k12-statute-aafdc500ef00ec27fb09",
       "url": "https://www.foxconnfoundation.org/statute",
       "format": "html",
@@ -505,24 +457,6 @@
       "cycle": "114-115"
     },
     {
-      "from": "doc-k12-statute-5f2f7b5a72bbfc9b716d",
-      "to": "doc-k12-call-f97f40206228c0fe57e2",
-      "url": "https://www.ccf.org.tw/",
-      "role": "statutory_authority",
-      "program_key": "k12-ccf-taiwan-children-scholarship",
-      "scope": "k12-ccf-taiwan-children-scholarship",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-k12-call-f97f40206228c0fe57e2",
-      "to": "doc-k12-form-d4303fefc5069fa9343f",
-      "url": "https://www.ccf.org.tw/standard-forms",
-      "role": "school_submission_form",
-      "program_key": "k12-ccf-taiwan-children-scholarship",
-      "scope": "k12-ccf-taiwan-children-scholarship",
-      "cycle": "114-115"
-    },
-    {
       "from": "doc-k12-statute-aafdc500ef00ec27fb09",
       "to": "doc-k12-call-a46aefac34b175bbd73c",
       "url": "https://www.foxconnfoundation.org/",
@@ -567,10 +501,6 @@
       "label": "財團法人普仁青年關懷基金會"
     },
     {
-      "id": "k12-ccf-taiwan-children-scholarship",
-      "label": "財團法人台灣兒童暨家庭扶助基金會"
-    },
-    {
       "id": "k12-foxconn-whale-vocational-scholarship",
       "label": "財團法人鴻海教育基金會"
     }
@@ -613,12 +543,6 @@
       "historical_baseline_allowed": true
     },
     {
-      "candidate_id": "cand-k12-ccf-taiwan-children-scholarship-dc5fee52",
-      "program_key": "k12-ccf-taiwan-children-scholarship",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
       "candidate_id": "cand-k12-foxconn-whale-vocational-scholarship-c95036c0",
       "program_key": "k12-foxconn-whale-vocational-scholarship",
       "phase": "all",
@@ -628,7 +552,7 @@
   "reports": [
     {
       "batch_id": "batch-k12",
-      "verified_schemes": 8,
+      "verified_schemes": 7,
       "notes": "公部門與各級教育助學，涵蓋母法設置要點、年度徵件公告與學校初審表件。"
     }
   ]

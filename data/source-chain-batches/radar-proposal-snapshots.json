@@ -1,6 +1,6 @@
 {
   "schema_version": "source-chain-1",
-  "generated_at": "2026-11-07T21:31:52+00:00",
+  "generated_at": "2026-11-08T03:40:26+00:00",
   "model_calls": 0,
   "official_data_modified": false,
   "documents": [
@@ -2256,6 +2256,20 @@
       "evidence_mode": "hash_only",
       "candidate_ids": [
         "cand-discovery-d2a53da2cfc4acb3d-4e7a4c06"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-d4c25ed2dab836dc98adf14d",
+      "url": "https://www.ccf.org.tw/unitoutweb/laravel-filemanager/files/39/68833a3f57de5.pdf",
+      "format": "pdf",
+      "revision_id": "4b73b6cce5b8746f9de8dfccae7257cb0fdb790fea7aff748fca3f5f50ae0cd6",
+      "observed_at": "2026-11-08T03:40:20+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-dd4c25ed2dab836dc-4b73b6cc"
       ],
       "events": [],
       "links": []

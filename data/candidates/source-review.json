@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0-candidate",
-  "generated_at": "2026-11-07T21:31:52+00:00",
+  "generated_at": "2026-11-08T03:40:26+00:00",
   "as_of": "2026-11-08",
   "timezone": "Asia/Taipei",
   "model_enabled": false,
@@ -48805,6 +48805,408 @@
           {
             "source": "discovery-d2a53da2cfc4acb3d",
             "locator": "PDF page 3"
+          }
+        ]
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-discovery-dd4c25ed2dab836dc-4b73b6cc",
+      "opportunity_id": "discovery-dd4c25ed2dab836dc",
+      "program_key": "discovery-dd4c25ed2dab836dc",
+      "title": "「114學年度第一學期韌世代獎助學金」申請辦法",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "cycle": {
+        "kind": "policy_snapshot",
+        "label": "制度快照；版本依原文核對",
+        "year_system": "unknown",
+        "year": null,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "unknown",
+        "beneficiary": "unknown",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "unknown",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "待查",
+          "refs": []
+        },
+        "announcer": {
+          "text": "待查",
+          "refs": []
+        },
+        "receiver": {
+          "text": "全台各縣市家扶中心／各家扶中心",
+          "refs": [
+            {
+              "source": "discovery-dd4c25ed2dab836dc",
+              "locator": "PDF page 2"
+            },
+            {
+              "source": "discovery-dd4c25ed2dab836dc",
+              "locator": "PDF page 2"
+            },
+            {
+              "source": "discovery-dd4c25ed2dab836dc",
+              "locator": "PDF page 3"
+            },
+            {
+              "source": "discovery-dd4c25ed2dab836dc",
+              "locator": "PDF page 3"
+            },
+            {
+              "source": "discovery-dd4c25ed2dab836dc",
+              "locator": "PDF page 3"
+            }
+          ]
+        }
+      },
+      "eligibility": {
+        "degrees": [],
+        "institution": "unknown",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "身分條件請至來源定位核對",
+          "refs": [
+            {
+              "source": "discovery-dd4c25ed2dab836dc",
+              "locator": "PDF page 1"
+            },
+            {
+              "source": "discovery-dd4c25ed2dab836dc",
+              "locator": "PDF page 1"
+            }
+          ]
+        },
+        "other_conditions": []
+      },
+      "benefit": {
+        "summary": "金額請見來源",
+        "items": [],
+        "refs": []
+      },
+      "compatibility": {
+        "mode": "unknown",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "須查雙方方案及重疊期間，未明示不代表可兼領。",
+        "refs": []
+      },
+      "hardship": {
+        "mode": "unknown",
+        "note": "未完成清寒限定條文查核。",
+        "refs": []
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "未記錄明確申請起日"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "依公告規定申請",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "待確認"
+            },
+            "refs": [
+              {
+                "source": "discovery-dd4c25ed2dab836dc",
+                "locator": "PDF page 1"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "官方未公告明確結果公布日",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-11-08",
+        "reason": "尚無足以確認學生收件窗口的資料。",
+        "refs": []
+      },
+      "policy_version": {
+        "promulgated_on": "2026-01-30",
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "已記錄修正／通過日期 2026-01-30；未明示同日生效前，不將修正日自動當作生效日。",
+        "refs": [
+          {
+            "source": "discovery-dd4c25ed2dab836dc",
+            "locator": "PDF page 2"
+          }
+        ]
+      },
+      "source_metadata": {
+        "source_id": "discovery-dd4c25ed2dab836dc",
+        "revision_id": "4b73b6cce5b8746f9de8dfccae7257cb0fdb790fea7aff748fca3f5f50ae0cd6",
+        "url": "https://www.ccf.org.tw/unitoutweb/laravel-filemanager/files/39/68833a3f57de5.pdf",
+        "observed_at": "2026-11-08T03:40:20+00:00",
+        "evidence_mode": "hash_only",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.10.0",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "d11b7ea62daff0cd80914238295fc37839e54b0b067c67d1bd3b0f6a676d6890"
+      },
+      "field_evidence": [
+        {
+          "field_path": "policy_version",
+          "source": "discovery-dd4c25ed2dab836dc",
+          "revision_id": "4b73b6cce5b8746f9de8dfccae7257cb0fdb790fea7aff748fca3f5f50ae0cd6",
+          "locator": "PDF page 2",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "ce1081b7826e18d92af6eed1180961766e89a661629f1a5aca7c498e8be7a285",
+          "source_block_sha256": "ce1081b7826e18d92af6eed1180961766e89a661629f1a5aca7c498e8be7a285",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.identity",
+          "source": "discovery-dd4c25ed2dab836dc",
+          "revision_id": "4b73b6cce5b8746f9de8dfccae7257cb0fdb790fea7aff748fca3f5f50ae0cd6",
+          "locator": "PDF page 1",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "4d5eabca6607be360184b53cf8579dc5035e942ac131e58b4c86a7802b68d6ba",
+          "source_block_sha256": "4d5eabca6607be360184b53cf8579dc5035e942ac131e58b4c86a7802b68d6ba",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.identity",
+          "source": "discovery-dd4c25ed2dab836dc",
+          "revision_id": "4b73b6cce5b8746f9de8dfccae7257cb0fdb790fea7aff748fca3f5f50ae0cd6",
+          "locator": "PDF page 1",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "d7e8f392cbf2c5d925bbda645d24242e628e5d3f6b28b938dbb440e385f3909f",
+          "source_block_sha256": "d7e8f392cbf2c5d925bbda645d24242e628e5d3f6b28b938dbb440e385f3909f",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "organizations.receiver",
+          "source": "discovery-dd4c25ed2dab836dc",
+          "revision_id": "4b73b6cce5b8746f9de8dfccae7257cb0fdb790fea7aff748fca3f5f50ae0cd6",
+          "locator": "PDF page 2",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "50ef8ac64ea34da630cd23d6d68d998e9c5a4156e95ccc42b3d34e28a9d557cb",
+          "source_block_sha256": "50ef8ac64ea34da630cd23d6d68d998e9c5a4156e95ccc42b3d34e28a9d557cb",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "organizations.receiver",
+          "source": "discovery-dd4c25ed2dab836dc",
+          "revision_id": "4b73b6cce5b8746f9de8dfccae7257cb0fdb790fea7aff748fca3f5f50ae0cd6",
+          "locator": "PDF page 2",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "d4696e4d60b17d22ceca511cb84ec0b6fce6d7b88f5cf5d4bb721695670e424c",
+          "source_block_sha256": "d4696e4d60b17d22ceca511cb84ec0b6fce6d7b88f5cf5d4bb721695670e424c",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "organizations.receiver",
+          "source": "discovery-dd4c25ed2dab836dc",
+          "revision_id": "4b73b6cce5b8746f9de8dfccae7257cb0fdb790fea7aff748fca3f5f50ae0cd6",
+          "locator": "PDF page 3",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+          "source_block_sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "organizations.receiver",
+          "source": "discovery-dd4c25ed2dab836dc",
+          "revision_id": "4b73b6cce5b8746f9de8dfccae7257cb0fdb790fea7aff748fca3f5f50ae0cd6",
+          "locator": "PDF page 3",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "be8e28d922480a12751c4ff1810d2d2a52c753c72f48ae119d6c83f479762e36",
+          "source_block_sha256": "be8e28d922480a12751c4ff1810d2d2a52c753c72f48ae119d6c83f479762e36",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "organizations.receiver",
+          "source": "discovery-dd4c25ed2dab836dc",
+          "revision_id": "4b73b6cce5b8746f9de8dfccae7257cb0fdb790fea7aff748fca3f5f50ae0cd6",
+          "locator": "PDF page 3",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "8d80a473ca2fda3466b1efd392910107c17da9b2ec7435a0d505883440e7b38d",
+          "source_block_sha256": "8d80a473ca2fda3466b1efd392910107c17da9b2ec7435a0d505883440e7b38d",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "application_method/33",
+          "source": "discovery-dd4c25ed2dab836dc",
+          "revision_id": "4b73b6cce5b8746f9de8dfccae7257cb0fdb790fea7aff748fca3f5f50ae0cd6",
+          "locator": "PDF page 1",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "7477151be8ea267a2933f664a0e48d671b79c2dfabada189780c2ae96b6980ea",
+          "source_block_sha256": "7477151be8ea267a2933f664a0e48d671b79c2dfabada189780c2ae96b6980ea",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "application_method/38",
+          "source": "discovery-dd4c25ed2dab836dc",
+          "revision_id": "4b73b6cce5b8746f9de8dfccae7257cb0fdb790fea7aff748fca3f5f50ae0cd6",
+          "locator": "PDF page 2",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "a7eda61f86a2cc28f8fb21b2cae0d11bd8f55b0decadfc9292d01e06495e24bc",
+          "source_block_sha256": "a7eda61f86a2cc28f8fb21b2cae0d11bd8f55b0decadfc9292d01e06495e24bc",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "application_method/39",
+          "source": "discovery-dd4c25ed2dab836dc",
+          "revision_id": "4b73b6cce5b8746f9de8dfccae7257cb0fdb790fea7aff748fca3f5f50ae0cd6",
+          "locator": "PDF page 2",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "78cb4754af622af0cc124ecf402271674ebe677d89d98f553f26b1b69756cb7e",
+          "source_block_sha256": "78cb4754af622af0cc124ecf402271674ebe677d89d98f553f26b1b69756cb7e",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "application_method/62",
+          "source": "discovery-dd4c25ed2dab836dc",
+          "revision_id": "4b73b6cce5b8746f9de8dfccae7257cb0fdb790fea7aff748fca3f5f50ae0cd6",
+          "locator": "PDF page 2",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "84cbef2cd9f236135858ce4f6c3f3c3aec77908dfc4a016924842934f94133c9",
+          "source_block_sha256": "84cbef2cd9f236135858ce4f6c3f3c3aec77908dfc4a016924842934f94133c9",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [
+          "unextracted:schedule.application_start",
+          "unextracted:schedule.student_deadline",
+          "unextracted:benefit",
+          "unextracted:compatibility",
+          "unextracted:application_method"
+        ],
+        "conflicts": [],
+        "open_questions": [
+          "指定非原編輯者獨立覆核重大欄位（資格、金額、期限、兼領、法源版本）。"
+        ]
+      },
+      "evidence_status": "sufficient_for_draft",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.4.0",
+        "checked_at": "2026-11-08T03:40:20+00:00",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [
+          "coverage_gap:missing_structured_benefit_items",
+          "coverage_gap:eligibility.identity_not_extracted",
+          "coverage_gap:unextracted:schedule.application_start",
+          "coverage_gap:unextracted:schedule.student_deadline",
+          "coverage_gap:unextracted:benefit",
+          "coverage_gap:unextracted:compatibility",
+          "coverage_gap:unextracted:application_method"
+        ],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.10.0",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "unknown",
+        "channels": [
+          "post"
+        ],
+        "paper_delivery": "unknown",
+        "handwritten_signature": "required",
+        "deadline_basis": "postmark",
+        "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
+        "refs": [
+          {
+            "source": "discovery-dd4c25ed2dab836dc",
+            "locator": "PDF page 1"
+          },
+          {
+            "source": "discovery-dd4c25ed2dab836dc",
+            "locator": "PDF page 2"
+          },
+          {
+            "source": "discovery-dd4c25ed2dab836dc",
+            "locator": "PDF page 2"
+          },
+          {
+            "source": "discovery-dd4c25ed2dab836dc",
+            "locator": "PDF page 2"
           }
         ]
       },
