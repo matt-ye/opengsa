@@ -49,6 +49,14 @@ class RetireCandidatesTests(unittest.TestCase):
         self.assertIn(card["candidate_id"], read(ROOT / "data/known-hand-authored-candidates.json")["candidate_ids"])
         self.assertEqual(source["automation"], "not_enabled")
 
+    def test_retired_card_leaves_every_baseline_list(self):
+        baseline = read(self.root / "data/known-hand-authored-candidates.json")
+        pending = baseline["pending_extractor"][0]
+        retire([pending], self.root)
+        after = read(self.root / "data/known-hand-authored-candidates.json")
+        self.assertNotIn(pending, after["candidate_ids"])
+        self.assertNotIn(pending, after["pending_extractor"])
+
     def test_unknown_id_changes_nothing(self):
         before = (self.root / "data/known-hand-authored-candidates.json").read_bytes()
         with self.assertRaises(ValueError):

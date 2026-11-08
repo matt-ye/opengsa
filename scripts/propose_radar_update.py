@@ -44,8 +44,12 @@ def retire_hand_cards(good,replaced_urls=()):
     gone={row['candidate_id'] for row in retired}
     for rel in {row['bundle'] for row in retired}:
         files[rel]={**bundles[rel],'candidates':[c for c in bundles[rel]['candidates'] if c['candidate_id'] not in gone]}
-    if gone:files[HAND_BASELINE]={**baseline,'candidate_ids':[i for i in baseline['candidate_ids'] if i not in gone]}
+    if gone:files[HAND_BASELINE]=without_cards(baseline,gone)
     return files,retired,manual
+
+def without_cards(baseline,gone):
+    """撤掉的卡要從手寫基準的每份清單移除，包括「萃取方式待補」，否則清單會指向不存在的卡。"""
+    return {**baseline,**{key:[i for i in baseline[key] if i not in gone] for key in ('candidate_ids','pending_extractor') if key in baseline}}
 
 def merge_temporal(merged,good,temporal,observed):
     """當輪的時間紀錄和卡片一起進提案。只收同一版本內容讀到的；已被取代的卡，舊紀錄一併移除。"""

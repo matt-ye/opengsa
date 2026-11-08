@@ -88,44 +88,6 @@
         ]
       }
     },
-    "cand-nycu-emergency-relief": {
-      "candidate_sha256": "e5d9850acde6ec0ad677a455f5071610dd01a8cd709bd8bda693524ab9350215",
-      "url": "https://osa.nycu.edu.tw/",
-      "status": "replayed",
-      "reason": null,
-      "observed_at": "2026-11-06T10:00:00Z",
-      "raw_sha256": "9a15122b6071b3983d8b1933ecaf28636903016230c4b829b67473df58bc5149",
-      "revision_id": "9a15122b6071b3983d8b1933ecaf28636903016230c4b829b67473df58bc5149",
-      "format": "html",
-      "policy": {
-        "version": "time-policy-1",
-        "submission_mode": "continuous",
-        "review_mode": "case_by_case",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "continuous",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "事故發生日起3個月內提出",
-            "value": null,
-            "precision": "rule",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "nycu-osa-emergency",
-                "revision_id": "9a15122b6071b3983d8b1933ecaf28636903016230c4b829b67473df58bc5149",
-                "locator": "期限條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": [
-          "needs_event_date"
-        ]
-      }
-    },
     "cand-nccu-emergency-aid": {
       "candidate_sha256": "be0a46a706a13662306c514dfa247d5294825e1a5eef159641c008a11513716f",
       "url": "https://osa.nccu.edu.tw/",
@@ -191,44 +153,6 @@
               {
                 "source": "fju-life-emergency",
                 "revision_id": "774af52be0bbc5d856a14b6d31a09ea65c862dcb8a2fabb00ca18f3581fb0fce",
-                "locator": "期限條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": [
-          "needs_event_date"
-        ]
-      }
-    },
-    "cand-hsingtian-emergency-grant": {
-      "candidate_sha256": "50a611b2f0029d45c1c0a6fdad596fc96b2b0ee80fb175b77595dfddbd1b4a2f",
-      "url": "https://www.ht.org.tw/religion178.htm",
-      "status": "replayed",
-      "reason": null,
-      "observed_at": "2026-11-06T10:00:00Z",
-      "raw_sha256": "89a1bb21aa92c371b27e78d6672a23da04f39a4b32dc527a19c7143d1758e4ae",
-      "revision_id": "89a1bb21aa92c371b27e78d6672a23da04f39a4b32dc527a19c7143d1758e4ae",
-      "format": "html",
-      "policy": {
-        "version": "time-policy-1",
-        "submission_mode": "continuous",
-        "review_mode": "case_by_case",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "continuous",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "重大變故發生日起6個月內由學校轉介申請",
-            "value": null,
-            "precision": "rule",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "hsingtian-emergency-grant",
-                "revision_id": "89a1bb21aa92c371b27e78d6672a23da04f39a4b32dc527a19c7143d1758e4ae",
                 "locator": "期限條款",
                 "evidence_path": "schedule.steps/0/deadline"
               }
@@ -381,44 +305,6 @@
               {
                 "source": "sfaa-special-family",
                 "revision_id": "5afc30ec49df0e0e78bd22ab5832b90f617c9fddb3511e70cbb43856d4102d27",
-                "locator": "期限條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": [
-          "needs_event_date"
-        ]
-      }
-    },
-    "cand-wrp-single-parent-aid": {
-      "candidate_sha256": "02c926f158246b10c678a8ae6048e74983e791571d682a7d4671d89ccca18d5e",
-      "url": "https://www.wrp.org.tw/",
-      "status": "replayed",
-      "reason": null,
-      "observed_at": "2026-11-06T10:00:00Z",
-      "raw_sha256": "73dc8df99a1719dedf2cf4ce1793c051af48018e47f7bd9aa0529c32d7de07aa",
-      "revision_id": "73dc8df99a1719dedf2cf4ce1793c051af48018e47f7bd9aa0529c32d7de07aa",
-      "format": "html",
-      "policy": {
-        "version": "time-policy-1",
-        "submission_mode": "continuous",
-        "review_mode": "case_by_case",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "continuous",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "第1學期9月1日至10月10日；第2學期2月15日至3月25日",
-            "value": null,
-            "precision": "rule",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "wrp-single-parent-aid",
-                "revision_id": "73dc8df99a1719dedf2cf4ce1793c051af48018e47f7bd9aa0529c32d7de07aa",
                 "locator": "期限條款",
                 "evidence_path": "schedule.steps/0/deadline"
               }
