@@ -5,7 +5,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
-from scripts.propose_radar_update import ROOT,prepare,same_program,split_site_ready,write_proposal,read
+from scripts.propose_radar_update import ROOT,distinct_named_cards,prepare,same_program,split_site_ready,write_proposal,read
 from scripts.expand_sources import prepare_response,profile_for
 from scripts.extract_candidates import extract_from_in_memory_blocks
 from scripts.scan_sources import digest
@@ -88,6 +88,36 @@ class RadarProposalTests(unittest.TestCase):
         card['eligibility']['year_limit']={'mode':'range','min':1,'max':3,'assessed_at':None,'refs':deepcopy(card['eligibility']['identity']['refs'])}
         ready,withheld=split_site_ready([card],bundle,config)
         self.assertEqual((len(ready),withheld),(1,[]))
+
+    def test_same_program_retires_the_hand_card_even_when_the_old_url_is_wrong(self):
+        url,cards=self.hand_url(1);bundle,config,_=self.fixture()
+        bundle['candidates'][0]['title']=cards[0]['title']
+        _,summary=prepare(bundle,config)
+        self.assertEqual({r['candidate_id'] for r in summary['retired_hand_cards']},{c['candidate_id'] for c in cards})
+
+    def card(self,title,url):
+        return {'candidate_id':title+url,'title':title,'source_metadata':{'url':url}}
+
+    def test_same_document_and_same_title_become_one_card_and_are_listed(self):
+        kept,dropped=distinct_named_cards([self.card('甲獎學金表格','https://a.test/x.pdf'),self.card('甲獎學金','https://a.test/p'),
+            self.card('乙獎學金','https://a.test/p'),self.card('甲獎學金','https://a.test/form.pdf'),self.card('甲獎學金','https://b.test/p')])
+        self.assertEqual({(c['title'],c['source_metadata']['url']) for c in kept},{('甲獎學金','https://a.test/p'),('甲獎學金表格','https://a.test/x.pdf'),('甲獎學金','https://b.test/p')})
+        self.assertEqual(sorted(r['reason'] for r in dropped),['same_document','same_title_same_site'])
+
+    def test_listing_page_title_is_not_a_program_name(self):
+        for title in ('校內獎助學金一覽表  - 國立某大學','獎助學金資訊網','研究生獎助學金','校內獎學金','└ 校外獎助學金 ┘','某大學 學生事務處 | 獎助學金公告','::: 校內獎學金'):
+            with self.subTest(title=title):
+                self.assertEqual(distinct_named_cards([self.card(title,'https://a.test/x')])[1][0]['reason'],'generic_title')
+        for title in ('國立中興大學研究生獎助學金辦法','葉文冠教授紀念獎學金','115學年度校內獎學金申請公告'):
+            with self.subTest(title=title):
+                self.assertEqual(distinct_named_cards([self.card(title,'https://a.test/x')])[1],[])
+
+    def test_clause_testimonial_and_form_documents_are_not_cards(self):
+        for title,url in (('七、本辦法如有未盡事宜處，由本會解釋之。','https://a.test/x'),('某宗親會獎助學金（獲奬人感言）','https://a.test/x'),
+                ('其他獎學金設置要點','https://a.test/x'),('長庚大學-長庚中文站台-獎助學金','https://a.test/x'),('申請獎學金','https://a.test/x'),
+                ('短期獎學金','https://a.test/2026/shinsehyo_list1.pdf'),('短期獎學金','https://a.test/8.houkokusho_list5.pdf'),('甲獎學金流程','https://a.test/x'),('甲要點修正對照表','https://a.test/x'),('甲獎學金','https://a.test/%E7%94%B3%E8%AB%8B%E8%A1%A8.pdf')):
+            with self.subTest(title=title):
+                self.assertEqual(distinct_named_cards([self.card(title,url)])[0],[])
 
     def test_different_program_on_the_same_url_is_left_for_a_person(self):
         url,cards=self.hand_url(1);bundle,config,_=self.fixture()

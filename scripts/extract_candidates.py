@@ -32,10 +32,10 @@ from scripts.evaluate_deadlines import evaluate_application_window, parse_iso_da
 from scripts.scan_sources import CONTACT, SKIP, Fetcher, ScanError, digest, html_document, normalized, pdf_document, semantic_digest
 from scripts.verify_candidates import digest_text, evidence_digest, verify_candidate
 from scripts.application_process import infer_process
-from scripts.semantic_facts import INSTRUCTIONS, PLACEHOLDER, discover_identity, discover_organizations, is_student_document, recurring_time, degree_terms, time_actor, labelled_date_clause
+from scripts.semantic_facts import INSTRUCTIONS, NON_ROC_ALLOWED, OTHER_LEVELS, PLACEHOLDER, award_clauses, discover_identity, discover_organizations, is_student_document, recurring_time, degree_terms, time_actor, labelled_date_clause
 from scripts.ai_tool_rules import benefit_tiers
 
-EXTRACTOR_VERSION = "extractor-1.9.0"
+EXTRACTOR_VERSION = "extractor-1.10.0"
 PROMPT_VERSION = "prompt-1.4.0"
 
 
@@ -1079,7 +1079,7 @@ def _format_benefit_summary(item):
         return f"{dur_prefix}總額新臺幣{amin:,}至{amax:,}元（實際額度依審議結果決定）。"
     if unit == "lump_sum":
         return f"獎勵金新臺幣{amin:,}元。"
-    return f"新臺幣{amin:,}元 ({unit})。"
+    return f"新臺幣{amin:,}元。" if unit == "unknown" else f"新臺幣{amin:,}元 ({unit})。"
 
 
 def parse_date_range_from_text(text):
@@ -2815,12 +2815,41 @@ def _apply_legacy_model_patch(cand, patch, source, blocks):
     return updated
 
 
+def withhold_unsure_generic_fields(cand, blocks, source_id, revision_id, evidence_mode):
+    """通用路徑不認識這份文件的結構：金額、學制、國籍只填分得清的，其他留白，讀者看來源。"""
+    def drop_evidence(prefix):
+        cand["field_evidence"] = [e for e in cand["field_evidence"] if not e["field_path"].startswith(prefix)]
+    elig = cand["eligibility"]
+    # 金額：整份文件只有一個像獎助的金額才填。多個金額通常是分級，只取一個會誤導。
+    found = [(block, clause, {parse_chinese_or_arabic_int(t.replace("兩", "二")) for t in tokens}) for block, clause, tokens in award_clauses(blocks)]
+    amounts = {value for _, _, values in found for value in values if value and value >= 1000}
+    cand["benefit"] = {"summary": "金額請見來源", "items": [], "refs": []}
+    drop_evidence("benefit.")
+    if len(amounts) == 1:
+        block, clause, _ = next(row for row in found if amounts & row[2])
+        parsed = parse_amount_from_text(clause)
+        if parsed and amounts & {parsed["amount_min"], parsed["amount_max"]}:
+            ref = {"source": source_id, "locator": block["locator"]}
+            item = {"branch_or_tier": cand["cycle"].get("branch"), **parsed, "refs": [ref]}
+            cand["benefit"] = {"summary": _format_benefit_summary(item), "items": [item], "refs": [ref]}
+            cand["field_evidence"].append(make_field_evidence("benefit.items/0", source_id, revision_id, block, evidence_mode))
+    text = "".join(b["text"] for b in blocks)
+    if elig["degrees"] and OTHER_LEVELS.search(text):
+        elig["degrees"] = []
+        elig["identity"] = {"text": PLACEHOLDER, "refs": elig["identity"]["refs"]}
+        drop_evidence("eligibility.degrees")
+    if elig["nationality"] == "roc_only" and NON_ROC_ALLOWED.search(text):
+        elig["nationality"] = "unknown"
+        drop_evidence("eligibility.nationality")
+
+
 def report_unknown_fields(cand):
     """學生最需要的欄位還是未知時要明說，不能讓檢核看起來沒有缺漏。"""
     schedule=cand["schedule"]
     unknown={
         "unextracted:schedule.application_start":schedule["application_start"]["kind"]=="unknown",
         "unextracted:schedule.student_deadline":not any(s["actor"]=="student" and s["deadline"]["kind"]!="unknown" for s in schedule["steps"]),
+        "unextracted:benefit":not cand["benefit"]["items"],
         "unextracted:compatibility":cand["compatibility"]["mode"]=="unknown",
         "unextracted:application_method":cand.get("application_method",{}).get("mode","unknown")=="unknown",
     }
@@ -2954,6 +2983,8 @@ def extract_from_in_memory_blocks(
         if url!=source["url"]:cand["source_metadata"]["parent_url"]=source["url"]
         if extraction_strategy!='llm_only':
             _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode)
+            if cand is generic:
+                withhold_unsure_generic_fields(cand,blocks,sid,revision_id,evidence_mode)
         if extraction_strategy != "rules_only" and model_adapter.enabled:
             if (evidence_mode == "hash_only" or "aca.ntu.edu.tw" in url) and model_adapter.is_external:
                 cand["verification"]["warnings"].append("external_model_skipped_for_hash_only_source")

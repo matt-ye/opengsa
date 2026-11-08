@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from scripts.expand_sources import INTAKE_OPTIONS, initial_state, run_batch
-from scripts.run_hand_replacement import build_proposal, hand_targets, run, spread
+from scripts.run_hand_replacement import build_proposal, hand_targets, load_targets, run, spread
 
 PAGE = ("<article><h1>{title}</h1><p>申請資格：國內大學碩士班、博士班在學學生。</p>"
         "<p>獎助金額：每名新臺幣五萬元。</p><p>申請期間：自115年3月1日起至115年4月15日止。</p></article>")
@@ -51,6 +51,14 @@ class HandReplacementTests(unittest.TestCase):
             first = len(calls)
             run(tmp, targets, transport=transport, spacing=0, progress=lambda *a, **k: None)
             self.assertEqual(len(calls), first)
+
+    def test_research_targets_skip_duplicates_and_urls_already_run(self, _):
+        already = hand_targets()[0]["url"]
+        rows = [{"url": already, "category": "scholarship"}, {"url": "https://a.test/x", "category": "living"}, {"url": "https://a.test/x", "category": "living"}]
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "targets.json"
+            path.write_text(json.dumps(rows), encoding="utf-8")
+            self.assertEqual(load_targets(path), [{"url": "https://a.test/x", "category": "living", "cards": []}])
 
     def test_blocked_host_is_not_asked_again(self, _):
         calls = []

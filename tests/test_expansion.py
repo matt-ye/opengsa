@@ -98,3 +98,17 @@ class ExpansionTests(unittest.TestCase):
         self.assertEqual(p['category'],'living_tuition');self.assertNotIn('degrees',p)
         p=profile_for(row(),{'title':'SYNTH補助博士生赴國外研究'},None)
         self.assertEqual(p['category'],'overseas_research')
+
+    def test_title_drops_site_name_and_notice_wrapping_but_keeps_the_deadline(self):
+        for title,expected in (('【獎學金】115-1 甲同鄉會獎學金(截止日11/30)  - 國立某大學學務處生活輔導組','115-1 甲同鄉會獎學金(截止日11/30)'),
+                ('轉知乙獎助學金資訊(2026)  - 國立某大學學生事務處','乙獎助學金資訊(2026)'),('公告「丙獎助學金」','丙獎助學金'),('轉知「己獎學金試辦方案」相關訊息','己獎學金試辦方案'),
+                ('【生輔組公告】丁獎學金','丁獎學金'),('【戊基金會】115年戊獎學金','【戊基金會】115年戊獎學金')):
+            with self.subTest(title=title):
+                self.assertEqual(profile_for(row(),{'title':title},None)['title'],expected)
+        self.assertEqual(profile_for(row(),{'title':'甲系學生出國研修獎勵'},None)['category'],'overseas_research')
+
+    def test_plain_scholarship_is_not_filed_under_phd(self):
+        for title,expected in (('SYNTH清寒獎學金','living_tuition'),('SYNTH碩博士獎學金','living_tuition'),('SYNTH博士後研究獎助','living_tuition'),
+                ('SYNTH學生急難救助','living_emergency'),('SYNTH博士生獎學金','phd_research'),('SYNTH PhD Fellowship','phd_research')):
+            with self.subTest(title=title):
+                self.assertEqual(profile_for(row(category='scholarship'),{'title':title},None)['category'],expected)

@@ -85,6 +85,8 @@ def pr_body(summary, new_hosts, source_label):
              f"- 提案接受 {summary['accepted_for_radar_proposal']} 筆，檢核未過而扣下 {summary['withheld_failed_checks']} 筆",
              f"- 帶時間紀錄 {summary.get('temporal_records', 0)} 筆"]
     retired, manual = summary.get("retired_hand_cards", []), summary.get("needs_manual_retire", [])
+    if summary.get("dropped_not_distinct"):
+        lines.append(f"- 重複或標題看不出方案而不成卡 {len(summary['dropped_not_distinct'])} 筆")
     if summary.get("withheld_site_contract"):
         lines.append(f"- 不符合網站資料規格而扣下 {len(summary['withheld_site_contract'])} 筆：" + "、".join(safe_text(row["title"], 40) for row in summary["withheld_site_contract"][:20]))
     if retired:

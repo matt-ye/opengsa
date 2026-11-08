@@ -40,6 +40,18 @@ def hand_targets(root=ROOT):
     return list(targets.values())
 
 
+def load_targets(path, include_hand_urls=False):
+    """研究查到的網址：[{url, category}]。重複的只跑一次，手寫卡已跑過的網址預設不用再跑。"""
+    seen = set() if include_hand_urls else {row["url"] for row in hand_targets()}
+    targets = []
+    for row in read(path):
+        url = canonical_url(row["url"])
+        if url not in seen:
+            seen.add(url)
+            targets.append({"url": url, "category": row["category"], "cards": []})
+    return targets
+
+
 def spread(rows, count):
     """抽樣時平均取，才會涵蓋不同候選檔。"""
     if not count or count >= len(rows):
@@ -134,12 +146,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--sample", type=int, help="只跑平均抽出的 N 個來源")
+    parser.add_argument("--targets", type=Path, help="改跑這份網址清單，不跑手寫卡的來源")
+    parser.add_argument("--include-hand-urls", action="store_true", help="清單裡手寫卡用過的網址也要跑")
     parser.add_argument("--max-requests", type=int, default=3000)
     parser.add_argument("--propose", action="store_true", help="不抓取，只把已跑完的結果彙整成提案")
     args = parser.parse_args()
     if args.output.resolve().is_relative_to(ROOT / "data"):
         parser.error("write review artifacts outside data")
-    targets = spread(hand_targets(), args.sample)
+    targets = spread(load_targets(args.targets, args.include_hand_urls) if args.targets else hand_targets(), args.sample)
     if args.propose:
         print(json.dumps(build_proposal(args.output, targets), ensure_ascii=False))
     else:
