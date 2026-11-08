@@ -398,7 +398,8 @@ def extract_policy(candidate, blocks, profile, revision, observed):
         for idx_r, r in enumerate(rules):
             if r['rule_id'].startswith('replay/'):
                 r['rule_id'] = f'replay/{idx_r}'
-    if policy['submission_mode'] not in ('conditional_deadline','automatic','reference','event_relative','recurring','mixed'):
+    # 卡片排程先給的 recurring 不能擋重算：回放若又抽到明確日期，就是 mixed，不能留著 recurring 卻帶座標。
+    if policy['submission_mode'] not in ('conditional_deadline','automatic','reference','event_relative','mixed'):
         submission = [r for r in rules if r['stage'] != 'review']
         kinds = {r['kind'] for r in submission}
         student = [r for r in submission if r['actor']=='student' and r['kind']=='absolute']

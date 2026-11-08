@@ -109,15 +109,27 @@ def named_candidate(row,prepared,known,documents=False):
     claim=discover_identity(prepared['blocks'])
     return bool(RESOURCE.search(title) and claim and claim['kind']=='eligibility_clause')
 
+def clean_title(title):
+    """公告標題去掉網站名稱、公告分類與轉知字樣。截止日留著，讀者用得到。"""
+    text=re.sub(r'\s+[-－]\s+[^-－]*(?:大學|學院|學務處|事務處|輔導組)[^-－]*$','',(title or '').strip())
+    text=re.sub(r'^【[^】]*(?:公告|訊息|獎學金|獎助學金)[^】]*】\s*','',text)
+    text=re.sub(r'^(?:轉知|轉發)\s*(?:[「『]([^」』]+)[」』].*)?',lambda m:m.group(1) or '',text)
+    return re.sub(r'^公告\s*[「『]([^」』]+)[」』]$',r'\1',text).strip() or title
+
+
 def profile_for(row,prepared,known):
     if known:return deepcopy(known)
     category,kind={'award':('outcome_award','award'),'mobility':('international_conference','travel_grant'),
         'living':('living_tuition','scholarship'),'foundation':('living_tuition','scholarship'),'campus':('living_tuition','scholarship'),
-        'identity':('living_tuition','scholarship'),'ai':('research_tools','tool_subscription')}.get(row['category'],('phd_research','scholarship'))
-    if re.search(r'赴國外研究|境外研究',prepared['title'] or ''):category,kind='overseas_research','travel_grant'
+        'identity':('living_tuition','scholarship'),'ai':('research_tools','tool_subscription')}.get(row['category'],('living_tuition','scholarship'))
+    # 一般獎學金不能預設成博士：只有標題明說只給博士才算，碩博並列或博士後都不算。
+    if kind=='scholarship':
+        if re.search(r'急難',prepared['title'] or ''):category='living_emergency'
+        elif re.search(r'博士(?!後)|ph\.?d|doctoral',prepared['title'] or '',re.I) and not re.search(r'碩|大學部|學士|master',prepared['title'] or '',re.I):category='phd_research'
+    if re.search(r'赴國外研究|境外研究|出國(?:學習|研修|進修|留學|實習)|交換學生|海外研修|留學獎學金',prepared['title'] or ''):category,kind='overseas_research','travel_grant'
     if re.search(r'校長獎|院長獎|論文獎|著作獎',prepared['title'] or ''):category,kind='outcome_award','award'
     # Routing tags are preliminary; unknown degree/year/college remain unknown.
-    return {'id':'discovery-'+row['id'].lower(),'title':prepared['title'],'url':row['url'],
+    return {'id':'discovery-'+row['id'].lower(),'title':clean_title(prepared['title']),'url':row['url'],
         'body_selector':'body','required_markers':[],'pdf_include':[],'max_pdfs':0,
         'review_note':'自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。',
         'evidence_mode':'hash_only','category':category,'resource_kind':kind,
@@ -179,7 +191,8 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
             prepared=prepare_response(response,p or {},hosts,link_limit=options['link_limit'],broad_links=options['broad_links'])
             if options['document_candidates'] and not prepared['title']:
                 # 附件沒有網頁標題：連結文字像方案名稱就用它，否則沿用連到它的公告標題。
-                label=row.get('title') or ''
+                # 連結文字常帶檔名副檔名或「點我下載」，都不是方案名稱的一部分。
+                label=re.sub(r'\s*(?:點我下載|\(PDF\)|\.(?:pdf|docx?|odt))\s*$','',row.get('title') or '',flags=re.I)
                 prepared['title']=label if RESOURCE.search(label) else row.get('parent_title') or label
             ir=prepare_document(prepared['blocks']);revision=digest([url,digest(response['body']),fingerprint()])
             record.update(status='read',format=prepared['kind'],title=prepared['title'],final_url=response['url'],

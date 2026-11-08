@@ -1,0 +1,5767 @@
+{
+ "schema": "research-sources/1",
+ "searched_on": "2026-11-07",
+ "note": "研究代理查到的官方來源網址與查無結果的項目。網址只是線索，卡片內容一律由萃取流程從來源產生。",
+ "found": [
+  {
+   "group": "enterprise",
+   "url": "https://www.tzuchi.org.tw/what-we-do/support-for-underprivileged-families/sprout-scholarship-program",
+   "organization": "慈濟基金會",
+   "program": "新芽獎學金",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-ent-tzu-chi-college-sprout-65f29d0c",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.chimeimuseum.org/apply/award/5fd343d3dea59",
+   "organization": "奇美文化基金會（奇美博物館）",
+   "program": "第39屆獎助辦法 (2027年度)",
+   "page_type": "program",
+   "category": "award",
+   "replaces": "cand-ent-chimei-arts-award-9a2872ff",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.chimeimuseum.org/apply/award/62317f6695c5e",
+   "organization": "奇美文化基金會（奇美博物館）",
+   "program": "歷屆奇美藝術獎資訊下載",
+   "page_type": "listing",
+   "category": "award",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.ccf.org.tw/28/service/MTMwNQ",
+   "organization": "家扶基金會（花蓮家扶中心）",
+   "program": "韌世代獎助學金",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": "cand-ent-ccf-college-scholarship-deba82ae",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.fulbright.org.tw/graduate-study-grants/",
+   "organization": "學術交流基金會 (Fulbright Taiwan)",
+   "program": "Graduate Study Award",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": "cand-ent-fulbright-taiwan-fellowship-d85f9bb6",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.fulbright.org.tw/doctoral-dissertation-fulbright-research-grants/",
+   "organization": "學術交流基金會 (Fulbright Taiwan)",
+   "program": "Doctoral Dissertation Research Award",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.gfc.org.tw/project-news/2735",
+   "organization": "崇友文教基金會",
+   "program": "2026第十四屆崇友實業獎學金申請辦法",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": "cand-ent-chong-you-elevator-scholarship-ce2115ab",
+   "checked": "read_page"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://event.gigabyte.com/GDesign/",
+   "organization": "技嘉教育基金會",
+   "program": "奇‧想設計大賽 (G-Design)",
+   "page_type": "program",
+   "category": "award",
+   "replaces": "cand-ent-gigabyte-great-design-award-ce45dca1",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.ht.org.tw/religion153.htm",
+   "organization": "行天宮文化教育發展基金會",
+   "program": "行天宮助學金｜實施辦法",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-ent-hsing-tian-kong-college-aid-d97fb06d",
+   "checked": "read_page"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.sunshine.org.tw/news/announce/2026Scholarship",
+   "organization": "陽光社會福利基金會",
+   "program": "115年度獎助學金申請說明及相關簡章開放下載（陽光獎助學金、萬足燒傷勞工子女大專生獎助學金、仁寶電腦獎助學金等）",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-ent-sunshine-burn-injury-scholarship-d8075e8f",
+   "checked": "read_page"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.tfrd.org.tw/tfrd/service_c/main/category_id/1",
+   "organization": "罕見疾病基金會",
+   "program": "罕見疾病獎助學金申請公告",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": "cand-ent-tfrd-college-scholarship-84d03569",
+   "checked": "read_page"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.tfrd.org.tw/tfrd/news/content/id/3751",
+   "organization": "罕見疾病基金會",
+   "program": "第28屆罕見疾病博碩士論文獎助",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": "cand-ent-tfrd-thesis-grant-fc08b512",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://patronc.cathaylife.com.tw/ODAY/F1/ODAYF100/",
+   "organization": "國泰慈善基金會",
+   "program": "獎學金申請｜國泰卓越獎助計劃",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": "cand-ent-cathay-excellence-college-6fd550f2",
+   "checked": "read_page"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.ciche.org.tw/wordpress/?page_id=115",
+   "organization": "中國土木水利工程學會",
+   "program": "獎學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": "cand-ent-cice-civil-engineering-scholarship-28a8c487",
+   "checked": "read_page"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.ciche.org.tw/wordpress/?page_id=113",
+   "organization": "中國土木水利工程學會",
+   "program": "論文獎",
+   "page_type": "listing",
+   "category": "award",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.aclclp.org.tw/doc/shipreg.htm",
+   "organization": "中華民國計算語言學學會",
+   "program": "博碩士論文獎申請辦法",
+   "page_type": "program",
+   "category": "award",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://ieee.org.tw/wp-content/uploads/2025/06/IEEE中華民國分會碩博士論文獎申請辦法2025.01.10.pdf",
+   "organization": "IEEE Taipei Section（IEEE中華民國分會）",
+   "program": "IEEE中華民國分會碩博士論文獎申請辦法",
+   "page_type": "program",
+   "category": "award",
+   "replaces": "cand-ent-ieee-taipei-best-thesis-award-2c236a80",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.cref.org.tw/2017-05-28-09-12-02/2018-07-17-04-31-02.html",
+   "organization": "中華扶輪教育基金會",
+   "program": "中華扶輪獎學金",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.tcb-bank.com.tw/about-tcb/info/information-centres/news-district/114/005-1140109",
+   "organization": "合作金庫商業銀行",
+   "program": "合作金庫銀行研究獎金",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.firstbank.com.tw/sites/fcb/zh_TW/1565706739379",
+   "organization": "第一商業銀行文教基金會",
+   "program": "2025年財團法人第一商業銀行文教基金會資優學生獎學金",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.chf.ngo/%E5%98%89%E6%96%B0%E7%8D%8E%E5%AD%B8%E9%87%91/",
+   "organization": "嘉新兆福文化基金會",
+   "program": "嘉新獎學金",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.chf.ngo/%E6%B0%B8%E7%BA%8C%E5%8A%9B%E7%8D%8E%E5%AD%B8%E9%87%91/",
+   "organization": "嘉新兆福文化基金會",
+   "program": "永續力獎學金",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.chf.ngo/%E4%B8%AD%E8%8F%AF%E5%98%89%E6%96%B0%E9%AB%94%E8%82%B2%E7%8D%8E%E5%AD%B8%E9%87%91/",
+   "organization": "嘉新兆福文化基金會",
+   "program": "中華嘉新體育獎學金",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.foxconnfoundation.org/plan/scholar/university",
+   "organization": "鴻海教育基金會",
+   "program": "大專、碩博士申請辦法（鴻海獎學鯨）",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://faos.org.tw/Application/ApplicatStud.html",
+   "organization": "傑出人才發展基金會",
+   "program": "優秀學生出國開會申請補助辦法",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": "cand-ent-faos-conference-grant-2c7ca55a",
+   "checked": "read_page"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://pan.itri.org.tw/datadetailTab?SiteID=1&MmmID=1310654305564173310",
+   "organization": "潘文淵文教基金會",
+   "program": "研究傑出獎",
+   "page_type": "program",
+   "category": "award",
+   "replaces": "cand-ent-pan-wen-yuan-research-award-f1a6a009",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://pan.itri.org.tw/datadetailTab?SiteID=1&MmmID=1310654323007567742",
+   "organization": "潘文淵文教基金會",
+   "program": "考察研究獎助金",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://pan.itri.org.tw/datadetailTab?SiteID=1&MmmID=1310654323535207466",
+   "organization": "潘文淵文教基金會",
+   "program": "獎學金 獎助章程",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.ctci.org.tw/8838/talent/ctci-scholarship/46612/46765/",
+   "organization": "中技社",
+   "program": "2026年中技社科技獎學金（研究/創意/技職/境外生研究）",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": "cand-ent-ctci-research-scholarship-f27aafbe",
+   "checked": "read_page"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.ctci.org.tw/8838/talent/ctci-scholarship/",
+   "organization": "中技社",
+   "program": "中技社科技獎學金（歷年公告列表）",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": "cand-ent-ctci-creativity-scholarship-18f1cfee",
+   "checked": "read_page"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.foxconnfoundation.org/plan/scholarship",
+   "organization": "鴻海教育基金會",
+   "program": "獎學鯨",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": "cand-ent-foxconn-whale-scholarship-020490dd",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.foxconnfoundation.org/plan/technology_award",
+   "organization": "鴻海教育基金會",
+   "program": "鴻海科技獎",
+   "page_type": "program",
+   "category": "award",
+   "replaces": "cand-ent-foxconn-tech-award-ef65c9fb",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://foundation.deltaww.com/care/1/15",
+   "organization": "台達電子文教基金會",
+   "program": "台達荷蘭環境獎學金",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": "cand-ent-delta-netherlands-scholarship-ac8da9b6",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://foundation.deltaww.com/care/1/16",
+   "organization": "台達電子文教基金會",
+   "program": "台達英國環境獎學金",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.chtf.org.tw/project/693",
+   "organization": "中華電信基金會",
+   "program": "中華電信方賢齊先生獎學金",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": "cand-ent-cht-fang-scholarship-209dcd8d",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.tsmc.com/english/node/236",
+   "organization": "台積電",
+   "program": "2026 台積公司博士獎學金申請(第二梯次)",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": "cand-ent-tsmc-phd-fellowship-881c712f",
+   "checked": "read_page"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://research.nvidia.com/graduate-fellowships",
+   "organization": "NVIDIA",
+   "program": "NVIDIA Graduate Fellowship",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": "cand-ent-nvidia-graduate-fellowship-7a5951dc",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.microsoft.com/en-us/research/academic-program/2026-microsoft-research-fellowship/",
+   "organization": "Microsoft Research",
+   "program": "2026 Microsoft Research Fellowship",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": "cand-ent-microsoft-research-fellowship-61459559",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.tsia.org.tw/NodeList.aspx?nodeID=115",
+   "organization": "台灣半導體產業協會 (TSIA)",
+   "program": "TSIA 具博士學位之新進研究人員/博士研究生半導體獎",
+   "page_type": "program",
+   "category": "award",
+   "replaces": "cand-ent-tsia-phd-award-a28912a0",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.tsia.org.tw/NodeList.aspx?nodeID=89",
+   "organization": "台灣半導體產業協會 (TSIA)",
+   "program": "TSIA獎項",
+   "page_type": "listing",
+   "category": "award",
+   "replaces": "cand-ent-tsia-master-award-ffc6a422",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.taai.org.tw/award/thesis",
+   "organization": "中華民國人工智慧學會",
+   "program": "碩博士論文獎",
+   "page_type": "program",
+   "category": "award",
+   "replaces": "cand-ent-taai-best-thesis-award-e1ae5a23",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://chemistry.org.tw/awards-lee.php",
+   "organization": "中華民國化學會",
+   "program": "李遠哲院士暨夫人獎學金",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": "cand-ent-cslt-lee-fellowship-9b0a559d",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://chemistry.org.tw/awards-bsf.php",
+   "organization": "中華民國化學會",
+   "program": "巴斯夫碩博士生創新論文獎",
+   "page_type": "program",
+   "category": "award",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://chemistry.org.tw/awards-ctci.php",
+   "organization": "中華民國化學會",
+   "program": "中技社化學傑出大學生獎",
+   "page_type": "program",
+   "category": "award",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.acerfoundation.org.tw/project_look_2026.html",
+   "organization": "宏碁基金會",
+   "program": "2026龍騰微笑競賽",
+   "page_type": "program",
+   "category": "award",
+   "replaces": "cand-ent-acer-smiling-award-3bd2fdd0",
+   "checked": "search_result"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.esunfhc.com/zh-tw/Foundation/volunteer/Scholarship/Scholarship-Plan",
+   "organization": "玉山文教基金會",
+   "program": "傑出人才獎學金 申請須知（碩士生為主）",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": "cand-ent-esun-outstanding-fellowship-c1266e4c",
+   "checked": "read_page"
+  },
+  {
+   "group": "enterprise",
+   "url": "https://www.nncf.org/service/subsidy/l13jh",
+   "organization": "羅慧夫顱顏基金會",
+   "program": "獎助學金（國中以上含大專、研究所、博士班）",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": "cand-ent-noordhoff-craniofacial-award-4c26f49f",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://advisory.ntu.edu.tw/CMS/HTML/118",
+   "organization": "臺灣大學學務處生活輔導組",
+   "program": "本校急難慰問救助金",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-ntu-emergency-aid",
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://advisory.ntu.edu.tw/CMS/HTML/116",
+   "organization": "臺灣大學學務處生活輔導組",
+   "program": "本校急難慰問救助金申請表格",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://osa.nccu.edu.tw/tw/%E7%94%9F%E6%B4%BB%E4%BA%8B%E5%8B%99%E6%9A%A8%E5%83%91%E7%94%9F%E8%BC%94%E5%B0%8E%E7%B5%84/%E5%AD%B8%E7%94%9F%E5%8A%A9%E5%AD%B8%E6%8E%AA%E6%96%BD/%E6%80%A5%E9%9B%A3%E6%85%B0%E5%8A%A9/%E6%80%A5%E9%9B%A3%E6%85%B0%E5%8A%A9",
+   "organization": "政治大學學務處生活事務暨僑生輔導組",
+   "program": "校內急難慰助",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-nccu-emergency-aid",
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://sa.tku.edu.tw/spirit/?p=8014",
+   "organization": "淡江大學學生事務處",
+   "program": "淡江大學緊急紓困助學金／急難救助（sa.tku.edu.tw/spirit，頁面內容未確認）",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-tku-emergency-aid",
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://www.k12ea.gov.tw/Tw/Station/AffairDetail?filter=63F293A9-0155-41A3-97B7-46E43E4685FE&id=9f8b1c4e-c3ea-483e-a9eb-56e25225bc71",
+   "organization": "教育部國民及學前教育署",
+   "program": "高級職業學校建教合作教育",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-k12-k12ea-cooperative-education-stipend-7992c342",
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://www.k12ea.gov.tw/Tw/PublickInfo/EdufundDetail?filter=588AEF47-226C-4164-95A8-EE5EA941567F&id=5806fbbf-54af-4190-9dc6-0522f46aeb7e",
+   "organization": "教育部國民及學前教育署",
+   "program": "總統教育獎辦理要點",
+   "page_type": "program",
+   "category": "award",
+   "replaces": "cand-k12-moe-president-education-award-bfc4415c",
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://www.k12ea.gov.tw/Tw/Station/AffairDetail?filter=63F293A9-0155-41A3-97B7-46E43E4685FE&id=2806a499-9465-4498-9a81-35455101803e",
+   "organization": "教育部國民及學前教育署",
+   "program": "總統教育獎業務",
+   "page_type": "program",
+   "category": "award",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://social.kinmen.gov.tw/cp.aspx?n=99FF9571F64E278F&s=FCE747C0D3337E3F",
+   "organization": "金門縣政府社會處",
+   "program": "急難救助",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://social.kinmen.gov.tw/cp.aspx?n=99ff9571f64e278f&s=1C119C1858FA2DAC",
+   "organization": "金門縣政府社會處",
+   "program": "急難紓困",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://law.matsu.gov.tw/LawContent.aspx?id=GL000064",
+   "organization": "連江縣政府",
+   "program": "連江縣政府民眾急難救助自治條例",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://glrs.nantou.gov.tw/glrsout/LawContent.aspx?id=GL000436",
+   "organization": "南投縣政府",
+   "program": "南投縣國民中學以上學校清寒優秀學生獎學金要點",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://lawsearch.chcg.gov.tw/GLRSNEWSOUT/LawContent.aspx?id=FL089018",
+   "organization": "彰化縣政府",
+   "program": "彰化縣自強優秀學生獎學金實施要點",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://www.ldsh.ilc.edu.tw/var/file/15/1015/attach/17/pta_196267_667692_19941.pdf",
+   "organization": "宜蘭縣政府（文件由宜蘭縣立學校網站轉載）",
+   "program": "宜蘭縣114年第2次中等以上學校優秀學生獎學金申請注意事項",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://stud.ntub.edu.tw/p/403-1007-1006-1.php?Lang=zh-tw",
+   "organization": "臺北商業大學學生事務處",
+   "program": "校外獎助學金公告",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://stud.ntub.edu.tw/p/406-1007-67093,r949.php?Lang=zh-tw",
+   "organization": "臺北商業大學學生事務處",
+   "program": "國立臺北商業大學弱勢學生助學金實施要點",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://niuosa.niu.edu.tw/p/404-1004-62950.php",
+   "organization": "宜蘭大學學生事務處",
+   "program": "公告「114年寶佳大學生獎學金」",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL000019",
+   "organization": "教育部",
+   "program": "教育部學產基金設置低收入戶學生助學金實施要點",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-k12-moe-scholarship-fund-low-income-729b8e49",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=FL035980",
+   "organization": "教育部",
+   "program": "教育部學產基金設置急難慰問金實施要點",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-moe-student-aid-emergency",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL000545",
+   "organization": "教育部",
+   "program": "低收入戶學生及中低收入戶學生就讀高級中等以上學校學雜費減免辦法",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.edu.tw/helpdreams/cp.aspx?n=B99F77007C45EA0F&s=4810D2C08B273D5E",
+   "organization": "教育部圓夢助學網",
+   "program": "學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=FL008422",
+   "organization": "教育部",
+   "program": "軍公教遺族就學費用優待條例",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-k12-moe-military-civil-servant-bereaved-aid-7c8f4eca",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=FL037349",
+   "organization": "教育部",
+   "program": "高級中等學校原住民學生助學金補助辦法",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://law.cip.gov.tw/LawContent.aspx?id=FL029068",
+   "organization": "原住民族委員會",
+   "program": "原住民族委員會獎助大專校院原住民學生實施要點",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://law.ocac.gov.tw/law/LawContent.aspx?id=FL027428",
+   "organization": "僑務委員會",
+   "program": "僑務委員會獎勵傑出及學行優良僑生獎學金核發要點",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.ocac.gov.tw/OCAC/Pages/List.aspx?nodeid=4496",
+   "organization": "僑務委員會",
+   "program": "僑生獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.ocac.gov.tw/OCAC/Pages/List.aspx?nodeid=4514",
+   "organization": "僑務委員會",
+   "program": "獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.ocac.gov.tw/OCAC/Pages/List.aspx?nodeid=603",
+   "organization": "僑務委員會",
+   "program": "僑胞醫療急難及喪葬慰問",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-ocac-compatriot-emergency",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.vac.gov.tw/cp-2103-4073-1.html",
+   "organization": "國軍退除役官兵輔導委員會",
+   "program": "財團法人榮民榮眷基金會清寒榮民子女獎學金申請",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.vac.gov.tw/cp-2103-4075-1.html",
+   "organization": "國軍退除役官兵輔導委員會",
+   "program": "財團法人周祖孝文教基金會清寒榮民、遺眷子女獎學金",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://vsap.vac.gov.tw/",
+   "organization": "國軍退除役官兵輔導委員會",
+   "program": "榮民子女教育補助、就學補助及獎學金線上申辦系統",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-k12-vac-veterans-children-education-aid-2db1e03d",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.vac.gov.tw/rss-2103-1.html",
+   "organization": "國軍退除役官兵輔導委員會",
+   "program": "榮民子女就學補助及獎學金（清單）",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://law.vac.gov.tw/vaclaw/LawContent.aspx?id=GL000134",
+   "organization": "國軍退除役官兵輔導委員會",
+   "program": "支領退休俸贍養金或生活補助費人員子女教育補助費發給作業要點",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.moa.gov.tw/ws.php?id=5057",
+   "organization": "農業部",
+   "program": "農漁民子女就學獎助學金申請作業說明",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-k12-moa-farmers-fishermen-children-scholarship-ced2d2bf",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://oasiscff.moa.gov.tw/",
+   "organization": "農業部",
+   "program": "農業部獎勵農漁民子女就學金線上申請系統",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.k12ea.gov.tw/Tw/Unique/FAQDetail?cate1_id=C0C06A62-A856-48BB-A410-9E9C361BE503&filter=C49CFCC1-11D8-49BD-AFB8-95856E82E58D&page=0",
+   "organization": "教育部國民及學前教育署",
+   "program": "教育部辦理高級中等學校免學費方案",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-k12-moe-senior-high-free-tuition-e139917f",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.k12ea.gov.tw/Tw/Station/AffairDetail?filter=63F293A9-0155-41A3-97B7-46E43E4685FE&id=481c3f9d-67c6-40e3-87a4-3a9e3106c610",
+   "organization": "教育部國民及學前教育署",
+   "program": "辦理「教育部補助高級中等學校學生學費實施要點」補助",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.k12ea.gov.tw/Tw/Station/AffairDetail?filter=63F293A9-0155-41A3-97B7-46E43E4685FE&id=aede1af0-b47e-42c9-9fda-4c60bbf4cd60",
+   "organization": "教育部國民及學前教育署",
+   "program": "補助高級中等以下學校原住民學生助學金及住宿伙食費",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-k12-k12ea-indigenous-highschool-grant-and-meals-d51c376e",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.k12ea.gov.tw/Tw/Station/AffairDetail?filter=63F293A9-0155-41A3-97B7-46E43E4685FE&id=65f5febd-5ffe-498d-80ab-90b82d2fbacb",
+   "organization": "教育部國民及學前教育署",
+   "program": "辦理身心障礙學生及身心障礙人士子女就學費用減免",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-k12-moe-disability-tuition-waiver-609de122",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.mol.gov.tw/1607/28162/28540/28582/",
+   "organization": "勞動部",
+   "program": "失業勞工在學子女生活扶助金",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-k12-mol-unemployed-workers-children-stipend-1080a27c",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://ifi.immigration.gov.tw/wSite/lp?ctNode=37277&mp=1",
+   "organization": "內政部移民署",
+   "program": "新住民培力發展資訊網 獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": "cand-k12-nia-new-immigrant-scholarship-d2f76baf",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.oac.gov.tw/ch/home.jsp?id=249&parentpath=0&mcustomize=subsidyresearch_view.jsp&dataserno=202504110002",
+   "organization": "海洋委員會",
+   "program": "114年補助大專校院學生專題研究計畫 相關表單",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.nstc.gov.tw/folksonomy/list/2af9ad9a-1f47-450d-b5a1-2cb43de8290c?l=ch",
+   "organization": "國家科學及技術委員會",
+   "program": "大專學生研究計畫",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.nstc.gov.tw/folksonomy/list/41807545-1a6e-4f15-9b24-a544913fbb2d?l=ch",
+   "organization": "國家科學及技術委員會",
+   "program": "大專學生研究創作獎",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://grants.moc.gov.tw/Web/PointDetail.jsp?Key=35&PT=2188",
+   "organization": "文化部",
+   "program": "獎補助資訊網-找獎補助",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.hakka.gov.tw/chhakka/app/data/list?id=273",
+   "organization": "客家委員會",
+   "program": "獎補助公告",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.mohw.gov.tw/cp-16-29044-1.html",
+   "organization": "衛生福利部",
+   "program": "兒童與少年未來教育及發展帳戶",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.ece.moe.edu.tw/ch/subsidy/",
+   "organization": "教育部",
+   "program": "公立、非營利幼兒園 就學補助與育兒津貼",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": "cand-k12-moe-ece-subsidies-40978dfb",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.sfaa.gov.tw/sfaa/list/5e0",
+   "organization": "衛生福利部社會及家庭署",
+   "program": "育有未滿2歲兒童育兒津貼",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.foxconnfoundation.org/news/7b09cc55fbc5",
+   "organization": "財團法人鴻海教育基金會",
+   "program": "2026鴻海獎學鯨｜高中、國中、國小申請說明",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": "cand-k12-foxconn-whale-vocational-scholarship-c95036c0",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.fuboncharity.org.tw/chinese/help/index",
+   "organization": "財團法人富邦慈善基金會",
+   "program": "急難救助",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-fubon-emergency-aid",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.ccf.org.tw/service/domestic/61d7d3917b3ca",
+   "organization": "財團法人台灣兒童暨家庭扶助基金會",
+   "program": "貧困兒童少年家庭扶助服務",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-k12-ccf-taiwan-children-scholarship-dc5fee52",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.you-care.org.tw/List.aspx?mid=49",
+   "organization": "財團法人普仁青年關懷基金會",
+   "program": "助學計畫",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": "cand-k12-you-care-pu-ren-mentorship-aid-72eacff7",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.you-care.org.tw/OnePage.aspx?mid=63",
+   "organization": "財團法人普仁青年關懷基金會",
+   "program": "急難捐助",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.you-care.org.tw/OnePage.aspx?mid=79&id=412",
+   "organization": "財團法人普仁青年關懷基金會",
+   "program": "大手拉小手 助學計畫",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://assistance-osa.ncku.edu.tw/p/412-1051-2563.php?Lang=zh-tw",
+   "organization": "國立成功大學學務處",
+   "program": "獎學金申請",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.doe.gov.taipei/News_Content.aspx?n=0A89DA3D06EF885F&sms=87415A8B9CE81B16&s=0C21C0325AE9A2CB",
+   "organization": "臺北市政府教育局",
+   "program": "特教生獎助：特殊教育學生獎助金之條件及金額",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.ntpc.edu.tw/home.jsp?id=d127e0ce0f4f407b&act=be4f48068b2b0031&dataserno=809d4238e3781f25a2fac76d74a561e9",
+   "organization": "新北市政府教育局",
+   "program": "新北市高中以上學生獎學金開放申請",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://sec.ntpc.edu.tw/p/405-1004-6793,c903.php",
+   "organization": "新北市政府教育局",
+   "program": "新北市高級中等以下學校特殊教育學生獎助金申請",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://nl.pjhs.tyc.edu.tw/SC/About",
+   "organization": "桃園市政府教育局",
+   "program": "桃園市仁愛獎助學金申請平臺 實施計畫",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://law.tycg.gov.tw/LawContent.aspx?id=GL002215",
+   "organization": "桃園市政府教育局",
+   "program": "辦理財團法人臻鼎教育基金會優良學生獎助學金實施要點",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://law.taichung.gov.tw/LawContent.aspx?id=GL000891",
+   "organization": "臺中市政府教育局",
+   "program": "臺中市中等以上學校勤學優秀學生獎學金實施要點",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://law.taichung.gov.tw/LawContent.aspx?id=GL002027",
+   "organization": "臺中市政府教育局",
+   "program": "臺中市各級學校學生急難慰問金實施要點",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www2.tc.edu.tw/grants/list",
+   "organization": "臺中市政府教育局",
+   "program": "就學補助網",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://law01.tainan.gov.tw/GLRSNEWSOUT/NewsContent.aspx?id=2116",
+   "organization": "臺南市政府教育局",
+   "program": "臺南市中等以上學校清寒優秀學生獎學金申請要點（修正）",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://sab.tainan.gov.tw/News_Content.aspx?n=17856&s=7875554",
+   "organization": "臺南市政府社會局",
+   "program": "中低收入戶學生獎助學金（王波濤先生捐贈）",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://outlaw.kcg.gov.tw/LawContent.aspx?id=GL000057",
+   "organization": "高雄市政府教育局",
+   "program": "高雄市中等以上學校清寒優秀學生獎勵辦法",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://outlaw.kcg.gov.tw/LawContent.aspx?id=GL000066",
+   "organization": "高雄市政府教育局",
+   "program": "高雄市高級中等以下學校經濟弱勢身心障礙學生獎助辦法",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.kl.edu.tw/v7/eduweb/index.php?func=law&law_id=94",
+   "organization": "基隆市政府教育處",
+   "program": "基隆教育資源網 清寒優秀學生獎學金自治條例",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.klcg.gov.tw/tw/education/3473-266481.html",
+   "organization": "基隆市政府教育處",
+   "program": "專屬原住民學生獎助學金",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.hccg.gov.tw/hccg/app/artwebsite?module=artwebsite&id=30383&serno=null",
+   "organization": "新竹市政府",
+   "program": "低收入戶學生助學金",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.hccg.gov.tw/hccg/app/artwebsite?module=artwebsite&id=30384&serno=null",
+   "organization": "新竹市政府",
+   "program": "中低收入戶學生助學金",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://doe.hcc.edu.tw/doe_front/index.php?action=news_detail_share&message=&news_uuid=288e89ed-7f97-4347-9971-f720af6c8da6&type=latest_",
+   "organization": "新竹縣政府教育局",
+   "program": "教育局網站公告（清寒優秀學生獎學金相關）",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://mlc.edu.tw/System/main/News/Detail.php?ID=43260",
+   "organization": "苗栗縣政府教育處",
+   "program": "一般公告：國小學童清寒獎助學金申請（轉知）",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://ctrl.chcg.gov.tw/main/main_act3/main.aspx?main_id=27646&act_id=403",
+   "organization": "彰化縣政府",
+   "program": "原住民福利專區 教育補助",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://glrs.nantou.gov.tw/GLRSOUT/LawContent.aspx?id=FL027620",
+   "organization": "南投縣政府",
+   "program": "南投縣辦理民眾急難救助實施要點",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://school-faci.ylc.edu.tw/cl.aspx?n=73150",
+   "organization": "雲林縣政府教育處",
+   "program": "學務管理科 各式獎學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://education.ylc.edu.tw/News.aspx?n=101460&sms=54449&_CSN=189",
+   "organization": "雲林縣政府教育處",
+   "program": "獎助學金佈告",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://education.ylc.edu.tw/News.aspx?n=112238&sms=56642",
+   "organization": "雲林縣政府教育處",
+   "program": "清寒優秀獎學金申請",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://law.chiayi.gov.tw/LawContent.aspx?id=FL022594&kw=",
+   "organization": "嘉義市政府教育處",
+   "program": "嘉義市中等以上學校清寒優秀學生獎學金自治條例",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://ptlaw.pthg.gov.tw/LawContent.aspx?id=FL051936",
+   "organization": "屏東縣政府教育處",
+   "program": "屏東縣中等以上學校清寒及優秀學生獎學金實施要點",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.pthg.gov.tw/e-service/page_1_2_23.html",
+   "organization": "屏東縣政府",
+   "program": "便民E櫃檯 獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.pthg.gov.tw/planjdp/cp.aspx?n=9463987D224BAA6B&s=7CA7BDAC33DBE343",
+   "organization": "屏東縣政府社會處",
+   "program": "聯合助學、物資銀行、國軍脫貧計畫",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://glrs.hl.gov.tw/glrsout/LawContent.aspx?id=FL047417",
+   "organization": "花蓮縣政府教育處",
+   "program": "花蓮縣清寒優秀學生獎學金核發要點",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://law.penghu.gov.tw/glrsnewsout/LawContent.aspx?id=GL000284",
+   "organization": "澎湖縣政府教育處",
+   "program": "澎湖縣政府辦理各級學校清寒優秀學生獎學金發給要點",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.penghu.gov.tw/edu/home.jsp?id=310&act=view&dataserno=202208290002",
+   "organization": "澎湖縣政府教育處",
+   "program": "澎湖縣獎助學生助學金與交通圖書券",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.kinmen.gov.tw/News_Content2.aspx?n=98E3CA7358C89100&sms=BF7D6D478B935644&s=DF4728949EE07ECB&Create=1",
+   "organization": "金門縣政府",
+   "program": "金門縣政府獎學金受理申請（3/1-3/15）",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.kinmen.gov.tw/News_Content2.aspx?n=98E3CA7358C89100&sms=BF7D6D478B935644&s=9C6E1DBB5525201C&Create=1",
+   "organization": "金門縣政府",
+   "program": "金門縣政府獎學金受理申請（10/1-10/15）",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://law.matsu.gov.tw/LawContent.aspx?id=GL000468",
+   "organization": "連江縣政府",
+   "program": "連江縣特殊教育學生獎補助辦法",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://law.matsu.gov.tw/LawContent.aspx?id=GL000158&kw=",
+   "organization": "連江縣政府",
+   "program": "連江縣中低收入兒童及少年生活扶助辦法",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://dosw.gov.taipei/cp.aspx?n=0BF751F1B9F07AA1",
+   "organization": "臺北市政府社會局",
+   "program": "急難救助-申請說明",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-tpe-emergency-relief",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://welfare.ntpc.gov.tw/viewService/show/1008038?fromOpa=1",
+   "organization": "新北市政府社會局",
+   "program": "申請急難救助",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-ntpc-emergency-relief",
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://sab.tycg.gov.tw/cp.aspx?n=26662",
+   "organization": "桃園市政府社會局",
+   "program": "桃園市急難救助",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.society.taichung.gov.tw/13710/13735/13856/13865/135886",
+   "organization": "臺中市政府社會局",
+   "program": "市急難救助",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://sab.tainan.gov.tw/News_Content.aspx?n=21235&s=4780917",
+   "organization": "臺南市政府社會局",
+   "program": "臺南市急難救助辦法",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://socbu.kcg.gov.tw/index.php?prog=2&b_id=6&m_id=36&s_id=108",
+   "organization": "高雄市政府社會局",
+   "program": "社會救助（急難救助）",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.klcg.gov.tw/tw/social/2811-113174.html",
+   "organization": "基隆市政府社會處",
+   "program": "基隆市民眾急難救助",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://society.hccg.gov.tw/ch/home.jsp?id=140&parentpath=0%2C3%2C30&mcustomize=onemessages_view.jsp&toolsflag=Y&dataserno=201603300047&t=SocietyOnes&mserno=201603090043",
+   "organization": "新竹市政府社會處",
+   "program": "急難及災害救助",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://social.hsinchu.gov.tw/News_Content.aspx?n=207&s=3884",
+   "organization": "新竹縣政府社會處",
+   "program": "急難救助",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://law.miaoli.gov.tw/glrsnewsout/LawContent.aspx?id=GL000012",
+   "organization": "苗栗縣政府社會處",
+   "program": "苗栗縣急難救助實施辦法",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://social.chcg.gov.tw/06service/service01_con.aspx?data_id=21944&topsn=2434",
+   "organization": "彰化縣政府社會處",
+   "program": "急難救助（申辦服務）",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://welfare.nantou.gov.tw/1486/2104",
+   "organization": "南投縣政府社會及勞動處",
+   "program": "急難紓困",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://social.yunlin.gov.tw/News_Content.aspx?n=737&s=252787",
+   "organization": "雲林縣政府社會處",
+   "program": "雲林縣急難救助申請表格",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://sabcc.cyhg.gov.tw/cp.aspx?n=E81A92B24ABAFB50",
+   "organization": "嘉義縣社會局",
+   "program": "社會救助科（急難救助、馬上關懷急難救助）",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://social.chiayi.gov.tw/News_Content.aspx?n=397&s=293328",
+   "organization": "嘉義市政府社會處",
+   "program": "急難救助",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://www.pthg.gov.tw/planjdp/cp.aspx?n=51E132D99F254E3B",
+   "organization": "屏東縣政府社會處",
+   "program": "急難紓困專案、急難救助、川資救助、災害救助申請",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://sa.hl.gov.tw/Detail_sp/ce71b2c5d6024dfca9eb1d6f87ba2974",
+   "organization": "花蓮縣政府社會處",
+   "program": "急難救助",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "government",
+   "url": "https://taisoc.taitung.gov.tw/",
+   "organization": "臺東縣政府社會處",
+   "program": "臺東縣政府社會處（急難救助受理說明）",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "government",
+   "url": "https://www.penghu.gov.tw/society/home.jsp?id=114&act=view&dataserno=201309260001",
+   "organization": "澎湖縣政府社會處",
+   "program": "急難救助",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "merit-similar",
+   "url": "https://www.kang.org.tw/%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91/115%E5%B9%B4%E6%95%99%E8%82%B2%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91-%E7%8D%8E%E5%8B%B5%E8%BE%A6%E6%B3%95/",
+   "organization": "台灣康氏宗親總會",
+   "program": "115年教育獎助學金 獎勵辦法",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "merit-similar",
+   "url": "https://taipei.yunnans.org.tw/docs/%E8%87%BA%E5%8C%97%E5%B8%82%E9%9B%B2%E5%8D%97%E7%9C%81%E5%90%8C%E9%84%89%E6%9C%83-%E5%84%AA%E7%A7%80%E5%AD%B8%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91%E7%94%B3%E8%AB%8B%E8%BE%A6%E6%B3%95-2/",
+   "organization": "台北市雲南省同鄉會",
+   "program": "臺北市雲南省同鄉會 優秀學生獎學金申請辦法",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "merit-similar",
+   "url": "https://zhao.org.tw/scholarships",
+   "organization": "財團法人趙自齊教育基金會",
+   "program": "申請獎學金（資助海外來台深造之熱河省籍學生獎助金）",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "merit-similar",
+   "url": "https://www.chcg.gov.tw/TSO/hemei/07other/main.aspx?main_id=10087",
+   "organization": "彰化縣和美鎮公所",
+   "program": "和美鎮仁愛優秀學生獎學金",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "merit-similar",
+   "url": "https://www.sanchong.ntpc.gov.tw/home.jsp?id=45f19ec62af5557f&act=be4f48068b2b0031&dataserno=06ff8f7cb7f3767b4420f1a29e2c355e",
+   "organization": "新北市政府（三重區公所轉知）",
+   "program": "115年度（114學年度）「就讀高級中等以上學校學生獎學金」",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "merit-similar",
+   "url": "https://law.tycg.gov.tw/LawContent.aspx?id=GL002072",
+   "organization": "桃園市大園區公所",
+   "program": "桃園市大園區公所辦理高級中等以上學校學生獎學金實施要點",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "merit-similar",
+   "url": "https://www.jian.org.tw/esg/detail/?sn=1",
+   "organization": "財團法人樹林濟安宮",
+   "program": "獎助學金（115年獎學金獎勵辦法）",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "merit-similar",
+   "url": "https://www.dajiama.org.tw/OnePage.aspx?tid=5&id=165",
+   "organization": "財團法人大甲媽社會福利基金會／大甲鎮瀾宮",
+   "program": "114年媽祖友愛獎助學金申請（媽祖有愛獎學金申請辦法）",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "merit-similar",
+   "url": "https://www.lungshan.org.tw/tw/05_2_charity.php",
+   "organization": "艋舺龍山寺",
+   "program": "社教公益（獎學金：經就讀學校統籌甄選）",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "merit-similar",
+   "url": "https://www.starenergy.com.tw/news/more?id=c1df148de3ea481b8dcf770d5a532a23",
+   "organization": "星能股份有限公司",
+   "program": "星能(股)公司大學及研究所獎學金設置要點及申請表",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "merit-similar",
+   "url": "https://cathay-young.com.tw/scholarship",
+   "organization": "國泰人壽（國泰青年節）",
+   "program": "2026國泰青年節-保戶子女獎學金",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://cursor.com/students",
+   "organization": "Cursor",
+   "program": "Cursor for Students",
+   "page_type": "program",
+   "category": "ai",
+   "replaces": "cand-perk-cursor-ai-student-b2125ede",
+   "checked": "read_page"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://mathworks.com/student",
+   "organization": "MathWorks",
+   "program": "MATLAB and Simulink Student Access",
+   "page_type": "program",
+   "category": "ai",
+   "replaces": "cand-perk-matlab-campus-wide-6ab0a357",
+   "checked": "read_page"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://docs.github.com/en/education/about-github-education/github-education-for-students",
+   "organization": "GitHub",
+   "program": "GitHub Education for students",
+   "page_type": "program",
+   "category": "ai",
+   "replaces": "cand-perk-github-copilot-student-d35e5851",
+   "checked": "read_page"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.coursera.support/s/article/learner-000001455?language=en_US",
+   "organization": "Coursera",
+   "program": "Apply for financial aid",
+   "page_type": "program",
+   "category": "ai",
+   "replaces": "cand-perk-coursera-for-campus-7b2509ff",
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://images.samsung.com/is/content/samsung/assets/tw/downloads/2026_samsung_education_pricing_0316.pdf",
+   "organization": "Samsung Taiwan",
+   "program": "2026 Samsung 星學力優惠活動（教育優惠價）",
+   "page_type": "program",
+   "category": "ai",
+   "replaces": "cand-perk-samsung-education-store-01bfc5e9",
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.lenovo.com/tw/partssale/zh/d/student/university",
+   "organization": "Lenovo Taiwan",
+   "program": "學生專區（大學）",
+   "page_type": "listing",
+   "category": "ai",
+   "replaces": "cand-perk-lenovo-education-store-746522f1",
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://gemini.google/students/?hl=en-GB",
+   "organization": "Google",
+   "program": "Gemini for Students（一年免費學生方案，非美國學生為 Google AI Plus；台灣是否在名單未確認）",
+   "page_type": "program",
+   "category": "ai",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.scholarship.moe.gov.tw/studyabroad/exam",
+   "organization": "教育部",
+   "program": "教育部公費留學考試報名系統",
+   "page_type": "listing",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.scholarship.moe.gov.tw/exam-v2/student/brochure/general",
+   "organization": "教育部",
+   "program": "115 年公費留學考試簡章（不含五大信賴產業學門）",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.scholarship.moe.gov.tw/exam-v2/student/brochure/trusted",
+   "organization": "教育部",
+   "program": "115 年公費留學考試簡章（五大信賴產業學門）",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.scholarship.moe.gov.tw/scholarship",
+   "organization": "教育部",
+   "program": "教育部 115 年留學獎學金甄試（報名入口與公告）",
+   "page_type": "listing",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.scholarship.moe.gov.tw/eu/index/index",
+   "organization": "教育部",
+   "program": "教育部歐盟獎學金",
+   "page_type": "listing",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=FL038574",
+   "organization": "教育部",
+   "program": "教育部鼓勵國內大專校院選送學生出國研修或國外專業實習補助要點（學海飛颺、學海惜珠、學海築夢）",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.nstc.gov.tw/folksonomy/rfpDetail/fb285d89-02c6-4a01-a256-580b4c434822?l=CH",
+   "organization": "國科會",
+   "program": "116 年度補助博士生赴國外研究計畫（千里馬計畫）申請須知",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.nstc.gov.tw/folksonomy/rfpDetail/92f72ac2-0230-4259-9253-8834522cba6f?l=CH",
+   "organization": "國科會",
+   "program": "116 年度補助赴國外從事博士後研究計畫（千里馬計畫）申請須知",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.nstc.gov.tw/sci/ch/detail/bf1bf8bd-42b8-4089-aea6-45ed1fcc94bb",
+   "organization": "國科會",
+   "program": "補助國內研究生出席國際學術會議",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.nstc.gov.tw/nat/ch/detail/4c7c6587-a6f9-47e0-a495-30539f027410",
+   "organization": "國科會",
+   "program": "自然處補助國內研究生出席國際學術會議作業說明",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.daad.org.tw/de/foerderung-finden/stipendien-fuer-taiwaner/",
+   "organization": "DAAD Taiwan",
+   "program": "Stipendien für Taiwaner",
+   "page_type": "listing",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.koryu.or.jp/tw/business/scholarship/shortterm/",
+   "organization": "公益財團法人日本台灣交流協會",
+   "program": "短期獎學金",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.koryu.or.jp/business/scholarship/",
+   "organization": "公益財團法人日本台灣交流協會",
+   "program": "奨学金留学生事業",
+   "page_type": "listing",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.taiwan.campusfrance.org/bourses",
+   "organization": "Campus France Taiwan 法國教育中心",
+   "program": "留學獎學金",
+   "page_type": "listing",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.taiwan.campusfrance.org/faguozaitaixiehui-2026-nianliufajingyingjiangxuejin-france-excellence",
+   "organization": "法國在台協會 / Campus France Taiwan",
+   "program": "法國在台協會 2026 年留法精英獎學金 France Excellence",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.chevening.org/scholarship/taiwan/",
+   "organization": "Chevening",
+   "program": "Taiwan (Chevening Scholarship)",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.educanada.ca/scholarships-bourses/non_can/index.aspx?lang=eng",
+   "organization": "EduCanada (Global Affairs Canada)",
+   "program": "Scholarships for international applicants",
+   "page_type": "listing",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do?tab=gks-tab4",
+   "organization": "Study in Korea (NIIED)",
+   "program": "Global Korea Scholarship (GKS)",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://nus.edu.sg/oam/scholarships/scholarships-for-freshmen-(international-students)/the-association-of-banks-in-singapore---goh-keng-swee-scholarship",
+   "organization": "National University of Singapore",
+   "program": "The Association of Banks in Singapore – Goh Keng Swee Scholarship",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.nus.edu.sg/oam/scholarships/scholarships-for-freshmen-international-students",
+   "organization": "National University of Singapore",
+   "program": "Scholarships for Freshmen (International Students)",
+   "page_type": "listing",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.studyinnl.org/finances/nl-scholarship",
+   "organization": "Nuffic (Study in NL)",
+   "program": "NL Scholarship",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://tajpej.mfa.gov.hu/en/stipendium-hungaricum-scholarship-program",
+   "organization": "Hungarian Trade Office Taipei",
+   "program": "Stipendium Hungaricum Scholarship Program",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.yda.gov.tw/plan.aspx?p=1024",
+   "organization": "教育部青年發展署",
+   "program": "青年海外志工",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "perks-overseas",
+   "url": "https://www.yda.gov.tw/upload/plan/file/7b610da2-fa14-4ecd-94eb-af0fa955c440.pdf",
+   "organization": "教育部青年發展署",
+   "program": "「iYouth voice」青年國際發聲及蹲點研習計畫（115 年 4 月修正）",
+   "page_type": "program",
+   "category": "mobility",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://rd.asia.edu.tw/zh_tw/specialization/fellowship",
+   "organization": "亞洲大學",
+   "program": "新生獎學金一覽（研發處獎助學金頁）",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://www.cct.edu.tw/Administration/samo/samo_n.html",
+   "organization": "臺北基督學院",
+   "program": "學務處（samo）公告頁，含獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://www.cct.edu.tw/Administration/samo/scholarship/2025/臺北基督學院「撒瑪利亞人助學金」辦法 1140526A.pdf",
+   "organization": "臺北基督學院",
+   "program": "撒瑪利亞人助學金辦法",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://www.cct.edu.tw/Administration/samo/scholarship/2025/臺北基督學院「信友堂自強分堂助學金」辦法 1140526A.pdf",
+   "organization": "臺北基督學院",
+   "program": "信友堂自強分堂助學金辦法",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://www.cct.edu.tw/Administration/samo/scholarship/2025/臺北基督學院「大使命助學金」辦法.pdf",
+   "organization": "臺北基督學院",
+   "program": "大使命助學金辦法",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://regulation.cmu.edu.tw/doc/202603111323051.pdf",
+   "organization": "中國醫藥大學",
+   "program": "弱勢及受美國關稅影響學生助學金（辦法PDF，2026-03公布）",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://sa.tnu.edu.tw/uploads/asset/data/67359b321d41c80e58006257/%E5%AD%B8%E9%9B%9C%E8%B2%BB%E8%A3%9C%E5%8A%A9%E6%96%B9%E6%A1%88%E8%AA%AA%E6%98%8E_%E6%9D%B1%E5%8D%97%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%B8_.pdf",
+   "organization": "東南科技大學",
+   "program": "學雜費補助方案說明（學務處PDF）",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://scholarship.in.tku.edu.tw/index",
+   "organization": "淡江大學",
+   "program": "樸實剛毅獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": "cand-univ-tku-0013a12b",
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://scholarship.in.tku.edu.tw/Scholarship_qry",
+   "organization": "淡江大學",
+   "program": "獎學金查詢",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://scholarship.in.tku.edu.tw/stipend",
+   "organization": "淡江大學",
+   "program": "助學金資訊",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://sa.tku.edu.tw/spirit/?p=6514",
+   "organization": "淡江大學",
+   "program": "奬助學金/減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://life.dsa.fju.edu.tw/resource.jsp?labelID=35",
+   "organization": "輔仁大學",
+   "program": ">獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": "cand-univ-fju-0011a12b",
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://life.dsa.fju.edu.tw/resource.jsp?labelID=39",
+   "organization": "輔仁大學",
+   "program": "就學減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://life.dsa.fju.edu.tw/resource.jsp?labelID=34",
+   "organization": "輔仁大學",
+   "program": "急難救助",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://oosa.cycu.edu.tw/%E4%BA%8C%E7%B4%9A%E5%96%AE%E4%BD%8D/%E8%A1%9B%E7%94%9F%E4%BF%9D%E5%81%A5%E7%B5%84/%E5%AD%B8%E7%94%9F%E5%B9%B3%E5%AE%89%E4%BF%9D%E9%9A%AA%E8%88%87%E6%95%99%E8%82%B2%E9%83%A8%E6%80%A5%E9%9B%A3%E6%85%B0%E5%95%8F%E9%87%91/",
+   "organization": "中原大學",
+   "program": "學生平安保險與教育部急難慰問金Student Group Insurance and Emergency aid grants",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://oosa.cycu.edu.tw/%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91%E8%88%87%E8%A3%9C%E5%8A%A9/",
+   "organization": "中原大學",
+   "program": "獎助學金與補助",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": "cand-univ-cycu-0016a12b",
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://oosa.cycu.edu.tw/%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91%E8%88%87%E8%A3%9C%E5%8A%A9/%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91%E7%9B%B8%E9%97%9C%E8%BE%A6%E6%B3%95/",
+   "organization": "中原大學",
+   "program": "獎助學金相關辦法",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://oosa.cycu.edu.tw/%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91%E8%88%87%E8%A3%9C%E5%8A%A9/%E4%B8%AD%E5%8E%9F%E5%A4%A7%E5%AD%B8%E5%BC%B1%E5%8B%A2%E5%AD%B8%E7%94%9F%E5%8A%A9%E5%AD%B8%E9%87%91/",
+   "organization": "中原大學",
+   "program": "不利處境學生助學金",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://www.fcu.edu.tw/finance/#finance-scholarship",
+   "organization": "逢甲大學",
+   "program": "校內外獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": "cand-univ-fcu-0014a12b",
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://www.yzu.edu.tw/admin/st/index.php/tw/2016-03-25-05-42-29/2016-06-27-08-12-01",
+   "organization": "元智大學",
+   "program": "清寒助學金",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://sa1.isu.edu.tw/page/preview-slV0ZNaOQz7x",
+   "organization": "義守大學",
+   "program": "獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://sa1.isu.edu.tw/page/%E6%A0%A1%E5%85%A7%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91-slV0ZNaOQz7x",
+   "organization": "義守大學",
+   "program": "獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://web2.mcu.edu.tw/%E7%8D%8E%E5%AD%B8%E9%87%91%E5%8D%80/",
+   "organization": "銘傳大學",
+   "program": "獎學金專區",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://www.shu.edu.tw/News-List.aspx?csID=02",
+   "organization": "世新大學",
+   "program": "繳費、就貸、助學 »",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://sao.usc.edu.tw/p/406-1046-4623,r16.php?Lang=zh-tw",
+   "organization": "實踐大學",
+   "program": "高教深耕經濟不利助學金說明及法規",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://admissionu01.usc.edu.tw/p/412-1045-2992.php?Lang=zh-tw",
+   "organization": "實踐大學",
+   "program": "獎助學金 Scholarships",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://admissionu01.usc.edu.tw/p/412-1045-3010.php?Lang=zh-tw",
+   "organization": "實踐大學",
+   "program": "校內獎助學金 USC Scholarships",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://admissionu01.usc.edu.tw/p/412-1045-3011.php?Lang=zh-tw",
+   "organization": "實踐大學",
+   "program": "校外獎助學金 Other Scholarships",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://c030.pu.edu.tw/p/412-1063-5585.php?Lang=zh-tw",
+   "organization": "靜宜大學",
+   "program": "安心助學措施",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://www.au.edu.tw/p/406-1000-94297,r111327.php?Lang=zh-tw",
+   "organization": "真理大學",
+   "program": "獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://sa.hfu.edu.tw/p/412-1008-290.php?Lang=zh-tw",
+   "organization": "華梵大學",
+   "program": "弱勢學生助學計畫",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://www.hfu.edu.tw/",
+   "organization": "華梵大學",
+   "program": "獎助學金專區",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://www.hcu.edu.tw/act/act/zh-tw/D01FC0AF7A0C4CFFAE99CF5AEE257E80/?sh=",
+   "organization": "玄奘大學",
+   "program": "貸款減免獎助學金專區",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://www.tcu.edu.tw/p/412-1033-4825.php",
+   "organization": "慈濟大學",
+   "program": "助學圓夢",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://www.tcu.edu.tw/p/412-1033-4849.php",
+   "organization": "慈濟大學",
+   "program": "獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://osa.kmu.edu.tw/index.php/zh-tw/%E7%94%9F%E8%BC%94%E7%B5%84/%E5%AD%B8%E9%9B%9C%E8%B2%BB%E6%B8%9B%E5%85%8D",
+   "organization": "高雄醫學大學",
+   "program": "學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://osa.kmu.edu.tw/index.php/zh-tw/%E7%94%9F%E8%BC%94%E7%B5%84/%E6%A0%A1%E5%85%A7%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91",
+   "organization": "高雄醫學大學",
+   "program": "校內獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": "cand-univ-kmu-000fa12b",
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://osa.kmu.edu.tw/index.php/zh-tw/%E7%94%9F%E8%BC%94%E7%B5%84/%E6%A0%A1%E5%85%A7%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91/%E7%8D%8E%E5%AD%B8%E9%87%91",
+   "organization": "高雄醫學大學",
+   "program": "獎學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://osa.kmu.edu.tw/index.php/zh-tw/%E7%94%9F%E8%BC%94%E7%B5%84/%E6%A0%A1%E5%85%A7%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91/%E7%8D%8E%E5%AD%B8%E9%87%91/%E7%A0%94%E7%A9%B6%E7%94%9F%E7%8D%8E%E5%AD%B8%E9%87%91",
+   "organization": "高雄醫學大學",
+   "program": "研究生獎學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://newacademic.tmu.edu.tw/outside.aspx?mainPage=QQBw%20AHAAbABpAGMAYQB0AGkAbwBuAC8AUwBHAE0ALwBTAEcATQA%20yADAALwBTAEcATQAyADAAMQA2AF8AMAAxAC4AYQBzAHAAeA%20A=",
+   "organization": "臺北醫學大學",
+   "program": "獎助學金資訊",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": "cand-univ-tmu-000ea12b",
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://osa.tmu.edu.tw/front/Office_Of_Student_Affairs/TMUscholarship/pages.php?ID=d448de9a7b089d85445531d8669bdb1020c3cbf2a1414883f26265f8f885287d",
+   "organization": "臺北醫學大學",
+   "program": "獎助學金專區",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://osa.tmu.edu.tw/front/Office_Of_Student_Affairs/20240907/24091008/pages.php?ID=43afd407467f5d7a7ea066e572a099caf1222958475b2ad71d45fb210268dbd3",
+   "organization": "臺北醫學大學",
+   "program": "弱勢獎助學金獲獎分佈",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://osa.tmu.edu.tw/front/Office_Of_Student_Affairs/20240907/24091009/pages.php?ID=5ad65780d3c19c5f3592df97df2127d435e3ad14a8d21f4810afe93d7d98eeab",
+   "organization": "臺北醫學大學",
+   "program": "急難慰助金核發",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://osa.csmu.edu.tw/p/404-1011-33602.php?Lang=zh-tw",
+   "organization": "中山醫學大學",
+   "program": "學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://ukn05.ukn.edu.tw/p/412-1003-4377.php?Lang=zh-tw",
+   "organization": "康寧大學",
+   "program": "校內外獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://ukn05.ukn.edu.tw/p/412-1003-4710.php?Lang=zh-tw",
+   "organization": "康寧大學",
+   "program": "學雜費減免、低收免住宿申請",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://ukn05.ukn.edu.tw/p/412-1003-4719.php?Lang=zh-tw",
+   "organization": "康寧大學",
+   "program": "行政院減免學雜費",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://ukn05.ukn.edu.tw/p/412-1003-4577.php?Lang=zh-tw",
+   "organization": "康寧大學",
+   "program": "弱勢生活助學金",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://ssd-sao.cnu.edu.tw/",
+   "organization": "嘉南藥理大學",
+   "program": "圓夢助學計畫",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://osa.csu.edu.tw/p/412-1069-563.php?Lang=zh-tw",
+   "organization": "正修科技大學",
+   "program": "學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://sa.mcut.edu.tw/p/412-1009-664.php?Lang=zh-tw",
+   "organization": "明志科技大學",
+   "program": "各類減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://sa.mcut.edu.tw/p/412-1009-667.php?Lang=zh-tw",
+   "organization": "明志科技大學",
+   "program": "不利處境助學金",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://sa.mcut.edu.tw/p/403-1009-251.php?Lang=zh-tw",
+   "organization": "明志科技大學",
+   "program": "校外獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://budget.sa.uch.edu.tw/zh_tw/2/35181/351811",
+   "organization": "健行科技大學",
+   "program": "就學減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://budget.sa.uch.edu.tw/zh_tw/2/35181/351815",
+   "organization": "健行科技大學",
+   "program": "校內外獎學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://budget.sa.uch.edu.tw/zh_tw/2/35181/351816",
+   "organization": "健行科技大學",
+   "program": "急難救助",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://budget.sa.uch.edu.tw/zh_tw/007/03/0307",
+   "organization": "健行科技大學",
+   "program": "特殊教育獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://lf.hk.edu.tw/category/%E6%A0%A1%E5%A4%96%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91%E6%9C%80%E6%96%B0%E5%85%AC%E5%91%8A/",
+   "organization": "弘光科技大學",
+   "program": "校外獎助學金專區",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://stu.hk.edu.tw/category/%E5%BC%98%E6%84%9B%E7%AF%89%E5%A4%A2%E5%8A%A9%E5%AD%B8%E9%87%91/",
+   "organization": "弘光科技大學",
+   "program": "弘愛築夢助學金",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://stuaff.ctust.edu.tw/p/412-1022-83-1.php?Lang=zh-tw",
+   "organization": "中臺科技大學",
+   "program": "獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://stuaff.ctust.edu.tw/p/412-1022-3837.php?Lang=zh-tw",
+   "organization": "中臺科技大學",
+   "program": "不利處境助學金補助",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://stuaff.ctust.edu.tw/p/412-1022-3846.php?Lang=zh-tw",
+   "organization": "中臺科技大學",
+   "program": "學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://stuaff.ctust.edu.tw/p/412-1022-3848.php?Lang=zh-tw",
+   "organization": "中臺科技大學",
+   "program": "生活助學金",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://www.hust.edu.tw/event_news_content.jsp?nid=2013&sid=409813086",
+   "organization": "修平科技大學",
+   "program": "台積電走進修平科大　學年實習助學生接軌半導體產業",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://student.hust.edu.tw/guidance?item=12&custom=2896&type=detail&isEn=0",
+   "organization": "修平科技大學",
+   "program": "各項學生獎助學金 (將會開啟新視窗)",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://ltu1700.video.ltu.edu.tw/p/doc24",
+   "organization": "嶺東科技大學",
+   "program": "清寒優秀學生勵學獎學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://ltu2661.video.ltu.edu.tw/p/doc4",
+   "organization": "嶺東科技大學",
+   "program": "獎學金 Scholarship",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://ltu2661.video.ltu.edu.tw/p/doc6",
+   "organization": "嶺東科技大學",
+   "program": "就學減免 School Relief",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://ltu2661.video.ltu.edu.tw/p/doc15",
+   "organization": "嶺東科技大學",
+   "program": "急難救助專區",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://campus.cc.wfu.edu.tw/CampusNews/IISystem/MsgManager/showNews/NewsV1/newsList.jspf?Layout_ID=32",
+   "organization": "吳鳳科技大學",
+   "program": "獎助學金申請",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://nkstu.nkut.edu.tw/front/about/PMS/archive.php?ID=bmt1dF9zdHUmUE1T",
+   "organization": "南開科技大學",
+   "program": "安心助學資訊",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://nkstu.nkut.edu.tw/front/1/PE001/news.php?ID=bmt1dF9zdHUmUEUwMDE=",
+   "organization": "南開科技大學",
+   "program": "學生獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://nkstu.nkut.edu.tw/front/Aboriginal_Stud/Scholarships_fo/pages.php?ID=bmt1dF9zdHUmU2Nob2xhcnNoaXBzX2Zv",
+   "organization": "南開科技大學",
+   "program": "原住民學生獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://nkstu.nkut.edu.tw/front/stu_news_focus/news.php?ID=bmt1dF9zdHUmc3R1X25ld3NfZm9jdXM=&Sn=5064",
+   "organization": "南開科技大學",
+   "program": "南投市學生獎助學金發給實施要點",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://a05.tajen.edu.tw/p/412-1005-4736.php?Lang=zh-tw",
+   "organization": "大仁科技大學",
+   "program": "獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://a05.tajen.edu.tw/p/412-1005-4708.php?Lang=zh-tw",
+   "organization": "大仁科技大學",
+   "program": "學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://a05.tajen.edu.tw/p/412-1005-5525.php?Lang=zh-tw",
+   "organization": "大仁科技大學",
+   "program": "急難救助",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://a29.tajen.edu.tw/p/412-1029-6531.php?Lang=zh-tw",
+   "organization": "大仁科技大學",
+   "program": "獎學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://osa.meiho.edu.tw/p/412-1003-638.php?Lang=zh-tw",
+   "organization": "美和科技大學",
+   "program": "獎學金專區",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://indigenous.meiho.edu.tw/p/412-1027-3650.php?Lang=zh-tw",
+   "organization": "美和科技大學",
+   "program": "原住民族獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://osa.lit.edu.tw/files/40-1013-129.php",
+   "organization": "黎明技術學院",
+   "program": "獎學金專區",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://www.lit.edu.tw/student_cat/stud-01-03/",
+   "organization": "黎明技術學院",
+   "program": "各類學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://www.lit.edu.tw/student_cat/stud-01-06/",
+   "organization": "黎明技術學院",
+   "program": "獎助學金申請",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://www.lit.edu.tw/student_cat/stud-05-01/",
+   "organization": "黎明技術學院",
+   "program": "原住民獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://studentaffairs.mmu.edu.tw/xmdoc/cont?xsmsid=0P259367774321951675",
+   "organization": "馬偕醫學院",
+   "program": "各類學雜費減免(含行政院拉近專案)",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://studentaffairs.mmu.edu.tw/xmdoc/cont?xsmsid=0Q023601540193360443",
+   "organization": "馬偕醫學院",
+   "program": "原資中心-獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://studentaffairs.mmu.edu.tw/xmdoc/cont?xsmsid=0P258371050384057968&sid=0Q310561913687429970",
+   "organization": "馬偕醫學院",
+   "program": "第4屆「中山青年論文獎助學金」",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://studentaffairs.mmu.edu.tw/xmdoc/cont?xsmsid=0P258371050384057968&sid=0Q310560073374603813",
+   "organization": "馬偕醫學院",
+   "program": "三重東區扶輪社成績優良及清寒優良獎學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://studentaffairs.cgust.edu.tw/p/412-1009-820.php",
+   "organization": "耕莘健康管理專科學校",
+   "program": "獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://sao.tpcu.edu.tw/p/412-1017-4155.php?Lang=zh-tw",
+   "organization": "台北城市科技大學",
+   "program": "獎助學金專區",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://sao.tpcu.edu.tw/p/412-1017-4161.php?Lang=zh-tw",
+   "organization": "台北城市科技大學",
+   "program": "就學貸款/減免/弱勢助學",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://sad.aeust.edu.tw/p/412-1073-4729.php?Lang=zh-tw",
+   "organization": "亞東科技大學",
+   "program": "校內外各項獎學金資訊",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://c009.mhchcm.edu.tw/p/412-1009-686.php?Lang=zh-tw",
+   "organization": "敏惠醫護管理專科學校",
+   "program": "獎助學金專區",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://studentaffairs.hdut.edu.tw/p/406-1001-9116,r290.php?Lang=zh-tw",
+   "organization": "宏國德霖科技大學",
+   "program": "學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://studentaffairs.hdut.edu.tw/p/406-1001-4940,r304.php?Lang=zh-tw",
+   "organization": "宏國德霖科技大學",
+   "program": "獎助學金資訊",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://sa.dila.edu.tw/?page_id=15812",
+   "organization": "法鼓文理學院",
+   "program": "學生校內外獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://cac.dila.edu.tw/?page_id=1031",
+   "organization": "法鼓文理學院",
+   "program": "校友與學生急難救助",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://student.hwai.edu.tw/p/412-1014-2318.php?Lang=zh-tw",
+   "organization": "中華醫事科技大學",
+   "program": "校外獎助學金專區",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://student.hwai.edu.tw/p/412-1014-2305.php?Lang=zh-tw",
+   "organization": "中華醫事科技大學",
+   "program": "學雜費減免專區",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://student.hwai.edu.tw/p/412-1014-2309.php?Lang=zh-tw",
+   "organization": "中華醫事科技大學",
+   "program": "生活助學金辦理方法",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://student.hwai.edu.tw/p/412-1014-2310.php?Lang=zh-tw",
+   "organization": "中華醫事科技大學",
+   "program": "急難救助金辦理方法",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://admin.must.edu.tw/index.aspx?UnitID=1236",
+   "organization": "明新科技大學",
+   "program": "獎助學金專區",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "private-univ",
+   "url": "https://sa.hsc.edu.tw/p/403-1002-10.php?Lang=zh-tw",
+   "organization": "新生醫護管理專科學校",
+   "program": "獎助學金相關訊息",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://advisory.ntu.edu.tw/CMS/Scholarship?pageId=232",
+   "organization": "臺灣大學學務處生活輔導組",
+   "program": "獎學金公告一覽表",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://advisory.ntu.edu.tw/CMS/Page/21",
+   "organization": "臺灣大學學務處生活輔導組",
+   "program": "獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://advisory.ntu.edu.tw/CMS/Page/182",
+   "organization": "臺灣大學學務處生活輔導組",
+   "program": "研究生獎勵金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://advisory.ntu.edu.tw/CMS/Page/186",
+   "organization": "臺灣大學學務處生活輔導組",
+   "program": "急難慰問救助",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://advisory.ntu.edu.tw/CMS/Page/174",
+   "organization": "臺灣大學學務處生活輔導組",
+   "program": "學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.nccu.edu.tw/tw/生活事務暨僑生輔導組/學生助學措施/獎助學金/校外獎助學金申請流程",
+   "organization": "政治大學學務處生活事務暨僑生輔導組",
+   "program": "校外獎助學金申請流程",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.nccu.edu.tw/gb/component/tags/tag/助學?start=1000",
+   "organization": "政治大學學務處",
+   "program": "助學(校外獎學金公告列表)",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.nccu.edu.tw/tw/生活事務暨僑生輔導組/學生助學措施/助學服務/研究生獎學金作業",
+   "organization": "政治大學學務處生活事務暨僑生輔導組",
+   "program": "研究生獎學金作業",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.nccu.edu.tw/tw/生活事務暨僑生輔導組/學生助學措施/急難慰助/校外急難慰助",
+   "organization": "政治大學學務處生活事務暨僑生輔導組",
+   "program": "校外急難慰助",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.nccu.edu.tw/tw/生活事務暨僑生輔導組/學生助學措施/學雜費減免/學雜費減免資訊",
+   "organization": "政治大學學務處生活事務暨僑生輔導組",
+   "program": "學雜費減免資訊",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://assistance.sa.ntnu.edu.tw/scholarships-1-3/",
+   "organization": "臺灣師範大學學務處生活輔導組",
+   "program": "校外獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://assistance.sa.ntnu.edu.tw/scholarships-2-3/",
+   "organization": "臺灣師範大學學務處生活輔導組",
+   "program": "優秀研究生獎學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": "cand-univ-ntnu-0009a12b",
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://assistance.sa.ntnu.edu.tw/ministry-edu-3/",
+   "organization": "臺灣師範大學學務處生活輔導組",
+   "program": "急難慰助金",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://assistance.sa.ntnu.edu.tw/exemption/",
+   "organization": "臺灣師範大學學務處生活輔導組",
+   "program": "學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://sa.site.nthu.edu.tw/p/404-1480-168291.php?Lang=zh-tw",
+   "organization": "清華大學學務處生活輔導組",
+   "program": "校內外獎學金(一般獎助學金)",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://sa.site.nthu.edu.tw/p/412-1480-21746.php?Lang=zh-tw",
+   "organization": "清華大學學務處生活輔導組",
+   "program": "專案獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://sa.site.nthu.edu.tw/p/404-1480-164600.php?Lang=zh-tw",
+   "organization": "清華大學學務處生活輔導組",
+   "program": "急難扶助",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://www.nycu.edu.tw/osa/ch/app/folder/3708",
+   "organization": "陽明交通大學學務處生活輔導組",
+   "program": "獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://www.nycu.edu.tw/osa/ch/app/artwebsite/view?module=artwebsite&id=3955&serno=64f9b82c-bd94-4ddd-9849-a5b06d490b42",
+   "organization": "陽明交通大學學務處生活輔導組",
+   "program": "校外獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://www.nycu.edu.tw/osa/ch/app/artwebsite/view?module=artwebsite&id=3960&serno=aa169523-1649-4c38-9436-461ace6cff43",
+   "organization": "陽明交通大學學務處",
+   "program": "研究生獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.nycu.edu.tw/osa/ch/app/artwebsite/view?module=artwebsite&id=3948&serno=147df800-75ea-4f88-b6e7-fa54a08fb8fb",
+   "organization": "陽明交通大學學務處",
+   "program": "急難濟助",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://www.nycu.edu.tw/osa/ch/app/artwebsite/view?module=artwebsite&id=3940&serno=82b96433-f11f-490a-8a33-4ae74ae860a8",
+   "organization": "陽明交通大學學務處",
+   "program": "學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://military.ncu.edu.tw/scholarship.php",
+   "organization": "中央大學學務處生活輔導組",
+   "program": "國立中央大學各項獎學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://webap.ntpu.edu.tw/scholarship/scholarship.php",
+   "organization": "臺北大學學務處生活輔導組",
+   "program": "校內外獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://service.utaipei.edu.tw/p/412-1034-63.php?Lang=zh-tw",
+   "organization": "臺北市立大學學務處生輔暨校安組",
+   "program": "校外獎助學金(隨時更新)",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://service.utaipei.edu.tw/p/412-1034-18.php?Lang=zh-tw",
+   "organization": "臺北市立大學學務處生輔暨校安組",
+   "program": "獎助學金專區",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://service.utaipei.edu.tw/p/412-1034-3994.php?Lang=zh-tw",
+   "organization": "臺北市立大學學務處生輔暨校安組",
+   "program": "急難慰助及教儲戶",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://service.utaipei.edu.tw/p/412-1034-5669.php?Lang=zh-tw",
+   "organization": "臺北市立大學學務處生輔暨校安組",
+   "program": "學雜費優待減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://tsweb.ntou.edu.tw/p/412-1072-6672.php?Lang=zh-tw",
+   "organization": "臺灣海洋大學學務處生活輔導組",
+   "program": "獎助學金(含校外獎學金)",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://stu.ntou.edu.tw/p/412-1023-7958.php?Lang=zh-tw",
+   "organization": "臺灣海洋大學",
+   "program": "就學獎補助須知",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://dsanew.ntue.edu.tw/p/405-1042-16721,c3098.php?Lang=zh-tw",
+   "organization": "臺北教育大學學務處生活輔導組",
+   "program": "最新獎助學金總表",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://dsanew.ntue.edu.tw/p/405-1042-16724,c3098.php?Lang=zh-tw",
+   "organization": "臺北教育大學學務處生活輔導組",
+   "program": "學生助學資源綜覽",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://dsanew.ntue.edu.tw/p/405-1042-16719,c3098.php?Lang=zh-tw",
+   "organization": "臺北教育大學學務處生活輔導組",
+   "program": "急難及助學金專區",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://scholarship.ntut.edu.tw/p/412-1043-13255.php",
+   "organization": "臺北科技大學學務處",
+   "program": "校外獎學金(統一辦理)",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://scholarship.ntut.edu.tw/p/412-1043-13137.php",
+   "organization": "臺北科技大學學務處",
+   "program": "校外獎學金(自行辦理)",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://scholarship.ntut.edu.tw/p/412-1043-13156.php",
+   "organization": "臺北科技大學學務處",
+   "program": "研究生獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.ntut.edu.tw/p/412-1041-13309.php?Lang=zh-tw",
+   "organization": "臺北科技大學學務處",
+   "program": "學雜費減免(日間部)",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.ntut.edu.tw/p/412-1041-13038.php?Lang=zh-tw",
+   "organization": "臺北科技大學學務處",
+   "program": "學生助學方案",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://student.ntust.edu.tw/p/412-1053-8403.php?Lang=zh-tw",
+   "organization": "臺灣科技大學學務處",
+   "program": "獎助學金、急難救助申請",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://student.ntust.edu.tw/p/412-1053-8400.php?Lang=zh-tw",
+   "organization": "臺灣科技大學學務處",
+   "program": "學雜費減免申請",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://assistance-osa.ntunhs.edu.tw/p/412-1042-3369.php?Lang=zh-tw",
+   "organization": "臺北護理健康大學學務處",
+   "program": "助學措施(學務處)",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://activity-osa.ntunhs.edu.tw/p/412-1043-3282.php?Lang=zh-tw",
+   "organization": "臺北護理健康大學學務處課外活動組",
+   "program": "獎助學金申請專區(含校外)",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://assistance-osa.ntunhs.edu.tw/p/404-1042-57492.php?Lang=zh-tw",
+   "organization": "臺北護理健康大學學務處",
+   "program": "急難救助",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://assistance-osa.ntunhs.edu.tw/p/404-1042-60251.php?Lang=zh-tw",
+   "organization": "臺北護理健康大學學務處",
+   "program": "學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.ntua.edu.tw/article.aspx?category=83",
+   "organization": "臺灣藝術大學學務處",
+   "program": "校內外獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.ntua.edu.tw/article.aspx?category=90",
+   "organization": "臺灣藝術大學學務處",
+   "program": "獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.ntua.edu.tw/article.aspx?category=187",
+   "organization": "臺灣藝術大學學務處",
+   "program": "學雜費減免／不利處境助學計畫",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://w3.tnua.edu.tw/category/scholarship/",
+   "organization": "臺北藝術大學",
+   "program": "獎助學金 彙整",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://student.tnua.edu.tw/student/activity/d3.php",
+   "organization": "臺北藝術大學學務處",
+   "program": "校外獎學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://student.tnua.edu.tw/student/activity/d4.php",
+   "organization": "臺北藝術大學學務處",
+   "program": "學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://student.tnua.edu.tw/student/activity/d6.php",
+   "organization": "臺北藝術大學學務處",
+   "program": "急難救助",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://students.ntsu.edu.tw/p/412-1003-116.php?Lang=zh-tw",
+   "organization": "臺灣體育運動大學學務處",
+   "program": "校內外獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://students.ntsu.edu.tw/p/412-1003-52.php?Lang=zh-tw",
+   "organization": "臺灣體育運動大學學務處",
+   "program": "就學優待減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://student.ntus.edu.tw/index.php?code=list&ids=1297",
+   "organization": "國立體育大學學務處課外活動組",
+   "program": "獎助學金專區",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://student.ntus.edu.tw/index.php?code=list&ids=1296",
+   "organization": "國立體育大學學務處課外活動組",
+   "program": "急難救助金",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://student.ntus.edu.tw/index.php?code=list&ids=1293",
+   "organization": "國立體育大學學務處課外活動組",
+   "program": "學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://www.osa.nchu.edu.tw/osa/laa/sys/modules/osa_scholarship/",
+   "organization": "國立中興大學學務處生活輔導組",
+   "program": "獎助學金公告",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://www.osa.nchu.edu.tw/osa/laa/scholarship.html",
+   "organization": "國立中興大學學務處生活輔導組",
+   "program": "校內外獎學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://www.osa.nchu.edu.tw/osa/laa/postgraduate.html",
+   "organization": "國立中興大學學務處生活輔導組",
+   "program": "研究生獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://www.osa.nchu.edu.tw/osa/laa/deductions.html",
+   "organization": "國立中興大學學務處生活輔導組",
+   "program": "學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://stuaffweb.ncue.edu.tw/p/403-1039-37-1.php",
+   "organization": "國立彰化師範大學學務處生活輔導組",
+   "program": "獎助學金最新公告",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://stuaffweb.ncue.edu.tw/p/412-1039-1014.php",
+   "organization": "國立彰化師範大學學務處生活輔導組",
+   "program": "校內外獎助學金 Scholarships",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://stuaffweb.ncue.edu.tw/p/412-1039-1052.php",
+   "organization": "國立彰化師範大學學務處生活輔導組",
+   "program": "校內獎助學金一覽表",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://stuaffweb.ncue.edu.tw/p/412-1039-1822.php",
+   "organization": "國立彰化師範大學學務處生活輔導組",
+   "program": "大專校院弱勢學生助學計畫 (助學金)",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://assistance.ncnu.edu.tw/p/412-1079-693.php?Lang=zh-tw",
+   "organization": "國立暨南國際大學學務處生活輔導組",
+   "program": "校內獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://assistance.ncnu.edu.tw/p/412-1079-694.php?Lang=zh-tw",
+   "organization": "國立暨南國際大學學務處生活輔導組",
+   "program": "校外獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://assistance.ncnu.edu.tw/p/412-1079-685.php?Lang=zh-tw",
+   "organization": "國立暨南國際大學學務處生活輔導組",
+   "program": "急難救助金",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://assistance.ncnu.edu.tw/p/412-1079-679.php?Lang=zh-tw",
+   "organization": "國立暨南國際大學學務處生活輔導組",
+   "program": "學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://saactivity.ntcu.edu.tw/news?cate=8",
+   "organization": "國立臺中教育大學學務處課外活動指導組",
+   "program": "訊息公告 獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://saactivity.ntcu.edu.tw/news?cate=10",
+   "organization": "國立臺中教育大學學務處課外活動指導組",
+   "program": "訊息公告 急難救助",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "http://student.nutc.edu.tw/p/404-1020-49382.php?Lang=zh-tw",
+   "organization": "國立臺中科技大學學生事務處",
+   "program": "校外獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "http://student.nutc.edu.tw/p/404-1020-555.php?Lang=zh-tw",
+   "organization": "國立臺中科技大學學生事務處",
+   "program": "就學救助",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osca.ncut.edu.tw/p/403-1010-611.php?Lang=zh-tw",
+   "organization": "國立勤益科技大學學務處",
+   "program": "校外獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osca.ncut.edu.tw/p/404-1010-14751.php?Lang=zh-tw",
+   "organization": "國立勤益科技大學學務處",
+   "program": "學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osca.ncut.edu.tw/p/404-1010-14750.php?Lang=zh-tw",
+   "organization": "國立勤益科技大學學務處",
+   "program": "不利處境學生助學金申請",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://asx.yuntech.edu.tw/index.php/2020-02-26-09-24-01/itemlist/category/71-2021-08-25-01-48-59",
+   "organization": "國立雲林科技大學學生事務處",
+   "program": "助學措施-校內外獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://asx.yuntech.edu.tw/index.php/2020-02-26-09-23-21/itemlist/category/76-2021-01-11-08-52-46",
+   "organization": "國立雲林科技大學學生事務處",
+   "program": "獎補助區",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://asx.yuntech.edu.tw/index.php/2020-02-26-09-23-21/item/302-2021-08-03-05-39-07",
+   "organization": "國立雲林科技大學學生事務處",
+   "program": "急難救助",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://asx.yuntech.edu.tw/index.php/2020-02-26-09-23-21/item/296-2021-08-03-00-51-47",
+   "organization": "國立雲林科技大學學生事務處",
+   "program": "學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.nfu.edu.tw/zh_tw/4/sclink/scholarship",
+   "organization": "國立虎尾科技大學學務處",
+   "program": "相關公告資訊（獎助學金）",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://nfuosa.nfu.edu.tw/news-scholarship.html",
+   "organization": "國立虎尾科技大學學務處",
+   "program": "相關公告資訊（獎助學金）",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://website.ncyu.edu.tw/life/Subject?nodeId=55082",
+   "organization": "國立嘉義大學學生事務處生活輔導組",
+   "program": "校外各項獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "http://www.ncyu.edu.tw/life/itemize.aspx?itemize_sn=172443&pages=0&site_content_sn=53232",
+   "organization": "國立嘉義大學學生事務處生活輔導組",
+   "program": "校內獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://studentlife.ccu.edu.tw/p/403-1034-2789.php?Lang=zh-tw",
+   "organization": "國立中正大學學務處生活事務組",
+   "program": "校外獎助學金公告",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://studentlife.ccu.edu.tw/p/403-1034-2791-1.php?Lang=zh-tw",
+   "organization": "國立中正大學學務處生活事務組",
+   "program": "助學公告",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://stua04.nuu.edu.tw/p/412-1036-1716.php",
+   "organization": "國立聯合大學學務處課外活動指導組",
+   "program": "校內獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://stua04.nuu.edu.tw/p/412-1036-1720.php",
+   "organization": "國立聯合大學學務處課外活動指導組",
+   "program": "學生生活教育學習",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://www2.nou.edu.tw/coach/List.aspx?uid=4506&pid=4483",
+   "organization": "國立空中大學學生事務處",
+   "program": "校內獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://www2.nou.edu.tw/coach/doclist.aspx?uid=4439&pid=4376",
+   "organization": "國立空中大學學生事務處",
+   "program": "獎學金訊息",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://rb003.tcpa.edu.tw/p/412-1006-2699.php",
+   "organization": "國立臺灣戲曲學院學生事務處",
+   "program": "獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://rb003.tcpa.edu.tw/p/403-1006-137-1.php",
+   "organization": "國立臺灣戲曲學院學生事務處",
+   "program": "獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://rb003.tcpa.edu.tw/p/406-1006-40110,r314.php",
+   "organization": "國立臺灣戲曲學院學生事務處",
+   "program": "希望助學金實施要點「急難救助」",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://assistance-osa.ncku.edu.tw/p/403-1051-699.php?Lang=zh-tw",
+   "organization": "成功大學生活輔導組",
+   "program": "獎學金公告(校外)",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://assistance-osa.ncku.edu.tw/p/403-1051-2688.php?Lang=zh-tw",
+   "organization": "成功大學生活輔導組",
+   "program": "成功深耕扶助公告",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://ag-osa.nsysu.edu.tw/p/412-1087-8740.php?Lang=zh-tw",
+   "organization": "中山大學學務處生輔組",
+   "program": "校內外獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://ag-osa.nsysu.edu.tw/p/403-1087-5200-1.php?Lang=zh-tw",
+   "organization": "中山大學學務處生輔組",
+   "program": "助學/獎學金公告",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://ag-osa.nsysu.edu.tw/p/412-1087-4298.php?Lang=zh-tw",
+   "organization": "中山大學學務處生輔組",
+   "program": "學雜費減免",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://ag-osa.nsysu.edu.tw/p/412-1087-4300.php?Lang=zh-tw",
+   "organization": "中山大學學務處生輔組",
+   "program": "急難慰助金",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://ag-osa.nsysu.edu.tw/p/412-1087-8887.php?Lang=zh-tw",
+   "organization": "中山大學學務處生輔組",
+   "program": "不利處境助學",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://regs.nsysu.edu.tw/rule/file/202506261443070540.pdf",
+   "organization": "中山大學",
+   "program": "國立中山大學獎勵本國優秀學生就讀本校(學士、碩士、博士)獎助學金要點",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": "cand-univ-nsysu-0006a12b",
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://news.nknu.edu.tw/nknu_news/lastNews.aspx?catid=SCHOOLADMIN&unid=9B22DE2EE677E55696122F77A18C3EE5CB400DE2&place=nknu",
+   "organization": "高雄師範大學",
+   "program": "最新公告(學務/行政公告)",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://stu.nkust.edu.tw/p/403-1007-1414-1.php?Lang=zh-tw",
+   "organization": "高雄科技大學學生事務處",
+   "program": "公告消息(就服組)",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://stu.nkust.edu.tw/p/403-1007-603-1.php?Lang=zh-tw",
+   "organization": "高雄科技大學學生事務處",
+   "program": "就學服務組-學雜費減免",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://www.nuk.edu.tw/p/403-1000-112-1.php?Lang=zh-tw",
+   "organization": "高雄大學學務處",
+   "program": "公告(學務處)",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://www.nuk.edu.tw/p/412-1000-1204.php?Lang=zh-tw",
+   "organization": "高雄大學學務處",
+   "program": "學雜費減免",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://staf-life.nptu.edu.tw/p/403-1074-3893-1.php?Lang=zh-tw",
+   "organization": "屏東大學學務處生活輔導組",
+   "program": "校外獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://staf-life.nptu.edu.tw/p/403-1074-3892-1.php?Lang=zh-tw",
+   "organization": "屏東大學學務處生活輔導組",
+   "program": "校內獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.npust.edu.tw/unit/eas/scholarship/",
+   "organization": "屏東科技大學學務處",
+   "program": "獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.npust.edu.tw/qa/qa1/exempt1/",
+   "organization": "屏東科技大學學務處",
+   "program": "各類減免須檢附之資料一覽表",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.nutn.edu.tw/index.php?group=sa2&id=469&lang=cht&option=module&task=showlist",
+   "organization": "臺南大學學務處生活輔導組",
+   "program": "生活輔導組公告",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://campus.nutn.edu.tw/newsPost3/default.aspx?board=18",
+   "organization": "臺南大學",
+   "program": "最新消息公佈欄(校外獎學金轉知)",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://student.tnnua.edu.tw/p/403-1005-2019-1.php?Lang=zh-tw",
+   "organization": "臺南藝術大學學生事務處",
+   "program": "獎(助)學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://lifestudent.tnnua.edu.tw/p/403-1006-567-1.php?Lang=zh-tw",
+   "organization": "臺南藝術大學生活輔導組",
+   "program": "校外獎學金-法人基金會",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://wdsa.nttu.edu.tw/p/403-1009-525-1.php?Lang=zh-tw",
+   "organization": "臺東大學學務處課外活動指導組",
+   "program": "課外組獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.ndhu.edu.tw/p/403-1005-402.php",
+   "organization": "東華大學學務處",
+   "program": "學生獎學金(最新獎助學金申請公告)",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.ndhu.edu.tw/p/403-1005-2751-1.php?Lang=zh-tw",
+   "organization": "東華大學學務處",
+   "program": "獎助學金申請相關表單",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.ndhu.edu.tw/p/412-1005-22905.php?Lang=zh-tw",
+   "organization": "東華大學學務處",
+   "program": "學雜費減免",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://www.npu.edu.tw/sub/latestevent/index.aspx?Parser=9,22,501,486",
+   "organization": "澎湖科技大學學務處課外活動指導組",
+   "program": "獎助學金公告專區",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.nqu.edu.tw/p/403-1002-139-1.php?Lang=zh-tw",
+   "organization": "金門大學學生事務處",
+   "program": "校內獎助學金",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.nqu.edu.tw/p/403-1002-140-1.php?Lang=zh-tw",
+   "organization": "金門大學學生事務處",
+   "program": "校外獎助學金(軍訓室送件)",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://osa.nqu.edu.tw/p/403-1002-141-1.php?Lang=zh-tw",
+   "organization": "金門大學學生事務處",
+   "program": "校外獎助學金(自行申請)",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://www.moa.gov.tw/sp_ws.php?id=1518",
+   "organization": "農業部",
+   "program": "農業部：獎勵農漁民子女就學金常見問答（FAQ）",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-gov-moa-farmers-aid",
+   "checked": "read_page"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://www.mol.gov.tw/1607/1632/1633/98953/",
+   "organization": "勞動部",
+   "program": "勞動部失業勞工在學子女生活扶助金新制自9月8日起開始受理",
+   "page_type": "program",
+   "category": "living",
+   "replaces": "cand-gov-mol-unemployed-workers-aid",
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://www.mol.gov.tw/1607/28162/28540/28582/lpsimplelist",
+   "organization": "勞動部",
+   "program": "失業勞工在學子女生活扶助金",
+   "page_type": "listing",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "public-univ",
+   "url": "https://www.vac.gov.tw/cp-2103-4077-1.html",
+   "organization": "國軍退除役官兵輔導委員會",
+   "program": "高中職以下榮民子女就學補助",
+   "page_type": "program",
+   "category": "living",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "threads-list",
+   "url": "https://www.cie.org.tw/p/405-1000-1390,c216.php?Lang=zh-tw",
+   "organization": "中國工程師學會",
+   "program": "優秀工程學生獎學金",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "threads-list",
+   "url": "https://www.zlskyt.com.tw/article/52/detail/814",
+   "organization": "新北市竹林山觀音寺",
+   "program": "獎助學金申請",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "threads-list",
+   "url": "https://www.baoan.org.tw/file/news/268/20260717-045105-1.pdf",
+   "organization": "財團法人台北保安宮（大龍峒保安宮）",
+   "program": "115年度第二次獎、助學金申請簡章",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "threads-list",
+   "url": "https://www.ssjyg.org.tw/groupView.aspx?View=50",
+   "organization": "財團法人台北市松山慈祐宮",
+   "program": "慈善公益（績優獎學金申請說明）",
+   "page_type": "listing",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "threads-list",
+   "url": "https://glrslaw.e-land.gov.tw/LawContent.aspx?id=FL023596",
+   "organization": "宜蘭縣政府",
+   "program": "宜蘭縣中等以上學校優秀學生獎學金發給辦法",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "threads-list",
+   "url": "https://csr.post.gov.tw/post/index.jsp?ID=101&news_no=611",
+   "organization": "中華郵政股份有限公司",
+   "program": "中華郵政壽險保戶子女獎學金自4月1日起受理申請",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "threads-list",
+   "url": "https://www.auden.com.tw/2026scholarship/",
+   "organization": "財團法人耀登炳南教育基金會",
+   "program": "2026耀登炳南大專院校優秀人才獎學金",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "threads-list",
+   "url": "https://www.huayencollege.org/index.php/scholarship",
+   "organization": "華嚴蓮社／華嚴專宗學院",
+   "program": "慈孝獎學金",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "threads-list",
+   "url": "https://scholarship.taipower.com.tw/",
+   "organization": "台灣電力股份有限公司",
+   "program": "台電公司大學及研究所獎學金甄選網站",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "threads-list",
+   "url": "https://www.ta-yung.com.tw/news/5",
+   "organization": "財團法人林熊徵學田基金會",
+   "program": "115年度(第76屆)獎學金申請公告",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  },
+  {
+   "group": "threads-list",
+   "url": "https://www.csroc.org.tw/page.jsp?ID=41",
+   "organization": "中華民國電腦學會",
+   "program": "ITSS(資訊人社會關懷獎學金)最新年度資訊",
+   "page_type": "program",
+   "category": "scholarship",
+   "replaces": null,
+   "checked": "search_result"
+  }
+ ],
+ "not_found": [
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-formosa-plastics-entrepreneurship-42e619df",
+   "title": "台塑企業文物館暨王永慶青年創業獎助金",
+   "reason": "搜尋僅得新聞，查無此獎助金官方頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-eden-disability-college-aid-cd6c960a",
+   "title": "伊甸大專身心障礙學生勵學金",
+   "reason": "以名稱與限定 eden.org.tw 搜尋均無此方案；官網僅有服務計畫"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-precision-medicine-young-award-d61e8946",
+   "title": "台灣精準醫療產業協會青年科學家獎助",
+   "reason": "搜尋無此協會獎助頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-acer-digital-award-bf0e3227",
+   "title": "宏碁數位創作獎",
+   "reason": "此獎2015年止，2016起轉型為Being Life創作大賽（國高中為主），且非大專；查無現行官方頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-compal-rnd-fellowship-ca4a3cc4",
+   "title": "仁寶電腦產學合作碩博士獎助學金",
+   "reason": "查無仁寶官方獎學金頁；僅見仁寶電腦獎助學金在陽光基金會（顏損/燒傷）下，已含於陽光頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-chang-yung-fa-college-aid-ae2f428d",
+   "title": "張榮發基金會清寒學生助學金",
+   "reason": "搜尋僅得長榮集團首頁，無助學金頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-eslite-culture-award-41017a0e",
+   "title": "誠品人文創新獎助",
+   "reason": "誠品基金會僅見閱讀分享（贈書）計畫，無獎助"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-foi-consumer-protection-award-15fc4495",
+   "title": "金融消費評議中心研究論文獎",
+   "reason": "限定 foi.org.tw 搜尋無此獎項"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-hsing-tian-kong-elite-scholarship-92dd370a",
+   "title": "行天宮資優學生長期培育獎學金",
+   "reason": "官方網站為 http://scholarship.ht.org.tw/（僅 http，不合 https 規則），未收"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-maria-angel-scholarship-61d18baa",
+   "title": "瑪利亞天使培育助學金",
+   "reason": "maria.org.tw 搜尋無此助學金"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-mega-bank-college-scholarship-d3decf65",
+   "title": "兆豐大專清寒與優秀獎學金",
+   "reason": "搜尋無兆豐官方頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-mercy-foundation-scholarship-26c83aed",
+   "title": "恩慈大專優秀清寒助學金",
+   "reason": "搜尋無此基金會頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-psmc-advanced-process-award-d51666ca",
+   "title": "力積電先進製程研發育成獎助",
+   "reason": "僅見各校轉載的力積電碩士預聘獎學金，無力積電官方頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-pst-polymer-research-award-83cffe20",
+   "title": "高分子學會傑出研究獎學金",
+   "reason": "搜尋無學會官方頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-shin-lu-youth-empowerment-dc97696e",
+   "title": "心路身心障礙青年自立與升學獎助",
+   "reason": "搜尋無此方案"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-taishin-arts-student-review-0b2a25f8",
+   "title": "台新藝術獎學生評論獎助",
+   "reason": "taishinart.org.tw 無學生評論獎助；僅有台新藝術獎本身（專業提名，非學生）"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-trendmicro-cloud-intern-aid-d5657e6e",
+   "title": "趨勢科技騰雲運算與資安實習研究補助",
+   "reason": "trendmicro.com 僅有校園徵才/實習，無補助"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-china-steel-metal-scholarship-2e49f528",
+   "title": "中鋼金屬工程優秀學生獎助",
+   "reason": "僅見各校轉載辦法，無基金會官方頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-sfi-gold-eagle-scholarship-4fe898c4",
+   "title": "證券暨期貨金鷹獎學金",
+   "reason": "搜尋無此獎學金（僅見金彝獎、金椽獎）"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-auo-aplus-fellowship-798e0903",
+   "title": "友達A+研發獎學金",
+   "reason": "無友達官方頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-auo-green-energy-award-09b848cd",
+   "title": "友達綠能永續跨領域專題獎助",
+   "reason": "無友達官方頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-auo-display-thesis-award-a0fae27c",
+   "title": "友達前瞻顯示技術論文獎",
+   "reason": "無友達官方頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-cathay-excellence-graduate-75dfe2a1",
+   "title": "國泰卓越獎助學金（碩士組卓越專案）",
+   "reason": "國泰卓越計畫無獨立碩士組；碩士生適用特色獎助類，已併入國泰頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-fubon-management-thesis-award-a8c60a86",
+   "title": "富邦管理碩士論文獎",
+   "reason": "實為中華民國管理科學學會主辦、富邦人壽贊助的管理博碩士論文獎；僅見新聞稿，未找到簡章頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-iicm-best-degree-thesis-award-1be115a5",
+   "title": "資訊學會碩博士最佳學位論文獎",
+   "reason": "獎項存在但未找到官方辦法頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-lcy-education-scholarship-c47320f3",
+   "title": "李長榮優秀學生獎學金",
+   "reason": "官網 scholarship.lcyef.org 讀取回傳空白，無法驗證頁面"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-lin-rong-san-literature-award-8ea527dd",
+   "title": "林榮三文學獎",
+   "reason": "搜尋僅得新聞，無官方頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-samm-mechanics-thesis-award-63420eea",
+   "title": "力學學會最佳碩博士論文獎",
+   "reason": "搜尋無此學會頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-scsb-college-scholarship-9b153120",
+   "title": "上海商銀大專獎學金",
+   "reason": "僅見各校轉載公告，無基金會官方頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-police-children-scholarship-43248266",
+   "title": "白曉燕文教基金會警察子女獎助學金",
+   "reason": "僅見學校轉載，無官方頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-tcc-communication-award-c5c68d41",
+   "title": "台灣通訊學會論文獎",
+   "reason": "搜尋無此學會頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": null,
+   "title": "臺灣期貨交易所 博碩士期貨與選擇權論文獎學金",
+   "reason": "僅見104/105學年度舊名單，未確認現行是否仍辦，未收"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": null,
+   "title": "慈光山人文獎（大專獎助學金）",
+   "reason": "官網僅 http://www.zgs.org.tw，不符 https 規則，未收"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": null,
+   "title": "銀行/集團/宗教/各專業學會擴大蒐集",
+   "reason": "搜尋額度用盡；法律、會計、農業、醫學、機械/化工/電機學會、多數集團基金會未能找到官方頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-pan-wen-yuan-fellowship-78b0319d",
+   "title": "潘文淵基金會 博士班學生出國研究獎學金",
+   "reason": "官網僅有研究傑出獎、考察研究獎助金（博士後五年內/40歲以下）、獎學金（國內院校班排前1/4）；無博士生出國研究獎學金。已另列考察研究獎助金"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-ctci-international-scholarship-341d40e9",
+   "title": "中技社 境外生研究獎學金",
+   "reason": "2026年公告同頁涵蓋（已列於 ctci 2026 公告 46612/46765）；不另有獨立頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-ctci-international-living-aid-b4af3092",
+   "title": "中技社 境外生生活助學金",
+   "reason": "2026年公告四項獎學金不含生活助學金；英文站說明境外生Bursary Award自2026起暫停"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-mediatek-phd-fellowship-b2f8efec",
+   "title": "聯發科技博士生研究獎學金",
+   "reason": "mediatek.com/company/mediatek-foundation 頁面只有科學教育/產學合作，無獎學金頁；搜尋亦無官方辦法"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-mediatek-girls-in-stem-61477d9d",
+   "title": "聯發科 Girls in STEM",
+   "reason": "同上，查無官方方案頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-mediatek-master-thesis-award-ff35346b",
+   "title": "聯發科碩士論文獎",
+   "reason": "同上，查無官方方案頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-pu-ren-university-mentorship-a08ea367",
+   "title": "仁愛/普仁 大學部導引助學計畫",
+   "reason": "you-care.org.tw 助學計畫僅針對高中職，查無大專方案"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-csroc-outstanding-thesis-award-d6e945cc",
+   "title": "CSROC 大專與碩博士論文獎",
+   "reason": "csroc.org.tw 僅見 award.jsp 與 ITSS獎學金，查無論文獎專頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-realtek-top-rnd-fellowship-2dc7a995",
+   "title": "瑞昱碩博士頂尖研發獎學金",
+   "reason": "realtek.com 首頁無相關連結，舊網址為錯誤頁"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-ase-environment-thesis-award-31835beb",
+   "title": "日月光環保學術碩博士論文獎助",
+   "reason": "舊網域asefoundation.org.tw不存在；真實站為 aseepsfund.org.tw 與 asefund.org.tw，但首頁/清單未讀到現行申請頁，僅見第九屆得獎新聞，未收"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-advantech-tic100-award-b05340f3",
+   "title": "研華 TiC100",
+   "reason": "tic100.org.tw 現為無關內容/疑似被濫用的網站，已非原計畫；勿收"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-ase-women-stem-scholarship-5a49be4c",
+   "title": "日月光女性永續創新",
+   "reason": "asefund.org.tw 未見該獎學金專頁；舊網域不存在"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-tzu-chi-college-sprout-65f29d0c",
+   "title": "慈濟基金會新芽獎學金（大專組）",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-eden-disability-college-aid-cd6c960a",
+   "title": "伊甸社會福利基金會 - 伊甸大專身心障礙學生勵學金",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-precision-medicine-young-award-d61e8946",
+   "title": "台灣精準醫療產業協會 - 精準醫療青年科學家獎助",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-acer-digital-award-bf0e3227",
+   "title": "宏碁基金會 - 宏碁數位創作獎",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-ccf-college-scholarship-deba82ae",
+   "title": "家扶基金會大專學生獎助學金",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-chimei-arts-award-9a2872ff",
+   "title": "奇美文化基金會 - 奇美藝術獎",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-eslite-culture-award-41017a0e",
+   "title": "誠品文化藝術基金會 - 人文創新獎助",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-foi-consumer-protection-award-15fc4495",
+   "title": "金融消費評議中心 - 金融消費者保護研究論文獎",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-fulbright-taiwan-fellowship-d85f9bb6",
+   "title": "學術交流基金會 (Fulbright Taiwan) - 赴美攻讀碩博士獎學金",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-chong-you-elevator-scholarship-ce2115ab",
+   "title": "崇友實業大專院校獎學金",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-gigabyte-great-design-award-ce45dca1",
+   "title": "技嘉教育基金會 - 奇想設計大賽獎助",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-hsing-tian-kong-college-aid-d97fb06d",
+   "title": "行天宮助學金（大專組）",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-maria-angel-scholarship-61d18baa",
+   "title": "瑪利亞社會福利基金會 - 瑪利亞天使培育助學金",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-mega-bank-college-scholarship-d3decf65",
+   "title": "兆豐大專學生清寒與優秀獎學金",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-pst-polymer-research-award-83cffe20",
+   "title": "中華民國高分子學會 - 傑出研究獎學金",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-sunshine-burn-injury-scholarship-d8075e8f",
+   "title": "陽光社會福利基金會 - 陽光獎助學金（燒傷暨顏損大專青年）",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-shin-lu-youth-empowerment-dc97696e",
+   "title": "心路社會福利基金會 - 身心障礙青年自立與升學獎助",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-tfrd-college-scholarship-84d03569",
+   "title": "罕見疾病大專獎助學金",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-tfrd-thesis-grant-fc08b512",
+   "title": "罕見疾病博碩士論文獎助金",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-china-steel-metal-scholarship-2e49f528",
+   "title": "中鋼集團教育基金會 - 中鋼金屬工程優秀學生獎助",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-auo-aplus-fellowship-798e0903",
+   "title": "友達光電 A+ 研發獎學金",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-auo-green-energy-award-09b848cd",
+   "title": "友達光電文教基金會 - 綠能永續跨領域專題獎助",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-auo-display-thesis-award-a0fae27c",
+   "title": "友達光電前瞻顯示技術論文獎",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-cathay-excellence-college-6fd550f2",
+   "title": "國泰卓越獎助學金（大專組）",
+   "reason": "未查到官方頁：舊網址為猜測且網域不存在（DNS 無解），本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-cice-civil-engineering-scholarship-28a8c487",
+   "title": "中華民國土木水利工程學會 - 優秀學生獎學金",
+   "reason": "未查到官方頁：舊網址為猜測且網域不存在（DNS 無解），本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-fubon-management-thesis-award-a8c60a86",
+   "title": "富邦人壽管理碩士論文獎",
+   "reason": "未查到官方頁：舊網址為猜測且網域不存在（DNS 無解），本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-iicm-best-degree-thesis-award-1be115a5",
+   "title": "中華民國資訊學會 (IICM) - 碩博士最佳學位論文獎",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-lcy-education-scholarship-c47320f3",
+   "title": "李長榮教育基金會 - 李長榮優秀學生獎學金",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-formosa-qin-lao-intern-aid-c7f5c781",
+   "title": "勤勞學生暑期工讀暨助學專案",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-lin-rong-san-literature-award-8ea527dd",
+   "title": "林榮三文化公益基金會 - 林榮三文學獎",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-samm-mechanics-thesis-award-63420eea",
+   "title": "中華民國力學學會 - 最佳碩博士論文獎",
+   "reason": "未查到官方頁：舊網址為猜測且網域不存在（DNS 無解），本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-police-children-scholarship-43248266",
+   "title": "白曉燕文教基金會 - 警察子女獎助學金",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-tcc-communication-award-c5c68d41",
+   "title": "台灣通訊學會 - 5G/6G 前瞻通訊創新研究論文獎",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-li-hsien-dandelion-aid-ee93a725",
+   "title": "財團法人立賢教育基金會 - 蒲公英大專生偏鄉陪伴服務獎助",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-tps-optics-thesis-award-17699d77",
+   "title": "中華民國光電學會 (TPS) - 最佳碩博士論文獎",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-tsung-cho-chang-scholarship-85b7570b",
+   "title": "宗倬章先生教育基金會學生獎助學金",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-asus-youth-innovation-award-89557049",
+   "title": "華碩青年程式與永續創新專案",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-delta-young-environment-award-5efe85e3",
+   "title": "台達青年環境獎學金",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-ieee-taipei-best-thesis-award-2c236a80",
+   "title": "台灣電機電子工程學會 (IEEE Taipei Section) - 碩博士最佳論文獎",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-innolux-rnd-scholarship-0434ddb5",
+   "title": "群創光電研發菁英獎學金",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-spil-semiconductor-scholarship-6d274b41",
+   "title": "矽品精密半導體封裝研發獎學金",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-tbpa-biotech-thesis-award-dc07e4de",
+   "title": "台灣生技產業聯盟 - 生物技術與生技產業潛力人才論文獎",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "enterprise",
+   "candidate_id": "cand-ent-taipei-cement-low-carbon-award-2288553c",
+   "title": "台泥永續環境基金會 - 低碳永續工程研究論文獎",
+   "reason": "未查到官方頁：舊網址為猜測，本輪搜尋額度用盡，未能進一步找到正確網址"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-ntu-oia-international-emergency",
+   "title": "臺大國際事務處 NTU OIA Emergency Relief Fund",
+   "reason": "搜尋（中英文、限 ntu.edu.tw）無國際事務處專屬急難基金；僅見學務處急難慰問救助金，已併入 cand-ntu-emergency-aid"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-k12-k12ea-remote-schools-transport-hostel-dadb681f",
+   "title": "偏遠地區學校及非山非離島學生交通費與住宿補助",
+   "reason": "兩次限 k12ea.gov.tw 搜尋均無對應學生補助頁，僅有原住民助學金、身障交通費、國中小東部離島交通費，皆非本方案"
+  },
+  {
+   "group": "government",
+   "candidate_id": null,
+   "title": "宜蘭縣政府社會處急難救助",
+   "reason": "兩次搜尋（含限 ilan.gov.tw）皆回傳 0 筆結果，未查證"
+  },
+  {
+   "group": "government",
+   "candidate_id": null,
+   "title": "臺東縣政府教育處獎學金",
+   "reason": "兩次搜尋無縣府教育處個人獎學金頁，僅有資優獎助辦法與無關新聞"
+  },
+  {
+   "group": "government",
+   "candidate_id": null,
+   "title": "苗栗縣政府教育處清寒優秀學生獎學金",
+   "reason": "只搜到各高中轉載公告，縣府原頁未出現在結果"
+  },
+  {
+   "group": "government",
+   "candidate_id": null,
+   "title": "嘉義縣政府教育處清寒優秀學生獎學金",
+   "reason": "只見縣教育資訊網轉載與法規目錄頁（law.cyhg.gov.tw 法規體系），無單篇要點頁；目錄頁未收"
+  },
+  {
+   "group": "government",
+   "candidate_id": null,
+   "title": "新竹縣政府教育處獎學金",
+   "reason": "只見學校轉載；縣府已改稱教育局，doe.hcc.edu.tw 結果為全部公告通用列表，非獎學金專頁，未收"
+  },
+  {
+   "group": "government",
+   "candidate_id": null,
+   "title": "宜蘭大學獎助學金清單頁",
+   "reason": "只搜到個別公告，未見獎助學金分類列表頁；僅收一則 114 年公告為 program"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-k12-moe-low-income-preschool-aid-cae8c204",
+   "title": "低收入戶及中低收入戶幼童托教補助",
+   "reason": "dep.mohw.gov.tw/DOSAASW 首頁可讀但無此方案專頁；幼兒就學補助見 ece.moe.edu.tw/ch/subsidy/（已列於 ece 卡）"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-ncku-emergency-aid",
+   "title": "成大學生急難救助金",
+   "reason": "成大學務處站內只找到獎學金申請與急難紓困PDF，無專屬急難救助金頁"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-fju-emergency-relief",
+   "title": "輔大學生急難救助金",
+   "reason": "搜尋額度用盡，大學校內急難救助未查（建議交大學組處理）"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-ntu-oia-international-emergency",
+   "title": "臺大國際學生急難救助金",
+   "reason": "搜尋額度用盡，大學校內急難救助未查（建議交大學組處理）"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-nccu-emergency-aid",
+   "title": "政大學生急難救助金",
+   "reason": "搜尋額度用盡，大學校內急難救助未查（建議交大學組處理）"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-nycu-emergency-relief",
+   "title": "陽明交大學生急難救助金",
+   "reason": "搜尋額度用盡，大學校內急難救助未查（建議交大學組處理）"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-nthu-emergency-relief",
+   "title": "清大學生急難救助金",
+   "reason": "搜尋額度用盡，大學校內急難救助未查（建議交大學組處理）"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-ntu-emergency-aid",
+   "title": "臺大學生急難救助金",
+   "reason": "搜尋額度用盡，大學校內急難救助未查（建議交大學組處理）"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-tku-emergency-aid",
+   "title": "淡江學生急難救助金",
+   "reason": "搜尋額度用盡，大學校內急難救助未查（建議交大學組處理）"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-k12-tfrd-rare-disorder-scholarship-0c9ab3b4",
+   "title": "罕見疾病基金會助學金",
+   "reason": "tfrd.org.tw 首頁為JS渲染，抓不到連結，未能確認專頁"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-hsingtian-emergency-grant",
+   "title": "行天宮急難/學生救助",
+   "reason": "ht.org.tw 首頁無可抓連結，未確認"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-k12-hsing-tian-kong-scholarship-2fc58a6b",
+   "title": "行天宮助學金",
+   "reason": "同上，未確認"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-wrp-single-parent-aid",
+   "title": "婦女救援基金會單親家庭",
+   "reason": "wrp.org.tw 首頁無可抓連結，未確認"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-tzuchi-emergency-relief",
+   "title": "慈濟急難/學生",
+   "reason": "tzuchi.org.tw 首頁JS渲染，未確認"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-k12-tzu-chi-sprout-scholarship-6c912c99",
+   "title": "慈濟新芽獎學金",
+   "reason": "同上，未確認"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-mohw-emergency-relief",
+   "title": "衛福部急難紓困",
+   "reason": "舊URL 404；dep.mohw.gov.tw/DOSAASW 首頁可讀但未找到急難紓困專頁（各縣市社會局急難救助已另列）"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-sfaa-special-family",
+   "title": "社家署特殊境遇家庭扶助",
+   "reason": "sfaa.gov.tw 首頁未列出專頁連結，搜尋僅得訴願決定書與舊法規"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-k12-moe-special-circumstances-family-waiver-1456e530",
+   "title": "特殊境遇家庭子女就學費用減免",
+   "reason": "未找到官方專頁"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-k12-moe-school-lunch-subsidy-35b9fafd",
+   "title": "國中小清寒學生午餐費補助",
+   "reason": "未找到官方專頁"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-k12-moe-youth-education-employment-savings-95808842",
+   "title": "青年教育與就業儲蓄帳戶",
+   "reason": "未找到官方專頁"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-k12-cip-indigenous-elementary-junior-aid-7cd98aed",
+   "title": "原民會國中小原住民學生助學金",
+   "reason": "未找到專頁（cip.gov.tw 首頁可讀，國中小助學金多由縣市辦理）"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-k12-moe-childcare-stipend-2to5-8dcbb7b3",
+   "title": "2至5歲育兒津貼",
+   "reason": "sfaa list/5e0 僅為未滿2歲；2-5歲專頁未確認"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-k12-k12ea-cooperative-education-stipend-7992c342",
+   "title": "建教合作生活津貼",
+   "reason": "搜尋額度用盡未查"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-k12-moe-president-education-award-bfc4415c",
+   "title": "總統教育獎",
+   "reason": "未查"
+  },
+  {
+   "group": "government",
+   "candidate_id": "cand-k12-k12ea-remote-schools-transport-hostel-dadb681f",
+   "title": "偏遠地區學校交通住宿補助",
+   "reason": "未查"
+  },
+  {
+   "group": "government",
+   "candidate_id": null,
+   "title": "金門縣政府社會處急難救助",
+   "reason": "搜尋額度用盡或搜尋無官方頁面；僅見學校轉知公告"
+  },
+  {
+   "group": "government",
+   "candidate_id": null,
+   "title": "連江縣政府社會處急難救助",
+   "reason": "搜尋額度用盡或搜尋無官方頁面；僅見學校轉知公告"
+  },
+  {
+   "group": "government",
+   "candidate_id": null,
+   "title": "臺東縣政府教育處清寒優秀學生獎學金",
+   "reason": "搜尋額度用盡或搜尋無官方頁面；僅見學校轉知公告"
+  },
+  {
+   "group": "government",
+   "candidate_id": null,
+   "title": "宜蘭縣政府教育處優秀學生獎學金（官方頁）",
+   "reason": "搜尋額度用盡或搜尋無官方頁面；僅見學校轉知公告"
+  },
+  {
+   "group": "government",
+   "candidate_id": null,
+   "title": "新竹縣政府教育處清寒優秀學生獎學金（官方專頁）",
+   "reason": "搜尋額度用盡或搜尋無官方頁面；僅見學校轉知公告"
+  },
+  {
+   "group": "government",
+   "candidate_id": null,
+   "title": "彰化縣政府教育處清寒/自強獎學金（官方專頁）",
+   "reason": "搜尋額度用盡或搜尋無官方頁面；僅見學校轉知公告"
+  },
+  {
+   "group": "government",
+   "candidate_id": null,
+   "title": "苗栗/南投/嘉義縣教育處清寒優秀獎學金（官方專頁，只見學校轉知）",
+   "reason": "搜尋額度用盡或搜尋無官方頁面；僅見學校轉知公告"
+  },
+  {
+   "group": "government",
+   "candidate_id": null,
+   "title": "臺北市政府教育局弱勢助學金專頁",
+   "reason": "搜尋額度用盡或搜尋無官方頁面；僅見學校轉知公告"
+  },
+  {
+   "group": "government",
+   "candidate_id": null,
+   "title": "中央：教育部青年發展署、數位發展部、國科會高中生獎學金（查無學生獎學金）",
+   "reason": "搜尋額度用盡或搜尋無官方頁面；僅見學校轉知公告"
+  },
+  {
+   "group": "government",
+   "candidate_id": null,
+   "title": "民間：宗教與慈善團體（除慈濟、行天宮、普仁、家扶、富邦、鴻海外）",
+   "reason": "搜尋額度用盡或搜尋無官方頁面；僅見學校轉知公告"
+  },
+  {
+   "group": "merit-similar",
+   "candidate_id": null,
+   "title": "指南宮 獎學金",
+   "reason": "搜尋兩次（含 org.tw 限定），無任何指南宮自辦獎學金的結果"
+  },
+  {
+   "group": "merit-similar",
+   "candidate_id": null,
+   "title": "北港朝天宮 獎學金",
+   "reason": "只查到「北港媽孝心獎」（弱勢孝順學童，國小為主），非大專績優獎學金；未取得官方頁面網址"
+  },
+  {
+   "group": "merit-similar",
+   "candidate_id": null,
+   "title": "佛光山／法鼓山 績優學生獎學金",
+   "reason": "法鼓山查無；佛光山只見「好苗子人才扶植計畫」且網址為 http，依規則未收"
+  },
+  {
+   "group": "merit-similar",
+   "candidate_id": null,
+   "title": "中油／台糖／台水／中鋼 對一般學生獎學金",
+   "reason": "中油為「暑期實習工讀暨獎學金」且畢業須服務，非純績優；台糖台水查無；中鋼已在 known-urls"
+  },
+  {
+   "group": "merit-similar",
+   "candidate_id": null,
+   "title": "臺灣銀行／土地銀行／華南／彰銀／兆豐 學生獎學金",
+   "reason": "用各行官網網域限定搜尋，只見就學貸款、捐助團體與失親兒少，無一般學生獎學金；第一銀行文教基金會資優獎學金限弱勢學生，不收"
+  },
+  {
+   "group": "merit-similar",
+   "candidate_id": null,
+   "title": "台北市文昌宮 獎學金",
+   "reason": "官網 product.html 只列簡章名稱，無資格內文；搜尋摘要稱對象為清寒優秀學生，未確認是否不限清寒，未收"
+  },
+  {
+   "group": "merit-similar",
+   "candidate_id": null,
+   "title": "萬和宮子女獎學金",
+   "reason": "限信眾子女，資格在下載專區，頁面未載明，未收"
+  },
+  {
+   "group": "merit-similar",
+   "candidate_id": null,
+   "title": "台灣產業服務基金會 優秀學生獎學金",
+   "reason": "只找到各大學轉載 PDF，官方網域搜尋無結果"
+  },
+  {
+   "group": "merit-similar",
+   "candidate_id": null,
+   "title": "平安菁英教育基金會 平安獎學金",
+   "reason": "有家戶所得 90 萬元上限，非完全不限家境，且 elite-well 可能已在他處；未收"
+  },
+  {
+   "group": "merit-similar",
+   "candidate_id": null,
+   "title": "張榮發基金會夢想獎助學金／第一銀行資優獎學金／南投縣優秀學生獎學金辦法",
+   "reason": "分別需清寒、需弱勢身分、辦法已廢止（2016），皆不符"
+  },
+  {
+   "group": "perks-overseas",
+   "candidate_id": "cand-perk-canva-education-b9b84531",
+   "title": "Canva for Education / Canva 學生方案",
+   "reason": "搜尋結果顯示 Canva for Education 僅限 K-12 且須教師邀請，大專生不適用；canva.com/education/students/ 讀取回 403。無大專生官方方案頁。"
+  },
+  {
+   "group": "perks-overseas",
+   "candidate_id": "cand-perk-perplexity-student-discount-caccf465",
+   "title": "Perplexity Pro 學生優惠方案",
+   "reason": "perplexity.ai/education 讀取回 403，搜尋結果也無官方頁面，只有第三方描述，優惠條件互相矛盾，故不收。"
+  },
+  {
+   "group": "perks-overseas",
+   "candidate_id": "cand-perk-autodesk-education-135d397b",
+   "title": "Autodesk Education Community",
+   "reason": "原網址與替代查詢皆回 403，未能自行讀到任何官方頁面。"
+  },
+  {
+   "group": "perks-overseas",
+   "candidate_id": "cand-perk-logitech-student-69c2587c",
+   "title": "Logitech 羅技官方教育優惠折扣",
+   "reason": "搜尋未找到台灣學生折扣方案；僅有英國學生計畫與台灣員工購買計畫，不適用。"
+  },
+  {
+   "group": "perks-overseas",
+   "candidate_id": "cand-perk-isic-card-7c39156e",
+   "title": "ISIC 國際學生證",
+   "reason": "傳聞官網 isic.com.tw，但讀取回空白、搜尋結果中也沒出現該網址，無法確認；isic.org 首頁未見台灣資訊。"
+  },
+  {
+   "group": "perks-overseas",
+   "candidate_id": "cand-perk-academic-databases-library-af229a92",
+   "title": "學術文獻庫校園授權",
+   "reason": "未查到單一官方學生方案頁；屬各校圖書館授權，原網址 concert.stpi.narl.org.tw 已在 known-urls。"
+  },
+  {
+   "group": "perks-overseas",
+   "candidate_id": "cand-perk-google-cloud-skills-boost-57397feb",
+   "title": "Google Cloud Skills Boost for Students",
+   "reason": "本輪未查到可驗證的學生方案頁，未深入搜尋。"
+  },
+  {
+   "group": "perks-overseas",
+   "candidate_id": "cand-perk-adobe-cc-student-483d80c7",
+   "title": "Adobe Creative Cloud 學生與教師特惠方案",
+   "reason": "原網址仍可讀且已在 known-urls；另見 adobe.com/tw/products/special-offers/ccm-ste-introductory.html 但只是優惠條款頁，不收。"
+  },
+  {
+   "group": "perks-overseas",
+   "candidate_id": null,
+   "title": "澳洲政府在台獎學金",
+   "reason": "australia.org.tw 與 DFAT 頁面只提 Australia Awards／New Colombo Plan 概況，New Colombo Plan 是給澳洲學生赴台，未見台灣學生專屬可申請方案頁。"
+  },
+  {
+   "group": "perks-overseas",
+   "candidate_id": null,
+   "title": "紐西蘭政府在台獎學金",
+   "reason": "Manaaki 等政府獎學金對象為開發中國家，未見台灣學生適用的官方方案頁。"
+  },
+  {
+   "group": "perks-overseas",
+   "candidate_id": null,
+   "title": "ChatGPT／Claude／Microsoft Copilot 學生方案",
+   "reason": "OpenAI 學生優惠限美加；Claude for Education 為校方採購；Microsoft 免費一年已於 2025-10-31 結束，皆無台灣學生可個別申請的官方頁。"
+  },
+  {
+   "group": "perks-overseas",
+   "candidate_id": null,
+   "title": "美國 AIT 獎學金／EducationUSA",
+   "reason": "AIT 頁面多為存檔，主要管道即 Fulbright Taiwan（已收）。"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "東吳大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "長庚大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "東海大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "中國文化大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "大同大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "朝陽科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "中華大學",
+   "reason": "新聞稱115學年度起停招（未確認），且未找到學務處頁"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "南華大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "佛光大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "開南大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "長榮大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "大葉大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "明道大學",
+   "reason": "新聞稱112學年起停招並退場，不收"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "致理科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "元培醫事科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "輔英科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "南臺科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "崑山科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "樹德科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "龍華科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "中信金融管理學院",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "景文科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "德明財經科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "僑光科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "建國科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "環球科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "高苑科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "遠東科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "東方設計大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "華夏科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "萬能科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "清雲科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "育達科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "崇仁醫護管理專科學校",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "中州科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "大漢技術學院",
+   "reason": "新聞稱114學年度起停辦，學生安置他校"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "聖約翰科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "臺北海洋科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "稻江科技暨管理學院",
+   "reason": "新聞稱停招並多次提停辦計畫"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "台灣首府大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "南榮科技大學",
+   "reason": "新聞稱停辦退場"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "和春技術學院",
+   "reason": "新聞稱已停招並停辦"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "親民健康管理學院",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "經國管理暨健康學院",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "蘭陽技術學院",
+   "reason": "新聞稱111學年起停辦"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "中華科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "文藻外語大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "崇右影藝科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "臺灣觀光學院",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "樹人醫護管理專科學校",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "大同技術學院",
+   "reason": "新聞稱111學年起停招"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "台灣神學院",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "聖母醫護管理專科學校",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "慈濟科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "長庚科技大學",
+   "reason": "WebSearch一次（校名+獎助學金+學務處）僅得他校文件、新聞或規章PDF，未出現該校學務處獎助學金清單頁；未猜網址"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": "cand-univ-scu-0012a12b",
+   "title": "東吳大學舊卡",
+   "reason": "第二輪搜尋仍只得規章PDF與新聞，無可驗證的清單頁；中國醫藥另有助學金辦法PDF已列入found但非同一方案，故不填replaces"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": "cand-univ-thu-0017a12b",
+   "title": "東海大學舊卡",
+   "reason": "第二輪搜尋仍只得規章PDF與新聞，無可驗證的清單頁；中國醫藥另有助學金辦法PDF已列入found但非同一方案，故不填replaces"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": "cand-univ-cmu-0010a12b",
+   "title": "中國醫藥大學舊卡",
+   "reason": "第二輪搜尋仍只得規章PDF與新聞，無可驗證的清單頁；中國醫藥另有助學金辦法PDF已列入found但非同一方案，故不填replaces"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "中國醫藥大學",
+   "reason": "自動爬取官網首頁／學務處頁未能取得獎助學金清單連結（頁面為JS動態選單、網域無法連線或搜尋無結果），未確認"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "亞洲大學",
+   "reason": "自動爬取官網首頁／學務處頁未能取得獎助學金清單連結（頁面為JS動態選單、網域無法連線或搜尋無結果），未確認"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "東南科技大學",
+   "reason": "自動爬取官網首頁／學務處頁未能取得獎助學金清單連結（頁面為JS動態選單、網域無法連線或搜尋無結果），未確認"
+  },
+  {
+   "group": "private-univ",
+   "candidate_id": null,
+   "title": "臺北基督學院",
+   "reason": "自動爬取官網首頁／學務處頁未能取得獎助學金清單連結（頁面為JS動態選單、網域無法連線或搜尋無結果），未確認"
+  },
+  {
+   "group": "public-univ",
+   "candidate_id": "cand-univ-nccu-0004a12b",
+   "title": "政治大學指南優秀研究生獎學金與人文卓越獎勵",
+   "reason": "政大研究生獎學金作業頁僅述學務處預算流程,未提及指南/人文卓越;未找到專頁"
+  },
+  {
+   "group": "public-univ",
+   "candidate_id": "cand-univ-nthu-0001a12b",
+   "title": "清華大學校長獎學金與優秀研究生學術獎勵",
+   "reason": "僅搜到各系所/教務處校長獎學金辦法PDF,未找到學務處官方專頁"
+  },
+  {
+   "group": "public-univ",
+   "candidate_id": "cand-univ-nycu-0002a12b",
+   "title": "陽明交通大學學術卓越研究生獎學金",
+   "reason": "學務處研究生獎助學金頁未提及該方案名稱;搜到的博士生獎學金PDF屬各單位"
+  },
+  {
+   "group": "public-univ",
+   "candidate_id": "cand-univ-ncu-0005a12b",
+   "title": "中央大學松果研究生獎助金與拔尖獎學金",
+   "reason": "生輔組獎學金頁未見此方案"
+  },
+  {
+   "group": "public-univ",
+   "candidate_id": "cand-univ-ntpu-000aa12b",
+   "title": "臺北大學三峽優秀研究生學術獎助金",
+   "reason": "校內外獎助學金列表頁未確認此方案,未找到專頁"
+  },
+  {
+   "group": "public-univ",
+   "candidate_id": "cand-univ-ntut-000ca12b",
+   "title": "臺北科技大學優秀博碩士研究生入學與研發獎學金",
+   "reason": "研究生獎助學金頁僅為助理型獎助,不含入學/研發獎學金"
+  },
+  {
+   "group": "public-univ",
+   "candidate_id": "cand-univ-ntust-000ba12b",
+   "title": "臺灣科技大學碩博士研究生卓越獎學金",
+   "reason": "學務處頁未列研究生卓越獎學金,未找到"
+  },
+  {
+   "group": "public-univ",
+   "candidate_id": "cand-ntu-med-oia-conference-40192a8b",
+   "title": "臺大醫學院醫學生出席國際會議及海外實習服務交換獎學金",
+   "reason": "未查到(搜尋額度有限,未專查醫學院)"
+  },
+  {
+   "group": "public-univ",
+   "candidate_id": "cand-ntu-med-publication-115-7296a12b",
+   "title": "臺大醫學院115學年度研究生優秀著作獎",
+   "reason": "未查到(未專查醫學院)"
+  },
+  {
+   "group": "public-univ",
+   "candidate_id": null,
+   "title": "臺北商業大學",
+   "reason": "官網首頁與學生專區無學務處獎助學金連結,搜尋額度用盡,未找到"
+  },
+  {
+   "group": "public-univ",
+   "candidate_id": "cand-univ-nchu-0007a12b",
+   "title": "中興大學優秀博碩士研究生獎勵金",
+   "reason": "生輔組研究生獎助學金頁(postgraduate.html)僅列研究生獎助學金實施辦法，未見此方案名稱；查無對應官方頁"
+  },
+  {
+   "group": "public-univ",
+   "candidate_id": "cand-univ-ccu-0008a12b",
+   "title": "中正大學研究生學術卓越獎學金",
+   "reason": "搜尋ccu.edu.tw僅見獎助學金實施要點與博士生獎學金試辦要點，查無同名方案"
+  },
+  {
+   "group": "public-univ",
+   "candidate_id": null,
+   "title": "宜蘭大學",
+   "reason": "搜尋僅見個別公告頁(niuosa.niu.edu.tw/files/…,c527等單篇)，未讀到獎助學金清單頁，不收單篇"
+  },
+  {
+   "group": "public-univ",
+   "candidate_id": "cand-univ-ncku-0003a12b",
+   "title": "成功大學優秀研究生獎助學金與博生獎勵",
+   "reason": "成大生輔組頁面無研究生專屬獎助頁，搜尋亦未見該方案官方頁"
+  },
+  {
+   "group": "public-univ",
+   "candidate_id": "cand-univ-ndhu-0018a12b",
+   "title": "東華大學東區優秀博碩士研究生獎助金",
+   "reason": "osa.ndhu 首頁無研究生獎助金連結，搜尋未見"
+  },
+  {
+   "group": "threads-list",
+   "candidate_id": null,
+   "title": "朱順一合勤獎學金",
+   "reason": "搜尋只出現中央、清華、陽明交大各校自訂辦法與校內轉載；未見合勤科技或朱順一相關基金會的官方方案頁。依規定不收學校頁面。"
+  },
+  {
+   "group": "threads-list",
+   "candidate_id": null,
+   "title": "威帝建設倫理專案獎學金",
+   "reason": "搜尋三次（含限定網域），只有學校轉載的施行計畫PDF，查無威帝建設官方網站頁面；依規定不收學校轉載頁。"
+  }
+ ]
+}

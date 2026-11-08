@@ -15,15 +15,15 @@
 ## 🚀 最新專案狀態 (Latest Status)
 
 > **公開預覽網站即時發布中**：**[https://opengsa.mattye.dev/](https://opengsa.mattye.dev/)**  
-> **全庫方案覆蓋規模**：**128 筆來源摘要**（1-to-1 精確時程政策覆蓋，`undetermined = 0`，覆蓋率 100%）  
+> **全庫方案覆蓋規模**：**224 筆來源摘要**（部分是早期手寫卡，尚待用現行流程重新查核；來源沒載明時程的標示為未判定，不補值）  
 > **測試防線**：Python 單元測試與前端整合測試由 GitHub Actions 每次執行
 
-### 1. 全庫八大獎助資源板塊 (128 筆來源摘要)
+### 1. 全庫八大獎助資源板塊 (224 筆來源摘要)
 OpenGSA 目前收錄跨越教育階段、公部門、民間企業與高等教育學府的完整資源光譜：
-1. **碩博士研究生與核心研究獎助 (64 筆)**：國科會博士生研究獎學金、教育部產學博班、校長獎學金、傑出論文成果獎等。
+1. **研究生、校內與民間獎助（來源審核中，163 筆）**：國科會博士生研究獎學金、教育部產學博班、校長獎學金、傑出論文成果獎，以及各校公告的校內外獎學金與民間基金會獎助等。
 2. **K-12 各級教育與公部門助學 (8 筆)**：學產基金、教育部清寒弱勢助學、地方政府急難救助金等（[專題報告](docs/K12-SCHOLARSHIP-LANDSCAPE-AND-SOURCE-CHAINS.md)）。
-3. **學生身分軟硬體、雲端與 AI Perks (15 筆)**：GitHub Student Pack、Notion AI、JetBrains、AWS Educate 等（[專題報告](docs/STUDENT-SOFTWARE-HARDWARE-AND-AI-PERKS.md)）。
-4. **企業、民間基金會與學會獎助 (6 筆)**：台積電、鴻海獎學鯨、行天宮、宗倬章、各專門學會獎助等（[專題報告](docs/ENTERPRISE-SCHOLARSHIP-LANDSCAPE-AND-SOURCE-CHAINS.md)）。
+3. **學生身分軟硬體、雲端與 AI Perks (13 筆)**：GitHub Student Pack、Notion AI、JetBrains、AWS Educate 等（[專題報告](docs/STUDENT-SOFTWARE-HARDWARE-AND-AI-PERKS.md)）。
+4. **企業、民間基金會與學會獎助 (5 筆)**：台積電、鴻海獎學鯨、行天宮、宗倬章、各專門學會獎助等（[專題報告](docs/ENTERPRISE-SCHOLARSHIP-LANDSCAPE-AND-SOURCE-CHAINS.md)）。
 5. **醫學與特定專業出國/論文獎助 (1 筆)**：臺大醫學院學生出國補助辦法、醫學院研究生優秀著作獎（[專題報告](docs/MED-SCHOLARSHIPS-AUDIT.md)）。
 6. **全台跨校大專校院代表性研究生獎助 (19 筆)**：清華、交大、成大、政大、中央、中山、中興、中正、師大、臺北大學等 24 所代表性高教學府（[專題報告](docs/TAIWAN-UNIVERSITIES-SCHOLARSHIP-EXPANSION.md)）。
 7. **中央跨部會法定助學、算力與全國學會論文獎 (3 筆)**：原民會、農業部、勞動部、退輔會就學補助，Azure for Students 算力點數，資訊學會 (IICM)、人工智慧學會 (TAAI)、電腦學會 (CSROC) 碩博士最佳論文獎。
@@ -58,20 +58,17 @@ $$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (當�
 
 ### 5. 四分頁職責重新定位與輕量 URL 狀態同步
 - **Tab 1（獎助探索與快篩）**：支援卡片清單與全域甘特圖切換；升級**全教育階段學歷篩選**（大學部、高中職、國中小幼兒、碩博）與**出國出訪綜合總覽**，卡片附一鍵【⭐ 收藏至個人時程】與【📄 查看完整條文】（[篩選升級說明](docs/FILTER-EXPANSION-AND-VISIBILITY.md)）。
-- **Tab 2（方案詳情與條件比對）**：支援全庫 128 筆來源摘要獨立切換；新增**雙方案並排比對（Side-by-Side）**，精確比對資格、給付、兼領限制與期限。
+- **Tab 2（方案詳情與條件比對）**：支援全庫 224 筆來源摘要獨立切換；新增**雙方案並排比對（Side-by-Side）**，精確比對資格、給付、兼領限制與期限。
 - **Tab 3（我的時程與行動規劃）**：專屬個人時間軸，專注渲染收藏方案，附待辦核銷進度統計與研討會個人補助試算。
 - **Tab 4（權益防線與法規指南）**：提供雙軌五級救濟地圖、各校 TA/RA 給付行情比對與從屬性自測工具（[權益頁說明](docs/RIGHTS-PAGE-UPDATE.md)）。
 - **輕量 URL 狀態同步（State in URL）**：`URLSearchParams` 雙向同步分頁、搜尋字、篩選、比對清單，支援深層連結與頁首「📋 分享此畫面」一鍵複製。
 
 ---
 
-### 6. GitHub Actions 自動化巡檢與增量保護機制
-- **四大執行軌道**：
-  - `gov` 軌道（週二、五 09:17 UTC+8）：公部門與法定助學
-  - `enterprise` 軌道（週一、四 09:17 UTC+8）：企業、基金會與學會
-  - `other` 軌道（週三、六 09:17 UTC+8）：學生 Perks、AI 工具與大專校院生輔組
-  - `consolidation` 軌道（週日 09:17 UTC+8）：全庫時程聚合校驗
-- **增量閘門 (Incremental Diff Gate)**：未異動來源直接判定 `SKIP_UNCHANGED`（**0 HTTP / 0 Token**），嚴格落實 `model_mode=off`。
+### 6. GitHub Actions 來源巡檢
+- **排程掃描**：週一到週六 09:17（UTC+8，GitHub 不保證準時），週日沒有排程。每輪接著上一輪的位置往下讀，請求數有上限（`data/scan-sources.json` 的 `max_requests`），不分軌道，模型固定關閉。沒有變動的來源用 ETag／Last-Modified 判斷，仍會發出請求。
+- **手動時間重萃（`temporal_replay`）**：只由 owner 手動觸發。`gov`、`enterprise`、`other` 分軌和增量閘門（未異動來源判定 `SKIP_UNCHANGED`，0 HTTP）都只在這裡生效，排程不經過。
+- **產出**：掃描結果是待審提案，存成 Actions artifact；排程不會改動網站資料。
 
 ---
 
@@ -79,7 +76,7 @@ $$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (當�
 OpenGSA 支援標準 RSS 2.0 / Atom 1.0 訂閱頻道，隨 GitHub Pages 自動建置。首頁頂端提供 **`[📡 訂閱推播]`** 按鈕與原生 `<dialog>` 小視窗，支援一鍵複製、直接開啟 XML 與免裝閱讀器的外部託管訂閱：
 - **首頁「📡 訂閱推播」小視窗**：點擊即可開啟原生彈窗，提供雙軌 Feed 複製、閱讀器訂閱指引與 Follow.it 串接。
 - **免裝軟體 · Email 訂閱（透過 Follow.it）**：整合 [Follow.it](https://follow.it/) 代管轉發，使用者可直接以電子郵件或 Telegram 接收推播，OpenGSA 伺服器零個資儲存。
-- **最新獎助公告頻道**：[`feed.xml`](https://opengsa.mattye.dev/feed.xml)（全庫 128 筆來源摘要最新動態）
+- **最新獎助公告頻道**：[`feed.xml`](https://opengsa.mattye.dev/feed.xml)（全庫 224 筆來源摘要最新動態）
 - **截止倒數專刊頻道**：[`feed-deadlines.xml`](https://opengsa.mattye.dev/feed-deadlines.xml)（即將於近期截止之方案警訊）
 - 詳見專案規格書：[RSS 電子報與主動推播通知架構](docs/RSS-FEEDS-AND-NOTIFICATION-ARCHITECTURE.md)。
 
