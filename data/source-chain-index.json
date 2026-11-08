@@ -2,7 +2,7 @@
   "schema_version": "source-chain-index-1",
   "as_of": "2026-11-08",
   "candidate_file": "data/candidates/source-review.json",
-  "candidate_sha256": "e2b38169512d53855c289764cd84560a00717db7d88c4807b64c0b1fbf09d7f2",
+  "candidate_sha256": "a0850790c6bf8df07f263c6417ef6d874180def1ad7e8fd2c8a59069d2c0560a",
   "bundles": [
     "data/source-chains.json",
     "data/source-chain-batches/batch-01.json",
@@ -2405,6 +2405,244 @@
       ],
       "rules": [],
       "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-7da91ea93707",
+      "title": "急難濟助",
+      "candidate_ids": [
+        "cand-discovery-issue-7da91ea93707-58be8b97"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d7ea84090352011b3",
+      "title": "獎勵農漁民子女就學金",
+      "candidate_ids": [
+        "cand-discovery-d7ea84090352011b3-e14cb934"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-91df2926e16a",
+      "title": "教育部學產基金設置低收入戶學生助學金實施要點",
+      "candidate_ids": [
+        "cand-discovery-issue-91df2926e16a-8241c29f"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-daf7fac9b00bae084",
+      "title": "【大手拉小手 — 助學計畫】",
+      "candidate_ids": [
+        "cand-discovery-daf7fac9b00bae084-c3014132"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-6ae328825c63",
+      "title": "國立清華大學學生急難貸款辦法",
+      "candidate_ids": [
+        "cand-discovery-dc0df4a8da338a2c2-acb9974a"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d0742a240ba2d6459",
+      "title": "國立陽明交通大學學生急難濟助實施辦法",
+      "candidate_ids": [
+        "cand-discovery-d0742a240ba2d6459-938a78b6"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-11c6f814ba09",
+      "title": "適用於學生與教師的 Adobe Creative Cloud Pro | Adobe Creative Cloud",
+      "candidate_ids": [
+        "cand-discovery-issue-11c6f814ba09-2f96397d"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-400972f9583a",
+      "title": "教育商店",
+      "candidate_ids": [
+        "cand-discovery-issue-400972f9583a-44c0c3fb"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-46f3883348e6",
+      "title": "Build in the cloud with Azure for Students for free",
+      "candidate_ids": [
+        "cand-discovery-issue-46f3883348e6-d06d23aa"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-7ea638b0b734",
+      "title": "Figma for Education | Free tools",
+      "candidate_ids": [
+        "cand-discovery-issue-7ea638b0b734-32d3d9e2"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-f97761d80af1",
+      "title": "Free JetBrains Student Pack",
+      "candidate_ids": [
+        "cand-discovery-issue-f97761d80af1-a5dcc9e3"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-22c708ef0d30",
+      "title": "Notion for Education",
+      "candidate_ids": [
+        "cand-discovery-issue-22c708ef0d30-aa3bde7c"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-54288490a082",
+      "title": "學生可免費使用 Premium 1 個月",
+      "candidate_ids": [
+        "cand-discovery-issue-54288490a082-3f2f59e8"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-969bcc839ea7",
+      "title": "Tableau for Students",
+      "candidate_ids": [
+        "cand-discovery-issue-969bcc839ea7-b398833b"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-a29a5792a265",
+      "title": "UNiDAYS - 為學生提供快速、免費、獨家的折扣",
+      "candidate_ids": [
+        "cand-discovery-issue-a29a5792a265-c8cdc59f"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-ce8ed040d42f",
+      "title": "單親培力計畫",
+      "candidate_ids": [
+        "cand-discovery-issue-ce8ed040d42f-b807397c"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d70bd5e659f05692a",
+      "title": "急難救助  - 學生安全組",
+      "candidate_ids": [
+        "cand-discovery-d70bd5e659f05692a-87ca2a16"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
     }
   ],
   "included_links": [
@@ -2468,6 +2706,7 @@
     "第一批以13方案／19候選為基線；本次為64份候選文件／58組暫定方案，未完成跨URL語義別名整併。",
     "batch-01僅表示原第一批3方案的資訊鏈規則；全原始URL盤查見original-source-verification.json。",
     "全部規則與候選維持pending，不是人工發布核准。",
+    "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。"

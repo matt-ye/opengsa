@@ -15,7 +15,7 @@ if str(ROOT) not in sys.path:
 from scripts.verify_candidates import verify_candidate
 
 BASELINE = ROOT / "data/known-hand-authored-candidates.json"
-MAX_BASELINE = 33
+MAX_BASELINE = 18
 
 
 def problems(candidate):

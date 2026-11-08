@@ -1,6 +1,6 @@
 {
   "schema_version": "source-chain-1",
-  "generated_at": "2026-11-08T03:40:26+00:00",
+  "generated_at": "2026-11-08T05:28:54+00:00",
   "model_calls": 0,
   "official_data_modified": false,
   "documents": [
@@ -2270,6 +2270,244 @@
       "evidence_mode": "hash_only",
       "candidate_ids": [
         "cand-discovery-dd4c25ed2dab836dc-4b73b6cc"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-7da91ea937071566d167a1ed",
+      "url": "https://www.ht.org.tw/religion2666.htm",
+      "format": "html",
+      "revision_id": "58be8b97195418950093d1b1a6dd36e49dc88568e4e35f1a02c6ac0eca5700a1",
+      "observed_at": "2026-11-08T05:29:58+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-7da91ea93707-58be8b97"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-7ea84090352011b30b6c107b",
+      "url": "https://m.moa.gov.tw/api/DownloadFile/GetFile/2547773",
+      "format": "html",
+      "revision_id": "e14cb934ea7eafa84bacba7215807edea5bd8be52df1ab13fc9ad5036427d3f6",
+      "observed_at": "2026-11-08T05:30:34+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d7ea84090352011b3-e14cb934"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-91df2926e16acfade4cf8b4a",
+      "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL000019",
+      "format": "html",
+      "revision_id": "8241c29f41dbccf2c26db1ba7bb113b7b02c851b75ee3a5d8d2a144e41ad1832",
+      "observed_at": "2026-11-08T05:31:54+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-91df2926e16a-8241c29f"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-af7fac9b00bae0846618d445",
+      "url": "https://www.you-care.org.tw/List.aspx?mid=79",
+      "format": "html",
+      "revision_id": "c30141329c13a020a436384e326d322d2cdda851351b9f7b8e3ebd209eb255be",
+      "observed_at": "2026-11-08T05:32:43+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-daf7fac9b00bae084-c3014132"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-c0df4a8da338a2c2153553eb",
+      "url": "https://sa.site.nthu.edu.tw/app/index.php?Action=downloadfile&file=Mlg4SmhMYmhkTW1lK0FaSEczUi94amk0VStML2FHbU1KL01JdkZ6T0RETmRzT1NBWFhwc3VjcmFhclMyNlpFM1FiZjFQRFJHTXNPS3R1aFZ1R0huQi9Pekc2K3FSOCtGUzBhUXowdUIvUVE9&fname=TUtnWVdqNWVUb2h2dnpOcFR5VEtnS0JRTkJOVW5ON2dkSU9TRjFaTnJOYVgzZzI2dHQwZEJGSHl0V2w2T29WazErcEtkTXNnMkNyQ2dJc094L3pLRkpBaWpoVjRMd1lxa2FDNjdIUnN6eDNzNkFFVkh4ZVc3VWtFNzdnL2I1T3VLVlFmNGhOaGNEcGs4bkVBY2ZWa0dRPT0=&cg=15113",
+      "format": "html",
+      "revision_id": "acb9974af07801f7c350b7737802348753445d0d67bb1af7a47259a7bf592b05",
+      "observed_at": "2026-11-08T05:38:02+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-dc0df4a8da338a2c2-acb9974a"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-0742a240ba2d6459b7cc49a8",
+      "url": "https://osa.nycu.edu.tw/osa/ch/app/artwebsite/doc?module=artwebsite&detailNo=1476394271421501440&type=s",
+      "format": "html",
+      "revision_id": "938a78b6189219ffac2cac2494f5d26fbb7b072aeb41034cb7e43aa7c60fa33c",
+      "observed_at": "2026-11-08T05:39:36+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d0742a240ba2d6459-938a78b6"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-11c6f814ba09c666f4f04ad1",
+      "url": "https://www.adobe.com/tw/creativecloud/buy/students.html",
+      "format": "html",
+      "revision_id": "2f96397dc182b4adeb9f46b9eda1f5e56ac3f3b4a2c881634006efaa8268efbb",
+      "observed_at": "2026-11-08T05:39:54+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-11c6f814ba09-2f96397d"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-400972f9583a376d6b0905be",
+      "url": "https://www.apple.com/tw-edu/store",
+      "format": "html",
+      "revision_id": "44c0c3fba7b7d6a374157b115fcc900c0e4f74c13f7ea96cd8070e52f6528701",
+      "observed_at": "2026-11-08T05:40:08+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-400972f9583a-44c0c3fb"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-46f3883348e6d13ff56e9971",
+      "url": "https://azure.microsoft.com/free/students/",
+      "format": "html",
+      "revision_id": "d06d23aab6d5dd114c439586e33b8a37b2876c15245d735dc37fd220fedd5698",
+      "observed_at": "2026-11-08T05:40:32+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-46f3883348e6-d06d23aa"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-7ea638b0b734cadc716c244e",
+      "url": "https://www.figma.com/education/",
+      "format": "html",
+      "revision_id": "32d3d9e2e1f8af50f143f5c227c580c44625e72d7fd369f7ce5d38cc2d4b25d1",
+      "observed_at": "2026-11-08T05:41:01+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-7ea638b0b734-32d3d9e2"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-f97761d80af19f11188c28eb",
+      "url": "https://www.jetbrains.com/community/education/",
+      "format": "html",
+      "revision_id": "a5dcc9e3dc94a388b5fc5b50fa265ce797501aa4379e3ada5140035893d78752",
+      "observed_at": "2026-11-08T05:41:14+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-f97761d80af1-a5dcc9e3"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-22c708ef0d30d34e9b4a0381",
+      "url": "https://www.notion.com/product/notion-for-education",
+      "format": "html",
+      "revision_id": "aa3bde7c1dfdd2094609dc5e63c3c190b848f634b71be83623d363713a8c7b57",
+      "observed_at": "2026-11-08T05:41:45+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-22c708ef0d30-aa3bde7c"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-54288490a082dab6e2b1ce1b",
+      "url": "https://www.spotify.com/tw/student/",
+      "format": "html",
+      "revision_id": "3f2f59e83766e5e618235ea53c7dd6a77ac259b307e31c5ff4bba7d10c30fc32",
+      "observed_at": "2026-11-08T05:41:57+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-54288490a082-3f2f59e8"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-969bcc839ea7748734d5dbc4",
+      "url": "https://www.tableau.com/academic/students",
+      "format": "html",
+      "revision_id": "b398833b855ae07f1f6de89c1bf60a0153791351dabf5ee3da7bf50ec61842ff",
+      "observed_at": "2026-11-08T05:42:09+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-969bcc839ea7-b398833b"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-a29a5792a265e1b290fbe84b",
+      "url": "https://www.myunidays.com/TW/zh-TW",
+      "format": "html",
+      "revision_id": "c8cdc59fa05c1323c91e8a1c1a411ccce58aa30d7cd513a49d51d21aed0af35c",
+      "observed_at": "2026-11-08T05:42:25+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-a29a5792a265-c8cdc59f"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-ce8ed040d42f7c25dd3b4bed",
+      "url": "https://www.wrp.org.tw/OnePage.aspx?mid=39&id=85",
+      "format": "html",
+      "revision_id": "b807397c4752afd8741d89472490615baf047b054aa791ac83b2cc7a8000e1ce",
+      "observed_at": "2026-11-08T05:43:12+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-ce8ed040d42f-b807397c"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-70bd5e659f05692aaab69aa7",
+      "url": "https://military-osa.ncku.edu.tw/var/file/55/1055/img/406/181611679.pdf",
+      "format": "pdf",
+      "revision_id": "87ca2a160c6301606bb04dbc24be15d55fcbd99fd187b60c4d6843e912bab8d9",
+      "observed_at": "2026-11-08T05:36:35+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d70bd5e659f05692a-87ca2a16"
       ],
       "events": [],
       "links": []

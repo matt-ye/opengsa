@@ -7,8 +7,8 @@
   "official_data_modified": false,
   "http_requests": 0,
   "description": "全台學生急難救助金五節點資訊鏈拓撲批次（中央法定學產、指標公私立大學校院與主要慈善基金會）",
-  "total_documents": 55,
-  "total_edges": 44,
+  "total_documents": 40,
+  "total_edges": 32,
   "documents": [
     {
       "id": "doc-nthu-sa-emergency-anchor",
@@ -171,86 +171,6 @@
       "links": []
     },
     {
-      "id": "doc-nycu-osa-emergency-anchor",
-      "url": "https://osa.nycu.edu.tw/",
-      "format": "html",
-      "revision_id": "d119e9e04f598b8ee2c2db74bddc9752b41f5feba91df9f70dab54824dc54597",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-nycu-emergency-relief"
-      ],
-      "role": "anchor",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-nycu-osa-emergency-call",
-      "url": "https://osa.nycu.edu.tw/",
-      "format": "html",
-      "revision_id": "52586179046da2cf23b4b0deb1c9ddd70489564fedee5f1f245ae295ce540103",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-nycu-emergency-relief"
-      ],
-      "role": "call",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-nycu-osa-emergency-form",
-      "url": "https://osa.nycu.edu.tw/",
-      "format": "html",
-      "revision_id": "697919468182a69ad88e3b17d93965e1851ccef60c60019f9e86a325281d4741",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-nycu-emergency-relief"
-      ],
-      "role": "form",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-nycu-osa-emergency-intake",
-      "url": "https://osa.nycu.edu.tw/",
-      "format": "html",
-      "revision_id": "72ea5f9ce8b82f3e4b8b314bf88b85895db2c0f43704da7ad2285ae7405faf59",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-nycu-emergency-relief"
-      ],
-      "role": "intake",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-nycu-osa-emergency-result",
-      "url": "https://osa.nycu.edu.tw/",
-      "format": "html",
-      "revision_id": "2f069a94b1c158542127753decbaa500206a09d5b2afd0e8385a87b70a5a5fec",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-nycu-emergency-relief"
-      ],
-      "role": "result",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
       "id": "doc-nccu-osa-emergency-anchor",
       "url": "https://osa.nccu.edu.tw/",
       "format": "html",
@@ -404,86 +324,6 @@
       "evidence_mode": "hash_only",
       "candidate_ids": [
         "cand-fju-emergency-relief"
-      ],
-      "role": "result",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-hsingtian-emergency-grant-anchor",
-      "url": "https://www.ht.org.tw/religion178.htm",
-      "format": "html",
-      "revision_id": "5b2577808b293ff8bffec07f74dcc1de4555d39026d6352053770d90bfcbd305",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-hsingtian-emergency-grant"
-      ],
-      "role": "anchor",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-hsingtian-emergency-grant-call",
-      "url": "https://www.ht.org.tw/religion178.htm",
-      "format": "html",
-      "revision_id": "5489a5cdcb34b8cd76471b1b2cdb799d99274570307bd83e10218499ef5b9a92",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-hsingtian-emergency-grant"
-      ],
-      "role": "call",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-hsingtian-emergency-grant-form",
-      "url": "https://www.ht.org.tw/religion178.htm",
-      "format": "html",
-      "revision_id": "09316d54cee2b35d0d9392cae0e30bb736c3ce4e448fec59f17285cc0e41eba0",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-hsingtian-emergency-grant"
-      ],
-      "role": "form",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-hsingtian-emergency-grant-intake",
-      "url": "https://www.ht.org.tw/religion178.htm",
-      "format": "html",
-      "revision_id": "52161934821c332648671095b3fef4191b17d81c813deec54cd5873286ced93c",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-hsingtian-emergency-grant"
-      ],
-      "role": "intake",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-hsingtian-emergency-grant-result",
-      "url": "https://www.ht.org.tw/religion178.htm",
-      "format": "html",
-      "revision_id": "5d941142fdd6ed76ad34ba0a06069c1ee2cfa4f5c5bad7ef0f2b289af5dce9c5",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-hsingtian-emergency-grant"
       ],
       "role": "result",
       "archetype": "government_statutory",
@@ -809,86 +649,6 @@
       "archetype": "government_statutory",
       "events": [],
       "links": []
-    },
-    {
-      "id": "doc-wrp-single-parent-aid-anchor",
-      "url": "https://www.wrp.org.tw/",
-      "format": "html",
-      "revision_id": "520bc5bf070c2245a2b70a55b5916dfb72c6c97c765ebf66b3bfb0d846fcd946",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-wrp-single-parent-aid"
-      ],
-      "role": "anchor",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-wrp-single-parent-aid-call",
-      "url": "https://www.wrp.org.tw/",
-      "format": "html",
-      "revision_id": "b8df883b33288fe38db6b27d97ba3ea2d3ac34aaf268b0c7c1329d7ca2c93f93",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-wrp-single-parent-aid"
-      ],
-      "role": "call",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-wrp-single-parent-aid-form",
-      "url": "https://www.wrp.org.tw/",
-      "format": "html",
-      "revision_id": "21057fc488065eabbcd216edd696f6cce2b0f6fc935a2be59e0cf0f2ee4673ef",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-wrp-single-parent-aid"
-      ],
-      "role": "form",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-wrp-single-parent-aid-intake",
-      "url": "https://www.wrp.org.tw/",
-      "format": "html",
-      "revision_id": "4404fe16ebdafe6de9713da931ab9ebcfe1fd5900366cfab400fddff5e8c35f4",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-wrp-single-parent-aid"
-      ],
-      "role": "intake",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-wrp-single-parent-aid-result",
-      "url": "https://www.wrp.org.tw/",
-      "format": "html",
-      "revision_id": "201c2f95fb7037ce6805d3bbe586f7cfe2e2d13af997c1f2a35fc37da673ad77",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-wrp-single-parent-aid"
-      ],
-      "role": "result",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
     }
   ],
   "edges": [
@@ -933,26 +693,6 @@
       "type": "reviews"
     },
     {
-      "from": "doc-nycu-osa-emergency-anchor",
-      "to": "doc-nycu-osa-emergency-call",
-      "type": "authorizes"
-    },
-    {
-      "from": "doc-nycu-osa-emergency-call",
-      "to": "doc-nycu-osa-emergency-form",
-      "type": "requires"
-    },
-    {
-      "from": "doc-nycu-osa-emergency-form",
-      "to": "doc-nycu-osa-emergency-intake",
-      "type": "submits_to"
-    },
-    {
-      "from": "doc-nycu-osa-emergency-intake",
-      "to": "doc-nycu-osa-emergency-result",
-      "type": "reviews"
-    },
-    {
       "from": "doc-nccu-osa-emergency-anchor",
       "to": "doc-nccu-osa-emergency-call",
       "type": "authorizes"
@@ -990,26 +730,6 @@
     {
       "from": "doc-fju-life-emergency-intake",
       "to": "doc-fju-life-emergency-result",
-      "type": "reviews"
-    },
-    {
-      "from": "doc-hsingtian-emergency-grant-anchor",
-      "to": "doc-hsingtian-emergency-grant-call",
-      "type": "authorizes"
-    },
-    {
-      "from": "doc-hsingtian-emergency-grant-call",
-      "to": "doc-hsingtian-emergency-grant-form",
-      "type": "requires"
-    },
-    {
-      "from": "doc-hsingtian-emergency-grant-form",
-      "to": "doc-hsingtian-emergency-grant-intake",
-      "type": "submits_to"
-    },
-    {
-      "from": "doc-hsingtian-emergency-grant-intake",
-      "to": "doc-hsingtian-emergency-grant-result",
       "type": "reviews"
     },
     {
@@ -1091,26 +811,6 @@
       "from": "doc-sfaa-special-family-intake",
       "to": "doc-sfaa-special-family-result",
       "type": "reviews"
-    },
-    {
-      "from": "doc-wrp-single-parent-aid-anchor",
-      "to": "doc-wrp-single-parent-aid-call",
-      "type": "authorizes"
-    },
-    {
-      "from": "doc-wrp-single-parent-aid-call",
-      "to": "doc-wrp-single-parent-aid-form",
-      "type": "requires"
-    },
-    {
-      "from": "doc-wrp-single-parent-aid-form",
-      "to": "doc-wrp-single-parent-aid-intake",
-      "type": "submits_to"
-    },
-    {
-      "from": "doc-wrp-single-parent-aid-intake",
-      "to": "doc-wrp-single-parent-aid-result",
-      "type": "reviews"
     }
   ],
   "scopes": [
@@ -1137,12 +837,6 @@
       "historical_baseline_allowed": true
     },
     {
-      "candidate_id": "cand-nycu-emergency-relief",
-      "program_key": "nycu-osa-emergency",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
       "candidate_id": "cand-nccu-emergency-aid",
       "program_key": "nccu-osa-emergency",
       "phase": "all",
@@ -1151,12 +845,6 @@
     {
       "candidate_id": "cand-fju-emergency-relief",
       "program_key": "fju-life-emergency",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
-      "candidate_id": "cand-hsingtian-emergency-grant",
-      "program_key": "hsingtian-emergency-grant",
       "phase": "all",
       "historical_baseline_allowed": true
     },
@@ -1181,12 +869,6 @@
     {
       "candidate_id": "cand-sfaa-special-family",
       "program_key": "sfaa-special-family",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
-      "candidate_id": "cand-wrp-single-parent-aid",
-      "program_key": "wrp-single-parent-aid",
       "phase": "all",
       "historical_baseline_allowed": true
     }

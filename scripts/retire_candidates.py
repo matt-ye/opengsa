@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from scripts.expand_sources import read, save
-from scripts.propose_radar_update import HAND_BASELINE
+from scripts.propose_radar_update import HAND_BASELINE, without_cards
 
 
 def retire_from_batch(batch, ids, programs):
@@ -57,7 +57,7 @@ def retire(ids, root=ROOT):
         save(path, bundle)
     baseline = read(root / HAND_BASELINE)
     hand_sources = {c["source_metadata"]["source_id"] for c in found if c["candidate_id"] in set(baseline["candidate_ids"])}
-    save(root / HAND_BASELINE, {**baseline, "candidate_ids": [i for i in baseline["candidate_ids"] if i not in ids]})
+    save(root / HAND_BASELINE, without_cards(baseline, ids))
     for path in sorted((root / "data").glob("*temporal-observations.json")):
         data = read(path)
         if any(i in data["records"] for i in ids):
