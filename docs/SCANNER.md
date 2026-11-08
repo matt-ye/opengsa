@@ -72,7 +72,7 @@ noted／dismissed是文件層級佇列處置；帶candidate_id的處置只影響
 
 ## 排程與失敗保留
 
-- Actions週二／五09:17（臺北），GitHub不保證準時；main手動scan可執行，模型預設off。Pages部署另由pages.yml執行，PR只離線檢查及建置，不取得來源Secrets。
+- Actions週一至週六09:17（臺北），GitHub不保證準時；main手動scan可執行，模型預設off。Pages部署另由pages.yml執行，PR只離線檢查及建置，不取得來源Secrets。
 - 每輪最多20次HTTP（含robots／轉向／重試／附件）、5份變更、24份待審；至少3秒主機間隔、一次一請求。待審滿則停新增，不覆蓋未審候選；同一網址出現新版本時，新版本取代舊版本。當輪抽好的結構化候選（不是原文）存在 state，下一輪直接沿用；還沒抽到的項目在保留的 6 次請求內重抓，內文已改就等掃描產生新版本。
 - HTTPS白名單逐次檢查重新導向、TLS正常驗證；不登入、不下載名單或帶session／token連結。robots每輪重查，404不等於轉載授權；禁止路徑不以代理、換IP或偽裝瀏覽器繞過。
 - 403／429暫停主機；傳輸失敗／5xx共用最多一次重試，Retry-After延後下輪。HTML上限2MB；PDF10MB／50頁，文字抽取20秒；Linux子程序限CPU／768MB，Windows無相同記憶體硬上限。加密、掃描圖或解析問題轉人工，不做OCR。
