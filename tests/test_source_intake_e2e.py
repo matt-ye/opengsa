@@ -120,8 +120,7 @@ class SourceIntakeE2ETests(unittest.TestCase):
         args = ["--no-preview"] if not preview else []
         if not cls.sh(f"{name}.propose", "scripts/propose_radar_update.py", "--candidates", f"{report}/structured-candidates.json", "--temporal", f"{report}/temporal-records.json", "--output", proposal, *args):
             return False
-        # 目前沒有套用指令，照 PR-DRAFT.md 把 repo/ 蓋回去。
-        shutil.copytree(cls.repo / proposal / "repo", cls.repo, dirs_exist_ok=True)
+        cls.sh(f"{name}.apply", "scripts/open_data_pr.py", "--apply-only", "--proposal", proposal)
         for gate, cmd in GATES.items():
             cls.sh(f"{name}.{gate}", *cmd)
         return cls.sh(f"{name}.build_site", "scripts/build_site.py", base / f"site-{name}")
@@ -151,7 +150,7 @@ class SourceIntakeE2ETests(unittest.TestCase):
 
     @classmethod
     def intake_round(cls, base):
-        """第 1 到 11 步：owner 核可 Issue，只跑該來源，再人工套用提案。"""
+        """第 1 到 11 步：owner 核可 Issue，只跑該來源，再套用提案（開 PR 那一步需要真實 repo，另有單元測試）。"""
         body = f"### 資源名稱\n\n任意 @someone 名稱\n\n### 公開來源網址\n\n{BASE}/news/intake-2026\n\n### 資源類型\n\n獎學金／研究獎助\n"
         save(base / "event.json", {"action": "labeled", "label": {"name": "source-approved"}, "sender": {"login": "owner"},
                                    "repository": {"owner": {"login": "owner"}}, "issue": {"number": 7, "body": body}})
@@ -162,7 +161,7 @@ class SourceIntakeE2ETests(unittest.TestCase):
         if not (cls.repo / "work/intake/proposal/repo").exists():
             cls.results["intake.proposal"] = (1, (cls.repo / "work/intake/result.json").read_text(encoding="utf-8")[-1500:])
             return False
-        shutil.copytree(cls.repo / "work/intake/proposal/repo", cls.repo, dirs_exist_ok=True)
+        cls.sh("intake.apply", "scripts/open_data_pr.py", "--apply-only", "--proposal", "work/intake/proposal")
         for gate, cmd in GATES.items():
             cls.sh(f"intake.{gate}", *cmd)
         return cls.sh("intake.build_site", "scripts/build_site.py", base / "site-intake")
@@ -189,7 +188,7 @@ class SourceIntakeE2ETests(unittest.TestCase):
         if not (cls.repo / "work/replace/proposal/repo").exists():
             cls.results["replace.proposal"] = (1, (cls.repo / "work/replace/result.json").read_text(encoding="utf-8")[-1500:])
             return False
-        shutil.copytree(cls.repo / "work/replace/proposal/repo", cls.repo, dirs_exist_ok=True)
+        cls.sh("replace.apply", "scripts/open_data_pr.py", "--apply-only", "--proposal", "work/replace/proposal")
         for gate, cmd in GATES.items():
             cls.sh(f"replace.{gate}", *cmd)
         return cls.sh("replace.build_site", "scripts/build_site.py", base / "site-replace")

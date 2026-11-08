@@ -392,10 +392,6 @@
               "max": {
                 "type": "integer"
               },
-              "assessed_at": {
-                "type": "string",
-                "format": "date"
-              },
               "refs": {
                 "type": "array",
                 "items": {

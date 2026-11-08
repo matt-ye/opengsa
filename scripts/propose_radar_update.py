@@ -68,11 +68,24 @@ def merge_temporal(merged,good,temporal,observed):
     if errors:raise ValueError('invalid_temporal_records: '+str(errors)[:300])
     return result,len(records)
 
+def split_site_ready(cards,incoming,config):
+    """一張卡不符合網站資料規格，不能讓整批提案和網站建置一起失敗；扣下來並列出原因。"""
+    from scripts.build_review_workspace import candidate_preview_data
+    pilot=read(ROOT/'data/pilot.json');ready,withheld=[],[]
+    for card in cards:
+        try:
+            candidate_preview_data({**incoming,'candidates':[card]},pilot,config)
+            ready.append(card)
+        except (ValueError,KeyError) as error:
+            withheld.append({'candidate_id':card['candidate_id'],'title':card['title'],'url':card['source_metadata']['url'],'error':str(error)[:300]})
+    return ready,withheld
+
 def prepare(incoming,config,observations=None,replaced_urls=(),temporal=None):
     errors=validate_candidate_snapshot(incoming,config)
     if errors:raise ValueError('invalid_incoming_candidates: '+str(errors)[:300])
     base=read(ROOT/'data/candidates/source-review.json')
     good=[deepcopy(c) for c in incoming['candidates'] if c['verification']['status'] in ACCEPT]
+    good,withheld_contract=split_site_ready(good,incoming,config)
     if any(c['review']['promotion_ready'] or c['review'].get('independent_reviewer') for c in good):raise ValueError('automatic_approval_not_allowed')
     urls={c['source_metadata']['url'] for c in good}
     fresh_ids={c['candidate_id'] for c in good}
@@ -161,7 +174,7 @@ def prepare(incoming,config,observations=None,replaced_urls=(),temporal=None):
     load_graph(index,reader=lambda path:files[path] if path in files else original(path))
     timeline_metadata(files['data/source-chains.json'],merged)
     summary={'incoming':len(incoming['candidates']),'accepted_for_radar_proposal':len(good),
-        'withheld_failed_checks':len(incoming['candidates'])-len(good),'retained_old_candidates':len(keep),
+        'withheld_failed_checks':len(incoming['candidates'])-len(good)-len(withheld_contract),'withheld_site_contract':withheld_contract,'retained_old_candidates':len(keep),
         'proposed_candidates':len(merged['candidates']),'replaced_urls':sorted(urls),'invalidated_timeline_documents':sorted(invalid_docs),
         'byte_identical_rebound_documents':sorted({key[0] for key in rebound}-invalid_docs),
         'retired_hand_cards':retired,'needs_manual_retire':manual,'temporal_records':temporal_count,

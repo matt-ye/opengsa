@@ -17,6 +17,8 @@ jobs:
     if: github.event.label.name == 'source-approved' && github.event.sender.login == github.repository_owner
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    outputs:
+      has_proposal: ${{ steps.check.outputs.has_proposal }}
     permissions:
       contents: read
       issues: write
@@ -37,6 +39,11 @@ jobs:
         # 比 job 上限短，逾時後後面的步驟還來得及上傳與回報。
         timeout-minutes: 17
         run: python scripts/run_source_intake.py --request work/intake/request.json --output work/intake
+      - name: Check whether there is a proposal
+        id: check
+        shell: bash
+        run: |
+          if [ -f work/intake/proposal/summary.json ]; then echo "has_proposal=true" >> "$GITHUB_OUTPUT"; fi
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         if: always()
         with:
@@ -50,3 +57,45 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file work/intake/comment.md
+
+  data-pr:
+    needs: intake
+    if: ${{ always() && needs.intake.outputs.has_proposal == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    # 全 workflow 唯一有 contents 寫入權限的 job。公開提交的網域不會進 allowed_hosts，見 open_data_pr.py。
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      # 不把權杖留在磁碟上：提案內容來自公開網站，檢查階段碰不到寫入權限。
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      - run: python -m pip install -r requirements-dev.txt
+      - uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6
+        with:
+          name: source-intake-${{ github.run_id }}
+          path: work/intake
+      - name: Apply the proposal and run the same checks as CI (no token)
+        run: |
+          python scripts/open_data_pr.py --proposal work/intake/proposal --output work/data-pr --label "來源提交 Issue #${{ github.event.issue.number }}"
+      - name: Push the branch and open the data PR (never merges)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python scripts/open_data_pr.py --publish --output work/data-pr --branch data/intake-${{ github.event.issue.number }} --title "data: 來源提交 #${{ github.event.issue.number }} 的待審提案"
+      - name: Report the data PR on the issue
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          if [ -f work/data-pr/comment.md ]; then gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file work/data-pr/comment.md; fi

@@ -1456,7 +1456,7 @@ function drawDetail() {
  if(raw){
   const details=el("section","panel detail-section");details.append(el("h3","","申請重點"));
   const year=raw.eligibility.year_limit;
-  radarFact(details,"年級",item.year==="range"?year.min+"–"+year.max+"年級；基準日 "+dateText(year.assessed_at):item.year==="unlimited"?"來源明示不限年級":null,item);
+  radarFact(details,"年級",item.year==="range"?year.min+"–"+year.max+"年級"+(year.assessed_at?"；基準日 "+dateText(year.assessed_at):"；基準日請見來源"):item.year==="unlimited"?"來源明示不限年級":null,item);
   radarFact(details,"學校／學院",[raw.institution_scope?.school==="NTU"?"國立臺灣大學":null,raw.institution_scope?.college,raw.institution_scope?.department].filter(Boolean).join("／")||null,item);
   for(const [role,label] of Object.entries({funder:"資助單位",announcer:"公告單位",receiver:"收件／轉送"}))if(item.organizations?.[role])radarFact(details,label,item.organizations[role],item);
   if(item.sourceBasis)radarFact(details,"方案來源分類依據",item.sourceBasis,item);
