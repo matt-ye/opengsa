@@ -66,6 +66,8 @@ python scripts/review_candidates.py --candidates work/scanner/report/candidates.
 
 repo 設定 `can_approve_pull_request_reviews` 關閉時 Actions 開不了 PR，會改留比較連結，由維護者自己開（這樣 CI 也會跑）。
 
+通知走固定的「待審資料收件匣」Issue（2026-11-08 使用者決定，只用於排程掃描）：每輪有新提案或提案沒過檢查時，bot 在這張 Issue 留言，內容是 PR 連結或比較連結加上提案摘要。留言才會推播，改 Issue 內文不會。第一次開 Issue 時提及 repo 擁有者，擁有者就會自動訂閱。沒有提案或沒有變動時不留言。流程是：手機收到推播，點連結開 PR，CI 跑完，看過後合併。
+
 ## 上架與駁回（2026-11-08 使用者決定）
 
 提案前會去掉重複：同一份文件只留一張，同網站同標題只留一張；標題只是頁面或專區名稱、條文片段、心得或得獎名單的不成卡，申請表、報告書、流程圖與修正對照表也不成卡。這些都列在提案摘要的 `dropped_not_distinct`。
