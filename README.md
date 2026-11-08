@@ -58,7 +58,7 @@ $$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (當�
 
 ### 5. 四分頁職責重新定位與輕量 URL 狀態同步
 - **Tab 1（獎助探索與快篩）**：支援卡片清單與全域甘特圖切換；升級**全教育階段學歷篩選**（大學部、高中職、國中小幼兒、碩博）與**出國出訪綜合總覽**，卡片附一鍵【⭐ 收藏至個人時程】與【📄 查看完整條文】（[篩選升級說明](docs/FILTER-EXPANSION-AND-VISIBILITY.md)）。
-- **Tab 2（方案詳情與條件比對）**：支援全庫 128 筆來源摘要獨立切換；新增**雙方案並排比對（Side-by-Side）**，精確比對資格、給付、兼領限制與期限。
+- **Tab 2（方案詳情與條件比對）**：支援全庫 224 筆來源摘要獨立切換；新增**雙方案並排比對（Side-by-Side）**，精確比對資格、給付、兼領限制與期限。
 - **Tab 3（我的時程與行動規劃）**：專屬個人時間軸，專注渲染收藏方案，附待辦核銷進度統計與研討會個人補助試算。
 - **Tab 4（權益防線與法規指南）**：提供雙軌五級救濟地圖、各校 TA/RA 給付行情比對與從屬性自測工具（[權益頁說明](docs/RIGHTS-PAGE-UPDATE.md)）。
 - **輕量 URL 狀態同步（State in URL）**：`URLSearchParams` 雙向同步分頁、搜尋字、篩選、比對清單，支援深層連結與頁首「📋 分享此畫面」一鍵複製。
@@ -76,7 +76,7 @@ $$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (當�
 OpenGSA 支援標準 RSS 2.0 / Atom 1.0 訂閱頻道，隨 GitHub Pages 自動建置。首頁頂端提供 **`[📡 訂閱推播]`** 按鈕與原生 `<dialog>` 小視窗，支援一鍵複製、直接開啟 XML 與免裝閱讀器的外部託管訂閱：
 - **首頁「📡 訂閱推播」小視窗**：點擊即可開啟原生彈窗，提供雙軌 Feed 複製、閱讀器訂閱指引與 Follow.it 串接。
 - **免裝軟體 · Email 訂閱（透過 Follow.it）**：整合 [Follow.it](https://follow.it/) 代管轉發，使用者可直接以電子郵件或 Telegram 接收推播，OpenGSA 伺服器零個資儲存。
-- **最新獎助公告頻道**：[`feed.xml`](https://opengsa.mattye.dev/feed.xml)（全庫 128 筆來源摘要最新動態）
+- **最新獎助公告頻道**：[`feed.xml`](https://opengsa.mattye.dev/feed.xml)（全庫 224 筆來源摘要最新動態）
 - **截止倒數專刊頻道**：[`feed-deadlines.xml`](https://opengsa.mattye.dev/feed-deadlines.xml)（即將於近期截止之方案警訊）
 - 詳見專案規格書：[RSS 電子報與主動推播通知架構](docs/RSS-FEEDS-AND-NOTIFICATION-ARCHITECTURE.md)。
 
