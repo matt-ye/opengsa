@@ -39,6 +39,13 @@ class RetireCandidatesTests(unittest.TestCase):
         self.assertEqual(after["total_schemes_covered"], before["total_schemes_covered"] - 1)
         self.assertEqual(after["total_documents"], sum(e["documents"] for e in after["batches"]))
 
+    def test_source_without_cards_leaves_the_schedule(self):
+        cards = read(self.root / "data/candidates/enterprise-scholarships.json")["candidates"]
+        card = next(c for c in cards if sum(o["source_metadata"]["source_id"] == c["source_metadata"]["source_id"] for o in cards) == 1)
+        retire([card["candidate_id"]], self.root)
+        source = next(s for s in read(self.root / "data/scan-sources.json")["sources"] if s["id"] == card["source_metadata"]["source_id"])
+        self.assertIs(source["enabled"], False)
+
     def test_unknown_id_changes_nothing(self):
         before = (self.root / "data/known-hand-authored-candidates.json").read_bytes()
         with self.assertRaises(ValueError):

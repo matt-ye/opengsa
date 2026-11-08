@@ -32,8 +32,16 @@ KINDS = {
 }
 
 
-# 待審項目重抓內文保留的請求數（robots＋頁面，約 3 份）。掃描本身至少還有 14 次。
+# 待審項目重抓內文保留的請求數（robots＋頁面，約 3 份）。其餘都給掃描。
 REFETCH_RESERVE = 6
+# 連續失敗的來源輪到時略過幾次：第 1 次失敗不略過，之後 1、3，最多 4。略過不花請求。
+MAX_FAILURE_SKIPS = 4
+# 重抓這麼多次還抽不到內容就放棄，不再佔佇列和額度；忘掉雜湊，下次輪到會重新當成變更。
+MAX_REFETCH_ATTEMPTS = 3
+# 重抓內文也需要時間；掃描要留這些秒數給它，否則保留的請求數用不到。
+REFETCH_RESERVE_SECONDS = 30
+# 連續失敗達這個次數才在報告上提醒；一兩次多半是對方網站暫時的問題。
+FAILURE_ALERT_COUNT = 3
 
 
 class ScanError(Exception):
@@ -181,7 +189,10 @@ class Fetcher:
                 response = self.follow(url, headers, limit)
             except ScanError as error:
                 # Same TLS/robots/host budget on retry; never retry access denials or 429.
-                if str(error)=="transport_error" and attempt==0:continue
+                if str(error)=="transport_error":
+                    if attempt==0:continue
+                    # 連不上的主機，這一輪其他來源不用再花請求試。
+                    self.blocked[urlsplit(url).hostname]="transport_error_host_paused"
                 raise
             if response["status"] >= 500 and response["headers"].get("retry-after"):
                 self.blocked[urlsplit(url).hostname] = "service_retry_after_deferred"
@@ -320,7 +331,7 @@ def semantic_digest(blocks, attachments):
 def scan(config, previous=None, fetcher=None, resolved=None):
     previous = previous or {"documents": {}, "pending": {}}
     state = deepcopy(previous)
-    state.update({"version": VERSION, "documents": state.get("documents", {}), "pending": state.get("pending", {})})
+    state.update({"version": VERSION, "documents": state.get("documents", {}), "pending": state.get("pending", {}), "failures": state.get("failures", {})})
     fetcher = fetcher or Fetcher(config)
     resolved = resolved or set()
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
@@ -336,11 +347,14 @@ def scan(config, previous=None, fetcher=None, resolved=None):
         profile = digest([VERSION, source])
         fetch_previous = old if old.get("profile_sha256") == profile else {}
         report = {"source_id": source["id"], "url": original_url, "kind": kind}
+        spent = fetcher.count
+        failure = state["failures"].get(original_url)
         try:
             if changed >= config["max_changed_documents"]:
                 raise ScanError("changed_document_budget_deferred")
-            if len(state["pending"]) >= config["max_pending_candidates"]:
-                raise ScanError("review_backlog_full")
+            if failure and failure["skips_left"] > 0:
+                failure["skips_left"] -= 1
+                raise ScanError("failure_cooldown")
             response = fetcher.get(original_url, fetch_previous, 10 * 1024 * 1024 if kind == "pdf" else 2 * 1024 * 1024)
             status = response["status"]
             if status == 304:
@@ -371,7 +385,6 @@ def scan(config, previous=None, fetcher=None, resolved=None):
                             "attachments": attachments, "last_checked_at": now, "final_url": response["url"], "profile_sha256": profile}
                 report["status"] = "unchanged" if old.get("semantic_sha256") == semantic and old.get("profile_sha256") == profile else "changed"
                 if report["status"] == "changed":
-                    changed += 1
                     revision = digest([original_url, semantic, profile])
                     candidate = {"id": revision, "source_id": source["id"], "url": original_url,
                                  "revision": document, "observed_at": now, "parser": VERSION,
@@ -381,11 +394,16 @@ def scan(config, previous=None, fetcher=None, resolved=None):
                                  "review_note": source["review_note"]}
                     if revision not in resolved:
                         # 來源已是新版本，舊版本不能再當成待審內容提案。
-                        state["pending"] = {key: item for key, item in state["pending"].items() if item.get("url") != original_url}
-                        state["pending"][revision] = candidate
+                        others = {key: item for key, item in state["pending"].items() if item.get("url") != original_url}
+                        # 佇列滿只擋新增，其他來源照常檢查。這份文件的雜湊不更新，下一輪仍算變更，不會漏掉。
+                        if len(others) >= config["max_pending_candidates"]:
+                            raise ScanError("review_backlog_full")
+                        state["pending"] = {**others, revision: candidate}
+                    changed += 1
             else:
                 raise ScanError(f"http_{status}")
             state["documents"][original_url] = document
+            state["failures"].pop(original_url, None)
             if kind == "html":
                 queue.extend((source, item["url"], "pdf") for item in document.get("attachments", []))
         except (ScanError, subprocess.TimeoutExpired) as error:
@@ -393,6 +411,11 @@ def scan(config, previous=None, fetcher=None, resolved=None):
             report["retained_previous"] = bool(old)
             if kind == "html" and deferred_index is None and report["status"] in ("run_budget_exhausted", "changed_document_budget_deferred"):
                 deferred_index = sources.index(source)
+            # 只有真的花了請求而失敗才算；輪不到、額度用完、被同主機連累、佇列滿都不是來源的問題。
+            if fetcher.count > spent and report["status"] not in ("review_backlog_full", "run_budget_exhausted"):
+                count = (failure or {}).get("count", 0) + 1
+                state["failures"][original_url] = {"count": count, "status": report["status"], "last_failed_at": now,
+                                                   "skips_left": min(2 ** (count - 1) - 1, MAX_FAILURE_SKIPS)}
         except Exception as error:
             report["status"] = "unexpected_" + type(error).__name__
             report["retained_previous"] = bool(old)
@@ -413,6 +436,10 @@ def markdown_report(state, report):
              f"HTTP {report['http_requests']}次；變更{report['changed_documents']}份；待覆核{report['pending_candidates']}筆；模型呼叫0次。",
              "", "| 來源 | 類型 | 狀態 |", "|---|---|---|"]
     lines.extend(f"| {cell(d['source_id'])} | {d['kind']} | {cell(d['status'])} |" for d in report["documents"])
+    repeated = {url: item for url, item in state.get("failures", {}).items() if item["count"] >= FAILURE_ALERT_COUNT}
+    if repeated:
+        lines.extend(["", f"## 連續失敗 {FAILURE_ALERT_COUNT} 次以上（來源可能已搬移，請確認）", "", "| 來源URL | 次數 | 最後狀態 |", "|---|---|---|"])
+        lines.extend(f"| {cell(url)} | {item['count']} | {cell(item['status'])} |" for url, item in sorted(repeated.items()))
     lines.extend(["", "## 待覆核欄位線索", "", "| 來源URL | 欄位 | 原文短證據 | 定位 |", "|---|---|---|---|"])
     for candidate in state["pending"].values():
         for fact in candidate["facts"]:
@@ -421,7 +448,8 @@ def markdown_report(state, report):
 
 
 def validate_config(config):
-    if not (0 < config["max_requests"] <= 20 and 0 < config["max_changed_documents"] <= 5
+    # 請求上限 50 是 2026-11-08 使用者決定的暫時值（原本 20）；主機間隔與 robots 規則不變。
+    if not (0 < config["max_requests"] <= 50 and 0 < config["max_changed_documents"] <= 5
             and 0 < config["max_pending_candidates"] <= 24 and config["minimum_host_interval_seconds"] >= 3
             and 0 < config["max_run_seconds"] <= 180):
         raise ValueError("Configuration exceeds the bounded scan policy")
@@ -445,6 +473,22 @@ def validate_config(config):
             if not urlsplit(url).path.lower().endswith(".pdf"):raise ValueError("Known attachments must be PDF URLs")
 
 
+def resolved_revisions(reviews_payload, live_bundle):
+    """不用再待審的版本：人工在文件層級處置過的，以及已經進資料庫的。"""
+    resolved = {card["source_metadata"]["revision_id"] for card in live_bundle["candidates"]}
+    for review in reviews_payload["reviews"]:
+        if review["action"] == "applied" or review.get("candidate_id"):
+            continue  # Per-candidate approval does not resolve every branch of a document.
+        resolved.add(review["revision_id"])
+    return resolved
+
+
+def read_any_source(report):
+    """這輪有試著讀來源卻全部失敗才算掃描失敗；全部略過或輪不到不算。"""
+    tried = [d for d in report["documents"] if d["status"] not in ("failure_cooldown", "run_budget_exhausted", "changed_document_budget_deferred")]
+    return not tried or any(d["status"] in ("changed", "unchanged", "unchanged_304", "review_backlog_full") for d in tried)
+
+
 def scan_and_extract(config, previous, fetcher, resolved, reviews_payload, pilot_data, on_scanned=None):
     """掃描後把所有待審項目轉成結構化候選。
 
@@ -456,7 +500,8 @@ def scan_and_extract(config, previous, fetcher, resolved, reviews_payload, pilot
     known = (previous or {}).get("extractions", {})
     waiting = [p for key, p in (previous or {}).get("pending", {}).items() if known.get(key, {}).get("extractor") != EXTRACTOR_VERSION]
     reserve = min(REFETCH_RESERVE, 2 * len(waiting))
-    fetcher.config = {**config, "max_requests": config["max_requests"] - reserve}
+    fetcher.config = {**config, "max_requests": config["max_requests"] - reserve,
+                      "max_run_seconds": max(config["max_run_seconds"] - REFETCH_RESERVE_SECONDS, 1) if reserve else config["max_run_seconds"]}
     state, report = scan(config, previous, fetcher=fetcher, resolved=resolved)
     fetcher.config = config
     if on_scanned:
@@ -483,9 +528,17 @@ def scan_and_extract(config, previous, fetcher, resolved, reviews_payload, pilot
     for candidate in verified_bundle["candidates"]:
         if candidate["verification"]["status"] != "needs_context":
             fresh.setdefault(candidate["source_metadata"]["revision_id"], []).append(candidate)
+    abandoned = []
     for stub in todo:
-        if stub["id"] not in fresh:
-            stub["refetch_attempts"] = stub.get("refetch_attempts", 0) + 1
+        if stub["id"] in fresh:
+            continue
+        stub["refetch_attempts"] = stub.get("refetch_attempts", 0) + 1
+        if stub["refetch_attempts"] >= MAX_REFETCH_ATTEMPTS:
+            state["pending"].pop(stub["id"])
+            state["documents"].pop(stub["url"], None)
+            abandoned.append(stub["url"])
+    report["abandoned_pending"] = abandoned
+    verified_bundle["candidates"] = [c for c in verified_bundle["candidates"] if c["source_metadata"]["revision_id"] in state["pending"]]
     # 上一輪抽好的卡沒有內文可重驗，但人工處置要照最新台帳。
     reviews_by_revision = {}
     for entry in reviews_payload["reviews"]:
@@ -529,13 +582,10 @@ def run():
         temp.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
         temp.replace(args.state)
 
-    resolved = set()
-    for review in reviews_payload["reviews"]:
-        if review["action"] == "applied" or review.get("candidate_id"):
-            continue  # Per-candidate approval does not resolve every branch of a document.
-        resolved.add(review["revision_id"])
-        if old:
-            old.get("pending", {}).pop(review["revision_id"], None)
+    resolved = resolved_revisions(reviews_payload, json.loads((ROOT / "data/candidates/source-review.json").read_text(encoding="utf-8")))
+    if old:
+        for revision in resolved:
+            old.get("pending", {}).pop(revision, None)
     pilot_data = json.loads((ROOT / "data/pilot.json").read_text(encoding="utf-8"))
     state, report, verified_bundle, review_summary, review_md = scan_and_extract(
         config, old, Fetcher(config), resolved, reviews_payload, pilot_data, on_scanned=persist)
@@ -555,5 +605,5 @@ def run():
 
 if __name__ == "__main__":
     report = run()
-    if report is not None and not any(d["status"] in ["changed", "unchanged", "unchanged_304"] for d in report["documents"]):
+    if report is not None and not read_any_source(report):
         sys.exit(1)

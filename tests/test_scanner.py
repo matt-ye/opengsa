@@ -8,8 +8,8 @@ from unittest.mock import patch
 
 from pypdf import PdfWriter
 from pypdf.generic import DictionaryObject, NameObject, DecodedStreamObject
-from scripts.scan_sources import (ROOT, VERSION, Fetcher, ScanError, digest, evidence_mentions,
-                                 html_document, markdown_report, pdf_document, robots_policy, safe_url, scan, scan_and_extract)
+from scripts.scan_sources import (MAX_REFETCH_ATTEMPTS, ROOT, VERSION, Fetcher, ScanError, digest, evidence_mentions,
+                                 html_document, markdown_report, pdf_document, robots_policy, safe_url, read_any_source, resolved_revisions, scan, scan_and_extract, validate_config)
 
 CONFIG = json.loads((ROOT / "data/scan-sources.json").read_text(encoding="utf-8"))
 
@@ -108,6 +108,20 @@ class PendingContextTests(unittest.TestCase):
         self.assertNotEqual(page, self.page)
         _, _, bundle, _, _ = self.run_round(state, page=page, config=tight)
         self.assertEqual(self.statuses(bundle), ["needs_context"])
+
+    def test_item_that_never_extracts_stops_taking_requests_and_is_read_again_later(self):
+        state, _, _, _, _ = self.run_round(None)
+        state.pop("extractions")
+        tight = {**self.config, "max_requests": 2}
+        page = self.page.replace("115年4月15日".encode(), "115年5月20日".encode())
+        for _ in range(MAX_REFETCH_ATTEMPTS):
+            self.assertEqual(len(state["pending"]), 1)
+            state, report, _, _, _ = self.run_round(state, page=page, config=tight)
+        self.assertEqual((state["pending"], report["abandoned_pending"]), ({}, [self.URL]))
+        # 雜湊忘掉了，下一輪正常額度讀到就重新成卡。
+        state, _, bundle, _, _ = self.run_round(state, page=page)
+        self.assertNotIn("needs_context", self.statuses(bundle))
+        self.assertEqual(len(state["pending"]), 1)
 
     def test_stored_extraction_is_dropped_when_the_extractor_changes(self):
         state, _, _, _, _ = self.run_round(None)
@@ -308,10 +322,92 @@ class ScannerTests(unittest.TestCase):
         self.assertEqual(report['documents'][1]['status'],'changed_document_budget_deferred')
 
     def test_cache_backlog_is_not_silently_dropped(self):
-        config=self.config();config['max_pending_candidates']=1
+        config=self.config();config['max_pending_candidates']=1;source=config['sources'][0]
+        def transport(url,*args): return response(status=404) if url.endswith('robots.txt') else response(fixture(source))
         old={'documents':{},'pending':{'unreviewed':{'id':'unreviewed'}}}
-        state,report=scan(config,old,self.fetcher(config,lambda *args: self.fail('must not request')))
+        state,report=scan(config,old,self.fetcher(config,transport))
         self.assertEqual(state['pending'],old['pending']);self.assertEqual(report['documents'][0]['status'],'review_backlog_full')
+        # 雜湊沒有更新，下一輪仍會算變更。
+        self.assertNotIn(source['url'],state['documents'])
+        self.assertEqual(state['failures'],{})
+
+    def test_full_backlog_does_not_stop_other_sources_from_being_checked(self):
+        config=self.config(2);first,second=config['sources'];config['max_pending_candidates']=1
+        def transport(url,*args):
+            if url.endswith('robots.txt'):return response(status=404)
+            return response(fixture(first if url==first['url'] else second))
+        old,_=scan({**config,'sources':[second]},None,self.fetcher(config,transport))
+        state,report=scan(config,old,self.fetcher(config,transport))
+        statuses={d['source_id']:d['status'] for d in report['documents']}
+        self.assertEqual(statuses[second['id']],'unchanged')
+        self.assertEqual(statuses[first['id']],'review_backlog_full')
+
+    def dead_source_rounds(self,rounds):
+        config=self.config();seen=[];state=None
+        def transport(url,*args):
+            seen.append(url);raise ScanError('transport_error')
+        out=[]
+        for _ in range(rounds):
+            state,report=scan(config,state,self.fetcher(config,transport))
+            out.append((report['documents'][0]['status'],report['http_requests']))
+        return out,state
+
+    def test_failing_source_is_skipped_more_often_without_spending_requests(self):
+        out,state=self.dead_source_rounds(5)
+        self.assertEqual([status for status,_ in out],['transport_error','transport_error','failure_cooldown','transport_error','failure_cooldown'])
+        self.assertEqual(out[2][1],0)
+        self.assertEqual(state['failures'][self.config()['sources'][0]['url']]['count'],3)
+
+    def test_repeated_failures_are_listed_in_the_report(self):
+        out,state=self.dead_source_rounds(5)
+        report={'http_requests':0,'changed_documents':0,'pending_candidates':0,'documents':[]}
+        self.assertIn('連續失敗 3 次以上',markdown_report(state,report))
+        _,once=self.dead_source_rounds(1)
+        self.assertNotIn('連續失敗',markdown_report(once,report))
+
+    def test_request_limit_is_capped_at_the_temporary_value(self):
+        config=self.config();config['max_requests']=50;config['minimum_host_interval_seconds']=3
+        validate_config(config)
+        config['max_requests']=51
+        with self.assertRaises(ValueError):validate_config(config)
+
+    def test_recovered_source_clears_its_failure_record(self):
+        config=self.config();source=config['sources'][0];_,state=self.dead_source_rounds(1)
+        def transport(url,*args): return response(status=404) if url.endswith('robots.txt') else response(fixture(source))
+        state,_=scan(config,state,self.fetcher(config,transport))
+        self.assertEqual(state['failures'],{})
+
+    def test_running_out_of_budget_is_not_the_source_failing(self):
+        config=self.config();config['max_requests']=1
+        source=config['sources'][0]
+        def transport(url,*args): return response(status=404) if url.endswith('robots.txt') else response(fixture(source))
+        state,report=scan(config,None,self.fetcher(config,transport))
+        self.assertEqual((report['http_requests'],report['documents'][0]['status']),(1,'run_budget_exhausted'))
+        self.assertEqual(state['failures'],{})
+
+    def test_unreachable_host_is_not_retried_for_its_other_sources(self):
+        config=self.config(2);first,second=config['sources']
+        second['url']=first['url'].rstrip('/')+'/other'
+        count=[]
+        def transport(url,*args):
+            count.append(url);raise ScanError('transport_error')
+        state,report=scan(config,None,self.fetcher(config,transport))
+        self.assertEqual(report['http_requests'],2)
+        self.assertEqual(report['documents'][1]['status'],'transport_error_host_paused')
+        # 被同主機連累的來源不算失敗。
+        self.assertNotIn(second['url'],state['failures'])
+
+    def test_run_counts_as_failed_only_when_something_was_tried(self):
+        doc=lambda status:{'documents':[{'status':status}]}
+        self.assertFalse(read_any_source(doc('transport_error')))
+        self.assertTrue(read_any_source(doc('failure_cooldown')))
+        self.assertTrue(read_any_source(doc('unchanged')))
+        self.assertTrue(read_any_source(doc('run_budget_exhausted')))
+
+    def test_cards_already_in_the_library_leave_the_review_queue(self):
+        live={'candidates':[{'source_metadata':{'revision_id':'on-site'}}]}
+        reviews={'reviews':[{'revision_id':'dismissed','action':'dismissed'},{'revision_id':'one-branch','action':'noted','candidate_id':'x'}]}
+        self.assertEqual(resolved_revisions(reviews,live),{'on-site','dismissed'})
 
     def test_profile_change_bypasses_conditional_cache_and_requires_new_review(self):
         config=self.config();source=config['sources'][0];sent=[]

@@ -141,7 +141,7 @@ jobs:
         with:
           node-version: '24'
       - name: Restore observed hashes and pending review queue
-        uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5
+        uses: actions/cache/restore@caa296126883cff596d87d8935842f9db880ef25 # v5
         with:
           path: work/scanner/state.json
           key: source-scan-v2-main-${{ github.run_id }}-${{ github.run_attempt }}
@@ -164,6 +164,13 @@ jobs:
             export OPENGSA_MODEL_MODE="off"
           fi
           python scripts/scan_sources.py
+      # 掃描失敗也要存：不存的話游標和失敗紀錄都留在原地，下一輪又卡在同一批來源。
+      - name: Save observed hashes and pending review queue
+        if: always() && hashFiles('work/scanner/state.json') != ''
+        uses: actions/cache/save@caa296126883cff596d87d8935842f9db880ef25 # v5
+        with:
+          path: work/scanner/state.json
+          key: source-scan-v2-main-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Publish review summary
         if: always()
         shell: bash
@@ -192,10 +199,10 @@ jobs:
           if-no-files-found: warn
 
       - name: Prepare radar candidate update and offline preview
-        if: success()
+        if: always() && hashFiles('work/scanner/report/structured-candidates.json') != ''
         run: python scripts/propose_radar_update.py --candidates work/scanner/report/structured-candidates.json --output work/radar-proposal
       - name: Preserve radar proposal and preview
-        if: success()
+        if: always() && hashFiles('work/scanner/report/structured-candidates.json') != ''
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: radar-data-proposal-${{ github.run_id }}

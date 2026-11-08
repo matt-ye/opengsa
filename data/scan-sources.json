@@ -210,7 +210,7 @@
     "youth.gov.taipei",
     "youth.tycg.gov.tw"
   ],
-  "max_requests": 20,
+  "max_requests": 50,
   "max_changed_documents": 5,
   "max_pending_candidates": 24,
   "minimum_host_interval_seconds": 3,
@@ -1187,7 +1187,8 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：教育部國民及學前教育署 / 衛生福利部社會及家庭署 主管，階段：preschool",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "k12-moe-low-income-preschool-aid",
@@ -1232,7 +1233,8 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：原住民族委員會（委託國立臺中教育大學辦理） 主管，階段：elementary,junior_high",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "k12-vac-veterans-children-education-aid",
@@ -1247,7 +1249,8 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：國軍退除役官兵輔導委員會 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "k12-moe-military-civil-servant-bereaved-aid",
@@ -1262,7 +1265,8 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：教育部國民及學前教育署 / 各主管教育行政機關 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "k12-moe-disability-tuition-waiver",
@@ -1277,7 +1281,8 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：教育部國民及學前教育署原民特教組 / 各直轄市及縣市政府教育局 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "k12-nia-new-immigrant-scholarship",
@@ -1307,7 +1312,8 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：教育部國民及學前教育署 / 各直轄市及縣市政府教育局處 主管，階段：elementary,junior_high",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "k12-moe-president-education-award",
@@ -1322,7 +1328,8 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：教育部國民及學前教育署（委託國立東華大學主辦專案） 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "k12-moe-senior-high-free-tuition",
@@ -1337,7 +1344,8 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：教育部國民及學前教育署高級中等教育組 主管，階段：senior_high,vocational_high,five_year_junior_college_y1_y3",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "k12-moe-special-circumstances-family-waiver",
@@ -1352,7 +1360,8 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：教育部國民及學前教育署 / 衛生福利部 主管，階段：senior_high,vocational_high,five_year_junior_college_y1_y3",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "k12-mol-unemployed-workers-children-stipend",
@@ -1367,7 +1376,8 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：勞動部勞動福祉退休司 主管，階段：senior_high,vocational_high,five_year_junior_college_y1_y3",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "k12-moa-farmers-fishermen-children-scholarship",
@@ -1397,7 +1407,8 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：教育部國民及學前教育署原民特教組 主管，階段：senior_high,vocational_high,five_year_junior_college_y1_y3",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "k12-k12ea-cooperative-education-stipend",
@@ -1412,7 +1423,8 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：教育部國民及學前教育署高中職組 / 勞動部 主管，階段：vocational_high",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "k12-moe-youth-education-employment-savings",
@@ -1427,7 +1439,8 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：教育部青年發展署 / 勞動部勞動力發展署 主管，階段：senior_high,vocational_high",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "k12-k12ea-remote-schools-transport-hostel",
@@ -1442,7 +1455,8 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：教育部國民及學前教育署 主管，階段：elementary,junior_high,senior_high",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "k12-hsing-tian-kong-scholarship",
@@ -1457,7 +1471,8 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：財團法人台北市行天宮文教發展促進基金會 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "k12-you-care-pu-ren-mentorship-aid",
@@ -1487,7 +1502,8 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：財團法人中華民國佛教慈濟慈善事業基金會 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "k12-tfrd-rare-disorder-scholarship",
@@ -1502,7 +1518,8 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：財團法人罕見疾病基金會 主管，階段：preschool,elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "k12-ccf-taiwan-children-scholarship",
@@ -1570,7 +1587,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "perk-azure-for-students",
@@ -1627,7 +1645,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "perk-notion-education",
@@ -1703,7 +1722,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "perk-matlab-campus-wide",
@@ -1722,7 +1742,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "perk-tableau-for-students",
@@ -1798,7 +1819,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "perk-coursera-for-campus",
@@ -1836,7 +1858,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "perk-academic-databases-library",
@@ -1855,7 +1878,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "perk-apple-education-pricing",
@@ -1893,7 +1917,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "perk-lenovo-education-store",
@@ -1912,7 +1937,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "perk-logitech-student",
@@ -1931,7 +1957,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "perk-spotify-student",
@@ -2007,7 +2034,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "perk-perplexity-student-discount",
@@ -2026,7 +2054,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "perk-cursor-ai-student",
@@ -2045,7 +2074,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "perk-unidays-platform",
@@ -2083,7 +2113,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-mediatek-phd-fellowship",
@@ -2102,7 +2133,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-mediatek-master-thesis-award",
@@ -2121,7 +2153,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-foxconn-tech-award",
@@ -2140,7 +2173,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-foxconn-whale-scholarship",
@@ -2159,7 +2193,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-ctci-research-scholarship",
@@ -2178,7 +2213,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-ctci-creativity-scholarship",
@@ -2197,7 +2233,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-ctci-international-scholarship",
@@ -2216,7 +2253,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-ctci-international-living-aid",
@@ -2235,7 +2273,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-pan-wen-yuan-research-award",
@@ -2254,7 +2293,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-pan-wen-yuan-fellowship",
@@ -2273,7 +2313,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-cathay-excellence-college",
@@ -2292,7 +2333,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-cathay-excellence-graduate",
@@ -2311,7 +2353,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-fubon-management-thesis-award",
@@ -2330,7 +2373,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-tsung-cho-chang-scholarship",
@@ -2349,7 +2393,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-hsing-tian-kong-elite-scholarship",
@@ -2368,7 +2413,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-hsing-tian-kong-college-aid",
@@ -2387,7 +2433,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-faos-conference-grant",
@@ -2463,7 +2510,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-delta-netherlands-scholarship",
@@ -2482,7 +2530,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-delta-young-environment-award",
@@ -2501,7 +2550,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-cht-fang-scholarship",
@@ -2520,7 +2570,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-auo-aplus-fellowship",
@@ -2539,7 +2590,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-auo-display-thesis-award",
@@ -2558,7 +2610,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-advantech-tic100-award",
@@ -2577,7 +2630,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-acer-digital-award",
@@ -2596,7 +2650,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-acer-smiling-award",
@@ -2615,7 +2670,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-trendmicro-cloud-intern-aid",
@@ -2634,7 +2690,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-chimei-arts-award",
@@ -2653,7 +2710,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-lin-rong-san-literature-award",
@@ -2672,7 +2730,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-gigabyte-great-design-award",
@@ -2691,7 +2750,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-compal-rnd-fellowship",
@@ -2710,7 +2770,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-asus-youth-innovation-award",
@@ -2729,7 +2790,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-innolux-rnd-scholarship",
@@ -2748,7 +2810,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-realtek-top-rnd-fellowship",
@@ -2786,7 +2849,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-psmc-advanced-process-award",
@@ -2805,7 +2869,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-ase-environment-thesis-award",
@@ -2824,7 +2889,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-ase-women-stem-scholarship",
@@ -2843,7 +2909,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-mercy-foundation-scholarship",
@@ -2862,7 +2929,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-tzu-chi-college-sprout",
@@ -2881,7 +2949,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-pu-ren-university-mentorship",
@@ -2900,7 +2969,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-ccf-college-scholarship",
@@ -2919,7 +2989,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-tfrd-thesis-grant",
@@ -2938,7 +3009,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-tfrd-college-scholarship",
@@ -2957,7 +3029,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-chong-you-elevator-scholarship",
@@ -2976,7 +3049,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-chang-yung-fa-college-aid",
@@ -2995,7 +3069,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-formosa-qin-lao-intern-aid",
@@ -3014,7 +3089,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-eslite-culture-award",
@@ -3033,7 +3109,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-sfi-gold-eagle-scholarship",
@@ -3052,7 +3129,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-foi-consumer-protection-award",
@@ -3071,7 +3149,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-esun-outstanding-fellowship",
@@ -3090,7 +3169,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-taishin-arts-student-review",
@@ -3109,7 +3189,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-mega-bank-college-scholarship",
@@ -3128,7 +3209,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-scsb-college-scholarship",
@@ -3147,7 +3229,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-csroc-outstanding-thesis-award",
@@ -3166,7 +3249,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-iicm-best-degree-thesis-award",
@@ -3185,7 +3269,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-taai-best-thesis-award",
@@ -3204,7 +3289,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-ieee-taipei-best-thesis-award",
@@ -3223,7 +3309,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-tcc-communication-award",
@@ -3242,7 +3329,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-tsia-phd-award",
@@ -3261,7 +3349,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-tsia-master-award",
@@ -3280,7 +3369,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-tps-optics-thesis-award",
@@ -3299,7 +3389,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-pst-polymer-research-award",
@@ -3318,7 +3409,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-cslt-lee-fellowship",
@@ -3337,7 +3429,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-samm-mechanics-thesis-award",
@@ -3356,7 +3449,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-cice-civil-engineering-scholarship",
@@ -3375,7 +3469,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-tbpa-biotech-thesis-award",
@@ -3394,7 +3489,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-precision-medicine-young-award",
@@ -3413,7 +3509,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-li-hsien-dandelion-aid",
@@ -3432,7 +3529,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-shin-lu-youth-empowerment",
@@ -3451,7 +3549,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-maria-angel-scholarship",
@@ -3470,7 +3569,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-eden-disability-college-aid",
@@ -3489,7 +3589,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-sunshine-burn-injury-scholarship",
@@ -3508,7 +3609,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-noordhoff-craniofacial-award",
@@ -3546,7 +3648,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-police-children-scholarship",
@@ -3565,7 +3668,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-mediatek-girls-in-stem",
@@ -3584,7 +3688,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-auo-green-energy-award",
@@ -3603,7 +3708,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-taipei-cement-low-carbon-award",
@@ -3622,7 +3728,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-china-steel-metal-scholarship",
@@ -3641,7 +3748,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ent-formosa-plastics-entrepreneurship",
@@ -3679,7 +3787,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "ntu-med-oia",
@@ -3863,7 +3972,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "univ-ntnu",
@@ -3901,7 +4011,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "univ-ntust",
@@ -3996,7 +4107,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "univ-cmu",
@@ -4129,7 +4241,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "univ-thu",
@@ -4148,7 +4261,8 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false
     },
     {
       "id": "univ-ndhu",
@@ -4182,7 +4296,8 @@
       "known_attachment_urls": [],
       "review_note": "通用拓撲探針發現來源：原住民族委員會大專校院原住民族學生獎助學金",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "gov-moa-farmers",
@@ -4212,7 +4327,8 @@
       "known_attachment_urls": [],
       "review_note": "通用拓撲探針發現來源：勞動部失業勞工子女就學補助",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "gov-vac-veterans",
@@ -4227,7 +4343,8 @@
       "known_attachment_urls": [],
       "review_note": "通用拓撲探針發現來源：國軍退除役官兵輔導委員會榮民子女就學補助及清寒獎助學金",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "ent-iicm-thesis-award",
@@ -4242,7 +4359,8 @@
       "known_attachment_urls": [],
       "review_note": "通用拓撲探針發現來源：中華民國資訊學會最佳碩博士論文獎",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "ent-taai-thesis-award",
@@ -4257,7 +4375,8 @@
       "known_attachment_urls": [],
       "review_note": "通用拓撲探針發現來源：中華民國人工智慧學會 TAAI 最佳碩博士論文獎",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false
     },
     {
       "id": "ent-csroc-thesis-award",
