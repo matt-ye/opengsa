@@ -35,7 +35,7 @@ from scripts.application_process import infer_process
 from scripts.semantic_facts import INSTRUCTIONS, NON_ROC_ALLOWED, OTHER_LEVELS, PLACEHOLDER, award_clauses, discover_identity, discover_organizations, is_student_document, recurring_time, degree_terms, time_actor, labelled_date_clause
 from scripts.ai_tool_rules import benefit_tiers
 
-EXTRACTOR_VERSION = "extractor-1.12.0"
+EXTRACTOR_VERSION = "extractor-1.12.1"
 PROMPT_VERSION = "prompt-1.4.0"
 
 
@@ -1086,8 +1086,13 @@ def parse_date_range_from_text(text):
     """擷取期間起訖（如 '2026-07-08至2026-08-25' 或 '115/8/5至8/13'），回傳 (start_iso, end_iso) 或 (None, None)。"""
     clean = _normalize_chinese_roc_years(normalized(text))
     clean = re.sub(r'[（(](?:星期|週)?[一二三四五六日天][）)]', '', clean)
+    # 起日後面常接時間（「8月26日上午9:00起至9月9日16:30止」）；沒容許時間就認不出區間，
+    # 後面的程式會改取第一個日期，把起日當成截止日。
+    clock = r"(?:\s*(?:上午|下午|中午|晚上|早上)?\s*\d{1,2}\s*[:：時點]\s*(?:\d{1,2}\s*分?)?)?"
+    # 「起」也寫成「開始申辦／申請／受理／收件」。
+    begin = r"\s*(?:起|開始(?:申辦|申請|受理|收件)?)?"
     m_iso = re.search(
-        r"(20\d{2})[年/.\-](\d{1,2})[月/.\-](\d{1,2})日?\s*(?:至|~|～|-|到)\s*(?:(20\d{2})[年/.\-])?(\d{1,2})[月/.\-](\d{1,2})",
+        r"(20\d{2})[年/.\-](\d{1,2})[月/.\-](\d{1,2})日?" + clock + begin + r"\s*(?:至|~|～|-|到)\s*(?:(20\d{2})[年/.\-])?(\d{1,2})[月/.\-](\d{1,2})",
         clean,
     )
     if m_iso:
@@ -1100,7 +1105,7 @@ def parse_date_range_from_text(text):
             return s, e
 
     m_roc = re.search(
-        r"(1\d{2})\s*[年/.\-]\s*(\d{1,2})\s*[月/.\-]\s*(\d{1,2})\s*日?\s*起?\s*(?:至|~|～|-|到)\s*(?:民國\s*)?(?:(1\d{2})\s*[年/.\-]\s*)?(\d{1,2})\s*[月/.\-]\s*(\d{1,2})\s*日?",
+        r"(1\d{2})\s*[年/.\-]\s*(\d{1,2})\s*[月/.\-]\s*(\d{1,2})\s*日?" + clock + begin + r"\s*(?:至|~|～|-|到)\s*(?:民國\s*)?(?:(1\d{2})\s*[年/.\-]\s*)?(\d{1,2})\s*[月/.\-]\s*(\d{1,2})\s*日?",
         clean,
     )
     if m_roc:
