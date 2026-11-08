@@ -489,6 +489,22 @@ def read_any_source(report):
     return not tried or any(d["status"] in ("changed", "unchanged", "unchanged_304", "review_backlog_full") for d in tried)
 
 
+def same_round_records(candidates, config, fetcher, observed):
+    """時間軌用當輪的內文，不多發請求。判斷不出來就不留紀錄，卡片照樣能提案。"""
+    from jsonschema import ValidationError
+    from scripts.temporal_reextract import same_round_record
+    profiles, records = {s["id"]: s for s in config["sources"]}, {}
+    for candidate in candidates:
+        meta = candidate["source_metadata"]
+        blocks, raw = fetcher.in_memory_blocks.get(meta["url"]), fetcher.in_memory_raw_sha256.get(meta["url"])
+        if blocks and raw and meta["source_id"] in profiles and candidate["verification"]["status"] in ("passed_automated_checks", "passed_with_gaps"):
+            try:
+                records[candidate["candidate_id"]] = same_round_record(candidate, blocks, raw, profiles[meta["source_id"]], observed)
+            except (ValueError, KeyError, ValidationError):
+                continue
+    return records
+
+
 def scan_and_extract(config, previous, fetcher, resolved, reviews_payload, pilot_data, on_scanned=None):
     """掃描後把所有待審項目轉成結構化候選。
 
@@ -548,7 +564,8 @@ def scan_and_extract(config, previous, fetcher, resolved, reviews_payload, pilot
     review_summary["carried_forward_candidates"] = len(carried)
     if carried:
         review_md += f"\n另有 {len(carried)} 筆沿用先前讀到的內容，這輪沒有重新抓取。\n"
-    state["extractions"] = {**kept, **{key: {"extractor": EXTRACTOR_VERSION, "candidates": rows} for key, rows in fresh.items()}}
+    state["extractions"] = {**kept, **{key: {"extractor": EXTRACTOR_VERSION, "candidates": rows, "temporal": same_round_records(rows, config, fetcher, report["observed_at"])}
+                                       for key, rows in fresh.items()}}
     report["http_requests"] = fetcher.count
     return state, report, verified_bundle, review_summary, review_md
 
@@ -593,6 +610,8 @@ def run():
     args.output.mkdir(parents=True, exist_ok=True)
     (args.output / "candidates.json").write_text(json.dumps(list(state["pending"].values()), ensure_ascii=False, indent=2), encoding="utf-8")
     (args.output / "summary.md").write_text(markdown_report(state, report), encoding="utf-8")
+    temporal = {key: record for value in state["extractions"].values() for key, record in value.get("temporal", {}).items()}
+    (args.output / "temporal-records.json").write_text(json.dumps(temporal, ensure_ascii=False, indent=2), encoding="utf-8")
     (args.output / "structured-candidates.json").write_text(json.dumps(verified_bundle, ensure_ascii=False, indent=2), encoding="utf-8")
     (args.output / "review-diff.json").write_text(json.dumps(review_summary, ensure_ascii=False, indent=2), encoding="utf-8")
     (args.output / "model-usage.json").write_text(json.dumps(review_summary.get("model_usage", {}), ensure_ascii=False, indent=2), encoding="utf-8")

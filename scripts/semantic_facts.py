@@ -123,6 +123,16 @@ def time_actor(text):
     return 'unit'
 
 
+def is_student_document(blocks):
+    """文件對象是學生本人：沒寫主詞的「申請期間」才算學生的期間，不算學校或單位的。"""
+    safe=[b['text'] for b in blocks if not INJECTION.search(b['text'])]
+    identity=discover_identity(blocks)
+    if identity and identity['kind']=='eligibility_clause' and identity['degrees']:
+        return True
+    return (any(re.search(r'學校電子郵件投件申請|線上報名表單|即日起開放報名|報名對象[：:]|申請資格[：:].{0,30}(?:學生|博士生|碩士生)|申請對象[：:].{0,30}(?:學生|博士生|碩士生)',text) for text in safe)
+            and not any(re.search(r'學校彙|學院彙|系所彙整',b['text']) for b in blocks))
+
+
 def labelled_date_clause(clause):
     """Parse a date adjacent to the application label, never the first page date."""
     year=r'(?:20\d{2}|1\d{2})[年/.\-]|[一二三四五六七八九〇零]{3}年'

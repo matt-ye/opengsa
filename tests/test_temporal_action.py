@@ -136,6 +136,6 @@ class TemporalActionTests(unittest.TestCase):
             self.assertEqual(report['model_usage']['calls'],0)
             proposed=read(Path(d)/'action/temporal-observations.proposed.json')
             self.assertEqual(proposed['baseline']['previous_round_http_requests'],base['http_requests'])
-            self.assertEqual(len(proposed['records']),64)
+            self.assertEqual(len(proposed['records']),len(base['records']))
             self.assertFalse(report['published'])
             self.assertTrue((Path(d)/'action/preview/index.html').exists())

@@ -21,6 +21,7 @@ from scripts.audit_sources import canonical_url
 from scripts.scan_sources import Fetcher,ScanError,node_get,digest,safe_url,html_document,pdf_document,SKIP
 from scripts.source_chains import DOCUMENT_LINK,discover_links,publication
 from scripts.document_ir import prepare_document,document_manifest,VERSION as IR_VERSION
+from jsonschema import ValidationError
 from scripts.extract_candidates import extract_from_in_memory_blocks,DisabledModelAdapter,EXTRACTOR_VERSION
 from scripts.semantic_facts import discover_identity
 
@@ -201,6 +202,12 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
                     # 公告連到的辦法或附件屬於同一方案。只共用方案代號，各文件的欄位不拼接。
                     if row.get('parent_program_key'):candidate['program_key']=row['parent_program_key']
                     state['candidates'][candidate['candidate_id']]=candidate;record['candidate_ids'].append(candidate['candidate_id'])
+                    if candidate['verification']['status'] in ('passed_automated_checks','passed_with_gaps'):
+                        try:
+                            from scripts.temporal_reextract import same_round_record
+                            state.setdefault('temporal',{})[candidate['candidate_id']]=same_round_record(candidate,prepared['blocks'],digest(response['body']),profile,record['observed_at'])
+                        except (ValueError,KeyError,ValidationError):
+                            pass  # 判斷不出時間，卡片照樣能提案。
                 record['disposition']='named_candidates_pending'
             else:record['disposition']='source_document_or_discovery_only'
             # Child links get no inherited year, deadline, eligibility or approval.
@@ -235,7 +242,7 @@ def export_report(inventory,state,output):
     from scripts.check_data import validate_candidate_snapshot
     errors=validate_candidate_snapshot(bundle,config)
     if errors:raise ValueError('invalid_expansion_candidates: '+str(errors)[:600])
-    save(output/'structured-candidates.json',bundle);save(output/'source-profiles.json',config)
+    save(output/'structured-candidates.json',bundle);save(output/'source-profiles.json',config);save(output/'temporal-records.json',state.get('temporal',{}))
     summary={'version':VERSION,'generated_at':now(),'http_requests':state['http_requests'],'request_count_scope':'attempts reserved before transport, includes robots/retries/preflight; may include interrupted attempts',
         'batch_requests':state['batch_requests'],'model_calls':0,'official_data_modified':False,'human_approvals':0,
         'inventory_urls':len(inventory['rows']),'source_records':len(state['records']),'new_sources':len(state['new_sources']),

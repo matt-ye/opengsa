@@ -32,10 +32,10 @@ from scripts.evaluate_deadlines import evaluate_application_window, parse_iso_da
 from scripts.scan_sources import CONTACT, SKIP, Fetcher, ScanError, digest, html_document, normalized, pdf_document, semantic_digest
 from scripts.verify_candidates import digest_text, evidence_digest, verify_candidate
 from scripts.application_process import infer_process
-from scripts.semantic_facts import INSTRUCTIONS, PLACEHOLDER, discover_identity, discover_organizations, recurring_time, degree_terms, time_actor, labelled_date_clause
+from scripts.semantic_facts import INSTRUCTIONS, PLACEHOLDER, discover_identity, discover_organizations, is_student_document, recurring_time, degree_terms, time_actor, labelled_date_clause
 from scripts.ai_tool_rules import benefit_tiers
 
-EXTRACTOR_VERSION = "extractor-1.8.0"
+EXTRACTOR_VERSION = "extractor-1.9.0"
 PROMPT_VERSION = "prompt-1.4.0"
 
 
@@ -2215,7 +2215,7 @@ def _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode):
             'refs':evidence('organizations.'+role,units)}
     # Timing is independent of whether identity was already recognized.
     if blocks:
-        seen=set()
+        seen=set();student_document=is_student_document(blocks)
         for block in blocks:
             if PROMPT_INJECTION_RE.search(block['text']) or SKIP.search(block['text']):continue
             text=re.sub(r'\s+','',block['text'])
@@ -2230,6 +2230,8 @@ def _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode):
                     end_kind,end_value=parse_roc_or_iso_date_from_text(tail,int(end[:4])-1911)
                     if end_value and end_value[:10]==end:kind,value=end_kind,end_value
                 actor=time_actor(text)
+                # 和時間軌相同的判斷：對象是學生的文件，沒寫主詞的期間算學生的。
+                if actor=='unit' and student_document and not re.search(r'學校|學院|系所|彙送|推薦名單|備函',text):actor='student'
                 if value:
                     rule={'actor':actor,'action':'依來源明示期間辦理'+('（'+start+'至'+end+'）' if start and end else ''),
                         'deadline':{'kind':kind,'value':value,'timezone':'Asia/Taipei','note':'角色依本段辨識；未載學生期限時不以其他層級回填'}}
@@ -2813,6 +2815,19 @@ def _apply_legacy_model_patch(cand, patch, source, blocks):
     return updated
 
 
+def report_unknown_fields(cand):
+    """學生最需要的欄位還是未知時要明說，不能讓檢核看起來沒有缺漏。"""
+    schedule=cand["schedule"]
+    unknown={
+        "unextracted:schedule.application_start":schedule["application_start"]["kind"]=="unknown",
+        "unextracted:schedule.student_deadline":not any(s["actor"]=="student" and s["deadline"]["kind"]!="unknown" for s in schedule["steps"]),
+        "unextracted:compatibility":cand["compatibility"]["mode"]=="unknown",
+        "unextracted:application_method":cand.get("application_method",{}).get("mode","unknown")=="unknown",
+    }
+    missing=cand["gaps_and_conflicts"]["missing_fields"]
+    missing.extend(field for field,is_unknown in unknown.items() if is_unknown and field not in missing)
+
+
 def extract_from_in_memory_blocks(
     source,
     blocks,
@@ -2836,6 +2851,7 @@ def extract_from_in_memory_blocks(
     blocks=prepared_document['units']
     evidence_mode = source.get("evidence_mode", "short_excerpt")
     sid = source["id"]
+    generic = None
 
     if extraction_strategy == "llm_only":
         first_ref = {"source": sid, "locator": blocks[0]["locator"]}
@@ -2973,6 +2989,9 @@ def extract_from_in_memory_blocks(
             "reason": window["reason"],
             "refs": [{"source": sid, "locator": blocks[0]["locator"]}] if window["state"] != "unknown" else [],
         }
+        # 專用解析器有自己列的缺漏，這裡只補通用路徑。
+        if generic and cand["candidate_id"] == generic["candidate_id"]:
+            report_unknown_fields(cand)
 
         # 執行獨立檢核
         excerpt_remaining = limit_evidence_excerpts(cand, excerpt_remaining)
@@ -3122,6 +3141,8 @@ def refetch_and_extract_candidates(
                         raise ScanError("stale_revision_requires_rescan")
                     in_memory_blocks_by_url[url] = blocks
                     fetcher.in_memory_blocks[url] = blocks
+                    fetcher.in_memory_raw_sha256[url] = digest(resp["body"])
+                    fetcher.in_memory_semantic_sha256[url] = semantic_digest(blocks, attachments)
                     refetch_statuses[url] = "refetched_in_memory"
                 else:
                     refetch_statuses[url] = f"http_{resp['status']}"

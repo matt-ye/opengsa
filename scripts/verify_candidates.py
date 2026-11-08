@@ -710,6 +710,8 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
         for mf in cand.get("gaps_and_conflicts", {}).get("missing_fields", []):
             if "attachment" in mf and any(word in mf for word in ("unfetched","restricted","unavailable")):
                 coverage_warnings.append(f"coverage_gap:{mf}")
+            if mf.startswith("unextracted:"):
+                coverage_warnings.append(f"coverage_gap:{mf}")
 
         if pilot_by_id and cycle.get("kind") != "policy_snapshot":
             opp_id = cand.get("opportunity_id")
