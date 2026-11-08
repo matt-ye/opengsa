@@ -1,6 +1,6 @@
 {
   "schema_version": "source-chain-1",
-  "generated_at": "2026-11-08T05:28:54+00:00",
+  "generated_at": "2026-11-08T07:24:23+00:00",
   "model_calls": 0,
   "official_data_modified": false,
   "documents": [
@@ -2508,6 +2508,300 @@
       "evidence_mode": "hash_only",
       "candidate_ids": [
         "cand-discovery-d70bd5e659f05692a-87ca2a16"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-883814ec5158c05a7d51e77f",
+      "url": "https://www.microsoft.com/en-us/research/academic-program/phd-fellowship/",
+      "format": "html",
+      "revision_id": "0214e24109307c8a39946f0882c7f651ea8e9fbacf3511e5c9d8fb6f52d65416",
+      "observed_at": "2026-11-08T07:24:19+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-883814ec5158-0214e241"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-12c226584b8b78d046c1cbfc",
+      "url": "https://life.dsa.fju.edu.tw/DownloadSubLabelFileServlet?menuID=4&labelID=36&subLabelID=1143&fileID=2",
+      "format": "html",
+      "revision_id": "5f07fdda57985a6990e8d14f98ee3be5d6afa1cafbc81204420f0cacc1d34e6f",
+      "observed_at": "2026-11-08T07:24:35+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d12c226584b8b78d0-5f07fdda"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-20a85b8b4295ab7d19493772",
+      "url": "https://life.dsa.fju.edu.tw/newsDetail.jsp?newsID=2556&newsClassID=12",
+      "format": "html",
+      "revision_id": "bada8719f177e06f9d2404e5d0f87eb88905e7de8fd1fdf59716a51fbf8194e1",
+      "observed_at": "2026-11-08T07:24:47+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d20a85b8b4295ab7d-bada8719"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-48ee81664e14cb60b1b96ee3",
+      "url": "https://life.dsa.fju.edu.tw/newsDetail.jsp?newsID=2552&newsClassID=12",
+      "format": "html",
+      "revision_id": "8eff23663356abaf307d9e64e3ea666d1e8484d882a0680a98b355cc4a82bf1a",
+      "observed_at": "2026-11-08T07:24:50+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d48ee81664e14cb60-8eff2366"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-35a493edc43716decaa4681e",
+      "url": "https://life.dsa.fju.edu.tw/DownloadNewsFileServlet?file=1151",
+      "format": "html",
+      "revision_id": "32459893b185ab37cd1e25ef3944264e2d1f9547a195c3d366fdef4db9a8d82d",
+      "observed_at": "2026-11-08T07:25:08+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d35a493edc43716de-32459893"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-591f42bdb1a07f23339f4bee",
+      "url": "https://www.foxconnfoundation.org/news/7b09cc55fbc5",
+      "format": "html",
+      "revision_id": "60c128c755af0eb0ecb31be9d827b07c5d63dbf58b0afe2ea5ff77572c751eb2",
+      "observed_at": "2026-11-08T07:25:44+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-591f42bdb1a0-60c128c7"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-9667793ba5867d6a62a6dcb5",
+      "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL000693",
+      "format": "html",
+      "revision_id": "ad87d67cce63e3ea78680deabede1584b773fc6b37cd140f39bd8f42246d033a",
+      "observed_at": "2026-11-08T07:25:55+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-9667793ba586-ad87d67c"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-51244b764a0dff56457b9757",
+      "url": "https://ifi.immigration.gov.tw/wSite/ct?xItem=101733&ctNode=37277&mp=1",
+      "format": "html",
+      "revision_id": "725eafed25128fea4df3b18a8ec070c91fab54a238810b80f0a55419cebfa34a",
+      "observed_at": "2026-11-08T07:26:12+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-51244b764a0d-725eafed"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-7a66858f325811a0b88d5d6c",
+      "url": "https://osa.nccu.edu.tw/tw/%E7%94%9F%E6%B4%BB%E4%BA%8B%E5%8B%99%E6%9A%A8%E5%83%91%E7%94%9F%E8%BC%94%E5%B0%8E%E7%B5%84/%E5%AD%B8%E7%94%9F%E5%8A%A9%E5%AD%B8%E6%8E%AA%E6%96%BD/%E6%80%A5%E9%9B%A3%E6%85%B0%E5%8A%A9/%E6%80%A5%E9%9B%A3%E6%85%B0%E5%8A%A9",
+      "format": "html",
+      "revision_id": "7aa4f3d97529bccef30aeb18b4ca9e9be1c4eef7d2e669a210ff720ae7184707",
+      "observed_at": "2026-11-08T07:26:39+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-7a66858f3258-7aa4f3d9"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-b79e45c60a7e2cdea2bcb8c2",
+      "url": "https://osa.nccu.edu.tw/tw/%E7%94%9F%E6%B4%BB%E4%BA%8B%E5%8B%99%E6%9A%A8%E5%83%91%E7%94%9F%E8%BC%94%E5%B0%8E%E7%B5%84/%E5%AD%B8%E7%94%9F%E5%8A%A9%E5%AD%B8%E6%8E%AA%E6%96%BD/%E4%B8%8D%E5%88%A9%E8%99%95%E5%A2%83%E5%AD%B8%E7%94%9F%E5%8A%A9%E5%AD%B8%E9%87%91",
+      "format": "html",
+      "revision_id": "fa095f214dc45170dd76ce5f5e49af61a445442d84bffda5305775e72215e672",
+      "observed_at": "2026-11-08T07:28:59+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-db79e45c60a7e2cde-fa095f21"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-6cc4df60f598642745b314b0",
+      "url": "https://osa.nccu.edu.tw/tw/%E7%94%9F%E6%B4%BB%E4%BA%8B%E5%8B%99%E6%9A%A8%E5%83%91%E7%94%9F%E8%BC%94%E5%B0%8E%E7%B5%84/%E5%AD%B8%E7%94%9F%E5%8A%A9%E5%AD%B8%E6%8E%AA%E6%96%BD/%E4%B8%8D%E5%88%A9%E8%99%95%E5%A2%83%E5%AD%B8%E7%94%9F%E5%A4%9A%E5%85%83%E7%94%9F%E7%90%86%E7%94%A8%E5%93%81%E5%B0%88%E9%A0%85%E8%A3%9C%E5%8A%A9",
+      "format": "html",
+      "revision_id": "bc08296e98d1b83cf47a1efc7f8703664444906d426a764337f96ff13869ff14",
+      "observed_at": "2026-11-08T07:29:09+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d6cc4df60f5986427-bc08296e"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-fa156b14905cf94d3231f4a1",
+      "url": "https://osa.nccu.edu.tw/tw/%E7%94%9F%E6%B4%BB%E4%BA%8B%E5%8B%99%E6%9A%A8%E5%83%91%E7%94%9F%E8%BC%94%E5%B0%8E%E7%B5%84/%E5%AD%B8%E7%94%9F%E5%8A%A9%E5%AD%B8%E6%8E%AA%E6%96%BD/%E5%A4%B1%E6%A5%AD%E5%8B%9E%E5%B7%A5%E5%AD%90%E5%A5%B3%E5%B0%B1%E5%AD%B8%E8%A3%9C%E5%8A%A9",
+      "format": "html",
+      "revision_id": "ca458b2eca53f6a08e1f84212716ec0b2b9b12fb96ce41f7e89fce697e21c7fe",
+      "observed_at": "2026-11-08T07:29:19+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-dfa156b14905cf94d-ca458b2e"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-8e2ea61cffbec92762f9c262",
+      "url": "https://osa.nccu.edu.tw/tw/%E7%94%9F%E6%B4%BB%E4%BA%8B%E5%8B%99%E6%9A%A8%E5%83%91%E7%94%9F%E8%BC%94%E5%B0%8E%E7%B5%84/%E5%AD%B8%E7%94%9F%E5%8A%A9%E5%AD%B8%E6%8E%AA%E6%96%BD/%E5%AD%B8%E9%9B%9C%E8%B2%BB%E6%B8%9B%E5%85%8D/%E7%B7%9A%E4%B8%8A%E7%94%B3%E8%AB%8B",
+      "format": "html",
+      "revision_id": "1418be7f538b7f95e53a485658558bd0e28422c87e5c9c1fac3a3905f042c8c6",
+      "observed_at": "2026-11-08T07:29:39+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d8e2ea61cffbec927-1418be7f"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-e2ae2c9d9c01d9f32e5da167",
+      "url": "https://sa.site.nthu.edu.tw/app/index.php?Action=downloadfile&file=Mlg4SmhMYmhkTW1lK0FaSEczUi94aFNhcEMvZm9qdlZ5UGNpMnpWblRZRUtUeDU0TFlJQ2NtaC9OVDB3TmVkWUw2MS90R2lkZXNjZnNNMytMRkFacVBPekc2K3FSOCtGUzBhUXowdUIvUVE9&fname=eFpoVUlucDl6Q2tKOTE4OHBmUkVSanBUMFBiM2NNZTVESGR2QWpyeEdmV0krdy9ZbEFTLzUySUZ1dmZMR1c5cmlCcUtteUFScHQ5d3Qwd1Y2elUxRkRwVDBQYjNjTWU1REhkdkFqcnhHZlVxNU9zenYrK3U5VTlnV1VpMll3RGsrbS9VY3BWdU02b3hvQ1dzbURvQjdhci9sNzBxL25oTUg0VkUyZ3lIZ1pReTZjRlZiZFp0NjQzd0p3azNjWmRX&cg=15113",
+      "format": "html",
+      "revision_id": "f87057b6747d8bb9c7f08be674a79eb9e950965e0c23c18d3743884403570e2c",
+      "observed_at": "2026-11-08T07:31:12+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-de2ae2c9d9c01d9f3-f87057b6"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-c5e90b00ffff1d00f2e3ffd3",
+      "url": "https://welfare.ntpc.gov.tw/viewService/show/1008038?actionName=list6&fromOpa=1",
+      "format": "html",
+      "revision_id": "262335249c6156d0f73b6f8a277a67da364c3556e83a97dccda1b5cbf42a86cc",
+      "observed_at": "2026-11-08T07:34:52+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-c5e90b00ffff-26233524"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-f89fa99d52cbeba9f8e1738a",
+      "url": "https://www.apple.com/tw/apple-music/",
+      "format": "html",
+      "revision_id": "6ce721d0f69ef1e78ce32b5fce001920d1cdbe00464f45f1315da1ed2453ad99",
+      "observed_at": "2026-11-08T07:32:53+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-f89fa99d52cb-6ce721d0"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-3777f6859f5753812c303de2",
+      "url": "https://www.microsoft.com/education/products/office",
+      "format": "html",
+      "revision_id": "2d25fba247297a9e52d2c3cbfc07e51d3d61ee6409851caf2f10ddcf81f19710",
+      "observed_at": "2026-11-08T07:33:05+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-3777f6859f57-2d25fba2"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-4730933aa8225b35e9bac3f2",
+      "url": "https://support.google.com/youtube/answer/9169274?hl=zh-Hant",
+      "format": "html",
+      "revision_id": "01cd90f52732e084ab01669ae5d45940c33a225313cd3f75b29bce651df487f4",
+      "observed_at": "2026-11-08T07:33:20+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-4730933aa822-01cd90f5"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-de402a17589a44877a5031ce",
+      "url": "https://laws.gov.taipei/law/LawSearch/LawArticleContent/FL002598",
+      "format": "html",
+      "revision_id": "12e772e9c92cba23873e4d6f6f04922dbe097aff102468f7d0756f10641e62f1",
+      "observed_at": "2026-11-08T07:33:33+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-de402a17589a-12e772e9"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-4f8968cad252fdbb61e88102",
+      "url": "https://laws.gov.taipei/law/LawSearch/LawArticleContent/FL002892",
+      "format": "html",
+      "revision_id": "fd6f60627315891f3897f21b199e2b0f1e2ef819c01349b701f475447fb3b605",
+      "observed_at": "2026-11-08T07:33:45+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-4f8968cad252-fd6f6062"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-d5a32d7ef14a91fbb0ee88fa",
+      "url": "https://military-osa.ncku.edu.tw/var/file/55/1055/img/406/408678570.pdf",
+      "format": "pdf",
+      "revision_id": "d9284afdf34759e89980290dc75b9fc52cd2dd9868438b987513e343ed2ca457",
+      "observed_at": "2026-11-08T07:30:09+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-dd5a32d7ef14a91fb-d9284afd"
       ],
       "events": [],
       "links": []
