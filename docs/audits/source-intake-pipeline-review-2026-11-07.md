@@ -158,10 +158,10 @@
 | 9 | 公告和它連到的辦法、附件歸成同一方案，欄位不拼接 | 已合併 | [#94](https://github.com/matt-ye/opengsa/pull/94) |
 | 新增 | 手寫卡整批送進流程：實跑 183 個來源，3 張可取代，結果見 [hand-replacement-run-2026-11-07.md](hand-replacement-run-2026-11-07.md) | 已合併 | [#95](https://github.com/matt-ye/opengsa/pull/95) |
 | 新增 | 撤下來源讀不到的 126 張手寫卡 | 已合併 | [#96](https://github.com/matt-ye/opengsa/pull/96) |
-| 3 | README 與文件的排程描述改成實際行為；拿掉「覆蓋率 100%」 | 已開 PR，待使用者看 | [#97](https://github.com/matt-ye/opengsa/pull/97) |
-| 4 | 待審卡片帶上來源脈絡與檢查結果 | 已開 PR，待使用者看 | [#98](https://github.com/matt-ye/opengsa/pull/98) |
-| 5 | 每輪請求上限暫調 50、停掉讀不到的來源、失敗退避 | 已開 PR，待使用者看 | [#99](https://github.com/matt-ye/opengsa/pull/99) |
-| 10 | 時間紀錄與卡片同一輪產生，沒抽到的欄位明列 | 已開 PR，待使用者看 | [#100](https://github.com/matt-ye/opengsa/pull/100) |
-| 11 | 提案自動變成資料 PR，檢查在推之前跑完 | 已開 PR，待使用者看 | [#102](https://github.com/matt-ye/opengsa/pull/102) |
-| 12 | 駁回的卡下架並記下問題來源 | 已開 PR，待使用者看 | [#103](https://github.com/matt-ye/opengsa/pull/103) |
-| 新增 | 擴大檢索台灣來源，抽查後修通用萃取（金額、學制、國籍、分類、標題），清單見 [research-sources-2026-11-07.json](research-sources-2026-11-07.json) | 已開 PR，待使用者看 | 研究批次 |
+| 3 | README 與文件的排程描述改成實際行為；拿掉「覆蓋率 100%」 | 已合併 | [#97](https://github.com/matt-ye/opengsa/pull/97) |
+| 4 | 待審卡片帶上來源脈絡與檢查結果 | 已合併 | [#98](https://github.com/matt-ye/opengsa/pull/98) |
+| 5 | 每輪請求上限暫調 50、停掉讀不到的來源、失敗退避 | 已合併 | [#99](https://github.com/matt-ye/opengsa/pull/99) |
+| 10 | 時間紀錄與卡片同一輪產生，沒抽到的欄位明列 | 已合併 | [#100](https://github.com/matt-ye/opengsa/pull/100) |
+| 11 | 提案自動變成資料 PR，檢查在推之前跑完 | 已合併 | [#102](https://github.com/matt-ye/opengsa/pull/102) |
+| 12 | 駁回的卡下架並記下問題來源 | 已合併 | [#103](https://github.com/matt-ye/opengsa/pull/103) |
+| 新增 | 擴大檢索台灣來源，抽查後修通用萃取（金額、學制、國籍、分類、標題），清單見 [research-sources-2026-11-07.json](research-sources-2026-11-07.json) | 已合併 | [#104](https://github.com/matt-ye/opengsa/pull/104)、[#105](https://github.com/matt-ye/opengsa/pull/105) |
