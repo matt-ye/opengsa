@@ -35,7 +35,7 @@ from scripts.application_process import infer_process
 from scripts.semantic_facts import INSTRUCTIONS, NON_ROC_ALLOWED, OTHER_LEVELS, PLACEHOLDER, award_clauses, discover_identity, discover_organizations, is_student_document, recurring_time, degree_terms, time_actor, labelled_date_clause
 from scripts.ai_tool_rules import benefit_tiers
 
-EXTRACTOR_VERSION = "extractor-1.11.0"
+EXTRACTOR_VERSION = "extractor-1.12.0"
 PROMPT_VERSION = "prompt-1.4.0"
 
 
@@ -2830,7 +2830,8 @@ def withhold_unsure_generic_fields(cand, blocks, source_id, revision_id, evidenc
     if len(amounts) == 1:
         block, clause, _ = next(row for row in found if amounts & row[2])
         parsed = parse_amount_from_text(clause)
-        if parsed and amounts & {parsed["amount_min"], parsed["amount_max"]}:
+        # 單位（一次、每月、每學期）分不清就不填：只寫「新臺幣5萬元」的急難金，填了會被檢核擋下整張卡。
+        if parsed and amounts & {parsed["amount_min"], parsed["amount_max"]} and parsed.get("unit") not in (None, "unknown"):
             ref = {"source": source_id, "locator": block["locator"]}
             item = {"branch_or_tier": cand["cycle"].get("branch"), **parsed, "refs": [ref]}
             cand["benefit"] = {"summary": _format_benefit_summary(item), "items": [item], "refs": [ref]}
