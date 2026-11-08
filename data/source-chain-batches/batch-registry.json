@@ -3,9 +3,9 @@
   "updated_at": "2026-11-05T12:00:00+00:00",
   "description": "OpenGSA 全庫跨資源通用資訊鏈（Universal Source Chains）拓撲批次總註冊表",
   "total_batches": 7,
-  "total_documents": 266,
-  "total_edges": 198,
-  "total_schemes_covered": 68,
+  "total_documents": 165,
+  "total_edges": 118,
+  "total_schemes_covered": 47,
   "batches": [
     {
       "batch_id": "batch-university",
@@ -13,9 +13,9 @@
       "archetype": "higher_education_university",
       "description": "全台大專校院與研究生專屬獎助五節點拓撲 (原型 A)",
       "schedule_track": "other",
-      "documents": 95,
-      "edges": 76,
-      "candidates": 19
+      "documents": 0,
+      "edges": 0,
+      "candidates": 0
     },
     {
       "batch_id": "batch-k12",
@@ -53,9 +53,9 @@
       "archetype": "universal_topology_probe",
       "description": "通用拓撲探針發現之高價值法定助學、算力與學會論文獎 (8 方案)",
       "schedule_track": "gov",
-      "documents": 9,
-      "edges": 6,
-      "candidates": 3
+      "documents": 3,
+      "edges": 2,
+      "candidates": 1
     },
     {
       "batch_id": "batch-conference",

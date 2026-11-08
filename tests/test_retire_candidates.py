@@ -45,6 +45,9 @@ class RetireCandidatesTests(unittest.TestCase):
         retire([card["candidate_id"]], self.root)
         source = next(s for s in read(self.root / "data/scan-sources.json")["sources"] if s["id"] == card["source_metadata"]["source_id"])
         self.assertIs(source["enabled"], False)
+        # 企業卡都是手寫卡：它的 profile 沒驗證過，撤卡後提交流程也不能再拿來用。
+        self.assertIn(card["candidate_id"], read(ROOT / "data/known-hand-authored-candidates.json")["candidate_ids"])
+        self.assertEqual(source["automation"], "not_enabled")
 
     def test_unknown_id_changes_nothing(self):
         before = (self.root / "data/known-hand-authored-candidates.json").read_bytes()

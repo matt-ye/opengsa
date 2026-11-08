@@ -56,6 +56,7 @@ def retire(ids, root=ROOT):
     for path, bundle in bundles.items():
         save(path, bundle)
     baseline = read(root / HAND_BASELINE)
+    hand_sources = {c["source_metadata"]["source_id"] for c in found if c["candidate_id"] in set(baseline["candidate_ids"])}
     save(root / HAND_BASELINE, {**baseline, "candidate_ids": [i for i in baseline["candidate_ids"] if i not in ids]})
     for path in sorted((root / "data").glob("*temporal-observations.json")):
         data = read(path)
@@ -75,7 +76,13 @@ def retire(ids, root=ROOT):
     config = read(config_path)
     used = {c["source_metadata"]["source_id"] for path in (root / "data/candidates").glob("*.json") for c in read(path)["candidates"]}
     orphaned = {c["source_metadata"]["source_id"] for c in found} - used
-    save(config_path, {**config, "sources": [{**s, "enabled": False} if s["id"] in orphaned else s for s in config["sources"]]})
+    # 手寫卡的 profile（標題、選擇器）沒驗證過。卡撤掉後它就不再被當成手寫來源排除，
+    # 提交流程遇到同網址會拿它把首頁命名成那個方案，所以標成人工清單，流程不再採用。
+    def retired(source):
+        if source["id"] not in orphaned:
+            return source
+        return {**source, "enabled": False, **({"automation": "not_enabled"} if source["id"] in hand_sources else {})}
+    save(config_path, {**config, "sources": [retired(s) for s in config["sources"]]})
     save(registry_path, {**registry, "total_documents": sum(e["documents"] for e in registry["batches"]), "total_edges": sum(e["edges"] for e in registry["batches"]),
                          "total_schemes_covered": sum(e["candidates"] for e in registry["batches"])})
     return found

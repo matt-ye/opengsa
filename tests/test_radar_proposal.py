@@ -131,8 +131,10 @@ class RadarProposalTests(unittest.TestCase):
         self.assertFalse(same_program('國立中山大學學生急難救助金','中山大學西灣優秀學生與研究生卓越獎學金'))
         self.assertFalse(same_program('獎學金','財團法人某基金會獎學金'))
 
-    def test_shared_url_across_programs_is_left_for_a_person(self):
-        url,cards=self.hand_url(2);bundle,config,_=self.fixture()
+    def test_same_url_but_another_program_is_left_for_a_person(self):
+        # 同網址不代表同方案（同校首頁可能有急難金和獎學金）：標題認不出是同一方案就不刪。
+        url,cards=self.hand_url(1);bundle,config,_=self.fixture()
+        self.assertFalse(any(same_program(c['title'],new['title']) for c in cards for new in bundle['candidates']))
         files,summary=prepare(bundle,config,replaced_urls=[url])
         self.assertEqual(summary['retired_hand_cards'],[])
         self.assertEqual({r['candidate_id'] for r in summary['needs_manual_retire']},{c['candidate_id'] for c in cards})
