@@ -221,10 +221,11 @@ jobs:
     if: ${{ always() && needs.scan.outputs.has_proposal == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    # 全 workflow 唯一有寫入權限的 job。
+    # 全 workflow 唯一有寫入權限的 job。issues 只用來在收件匣 Issue 留言。
     permissions:
       contents: write
       pull-requests: write
+      issues: write
     steps:
       # 不把權杖留在磁碟上：提案內容來自公開網站，檢查階段碰不到寫入權限。
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
@@ -249,6 +250,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           python scripts/open_data_pr.py --publish --output work/data-pr --branch data/radar-proposal --title "data: 排程掃描的待審提案"
+      # 檢查沒過也要通知，所以用 always()；沒有提案或沒有變動時腳本自己跳過。
+      - name: Post to the review inbox Issue
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          python scripts/open_data_pr.py --notify --output work/data-pr
 
   review-workspace:
     if: github.event_name == 'workflow_dispatch' && inputs.operation == 'review_workspace'
