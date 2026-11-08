@@ -1534,7 +1534,9 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：財團法人台灣兒童暨家庭扶助基金會（家扶基金會） 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "k12-foxconn-whale-vocational-scholarship",
@@ -2453,7 +2455,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "ent-google-phd-fellowship",
@@ -2830,7 +2834,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "ent-spil-semiconductor-scholarship",
@@ -3629,7 +3635,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "ent-lcy-education-scholarship",
@@ -3768,7 +3776,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "ent-fulbright-taiwan-fellowship",
@@ -4431,7 +4441,9 @@
       "known_attachment_urls": [],
       "review_note": "通用拓撲探針發現來源：中華民國電腦學會最佳碩博士論文獎",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "moe-student-aid-emergency",
@@ -6573,6 +6585,21 @@
       "id": "discovery-d2a53da2cfc4acb3d",
       "title": "「中原大學清寒優秀學生勵學獎學金實施辦法與意願書」",
       "url": "https://oosa.cycu.edu.tw/wp-content/uploads/%E4%B8%AD%E5%8E%9F%E5%A4%A7%E5%AD%B8%E6%B8%85%E5%AF%92%E5%84%AA%E7%A7%80%E5%AD%B8%E7%94%9F%E5%8B%B5%E5%AD%B8%E7%8D%8E%E5%AD%B8%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E8%88%87%E6%84%8F%E9%A1%98%E6%9B%B8.pdf",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": false
+    },
+    {
+      "id": "discovery-dd4c25ed2dab836dc",
+      "title": "「114學年度第一學期韌世代獎助學金」申請辦法",
+      "url": "https://www.ccf.org.tw/unitoutweb/laravel-filemanager/files/39/68833a3f57de5.pdf",
       "body_selector": "body",
       "required_markers": [],
       "pdf_include": [],

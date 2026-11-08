@@ -7,8 +7,8 @@
   "official_data_modified": false,
   "http_requests": 0,
   "description": "全台學生急難救助金五節點資訊鏈拓撲批次（中央法定學產、指標公私立大學校院與主要慈善基金會）",
-  "total_documents": 60,
-  "total_edges": 48,
+  "total_documents": 55,
+  "total_edges": 44,
   "documents": [
     {
       "id": "doc-nthu-sa-emergency-anchor",
@@ -889,86 +889,6 @@
       "archetype": "government_statutory",
       "events": [],
       "links": []
-    },
-    {
-      "id": "doc-ntu-oia-emergency-anchor",
-      "url": "https://oia.ntu.edu.tw/",
-      "format": "html",
-      "revision_id": "0380645fa738c25e6fc5e7f62a9e664c7e3f9ae3693a1d64cf5b43656b2ea201",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ntu-oia-international-emergency"
-      ],
-      "role": "anchor",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-ntu-oia-emergency-call",
-      "url": "https://oia.ntu.edu.tw/",
-      "format": "html",
-      "revision_id": "0709b9d1bfcddf5641bed04adb931b24d17f2065746110ce369f2a73e469cf48",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ntu-oia-international-emergency"
-      ],
-      "role": "call",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-ntu-oia-emergency-form",
-      "url": "https://oia.ntu.edu.tw/",
-      "format": "html",
-      "revision_id": "563d1f1a422b5f8f2049eb5d2fa234724b7c6b6a9a0aea013529d9d542ee7f5d",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ntu-oia-international-emergency"
-      ],
-      "role": "form",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-ntu-oia-emergency-intake",
-      "url": "https://oia.ntu.edu.tw/",
-      "format": "html",
-      "revision_id": "b4a524eaf69e33c9224f03180afce9c40440f55520f65e24ad982b838533e6be",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ntu-oia-international-emergency"
-      ],
-      "role": "intake",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-ntu-oia-emergency-result",
-      "url": "https://oia.ntu.edu.tw/",
-      "format": "html",
-      "revision_id": "d050f0a7f6fe18599e1a95c7893789d24e98cdb844ed111e971167586a15c452",
-      "observed_at": "2026-11-06T10:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ntu-oia-international-emergency"
-      ],
-      "role": "result",
-      "archetype": "government_statutory",
-      "events": [],
-      "links": []
     }
   ],
   "edges": [
@@ -1191,26 +1111,6 @@
       "from": "doc-wrp-single-parent-aid-intake",
       "to": "doc-wrp-single-parent-aid-result",
       "type": "reviews"
-    },
-    {
-      "from": "doc-ntu-oia-emergency-anchor",
-      "to": "doc-ntu-oia-emergency-call",
-      "type": "authorizes"
-    },
-    {
-      "from": "doc-ntu-oia-emergency-call",
-      "to": "doc-ntu-oia-emergency-form",
-      "type": "requires"
-    },
-    {
-      "from": "doc-ntu-oia-emergency-form",
-      "to": "doc-ntu-oia-emergency-intake",
-      "type": "submits_to"
-    },
-    {
-      "from": "doc-ntu-oia-emergency-intake",
-      "to": "doc-ntu-oia-emergency-result",
-      "type": "reviews"
     }
   ],
   "scopes": [
@@ -1287,12 +1187,6 @@
     {
       "candidate_id": "cand-wrp-single-parent-aid",
       "program_key": "wrp-single-parent-aid",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
-      "candidate_id": "cand-ntu-oia-international-emergency",
-      "program_key": "ntu-oia-emergency",
       "phase": "all",
       "historical_baseline_allowed": true
     }

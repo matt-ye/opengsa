@@ -11,43 +11,5 @@
       "track": "other"
     }
   ],
-  "records": {
-    "cand-ent-csroc-thesis-award": {
-      "candidate_sha256": "7ab9c2b1fa1b9632eb3f31b513f5e9460349d9e29e4b0efb829709ef08ee5b91",
-      "url": "https://www.csroc.org.tw/news_detail.php?id=12",
-      "status": "replayed",
-      "reason": null,
-      "observed_at": "2026-11-04T00:00:00Z",
-      "raw_sha256": "141afe1c0e0f545c971e0082da48a9fa9539cc5ee201446d135c5ee458a40883",
-      "revision_id": "93520b9d466b2f200133bda8d344800c15f8b98f9113969c3500962e8927d379",
-      "format": "html",
-      "policy": {
-        "version": "time-policy-1",
-        "submission_mode": "fixed_window",
-        "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "ent-csroc-thesis-award/submission",
-            "kind": "fixed_window",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "每年 6 月 1 日至 7 月 31 日受理推薦送審",
-            "value": "2026-10-15",
-            "precision": "date",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "ent-csroc-thesis-award",
-                "revision_id": "93520b9d466b2f200133bda8d344800c15f8b98f9113969c3500962e8927d379",
-                "locator": "official_schedule",
-                "evidence_path": "temporal_replay/submission"
-              }
-            ]
-          }
-        ],
-        "gaps": []
-      },
-      "parser_sha256": "dff305dd37a82c1715f616fda95d25d0c86a9dd9fef67a0e7cfbd489dbcaa348"
-    }
-  }
+  "records": {}
 }

@@ -3511,6 +3511,26 @@
       "text": "### 「中原大學清寒優秀學生勵學獎學金實施辦法與意願書」\n\n原候選來源 · pdf · candidate_snapshot\n\n查核：2026-11-07\n\n[來源網站](https://oosa.cycu.edu.tw/wp-content/uploads/%E4%B8%AD%E5%8E%9F%E5%A4%A7%E5%AD%B8%E6%B8%85%E5%AF%92%E5%84%AA%E7%A7%80%E5%AD%B8%E7%94%9F%E5%8B%B5%E5%AD%B8%E7%8D%8E%E5%AD%B8%E9%87%91%E5%AF%A6%E6%96%BD%E8%BE%A6%E6%B3%95%E8%88%87%E6%84%8F%E9%A1%98%E6%9B%B8.pdf)\n\n`doc-2a53da2cfc4acb3d5f79325b`"
     },
     {
+      "id": "5406f5f075b19865",
+      "type": "text",
+      "x": 0,
+      "y": 64300,
+      "width": 350,
+      "height": 175,
+      "color": "5",
+      "text": "## 「114學年度第一學期韌世代獎助學金」申請辦法\n\n1筆候選｜baseline_pending\n\n沿用基線；待下一批查核"
+    },
+    {
+      "id": "cb8e86c5fabc9a9c",
+      "type": "text",
+      "x": 430,
+      "y": 64300,
+      "width": 350,
+      "height": 260,
+      "color": "3",
+      "text": "### 「114學年度第一學期韌世代獎助學金」申請辦法\n\n原候選來源 · pdf · candidate_snapshot\n\n查核：2026-11-08\n\n[來源網站](https://www.ccf.org.tw/unitoutweb/laravel-filemanager/files/39/68833a3f57de5.pdf)\n\n`doc-d4c25ed2dab836dc98adf14d`"
+    },
+    {
       "id": "f94a583d91ca7514",
       "type": "text",
       "x": 0,
@@ -5555,6 +5575,16 @@
       "id": "0abd41c32c8f207b",
       "fromNode": "52e9ee3b57b85ec7",
       "toNode": "c45fde29143cc7ab",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "f0d58a154209a168",
+      "fromNode": "5406f5f075b19865",
+      "toNode": "cb8e86c5fabc9a9c",
       "fromSide": "right",
       "toSide": "left",
       "toEnd": "arrow",

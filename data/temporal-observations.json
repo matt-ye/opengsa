@@ -188,6 +188,14 @@
         "https://www.yzu.edu.tw/admin/st/index.php/tw/s-news-tw/7173-st-lgs20261106-1430-01"
       ],
       "observed_at": "2026-11-07T21:31:52+00:00"
+    },
+    {
+      "http_requests": 0,
+      "kind": "same_round",
+      "attempted_urls": [
+        "https://www.ccf.org.tw/unitoutweb/laravel-filemanager/files/39/68833a3f57de5.pdf"
+      ],
+      "observed_at": "2026-11-08T03:40:26+00:00"
     }
   ],
   "records": {
@@ -33650,6 +33658,313 @@
       ],
       "undetermined_subkind": "unparsed_timing_clause",
       "candidate_sha256": "6392fc032624a38473db155f19345608177e9e9ee47340aa5cafae7d33e8350a"
+    },
+    "cand-discovery-dd4c25ed2dab836dc-4b73b6cc": {
+      "url": "https://www.ccf.org.tw/unitoutweb/laravel-filemanager/files/39/68833a3f57de5.pdf",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-08T03:40:20+00:00",
+      "raw_sha256": "4d167fd4c1f333ed88adf460554a33fba3a66b9b604988623b09e865ec0695c3",
+      "revision_id": "762ae6da3332eb85d0afe8c39c6eca1f8dd884b5d750fea3fb3dec9bda02227f",
+      "format": "pdf",
+      "parser_sha256": "c991a93c6ea47313d6ea359014a611251a928edff0d7731f9353429b0b246cb9",
+      "card_revision_id": "4b73b6cce5b8746f9de8dfccae7257cb0fdb790fea7aff748fca3f5f50ae0cd6",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "reference",
+        "review_mode": "not_stated",
+        "rules": [],
+        "gaps": []
+      },
+      "diagnostics": [
+        {
+          "locator": "PDF page 1 + PDF page 1 + PDF page 1 + PDF page 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1 + PDF page 1 + PDF page 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1 + PDF page 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1 + PDF page 1 + PDF page 1 + PDF page 1",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "date",
+            "2025-09-19"
+          ]
+        },
+        {
+          "locator": "PDF page 1 + PDF page 1 + PDF page 1",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "date",
+            "2025-09-19"
+          ]
+        },
+        {
+          "locator": "PDF page 1 + PDF page 1",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2 + PDF page 2",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2 + PDF page 2",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2 + PDF page 2 + PDF page 2",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "date",
+            "2026-01-30"
+          ]
+        },
+        {
+          "locator": "PDF page 2",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 2 + PDF page 2",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 3 + PDF page 3 + PDF page 3 + PDF page 3",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ],
+      "candidate_sha256": "d8045a3f58f29304d1038e5304562ae477efd14e1e7f4a327678542b1dc429c9"
     }
   },
   "baseline": {

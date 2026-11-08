@@ -236,43 +236,6 @@
       },
       "parser_sha256": "dff305dd37a82c1715f616fda95d25d0c86a9dd9fef67a0e7cfbd489dbcaa348"
     },
-    "cand-k12-ccf-taiwan-children-scholarship-dc5fee52": {
-      "candidate_sha256": "3d9c7fe5045f3a6db48bf33124021e4368b7fd361ebe852626e1d8cfc03fb76e",
-      "url": "https://www.ccf.org.tw/",
-      "status": "replayed",
-      "reason": null,
-      "observed_at": "2026-11-04T00:00:00Z",
-      "raw_sha256": "56e69d40124d3a5fa8c4caf9634133fb0edf55444ee04b63e1f1c9a1ee15ad9a",
-      "revision_id": "dc5fee522d863409fee74e3f389f72bc9cff0e8acb16d01bb7be64c9c1372ccd",
-      "format": "html",
-      "policy": {
-        "version": "time-policy-1",
-        "submission_mode": "recurring",
-        "review_mode": "not_stated",
-        "rules": [
-          {
-            "rule_id": "k12/0",
-            "kind": "recurring",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "每學期開學後檢附註冊繳費單向各地方家扶中心社工提出助學金申請",
-            "value": null,
-            "precision": "rule",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "k12-ccf-taiwan-children-scholarship",
-                "revision_id": "dc5fee522d863409fee74e3f389f72bc9cff0e8acb16d01bb7be64c9c1372ccd",
-                "locator": "k12_schedule",
-                "evidence_path": "temporal_replay/submission"
-              }
-            ]
-          }
-        ],
-        "gaps": []
-      },
-      "parser_sha256": "dff305dd37a82c1715f616fda95d25d0c86a9dd9fef67a0e7cfbd489dbcaa348"
-    },
     "cand-k12-foxconn-whale-vocational-scholarship-c95036c0": {
       "candidate_sha256": "49a255cb78b3afb7c318d633b8646b2ae77228e59d2859093dce6166ec61a669",
       "url": "https://www.foxconnfoundation.org/",

@@ -7,97 +7,21 @@
   "official_data_modified": false,
   "http_requests": 0,
   "description": "通用資訊鏈拓撲探針發現之 8 筆高價值法定助學、算力與學會論文獎五節點資訊鏈拓撲批次",
-  "total_documents": 3,
-  "total_edges": 2,
-  "documents": [
-    {
-      "id": "doc-topodiscover-a76aac905a39dc86a6",
-      "url": "https://www.csroc.org.tw/news_detail.php?id=12/rules",
-      "format": "html",
-      "revision_id": "a4ee380a7a9836c3d579eb49e0c49c5520942f8f1010c768f01433a8c8119f5e",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ent-csroc-thesis-award"
-      ],
-      "role": "charter",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-topodiscover-9cc592384f6d669151",
-      "url": "https://www.csroc.org.tw/news_detail.php?id=12",
-      "format": "html",
-      "revision_id": "fcc043be37e4cf2b362f7ee85ba63cf1b5b69deeaf1297e6a7e19a52eba5b718",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ent-csroc-thesis-award"
-      ],
-      "role": "call",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-topodiscover-d95e7fff267648cf88",
-      "url": "https://www.csroc.org.tw/news_detail.php?id=12/portal",
-      "format": "html",
-      "revision_id": "b87b2611619063e75db6c078778aff8b1d77fa48e3c1328fa796b34c1d2617f0",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-ent-csroc-thesis-award"
-      ],
-      "role": "claim",
-      "events": [],
-      "links": []
-    }
-  ],
-  "edges": [
-    {
-      "from": "doc-topodiscover-a76aac905a39dc86a6",
-      "to": "doc-topodiscover-9cc592384f6d669151",
-      "url": "https://www.csroc.org.tw/news_detail.php?id=12",
-      "role": "authoritative_rule",
-      "program_key": "ent-csroc-thesis-award",
-      "scope": "ent-csroc-thesis-award",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-topodiscover-9cc592384f6d669151",
-      "to": "doc-topodiscover-d95e7fff267648cf88",
-      "url": "https://www.csroc.org.tw/news_detail.php?id=12/portal",
-      "role": "submission_form",
-      "program_key": "ent-csroc-thesis-award",
-      "scope": "ent-csroc-thesis-award",
-      "cycle": "114-115"
-    }
-  ],
+  "total_documents": 0,
+  "total_edges": 0,
+  "documents": [],
+  "edges": [],
   "scopes": [
     {
       "id": "perk-azure-for-students",
       "label": "Microsoft"
-    },
-    {
-      "id": "ent-csroc-thesis-award",
-      "label": "中華民國電腦學會"
     }
   ],
-  "candidate_bindings": [
-    {
-      "candidate_id": "cand-ent-csroc-thesis-award",
-      "program_key": "ent-csroc-thesis-award",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    }
-  ],
+  "candidate_bindings": [],
   "reports": [
     {
       "batch_id": "batch-topology-discovered",
-      "verified_schemes": 1,
+      "verified_schemes": 0,
       "notes": "涵蓋原民會、農業部、勞動部、退輔會、Azure算力與資訊/AI學會論文獎。"
     }
   ]

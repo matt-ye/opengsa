@@ -429,44 +429,6 @@
           "needs_event_date"
         ]
       }
-    },
-    "cand-ntu-oia-international-emergency": {
-      "candidate_sha256": "ad787827baa5045e0e1a713489c111f718a02384abeac2218898a14b6a6f5f3f",
-      "url": "https://oia.ntu.edu.tw/",
-      "status": "replayed",
-      "reason": null,
-      "observed_at": "2026-11-06T10:00:00Z",
-      "raw_sha256": "8057c385eb0f2f721d9b17e3a5574487c4a5deecab6547d9359b9f8d6e5c961a",
-      "revision_id": "8057c385eb0f2f721d9b17e3a5574487c4a5deecab6547d9359b9f8d6e5c961a",
-      "format": "html",
-      "policy": {
-        "version": "time-policy-1",
-        "submission_mode": "continuous",
-        "review_mode": "case_by_case",
-        "rules": [
-          {
-            "rule_id": "schedule.steps/0/deadline",
-            "kind": "continuous",
-            "actor": "student",
-            "stage": "submission",
-            "summary": "事故發生日起3個月內向國際事務處提出",
-            "value": null,
-            "precision": "rule",
-            "anchor_event": null,
-            "source_refs": [
-              {
-                "source": "ntu-oia-emergency",
-                "revision_id": "8057c385eb0f2f721d9b17e3a5574487c4a5deecab6547d9359b9f8d6e5c961a",
-                "locator": "期限條款",
-                "evidence_path": "schedule.steps/0/deadline"
-              }
-            ]
-          }
-        ],
-        "gaps": [
-          "needs_event_date"
-        ]
-      }
     }
   }
 }

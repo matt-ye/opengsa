@@ -2,7 +2,7 @@
   "schema_version": "source-chain-index-1",
   "as_of": "2026-11-08",
   "candidate_file": "data/candidates/source-review.json",
-  "candidate_sha256": "10824375c1c15c16e008f4790471ae9b8827d4090d745421dc11d455919b7849",
+  "candidate_sha256": "e2b38169512d53855c289764cd84560a00717db7d88c4807b64c0b1fbf09d7f2",
   "bundles": [
     "data/source-chains.json",
     "data/source-chain-batches/batch-01.json",
@@ -2391,6 +2391,20 @@
       ],
       "rules": [],
       "audited_batch": null
+    },
+    {
+      "key": "discovery-dd4c25ed2dab836dc",
+      "title": "「114學年度第一學期韌世代獎助學金」申請辦法",
+      "candidate_ids": [
+        "cand-discovery-dd4c25ed2dab836dc-4b73b6cc"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
     }
   ],
   "included_links": [
@@ -2454,6 +2468,7 @@
     "第一批以13方案／19候選為基線；本次為64份候選文件／58組暫定方案，未完成跨URL語義別名整併。",
     "batch-01僅表示原第一批3方案的資訊鏈規則；全原始URL盤查見original-source-verification.json。",
     "全部規則與候選維持pending，不是人工發布核准。",
+    "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。"
   ],
