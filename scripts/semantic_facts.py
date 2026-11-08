@@ -61,8 +61,9 @@ def award_clauses(blocks):
 
 
 # 急難救助、家庭補助與學生優惠的資格寫的是家戶或學生身分，不是「就讀碩博士」。只在這兩類來源採用。
-LIVING_AUDIENCE=re.compile(r'學生|子女|兒童|幼兒|低收入|中低收入|家庭|單親|新住民|農漁民|特殊境遇|弱勢')
-LIVING_RULE=re.compile(r'申請(?:資格|對象|條件)|補助對象|適用對象|扶助對象|救助對象|服務對象|凡|符合|具.{0,6}身分')
+LIVING_AUDIENCE=re.compile(r'學生|子女|兒童|幼兒|低收入|中低收入|家庭|單親|新住民|農漁民|特殊境遇|弱勢|市民|居民|個案')
+# 「得…申請」「向區公所申請」也是在講誰可以申請。
+LIVING_RULE=re.compile(r'申請(?:資格|對象|條件)|補助對象|適用對象|扶助對象|救助對象|服務對象|凡|符合|具.{0,6}身分|得.{0,24}申請|可.{0,6}申請|向.{0,20}申請')
 # 比對前會去掉所有空白（compact），英文規則不能靠空白或字邊界。
 PERK_AUDIENCE=re.compile(r'students?|educators?|teachers?|學生|教師',re.I)
 PERK_TITLE=re.compile(r'學生|教師|教育|students?|educat|academic|campus',re.I)
@@ -78,6 +79,13 @@ def audience_clause(blocks,category):
         if units[0].get('kind')=='heading':continue
         if audience.search(clause) and rule.search(clause):
             return {'text':text,'degrees':[],'units':units,'kind':'eligibility_clause'}
+    # 資格常寫在「四、申請資格」這種小標題底下，段落本身不再重複「申請資格」：取小標題後第一段寫到身分的。
+    for i,block in enumerate(blocks):
+        if block.get('kind')=='heading' and rule.search(compact(block['text'])):
+            for other in blocks[i+1:i+4]:
+                if other.get('kind')=='heading':break
+                if audience.search(compact(other['text'])) and not (INJECTION.search(other['text']) or PRIVATE.search(other['text'])):
+                    return {'text':text,'degrees':[],'units':[other],'kind':'eligibility_clause'}
     # 學生優惠的產品頁常把資格放在動態載入的區塊；標題寫明對象（例如「for Students」）就以標題為據，細節讓讀者看來源。
     if category=='ai':
         for clause,units in safe_units(blocks):
@@ -92,7 +100,8 @@ def discover_identity(blocks,category=None):
         if units[0].get('kind')=='heading':continue
         # A student's transcript or a salary table is not an enrollment criterion.
         if re.search(r'成績單|學位證書|每月|每年.{0,8}元|支給|薪資|給付|上限|下限',text):continue
-        student=bool(re.search(r'(?:PhD|doctoral|graduate)students?|students?(?:enrolled|pursuing)|'
+        student=bool(re.search(r'(?:PhD|doctoral|graduate)students?|students?.{0,40}(?:enrolled|pursuing)|eligible.{0,12}students?|'
+            r'(?:學士班|大學部|醫學系).{0,8}學生|醫學生|'
             r'在學.{0,16}(?:學生|研究生)|(?:現正|現)?就讀.{0,36}(?:博士|碩士)|'
             r'(?:博士班|碩士班|碩[、及或與]?博(?:士)?班).{0,10}(?:學生|研究生)|研究生[：:].{0,30}(?:博士|碩士)',text))
         if not student:continue
