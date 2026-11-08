@@ -11,7 +11,7 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-from scripts.open_data_pr import apply_proposal, comment, main, pr_body, prepare, proposal_files, publish, run_gates
+from scripts.open_data_pr import INBOX_TITLE, apply_proposal, comment, main, notify, pr_body, prepare, proposal_files, publish, run_gates
 
 
 def write(path, value):
@@ -135,6 +135,48 @@ class OpenDataPrTests(unittest.TestCase):
             with self.assertRaises(SystemExit):
                 main()
         self.assertIn("沒有開 PR", (out / "comment.md").read_text(encoding="utf-8"))
+
+    def inbox(self, status="ready", issues=(), with_comment=True):
+        out = self.base / f"inbox-{len(list(self.base.glob('inbox-*')))}"
+        write(out / "result.json", {"status": status, "pr_url": None, "compare_url": "https://github.com/o/r/compare/main...data/x"})
+        if with_comment:
+            write(out / "comment.md", "請從這裡開：連結\n")
+        write(out / "pr-body.md", "提案接受 1 筆\n")
+        calls = []
+
+        def runner(command, **kwargs):
+            calls.append(command)
+            if command[:3] == ["gh", "issue", "list"]:
+                return SimpleNamespace(returncode=0, stdout=json.dumps(list(issues)))
+            return SimpleNamespace(returncode=0, stdout="https://github.com/o/r/issues/42\n")
+        return notify(out, "o/r", "tok", "owner", runner), calls, out
+
+    def test_inbox_issue_is_opened_once_and_new_proposals_are_comments(self):
+        number, calls, out = self.inbox()
+        self.assertEqual(number, "42")
+        self.assertEqual([c[:3] for c in calls], [["gh", "issue", "list"], ["gh", "issue", "create"], ["gh", "issue", "comment"]])
+        self.assertIn("@owner", (out / "inbox-body.md").read_text(encoding="utf-8"))
+        text = (out / "inbox-comment.md").read_text(encoding="utf-8")
+        self.assertIn("請從這裡開", text)
+        self.assertIn("提案接受 1 筆", text)
+        number, calls, _ = self.inbox(issues=[{"number": 7, "title": INBOX_TITLE}, {"number": 8, "title": "別的"}])
+        self.assertEqual(number, "7")
+        self.assertFalse([c for c in calls if c[:3] == ["gh", "issue", "create"]])
+
+    def test_inbox_stays_quiet_without_a_proposal(self):
+        self.assertEqual(self.inbox(status="no_changes")[:2], (None, []))
+        self.assertEqual(self.inbox(with_comment=False)[:2], (None, []))
+        number, _, out = self.inbox(status="gates_failed")
+        self.assertEqual(number, "42")
+        self.assertNotIn("提案接受", (out / "inbox-comment.md").read_text(encoding="utf-8"))
+
+    def test_workflow_notifies_the_inbox_even_when_checks_fail(self):
+        workflow = (ROOT / ".github/workflows/scan-sources.yml").read_text(encoding="utf-8")
+        job = workflow.split("\n  data-pr:")[1].split("\n  review-workspace:")[0]
+        self.assertIn("issues: write", job)
+        step = job.split("Post to the review inbox Issue")[1]
+        self.assertIn("if: always()", step)
+        self.assertIn("--notify", step)
 
 
 if __name__ == "__main__":
