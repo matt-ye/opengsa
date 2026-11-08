@@ -2,7 +2,7 @@
   "schema_version": "source-chain-index-1",
   "as_of": "2026-11-08",
   "candidate_file": "data/candidates/source-review.json",
-  "candidate_sha256": "a0850790c6bf8df07f263c6417ef6d874180def1ad7e8fd2c8a59069d2c0560a",
+  "candidate_sha256": "5b12065af95c09a2a6051c83d0cd3b5befc00a31b51d6a2c4f057e7552c7900a",
   "bundles": [
     "data/source-chains.json",
     "data/source-chain-batches/batch-01.json",
@@ -2466,7 +2466,8 @@
       "key": "discovery-issue-6ae328825c63",
       "title": "國立清華大學學生急難貸款辦法",
       "candidate_ids": [
-        "cand-discovery-dc0df4a8da338a2c2-acb9974a"
+        "cand-discovery-dc0df4a8da338a2c2-acb9974a",
+        "cand-discovery-de2ae2c9d9c01d9f3-f87057b6"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
@@ -2643,6 +2644,273 @@
       ],
       "rules": [],
       "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-883814ec5158",
+      "title": "Microsoft Research PhD Fellowship",
+      "candidate_ids": [
+        "cand-discovery-issue-883814ec5158-0214e241"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d12c226584b8b78d0",
+      "title": "大專校院不利處境學生助學金申請簡介",
+      "candidate_ids": [
+        "cand-discovery-d12c226584b8b78d0-5f07fdda"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d20a85b8b4295ab7d",
+      "title": "115學年度大專校院「不利處境學生助學計畫-助學金」申辦公告更新逾時視同放棄！",
+      "candidate_ids": [
+        "cand-discovery-d20a85b8b4295ab7d-bada8719"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d48ee81664e14cb60",
+      "title": "115-1學期生活助學金申請公告(限新生、轉學生)，申請期間於8/26至9/9止。",
+      "candidate_ids": [
+        "cand-discovery-d48ee81664e14cb60-8eff2366",
+        "cand-discovery-d35a493edc43716de-32459893"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-591f42bdb1a0",
+      "title": "2026鴻海獎學鯨｜高中、國中、國小申請說明",
+      "candidate_ids": [
+        "cand-discovery-issue-591f42bdb1a0-60c128c7"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-9667793ba586",
+      "title": "幼兒就讀教保服務機構補助辦法",
+      "candidate_ids": [
+        "cand-discovery-issue-9667793ba586-ad87d67c"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-51244b764a0d",
+      "title": "114學年度新住民及子女培力與獎助(勵)學金計畫(115年2月23日受理報名)",
+      "candidate_ids": [
+        "cand-discovery-issue-51244b764a0d-725eafed"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-7a66858f3258",
+      "title": "校內急難慰助",
+      "candidate_ids": [
+        "cand-discovery-issue-7a66858f3258-7aa4f3d9"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-db79e45c60a7e2cde",
+      "title": "不利處境學生助學金",
+      "candidate_ids": [
+        "cand-discovery-db79e45c60a7e2cde-fa095f21"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d6cc4df60f5986427",
+      "title": "不利處境學生多元生理用品專項補助",
+      "candidate_ids": [
+        "cand-discovery-d6cc4df60f5986427-bc08296e"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-dfa156b14905cf94d",
+      "title": "失業勞工子女就學補助",
+      "candidate_ids": [
+        "cand-discovery-dfa156b14905cf94d-ca458b2e"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d8e2ea61cffbec927",
+      "title": "學雜費減免線上申請",
+      "candidate_ids": [
+        "cand-discovery-d8e2ea61cffbec927-1418be7f"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-c5e90b00ffff",
+      "title": "申請急難救助（新北市政府福利補助自己查）",
+      "candidate_ids": [
+        "cand-discovery-issue-c5e90b00ffff-26233524"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-f89fa99d52cb",
+      "title": "Apple Music 學生方案",
+      "candidate_ids": [
+        "cand-discovery-issue-f89fa99d52cb-6ce721d0"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-3777f6859f57",
+      "title": "免費的學校用 Microsoft Office 365 | Microsoft 教育版",
+      "candidate_ids": [
+        "cand-discovery-issue-3777f6859f57-2d25fba2"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-4730933aa822",
+      "title": "管理 YouTube Premium 或 YouTube Music Premium 學生方案",
+      "candidate_ids": [
+        "cand-discovery-issue-4730933aa822-01cd90f5"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-de402a17589a",
+      "title": "特殊境遇家庭扶助條例",
+      "candidate_ids": [
+        "cand-discovery-issue-de402a17589a-12e772e9"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-4f8968cad252",
+      "title": "臺北市急難救助金核發作業要點",
+      "candidate_ids": [
+        "cand-discovery-issue-4f8968cad252-fd6f6062"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-dd5a32d7ef14a91fb",
+      "title": "國立成功大學學生緊急紓困及家庭急難慰助金實施辦法",
+      "candidate_ids": [
+        "cand-discovery-dd5a32d7ef14a91fb-d9284afd"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
     }
   ],
   "included_links": [
@@ -2706,6 +2974,7 @@
     "第一批以13方案／19候選為基線；本次為64份候選文件／58組暫定方案，未完成跨URL語義別名整併。",
     "batch-01僅表示原第一批3方案的資訊鏈規則；全原始URL盤查見original-source-verification.json。",
     "全部規則與候選維持pending，不是人工發布核准。",
+    "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",

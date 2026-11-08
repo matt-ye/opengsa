@@ -13,6 +13,22 @@ from scripts.audit_sources import canonical_url
 from tests.test_expansion import HTML,row
 
 class RadarProposalTests(unittest.TestCase):
+    def setUp(self):
+        # 正式資料的手寫卡會撤光：讀手寫基準時多標一張「網址只對應這張卡」的流程卡當素材，不寫檔。
+        baseline=read(ROOT/'data/known-hand-authored-candidates.json')
+        # 不從 source-review 挑：來源鏈索引綁著它的雜湊，撤掉其中一張會讓索引對不上。
+        index_file=read(ROOT/'data/source-chain-index.json')['candidate_file']
+        cards=[c for path in sorted((ROOT/'data/candidates').glob('*.json')) if not str(path).replace('\\','/').endswith(index_file)
+               for c in read(path)['candidates']]
+        urls=[canonical_url(c['source_metadata']['url']) for c in cards]
+        extra=next(c for c in cards if urls.count(canonical_url(c['source_metadata']['url']))==1)
+        self.known=baseline['candidate_ids']+[extra['candidate_id']]
+        marked={**baseline,'candidate_ids':self.known}
+        original=read
+        def reader(path):
+            return deepcopy(marked) if str(path).replace('\\','/').endswith('data/known-hand-authored-candidates.json') else original(path)
+        stub=patch('scripts.propose_radar_update.read',reader);stub.start();self.addCleanup(stub.stop)
+
     def fixture(self):
         response={'url':row()['url'],'body':HTML,'headers':{'content-type':'text/html'}}
         prep=prepare_response(response,{},['example.test']);profile=profile_for(row(),prep,None)
@@ -51,7 +67,7 @@ class RadarProposalTests(unittest.TestCase):
                 self.assertEqual((repo/'docs/source-chains'/name).read_text(encoding='utf-8'),(expected/name).read_text(encoding='utf-8'))
 
     def hand_url(self,programs):
-        known=set(read(ROOT/'data/known-hand-authored-candidates.json')['candidate_ids']);at={}
+        known=set(self.known);at={}
         for path in (ROOT/'data/candidates').glob('*.json'):
             for card in read(path)['candidates']:
                 if card['candidate_id'] in known:at.setdefault(canonical_url(card['source_metadata']['url']),[]).append(card)
@@ -65,7 +81,7 @@ class RadarProposalTests(unittest.TestCase):
         self.assertEqual(summary['needs_manual_retire'],[])
         baseline=files['data/known-hand-authored-candidates.json']['candidate_ids']
         self.assertFalse({c['candidate_id'] for c in cards}&set(baseline))
-        self.assertEqual(len(baseline),len(read(ROOT/'data/known-hand-authored-candidates.json')['candidate_ids'])-len(cards))
+        self.assertEqual(len(baseline),len(self.known)-len(cards))
         bundle_path=summary['retired_hand_cards'][0]['bundle']
         self.assertNotIn(cards[0]['candidate_id'],[c['candidate_id'] for c in files[bundle_path]['candidates']])
         self.assertEqual(len(files[bundle_path]['candidates']),len(read(ROOT/bundle_path)['candidates'])-len(cards))

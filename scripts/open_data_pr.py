@@ -55,6 +55,11 @@ def apply_proposal(proposal, root=ROOT):
         target = Path(root) / name
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(Path(proposal) / "repo" / name, target)
+    # 提案自動取代的手寫卡已從卡片檔移除；它在時程紀錄和來源鏈留下的參照也要一起清。
+    summary_path = Path(proposal) / "summary.json"
+    if summary_path.exists():
+        from scripts.retire_candidates import scrub
+        scrub([row["candidate_id"] for row in read(summary_path).get("retired_hand_cards", [])], Path(root))
     config = read(Path(root) / CONFIG)
     new_hosts = sorted(set(config["allowed_hosts"]) - set(before))
     if new_hosts:

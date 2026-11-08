@@ -25,13 +25,26 @@ class ProvenanceGateTests(unittest.TestCase):
         self.assertLessEqual(len(self.known), MAX_BASELINE)
         self.assertLessEqual(self.known, {c["candidate_id"] for c in self.candidates})
 
+    def test_timelines_and_chain_bindings_only_point_at_existing_cards(self):
+        # 撤卡（含提案自動取代）後不能留下指向不存在卡片的時程紀錄或來源鏈綁定。會議批次的 id 是合成的，不在卡片檔。
+        ids = {c["candidate_id"] for c in self.candidates}
+        for path in sorted((ROOT / "data").glob("*temporal-observations.json")):
+            self.assertLessEqual(set(json.loads(path.read_text(encoding="utf-8")).get("records", {})), ids, path.name)
+        registry = json.loads((ROOT / "data/source-chain-batches/batch-registry.json").read_text(encoding="utf-8"))
+        for entry in registry["batches"]:
+            if "conference" in entry["file"]:
+                continue
+            batch = json.loads((ROOT / entry["file"]).read_text(encoding="utf-8"))
+            self.assertLessEqual({b["candidate_id"] for b in batch.get("candidate_bindings", [])}, ids, entry["file"])
+
     def test_pending_extractor_cards_are_still_marked_hand_authored(self):
         pending = set(json.loads(BASELINE.read_text(encoding="utf-8")).get("pending_extractor", []))
         self.assertLessEqual(pending, self.known)
 
     def test_a_new_hand_authored_candidate_is_rejected(self):
-        template = next(c for c in self.candidates if c["candidate_id"] in self.known)
-        forged = deepcopy(template)
+        # 手寫卡會撤光，不能拿手寫卡當模板：取任一張卡、拿掉證據，就是手寫卡的特徵。
+        forged = deepcopy(self.candidates[0])
+        forged["field_evidence"] = []
         forged["candidate_id"] = "cand-forged-00000000"
         forged["verification"]["status"] = "passed_automated_checks"
         forged["verification"]["errors"] = []

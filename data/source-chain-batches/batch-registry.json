@@ -3,9 +3,9 @@
   "updated_at": "2026-11-05T12:00:00+00:00",
   "description": "OpenGSA 全庫跨資源通用資訊鏈（Universal Source Chains）拓撲批次總註冊表",
   "total_batches": 7,
-  "total_documents": 106,
-  "total_edges": 76,
-  "total_schemes_covered": 30,
+  "total_documents": 15,
+  "total_edges": 10,
+  "total_schemes_covered": 5,
   "batches": [
     {
       "batch_id": "batch-university",
@@ -23,9 +23,9 @@
       "archetype": "government_statutory",
       "description": "K-12 各級教育與公部門法定助學五節點拓撲 (原型 B)",
       "schedule_track": "gov",
-      "documents": 21,
-      "edges": 14,
-      "candidates": 7
+      "documents": 0,
+      "edges": 0,
+      "candidates": 0
     },
     {
       "batch_id": "batch-perks",
@@ -33,9 +33,9 @@
       "archetype": "student_perks_identity",
       "description": "學生身分福利與 AI Perks 自動化查驗拓撲 (原型 D)",
       "schedule_track": "other",
-      "documents": 24,
-      "edges": 16,
-      "candidates": 8
+      "documents": 0,
+      "edges": 0,
+      "candidates": 0
     },
     {
       "batch_id": "batch-enterprise",
@@ -43,9 +43,9 @@
       "archetype": "corporate_foundation_dual_track",
       "description": "企業、民間基金會與學會雙軌申辦拓撲 (原型 C)",
       "schedule_track": "enterprise",
-      "documents": 6,
-      "edges": 4,
-      "candidates": 2
+      "documents": 0,
+      "edges": 0,
+      "candidates": 0
     },
     {
       "batch_id": "batch-topology-discovered",
@@ -73,9 +73,9 @@
       "archetype": "government_statutory",
       "description": "全台學生急難救助金資訊鏈五節點拓撲閉環（中央法定學產、指標公私立大學校院、地方各縣市、單親特境與主要慈善基金會）",
       "schedule_track": "other",
-      "documents": 40,
-      "edges": 32,
-      "candidates": 8
+      "documents": 0,
+      "edges": 0,
+      "candidates": 0
     }
   ]
 }
