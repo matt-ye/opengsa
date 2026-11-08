@@ -50,7 +50,7 @@ on:
           - 'extract'
           - 'both'
   schedule:
-    # Asia/Taipei 週二、週五09:17（公部門 gov 軌）、週一、週四09:17（企業/基金會 enterprise 軌）、週三、週六09:17（AI工具與其他 other 軌）。排程強制使用 model_mode=off。
+    # Asia/Taipei 週一至週六 09:17，只跑 scan job，不分軌道，強制 model_mode=off。gov／enterprise／other 分軌只用在手動 temporal_replay。
     - cron: '17 1 * * 2,5'
     - cron: '17 1 * * 1,4'
     - cron: '17 1 * * 3,6'

@@ -154,6 +154,8 @@
 | 6 | 提交入口：owner 加標籤後驗證網址 | 已合併 | [#90](https://github.com/matt-ye/opengsa/pull/90) |
 | 7 | 單一來源管線：核可後只跑該來源並產生提案 | 已合併 | [#91](https://github.com/matt-ye/opengsa/pull/91) |
 | 8 | 資源列舉：入口頁往下找公告與附件，索引頁不成卡 | 已合併 | [#92](https://github.com/matt-ye/opengsa/pull/92) |
-| 新增 | 新卡取代同網址、同方案的手寫卡；認不出是同方案就交給人判斷 | 已開 PR，待使用者看 | [#93](https://github.com/matt-ye/opengsa/pull/93) |
-| 9 | 公告和它連到的辦法、附件歸成同一方案，欄位不拼接 | 已開 PR，待使用者看 | 第 9 項 |
-| 新增 | 手寫卡整批送進流程：實跑 183 個來源，3 張可取代，結果見 [hand-replacement-run-2026-11-07.md](hand-replacement-run-2026-11-07.md) | 已開 PR，待使用者看 | 整批換新 |
+| 新增 | 新卡取代同網址、同方案的手寫卡；認不出是同方案就交給人判斷 | 已合併 | [#93](https://github.com/matt-ye/opengsa/pull/93) |
+| 9 | 公告和它連到的辦法、附件歸成同一方案，欄位不拼接 | 已合併 | [#94](https://github.com/matt-ye/opengsa/pull/94) |
+| 新增 | 手寫卡整批送進流程：實跑 183 個來源，3 張可取代，結果見 [hand-replacement-run-2026-11-07.md](hand-replacement-run-2026-11-07.md) | 已合併 | [#95](https://github.com/matt-ye/opengsa/pull/95) |
+| 新增 | 撤下來源讀不到的 126 張手寫卡 | 已合併 | [#96](https://github.com/matt-ye/opengsa/pull/96) |
+| 3 | README 與文件的排程描述改成實際行為；拿掉「覆蓋率 100%」 | 本 PR | 本 PR |
