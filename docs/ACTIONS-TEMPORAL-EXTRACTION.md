@@ -8,6 +8,8 @@
 
 為避免每次巡檢重跑全部來源或單次執行超時，最外層由 [`scripts/temporal_tracks.py`](../scripts/temporal_tracks.py) 實作三軌分流與三層增量比對閘門：
 
+> 下表的分軌只在手動觸發 `temporal_replay` 時生效。cron 排程只跑 `scan` job，不分軌道，也不經過這裡的增量閘門。
+
 | 排程軌道 (`schedule_track`) | 巡檢日 | 涵蓋來源類型 | 現有 64 筆候選分布 | 目前待補 (`RUN_BACKFILL`) | 已穩定跳過 (`SKIP_UNCHANGED`) |
 |---|---|---|---:|---:|---:|
 | `gov` | 每週二、週五 | 公部門與政府機關獎助（教育部、國科會、中研院、勞動部、地方政府等） | 30 筆 | 15 筆 | 15 筆 |
