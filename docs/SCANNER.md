@@ -75,6 +75,14 @@ python scripts/review_candidates.py --candidates work/scanner/report/candidates.
 
 `scripts/open_data_pr.py` 把提案變成資料 PR，由 `scan-sources.yml` 和 `source-intake.yml` 的 `data-pr` job 執行，只有這個 job 有寫入權限。檢查階段不帶權杖；提案只能改 `data/` 和 `docs/source-chains/`；只推 `data/` 開頭的分支；不會合併，合併才是上架。公開提交的新網域不進 `allowed_hosts`，要排程巡檢由維護者另外加。
 
+巡檢範圍（2026-11-08 使用者決定網站上的卡要持續巡檢）：
+- 網域已在 `allowed_hosts` 的新卡，來源在提案時就直接啟用，跟著排程輪流巡檢。
+- 新網域的來源維持停用，等維護者把網域加進 `allowed_hosts`。
+- 同一網址已有啟用的來源時不重複啟用。
+- `tests/test_scan_coverage.py` 檢查網域已核可的每張流程卡都在巡檢中。
+
+每輪最多 5 份變動文件，所以第一次巡完約 200 個來源要約 40 輪。之後沒變動的來源會很快略過。
+
 repo 設定 `can_approve_pull_request_reviews` 關閉時 Actions 開不了 PR，會改留比較連結，由維護者自己開（這樣 CI 也會跑）。
 
 通知走固定的「待審資料收件匣」Issue（2026-11-08 使用者決定，只用於排程掃描）：每輪有新提案或提案沒過檢查時，bot 在這張 Issue 留言，內容是 PR 連結或比較連結加上提案摘要。留言才會推播，改 Issue 內文不會。第一次開 Issue 時提及 repo 擁有者，擁有者就會自動訂閱。沒有提案或沒有變動時不留言。流程是：手機收到推播，點連結開 PR，CI 跑完，看過後合併。

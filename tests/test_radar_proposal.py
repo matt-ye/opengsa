@@ -47,6 +47,15 @@ class RadarProposalTests(unittest.TestCase):
         self.assertEqual(before,(ROOT/'data/candidates/source-review.json').read_bytes())
         self.assertIn('data/source-chain-batches/radar-proposal-snapshots.json',files)
 
+    def test_new_source_on_an_approved_host_joins_the_schedule(self):
+        # 網域已在 allowed_hosts（維護者核可過）的新來源直接排入巡檢；上一個測試的 example.test 是新網域，維持停用。
+        bundle,config,profile=self.fixture()
+        approved=read(ROOT/'data/scan-sources.json')
+        with patch('scripts.propose_radar_update.read',lambda path:{**approved,'allowed_hosts':approved['allowed_hosts']+['example.test']}
+                   if str(path).replace('\\','/').endswith('data/scan-sources.json') else read(path)):
+            files,_=prepare(bundle,config)
+        self.assertTrue(next(p for p in files['data/scan-sources.json']['sources'] if p['id']==profile['id'])['enabled'])
+
     def test_readable_preview_and_patch_created_offline(self):
         bundle,config,_=self.fixture()
         with TemporaryDirectory() as tmp:

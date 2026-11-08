@@ -133,10 +133,14 @@ def prepare(incoming,config,observations=None,replaced_urls=(),temporal=None):
     files.update(retired_files)
     oldconfig=read(ROOT/'data/scan-sources.json');profiles={p['id']:p for p in oldconfig['sources']}
     needed={c['source_metadata']['source_id'] for c in merged['candidates']}
+    # 2026-11-08 使用者決定網站上的卡要持續巡檢：已核可網域上的新來源直接排入巡檢。
+    # 新網域（例如民眾提交）維持停用，等維護者加進 allowed_hosts；同一網址已在巡檢就不重複。
+    trusted=set(oldconfig['allowed_hosts']);active={p['url'] for p in oldconfig['sources'] if p.get('enabled',True)}
     for p in config['sources']:
         if p['id'] not in profiles and p['id'] in needed:
-            # Readable preview is not permission to add new scheduled scan targets.
-            profiles[p['id']]={**p,'enabled':False}
+            scan=urlsplit(p['url']).hostname in trusted and p['url'] not in active and p.get('automation')!='not_enabled'
+            profiles[p['id']]={**p,'enabled':scan}
+            if scan:active.add(p['url'])
     newconfig={**oldconfig,'sources':list(profiles.values()),'allowed_hosts':sorted(set(oldconfig['allowed_hosts'])|set(config['allowed_hosts']))}
     files['data/scan-sources.json']=newconfig
     index=read(ROOT/'data/source-chain-index.json')
