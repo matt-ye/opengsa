@@ -15,7 +15,7 @@
 ## 🚀 最新專案狀態 (Latest Status)
 
 > **公開預覽網站即時發布中**：**[https://opengsa.mattye.dev/](https://opengsa.mattye.dev/)**  
-> **全庫方案覆蓋規模**：**224 筆來源摘要**（1-to-1 精確時程政策覆蓋，`undetermined = 0`，覆蓋率 100%）  
+> **全庫方案覆蓋規模**：**224 筆來源摘要**（部分是早期手寫卡，尚待用現行流程重新查核；來源沒載明時程的標示為未判定，不補值）  
 > **測試防線**：Python 單元測試與前端整合測試由 GitHub Actions 每次執行
 
 ### 1. 全庫八大獎助資源板塊 (224 筆來源摘要)
@@ -65,13 +65,10 @@ $$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (當�
 
 ---
 
-### 6. GitHub Actions 自動化巡檢與增量保護機制
-- **四大執行軌道**：
-  - `gov` 軌道（週二、五 09:17 UTC+8）：公部門與法定助學
-  - `enterprise` 軌道（週一、四 09:17 UTC+8）：企業、基金會與學會
-  - `other` 軌道（週三、六 09:17 UTC+8）：學生 Perks、AI 工具與大專校院生輔組
-  - `consolidation` 軌道（週日 09:17 UTC+8）：全庫時程聚合校驗
-- **增量閘門 (Incremental Diff Gate)**：未異動來源直接判定 `SKIP_UNCHANGED`（**0 HTTP / 0 Token**），嚴格落實 `model_mode=off`。
+### 6. GitHub Actions 來源巡檢
+- **排程掃描**：週一到週六 09:17（UTC+8，GitHub 不保證準時），週日沒有排程。每輪接著上一輪的位置往下讀，請求數有上限（`data/scan-sources.json` 的 `max_requests`），不分軌道，模型固定關閉。沒有變動的來源用 ETag／Last-Modified 判斷，仍會發出請求。
+- **手動時間重萃（`temporal_replay`）**：只由 owner 手動觸發。`gov`、`enterprise`、`other` 分軌和增量閘門（未異動來源判定 `SKIP_UNCHANGED`，0 HTTP）都只在這裡生效，排程不經過。
+- **產出**：掃描結果是待審提案，存成 Actions artifact；排程不會改動網站資料。
 
 ---
 
