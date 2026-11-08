@@ -27,6 +27,8 @@ SOURCE_ID = "synthetic-foundation-2026"
 TITLE = "合成基金會115學年度研究生獎學金"
 INTAKE_TITLE = "合成丁基金會115學年度研究生獎學金"
 REPLACE_TITLE = "合成己基金會115學年度研究生獎學金"
+NEW_HOST_TITLE = "合成庚基金會115學年度研究生獎學金"
+NEW_HOST_URL = "https://other.opengsa-synthetic.example/news/intake-2026"
 REPLACE_CYCLE = "115學年度"
 PROFILE = {"id": SOURCE_ID, "title": TITLE, "url": f"{BASE}/news/phd-2026", "body_selector": "article", "required_markers": ["申請資格"],
            "pdf_include": [], "max_pdfs": 0, "review_note": "合成來源，端到端測試用。", "evidence_mode": "short_excerpt",
@@ -143,10 +145,12 @@ class SourceIntakeE2ETests(unittest.TestCase):
             return
         cls.updated_cards = cls.synthetic_cards()
         cls.review_after_update = len(read(cls.repo / "data/candidates/source-review.json")["candidates"])
-        if not cls.intake_round(base) or not cls.replace_round(base):
+        if not cls.intake_round(base) or not cls.replace_round(base) or not cls.new_host_round(base):
             return
         # 新增、更新、提交都套用後才重跑全部測試：寫死總數或版本的測試會在這裡現形。
         cls.sh("update.unittest", "-m", "unittest", "discover", "-s", "tests")
+        # 排在全測之後：有測試假設台帳是空的。
+        cls.dismiss_round(base)
 
     @classmethod
     def intake_round(cls, base):
@@ -192,6 +196,33 @@ class SourceIntakeE2ETests(unittest.TestCase):
         for gate, cmd in GATES.items():
             cls.sh(f"replace.{gate}", *cmd)
         return cls.sh("replace.build_site", "scripts/build_site.py", base / "site-replace")
+
+    @classmethod
+    def new_host_round(cls, base):
+        """提交沒登記過的網域：網域不進 allowed_hosts，卡片照樣過檢查、上網站。"""
+        page = (cls.pages / "intake.html").read_text(encoding="utf-8").replace(INTAKE_TITLE, NEW_HOST_TITLE)
+        (cls.pages / "new-host.html").write_text(page, encoding="utf-8")
+        pages = read(cls.pages / "map.json")
+        pages[NEW_HOST_URL] = "new-host.html"
+        pages[NEW_HOST_URL.replace("/news/intake-2026", "/policy/rules")] = "policy.html"
+        save(cls.pages / "map.json", pages)
+        save(cls.repo / "work/newhost.json", {"status": "accepted", "issue": 11, "url": NEW_HOST_URL, "category": "scholarship"})
+        if not cls.sh("newhost.run", "scripts/run_source_intake.py", "--request", "work/newhost.json", "--output", "work/newhost"):
+            return False
+        cls.sh("newhost.apply", "scripts/open_data_pr.py", "--apply-only", "--proposal", "work/newhost/proposal")
+        for gate, cmd in GATES.items():
+            cls.sh(f"newhost.{gate}", *cmd)
+        return cls.sh("newhost.build_site", "scripts/build_site.py", base / "site-newhost")
+
+    @classmethod
+    def dismiss_round(cls, base):
+        """駁回一張卡：照常建置，卡片留在候選檔，網站和 RSS 不再顯示。"""
+        cls.dismissed = cls.synthetic_cards()[0]
+        if not cls.sh("dismiss.run", "scripts/dismiss_candidate.py", "--candidate-id", cls.dismissed["candidate_id"], "--reason", "合成：日期抽錯", "--problem-source", "extraction"):
+            return False
+        for gate, cmd in GATES.items():
+            cls.sh(f"dismiss.{gate}", *cmd)
+        return cls.sh("dismiss.build_site", "scripts/build_site.py", base / "site-dismiss")
 
     @classmethod
     def synthetic_cards(cls):
@@ -311,6 +342,29 @@ class SourceIntakeE2ETests(unittest.TestCase):
         self.assertIn(self.hand_card["title"] + REPLACE_CYCLE, feed)
         self.assertNotIn(self.hand_card["candidate_id"], page)
         self.assertNotIn(self.hand_card["candidate_id"], read(self.repo / "data/known-hand-authored-candidates.json")["candidate_ids"])
+
+    def test_submitted_host_stays_out_of_allowed_hosts_and_the_card_still_passes(self):
+        for step in ("newhost.apply", *(f"newhost.{gate}" for gate in GATES), "newhost.build_site"):
+            self.assert_step(step)
+        config = read(self.repo / "data/scan-sources.json")
+        self.assertNotIn(urlsplit(NEW_HOST_URL).hostname, config["allowed_hosts"])
+        self.assertIs(next(s for s in config["sources"] if s["url"] == NEW_HOST_URL)["enabled"], False)
+        _, feed = self.site("newhost")
+        self.assertIn(NEW_HOST_TITLE, feed)
+
+    def test_dismissed_card_leaves_the_site_and_feed_and_keeps_its_reason(self):
+        for gate in GATES:
+            self.assert_step(f"dismiss.{gate}")
+        self.assert_step("dismiss.build_site")
+        card = self.dismissed
+        page, feed = self.site("dismiss")
+        self.assertNotIn(card["candidate_id"], page)
+        self.assertNotIn(card["title"], feed)
+        # 未審的其他卡還在。
+        self.assertIn(INTAKE_TITLE, feed)
+        entry = read(self.repo / "data/scan-reviews.json")["reviews"][-1]
+        self.assertEqual((entry["candidate_id"], entry["action"], entry["problem_source"]), (card["candidate_id"], "dismissed", "extraction"))
+        self.assertIn(card["candidate_id"], [c["candidate_id"] for c in read(self.repo / "data/candidates/source-review.json")["candidates"]])
 
     def test_whole_suite_passes_with_the_applied_data(self):
         self.assert_step("update.unittest")
