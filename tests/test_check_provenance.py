@@ -25,6 +25,10 @@ class ProvenanceGateTests(unittest.TestCase):
         self.assertLessEqual(len(self.known), MAX_BASELINE)
         self.assertLessEqual(self.known, {c["candidate_id"] for c in self.candidates})
 
+    def test_pending_extractor_cards_are_still_marked_hand_authored(self):
+        pending = set(json.loads(BASELINE.read_text(encoding="utf-8")).get("pending_extractor", []))
+        self.assertLessEqual(pending, self.known)
+
     def test_a_new_hand_authored_candidate_is_rejected(self):
         template = next(c for c in self.candidates if c["candidate_id"] in self.known)
         forged = deepcopy(template)

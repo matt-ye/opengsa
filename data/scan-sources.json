@@ -3839,7 +3839,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-nycu",
@@ -3858,7 +3860,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-ncku",
@@ -3877,7 +3881,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-nccu",
@@ -3896,7 +3902,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-ncu",
@@ -3915,7 +3923,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-nsysu",
@@ -3934,7 +3944,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-nchu",
@@ -3953,7 +3965,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-ccu",
@@ -3992,7 +4006,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-ntpu",
@@ -4031,7 +4047,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-ntut",
@@ -4050,7 +4068,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-cgu",
@@ -4069,7 +4089,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-tmu",
@@ -4088,7 +4110,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-kmu",
@@ -4127,7 +4151,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-fju",
@@ -4146,7 +4172,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-scu",
@@ -4165,7 +4193,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-tku",
@@ -4184,7 +4214,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-fcu",
@@ -4203,7 +4235,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-yzu",
@@ -4222,7 +4256,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-cycu",
@@ -4281,7 +4317,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "gov-cip-indigenous",
@@ -4312,7 +4350,9 @@
       "known_attachment_urls": [],
       "review_note": "通用拓撲探針發現來源：農業部農漁民子女就學助學金",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "gov-mol-unemployed-workers",

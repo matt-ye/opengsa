@@ -7,99 +7,9 @@
   "official_data_modified": false,
   "http_requests": 0,
   "description": "通用資訊鏈拓撲探針發現之 8 筆高價值法定助學、算力與學會論文獎五節點資訊鏈拓撲批次",
-  "total_documents": 9,
-  "total_edges": 6,
+  "total_documents": 3,
+  "total_edges": 2,
   "documents": [
-    {
-      "id": "doc-topodiscover-7dfe4611145dd0b300",
-      "url": "https://www.moa.gov.tw/theme_data.php?theme=news&sub_theme=hot&id=123/rules",
-      "format": "html",
-      "revision_id": "17f21bacf4abb7be2bbf16b558cd422b5e8d28375ed8122e991c4e79c0b967c8",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-gov-moa-farmers-aid"
-      ],
-      "role": "statute",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-topodiscover-3f11a84220cbac5d90",
-      "url": "https://www.moa.gov.tw/theme_data.php?theme=news&sub_theme=hot&id=123",
-      "format": "html",
-      "revision_id": "191c8ca6119a414126ae6fd6e1b2e6493f83f9aa8d8f4f5e8a4f29e9647c8e0b",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-gov-moa-farmers-aid"
-      ],
-      "role": "call",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-topodiscover-325f7449ef4f9b4142",
-      "url": "https://www.moa.gov.tw/theme_data.php?theme=news&sub_theme=hot&id=123/portal",
-      "format": "html",
-      "revision_id": "2602113e418aa0175cc1728475e92bc8b031786b34c9b0a31996bf467245ff8d",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-gov-moa-farmers-aid"
-      ],
-      "role": "form",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-topodiscover-8c3c3eef3783ae0612",
-      "url": "https://azure.microsoft.com/free/students/rules",
-      "format": "html",
-      "revision_id": "63e40ae272732ce17a9ec4a2e4466abd8532e9235ee3eec7f932771ee42c1533",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-perk-azure-for-students"
-      ],
-      "role": "charter",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-topodiscover-b0eb84773c74336e04",
-      "url": "https://azure.microsoft.com/free/students/",
-      "format": "html",
-      "revision_id": "c57108f1c015b2479e94a3a0b569aafa42047a81785216c31e1adb2cd8d647bb",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-perk-azure-for-students"
-      ],
-      "role": "call",
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-topodiscover-2ab41aebc90d5f2274",
-      "url": "https://azure.microsoft.com/free/students/portal",
-      "format": "html",
-      "revision_id": "820601e450abad2cd2bbcc8e59cfaf443f0f8ebbd55956c482746d34c15ec98c",
-      "observed_at": "2026-11-05T00:00:00+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-perk-azure-for-students"
-      ],
-      "role": "claim",
-      "events": [],
-      "links": []
-    },
     {
       "id": "doc-topodiscover-a76aac905a39dc86a6",
       "url": "https://www.csroc.org.tw/news_detail.php?id=12/rules",
@@ -148,42 +58,6 @@
   ],
   "edges": [
     {
-      "from": "doc-topodiscover-7dfe4611145dd0b300",
-      "to": "doc-topodiscover-3f11a84220cbac5d90",
-      "url": "https://www.moa.gov.tw/theme_data.php?theme=news&sub_theme=hot&id=123",
-      "role": "authoritative_rule",
-      "program_key": "gov-moa-farmers",
-      "scope": "gov-moa-farmers",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-topodiscover-3f11a84220cbac5d90",
-      "to": "doc-topodiscover-325f7449ef4f9b4142",
-      "url": "https://www.moa.gov.tw/theme_data.php?theme=news&sub_theme=hot&id=123/portal",
-      "role": "submission_form",
-      "program_key": "gov-moa-farmers",
-      "scope": "gov-moa-farmers",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-topodiscover-8c3c3eef3783ae0612",
-      "to": "doc-topodiscover-b0eb84773c74336e04",
-      "url": "https://azure.microsoft.com/free/students/",
-      "role": "authoritative_rule",
-      "program_key": "perk-azure-for-students",
-      "scope": "perk-azure-for-students",
-      "cycle": "114-115"
-    },
-    {
-      "from": "doc-topodiscover-b0eb84773c74336e04",
-      "to": "doc-topodiscover-2ab41aebc90d5f2274",
-      "url": "https://azure.microsoft.com/free/students/portal",
-      "role": "submission_form",
-      "program_key": "perk-azure-for-students",
-      "scope": "perk-azure-for-students",
-      "cycle": "114-115"
-    },
-    {
       "from": "doc-topodiscover-a76aac905a39dc86a6",
       "to": "doc-topodiscover-9cc592384f6d669151",
       "url": "https://www.csroc.org.tw/news_detail.php?id=12",
@@ -204,10 +78,6 @@
   ],
   "scopes": [
     {
-      "id": "gov-moa-farmers",
-      "label": "農業部農漁民子女"
-    },
-    {
       "id": "perk-azure-for-students",
       "label": "Microsoft"
     },
@@ -218,18 +88,6 @@
   ],
   "candidate_bindings": [
     {
-      "candidate_id": "cand-gov-moa-farmers-aid",
-      "program_key": "gov-moa-farmers",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
-      "candidate_id": "cand-perk-azure-for-students",
-      "program_key": "perk-azure-for-students",
-      "phase": "all",
-      "historical_baseline_allowed": true
-    },
-    {
       "candidate_id": "cand-ent-csroc-thesis-award",
       "program_key": "ent-csroc-thesis-award",
       "phase": "all",
@@ -239,7 +97,7 @@
   "reports": [
     {
       "batch_id": "batch-topology-discovered",
-      "verified_schemes": 3,
+      "verified_schemes": 1,
       "notes": "涵蓋原民會、農業部、勞動部、退輔會、Azure算力與資訊/AI學會論文獎。"
     }
   ]

@@ -73,8 +73,11 @@ class HandReplacementTests(unittest.TestCase):
     def test_only_sources_with_a_candidate_replace_their_hand_card(self, _):
         targets = hand_targets()
         single = [t for t in targets if len({c["program_key"] for c in t["cards"]}) == 1 and t["url"].startswith("https://")
-                  and urlsplit(t["url"]).path not in ("", "/") and "獎學金" in t["cards"][0]["title"]][:2]
-        hit, miss = single
+                  and urlsplit(t["url"]).path not in ("", "/")]
+        # 命中的頁面要用含「獎學金」的標題才會成卡；沒命中的只要是另一個來源就好，不綁剩下幾張手寫卡。
+        hit = next(t for t in single if "獎學金" in t["cards"][0]["title"])
+        miss = next(t for t in single if t is not hit)
+        single = [hit, miss]
         def transport(url, headers, limit):
             if url == hit["url"]:
                 return {"status": 200, "headers": {"content-type": "text/html"}, "body": PAGE.format(title=hit["cards"][0]["title"]).encode()}
