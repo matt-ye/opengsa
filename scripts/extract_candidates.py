@@ -35,7 +35,7 @@ from scripts.application_process import infer_process
 from scripts.semantic_facts import INSTRUCTIONS, NON_ROC_ALLOWED, OTHER_LEVELS, PLACEHOLDER, award_clauses, discover_identity, discover_organizations, is_student_document, recurring_time, degree_terms, time_actor, labelled_date_clause
 from scripts.ai_tool_rules import benefit_tiers
 
-EXTRACTOR_VERSION = "extractor-1.10.0"
+EXTRACTOR_VERSION = "extractor-1.11.0"
 PROMPT_VERSION = "prompt-1.4.0"
 
 
@@ -2194,7 +2194,9 @@ def _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode):
         return [{'source':sid,'locator':b['locator']} for b in units]
     generic_identity=cand['eligibility']['identity']['text']==PLACEHOLDER
     if generic_identity:
-        claim=discover_identity(blocks)
+        # 急難救助、家庭補助與學生優惠的資格寫法不同，依卡片類別找申請對象。
+        audience='living' if cand['category'].startswith('living_') else 'ai' if cand['category']=='research_tools' else None
+        claim=discover_identity(blocks,audience)
         if claim:
             if cand['resource_kind']=='employment_support':
                 role_units=[b for b in blocks if re.search(r'專任人員|兼任人員|臨時工',b['text'])]

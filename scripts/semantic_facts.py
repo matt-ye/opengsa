@@ -38,7 +38,7 @@ def safe_units(blocks):
 def degree_terms(text):
     degrees=[]
     if re.search(r'碩士|碩[、及或與]?博',text):degrees.append('master')
-    if re.search(r'博士|碩[、及或與]?博',text):degrees.append('phd')
+    if re.search(r'博士|碩[、及或與]?博|ph\.?d|doctoral',text,re.I):degrees.append('phd')
     return degrees
 
 
@@ -60,13 +60,40 @@ def award_clauses(blocks):
                 yield block,clause,tokens
 
 
-def discover_identity(blocks):
+# 急難救助、家庭補助與學生優惠的資格寫的是家戶或學生身分，不是「就讀碩博士」。只在這兩類來源採用。
+LIVING_AUDIENCE=re.compile(r'學生|子女|兒童|幼兒|低收入|中低收入|家庭|單親|新住民|農漁民|特殊境遇|弱勢')
+LIVING_RULE=re.compile(r'申請(?:資格|對象|條件)|補助對象|適用對象|扶助對象|救助對象|服務對象|凡|符合|具.{0,6}身分')
+# 比對前會去掉所有空白（compact），英文規則不能靠空白或字邊界。
+PERK_AUDIENCE=re.compile(r'students?|educators?|teachers?|學生|教師',re.I)
+PERK_TITLE=re.compile(r'學生|教師|教育|students?|educat|academic|campus',re.I)
+PERK_RULE=re.compile(r'eligib|enrolled|verif|accredited|schoolemail|free|discount|\d+%off|學生身分|在學|驗證|認證|免費|優惠|折扣',re.I)
+
+
+def audience_clause(blocks,category):
+    """找不到學位資格時，依來源類別找申請對象的句子；只標出有這段，細節讓讀者看來源。"""
+    audience,rule,text={'living':(LIVING_AUDIENCE,LIVING_RULE,'申請對象請核對來源'),
+                        'ai':(PERK_AUDIENCE,PERK_RULE,'學生優惠；適用對象與驗證方式請看來源')}.get(category,(None,None,None))
+    if not audience:return None
+    for clause,units in safe_units(blocks):
+        if units[0].get('kind')=='heading':continue
+        if audience.search(clause) and rule.search(clause):
+            return {'text':text,'degrees':[],'units':units,'kind':'eligibility_clause'}
+    # 學生優惠的產品頁常把資格放在動態載入的區塊；標題寫明對象（例如「for Students」）就以標題為據，細節讓讀者看來源。
+    if category=='ai':
+        for clause,units in safe_units(blocks):
+            if units[0].get('kind')=='heading' and PERK_TITLE.search(clause):
+                return {'text':text,'degrees':[],'units':units,'kind':'eligibility_clause'}
+    return None
+
+
+def discover_identity(blocks,category=None):
     options=[]
     for text,units in safe_units(blocks):
         if units[0].get('kind')=='heading':continue
         # A student's transcript or a salary table is not an enrollment criterion.
         if re.search(r'成績單|學位證書|每月|每年.{0,8}元|支給|薪資|給付|上限|下限',text):continue
-        student=bool(re.search(r'在學.{0,16}(?:學生|研究生)|(?:現正|現)?就讀.{0,36}(?:博士|碩士)|'
+        student=bool(re.search(r'(?:PhD|doctoral|graduate)students?|students?(?:enrolled|pursuing)|'
+            r'在學.{0,16}(?:學生|研究生)|(?:現正|現)?就讀.{0,36}(?:博士|碩士)|'
             r'(?:博士班|碩士班|碩[、及或與]?博(?:士)?班).{0,10}(?:學生|研究生)|研究生[：:].{0,30}(?:博士|碩士)',text))
         if not student:continue
         if re.search(r'鼓勵|吸引|發揮潛能|目的',text) and not re.search(r'申請資格|凡|應具|須具|現正就讀',text):continue
@@ -81,9 +108,11 @@ def discover_identity(blocks):
         if '系所推薦' in text:parts.append('須經系所推薦')
         if re.search(r'不含|不得|排除|非在職',text):parts.append('另有排除條件')
         parts.append('其餘資格、排除與文件要求請核對來源')
-        score=3*bool(re.search(r'資格|凡|現正就讀|應具|須具',text))+bool(degrees)
+        score=3*bool(re.search(r'資格|凡|現正就讀|應具|須具|eligib',text,re.I))+bool(degrees)
         options.append((score,{'text':'；'.join(parts),'degrees':degrees,'units':units,'kind':'eligibility_clause'}))
     if options:return max(options,key=lambda item:item[0])[1]
+    found=audience_clause(blocks,category)
+    if found:return found
     # Useful descriptors do not become strict degree/candidate filter matches.
     for text,units in safe_units(blocks):
         if '博士候選人' in text and re.search(r'培育|獎勵|計畫|博士論文',text):
