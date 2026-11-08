@@ -29,7 +29,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.evaluate_deadlines import evaluate_application_window, parse_iso_date, parse_taipei_datetime, taipei_today
-from scripts.scan_sources import CONTACT, SKIP, Fetcher, ScanError, digest, html_document, normalized, pdf_document
+from scripts.scan_sources import CONTACT, SKIP, Fetcher, ScanError, digest, html_document, normalized, pdf_document, semantic_digest
 from scripts.verify_candidates import digest_text, evidence_digest, verify_candidate
 from scripts.application_process import infer_process
 from scripts.semantic_facts import INSTRUCTIONS, PLACEHOLDER, discover_identity, discover_organizations, recurring_time, degree_terms, time_actor, labelled_date_clause
@@ -3111,12 +3111,15 @@ def refetch_and_extract_candidates(
                 is_pdf = source.get("format")=="pdf" or url.lower().split("?",1)[0].endswith(".pdf")
                 resp = fetcher.get(url, {}, 10 * 1024 * 1024 if is_pdf else 2 * 1024 * 1024)
                 if resp["status"] == 200:
-                    if stub.get("revision", {}).get("raw_sha256") and digest(resp["body"]) != stub["revision"]["raw_sha256"]:
-                        raise ScanError("stale_revision_requires_rescan")
                     if is_pdf:
-                        blocks = pdf_document(resp["body"])
+                        blocks, attachments = pdf_document(resp["body"]), []
                     else:
-                        blocks, _ = html_document(resp["body"], source, resp["url"], config["allowed_hosts"])
+                        blocks, attachments = html_document(resp["body"], source, resp["url"], config["allowed_hosts"])
+                    # 頁面常有計數器或時間戳，比內文指紋；舊 state 沒有指紋才比原始位元組。
+                    revision = stub.get("revision", {})
+                    expected, actual = (revision.get("semantic_sha256"), semantic_digest(blocks, attachments)) if revision.get("semantic_sha256") else (revision.get("raw_sha256"), digest(resp["body"]))
+                    if expected and actual != expected:
+                        raise ScanError("stale_revision_requires_rescan")
                     in_memory_blocks_by_url[url] = blocks
                     fetcher.in_memory_blocks[url] = blocks
                     refetch_statuses[url] = "refetched_in_memory"
@@ -3133,7 +3136,13 @@ def refetch_and_extract_candidates(
 
         expected_raw = stub.get("revision", {}).get("raw_sha256")
         actual_raw = getattr(fetcher, "in_memory_raw_sha256", {}).get(url) if fetcher else None
-        if expected_raw and actual_raw and expected_raw != actual_raw:
+        expected_semantic = stub.get("revision", {}).get("semantic_sha256")
+        actual_semantic = getattr(fetcher, "in_memory_semantic_sha256", {}).get(url) if fetcher else None
+        if expected_semantic and actual_semantic:
+            is_stale = expected_semantic != actual_semantic
+        else:
+            is_stale = expected_raw and actual_raw and expected_raw != actual_raw
+        if is_stale:
             blocks = None
             refetch_statuses[url] = "stale_revision_requires_rescan"
         if blocks:
