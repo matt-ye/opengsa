@@ -84,7 +84,8 @@ def run(output, targets, transport=node_get, max_requests=3000, spacing=TARGET_S
             result = process({"issue": digest(url)[:12], "url": valid, "category": row["category"]}, directory, transport=transport,
                              progress=lambda *a, **k: None, options=BATCH_OPTIONS, propose=False)
             outcome.update(http_requests=result["http_requests"], candidates=result["candidates"], links_skipped=result["links_skipped"],
-                           statuses=[r["status"] for r in result["records"]])
+                           statuses=[r["status"] for r in result["records"]],
+                           not_card_reasons=[r["not_card_reason"] for r in result["records"] if r.get("not_card_reason")])
             first = result["records"][0]["status"] if result["records"] else ""
             if DENIED.search(first) and first != "robots_denied":
                 paused[host] = first
@@ -110,7 +111,9 @@ def summarize(output, targets):
                "hand_cards_on_finished": sum(len(r["cards"]) for r in rows), "hand_cards_with_accepted_source": sum(len(r["cards"]) for r in accepted),
                "candidates": sum(len(r["candidates"]) for r in rows), "http_requests": sum(r["http_requests"] for r in rows),
                "links_skipped": sum(r["links_skipped"] for r in rows), "model_calls": 0,
-               "statuses": dict(Counter(re.sub(r":.*", "", s) for r in rows for s in r["statuses"]).most_common())}
+               "statuses": dict(Counter(re.sub(r":.*", "", s) for r in rows for s in r["statuses"]).most_common()),
+               # 讀到了卻沒成卡的頁面卡在哪一關。
+               "not_card_reasons": dict(Counter(x for r in rows for x in r.get("not_card_reasons", [])).most_common())}
     save(Path(output) / "summary.json", summary)
     return summary
 
