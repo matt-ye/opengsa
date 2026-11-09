@@ -106,6 +106,8 @@ def main():
     parser.add_argument("--ids", type=Path, required=True, help="JSON 陣列：要撤下的 candidate_id")
     args = parser.parse_args()
     found = retire(json.loads(args.ids.read_text(encoding="utf-8")))
+    from scripts.readme_counts import refresh
+    refresh()
     print(json.dumps({"retired": len(found)}, ensure_ascii=False))
 
 

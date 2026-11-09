@@ -60,6 +60,9 @@ def apply_proposal(proposal, root=ROOT):
     if summary_path.exists():
         from scripts.retire_candidates import scrub
         scrub([row["candidate_id"] for row in read(summary_path).get("retired_hand_cards", [])], Path(root))
+    # README 的資料規模區塊跟著資料走，和提案一起提交。
+    from scripts.readme_counts import refresh
+    refresh(Path(root))
     config = read(Path(root) / CONFIG)
     new_hosts = sorted(set(config["allowed_hosts"]) - set(before))
     if new_hosts:
@@ -116,12 +119,12 @@ def prepare(proposal, output, source_label, root=ROOT, runner=subprocess.run, gi
     result = {"status": "no_changes", "pr_url": None}
     if summary["accepted_for_radar_proposal"]:
         new_hosts = apply_proposal(proposal, root)
-        if git("status", "--porcelain", "--", "data", "docs/source-chains").strip():
+        if git("status", "--porcelain", "--", "data", "docs/source-chains", "README.md").strip():
             failed = run_gates(root, runner)
             result = {"status": "gates_failed", "failed_gate": failed} if failed else {"status": "ready", "new_hosts": new_hosts}
             if not failed:
                 (output / "pr-body.md").write_text(pr_body(summary, new_hosts, source_label), encoding="utf-8")
-                git("add", "--", "data", "docs/source-chains")
+                git("add", "--", "data", "docs/source-chains", "README.md")
                 git("-c", f"user.name={BOT[0]}", "-c", f"user.email={BOT[1]}", "commit", "-m", f"data: 待審提案（{source_label}）")
     (output / "result.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return result

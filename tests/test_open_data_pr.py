@@ -74,7 +74,8 @@ class OpenDataPrTests(unittest.TestCase):
     def test_passing_gates_commit_only_data_paths(self):
         result, calls = self.prepare()
         self.assertEqual(result, {"status": "ready", "new_hosts": ["new.example"]})
-        self.assertIn(("add", "--", "data", "docs/source-chains"), calls)
+        # README 只提交由資料產生的資料規模區塊（scripts/readme_counts.py），不是提案內容。
+        self.assertIn(("add", "--", "data", "docs/source-chains", "README.md"), calls)
         self.assertIn("new.example", (self.base / "out/pr-body.md").read_text(encoding="utf-8"))
 
     def test_no_diff_and_no_accepted_cards_do_not_open_a_pr(self):
