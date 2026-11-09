@@ -49,6 +49,22 @@ class AdaptiveExtractionTests(unittest.TestCase):
         self.assertEqual(clean_title("10月份獎學金公告"), "10月份獎學金公告")
         self.assertEqual(clean_title("急難救助  - 學生安全組"), "急難救助")
 
+    def test_warning_and_explainer_tails_are_removed_but_deadlines_stay(self):
+        self.assertEqual(clean_title("115學年度大專校院「不利處境學生助學計畫-助學金」申辦公告更新⛔逾時視同放棄！"),
+                         "115學年度大專校院「不利處境學生助學計畫-助學金」申辦公告更新")
+        self.assertEqual(clean_title("2026鴻海獎學鯨｜高中、國中、國小申請說明"), "2026鴻海獎學鯨")
+        self.assertEqual(clean_title("NQU清寒優秀勵學獎學金要點-1141231"), "NQU清寒優秀勵學獎學金要點")
+        self.assertEqual(clean_title("01.三重東區扶輪社獎學金"), "三重東區扶輪社獎學金")
+        self.assertEqual(clean_title("學產基金助學金申辦延至10/9截止收件"), "學產基金助學金申辦延至10/9截止收件")
+        self.assertEqual(clean_title("Figma for Education | Free tools"), "Figma for Education | Free tools")
+
+    def test_stored_titles_get_the_current_cleanup(self):
+        from scripts.expand_sources import profile_for
+        known = {"id": "s", "title": "2026鴻海獎學鯨｜高中、國中、國小申請說明"}
+        self.assertEqual(profile_for({"category": "living"}, {"title": "x"}, known)["title"], "2026鴻海獎學鯨")
+        bare = {"id": "s", "title": "急難救助  - 學生安全組"}
+        self.assertEqual(profile_for({"category": "living"}, {"title": "急難救助"}, bare)["title"], "急難救助  - 學生安全組")
+
     def test_bare_category_titles_and_paperwork_do_not_become_cards(self):
         self.assertTrue(GENERIC_TITLE.search("急難救助"))
         self.assertFalse(GENERIC_TITLE.search("臺北市急難救助金核發作業要點"))
