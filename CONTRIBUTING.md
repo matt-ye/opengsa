@@ -1,10 +1,10 @@
 # 貢獻指南
 
-本專案仍在規劃與資料基礎階段，先完成 [目前計畫](docs/TODO.md) 的代表資料及線框，不直接新增產品框架或大量爬蟲。
+本專案已上線公開預覽（https://opengsa.mattye.dev/），並依排程巡檢公開來源：機器人每週一把累積的待審卡片開成資料 PR，由維護者審閱後合併。目前計畫與待辦見 [docs/TODO.md](docs/TODO.md)，開發與資料規則見 [AGENTS.md](AGENTS.md)。新功能請先開 Issue 討論，不直接新增產品框架或大量爬蟲。
 
 ## 提交資料或更正
 
-網站頁首的「提供獎助來源」會開啟[資源推薦表單](https://github.com/matt-ye/opengsa/issues/new?template=resource-source.yml)，用於尚未收錄的獎學金、補助、獎項及研究生資源；操作或版面問題請用[提供回饋](https://github.com/matt-ye/opengsa/issues/new?template=preview-feedback.yml)。兩者皆需GitHub帳號，內容公開。提交後由維護者查核，不自動發布或啟用來源掃描。
+網站頁首的「提供獎助來源」會開啟[資源推薦表單](https://github.com/matt-ye/opengsa/issues/new?template=resource-source.yml)，用於尚未收錄的獎學金、補助、獎項及研究生資源；操作或版面問題請用[提供回饋](https://github.com/matt-ye/opengsa/issues/new?template=preview-feedback.yml)。兩者皆需GitHub帳號，內容公開。提交後由維護者查核；維護者（repo owner）在 Issue 加上 `source-approved` 標籤後，才會對該單一來源跑萃取管線並產生待審提案（`source-intake.yml`）。來源不會因為提交就自動發布或加入排程巡檢，加入巡檢要另經維護者核可網域。
 
 請提供制度名稱、年度／梯次、公開來源連結、欲修正欄位、原文定位及核對日期。說明來源是主辦方或轉知方，以及有無登入／重製限制。重複的中英文名稱先查是否同一制度。
 

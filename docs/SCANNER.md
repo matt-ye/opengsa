@@ -1,18 +1,14 @@
 # 公開來源掃描與候選覆核
 
-2026-11-01全來源第一輪另見[擴展結果與重現方式](archive/SOURCE-EXPANSION-RUN.md)：367原始URL均有處置，56新子來源、22份待審快照，634HTTP／模型0。原19筆正式候選池與16個排程profile不變，新profile停用；擴展資料在`data/source-expansion/`，不自動進公開網站。新增`expand_sources.py`有界續跑與`propose_radar_update.py`離線資料patch／三頁預覽；scan完成後保留14天提案artifact，權限仍唯讀，不自動開、合併或發布資料PR。下列19筆數字為既有基線。
+現況（以資料與程式為準）：`data/scan-sources.json` 的來源數與啟用數、`max_requests`／`max_changed_documents`／`max_pending_candidates` 都在該檔；萃取器版本是 `scripts/extract_candidates.py` 的 `EXTRACTOR_VERSION`。排程是週一到週六 09:17（臺北），週一那輪開每週的資料 PR，細節見本文「排程與失敗保留」。模型排程固定 off。
 
-2026-11-01最新：19筆以extractor-1.5.0完整重萃，12筆自動檢核通過、7筆有缺漏，仍全部pending；新增通用指令、`--full-replay`及隔離外部驗證。來源profile仍16筆／13啟用，未增加正式排程目標。[最新結果與限制](GENERALIZABLE-EXTRACTION.md)優先於下列歷史階段描述。
+這份文件的前半（來源台帳、執行與輸出、萃取規則）寫於各階段，後半是 2026-11-08 起的上架、駁回與排程規則；若有衝突，以後半為準。各階段的舊紀錄已封存在 [docs/archive/](archive/)：[擴展結果](archive/SOURCE-EXPANSION-RUN.md)、[文件準備整合](archive/PREPARED-EXTRACTION.md)、[審查工作台](archive/REVIEW-WORKSPACE.md)（Actions `operation=review_workspace` 仍可手動產生離線審查 artifact）、[API 查核](archive/API-AUDIT.md)。通用萃取的整理見 [GENERALIZABLE-EXTRACTION.md](GENERALIZABLE-EXTRACTION.md)（停在 2026-11-01）。
 
-> 後續整合更新：本批已接上統一文件準備、Token預算分段及局部規則重萃，現行能力／未完成項目與實際驗收見[文件準備整合](archive/PREPARED-EXTRACTION.md)。舊階段提案或測試數量不代表最新整合狀態。
+有限公開 GET、增量差異、規則萃取、可選手動 LLM、獨立檢核、申請時間及資格比對已串接。**掃描只產生待覆核提案，不直接改寫網站資料**；提案經資料 PR 由 owner 審閱合併後才進網站。
 
-PR #20 已合併；具名候選新增[審查工作台與資料 PR 草稿](archive/REVIEW-WORKSPACE.md)。Actions `operation=review_workspace` 僅產生 repo 候選池的離線審查 artifact，與 `scan`／`provider_audit` 分流；不重新抓來源、不注入金鑰或模型，不改變原有低頻掃描排程。重新核驗及意向匯出由本機 CLI 執行。
+## 來源台帳（下表為 2026-10-31 的觀察）
 
-更新：2026-10-30，以PR #20合併後狀態及本輪審查工作台為基準。有限公開GET、增量差異、規則萃取、可選手動LLM、獨立檢核、申請時間及P1資格比對已串接。**只產生待覆核報告，不直接改寫網站資料**。模型排程固定off；API設定、觀察值及限制見[API查核](archive/API-AUDIT.md)。
-
-## 來源台帳與最近實測（2026-10-31）
-
-[scan-sources.json](../data/scan-sources.json)共16個profile：13啟用、3停用。最新實掃將13個來源17份文件整理為19筆待審候選，12 passed_automated_checks、7 passed_with_gaps，0人工核准。[完整來源驗收與成本](SOURCE-COVERAGE-AUDIT.md)、[145個網址逐項清單](SOURCE-LINKS-2026-10-31.md)。
+[scan-sources.json](../data/scan-sources.json)是來源台帳，來源數與啟用數以該檔為準（2026-11-10 實算：407 個來源、啟用 199 個）。下表與連結是 2026-10-31 當時 16 個 profile 的觀察，現況未逐項重查。[完整來源驗收與成本](SOURCE-COVERAGE-AUDIT.md)、[145個網址逐項清單](SOURCE-LINKS-2026-10-31.md)。
 
 | 群組 | 狀態 |
 |---|---|
@@ -101,7 +97,7 @@ python scripts/review_candidates.py --candidates work/scanner/report/candidates.
 - 同一網址已有啟用的來源時不重複啟用。
 - `tests/test_scan_coverage.py` 檢查網域已核可的每張流程卡都在巡檢中。
 
-每輪最多 5 份變動文件，所以第一次巡完約 200 個來源要約 40 輪。之後沒變動的來源會很快略過。
+每輪最多 10 份變動文件（2026-11-09 起，原為 5 份），所以第一次巡完約 200 個啟用來源約要 20 輪。之後沒變動的來源會很快略過。
 
 repo 設定 `can_approve_pull_request_reviews` 關閉時 Actions 開不了 PR，會改留比較連結，由維護者自己開（這樣 CI 也會跑）。
 
@@ -159,7 +155,7 @@ noted／dismissed是文件層級佇列處置；帶candidate_id的處置只影響
 - JSON 多了完整網址，還有資訊鏈：每個來源連到的附件，各自的狀態與內容雜湊。
 - 檔案裡沒有執行時間，只有內容雜湊的前 12 碼。來源沒有變，檔案就不會變，也就不會產生提交。
 - 這兩個檔案只由 bot 寫入，人工修改會在下一輪被蓋掉。用 `GITHUB_TOKEN` 推送的提交不會觸發網站重新部署。
-- GitHub 只把 512 KB 以下的 CSV 顯示成表格。實測 269 個來源時，CSV 是 17 KB（每列約 64 位元組），JSON 是 76 KB（每個來源約 284 位元組）。照這個比例，1000 個來源大約是 CSV 65 KB、JSON 290 KB。
+- GitHub 只把 512 KB 以下的 CSV 顯示成表格。當時量測 269 個來源：CSV 17 KB（每列約 64 位元組），JSON 76 KB（每個來源約 284 位元組）；來源數已增加，這是舊量測，未重測。
 
 ## 模型型號清單
 
