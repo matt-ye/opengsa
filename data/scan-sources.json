@@ -240,8 +240,8 @@
     "youth.tycg.gov.tw"
   ],
   "max_requests": 50,
-  "max_changed_documents": 5,
-  "max_pending_candidates": 24,
+  "max_changed_documents": 10,
+  "max_pending_candidates": 60,
   "minimum_host_interval_seconds": 3,
   "max_run_seconds": 180,
   "sources": [

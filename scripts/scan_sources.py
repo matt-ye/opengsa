@@ -449,8 +449,9 @@ def markdown_report(state, report):
 
 def validate_config(config):
     # 請求上限 50 是 2026-11-08 使用者決定的暫時值（原本 20）；主機間隔與 robots 規則不變。
-    if not (0 < config["max_requests"] <= 50 and 0 < config["max_changed_documents"] <= 5
-            and 0 < config["max_pending_candidates"] <= 24 and config["minimum_host_interval_seconds"] >= 3
+    # 變動文件上限 10、待審上限 60 是 2026-11-09 使用者決定（每週彙整一次資料 PR，一週約 6 輪）。
+    if not (0 < config["max_requests"] <= 50 and 0 < config["max_changed_documents"] <= 10
+            and 0 < config["max_pending_candidates"] <= 60 and config["minimum_host_interval_seconds"] >= 3
             and 0 < config["max_run_seconds"] <= 180):
         raise ValueError("Configuration exceeds the bounded scan policy")
     active = [s for s in config["sources"] if s.get("enabled", True)]
