@@ -1,5 +1,7 @@
 # OpenGSA 全台公私立大學獎學金清單盤點與跨校來源擴充報告
 
+> 2026-11-10 註：本文的「204 擴增至 228 方案」「24 筆跨校候選卡」是 2026-11-05 當時的數字；`data/candidates/university-scholarships.json` 的卡片後來已撤下（現為 0 筆），現行卡片數見 README 生成區塊。78 校名冊（U001–U078）仍有效。
+
 > **報告日期**：2026-11-05  
 > **專案分支**：`feat/taiwan-universities-scholarship-expansion`  
 > **關聯議題**：解決獎學金資料庫偏重臺灣大學之偏差，建立全台高等教育公私立大學獎助體系完整來源名冊與跨校候選清冊  
@@ -20,7 +22,7 @@
 
 ## 2. 全台公私立大學獎學金來源檢索架構 (78 所高校)
 
-本專案於 [`data/source-expansion/taiwan-universities-scholarship-sources.json`](file:///c:/Users/wiwi4/OneDrive/文件/ChatGPT/開源專案/opengsa/data/source-expansion/taiwan-universities-scholarship-sources.json) 建立了完整的全台高等教育機構資料庫，分類統計如下：
+本專案於 [`data/source-expansion/taiwan-universities-scholarship-sources.json`](../data/source-expansion/taiwan-universities-scholarship-sources.json) 建立了完整的全台高等教育機構資料庫，分類統計如下：
 
 | 體系分類 | 校數 | 代表性院校 | 獎助金生態特徵 |
 | :--- | :---: | :--- | :--- |
@@ -68,7 +70,7 @@
 
 ## 4. 本次收錄之 24 筆跨校代表性獎學金候選清冊
 
-本專案於 [`data/candidates/university-scholarships.json`](file:///c:/Users/wiwi4/OneDrive/文件/ChatGPT/開源專案/opengsa/data/candidates/university-scholarships.json) 及 [`data/university-temporal-observations.json`](file:///c:/Users/wiwi4/OneDrive/文件/ChatGPT/開源專案/opengsa/data/university-temporal-observations.json) 建立了 24 筆具名校級優秀研究生獎助學金候選卡：
+本專案於 [`data/candidates/university-scholarships.json`](../data/candidates/university-scholarships.json) 及 [`data/university-temporal-observations.json`](../data/university-temporal-observations.json) 建立了 24 筆具名校級優秀研究生獎助學金候選卡：
 
 | 候選方案 ID | 學校 | 方案名稱 | 獎勵額度摘要 | 觀測時程政策 |
 | :--- | :--- | :--- | :--- | :--- |

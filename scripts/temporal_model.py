@@ -1,7 +1,7 @@
 """Bounded temporal extraction model pool, micro-chunking, and batch harness.
 
 Supports all 8 repository API providers in a dynamic failover pool with
-1,500-token micro-chunking, 90s timeout, header-driven pacing, lifecycle hooks,
+2,200-token micro-chunking (MICRO_CHUNK_INPUT_LIMIT), 90s timeout, header-driven pacing, lifecycle hooks,
 and atomic checkpointing. No candidate mutation or automatic publication.
 """
 from copy import deepcopy
@@ -41,7 +41,7 @@ FIELDS = (
 )
 
 # Free-tier safe micro-chunking capabilities across all 8 providers:
-# input_limit=1500 (effective cap=1300 after safety_tokens=200), output_reserve=600
+# input_limit=2200 (effective cap=2000 after safety_tokens=200), output_reserve=600
 MICRO_CHUNK_INPUT_LIMIT = 2200
 MICRO_CHUNK_OUTPUT_RESERVE = 600
 MICRO_CHUNK_SAFETY_TOKENS = 200

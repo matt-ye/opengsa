@@ -5,7 +5,7 @@ name: Model catalog
 on:
   workflow_dispatch:
   schedule:
-    # 每週日 09:47（臺北），避開每天 09:17 的來源掃描。
+    # 每週日 09:47（臺北）。來源掃描是週一到週六 09:17，週日沒有掃描。
     - cron: '47 1 * * 0'
 
 permissions:
