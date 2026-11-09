@@ -1,0 +1,58 @@
+name: Model catalog
+
+# 各家模型 API 的型號清單寫成 status/model-catalog.json，給模型呼叫與其他 agent 查用。
+# 只查 /models 清單，不呼叫模型、不送資料。打 API 發現型號不對時，手動執行一次就會更新。
+on:
+  workflow_dispatch:
+  schedule:
+    # 每週日 09:47（臺北），避開每天 09:17 的來源掃描。
+    - cron: '47 1 * * 0'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: model-catalog
+  cancel-in-progress: false
+
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    # 只寫 status/model-catalog.json。用 GITHUB_TOKEN 推的提交不會觸發網站重新部署。
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
+      - name: List models of each provider (catalog only, no inference)
+        env:
+          OPENGSA_MODEL_BASE_URL: ${{ vars.OPENGSA_MODEL_BASE_URL }}
+          OPENGSA_MODEL_NAME: ${{ vars.OPENGSA_MODEL_NAME }}
+          OPENGSA_SILICONFLOW_REGION: ${{ vars.OPENGSA_SILICONFLOW_REGION }}
+          OPENGSA_MODEL_API_KEY: ${{ secrets.OPENGSA_MODEL_API_KEY }}
+          OPENGSA_GEMINI_API_KEY: ${{ secrets.OPENGSA_GEMINI_API_KEY }}
+          OPENGSA_NVIDIA_API_KEY: ${{ secrets.OPENGSA_NVIDIA_API_KEY }}
+          OPENGSA_SAMBANOVA_API_KEY: ${{ secrets.OPENGSA_SAMBANOVA_API_KEY }}
+          OPENGSA_CEREBRAS_API_KEY: ${{ secrets.OPENGSA_CEREBRAS_API_KEY }}
+          OPENGSA_OPENROUTER_API_KEY: ${{ secrets.OPENGSA_OPENROUTER_API_KEY }}
+          OPENGSA_SILICONFLOW_API_KEY: ${{ secrets.OPENGSA_SILICONFLOW_API_KEY }}
+          OPENGSA_MISTRAL_API_KEY: ${{ secrets.OPENGSA_MISTRAL_API_KEY }}
+        run: python scripts/model_catalog.py
+      - name: Commit only when the catalog changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          if [ -z "$(git status --porcelain -- status/model-catalog.json)" ]; then
+            echo "型號清單沒有變動，不提交。"
+            exit 0
+          fi
+          git add -- status/model-catalog.json
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "status: 更新模型型號清單"
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main \
+            || echo "::warning::main 在這輪期間有新提交，清單沒推上去；下次執行會重寫。"

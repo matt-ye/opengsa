@@ -160,3 +160,12 @@ noted／dismissed是文件層級佇列處置；帶candidate_id的處置只影響
 - 檔案裡沒有執行時間，只有內容雜湊的前 12 碼。來源沒有變，檔案就不會變，也就不會產生提交。
 - 這兩個檔案只由 bot 寫入，人工修改會在下一輪被蓋掉。用 `GITHUB_TOKEN` 推送的提交不會觸發網站重新部署。
 - GitHub 只把 512 KB 以下的 CSV 顯示成表格。實測 269 個來源時，CSV 是 17 KB（每列約 64 位元組），JSON 是 76 KB（每個來源約 284 位元組）。照這個比例，1000 個來源大約是 CSV 65 KB、JSON 290 KB。
+
+## 模型型號清單
+
+`.github/workflows/model-catalog.yml` 每週日 09:47（臺北）執行，也可以手動執行：
+
+- `scripts/model_catalog.py` 向 `data/model-providers.json` 的各家查 `/models` 清單，不呼叫模型、不送資料。
+- 結果寫成 `status/model-catalog.json`，內容有：各家的型號清單、設定的型號還在不在、計費政策，以及 OpenRouter 的免費型號。
+- 不寫查詢時間和流量限制，所以清單沒變時檔案不變，也不會提交。
+- 打 API 發現型號不對時，手動執行一次就會更新。
