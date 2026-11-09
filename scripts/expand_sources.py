@@ -178,15 +178,18 @@ def clean_title(title):
     text=re.sub(r'\s+[-－]\s+[^-－]*(?:大學|學院|學務處|事務處|組)[^-－]*$','',(title or '').strip())
     # 表情符號、開頭的檔案編號（01-1、02_）、結尾的日期（115.6.30）都不是方案名稱。
     text=re.sub(r'[\U0001F000-\U0001FAFF☀-➿️]','',text)
-    text=re.sub(r'^(?:0\d(?:-\d+)?|\d{2}-\d+|\d{2}_)[_\s]*(?=\D)','',text)
+    text=re.sub(r'^(?:0\d(?:-\d+)?|\d{2}-\d+|\d{2}_)[_.\s]*(?=\D)','',text)
     text=re.sub(r'\s*\d{2,3}\.\d{1,2}\.\d{1,2}$','',text)
     text=re.sub(r'^【[^】]*(?:公告|訊息|獎學金|獎助學金)[^】]*】\s*','',text)
     # 法規資料庫的頁面標題帶系統名稱，例如「教育部主管法規共用系統-法規內容-…」。
     text=re.sub(r'^[^-－]*法規[^-－]*[-－]法規內容[-－]\s*','',text)
     # 附件編號與檔名裡的民國日期不是方案名稱；去掉後，同一方案的附件才會被當成同標題去重。
     text=re.sub(r'^附件\s*\d+\s*[：:]\s*','',text)
-    text=re.sub(r'(?<=\D)\d?1\d{6}(?:版)?$','',text)
+    text=re.sub(r'(?<=\D)[-_\s]?\d?1\d{6}(?:版)?$','',text)
     text=re.sub(r'^(?:轉知|轉發)\s*(?:[「『]([^」』]+)[」』].*)?',lambda m:m.group(1) or '',text)
+    # 警語與「｜某某申請說明」這種尾巴不是方案名稱；截止日照舊保留。
+    text=re.sub(r'[⛔️\s]*逾時視同放棄[！!]*$','',text)
+    text=re.sub(r'\s*[｜|]\s*[^｜|]*(?:申請說明|說明會?|簡介)$','',text)
     return re.sub(r'^公告\s*[「『]([^」』]+)[」』]$',r'\1',text).strip() or title
 
 
@@ -198,6 +201,10 @@ def profile_for(row,prepared,known):
         fresh=clean_title(prepared['title'])
         if BARE_CATEGORY.fullmatch((profile.get('title') or '').strip()) and not BARE_CATEGORY.fullmatch(fresh.strip()):
             profile['title']=fresh
+        # 舊設定存的是當時的標題；清理規則改進後也要套上，否則這張卡永遠帶著舊雜訊。清完只剩類別名稱就不動。
+        elif profile.get('title'):
+            cleaned=clean_title(profile['title'])
+            if not BARE_CATEGORY.fullmatch(cleaned.strip()):profile['title']=cleaned
         return profile
     category,kind={'award':('outcome_award','award'),'mobility':('international_conference','travel_grant'),
         'living':('living_tuition','scholarship'),'foundation':('living_tuition','scholarship'),'campus':('living_tuition','scholarship'),
