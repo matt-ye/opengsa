@@ -5,7 +5,7 @@
 > **核心關聯資料**：
 > - 頂會專屬獎助清冊：[`data/top-conference-travel-grants.json`](../data/top-conference-travel-grants.json)
 > - 研討會試算工具配置：[`data/conference-programs.json`](../data/conference-programs.json)
-> - 搜尋引擎同義詞核心：[`docs/design/prototype.js`](../docs/design/prototype.js)
+> - 搜尋引擎同義詞核心：[`docs/design/prototype.js`](design/prototype.js)
 > - 研討會與差旅資訊鏈：[`data/source-chain-batches/batch-conference.json`](../data/source-chain-batches/batch-conference.json)
 
 ---

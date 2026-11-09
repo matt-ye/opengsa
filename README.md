@@ -56,8 +56,8 @@ OpenGSA 解決過去獎助資訊「只有單一網址、缺漏法源母法與申
 $$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (當期徵件公告)} \xrightarrow{\text{portal}} \text{Form (申請表件/系統)} \xrightarrow{\text{intake}} \text{Intake (生輔組/系所窗口)} \xrightarrow{\text{result}} \text{Result (名冊公示)}$$
 
 - **大專校院資訊鏈批次**：[`data/source-chain-batches/batch-university.json`](data/source-chain-batches/batch-university.json)（120 份文件節點、96 條邊）。
-- **全庫拓撲擴展與掃描稽核報告**：[全庫 236 方案拓撲擴展與 Actions 掃描稽核](docs/TOPOLOGY-EXPANSION-AND-SCAN-AUDIT.md)。
-- **通用拓撲架構規格書**：[全庫跨資源通用資訊鏈架構規劃](docs/UNIVERSAL-SOURCE-CHAIN-TOPOLOGY.md)（定義高教型、公部門法定型、企業雙軌型、學生 Perks 型與研討會型五大原型）。
+- **全庫拓撲擴展與掃描稽核報告**：[全庫 236 方案拓撲擴展與 Actions 掃描稽核](docs/archive/TOPOLOGY-EXPANSION-AND-SCAN-AUDIT.md)。
+- **通用拓撲架構規格書**：[全庫跨資源通用資訊鏈架構規劃](docs/archive/UNIVERSAL-SOURCE-CHAIN-TOPOLOGY.md)（定義高教型、公部門法定型、企業雙軌型、學生 Perks 型與研討會型五大原型）。
 - **離線資訊鏈地圖**：[資訊鏈互動樹狀圖](docs/source-chains/source-chain-map.html) · [Obsidian Canvas](docs/source-chains/source-chain-map.canvas)。
 
 ---
@@ -66,7 +66,7 @@ $$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (當�
 - **Tab 1（獎助探索與快篩）**：支援卡片清單與全域甘特圖切換；升級**全教育階段學歷篩選**（大學部、高中職、國中小幼兒、碩博）與**出國出訪綜合總覽**，卡片附一鍵【⭐ 收藏至個人時程】與【📄 查看完整條文】（[篩選升級說明](docs/FILTER-EXPANSION-AND-VISIBILITY.md)）。
 - **Tab 2（方案詳情與條件比對）**：支援全庫所有來源摘要獨立切換；新增**雙方案並排比對（Side-by-Side）**，精確比對資格、給付、兼領限制與期限。
 - **Tab 3（我的時程與行動規劃）**：專屬個人時間軸，專注渲染收藏方案，附待辦核銷進度統計與研討會個人補助試算。
-- **Tab 4（權益防線與法規指南）**：提供雙軌五級救濟地圖、各校 TA/RA 給付行情比對與從屬性自測工具（[權益頁說明](docs/RIGHTS-PAGE-UPDATE.md)）。
+- **Tab 4（權益防線與法規指南）**：提供雙軌五級救濟地圖、各校 TA/RA 給付行情比對與從屬性自測工具（[權益頁說明](docs/archive/RIGHTS-PAGE-UPDATE.md)）。
 - **輕量 URL 狀態同步（State in URL）**：`URLSearchParams` 雙向同步分頁、搜尋字、篩選、比對清單，支援深層連結與頁首「📋 分享此畫面」一鍵複製。
 
 ---
@@ -130,7 +130,7 @@ $$\text{Anchor (母法設置辦法)} \xrightarrow{\text{rule}} \text{Call (生�
 - **Toutour 情境感知 5 大導覽體系**：提供 `global`（全站 4 步總覽）及 `search`、`detail`、`timeline`、`rights` 四大分頁專屬子導覽；點擊頁首 `❓ 快速指南` 或按 `?` 鍵時自動感知所在分頁精準彈出，每頁嚴格 $\le 4$ 步，支援頂部選單自由切換。
 - **其餘分頁 RWD 深度優化**：Tab 2 工具列小螢幕彈性分組與防空白、Tab 3 個人甘特圖緊湊化、Tab 4 四大主題改為手機版橫向無縫捲動膠囊（Segmented Scroll）。
 - **全站鍵盤快捷鍵矩陣與動態微回饋**：`?`（喚起當前分頁指南）、`/`（聚焦搜尋框）、`1`～`4`（切換四分頁）、`Esc`（退出彈窗）；跨頁收藏即時浮動 Toast。
-- 詳見專案手冊：[快速上手指南、全站四分頁 RWD 響應式升級與 Toutour 子導覽手冊](docs/UI-UX-ONBOARDING-AND-ROADMAP-TODO.md)。
+- 詳見專案手冊：[快速上手指南、全站四分頁 RWD 響應式升級與 Toutour 子導覽手冊](docs/archive/UI-UX-ONBOARDING-AND-ROADMAP-TODO.md)。
 
 ---
 

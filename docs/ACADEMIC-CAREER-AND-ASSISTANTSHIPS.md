@@ -192,7 +192,7 @@ flowchart LR
 
 ## 4. 聘任管道與給付比較（2026-11-02 補核）
 
-本節取代舊的「4,000–50,000元薪資階梯」：不同經費的最低要求、原則區間、方案標準、上限與增核額須分開讀。以下為官方依據摘要，尚未代填獨立人工覆核；不是個別給付核定。網頁「權益與求助」分成重點總覽、聘任與給付、法規與保障、求助與自測，詳見[介面與連結查核](RIGHTS-PAGE-UPDATE.md)。
+本節取代舊的「4,000–50,000元薪資階梯」：不同經費的最低要求、原則區間、方案標準、上限與增核額須分開讀。以下為官方依據摘要，尚未代填獨立人工覆核；不是個別給付核定。網頁「權益與求助」分成重點總覽、聘任與給付、法規與保障、求助與自測，詳見[介面與連結查核](archive/RIGHTS-PAGE-UPDATE.md)。
 
 ### 4.1 五類聘任查核路徑（以臺大為例）
 
@@ -256,5 +256,5 @@ flowchart LR
 - [x] 建立碩士、博士、博士候選人、博士後研究員四大身分階梯專屬獎助之精準分流對照表。
 - [x] 確立斐陶斐榮譽學會推薦比例（博10%、碩3%、學1%）、優秀青年與各級榮譽獎項遴選規範。
 - [x] 2026-11-02按官方依據重整五類聘任查核路徑與給付比較，區分最低額、原則區間、方案標準、上限及增核；學院／系所自聘不推定已驗證。
-- [x] 產出專案文檔 [`docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md`](ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md)，並與 [`docs/PLAN.md`](PLAN.md) 及 [`docs/RIGHTS-SOURCES.md`](RIGHTS-SOURCES.md) 整合。
+- [x] 產出專案文檔 [`docs/ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md`](ACADEMIC-CAREER-AND-ASSISTANTSHIPS.md)，並與 [`docs/TODO.md`](TODO.md) 及 [`docs/RIGHTS-SOURCES.md`](RIGHTS-SOURCES.md) 整合。
 - [ ] 於下階段更新 `schema/candidate.schema.json`，納入 `academic_stage: [master, phd_student, phd_candidate, postdoc]` 欄位驗證。

@@ -1,8 +1,8 @@
 # 當前待審批次
 
-2026-11-02建卡支線：`source-review.json`更新為64筆文件／分支摘要、58組暫定方案，本輪61筆與保留3筆；14筆自動檢核通過、50筆有缺漏，全pending。公開站尚未更新；正式pilot10筆、真人台帳與新增來源排程不變。匯入、版本與驗收詳見[本批說明](../../docs/VERIFIED-SOURCE-CARDS.md)。下方19筆及AI兩筆為歷史批次，不能相加當作本批數量。
+2026-11-02建卡支線：`source-review.json`更新為64筆文件／分支摘要、58組暫定方案，本輪61筆與保留3筆；14筆自動檢核通過、50筆有缺漏，全pending。公開站尚未更新；正式pilot10筆、真人台帳與新增來源排程不變。匯入、版本與驗收詳見[本批說明](../../docs/archive/VERIFIED-SOURCE-CARDS.md)。下方19筆及AI兩筆為歷史批次，不能相加當作本批數量。
 
-> 後續整合更新：本批已接上統一文件準備、Token預算分段及局部規則重萃，現行能力／未完成項目與實際驗收見[文件準備整合](../../docs/PREPARED-EXTRACTION.md)。舊階段提案或測試數量不代表最新整合狀態。
+> 後續整合更新：本批已接上統一文件準備、Token預算分段及局部規則重萃，現行能力／未完成項目與實際驗收見[文件準備整合](../../docs/archive/PREPARED-EXTRACTION.md)。舊階段提案或測試數量不代表最新整合狀態。
 
 2026-11-01的[source-review.json](source-review.json)是工作台預設批次：13個來源、17份文件、19筆候選，12筆自動檢核通過、7筆有缺漏，全部pending、promotion_ready=false。19筆有可讀對象，其中2筆是明標制度線索；仍不代表完整資格已解析。完整重萃保留來源版本、全部給付及受阻附件，學位未知可空陣列；外部測試樣本不混入本檔。[最新指令與驗收](../../docs/GENERALIZABLE-EXTRACTION.md)。HTML、規則PDF、申請說明各自保留版本，不把文件數量當獎學金數量。
 
@@ -25,6 +25,6 @@
 
 `check_data.py`額外檢查本目錄候選bundle的Schema、來源URL、摘錄預算與待審邊界；不在CI重新連外，也不以短證據重新宣告完整原文核驗通過。合成測試放tests，不放本目錄；正式人工處置仍在data/scan-reviews.json，目前沒有本批核准紀錄。
 
-官方依據：[臺北市計畫](https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796)、[新竹市申辦說明](https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest)。操作與驗收見[候選推進紀錄](../../docs/AI-TOOLS-CANDIDATES.md)。
+官方依據：[臺北市計畫](https://youth.gov.taipei/services/05eb79e5-46b5-41e5-b1fd-0519d782b04a/0ecc1836-dd0d-4085-a34f-003609f00796)、[新竹市申辦說明](https://dgservice.hccg.gov.tw/serviceNotice.do?id=1323&rule=guest)。操作與驗收見[候選推進紀錄](../../docs/archive/AI-TOOLS-CANDIDATES.md)。
 
-2026-10-31後續核可：先穩定本批再擴張。已修正給付重複、週期與身分、院別範圍及文件層級N/A；工作台新增方案文件分組及review-text.md文字審查清單。最新8筆通過、11筆有缺漏，仍全部待審。詳見[本批穩定化與擴張門檻](../../docs/CANDIDATE-STABILITY.md)。
+2026-10-31後續核可：先穩定本批再擴張。已修正給付重複、週期與身分、院別範圍及文件層級N/A；工作台新增方案文件分組及review-text.md文字審查清單。最新8筆通過、11筆有缺漏，仍全部待審。詳見[本批穩定化與擴張門檻](../../docs/archive/CANDIDATE-STABILITY.md)。

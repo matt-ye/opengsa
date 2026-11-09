@@ -1,14 +1,14 @@
 # 公開來源掃描與候選覆核
 
-2026-11-01全來源第一輪另見[擴展結果與重現方式](SOURCE-EXPANSION-RUN.md)：367原始URL均有處置，56新子來源、22份待審快照，634HTTP／模型0。原19筆正式候選池與16個排程profile不變，新profile停用；擴展資料在`data/source-expansion/`，不自動進公開網站。新增`expand_sources.py`有界續跑與`propose_radar_update.py`離線資料patch／三頁預覽；scan完成後保留14天提案artifact，權限仍唯讀，不自動開、合併或發布資料PR。下列19筆數字為既有基線。
+2026-11-01全來源第一輪另見[擴展結果與重現方式](archive/SOURCE-EXPANSION-RUN.md)：367原始URL均有處置，56新子來源、22份待審快照，634HTTP／模型0。原19筆正式候選池與16個排程profile不變，新profile停用；擴展資料在`data/source-expansion/`，不自動進公開網站。新增`expand_sources.py`有界續跑與`propose_radar_update.py`離線資料patch／三頁預覽；scan完成後保留14天提案artifact，權限仍唯讀，不自動開、合併或發布資料PR。下列19筆數字為既有基線。
 
 2026-11-01最新：19筆以extractor-1.5.0完整重萃，12筆自動檢核通過、7筆有缺漏，仍全部pending；新增通用指令、`--full-replay`及隔離外部驗證。來源profile仍16筆／13啟用，未增加正式排程目標。[最新結果與限制](GENERALIZABLE-EXTRACTION.md)優先於下列歷史階段描述。
 
-> 後續整合更新：本批已接上統一文件準備、Token預算分段及局部規則重萃，現行能力／未完成項目與實際驗收見[文件準備整合](PREPARED-EXTRACTION.md)。舊階段提案或測試數量不代表最新整合狀態。
+> 後續整合更新：本批已接上統一文件準備、Token預算分段及局部規則重萃，現行能力／未完成項目與實際驗收見[文件準備整合](archive/PREPARED-EXTRACTION.md)。舊階段提案或測試數量不代表最新整合狀態。
 
-PR #20 已合併；具名候選新增[審查工作台與資料 PR 草稿](REVIEW-WORKSPACE.md)。Actions `operation=review_workspace` 僅產生 repo 候選池的離線審查 artifact，與 `scan`／`provider_audit` 分流；不重新抓來源、不注入金鑰或模型，不改變原有低頻掃描排程。重新核驗及意向匯出由本機 CLI 執行。
+PR #20 已合併；具名候選新增[審查工作台與資料 PR 草稿](archive/REVIEW-WORKSPACE.md)。Actions `operation=review_workspace` 僅產生 repo 候選池的離線審查 artifact，與 `scan`／`provider_audit` 分流；不重新抓來源、不注入金鑰或模型，不改變原有低頻掃描排程。重新核驗及意向匯出由本機 CLI 執行。
 
-更新：2026-10-30，以PR #20合併後狀態及本輪審查工作台為基準。有限公開GET、增量差異、規則萃取、可選手動LLM、獨立檢核、申請時間及P1資格比對已串接。**只產生待覆核報告，不直接改寫網站資料**。模型排程固定off；API設定、觀察值及限制見[API查核](API-AUDIT.md)。
+更新：2026-10-30，以PR #20合併後狀態及本輪審查工作台為基準。有限公開GET、增量差異、規則萃取、可選手動LLM、獨立檢核、申請時間及P1資格比對已串接。**只產生待覆核報告，不直接改寫網站資料**。模型排程固定off；API設定、觀察值及限制見[API查核](archive/API-AUDIT.md)。
 
 ## 來源台帳與最近實測（2026-10-31）
 
@@ -136,7 +136,7 @@ noted／dismissed是文件層級佇列處置；帶candidate_id的處置只影響
 - 403／429暫停主機；傳輸失敗／5xx共用最多一次重試，Retry-After延後下輪。HTML上限2MB；PDF10MB／50頁，文字抽取20秒；Linux子程序限CPU／768MB，Windows無相同記憶體硬上限。加密、掃描圖或解析問題轉人工，不做OCR。
 - 新請求啟動預算180秒、單次逾時23秒、workflow10分鐘。故障保留舊正式資料及候選，不當停辦。舊版雜湊或304沒有完整原文可用時，不重新宣稱內容通過。
 
-離線測試與建置指令見[資料契約](DATA-CONTRACT.md)；本輪驗收見[可靠性紀錄](RELIABILITY-AUDIT.md)。依據：[GitHub排程事件](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows)、[RFC9309](https://www.rfc-editor.org/rfc/rfc9309.html)、[教務處聲明](https://www.aca.ntu.edu.tw/w/aca/Privacy)、[pypdf限制](https://pypdf.readthedocs.io/en/stable/user/extract-text.html)。
+離線測試與建置指令見[資料契約](DATA-CONTRACT.md)；本輪驗收見[可靠性紀錄](archive/RELIABILITY-AUDIT.md)。依據：[GitHub排程事件](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows)、[RFC9309](https://www.rfc-editor.org/rfc/rfc9309.html)、[教務處聲明](https://www.aca.ntu.edu.tw/w/aca/Privacy)、[pypdf限制](https://pypdf.readthedocs.io/en/stable/user/extract-text.html)。
 
 ## 申辦方式與欄位適用性更新（2026-10-30）
 
@@ -144,7 +144,7 @@ noted／dismissed是文件層級佇列處置；帶candidate_id的處置只影響
 
 ## 地方AI工具補助候選
 
-臺北／新竹兩個公開正文profile及具名候選已接入，僅規則萃取、不修改pilot。購買／訂閱支出期間與申請期限分開，年度上限不代表個人仍可申請；分支與缺漏需覆核。細節見[候選推進](AI-TOOLS-CANDIDATES.md)。
+臺北／新竹兩個公開正文profile及具名候選已接入，僅規則萃取、不修改pilot。購買／訂閱支出期間與申請期限分開，年度上限不代表個人仍可申請；分支與缺漏需覆核。細節見[候選推進](archive/AI-TOOLS-CANDIDATES.md)。
 
 
 ## 來源資訊鏈的手動掃描（PR31）
