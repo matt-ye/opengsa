@@ -13,7 +13,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-from scripts.expand_sources import INTAKE_OPTIONS, export_report, initial_state, read, run_batch, save
+from scripts.expand_sources import INTAKE_OPTIONS, NOT_CARD_REASONS, export_report, initial_state, read, run_batch, save
 from scripts.audit_sources import canonical_url
 from scripts.propose_radar_update import HAND_BASELINE, write_proposal
 from scripts.scan_sources import node_get
@@ -54,7 +54,8 @@ def process(request, output, transport=node_get, progress=print, options=INTAKE_
     summary = export_report(inventory, state, report)
     bundle, profiles = read(report / "structured-candidates.json"), read(report / "source-profiles.json")
     result = {"schema_version": "source-intake-result-1", "issue": request["issue"], "url": url, "already_registered": bool(request.get("already_registered")), "http_requests": state["http_requests"], "model_calls": 0,
-              "records": [{"url": r["url"], "status": r["status"], "disposition": r.get("disposition")} for r in state["records"].values()],
+              "records": [{"url": r["url"], "status": r["status"], "disposition": r.get("disposition"), "not_card_reason": r.get("not_card_reason")}
+                          for r in state["records"].values()],
               "links_skipped": sum(r.get("links_skipped", 0) for r in state["records"].values()),
               "candidates": [{"title": c["title"], "status": c["verification"]["status"], "program_key": c["program_key"]} for c in bundle["candidates"]],
               "proposal": None, "published": False, "official_data_modified": False, "expansion_summary": summary["statuses"]}
@@ -70,7 +71,8 @@ def comment(result, run_url=None):
         lines.extend(["這個網址已登記過。", ""])
     lines.extend(["| 文件 | 結果 |", "|---|---|"])
     for record in result["records"]:
-        lines.append(f"| `{record['url']}` | {DISPOSITIONS.get(record['disposition'], '無法處理：' + safe_text(record['status']))} |")
+        why = NOT_CARD_REASONS.get(record.get("not_card_reason"))
+        lines.append(f"| `{record['url']}` | {DISPOSITIONS.get(record['disposition'], '無法處理：' + safe_text(record['status']))}{'（' + why + '）' if why else ''} |")
     if result["candidates"]:
         lines.extend(["", "| 候選 | 自動檢核 |", "|---|---|"])
         lines.extend(f"| {safe_text(c['title'])} | {c['status']} |" for c in result["candidates"])

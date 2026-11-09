@@ -75,6 +75,7 @@ def office_blocks(raw,kind):
         if text:blocks.append({'locator':kind.upper()+' paragraph '+str(len(blocks)+1),'text':text,'kind':'paragraph','structure_status':'office_layout_unverified'})
     return blocks
 
+BARE_CATEGORY=re.compile(r'(?:申請)?(?:急難(?:救助|慰助|濟助)|助學金|獎助學金|生活助學金)')
 LABELLED_NAME=re.compile(r'(?:法規|福利|計畫|方案|補助|獎助)?名\s*稱\s*[：:]?\s*(.*)')
 
 def labelled_name(soup,category=None):
@@ -132,6 +133,11 @@ def prepare_response(response,profile,hosts,link_limit=8,broad_links=False,categ
         # h1 本身看不出是方案時，名稱欄位比網站標題準。
         if not (heading and resource_title(heading.get_text(' ',strip=True),category)):
             title=labelled_name(soup,category) or title
+        # 標題只寫類別（「急難濟助」）時看不出是誰辦的，會被提案當成泛稱擋掉；接上網站名稱
+        # （<title> 最後一段，例如「行天宮五大志業網」），真方案才不會被誤擋。
+        site=re.split(r'\s*[|｜∣\-－–]\s*',soup.title.get_text(' ',strip=True))[-1] if soup.title else ''
+        if BARE_CATEGORY.fullmatch(title.strip()) and site and not BARE_CATEGORY.fullmatch(site) and site not in title:
+            title=f'{title.strip()}（{site}）'
         if SKIP.search(title):raise ScanError('private_or_result_title_not_processed')
         links=discover_links(raw,url,hosts,selector,limit=link_limit,broad=broad_links)
         links=[l for l in links if not SKIP.search(l['label']) and not ADMIN.search(l['label'])]
@@ -144,13 +150,28 @@ def prepare_response(response,profile,hosts,link_limit=8,broad_links=False,categ
     if not blocks or (sum(len(b['text']) for b in blocks)<80 and not broad_links):raise ScanError('insufficient_document_text')
     return {'kind':kind,'blocks':blocks,'links':links,'title':title,'publication':published}
 
-def named_candidate(row,prepared,known,documents=False):
-    if known:return True
+# 頁面讀到了卻不成卡的原因。記在每份文件上並在摘要統計，調規則時直接看卡在哪一關，不用逐頁除錯。
+NOT_CARD_REASONS={'index_page':'索引頁（列出多個方案）','category_not_carded':'這個類別不成卡','document_not_html':'不是 HTML 的附件',
+    'site_root_page':'網站首頁','listing_title':'列表頁標題','admin_title':'行政公告標題','information_title':'說明會或資訊類標題',
+    'title_not_a_program':'標題看不出是方案','no_eligibility_sentence':'找不到申請資格或申請對象'}
+
+def not_card_reason(row,prepared,known,documents=False):
+    """回傳不成卡的原因代碼（見 NOT_CARD_REASONS）；會成卡回傳 None。"""
+    if known:return None
     title=prepared['title'] or ''
-    if row['category'] in ('rights','agency','startup','unclassified') or (prepared['kind']!='html' and not documents):return False
-    if urlsplit(row['url']).path=='/' or INDEX.fullmatch(title) or ADMIN.search(title) or INFORMATION.search(title):return False
+    if row['category'] in ('rights','agency','startup','unclassified'):return 'category_not_carded'
+    if prepared['kind']!='html' and not documents:return 'document_not_html'
+    if urlsplit(row['url']).path=='/':return 'site_root_page'
+    if INDEX.fullmatch(title):return 'listing_title'
+    if ADMIN.search(title):return 'admin_title'
+    if INFORMATION.search(title):return 'information_title'
+    if not resource_title(title,row['category']):return 'title_not_a_program'
     claim=discover_identity(prepared['blocks'],row['category'])
-    return bool(resource_title(title,row['category']) and claim and claim['kind']=='eligibility_clause')
+    if not (claim and claim['kind']=='eligibility_clause'):return 'no_eligibility_sentence'
+    return None
+
+def named_candidate(row,prepared,known,documents=False):
+    return not_card_reason(row,prepared,known,documents)is None
 
 def clean_title(title):
     """公告標題去掉網站名稱、公告分類與轉知字樣。截止日留著，讀者用得到。"""
@@ -170,7 +191,14 @@ def clean_title(title):
 
 
 def profile_for(row,prepared,known):
-    if known:return deepcopy(known)
+    if known:
+        profile=deepcopy(known)
+        # 舊設定的標題只寫類別（「急難濟助」）會被提案當成泛稱擋掉，這張卡就再也更新不了；
+        # 這次讀到的標題接上了網站名稱，就改用它。
+        fresh=clean_title(prepared['title'])
+        if BARE_CATEGORY.fullmatch((profile.get('title') or '').strip()) and not BARE_CATEGORY.fullmatch(fresh.strip()):
+            profile['title']=fresh
+        return profile
     category,kind={'award':('outcome_award','award'),'mobility':('international_conference','travel_grant'),
         'living':('living_tuition','scholarship'),'foundation':('living_tuition','scholarship'),'campus':('living_tuition','scholarship'),
         'identity':('living_tuition','scholarship'),'ai':('research_tools','tool_subscription')}.get(row['category'],('living_tuition','scholarship'))
@@ -258,7 +286,9 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
             if index_like and row.get('category') in CATEGORY_RESOURCE and discover_identity(prepared['blocks'],row['category']):
                 index_like=False
             record['links_found'],record['links_skipped']=len(prepared['links']),0
-            if not index_like and named_candidate(row,prepared,p,documents=options['document_candidates']):
+            reason='index_page' if index_like else not_card_reason(row,prepared,p,documents=options['document_candidates'])
+            if reason:record['not_card_reason']=reason
+            if not reason:
                 profile=profile_for(row,prepared,p)
                 # Strictest retention for expansion: even existing short_excerpt profiles use hash-only here.
                 profile['evidence_mode']='hash_only'
@@ -315,6 +345,7 @@ def export_report(inventory,state,output):
         'batch_requests':state['batch_requests'],'model_calls':0,'official_data_modified':False,'human_approvals':0,
         'inventory_urls':len(inventory['rows']),'source_records':len(state['records']),'new_sources':len(state['new_sources']),
         'candidate_count':len(bundle['candidates']),'statuses':dict(Counter(r['status'] for r in state['records'].values())),
+        'not_card_reasons':dict(Counter(r['not_card_reason'] for r in state['records'].values() if r.get('not_card_reason'))),
         'remaining':[r['id'] for r in inventory['rows'] if r['batch'] not in ('H','X') and r['url'] not in state['records']]}
     save(output/'summary.json',summary)
     save(output/'source-results.json',{'summary':summary,'records':list(state['records'].values()),'relations':state['relations'],'discovered_sources':list(state['new_sources'].values())})
