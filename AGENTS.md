@@ -7,6 +7,8 @@
 
 - **候選只能由萃取流程產生**：不得手寫或用腳本寫定候選內容、雜湊與`field_evidence`；連不上來源就標未確認，不得補值。2026-11-07查核發現190／256筆為手寫（見docs/audits/candidate-provenance-2026-11-07.md），CI以`scripts/check_provenance.py`把關，基準清單只減不增。
 
+- **模型型號以 `status/model-catalog.json` 為準**：要呼叫模型或寫型號設定前先查這份清單（每週日由 `model-catalog` workflow 從各家 `/models` 更新，只查清單不推論）。不憑記憶填型號；打 API 發現型號不對時，手動執行一次 `model-catalog` workflow 更新清單。在清單裡不代表能免費推論，計費以 `inference_policy` 為準。
+
 - 2026-11-07最新核可：使用者要求修78校名冊及4筆失效來源，並決定清除24筆大學候選寫定的截止日。候選內容其餘欄位仍未查核，不得視為來源證據。見docs/PLAN.md。
 
 - 2026-11-07最新文案核可：使用者決定全庫數量統一寫成「254 筆來源摘要」（數字由資料帶入），公開署名只用Matt Ye，不用本名。
