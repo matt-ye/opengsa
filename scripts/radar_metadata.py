@@ -13,6 +13,12 @@ def known_hand_authored():
     return set(json.loads(path.read_text(encoding='utf-8'))['candidate_ids'])
 
 
+def pending_extractor():
+    """手寫卡中「萃取方式待補」的：來源讀得到，但流程還沒有能抽出這類內容的萃取方式。"""
+    path=Path(__file__).resolve().parents[1]/'data/known-hand-authored-candidates.json'
+    return set(json.loads(path.read_text(encoding='utf-8')).get('pending_extractor',[]))
+
+
 def programme_source(candidate, organizations):
     """Classify named scheme provenance, never the forwarding website or a student's eligibility."""
     patterns={
@@ -39,6 +45,7 @@ def radar_metadata(bundle, observations=None):
         observations=json.loads(path.read_text(encoding='utf-8')) if path.exists() else {}
     records={}
     hand_authored=known_hand_authored()
+    no_extractor=pending_extractor()
     for candidate in bundle['candidates']:
         gaps=classify_review_gaps(candidate)['source']
         unsafe=source_is_unsafe(candidate)
@@ -74,6 +81,7 @@ def radar_metadata(bundle, observations=None):
             'observed_at':candidate['source_metadata']['observed_at'],
             'known':known,'unsafe':unsafe,'unknown_reasons':gaps,
             'unverified_source':candidate['candidate_id'] in hand_authored,
+            'pending_extractor':candidate['candidate_id'] in no_extractor,
             'audience_kind':candidate['eligibility']['identity'].get('claim_kind','source_specific_summary'),
             'organizations':organizations,'time_steps':time_steps,
             'time_policy':project_time_policy(candidate,unsafe),

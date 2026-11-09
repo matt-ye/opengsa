@@ -28,6 +28,16 @@ from scripts.semantic_facts import discover_identity
 VERSION='expansion-1'
 DENIED=re.compile(r'robots_|http_403|http_429|service_retry_after')
 RESOURCE=re.compile(r'獎學金|獎助學金|論文獎|著作獎|培育計畫|研究獎勵|人社論文獎勵|撰寫博士論文|補助博士生赴國外研究|出席.*會議.*補助|(?:scholarship|fellowship|travel grant)',re.I)
+# 急難救助、家庭補助與學生優惠的頁面不寫「獎學金」。只在這兩類來源放寬，獎學金來源維持原規則，排程掃描不多出雜卡。
+CATEGORY_RESOURCE={
+    'living':re.compile(r'急難|慰助|濟助|慰問金|紓困|助學金|就學(?:金|補助)|學雜費減免|托教補助|扶助|生活津貼|培力計畫|助學計畫|幼兒園|托育|獎學|學金|補助'),
+    # 學生優惠來源是人工挑的產品頁，標題提到學生或教育就算。
+    'ai':re.compile(r'學生|教師|教育|students?|educat|academic|campus',re.I)}
+
+def resource_title(title,category=None):
+    pattern=CATEGORY_RESOURCE.get(category)
+    return bool(RESOURCE.search(title or '') or (pattern and pattern.search(title or '')))
+
 INDEX=re.compile(r'^(?:最新消息|最新公告|獎學金|獎助學金|學生獎學金|學生事務|相關辦法|法規|首頁|獎(?:助)?學金(?:資訊|公告|公告資訊網|申請辦法)|news|scholarships?)$',re.I)
 INFORMATION=re.compile(r'說明會|發放訊息|發放通知|QA整理|影片.*簡報|(?:Q\s*&\s*A|FAQ)',re.I)
 # 全庫擴展的預設界限；提交流程要從入口頁往下走，放寬連結範圍，並把附件也當成可能的方案文件。
@@ -65,7 +75,22 @@ def office_blocks(raw,kind):
         if text:blocks.append({'locator':kind.upper()+' paragraph '+str(len(blocks)+1),'text':text,'kind':'paragraph','structure_status':'office_layout_unverified'})
     return blocks
 
-def prepare_response(response,profile,hosts,link_limit=8,broad_links=False):
+LABELLED_NAME=re.compile(r'(?:法規|福利|計畫|方案|補助|獎助)?名\s*稱\s*[：:]?\s*(.*)')
+
+def labelled_name(soup,category=None):
+    """「名稱：X」或「福利名稱：」下一行 X；只收看得出是方案的值。"""
+    lines=[line.strip() for line in soup.get_text('\n').splitlines() if line.strip()]
+    for i,line in enumerate(lines):
+        match=LABELLED_NAME.fullmatch(line)
+        if match:
+            value=(match.group(1) or (lines[i+1] if i+1<len(lines) else '')).strip()
+            if 4<=len(value)<=80 and resource_title(value,category):
+                # 短名稱（「申請急難救助」）看不出是誰辦的，附上網站名稱。
+                site=soup.title.get_text(' ',strip=True) if soup.title else ''
+                return f'{value}（{site}）' if len(value)<=8 and site and site!=value else value
+    return ''
+
+def prepare_response(response,profile,hosts,link_limit=8,broad_links=False,category=None):
     raw=response['body'];ctype=response['headers'].get('content-type','').lower();url=response['url']
     soup=None;links=[];published=None;title=None
     if raw.startswith(b'%PDF'):
@@ -87,17 +112,35 @@ def prepare_response(response,profile,hosts,link_limit=8,broad_links=False):
         roots=soup.select(selector)
         heading=next((r.select_one('h1') for r in roots if r.select_one('h1')),None)
         meta=soup.select_one('meta[property="og:title"]')
-        title=(heading.get_text(' ',strip=True) if heading else meta.get('content','') if meta else soup.title.get_text(' ',strip=True) if soup.title else '')
+        # h1、og:title、<title> 依序看：先取看得出是方案的；都看不出就取第一個有字的（有些網站的 h1 是空的 logo）。
+        names=[t for t in (heading.get_text(' ',strip=True) if heading else '',meta.get('content','') if meta else '',
+                           soup.title.get_text(' ',strip=True) if soup.title else '') if t.strip()]
+        title=next((t for t in names if resource_title(t,category) and not INDEX.fullmatch(t)),names[0] if names else '')
         # Generic site headings often hide the actual article title in a lower heading.
-        if not RESOURCE.search(title) or INDEX.fullmatch(title):
-            options=list(dict.fromkeys(n.get_text(' ',strip=True) for root in roots for n in root.select('.news-title,.article-title,.entry-title,h2,h3')
-                if RESOURCE.search(n.get_text(' ',strip=True)) and not INDEX.fullmatch(n.get_text(' ',strip=True)) and len(n.get_text(' ',strip=True))<=200))
-            if len(options)==1:title=options[0]
+        if not resource_title(title,category) or INDEX.fullmatch(title):
+            found=[n.get_text(' ',strip=True) for root in roots for n in root.select('.news-title,.article-title,.entry-title,h2,h3')
+                if resource_title(n.get_text(' ',strip=True),category) and not INDEX.fullmatch(n.get_text(' ',strip=True)) and len(n.get_text(' ',strip=True))<=200]
+            options=list(dict.fromkeys(found))
+            # 產品頁會重複放同一個方案小標題，常見問題只出現一次：學生優惠來源取出現最多次的那個。
+            if category=='ai' and len(options)>1:
+                ranked=sorted(options,key=found.count,reverse=True)
+                if found.count(ranked[0])>found.count(ranked[1]):options=ranked[:1]
+            if len(options)==1:
+                # 產品頁的小標題常只寫「學生方案」，要接上產品名才看得出是哪個方案。
+                title=f'{title} {options[0]}' if category=='ai' and title and len(options[0])<=8 else options[0]
+        # 政府網站常把名稱放在「名稱：…」「福利名稱：…」欄位，網站標題只是系統名稱（「福利補助自己查」）。
+        # h1 本身看不出是方案時，名稱欄位比網站標題準。
+        if not (heading and resource_title(heading.get_text(' ',strip=True),category)):
+            title=labelled_name(soup,category) or title
         if SKIP.search(title):raise ScanError('private_or_result_title_not_processed')
         links=discover_links(raw,url,hosts,selector,limit=link_limit,broad=broad_links)
         links=[l for l in links if not SKIP.search(l['label']) and not ADMIN.search(l['label'])]
         pub=publication(soup,blocks,url);published=pub if pub[0] else None
     else:raise ScanError('format_parser_deferred')
+    # 學生優惠的產品頁把資格放在動態區塊，標題常是唯一寫明對象的地方；只在這類來源把標題當成可引用的區塊。
+    # 其他來源不加，否則所有文件的版本雜湊都會變，排程掃描會把每個來源都當成有變動。
+    if category=='ai' and title and blocks and not any(b['text']==title for b in blocks):
+        blocks=[{'locator':'html title','text':title,'kind':'heading'}]+blocks
     if not blocks or (sum(len(b['text']) for b in blocks)<80 and not broad_links):raise ScanError('insufficient_document_text')
     return {'kind':kind,'blocks':blocks,'links':links,'title':title,'publication':published}
 
@@ -106,13 +149,22 @@ def named_candidate(row,prepared,known,documents=False):
     title=prepared['title'] or ''
     if row['category'] in ('rights','agency','startup','unclassified') or (prepared['kind']!='html' and not documents):return False
     if urlsplit(row['url']).path=='/' or INDEX.fullmatch(title) or ADMIN.search(title) or INFORMATION.search(title):return False
-    claim=discover_identity(prepared['blocks'])
-    return bool(RESOURCE.search(title) and claim and claim['kind']=='eligibility_clause')
+    claim=discover_identity(prepared['blocks'],row['category'])
+    return bool(resource_title(title,row['category']) and claim and claim['kind']=='eligibility_clause')
 
 def clean_title(title):
     """公告標題去掉網站名稱、公告分類與轉知字樣。截止日留著，讀者用得到。"""
-    text=re.sub(r'\s+[-－]\s+[^-－]*(?:大學|學院|學務處|事務處|輔導組)[^-－]*$','',(title or '').strip())
+    text=re.sub(r'\s+[-－]\s+[^-－]*(?:大學|學院|學務處|事務處|組)[^-－]*$','',(title or '').strip())
+    # 表情符號、開頭的檔案編號（01-1、02_）、結尾的日期（115.6.30）都不是方案名稱。
+    text=re.sub(r'[\U0001F000-\U0001FAFF☀-➿️]','',text)
+    text=re.sub(r'^(?:0\d(?:-\d+)?|\d{2}-\d+|\d{2}_)[_\s]*(?=\D)','',text)
+    text=re.sub(r'\s*\d{2,3}\.\d{1,2}\.\d{1,2}$','',text)
     text=re.sub(r'^【[^】]*(?:公告|訊息|獎學金|獎助學金)[^】]*】\s*','',text)
+    # 法規資料庫的頁面標題帶系統名稱，例如「教育部主管法規共用系統-法規內容-…」。
+    text=re.sub(r'^[^-－]*法規[^-－]*[-－]法規內容[-－]\s*','',text)
+    # 附件編號與檔名裡的民國日期不是方案名稱；去掉後，同一方案的附件才會被當成同標題去重。
+    text=re.sub(r'^附件\s*\d+\s*[：:]\s*','',text)
+    text=re.sub(r'(?<=\D)\d?1\d{6}(?:版)?$','',text)
     text=re.sub(r'^(?:轉知|轉發)\s*(?:[「『]([^」』]+)[」』].*)?',lambda m:m.group(1) or '',text)
     return re.sub(r'^公告\s*[「『]([^」』]+)[」』]$',r'\1',text).strip() or title
 
@@ -188,12 +240,12 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
             safe_url(url,hosts)
             response=fetcher.get(url,{},10*1024*1024)
             if response['status']!=200:raise ScanError('http_'+str(response['status']))
-            prepared=prepare_response(response,p or {},hosts,link_limit=options['link_limit'],broad_links=options['broad_links'])
+            prepared=prepare_response(response,p or {},hosts,link_limit=options['link_limit'],broad_links=options['broad_links'],category=row.get('category'))
             if options['document_candidates'] and not prepared['title']:
                 # 附件沒有網頁標題：連結文字像方案名稱就用它，否則沿用連到它的公告標題。
                 # 連結文字常帶檔名副檔名或「點我下載」，都不是方案名稱的一部分。
                 label=re.sub(r'\s*(?:點我下載|\(PDF\)|\.(?:pdf|docx?|odt))\s*$','',row.get('title') or '',flags=re.I)
-                prepared['title']=label if RESOURCE.search(label) else row.get('parent_title') or label
+                prepared['title']=label if resource_title(label,row.get('category')) else row.get('parent_title') or label
             ir=prepare_document(prepared['blocks']);revision=digest([url,digest(response['body']),fingerprint()])
             record.update(status='read',format=prepared['kind'],title=prepared['title'],final_url=response['url'],
                 raw_sha256=digest(response['body']),revision_id=revision,document_manifest=document_manifest(ir),links=prepared['links'])
@@ -202,6 +254,9 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
                     'block_sha256':digest(ref['text'].encode()),'document_revision':revision,'review_status':'pending'}]
             # 列出多個方案的頁面是索引，要往下走，本身不成卡。
             index_like=options['broad_links'] and sum(bool(RESOURCE.search(l['label'])) for l in prepared['links'])>=INDEX_LINK_COUNT
+            # 急難救助、家庭補助與學生優惠的頁面常在導覽列掛著獎學金連結；頁面本身寫了申請對象就是方案頁，不是索引。
+            if index_like and row.get('category') in CATEGORY_RESOURCE and discover_identity(prepared['blocks'],row['category']):
+                index_like=False
             record['links_found'],record['links_skipped']=len(prepared['links']),0
             if not index_like and named_candidate(row,prepared,p,documents=options['document_candidates']):
                 profile=profile_for(row,prepared,p)

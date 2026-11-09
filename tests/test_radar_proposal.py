@@ -13,6 +13,22 @@ from scripts.audit_sources import canonical_url
 from tests.test_expansion import HTML,row
 
 class RadarProposalTests(unittest.TestCase):
+    def setUp(self):
+        # 正式資料的手寫卡會撤光：讀手寫基準時多標一張「網址只對應這張卡」的流程卡當素材，不寫檔。
+        baseline=read(ROOT/'data/known-hand-authored-candidates.json')
+        # 不從 source-review 挑：來源鏈索引綁著它的雜湊，撤掉其中一張會讓索引對不上。
+        index_file=read(ROOT/'data/source-chain-index.json')['candidate_file']
+        cards=[c for path in sorted((ROOT/'data/candidates').glob('*.json')) if not str(path).replace('\\','/').endswith(index_file)
+               for c in read(path)['candidates']]
+        urls=[canonical_url(c['source_metadata']['url']) for c in cards]
+        extra=next(c for c in cards if urls.count(canonical_url(c['source_metadata']['url']))==1)
+        self.known=baseline['candidate_ids']+[extra['candidate_id']]
+        marked={**baseline,'candidate_ids':self.known}
+        original=read
+        def reader(path):
+            return deepcopy(marked) if str(path).replace('\\','/').endswith('data/known-hand-authored-candidates.json') else original(path)
+        stub=patch('scripts.propose_radar_update.read',reader);stub.start();self.addCleanup(stub.stop)
+
     def fixture(self):
         response={'url':row()['url'],'body':HTML,'headers':{'content-type':'text/html'}}
         prep=prepare_response(response,{},['example.test']);profile=profile_for(row(),prep,None)
@@ -30,6 +46,15 @@ class RadarProposalTests(unittest.TestCase):
         self.assertFalse(next(p for p in files['data/scan-sources.json']['sources'] if p['id']==profile['id'])['enabled'])
         self.assertEqual(before,(ROOT/'data/candidates/source-review.json').read_bytes())
         self.assertIn('data/source-chain-batches/radar-proposal-snapshots.json',files)
+
+    def test_new_source_on_an_approved_host_joins_the_schedule(self):
+        # 網域已在 allowed_hosts（維護者核可過）的新來源直接排入巡檢；上一個測試的 example.test 是新網域，維持停用。
+        bundle,config,profile=self.fixture()
+        approved=read(ROOT/'data/scan-sources.json')
+        with patch('scripts.propose_radar_update.read',lambda path:{**approved,'allowed_hosts':approved['allowed_hosts']+['example.test']}
+                   if str(path).replace('\\','/').endswith('data/scan-sources.json') else read(path)):
+            files,_=prepare(bundle,config)
+        self.assertTrue(next(p for p in files['data/scan-sources.json']['sources'] if p['id']==profile['id'])['enabled'])
 
     def test_readable_preview_and_patch_created_offline(self):
         bundle,config,_=self.fixture()
@@ -51,7 +76,7 @@ class RadarProposalTests(unittest.TestCase):
                 self.assertEqual((repo/'docs/source-chains'/name).read_text(encoding='utf-8'),(expected/name).read_text(encoding='utf-8'))
 
     def hand_url(self,programs):
-        known=set(read(ROOT/'data/known-hand-authored-candidates.json')['candidate_ids']);at={}
+        known=set(self.known);at={}
         for path in (ROOT/'data/candidates').glob('*.json'):
             for card in read(path)['candidates']:
                 if card['candidate_id'] in known:at.setdefault(canonical_url(card['source_metadata']['url']),[]).append(card)
@@ -65,7 +90,7 @@ class RadarProposalTests(unittest.TestCase):
         self.assertEqual(summary['needs_manual_retire'],[])
         baseline=files['data/known-hand-authored-candidates.json']['candidate_ids']
         self.assertFalse({c['candidate_id'] for c in cards}&set(baseline))
-        self.assertEqual(len(baseline),len(read(ROOT/'data/known-hand-authored-candidates.json')['candidate_ids'])-len(cards))
+        self.assertEqual(len(baseline),len(self.known)-len(cards))
         bundle_path=summary['retired_hand_cards'][0]['bundle']
         self.assertNotIn(cards[0]['candidate_id'],[c['candidate_id'] for c in files[bundle_path]['candidates']])
         self.assertEqual(len(files[bundle_path]['candidates']),len(read(ROOT/bundle_path)['candidates'])-len(cards))
@@ -131,8 +156,10 @@ class RadarProposalTests(unittest.TestCase):
         self.assertFalse(same_program('國立中山大學學生急難救助金','中山大學西灣優秀學生與研究生卓越獎學金'))
         self.assertFalse(same_program('獎學金','財團法人某基金會獎學金'))
 
-    def test_shared_url_across_programs_is_left_for_a_person(self):
-        url,cards=self.hand_url(2);bundle,config,_=self.fixture()
+    def test_same_url_but_another_program_is_left_for_a_person(self):
+        # 同網址不代表同方案（同校首頁可能有急難金和獎學金）：標題認不出是同一方案就不刪。
+        url,cards=self.hand_url(1);bundle,config,_=self.fixture()
+        self.assertFalse(any(same_program(c['title'],new['title']) for c in cards for new in bundle['candidates']))
         files,summary=prepare(bundle,config,replaced_urls=[url])
         self.assertEqual(summary['retired_hand_cards'],[])
         self.assertEqual({r['candidate_id'] for r in summary['needs_manual_retire']},{c['candidate_id'] for c in cards})

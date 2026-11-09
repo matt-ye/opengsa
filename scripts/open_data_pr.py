@@ -3,6 +3,7 @@
 分兩步跑，寫入權限只在第二步：
 - 預設：套用提案、跑和 CI 相同的檢查、在本機提交。提案內容來自公開網站，這一步碰不到權杖。
 - --publish：推分支並開 PR。沒有權限開 PR 時，改給比較連結讓維護者自己開。
+- --notify：在固定的收件匣 Issue 留言，維護者在手機上收到推播，點連結就能開 PR。
 
 用 GITHUB_TOKEN 開的 PR 不會觸發 pull_request CI，所以檢查一定要在這裡跑過才推。
 """
@@ -54,6 +55,11 @@ def apply_proposal(proposal, root=ROOT):
         target = Path(root) / name
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(Path(proposal) / "repo" / name, target)
+    # 提案自動取代的手寫卡已從卡片檔移除；它在時程紀錄和來源鏈留下的參照也要一起清。
+    summary_path = Path(proposal) / "summary.json"
+    if summary_path.exists():
+        from scripts.retire_candidates import scrub
+        scrub([row["candidate_id"] for row in read(summary_path).get("retired_hand_cards", [])], Path(root))
     config = read(Path(root) / CONFIG)
     new_hosts = sorted(set(config["allowed_hosts"]) - set(before))
     if new_hosts:
@@ -151,6 +157,52 @@ def publish(output, branch, title, repository, token, runner=subprocess.run):
     return result
 
 
+INBOX_TITLE = "待審資料收件匣"
+
+
+def inbox_body(owner):
+    return "\n".join([
+        "這張 Issue 是排程掃描的待審資料收件匣，由 Actions 維護，請不要關閉；關閉後下一次有提案時會再開一張。", "",
+        "每輪掃描產生新的待審提案時，bot 會在這裡留言：新卡數量、扣下的原因，以及開資料 PR 的連結。"
+        "留言才會推播，改 Issue 內文不會，所以每次都是新留言。", "",
+        "處理方式：點留言裡的連結開 PR，等 CI 跑完，看過後合併。合併就是上架；不想上架就不要合併，下一輪的新提案會覆蓋同一個分支。", "",
+        f"@{owner} 開立時提及你，你會自動訂閱這張 Issue。", ""])
+
+
+def notify(output, repository, token, owner, runner=subprocess.run):
+    """有新提案或提案沒過檢查時，在收件匣 Issue 留言；沒有變動就不吵人。回傳留言的 Issue 編號。"""
+    output = Path(output)
+    if not (output / "comment.md").exists() or not (output / "result.json").exists():
+        return None
+    result = read(output / "result.json")
+    if result["status"] not in ("ready", "gates_failed"):
+        return None
+    text = (output / "comment.md").read_text(encoding="utf-8")
+    if result["status"] == "ready" and (output / "pr-body.md").exists():
+        text += "\n" + (output / "pr-body.md").read_text(encoding="utf-8")
+    (output / "inbox-comment.md").write_text(text, encoding="utf-8")
+    env = {**os.environ, "GH_TOKEN": token}
+    # 用作者篩選再比對完整標題，不用全文搜尋：搜尋索引有延遲，剛開的 Issue 會找不到而重複開。
+    listed = runner(["gh", "issue", "list", "--repo", repository, "--state", "open", "--author", "app/github-actions",
+                     "--limit", "200", "--json", "number,title"], env=env, capture_output=True, text=True)
+    if listed.returncode:
+        raise RuntimeError("inbox_list_failed")
+    found = [row["number"] for row in json.loads(listed.stdout or "[]") if row["title"] == INBOX_TITLE]
+    if found:
+        number = str(min(found))
+    else:
+        (output / "inbox-body.md").write_text(inbox_body(owner), encoding="utf-8")
+        created = runner(["gh", "issue", "create", "--repo", repository, "--title", INBOX_TITLE, "--body-file", str(output / "inbox-body.md")],
+                         env=env, capture_output=True, text=True)
+        if created.returncode:
+            raise RuntimeError("inbox_create_failed")
+        number = created.stdout.strip().rsplit("/", 1)[-1]
+    if runner(["gh", "issue", "comment", number, "--repo", repository, "--body-file", str(output / "inbox-comment.md")],
+              env=env, capture_output=True, text=True).returncode:
+        raise RuntimeError("inbox_comment_failed")
+    return number
+
+
 def comment(result):
     if result["status"] == "gates_failed":
         return f"提案沒有通過 `{safe_text(result['failed_gate'])}`，沒有開 PR，網站不會變動。\n"
@@ -168,9 +220,14 @@ def main():
     parser.add_argument("--label", default="排程掃描", help="PR 內文的來源說明")
     parser.add_argument("--apply-only", action="store_true", help="只套用提案，不跑檢查也不提交")
     parser.add_argument("--publish", action="store_true")
+    parser.add_argument("--notify", action="store_true", help="在收件匣 Issue 留言")
     parser.add_argument("--branch")
     parser.add_argument("--title", default="data: 待審提案")
     args = parser.parse_args()
+    if args.notify:
+        number = notify(args.output, os.environ["GITHUB_REPOSITORY"], os.environ["GH_TOKEN"], os.environ["OWNER"])
+        print(json.dumps({"inbox_issue": number}, ensure_ascii=False))
+        return
     if args.publish:
         result = publish(args.output, args.branch, args.title, os.environ["GITHUB_REPOSITORY"], os.environ["GH_TOKEN"])
         (args.output / "comment.md").write_text(comment(result), encoding="utf-8")

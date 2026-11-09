@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from scripts.radar_metadata import known_hand_authored
+from scripts.radar_metadata import known_hand_authored, pending_extractor
 
 SITE_URL = "https://opengsa.mattye.dev/"
 FEED_URL = f"{SITE_URL}feed.xml"
@@ -68,6 +68,7 @@ def build_feeds(output_dir: Path, candidates: list[dict], observations: dict) ->
 
     records = observations.get("records", {})
     hand_authored = known_hand_authored()
+    no_extractor = pending_extractor()
     all_feed_items = []
     deadlines_feed_items = []
 
@@ -82,7 +83,9 @@ def build_feeds(output_dir: Path, candidates: list[dict], observations: dict) ->
         benefit_text = cand.get("benefit", {}).get("text", "獎助內容詳見官方簡章")
         ident = cand.get("eligibility", {}).get("identity", {}).get("text", "資格條件請見來源公告")
         desc = f"【身分資格】{ident} ｜ 【獎助內容】{benefit_text}"
-        if cid in hand_authored:
+        if cid in no_extractor:
+            desc = f"⚠ 尚未經來源查證（萃取方式待補），請以官方頁面為準。{desc}"
+        elif cid in hand_authored:
             desc = f"⚠ 尚未經來源查證，請以官方公告為準。{desc}"
 
         rec = records.get(cid, {})

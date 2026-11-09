@@ -1066,6 +1066,9 @@ test("hand-authored items are labelled and extracted items are not",()=>{
  const plain=core.makeDrafts(pilot,"2026-11-03",{records:{[id]:base}})[0];
  assert.equal(warned.unverifiedSource,true);
  assert.equal(plain.unverifiedSource,false);
+ const pending=core.makeDrafts(pilot,"2026-11-03",{records:{[id]:{...base,unverified_source:true,pending_extractor:true}}})[0];
+ assert.equal(pending.pendingExtractor,true);
+ assert.equal(warned.pendingExtractor,false);
 });
 
 test("同方案的文件互相列為相關文件，欄位不拼接，個人與無方案項目不連結", () => {

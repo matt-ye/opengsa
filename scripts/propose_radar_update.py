@@ -44,8 +44,12 @@ def retire_hand_cards(good,replaced_urls=()):
     gone={row['candidate_id'] for row in retired}
     for rel in {row['bundle'] for row in retired}:
         files[rel]={**bundles[rel],'candidates':[c for c in bundles[rel]['candidates'] if c['candidate_id'] not in gone]}
-    if gone:files[HAND_BASELINE]={**baseline,'candidate_ids':[i for i in baseline['candidate_ids'] if i not in gone]}
+    if gone:files[HAND_BASELINE]=without_cards(baseline,gone)
     return files,retired,manual
+
+def without_cards(baseline,gone):
+    """撤掉的卡要從手寫基準的每份清單移除，包括「萃取方式待補」，否則清單會指向不存在的卡。"""
+    return {**baseline,**{key:[i for i in baseline[key] if i not in gone] for key in ('candidate_ids','pending_extractor') if key in baseline}}
 
 def merge_temporal(merged,good,temporal,observed):
     """當輪的時間紀錄和卡片一起進提案。只收同一版本內容讀到的；已被取代的卡，舊紀錄一併移除。"""
@@ -65,9 +69,11 @@ def merge_temporal(merged,good,temporal,observed):
 # 標題只是頁面或專區名稱，看不出是哪個方案（附件沒有自己的標題時會沿用列表頁的）。
 # 條文片段、心得與得獎名單也不是方案名稱。
 GENERIC_TITLE=re.compile(r'一覽表?|資訊網|專區|相關辦法|獎助學金與補助|各項獎(?:助)?學金|站台-|獎(?:助)?學金資訊$|^其他獎|感言|[得獲]獎名單'
-    r'|^[一二三四五六七八九十]+、|^(?:::: )?(?:校內外|校內|校外|研究生|申請)?獎(?:助)?學金(?:資訊|公告)?(?:\s|$|[-－|｜])|[|｜]\s*獎助學金公告|^└')
+    r'|^[一二三四五六七八九十]+、|^(?:::: )?(?:校內外|校內|校外|研究生|申請)?獎(?:助)?學金(?:資訊|公告)?(?:\s|$|[-－|｜])|[|｜]\s*獎助學金公告|^└|(?:救助|補助|扶助)資源$'
+    # 只寫類別、看不出是誰辦的方案（例如網站分類頁「急難救助」）。
+    r'|^(?:申請)?(?:急難(?:救助|慰助|濟助)|助學金|獎助學金|生活助學金)$')
 # 申請表、報告書、流程圖、修正對照表都只是附件，不是方案說明。
-FORM_DOCUMENT=re.compile(r'申請[表書]|報名表|推薦表|報告書|對照表|流程|shinsehyo|houkokusho|application[-_ ]?form',re.I)
+FORM_DOCUMENT=re.compile(r'申請[表書]|報名表|推薦表|報告書|對照表|流程|附表|說明表|標準表|檢核表|切結書|應繳文件|應計列|Q\s*&?\s*A\b|shinsehyo|houkokusho|application[-_ ]?form',re.I)
 
 def distinct_named_cards(cards):
     """同一份文件只留一張（同一 PDF 可能從多個入口讀到），同網站同標題也只留一張（常是同方案的申請表、報告表）；
@@ -75,11 +81,15 @@ def distinct_named_cards(cards):
     kept,seen,dropped=[],set(),[]
     # 網頁優先於附件，內容通常比表格完整。
     for card in sorted(cards,key=lambda c:bool(re.search(r'\.(?:pdf|docx?|odt)$',urlsplit(c['source_metadata']['url']).path,re.I))):
-        meta=card['source_metadata'];title=re.sub(r'\W+','',card['title']).casefold()
+        # 比對時忽略開頭的年度：「115年單親培力計畫」附件和「單親培力計畫」網頁是同一方案。
+        meta=card['source_metadata'];title=re.sub(r'\W+','',re.sub(r'^\d{2,4}\s*(?:學)?年度?','',card['title'].strip())).casefold()
         reason=('generic_title' if GENERIC_TITLE.search(card['title']) else
                 'form_document' if FORM_DOCUMENT.search(card['title']+unquote(urlsplit(meta['url']).path)) else
                 'same_document' if canonical_url(meta['url']) in seen else
-                'same_title_same_site' if (urlsplit(meta['url']).hostname,title) in seen else None)
+                'same_title_same_site' if (urlsplit(meta['url']).hostname,title) in seen else
+                # 同站一個標題包含另一個（「不利處境學生助學金」與「…不利處境學生助學金申請簡介」）是同一方案的不同文件。
+                'same_program_same_site' if any(urlsplit(k['source_metadata']['url']).hostname==urlsplit(meta['url']).hostname
+                                                and same_program(k['title'],card['title']) for k in kept) else None)
         if reason:
             dropped.append({'candidate_id':card['candidate_id'],'title':card['title'],'url':meta['url'],'reason':reason})
             continue
@@ -123,10 +133,14 @@ def prepare(incoming,config,observations=None,replaced_urls=(),temporal=None):
     files.update(retired_files)
     oldconfig=read(ROOT/'data/scan-sources.json');profiles={p['id']:p for p in oldconfig['sources']}
     needed={c['source_metadata']['source_id'] for c in merged['candidates']}
+    # 2026-11-08 使用者決定網站上的卡要持續巡檢：已核可網域上的新來源直接排入巡檢。
+    # 新網域（例如民眾提交）維持停用，等維護者加進 allowed_hosts；同一網址已在巡檢就不重複。
+    trusted=set(oldconfig['allowed_hosts']);active={p['url'] for p in oldconfig['sources'] if p.get('enabled',True)}
     for p in config['sources']:
         if p['id'] not in profiles and p['id'] in needed:
-            # Readable preview is not permission to add new scheduled scan targets.
-            profiles[p['id']]={**p,'enabled':False}
+            scan=urlsplit(p['url']).hostname in trusted and p['url'] not in active and p.get('automation')!='not_enabled'
+            profiles[p['id']]={**p,'enabled':scan}
+            if scan:active.add(p['url'])
     newconfig={**oldconfig,'sources':list(profiles.values()),'allowed_hosts':sorted(set(oldconfig['allowed_hosts'])|set(config['allowed_hosts']))}
     files['data/scan-sources.json']=newconfig
     index=read(ROOT/'data/source-chain-index.json')

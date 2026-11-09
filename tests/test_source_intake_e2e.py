@@ -279,9 +279,11 @@ class SourceIntakeE2ETests(unittest.TestCase):
         self.assertEqual((result["model_calls"], result["published"]), (0, False))
         self.assertEqual(result["records"][0]["disposition"], "named_candidates_pending")
         self.assertIn(INTAKE_TITLE, [c["title"] for c in result["candidates"]])
-        # 新來源不會被加進排程，名稱欄的提交內容也不會出現在留言。
+        # 網域已在 allowed_hosts（測試設定時核可）的新來源直接排入巡檢（2026-11-08 使用者決定）；
+        # 新網域維持停用，見 test_submitted_host_stays_out_of_allowed_hosts_and_the_card_still_passes。
+        # 名稱欄的提交內容不會出現在留言。
         source = next(s for s in read(self.repo / "data/scan-sources.json")["sources"] if s["url"] == f"{BASE}/news/intake-2026")
-        self.assertIs(source["enabled"], False)
+        self.assertIs(source["enabled"], True)
         text = (self.repo / "work/intake/comment.md").read_text(encoding="utf-8")
         self.assertIn("還沒上架", text)
         self.assertNotIn("@someone", text)

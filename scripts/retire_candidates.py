@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from scripts.expand_sources import read, save
-from scripts.propose_radar_update import HAND_BASELINE
+from scripts.propose_radar_update import HAND_BASELINE, without_cards
 
 
 def retire_from_batch(batch, ids, programs):
@@ -56,7 +56,31 @@ def retire(ids, root=ROOT):
     for path, bundle in bundles.items():
         save(path, bundle)
     baseline = read(root / HAND_BASELINE)
-    save(root / HAND_BASELINE, {**baseline, "candidate_ids": [i for i in baseline["candidate_ids"] if i not in ids]})
+    hand_sources = {c["source_metadata"]["source_id"] for c in found if c["candidate_id"] in set(baseline["candidate_ids"])}
+    save(root / HAND_BASELINE, without_cards(baseline, ids))
+    scrub(ids, root, programs)
+    # 沒有卡片在用的來源不再排程掃描，否則連不上的網址會一直吃掉每輪的請求額度。
+    config_path = root / "data/scan-sources.json"
+    config = read(config_path)
+    used = {c["source_metadata"]["source_id"] for path in (root / "data/candidates").glob("*.json") for c in read(path)["candidates"]}
+    orphaned = {c["source_metadata"]["source_id"] for c in found} - used
+    # 手寫卡的 profile（標題、選擇器）沒驗證過。卡撤掉後它就不再被當成手寫來源排除，
+    # 提交流程遇到同網址會拿它把首頁命名成那個方案，所以標成人工清單，流程不再採用。
+    def retired(source):
+        if source["id"] not in orphaned:
+            return source
+        return {**source, "enabled": False, **({"automation": "not_enabled"} if source["id"] in hand_sources else {})}
+    save(config_path, {**config, "sources": [retired(s) for s in config["sources"]]})
+    return found
+
+
+def scrub(ids, root=ROOT, programs=()):
+    """清掉已撤卡片留在時程紀錄與來源鏈的參照。提案自動取代手寫卡時，卡片檔已經不含這些卡，
+    也要跑這一步，否則來源鏈還綁著不存在的卡。只處理指定的 id：會議批次的 id 是合成的，不在卡片檔裡。"""
+    ids = set(ids)
+    if not ids:
+        return
+    used = {c["program_key"] for path in (root / "data/candidates").glob("*.json") for c in read(path)["candidates"]}
     for path in sorted((root / "data").glob("*temporal-observations.json")):
         data = read(path)
         if any(i in data["records"] for i in ids):
@@ -66,19 +90,15 @@ def retire(ids, root=ROOT):
     for entry in registry["batches"]:
         path = root / entry["file"]
         batch = read(path)
-        if "candidate_bindings" in batch and any(b["candidate_id"] in ids for b in batch["candidate_bindings"]):
-            batch = retire_from_batch(batch, ids, programs)
+        bound = [b for b in batch.get("candidate_bindings", []) if b["candidate_id"] in ids]
+        if bound:
+            # 還有其他卡在用的方案，來源鏈要留著。
+            gone = (set(programs) | {b["program_key"] for b in bound if b.get("program_key")}) - used
+            batch = retire_from_batch(batch, ids, gone)
             save(path, batch)
             entry.update(documents=batch["total_documents"], edges=batch["total_edges"], candidates=len(batch["candidate_bindings"]))
-    # 沒有卡片在用的來源不再排程掃描，否則連不上的網址會一直吃掉每輪的請求額度。
-    config_path = root / "data/scan-sources.json"
-    config = read(config_path)
-    used = {c["source_metadata"]["source_id"] for path in (root / "data/candidates").glob("*.json") for c in read(path)["candidates"]}
-    orphaned = {c["source_metadata"]["source_id"] for c in found} - used
-    save(config_path, {**config, "sources": [{**s, "enabled": False} if s["id"] in orphaned else s for s in config["sources"]]})
     save(registry_path, {**registry, "total_documents": sum(e["documents"] for e in registry["batches"]), "total_edges": sum(e["edges"] for e in registry["batches"]),
                          "total_schemes_covered": sum(e["candidates"] for e in registry["batches"])})
-    return found
 
 
 def main():

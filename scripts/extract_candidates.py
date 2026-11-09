@@ -35,7 +35,7 @@ from scripts.application_process import infer_process
 from scripts.semantic_facts import INSTRUCTIONS, NON_ROC_ALLOWED, OTHER_LEVELS, PLACEHOLDER, award_clauses, discover_identity, discover_organizations, is_student_document, recurring_time, degree_terms, time_actor, labelled_date_clause
 from scripts.ai_tool_rules import benefit_tiers
 
-EXTRACTOR_VERSION = "extractor-1.10.0"
+EXTRACTOR_VERSION = "extractor-1.12.1"
 PROMPT_VERSION = "prompt-1.4.0"
 
 
@@ -1086,8 +1086,13 @@ def parse_date_range_from_text(text):
     """擷取期間起訖（如 '2026-07-08至2026-08-25' 或 '115/8/5至8/13'），回傳 (start_iso, end_iso) 或 (None, None)。"""
     clean = _normalize_chinese_roc_years(normalized(text))
     clean = re.sub(r'[（(](?:星期|週)?[一二三四五六日天][）)]', '', clean)
+    # 起日後面常接時間（「8月26日上午9:00起至9月9日16:30止」）；沒容許時間就認不出區間，
+    # 後面的程式會改取第一個日期，把起日當成截止日。
+    clock = r"(?:\s*(?:上午|下午|中午|晚上|早上)?\s*\d{1,2}\s*[:：時點]\s*(?:\d{1,2}\s*分?)?)?"
+    # 「起」也寫成「開始申辦／申請／受理／收件」。
+    begin = r"\s*(?:起|開始(?:申辦|申請|受理|收件)?)?"
     m_iso = re.search(
-        r"(20\d{2})[年/.\-](\d{1,2})[月/.\-](\d{1,2})日?\s*(?:至|~|～|-|到)\s*(?:(20\d{2})[年/.\-])?(\d{1,2})[月/.\-](\d{1,2})",
+        r"(20\d{2})[年/.\-](\d{1,2})[月/.\-](\d{1,2})日?" + clock + begin + r"\s*(?:至|~|～|-|到)\s*(?:(20\d{2})[年/.\-])?(\d{1,2})[月/.\-](\d{1,2})",
         clean,
     )
     if m_iso:
@@ -1100,7 +1105,7 @@ def parse_date_range_from_text(text):
             return s, e
 
     m_roc = re.search(
-        r"(1\d{2})\s*[年/.\-]\s*(\d{1,2})\s*[月/.\-]\s*(\d{1,2})\s*日?\s*起?\s*(?:至|~|～|-|到)\s*(?:民國\s*)?(?:(1\d{2})\s*[年/.\-]\s*)?(\d{1,2})\s*[月/.\-]\s*(\d{1,2})\s*日?",
+        r"(1\d{2})\s*[年/.\-]\s*(\d{1,2})\s*[月/.\-]\s*(\d{1,2})\s*日?" + clock + begin + r"\s*(?:至|~|～|-|到)\s*(?:民國\s*)?(?:(1\d{2})\s*[年/.\-]\s*)?(\d{1,2})\s*[月/.\-]\s*(\d{1,2})\s*日?",
         clean,
     )
     if m_roc:
@@ -2194,7 +2199,9 @@ def _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode):
         return [{'source':sid,'locator':b['locator']} for b in units]
     generic_identity=cand['eligibility']['identity']['text']==PLACEHOLDER
     if generic_identity:
-        claim=discover_identity(blocks)
+        # 急難救助、家庭補助與學生優惠的資格寫法不同，依卡片類別找申請對象。
+        audience='living' if cand['category'].startswith('living_') else 'ai' if cand['category']=='research_tools' else None
+        claim=discover_identity(blocks,audience)
         if claim:
             if cand['resource_kind']=='employment_support':
                 role_units=[b for b in blocks if re.search(r'專任人員|兼任人員|臨時工',b['text'])]
@@ -2828,7 +2835,8 @@ def withhold_unsure_generic_fields(cand, blocks, source_id, revision_id, evidenc
     if len(amounts) == 1:
         block, clause, _ = next(row for row in found if amounts & row[2])
         parsed = parse_amount_from_text(clause)
-        if parsed and amounts & {parsed["amount_min"], parsed["amount_max"]}:
+        # 單位（一次、每月、每學期）分不清就不填：只寫「新臺幣5萬元」的急難金，填了會被檢核擋下整張卡。
+        if parsed and amounts & {parsed["amount_min"], parsed["amount_max"]} and parsed.get("unit") not in (None, "unknown"):
             ref = {"source": source_id, "locator": block["locator"]}
             item = {"branch_or_tier": cand["cycle"].get("branch"), **parsed, "refs": [ref]}
             cand["benefit"] = {"summary": _format_benefit_summary(item), "items": [item], "refs": [ref]}

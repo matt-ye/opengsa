@@ -487,6 +487,7 @@ function makeDrafts(pilot,asOf=taipeiToday(),radarData=null) {
    draft.url=officialUrl(meta.url);draft.sourceVersion=meta.revision;draft.sourceChecked=taipeiToday(new Date(meta.observed_at));
    draft.conflict=meta.unsafe;
    draft.unverifiedSource=Boolean(meta.unverified_source);
+   draft.pendingExtractor=Boolean(meta.unverified_source&&meta.pending_extractor);
    draft.organizations=meta.organizations||{};
    if(meta.programme_source){draft.source=meta.programme_source.type;draft.sourceBasis=meta.programme_source.label;}
    draft.timeSteps=meta.time_steps||[];
@@ -983,7 +984,7 @@ window.addEventListener("hashchange",()=>{
 function itemTags(item) {
  const tags = [item.source!=="unknown"?(labels.source[item.source]||item.source):null, (item.degrees||[]).map(x=>labels.degree[x]||x).join("／"), item.year!=="unknown"?(labels.year[item.year]||item.year):null, item.compatibility!=="unknown"?(labels.compatibility[item.compatibility]||item.compatibility):null, item.hardship!=="unknown"?(labels.hardship[item.hardship]||item.hardship):null];
  if(item.candidateMode==="required") tags.push("須博士候選人");
- if(item.unverifiedSource) tags.unshift("⚠ 未經來源查證");
+ if(item.unverifiedSource) tags.unshift(item.pendingExtractor?"⚠ 未經來源查證（萃取方式待補）":"⚠ 未經來源查證");
  if(isNA(item,"year_limit")) tags[2]="年級 N/A 不適用";
  return tags.filter(Boolean);
 }
@@ -1448,7 +1449,7 @@ function drawDetail() {
  }
  const raw=rawById.get(item.id), top=el("div","panel");
  top.append(el("div","category",labels.category[item.category]+" · "+item.cycle),el("h3","detail-title",item.title));
- if(item.unverifiedSource)top.append(el("p","callout","⚠ 這筆資料尚未從來源萃取，金額、日期與資格都可能有誤，請以官方公告為準。"));
+ if(item.unverifiedSource)top.append(el("p","callout",item.pendingExtractor?"⚠ 這筆資料是人工整理的，流程還沒有能從這類頁面萃取內容的方式（萃取方式待補）。方案內容與資格都可能有誤，請以官方頁面為準。":"⚠ 這筆資料尚未從來源萃取，金額、日期與資格都可能有誤，請以官方公告為準。"));
  if(raw)radarSummary(top,item);
  else {const axes=el("div","axes");axes.append(axis("資格："+(item.synthetic?"合成示範／未比對":"待補資料／人工核對"),"warn"),axis("受理："+item.application));top.append(axes,radarLinks(item));}
  const tags=el("div","pills");itemTags(item).forEach(tag=>tags.append(el("span","pill",tag)));top.append(tags);

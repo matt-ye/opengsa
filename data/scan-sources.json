@@ -6,10 +6,14 @@
   "allowed_hosts": [
     "ac.ntu.edu.tw",
     "adm08.cmu.edu.tw",
+    "admissionu01.usc.edu.tw",
     "advisory.ntu.edu.tw",
     "ag-osa.nsysu.edu.tw",
     "assistance-osa.ncku.edu.tw",
+    "assistance-osa.ntunhs.edu.tw",
+    "assistance.ncnu.edu.tw",
     "assistance.sa.ntnu.edu.tw",
+    "asx.yuntech.edu.tw",
     "auo.com",
     "aws.amazon.com",
     "azure.microsoft.com",
@@ -34,29 +38,43 @@
     "fatraceschool.k12ea.gov.tw",
     "gice.ntu.edu.tw",
     "giee.ntu.edu.tw",
+    "glrs.hl.gov.tw",
     "guide.cmu.edu.tw",
     "helpdreams.moe.edu.tw",
     "ifi.immigration.gov.tw",
     "lae.mol.gov.tw",
+    "law.chiayi.gov.tw",
     "law.moj.gov.tw",
     "law.nstc.gov.tw",
+    "laws.gov.taipei",
     "laws.mol.gov.tw",
+    "lf.hk.edu.tw",
     "liberal.ntu.edu.tw",
     "life.cycu.edu.tw",
     "life.dsa.fju.edu.tw",
+    "ltu1700.video.ltu.edu.tw",
+    "m.moa.gov.tw",
+    "military-osa.ncku.edu.tw",
     "military.ncu.edu.tw",
+    "niuosa.niu.edu.tw",
+    "nkstu.nkut.edu.tw",
     "oga.site.nthu.edu.tw",
     "oia.ncku.edu.tw",
     "oia.ntu.edu.tw",
     "one.google.com",
+    "oosa.cycu.edu.tw",
     "ord.ntu.edu.tw",
     "osa.kmu.edu.tw",
     "osa.nccu.edu.tw",
+    "osa.nfu.edu.tw",
+    "osa.nqu.edu.tw",
     "osa.ntut.edu.tw",
     "osa.nycu.edu.tw",
     "osa.tmu.edu.tw",
     "pan.itri.org.tw",
     "pea.nknu.edu.tw",
+    "ptlaw.pthg.gov.tw",
+    "rb003.tcpa.edu.tw",
     "rb005.ndhu.edu.tw",
     "rd.mc.ntu.edu.tw",
     "research.google",
@@ -72,18 +90,28 @@
     "sp.immigration.gov.tw",
     "special.moe.gov.tw",
     "spirit.tku.edu.tw",
+    "staf-life.nptu.edu.tw",
+    "stuaffweb.ncue.edu.tw",
     "studaff.ccu.edu.tw",
     "student.fcu.edu.tw",
+    "student.hwai.edu.tw",
     "student.ntust.edu.tw",
+    "student.tnnua.edu.tw",
     "studentaffairs.cgu.edu.tw",
+    "studentlife.ccu.edu.tw",
+    "support.google.com",
+    "tsweb.ntou.edu.tw",
     "tw.tzuchi.org",
+    "w3.tnua.edu.tw",
     "web-ch.scu.edu.tw",
+    "welfare.ntpc.gov.tw",
     "www.aca.ntu.edu.tw",
     "www.acerfoundation.org.tw",
     "www.adobe.com",
     "www.apple.com",
     "www.asefoundation.org.tw",
     "www.asusfoundation.org",
+    "www.auden.com.tw",
     "www.autodesk.com",
     "www.canva.com",
     "www.cathay-charity.org.tw",
@@ -178,6 +206,7 @@
     "www.sw.ntpc.gov.tw",
     "www.swallow.org.tw",
     "www.syinlu.org.tw",
+    "www.ta-yung.com.tw",
     "www.taai.org.tw",
     "www.tableau.com",
     "www.taishinart.org.tw",
@@ -497,7 +526,7 @@
       "category": "phd_research",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r112",
@@ -512,7 +541,7 @@
       "category": "phd_research",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r297",
@@ -527,7 +556,7 @@
       "category": "phd_research",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-q001",
@@ -542,7 +571,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-q009",
@@ -557,7 +586,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r299",
@@ -572,7 +601,7 @@
       "category": "phd_research",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r301",
@@ -587,7 +616,7 @@
       "category": "overseas_research",
       "resource_kind": "travel_grant",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r308",
@@ -602,7 +631,7 @@
       "category": "overseas_research",
       "resource_kind": "travel_grant",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r043",
@@ -632,7 +661,7 @@
       "category": "research_tools",
       "resource_kind": "tool_subscription",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r055",
@@ -647,7 +676,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r057",
@@ -662,7 +691,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r110",
@@ -677,7 +706,7 @@
       "category": "research_tools",
       "resource_kind": "tool_subscription",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r113",
@@ -707,7 +736,7 @@
       "category": "phd_research",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r192",
@@ -722,7 +751,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r193",
@@ -737,7 +766,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r194",
@@ -752,7 +781,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r195",
@@ -767,7 +796,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r196",
@@ -782,7 +811,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r197",
@@ -797,7 +826,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r198",
@@ -812,7 +841,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r199",
@@ -827,7 +856,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r200",
@@ -842,7 +871,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r241",
@@ -857,7 +886,7 @@
       "category": "research_tools",
       "resource_kind": "tool_subscription",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r270",
@@ -887,7 +916,7 @@
       "category": "outcome_award",
       "resource_kind": "award",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r310",
@@ -902,7 +931,7 @@
       "category": "outcome_award",
       "resource_kind": "award",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r312",
@@ -917,7 +946,7 @@
       "category": "overseas_research",
       "resource_kind": "travel_grant",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r425",
@@ -932,7 +961,7 @@
       "category": "phd_research",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r426",
@@ -947,7 +976,7 @@
       "category": "overseas_research",
       "resource_kind": "travel_grant",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r432",
@@ -962,7 +991,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r448",
@@ -977,7 +1006,7 @@
       "category": "phd_research",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r456",
@@ -992,7 +1021,7 @@
       "category": "international_conference",
       "resource_kind": "travel_grant",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r468",
@@ -1007,7 +1036,7 @@
       "category": "indirect_support",
       "resource_kind": "tuition_remission",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r473",
@@ -1022,7 +1051,7 @@
       "category": "indirect_support",
       "resource_kind": "tuition_remission",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r477",
@@ -1037,7 +1066,7 @@
       "category": "research_tools",
       "resource_kind": "tool_subscription",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r482",
@@ -1052,7 +1081,7 @@
       "category": "research_tools",
       "resource_kind": "tool_subscription",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r090",
@@ -1067,7 +1096,7 @@
       "category": "research_tools",
       "resource_kind": "tool_subscription",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r136",
@@ -1082,7 +1111,7 @@
       "category": "phd_research",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r137",
@@ -1097,7 +1126,7 @@
       "category": "phd_research",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r138",
@@ -1112,7 +1141,7 @@
       "category": "phd_research",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r139",
@@ -1127,7 +1156,7 @@
       "category": "phd_research",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r140",
@@ -1142,7 +1171,7 @@
       "category": "international_conference",
       "resource_kind": "travel_grant",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-r141",
@@ -1157,7 +1186,7 @@
       "category": "phd_research",
       "resource_kind": "scholarship",
       "scope": "ntu",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "k12-moe-ece-subsidies",
@@ -1172,7 +1201,9 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：教育部國民及學前教育署 主管，階段：preschool",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "k12-moe-childcare-stipend-2to5",
@@ -1203,7 +1234,9 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：衛生福利部社會救助及社工司 / 各直轄市及縣市政府教育局 主管，階段：preschool",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "k12-moe-scholarship-fund-low-income",
@@ -1297,7 +1330,9 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：內政部移民署（運用新住民發展基金） 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "k12-moe-school-lunch-subsidy",
@@ -1534,7 +1569,9 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：財團法人台灣兒童暨家庭扶助基金會（家扶基金會） 主管，階段：elementary,junior_high,senior_high,vocational_high,five_year_junior_college_y1_y3",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "k12-foxconn-whale-vocational-scholarship",
@@ -1549,7 +1586,9 @@
       "known_attachment_urls": [],
       "review_note": "K-12 基準方案：財團法人鴻海教育基金會 主管，階段：senior_high,vocational_high,five_year_junior_college_y1_y3",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "perk-github-student-pack",
@@ -1607,7 +1646,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "perk-aws-educate",
@@ -1684,7 +1725,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "perk-jetbrains-student-pack",
@@ -1703,7 +1746,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "perk-autodesk-education",
@@ -1781,7 +1826,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "perk-adobe-cc-student",
@@ -1800,7 +1847,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "perk-canva-education",
@@ -1839,7 +1888,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "perk-datacamp-education",
@@ -1898,7 +1949,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "perk-samsung-education-store",
@@ -1977,7 +2030,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "perk-apple-music-student",
@@ -2015,7 +2070,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "perk-isic-card",
@@ -2094,7 +2151,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "ent-tsmc-phd-fellowship",
@@ -2453,7 +2512,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "ent-google-phd-fellowship",
@@ -2830,7 +2891,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "ent-spil-semiconductor-scholarship",
@@ -3629,7 +3692,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "ent-lcy-education-scholarship",
@@ -3768,7 +3833,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "ent-fulbright-taiwan-fellowship",
@@ -3839,7 +3906,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-nycu",
@@ -3858,7 +3927,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-ncku",
@@ -3877,7 +3948,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-nccu",
@@ -3896,7 +3969,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-ncu",
@@ -3915,7 +3990,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-nsysu",
@@ -3934,7 +4011,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-nchu",
@@ -3953,7 +4032,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-ccu",
@@ -3992,7 +4073,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-ntpu",
@@ -4031,7 +4114,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-ntut",
@@ -4050,7 +4135,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-cgu",
@@ -4069,7 +4156,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-tmu",
@@ -4088,7 +4177,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-kmu",
@@ -4127,7 +4218,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-fju",
@@ -4146,7 +4239,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-scu",
@@ -4165,7 +4260,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-tku",
@@ -4184,7 +4281,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-fcu",
@@ -4203,7 +4302,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-yzu",
@@ -4222,7 +4323,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "univ-cycu",
@@ -4281,7 +4384,9 @@
       "cadence": "monthly",
       "parser": "generic_html",
       "format": "html",
-      "known_attachment_urls": []
+      "known_attachment_urls": [],
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "gov-cip-indigenous",
@@ -4312,7 +4417,9 @@
       "known_attachment_urls": [],
       "review_note": "通用拓撲探針發現來源：農業部農漁民子女就學助學金",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "gov-mol-unemployed-workers",
@@ -4391,7 +4498,9 @@
       "known_attachment_urls": [],
       "review_note": "通用拓撲探針發現來源：中華民國電腦學會最佳碩博士論文獎",
       "pdf_include": [],
-      "max_pdfs": 0
+      "max_pdfs": 0,
+      "enabled": false,
+      "automation": "not_enabled"
     },
     {
       "id": "moe-student-aid-emergency",
@@ -5072,7 +5181,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d68dbf24967e5108a",
@@ -5087,7 +5196,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-de19a3358a3348201",
@@ -5102,7 +5211,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dc7cb133a31314489",
@@ -5117,7 +5226,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-da21797d782e64e6c",
@@ -5132,7 +5241,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d9b21414e41a33c84",
@@ -5147,7 +5256,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d4acb394f3cca0650",
@@ -5162,7 +5271,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-issue-1fd3dbaebdf2",
@@ -5177,7 +5286,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-issue-24d2de21f01f",
@@ -5192,7 +5301,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d352a37c66ee12ff2",
@@ -5207,7 +5316,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d617568c93b125cbc",
@@ -5222,7 +5331,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dc8bfa0a27ab4059d",
@@ -5237,7 +5346,7 @@
       "category": "living_emergency",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d8484376ace0832b4",
@@ -5252,7 +5361,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dfb54c7b4a476ef83",
@@ -5267,7 +5376,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d0313ed46967bc291",
@@ -5282,7 +5391,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dc733b1fd06b60b8d",
@@ -5297,7 +5406,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dc57280be4668c55a",
@@ -5312,7 +5421,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-df32ed6412744e8f6",
@@ -5327,7 +5436,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d110a7556f8af0ec9",
@@ -5342,7 +5451,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d8f9537ccf3b6e18b",
@@ -5357,7 +5466,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-issue-374f1e978f0b",
@@ -5372,7 +5481,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d73e273ca1cd5040e",
@@ -5387,7 +5496,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dc4ab0b42a5855fe7",
@@ -5402,7 +5511,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dd9aa03af8249f283",
@@ -5417,7 +5526,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d39290f7ac0b9e418",
@@ -5432,7 +5541,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d11f1efff6e6bd621",
@@ -5447,7 +5556,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d9a614762aa399daf",
@@ -5462,7 +5571,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d8c821029453648f2",
@@ -5477,7 +5586,7 @@
       "category": "outcome_award",
       "resource_kind": "award",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dd7bfefdcdf675a66",
@@ -5492,7 +5601,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d993e01f8c0dadaef",
@@ -5507,7 +5616,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-de3e9681cf72fa051",
@@ -5522,7 +5631,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d376138e497a55cd5",
@@ -5537,7 +5646,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dd1d73643a940d42a",
@@ -5552,7 +5661,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d99ba8e3f9603e40f",
@@ -5567,7 +5676,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d882feb6feb91ce74",
@@ -5582,7 +5691,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-db2fed31265894299",
@@ -5597,7 +5706,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d93da1f20365dd9d5",
@@ -5612,7 +5721,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dcc5647da1616508c",
@@ -5627,7 +5736,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d24a8faa322e17142",
@@ -5642,7 +5751,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d0e185fee797c8aeb",
@@ -5657,7 +5766,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d6b37b7e5a1345b0c",
@@ -5672,7 +5781,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dac2549c752cd21c6",
@@ -5687,7 +5796,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-issue-580a5041a60d",
@@ -5702,7 +5811,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-de87d72b167c9e5f9",
@@ -5717,7 +5826,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d8ccaeb0eb01e2291",
@@ -5732,7 +5841,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d2be18ab5aae99321",
@@ -5747,7 +5856,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d91f548e16a930748",
@@ -5762,7 +5871,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d7b51095478c91c4c",
@@ -5777,7 +5886,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-df3f52c1d57bd2662",
@@ -5792,7 +5901,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-de9900f197759567a",
@@ -5807,7 +5916,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d1d265b53107eaba9",
@@ -5822,7 +5931,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d2b69504aaf71f1f2",
@@ -5837,7 +5946,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dd5866e6984764aa2",
@@ -5852,7 +5961,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d782b7f17286650de",
@@ -5867,7 +5976,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-da849eeb39a974954",
@@ -5882,7 +5991,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dbfe4dc951ff15b8c",
@@ -5897,7 +6006,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d69d82e9a50a8496d",
@@ -5912,7 +6021,7 @@
       "category": "outcome_award",
       "resource_kind": "award",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d5d92172b72d6e6a4",
@@ -5927,7 +6036,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d38c03063a5cb2023",
@@ -5942,7 +6051,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dc25ec292544242b4",
@@ -5957,7 +6066,7 @@
       "category": "outcome_award",
       "resource_kind": "award",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d566085552861f9ee",
@@ -5972,7 +6081,7 @@
       "category": "living_emergency",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d20aa4cb953feed5a",
@@ -5987,7 +6096,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d70002660ff6cdd9b",
@@ -6002,7 +6111,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d13a5de507dff5e53",
@@ -6017,7 +6126,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d14f6cf95d036b358",
@@ -6032,7 +6141,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-issue-7ad357da7e5d",
@@ -6047,7 +6156,7 @@
       "category": "outcome_award",
       "resource_kind": "award",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d78a948d1602878e3",
@@ -6062,7 +6171,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-issue-85ca26f6d5fb",
@@ -6077,7 +6186,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d345d657a58c2bb1d",
@@ -6092,7 +6201,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d921519d76b7ee73e",
@@ -6107,7 +6216,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d4271890a2df7a262",
@@ -6122,7 +6231,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dc99ef4ccf647a528",
@@ -6137,7 +6246,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d43006e7fa6a88893",
@@ -6152,7 +6261,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d43fc410a0da128c1",
@@ -6167,7 +6276,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-issue-910968778d3b",
@@ -6182,7 +6291,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dcd027a0bc88ff540",
@@ -6197,7 +6306,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d8b23657805cf93ff",
@@ -6212,7 +6321,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d4b5ab638aeda7e4a",
@@ -6227,7 +6336,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d840444cb494b2856",
@@ -6242,7 +6351,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d499794bfaf2679e8",
@@ -6257,7 +6366,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d8aa1f20e78a2846c",
@@ -6272,7 +6381,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d4264ce4025b43845",
@@ -6287,7 +6396,7 @@
       "category": "phd_research",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d1d2fd8632d5bf749",
@@ -6302,7 +6411,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-issue-e29ee1b421e4",
@@ -6317,7 +6426,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d872ff4346bdd5965",
@@ -6332,7 +6441,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d2f599e0ddd70c76a",
@@ -6347,7 +6456,7 @@
       "category": "overseas_research",
       "resource_kind": "travel_grant",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dbec71225ccef1e5e",
@@ -6362,7 +6471,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d4b944a18f802c295",
@@ -6377,7 +6486,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-issue-e57f805bfa2d",
@@ -6392,7 +6501,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dac86d8b7215eff47",
@@ -6407,7 +6516,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d558e0892e5fd6a0f",
@@ -6422,7 +6531,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-issue-eb7f85c3edbe",
@@ -6437,7 +6546,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d19ce2601983a8c9f",
@@ -6452,7 +6561,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-db6ce7313f9a3c97f",
@@ -6467,7 +6576,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-db318e45a4ac90b08",
@@ -6482,7 +6591,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dfa58ac9d952ef2c7",
@@ -6497,7 +6606,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-da945e75d7c7dd6aa",
@@ -6512,7 +6621,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-dfa55110cebba29a8",
@@ -6527,7 +6636,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d2a53da2cfc4acb3d",
@@ -6542,7 +6651,592 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-dd4c25ed2dab836dc",
+      "title": "「114學年度第一學期韌世代獎助學金」申請辦法",
+      "url": "https://www.ccf.org.tw/unitoutweb/laravel-filemanager/files/39/68833a3f57de5.pdf",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-7da91ea93707",
+      "title": "急難濟助",
+      "url": "https://www.ht.org.tw/religion2666.htm",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_emergency",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-d7ea84090352011b3",
+      "title": "獎勵農漁民子女就學金",
+      "url": "https://m.moa.gov.tw/api/DownloadFile/GetFile/2547773",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-91df2926e16a",
+      "title": "教育部學產基金設置低收入戶學生助學金實施要點",
+      "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL000019",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-daf7fac9b00bae084",
+      "title": "【大手拉小手 — 助學計畫】",
+      "url": "https://www.you-care.org.tw/List.aspx?mid=79",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-d70bd5e659f05692a",
+      "title": "急難救助  - 學生安全組",
+      "url": "https://military-osa.ncku.edu.tw/var/file/55/1055/img/406/181611679.pdf",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_emergency",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-dc0df4a8da338a2c2",
+      "title": "國立清華大學學生急難貸款辦法",
+      "url": "https://sa.site.nthu.edu.tw/app/index.php?Action=downloadfile&file=Mlg4SmhMYmhkTW1lK0FaSEczUi94amk0VStML2FHbU1KL01JdkZ6T0RETmRzT1NBWFhwc3VjcmFhclMyNlpFM1FiZjFQRFJHTXNPS3R1aFZ1R0huQi9Pekc2K3FSOCtGUzBhUXowdUIvUVE9&fname=TUtnWVdqNWVUb2h2dnpOcFR5VEtnS0JRTkJOVW5ON2dkSU9TRjFaTnJOYVgzZzI2dHQwZEJGSHl0V2w2T29WazErcEtkTXNnMkNyQ2dJc094L3pLRkpBaWpoVjRMd1lxa2FDNjdIUnN6eDNzNkFFVkh4ZVc3VWtFNzdnL2I1T3VLVlFmNGhOaGNEcGs4bkVBY2ZWa0dRPT0=&cg=15113",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_emergency",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-d0742a240ba2d6459",
+      "title": "國立陽明交通大學學生急難濟助實施辦法",
+      "url": "https://osa.nycu.edu.tw/osa/ch/app/artwebsite/doc?module=artwebsite&detailNo=1476394271421501440&type=s",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_emergency",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-11c6f814ba09",
+      "title": "適用於學生與教師的 Adobe Creative Cloud Pro | Adobe Creative Cloud",
+      "url": "https://www.adobe.com/tw/creativecloud/buy/students.html",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "research_tools",
+      "resource_kind": "tool_subscription",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-400972f9583a",
+      "title": "教育商店",
+      "url": "https://www.apple.com/tw-edu/store",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "research_tools",
+      "resource_kind": "tool_subscription",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-46f3883348e6",
+      "title": "Build in the cloud with Azure for Students for free",
+      "url": "https://azure.microsoft.com/free/students/",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "research_tools",
+      "resource_kind": "tool_subscription",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-7ea638b0b734",
+      "title": "Figma for Education | Free tools",
+      "url": "https://www.figma.com/education/",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "research_tools",
+      "resource_kind": "tool_subscription",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-f97761d80af1",
+      "title": "Free JetBrains Student Pack",
+      "url": "https://www.jetbrains.com/community/education/",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "research_tools",
+      "resource_kind": "tool_subscription",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-22c708ef0d30",
+      "title": "Notion for Education",
+      "url": "https://www.notion.com/product/notion-for-education",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "research_tools",
+      "resource_kind": "tool_subscription",
+      "scope": "nationwide",
       "enabled": false
+    },
+    {
+      "id": "discovery-issue-54288490a082",
+      "title": "學生可免費使用 Premium 1 個月",
+      "url": "https://www.spotify.com/tw/student/",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "research_tools",
+      "resource_kind": "tool_subscription",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-969bcc839ea7",
+      "title": "Tableau for Students",
+      "url": "https://www.tableau.com/academic/students",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "research_tools",
+      "resource_kind": "tool_subscription",
+      "scope": "nationwide",
+      "enabled": false
+    },
+    {
+      "id": "discovery-issue-a29a5792a265",
+      "title": "UNiDAYS - 為學生提供快速、免費、獨家的折扣",
+      "url": "https://www.myunidays.com/TW/zh-TW",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "research_tools",
+      "resource_kind": "tool_subscription",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-ce8ed040d42f",
+      "title": "單親培力計畫",
+      "url": "https://www.wrp.org.tw/OnePage.aspx?mid=39&id=85",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-883814ec5158",
+      "title": "Microsoft Research PhD Fellowship",
+      "url": "https://www.microsoft.com/en-us/research/academic-program/phd-fellowship/",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "phd_research",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": false
+    },
+    {
+      "id": "discovery-d12c226584b8b78d0",
+      "title": "大專校院不利處境學生助學金申請簡介",
+      "url": "https://life.dsa.fju.edu.tw/DownloadSubLabelFileServlet?menuID=4&labelID=36&subLabelID=1143&fileID=2",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-d20a85b8b4295ab7d",
+      "title": "115學年度大專校院「不利處境學生助學計畫-助學金」申辦公告更新逾時視同放棄！",
+      "url": "https://life.dsa.fju.edu.tw/newsDetail.jsp?newsID=2556&newsClassID=12",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-d48ee81664e14cb60",
+      "title": "115-1學期生活助學金申請公告(限新生、轉學生)，申請期間於8/26至9/9止。",
+      "url": "https://life.dsa.fju.edu.tw/newsDetail.jsp?newsID=2552&newsClassID=12",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-d35a493edc43716de",
+      "title": "輔仁大學生活助學金實施辦法",
+      "url": "https://life.dsa.fju.edu.tw/DownloadNewsFileServlet?file=1151",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-591f42bdb1a0",
+      "title": "2026鴻海獎學鯨｜高中、國中、國小申請說明",
+      "url": "https://www.foxconnfoundation.org/news/7b09cc55fbc5",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-9667793ba586",
+      "title": "幼兒就讀教保服務機構補助辦法",
+      "url": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL000693",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-51244b764a0d",
+      "title": "114學年度新住民及子女培力與獎助(勵)學金計畫(115年2月23日受理報名)",
+      "url": "https://ifi.immigration.gov.tw/wSite/ct?xItem=101733&ctNode=37277&mp=1",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-7a66858f3258",
+      "title": "校內急難慰助",
+      "url": "https://osa.nccu.edu.tw/tw/%E7%94%9F%E6%B4%BB%E4%BA%8B%E5%8B%99%E6%9A%A8%E5%83%91%E7%94%9F%E8%BC%94%E5%B0%8E%E7%B5%84/%E5%AD%B8%E7%94%9F%E5%8A%A9%E5%AD%B8%E6%8E%AA%E6%96%BD/%E6%80%A5%E9%9B%A3%E6%85%B0%E5%8A%A9/%E6%80%A5%E9%9B%A3%E6%85%B0%E5%8A%A9",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_emergency",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-db79e45c60a7e2cde",
+      "title": "不利處境學生助學金",
+      "url": "https://osa.nccu.edu.tw/tw/%E7%94%9F%E6%B4%BB%E4%BA%8B%E5%8B%99%E6%9A%A8%E5%83%91%E7%94%9F%E8%BC%94%E5%B0%8E%E7%B5%84/%E5%AD%B8%E7%94%9F%E5%8A%A9%E5%AD%B8%E6%8E%AA%E6%96%BD/%E4%B8%8D%E5%88%A9%E8%99%95%E5%A2%83%E5%AD%B8%E7%94%9F%E5%8A%A9%E5%AD%B8%E9%87%91",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-d6cc4df60f5986427",
+      "title": "不利處境學生多元生理用品專項補助",
+      "url": "https://osa.nccu.edu.tw/tw/%E7%94%9F%E6%B4%BB%E4%BA%8B%E5%8B%99%E6%9A%A8%E5%83%91%E7%94%9F%E8%BC%94%E5%B0%8E%E7%B5%84/%E5%AD%B8%E7%94%9F%E5%8A%A9%E5%AD%B8%E6%8E%AA%E6%96%BD/%E4%B8%8D%E5%88%A9%E8%99%95%E5%A2%83%E5%AD%B8%E7%94%9F%E5%A4%9A%E5%85%83%E7%94%9F%E7%90%86%E7%94%A8%E5%93%81%E5%B0%88%E9%A0%85%E8%A3%9C%E5%8A%A9",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-dfa156b14905cf94d",
+      "title": "失業勞工子女就學補助",
+      "url": "https://osa.nccu.edu.tw/tw/%E7%94%9F%E6%B4%BB%E4%BA%8B%E5%8B%99%E6%9A%A8%E5%83%91%E7%94%9F%E8%BC%94%E5%B0%8E%E7%B5%84/%E5%AD%B8%E7%94%9F%E5%8A%A9%E5%AD%B8%E6%8E%AA%E6%96%BD/%E5%A4%B1%E6%A5%AD%E5%8B%9E%E5%B7%A5%E5%AD%90%E5%A5%B3%E5%B0%B1%E5%AD%B8%E8%A3%9C%E5%8A%A9",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-d8e2ea61cffbec927",
+      "title": "學雜費減免線上申請",
+      "url": "https://osa.nccu.edu.tw/tw/%E7%94%9F%E6%B4%BB%E4%BA%8B%E5%8B%99%E6%9A%A8%E5%83%91%E7%94%9F%E8%BC%94%E5%B0%8E%E7%B5%84/%E5%AD%B8%E7%94%9F%E5%8A%A9%E5%AD%B8%E6%8E%AA%E6%96%BD/%E5%AD%B8%E9%9B%9C%E8%B2%BB%E6%B8%9B%E5%85%8D/%E7%B7%9A%E4%B8%8A%E7%94%B3%E8%AB%8B",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-dd5a32d7ef14a91fb",
+      "title": "國立成功大學學生緊急紓困及家庭急難慰助金實施辦法",
+      "url": "https://military-osa.ncku.edu.tw/var/file/55/1055/img/406/408678570.pdf",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_emergency",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-de2ae2c9d9c01d9f3",
+      "title": "急難扶助辦法及學生急難扶助辦法施行細則",
+      "url": "https://sa.site.nthu.edu.tw/app/index.php?Action=downloadfile&file=Mlg4SmhMYmhkTW1lK0FaSEczUi94aFNhcEMvZm9qdlZ5UGNpMnpWblRZRUtUeDU0TFlJQ2NtaC9OVDB3TmVkWUw2MS90R2lkZXNjZnNNMytMRkFacVBPekc2K3FSOCtGUzBhUXowdUIvUVE9&fname=eFpoVUlucDl6Q2tKOTE4OHBmUkVSanBUMFBiM2NNZTVESGR2QWpyeEdmV0krdy9ZbEFTLzUySUZ1dmZMR1c5cmlCcUtteUFScHQ5d3Qwd1Y2elUxRkRwVDBQYjNjTWU1REhkdkFqcnhHZlVxNU9zenYrK3U5VTlnV1VpMll3RGsrbS9VY3BWdU02b3hvQ1dzbURvQjdhci9sNzBxL25oTUg0VkUyZ3lIZ1pReTZjRlZiZFp0NjQzd0p3azNjWmRX&cg=15113",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_emergency",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-c5e90b00ffff",
+      "title": "申請急難救助（新北市政府福利補助自己查）",
+      "url": "https://welfare.ntpc.gov.tw/viewService/show/1008038?actionName=list6&fromOpa=1",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_emergency",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-f89fa99d52cb",
+      "title": "Apple Music 學生方案",
+      "url": "https://www.apple.com/tw/apple-music/",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "research_tools",
+      "resource_kind": "tool_subscription",
+      "scope": "nationwide",
+      "enabled": false
+    },
+    {
+      "id": "discovery-issue-3777f6859f57",
+      "title": "免費的學校用 Microsoft Office 365 | Microsoft 教育版",
+      "url": "https://www.microsoft.com/education/products/office",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "research_tools",
+      "resource_kind": "tool_subscription",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-4730933aa822",
+      "title": "管理 YouTube Premium 或 YouTube Music Premium 學生方案",
+      "url": "https://support.google.com/youtube/answer/9169274?hl=zh-Hant",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "research_tools",
+      "resource_kind": "tool_subscription",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-de402a17589a",
+      "title": "特殊境遇家庭扶助條例",
+      "url": "https://laws.gov.taipei/law/LawSearch/LawArticleContent/FL002598",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-4f8968cad252",
+      "title": "臺北市急難救助金核發作業要點",
+      "url": "https://laws.gov.taipei/law/LawSearch/LawArticleContent/FL002892",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "living_emergency",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
     }
   ],
   "deferred_sources": [
