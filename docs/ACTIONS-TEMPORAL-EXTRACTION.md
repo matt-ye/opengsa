@@ -56,6 +56,8 @@
 
 ## 四、GitHub Actions 45 分鐘長時續傳與操作方式（Step 4 / PR #48）
 
+> 2026-11-10：此圖部分過時，現行流程與模型節點、局部 ReAct 的規劃見 [AGENTIC-EXTRACTION-ARCHITECTURE.md](AGENTIC-EXTRACTION-ARCHITECTURE.md)。
+
 ```mermaid
 flowchart TD
  A[選取來源ID 或 依軌道 track:gov/enterprise/other 篩選] --> A1{三層增量比對閘門<br>NEW / CHANGED / BACKFILL？}

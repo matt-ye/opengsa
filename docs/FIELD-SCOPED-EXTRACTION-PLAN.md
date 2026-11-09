@@ -129,6 +129,8 @@ T + output_reserve + thinking_reserve <= context_limit - 安全餘裕
 
 ## 10. 資料流
 
+> 2026-11-10：此圖部分過時，現行流程與模型節點、局部 ReAct 的規劃見 [AGENTIC-EXTRACTION-ARCHITECTURE.md](AGENTIC-EXTRACTION-ARCHITECTURE.md)。
+
 ```mermaid
 flowchart TD
  A[既有來源台帳與存取限制] --> B{可取得原文？}
