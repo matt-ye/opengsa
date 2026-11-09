@@ -1,12 +1,35 @@
+> 已封存（2026-11-10）：記錄 2026-11-06 當時的狀態，不代表現況。現行規則見 AGENTS.md，現行規劃見 docs/TODO.md。
+
+## 2026-11-10 查證紀錄（GitHub issue #123）
+
+逐項到官方頁面核對本文的獎助名稱、金額、資格與截止日。**多數無法確認，也有與本文相反的結果，所以整份封存，不再當作現行資料。** 本文的金額、時限與資格請一律視為「未確認」，`data/top-conference-travel-grants.json` 的對應欄位同理（本次未改 data）。
+
+| 項目 | 官方頁面 | 查證結果 |
+|---|---|---|
+| NeurIPS | https://neurips.cc/Conferences/2026/FinancialAssistance | 項目名稱是 Financial Assistance，不是 Scholar Award。**沒有現金金額**：給的是免註冊費與／或最多七晚預付飯店，不含機票與餐費（與本文「$1,000–$2,000 USD」不符）。優先對象是學生與初階博後；截止 6 Oct 23:59 AoE（2026 屆）。 |
+| ICLR | https://iclr.cc/Conferences/2026/FinancialAssistance | 對象含學生與早期職涯貢獻者。分級：預付（註冊＋住宿）約 1,745 USD 以上、報銷最高 1,500 USD 等，頁面註明「可能調整」。2026 屆截止 2026-03-01 AoE，已關閉。與本文「約會前 40 天截止」「定額差旅補助」不符。 |
+| ICML | https://icml.cc/Conferences/2025/FinancialAid（2026 屆頁面 404，只查到 2025 屆） | 2025 屆：免註冊費加七晚住宿，**沒有現金**；對象不限學生，著重經濟負擔；截止 2025-05-30 AoE。與本文「最高 $2,000 USD」「放榜後 14 天」不符。 |
+| SIGCOMM | https://conferences.sigcomm.org/sigcomm/2026/ | 只確認有「Student Travel Grants（GeoDiversity、N2Women、NSF）」，截止 2026-06-19；金額與資格頁面未載明（未確認）。 |
+| SIGGRAPH | https://s2026.siggraph.org/ | 只看到 Student Volunteers 三類申請且已關閉；沒有找到 Student Travel Award（未確認）。 |
+| CHI（Gary Marsden） | https://chi2026.acm.org/、https://sigchi.org/awards/gary-marsden-travel-awards/ | 大會頁沒有旅費補助；SIGCHI 頁 404。金額「高達 $2,500」未確認。 |
+| CVPR | https://cvpr.thecvf.com/Conferences/2026 | 沒有找到旅費補助描述（未確認）。 |
+| ACL / EMNLP | https://www.aclweb.org/portal/content/acl-student-travel-grants | 404（未確認）。 |
+| IEEE INFOCOM | https://infocom.ieee.org/ | 網域無法解析（未確認）。 |
+| Google | https://buildyourfuture.withgoogle.com/scholarships/google-travel-scholarships | 頁面沒有內容（未確認）。 |
+| Microsoft Research | https://www.microsoft.com/en-us/research/academic-programs/ | 沒有找到旅費補助方案與金額（未確認）。 |
+| 國內大學頂會專案加碼（3–5 萬元） | 無官方頁面 | 未確認，沒有可核對的來源。 |
+
+另外，本文第 1.1 節的「全庫 236 筆候選方案」「7 筆通案型」已過時；現行卡片數以 README 生成區塊為準。查證只讀公開頁面，未登入，頁面文字視為資料。
+
 # 國際頂級會議專屬學生獎助（Top Conference Travel Grants）未顯示原因深層診斷與全景架構報告
 
 > **版本**：1.0.0-top-conf-diagnosis  
 > **更新時間**：2026-11-06  
 > **核心關聯資料**：
-> - 頂會專屬獎助清冊：[`data/top-conference-travel-grants.json`](../data/top-conference-travel-grants.json)
-> - 研討會試算工具配置：[`data/conference-programs.json`](../data/conference-programs.json)
-> - 搜尋引擎同義詞核心：[`docs/design/prototype.js`](design/prototype.js)
-> - 研討會與差旅資訊鏈：[`data/source-chain-batches/batch-conference.json`](../data/source-chain-batches/batch-conference.json)
+> - 頂會專屬獎助清冊：[`data/top-conference-travel-grants.json`](../../data/top-conference-travel-grants.json)
+> - 研討會試算工具配置：[`data/conference-programs.json`](../../data/conference-programs.json)
+> - 搜尋引擎同義詞核心：[`docs/design/prototype.js`](../design/prototype.js)
+> - 研討會與差旅資訊鏈：[`data/source-chain-batches/batch-conference.json`](../../data/source-chain-batches/batch-conference.json)
 
 ---
 
@@ -77,7 +100,7 @@ flowchart TD
 
 ## 2. 國際頂級會議專屬學生差旅獎助全景架構
 
-為了徹底解決此一缺口，本輪正式編制 [`data/top-conference-travel-grants.json`](../data/top-conference-travel-grants.json)，收錄 **12 項頂級會議與出國開會代表性專屬獎助**，涵蓋四大生態維度：
+為了徹底解決此一缺口，本輪正式編制 [`data/top-conference-travel-grants.json`](../../data/top-conference-travel-grants.json)，收錄 **12 項頂級會議與出國開會代表性專屬獎助**，涵蓋四大生態維度：
 
 ```mermaid
 flowchart TD
@@ -154,7 +177,7 @@ const perkAliases = isPerk ? " perk perks 學生福利 學生優惠 教育版 �
 **效益**：現在只要在首頁或詳情頁搜尋框中輸入 `頂會`、`頂級會議`、`Travel Grant`、`差旅補助`、`出國開會`、`NeurIPS`、`CVPR`，即可 100% 精確命中全庫所有研討會出國方案。
 
 ### 3.2 結構化頂會專屬清冊建立
-正式產出 [`data/top-conference-travel-grants.json`](../data/top-conference-travel-grants.json)，作為 OpenGSA 後續建置「國際頂會差旅試算與攻略」之核心規格台帳。
+正式產出 [`data/top-conference-travel-grants.json`](../../data/top-conference-travel-grants.json)，作為 OpenGSA 後續建置「國際頂會差旅試算與攻略」之核心規格台帳。
 
 ### 3.3 自動化回歸測試保障
 在 `tests/prototype.test.cjs` 中新增單元測試：

@@ -97,7 +97,7 @@ OpenGSA 支援標準 RSS 2.0 / Atom 1.0 訂閱頻道，隨 GitHub Pages 自動�
 
 ### 9. 國際頂級會議出國獎助
 - 基準清冊：[`data/top-conference-travel-grants.json`](data/top-conference-travel-grants.json)，收錄各頂尖會議的學生差旅獎助，項目數以檔案為準。
-- 診斷報告：[頂級會議獎助未顯示診斷](docs/TOP-CONFERENCE-TRAVEL-GRANTS-AND-DISCOVERY-DIAGNOSIS.md)。金額與期限是否仍有效，以該文件頂端的查核紀錄為準。
+- 診斷報告（已封存）：[頂級會議獎助未顯示診斷](docs/archive/TOP-CONFERENCE-TRAVEL-GRANTS-AND-DISCOVERY-DIAGNOSIS.md)。2026-11-10 查證多數無法確認，金額與期限一律視為未確認，見該文件頂端的查證紀錄。
 
 ---
 

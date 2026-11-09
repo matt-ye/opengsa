@@ -65,5 +65,5 @@
 ## 暫不納入
 
 - **`data.gov.tw`：** API 路徑與初版列的資料集都未確認，要先查證，再決定值不值得做。
-- **國際會議差旅補助：** 初版的路徑是猜測值，而且 `main` 已有相關文件 `docs/TOP-CONFERENCE-TRAVEL-GRANTS-AND-DISCOVERY-DIAGNOSIS.md`，要先對照再談。
+- **國際會議差旅補助：** 初版的路徑是猜測值，而且 `main` 已有相關文件 `docs/archive/TOP-CONFERENCE-TRAVEL-GRANTS-AND-DISCOVERY-DIAGNOSIS.md`，要先對照再談。
 - **Levenshtein 去重、信心分數、自動開 Issue：** 沒有候選來源之前，這些都還用不到。

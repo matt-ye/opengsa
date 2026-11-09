@@ -91,7 +91,7 @@
 
 ## 2026-11-06 國際頂會專屬獎學金未顯示診斷、大專生輔組資訊鏈深化與學生 Perks 擴展
 
-- **國際頂級會議專屬獎助（Top Conference Travel Grants）未顯示原因深層診斷**（[診斷報告](../TOP-CONFERENCE-TRAVEL-GRANTS-AND-DISCOVERY-DIAGNOSIS.md)）：
+- **國際頂級會議專屬獎助（Top Conference Travel Grants）未顯示原因深層診斷**（[診斷報告](TOP-CONFERENCE-TRAVEL-GRANTS-AND-DISCOVERY-DIAGNOSIS.md)）：
   - 核心根因深解：收錄層面未建卡、radarView 隔離 conferenceEntries、搜尋引擎缺少「頂會」「頂級會議」同義詞字典、事件相對期限（event_relative）無實體色帶。
   - 前端搜尋同義詞升級：`docs/design/prototype.js` 擴充支援 `頂會`、`頂級會議`、`Top Conference`、`Travel Grant`、`差旅補助`、`出國開會`、`NeurIPS`、`CVPR`、`SIGGRAPH`、`ICML`，100% 精確命中出國會議方案。
   - 頂會獎助基準清冊建立：產出 [`data/top-conference-travel-grants.json`](../../data/top-conference-travel-grants.json)，收錄 12 項頂級會議獎助（NeurIPS, CVPR, ICML, ICLR, ACL, SIGGRAPH, SIGCOMM, CHI, INFOCOM, Google/MSR 與各大學頂會專款加碼）。
