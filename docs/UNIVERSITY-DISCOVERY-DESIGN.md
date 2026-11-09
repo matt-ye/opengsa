@@ -1,6 +1,6 @@
 # 第 2 階段設計：大專校院獎助入口探索
 
-最後更新：2026-11-10。使用者已確認第 7 節的決定，開始實作。
+最後更新：2026-11-10。使用者已確認第 7 節的決定；第 3–5 節已照實作改寫（`scripts/discover_universities.py`）。
 
 ## 1. 目標
 
@@ -28,54 +28,63 @@
 
 ```mermaid
 flowchart TD
-  SEED[名冊：先做 54 所沒有卡的學校] --> ROBOTS[讀 robots.txt]
-  ROBOTS --> MAP{有 sitemap.xml？}
-  MAP -->|有| SM[從 sitemap 篩網址與標題關鍵字]
-  MAP -->|沒有| NAV[首頁與學務處的導覽連結]
-  SM --> CAND[入口頁候選]
-  NAV --> CAND
-  CAND --> RULE{關鍵字規則判斷得了？}
-  RULE -->|是| CHECK[抓入口頁一次：不成卡原因必須是「索引頁」或可成卡]
-  RULE -->|否| REACT[ReAct D（可選）：只看連結文字與頁面標題]
-  REACT --> CHECK
-  CHECK --> REPORT[探索報告：每校的入口頁、證據、預估卡數]
+  SEED[名冊：先做 54 所沒有卡的學校] --> ROBOTS[讀 robots.txt，讀不到就跳過該校]
+  ROBOTS --> HOME[學校首頁]
+  HOME --> REACT[ReAct D 模型版本：只看連結文字與頁面標題]
+  HOME --> RULE[關鍵字規則：首頁與學務處頁面]
+  REACT --> CHECK[確認入口頁：內文區有 3 個以上獎助連結，或可以直接成卡]
+  RULE --> CHECK
+  CHECK --> PICK{模型的入口頁通過確認？}
+  PICK -->|是| REPORT
+  PICK -->|否| FALLBACK[改用規則找到且通過確認的入口頁] --> REPORT
+  REPORT[探索報告：每校的入口頁、依據、兩條路徑的案例]
   REPORT --> ISSUE[Issue 勾選清單：使用者勾選網域]
   ISSUE --> ADD[勾選的網域加入 allowed_hosts，入口頁成為來源並啟用]
   ADD --> SCAN[排程巡檢與萃取（既有流程）]
 ```
 
-### 3.1 找入口頁
+### 3.1 找入口頁（規則版本）
 
-1. 讀 robots.txt。被禁止的路徑不抓，不繞過。
-2. 有 sitemap.xml，就從裡面挑網址或標題含關鍵字的項目。
-3. 沒有 sitemap，就看首頁導覽，以及學務處（`osa.`、`sa.`、`stu.`、`student.` 等子網域）的導覽連結。
-4. 關鍵字：獎學金、獎助、助學、急難、弱勢、學雜費減免、工讀；排除：名單、榜單、得獎、成果、新聞稿。
+1. 讀 robots.txt。被禁止的路徑不抓，不繞過；robots 回 HTML 或讀不到的學校整校跳過（跟每日巡檢同一套規則）。
+2. 看首頁的連結，以及首頁上「學務處、學生事務、生活輔導」連結（最多 2 個）的頁面連結。學務處常在 `osa.`、`sa.` 等子網域，同一所學校網域下的子網域都可以抓。
+3. 關鍵字：獎學金、獎助、助學、急難、弱勢、學雜費減免、工讀；排除：名單、榜單、得獎、獲獎、成果、新聞稿、頒獎、申請表。
+4. sitemap.xml 還沒做：首頁加學務處已經涵蓋實測的學校，有需要再加。
 
 ### 3.2 確認入口頁
 
-- 每個候選入口頁抓一次，交給現有的 `prepare_response` 和 `not_card_reason` 判斷。
-- 判定成「索引頁」（列出多個方案）或可以直接成卡的，才算入口頁。
-- 結果記成入口頁網址、判斷依據（例如哪段導覽路徑、哪些關鍵字），以及預估卡數，也就是索引頁上獎助類連結的數目。
+- 每個候選入口頁抓一次。下列其一成立才算入口頁：
+  - **索引頁**：內文區（導覽、頁首、頁尾以外）有 3 個以上獎助類連結。只數內文區，是因為選單每頁都一樣，數進去的話整個網站每頁都像索引頁。
+  - **可以直接成卡**：交給現有的 `prepare_response` 和 `not_card_reason`，沒有不成卡的原因。
+- 結果記成入口頁網址與依據（例如「索引頁（8 個獎助連結）」），每校最多 3 個入口頁。
 
 ### 3.3 ReAct D（模型版本優先，失敗時改用規則）
 
-- **觸發**：關鍵字找不到入口、或候選太多分不出來的學校。
-- **工具**：讀 robots、讀 sitemap、列出某頁的連結（只回連結文字與網址）、讀某頁的標題與小標題。不讀內文。
-- **上限**：每校最多 8 次抓取，每週最多 20 校。
-- **驗證**：同 3.2，入口頁一樣要過 `not_card_reason` 的判斷才算數。
-- **記錄**：每校一筆案例，供之後整理規則與 skill，見 `docs/AGENTIC-EXTRACTION-ARCHITECTURE.md`。
+- **每校都先跑**：模型每一步看到目前頁面的標題和編號連結（獎助與學務處連結排前面，最多 60 個），回答「打開第 n 個」「入口頁是第 n 個」或「找不到」。不送內文。
+- **上限**：每校最多 6 步；每輪模型呼叫最多 150 次（`--max-model-calls`）。模型的回覆以內容雜湊快取在 `work/discovery/model-cache/`，續跑不重複呼叫。
+- **只用免費模型**：預設 Groq（`data/model-providers.json`）。沒有金鑰就只跑規則。
+- **驗證**：同 3.2，模型指的入口頁一樣要通過確認才算數；沒通過、模型找不到或呼叫失敗，就用規則的結果。
+- **記錄**：每校一筆案例，模型的每一步、兩條路徑各找到幾個入口頁都記下，供之後比較與整理規則、skill，見 `docs/AGENTIC-EXTRACTION-ARCHITECTURE.md`。
 
 ## 4. 執行方式
 
-- **新 workflow**：`university-discovery.yml`，每週一次（暫定週日，避開掃描與型號清單），也可以手動執行。
-- **請求額度另外算**：每輪 100 次，不吃每日巡檢的 50 次。同站間隔至少 3 秒，403／429 就暫停該站。
-- **可續跑**：進度存在 Actions 快取，每輪從上次停的學校接著做，大約 2–3 輪做完 54 校。
-- **權限**：探索 job 只讀；開 Issue 的 job 只有 `issues: write`，不能寫 repo。
+- **workflow**：`university-discovery.yml`，每週六 10:37（臺北）一次，避開每天的掃描與週日的型號清單，也可以手動執行。
+- **請求額度另外算**：每輪 100 次（含 robots），不吃每日巡檢的額度。同站間隔至少 3 秒，403／429 就暫停該站。
+- **可續跑**：進度存在 Actions 快取，每輪從上次停的學校接著做。實測每校約 8–10 次請求，每輪約 10 校，54 校約要 5–6 輪。
+- **權限**：探索 job 只讀；更新 Issue 的 job 只有 `issues: write`，不能寫 repo、不抓網頁。Issue 裡的連結文字先去掉提及與 Markdown 語法。
 
 ## 5. 核可與加入巡檢
 
-- 探索報告整理成一張 Issue，每校一行：網域、入口頁、依據、預估卡數，前面有勾選框。
-- 使用者勾選後，由另一支 workflow 或手動指令，把勾選的網域加進 `allowed_hosts`，入口頁成為來源並啟用，再開 PR 給使用者合併。
+- 探索結果寫在「大專校院獎助入口探索」Issue，每校一行：網域、入口頁、依據，前面有勾選框。每週更新時保留已勾選的項目。
+- 使用者勾選後，由 agent 照下列步驟開 PR，使用者合併後生效：
+
+  ```bash
+  gh issue view <編號> --json body --jq .body > work/discovery/issue-body.md
+  python scripts/discover_universities.py --approved work/discovery/issue-body.md   # 寫出 approved-targets.json
+  python scripts/run_hand_replacement.py --targets work/discovery/approved-targets.json --output work/discovery/intake
+  python scripts/run_hand_replacement.py --targets work/discovery/approved-targets.json --output work/discovery/intake --propose
+  ```
+
+  提案會把入口頁的網域加進 `allowed_hosts`、入口頁加成來源；之後照一般資料 PR 的流程（`open_data_pr.py`）開 PR。
 - 沒勾選的網域不加入、不巡檢。
 
 ## 6. 品質
