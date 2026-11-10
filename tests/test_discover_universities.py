@@ -13,6 +13,11 @@ PAGES = {
         '<a href="/aid/a">校內獎學金</a><a href="/aid/b">弱勢助學金</a><a href="/aid/c">急難救助金</a><a href="/aid/d">學雜費減免</a></main></body></html>',
     "https://osa.demo.edu.tw/one": '<html><head><title>公告</title></head><body><main><h1>最新公告</h1>'
         '<p>本週行政公告一則。</p></main></body></html>',
+    # 單篇公告旁邊列了相關文章：內文區獎助連結超過門檻，但仍不是入口頁。
+    "https://osa.demo.edu.tw/post": '<html><head><title>公告</title></head><body><main><h1>【生輔組】辦理115學年度學雜費減免申請事宜</h1>'
+        '<a href="/aid/a">校內獎學金</a><a href="/aid/b">弱勢助學金</a><a href="/aid/c">急難救助金</a></main></body></html>',
+    "https://osa.demo.edu.tw/p/404-1000-123.php": '<html><head><title>獎學金</title></head><body><main><h1>扶輪社獎助學金</h1>'
+        '<a href="/aid/a">校內獎學金</a><a href="/aid/b">弱勢助學金</a><a href="/aid/c">急難救助金</a></main></body></html>',
 }
 
 
@@ -68,6 +73,43 @@ class DiscoverTest(unittest.TestCase):
             result = du.discover(SCHOOL, browser(), "groq", None, {"model_calls": 5})
         self.assertEqual(result["source"], "rule")
         self.assertEqual(result["model"]["steps"], [{"stop": "model_error:TimeoutError"}])
+
+    def test_single_notices_are_not_entry_pages(self):
+        for url in ("https://osa.demo.edu.tw/post", "https://osa.demo.edu.tw/p/404-1000-123.php"):
+            ok, basis = du.verify(browser(), url, "demo.edu.tw")
+            self.assertFalse(ok, url)
+            self.assertIn("單篇公告", basis)
+
+    def test_rate_limit_records_code_and_pauses_model_for_the_run(self):
+        import io
+        import urllib.error
+        calls = []
+
+        def limited(provider, messages, cache):
+            calls.append(1)
+            raise urllib.error.HTTPError("https://api", 429, "Too Many Requests", {}, io.BytesIO(b'{"error":"rate limit"}'))
+        budget = {"model_calls": 5}
+        with mock.patch.object(du, "ask_model", limited):
+            first = du.discover(SCHOOL, browser(), "groq", None, budget)
+            second = du.discover({**SCHOOL, "id": "T002"}, browser(), "groq", None, budget)
+        self.assertEqual(first["model"]["steps"][0]["stop"], "model_error:http_429")
+        self.assertIn("rate limit", first["model"]["steps"][0]["message"])
+        self.assertEqual(second["model"]["steps"], [{"stop": "model_paused_after_429"}])
+        self.assertEqual(len(calls), 1)  # 限速後不重試、不再呼叫
+        self.assertEqual(second["source"], "rule")
+
+    def test_model_sees_only_current_page_and_a_short_history(self):
+        seen = []
+        answers = iter([{"action": "open", "n": 1}, {"action": "answer", "n": [1]}])
+
+        def fake(provider, messages, cache):
+            seen.append(messages)
+            return {"raw": "{}", "action": next(answers)}, False
+        with mock.patch.object(du, "ask_model", fake), mock.patch.object(du.time, "sleep"):
+            du.discover(SCHOOL, browser(), "groq", None, {"model_calls": 5})
+        self.assertEqual([len(m) for m in seen], [2, 2])
+        self.assertIn("已經走過", seen[1][1]["content"])
+        self.assertNotIn("最新消息", seen[1][1]["content"])  # 首頁的連結清單不再重送
 
     def test_off_site_links_are_refused(self):
         with self.assertRaises(du.ScanError):
