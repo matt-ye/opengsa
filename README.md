@@ -71,6 +71,7 @@ OpenGSA 把一個方案的出處拆成節點：母法設置辦法（Anchor）、
 ### 6. GitHub Actions 排程
 - **來源巡檢**（`scan-sources.yml`）：週一到週六 09:17（臺北，GitHub 不保證準時），週日沒有巡檢。每輪接著上一輪的位置往下讀；請求數、變動文件數、待審數都有上限（`data/scan-sources.json` 的 `max_requests`、`max_changed_documents`、`max_pending_candidates`，目前 50／10／60）。排程不分軌道，模型固定關閉。沒有變動的來源用 ETag／Last-Modified 判斷，仍會發出請求。
 - **資料 PR 每週彙整**：週一那輪把整週累積的待審提案開成一個資料 PR，由 owner 審閱後合併；機器人不會自己合併。週二到週六只掃描、累積待審，不開 PR。PR 開出後會在收件匣 Issue 留言通知。
+- **入口頁每週巡檢**：週一那輪另外重跑使用者核可過的獎助入口頁（`data/entry-pages.json`），找出入口頁上新出現的方案，併進同一份資料 PR。每日掃描只重抓來源頁本身，不跟連結。
 - **狀態檔**：每輪寫 `status/pipeline.csv`、`status/pipeline.json`（來源狀態）；`model-catalog.yml` 每週日 09:47 更新 `status/model-catalog.json`（只查模型清單，不呼叫模型）。
 - **來源提交**：Issue 經 owner 加上 `source-approved` 標籤後，`source-intake.yml` 才會跑單一來源的管線。
 - **手動時間重萃（`temporal_replay`）**：只由 owner 手動觸發。`gov`、`enterprise`、`other` 分軌和增量閘門（未異動來源判定 `SKIP_UNCHANGED`，0 HTTP）只在這裡生效，排程不經過。

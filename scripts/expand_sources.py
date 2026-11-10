@@ -294,6 +294,8 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
                 index_like=False
             record['links_found'],record['links_skipped']=len(prepared['links']),0
             reason='index_page' if index_like else not_card_reason(row,prepared,p,documents=options['document_candidates'])
+            # 入口頁巡檢：入口頁本身只用來找連結，不成卡（它若是來源，每天的排程會掃；重抽只會換掉卡片代號）。
+            if options.get('discovery_only_roots') and record['depth']==0:reason=reason or 'index_page'
             if reason:record['not_card_reason']=reason
             if not reason:
                 profile=profile_for(row,prepared,p)
@@ -319,6 +321,8 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
             for link in prepared['links']:
                 child=canonical_url(link['url']);relation={'from_url':url,'to_url':child,'role':link['role'],'label':link['label'],'origin':'observed_link','revision_id':revision}
                 if relation not in state['relations']:state['relations'].append(relation)
+                # 入口頁巡檢只找新方案：已經是來源的頁面每天的排程會掃，這裡不再跟。
+                if options.get('skip_known_children') and child in known:continue
                 if (record['depth']<2 and link['role'] in options['follow_roles'] and child not in {r['url'] for r in inventory['rows']}
                         and child not in state['new_sources']):
                     if len([r for r in state['new_sources'].values() if r.get('root_url')==row.get('root_url',url)])>=options['max_children']:

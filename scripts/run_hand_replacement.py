@@ -63,7 +63,7 @@ def source_dir(output, url):
     return Path(output) / "sources" / digest(url)[:16]
 
 
-def run(output, targets, transport=node_get, max_requests=3000, spacing=TARGET_SPACING_SECONDS, progress=print):
+def run(output, targets, transport=node_get, max_requests=3000, spacing=TARGET_SPACING_SECONDS, progress=print, options=BATCH_OPTIONS):
     output = Path(output)
     used, paused = 0, {}
     for row in targets:
@@ -82,7 +82,7 @@ def run(output, targets, transport=node_get, max_requests=3000, spacing=TARGET_S
                 raise IntakeRejected("host_paused:" + paused[host])
             valid = validated_url(url)
             result = process({"issue": digest(url)[:12], "url": valid, "category": row["category"]}, directory, transport=transport,
-                             progress=lambda *a, **k: None, options=BATCH_OPTIONS, propose=False)
+                             progress=lambda *a, **k: None, options=options, propose=False)
             outcome.update(http_requests=result["http_requests"], candidates=result["candidates"], links_skipped=result["links_skipped"],
                            statuses=[r["status"] for r in result["records"]],
                            not_card_reasons=[r["not_card_reason"] for r in result["records"] if r.get("not_card_reason")])

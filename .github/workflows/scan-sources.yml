@@ -216,10 +216,49 @@ jobs:
           retention-days: 14
           if-no-files-found: error
 
-  data-pr:
+  # 每日掃描不跟連結，入口頁上新出現的方案靠這個 job 找（data/entry-pages.json，使用者核可過的入口頁）。
+  # 只在會開資料 PR 的那輪跑（週一排程或手動），結果和掃描提案合併成一份。只讀，不碰權杖。
+  entry-watch:
     needs: scan
-    # 排程只在週一那輪開 PR；手動執行照舊每次都開。
-    if: ${{ always() && needs.scan.outputs.has_proposal == 'true' && (github.event_name != 'schedule' || github.event.schedule == '17 1 * * 1') }}
+    if: ${{ always() && needs.scan.result != 'skipped' && (github.event_name != 'schedule' || github.event.schedule == '17 1 * * 1') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      has_proposal: ${{ steps.watch.outputs.has_proposal }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      - name: Install extraction dependencies
+        run: python -m pip install -r requirements-ingestion.txt
+      # 掃描這輪沒有提案時就沒有 artifact，下載失敗不影響入口頁巡檢。
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        continue-on-error: true
+        with:
+          name: radar-data-proposal-${{ github.run_id }}
+          path: work/radar-proposal
+      - name: Re-run approved entry pages for new programs (bounded, robots respected)
+        id: watch
+        run: python scripts/watch_entry_pages.py --base-proposal work/radar-proposal --output work/entry-watch --max-requests 300
+      - name: Preserve the combined proposal
+        if: steps.watch.outputs.has_proposal == 'true'
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: radar-data-proposal-final-${{ github.run_id }}
+          path: work/entry-watch/proposal/
+          retention-days: 14
+          if-no-files-found: error
+
+  data-pr:
+    needs: [scan, entry-watch]
+    # 排程只在週一那輪開 PR；手動執行照舊每次都開。提案是掃描加上入口頁巡檢合併後的那份。
+    if: ${{ always() && needs.entry-watch.outputs.has_proposal == 'true' && (github.event_name != 'schedule' || github.event.schedule == '17 1 * * 1') }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     # 有寫入權限的只有這個 job 和 status；兩者都不抓公開網頁。issues 只用來在收件匣 Issue 留言。
@@ -241,7 +280,7 @@ jobs:
       - run: python -m pip install -r requirements-dev.txt
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
-          name: radar-data-proposal-${{ github.run_id }}
+          name: radar-data-proposal-final-${{ github.run_id }}
           path: work/radar-proposal
       - name: Apply the proposal and run the same checks as CI (no token)
         run: |
