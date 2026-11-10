@@ -294,6 +294,8 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
                 index_like=False
             record['links_found'],record['links_skipped']=len(prepared['links']),0
             reason='index_page' if index_like else not_card_reason(row,prepared,p,documents=options['document_candidates'])
+            # 入口頁巡檢：入口頁本身只用來找連結，不成卡（它若是來源，每天的排程會掃；重抽只會換掉卡片代號）。
+            if options.get('discovery_only_roots') and record['depth']==0:reason=reason or 'index_page'
             if reason:record['not_card_reason']=reason
             if not reason:
                 profile=profile_for(row,prepared,p)

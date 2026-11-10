@@ -23,7 +23,7 @@ from scripts.open_data_pr import apply_proposal
 from scripts.run_hand_replacement import BATCH_OPTIONS, build_proposal, run
 
 REGISTRY = "data/entry-pages.json"
-WATCH_OPTIONS = {**BATCH_OPTIONS, "skip_known_children": True}
+WATCH_OPTIONS = {**BATCH_OPTIONS, "skip_known_children": True, "discovery_only_roots": True}
 COUNTS = ("accepted_for_radar_proposal", "withheld_failed_checks", "temporal_records")
 LISTS = ("dropped_not_distinct", "withheld_site_contract", "retired_hand_cards", "needs_manual_retire")
 

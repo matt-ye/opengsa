@@ -109,5 +109,27 @@ class SkipKnownChildrenTests(unittest.TestCase):
         self.assertIn("https://osa.demo.edu.tw/known", self.run_page(INTAKE_OPTIONS))
 
 
+class DiscoveryOnlyRootsTests(unittest.TestCase):
+    """入口頁本身不成卡：同一頁在一般提交流程會成卡，入口頁巡檢不會。"""
+    PAGE = ('<html><head><title>清寒助學金</title></head><body><main><h1>示範基金會115年度清寒獎學金</h1>'
+            '<p>申請資格：本校學士班在學學生，家境清寒者得申請。</p><p>補助金額：每學期新臺幣一萬元。</p>'
+            '<p>申請期限：115年10月31日前向生活輔導組提出申請。</p></main></body></html>')
+
+    def cards(self, options):
+        def transport(url, headers, limit):
+            if url.endswith("robots.txt"):
+                return {"status": 404, "headers": {}, "body": b""}
+            return {"status": 200, "headers": {"content-type": "text/html"}, "body": self.PAGE.encode()}
+        inventory = {"rows": [{"id": "E", "url": "https://osa.demo.edu.tw/aid/1", "title": "", "batch": "B1", "category": "scholarship", "restrictions": []}]}
+        with tempfile.TemporaryDirectory() as tmp, mock.patch("scripts.scan_sources.pause"):
+            state = run_batch(inventory, initial_state(inventory), "B1", Path(tmp) / "state.json", {"sources": []}, transport=transport,
+                              progress=lambda *a, **k: None, options=options)
+        return state["records"]["https://osa.demo.edu.tw/aid/1"]["candidate_ids"]
+
+    def test_root_page_is_not_carded_when_watching(self):
+        self.assertTrue(self.cards(INTAKE_OPTIONS))  # 前提：這頁平常會成卡
+        self.assertEqual(self.cards(watch.WATCH_OPTIONS), [])
+
+
 if __name__ == "__main__":
     unittest.main()
