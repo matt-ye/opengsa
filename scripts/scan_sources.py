@@ -5,6 +5,7 @@ from copy import deepcopy
 import hashlib
 import html
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -105,6 +106,14 @@ def robots_policy(text, url):
     return True, delay
 
 
+def pause(seconds):
+    """同站間隔的等待。只有在端到端測試把 http_get.cjs 換成讀假網站的版本時才不等；
+    兩個條件都要成立（環境變數，加上傳輸程式本身就是讀假網站的），正式執行一律照間隔等。"""
+    if os.environ.get("OPENGSA_FIXTURES") and "OPENGSA_FIXTURES" in (ROOT / "scripts/http_get.cjs").read_text(encoding="utf-8"):
+        return
+    time.sleep(seconds)
+
+
 def node_get(url, headers, limit):
     result = subprocess.run(["node", str(ROOT / "scripts/http_get.cjs")],
                             input=json.dumps({"url": url, "headers": headers, "limit": limit}).encode(),
@@ -117,7 +126,7 @@ def node_get(url, headers, limit):
 
 
 class Fetcher:
-    def __init__(self, config, transport=node_get, clock=time.monotonic, sleeper=time.sleep):
+    def __init__(self, config, transport=node_get, clock=time.monotonic, sleeper=None):
         self.config, self.transport, self.clock, self.sleeper = config, transport, clock, sleeper
         self.started, self.count = clock(), 0
         self.last, self.robots, self.blocked, self.delays, self.robots_checks = {}, {}, {}, {}, {}
@@ -133,7 +142,7 @@ class Fetcher:
         wait = max(0, self.last.get(host, -1000000) + max(self.config["minimum_host_interval_seconds"], self.delays.get(host, 0)) - self.clock())
         if self.count >= self.config["max_requests"] or self.clock() + wait - self.started >= self.config["max_run_seconds"]:
             raise ScanError("run_budget_exhausted")
-        self.sleeper(wait)
+        (self.sleeper or pause)(wait)  # 沒指定時用 pause：測試可以整個換掉
         self.count += 1
         self.last[host] = self.clock()
         response = self.transport(url, {"User-Agent": AGENT, "Accept-Encoding": "identity", **headers}, limit)

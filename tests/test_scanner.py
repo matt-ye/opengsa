@@ -428,5 +428,25 @@ class ScannerTests(unittest.TestCase):
         self.assertEqual(after['pending'],{})
 
 
+class HostSpacingDefaultTests(unittest.TestCase):
+    """測試可以跳過同站間隔，正式執行不行：沒指定 sleeper 時一定照間隔等。"""
+
+    def test_default_fetcher_waits_between_requests_to_the_same_host(self):
+        ok=lambda url,headers,limit:{'status':200,'headers':{},'body':b'ok'}
+        config={'allowed_hosts':['example.org'],'max_requests':5,'minimum_host_interval_seconds':3,'max_run_seconds':60}
+        with patch('scripts.scan_sources.time.sleep') as sleep:
+            fetcher=Fetcher(config,transport=ok,clock=lambda:100.0)
+            fetcher.request('https://example.org/a',{},100)
+            fetcher.request('https://example.org/b',{},100)
+        self.assertEqual(sleep.call_args_list[-1].args,(3.0,))
+
+    def test_fixture_variable_alone_does_not_skip_waiting(self):
+        # 只設環境變數、傳輸程式仍是真的 http_get.cjs：照樣要等。
+        from scripts import scan_sources
+        with patch.dict('os.environ',{'OPENGSA_FIXTURES':'x'}),patch('scripts.scan_sources.time.sleep') as sleep:
+            scan_sources.pause(3)
+        sleep.assert_called_once_with(3)
+
+
 if __name__=='__main__':
     unittest.main()

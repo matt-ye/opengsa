@@ -9,6 +9,15 @@ import zipfile
 from scripts.expand_sources import initial_state,run_batch,export_report,office_blocks,prepare_response,named_candidate,profile_for
 from scripts.scan_sources import ScanError
 
+def setUpModule():
+    # 假網站不用等同站間隔（每站 3 秒）；間隔規則本身由 test_scanner 檢查。
+    import unittest.mock
+    from scripts import scan_sources
+    patcher = unittest.mock.patch.object(scan_sources, "pause", lambda seconds: None)
+    patcher.start()
+    unittest.addModuleCleanup(patcher.stop)
+
+
 def row(n=1,**extra):
     return {'id':'SYNTH-'+str(n),'url':'https://example.test/call'+str(n),'title':'SYNTH獎學金','batch':'B1','category':'doctoral',
             'access_gate':'fresh_policy_and_profile_check_required','restrictions':[],**extra}

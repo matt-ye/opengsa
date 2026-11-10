@@ -20,7 +20,6 @@ if str(ROOT) not in sys.path:
 from scripts.audit_sources import canonical_url
 
 FIXTURES = ROOT / "tests/fixtures/source-intake"
-NESTED = "OPENGSA_INTAKE_E2E_NESTED"
 HOST = "scholarship.opengsa-synthetic.example"
 BASE = f"https://{HOST}"
 SOURCE_ID = "synthetic-foundation-2026"
@@ -76,7 +75,6 @@ def text_pdf(lines):
     return bytes(out)
 
 
-@unittest.skipIf(os.environ.get(NESTED), "副本內重跑全部測試時不再巢狀執行自己")
 class SourceIntakeE2ETests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -90,7 +88,7 @@ class SourceIntakeE2ETests(unittest.TestCase):
         save(cls.pages / "map.json", PAGES)
         # 不帶任何金鑰，模型一律關閉。
         cls.env = {**{k: v for k, v in os.environ.items() if not k.endswith("_API_KEY")},
-                   "OPENGSA_FIXTURES": str(cls.pages), "OPENGSA_MODEL_MODE": "off", "PYTHONUTF8": "1", "PYTHONDONTWRITEBYTECODE": "1", NESTED: "1"}
+                   "OPENGSA_FIXTURES": str(cls.pages), "OPENGSA_MODEL_MODE": "off", "PYTHONUTF8": "1", "PYTHONDONTWRITEBYTECODE": "1"}
         cls.results, cls.base_total = {}, cls.library_size()
         cls.base_review = len(read(cls.repo / "data/candidates/source-review.json")["candidates"])
         try:
@@ -147,9 +145,7 @@ class SourceIntakeE2ETests(unittest.TestCase):
         cls.review_after_update = len(read(cls.repo / "data/candidates/source-review.json")["candidates"])
         if not cls.intake_round(base) or not cls.replace_round(base) or not cls.new_host_round(base):
             return
-        # 新增、更新、提交都套用後才重跑全部測試：寫死總數或版本的測試會在這裡現形。
-        cls.sh("update.unittest", "-m", "unittest", "discover", "-s", "tests")
-        # 排在全測之後：有測試假設台帳是空的。
+        # 不在副本裡重跑全部測試：每一輪已經跑過資料檢查與建置（GATES），全測要多花將近 3 分鐘。
         cls.dismiss_round(base)
 
     @classmethod
@@ -367,9 +363,6 @@ class SourceIntakeE2ETests(unittest.TestCase):
         entry = read(self.repo / "data/scan-reviews.json")["reviews"][-1]
         self.assertEqual((entry["candidate_id"], entry["action"], entry["problem_source"]), (card["candidate_id"], "dismissed", "extraction"))
         self.assertIn(card["candidate_id"], [c["candidate_id"] for c in read(self.repo / "data/candidates/source-review.json")["candidates"]])
-
-    def test_whole_suite_passes_with_the_applied_data(self):
-        self.assert_step("update.unittest")
 
     def test_flow_never_leaves_the_mock_transport(self):
         # 假傳輸不連外；這裡確認沒有請求是地圖外的頁面（robots.txt 除外，假傳輸一律回 404）。

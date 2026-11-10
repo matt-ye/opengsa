@@ -19,6 +19,15 @@ from scripts.verify_candidates import classify_review_gaps, verify_candidate
 ROOT=Path(__file__).resolve().parents[1]
 
 
+def setUpModule():
+    # 假網站不用等同站間隔（每站 3 秒）；間隔規則本身由 test_scanner 檢查。
+    import unittest.mock
+    from scripts import scan_sources
+    patcher = unittest.mock.patch.object(scan_sources, "pause", lambda seconds: None)
+    patcher.start()
+    unittest.addModuleCleanup(patcher.stop)
+
+
 def read(path):
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
