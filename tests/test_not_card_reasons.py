@@ -50,19 +50,30 @@ class NotCardReasonTests(unittest.TestCase):
         living = row(category="living")
         with patch.object(expand_sources, "today", lambda: date(2026, 11, 11)):
             cases = [
-                (page("114學年度「余傳韜校長紀念獎助學金」申請自114年4月起"), "past_year_title"),
+                # 早兩個學年度以上：往年公告。
                 (page("113 學年度清寒獎學金"), "past_year_title"),
+                # 早一個學年度、申請日期也在去年（114 年）：往年公告。
+                (page("114學年度「余傳韜校長紀念獎助學金」申請自114年4月15日起至6月3日止"), "past_year_title"),
+                # 早一個學年度常是「上一學年成績」的獎學金，今年才申請；看不出是往年就照常成卡。
+                (page("114學年度周惠慈獎學金收件期間:11月3日至11月21日"), None),
+                (page("115-1 台北市東莞同鄉會-114學年度獎學金(截止日11/30)"), None),
+                # 審查結果公告不是方案。
+                (page("【生活輔導組】114學年度弱勢助學金-所得/財產查核結果"), "information_title"),
                 (page("115學年度「余傳韜校長紀念獎助學金」申請自115年4月13日起"), None),
                 (page("113-115學年度某某獎學金"), None),
+                # 西元年不是民國學年度。
+                (page("2026學年度某某獎學金"), None),
                 (page("「接受捐贈獎學金行政運作及管理作業要點」115-5"), "admin_title"),
                 (page("接受捐贈獎學金作業規定110-3"), "admin_title"),
+                (page("某某校友接受捐贈之清寒獎學金"), None),
             ]
             for p, expected in cases:
                 with self.subTest(title=p["title"]):
                     self.assertEqual(not_card_reason(living, p, None), expected)
-        # 八月起是新學年度：2026-07 時 114 學年度還沒結束。
+        # 八月起是新學年度：2026-07 還在 114 學年度，113 只早一年，112 才早兩年。
         with patch.object(expand_sources, "today", lambda: date(2026, 7, 31)):
-            self.assertIsNone(not_card_reason(living, page("114學年度清寒獎學金"), None))
+            self.assertIsNone(not_card_reason(living, page("113學年度清寒獎學金"), None))
+            self.assertEqual(not_card_reason(living, page("112學年度清寒獎學金"), None), "past_year_title")
         self.assertIn("past_year_title", NOT_CARD_REASONS)
         self.assertEqual(not_card_reason(living, page("碩博士論文獎助最新公告"), None), "listing_title")
 

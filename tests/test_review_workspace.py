@@ -215,14 +215,15 @@ class ReviewWorkspaceTests(unittest.TestCase):
         """萃取時狀態未知、截止日過後重算成已截止：要附上寫著截止日的段落，網站規格檢查才過（2026-11-11 CI 因此失敗）。"""
         from scripts.build_review_workspace import candidate_preview_data
         bundle=json.loads((ROOT/"data/candidates/source-review.json").read_text(encoding="utf-8"))
-        card=next(c for c in bundle["candidates"] if c["application"]["state"]=="unknown" and not c["application"].get("refs")
-                  and any((s.get("deadline") or {}).get("value") for s in c["schedule"]["steps"]))
+        card=next((c for c in bundle["candidates"] if c["application"]["state"]=="unknown" and not c["application"].get("refs")
+                   and any((s.get("deadline") or {}).get("value") for s in c["schedule"]["steps"])),None)
+        if card is None:self.skipTest("資料裡沒有萃取時狀態未知、但有截止日的卡")
         last=max(s["deadline"]["value"][:10] for s in card["schedule"]["steps"] if (s.get("deadline") or {}).get("value"))
         after=(date.fromisoformat(last)+timedelta(days=1)).isoformat()
         preview=candidate_preview_data({**bundle,"as_of":after,"candidates":[card]},self.pilot,self.config)
         item=preview["opportunities"][0]
-        if item["application"]["state"]!="unknown":
-            self.assertTrue(item["application"]["refs"])
+        self.assertEqual(item["application"]["state"],"closed")
+        self.assertTrue(item["application"]["refs"])
 
 
 if __name__=="__main__":unittest.main()

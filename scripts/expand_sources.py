@@ -38,24 +38,31 @@ def resource_title(title,category=None):
     pattern=CATEGORY_RESOURCE.get(category)
     return bool(RESOURCE.search(title or '') or (pattern and pattern.search(title or '')))
 
-# 「碩博士論文獎助最新公告」這種分類列表頁的標題，結尾是最新公告或最新消息。
-INDEX=re.compile(r'^(?:.{0,30}(?:最新消息|最新公告)|獎學金|獎助學金|學生獎學金|學生事務|相關辦法|法規|首頁|獎(?:助)?學金(?:資訊|公告|公告資訊網|申請辦法)|news|scholarships?)$',re.I)
-INFORMATION=re.compile(r'說明會|發放訊息|發放通知|QA整理|影片.*簡報|(?:Q\s*&\s*A|FAQ)',re.I)
+INDEX=re.compile(r'^(?:最新消息|最新公告|獎學金|獎助學金|學生獎學金|學生事務|相關辦法|法規|首頁|獎(?:助)?學金(?:資訊|公告|公告資訊網|申請辦法)|news|scholarships?)$',re.I)
+# 「碩博士論文獎助最新公告」這種分類列表頁的標題，結尾是最新公告或最新消息。只用在不成卡的判斷，不影響選標題。
+LISTING_SUFFIX=re.compile(r'(?:最新消息|最新公告)$')
+# 審查結果與名單公告是已經申請過的結果，不是可以申請的方案。
+INFORMATION=re.compile(r'說明會|發放訊息|發放通知|(?:查核|審查|審核)結果|(?:核定|錄取)名單|QA整理|影片.*簡報|(?:Q\s*&\s*A|FAQ)',re.I)
 # 全庫擴展的預設界限；提交流程要從入口頁往下走，放寬連結範圍，並把附件也當成可能的方案文件。
 DEFAULT_OPTIONS={'follow_roles':('policy',),'max_children':8,'link_limit':8,'broad_links':False,'document_candidates':False,'group_documents':False}
 INTAKE_OPTIONS={'follow_roles':('policy','related_call'),'max_children':40,'link_limit':None,'broad_links':True,'document_candidates':True,'group_documents':True}
 INDEX_LINK_COUNT=3
 # 「接受捐贈獎學金行政運作及管理作業要點」是學校怎麼收捐款的規定，不是給學生申請的方案。
-ADMIN=re.compile(r'教師(?:評審|評鑑|遴選)|院長選任|校長遴選|經費稽核委員會|預算分配委員會|電腦中心設置|接受捐[贈款]')
-ACADEMIC_YEAR=re.compile(r'(\d{3})\s*學年度')
+ADMIN=re.compile(r'教師(?:評審|評鑑|遴選)|院長選任|校長遴選|經費稽核委員會|預算分配委員會|電腦中心設置|接受捐[贈款].{0,20}(?:要點|作業|規定|辦法)')
+ACADEMIC_YEAR=re.compile(r'(?<!\d)(\d{3})(?:\s*學年度|-[12](?!\d))')
+ROC_DATE=re.compile(r'(?<!\d)(\d{3})\s*年\s*\d{1,2}\s*月')
 
 def today():return datetime.now(timezone(timedelta(hours=8))).date()
 
 def past_year_title(title):
-    """標題寫的學年度都已過去（八月起算新學年度），是往年公告；同一方案今年的公告另有一頁。寫了今年或之後的就不算。"""
+    """標題寫的是往年公告：學年度早兩年以上；或早一年、而且標題裡的申請日期（民國年）也在去年以前。
+    早一年的常是「上一學年成績」的獎學金，今年才收件，看不出是往年就照常成卡。八月起算新學年度。"""
     years=[int(y) for y in ACADEMIC_YEAR.findall(title or '')]
-    day=today();current=day.year-1911-(day.month<8)
-    return bool(years) and max(years)<current
+    if not years:return False
+    day=today();current=day.year-1911-(day.month<8);newest=max(years)
+    if newest<current-1:return True
+    dates=[int(y) for y in ROC_DATE.findall(title or '')]
+    return newest==current-1 and bool(dates) and max(dates)<day.year-1911
 
 def read(path):return json.loads(Path(path).read_text(encoding='utf-8-sig'))
 def save(path,value):
@@ -173,7 +180,7 @@ def not_card_reason(row,prepared,known,documents=False):
     if row['category'] in ('rights','agency','startup','unclassified'):return 'category_not_carded'
     if prepared['kind']!='html' and not documents:return 'document_not_html'
     if urlsplit(row['url']).path=='/':return 'site_root_page'
-    if INDEX.fullmatch(title):return 'listing_title'
+    if INDEX.fullmatch(title) or LISTING_SUFFIX.search(title):return 'listing_title'
     if ADMIN.search(title):return 'admin_title'
     if INFORMATION.search(title):return 'information_title'
     if past_year_title(title):return 'past_year_title'
@@ -194,7 +201,7 @@ def clean_title(title):
     text=re.sub(r'\s*\d{2,3}\.\d{1,2}\.\d{1,2}$','',text)
     text=re.sub(r'^【[^】]*(?:公告|訊息|獎學金|獎助學金|組|處|中心|室)】\s*','',text)
     # 「國立嘉義大學-學生事務處生活輔導組-…」：處室名稱不是方案名稱；校名留著，讀者才知道是哪一校。
-    text=re.sub(r'^([^-－\s]*大學)\s*[-－]\s*[^-－\s]*(?:處|組|中心)[^-－\s]*\s*[-－]\s*',r'\1',text)
+    text=re.sub(r'^([^-－\s]*大學)\s*[-－]\s*[^-－\s]*(?:處|組)\s*[-－]\s*',r'\1',text)
     # 法規資料庫的頁面標題帶系統名稱，例如「教育部主管法規共用系統-法規內容-…」。
     text=re.sub(r'^[^-－]*法規[^-－]*[-－]法規內容[-－]\s*','',text)
     # 附件編號與檔名裡的民國日期不是方案名稱；去掉後，同一方案的附件才會被當成同標題去重。

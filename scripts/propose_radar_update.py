@@ -73,7 +73,7 @@ GENERIC_TITLE=re.compile(r'一覽表?|資訊網|專區|相關辦法|獎助學金
     # 只寫類別、看不出是誰辦的方案（例如網站分類頁「急難救助」）。
     r'|^(?:申請)?(?:急難(?:救助|慰助|濟助)|助學金|獎助學金|生活助學金)$')
 # 申請表、報告書、流程圖、修正對照表都只是附件，不是方案說明；「獎助學金申請相關表單」這種表單下載頁也是。
-FORM_DOCUMENT=re.compile(r'申請[表書]|表單|報名表|推薦表|報告書|對照表|流程|附表|說明表|標準表|檢核表|切結書|應繳文件|應計列|Q\s*&?\s*A\b|shinsehyo|houkokusho|application[-_ ]?form',re.I)
+FORM_DOCUMENT=re.compile(r'申請[表書]|表單(?![／/]?辦法)|報名表|推薦表|報告書|對照表|流程|附表|說明表|標準表|檢核表|切結書|應繳文件|應計列|Q\s*&?\s*A\b|shinsehyo|houkokusho|application[-_ ]?form',re.I)
 
 def distinct_named_cards(cards):
     """同一份文件只留一張（同一 PDF 可能從多個入口讀到），同網站同標題也只留一張（常是同方案的申請表、報告表）；

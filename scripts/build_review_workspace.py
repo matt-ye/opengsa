@@ -65,9 +65,13 @@ def candidate_preview_data(bundle,pilot,config):
         item["id"]=cand["candidate_id"]
         window=evaluate_application_window(item,bundle["as_of"])
         item["application"].update(state=window["state"],as_of=bundle["as_of"],reason=window["reason"])
-        # 萃取時「未知」的卡，過了截止日重算會變成「已截止」；出處是寫著那個截止日的段落。
+        # 萃取時「未知」的卡，依今天重算後可能變成已截止、未開始或受理中，要附上判斷依據的段落：
+        # 已截止引截止日那一步，未開始與受理中引起始日（沒有起始日出處才退回截止日）。
         if window["state"]!="unknown" and not item["application"].get("refs"):
-            item["application"]["refs"]=deepcopy([r for s in item.get("steps",[]) if (s.get("deadline") or {}).get("value") for r in s.get("refs",[])][:1])
+            deadline_refs=[r for s in item.get("steps",[]) if (s.get("deadline") or {}).get("value") for r in s.get("refs",[])]
+            start_refs=(item.get("start") or {}).get("refs") or []
+            chosen=deadline_refs if window["state"]=="closed" else start_refs or deadline_refs
+            item["application"]["refs"]=deepcopy(chosen[:1])
         dataset["opportunities"].append(item)
     add_sources(dataset,bundle["candidates"],config)
     # A source profile may contain several PDFs. Keep exact document URLs in the
