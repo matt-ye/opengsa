@@ -1,6 +1,6 @@
 {
   "schema_version": "source-chain-1",
-  "generated_at": "2026-11-08T07:24:23+00:00",
+  "generated_at": "2026-11-10T04:01:37+00:00",
   "model_calls": 0,
   "official_data_modified": false,
   "documents": [
@@ -2802,6 +2802,118 @@
       "evidence_mode": "hash_only",
       "candidate_ids": [
         "cand-discovery-dd5a32d7ef14a91fb-d9284afd"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-dc8eafa1b3a0cf5cf1088e89",
+      "url": "https://website.ncyu.edu.tw/life/Subject/Detail/237600?nodeId=59894",
+      "format": "html",
+      "revision_id": "05ccbdb009b4b49d2cbe9515b69b008d142fa6120f15e301bf8e3ab4322bcd97",
+      "observed_at": "2026-11-10T04:02:48+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-ddc8eafa1b3a0cf5c-05ccbdb0"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-3bba7b547abf84d024ea4018",
+      "url": "https://website.ncyu.edu.tw/life/Subject/Detail/220156?nodeId=59894",
+      "format": "html",
+      "revision_id": "15a5721915f9d0b42d53bb0ee75154483b607a0b788c310a0a9cf23db4e7316e",
+      "observed_at": "2026-11-10T04:02:51+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d3bba7b547abf84d0-15a57219"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-6b2166b00772a7dee90ce5ec",
+      "url": "https://website.ncyu.edu.tw/life/Subject/Detail/193463?nodeId=59894",
+      "format": "html",
+      "revision_id": "dbc9095155d5bfcb7f19cc46adf66ea8eda312cd83575c9d70b8fc3050e1df10",
+      "observed_at": "2026-11-10T04:02:54+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d6b2166b00772a7de-dbc90951"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-026dc837484cf61e03cd3184",
+      "url": "https://rb005.ndhu.edu.tw/p/403-1005-402.php",
+      "format": "html",
+      "revision_id": "620cbbfe31dd8151055693cf65b0bfa1481fc0eb1c59922c6db626daf79cd870",
+      "observed_at": "2026-11-10T04:03:09+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-026dc837484c-620cbbfe"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-6a6f4a3535de74bbf1637458",
+      "url": "https://rb005.ndhu.edu.tw/p/412-1005-7230.php",
+      "format": "html",
+      "revision_id": "3d338c162caacb96275833511dcc7829c1c15f2290d256505483b02ba98bd8ae",
+      "observed_at": "2026-11-10T04:05:58+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d6a6f4a3535de74bb-3d338c16"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-7d777ae8ef871b41c8c58ca8",
+      "url": "https://rb005.ndhu.edu.tw/p/403-1005-3743-1.php",
+      "format": "html",
+      "revision_id": "73739c4922ae4efbed7e72b38a2294e8e5cb2b61f82e5c0077c3445c74b05dbc",
+      "observed_at": "2026-11-10T04:06:01+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d7d777ae8ef871b41-73739c49"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-87ef71beb57742062de9442a",
+      "url": "https://assistance.sa.ntnu.edu.tw/download/31/%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91/11680/%E3%80%8C%E6%8E%A5%E5%8F%97%E6%8D%90%E8%B4%88%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A1%8C%E6%94%BF%E9%81%8B%E4%BD%9C%E5%8F%8A%E7%AE%A1%E7%90%86%E4%BD%9C%E6%A5%AD%E8%A6%81%E9%BB%9E%E3%80%8D115-5.pdf",
+      "format": "pdf",
+      "revision_id": "6bc96104aea88df4776e5dbe96aa2bf6ed2f06be178644a7734bfe5e390be468",
+      "observed_at": "2026-11-10T03:59:47+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d87ef71beb5774206-6bc96104"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-2661751beebc3d82b5defc6f",
+      "url": "https://assistance.sa.ntnu.edu.tw/download/31/%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91/11914/%E6%8E%A5%E5%8F%97%E6%8D%90%E8%B4%88%E7%8D%8E%E5%AD%B8%E9%87%91%E4%BD%9C%E6%A5%AD%E8%A6%8F%E5%AE%9A110-3.pdf",
+      "format": "pdf",
+      "revision_id": "a27c729348309f9a6b4e53c51c3d2b330879a5662a8ec5b93715fdc916c3d4fd",
+      "observed_at": "2026-11-10T03:59:57+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d2661751beebc3d82-a27c7293"
       ],
       "events": [],
       "links": []

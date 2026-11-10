@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1.0-candidate",
-  "generated_at": "2026-11-08T07:24:23+00:00",
-  "as_of": "2026-11-08",
+  "generated_at": "2026-11-10T04:01:37+00:00",
+  "as_of": "2026-11-10",
   "timezone": "Asia/Taipei",
   "model_enabled": false,
   "model_calls": 0,
@@ -59596,6 +59596,2179 @@
       "review": {
         "status": "pending",
         "editor": "extractor-1.12.0",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "unknown",
+        "channels": [],
+        "paper_delivery": "unknown",
+        "handwritten_signature": "unknown",
+        "deadline_basis": "unknown",
+        "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
+        "refs": []
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-discovery-ddc8eafa1b3a0cf5c-05ccbdb0",
+      "opportunity_id": "discovery-ddc8eafa1b3a0cf5c",
+      "program_key": "discovery-ddc8eafa1b3a0cf5c",
+      "title": "國立嘉義大學-學生事務處生活輔導組-115學年度「余傳韜校長紀念獎助學金」申請自115年4月13日起至6月1日止。",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "cycle": {
+        "kind": "academic_year",
+        "label": "待確認學年度",
+        "year_system": "unknown",
+        "year": null,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "unknown",
+        "beneficiary": "unknown",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "unknown",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "待查",
+          "refs": []
+        },
+        "announcer": {
+          "text": "待查",
+          "refs": []
+        },
+        "receiver": {
+          "text": "待查",
+          "refs": []
+        }
+      },
+      "eligibility": {
+        "degrees": [],
+        "institution": "unknown",
+        "nationality": "roc_only",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "身分條件請至來源定位核對",
+          "refs": [
+            {
+              "source": "discovery-ddc8eafa1b3a0cf5c",
+              "locator": ".content / text-block 4"
+            }
+          ]
+        },
+        "other_conditions": []
+      },
+      "benefit": {
+        "summary": "金額請見來源",
+        "items": [],
+        "refs": []
+      },
+      "compatibility": {
+        "mode": "unknown",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "須查雙方方案及重疊期間，未明示不代表可兼領。",
+        "refs": []
+      },
+      "hardship": {
+        "mode": "unknown",
+        "note": "未完成清寒限定條文查核。",
+        "refs": []
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "date",
+          "value": "2026-04-13",
+          "timezone": "Asia/Taipei",
+          "certainty": "confirmed",
+          "note": "學生受理期間明示起日"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "依公告規定申請",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "待確認"
+            },
+            "refs": [
+              {
+                "source": "discovery-ddc8eafa1b3a0cf5c",
+                "locator": ".content / text-block 1"
+              }
+            ]
+          },
+          {
+            "actor": "student",
+            "action": "依來源明示期間辦理（2026-04-13至2026-06-01）",
+            "deadline": {
+              "kind": "date",
+              "value": "2026-06-01",
+              "timezone": "Asia/Taipei",
+              "note": "角色依本段辨識；未載學生期限時不以其他層級回填"
+            },
+            "refs": [
+              {
+                "source": "discovery-ddc8eafa1b3a0cf5c",
+                "locator": ".content / text-block 15"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "官方未公告明確結果公布日",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "closed",
+        "as_of": "2026-11-10",
+        "reason": "本期學生申請已於 2026-06-01 截止；不從本期日期自動推算下一期。",
+        "refs": [
+          {
+            "source": "discovery-ddc8eafa1b3a0cf5c",
+            "locator": ".content / text-block 1"
+          }
+        ]
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "法規版本與生效日待覆核；修正日不自動當作生效日。",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "discovery-ddc8eafa1b3a0cf5c",
+        "revision_id": "05ccbdb009b4b49d2cbe9515b69b008d142fa6120f15e301bf8e3ab4322bcd97",
+        "url": "https://website.ncyu.edu.tw/life/Subject/Detail/237600?nodeId=59894",
+        "observed_at": "2026-11-10T04:02:48+00:00",
+        "evidence_mode": "hash_only",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.12.1",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "70542718bb296bac5300000fe4f5bab54152db055c5ed4045e7714e181f0626e"
+      },
+      "field_evidence": [
+        {
+          "field_path": "eligibility.nationality",
+          "source": "discovery-ddc8eafa1b3a0cf5c",
+          "revision_id": "05ccbdb009b4b49d2cbe9515b69b008d142fa6120f15e301bf8e3ab4322bcd97",
+          "locator": ".content / text-block 4",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "5b8a2d9a018903e6aa4778964640b61631bafd53ab6185f36a82b70c16736564",
+          "source_block_sha256": "5b8a2d9a018903e6aa4778964640b61631bafd53ab6185f36a82b70c16736564",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.identity",
+          "source": "discovery-ddc8eafa1b3a0cf5c",
+          "revision_id": "05ccbdb009b4b49d2cbe9515b69b008d142fa6120f15e301bf8e3ab4322bcd97",
+          "locator": ".content / text-block 4",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "5b8a2d9a018903e6aa4778964640b61631bafd53ab6185f36a82b70c16736564",
+          "source_block_sha256": "5b8a2d9a018903e6aa4778964640b61631bafd53ab6185f36a82b70c16736564",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "schedule.application_start",
+          "source": "discovery-ddc8eafa1b3a0cf5c",
+          "revision_id": "05ccbdb009b4b49d2cbe9515b69b008d142fa6120f15e301bf8e3ab4322bcd97",
+          "locator": ".content / text-block 15",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "cd0f88d76b068447f70bc83a9fa2409d50f3c3199e256b05276e5cf1435dcf3a",
+          "source_block_sha256": "cd0f88d76b068447f70bc83a9fa2409d50f3c3199e256b05276e5cf1435dcf3a",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "schedule.steps/1/deadline",
+          "source": "discovery-ddc8eafa1b3a0cf5c",
+          "revision_id": "05ccbdb009b4b49d2cbe9515b69b008d142fa6120f15e301bf8e3ab4322bcd97",
+          "locator": ".content / text-block 15",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "cd0f88d76b068447f70bc83a9fa2409d50f3c3199e256b05276e5cf1435dcf3a",
+          "source_block_sha256": "cd0f88d76b068447f70bc83a9fa2409d50f3c3199e256b05276e5cf1435dcf3a",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [
+          "unextracted:benefit",
+          "unextracted:compatibility",
+          "unextracted:application_method"
+        ],
+        "conflicts": [],
+        "open_questions": [
+          "指定非原編輯者獨立覆核重大欄位（資格、金額、期限、兼領、法源版本）。"
+        ]
+      },
+      "evidence_status": "sufficient_for_draft",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.4.0",
+        "checked_at": "2026-11-10T04:02:48+00:00",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [
+          "coverage_gap:cycle_year_unknown",
+          "coverage_gap:missing_structured_benefit_items",
+          "coverage_gap:eligibility.identity_not_extracted",
+          "coverage_gap:unextracted:benefit",
+          "coverage_gap:unextracted:compatibility",
+          "coverage_gap:unextracted:application_method"
+        ],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.12.1",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "unknown",
+        "channels": [],
+        "paper_delivery": "unknown",
+        "handwritten_signature": "unknown",
+        "deadline_basis": "unknown",
+        "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
+        "refs": []
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-discovery-d3bba7b547abf84d0-15a57219",
+      "opportunity_id": "discovery-d3bba7b547abf84d0",
+      "program_key": "discovery-d3bba7b547abf84d0",
+      "title": "國立嘉義大學-學生事務處生活輔導組-114學年度「余傳韜校長紀念獎助學金」申請自114年4月15日起至6月3日止。",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "cycle": {
+        "kind": "academic_year",
+        "label": "待確認學年度",
+        "year_system": "unknown",
+        "year": null,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "unknown",
+        "beneficiary": "unknown",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "unknown",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "待查",
+          "refs": []
+        },
+        "announcer": {
+          "text": "待查",
+          "refs": []
+        },
+        "receiver": {
+          "text": "待查",
+          "refs": []
+        }
+      },
+      "eligibility": {
+        "degrees": [],
+        "institution": "unknown",
+        "nationality": "roc_only",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "身分條件請至來源定位核對",
+          "refs": [
+            {
+              "source": "discovery-d3bba7b547abf84d0",
+              "locator": ".content / text-block 4"
+            }
+          ]
+        },
+        "other_conditions": []
+      },
+      "benefit": {
+        "summary": "金額請見來源",
+        "items": [],
+        "refs": []
+      },
+      "compatibility": {
+        "mode": "unknown",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "須查雙方方案及重疊期間，未明示不代表可兼領。",
+        "refs": []
+      },
+      "hardship": {
+        "mode": "unknown",
+        "note": "未完成清寒限定條文查核。",
+        "refs": []
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "date",
+          "value": "2025-04-15",
+          "timezone": "Asia/Taipei",
+          "certainty": "confirmed",
+          "note": "學生受理期間明示起日"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "依公告規定申請",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "待確認"
+            },
+            "refs": [
+              {
+                "source": "discovery-d3bba7b547abf84d0",
+                "locator": ".content / text-block 1"
+              }
+            ]
+          },
+          {
+            "actor": "student",
+            "action": "依來源明示期間辦理（2025-04-15至2025-06-03）",
+            "deadline": {
+              "kind": "date",
+              "value": "2025-06-03",
+              "timezone": "Asia/Taipei",
+              "note": "角色依本段辨識；未載學生期限時不以其他層級回填"
+            },
+            "refs": [
+              {
+                "source": "discovery-d3bba7b547abf84d0",
+                "locator": ".content / text-block 15"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "官方未公告明確結果公布日",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "closed",
+        "as_of": "2026-11-10",
+        "reason": "本期學生申請已於 2025-06-03 截止；不從本期日期自動推算下一期。",
+        "refs": [
+          {
+            "source": "discovery-d3bba7b547abf84d0",
+            "locator": ".content / text-block 1"
+          }
+        ]
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "法規版本與生效日待覆核；修正日不自動當作生效日。",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "discovery-d3bba7b547abf84d0",
+        "revision_id": "15a5721915f9d0b42d53bb0ee75154483b607a0b788c310a0a9cf23db4e7316e",
+        "url": "https://website.ncyu.edu.tw/life/Subject/Detail/220156?nodeId=59894",
+        "observed_at": "2026-11-10T04:02:51+00:00",
+        "evidence_mode": "hash_only",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.12.1",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "318c96163fdce9f9e591b4de300aaee777aa33392f1a8acf801c9b3212a5a569"
+      },
+      "field_evidence": [
+        {
+          "field_path": "eligibility.nationality",
+          "source": "discovery-d3bba7b547abf84d0",
+          "revision_id": "15a5721915f9d0b42d53bb0ee75154483b607a0b788c310a0a9cf23db4e7316e",
+          "locator": ".content / text-block 4",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "fb8da76604197198da1ac315cceb6ebb8dd6a054068dba7daa34a2c3707741c3",
+          "source_block_sha256": "fb8da76604197198da1ac315cceb6ebb8dd6a054068dba7daa34a2c3707741c3",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.identity",
+          "source": "discovery-d3bba7b547abf84d0",
+          "revision_id": "15a5721915f9d0b42d53bb0ee75154483b607a0b788c310a0a9cf23db4e7316e",
+          "locator": ".content / text-block 4",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "fb8da76604197198da1ac315cceb6ebb8dd6a054068dba7daa34a2c3707741c3",
+          "source_block_sha256": "fb8da76604197198da1ac315cceb6ebb8dd6a054068dba7daa34a2c3707741c3",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "schedule.application_start",
+          "source": "discovery-d3bba7b547abf84d0",
+          "revision_id": "15a5721915f9d0b42d53bb0ee75154483b607a0b788c310a0a9cf23db4e7316e",
+          "locator": ".content / text-block 15",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "a5531a1c7f8c8ce361deb3889227539ad0eb346b3b2a1e45626aece5891e84f2",
+          "source_block_sha256": "a5531a1c7f8c8ce361deb3889227539ad0eb346b3b2a1e45626aece5891e84f2",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "schedule.steps/1/deadline",
+          "source": "discovery-d3bba7b547abf84d0",
+          "revision_id": "15a5721915f9d0b42d53bb0ee75154483b607a0b788c310a0a9cf23db4e7316e",
+          "locator": ".content / text-block 15",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "a5531a1c7f8c8ce361deb3889227539ad0eb346b3b2a1e45626aece5891e84f2",
+          "source_block_sha256": "a5531a1c7f8c8ce361deb3889227539ad0eb346b3b2a1e45626aece5891e84f2",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [
+          "unextracted:benefit",
+          "unextracted:compatibility",
+          "unextracted:application_method"
+        ],
+        "conflicts": [],
+        "open_questions": [
+          "指定非原編輯者獨立覆核重大欄位（資格、金額、期限、兼領、法源版本）。"
+        ]
+      },
+      "evidence_status": "sufficient_for_draft",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.4.0",
+        "checked_at": "2026-11-10T04:02:51+00:00",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [
+          "coverage_gap:cycle_year_unknown",
+          "coverage_gap:missing_structured_benefit_items",
+          "coverage_gap:eligibility.identity_not_extracted",
+          "coverage_gap:unextracted:benefit",
+          "coverage_gap:unextracted:compatibility",
+          "coverage_gap:unextracted:application_method"
+        ],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.12.1",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "unknown",
+        "channels": [],
+        "paper_delivery": "unknown",
+        "handwritten_signature": "unknown",
+        "deadline_basis": "unknown",
+        "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
+        "refs": []
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-discovery-d6b2166b00772a7de-dbc90951",
+      "opportunity_id": "discovery-d6b2166b00772a7de",
+      "program_key": "discovery-d6b2166b00772a7de",
+      "title": "國立嘉義大學-學生事務處生活輔導組-113學年度「余傳韜校長紀念獎助學金」申請自113年4月15日起至6月3日止。",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "cycle": {
+        "kind": "academic_year",
+        "label": "待確認學年度",
+        "year_system": "unknown",
+        "year": null,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "unknown",
+        "beneficiary": "unknown",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "unknown",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "待查",
+          "refs": []
+        },
+        "announcer": {
+          "text": "待查",
+          "refs": []
+        },
+        "receiver": {
+          "text": "待查",
+          "refs": []
+        }
+      },
+      "eligibility": {
+        "degrees": [],
+        "institution": "unknown",
+        "nationality": "roc_only",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "身分條件請至來源定位核對",
+          "refs": [
+            {
+              "source": "discovery-d6b2166b00772a7de",
+              "locator": ".content / text-block 4"
+            }
+          ]
+        },
+        "other_conditions": []
+      },
+      "benefit": {
+        "summary": "金額請見來源",
+        "items": [],
+        "refs": []
+      },
+      "compatibility": {
+        "mode": "unknown",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "須查雙方方案及重疊期間，未明示不代表可兼領。",
+        "refs": []
+      },
+      "hardship": {
+        "mode": "unknown",
+        "note": "未完成清寒限定條文查核。",
+        "refs": []
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "date",
+          "value": "2024-04-15",
+          "timezone": "Asia/Taipei",
+          "certainty": "confirmed",
+          "note": "學生受理期間明示起日"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "依公告規定申請",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "待確認"
+            },
+            "refs": [
+              {
+                "source": "discovery-d6b2166b00772a7de",
+                "locator": ".content / text-block 1"
+              }
+            ]
+          },
+          {
+            "actor": "student",
+            "action": "依來源明示期間辦理（2024-04-15至2024-06-03）",
+            "deadline": {
+              "kind": "date",
+              "value": "2024-06-03",
+              "timezone": "Asia/Taipei",
+              "note": "角色依本段辨識；未載學生期限時不以其他層級回填"
+            },
+            "refs": [
+              {
+                "source": "discovery-d6b2166b00772a7de",
+                "locator": ".content / text-block 15"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "官方未公告明確結果公布日",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "closed",
+        "as_of": "2026-11-10",
+        "reason": "本期學生申請已於 2024-06-03 截止；不從本期日期自動推算下一期。",
+        "refs": [
+          {
+            "source": "discovery-d6b2166b00772a7de",
+            "locator": ".content / text-block 1"
+          }
+        ]
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "法規版本與生效日待覆核；修正日不自動當作生效日。",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "discovery-d6b2166b00772a7de",
+        "revision_id": "dbc9095155d5bfcb7f19cc46adf66ea8eda312cd83575c9d70b8fc3050e1df10",
+        "url": "https://website.ncyu.edu.tw/life/Subject/Detail/193463?nodeId=59894",
+        "observed_at": "2026-11-10T04:02:54+00:00",
+        "evidence_mode": "hash_only",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.12.1",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "344b75e325db6fdd5b6229c417995ae7965678c92a286c7cdb870aab18ef8475"
+      },
+      "field_evidence": [
+        {
+          "field_path": "eligibility.nationality",
+          "source": "discovery-d6b2166b00772a7de",
+          "revision_id": "dbc9095155d5bfcb7f19cc46adf66ea8eda312cd83575c9d70b8fc3050e1df10",
+          "locator": ".content / text-block 4",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "d838f57861056b9c469eddfbfcaa4180f33c769975ea5305ea07e38a87f22eb8",
+          "source_block_sha256": "d838f57861056b9c469eddfbfcaa4180f33c769975ea5305ea07e38a87f22eb8",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.identity",
+          "source": "discovery-d6b2166b00772a7de",
+          "revision_id": "dbc9095155d5bfcb7f19cc46adf66ea8eda312cd83575c9d70b8fc3050e1df10",
+          "locator": ".content / text-block 4",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "d838f57861056b9c469eddfbfcaa4180f33c769975ea5305ea07e38a87f22eb8",
+          "source_block_sha256": "d838f57861056b9c469eddfbfcaa4180f33c769975ea5305ea07e38a87f22eb8",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "schedule.application_start",
+          "source": "discovery-d6b2166b00772a7de",
+          "revision_id": "dbc9095155d5bfcb7f19cc46adf66ea8eda312cd83575c9d70b8fc3050e1df10",
+          "locator": ".content / text-block 15",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "fed2c56f350591ba02b9096bb3c852a12fa78341c341c45cbf1dc9776ceaf1ee",
+          "source_block_sha256": "fed2c56f350591ba02b9096bb3c852a12fa78341c341c45cbf1dc9776ceaf1ee",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "schedule.steps/1/deadline",
+          "source": "discovery-d6b2166b00772a7de",
+          "revision_id": "dbc9095155d5bfcb7f19cc46adf66ea8eda312cd83575c9d70b8fc3050e1df10",
+          "locator": ".content / text-block 15",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "fed2c56f350591ba02b9096bb3c852a12fa78341c341c45cbf1dc9776ceaf1ee",
+          "source_block_sha256": "fed2c56f350591ba02b9096bb3c852a12fa78341c341c45cbf1dc9776ceaf1ee",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [
+          "unextracted:benefit",
+          "unextracted:compatibility",
+          "unextracted:application_method"
+        ],
+        "conflicts": [],
+        "open_questions": [
+          "指定非原編輯者獨立覆核重大欄位（資格、金額、期限、兼領、法源版本）。"
+        ]
+      },
+      "evidence_status": "sufficient_for_draft",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.4.0",
+        "checked_at": "2026-11-10T04:02:54+00:00",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [
+          "coverage_gap:cycle_year_unknown",
+          "coverage_gap:missing_structured_benefit_items",
+          "coverage_gap:eligibility.identity_not_extracted",
+          "coverage_gap:unextracted:benefit",
+          "coverage_gap:unextracted:compatibility",
+          "coverage_gap:unextracted:application_method"
+        ],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.12.1",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "unknown",
+        "channels": [],
+        "paper_delivery": "unknown",
+        "handwritten_signature": "unknown",
+        "deadline_basis": "unknown",
+        "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
+        "refs": []
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-discovery-issue-026dc837484c-620cbbfe",
+      "opportunity_id": "discovery-issue-026dc837484c",
+      "program_key": "discovery-issue-026dc837484c",
+      "title": "獎學金與學生照顧",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "cycle": {
+        "kind": "academic_year",
+        "label": "待確認學年度",
+        "year_system": "unknown",
+        "year": null,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "unknown",
+        "beneficiary": "unknown",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "unknown",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "待查",
+          "refs": []
+        },
+        "announcer": {
+          "text": "待查",
+          "refs": []
+        },
+        "receiver": {
+          "text": "待查",
+          "refs": []
+        }
+      },
+      "eligibility": {
+        "degrees": [],
+        "institution": "unknown",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "在學學生；其餘資格、排除與文件要求請核對來源",
+          "claim_kind": "eligibility_clause",
+          "refs": [
+            {
+              "source": "discovery-issue-026dc837484c",
+              "locator": "main / text-block 14"
+            }
+          ]
+        },
+        "other_conditions": []
+      },
+      "benefit": {
+        "summary": "金額請見來源",
+        "items": [],
+        "refs": []
+      },
+      "compatibility": {
+        "mode": "unknown",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "須查雙方方案及重疊期間，未明示不代表可兼領。",
+        "refs": []
+      },
+      "hardship": {
+        "mode": "unknown",
+        "note": "未完成清寒限定條文查核。",
+        "refs": []
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "未記錄明確申請起日"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "依公告規定申請",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "待確認"
+            },
+            "refs": [
+              {
+                "source": "discovery-issue-026dc837484c",
+                "locator": "main / text-block 1"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "官方未公告明確結果公布日",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-11-10",
+        "reason": "尚無足以確認學生收件窗口的資料。",
+        "refs": []
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "法規版本與生效日待覆核；修正日不自動當作生效日。",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "discovery-issue-026dc837484c",
+        "revision_id": "620cbbfe31dd8151055693cf65b0bfa1481fc0eb1c59922c6db626daf79cd870",
+        "url": "https://rb005.ndhu.edu.tw/p/403-1005-402.php",
+        "observed_at": "2026-11-10T04:03:09+00:00",
+        "evidence_mode": "hash_only",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.12.1",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "f45718c77d008d6a0724c13cbf283d6858345d8eb84a5528b0d2df20b326d02d"
+      },
+      "field_evidence": [
+        {
+          "field_path": "eligibility.identity",
+          "source": "discovery-issue-026dc837484c",
+          "revision_id": "620cbbfe31dd8151055693cf65b0bfa1481fc0eb1c59922c6db626daf79cd870",
+          "locator": "main / text-block 14",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "8bc7fa10bd018666350fe8cd5faaf7c169c427f0199386b5bbfb1d42c572d627",
+          "source_block_sha256": "8bc7fa10bd018666350fe8cd5faaf7c169c427f0199386b5bbfb1d42c572d627",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "application_method/19",
+          "source": "discovery-issue-026dc837484c",
+          "revision_id": "620cbbfe31dd8151055693cf65b0bfa1481fc0eb1c59922c6db626daf79cd870",
+          "locator": "main / text-block 20",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "9648781def689dcc0d0adeb00a1bf7f843df72c6b2aa3c64139e4983cc007d4f",
+          "source_block_sha256": "9648781def689dcc0d0adeb00a1bf7f843df72c6b2aa3c64139e4983cc007d4f",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [
+          "unextracted:schedule.application_start",
+          "unextracted:schedule.student_deadline",
+          "unextracted:benefit",
+          "unextracted:compatibility"
+        ],
+        "conflicts": [],
+        "open_questions": [
+          "指定非原編輯者獨立覆核重大欄位（資格、金額、期限、兼領、法源版本）。"
+        ]
+      },
+      "evidence_status": "sufficient_for_draft",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.4.0",
+        "checked_at": "2026-11-10T04:03:09+00:00",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [
+          "coverage_gap:cycle_year_unknown",
+          "coverage_gap:missing_structured_benefit_items",
+          "coverage_gap:unextracted:schedule.application_start",
+          "coverage_gap:unextracted:schedule.student_deadline",
+          "coverage_gap:unextracted:benefit",
+          "coverage_gap:unextracted:compatibility"
+        ],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.12.1",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "electronic",
+        "channels": [
+          "portal"
+        ],
+        "paper_delivery": "unknown",
+        "handwritten_signature": "unknown",
+        "deadline_basis": "unknown",
+        "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
+        "refs": [
+          {
+            "source": "discovery-issue-026dc837484c",
+            "locator": "main / text-block 20"
+          }
+        ]
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-discovery-d6a6f4a3535de74bb-3d338c16",
+      "opportunity_id": "discovery-d6a6f4a3535de74bb",
+      "program_key": "discovery-d6a6f4a3535de74bb",
+      "title": "任江履昇女士清寒獎學金",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "cycle": {
+        "kind": "academic_year",
+        "label": "待確認學年度",
+        "year_system": "unknown",
+        "year": null,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "unknown",
+        "beneficiary": "unknown",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "unknown",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "待查",
+          "refs": []
+        },
+        "announcer": {
+          "text": "待查",
+          "refs": []
+        },
+        "receiver": {
+          "text": "待查",
+          "refs": []
+        }
+      },
+      "eligibility": {
+        "degrees": [],
+        "institution": "unknown",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "在學學生；其餘資格、排除與文件要求請核對來源",
+          "claim_kind": "eligibility_clause",
+          "refs": [
+            {
+              "source": "discovery-d6a6f4a3535de74bb",
+              "locator": "main / text-block 14"
+            }
+          ]
+        },
+        "other_conditions": []
+      },
+      "benefit": {
+        "summary": "金額請見來源",
+        "items": [],
+        "refs": []
+      },
+      "compatibility": {
+        "mode": "unknown",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "須查雙方方案及重疊期間，未明示不代表可兼領。",
+        "refs": []
+      },
+      "hardship": {
+        "mode": "unknown",
+        "note": "未完成清寒限定條文查核。",
+        "refs": []
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "未記錄明確申請起日"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "依公告規定申請",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "待確認"
+            },
+            "refs": [
+              {
+                "source": "discovery-d6a6f4a3535de74bb",
+                "locator": "main / text-block 1"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "官方未公告明確結果公布日",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-11-10",
+        "reason": "尚無足以確認學生收件窗口的資料。",
+        "refs": []
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "法規版本與生效日待覆核；修正日不自動當作生效日。",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "discovery-d6a6f4a3535de74bb",
+        "revision_id": "3d338c162caacb96275833511dcc7829c1c15f2290d256505483b02ba98bd8ae",
+        "url": "https://rb005.ndhu.edu.tw/p/412-1005-7230.php",
+        "observed_at": "2026-11-10T04:05:58+00:00",
+        "evidence_mode": "hash_only",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.12.1",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "514bcba126e59e86acfcd943783c46cadd22bf04c84de0fc246cf2995ef0259d"
+      },
+      "field_evidence": [
+        {
+          "field_path": "eligibility.identity",
+          "source": "discovery-d6a6f4a3535de74bb",
+          "revision_id": "3d338c162caacb96275833511dcc7829c1c15f2290d256505483b02ba98bd8ae",
+          "locator": "main / text-block 14",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "8bc7fa10bd018666350fe8cd5faaf7c169c427f0199386b5bbfb1d42c572d627",
+          "source_block_sha256": "8bc7fa10bd018666350fe8cd5faaf7c169c427f0199386b5bbfb1d42c572d627",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "application_method/19",
+          "source": "discovery-d6a6f4a3535de74bb",
+          "revision_id": "3d338c162caacb96275833511dcc7829c1c15f2290d256505483b02ba98bd8ae",
+          "locator": "main / text-block 20",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "9648781def689dcc0d0adeb00a1bf7f843df72c6b2aa3c64139e4983cc007d4f",
+          "source_block_sha256": "9648781def689dcc0d0adeb00a1bf7f843df72c6b2aa3c64139e4983cc007d4f",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [
+          "unextracted:schedule.application_start",
+          "unextracted:schedule.student_deadline",
+          "unextracted:benefit",
+          "unextracted:compatibility"
+        ],
+        "conflicts": [],
+        "open_questions": [
+          "指定非原編輯者獨立覆核重大欄位（資格、金額、期限、兼領、法源版本）。"
+        ]
+      },
+      "evidence_status": "sufficient_for_draft",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.4.0",
+        "checked_at": "2026-11-10T04:05:58+00:00",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [
+          "coverage_gap:cycle_year_unknown",
+          "coverage_gap:missing_structured_benefit_items",
+          "coverage_gap:unextracted:schedule.application_start",
+          "coverage_gap:unextracted:schedule.student_deadline",
+          "coverage_gap:unextracted:benefit",
+          "coverage_gap:unextracted:compatibility"
+        ],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.12.1",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "electronic",
+        "channels": [
+          "portal"
+        ],
+        "paper_delivery": "unknown",
+        "handwritten_signature": "unknown",
+        "deadline_basis": "unknown",
+        "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
+        "refs": [
+          {
+            "source": "discovery-d6a6f4a3535de74bb",
+            "locator": "main / text-block 20"
+          }
+        ]
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-discovery-d7d777ae8ef871b41-73739c49",
+      "opportunity_id": "discovery-d7d777ae8ef871b41",
+      "program_key": "discovery-d7d777ae8ef871b41",
+      "title": "碩博士論文獎助最新公告",
+      "category": "outcome_award",
+      "resource_kind": "award",
+      "scope": "nationwide",
+      "cycle": {
+        "kind": "academic_year",
+        "label": "待確認學年度",
+        "year_system": "unknown",
+        "year": null,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "unknown",
+        "beneficiary": "unknown",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "unknown",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "待查",
+          "refs": []
+        },
+        "announcer": {
+          "text": "待查",
+          "refs": []
+        },
+        "receiver": {
+          "text": "待查",
+          "refs": []
+        }
+      },
+      "eligibility": {
+        "degrees": [],
+        "institution": "unknown",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "在學學生；其餘資格、排除與文件要求請核對來源",
+          "claim_kind": "eligibility_clause",
+          "refs": [
+            {
+              "source": "discovery-d7d777ae8ef871b41",
+              "locator": "main / text-block 14"
+            }
+          ]
+        },
+        "other_conditions": []
+      },
+      "benefit": {
+        "summary": "金額請見來源",
+        "items": [],
+        "refs": []
+      },
+      "compatibility": {
+        "mode": "unknown",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "須查雙方方案及重疊期間，未明示不代表可兼領。",
+        "refs": []
+      },
+      "hardship": {
+        "mode": "unknown",
+        "note": "未完成清寒限定條文查核。",
+        "refs": []
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "未記錄明確申請起日"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "依公告規定申請",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "待確認"
+            },
+            "refs": [
+              {
+                "source": "discovery-d7d777ae8ef871b41",
+                "locator": "main / text-block 1"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "官方未公告明確結果公布日",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-11-10",
+        "reason": "尚無足以確認學生收件窗口的資料。",
+        "refs": []
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "法規版本與生效日待覆核；修正日不自動當作生效日。",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "discovery-d7d777ae8ef871b41",
+        "revision_id": "73739c4922ae4efbed7e72b38a2294e8e5cb2b61f82e5c0077c3445c74b05dbc",
+        "url": "https://rb005.ndhu.edu.tw/p/403-1005-3743-1.php",
+        "observed_at": "2026-11-10T04:06:01+00:00",
+        "evidence_mode": "hash_only",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.12.1",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "a22f9e1099302bebd5386215adb7a993a2136ad63184ddc25068344689b4c4fc"
+      },
+      "field_evidence": [
+        {
+          "field_path": "eligibility.identity",
+          "source": "discovery-d7d777ae8ef871b41",
+          "revision_id": "73739c4922ae4efbed7e72b38a2294e8e5cb2b61f82e5c0077c3445c74b05dbc",
+          "locator": "main / text-block 14",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "8bc7fa10bd018666350fe8cd5faaf7c169c427f0199386b5bbfb1d42c572d627",
+          "source_block_sha256": "8bc7fa10bd018666350fe8cd5faaf7c169c427f0199386b5bbfb1d42c572d627",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "application_method/19",
+          "source": "discovery-d7d777ae8ef871b41",
+          "revision_id": "73739c4922ae4efbed7e72b38a2294e8e5cb2b61f82e5c0077c3445c74b05dbc",
+          "locator": "main / text-block 20",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "9648781def689dcc0d0adeb00a1bf7f843df72c6b2aa3c64139e4983cc007d4f",
+          "source_block_sha256": "9648781def689dcc0d0adeb00a1bf7f843df72c6b2aa3c64139e4983cc007d4f",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [
+          "unextracted:schedule.application_start",
+          "unextracted:schedule.student_deadline",
+          "unextracted:benefit",
+          "unextracted:compatibility"
+        ],
+        "conflicts": [],
+        "open_questions": [
+          "指定非原編輯者獨立覆核重大欄位（資格、金額、期限、兼領、法源版本）。"
+        ]
+      },
+      "evidence_status": "sufficient_for_draft",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.4.0",
+        "checked_at": "2026-11-10T04:06:01+00:00",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [
+          "coverage_gap:cycle_year_unknown",
+          "coverage_gap:missing_structured_benefit_items",
+          "coverage_gap:unextracted:schedule.application_start",
+          "coverage_gap:unextracted:schedule.student_deadline",
+          "coverage_gap:unextracted:benefit",
+          "coverage_gap:unextracted:compatibility"
+        ],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.12.1",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "electronic",
+        "channels": [
+          "portal"
+        ],
+        "paper_delivery": "unknown",
+        "handwritten_signature": "unknown",
+        "deadline_basis": "unknown",
+        "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
+        "refs": [
+          {
+            "source": "discovery-d7d777ae8ef871b41",
+            "locator": "main / text-block 20"
+          }
+        ]
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-discovery-d87ef71beb5774206-6bc96104",
+      "opportunity_id": "discovery-d87ef71beb5774206",
+      "program_key": "discovery-d87ef71beb5774206",
+      "title": "國立臺灣師範大學接受捐贈獎學金行政運作及管理作業要點",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "cycle": {
+        "kind": "policy_snapshot",
+        "label": "制度快照；版本依原文核對",
+        "year_system": "unknown",
+        "year": null,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "unknown",
+        "beneficiary": "unknown",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "unknown",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "待查",
+          "refs": []
+        },
+        "announcer": {
+          "text": "待查",
+          "refs": []
+        },
+        "receiver": {
+          "text": "待查",
+          "refs": []
+        }
+      },
+      "eligibility": {
+        "degrees": [],
+        "institution": "unknown",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "在學學生；本校學籍範圍；其餘資格、排除與文件要求請核對來源",
+          "claim_kind": "eligibility_clause",
+          "refs": [
+            {
+              "source": "discovery-d87ef71beb5774206",
+              "locator": "PDF page 1"
+            }
+          ]
+        },
+        "other_conditions": []
+      },
+      "benefit": {
+        "summary": "每年新臺幣10,000元；實際期間與給付條件依核定。",
+        "items": [
+          {
+            "branch_or_tier": null,
+            "amount_min": 10000,
+            "amount_max": 10000,
+            "currency": "TWD",
+            "unit": "per_year",
+            "basis": "fixed",
+            "duration_months_min": null,
+            "duration_months_max": null,
+            "tax_note": null,
+            "refs": [
+              {
+                "source": "discovery-d87ef71beb5774206",
+                "locator": "PDF page 1"
+              }
+            ]
+          }
+        ],
+        "refs": [
+          {
+            "source": "discovery-d87ef71beb5774206",
+            "locator": "PDF page 1"
+          }
+        ]
+      },
+      "compatibility": {
+        "mode": "unknown",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "須查雙方方案及重疊期間，未明示不代表可兼領。",
+        "refs": []
+      },
+      "hardship": {
+        "mode": "unknown",
+        "note": "未完成清寒限定條文查核。",
+        "refs": []
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "未記錄明確申請起日"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "依公告規定申請",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "待確認"
+            },
+            "refs": [
+              {
+                "source": "discovery-d87ef71beb5774206",
+                "locator": "PDF page 1"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "官方未公告明確結果公布日",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-11-10",
+        "reason": "尚無足以確認學生收件窗口的資料。",
+        "refs": []
+      },
+      "policy_version": {
+        "promulgated_on": "2020-03-11",
+        "amended_on": "2020-03-03",
+        "effective_from": null,
+        "effective_to": null,
+        "note": "已記錄修正／通過日期 2026-05-20；未明示同日生效前，不將修正日自動當作生效日。",
+        "refs": [
+          {
+            "source": "discovery-d87ef71beb5774206",
+            "locator": "PDF page 1"
+          }
+        ]
+      },
+      "source_metadata": {
+        "source_id": "discovery-d87ef71beb5774206",
+        "revision_id": "6bc96104aea88df4776e5dbe96aa2bf6ed2f06be178644a7734bfe5e390be468",
+        "url": "https://assistance.sa.ntnu.edu.tw/download/31/%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91/11680/%E3%80%8C%E6%8E%A5%E5%8F%97%E6%8D%90%E8%B4%88%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A1%8C%E6%94%BF%E9%81%8B%E4%BD%9C%E5%8F%8A%E7%AE%A1%E7%90%86%E4%BD%9C%E6%A5%AD%E8%A6%81%E9%BB%9E%E3%80%8D115-5.pdf",
+        "observed_at": "2026-11-10T03:59:47+00:00",
+        "evidence_mode": "hash_only",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.12.1",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "26d76ad56d61f8793e7599e54d06c477870f4c8a3a4368470f4a047c3630b4f4"
+      },
+      "field_evidence": [
+        {
+          "field_path": "policy_version",
+          "source": "discovery-d87ef71beb5774206",
+          "revision_id": "6bc96104aea88df4776e5dbe96aa2bf6ed2f06be178644a7734bfe5e390be468",
+          "locator": "PDF page 1",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "53cc53169b00d492c35c012eacbaa657efed1cbb3bc565f027ff4fdaa1161e86",
+          "source_block_sha256": "53cc53169b00d492c35c012eacbaa657efed1cbb3bc565f027ff4fdaa1161e86",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.identity",
+          "source": "discovery-d87ef71beb5774206",
+          "revision_id": "6bc96104aea88df4776e5dbe96aa2bf6ed2f06be178644a7734bfe5e390be468",
+          "locator": "PDF page 1",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "deaa1e1e435cfcadfd078674f072113f2d4f8c961dc662a72b49714c3a73ae56",
+          "source_block_sha256": "deaa1e1e435cfcadfd078674f072113f2d4f8c961dc662a72b49714c3a73ae56",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "benefit.items/0",
+          "source": "discovery-d87ef71beb5774206",
+          "revision_id": "6bc96104aea88df4776e5dbe96aa2bf6ed2f06be178644a7734bfe5e390be468",
+          "locator": "PDF page 1",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "39552d6b6f90ad6cb089870c3a5877b259566e3aee1a950e357a25705e455f5d",
+          "source_block_sha256": "39552d6b6f90ad6cb089870c3a5877b259566e3aee1a950e357a25705e455f5d",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [
+          "unextracted:schedule.application_start",
+          "unextracted:schedule.student_deadline",
+          "unextracted:compatibility",
+          "unextracted:application_method"
+        ],
+        "conflicts": [],
+        "open_questions": [
+          "指定非原編輯者獨立覆核重大欄位（資格、金額、期限、兼領、法源版本）。"
+        ]
+      },
+      "evidence_status": "sufficient_for_draft",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.4.0",
+        "checked_at": "2026-11-10T03:59:47+00:00",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [
+          "coverage_gap:unextracted:schedule.application_start",
+          "coverage_gap:unextracted:schedule.student_deadline",
+          "coverage_gap:unextracted:compatibility",
+          "coverage_gap:unextracted:application_method"
+        ],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.12.1",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "application_method": {
+        "mode": "unknown",
+        "channels": [],
+        "paper_delivery": "unknown",
+        "handwritten_signature": "unknown",
+        "deadline_basis": "unknown",
+        "note": "須核對申請、補件與核銷各步驟；線上報名不等於全程免紙本",
+        "refs": []
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-discovery-d2661751beebc3d82-a27c7293",
+      "opportunity_id": "discovery-d2661751beebc3d82",
+      "program_key": "discovery-d2661751beebc3d82",
+      "title": "國立臺灣師範大學接受捐贈獎學金作業規定",
+      "category": "living_tuition",
+      "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "cycle": {
+        "kind": "academic_year",
+        "label": "待確認學年度",
+        "year_system": "unknown",
+        "year": null,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "unknown",
+        "beneficiary": "unknown",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "unknown",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "待查",
+          "refs": []
+        },
+        "announcer": {
+          "text": "待查",
+          "refs": []
+        },
+        "receiver": {
+          "text": "待查",
+          "refs": []
+        }
+      },
+      "eligibility": {
+        "degrees": [],
+        "institution": "unknown",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "在學學生；本校學籍範圍；其餘資格、排除與文件要求請核對來源",
+          "claim_kind": "eligibility_clause",
+          "refs": [
+            {
+              "source": "discovery-d2661751beebc3d82",
+              "locator": "PDF page 1"
+            },
+            {
+              "source": "discovery-d2661751beebc3d82",
+              "locator": "PDF page 1"
+            }
+          ]
+        },
+        "other_conditions": []
+      },
+      "benefit": {
+        "summary": "獎勵金新臺幣10,000元。",
+        "items": [
+          {
+            "branch_or_tier": null,
+            "amount_min": 10000,
+            "amount_max": 10000,
+            "currency": "TWD",
+            "unit": "lump_sum",
+            "basis": "fixed",
+            "duration_months_min": null,
+            "duration_months_max": null,
+            "tax_note": null,
+            "refs": [
+              {
+                "source": "discovery-d2661751beebc3d82",
+                "locator": "PDF page 2"
+              }
+            ]
+          }
+        ],
+        "refs": [
+          {
+            "source": "discovery-d2661751beebc3d82",
+            "locator": "PDF page 2"
+          }
+        ]
+      },
+      "compatibility": {
+        "mode": "unknown",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "須查雙方方案及重疊期間，未明示不代表可兼領。",
+        "refs": []
+      },
+      "hardship": {
+        "mode": "unknown",
+        "note": "未完成清寒限定條文查核。",
+        "refs": []
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "未記錄明確申請起日"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "依公告規定申請",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "待確認"
+            },
+            "refs": [
+              {
+                "source": "discovery-d2661751beebc3d82",
+                "locator": "PDF page 1"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "官方未公告明確結果公布日",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-11-10",
+        "reason": "尚無足以確認學生收件窗口的資料。",
+        "refs": []
+      },
+      "policy_version": {
+        "promulgated_on": "2021-03-30",
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "已記錄修正／通過日期 2021-03-30；未明示同日生效前，不將修正日自動當作生效日。",
+        "refs": [
+          {
+            "source": "discovery-d2661751beebc3d82",
+            "locator": "PDF page 1"
+          }
+        ]
+      },
+      "source_metadata": {
+        "source_id": "discovery-d2661751beebc3d82",
+        "revision_id": "a27c729348309f9a6b4e53c51c3d2b330879a5662a8ec5b93715fdc916c3d4fd",
+        "url": "https://assistance.sa.ntnu.edu.tw/download/31/%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91/11914/%E6%8E%A5%E5%8F%97%E6%8D%90%E8%B4%88%E7%8D%8E%E5%AD%B8%E9%87%91%E4%BD%9C%E6%A5%AD%E8%A6%8F%E5%AE%9A110-3.pdf",
+        "observed_at": "2026-11-10T03:59:57+00:00",
+        "evidence_mode": "hash_only",
+        "context_sufficiency": "in_memory_full_blocks",
+        "extractor_version": "extractor-1.12.1",
+        "adapter_used": "deterministic_rule",
+        "prompt_version": null,
+        "normalizer_version": "document-ir-2",
+        "prepared_document_sha256": "aa2d09e0ec5957d3cde84a8b0a470df4198583ad4497add5275e383272731895"
+      },
+      "field_evidence": [
+        {
+          "field_path": "policy_version",
+          "source": "discovery-d2661751beebc3d82",
+          "revision_id": "a27c729348309f9a6b4e53c51c3d2b330879a5662a8ec5b93715fdc916c3d4fd",
+          "locator": "PDF page 1",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "e197c895939e82cc09a6a7ec2e9050f55574ae7afb7b876d859ff0cde8e78e36",
+          "source_block_sha256": "e197c895939e82cc09a6a7ec2e9050f55574ae7afb7b876d859ff0cde8e78e36",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.identity",
+          "source": "discovery-d2661751beebc3d82",
+          "revision_id": "a27c729348309f9a6b4e53c51c3d2b330879a5662a8ec5b93715fdc916c3d4fd",
+          "locator": "PDF page 1",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "4dcb4a8549578471e016832da9607cd94f988ad44f46748c97690a278ed3102e",
+          "source_block_sha256": "4dcb4a8549578471e016832da9607cd94f988ad44f46748c97690a278ed3102e",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "eligibility.identity",
+          "source": "discovery-d2661751beebc3d82",
+          "revision_id": "a27c729348309f9a6b4e53c51c3d2b330879a5662a8ec5b93715fdc916c3d4fd",
+          "locator": "PDF page 1",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "51762f1cda28ca60d998dbba00b088b97542d45f0b896d33a7c1427c0f6ec8ab",
+          "source_block_sha256": "51762f1cda28ca60d998dbba00b088b97542d45f0b896d33a7c1427c0f6ec8ab",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "benefit.items/0",
+          "source": "discovery-d2661751beebc3d82",
+          "revision_id": "a27c729348309f9a6b4e53c51c3d2b330879a5662a8ec5b93715fdc916c3d4fd",
+          "locator": "PDF page 2",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "469851957a5c326bc92b41014d72b39455c0d3658891f4f60756798bbba5c5d4",
+          "source_block_sha256": "469851957a5c326bc92b41014d72b39455c0d3658891f4f60756798bbba5c5d4",
+          "extraction_method": "deterministic_rule"
+        }
+      ],
+      "gaps_and_conflicts": {
+        "missing_fields": [
+          "unextracted:schedule.application_start",
+          "unextracted:schedule.student_deadline",
+          "unextracted:compatibility",
+          "unextracted:application_method"
+        ],
+        "conflicts": [],
+        "open_questions": [
+          "指定非原編輯者獨立覆核重大欄位（資格、金額、期限、兼領、法源版本）。"
+        ]
+      },
+      "evidence_status": "sufficient_for_draft",
+      "verification": {
+        "status": "passed_with_gaps",
+        "verifier_version": "verifier-1.4.0",
+        "checked_at": "2026-11-10T03:59:57+00:00",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": true,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [
+          "coverage_gap:cycle_year_unknown",
+          "coverage_gap:unextracted:schedule.application_start",
+          "coverage_gap:unextracted:schedule.student_deadline",
+          "coverage_gap:unextracted:compatibility",
+          "coverage_gap:unextracted:application_method"
+        ],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "extractor-1.12.1",
         "independent_reviewer": null,
         "reviewed_on": null,
         "ledger_action": "unreviewed",
