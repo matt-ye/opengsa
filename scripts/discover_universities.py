@@ -19,6 +19,7 @@ from pathlib import Path
 import re
 import sys
 import time
+import urllib.error
 import urllib.request
 from urllib.parse import urljoin, urlsplit
 
@@ -35,6 +36,10 @@ from scripts.scan_sources import AGENT, Fetcher, ScanError, digest, node_get
 ROSTER = ROOT / "docs/audits/university-roster-verification-2026-11-07.json"
 KEYWORDS = re.compile(r"獎學金|獎助|助學|急難|弱勢|學雜費減免|工讀|scholarship|financial\s*aid", re.I)
 EXCLUDE = re.compile(r"名單|榜單|得獎|獲獎|成果|新聞稿|花絮|頒獎|表格下載|申請表")
+# 單篇公告的標題：旁邊列了相關文章時，內文區的獎助連結也會超過門檻，要另外排除。
+NOTICE = re.compile(r"^【|學年度|學期|\d{4}\s*[-－–]\s*\d{4}\s*年度|申請事宜|辦理|轉知|[（(]自送[)）]")
+# 臺灣很多大學用同一套網站系統（rpage）：/p/404-… 是單篇文章，/p/403-…、/p/412-… 才是列表頁。
+SINGLE_POST = re.compile(r"/p/404-\d+-\d+\.php")
 OFFICE = re.compile(r"學務處|學生事務|生活輔導|生輔|student\s*affairs", re.I)
 CATEGORY = "living_tuition"  # 學校獎助頁大多是學雜費與生活助學類
 INDEX_LINKS = 3
@@ -127,6 +132,9 @@ def verify(browser, url, base):
         return False, f"http_{page['status']}"
     # 只數內文區的連結：導覽選單每頁都一樣，數進去的話整個網站每頁都像索引頁。
     count = len(keyword_links({"links": [l for l in page["links"] if not l["menu"]]}))
+    title = (page["prepared"] or {}).get("title") or page["title"]
+    if NOTICE.search(title) or SINGLE_POST.search(urlsplit(page["url"]).path):
+        return False, f"單篇公告，不是入口頁（{count} 個獎助連結）"
     if count >= INDEX_LINKS:
         return True, f"索引頁（{count} 個獎助連結）"
     reason = not_card_reason({"url": page["url"], "category": CATEGORY}, page["prepared"], None) if page["prepared"] else "unreadable"
@@ -179,26 +187,32 @@ def listing(page):
 def model_find(browser, home, base, school, provider, cache, budget):
     """ReAct D：模型一步一步選要打開的連結，最後回答入口頁。回傳 (入口頁連結, 步驟紀錄)。"""
     page = browser.open(home, base)
-    messages = [{"role": "system", "content": PROMPT}]
-    steps = []
+    steps, history = [], []
     for _ in range(MAX_STEPS):
+        if budget.get("paused"):
+            steps.append({"stop": budget["paused"]})
+            return [], steps
         if budget["model_calls"] <= 0:
             steps.append({"stop": "model_budget"})
             return [], steps
         links, text = listing(page)
-        messages.append({"role": "user", "content": f"學校：{school}\n{text}"})
+        # 每一步只送目前頁面的連結，之前的步驟只留一行摘要；整段歷史都送的話 token 越滾越多，容易撞到每分鐘上限。
+        done = "\n".join(history)
+        messages = [{"role": "system", "content": PROMPT},
+                    {"role": "user", "content": f"學校：{school}\n" + (f"已經走過：\n{done}\n" if done else "") + text}]
         result, cached = ask_model(provider, messages, cache)
         budget["model_calls"] -= 0 if cached else 1
         if not cached:
             time.sleep(2)
         action = result["action"] or {}
         steps.append({"page": page["url"], "action": action, "raw": result["raw"][:80]})
-        messages.append({"role": "assistant", "content": result["raw"]})
         if action.get("action") == "open" and isinstance(action.get("n"), int) and 0 < action["n"] <= len(links):
+            target = links[action["n"] - 1]
             try:
-                page = browser.open(links[action["n"] - 1]["url"], base)
+                page = browser.open(target["url"], base)
+                history.append(f"打開了「{target['label']}」 {target['url']}")
             except ScanError as error:
-                messages.append({"role": "user", "content": f"打不開（{error}），請選別的。"})
+                history.append(f"「{target['label']}」打不開（{error}），請選別的")
             continue
         if action.get("action") == "answer":
             picks = action.get("n") if isinstance(action.get("n"), list) else [action.get("n")]
@@ -220,7 +234,12 @@ def discover(school, browser, provider, cache, budget):
     if provider:
         try:
             model_links, steps = model_find(browser, home, base, school["name"], provider, cache, budget)
-        except Exception as error:  # 模型呼叫失敗就改用規則，原因記下來。
+        except urllib.error.HTTPError as error:
+            # 記下狀態碼與錯誤訊息（不含金鑰）才查得出原因。429 是限速：這一輪後面的學校都不再叫模型，不重試。
+            steps = [{"stop": f"model_error:http_{error.code}", "message": error.read()[:300].decode("utf-8", "replace")}]
+            if error.code == 429:
+                budget["paused"] = "model_paused_after_429"
+        except Exception as error:  # 其他模型錯誤也改用規則，原因記下來。
             steps = [{"stop": "model_error:" + type(error).__name__}]
     rule_links = rule_find(browser, home, base)
     checked = {}
