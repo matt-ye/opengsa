@@ -1,0 +1,93 @@
+name: University discovery
+
+# 第 2 階段：找名冊中還沒有卡片的大專校院的獎助入口頁（docs/UNIVERSITY-DISCOVERY-DESIGN.md）。
+# 只讀公開網頁、不改 repo。結果寫到「大專校院獎助入口探索」Issue，使用者勾選網域後由 agent 開 PR 加入巡檢。
+on:
+  workflow_dispatch:
+    inputs:
+      provider:
+        description: 'ReAct D 用的模型供應商；留空只跑規則'
+        required: false
+        default: 'groq'
+  schedule:
+    # 每週六 10:37（臺北），避開每天 09:17 的掃描與週日的型號清單。
+    - cron: '37 2 * * 6'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: university-discovery
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      # 進度存在快取：每輪從上次停的學校接著做（每輪 100 次請求，約 10 校）。
+      - name: Restore discovery progress
+        uses: actions/cache/restore@caa296126883cff596d87d8935842f9db880ef25 # v5
+        with:
+          path: work/discovery
+          key: university-discovery-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: university-discovery-v1-
+      - name: Install dependencies
+        run: python -m pip install -r requirements-ingestion.txt
+      - name: Discover entry pages (bounded, robots respected)
+        env:
+          OPENGSA_MODEL_API_KEY: ${{ secrets.OPENGSA_MODEL_API_KEY }}
+          OPENGSA_OPENROUTER_API_KEY: ${{ secrets.OPENGSA_OPENROUTER_API_KEY }}
+          PROVIDER: ${{ github.event_name == 'schedule' && 'groq' || inputs.provider }}
+        run: python scripts/discover_universities.py --provider "$PROVIDER" --max-requests 100
+      - name: Save discovery progress
+        if: always() && hashFiles('work/discovery/state.json') != ''
+        uses: actions/cache/save@caa296126883cff596d87d8935842f9db880ef25 # v5
+        with:
+          path: work/discovery
+          key: university-discovery-v1-${{ github.run_id }}-${{ github.run_attempt }}
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: university-discovery
+          path: |
+            work/discovery/report.json
+            work/discovery/issue.md
+          retention-days: 30
+
+  issue:
+    needs: discover
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    # 只能寫 Issue，不能寫 repo；不抓公開網頁。
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: university-discovery
+      - name: Update the discovery Issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          title="大專校院獎助入口探索"
+          number=$(gh issue list --state open --search "\"$title\" in:title" --json number,title --jq ".[] | select(.title == \"$title\") | .number" | head -1)
+          if [ -n "$number" ]; then
+            # 保留使用者已經勾選的學校，不要每週被新結果洗掉。
+            for id in $(gh issue view "$number" --json body --jq .body | grep -oE '^- \[x\] [A-Z][0-9]+' | awk '{print $3}'); do
+              sed -i "s/^- \[ \] $id /- [x] $id /" issue.md
+            done
+            gh issue edit "$number" --body-file issue.md
+          else
+            gh issue create --title "$title" --body-file issue.md
+          fi
