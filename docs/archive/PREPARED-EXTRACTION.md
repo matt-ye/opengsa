@@ -67,6 +67,8 @@ PDF 僅有文字層時保留 `pdf_layout_unverified`，沒有宣稱能還原所�
 
 ## 現行流程
 
+> 2026-11-10：此圖部分過時，現行流程與模型節點、局部 ReAct 的規劃見 [AGENTIC-EXTRACTION-ARCHITECTURE.md](AGENTIC-EXTRACTION-ARCHITECTURE.md)。
+
 ```mermaid
 flowchart TD
  A[既有來源與存取限制] --> B[允許的 HTML／文字PDF]

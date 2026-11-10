@@ -17,6 +17,8 @@ FAO登入區維持人工查閱；醫學院國際事務需動態渲染、醫學�
 
 ## 管線及權限邊界（已實作架構）
 
+> 2026-11-10：此圖部分過時，現行流程與模型節點、局部 ReAct 的規劃見 [AGENTIC-EXTRACTION-ARCHITECTURE.md](AGENTIC-EXTRACTION-ARCHITECTURE.md)。
+
 ```mermaid
 flowchart TD
  A[人工選定公開來源及存取規則 data/scan-sources.json] --> B[受限公開 GET：限定主機、3秒間隔、20次上限]
