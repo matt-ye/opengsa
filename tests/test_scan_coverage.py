@@ -5,10 +5,14 @@
 import glob
 import json
 from pathlib import Path
+import sys
 import unittest
 from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from scripts.review_candidates import dismissed_candidate_ids
 
 
 def read(path):
@@ -23,14 +27,16 @@ class ScanCoverageTests(unittest.TestCase):
         scanned = {s["url"] for s in config["sources"] if s.get("enabled", True)}
         trusted = set(config["allowed_hosts"])
         missing = []
-        for path in sorted(glob.glob(str(ROOT / "data/candidates/*.json"))):
-            for card in read(path)["candidates"]:
-                profile = profiles.get(card["source_metadata"]["source_id"])
-                # 新網域（例如民眾提交）等維護者核可後才巡檢；手寫卡的設定沒驗證過，不巡檢。
-                if card["candidate_id"] in hand or (profile and urlsplit(profile["url"]).hostname not in trusted):
-                    continue
-                if not profile or profile["url"] not in scanned:
-                    missing.append(card["candidate_id"])
+        cards = [card for path in sorted(glob.glob(str(ROOT / "data/candidates/*.json"))) for card in read(path)["candidates"]]
+        # 駁回的卡不上網站，來源可以停用。
+        dismissed = dismissed_candidate_ids(cards, read(ROOT / "data/scan-reviews.json"))
+        for card in cards:
+            profile = profiles.get(card["source_metadata"]["source_id"])
+            # 新網域（例如民眾提交）等維護者核可後才巡檢；手寫卡的設定沒驗證過，不巡檢。
+            if card["candidate_id"] in hand | dismissed or (profile and urlsplit(profile["url"]).hostname not in trusted):
+                continue
+            if not profile or profile["url"] not in scanned:
+                missing.append(card["candidate_id"])
         self.assertEqual(missing, [])
 
 

@@ -1009,7 +1009,8 @@ class ExtractionVerificationDeadlineTests(unittest.TestCase):
 
     def test_review_ledger_promotion_ready_and_pr_draft_export(self):
         from scripts.review_candidates import candidate_fingerprint
-        self.assertEqual(read_json(ROOT/"data/scan-reviews.json")["reviews"],[])
+        # 正式台帳沒有人工核可（駁回可以有）；下面的核可只用合成台帳。
+        self.assertEqual([r for r in read_json(ROOT/"data/scan-reviews.json")["reviews"] if r["action"]!="dismissed"],[])
         src=CONFIG["sources"][3]
         blocks=make_nstc_conference_blocks()
         cand=extract_from_in_memory_blocks(src,blocks,revision_id="a"*64,observed_at="2026-10-28T09:17:00+08:00",as_of="2026-10-28")[0]
