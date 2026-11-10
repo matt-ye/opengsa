@@ -553,7 +553,7 @@ def export_pr_candidate_draft(verified_bundle, pilot_data, output_path, scan_sou
                 "locator": "候選來源觀察記錄",
                 "owner": None,
                 "ownership_status": "unassigned",
-                "proposed_review_frequency": "每週二/五低頻掃描；人工獨立覆核",
+                "proposed_review_frequency": "排程巡檢（週一到週六）；人工獨立覆核",
                 "automation": "not_enabled",
                 "crawl_permission": "not_reviewed",
                 "next_action": "獨立覆核後納入公開候選台帳",
