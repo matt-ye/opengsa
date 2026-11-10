@@ -1,4 +1,4 @@
-"""Tests for Step 2: 8-provider failover pool, 1500-token micro-chunking, PII redaction unblock, and TemporalBatchHarness."""
+"""Tests for Step 2: 8-provider failover pool, 2200-token micro-chunking, PII redaction unblock, and TemporalBatchHarness."""
 from copy import deepcopy
 import json
 from pathlib import Path
@@ -118,7 +118,7 @@ class TemporalPoolAndHarnessTests(unittest.TestCase):
         self.assertTrue(row["preparation"]["complete"])
         self.assertEqual(len(row["preparation"]["redacted_unit_ids"]), 1)
 
-    def test_micro_chunking_keeps_every_chunk_under_1500_tokens_even_with_heavy_background(self):
+    def test_micro_chunking_keeps_every_chunk_under_2200_tokens_even_with_heavy_background(self):
         cand = self.candidate("taipei-ai-tools")
         profile = deepcopy(self.profiles["taipei-ai-tools"])
         # Build 25 paragraphs containing background keywords ("申請對象", "不得", "補助對象") plus date clauses

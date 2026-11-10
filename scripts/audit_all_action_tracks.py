@@ -30,9 +30,9 @@ parser_fp = parser_fingerprint(ROOT)
 print(f"Parser Fingerprint: {parser_fp[:16]}...")
 
 for tname, tlist in [
-    ('gov (公部門與教育法規軌 · 週二/週五)', tracks['gov']),
-    ('other (學生福利與AI工具軌 · 週三/週六)', tracks['other']),
-    ('enterprise (企業與學會獎助軌 · 週一/週四)', tracks['enterprise']),
+    ('gov (公部門與教育法規軌 · 手動重萃分軌)', tracks['gov']),
+    ('other (學生福利與AI工具軌 · 手動重萃分軌)', tracks['other']),
+    ('enterprise (企業與學會獎助軌 · 手動重萃分軌)', tracks['enterprise']),
 ]:
     print(f"\n--- [Action Track] {tname}: {len(tlist)} 方案 ---")
     decisions = [evaluate_incremental_diff(c, observations=obs, current_parser_sha256=parser_fp) for c in tlist]

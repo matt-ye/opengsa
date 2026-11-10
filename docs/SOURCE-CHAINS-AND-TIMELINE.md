@@ -100,4 +100,4 @@ GitHub端亦已手動執行[source_chains](https://github.com/matt-ye/opengsa/ac
 
 甘特圖捲動驗收：`scripts/browser_gantt_scroll_smoke.js`以Chrome驗證預設甘特圖、19列、內部上下與水平捲動（600px／300px）、標題與日期軸／左欄固定、頁面捲動不遮標題、Ctrl+End、清單切換及320px無整頁溢出。採原生CSS與捲動區域，未新增前端套件。
 
-工具列已依使用者核可採A配置：左欄選取管理，時間控制集中圖表，11項白底grid圖例預設收合。涵蓋已知日期會重設平移、定位實際／參考時段，不補猜未知；手機初訪可收合資格條件。完整對照與實作見[工具列整理](design/CONTROLS-MOCK-PLAN.md)。
+工具列已依使用者核可採A配置：左欄選取管理，時間控制集中圖表，11項白底grid圖例預設收合。涵蓋已知日期會重設平移、定位實際／參考時段，不補猜未知；手機初訪可收合資格條件。完整對照與實作見[工具列整理](archive/design/CONTROLS-MOCK-PLAN.md)。

@@ -399,7 +399,7 @@ flowchart TD
 
 ## 7. API與成本限制（2026-10-30更新）
 
-舊版的固定免費額度、Llama 3.3跨平台預設與三把金鑰瀑布備援提案已撤換。正式對照由[data/model-providers.json](../data/model-providers.json)維護，官方依據、8組Secret對應及本次Actions結果見[API查核](API-AUDIT.md)。
+舊版的固定免費額度、Llama 3.3跨平台預設與三把金鑰瀑布備援提案已撤換。正式對照由[data/model-providers.json](../data/model-providers.json)維護，官方依據、8組Secret對應及本次Actions結果見[API查核](archive/API-AUDIT.md)。
 
 每次手動選一個Provider；額度不足、401／402／403或429時停止外部推論並保留規則結果，不自動改用付費模型。目錄可讀、帳戶通過驗證、模型能輸出JSON、帳戶免費額度及key效期分別記錄，未知不填零或永久有效。hash_only永不外送；排程模型關閉。
 

@@ -1,6 +1,6 @@
 # 用 GitHub Actions 執行時間重萃、8 組 API 動態備援池、Map-Reduce 與甘特圖整合
 
-2026-11-03，接續 PR #44，分四階段（PR #45 ～ PR #48）完成最外層三軌排程與三層增量比對、8 組 API 動態備援池與 1,500-token 小分包 `TemporalBatchHarness`、跨文件／跨分包 Map-Reduce 時間規則合成與最新甘特圖對接，以及 GitHub Actions 45 分鐘長時續傳快取整合。
+2026-11-03，接續 PR #44，分四階段（PR #45 ～ PR #48）完成最外層三軌排程與三層增量比對、8 組 API 動態備援池與 2,200-token 小分包 `TemporalBatchHarness`、跨文件／跨分包 Map-Reduce 時間規則合成與最新甘特圖對接，以及 GitHub Actions 45 分鐘長時續傳快取整合。
 
 ---
 
@@ -24,15 +24,15 @@
 
 ---
 
-## 二、8 組 API 動態備援池、1,500-Token 小分包與 `TemporalBatchHarness`（Step 2 / PR #46）
+## 二、8 組 API 動態備援池、2,200-Token 小分包與 `TemporalBatchHarness`（Step 2 / PR #46）
 
 由 [`scripts/temporal_model.py`](../scripts/temporal_model.py) 與 [`scripts/extract_candidates.py`](../scripts/extract_candidates.py) 實作：
 
 1. **8 組 API 動態備援池 (`ProviderFailoverPool`)**：
    - 支援 `groq` (`qwen/qwen3.8-27b`)、`gemini` (`gemini-3.5-flash-lite`)、`cerebras` (`gpt-oss-120b`)、`mistral` (`mistral-small-latest`)、`sambanova` (`Meta-Llama-3.3-70B-Instruct`)、`openrouter` (`google/gemma-4-26b-a4b-it:free`)、`siliconflow` (`Qwen/Qwen2.5-7B-Instruct`，國際站 `api.siliconflow.com` / `region=com`)、`nvidia` (`openai/gpt-oss-20b`)。
    - **Chunk 級別無縫切換**：單一 Chunk 遭遇 `429`、`TimeoutError`、`5xx` 時，當前 Provider 標記冷卻（絕不對同一 429 端點連續重試），立即切換下一順位健康 Provider 完成該 Chunk。
-2. **Free-Tier 安全小分包 (`Micro-Chunking <= 1,500 Input Tokens`) 與 90s Timeout**：
-   - `input_limit = 1500`（扣除 `safety_tokens = 200` 後單包有效上限 `1,300` tokens）、`output_reserve = 600` tokens、HTTP `timeout = 90s`。
+2. **Free-Tier 安全小分包 (`Micro-Chunking <= 2,200 Input Tokens`) 與 90s Timeout**：
+   - `input_limit = 2200`（扣除 `safety_tokens = 200` 後單包有效上限 `2,000` tokens）、`output_reserve = 600` tokens、HTTP `timeout = 90s`。
    - 精簡時間模式之 `rule_summary` 並限制 `background` 共享上下文預算，徹底消除 Groq 8,000 TPM 429 撞牆與 `shared_context_exceeds_budget`。
 3. **解除 PII `[REDACTED]` 遮蔽死鎖**：
    - 頁面內含聯絡電話／Email（已遮蔽為 `[REDACTED]`）或「登入系統」、「得獎公告」字樣時，在時間欄位範圍（`schedule.*`）下不再誤觸 `source_sanitization_requires_review` 拒審。
@@ -63,7 +63,7 @@ flowchart TD
  A[選取來源ID 或 依軌道 track:gov/enterprise/other 篩選] --> A1{三層增量比對閘門<br>NEW / CHANGED / BACKFILL？}
  A1 -->|SKIP_UNCHANGED| A2[直接沿用既有時間觀察<br>0 HTTP / 0 Token]
  A1 -->|需執行| B[來源台帳與robots檢查 + 母子頁/PDF彙整]
- B --> C[1500-token 小分包 Micro-Chunking]
+ B --> C[2200-token 小分包 Micro-Chunking]
  C --> D[確定性規則重萃]
  C --> E{候選與台帳都允許外送？}
  E -->|否| F[規則模式及受限原因]

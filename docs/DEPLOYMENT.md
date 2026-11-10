@@ -2,15 +2,16 @@
 
 2026-11-07使用者核可：公開網址改為 https://opengsa.mattye.dev/ （GitHub Pages自訂網域，經Cloudflare代理；.dev瀏覽器強制HTTPS，DNS only在憑證發出前會中斷，2026-11-07實測約一小時），舊 github.io 網址由GitHub轉址；加入Cloudflare Web Analytics並整合至mattye.dev後台；維持noindex。取代下方2026-10-29「不修改DNS」之限制，該段保留為當時紀錄。
 
-2026-11-01雷達版建置改讀19筆候選快照作可讀摘要，預設文件檢視，另可彙整13組方案；不把原候選標成人工核准。正式pilot與真人台帳不變，舊文「僅10筆來源草稿／合成預設」為歷史階段。未知與Issue回報規則見[RADAR-VIEW.md](RADAR-VIEW.md)。本版仍需PR合併與main部署後才生效。
+網站建置讀 `scripts/build_site.py` 的 `load_full_library` 聚合的各 bundle，卡片數量以 README 的資料規模區塊（`scripts/readme_counts.py` 依資料產生）為準，不在這裡寫死。卡片是自動整理的來源摘要，不標成人工核准。未知與 Issue 回報規則見 [RADAR-VIEW.md](RADAR-VIEW.md)。
 
-2026-10-29使用者核可：PR #1合併規劃與原型，PR #2上架公開預覽供分享回饋。目的網址為 https://matt-ye.github.io/opengsa/ ，不修改個人首頁或DNS。正式服務及資料覆核門檻仍依[目前計畫](PLAN.md)。
+2026-10-29使用者核可：PR #1合併規劃與原型，PR #2上架公開預覽供分享回饋。目的網址為 https://matt-ye.github.io/opengsa/ ，不修改個人首頁或DNS。正式服務及資料覆核門檻仍依[目前計畫](TODO.md)。
 
 ## 發布內容
 
 由`scripts/build_site.py`重用離線匯出器，只產生：
 
 - `index.html`：內嵌程式與資料快照，清楚標示公開預覽、合成示範及待覆核草稿。
+- `feed.xml`、`feed-deadlines.xml`：全庫最新動態與截止倒數兩個 RSS（`scripts/build_feed.py`）。
 - `assets/opengsa-social-preview.jpg`：已核可的專案縮圖，供Open Graph分享使用。
 - `.nojekyll`：靜態成品標記。
 
@@ -19,6 +20,7 @@
 ```powershell
 python -m pip install -r requirements-dev.txt
 python scripts/check_data.py
+python scripts/check_provenance.py
 python scripts/scan_sources.py --check-config
 python -m unittest discover -s tests -v
 node --test tests/prototype.test.cjs
@@ -34,7 +36,7 @@ python -m http.server 8771 --bind 127.0.0.1 --directory dist/site
 
 部署job採GitHub Pages官方OIDC流程，只取得`pages:write`與`id-token:write`；不需新增私人API key或PAT。Action固定完整commit SHA，checkout不留存憑證，部署使用github-pages環境並避免同時發布。
 
-首次將repo的Pages來源設為GitHub Actions。官方依據：[自訂Pages工作流程](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。這是網站建置及發布流程；pages.yml沒有schedule，不抓取獎學金來源。另核可的[scan-sources.yml](SCANNER.md)獨立低頻掃描，排程不呼叫模型；另提供受成本限制的手動模型／provider audit，不建立D1或送出訂閱通知。
+首次將repo的Pages來源設為GitHub Actions。官方依據：[自訂Pages工作流程](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。這是網站建置及發布流程；pages.yml沒有schedule，不抓取獎學金來源。來源巡檢由獨立的 [scan-sources.yml](SCANNER.md) 負責：週一到週六排程，週一那輪開每週的資料 PR，排程不呼叫模型；另提供受成本限制的手動模型／provider audit。`model-catalog.yml` 每週日更新模型型號清單。不建立D1或送出訂閱通知。
 
 ## 分享與回饋
 

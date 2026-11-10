@@ -6,7 +6,7 @@
 > - 學生身分福利基準台帳：[`data/student-perks-baseline.json`](../data/student-perks-baseline.json)（收錄 **40 項** 代表性方案）
 > - 學生福利候選清冊：[`data/candidates/student-perks.json`](../data/candidates/student-perks.json)（28 方案第一梯次）
 > - 學生 Perks 資訊鏈批次：[`data/source-chain-batches/batch-perks.json`](../data/source-chain-batches/batch-perks.json)
-> - 第一梯次深度報告：[`docs/STUDENT-SOFTWARE-HARDWARE-AND-AI-PERKS.md`](docs/STUDENT-SOFTWARE-HARDWARE-AND-AI-PERKS.md)
+> - 第一梯次深度報告：[`docs/STUDENT-SOFTWARE-HARDWARE-AND-AI-PERKS.md`](STUDENT-SOFTWARE-HARDWARE-AND-AI-PERKS.md)
 
 ---
 
