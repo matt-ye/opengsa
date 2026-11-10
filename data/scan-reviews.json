@@ -1,4 +1,65 @@
 {
   "schema_version": "1.1.0",
-  "reviews": []
+  "reviews": [
+    {
+      "revision_id": "15a5721915f9d0b42d53bb0ee75154483b607a0b788c310a0a9cf23db4e7316e",
+      "source_id": "discovery-d3bba7b547abf84d0",
+      "candidate_id": "cand-discovery-d3bba7b547abf84d0-15a57219",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "114 學年度的舊公告；與 115 學年度是同一方案",
+      "problem_source": "source_page",
+      "reviewed_on": "2026-11-10"
+    },
+    {
+      "revision_id": "dbc9095155d5bfcb7f19cc46adf66ea8eda312cd83575c9d70b8fc3050e1df10",
+      "source_id": "discovery-d6b2166b00772a7de",
+      "candidate_id": "cand-discovery-d6b2166b00772a7de-dbc90951",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "113 學年度的舊公告；與 115 學年度是同一方案",
+      "problem_source": "source_page",
+      "reviewed_on": "2026-11-10"
+    },
+    {
+      "revision_id": "620cbbfe31dd8151055693cf65b0bfa1481fc0eb1c59922c6db626daf79cd870",
+      "source_id": "discovery-issue-026dc837484c",
+      "candidate_id": "cand-discovery-issue-026dc837484c-620cbbfe",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "列表頁標題，不是單一方案",
+      "problem_source": "not_a_program",
+      "reviewed_on": "2026-11-10"
+    },
+    {
+      "revision_id": "73739c4922ae4efbed7e72b38a2294e8e5cb2b61f82e5c0077c3445c74b05dbc",
+      "source_id": "discovery-d7d777ae8ef871b41",
+      "candidate_id": "cand-discovery-d7d777ae8ef871b41-73739c49",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "列表頁標題，不是單一方案",
+      "problem_source": "not_a_program",
+      "reviewed_on": "2026-11-10"
+    },
+    {
+      "revision_id": "6bc96104aea88df4776e5dbe96aa2bf6ed2f06be178644a7734bfe5e390be468",
+      "source_id": "discovery-d87ef71beb5774206",
+      "candidate_id": "cand-discovery-d87ef71beb5774206-6bc96104",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "學校的行政規定，不是給學生申請的方案",
+      "problem_source": "not_a_program",
+      "reviewed_on": "2026-11-10"
+    },
+    {
+      "revision_id": "a27c729348309f9a6b4e53c51c3d2b330879a5662a8ec5b93715fdc916c3d4fd",
+      "source_id": "discovery-d2661751beebc3d82",
+      "candidate_id": "cand-discovery-d2661751beebc3d82-a27c7293",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "學校的行政規定，不是給學生申請的方案",
+      "problem_source": "not_a_program",
+      "reviewed_on": "2026-11-10"
+    }
+  ]
 }

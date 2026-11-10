@@ -7371,7 +7371,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": true
+      "enabled": false
     },
     {
       "id": "discovery-d2661751beebc3d82",
@@ -7386,7 +7386,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": true
+      "enabled": false
     },
     {
       "id": "discovery-ddc8eafa1b3a0cf5c",
@@ -7446,7 +7446,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": true
+      "enabled": false
     },
     {
       "id": "discovery-d6a6f4a3535de74bb",
@@ -7476,7 +7476,7 @@
       "category": "outcome_award",
       "resource_kind": "award",
       "scope": "nationwide",
-      "enabled": true
+      "enabled": false
     }
   ],
   "deferred_sources": [
