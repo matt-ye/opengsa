@@ -1,5 +1,6 @@
 """Synthetic decisions and mock GET only; never approve or alter production data."""
 from copy import deepcopy
+from datetime import date, timedelta
 import json
 import subprocess
 from pathlib import Path
@@ -209,6 +210,19 @@ class ReviewWorkspaceTests(unittest.TestCase):
             self.assertEqual(result["publication_status"],"blocked")
             self.assertEqual(result["blocking_reason"],"same_opportunity_multiple_documents_require_reconciliation")
             self.assertFalse((output/"data-pr.patch").exists())
+
+    def test_deadline_passed_after_extraction_cites_the_deadline(self):
+        """萃取時狀態未知、截止日過後重算成已截止：要附上寫著截止日的段落，網站規格檢查才過（2026-11-11 CI 因此失敗）。"""
+        from scripts.build_review_workspace import candidate_preview_data
+        bundle=json.loads((ROOT/"data/candidates/source-review.json").read_text(encoding="utf-8"))
+        card=next(c for c in bundle["candidates"] if c["application"]["state"]=="unknown" and not c["application"].get("refs")
+                  and any((s.get("deadline") or {}).get("value") for s in c["schedule"]["steps"]))
+        last=max(s["deadline"]["value"][:10] for s in card["schedule"]["steps"] if (s.get("deadline") or {}).get("value"))
+        after=(date.fromisoformat(last)+timedelta(days=1)).isoformat()
+        preview=candidate_preview_data({**bundle,"as_of":after,"candidates":[card]},self.pilot,self.config)
+        item=preview["opportunities"][0]
+        if item["application"]["state"]!="unknown":
+            self.assertTrue(item["application"]["refs"])
 
 
 if __name__=="__main__":unittest.main()

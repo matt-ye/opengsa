@@ -65,6 +65,9 @@ def candidate_preview_data(bundle,pilot,config):
         item["id"]=cand["candidate_id"]
         window=evaluate_application_window(item,bundle["as_of"])
         item["application"].update(state=window["state"],as_of=bundle["as_of"],reason=window["reason"])
+        # 萃取時「未知」的卡，過了截止日重算會變成「已截止」；出處是寫著那個截止日的段落。
+        if window["state"]!="unknown" and not item["application"].get("refs"):
+            item["application"]["refs"]=deepcopy([r for s in item.get("steps",[]) if (s.get("deadline") or {}).get("value") for r in s.get("refs",[])][:1])
         dataset["opportunities"].append(item)
     add_sources(dataset,bundle["candidates"],config)
     # A source profile may contain several PDFs. Keep exact document URLs in the
