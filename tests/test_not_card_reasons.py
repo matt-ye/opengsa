@@ -9,6 +9,15 @@ from scripts.run_hand_replacement import run
 ELIGIBLE = [{"locator": "p", "text": "申請資格：本校博士班在學學生。", "kind": "paragraph"}]
 
 
+def setUpModule():
+    # 假網站不用等同站間隔（每站 3 秒）；間隔規則本身由 test_scanner 檢查。
+    import unittest.mock
+    from scripts import scan_sources
+    patcher = unittest.mock.patch.object(scan_sources, "pause", lambda seconds: None)
+    patcher.start()
+    unittest.addModuleCleanup(patcher.stop)
+
+
 def row(url="https://x.test/news/1", category="scholarship"):
     return {"url": url, "category": category}
 

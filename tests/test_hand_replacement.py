@@ -19,6 +19,15 @@ PAGE = ("<article><h1>{title}</h1><p>申請資格：國內大學碩士班、博�
         "<p>獎助金額：每名新臺幣五萬元。</p><p>申請期間：自115年3月1日起至115年4月15日止。</p></article>")
 
 
+def setUpModule():
+    # 假網站不用等同站間隔（每站 3 秒）；間隔規則本身由 test_scanner 檢查。
+    import unittest.mock
+    from scripts import scan_sources
+    patcher = unittest.mock.patch.object(scan_sources, "pause", lambda seconds: None)
+    patcher.start()
+    unittest.addModuleCleanup(patcher.stop)
+
+
 def row(url):
     return {"url": url, "category": "scholarship", "cards": [{"candidate_id": "x", "title": "x", "program_key": "x", "bundle": "x"}]}
 

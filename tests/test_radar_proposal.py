@@ -12,6 +12,15 @@ from scripts.scan_sources import digest
 from scripts.audit_sources import canonical_url
 from tests.test_expansion import HTML,row
 
+def setUpModule():
+    # 假網站不用等同站間隔（每站 3 秒）；間隔規則本身由 test_scanner 檢查。
+    import unittest.mock
+    from scripts import scan_sources
+    patcher = unittest.mock.patch.object(scan_sources, "pause", lambda seconds: None)
+    patcher.start()
+    unittest.addModuleCleanup(patcher.stop)
+
+
 class RadarProposalTests(unittest.TestCase):
     def setUp(self):
         # 正式資料的手寫卡會撤光：讀手寫基準時多標一張「網址只對應這張卡」的流程卡當素材，不寫檔。
