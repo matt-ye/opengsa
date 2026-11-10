@@ -42,7 +42,9 @@ def process(request, output, transport=node_get, progress=print, options=INTAKE_
     url = request["url"]
     # 手寫卡的 profile（標記字、選擇器）沒有驗證過，不拿來判斷真實頁面。
     # automation=not_enabled 是人工清單，只有手寫標題、沒有抽取設定；留著會把網站首頁命名成那個方案。
-    config["sources"] = [source for source in config["sources"] if source["id"] not in hand_source_ids() and source.get("automation") != "not_enabled"]
+    # 先算一次：寫在推導式條件裡會每個來源都重讀全部卡片檔（400 多個來源就讀 400 多遍）。
+    hand = hand_source_ids()
+    config["sources"] = [source for source in config["sources"] if source["id"] not in hand and source.get("automation") != "not_enabled"]
     # 維護者已核可這個網址，即使舊 profile 是停用狀態也要跑；不影響排程設定。
     config["sources"] = [{**source, "enabled": True} if canonical_url(source["url"]) == url else deepcopy(source) for source in config["sources"]]
     inventory = {"as_of": None, "rows": [{"id": f"ISSUE-{request['issue']}", "url": url, "title": "", "batch": BATCH, "category": request["category"],
