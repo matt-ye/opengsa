@@ -74,6 +74,7 @@ python scripts/review_candidates.py --candidates work/scanner/report/candidates.
   - 不是 HTML
   - 網站首頁
   - 列表頁、行政或資訊類標題
+  - 過去學年度的公告（標題寫的學年度都已過去，八月起算新學年度）
   - 標題看不出是方案
   - 找不到申請資格
 
@@ -84,6 +85,7 @@ python scripts/review_candidates.py --candidates work/scanner/report/candidates.
   - 哪些雜訊不該成卡
 
   `python scripts/evaluate_pages.py` 抓頁比對，原始回應只快取在 `work/eval/page-cache`，不進 repo。`--offline` 只用快取、不等請求間隔。有退步時結束碼為 1；原本不成卡的頁面改善後成卡，會標成「變動」請人確認。改萃取規則後先跑一次。
+- **學校頁的類別**：探索與入口頁巡檢傳給提交流程的是來源類別 `living`（`intake_source.CATEGORIES` 的值），不是卡片類別。`living` 才會套用助學金、紓困、急難這類標題與「申請對象」句子的放寬規則。
 - **只寫類別的標題**：例如「急難濟助」，會接上網站名稱（`<title>` 最後一段）。舊設定存著這類標題時，萃取時改用新標題，否則提案會把它當成泛稱擋掉，卡片就再也更新不了。
 時間與資格分開：缺必要學校、候選人或年級條件時不當符合；未結構化限制仍需人工核對。網站依臺北今天重算可確認窗口，舊快照的open不直接冒充今日開放；推定／未知起日不當正式開放日。結果確定程度、補送角色、結構化金額、國籍／就業／否定條件在候選轉pilot時保留。
 

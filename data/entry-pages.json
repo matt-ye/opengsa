@@ -4,7 +4,7 @@
   "pages": [
     {
       "url": "https://assistance.sa.ntnu.edu.tw/scholarships-0/",
-      "category": "living_tuition",
+      "category": "living",
       "school_id": "U004",
       "school": "國立臺灣師範大學",
       "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
@@ -12,7 +12,7 @@
     },
     {
       "url": "https://www.ncyu.edu.tw/life/Subject?nodeId=55082",
-      "category": "living_tuition",
+      "category": "living",
       "school_id": "U015",
       "school": "國立嘉義大學",
       "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
@@ -20,7 +20,7 @@
     },
     {
       "url": "https://website.ncyu.edu.tw/life/Subject?nodeId=59894",
-      "category": "living_tuition",
+      "category": "living",
       "school_id": "U015",
       "school": "國立嘉義大學",
       "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
@@ -28,7 +28,7 @@
     },
     {
       "url": "https://rb005.ndhu.edu.tw/p/403-1005-402.php",
-      "category": "living_tuition",
+      "category": "living",
       "school_id": "U017",
       "school": "國立東華大學",
       "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
@@ -36,7 +36,7 @@
     },
     {
       "url": "https://rb005.ndhu.edu.tw/p/412-1005-7230.php",
-      "category": "living_tuition",
+      "category": "living",
       "school_id": "U017",
       "school": "國立東華大學",
       "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
@@ -44,7 +44,7 @@
     },
     {
       "url": "https://rb005.ndhu.edu.tw/p/403-1005-3608.php",
-      "category": "living_tuition",
+      "category": "living",
       "school_id": "U017",
       "school": "國立東華大學",
       "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
@@ -52,7 +52,7 @@
     },
     {
       "url": "https://wdsa.nttu.edu.tw/p/403-1009-621.php?Lang=zh-tw",
-      "category": "living_tuition",
+      "category": "living",
       "school_id": "U019",
       "school": "國立臺東大學",
       "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
@@ -60,7 +60,7 @@
     },
     {
       "url": "https://service.utaipei.edu.tw/p/412-1034-3994.php?Lang=zh-tw",
-      "category": "living_tuition",
+      "category": "living",
       "school_id": "U027",
       "school": "臺北市立大學",
       "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
@@ -68,7 +68,7 @@
     },
     {
       "url": "https://service.utaipei.edu.tw/p/412-1034-5526.php?Lang=zh-tw",
-      "category": "living_tuition",
+      "category": "living",
       "school_id": "U027",
       "school": "臺北市立大學",
       "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
@@ -76,7 +76,7 @@
     },
     {
       "url": "https://student.ntust.edu.tw/p/412-1053-8400.php?Lang=zh-tw",
-      "category": "living_tuition",
+      "category": "living",
       "school_id": "U028",
       "school": "國立臺灣科技大學",
       "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
@@ -84,7 +84,7 @@
     },
     {
       "url": "https://student.ntust.edu.tw/p/412-1053-8425.php?Lang=zh-tw",
-      "category": "living_tuition",
+      "category": "living",
       "school_id": "U028",
       "school": "國立臺灣科技大學",
       "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
@@ -92,7 +92,7 @@
     },
     {
       "url": "https://student.ntust.edu.tw/p/412-1053-8402.php?Lang=zh-tw",
-      "category": "living_tuition",
+      "category": "living",
       "school_id": "U028",
       "school": "國立臺灣科技大學",
       "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
@@ -100,7 +100,7 @@
     },
     {
       "url": "https://osa.npust.edu.tw/unit/eas/scholarship/",
-      "category": "living_tuition",
+      "category": "living",
       "school_id": "U030",
       "school": "國立屏東科技大學",
       "approved_in": "https://github.com/matt-ye/opengsa/issues/130",

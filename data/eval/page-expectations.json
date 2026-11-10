@@ -32,6 +32,11 @@
     {"url": "https://www.mc.ntu.edu.tw/oia/Fpage.action?muid=1961&fid=1296", "category": "scholarship", "expect": {"no_card": true, "reason": "index_page"}, "note": "導覽列有多個獎學金連結，整頁被當成索引頁；方案名稱只出現在選單；改善後若成卡，評測會標成「變動」請人確認"},
     {"url": "https://www.coursera.org/", "category": "ai", "expect": {"no_card": true, "reason": "site_root_page"}},
     {"url": "https://www.fuboncharity.org.tw/chinese/help/index", "category": "living", "expect": {"no_card": true, "reason": "title_not_a_program"}},
-    {"url": "https://www.ece.moe.edu.tw/ch/subsidy/public-non-profit/index.html", "category": "living", "expect": {"no_card": true, "reason": "no_eligibility_sentence"}, "note": "內容由 JavaScript 載入，靜態頁讀不到"}
+    {"url": "https://www.ece.moe.edu.tw/ch/subsidy/public-non-profit/index.html", "category": "living", "expect": {"no_card": true, "reason": "no_eligibility_sentence"}, "note": "內容由 JavaScript 載入，靜態頁讀不到"},
+    {"url": "https://student.ntust.edu.tw/p/412-1053-8425.php?Lang=zh-tw", "category": "living", "expect": {"title_contains": "115學年度不利處境助學金申請公告"}, "forbid_titles_containing": ["114學年度"], "note": "#134 學校入口頁（2026-11-11 加入）：入口頁連到的本年度方案要成卡；114 學年度的查核結果公告是往年公告，不成卡。"},
+    {"url": "https://assistance.sa.ntnu.edu.tw/scholarships-0/", "category": "living", "expect": {"title_contains": "暖陽紓困助學金"}, "forbid_titles_containing": ["接受捐贈"], "note": "#134 學校入口頁（2026-11-11 加入）：入口頁連到的本年度方案要成卡；學校接受捐款的作業要點是行政規定，不成卡。"},
+    {"url": "https://rb005.ndhu.edu.tw/p/403-1005-3608.php", "category": "living", "expect": {"title_contains": "任江履昇女士清寒獎學金"}, "forbid_titles_containing": ["表單", "最新公告", "學生照顧"], "note": "#134 學校入口頁（2026-11-11 加入）：入口頁連到的本年度方案要成卡；表單下載頁與分類列表頁不成卡。"},
+    {"url": "https://website.ncyu.edu.tw/life/Subject?nodeId=59894", "category": "living", "expect": {"title_contains": "余傳韜校長紀念獎助學金"}, "forbid_titles_containing": ["113學年度", "114學年度"], "note": "#134 學校入口頁（2026-11-11 加入）：入口頁連到的本年度方案要成卡；113、114 學年度的公告是往年公告，不成卡。"},
+    {"url": "https://wdsa.nttu.edu.tw/p/403-1009-621.php?Lang=zh-tw", "category": "living", "expect": {"title_contains": "緊急紓困助學金設置要點"}, "note": "#134 學校入口頁（2026-11-11 加入）：入口頁連到的本年度方案要成卡；#134 時這校一張卡都沒有，原因是入口頁類別給成卡片類別 living_tuition。"}
   ]
 }

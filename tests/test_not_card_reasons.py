@@ -43,6 +43,44 @@ class NotCardReasonTests(unittest.TestCase):
                 self.assertEqual(not_card_reason(r, p, None), expected)
         self.assertTrue(all(code in NOT_CARD_REASONS for _, _, code in cases if code))
 
+    def test_school_pages_rejected_in_pr134(self):
+        """#134 人工駁回的三類學校頁：往年公告、學校的行政規定；本年度與還沒到的學年度照常成卡。"""
+        from datetime import date
+        from scripts import expand_sources
+        living = row(category="living")
+        with patch.object(expand_sources, "today", lambda: date(2026, 11, 11)):
+            cases = [
+                (page("114學年度「余傳韜校長紀念獎助學金」申請自114年4月起"), "past_year_title"),
+                (page("113 學年度清寒獎學金"), "past_year_title"),
+                (page("115學年度「余傳韜校長紀念獎助學金」申請自115年4月13日起"), None),
+                (page("113-115學年度某某獎學金"), None),
+                (page("「接受捐贈獎學金行政運作及管理作業要點」115-5"), "admin_title"),
+                (page("接受捐贈獎學金作業規定110-3"), "admin_title"),
+            ]
+            for p, expected in cases:
+                with self.subTest(title=p["title"]):
+                    self.assertEqual(not_card_reason(living, p, None), expected)
+        # 八月起是新學年度：2026-07 時 114 學年度還沒結束。
+        with patch.object(expand_sources, "today", lambda: date(2026, 7, 31)):
+            self.assertIsNone(not_card_reason(living, page("114學年度清寒獎學金"), None))
+        self.assertIn("past_year_title", NOT_CARD_REASONS)
+        self.assertEqual(not_card_reason(living, page("碩博士論文獎助最新公告"), None), "listing_title")
+
+    def test_school_titles_drop_office_prefix_but_keep_school(self):
+        from scripts.expand_sources import clean_title
+        self.assertEqual(clean_title("國立嘉義大學-學生事務處生活輔導組-115學年度「余傳韜校長紀念獎助學金」申請"),
+                         "國立嘉義大學115學年度「余傳韜校長紀念獎助學金」申請")
+        self.assertEqual(clean_title("【生活輔導組】115學年度不利處境助學金申請公告"), "115學年度不利處境助學金申請公告")
+
+    def test_school_category_relaxes_title_and_audience_rules(self):
+        """探索與入口頁用來源類別 living：學校的助學金、紓困金頁不寫「獎學金」，資格寫的是學生身分。"""
+        from scripts import discover_universities
+        self.assertEqual(discover_universities.CATEGORY, "living")
+        blocks = [{"locator": "p", "text": "申請對象：本校家境清寒之在學學生，得向生活輔導組申請。", "kind": "paragraph"}]
+        self.assertIsNone(not_card_reason(row(category="living"), page("暖陽紓困助學金", blocks=blocks), None))
+        self.assertEqual(not_card_reason(row(category="living_tuition"), page("暖陽紓困助學金", blocks=blocks), None),
+                         "title_not_a_program")
+
     def test_bare_category_title_gets_the_site_name_so_a_real_program_is_kept(self):
         from scripts.expand_sources import prepare_response
         from scripts.propose_radar_update import GENERIC_TITLE

@@ -38,13 +38,24 @@ def resource_title(title,category=None):
     pattern=CATEGORY_RESOURCE.get(category)
     return bool(RESOURCE.search(title or '') or (pattern and pattern.search(title or '')))
 
-INDEX=re.compile(r'^(?:最新消息|最新公告|獎學金|獎助學金|學生獎學金|學生事務|相關辦法|法規|首頁|獎(?:助)?學金(?:資訊|公告|公告資訊網|申請辦法)|news|scholarships?)$',re.I)
+# 「碩博士論文獎助最新公告」這種分類列表頁的標題，結尾是最新公告或最新消息。
+INDEX=re.compile(r'^(?:.{0,30}(?:最新消息|最新公告)|獎學金|獎助學金|學生獎學金|學生事務|相關辦法|法規|首頁|獎(?:助)?學金(?:資訊|公告|公告資訊網|申請辦法)|news|scholarships?)$',re.I)
 INFORMATION=re.compile(r'說明會|發放訊息|發放通知|QA整理|影片.*簡報|(?:Q\s*&\s*A|FAQ)',re.I)
 # 全庫擴展的預設界限；提交流程要從入口頁往下走，放寬連結範圍，並把附件也當成可能的方案文件。
 DEFAULT_OPTIONS={'follow_roles':('policy',),'max_children':8,'link_limit':8,'broad_links':False,'document_candidates':False,'group_documents':False}
 INTAKE_OPTIONS={'follow_roles':('policy','related_call'),'max_children':40,'link_limit':None,'broad_links':True,'document_candidates':True,'group_documents':True}
 INDEX_LINK_COUNT=3
-ADMIN=re.compile(r'教師(?:評審|評鑑|遴選)|院長選任|校長遴選|經費稽核委員會|預算分配委員會|電腦中心設置')
+# 「接受捐贈獎學金行政運作及管理作業要點」是學校怎麼收捐款的規定，不是給學生申請的方案。
+ADMIN=re.compile(r'教師(?:評審|評鑑|遴選)|院長選任|校長遴選|經費稽核委員會|預算分配委員會|電腦中心設置|接受捐[贈款]')
+ACADEMIC_YEAR=re.compile(r'(\d{3})\s*學年度')
+
+def today():return datetime.now(timezone(timedelta(hours=8))).date()
+
+def past_year_title(title):
+    """標題寫的學年度都已過去（八月起算新學年度），是往年公告；同一方案今年的公告另有一頁。寫了今年或之後的就不算。"""
+    years=[int(y) for y in ACADEMIC_YEAR.findall(title or '')]
+    day=today();current=day.year-1911-(day.month<8)
+    return bool(years) and max(years)<current
 
 def read(path):return json.loads(Path(path).read_text(encoding='utf-8-sig'))
 def save(path,value):
@@ -152,7 +163,7 @@ def prepare_response(response,profile,hosts,link_limit=8,broad_links=False,categ
 
 # 頁面讀到了卻不成卡的原因。記在每份文件上並在摘要統計，調規則時直接看卡在哪一關，不用逐頁除錯。
 NOT_CARD_REASONS={'index_page':'索引頁（列出多個方案）','category_not_carded':'這個類別不成卡','document_not_html':'不是 HTML 的附件',
-    'site_root_page':'網站首頁','listing_title':'列表頁標題','admin_title':'行政公告標題','information_title':'說明會或資訊類標題',
+    'site_root_page':'網站首頁','listing_title':'列表頁標題','admin_title':'行政公告標題','information_title':'說明會或資訊類標題','past_year_title':'過去學年度的公告',
     'title_not_a_program':'標題看不出是方案','no_eligibility_sentence':'找不到申請資格或申請對象'}
 
 def not_card_reason(row,prepared,known,documents=False):
@@ -165,6 +176,7 @@ def not_card_reason(row,prepared,known,documents=False):
     if INDEX.fullmatch(title):return 'listing_title'
     if ADMIN.search(title):return 'admin_title'
     if INFORMATION.search(title):return 'information_title'
+    if past_year_title(title):return 'past_year_title'
     if not resource_title(title,row['category']):return 'title_not_a_program'
     claim=discover_identity(prepared['blocks'],row['category'])
     if not (claim and claim['kind']=='eligibility_clause'):return 'no_eligibility_sentence'
@@ -180,7 +192,9 @@ def clean_title(title):
     text=re.sub(r'[\U0001F000-\U0001FAFF☀-➿️]','',text)
     text=re.sub(r'^(?:0\d(?:-\d+)?|\d{2}-\d+|\d{2}_)[_.\s]*(?=\D)','',text)
     text=re.sub(r'\s*\d{2,3}\.\d{1,2}\.\d{1,2}$','',text)
-    text=re.sub(r'^【[^】]*(?:公告|訊息|獎學金|獎助學金)[^】]*】\s*','',text)
+    text=re.sub(r'^【[^】]*(?:公告|訊息|獎學金|獎助學金|組|處|中心|室)】\s*','',text)
+    # 「國立嘉義大學-學生事務處生活輔導組-…」：處室名稱不是方案名稱；校名留著，讀者才知道是哪一校。
+    text=re.sub(r'^([^-－\s]*大學)\s*[-－]\s*[^-－\s]*(?:處|組|中心)[^-－\s]*\s*[-－]\s*',r'\1',text)
     # 法規資料庫的頁面標題帶系統名稱，例如「教育部主管法規共用系統-法規內容-…」。
     text=re.sub(r'^[^-－]*法規[^-－]*[-－]法規內容[-－]\s*','',text)
     # 附件編號與檔名裡的民國日期不是方案名稱；去掉後，同一方案的附件才會被當成同標題去重。
