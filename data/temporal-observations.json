@@ -248,6 +248,21 @@
         "https://www.microsoft.com/en-us/research/academic-program/phd-fellowship/"
       ],
       "observed_at": "2026-11-08T07:24:23+00:00"
+    },
+    {
+      "http_requests": 0,
+      "kind": "same_round",
+      "attempted_urls": [
+        "https://assistance.sa.ntnu.edu.tw/download/31/%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91/11680/%E3%80%8C%E6%8E%A5%E5%8F%97%E6%8D%90%E8%B4%88%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A1%8C%E6%94%BF%E9%81%8B%E4%BD%9C%E5%8F%8A%E7%AE%A1%E7%90%86%E4%BD%9C%E6%A5%AD%E8%A6%81%E9%BB%9E%E3%80%8D115-5.pdf",
+        "https://assistance.sa.ntnu.edu.tw/download/31/%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91/11914/%E6%8E%A5%E5%8F%97%E6%8D%90%E8%B4%88%E7%8D%8E%E5%AD%B8%E9%87%91%E4%BD%9C%E6%A5%AD%E8%A6%8F%E5%AE%9A110-3.pdf",
+        "https://rb005.ndhu.edu.tw/p/403-1005-3743-1.php",
+        "https://rb005.ndhu.edu.tw/p/403-1005-402.php",
+        "https://rb005.ndhu.edu.tw/p/412-1005-7230.php",
+        "https://website.ncyu.edu.tw/life/Subject/Detail/193463?nodeId=59894",
+        "https://website.ncyu.edu.tw/life/Subject/Detail/220156?nodeId=59894",
+        "https://website.ncyu.edu.tw/life/Subject/Detail/237600?nodeId=59894"
+      ],
+      "observed_at": "2026-11-10T04:01:37+00:00"
     }
   ],
   "records": {
@@ -39448,6 +39463,1022 @@
       ],
       "undetermined_subkind": "unparsed_timing_clause",
       "candidate_sha256": "6295da63fdf5cf1c0a811e30e2341502d3e72824517c8956dfb6fa3c6dd9e69e"
+    },
+    "cand-discovery-ddc8eafa1b3a0cf5c-05ccbdb0": {
+      "url": "https://website.ncyu.edu.tw/life/Subject/Detail/237600?nodeId=59894",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-10T04:02:48+00:00",
+      "raw_sha256": "dc0d0d0631450c6308a0f5ce366d05a76503db72f23004c7e2b02530f2c1b062",
+      "revision_id": "bb01498d789c3c42bcb10d82c0f02e12f51881a7be958128303061e3291761d5",
+      "format": "html",
+      "parser_sha256": "148ecd6304b89d622e3b38edcd77b4d6436fa9bb2a2200fe8337ebc67bb2987f",
+      "card_revision_id": "05ccbdb009b4b49d2cbe9515b69b008d142fa6120f15e301bf8e3ab4322bcd97",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "fixed_window",
+        "review_mode": "not_stated",
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "absolute",
+            "actor": "student",
+            "stage": "application_start",
+            "summary": "來源明示受理起日",
+            "value": "2026-04-13",
+            "precision": "date",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-ddc8eafa1b3a0cf5c",
+                "revision_id": "bb01498d789c3c42bcb10d82c0f02e12f51881a7be958128303061e3291761d5",
+                "locator": ".content / text-block 14 + .content / text-block 15",
+                "evidence_path": "temporal_replay/application_start"
+              }
+            ]
+          },
+          {
+            "rule_id": "replay/1",
+            "kind": "absolute",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "來源明示收件截止",
+            "value": "2026-06-01",
+            "precision": "date",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-ddc8eafa1b3a0cf5c",
+                "revision_id": "bb01498d789c3c42bcb10d82c0f02e12f51881a7be958128303061e3291761d5",
+                "locator": ".content / text-block 14 + .content / text-block 15",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
+        "gaps": []
+      },
+      "diagnostics": [
+        {
+          "locator": ".content / text-block 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 4 + .content / text-block 5",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 9",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 13",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 14 + .content / text-block 15",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            "2026-04-13",
+            "2026-06-01"
+          ],
+          "parsed_date": [
+            "date",
+            "2026-04-13"
+          ]
+        },
+        {
+          "locator": ".content / text-block 15",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            "2026-04-13",
+            "2026-06-01"
+          ],
+          "parsed_date": [
+            "date",
+            "2026-04-13"
+          ]
+        },
+        {
+          "locator": ".content / text-block 27",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ],
+      "candidate_sha256": "6621f6ca4fef741c362043ae170a31e10f564b15f4e27315ea3e86c1eab5af5a"
+    },
+    "cand-discovery-d3bba7b547abf84d0-15a57219": {
+      "url": "https://website.ncyu.edu.tw/life/Subject/Detail/220156?nodeId=59894",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-10T04:02:51+00:00",
+      "raw_sha256": "f3316da28444039656f2891162264978cbb04807edff6119394d887d0fb00eae",
+      "revision_id": "0ba1f2766d663202b98f1499f7fabd70046745872f5e7c9378be7fc69c8f1051",
+      "format": "html",
+      "parser_sha256": "148ecd6304b89d622e3b38edcd77b4d6436fa9bb2a2200fe8337ebc67bb2987f",
+      "card_revision_id": "15a5721915f9d0b42d53bb0ee75154483b607a0b788c310a0a9cf23db4e7316e",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "fixed_window",
+        "review_mode": "not_stated",
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "absolute",
+            "actor": "student",
+            "stage": "application_start",
+            "summary": "來源明示受理起日",
+            "value": "2025-04-15",
+            "precision": "date",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-d3bba7b547abf84d0",
+                "revision_id": "0ba1f2766d663202b98f1499f7fabd70046745872f5e7c9378be7fc69c8f1051",
+                "locator": ".content / text-block 14 + .content / text-block 15",
+                "evidence_path": "temporal_replay/application_start"
+              }
+            ]
+          },
+          {
+            "rule_id": "replay/1",
+            "kind": "absolute",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "來源明示收件截止",
+            "value": "2025-06-03",
+            "precision": "date",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-d3bba7b547abf84d0",
+                "revision_id": "0ba1f2766d663202b98f1499f7fabd70046745872f5e7c9378be7fc69c8f1051",
+                "locator": ".content / text-block 14 + .content / text-block 15",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
+        "gaps": []
+      },
+      "diagnostics": [
+        {
+          "locator": ".content / text-block 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 4 + .content / text-block 5",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 9",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 13",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 14 + .content / text-block 15",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            "2025-04-15",
+            "2025-06-03"
+          ],
+          "parsed_date": [
+            "date",
+            "2025-04-15"
+          ]
+        },
+        {
+          "locator": ".content / text-block 15",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            "2025-04-15",
+            "2025-06-03"
+          ],
+          "parsed_date": [
+            "date",
+            "2025-04-15"
+          ]
+        },
+        {
+          "locator": ".content / text-block 27",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ],
+      "candidate_sha256": "c17edd1f7829a4e416279545f7a52c76aea1396aba451a0e0d2a77c135d744f6"
+    },
+    "cand-discovery-d6b2166b00772a7de-dbc90951": {
+      "url": "https://website.ncyu.edu.tw/life/Subject/Detail/193463?nodeId=59894",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-10T04:02:54+00:00",
+      "raw_sha256": "0419aedebf95a012619f870639a90d2d0e57bd323573b52eb2d73c2425873291",
+      "revision_id": "7a6931e6c19998a7f2edffe4b8eada4a3c5c5f614e2be2dd15546dd8c5d58a91",
+      "format": "html",
+      "parser_sha256": "148ecd6304b89d622e3b38edcd77b4d6436fa9bb2a2200fe8337ebc67bb2987f",
+      "card_revision_id": "dbc9095155d5bfcb7f19cc46adf66ea8eda312cd83575c9d70b8fc3050e1df10",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "fixed_window",
+        "review_mode": "not_stated",
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "absolute",
+            "actor": "student",
+            "stage": "application_start",
+            "summary": "來源明示受理起日",
+            "value": "2024-04-15",
+            "precision": "date",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-d6b2166b00772a7de",
+                "revision_id": "7a6931e6c19998a7f2edffe4b8eada4a3c5c5f614e2be2dd15546dd8c5d58a91",
+                "locator": ".content / text-block 14 + .content / text-block 15",
+                "evidence_path": "temporal_replay/application_start"
+              }
+            ]
+          },
+          {
+            "rule_id": "replay/1",
+            "kind": "absolute",
+            "actor": "student",
+            "stage": "submission",
+            "summary": "來源明示收件截止",
+            "value": "2024-06-03",
+            "precision": "date",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-d6b2166b00772a7de",
+                "revision_id": "7a6931e6c19998a7f2edffe4b8eada4a3c5c5f614e2be2dd15546dd8c5d58a91",
+                "locator": ".content / text-block 14 + .content / text-block 15",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
+        "gaps": []
+      },
+      "diagnostics": [
+        {
+          "locator": ".content / text-block 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 4 + .content / text-block 5",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 9",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 13",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": ".content / text-block 14 + .content / text-block 15",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            "2024-04-15",
+            "2024-06-03"
+          ],
+          "parsed_date": [
+            "date",
+            "2024-04-15"
+          ]
+        },
+        {
+          "locator": ".content / text-block 15",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            "2024-04-15",
+            "2024-06-03"
+          ],
+          "parsed_date": [
+            "date",
+            "2024-04-15"
+          ]
+        },
+        {
+          "locator": ".content / text-block 27",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ],
+      "candidate_sha256": "8a71d389eac899183b49f282a5e1208300fccaae30b0d2b5d7642dd2989032fa"
+    },
+    "cand-discovery-issue-026dc837484c-620cbbfe": {
+      "url": "https://rb005.ndhu.edu.tw/p/403-1005-402.php",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-10T04:03:09+00:00",
+      "raw_sha256": "4b91fccc065233724d3ef43e38852e1ba8fcf992c210cb025afa1b6dc309a40e",
+      "revision_id": "44eb023a4549e5cb4f95a327b8063308d0bc2c14790253af67e06352771d4e1b",
+      "format": "html",
+      "parser_sha256": "148ecd6304b89d622e3b38edcd77b4d6436fa9bb2a2200fe8337ebc67bb2987f",
+      "card_revision_id": "620cbbfe31dd8151055693cf65b0bfa1481fc0eb1c59922c6db626daf79cd870",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "undetermined",
+        "review_mode": "not_stated",
+        "rules": [],
+        "gaps": [
+          "time_not_projected"
+        ]
+      },
+      "diagnostics": [
+        {
+          "locator": "main / text-block 20 + main / text-block 21 + main / text-block 22 + main / text-block 23",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 26 + main / text-block 27 + main / text-block 28 + main / text-block 29",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 75",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 76",
+          "has_deadline": true,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 77",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 78",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 80",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 81",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 82",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 85",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 110",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "date",
+            "2026-10-12"
+          ]
+        },
+        {
+          "locator": "main / text-block 111",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "date",
+            "2026-10-12"
+          ]
+        },
+        {
+          "locator": "main / text-block 112",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "date",
+            "2026-10-12"
+          ]
+        }
+      ],
+      "undetermined_subkind": "unparsed_timing_clause",
+      "candidate_sha256": "ebe7e757f11394ae6879649cd42812caf7778359329dbb312224a85bdc99515c"
+    },
+    "cand-discovery-d6a6f4a3535de74bb-3d338c16": {
+      "url": "https://rb005.ndhu.edu.tw/p/412-1005-7230.php",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-10T04:05:58+00:00",
+      "raw_sha256": "57074be86a5572cb99acb0cc6d804a1acc45e39b83b80e470529350ac9075d99",
+      "revision_id": "685147ba013c239acff1e5f72511b75795b891db925c634be6988c467e6435e4",
+      "format": "html",
+      "parser_sha256": "148ecd6304b89d622e3b38edcd77b4d6436fa9bb2a2200fe8337ebc67bb2987f",
+      "card_revision_id": "3d338c162caacb96275833511dcc7829c1c15f2290d256505483b02ba98bd8ae",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "undetermined",
+        "review_mode": "not_stated",
+        "rules": [],
+        "gaps": [
+          "time_not_projected"
+        ]
+      },
+      "diagnostics": [
+        {
+          "locator": "main / text-block 20 + main / text-block 21 + main / text-block 22 + main / text-block 23",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 26 + main / text-block 27 + main / text-block 28 + main / text-block 29",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 78 + main / text-block 79 + main / text-block 80",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 79 + main / text-block 80",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ],
+      "undetermined_subkind": "no_schedule_in_document",
+      "candidate_sha256": "25e0cf29000f8543d5a9fdf2d12b26f593cb6121966eadd322462c9f90b0e0d3"
+    },
+    "cand-discovery-d7d777ae8ef871b41-73739c49": {
+      "url": "https://rb005.ndhu.edu.tw/p/403-1005-3743-1.php",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-10T04:06:01+00:00",
+      "raw_sha256": "131c97b3dc1b18efabfb173a681130c52a6775bcd09f66315302873931347a37",
+      "revision_id": "774181595712366a9d7247934de0065afd170af2301333680b0f51c35ed881cb",
+      "format": "html",
+      "parser_sha256": "148ecd6304b89d622e3b38edcd77b4d6436fa9bb2a2200fe8337ebc67bb2987f",
+      "card_revision_id": "73739c4922ae4efbed7e72b38a2294e8e5cb2b61f82e5c0077c3445c74b05dbc",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "undetermined",
+        "review_mode": "not_stated",
+        "rules": [],
+        "gaps": [
+          "time_not_projected"
+        ]
+      },
+      "diagnostics": [
+        {
+          "locator": "main / text-block 20 + main / text-block 21 + main / text-block 22 + main / text-block 23",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 26 + main / text-block 27 + main / text-block 28 + main / text-block 29",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ],
+      "undetermined_subkind": "no_schedule_in_document",
+      "candidate_sha256": "42350d04b199115ee1837475fcff5954f9be5603b0427c0401304c0e6107a7cd"
+    },
+    "cand-discovery-d87ef71beb5774206-6bc96104": {
+      "url": "https://assistance.sa.ntnu.edu.tw/download/31/%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91/11680/%E3%80%8C%E6%8E%A5%E5%8F%97%E6%8D%90%E8%B4%88%E7%8D%8E%E5%AD%B8%E9%87%91%E8%A1%8C%E6%94%BF%E9%81%8B%E4%BD%9C%E5%8F%8A%E7%AE%A1%E7%90%86%E4%BD%9C%E6%A5%AD%E8%A6%81%E9%BB%9E%E3%80%8D115-5.pdf",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-10T03:59:47+00:00",
+      "raw_sha256": "ac60a5fe97c6299c8d6ae22f6ca2dc57162260189dc69c246b0418ac32d30e0f",
+      "revision_id": "47f9aceef05b073a551fb9adec3044235cfd4cc8796dce787a02ac600c0418bd",
+      "format": "pdf",
+      "parser_sha256": "148ecd6304b89d622e3b38edcd77b4d6436fa9bb2a2200fe8337ebc67bb2987f",
+      "card_revision_id": "6bc96104aea88df4776e5dbe96aa2bf6ed2f06be178644a7734bfe5e390be468",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "reference",
+        "review_mode": "not_stated",
+        "rules": [],
+        "gaps": []
+      },
+      "diagnostics": [
+        {
+          "locator": "PDF page 1 + PDF page 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ],
+      "candidate_sha256": "f7609bcca7b7a811b37157ddf3d308b34ba9e04e3be6e2c16cb5a932f7b2552f"
+    },
+    "cand-discovery-d2661751beebc3d82-a27c7293": {
+      "url": "https://assistance.sa.ntnu.edu.tw/download/31/%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91/11914/%E6%8E%A5%E5%8F%97%E6%8D%90%E8%B4%88%E7%8D%8E%E5%AD%B8%E9%87%91%E4%BD%9C%E6%A5%AD%E8%A6%8F%E5%AE%9A110-3.pdf",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-10T03:59:57+00:00",
+      "raw_sha256": "67f9fe660c65076363834674056c3eb2a87ec2a5517ce09d7de81f8821c0922e",
+      "revision_id": "fd8c8a3089f2d9e59d4b65bca5511375b1669a7949026377262a8bef5377052a",
+      "format": "pdf",
+      "parser_sha256": "148ecd6304b89d622e3b38edcd77b4d6436fa9bb2a2200fe8337ebc67bb2987f",
+      "card_revision_id": "a27c729348309f9a6b4e53c51c3d2b330879a5662a8ec5b93715fdc916c3d4fd",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "reference",
+        "review_mode": "not_stated",
+        "rules": [],
+        "gaps": []
+      },
+      "diagnostics": [
+        {
+          "locator": "PDF page 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1 + PDF page 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1 + PDF page 1",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1",
+          "has_deadline": true,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1 + PDF page 1 + PDF page 1",
+          "has_deadline": true,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1 + PDF page 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 3 + PDF page 3 + PDF page 3 + PDF page 3",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 3 + PDF page 3 + PDF page 3 + PDF page 3",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ],
+      "candidate_sha256": "ecac0da9f6c2c8a66a84642f517d9c6fa642d3f70cef126aca3229ee85641ee4"
     }
   },
   "baseline": {

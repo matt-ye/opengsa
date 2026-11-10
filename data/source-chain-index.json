@@ -1,8 +1,8 @@
 {
   "schema_version": "source-chain-index-1",
-  "as_of": "2026-11-08",
+  "as_of": "2026-11-10",
   "candidate_file": "data/candidates/source-review.json",
-  "candidate_sha256": "5b12065af95c09a2a6051c83d0cd3b5befc00a31b51d6a2c4f057e7552c7900a",
+  "candidate_sha256": "0a4ee3ac421e39a47504eedd82a7416d9034ffda50aa4ec3a42e1da438d0ca1c",
   "bundles": [
     "data/source-chains.json",
     "data/source-chain-batches/batch-01.json",
@@ -2911,6 +2911,118 @@
       ],
       "rules": [],
       "audited_batch": null
+    },
+    {
+      "key": "discovery-ddc8eafa1b3a0cf5c",
+      "title": "國立嘉義大學-學生事務處生活輔導組-115學年度「余傳韜校長紀念獎助學金」申請自115年4月13日起至6月1日止。",
+      "candidate_ids": [
+        "cand-discovery-ddc8eafa1b3a0cf5c-05ccbdb0"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d3bba7b547abf84d0",
+      "title": "國立嘉義大學-學生事務處生活輔導組-114學年度「余傳韜校長紀念獎助學金」申請自114年4月15日起至6月3日止。",
+      "candidate_ids": [
+        "cand-discovery-d3bba7b547abf84d0-15a57219"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d6b2166b00772a7de",
+      "title": "國立嘉義大學-學生事務處生活輔導組-113學年度「余傳韜校長紀念獎助學金」申請自113年4月15日起至6月3日止。",
+      "candidate_ids": [
+        "cand-discovery-d6b2166b00772a7de-dbc90951"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-issue-026dc837484c",
+      "title": "獎學金與學生照顧",
+      "candidate_ids": [
+        "cand-discovery-issue-026dc837484c-620cbbfe"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d6a6f4a3535de74bb",
+      "title": "任江履昇女士清寒獎學金",
+      "candidate_ids": [
+        "cand-discovery-d6a6f4a3535de74bb-3d338c16"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d7d777ae8ef871b41",
+      "title": "碩博士論文獎助最新公告",
+      "candidate_ids": [
+        "cand-discovery-d7d777ae8ef871b41-73739c49"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d87ef71beb5774206",
+      "title": "國立臺灣師範大學接受捐贈獎學金行政運作及管理作業要點",
+      "candidate_ids": [
+        "cand-discovery-d87ef71beb5774206-6bc96104"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d2661751beebc3d82",
+      "title": "國立臺灣師範大學接受捐贈獎學金作業規定",
+      "candidate_ids": [
+        "cand-discovery-d2661751beebc3d82-a27c7293"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
     }
   ],
   "included_links": [
@@ -2974,6 +3086,7 @@
     "第一批以13方案／19候選為基線；本次為64份候選文件／58組暫定方案，未完成跨URL語義別名整併。",
     "batch-01僅表示原第一批3方案的資訊鏈規則；全原始URL盤查見original-source-verification.json。",
     "全部規則與候選維持pending，不是人工發布核准。",
+    "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",

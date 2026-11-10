@@ -39,7 +39,8 @@ class ReviewWorkspaceTests(unittest.TestCase):
         self.source["title"]="SYNTH 合成 AI 工具補助"
         self.config["sources"]=[self.source]
         self.pilot=read(ROOT/"data/pilot.json")
-        self.ledger={"schema_version":"1.1.0","reviews":[]}
+        # 用正式台帳：產生的 patch 要能套在 repo 上（git apply --check），台帳不一定是空的。
+        self.ledger=read(ROOT/"data/scan-reviews.json")
         texts=["SYNTH：AI工具合成測試，不是真實補助。",
             "18歲以上至35歲、設籍臺北市6個月以上青年。",
             "具學籍或本年度應屆畢業資格。",
@@ -158,7 +159,8 @@ class ReviewWorkspaceTests(unittest.TestCase):
             self.assertIn("a/data/scan-reviews.json",patch_text)
             applied_check=subprocess.run(["git","apply","--check",str(output/"data-pr.patch")],cwd=ROOT,capture_output=True)
             self.assertEqual(applied_check.returncode,0,applied_check.stderr.decode(errors="replace"))
-            self.assertEqual(read(output/"reviews-proposal.json"),self.decisions)
+            # 提案的台帳＝正式台帳原有紀錄＋這次的決定。
+            self.assertEqual(read(output/"reviews-proposal.json")["reviews"],self.ledger["reviews"]+self.decisions["reviews"])
             self.assertIn('"publication_status": "proposal_generated_not_published"',(output/"review.html").read_text(encoding="utf-8"))
         for path,content in before.items():self.assertEqual((ROOT/path).read_bytes(),content)
 

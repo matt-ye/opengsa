@@ -2808,6 +2808,54 @@
       "program_key": "discovery-dd5a32d7ef14a91fb",
       "phase": "all",
       "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-ddc8eafa1b3a0cf5c-05ccbdb0",
+      "program_key": "discovery-ddc8eafa1b3a0cf5c",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-d3bba7b547abf84d0-15a57219",
+      "program_key": "discovery-d3bba7b547abf84d0",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-d6b2166b00772a7de-dbc90951",
+      "program_key": "discovery-d6b2166b00772a7de",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-issue-026dc837484c-620cbbfe",
+      "program_key": "discovery-issue-026dc837484c",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-d6a6f4a3535de74bb-3d338c16",
+      "program_key": "discovery-d6a6f4a3535de74bb",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-d7d777ae8ef871b41-73739c49",
+      "program_key": "discovery-d7d777ae8ef871b41",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-d87ef71beb5774206-6bc96104",
+      "program_key": "discovery-d87ef71beb5774206",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-d2661751beebc3d82-a27c7293",
+      "program_key": "discovery-d2661751beebc3d82",
+      "phase": "all",
+      "historical_baseline_allowed": true
     }
   ],
   "http_requests": 15,

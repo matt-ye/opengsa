@@ -31,7 +31,8 @@ class CardImportTests(unittest.TestCase):
             self.assertIsNone(card['review']['independent_reviewer'])
             self.assertFalse(card['review']['promotion_ready'])
         self.assertFalse(summary['published'])
-        self.assertEqual(read('data/scan-reviews.json')['reviews'],[])
+        # 匯入不算人工核可：台帳裡只能有駁回，不能有核可或上架紀錄。
+        self.assertEqual([r for r in read('data/scan-reviews.json')['reviews'] if r['action']!='dismissed'],[])
         self.assertEqual(len(read('data/pilot.json')['opportunities']),10)
 
     def test_synthetic_profiles_cover_current_cards_without_approvals(self):
