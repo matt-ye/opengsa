@@ -67,6 +67,7 @@
     "osa.kmu.edu.tw",
     "osa.nccu.edu.tw",
     "osa.nfu.edu.tw",
+    "osa.npust.edu.tw",
     "osa.nqu.edu.tw",
     "osa.ntut.edu.tw",
     "osa.nycu.edu.tw",
@@ -86,6 +87,7 @@
     "sab.tycg.gov.tw",
     "scholarship.moa.gov.tw",
     "scholarship.ncut.edu.tw",
+    "service.utaipei.edu.tw",
     "socbu.kcg.gov.tw",
     "sp.immigration.gov.tw",
     "special.moe.gov.tw",
@@ -103,7 +105,9 @@
     "tsweb.ntou.edu.tw",
     "tw.tzuchi.org",
     "w3.tnua.edu.tw",
+    "wdsa.nttu.edu.tw",
     "web-ch.scu.edu.tw",
+    "website.ncyu.edu.tw",
     "welfare.ntpc.gov.tw",
     "www.aca.ntu.edu.tw",
     "www.acerfoundation.org.tw",
@@ -176,6 +180,7 @@
     "www.moa.gov.tw",
     "www.mol.gov.tw",
     "www.myunidays.com",
+    "www.ncyu.edu.tw",
     "www.nncf.org",
     "www.notion.com",
     "www.nstc.gov.tw",
@@ -7401,7 +7406,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": false
+      "enabled": true
     },
     {
       "id": "discovery-d3bba7b547abf84d0",
