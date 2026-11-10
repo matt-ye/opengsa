@@ -11,12 +11,12 @@
 
 | 流程圖 | 位置 | 狀態 |
 |---|---|---|
-| 欄位計畫→Token 預算→分段→單一模型任務 | `docs/FIELD-SCOPED-EXTRACTION-PLAN.md` 第 10 節 | **部分實作、排程走不到** |
+| 欄位計畫→Token 預算→分段→單一模型任務 | `docs/archive/FIELD-SCOPED-EXTRACTION-PLAN.md` 第 10 節 | **部分實作、排程走不到** |
 | 現行流程（區塊→欄位計畫→規則→模型分段） | `docs/PREPARED-EXTRACTION.md` | 大致正確，但排程路徑走不到模型分支 |
 | 管線與權限邊界 | `docs/INGESTION-POC.md` | 部分過時 |
 | Micro-Chunking 長時續傳 | `docs/ACTIONS-TEMPORAL-EXTRACTION.md` | 部分過時，只對應手動 `temporal_replay` |
 | 審核工作台 | `docs/REVIEW-WORKSPACE.md` | 部分過時 |
-| 全庫四階段 | `docs/FULL-LIBRARY-EXTRACTION-PLAN.md` | 歷史紀錄，不是現行流程 |
+| 全庫四階段 | `docs/archive/FULL-LIBRARY-EXTRACTION-PLAN.md` | 歷史紀錄，不是現行流程 |
 
 ### 欄位計畫流程圖
 

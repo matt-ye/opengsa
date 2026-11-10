@@ -1,6 +1,9 @@
 """Outer-layer 3-track schedule router and 3-stage incremental diff gate.
 
-Tracks:
+Note: the scheduled scan (Mon-Sat 09:17 Taipei) does NOT use tracks; the weekday
+mapping below is only used by the manual `temporal_replay` operation (auto track).
+
+Tracks (weekday used only by manual temporal_replay):
 - gov (Tue/Fri, 週二/五): 公部門與政府機關獎助
 - enterprise (Mon/Thu, 週一/四): 企業、基金會與學會獎助
 - other (Wed/Sat, 週三/六): AI工具、研討會、校內院系與其他補助

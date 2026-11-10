@@ -1,6 +1,6 @@
 # 新來源到上架流程審查（2026-11-07）
 
-範圍：main `dbe0e98`。未改資料、未觸發 workflow、未連外部來源網站。實跑都在 repo 副本，傳輸換成讀本機假頁，假頁只用 `scholarship.opengsa-synthetic.example`。重現腳本在 [`source-intake-e2e-2026-11-07/`](source-intake-e2e-2026-11-07/)。
+範圍：main `dbe0e98`。未改資料、未觸發 workflow、未連外部來源網站。實跑都在 repo 副本，傳輸換成讀本機假頁，假頁只用 `scholarship.opengsa-synthetic.example`。重現腳本在 [`source-intake-e2e-2026-11-07/`](source-intake-e2e-2026-11-07)。
 
 ## 結論
 

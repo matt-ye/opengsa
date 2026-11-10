@@ -13,7 +13,7 @@ on:
         type: string
         default: 'taipei-ai-tools,hsinchu-ai-tools'
       schedule_track:
-        description: 'Outer schedule track routing (gov: Tue/Fri, enterprise: Mon/Thu, other: Wed/Sat)'
+        description: 'Outer schedule track routing (only for manual temporal_replay; the schedule does not use tracks. auto picks by weekday: gov: Tue/Fri, enterprise: Mon/Thu, other: Wed/Sat)'
         type: choice
         default: auto
         options: [auto, gov, enterprise, other, all]

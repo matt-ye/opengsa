@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Build universal source chain batches across all heterogeneous resource types.
 
-Generates:
-1. data/source-chain-batches/batch-k12.json (Archetype B: Government & Statutory Welfare, 25 schemes)
-2. data/source-chain-batches/batch-perks.json (Archetype D: Student Identity & AI Perks, 28 schemes)
-3. data/source-chain-batches/batch-enterprise.json (Archetype C: Corporate & Foundation Dual-Track, 85 schemes)
+Generates (2026-11-10 note: the k12, perks and enterprise cards were withdrawn, so those
+three batch files are now empty (0 documents); the baseline ledgers hold 25 / 40 / 85 items):
+1. data/source-chain-batches/batch-k12.json (Archetype B: Government & Statutory Welfare)
+2. data/source-chain-batches/batch-perks.json (Archetype D: Student Identity & AI Perks)
+3. data/source-chain-batches/batch-enterprise.json (Archetype C: Corporate & Foundation Dual-Track)
 4. data/source-chain-batches/batch-conference.json (Archetype E: Conference & Travel Grants, 5 schemes)
 5. data/source-chain-batches/batch-registry.json (Universal Registry aggregating all batches)
 """

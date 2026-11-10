@@ -104,7 +104,7 @@ if __name__ == "__main__":
     target = ROOT / "docs/audits/temporal-reextraction-2026-11-03.json"
     target.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     lines = [
-        "# 64筆時間重萃逐項檢核（含三軌排程與增量比對決策）",
+        "# 時間重萃逐項檢核（含增量比對決策）",
         "",
         "離線投影檢查，不代表獨立人工核准；原文未存檔，模型0。",
         "既有單位範例仍有自己的年度／版本／適用範圍，不因本輪主頁觀察而回填學生資格或受理狀態。",

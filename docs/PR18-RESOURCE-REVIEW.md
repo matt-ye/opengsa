@@ -1,6 +1,6 @@
 # PR #18 資源查核與更正
 
-查核日：2026-10-30（臺北）。PR #18／#19現已合併；以下保留初查紀錄，臺北／新竹後續兩筆具名候選見[候選推進](AI-TOOLS-CANDIDATES.md)。依[PR #18](https://github.com/matt-ye/opengsa/pull/18)的17筆搜尋種子逐項分流；該PR目前只有盤點文件，沒有把17項接入爬蟲或正式資料。以下是初查更正，不是獨立人工簽核。首頁連結不足以證明某項補助存在或現在開放。
+查核日：2026-10-30（臺北）。PR #18／#19現已合併；以下保留初查紀錄，臺北／新竹後續兩筆具名候選見[候選推進](archive/AI-TOOLS-CANDIDATES.md)。依[PR #18](https://github.com/matt-ye/opengsa/pull/18)的17筆搜尋種子逐項分流；該PR目前只有盤點文件，沒有把17項接入爬蟲或正式資料。以下是初查更正，不是獨立人工簽核。首頁連結不足以證明某項補助存在或現在開放。
 
 | 項目 | 查核結果／需修正處 | 具體官方依據 |
 |---|---|---|
@@ -17,7 +17,7 @@
 | Google新創雲端 | 原稿是新創計畫，非一般學生訂閱福利；20萬／35萬美元、階段與AI公司條件尚未逐項核實，先維持獨立新創搜尋種子 | [新創專區](https://cloud.google.com/startup)（額度待專案條款查核） |
 | AWS Educate | 可確認13歲起、電子郵件註冊及免信用卡；不限學籍。這是學習／實作實驗室，不推定一般AWS帳戶可任意使用Bedrock或獲通用現金點數；年級及博士候選人欄位可標N/A，註冊／年齡條件仍適用 | [官方方案](https://aws.amazon.com/education/awseducate/) |
 | OpenAI Researcher Access | 官方FAQ目前最高1,000美元API credits、有效12個月，非5,000美元；研究主題、研究機構關聯及支援地區等須核對，不是所有博士論文皆適用 | [官方FAQ](https://help.openai.com/en/articles/10139500-researcher-access-program-faq) |
-| NVIDIA | Inception是新創方案，Academic Grant應另建資源；不能混入NIM帳戶點數或保證所有學生享1,000點 | [Inception官方定位](https://www.nvidia.com/en-us/startups/)；API額度另見[API查核](API-AUDIT.md) |
+| NVIDIA | Inception是新創方案，Academic Grant應另建資源；不能混入NIM帳戶點數或保證所有學生享1,000點 | [Inception官方定位](https://www.nvidia.com/en-us/startups/)；API額度另見[API查核](archive/API-AUDIT.md) |
 | AIA學生方案 | 原稿只有機構首頁，未證實「大專學生減免」具名方案、當期金額、資格與受理方式；維持種子 | [機構入口](https://aiacademy.tw/)（非補助證據） |
 | OCF黑客松／伺服器補助 | 原稿未給特定徵件，不能由基金會存在推定持續提供AI獎金／伺服器補助；待具名公告 | [機構入口](https://ocf.tw/)（非補助證據） |
 | 均一狐狸貓 | 教育服務與現金／研究補助分開。原稿缺具名方案及適用年齡、是否需帳號與限制的直接來源；不以「完全免費開放」取代條款查核 | [平台入口](https://www.junyiacademy.org/)（具體服務條款待查） |
