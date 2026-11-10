@@ -87,8 +87,21 @@ flowchart TD
   python scripts/run_hand_replacement.py --targets work/discovery/approved-targets.json --output work/discovery/intake --propose
   ```
 
-  提案會把入口頁的網域加進 `allowed_hosts`、入口頁加成來源；之後照一般資料 PR 的流程（`open_data_pr.py`）開 PR。
+  之後照一般資料 PR 的流程（`open_data_pr.py`）開 PR。另外要手動補兩件事，同一個 PR 一起改：
+  - **網域加進 `allowed_hosts`**：`open_data_pr.py` 會把提案帶進來的新網域拿掉（公開提交的網域要人工另外加），所以勾選學校的網域由 agent 補進白名單。
+  - **入口頁登記到 `data/entry-pages.json`**：之後每週一重跑這些入口頁找新方案（見 5.1）。
+
+  第一批（#130 勾選的 7 校，#134）：13 個入口頁產生 8 張卡，使用者只收 2 張；其餘 6 張寫進駁回台帳並停用來源，分別是往年公告、列表頁標題、學校行政規定。
 - 沒勾選的網域不加入、不巡檢。
+
+### 5.1 入口頁每週巡檢
+
+每日掃描只重抓來源頁本身、不跟連結，入口頁上新出現的方案不會被發現。所以 `scan-sources` workflow 在週一那輪多一個 `entry-watch` job：
+
+- 重跑 `data/entry-pages.json` 裡的入口頁（`scripts/watch_entry_pages.py`）。入口頁上已經是來源的連結不再跟（`skip_known_children`），只對新連結跑提交流程。
+- 結果和同一輪排程掃描的提案合併成一份，由 `data-pr` job 開成週一那份資料 PR。入口頁提案是在掃描結果之上產生的，檔案以它為準；只有掃描改到的檔案從掃描提案補進來。
+- 只讀、不碰權杖；每輪最多 300 次請求，同站間隔 3 秒，不呼叫模型。
+- 已知限制：入口頁本身如果是駁回過的卡的來源，頁面改版時會再產生一張新卡，要再駁回一次。
 
 ## 6. 品質
 
