@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from scripts.run_source_intake import safe_text
+CARD_ID = re.compile(r"[A-Za-z0-9._-]{1,200}")
 
 ALLOWED_PREFIXES = ("data/", "docs/source-chains/")
 BRANCH = re.compile(r"data/[a-z0-9-]+")
@@ -105,6 +106,15 @@ def pr_body(summary, new_hosts, source_label):
     if new_hosts:
         lines.extend(["", "**新網域沒有加進 `allowed_hosts`：** " + "、".join(f"`{safe_text(host, 80)}`" for host in new_hosts),
                       "", "這些來源的 profile 是停用狀態，卡片可以上架，但不會被排程巡檢。確認網域可信後再手動加。"])
+    cards = summary.get("accepted_cards", [])
+    if cards:
+        lines.extend(["", "**卡片清單**：要拿掉某張卡，在這個 PR 留言 `/reject <卡片 id> [問題來源] <原因>`，一行一張；"
+                      "問題來源可省略，代碼見 `scripts/dismiss_candidate.py`。駁回後請在當週合併，下週一的提案會覆蓋這個分支。", "",
+                      "| 卡片 id | 標題 | 網站 |", "|---|---|---|"])
+        # 代號原樣列出（/reject 要用原樣）；不符合代號格式的才經過 safe_text。
+        lines.extend(f"| `{c['candidate_id'] if CARD_ID.fullmatch(c['candidate_id']) else safe_text(c['candidate_id'], 80)}` | {safe_text(c['title'], 60)} | {safe_text(urlhost(c['url']), 80)} |" for c in cards[:100])
+        if len(cards) > 100:
+            lines.append(f"| … | 另有 {len(cards) - 100} 張，見 `data/candidates/source-review.json` |")
     lines.extend(["", "推送前已跑過：`check_data`、`check_provenance`、`--check-config`、`unittest`、`node --test`、`build_site`。",
                   "這個 PR 由 Actions 開立時不會觸發 CI，所以上面這些是在開 PR 的 job 裡跑的。",
                   "", "人工核准數 0。沒有呼叫模型。"])

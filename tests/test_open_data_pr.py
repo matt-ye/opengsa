@@ -121,6 +121,16 @@ class OpenDataPrTests(unittest.TestCase):
         self.assertNotIn("[連結]", body)
         self.assertNotIn("#5", body)
 
+    def test_body_lists_card_ids_for_the_reject_command(self):
+        cards = [{"candidate_id": "cand-a-1", "title": "某某獎學金 | @someone", "url": "https://osa.demo.edu.tw/p/1#top"}]
+        body = pr_body({**SUMMARY, "accepted_cards": cards}, [], "測試")
+        self.assertIn("/reject", body)
+        row = next(line for line in body.splitlines() if "cand-a-1" in line)
+        # 標題裡的 | 不能多切出一欄，@ 不能變成提及。
+        self.assertEqual(row.count("|"), 4)
+        self.assertNotIn("@someone", row)
+        self.assertTrue(row.endswith("| osa.demo.edu.tw |"))
+
     def test_failed_push_does_not_show_the_token(self):
         out = self.base / "out"
         write(out / "result.json", {"status": "ready", "new_hosts": []})

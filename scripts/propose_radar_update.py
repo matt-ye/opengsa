@@ -212,7 +212,9 @@ def prepare(incoming,config,observations=None,replaced_urls=(),temporal=None):
         'proposed_candidates':len(merged['candidates']),'replaced_urls':sorted(urls),'invalidated_timeline_documents':sorted(invalid_docs),
         'byte_identical_rebound_documents':sorted({key[0] for key in rebound}-invalid_docs),
         'retired_hand_cards':retired,'needs_manual_retire':manual,'temporal_records':temporal_count,
-        'human_approvals':0,'published':False,'scheduled_sources_enabled':0}
+        'human_approvals':0,'published':False,'scheduled_sources_enabled':0,
+        # 資料 PR 說明列出每張卡的代號，審查時才能用 /reject 指定要駁回哪一張。
+        'accepted_cards':[{'candidate_id':c['candidate_id'],'title':c['title'],'url':c['source_metadata']['url']} for c in good]}
     return files,summary
 
 def write_proposal(incoming,config,output,preview=True,observations=None,replaced_urls=(),temporal=None):
