@@ -113,6 +113,11 @@ repo 設定 `can_approve_pull_request_reviews` 關閉時 Actions 開不了 PR，
 
 - **未審的卡直接上網站**，重點是快。卡片列出來源；不確定的欄位不猜，連到來源網站。
 - **駁回的卡下架**：`python scripts/dismiss_candidate.py --candidate-id ... --reason ... --problem-source extraction`。寫進台帳後，網站與 RSS 下一次建置就不顯示。卡片留在候選檔，原因和 `problem_source`（`source_page`、`extraction`、`wrong_url`、`not_a_program`、`other`）留在台帳，之後用來改進萃取腳本。
+- **在資料 PR 上單張駁回**（2026-11-11）：在資料 PR 留言 `/reject <卡片 id> [問題來源] <原因>`，一行一張；問題來源可省略，記成 `other`。`reject-command.yml` 用 main 的 `scripts/reject_command.py` 把駁回寫進 PR 分支的台帳；再把 PR 分支的資料放進 main 的工作目錄，用 main 的程式跑過和 CI 相同的檢查，才推回分支（不 force push），最後回覆結果。PR 分支上的程式碼不會執行。指令可以寫在留言的任何一行。
+  - **只有 repo owner 的留言會處理**，而且只處理本 repo、`data/` 開頭的分支。留言內容只由腳本從事件檔讀。
+  - **停用來源**：PR 新加的來源，如果它在 PR 裡的卡全被駁回，會一起停用；PR 之前就有的來源不動。
+  - **卡片代號**：資料 PR 說明會列出每張卡的代號、標題和網站（提案摘要的 `accepted_cards`）。
+  - **限制**：每週一的提案會 force push 覆蓋資料 PR 的分支。駁回後要在當週合併，否則下週一會被蓋掉。
 - **目前只有 repo owner 核准提交與駁回。** 讓核准更方便是未來規劃，這輪不做。
 
 ## 人工台帳與PR匯出

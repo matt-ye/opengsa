@@ -1,0 +1,103 @@
+name: Reject command
+
+# 維護者在資料 PR 留言 `/reject <卡片 id> [問題來源] <原因>`，把那張卡寫進駁回台帳並推回 PR 分支。
+# 只處理 repo owner 在本 repo data/ 分支 PR 上的留言。留言是輸入資料，只由腳本從事件檔讀，不放進 run 指令。
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: reject-command-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  reject:
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '/reject') && github.event.comment.user.login == github.repository_owner
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # 寫入只用在推回 data/ 分支與在 PR 留言。這個 job 不抓任何網頁。
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Find the PR branch (only data/ branches of this repo)
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ github.event.issue.number }}
+        run: |
+          info=$(gh pr view "$NUMBER" --repo "$GITHUB_REPOSITORY" --json headRefName,isCrossRepository,state,baseRefName)
+          ref=$(echo "$info" | jq -r .headRefName)
+          if [ "$(echo "$info" | jq -r .isCrossRepository)" != "false" ] || [ "$(echo "$info" | jq -r .state)" != "OPEN" ] || [ "$(echo "$info" | jq -r .baseRefName)" != "main" ] || ! [[ "$ref" =~ ^data/[a-z0-9-]+$ ]]; then
+            echo "not an open data PR of this repo; skip" ; echo "ok=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          echo "ok=true" >> "$GITHUB_OUTPUT"
+          echo "ref=$ref" >> "$GITHUB_OUTPUT"
+      # 腳本與檢查都用 main 的版本；PR 分支只當資料目錄。兩邊都不把權杖留在磁碟上。
+      - if: steps.pr.outputs.ok == 'true'
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - if: steps.pr.outputs.ok == 'true'
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ steps.pr.outputs.ref }}
+          path: pr
+          persist-credentials: false
+      - if: steps.pr.outputs.ok == 'true'
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
+      - if: steps.pr.outputs.ok == 'true'
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+      - if: steps.pr.outputs.ok == 'true'
+        run: python -m pip install -r requirements-dev.txt
+      - name: Write the dismissals into the PR branch's ledger
+        id: reject
+        if: steps.pr.outputs.ok == 'true'
+        run: python scripts/reject_command.py --root pr --output work/reject
+      # 用 GITHUB_TOKEN 推的提交不會觸發 CI，所以和開資料 PR 時一樣，推之前先跑同一組檢查。
+      # 檢查用 main 的程式：把 PR 分支的資料複製到 main 的工作目錄再跑，PR 分支上的程式碼一行都不執行。
+      - name: Run the same checks as CI with main's code on the PR's data
+        id: gates
+        if: steps.reject.outputs.changed == 'true'
+        run: |
+          rm -rf data docs/source-chains
+          cp -r pr/data data
+          if [ -d pr/docs/source-chains ]; then cp -r pr/docs/source-chains docs/source-chains; fi
+          cp pr/README.md README.md
+          # 檢查的輸出直接進 log；結果經檔案傳回，不混進輸出。
+          python -c "import sys; sys.path.insert(0, '.'); from scripts.open_data_pr import run_gates; open('work/reject/gate', 'w').write(run_gates('.') or '')"
+          echo "failed=$(cat work/reject/gate)" >> "$GITHUB_OUTPUT"
+      - name: Commit and push to the PR branch (never force)
+        id: push
+        if: steps.reject.outputs.changed == 'true' && steps.gates.outputs.failed == ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REF: ${{ steps.pr.outputs.ref }}
+        run: |
+          cd pr
+          git add -- data/scan-reviews.json data/scan-sources.json
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "data: /reject 駁回卡片"
+          # 權杖放在 header，不放進網址，錯誤訊息裡也不會出現。
+          auth=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c http.https://github.com/.extraheader="AUTHORIZATION: basic ${auth}" push "https://github.com/${GITHUB_REPOSITORY}.git" "HEAD:refs/heads/${REF}"
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+      - name: Reply on the PR
+        if: always() && steps.pr.outputs.ok == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ github.event.issue.number }}
+          PUSHED: ${{ steps.push.outputs.pushed }}
+          FAILED: ${{ steps.gates.outputs.failed }}
+        run: |
+          args=()
+          [ "$PUSHED" = "true" ] && args+=(--pushed)
+          [ -n "$FAILED" ] && args+=(--failed-gate "$FAILED")
+          python scripts/reject_command.py --root pr --output work/reject --reply "${args[@]}"
+          gh pr comment "$NUMBER" --repo "$GITHUB_REPOSITORY" --body-file work/reject/comment.md
