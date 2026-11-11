@@ -32,7 +32,7 @@ class WatchEntryPagesTests(unittest.TestCase):
         self.addCleanup(self.tmp.cleanup)
         self.dir = Path(self.tmp.name)
         self.root = self.dir / "repo"
-        save(self.root / watch.REGISTRY, {"pages": [{"url": "https://osa.demo.edu.tw/aid", "category": "living_tuition"}]})
+        save(self.root / watch.REGISTRY, {"pages": [{"url": "https://osa.demo.edu.tw/aid", "category": "living"}]})
 
     def test_entry_files_win_and_scan_only_files_are_kept(self):
         base = proposal(self.dir / "base", {"data/a.json": "scan", "data/b.json": "scan"}, 2)
@@ -75,7 +75,7 @@ class WatchEntryPagesTests(unittest.TestCase):
         def nothing(output, targets, preview):
             raise ValueError("no_candidates_to_propose")
         watch.watch(self.dir / "out", None, root=self.root, runner=runner, proposer=nothing)
-        self.assertEqual(seen["targets"], [{"url": "https://osa.demo.edu.tw/aid", "category": "living_tuition", "cards": []}])
+        self.assertEqual(seen["targets"], [{"url": "https://osa.demo.edu.tw/aid", "category": "living", "cards": []}])
         self.assertTrue(seen["options"]["skip_known_children"])
 
 
@@ -93,7 +93,7 @@ class SkipKnownChildrenTests(unittest.TestCase):
             if url.endswith("/aid"):
                 return {"status": 200, "headers": {"content-type": "text/html"}, "body": self.PAGE.encode()}
             return {"status": 404, "headers": {}, "body": b""}
-        inventory = {"rows": [{"id": "E", "url": "https://osa.demo.edu.tw/aid", "title": "", "batch": "B1", "category": "living_tuition", "restrictions": []}]}
+        inventory = {"rows": [{"id": "E", "url": "https://osa.demo.edu.tw/aid", "title": "", "batch": "B1", "category": "living", "restrictions": []}]}
         config = {"sources": [{"id": "k", "url": "https://osa.demo.edu.tw/known", "enabled": True}]}
         with tempfile.TemporaryDirectory() as tmp, mock.patch("scripts.scan_sources.pause"):
             run_batch(inventory, initial_state(inventory), "B1", Path(tmp) / "state.json", config, transport=transport,

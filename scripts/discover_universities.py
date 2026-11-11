@@ -41,7 +41,9 @@ NOTICE = re.compile(r"^【|學年度|學期|\d{4}\s*[-－–]\s*\d{4}\s*年度|�
 # 臺灣很多大學用同一套網站系統（rpage）：/p/404-… 是單篇文章，/p/403-…、/p/412-… 才是列表頁。
 SINGLE_POST = re.compile(r"/p/404-\d+-\d+\.php")
 OFFICE = re.compile(r"學務處|學生事務|生活輔導|生輔|student\s*affairs", re.I)
-CATEGORY = "living_tuition"  # 學校獎助頁大多是學雜費與生活助學類
+# 來源類別（intake_source.CATEGORIES 的值），不是卡片類別。學校獎助頁大多是學雜費、生活與急難類；
+# 用 living 才會套上這類頁面放寬的標題與申請對象規則（expand_sources.CATEGORY_RESOURCE、semantic_facts.audience_clause）。
+CATEGORY = "living"
 INDEX_LINKS = 3
 MAX_STEPS = 6
 MAX_LINKS = 60
