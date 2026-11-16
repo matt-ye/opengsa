@@ -1,8 +1,8 @@
 {
   "schema_version": "source-chain-index-1",
-  "as_of": "2026-11-10",
+  "as_of": "2026-11-16",
   "candidate_file": "data/candidates/source-review.json",
-  "candidate_sha256": "0a4ee3ac421e39a47504eedd82a7416d9034ffda50aa4ec3a42e1da438d0ca1c",
+  "candidate_sha256": "2e35263b22ff7d6d992c2e3c4576edfe00c9fd69b755af24a78c3c9d7e1ac00e",
   "bundles": [
     "data/source-chains.json",
     "data/source-chain-batches/batch-01.json",
@@ -3023,6 +3023,233 @@
       ],
       "rules": [],
       "audited_batch": null
+    },
+    {
+      "key": "discovery-df837d9384b67ce2c",
+      "title": "還願助學金",
+      "candidate_ids": [
+        "cand-discovery-df837d9384b67ce2c-29d70cdb",
+        "cand-discovery-da0d8a975d2cafd7e-10107fa6"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-df9470a30df499d28",
+      "title": "暖陽紓困助學金",
+      "candidate_ids": [
+        "cand-discovery-df9470a30df499d28-4ec15385"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-df1ecbf9be5d17bd7",
+      "title": "夢想起飛獎助學金",
+      "candidate_ids": [
+        "cand-discovery-df1ecbf9be5d17bd7-4e9f6f60"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d430cb3339ddaae2b",
+      "title": "115學年度「大專校院不利處境學生助學計畫」申請",
+      "candidate_ids": [
+        "cand-discovery-d430cb3339ddaae2b-03760bd5",
+        "cand-discovery-da4c2cb47bb48766b-c986a59e",
+        "cand-discovery-dcd2d334f974f9209-c186d140"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-dddb311bc25c98392",
+      "title": "教育部學產基金急難慰問金",
+      "candidate_ids": [
+        "cand-discovery-dddb311bc25c98392-a0660234"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d68602796e4c59875",
+      "title": "115學年度第1學期-學產基金低收入戶學生助學金申請",
+      "candidate_ids": [
+        "cand-discovery-d68602796e4c59875-540387d2"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d63b47162bd725635",
+      "title": "國立臺東大學學生急難慰問金實施辦法",
+      "candidate_ids": [
+        "cand-discovery-dcb99cc8ea465eae8-c326bda9"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-dbfe058c5f842f691",
+      "title": "國立臺東大學學生緊急紓困助學金設置要點_111.04.28行政會議通過",
+      "candidate_ids": [
+        "cand-discovery-de5f54b0fff73ca9d-9403168a"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-db7de73bb3a50634f",
+      "title": "教育部修正「學產基金設置急難慰問金實施要點」，自即日起實施",
+      "candidate_ids": [
+        "cand-discovery-db7de73bb3a50634f-94fd3611"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d8f2f4b1fce118ff4",
+      "title": "政府「急難紓困實施方案」新修正",
+      "candidate_ids": [
+        "cand-discovery-d8f2f4b1fce118ff4-2966234f"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d0c7c6ea27cee0283",
+      "title": "(彙送)財團法人賑災基金會「115年0624豪雨受災學生助學金」申請辦理公告",
+      "candidate_ids": [
+        "cand-discovery-d0c7c6ea27cee0283-7f193e34"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d969df883248bef06",
+      "title": "急難救助資源公告",
+      "candidate_ids": [
+        "cand-discovery-d969df883248bef06-1197efc6"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-deb1d81224253a6ea",
+      "title": "115學年度不利處境助學金申請公告(原弱勢助學金)",
+      "candidate_ids": [
+        "cand-discovery-deb1d81224253a6ea-ffb3169a"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d992b595bb9247b32",
+      "title": "圓夢育才助學金要點",
+      "candidate_ids": [
+        "cand-discovery-d992b595bb9247b32-07a570d1"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-d87cb7cbffae71bae",
+      "title": "校內外獎助學金申請須知",
+      "candidate_ids": [
+        "cand-discovery-d87cb7cbffae71bae-8eddbf13"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
+    },
+    {
+      "key": "discovery-de48df978ed709330",
+      "title": "115學年度第一學期學雜費減免須知",
+      "candidate_ids": [
+        "cand-discovery-de48df978ed709330-e5888bf0"
+      ],
+      "audit_status": "baseline_pending",
+      "source_contexts": [],
+      "gaps": [
+        "新發現雷達候選；資訊鏈與方案別名尚待核對，不代表完整閉合。"
+      ],
+      "rules": [],
+      "audited_batch": null
     }
   ],
   "included_links": [
@@ -3086,6 +3313,7 @@
     "第一批以13方案／19候選為基線；本次為64份候選文件／58組暫定方案，未完成跨URL語義別名整併。",
     "batch-01僅表示原第一批3方案的資訊鏈規則；全原始URL盤查見original-source-verification.json。",
     "全部規則與候選維持pending，不是人工發布核准。",
+    "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
