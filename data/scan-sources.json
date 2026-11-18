@@ -7556,7 +7556,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": true
+      "enabled": false
     },
     {
       "id": "discovery-da0d8a975d2cafd7e",
@@ -7571,7 +7571,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": true
+      "enabled": false
     },
     {
       "id": "discovery-d430cb3339ddaae2b",
@@ -7631,7 +7631,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": true
+      "enabled": false
     },
     {
       "id": "discovery-dcd2d334f974f9209",
@@ -7646,7 +7646,7 @@
       "category": "living_tuition",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": true
+      "enabled": false
     },
     {
       "id": "discovery-dcb99cc8ea465eae8",
@@ -7691,7 +7691,7 @@
       "category": "living_emergency",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": true
+      "enabled": false
     },
     {
       "id": "discovery-d8f2f4b1fce118ff4",
@@ -7721,7 +7721,7 @@
       "category": "living_emergency",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": true
+      "enabled": false
     },
     {
       "id": "discovery-d969df883248bef06",
@@ -7736,7 +7736,7 @@
       "category": "living_emergency",
       "resource_kind": "scholarship",
       "scope": "nationwide",
-      "enabled": true
+      "enabled": false
     },
     {
       "id": "discovery-deb1d81224253a6ea",
