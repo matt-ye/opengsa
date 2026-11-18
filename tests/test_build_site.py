@@ -76,7 +76,7 @@ console.log(items.length+' items: temporal labels, geometry, ambiguous years, in
         pages = {f for f in files if f.startswith("p/")}
         self.assertTrue(all(re.fullmatch(r"p/[a-z0-9][a-z0-9-]*/index\.html", f) for f in pages), pages)
         self.assertEqual(files - pages, {"index.html", "assets/opengsa-social-preview.jpg", ".nojekyll", "feed.xml",
-            "feed-deadlines.xml", "sitemap.xml", "robots.txt"})
+            "feed-deadlines.xml", "sitemap.xml", "robots.txt", "404.html"})
         self.assertEqual((self.output / "assets/opengsa-social-preview.jpg").read_bytes(), (ROOT / "docs/assets/opengsa-social-preview.jpg").read_bytes())
 
     def test_preview_is_self_contained_and_uses_named_radar_snapshot(self):
@@ -112,7 +112,12 @@ console.log(items.length+' items: temporal labels, geometry, ambiguous years, in
     def test_every_programme_has_a_crawlable_page_with_sources(self):
         snapshot = json.loads(re.search(r'<script id="pilot-data" type="application/json">(.*?)</script>', self.html, re.S)[1])
         pages = sorted((self.output / "p").glob("*/index.html"))
-        self.assertEqual(len(pages), len(snapshot["opportunities"]))
+        full_bundle, _ = load_full_library(ROOT)
+        opportunity_ids = {c["opportunity_id"] for c in full_bundle["candidates"]}
+        # 同一個 opportunity_id 的卡合成一頁（2026-11-18 使用者決定），所以頁數等於方案數而非卡數。
+        self.assertEqual(len(pages), len(opportunity_ids))
+        all_text = "".join(p.read_text(encoding="utf-8") for p in pages)
+        self.assertTrue(all(f"id={o['id']}" in all_text for o in snapshot["opportunities"]), "每張卡都要出現在某一頁")
         titles = set()
         for page in pages:
             html = page.read_text(encoding="utf-8")
@@ -134,9 +139,8 @@ console.log(items.length+' items: temporal labels, geometry, ambiguous years, in
         visible = BeautifulSoup(re.sub(r"<script[\s\S]*?</script>", "", self.html), "html.parser")
         index = visible.select_one("#programme-index")
         self.assertIsNotNone(index)
-        self.assertEqual(len(index.select('a[href^="p/"]')), len(snapshot["opportunities"]))
-        text = index.get_text()
-        self.assertTrue(all(o["title"] in text for o in snapshot["opportunities"]))
+        pages = list((self.output / "p").glob("*/index.html"))
+        self.assertEqual({a["href"] for a in index.select('a[href^="p/"]')}, {f"p/{p.parent.name}/" for p in pages})
 
     def test_sitemap_and_robots_point_at_every_page(self):
         sitemap = (self.output / "sitemap.xml").read_text(encoding="utf-8")

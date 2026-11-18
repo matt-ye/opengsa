@@ -13,8 +13,8 @@ for p in (ROOT, ROOT / "scripts"):
 from export_wireframes import export
 from scripts.build_review_workspace import candidate_preview_data
 from scripts.build_feed import SITE_URL, build_feeds
-from scripts.build_pages import (index_section, page_titles, programme_slugs, programme_sources, render_programme,
-    robots_txt, sitemap_xml, website_jsonld)
+from scripts.build_pages import (index_section, page_titles, programme_groups, programme_slugs, programme_sources, render_programme,
+    not_found_html, robots_txt, sitemap_xml, website_jsonld)
 from scripts.check_data import validate_candidate_snapshot
 from scripts.radar_metadata import known_hand_authored, pending_extractor, radar_metadata
 from scripts.review_candidates import dismissed_candidate_ids
@@ -169,27 +169,34 @@ def build(output):
     opportunity_ids = {c["candidate_id"]: c.get("opportunity_id") or c["candidate_id"] for c in candidates["candidates"]}
     programmes = [dict(o, opportunity_id=opportunity_ids[o["id"]]) for o in preview["opportunities"]]
     slugs = programme_slugs(programmes)
+    groups = programme_groups(programmes, slugs)
     unverified = known_hand_authored() | pending_extractor()
-    replace_once("</main>", index_section(programmes, slugs, unverified) + "</main>")
-    page.write_text(html, encoding="utf-8")
     sources_by_id = {src["id"]: src for src in preview["sources"]}
-    titles = page_titles(programmes, sources_by_id)
-    for programme in programmes:
-        target = output / "p" / slugs[programme["id"]] / "index.html"
+    titles = page_titles(groups, sources_by_id)
+    replace_once("</main>", index_section(groups, titles, unverified) + "</main>")
+    page.write_text(html, encoding="utf-8")
+    for slug, cards in groups.items():
+        sources, seen = [], set()
+        for card in cards:
+            for src in programme_sources(card, sources_by_id):
+                if src["id"] not in seen:
+                    seen.add(src["id"])
+                    sources.append(src)
+        target = output / "p" / slug / "index.html"
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(render_programme(
-            programme, slugs[programme["id"]], programme_sources(programme, sources_by_id),
-            programme["id"] in unverified, URL, ANALYTICS_HEAD, footer_html, preview["as_of"],
-            title=titles[programme["id"]],
+            cards, slug, sources, unverified, URL, ANALYTICS_HEAD, footer_html, preview["as_of"], titles[slug],
+            sources_by_id,
         ), encoding="utf-8")
     (output / "sitemap.xml").write_text(sitemap_xml(URL, slugs), encoding="utf-8")
     (output / "robots.txt").write_text(robots_txt(URL), encoding="utf-8")
+    (output / "404.html").write_text(not_found_html(URL), encoding="utf-8")
     assets = output / "assets"
     assets.mkdir(parents=True, exist_ok=True)
     shutil.copy2(ROOT / "docs/assets/opengsa-social-preview.jpg", assets / "opengsa-social-preview.jpg")
     build_feeds(output, candidates["candidates"], observations)
     (output / ".nojekyll").touch()
-    print(f"Built public site: index.html, {len(slugs)} programme pages, sitemap.xml, robots.txt, feeds, assets, .nojekyll")
+    print(f"Built public site: index.html, {len(groups)} programme pages, sitemap.xml, robots.txt, feeds, assets, .nojekyll")
 
 
 if __name__ == "__main__":

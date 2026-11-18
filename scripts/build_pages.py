@@ -25,20 +25,38 @@ SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 
 def programme_slugs(opportunities):
     """方案網址代號。candidate_id 帶來源版本雜湊，來源一改版就會換，不能當網址；
-    opportunity_id 是「方案＋年度梯次」的語意代號。少數重複的再加上首個來源 id 區分。"""
-    counts = Counter(o["opportunity_id"] for o in opportunities)
-    slugs = {}
+    opportunity_id 是方案的語意代號。同一個 opportunity_id 的卡（例如同一方案的法規與網頁、
+    或兩條申請路徑）共用一頁，2026-11-18 使用者決定。"""
+    slugs, owner = {}, {}
     for o in opportunities:
-        base = o["opportunity_id"].lower()
-        if counts[o["opportunity_id"]] > 1:
-            base = f"{base}--{first_source(o) or o['id']}".lower()
-        slug = re.sub(r"[^a-z0-9-]+", "-", base).strip("-")
+        slug = re.sub(r"[^a-z0-9-]+", "-", o["opportunity_id"].lower()).strip("-")
         if not SLUG_RE.match(slug):
             raise ValueError(f"Unusable programme slug: {o['id']}")
+        if owner.setdefault(slug, o["opportunity_id"]) != o["opportunity_id"]:
+            raise ValueError(f"Different opportunity_ids map to one slug: {slug}")
         slugs[o["id"]] = slug
-    if len(set(slugs.values())) != len(slugs):
-        raise ValueError("Programme slugs collide; review opportunity_id uniqueness")
     return slugs
+
+
+def group_title(cards):
+    """一頁多卡時的方案名稱：標題都相同就用它；不同就取共同前綴，太短才退回第一張。"""
+    names = [c["title"] for c in cards]
+    if len(set(names)) == 1:
+        return names[0]
+    prefix = names[0]
+    for n in names[1:]:
+        while not n.startswith(prefix):
+            prefix = prefix[:-1]
+    prefix = prefix.rstrip("（(｜|-－ 　")
+    return prefix if len(prefix) >= 6 else names[0]
+
+
+def programme_groups(opportunities, slugs):
+    """slug → 該頁的卡，依 candidate_id 排序，順序穩定。"""
+    groups = {}
+    for o in sorted(opportunities, key=lambda x: x["id"]):
+        groups.setdefault(slugs[o["id"]], []).append(o)
+    return groups
 
 
 def _refs(value):
@@ -89,8 +107,8 @@ def page_description(o, title=None):
     return text + suffix
 
 
-def page_titles(opportunities, sources_by_id):
-    """同名方案（不同學校轉發、不同梯次）在標題後加上區分，避免多頁共用同一個 <title>。
+def page_titles(groups, sources_by_id):
+    """slug → 頁面標題。同名方案（不同學校轉發、不同梯次）在標題後加上區分，避免多頁共用同一個 <title>。
     依序試公告單位、梯次、來源標題、來源網域，取第一個能讓同名方案彼此不同的。"""
     from urllib.parse import urlparse
 
@@ -103,11 +121,13 @@ def page_titles(opportunities, sources_by_id):
         lambda o: source(o).get("title"),
         lambda o: urlparse(source(o).get("url") or "").hostname,
     ]
-    groups = {}
-    for o in sorted(opportunities, key=lambda x: x["id"]):
-        groups.setdefault(o["title"], []).append(o)
+    leads = {slug: dict(cards[0], title=group_title(cards)) for slug, cards in groups.items()}
+    by_title = {}
+    for slug, o in sorted(leads.items()):
+        by_title.setdefault(o["title"], []).append((slug, o))
     titles = {}
-    for title, group in groups.items():
+    for title, pairs in by_title.items():
+        group = [o for _, o in pairs]
         chosen = None
         if len(group) > 1:
             for hint in hints:
@@ -119,14 +139,13 @@ def page_titles(opportunities, sources_by_id):
             # 同名、同網域又沒有其他欄位可分：多半是同一方案被收成兩張卡，資料端應合併。
             # 先編號讓標題不重複，網址代號本身不受影響。
             chosen = [f"公告 {i + 1}" for i in range(len(group))]
-        for i, o in enumerate(sorted(group, key=lambda x: x["id"])):
-            titles[o["id"]] = f"{title}（{chosen[i]}）" if chosen else title
+        for i, (slug, _) in enumerate(pairs):
+            titles[slug] = f"{title}（{chosen[i]}）" if chosen else title
     return titles
 
 
-def render_programme(o, slug, sources, unverified, site_url, head_extra, footer_html, as_of, title=None):
-    url = f"{site_url}p/{slug}/"
-    title = title or o["title"]
+def _card_body(o, heading):
+    """一張卡的重點、步驟與待確認事項。heading 為該卡小標（單卡頁不需要）。"""
     category = CATEGORY_LABELS.get(o.get("category"), "獎助")
     elig = o.get("eligibility") or {}
     degrees = "、".join(DEGREE_LABELS.get(d, d) for d in elig.get("degrees") or [])
@@ -150,6 +169,34 @@ def render_programme(o, slug, sources, unverified, site_url, head_extra, footer_
         for s in o.get("steps") or [] if s.get("action")
     )
     questions = "".join(f"<li>{escape(q)}</li>" for q in o.get("open_questions") or [])
+    h = "h3" if heading else "h2"
+    return (
+        (f"<section><h2>{escape(heading)}</h2>" if heading else "")
+        + (f"<section><{h}>重點</{h}><dl>{rows}</dl></section>" if not heading else f"<{h}>重點</{h}><dl>{rows}</dl>")
+        + (f"<{h}>申請步驟</{h}><ol>{steps}</ol>" if steps else "")
+        + (f"<{h}>尚待確認</{h}><ul>{questions}</ul>" if questions else "")
+        + ("</section>" if heading else "")
+    )
+
+
+def render_programme(cards, slug, sources, unverified_ids, site_url, head_extra, footer_html, as_of, title,
+                     sources_by_id=None):
+    o = cards[0]
+    # 卡片標題相同時，小標改用各自的來源名稱，否則頁內兩段看起來一模一樣。
+    headings = [c["title"] for c in cards]
+    if len(set(headings)) < len(headings):
+        srcs = [((sources_by_id or {}).get(first_source(c) or "") or {}) for c in cards]
+        headings = [src.get("title") or c["title"] for c, src in zip(cards, srcs)]
+        if len(set(headings)) < len(headings):
+            # 同一份文件的網頁版與 PDF 版，連來源標題都相同，只能用來源類型區分。
+            kind = lambda src: "PDF 文件" if (src.get("url") or "").lower().split("?")[0].endswith(".pdf") else "網頁"
+            headings = [f"{h}（{kind(src)}）" for h, src in zip(headings, srcs)]
+    url = f"{site_url}p/{slug}/"
+    if len(cards) == 1:
+        body = _card_body(o, None)
+    else:
+        body = (f"<p>這個方案有 {len(cards)} 筆來源摘要（例如法規與公告，或不同申請路徑），分列如下。</p>"
+                + "".join(_card_body(c, h) for c, h in zip(cards, headings)))
     source_items = "".join(
         f'<li><a href="{escape(s["url"])}" rel="noopener">{escape(s.get("title") or s["url"])}</a>'
         + (f"<br><small>最後核對 {escape(s['checked_on'])}</small>" if s.get("checked_on") else "")
@@ -157,8 +204,12 @@ def render_programme(o, slug, sources, unverified, site_url, head_extra, footer_
         for s in sources
     )
     warning = (
-        '<p class="warn">⚠ 未經來源查證：這筆資料不是由來源萃取流程產生，內容可能有誤，請以下方官方來源為準。</p>'
-        if unverified else ""
+        '<p class="warn">⚠ 未經來源查證：這頁有資料不是由來源萃取流程產生，內容可能有誤，請以下方官方來源為準。</p>'
+        if any(c["id"] in unverified_ids for c in cards) else ""
+    )
+    links = "、".join(
+        f'<a href="{site_url}?tab=detail&amp;id={escape(c["id"])}">{"開啟互動詳情" if len(cards) == 1 else escape(h)}</a>'
+        for c, h in zip(cards, headings)
     )
     description = page_description(o, title)
     ld = {
@@ -209,11 +260,9 @@ footer{{color:var(--muted);font-size:.85rem;padding-bottom:32px;margin-top:28px}
 <h1>{escape(title)}</h1>
 {warning}
 <p>OpenGSA 整理的來源摘要，非資格核定；申請前請以官方來源為準。資料快照 {escape(as_of)}。</p>
-<section><h2>重點</h2><dl>{rows}</dl></section>
-{f'<section><h2>申請步驟</h2><ol>{steps}</ol></section>' if steps else ''}
+{body}
 <section><h2>官方來源</h2>{f'<ul>{source_items}</ul>' if source_items else '<p>尚無可公開的來源連結。</p>'}</section>
-{f'<section><h2>尚待確認</h2><ul>{questions}</ul></section>' if questions else ''}
-<section><h2>在 OpenGSA 中比較與安排</h2><p><a href="{site_url}?tab=detail&amp;id={escape(o['id'])}">開啟互動詳情</a>：與其他方案並排比較、加入我的時間軸。</p></section>
+<section><h2>在 OpenGSA 中比較與安排</h2><p>{links}：與其他方案並排比較、加入我的時間軸。</p></section>
 </main>
 <footer>{footer_html}</footer>
 </body>
@@ -221,32 +270,33 @@ footer{{color:var(--muted);font-size:.85rem;padding-bottom:32px;margin-top:28px}
 """
 
 
-def index_section(opportunities, slugs, unverified_ids):
-    """首頁的純 HTML 方案索引：不執行 JS 也讀得到每一筆方案。"""
-    groups = {}
-    for o in sorted(opportunities, key=lambda x: x["title"]):
-        groups.setdefault(o.get("category"), []).append(o)
+def index_section(groups, titles, unverified_ids):
+    """首頁的純 HTML 方案索引：不執行 JS 也讀得到每一個方案頁。"""
+    by_cat = {}
+    for slug, cards in sorted(groups.items(), key=lambda kv: titles[kv[0]]):
+        by_cat.setdefault(cards[0].get("category"), []).append((slug, cards))
     blocks = []
     for cat in CATEGORY_LABELS:
-        items = groups.get(cat)
+        items = by_cat.get(cat)
         if not items:
             continue
         lis = "".join(
-            f'<li><a href="p/{slugs[o["id"]]}/">{escape(o["title"])}</a>'
-            + (" <small>⚠ 未經來源查證</small>" if o["id"] in unverified_ids else "") + "</li>"
-            for o in items
+            f'<li><a href="p/{slug}/">{escape(titles[slug])}</a>'
+            + (f" <small>（{len(cards)} 筆來源摘要）</small>" if len(cards) > 1 else "")
+            + (" <small>⚠ 未經來源查證</small>" if any(c["id"] in unverified_ids for c in cards) else "") + "</li>"
+            for slug, cards in items
         )
         blocks.append(f"<h3>{escape(CATEGORY_LABELS[cat])}（{len(items)}）</h3><ul>{lis}</ul>")
     return (
         '<section id="programme-index" class="programme-index" aria-labelledby="programme-index-title">'
-        f'<h2 id="programme-index-title">收錄方案一覽（{len(opportunities)} 筆）</h2>'
-        "<p>每筆方案都有獨立頁面，附官方來源連結。</p>"
+        f'<h2 id="programme-index-title">收錄方案一覽（{len(groups)} 個）</h2>'
+        "<p>每個方案都有獨立頁面，附官方來源連結。</p>"
         f'<details><summary>展開全部方案</summary>{"".join(blocks)}</details></section>'
     )
 
 
 def sitemap_xml(site_url, slugs):
-    urls = [site_url] + [f"{site_url}p/{s}/" for s in sorted(slugs.values())]
+    urls = [site_url] + [f"{site_url}p/{s}/" for s in sorted(set(slugs.values()))]
     body = "".join(f"<url><loc>{escape(u)}</loc></url>" for u in urls)
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{body}</urlset>\n'
 
@@ -268,3 +318,27 @@ def website_jsonld(site_url, description):
         "inLanguage": "zh-Hant",
         "publisher": {"@type": "Person", "name": "Matt Ye", "url": "https://mattye.dev/"},
     }, ensure_ascii=False)
+
+
+def not_found_html(site_url):
+    """GitHub Pages 對不存在的路徑回這頁（HTTP 404）。方案代號隨來源網址改變時，舊網址會落到這裡。"""
+    return f"""<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>找不到這個頁面｜OpenGSA</title>
+<meta name="robots" content="noindex">
+<meta property="og:title" content="找不到這個頁面｜OpenGSA">
+<meta property="og:description" content="這個方案可能已下架或換了網址，請回 OpenGSA 首頁搜尋。">
+<meta property="og:image" content="{site_url}assets/opengsa-social-preview.jpg">
+<style>body{{margin:0;padding:40px 16px;font:16px/1.7 system-ui,"Noto Sans TC",sans-serif;background:#faf8f3;color:#1f2a24}}
+@media (prefers-color-scheme:dark){{body{{background:#141a17;color:#e8eee9}}a{{color:#7fc4a6}}}}main{{max-width:640px;margin:0 auto}}</style>
+</head>
+<body><main>
+<h1>找不到這個頁面</h1>
+<p>這個方案可能已下架，或因為來源網址變動而換了網址。</p>
+<p><a href="{site_url}">回 OpenGSA 首頁搜尋方案</a> · <a href="{site_url}sitemap.xml">全部方案清單（sitemap）</a></p>
+</main></body>
+</html>
+"""
