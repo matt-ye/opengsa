@@ -71,6 +71,20 @@ console.log(items.length+' items: temporal labels, geometry, ambiguous years, in
         self.assertTrue(used)
         self.assertLessEqual(used, redacted)
 
+    def test_ga4_events_send_only_fixed_values(self):
+        # 2026-11-18 使用者核可的事件清單。新增事件要先更新這裡與 docs/DEPLOYMENT.md。
+        allowed = {"select_content", "official_source_click", "rss_subscribe", "share", "pick_add", "pick_remove",
+                   "tutorial_begin", "tutorial_complete", "filter_apply", "tab_view"}
+        source = (ROOT / "docs/design/prototype.js").read_text(encoding="utf-8")
+        calls = re.findall(r'track\((?:input\.checked\?)?"([a-z_]+)"(?::"([a-z_]+)")?', source)
+        used = {name for pair in calls for name in pair if name}
+        self.assertEqual(used, allowed)
+        # 頁尾承諾不記錄搜尋與篩選內容：追蹤呼叫裡不得出現輸入值或網址。
+        for line in source.splitlines():
+            if "track(" in line and "function track" not in line:
+                segment = line[line.index("track("):]
+                self.assertNotRegex(segment.split(");")[0], r"\.value|location|href|query", line.strip()[:120])
+
     def test_only_public_artifacts_are_published(self):
         files = {p.relative_to(self.output).as_posix() for p in self.output.rglob("*") if p.is_file()}
         pages = {f for f in files if f.startswith("p/")}

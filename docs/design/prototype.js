@@ -812,6 +812,10 @@ if(typeof module!=="undefined" && module.exports) module.exports=api;
 if(typeof document==="undefined") return;
 
 const byId=id=>document.getElementById(id);
+// GA4 事件。只送網站自己的固定值（方案代號、類別、篩選鍵名、頁籤名），
+// 絕不送使用者輸入的內容：搜尋字串、篩選值、分享連結都不送（頁尾承諾，見 docs/DEPLOYMENT.md）。
+function track(name,params){try{if(typeof window.gtag==="function")window.gtag("event",name,params||{});}catch(e){}}
+function trackDetail(item){if(item)track("select_content",{content_type:"opportunity",item_id:item.id,category:item.category||""});}
 const pilot=JSON.parse(byId("pilot-data").textContent);
 const conferenceData=JSON.parse(byId("conference-data").textContent);
 const reviewPreview=document.body.dataset.reviewPreview==="true";
@@ -933,7 +937,7 @@ function updateUrlState(push=false) {
 }
 document.querySelector('[role="tablist"]').addEventListener("click",event=>{
  const tab=event.target.closest('[role="tab"]');
- if(tab) activatePanel(tab.dataset.panel);
+ if(tab){track("tab_view",{tab:tab.dataset.panel});activatePanel(tab.dataset.panel);}
 });
 document.querySelector('[role="tablist"]').addEventListener("keydown",event=>{
  const tabs=[...document.querySelectorAll('[role="tab"]')];
@@ -992,7 +996,9 @@ function sourceLink(text,item,url=item.url){
  const safe=officialUrl(url);if(!safe)return el("span","quiet",item.synthetic?"合成示範，無官方來源":text+"（目前無有效來源連結）");
  const a=el("a",text.includes(UNKNOWN_LABEL)?"unknown-link":"",text+" ↗");
  if(text.includes(UNKNOWN_LABEL)){const icon=el("span","unknown-icon","⚠");icon.setAttribute("aria-hidden","true");a.prepend(icon);a.title="來源可能未載明或尚未完整辨識，請核對官方原文";}
- a.href=safe;a.target="_blank";a.rel="noopener noreferrer";return a;
+ a.href=safe;a.target="_blank";a.rel="noopener noreferrer";
+ if(item.id)a.addEventListener("click",()=>{let host="";try{host=new URL(safe).hostname;}catch(e){}track("official_source_click",{item_id:item.id,link_domain:host});});
+ return a;
 }
 function radarFact(container,label,value,item){
  const p=el("p","small");p.append(el("strong","",label+"："));
@@ -1161,13 +1167,15 @@ function pickControl(item,slot) {
  const label=el("label",slot==="gantt"?"row-pick":"item-pick");
  const input=el("input");input.type="checkbox";input.checked=picked[mode].has(item.id);input.dataset.pickId=item.id;
  input.setAttribute("aria-label","勾選 "+item.title);
- input.addEventListener("change",()=>{if(input.checked){picked[mode].add(item.id);showGlobalToast("⭐ 已將《"+item.title+"》加入個人時程（已同步至【我的時間軸】）");}else{picked[mode].delete(item.id);showGlobalToast("已從個人時程移除《"+item.title+"》");}renderWorkspace();});
+ input.addEventListener("change",()=>{track(input.checked?"pick_add":"pick_remove",{item_id:item.id});if(input.checked){picked[mode].add(item.id);showGlobalToast("⭐ 已將《"+item.title+"》加入個人時程（已同步至【我的時間軸】）");}else{picked[mode].delete(item.id);showGlobalToast("已從個人時程移除《"+item.title+"》");}renderWorkspace();});
  label.append(input,el("span","","列入我的選項"));return label;
 }
 function chooseAndOpen(item) {
+ trackDetail(item);track("pick_add",{item_id:item.id});
  picked[mode].add(item.id);activeDetail[mode]=item.id;renderWorkspace();activatePanel("detail");showGlobalToast("⭐ 已將《"+item.title+"》加入個人時程");
 }
 function openSharedDetail(item) {
+ trackDetail(item);
  activeDetail[mode]=item.id;renderWorkspace();activatePanel("detail");
 }
 function drawCards(items,partition) {
@@ -1361,6 +1369,7 @@ function renderCompareCard(col, item) {
  if (item.url) {
   const link = el("a", "source-link", "查看主辦官方網頁 ↗");
   link.href = item.url;
+  link.addEventListener("click", () => { let host = ""; try { host = new URL(item.url).hostname; } catch (e) {} track("official_source_click", { item_id: item.id, link_domain: host }); });
   link.target = "_blank";
   link.rel = "noopener noreferrer";
   secRef.append(link);
@@ -1586,6 +1595,7 @@ function render() {
 document.querySelectorAll("[data-filter]").forEach(input=>{
  const update=()=>{state[input.dataset.filter]=input.type==="checkbox"?input.checked:input.value;render();};
  input.addEventListener(input.type==="search"?"input":"change",update);
+ input.addEventListener("change",()=>track("filter_apply",{filter_key:input.dataset.filter}));
 });
 function resetFilters() {
  Object.assign(state,{query:"",category:"all",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all",application:"all",includeUnknown:true});
@@ -1594,7 +1604,7 @@ function resetFilters() {
 }
 byId("reset-filters").addEventListener("click",resetFilters);
 byId("empty-reset").addEventListener("click",resetFilters);
-byId("select-filtered").addEventListener("click",()=>{partitionItems(currentItems(),state).all.forEach(item=>picked[mode].add(item.id));renderWorkspace();});
+byId("select-filtered").addEventListener("click",()=>{track("pick_add",{bulk:true,item_count:partitionItems(currentItems(),state).all.length});partitionItems(currentItems(),state).all.forEach(item=>picked[mode].add(item.id));renderWorkspace();});
 byId("document-mode").addEventListener("change",()=>{documentMode=byId("document-mode").value;render();});
 function timelineFocusValue(items){
  const item=items.find(i=>i.timeline&&timelineDates(i).length)||items.find(i=>i.start.value||i.end.value||i.milestones.some(m=>m.value));
@@ -1613,8 +1623,8 @@ if(byId("timeline-controls")){
  }
 }
 byId("clear-selection").addEventListener("click",()=>{picked[mode].clear();renderWorkspace();});
-byId("detail-option").addEventListener("change",event=>{activeDetail[mode]=event.target.value;drawDetail();});
-function moveDetail(amount){const index=sharedItems.findIndex(item=>item.id===activeDetail[mode]);const next=sharedItems[index+amount];if(next){activeDetail[mode]=next.id;drawDetail();}}
+byId("detail-option").addEventListener("change",event=>{activeDetail[mode]=event.target.value;trackDetail(currentItems().find(item=>item.id===event.target.value));drawDetail();});
+function moveDetail(amount){const index=sharedItems.findIndex(item=>item.id===activeDetail[mode]);const next=sharedItems[index+amount];if(next){activeDetail[mode]=next.id;trackDetail(next);drawDetail();}}
 byId("detail-previous").addEventListener("click",()=>moveDetail(-1));
 byId("detail-next").addEventListener("click",()=>moveDetail(1));
 byId("personal-range-mode").addEventListener("change",event=>{personalRangeMode=event.target.value;drawPlan();});
@@ -1696,6 +1706,7 @@ if(byId("subordination-reset")){
 // Bind new Toolbar & Timeline Events
 if(byId("copy-share-link")){
  byId("copy-share-link").addEventListener("click",()=>{
+  track("share",{method:"copy_link"});
   updateUrlState(false);
   const url=window.location.href;
   const showToast=()=>{
@@ -1715,6 +1726,7 @@ const rssDismissBtn=byId("rss-dialog-dismiss");
 
 if(rssBtn && rssDialog){
  rssBtn.addEventListener("click",()=>{
+  track("rss_subscribe",{feed:"dialog"});
   if(typeof rssDialog.showModal==="function"){
    rssDialog.showModal();
   }
@@ -1766,6 +1778,7 @@ const setupFeedCopy=(btnId,urlId)=>{
  const input=byId(urlId);
  if(!btn) return;
  btn.addEventListener("click",()=>{
+  track("rss_subscribe",{feed:btnId==="copy-feed-deadlines"?"deadlines":"all"});
   const text=(input&&input.value)||btn.dataset.copy||"";
   if(navigator.clipboard&&navigator.clipboard.writeText){
    navigator.clipboard.writeText(text).then(()=>showRssToast("已複製 Feed 網址！")).catch(()=>showRssToast("已複製 Feed 網址！"));
@@ -1808,6 +1821,7 @@ if(byId("clear-compare-btn")){
 }
 const pickAllFiltered=()=>{
  const filtered=partitionItems(currentItems(),state).all;
+ track("pick_add",{bulk:true,item_count:filtered.length});
  filtered.forEach(item=>picked[mode].add(item.id));
  renderWorkspace();
  updateUrlState(false);
@@ -1974,11 +1988,11 @@ if (guideTourSelect) {
  });
 }
 
-if (guideOpenBtn) guideOpenBtn.addEventListener("click", () => openGuide(activePanelId, 1));
+if (guideOpenBtn) guideOpenBtn.addEventListener("click", () => { track("tutorial_begin", { tour: activePanelId || "search" }); openGuide(activePanelId, 1); });
 if (guideCloseBtn) guideCloseBtn.addEventListener("click", closeGuide);
 const inspectBackdrop = byId("inspect-backdrop");
 if (inspectBackdrop) inspectBackdrop.addEventListener("click", closeInspect);
-if (guideFinishBtn) guideFinishBtn.addEventListener("click", closeGuide);
+if (guideFinishBtn) guideFinishBtn.addEventListener("click", () => { track("tutorial_complete", { tour: currentGuideTourKey }); closeGuide(); });
 
 if (guidePrevBtn) guidePrevBtn.addEventListener("click", () => renderGuideStep(currentGuideTourKey, currentGuideStep - 1));
 if (guideNextBtn) guideNextBtn.addEventListener("click", () => renderGuideStep(currentGuideTourKey, currentGuideStep + 1));
