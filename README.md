@@ -14,7 +14,7 @@
 
 ## 🚀 最新專案狀態 (Latest Status)
 
-> **公開預覽網站即時發布中**：**[https://opengsa.mattye.dev/](https://opengsa.mattye.dev/)**  
+> **網站已正式上線**：**[https://opengsa.mattye.dev/](https://opengsa.mattye.dev/)**  
 <!-- data-counts:start -->
 > **全庫方案覆蓋規模**：**205 筆來源摘要**，其中 204 筆由萃取流程產生、1 筆是尚未由流程取代的手寫卡；排程巡檢中的來源 201 個。來源沒載明時程的標示為未判定，不補值。  
 
@@ -110,7 +110,7 @@ OpenGSA 支援標準 RSS 2.0 / Atom 1.0 訂閱頻道，隨 GitHub Pages 自動�
 
 ## 參與與回報
 
-- **[開啟公開預覽網站](https://opengsa.mattye.dev/)**
+- **[開啟 OpenGSA 網站](https://opengsa.mattye.dev/)**
 - **[提供使用回饋](https://github.com/matt-ye/opengsa/issues/new?template=preview-feedback.yml)**
 - **[回報新獎助來源](https://github.com/matt-ye/opengsa/issues/new?template=resource-source.yml)**（歡迎提供各大學、企業或基金會之公開獎助依據）
 
