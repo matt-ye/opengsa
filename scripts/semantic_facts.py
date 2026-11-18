@@ -48,7 +48,8 @@ AWARD_CLAUSE=re.compile(r'每[名人生位組]|每學[年期]|每月|獎學金|�
 NOT_AWARD_CLAUSE=re.compile(r'捐|基金(?!會)|本金|孳息|所得|收入|財產|存款|總額|美金|美元|匯率|報名費|保證金|經費|預算|貸款')
 # 「已獲…學雜費每學期1.75萬元或其他政府補助者，不得重複申領」：同一句有排除字樣時，寫身分的子句講的是別的補助。
 EXCLUSION_SENTENCE=re.compile(r'不得|不可|重複|除外')
-EXCLUDED_SUBJECT=re.compile(r'已(?:獲|領)|者$')
+# 「已獲」與結尾「者」都要有：「…予成績優良者，不得兼領其他獎學金」的「者」是本方案受獎人。
+EXCLUDED_SUBJECT=re.compile(r'已(?:獲|領).*者$')
 MONEY_TOKEN=re.compile(r'(?<![0-9,.])([0-9,]+(?:\.\d+)?[萬千仟百佰]?|[一二兩三四五六七八九零〇壹貳參肆伍陸柒捌玖十拾百佰千仟萬]+)元')
 OTHER_LEVELS=re.compile(r'學士|大學部|大學生|大專|高中|高職|專科|國中|國小|二技|四技|五專')
 NON_ROC_ALLOWED=re.compile(r'外籍|外國|僑生|陸生|港澳|護照|境外')

@@ -50,6 +50,11 @@ class WithheldGenericFieldsTests(unittest.TestCase):
         self.assertEqual(found,[])
         self.assertEqual(cand['benefit']['summary'],'金額請見來源')
         self.assertEqual(self.amounts('已獲錄取之學生每名發給獎學金5萬元。')[0],[(50000,50000)])
+        # 同一句有「不得」時，只有「已獲…者」整個身分子句才算排除。
+        found,_=self.amounts('每名發給獎學金5萬元予成績優良者，不得兼領其他獎學金。另補助每名每學期書籍費3,000元。')
+        self.assertEqual(found,[])
+        self.assertEqual(self.amounts('已獲錄取之學生每名發給獎學金5萬元，獲獎者不得重複申請。')[0],[(50000,50000)])
+        self.assertEqual(self.amounts('每名5萬元，不得兼領其他獎學金。')[0],[(50000,50000)])
 
     def test_per_semester_needs_semester_wording_in_the_source(self):
         units=blocks('SYNTH 獎學金申請辦法','每名發給獎學金新臺幣5萬元。')
