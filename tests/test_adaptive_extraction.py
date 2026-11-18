@@ -87,6 +87,49 @@ class AdaptiveExtractionTests(unittest.TestCase):
         withhold_unsure_generic_fields(cand, units, "s", "r" * 64, "hash_only")
         self.assertEqual(cand["benefit"]["items"], [])
 
+    def test_per_semester_amount_is_filled(self):
+        cand = {"benefit": {}, "field_evidence": [], "cycle": {}, "eligibility": {"degrees": [], "nationality": "unknown", "identity": {"text": "", "refs": []}}}
+        units = [{"locator": "a", "text": "完成學習輔導機制後，每學期可領取4萬元助學金，一學年8萬元。", "kind": "paragraph"}]
+        withhold_unsure_generic_fields(cand, units, "s", "r" * 64, "hash_only")
+        self.assertEqual((cand["benefit"]["items"][0]["unit"], cand["benefit"]["items"][0]["amount_min"]), ("per_semester", 40000))
+        units = [{"locator": "a", "text": "符合經濟不利身分學生可申請，每學期最高4萬元", "kind": "paragraph"}]
+        withhold_unsure_generic_fields(cand, units, "s", "r" * 64, "hash_only")
+        self.assertEqual(cand["benefit"]["items"][0]["unit"], "per_semester")
+        self.assertEqual(cand["benefit"]["items"][0]["amount_max"], 40000)
+        self.assertTrue(cand["benefit"]["summary"].startswith("每學期至多新臺幣40,000元"))
+
+    def test_office_date_and_slogan_noise_is_removed_from_titles(self):
+        self.assertEqual(clean_title("急難救助（學生事務處）"), "急難救助")
+        self.assertEqual(clean_title("急難救助（逢甲大學）"), "急難救助（逢甲大學）")
+        self.assertEqual(clean_title("國泰卓越獎助學金（大專組）"), "國泰卓越獎助學金（大專組）")
+        self.assertEqual(clean_title("某某紀念獎學金（嘉義市政府社會處）"), "某某紀念獎學金（嘉義市政府社會處）")
+        self.assertEqual(clean_title("(申請日期:115/8/7~115/9/21) 115-1學期隆玉獎學金"), "隆玉獎學金")
+        self.assertEqual(clean_title("115-1學期生活助學金申請公告(限新生、轉學生)，申請期間於8/26至9/9止。"),
+                         "115-1學期生活助學金申請公告(限新生、轉學生)，申請期間於8/26至9/9止。")
+        self.assertEqual(clean_title("宋恭源獎學金，是一份陪伴學生向前走的支持。"), "宋恭源獎學金")
+        self.assertEqual(clean_title("本校「還願助學金」新增補助本校出國研修學生助學金"), "還願助學金")
+
+    def test_generic_or_office_titles_are_replaced_by_the_page_title(self):
+        from scripts.expand_sources import profile_for
+        stored = {"id": "s", "title": "校外獎助學金申請資訊"}
+        fresh = "【生輔暨校安組獎學金訊息】(自送)2026-2027年度 三重東區扶輪社獎助學金申請公告"
+        self.assertEqual(profile_for({"category": "living"}, {"title": fresh}, stored)["title"], "(自送)2026-2027年度 三重東區扶輪社獎助學金申請公告")
+        stored = {"id": "s", "title": "急難救助（學生事務處）"}
+        self.assertEqual(profile_for({"category": "living"}, {"title": "急難救助（逢甲大學）"}, stored)["title"], "急難救助（逢甲大學）")
+        # 這次沒讀到標題（例如 PDF）時，不能把舊標題清成空白。
+        stored = {"id": "s", "title": "獎助學金申請資訊"}
+        self.assertEqual(profile_for({"category": "living"}, {"title": ""}, stored)["title"], "獎助學金申請資訊")
+        self.assertEqual(profile_for({"category": "living"}, {"title": None}, stored)["title"], "獎助學金申請資訊")
+
+    def test_generic_h1_and_office_site_name_do_not_become_the_title(self):
+        html = ("<html><head><title>【獎學金訊息】某某扶輪社獎助學金申請公告</title></head><body><main><h1>校外獎助學金申請資訊</h1>"
+                "<p>設籍本市之學生得申請。</p></main></body></html>")
+        self.assertEqual(page(html, "living")["title"], "【獎學金訊息】某某扶輪社獎助學金申請公告")
+        html = "<html><head><title>急難救助 | 某某大學-學生事務處</title></head><body><main><h1>急難救助</h1><p>本校學生得申請。</p></main></body></html>"
+        self.assertEqual(page(html, "living")["title"], "急難救助（某某大學）")
+        html = "<html><head><title>助學金 | 大學生專區 | 某某基金會</title></head><body><main><h1>助學金</h1><p>本會補助學生申請。</p></main></body></html>"
+        self.assertEqual(page(html, "living")["title"], "助學金（某某基金會）")
+
 
 if __name__ == "__main__":
     unittest.main()

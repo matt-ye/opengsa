@@ -410,6 +410,8 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
                 ev_errors.append("unsupported_period_context:"+path_key)
             if b_item.get("unit") == "per_year" and not re.search(r"每年|每學年|一年",compact):
                 ev_errors.append("unsupported_period_context:"+path_key)
+            if b_item.get("unit") == "per_semester" and "每學期" not in compact:
+                ev_errors.append("unsupported_period_context:"+path_key)
             if cand.get("program_key")=="nstc-assistant-rule":
                 compact=re.sub(r"\s+","",combined)
                 if b_item.get("unit")=="per_month" and not re.search(r"每月|月支|月薪",compact):
@@ -589,7 +591,7 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
             if same_value and locs.intersection(r.get("locator") for r in other.get("refs", [])):
                 da_errors.append(f"duplicate_benefit_claim:benefit.items/{idx}")
     summary = cand.get("benefit", {}).get("summary", "")
-    if benefit_items and all(i.get("unit") in ("per_month", "per_year") for i in benefit_items) and "總額" in summary:
+    if benefit_items and all(i.get("unit") in ("per_month", "per_year", "per_semester") for i in benefit_items) and "總額" in summary:
         da_errors.append("benefit_summary_period_conflicts_with_items")
 
     date_and_amount_units_valid = len(da_errors) == 0

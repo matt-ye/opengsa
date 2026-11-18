@@ -704,6 +704,7 @@
           "enum": [
             "per_month",
             "per_year",
+            "per_semester",
             "lump_sum",
             "total_range",
             "partial_reimbursement",

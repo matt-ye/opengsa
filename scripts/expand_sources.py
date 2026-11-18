@@ -38,7 +38,7 @@ def resource_title(title,category=None):
     pattern=CATEGORY_RESOURCE.get(category)
     return bool(RESOURCE.search(title or '') or (pattern and pattern.search(title or '')))
 
-INDEX=re.compile(r'^(?:最新消息|最新公告|獎學金|獎助學金|學生獎學金|學生事務|相關辦法|法規|首頁|獎(?:助)?學金(?:資訊|公告|公告資訊網|申請辦法)|news|scholarships?)$',re.I)
+INDEX=re.compile(r'^(?:最新消息|最新公告|獎學金|獎助學金|學生獎學金|學生事務|相關辦法|法規|首頁|(?:校[內外])?獎(?:助)?學金(?:聯合)?(?:申請)?(?:資訊|公告|公告資訊網|申請辦法)|news|scholarships?)$',re.I)
 # 「碩博士論文獎助最新公告」這種分類列表頁的標題，結尾是最新公告或最新消息。只用在不成卡的判斷，不影響選標題。
 LISTING_SUFFIX=re.compile(r'(?:最新消息|最新公告)$')
 # 審查結果與名單公告是已經申請過的結果，不是可以申請的方案。
@@ -153,7 +153,9 @@ def prepare_response(response,profile,hosts,link_limit=8,broad_links=False,categ
             title=labelled_name(soup,category) or title
         # 標題只寫類別（「急難濟助」）時看不出是誰辦的，會被提案當成泛稱擋掉；接上網站名稱
         # （<title> 最後一段，例如「行天宮五大志業網」），真方案才不會被誤擋。
-        site=re.split(r'\s*[|｜∣\-－–]\s*',soup.title.get_text(' ',strip=True))[-1] if soup.title else ''
+        # 「急難救助 | 逢甲大學-學生事務處」：有校名的那段才看得出是誰辦的，處室名稱看不出。
+        parts=re.split(r'\s*[|｜∣\-－–]\s*',soup.title.get_text(' ',strip=True)) if soup.title else ['']
+        site=next((p for p in parts if re.search(r'(?:大學|學院)$',p)),parts[-1])
         if BARE_CATEGORY.fullmatch(title.strip()) and site and not BARE_CATEGORY.fullmatch(site) and site not in title:
             title=f'{title.strip()}（{site}）'
         if SKIP.search(title):raise ScanError('private_or_result_title_not_processed')
@@ -200,6 +202,10 @@ def clean_title(title):
     text=re.sub(r'^(?:0\d(?:-\d+)?|\d{2}-\d+|\d{2}_)[_.\s]*(?=\D)','',text)
     text=re.sub(r'\s*\d{2,3}\.\d{1,2}\.\d{1,2}$','',text)
     text=re.sub(r'^【[^】]*(?:公告|訊息|獎學金|獎助學金|組|處|中心|室)】\s*','',text)
+    # 「急難救助（學生事務處）」：括號裡的校內處室不是方案名稱。政府、基金會等主辦單位（「嘉義市政府社會處」）留著。
+    text=re.sub(r'[（(](?:學生事務處|學務處|生活輔導組|生輔組|校安中心|德育中心|課外活動組|學生輔導中心)[）)]$','',text)
+    # 「(申請日期:115/8/7~115/9/21) 115-1學期隆玉獎學金」：開頭的申請日期和緊接的學期代碼不是方案名稱。
+    text=re.sub(r'^[(（]\s*(?:申請|收件)(?:日期|期間|時間)\s*[:：][^)）]*[)）]\s*(?:\d{3}-[12]\s*學期\s*)?(?=\S)','',text)
     # 「國立嘉義大學-學生事務處生活輔導組-…」：處室名稱不是方案名稱；校名留著，讀者才知道是哪一校。
     text=re.sub(r'^([^-－\s]*大學)\s*[-－]\s*[^-－\s]*(?:處|組)\s*[-－]\s*',r'\1',text)
     # 法規資料庫的頁面標題帶系統名稱，例如「教育部主管法規共用系統-法規內容-…」。
@@ -216,21 +222,28 @@ def clean_title(title):
     text=re.sub(r'\s*[（(]\d{7}(?:修正|修訂)[）)]$','',text)
     # 「政府「急難紓困實施方案」新修正」：引號裡才是方案名稱。
     text=re.sub(r'^[^「『]{0,6}[「『]([^」』]+)[」』](?:新)?修正$',r'\1',text)
+    # 「本校「還願助學金」新增補助…」：異動公告，引號裡才是方案名稱。
+    text=re.sub(r'^(?:本校|政府)?[「『]([^」』]+)[」』]新增.*$',r'\1',text)
+    # 「宋恭源獎學金，是一份陪伴學生向前走的支持。」：宣傳句，只留逗號前的方案名稱。
+    text=re.sub(r'^(\S{2,30}?(?:獎學金|助學金|計畫))[，,]\s*是[^，,]*[。！!]?$',r'\1',text)
     return re.sub(r'^公告\s*[「『]([^」』]+)[」』]$',r'\1',text).strip() or title
 
+
+def generic_title(title):
+    return bool(BARE_CATEGORY.fullmatch(title.strip()) or INDEX.fullmatch(title.strip()))
 
 def profile_for(row,prepared,known):
     if known:
         profile=deepcopy(known)
         # 舊設定的標題只寫類別（「急難濟助」）會被提案當成泛稱擋掉，這張卡就再也更新不了；
         # 這次讀到的標題接上了網站名稱，就改用它。
-        fresh=clean_title(prepared['title'])
-        if BARE_CATEGORY.fullmatch((profile.get('title') or '').strip()) and not BARE_CATEGORY.fullmatch(fresh.strip()):
+        # 舊標題是泛稱（「校外獎助學金申請資訊」）或清完只剩類別（「急難救助（學生事務處）」）也一樣。
+        fresh=clean_title(prepared['title']) or ''
+        cleaned=clean_title(profile.get('title')) or ''
+        if fresh and generic_title(cleaned) and not generic_title(fresh):
             profile['title']=fresh
         # 舊設定存的是當時的標題；清理規則改進後也要套上，否則這張卡永遠帶著舊雜訊。清完只剩類別名稱就不動。
-        elif profile.get('title'):
-            cleaned=clean_title(profile['title'])
-            if not BARE_CATEGORY.fullmatch(cleaned.strip()):profile['title']=cleaned
+        elif profile.get('title') and not generic_title(cleaned):profile['title']=cleaned
         return profile
     category,kind={'award':('outcome_award','award'),'mobility':('international_conference','travel_grant'),
         'living':('living_tuition','scholarship'),'foundation':('living_tuition','scholarship'),'campus':('living_tuition','scholarship'),

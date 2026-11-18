@@ -41,6 +41,30 @@ class WithheldGenericFieldsTests(unittest.TestCase):
     def test_money_without_award_context_is_ignored(self):
         self.assertEqual(self.amounts('報名費新臺幣1,000元。')[0],[])
 
+    def test_another_subsidy_in_an_exclusion_clause_is_not_the_award(self):
+        self.assertEqual(self.amounts('比對結果已獲教育部定額減免私立大專學生學雜費每學期1.75萬元或其他政府補助者，不得重複申領。')[0],[])
+
+    def test_award_clauses_naming_recipients_are_still_awards(self):
+        # 「…予學業成績優良者」與「已獲錄取之學生」講的是本方案的受獎人，不是排除條件。
+        found,cand=self.amounts('本獎學金每名發給新臺幣3萬元予學業成績優良者。另補助每名每學期書籍費3,000元。')
+        self.assertEqual(found,[])
+        self.assertEqual(cand['benefit']['summary'],'金額請見來源')
+        self.assertEqual(self.amounts('已獲錄取之學生每名發給獎學金5萬元。')[0],[(50000,50000)])
+        # 同一句有「不得」時，只有「已獲…者」整個身分子句才算排除。
+        found,_=self.amounts('每名發給獎學金5萬元予成績優良者，不得兼領其他獎學金。另補助每名每學期書籍費3,000元。')
+        self.assertEqual(found,[])
+        self.assertEqual(self.amounts('已獲錄取之學生每名發給獎學金5萬元，獲獎者不得重複申請。')[0],[(50000,50000)])
+        self.assertEqual(self.amounts('每名5萬元，不得兼領其他獎學金。')[0],[(50000,50000)])
+
+    def test_per_semester_needs_semester_wording_in_the_source(self):
+        units=blocks('SYNTH 獎學金申請辦法','每名發給獎學金新臺幣5萬元。')
+        _,cand=extract(units=units)
+        self.assertEqual(cand['benefit']['items'][0]['unit'],'lump_sum')
+        bad=deepcopy(cand);bad['benefit']['items'][0]['unit']='per_semester'
+        self.assertIn('unsupported_period_context:benefit.items/0',verify_candidate(bad,units)['verification']['errors'])
+        bad['benefit']['summary']='總額新臺幣50,000元'
+        self.assertIn('benefit_summary_period_conflicts_with_items',verify_candidate(bad,units)['verification']['errors'])
+
     def test_degrees_stay_empty_when_the_document_also_covers_other_levels(self):
         _,cand=extract(units=blocks('申請資格：就讀碩士班或博士班之在學學生。','大學部學生另依第五點辦理。'))
         self.assertEqual(cand['eligibility']['degrees'],[])
