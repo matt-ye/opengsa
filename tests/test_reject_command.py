@@ -5,6 +5,7 @@ from pathlib import Path
 import shutil
 import tempfile
 import unittest
+from unittest import mock
 
 from scripts.reject_command import parse, reply, run
 
@@ -53,6 +54,13 @@ class RejectCommandTests(unittest.TestCase):
         self.assertEqual(self.sources(), {"old-source": True, "new-source": False, "pair-source": True})
         # main 的工作目錄不能被改到。
         self.assertEqual(json.loads((self.base / "data/scan-reviews.json").read_text(encoding="utf-8"))["reviews"], [])
+
+    def test_readme_counts_are_refreshed_in_the_pr_branch_after_a_dismissal(self):
+        with mock.patch("scripts.reject_command.refresh") as refresh:
+            run("/reject c-new not_a_program 不是方案", "matt-ye", self.pr, self.base)
+        refresh.assert_called_once_with(self.pr)
+        workflow = (ROOT / ".github/workflows/reject-command.yml").read_text(encoding="utf-8")
+        self.assertIn("data/scan-sources.json README.md", workflow)
 
     def test_unknown_or_repeated_cards_are_reported_and_other_lines_still_apply(self):
         outcome = run("/reject c-new 不是方案\n/reject nope 不存在\n/reject c-new 又一次", "matt-ye", self.pr, self.base)

@@ -82,7 +82,7 @@ jobs:
           REF: ${{ steps.pr.outputs.ref }}
         run: |
           cd pr
-          git add -- data/scan-reviews.json data/scan-sources.json
+          git add -- data/scan-reviews.json data/scan-sources.json README.md
           git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "data: /reject 駁回卡片"
           # 權杖放在 header，不放進網址，錯誤訊息裡也不會出現。
           auth=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
