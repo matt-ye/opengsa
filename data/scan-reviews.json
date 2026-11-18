@@ -60,6 +60,26 @@
       "reason": "學校的行政規定，不是給學生申請的方案",
       "problem_source": "not_a_program",
       "reviewed_on": "2026-11-10"
+    },
+    {
+      "revision_id": "52289fdc2496a23a92d95316a70a864022379ab3c42ec69d3a38497f3341e750",
+      "source_id": "taipei-ai-tools",
+      "candidate_id": "cand-taipei-ai-tools-52289fdc",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "同一來源的舊版本（extractor 1.1.0），保留 11/01 的新版本",
+      "problem_source": "other",
+      "reviewed_on": "2026-11-18"
+    },
+    {
+      "revision_id": "a5cde54c22822f77bb7c27dba55d46642b16ee0dbb52332ff73b15758ae67f27",
+      "source_id": "hsinchu-ai-tools",
+      "candidate_id": "cand-hsinchu-ai-tools-a5cde54c",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "同一來源的舊版本（extractor 1.1.0），保留 11/01 的新版本",
+      "problem_source": "other",
+      "reviewed_on": "2026-11-18"
     }
   ]
 }
