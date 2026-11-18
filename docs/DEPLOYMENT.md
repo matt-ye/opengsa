@@ -46,7 +46,9 @@ python -m http.server 8771 --bind 127.0.0.1 --directory dist/site
 
 分享縮圖使用專案圖，不用個人照片。2026-11-18使用者核可正式上線：拿掉「預覽」字樣，首頁與全部方案頁開放索引；未經來源查證的方案也上架，但頁面要標示並附官方來源。Cloudflare對`Google-Extended`的封鎖維持不動（屬mattye.dev整個zone）。
 
-個人條件、勾選、待辦與會議輸入只留本次瀏覽記憶體，重整後重設。Cloudflare Web Analytics僅統計瀏覽量（`spa:false`，每次載入一筆）：不使用Cookie或localStorage，送出位置已移除查詢參數；2026-11-07攔截實測，網址中的搜尋、學位與已選項目皆未出現在送出內容。Google Analytics（`G-GEFSZXE0RE`，資源「個人網站流量」下的串流「OpenGSA」）會使用Cookie辨識回訪瀏覽器，統計瀏覽量與外連點擊；2026-11-07攔截實測：載入時的第一筆page_view一律帶原始網址（含搜尋條件），`page_location`、`send_page_view:false`與關閉加強型評估都擋不住，只有串流的「遮蓋資料」有效。因此串流必須維持：遮蓋網址查詢參數開啟，鍵為`q, cat, deg, id, mode, picks, tab, view, compare`（值變成`(redacted)`，鍵名仍會送出）；加強型評估關閉。程式另把其餘事件的網址與外連`link_url`去掉查詢參數。新增網址參數時要先到GA4後台加鍵，`tests/test_build_site.py`會擋下遺漏。GitHub Pages託管與Cloudflare仍可能保留連線紀錄，頁尾連結雙方隱私聲明。
+個人條件、勾選、待辦與會議輸入只留本次瀏覽記憶體，重整後重設。Cloudflare Web Analytics僅統計瀏覽量（`spa:false`，每次載入一筆）：不使用Cookie或localStorage，送出位置已移除查詢參數；2026-11-07攔截實測，網址中的搜尋、學位與已選項目皆未出現在送出內容。Google Analytics（`G-GEFSZXE0RE`，資源「個人網站流量」下的串流「OpenGSA」）會使用Cookie辨識回訪瀏覽器，統計瀏覽量與外連點擊；2026-11-07攔截實測：載入時的第一筆page_view一律帶原始網址（含搜尋條件），`page_location`、`send_page_view:false`與關閉加強型評估都擋不住，只有串流的「遮蓋資料」有效。因此串流必須維持：遮蓋網址查詢參數開啟，鍵為`q, cat, deg, id, mode, picks, tab, view, compare`（值變成`(redacted)`，鍵名仍會送出）；加強型評估關閉。程式另把其餘事件的網址與外連`link_url`去掉查詢參數。新增網址參數時要先到GA4後台加鍵，`tests/test_build_site.py`會擋下遺漏。
+
+2026-11-18使用者核可GA4事件（`docs/design/prototype.js`的`track()`）：`select_content`（開啟方案詳情）、`official_source_click`（點官方來源）、`rss_subscribe`（開啟或複製RSS）、`share`（複製分享連結，不送連結本身）、`pick_add`／`pick_remove`（加入或移出我的清單）、`tutorial_begin`／`tutorial_complete`（導覽）、`filter_apply`（只送篩選鍵名，不送選了什麼）、`tab_view`（點頁籤）。參數只能是網站自己的固定值：方案代號、類別、feed種類、頁籤名、導覽名、篩選鍵名；`tests/test_build_site.py`會擋下未核可的事件名與帶輸入值的呼叫。網站目前沒有匯出功能，所以沒有`export`事件。Key events：`official_source_click`、`rss_subscribe`。GitHub Pages託管與Cloudflare仍可能保留連線紀錄，頁尾連結雙方隱私聲明。
 
 ## 驗收與回復
 
