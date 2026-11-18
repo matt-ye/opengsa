@@ -410,6 +410,8 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
                 ev_errors.append("unsupported_period_context:"+path_key)
             if b_item.get("unit") == "per_year" and not re.search(r"每年|每學年|一年",compact):
                 ev_errors.append("unsupported_period_context:"+path_key)
+            if b_item.get("unit") == "per_semester" and "每學期" not in compact:
+                ev_errors.append("unsupported_period_context:"+path_key)
             if cand.get("program_key")=="nstc-assistant-rule":
                 compact=re.sub(r"\s+","",combined)
                 if b_item.get("unit")=="per_month" and not re.search(r"每月|月支|月薪",compact):

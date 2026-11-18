@@ -41,6 +41,9 @@ class WithheldGenericFieldsTests(unittest.TestCase):
     def test_money_without_award_context_is_ignored(self):
         self.assertEqual(self.amounts('報名費新臺幣1,000元。')[0],[])
 
+    def test_another_subsidy_in_an_exclusion_clause_is_not_the_award(self):
+        self.assertEqual(self.amounts('比對結果已獲教育部定額減免私立大專學生學雜費每學期1.75萬元或其他政府補助者，不得重複申領。')[0],[])
+
     def test_degrees_stay_empty_when_the_document_also_covers_other_levels(self):
         _,cand=extract(units=blocks('申請資格：就讀碩士班或博士班之在學學生。','大學部學生另依第五點辦理。'))
         self.assertEqual(cand['eligibility']['degrees'],[])

@@ -1036,7 +1036,7 @@ def parse_amount_from_text(text):
                 "amount_min": val,
                 "amount_max": val,
                 "currency": "TWD",
-                "unit": "per_year" if re.search(r"每年|每學年|一年", clean) else "lump_sum",
+                "unit": "per_year" if re.search(r"每年|每學年|一年", clean) else "per_semester" if "每學期" in clean else "lump_sum",
                 "basis": "fixed",
                 "duration_months_min": None,
                 "duration_months_max": None,
@@ -1052,7 +1052,7 @@ def parse_amount_from_text(text):
             start=max(clean.rfind(mark,0,money.start()) for mark in ('。','；','，'))+1
             ends=[pos for mark in ('。','；','，') if (pos:=clean.find(mark,money.end()))>=0]
             clause=clean[start:min(ends) if ends else len(clean)]
-            unit = "per_month" if "每月" in clause else ("per_year" if any(w in clause for w in ("每年", "每學年", "一年")) else "unknown")
+            unit = "per_month" if "每月" in clause else ("per_year" if any(w in clause for w in ("每年", "每學年", "一年")) else "per_semester" if "每學期" in clause else "unknown")
             basis='maximum' if re.search('最高|上限|至多',clause) else 'minimum' if re.search('最低|至少|不得低於',clause) else 'fixed'
             return {"amount_min":None if basis=='maximum' else amount,"amount_max":None if basis=='minimum' else amount,"currency":"TWD","unit":unit,"basis":basis,"duration_months_min":None,"duration_months_max":None,"tax_note":None}
     return None
@@ -1069,11 +1069,11 @@ def _format_benefit_summary(item):
 
     if amin is None or amax is None:
         value = amin if amin is not None else amax
-        period = {"per_month":"每月", "per_year":"每年"}.get(unit, "")
+        period = {"per_month":"每月", "per_year":"每年", "per_semester":"每學期"}.get(unit, "")
         return f"{branch + '：' if branch else ''}{period}{'至少' if amax is None else '至多'}新臺幣{value:,}元；適用條件及期間依來源核對。"
 
-    if unit in ("per_month", "per_year"):
-        period = "每月" if unit == "per_month" else "每年"
+    if unit in ("per_month", "per_year", "per_semester"):
+        period = {"per_month":"每月", "per_year":"每年", "per_semester":"每學期"}[unit]
         value = f"{amin:,}" if amin == amax else f"{amin:,}至{amax:,}"
         return f"{branch + '：' if branch else ''}{period}新臺幣{value}元；實際期間與給付條件依核定。"
     if unit == "total_range" or amin != amax:

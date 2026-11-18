@@ -26,7 +26,7 @@ erDiagram
 | `cycle` | `kind`（含 `policy_snapshot`）、`label`、`year_system`、`year`、`term_or_round`、`branch` | 嚴格區分學年度／曆年、梯次、方案分支與法規條文快照 (`policy_snapshot`)，禁止將新舊年度或互斥分支混成一筆 |
 | `participants` | `applicant`、`beneficiary`、`awardee`、`payee` | 區分學生申請 (`student`) 與學校／單位申請 (`institution` / `unit`) |
 | `eligibility` | `degrees`、`institution`（學校、學院、系所）、`year_limit`、`candidate`、`nationality`、`employment_status`、`negated_conditions`、`identity` | 明示否定條件（如排除在職生、不得重複請領），未知維持 `unknown`；`identity` 綁定含學制關鍵字區塊並附 `field_evidence` |
-| `benefit` | `summary`、`items`（`amount_min`、`amount_max`、`currency`、`unit`、`basis`、`duration_months_min/max`）、`refs` | 金額必須具備幣別與發放單位（`per_month`、`lump_sum`、`total_range` 等），拒絕無單位裸數字；摘要依實際金額動態產生 |
+| `benefit` | `summary`、`items`（`amount_min`、`amount_max`、`currency`、`unit`、`basis`、`duration_months_min/max`）、`refs` | 金額必須具備幣別與發放單位（`per_month`、`per_semester`、`lump_sum`、`total_range` 等），拒絕無單位裸數字；摘要依實際金額動態產生 |
 | `compatibility`／`hardship` | `mode`、`prohibited_schemes`、`overlap_period_rule`、`note`、`refs` | 未明示可兼領時一律保留 `unknown` 或 `conditional`，不得當作 `allowed` |
 | `schedule` | `application_start`、`steps`（區分 `student`、`department`、`college`、`university`、`institution`、`supplement`）、`result_date`、`relative_rule` | 學生截止與學院／學校／機關期限分層，支援固定日期與事件相對規則 |
 | `policy_version` | `promulgated_on`、`amended_on`、`effective_from`、`effective_to`、`note`、`refs` | 公布日、修正日與生效日分開；修正日不得自動複製為生效日 |
