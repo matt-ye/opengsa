@@ -1,4 +1,4 @@
-"""驗證發布成品邊界及預覽提示，不取代官方資料覆核。"""
+"""驗證發布成品邊界、方案實體頁與索引設定，不取代官方資料覆核。"""
 import json
 from pathlib import Path
 import re
@@ -73,7 +73,10 @@ console.log(items.length+' items: temporal labels, geometry, ambiguous years, in
 
     def test_only_public_artifacts_are_published(self):
         files = {p.relative_to(self.output).as_posix() for p in self.output.rglob("*") if p.is_file()}
-        self.assertEqual(files, {"index.html", "assets/opengsa-social-preview.jpg", ".nojekyll", "feed.xml", "feed-deadlines.xml"})
+        pages = {f for f in files if f.startswith("p/")}
+        self.assertTrue(all(re.fullmatch(r"p/[a-z0-9][a-z0-9-]*/index\.html", f) for f in pages), pages)
+        self.assertEqual(files - pages, {"index.html", "assets/opengsa-social-preview.jpg", ".nojekyll", "feed.xml",
+            "feed-deadlines.xml", "sitemap.xml", "robots.txt", "404.html"})
         self.assertEqual((self.output / "assets/opengsa-social-preview.jpg").read_bytes(), (ROOT / "docs/assets/opengsa-social-preview.jpg").read_bytes())
 
     def test_preview_is_self_contained_and_uses_named_radar_snapshot(self):
@@ -97,12 +100,56 @@ console.log(items.length+' items: temporal labels, geometry, ambiguous years, in
         self.assertEqual(set(json.loads(metadata[1])['records']),{c['candidate_id'] for c in candidates})
         conferences = re.search(r'<script id="conference-data" type="application/json">(.*?)</script>', self.html, re.S)
         self.assertEqual(json.loads(conferences[1]), json.loads((ROOT / "data/conference-programs.json").read_text(encoding="utf-8")))
-        self.assertIn('name="robots" content="noindex, nofollow"', self.html)
+        # 2026-11-18 使用者核可正式上線：首頁與方案頁都開放索引。
+        self.assertNotIn('noindex', self.html)
         self.assertIn('property="og:image" content="https://opengsa.mattye.dev/assets/opengsa-social-preview.jpg"', self.html)
         self.assertIn('href="https://opengsa.mattye.dev/"', self.html)
-        self.assertIn('獎助雷達預覽 · 來源摘要，非即時資格核定', self.html)
+        self.assertIn('獎助雷達 · 來源摘要，非即時資格核定', self.html)
+        self.assertNotIn('預覽', re.sub(r'<script[\s\S]*?</script>', '', self.html).split('<main')[0])
         self.assertIn('issues/new?template=preview-feedback.yml', self.html)
         self.assertIn('請勿提交個資或私人申訴', self.html)
+
+    def test_every_programme_has_a_crawlable_page_with_sources(self):
+        snapshot = json.loads(re.search(r'<script id="pilot-data" type="application/json">(.*?)</script>', self.html, re.S)[1])
+        pages = sorted((self.output / "p").glob("*/index.html"))
+        full_bundle, _ = load_full_library(ROOT)
+        opportunity_ids = {c["opportunity_id"] for c in full_bundle["candidates"]}
+        # 同一個 opportunity_id 的卡合成一頁（2026-11-18 使用者決定），所以頁數等於方案數而非卡數。
+        self.assertEqual(len(pages), len(opportunity_ids))
+        all_text = "".join(p.read_text(encoding="utf-8") for p in pages)
+        self.assertTrue(all(f"id={o['id']}" in all_text for o in snapshot["opportunities"]), "每張卡都要出現在某一頁")
+        titles = set()
+        for page in pages:
+            html = page.read_text(encoding="utf-8")
+            slug = page.parent.name
+            self.assertIn(f'<link rel="canonical" href="https://opengsa.mattye.dev/p/{slug}/">', html)
+            self.assertNotIn("noindex", html)
+            # D5：未查證的方案也上架，但每一頁都要附官方來源。
+            sources = re.search(r"<h2>官方來源</h2><ul>(.*?)</ul>", html, re.S)
+            self.assertTrue(sources and 'href="http' in sources[1], slug)
+            titles.add(re.search(r"<title>([^<]*)</title>", html)[1])
+            self.assertIn("G-GEFSZXE0RE", html)
+            json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)[1])
+        self.assertEqual(len(titles), len(pages), "每頁標題必須不同")
+        # 網址不能用帶來源版本雜湊的 candidate_id，否則來源一改版網址就變。
+        self.assertFalse(any(re.search(r"-[0-9a-f]{8}$", p.parent.name) and p.parent.name.startswith("cand-") for p in pages))
+
+    def test_homepage_lists_every_programme_without_javascript(self):
+        snapshot = json.loads(re.search(r'<script id="pilot-data" type="application/json">(.*?)</script>', self.html, re.S)[1])
+        visible = BeautifulSoup(re.sub(r"<script[\s\S]*?</script>", "", self.html), "html.parser")
+        index = visible.select_one("#programme-index")
+        self.assertIsNotNone(index)
+        pages = list((self.output / "p").glob("*/index.html"))
+        self.assertEqual({a["href"] for a in index.select('a[href^="p/"]')}, {f"p/{p.parent.name}/" for p in pages})
+
+    def test_sitemap_and_robots_point_at_every_page(self):
+        sitemap = (self.output / "sitemap.xml").read_text(encoding="utf-8")
+        locs = re.findall(r"<loc>([^<]+)</loc>", sitemap)
+        pages = {f"https://opengsa.mattye.dev/p/{p.parent.name}/" for p in (self.output / "p").glob("*/index.html")}
+        self.assertEqual(set(locs), pages | {"https://opengsa.mattye.dev/"})
+        robots = (self.output / "robots.txt").read_text(encoding="utf-8")
+        self.assertIn("Sitemap: https://opengsa.mattye.dev/sitemap.xml", robots)
+        self.assertNotIn("Disallow: /" + chr(10), robots)
 
     def test_existing_output_is_not_overwritten_or_uploaded(self):
         with tempfile.TemporaryDirectory() as directory:

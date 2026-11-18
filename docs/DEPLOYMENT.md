@@ -1,4 +1,4 @@
-# GitHub Pages公開預覽
+# GitHub Pages 公開網站
 
 2026-11-07使用者核可：公開網址改為 https://opengsa.mattye.dev/ （GitHub Pages自訂網域，經Cloudflare代理；.dev瀏覽器強制HTTPS，DNS only在憑證發出前會中斷，2026-11-07實測約一小時），舊 github.io 網址由GitHub轉址；加入Cloudflare Web Analytics並整合至mattye.dev後台；維持noindex。取代下方2026-10-29「不修改DNS」之限制，該段保留為當時紀錄。
 
@@ -10,7 +10,9 @@
 
 由`scripts/build_site.py`重用離線匯出器，只產生：
 
-- `index.html`：內嵌程式與資料快照，清楚標示公開預覽、合成示範及待覆核草稿。
+- `index.html`：內嵌程式與資料快照，標示合成示範及待覆核草稿；`<main>`尾端另有純HTML方案索引，不執行JS也讀得到每一筆方案。
+- `p/<方案代號>/index.html`：每個方案一頁，附官方來源；代號用`opportunity_id`（不含來源版本雜湊，來源改版網址不變），同代號重複時加首個來源id區分。
+- `sitemap.xml`、`robots.txt`：sitemap列首頁與全部方案頁；robots.txt只補`Sitemap:`，線上實際內容由Cloudflare代管規則合併產生。
 - `feed.xml`、`feed-deadlines.xml`：全庫最新動態與截止倒數兩個 RSS（`scripts/build_feed.py`）。
 - `assets/opengsa-social-preview.jpg`：已核可的專案縮圖，供Open Graph分享使用。
 - `.nojekyll`：靜態成品標記。
@@ -42,7 +44,7 @@ python -m http.server 8771 --bind 127.0.0.1 --directory dist/site
 
 頁首與頁尾連到GitHub公開Issue回饋表，需GitHub帳號；沒有匿名回饋資料庫。提供操作、版面、公開來源更正與功能建議分類，提醒勿提交個資、私人申訴或未遮蔽附件。平台不自動建立Issue，也不代學生送申請。
 
-分享縮圖使用專案圖，Open Graph URL固定公開預覽位置，不用個人照片。預覽加上noindex／nofollow，暫不主動進搜尋索引；這不是存取控制，任何知道網址的人都能瀏覽及分享。
+分享縮圖使用專案圖，不用個人照片。2026-11-18使用者核可正式上線：拿掉「預覽」字樣，首頁與全部方案頁開放索引；未經來源查證的方案也上架，但頁面要標示並附官方來源。Cloudflare對`Google-Extended`的封鎖維持不動（屬mattye.dev整個zone）。
 
 個人條件、勾選、待辦與會議輸入只留本次瀏覽記憶體，重整後重設。Cloudflare Web Analytics僅統計瀏覽量（`spa:false`，每次載入一筆）：不使用Cookie或localStorage，送出位置已移除查詢參數；2026-11-07攔截實測，網址中的搜尋、學位與已選項目皆未出現在送出內容。Google Analytics（`G-GEFSZXE0RE`，資源「個人網站流量」下的串流「OpenGSA」）會使用Cookie辨識回訪瀏覽器，統計瀏覽量與外連點擊；2026-11-07攔截實測：載入時的第一筆page_view一律帶原始網址（含搜尋條件），`page_location`、`send_page_view:false`與關閉加強型評估都擋不住，只有串流的「遮蓋資料」有效。因此串流必須維持：遮蓋網址查詢參數開啟，鍵為`q, cat, deg, id, mode, picks, tab, view, compare`（值變成`(redacted)`，鍵名仍會送出）；加強型評估關閉。程式另把其餘事件的網址與外連`link_url`去掉查詢參數。新增網址參數時要先到GA4後台加鍵，`tests/test_build_site.py`會擋下遺漏。GitHub Pages託管與Cloudflare仍可能保留連線紀錄，頁尾連結雙方隱私聲明。
 
