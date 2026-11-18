@@ -155,7 +155,7 @@ def prepare_response(response,profile,hosts,link_limit=8,broad_links=False,categ
         # （<title> 最後一段，例如「行天宮五大志業網」），真方案才不會被誤擋。
         # 「急難救助 | 逢甲大學-學生事務處」：有校名的那段才看得出是誰辦的，處室名稱看不出。
         parts=re.split(r'\s*[|｜∣\-－–]\s*',soup.title.get_text(' ',strip=True)) if soup.title else ['']
-        site=next((p for p in parts if re.search(r'大學|學院',p)),parts[-1])
+        site=next((p for p in parts if re.search(r'(?:大學|學院)$',p)),parts[-1])
         if BARE_CATEGORY.fullmatch(title.strip()) and site and not BARE_CATEGORY.fullmatch(site) and site not in title:
             title=f'{title.strip()}（{site}）'
         if SKIP.search(title):raise ScanError('private_or_result_title_not_processed')
@@ -202,8 +202,8 @@ def clean_title(title):
     text=re.sub(r'^(?:0\d(?:-\d+)?|\d{2}-\d+|\d{2}_)[_.\s]*(?=\D)','',text)
     text=re.sub(r'\s*\d{2,3}\.\d{1,2}\.\d{1,2}$','',text)
     text=re.sub(r'^【[^】]*(?:公告|訊息|獎學金|獎助學金|組|處|中心|室)】\s*','',text)
-    # 「急難救助（學生事務處）」：括號裡的處室名稱不是方案名稱；帶校名的不動，「（大專組）」是分組也不動。
-    text=re.sub(r'[（(](?![^）)]*(?:大學|學院))[^（）()]{2,8}(?:處|中心|室)[）)]$','',text)
+    # 「急難救助（學生事務處）」：括號裡的校內處室不是方案名稱。政府、基金會等主辦單位（「嘉義市政府社會處」）留著。
+    text=re.sub(r'[（(](?:學生事務處|學務處|生活輔導組|生輔組|校安中心|德育中心|課外活動組|學生輔導中心)[）)]$','',text)
     # 「(申請日期:115/8/7~115/9/21) 115-1學期隆玉獎學金」：開頭的申請日期和緊接的學期代碼不是方案名稱。
     text=re.sub(r'^[(（]\s*(?:申請|收件)(?:日期|期間|時間)\s*[:：][^)）]*[)）]\s*(?:\d{3}-[12]\s*學期\s*)?(?=\S)','',text)
     # 「國立嘉義大學-學生事務處生活輔導組-…」：處室名稱不是方案名稱；校名留著，讀者才知道是哪一校。
@@ -240,7 +240,7 @@ def profile_for(row,prepared,known):
         # 舊標題是泛稱（「校外獎助學金申請資訊」）或清完只剩類別（「急難救助（學生事務處）」）也一樣。
         fresh=clean_title(prepared['title']) or ''
         cleaned=clean_title(profile.get('title')) or ''
-        if generic_title(cleaned) and not generic_title(fresh):
+        if fresh and generic_title(cleaned) and not generic_title(fresh):
             profile['title']=fresh
         # 舊設定存的是當時的標題；清理規則改進後也要套上，否則這張卡永遠帶著舊雜訊。清完只剩類別名稱就不動。
         elif profile.get('title') and not generic_title(cleaned):profile['title']=cleaned
