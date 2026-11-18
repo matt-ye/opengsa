@@ -185,7 +185,9 @@ def is_student_document(blocks):
     identity=discover_identity(blocks)
     if identity and identity['kind']=='eligibility_clause' and identity['degrees']:
         return True
-    return (any(re.search(r'學校電子郵件投件申請|線上報名表單|即日起開放報名|報名對象[：:]|申請資格[：:].{0,30}(?:學生|博士生|碩士生)|申請對象[：:].{0,30}(?:學生|博士生|碩士生)',text) for text in safe)
+    # 「(一)申請對象」常自成一段、條件在下一段，所以相鄰兩段接起來看。
+    joined=[a+b for a,b in zip(safe,safe[1:]+[''])]
+    return (any(re.search(r'學校電子郵件投件申請|線上報名表單|即日起開放報名|報名對象[：:]|申請資格[：:].{0,30}(?:學生|博士生|碩士生)|申請對象[：:]?.{0,40}(?:學生|博士生|碩士生)',text) for text in joined)
             and not any(re.search(r'學校彙|學院彙|系所彙整',b['text']) for b in blocks))
 
 
