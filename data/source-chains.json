@@ -2856,6 +2856,120 @@
       "program_key": "discovery-d2661751beebc3d82",
       "phase": "all",
       "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-df837d9384b67ce2c-29d70cdb",
+      "program_key": "discovery-df837d9384b67ce2c",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-df9470a30df499d28-4ec15385",
+      "program_key": "discovery-df9470a30df499d28",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-df1ecbf9be5d17bd7-4e9f6f60",
+      "program_key": "discovery-df1ecbf9be5d17bd7",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-d430cb3339ddaae2b-03760bd5",
+      "program_key": "discovery-d430cb3339ddaae2b",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-dddb311bc25c98392-a0660234",
+      "program_key": "discovery-dddb311bc25c98392",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-d68602796e4c59875-540387d2",
+      "program_key": "discovery-d68602796e4c59875",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-dcb99cc8ea465eae8-c326bda9",
+      "program_key": "discovery-d63b47162bd725635",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-de5f54b0fff73ca9d-9403168a",
+      "program_key": "discovery-dbfe058c5f842f691",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-db7de73bb3a50634f-94fd3611",
+      "program_key": "discovery-db7de73bb3a50634f",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-d8f2f4b1fce118ff4-2966234f",
+      "program_key": "discovery-d8f2f4b1fce118ff4",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-d0c7c6ea27cee0283-7f193e34",
+      "program_key": "discovery-d0c7c6ea27cee0283",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-d969df883248bef06-1197efc6",
+      "program_key": "discovery-d969df883248bef06",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-deb1d81224253a6ea-ffb3169a",
+      "program_key": "discovery-deb1d81224253a6ea",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-d992b595bb9247b32-07a570d1",
+      "program_key": "discovery-d992b595bb9247b32",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-d87cb7cbffae71bae-8eddbf13",
+      "program_key": "discovery-d87cb7cbffae71bae",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-da0d8a975d2cafd7e-10107fa6",
+      "program_key": "discovery-df837d9384b67ce2c",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-da4c2cb47bb48766b-c986a59e",
+      "program_key": "discovery-d430cb3339ddaae2b",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-dcd2d334f974f9209-c186d140",
+      "program_key": "discovery-d430cb3339ddaae2b",
+      "phase": "all",
+      "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-de48df978ed709330-e5888bf0",
+      "program_key": "discovery-de48df978ed709330",
+      "phase": "all",
+      "historical_baseline_allowed": true
     }
   ],
   "http_requests": 15,

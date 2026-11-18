@@ -80,6 +80,76 @@
       "reason": "同一來源的舊版本（extractor 1.1.0），保留 11/01 的新版本",
       "problem_source": "other",
       "reviewed_on": "2026-11-18"
+    },
+    {
+      "revision_id": "94fd3611cd82f6d5fe7f11be19294497cd2e3be874ae440ebc4308cdb4e4a73a",
+      "source_id": "discovery-db7de73bb3a50634f",
+      "candidate_id": "cand-discovery-db7de73bb3a50634f-94fd3611",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "公告型標題，且資格抽反：來源明寫碩博士與25歲以上不適用",
+      "problem_source": "extraction",
+      "reviewed_on": "2026-11-18"
+    },
+    {
+      "revision_id": "7f193e34300ff083c17d06a74c6c4492afba0ba4cdf8d3b3d54a02fca9e4befb",
+      "source_id": "discovery-d0c7c6ea27cee0283",
+      "candidate_id": "cand-discovery-d0c7c6ea27cee0283-7f193e34",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "一次性豪雨助學金，校內收件10/5已截止",
+      "problem_source": "source_page",
+      "reviewed_on": "2026-11-18"
+    },
+    {
+      "revision_id": "1197efc630fea0d75f8c7a3ae386498052fae9d90795d3173ca9e62a98d9c59f",
+      "source_id": "discovery-d969df883248bef06",
+      "candidate_id": "cand-discovery-d969df883248bef06-1197efc6",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "標題泛稱未點名方案，實為龍舜興協會轉介制",
+      "problem_source": "extraction",
+      "reviewed_on": "2026-11-18"
+    },
+    {
+      "revision_id": "8eddbf13aa71343826949e8c3532da3b24abf9805f92a5903bafd59b7b1d2f1d",
+      "source_id": "discovery-d87cb7cbffae71bae",
+      "candidate_id": "cand-discovery-d87cb7cbffae71bae-8eddbf13",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "泛稱申請須知，不是單一方案",
+      "problem_source": "not_a_program",
+      "reviewed_on": "2026-11-18"
+    },
+    {
+      "revision_id": "10107fa6fda2641307fa4d6d118bfc4a1db7585f72c3b11857b48acd2f7bfe92",
+      "source_id": "discovery-da0d8a975d2cafd7e",
+      "candidate_id": "cand-discovery-da0d8a975d2cafd7e-10107fa6",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "與還願助學金專頁卡重複，留專頁",
+      "problem_source": "other",
+      "reviewed_on": "2026-11-18"
+    },
+    {
+      "revision_id": "c986a59ed7e7dd5043709e1712917804f6d081a538edacee5e35c68ed9ef1066",
+      "source_id": "discovery-da4c2cb47bb48766b",
+      "candidate_id": "cand-discovery-da4c2cb47bb48766b-c986a59e",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "行政作業要點，生活助學金已含在不利處境卡",
+      "problem_source": "other",
+      "reviewed_on": "2026-11-18"
+    },
+    {
+      "revision_id": "c186d1403d59812a5a7a29b72252711f59eb68c091932c481ae489e40bb401d1",
+      "source_id": "discovery-dcd2d334f974f9209",
+      "candidate_id": "cand-discovery-dcd2d334f974f9209-c186d140",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "教育部計畫通則PDF，與東華115公告卡重複",
+      "problem_source": "other",
+      "reviewed_on": "2026-11-18"
     }
   ]
 }
