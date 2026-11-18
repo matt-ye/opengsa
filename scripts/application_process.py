@@ -30,7 +30,8 @@ def infer_process(blocks, record=None):
         if basis:
             method["deadline_basis"] = basis
             evidence[f"application_method/{index}"] = block
-        no_application = bool(re.search(r"(?:免(?:另行|額外)?申請|(?:無須|不需|不須)(?:另行|額外)?申請)(?!核銷|補件|展延|變更)",text))
+        # 抵免申請、減免申請、豁免申請 are applications, not "no application needed".
+        no_application = bool(re.search(r"(?:(?<![抵減豁])免(?:另行|額外)?申請|(?:無須|不需|不須)(?:另行|額外)?申請)(?!核銷|補件|展延|變更)",text))
         if no_application:
             for key in ("application_start","student_deadline"):
                 applicability[key] = {"status":"not_applicable","reason":"來源明示無須提出申請","refs":[]}

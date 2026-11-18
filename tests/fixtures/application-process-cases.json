@@ -78,5 +78,26 @@
     ],
     "mode": "hybrid",
     "paper": "required"
+  },
+  {
+    "id": "ntu-nav-credit-waiver",
+    "kind": "source_excerpt",
+    "url": "https://www.aca.ntu.edu.tw/w/aca/GAADNews_26051910555788878",
+    "texts": [
+      "選課作業 學分抵免申請作業"
+    ],
+    "mode": "unknown",
+    "paper": "unknown",
+    "na": []
+  },
+  {
+    "id": "synthetic-tuition-reduction",
+    "kind": "synthetic",
+    "texts": [
+      "辦理115學年度學雜費減免申請事宜。"
+    ],
+    "mode": "unknown",
+    "paper": "unknown",
+    "na": []
   }
 ]
