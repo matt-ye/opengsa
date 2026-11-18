@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 from scripts.dismiss_candidate import LEDGER, PROBLEMS, dismiss
+from scripts.readme_counts import refresh
 from scripts.run_source_intake import safe_text
 
 CONFIG = "data/scan-sources.json"
@@ -88,6 +89,9 @@ def run(body, reviewer, root, base_root):
             # 不認得的 id、重複駁回、原因空白：這行不動，其他行照做。
             results.append({"candidate_id": candidate_id, "status": "error", "error": str(error).split(":")[0]})
     disabled = disable_rejected_new_sources(root, base_root) if any(r["status"] == "dismissed" for r in results) else []
+    # README 的卡片數由資料算出，駁回後不重算，CI 的 README 檢查就會擋下推送。
+    if any(r["status"] == "dismissed" for r in results):
+        refresh(root)
     return {"results": results, "disabled_sources": disabled}
 
 
