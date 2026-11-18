@@ -60,6 +60,8 @@ def safe_rate_metadata(headers, error_body=None):
 PII_REDACT_RE = re.compile(
     r"([A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}|(?:\(0\d\)|0\d)[\-\s]?\d{3,4}[\-\s]?\d{3,4}(?:\s*(?:轉|分機|ext\.?)\s*\d+)?)"
 )
+# 只有「申請時間：」這類標籤、沒有日期的段落；日期在下一段。
+TIME_LABEL_ONLY = re.compile(r"[一二三四五六七八九十\d、.()（）]{0,4}(?:申請期間|申請時程|申請時間|受理期間|收件期間|申請期限)[：:]?")
 PROMPT_INJECTION_RE = re.compile(
     r"(忽略前述|忽略所有指令|SYSTEM\s*OVERRIDE|ignore\s+previous|ignore\s+all\s+instructions|self_verified\s*=)",
     re.I,
@@ -2222,10 +2224,13 @@ def _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode):
             'refs':evidence('organizations.'+role,units)}
     # Timing is independent of whether identity was already recognized.
     if blocks:
-        seen=set();student_document=is_student_document(blocks)
+        seen=set();student_document=is_student_document(blocks);label=''
         for block in blocks:
-            if PROMPT_INJECTION_RE.search(block['text']) or SKIP.search(block['text']):continue
+            if PROMPT_INJECTION_RE.search(block['text']) or SKIP.search(block['text']):label='';continue
             text=re.sub(r'\s+','',block['text'])
+            # 「一、申請時間：」自成一段、日期在下一段時，把標籤接到下一段一起判斷。
+            text,label=label+text,(text if TIME_LABEL_ONLY.fullmatch(text) else '')
+            if label:continue
             rule=recurring_time(text)
             if (not rule and re.search(r'申請期間|申請時程|申請時間|受理期間|收件期間|申請期限|申請截止|截止',text)
                     and not re.search(r'每年|修正|生效|購買|支出|出國期間|公布結果|出生|年齡',text)):

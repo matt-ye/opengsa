@@ -48,6 +48,9 @@ class AdaptiveExtractionTests(unittest.TestCase):
         self.assertEqual(clean_title("生活助學金申請公告📅"), "生活助學金申請公告")
         self.assertEqual(clean_title("10月份獎學金公告"), "10月份獎學金公告")
         self.assertEqual(clean_title("急難救助  - 學生安全組"), "急難救助")
+        self.assertEqual(clean_title("國立臺東大學學生緊急紓困助學金設置要點_111.04.28行政會議通過"), "國立臺東大學學生緊急紓困助學金設置要點")
+        self.assertEqual(clean_title("國立東華大學生活助學金作業要點(1120517修訂)"), "國立東華大學生活助學金作業要點")
+        self.assertEqual(clean_title("政府「急難紓困實施方案」新修正"), "急難紓困實施方案")
 
     def test_warning_and_explainer_tails_are_removed_but_deadlines_stay(self):
         self.assertEqual(clean_title("115學年度大專校院「不利處境學生助學計畫-助學金」申辦公告更新⛔逾時視同放棄！"),

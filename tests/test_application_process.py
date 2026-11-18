@@ -47,4 +47,13 @@ class ApplicationProcessTests(unittest.TestCase):
         self.assertIn('na_requires_evidence:candidate_qualification',process_errors(record))
 
 
+    def test_label_and_date_in_separate_blocks(self):
+        source={'id':'synthetic-split','url':'https://example.test/synthetic','title':'SYNTH助學金申請公告','evidence_mode':'short_excerpt'}
+        blocks=[{'locator':'a','text':'(一)申請對象'},{'locator':'b','text':'具本校學籍，於修業年限內之在學生，符合家庭所得條件者得申請助學金。'},
+                {'locator':'c','text':'一、申請時間：'},{'locator':'d','text':'115 年9月1日(二)至115年 10月8日(四)止'}]
+        cand=extract_from_in_memory_blocks(source,blocks,'f'*64,'2026-08-20T10:00:00+08:00',as_of='2026-08-20')[0]
+        self.assertEqual(cand['schedule']['application_start']['value'],'2026-09-01')
+        self.assertIn(('student','2026-10-08'),[(s['actor'],s['deadline']['value']) for s in cand['schedule']['steps']])
+
+
 if __name__=='__main__':unittest.main()
