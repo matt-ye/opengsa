@@ -150,6 +150,36 @@
       "reason": "教育部計畫通則PDF，與東華115公告卡重複",
       "problem_source": "other",
       "reviewed_on": "2026-11-18"
+    },
+    {
+      "revision_id": "7869f879c726f886cecb755ea4f74a4174b7443dd514629560f6dcef99ce2035",
+      "source_id": "discovery-d340c4005d12a1d2d",
+      "candidate_id": "cand-discovery-d340c4005d12a1d2d-7869f879",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "標題是校內外獎助學金總表索引頁並帶站名尾巴，網址實為原民生作業原則PDF，非單一方案",
+      "problem_source": "not_a_program",
+      "reviewed_on": "2026-11-19"
+    },
+    {
+      "revision_id": "08ada6880d109f872b95630a308e8e6ee6b4b0e335db97c6d9edc4599bb9813f",
+      "source_id": "discovery-issue-1af8bf888e57",
+      "candidate_id": "cand-discovery-issue-1af8bf888e57-08ada688",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "表單下載頁（學產基金急難慰問金申請書），不是方案頁",
+      "problem_source": "source_page",
+      "reviewed_on": "2026-11-19"
+    },
+    {
+      "revision_id": "9b465a0c4cd082569a8d2b13202351d6976cf05105f3f2f378ddf6e69d84b59c",
+      "source_id": "discovery-d05354e255f9e7eb3",
+      "candidate_id": "cand-discovery-d05354e255f9e7eb3-9b465a0c",
+      "action": "dismissed",
+      "reviewer": "matt-ye",
+      "reason": "與04036d12（115學年度不利處境助學金公告）同一方案，保留有申請期間的那張",
+      "problem_source": "other",
+      "reviewed_on": "2026-11-19"
     }
   ]
 }

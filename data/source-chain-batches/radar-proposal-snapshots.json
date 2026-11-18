@@ -1,6 +1,6 @@
 {
   "schema_version": "source-chain-1",
-  "generated_at": "2026-11-16T08:09:56+00:00",
+  "generated_at": "2026-11-18T16:00:49+00:00",
   "model_calls": 0,
   "official_data_modified": false,
   "documents": [
@@ -2975,20 +2975,6 @@
       "links": []
     },
     {
-      "id": "doc-ddb311bc25c983925df513ee",
-      "url": "https://rb005.ndhu.edu.tw/p/404-1005-158425.php",
-      "format": "html",
-      "revision_id": "a066023456a4b45d3e60f850629c2077c522d89965dac3c9cb570262dea4c2a0",
-      "observed_at": "2026-11-16T08:12:07+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-discovery-dddb311bc25c98392-a0660234"
-      ],
-      "events": [],
-      "links": []
-    },
-    {
       "id": "doc-68602796e4c59875e2582b81",
       "url": "https://rb005.ndhu.edu.tw/p/404-1005-219526.php",
       "format": "html",
@@ -3003,34 +2989,6 @@
       "links": []
     },
     {
-      "id": "doc-cb99cc8ea465eae8b38500bf",
-      "url": "https://wdsa.nttu.edu.tw/app/index.php?Action=downloadfile&file=WVhSMFlXTm9Mek14TDNCMFlWOHhPVFV5TkRKZk1UVTVOekV3TTE4MU1ESXpOQzV3WkdZPQ==&fname=0054RPA0RK4441YXHCLKOKMO1430WTRLDGJC40KKCCVX0040UWYWFCLLLO10NKOKSSWWIH35A4045430YWOKTS3434B0NOYSVXVXXWTS34MKB001USSSYWFCNPPOPPKKDGA050TXZSNKDCICDG34YSMPLP35QPSWUSECYSUW34OK01USYWDCTX054410IGYWQOB4542520ROSWWSML2504TS3430JCFGYSGGKLQK00WWPPKKWW04SXMOSTTWJG00OPB0OKGCVXZTDC4014B045SWOOKKTTGH44CCXT15FG04TXXTVWXSOKLKUSFGRLHG&cg=4643",
-      "format": "html",
-      "revision_id": "c326bda9f7628d8e60e4cdbaa3247a5e3335cc73b3bed7a726c2117e17e82a3d",
-      "observed_at": "2026-11-16T08:15:14+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-discovery-dcb99cc8ea465eae8-c326bda9"
-      ],
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-e5f54b0fff73ca9dbe6b2f35",
-      "url": "https://wdsa.nttu.edu.tw/app/index.php?Action=downloadfile&file=WVhSMFlXTm9MemN5TDNCMFlWOHhORGN3TkRsZk5qSTVPRGcxTmw4MU1qWXhOeTV3WkdZPQ==&fname=LOGGROOKWWCGA1YXEDLKSW24143025RLYSFG04XSVXGDFG40OKFC24POWWOOFGOKPOPOGG01A404ROJGKOSWTSLO34B0NOYSVXVXDCTSWSB0VSOKUSKKYWFCNO4051ZXDGA050TXZSNKDCICUSB004NPGGGDQP21POB445KL34OK01USA4XWZX054410NPGDXSOKSWLKWSROCGXSUTXT04B5DCMK30B4GGPOGHQKGC40LLMPEDLK3024FCMOXW25DGJCSS10GGGDXWA0A0MKPPDGOOKKYWGH44POHD15FG04TX14KOOKEGHCUSB0NKWSGGYT44FCWSTSVSVSLOOOUWOK44LKDDYXEDPOSX24MKKOUSWS50FGWSMKJDGDKOA5NKEC455400A4RKFCA4DCYTKK00POKP14IGJGLOWSB4JGA1A1&cg=4660",
-      "format": "html",
-      "revision_id": "9403168ab8f79d1d9b47054154aa763065fc8f087310f2213d1641ea9523dff5",
-      "observed_at": "2026-11-16T08:15:32+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-discovery-de5f54b0fff73ca9d-9403168a"
-      ],
-      "events": [],
-      "links": []
-    },
-    {
       "id": "doc-b7de73bb3a50634fce0d22d5",
       "url": "https://service.utaipei.edu.tw/p/405-1034-133588%2Cc3994.php?Lang=zh-tw",
       "format": "html",
@@ -3040,20 +2998,6 @@
       "evidence_mode": "hash_only",
       "candidate_ids": [
         "cand-discovery-db7de73bb3a50634f-94fd3611"
-      ],
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-8f2f4b1fce118ff4c9466ab8",
-      "url": "https://service.utaipei.edu.tw/p/405-1034-133518%2Cc3994.php?Lang=zh-tw",
-      "format": "html",
-      "revision_id": "2966234fc6cc823b54b8a99f996856e1b912d58807b90344cc7fa27b0542b3db",
-      "observed_at": "2026-11-16T08:16:22+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-discovery-d8f2f4b1fce118ff4-2966234f"
       ],
       "events": [],
       "links": []
@@ -3082,20 +3026,6 @@
       "evidence_mode": "hash_only",
       "candidate_ids": [
         "cand-discovery-d969df883248bef06-1197efc6"
-      ],
-      "events": [],
-      "links": []
-    },
-    {
-      "id": "doc-eb1d81224253a6eaa3374b54",
-      "url": "https://student.ntust.edu.tw/p/405-1053-82565%2Cc8425.php?Lang=zh-tw",
-      "format": "html",
-      "revision_id": "ffb3169a309520f168af4f789a66c95b22939403db89491fe83180030b712384",
-      "observed_at": "2026-11-16T08:17:49+00:00",
-      "status": "candidate_snapshot",
-      "evidence_mode": "hash_only",
-      "candidate_ids": [
-        "cand-discovery-deb1d81224253a6ea-ffb3169a"
       ],
       "events": [],
       "links": []
@@ -3171,15 +3101,421 @@
       "links": []
     },
     {
-      "id": "doc-e48df978ed709330fa80ada2",
-      "url": "https://osa.npust.edu.tw/wp-content/uploads/2026/06/%E5%AD%B8%E9%9B%9C%E8%B2%BB%E6%B8%9B%E5%85%8D-115-1%E5%AD%B8%E9%9B%9C%E8%B2%BB%E6%B8%9B%E5%85%8D%E9%A0%88%E7%9F%A5.pdf",
-      "format": "pdf",
-      "revision_id": "e5888bf0d16dd8f4d7018fda0b52473511c44c65c10e0da60002ea9859d6ca5a",
-      "observed_at": "2026-11-16T08:18:41+00:00",
+      "id": "doc-258ec3a4c1faeca4d9a34fd6",
+      "url": "https://wdsa.nttu.edu.tw/p/404-1009-181313.php?Lang=zh-tw",
+      "format": "html",
+      "revision_id": "517d59b9b0e4a1b2004ec8f9210eece67238416103d7f76d473b150404c158bd",
+      "observed_at": "2026-11-18T16:00:07+00:00",
       "status": "candidate_snapshot",
       "evidence_mode": "hash_only",
       "candidate_ids": [
-        "cand-discovery-de48df978ed709330-e5888bf0"
+        "cand-discovery-issue-258ec3a4c1fa-517d59b9"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-ff8b93c5e1f9827a85d7090f",
+      "url": "https://service.utaipei.edu.tw/p/404-1034-136098.php?Lang=zh-tw",
+      "format": "html",
+      "revision_id": "68f41d401ccefe3dd76291925d65f3820d15fb9ed751728700c0b53a2514f666",
+      "observed_at": "2026-11-18T16:00:53+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-ff8b93c5e1f9-68f41d40"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-88ff4fbf88f5fe8498faea9d",
+      "url": "https://service.utaipei.edu.tw/p/405-1034-136291%2Cc63.php?Lang=zh-tw",
+      "format": "html",
+      "revision_id": "7c814878fb1fb634cf5f637c333ecfbf0ac75599f9a0607718664ca734906ca6",
+      "observed_at": "2026-11-18T16:01:11+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d88ff4fbf88f5fe84-7c814878"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-8936e607c4f5f9870668d69f",
+      "url": "https://service.utaipei.edu.tw/p/405-1034-135891%2Cc63.php?Lang=zh-tw",
+      "format": "html",
+      "revision_id": "b7e3b18561766c663f7693fa669ec1cde9b7d71c5025ca9817a20586da88d3b3",
+      "observed_at": "2026-11-18T16:01:23+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d8936e607c4f5f987-b7e3b185"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-1bef3d385a088762e339426e",
+      "url": "https://scholarship.ntut.edu.tw/p/412-1043-13159.php",
+      "format": "html",
+      "revision_id": "cdbe8dd0f05a759e7ef12b0a2253666316f093cd5dcb7c1bade88aeef03328a0",
+      "observed_at": "2026-11-18T16:01:57+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d1bef3d385a088762-cdbe8dd0"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-e353dc9afe64126c5e117cba",
+      "url": "https://scholarship.ntut.edu.tw/p/405-1043-151280%2Cc13136.php",
+      "format": "html",
+      "revision_id": "329457c9f2938732f13018f1116082c532193d9f62d641ae3415a650d7ac856f",
+      "observed_at": "2026-11-18T16:02:12+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-de353dc9afe64126c-329457c9"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-b63c3469507f7fb9024ea182",
+      "url": "https://scholarship.ntut.edu.tw/p/404-1043-151610.php",
+      "format": "html",
+      "revision_id": "dc5fbe8ec69500ca16aaaf25f90cec8e8277bd93cc5dccfa64d9378e57fbdf4c",
+      "observed_at": "2026-11-18T16:02:15+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-db63c3469507f7fb9-dc5fbe8e"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-4b71b6e132ab2fd08f0b6c7c",
+      "url": "https://scholarship.ntut.edu.tw/p/404-1043-149760.php",
+      "format": "html",
+      "revision_id": "c12b1fdb122834d085d9742a46aea5b8a265c52ee12ae9b3ec468f935a1899bc",
+      "observed_at": "2026-11-18T16:02:18+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d4b71b6e132ab2fd0-c12b1fdb"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-66bb73d71d3fbd20483b55be",
+      "url": "https://scholarship.ntut.edu.tw/p/404-1043-154480.php",
+      "format": "html",
+      "revision_id": "039445cb5af98aaea0bd8cbe3dc586e58844e2ffa9b4702373a93750dc9f6103",
+      "observed_at": "2026-11-18T16:02:21+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d66bb73d71d3fbd20-039445cb"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-0cc97b406b58556f73ee73ff",
+      "url": "https://scholarship.ntut.edu.tw/p/406-1043-156350%2Cr1652.php",
+      "format": "html",
+      "revision_id": "91c98f9d880851c3fd8fe1aaf68a7d9a119491ea0a13fe2eec8c73f933c6e170",
+      "observed_at": "2026-11-18T16:02:24+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d0cc97b406b58556f-91c98f9d"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-8cc296f8909a9a4c83654033",
+      "url": "https://scholarship.ntut.edu.tw/p/406-1043-156355%2Cr1652.php",
+      "format": "html",
+      "revision_id": "034588ce2c9fc6b4e13da02a265feb919075bfe90f677cc677068826d9ffd39d",
+      "observed_at": "2026-11-18T16:02:27+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d8cc296f8909a9a4c-034588ce"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-d398f8bcdfceac73c5cca7d2",
+      "url": "https://scholarship.ntut.edu.tw/p/406-1043-85347%2Cr1652.php",
+      "format": "html",
+      "revision_id": "d94d50c730b632ec6e7d36b3e59efc10c700829b32db47cc9cd6d64c55acf6ee",
+      "observed_at": "2026-11-18T16:02:33+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-dd398f8bcdfceac73-d94d50c7"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-1af8bf888e57e9a75697d1d8",
+      "url": "https://web-ch.scu.edu.tw/life/file/2450/2004",
+      "format": "html",
+      "revision_id": "08ada6880d109f872b95630a308e8e6ee6b4b0e335db97c6d9edc4599bb9813f",
+      "observed_at": "2026-11-18T16:08:37+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-1af8bf888e57-08ada688"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-f2bade0e2fafe3dd0e6e02e1",
+      "url": "https://web-ch.scu.edu.tw/index.php/life/file/7150",
+      "format": "html",
+      "revision_id": "087704f9e6e312c55cabeca05a47a6ef45bb0936d4c257e0d114bdc08143aee0",
+      "observed_at": "2026-11-18T16:08:47+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-f2bade0e2faf-087704f9"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-0c8df93e145e43c8c86f6752",
+      "url": "https://student.fcu.edu.tw/%E6%80%A5%E9%9B%A3%E6%95%91%E5%8A%A9/",
+      "format": "html",
+      "revision_id": "2c97b8bf28cbe385227a7f39fc657c24c01996417f16deeee7c2f2c5d8559298",
+      "observed_at": "2026-11-18T16:09:06+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-0c8df93e145e-2c97b8bf"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-06c9affd82effa39ae0ef011",
+      "url": "https://student.fcu.edu.tw/%E7%94%9F%E6%B4%BB%E5%8A%A9%E5%AD%B8%E9%87%91/",
+      "format": "html",
+      "revision_id": "c625285eb5cf1f18e6accd1aa548b9b716ab8f9cca0ac2de59238251a8264a55",
+      "observed_at": "2026-11-18T16:09:14+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-06c9affd82ef-c625285e"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-8bc962a884ea2937d5f8a11a",
+      "url": "https://student.fcu.edu.tw/%E6%B7%B1%E8%80%95%E5%8A%A9%E5%AD%B8%E9%87%91/",
+      "format": "html",
+      "revision_id": "8a99ed6ea2baed5455c9b4cc57478a44949c8afaf7d54d167f9a0d40225e77f2",
+      "observed_at": "2026-11-18T16:09:21+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-8bc962a884ea-8a99ed6e"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-bf1c6321c9d4fd59798ead6e",
+      "url": "https://sa1.isu.edu.tw/page/%E5%BC%B1%E5%8B%A2%E5%8A%A9%E5%AD%B8-1MydC5UNtpGy",
+      "format": "html",
+      "revision_id": "e620ace0dd60c76ddde01b288b884c1ebe0242f5468667f868f3792884a64422",
+      "observed_at": "2026-11-18T16:10:35+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-bf1c6321c9d4-e620ace0"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-ddb311bc25c983925df513ee",
+      "url": "https://rb005.ndhu.edu.tw/p/404-1005-158425.php",
+      "format": "html",
+      "revision_id": "d7f756d045b05e0dfbaa3f18b1db6825dc049724a9d0a25410c4a50e86a2e4d7",
+      "observed_at": "2026-11-18T16:10:52+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-dddb311bc25c98392-d7f756d0"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-cb99cc8ea465eae8b38500bf",
+      "url": "https://wdsa.nttu.edu.tw/app/index.php?Action=downloadfile&file=WVhSMFlXTm9Mek14TDNCMFlWOHhPVFV5TkRKZk1UVTVOekV3TTE4MU1ESXpOQzV3WkdZPQ==&fname=0054RPA0RK4441YXHCLKOKMO1430WTRLDGJC40KKCCVX0040UWYWFCLLLO10NKOKSSWWIH35A4045430YWOKTS3434B0NOYSVXVXXWTS34MKB001USSSYWFCNPPOPPKKDGA050TXZSNKDCICDG34YSMPLP35QPSWUSECYSUW34OK01USYWDCTX054410IGYWQOB4542520ROSWWSML2504TS3430JCFGYSGGKLQK00WWPPKKWW04SXMOSTTWJG00OPB0OKGCVXZTDC4014B045SWOOKKTTGH44CCXT15FG04TXXTVWXSOKLKUSFGRLHG&cg=4643",
+      "format": "html",
+      "revision_id": "a1e9f422504146d7dec15236f69d235e2becba706ae7febc212c5d5106244c07",
+      "observed_at": "2026-11-18T16:10:59+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-dcb99cc8ea465eae8-a1e9f422"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-e5f54b0fff73ca9dbe6b2f35",
+      "url": "https://wdsa.nttu.edu.tw/app/index.php?Action=downloadfile&file=WVhSMFlXTm9MemN5TDNCMFlWOHhORGN3TkRsZk5qSTVPRGcxTmw4MU1qWXhOeTV3WkdZPQ==&fname=LOGGROOKWWCGA1YXEDLKSW24143025RLYSFG04XSVXGDFG40OKFC24POWWOOFGOKPOPOGG01A404ROJGKOSWTSLO34B0NOYSVXVXDCTSWSB0VSOKUSKKYWFCNO4051ZXDGA050TXZSNKDCICUSB004NPGGGDQP21POB445KL34OK01USA4XWZX054410NPGDXSOKSWLKWSROCGXSUTXT04B5DCMK30B4GGPOGHQKGC40LLMPEDLK3024FCMOXW25DGJCSS10GGGDXWA0A0MKPPDGOOKKYWGH44POHD15FG04TX14KOOKEGHCUSB0NKWSGGYT44FCWSTSVSVSLOOOUWOK44LKDDYXEDPOSX24MKKOUSWS50FGWSMKJDGDKOA5NKEC455400A4RKFCA4DCYTKK00POKP14IGJGLOWSB4JGA1A1&cg=4660",
+      "format": "html",
+      "revision_id": "70f6d3ee044df786e3922200f95182f349452b6dbf1e22b261413e7680eae8e5",
+      "observed_at": "2026-11-18T16:11:07+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-de5f54b0fff73ca9d-70f6d3ee"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-8f2f4b1fce118ff4c9466ab8",
+      "url": "https://service.utaipei.edu.tw/p/405-1034-133518%2Cc3994.php?Lang=zh-tw",
+      "format": "html",
+      "revision_id": "0dc19491831f71bce6f3413d6ab1114f3d3bc33c0de6c0fc31ca733f85607c5f",
+      "observed_at": "2026-11-18T16:11:14+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d8f2f4b1fce118ff4-0dc19491"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-eb1d81224253a6eaa3374b54",
+      "url": "https://student.ntust.edu.tw/p/405-1053-82565%2Cc8425.php?Lang=zh-tw",
+      "format": "html",
+      "revision_id": "04036d12c207bac21cfd3e8caef8d6fac6b9cc77720a4da0dc1560afc89dc8e7",
+      "observed_at": "2026-11-18T16:11:27+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-deb1d81224253a6ea-04036d12"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-05354e255f9e7eb3c7b4ac3e",
+      "url": "https://student.ntust.edu.tw/p/412-1053-8425.php?Lang=zh-tw",
+      "format": "html",
+      "revision_id": "9b465a0c4cd082569a8d2b13202351d6976cf05105f3f2f378ddf6e69d84b59c",
+      "observed_at": "2026-11-18T16:11:48+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d05354e255f9e7eb3-9b465a0c"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-c185db0965d59959670d5a46",
+      "url": "https://student.ntust.edu.tw/p/412-1053-11221.php?Lang=zh-tw",
+      "format": "html",
+      "revision_id": "df9d12f5bea5cd4e6592b03dcc32c28cfe530d9d62c08937381389433cbfb352",
+      "observed_at": "2026-11-18T16:12:03+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-dc185db0965d59959-df9d12f5"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-340c4005d12a1d2d40d62abf",
+      "url": "https://osa.ntua.edu.tw/userfiles/files/(%E4%BF%AE%E6%AD%A3)%E5%9C%8B%E7%AB%8B%E8%87%BA%E7%81%A3%E8%97%9D%E8%A1%93%E5%A4%A7%E5%AD%B8%E5%8E%9F%E4%BD%8F%E6%B0%91%E5%AD%B8%E7%94%9F%E7%8D%8E%E5%8A%A9%E5%AD%B8%E9%87%91%E4%BD%9C%E6%A5%AD%E5%8E%9F%E5%89%870106.pdf",
+      "format": "pdf",
+      "revision_id": "7869f879c726f886cecb755ea4f74a4174b7443dd514629560f6dcef99ce2035",
+      "observed_at": "2026-11-18T16:07:52+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d340c4005d12a1d2d-7869f879"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-8088b3787face7972da8490a",
+      "url": "https://sa1.isu.edu.tw/storage/files/XqXIjgRwac9Ylb3GgAd7xoPbTKBeWUBZ0QuTT2rW.pdf",
+      "format": "pdf",
+      "revision_id": "3e67590b4769b610b206e13e18b8f2ae475e87c5c3fd75046ab09c5f871042de",
+      "observed_at": "2026-11-18T16:09:55+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d8088b3787face797-3e67590b"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-1520701ad6cbbbe370bfa9a7",
+      "url": "https://sa1.isu.edu.tw/storage/files/boHjS4AlPGtg5irkM9QYhxVrn9SACZWnW0xvPPvz.pdf",
+      "format": "pdf",
+      "revision_id": "b9b6a2ffc0e77bd8cc8d803d47ec3447dd604f7d141e6cdab07de6a50dde37b9",
+      "observed_at": "2026-11-18T16:10:14+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d1520701ad6cbbbe3-b9b6a2ff"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-68f245db5c9f2aa557afd644",
+      "url": "https://sa1.isu.edu.tw/storage/files/I3kxa65zhpJcyrHH0Z3UFemlWVbtHgG48s8ODChL.pdf",
+      "format": "pdf",
+      "revision_id": "780af74cf15d57598693b3d86d74d6050fc484770cc08ab1c28660f94ccb63ca",
+      "observed_at": "2026-11-18T16:10:20+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-d68f245db5c9f2aa5-780af74c"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-e48df978ed709330fa80ada2",
+      "url": "https://osa.npust.edu.tw/wp-content/uploads/2026/06/%E5%AD%B8%E9%9B%9C%E8%B2%BB%E6%B8%9B%E5%85%8D-115-1%E5%AD%B8%E9%9B%9C%E8%B2%BB%E6%B8%9B%E5%85%8D%E9%A0%88%E7%9F%A5.pdf",
+      "format": "pdf",
+      "revision_id": "1b772b21bd48af1059e251c0560ece20f297de75a491d40cb3ff146fc6a6a43d",
+      "observed_at": "2026-11-18T16:12:38+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-de48df978ed709330-1b772b21"
       ],
       "events": [],
       "links": []
