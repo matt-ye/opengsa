@@ -105,6 +105,166 @@
       "school": "國立屏東科技大學",
       "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
       "approved_on": "2026-11-10"
+    },
+    {
+      "url": "https://wdsa.nttu.edu.tw/p/404-1009-181313.php?Lang=zh-tw",
+      "category": "living",
+      "school_id": "U019",
+      "school": "國立臺東大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://service.utaipei.edu.tw/p/404-1034-136098.php?Lang=zh-tw",
+      "category": "living",
+      "school_id": "U027",
+      "school": "臺北市立大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://scholarship.ntut.edu.tw/",
+      "category": "living",
+      "school_id": "U031",
+      "school": "國立臺北科技大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://www.npu.edu.tw/form/index.aspx?Parser=2,5,44",
+      "category": "living",
+      "school_id": "U033",
+      "school": "國立澎湖科技大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://www.npu.edu.tw/sub/latestevent/index.aspx?Parser=9,22,501,486",
+      "category": "living",
+      "school_id": "U033",
+      "school": "國立澎湖科技大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://scholarship.ncut.edu.tw/index.OLD.php",
+      "category": "living",
+      "school_id": "U034",
+      "school": "國立勤益科技大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://osa.ntua.edu.tw/article.aspx?category=83",
+      "category": "living",
+      "school_id": "U037",
+      "school": "國立臺灣藝術大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://osa.ntua.edu.tw/article.aspx?category=97",
+      "category": "living",
+      "school_id": "U037",
+      "school": "國立臺灣藝術大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://web-ch.scu.edu.tw/life/file/2450/2004",
+      "category": "living",
+      "school_id": "U041",
+      "school": "東吳大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://web-ch.scu.edu.tw/index.php/life/file/7150",
+      "category": "living",
+      "school_id": "U041",
+      "school": "東吳大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://web-ch.scu.edu.tw/index.php/life/file/2450",
+      "category": "living",
+      "school_id": "U041",
+      "school": "東吳大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://student.fcu.edu.tw/%e6%80%a5%e9%9b%a3%e6%95%91%e5%8a%a9/",
+      "category": "living",
+      "school_id": "U045",
+      "school": "逢甲大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://student.fcu.edu.tw/%e7%94%9f%e6%b4%bb%e5%8a%a9%e5%ad%b8%e9%87%91/",
+      "category": "living",
+      "school_id": "U045",
+      "school": "逢甲大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://student.fcu.edu.tw/%e6%b7%b1%e8%80%95%e5%8a%a9%e5%ad%b8%e9%87%91/",
+      "category": "living",
+      "school_id": "U045",
+      "school": "逢甲大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://c030.pu.edu.tw/p/412-1063-5585.php?Lang=zh-tw",
+      "category": "living",
+      "school_id": "U047",
+      "school": "靜宜大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://c030.pu.edu.tw/p/412-1063-1660.php?Lang=zh-tw",
+      "category": "living",
+      "school_id": "U047",
+      "school": "靜宜大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://c030.pu.edu.tw/p/412-1063-1656.php?Lang=zh-tw",
+      "category": "living",
+      "school_id": "U047",
+      "school": "靜宜大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://sa1.isu.edu.tw/page/校內工讀-UWijFVqk9e8H",
+      "category": "living",
+      "school_id": "U050",
+      "school": "義守大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://sa1.isu.edu.tw/page/%E6%80%A5%E9%9B%A3%E6%95%91%E5%8A%A9-vy3JPzNCEEy7",
+      "category": "living",
+      "school_id": "U050",
+      "school": "義守大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
+    },
+    {
+      "url": "https://sa1.isu.edu.tw/page/%E5%BC%B1%E5%8B%A2%E5%8A%A9%E5%AD%B8-1MydC5UNtpGy",
+      "category": "living",
+      "school_id": "U050",
+      "school": "義守大學",
+      "approved_in": "https://github.com/matt-ye/opengsa/issues/130",
+      "approved_on": "2026-11-18"
     }
   ]
 }
