@@ -2,7 +2,7 @@
   "schema_version": "source-chain-index-1",
   "as_of": "2026-11-19",
   "candidate_file": "data/candidates/source-review.json",
-  "candidate_sha256": "98f0acac0133c98e2ccde20ff914d823cb94962a109a9eeeee6e4f41f5f286c4",
+  "candidate_sha256": "6dc6600577968bc71587a108a869bd69e8cb24a8818c6a74b733897cf9b260bd",
   "bundles": [
     "data/source-chains.json",
     "data/source-chain-batches/batch-01.json",
@@ -3578,7 +3578,7 @@
       "key": "discovery-issue-87b38e387dec",
       "title": "Claude Team plan for scientists",
       "candidate_ids": [
-        "cand-discovery-issue-87b38e387dec-e8a974dc"
+        "cand-discovery-issue-87b38e387dec-a288625a"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
@@ -3650,6 +3650,7 @@
     "第一批以13方案／19候選為基線；本次為64份候選文件／58組暫定方案，未完成跨URL語義別名整併。",
     "batch-01僅表示原第一批3方案的資訊鏈規則；全原始URL盤查見original-source-verification.json。",
     "全部規則與候選維持pending，不是人工發布核准。",
+    "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
