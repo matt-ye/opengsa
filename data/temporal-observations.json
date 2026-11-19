@@ -326,6 +326,22 @@
         "https://web-ch.scu.edu.tw/life/file/2450/2004"
       ],
       "observed_at": "2026-11-18T16:00:49+00:00"
+    },
+    {
+      "http_requests": 0,
+      "kind": "same_round",
+      "attempted_urls": [
+        "https://claude.com/programs/team-plan-for-scientists"
+      ],
+      "observed_at": "2026-11-19T04:35:18+00:00"
+    },
+    {
+      "http_requests": 0,
+      "kind": "same_round",
+      "attempted_urls": [
+        "https://claude.com/programs/team-plan-for-scientists"
+      ],
+      "observed_at": "2026-11-19T05:01:21+00:00"
     }
   ],
   "records": {
@@ -49305,6 +49321,56 @@
         }
       ],
       "candidate_sha256": "1dc26339dd761dd443436834a6f09a5ee897ee86a0dec8280444a36f3928bd0a"
+    },
+    "cand-discovery-issue-87b38e387dec-a288625a": {
+      "url": "https://claude.com/programs/team-plan-for-scientists",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-19T05:01:16+00:00",
+      "raw_sha256": "6415b92ea6ca49b803d702a5bf7c2b6e11fc110116168d91f41087018fbd52a0",
+      "revision_id": "a30a8af3a7ad305988be5dd8d5062713ec06b28157d77bea1e80c66c425a4398",
+      "format": "html",
+      "parser_sha256": "a6f09fbed2b5e7481a1be7a069f87a4e9559e6457c972198639e11ea96c3a04c",
+      "card_revision_id": "a288625a53c9c7ac93ddbc0104865ffbcac9db16bc781db7d143489a3e1dc734",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "undetermined",
+        "review_mode": "not_stated",
+        "rules": [],
+        "gaps": [
+          "time_not_projected"
+        ]
+      },
+      "diagnostics": [
+        {
+          "locator": "body / text-block 133",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "body / text-block 138",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ],
+      "undetermined_subkind": "no_schedule_in_document",
+      "candidate_sha256": "024233166eba03d10bd4346440230d588c5408c4a121b74e18b86dd4d80747e3"
     }
   },
   "baseline": {

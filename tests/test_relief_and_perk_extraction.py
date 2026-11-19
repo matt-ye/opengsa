@@ -20,6 +20,10 @@ class ReliefAndPerkTests(unittest.TestCase):
         self.assertFalse(resource_title("學生急難濟助實施辦法", "scholarship"))
         self.assertTrue(resource_title("Tableau for Students", "ai"))
         self.assertFalse(resource_title("Tableau for Students", None))
+        # 給研究人員的方案也算 AI 優惠；只在 ai 類別放寬。
+        self.assertTrue(resource_title("Claude Team plan for scientists", "ai"))
+        self.assertTrue(resource_title("研究人員方案", "ai"))
+        self.assertFalse(resource_title("Claude Team plan for scientists", None))
 
     def test_household_eligibility_is_found_only_for_living_sources(self):
         self.assertIsNone(discover_identity(RELIEF))
@@ -61,6 +65,56 @@ class ReliefAndPerkTests(unittest.TestCase):
         self.assertEqual([c["candidate_id"] for c in kept], ["b"])
         self.assertEqual(dropped[0]["reason"], "same_title_same_site")
 
+
+
+class ResearcherPlanTest(unittest.TestCase):
+    def test_researcher_eligibility_beats_student_testimonial(self):
+        page = blocks(
+            "As an MD-PhD student juggling course work and lab experiments, having a tool this versatile has been transformative.",
+            "Principal investigators (PIs) or equivalent at accredited universities and nonprofit research institutes are eligible to apply.")
+        found = discover_identity(page, "ai")
+        self.assertEqual(found["kind"], "eligibility_clause")
+        self.assertTrue(found["text"].startswith("由計畫主持人（PI）"))
+        self.assertEqual(found["applicant"], "principal_investigator")
+        self.assertEqual(found["units"][0]["locator"], "SYNTH/1")
+
+    def test_teaser_article_inside_main_is_not_the_body(self):
+        from bs4 import BeautifulSoup
+        from scripts.expand_sources import body_selector
+        long = "<p>" + "Eligibility and pricing details. " * 20 + "</p>"
+        teaser = BeautifulSoup("<main>" + long + "<article><p>Related story</p></article></main>", "html.parser")
+        self.assertEqual(body_selector(teaser), "main")
+        # 正文本身就是 article（公告頁）時照舊取 article。
+        notice = BeautifulSoup("<main><nav>Home</nav><article>" + long + "</article></main>", "html.parser")
+        self.assertEqual(body_selector(notice), "article")
+
+    def test_pi_program_card_has_pi_applicant_not_student_step(self):
+        from scripts.extract_candidates import extract_from_in_memory_blocks
+        from scripts.verify_candidates import verify_candidate
+        source = {"id": "synthetic-pi-plan", "url": "https://example.org/plan", "title": "Team plan for scientists",
+                  "category": "research_tools", "resource_kind": "tool_subscription", "evidence_mode": "hash_only"}
+        page = blocks("Verified principal investigators qualify for the plan and then add their research team to free seats.",
+                      "As a PhD student, I use it every day.")
+        card = extract_from_in_memory_blocks(source, page, "e" * 64, "2026-11-19T12:00:00+08:00", as_of="2026-11-19")[0]
+        self.assertEqual(card["participants"]["applicant"], "principal_investigator")
+        self.assertEqual([s["actor"] for s in card["schedule"]["steps"]], ["principal_investigator"])
+        self.assertIn("研究團隊成員由主持人加入", card["eligibility"]["identity"]["text"])
+        self.assertEqual(card["schedule"]["steps"][0]["refs"], card["eligibility"]["identity"]["refs"])
+        # 檢核也擋住「主持人方案卻寫學生申請」。
+        card["schedule"]["steps"][0]["actor"] = "student"
+        errors = verify_candidate(card)["verification"]["errors"]
+        self.assertIn("principal_investigator_program_has_student_step", errors)
+
+    def test_student_perk_card_keeps_student_step(self):
+        from scripts.extract_candidates import extract_from_in_memory_blocks
+        source = {"id": "synthetic-student-perk", "url": "https://example.org/edu", "title": "Tool for Students",
+                  "category": "research_tools", "resource_kind": "tool_subscription", "evidence_mode": "hash_only"}
+        card = extract_from_in_memory_blocks(source, PERK, "e" * 64, "2026-11-19T12:00:00+08:00", as_of="2026-11-19")[0]
+        self.assertEqual([s["actor"] for s in card["schedule"]["steps"]], ["student"])
+        self.assertNotEqual(card["participants"]["applicant"], "principal_investigator")
+
+    def test_student_perk_unchanged(self):
+        self.assertNotIn("計畫主持人", discover_identity(PERK, "ai")["text"])
 
 if __name__ == "__main__":
     unittest.main()
