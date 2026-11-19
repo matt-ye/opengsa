@@ -113,7 +113,9 @@ def project_time_policy(candidate, unsafe=False):
     def own_or_linked(e):
         if e['source'] == meta['source_id'] and e['revision_id'] == meta['revision_id']:
             return True
-        return (e['source'], e['revision_id']) in linked and re.fullmatch(r'schedule\.steps/\d+/deadline', e['field_path'])
+        step = re.fullmatch(r'schedule\.steps/(\d+)/deadline', e['field_path'])
+        return ((e['source'], e['revision_id']) in linked and bool(step) and int(step[1]) < len(schedule['steps'])
+                and schedule['steps'][int(step[1])]['actor'] == 'student')
 
     def refs(path):
         return [{'source': e['source'], 'revision_id': e['revision_id'],
