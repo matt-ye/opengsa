@@ -5271,6 +5271,26 @@
       "text": "### Claude Team plan for scientists\n\n原候選來源 · html · candidate_snapshot\n\n查核：2026-11-19\n\n[來源網站](https://claude.com/programs/team-plan-for-scientists)\n\n`doc-87b38e387dec518c0fdd828f`"
     },
     {
+      "id": "e8abe014127c6514",
+      "type": "text",
+      "x": 0,
+      "y": 98300,
+      "width": 350,
+      "height": 175,
+      "color": "5",
+      "text": "## 國立臺灣大學醫學院研究生優秀著作獎獎勵辦法\n\n1筆候選｜baseline_pending\n\n沿用基線；待下一批查核"
+    },
+    {
+      "id": "92a2b6c55a94085f",
+      "type": "text",
+      "x": 430,
+      "y": 98300,
+      "width": 350,
+      "height": 260,
+      "color": "3",
+      "text": "### 國立臺灣大學醫學院研究生優秀著作獎獎勵辦法\n\n原候選來源 · html · candidate_snapshot\n\n查核：2026-11-19\n\n[來源網站](https://rd.mc.ntu.edu.tw/bomrd/ntu2/file.asp?filename=2026102895354.pdf)\n\n`doc-890c93924c8d0727db9df92d`"
+    },
+    {
       "id": "f94a583d91ca7514",
       "type": "text",
       "x": 0,
@@ -8225,6 +8245,16 @@
       "id": "09f59b53407727b7",
       "fromNode": "0677f1ae49b30bac",
       "toNode": "6526f3e45de45dd1",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "c6bb64a60cc2e2b0",
+      "fromNode": "e8abe014127c6514",
+      "toNode": "92a2b6c55a94085f",
       "fromSide": "right",
       "toSide": "left",
       "toEnd": "arrow",

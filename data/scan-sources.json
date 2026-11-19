@@ -8148,6 +8148,21 @@
       "resource_kind": "tool_subscription",
       "scope": "nationwide",
       "enabled": true
+    },
+    {
+      "id": "discovery-issue-890c93924c8d",
+      "title": "國立臺灣大學醫學院研究生優秀著作獎獎勵辦法",
+      "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/file.asp?filename=2026102895354.pdf",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "outcome_award",
+      "resource_kind": "award",
+      "scope": "ntu",
+      "enabled": true
     }
   ],
   "deferred_sources": [
