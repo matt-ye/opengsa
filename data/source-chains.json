@@ -3120,6 +3120,12 @@
       "program_key": "discovery-issue-87b38e387dec",
       "phase": "all",
       "historical_baseline_allowed": true
+    },
+    {
+      "candidate_id": "cand-discovery-issue-890c93924c8d-024cf471",
+      "program_key": "discovery-issue-890c93924c8d",
+      "phase": "all",
+      "historical_baseline_allowed": true
     }
   ],
   "http_requests": 15,

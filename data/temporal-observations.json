@@ -342,6 +342,14 @@
         "https://claude.com/programs/team-plan-for-scientists"
       ],
       "observed_at": "2026-11-19T05:01:21+00:00"
+    },
+    {
+      "http_requests": 0,
+      "kind": "same_round",
+      "attempted_urls": [
+        "https://rd.mc.ntu.edu.tw/bomrd/ntu2/file.asp?filename=2026102895354.pdf"
+      ],
+      "observed_at": "2026-11-19T05:33:20+00:00"
     }
   ],
   "records": {
@@ -49371,6 +49379,139 @@
       ],
       "undetermined_subkind": "no_schedule_in_document",
       "candidate_sha256": "024233166eba03d10bd4346440230d588c5408c4a121b74e18b86dd4d80747e3"
+    },
+    "cand-discovery-issue-890c93924c8d-024cf471": {
+      "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/file.asp?filename=2026102895354.pdf",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-19T05:33:15+00:00",
+      "raw_sha256": "43eb75f6c05e301f2277642b29a33f43fe25d2b598b5527ef097ecd1b39532fe",
+      "revision_id": "9b260ebddc801a935dd871c80a766a46362f31257d8e42a8abde549986ebe1c5",
+      "format": "html",
+      "parser_sha256": "a6f09fbed2b5e7481a1be7a069f87a4e9559e6457c972198639e11ea96c3a04c",
+      "card_revision_id": "024cf4713bfaae3df25717404c8c136f4cc38e8a7c11616aaa4d38d1016b7557",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "recurring",
+        "review_mode": "not_stated",
+        "rules": [
+          {
+            "rule_id": "replay/0",
+            "kind": "recurring",
+            "actor": "unit",
+            "stage": "submission",
+            "summary": "來源明示週期性受理；當期具體日期另查",
+            "value": null,
+            "precision": "rule",
+            "anchor_event": null,
+            "source_refs": [
+              {
+                "source": "discovery-issue-890c93924c8d",
+                "revision_id": "9b260ebddc801a935dd871c80a766a46362f31257d8e42a8abde549986ebe1c5",
+                "locator": "PDF page 3 + PDF page 3",
+                "evidence_path": "temporal_replay/submission"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          "student_window_not_recorded"
+        ]
+      },
+      "diagnostics": [
+        {
+          "locator": "PDF page 1 + PDF page 1",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1 + PDF page 1",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 1 + PDF page 1",
+          "has_deadline": false,
+          "has_student": true,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 3",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 3 + PDF page 3",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "PDF page 3 + PDF page 3",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ],
+      "candidate_sha256": "2c93f98629f2ee35f4846b56c750cb73284e8f303c9ebd73449b56a60fb0c8bc"
     }
   },
   "baseline": {
