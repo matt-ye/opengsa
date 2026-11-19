@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1.0-candidate",
-  "generated_at": "2026-11-04T00:00:00Z",
-  "as_of": "2026-11-04",
+  "generated_at": "2026-11-19T00:00:00Z",
+  "as_of": "2026-11-19",
   "timezone": "Asia/Taipei",
   "model_enabled": false,
   "model_calls": 0,
@@ -11,5 +11,494 @@
     "calls": 0
   },
   "official_data_modified": false,
-  "candidates": []
+  "candidates": [
+    {
+      "candidate_id": "cand-openai-academic-researchers-hand",
+      "opportunity_id": "openai-chatgpt-academic-researchers",
+      "program_key": "openai-chatgpt-academic-researchers",
+      "title": "ChatGPT 學術研究人員版（ChatGPT for Academic Researchers）",
+      "category": "research_tools",
+      "resource_kind": "tool_subscription",
+      "scope": "nationwide",
+      "cycle": {
+        "kind": "policy_snapshot",
+        "label": "下一梯次（2026-11-23 開放）",
+        "year_system": "none",
+        "year": null,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "unknown",
+        "beneficiary": "student",
+        "awardee": "unknown",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "unknown",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "OpenAI",
+          "refs": [
+            {
+              "source": "openai-academic-researchers",
+              "locator": "說明頁 Eligibility 段"
+            }
+          ]
+        },
+        "announcer": {
+          "text": "OpenAI",
+          "refs": [
+            {
+              "source": "openai-academic-researchers",
+              "locator": "說明頁 Eligibility 段"
+            }
+          ]
+        },
+        "receiver": {
+          "text": "OpenAI（下一梯次開放時線上申請；目前沒有獨立申請表網址）",
+          "refs": [
+            {
+              "source": "openai-academic-researchers",
+              "locator": "說明頁 Eligibility 段"
+            }
+          ]
+        }
+      },
+      "eligibility": {
+        "degrees": [],
+        "institution": "unknown",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "需由指導教授／研究教職人員申請，學生以研究夥伴身分使用。申請人須為符合資格地區、參與計畫之學術機構的研究教職人員或博士後研究員；學生不能自行申請，只能被列為同校最多兩位研究夥伴之一。",
+          "refs": [
+            {
+              "source": "openai-academic-researchers",
+              "locator": "說明頁 Eligibility 段"
+            }
+          ]
+        },
+        "other_conditions": [
+          {
+            "text": "過去三年在符合資格領域有發表研究（含 arXiv、bioRxiv、ChemRxiv 論文），並計畫用於學術研究；須驗證身分及學術資格；符合資格不保證核准。",
+            "refs": [
+              {
+                "source": "openai-academic-researchers",
+                "locator": "說明頁 Eligibility 段；研究者方案比較頁"
+              }
+            ]
+          },
+          {
+            "text": "符合資格領域：生物科學、化學與材料、電腦科學、地球與行星科學、工程、數學、物理。",
+            "refs": [
+              {
+                "source": "openai-academic-researchers",
+                "locator": "說明頁 Eligibility 段"
+              }
+            ]
+          },
+          {
+            "text": "開放地區：依研究者方案比較頁，開放範圍為中國及香港以外地區；新梯次最終申請資格與協作者規定尚待官方確認，以官方公告為準。",
+            "refs": [
+              {
+                "source": "openai-academic-researchers",
+                "locator": "研究者方案比較頁 https://openai.com/zh-Hant/science/researcher-access/"
+              }
+            ]
+          }
+        ]
+      },
+      "benefit": {
+        "summary": "免費 ChatGPT Plus 3 個席位（研究者本人＋同校最多 2 位研究夥伴），最長 12 個月；不含 OpenAI API 額度。",
+        "items": [],
+        "refs": [
+          {
+            "source": "openai-academic-researchers",
+            "locator": "說明頁 Eligibility 段"
+          }
+        ]
+      },
+      "compatibility": {
+        "mode": "unknown",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "官方頁未載明",
+        "refs": []
+      },
+      "hardship": {
+        "mode": "unknown",
+        "note": "官方頁未載明",
+        "refs": []
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "date",
+          "value": "2026-11-23",
+          "timezone": "Asia/Taipei",
+          "note": "下一梯次開放日；新增 5 萬個名額，依申請順序提供給符合資格者（取消抽籤）"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "請指導教授／研究教職人員於下一梯次開放時申請，並將你列為同校研究夥伴（學生不能自行申請）",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "下一梯次 2026-11-23 開放，新增 5 萬個名額、依申請順序提供；截止日官方未載明"
+            },
+            "refs": [
+              {
+                "source": "openai-academic-researchers",
+                "locator": "說明頁 Eligibility 段"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "官方頁未載明",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "not_yet_open",
+        "as_of": "2026-11-19",
+        "reason": "目前不受理新申請，新登記者進入候補名單；下一梯次 2026-11-23 開放，新增 5 萬個名額，依申請順序提供。已登記候補且符合資格者會在開放前收到啟用信。需由指導教授／研究教職人員申請，學生以研究夥伴身分使用。",
+        "refs": [
+          {
+            "source": "openai-academic-researchers",
+            "locator": "說明頁 Eligibility 段"
+          }
+        ]
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "OpenAI 公告 2026-11-16（https://openai.com/zh-Hant/index/expanding-chatgpt-for-academic-researchers/）",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "openai-academic-researchers",
+        "revision_id": "eb6babfce063e173166e3cb6eb2bfc580a0051e58358f4327991c47a38265dba",
+        "url": "https://help.openai.com/en/articles/20001406-chatgpt-for-academic-researchers",
+        "observed_at": "2026-11-19T00:00:00Z",
+        "evidence_mode": "short_excerpt",
+        "context_sufficiency": "robots_or_access_restricted",
+        "extractor_version": "hand-authored-2026-11-19",
+        "adapter_used": "none_insufficient_context",
+        "prompt_version": null
+      },
+      "field_evidence": [],
+      "gaps_and_conflicts": {
+        "missing_fields": [
+          "openai:application_form_url",
+          "openai:final_new_round_eligibility"
+        ],
+        "conflicts": [],
+        "open_questions": [
+          "下一梯次申請表網址官方尚未提供（開放時才有）。",
+          "新一梯次的最終申請資格與協作者規定尚待官方確認；臺灣是否在開放範圍內以官方公告為準。",
+          "本卡為手寫：openai.com 對自動抓取回 403，萃取流程抓不到；內容依 2026-11-19 以瀏覽器讀取官方頁整理。網站可抓取後應以萃取流程產出取代。"
+        ]
+      },
+      "evidence_status": "incomplete",
+      "verification": {
+        "status": "needs_context",
+        "verifier_version": "hand-authored-2026-11-19",
+        "checked_at": "2026-11-19T00:00:00Z",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": false,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [
+          "hand_authored_owner_exception_2026-11-19"
+        ],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "hand-authored-2026-11-19",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "field_applicability": {}
+    },
+    {
+      "candidate_id": "cand-openai-chatgpt-edu-hand",
+      "opportunity_id": "openai-chatgpt-edu",
+      "program_key": "openai-chatgpt-edu",
+      "title": "ChatGPT Edu（學校方案）",
+      "category": "research_tools",
+      "resource_kind": "tool_subscription",
+      "scope": "nationwide",
+      "cycle": {
+        "kind": "policy_snapshot",
+        "label": "機構協議（無申請期間）",
+        "year_system": "none",
+        "year": null,
+        "term_or_round": null,
+        "branch": null
+      },
+      "participants": {
+        "applicant": "institution",
+        "beneficiary": "student",
+        "awardee": "institution",
+        "payee": "unknown"
+      },
+      "institution_scope": {
+        "school": "unknown",
+        "college": null,
+        "department": null
+      },
+      "organizations": {
+        "funder": {
+          "text": "OpenAI",
+          "refs": [
+            {
+              "source": "openai-chatgpt-edu",
+              "locator": "說明頁 9377311"
+            }
+          ]
+        },
+        "announcer": {
+          "text": "OpenAI",
+          "refs": [
+            {
+              "source": "openai-chatgpt-edu",
+              "locator": "說明頁 9377311"
+            }
+          ]
+        },
+        "receiver": {
+          "text": "OpenAI（由學校洽詢簽約）",
+          "refs": [
+            {
+              "source": "openai-chatgpt-edu",
+              "locator": "說明頁 9377311"
+            }
+          ]
+        }
+      },
+      "eligibility": {
+        "degrees": [],
+        "institution": "unknown",
+        "nationality": "unknown",
+        "employment_status": "unknown",
+        "year_limit": {
+          "mode": "unknown",
+          "min": null,
+          "max": null,
+          "assessed_at": null,
+          "refs": []
+        },
+        "candidate": {
+          "mode": "unknown",
+          "assessed_at": null,
+          "refs": []
+        },
+        "graduation_requirement": "unknown",
+        "prior_funding_rule": "unknown",
+        "negated_conditions": [],
+        "identity": {
+          "text": "學校簽約，個人不能申請。ChatGPT Edu 由學校與 OpenAI 簽訂 Edu 協議後提供給校內學生與教職員；學生或研究者請向學校資訊單位或管理員詢問學校是否已簽約、有無可用席位。",
+          "refs": [
+            {
+              "source": "openai-chatgpt-edu",
+              "locator": "說明頁 9377311"
+            }
+          ]
+        },
+        "other_conditions": [
+          {
+            "text": "研究者應向校內管理員詢問可用席位。",
+            "refs": [
+              {
+                "source": "openai-chatgpt-edu",
+                "locator": "研究者方案比較頁 https://openai.com/zh-Hant/science/researcher-access/"
+              }
+            ]
+          }
+        ]
+      },
+      "benefit": {
+        "summary": "學校層級的 ChatGPT Edu 存取權限；費用依所屬機構與 OpenAI 的協議，請查閱學校協議。",
+        "items": [],
+        "refs": [
+          {
+            "source": "openai-chatgpt-edu",
+            "locator": "說明頁 9377311"
+          }
+        ]
+      },
+      "compatibility": {
+        "mode": "unknown",
+        "prohibited_schemes": [],
+        "overlap_period_rule": null,
+        "note": "官方頁未載明",
+        "refs": []
+      },
+      "hardship": {
+        "mode": "unknown",
+        "note": "官方頁未載明",
+        "refs": []
+      },
+      "schedule": {
+        "application_start": {
+          "kind": "unknown",
+          "value": null,
+          "timezone": "Asia/Taipei",
+          "note": "沒有個人申請期間；由學校與 OpenAI 簽約"
+        },
+        "steps": [
+          {
+            "actor": "student",
+            "action": "向學校資訊單位或管理員詢問學校是否已簽 ChatGPT Edu 協議（個人不能申請）",
+            "deadline": {
+              "kind": "unknown",
+              "value": null,
+              "timezone": "Asia/Taipei",
+              "note": "沒有個人申請期間"
+            },
+            "refs": [
+              {
+                "source": "openai-chatgpt-edu",
+                "locator": "說明頁 9377311"
+              }
+            ]
+          }
+        ],
+        "result_date": {
+          "kind": "unknown",
+          "certainty": "unknown",
+          "value": null,
+          "end_value": null,
+          "timezone": "Asia/Taipei",
+          "note": "官方頁未載明",
+          "refs": []
+        },
+        "relative_rule": {
+          "rule_type": "none",
+          "anchor_event": null,
+          "agency_rule": null,
+          "student_rule": null,
+          "supplement_rule": null,
+          "holiday_policy": "not_specified",
+          "calendar_status": "not_applicable"
+        }
+      },
+      "application": {
+        "state": "unknown",
+        "as_of": "2026-11-19",
+        "reason": "沒有個人申請期間。學校簽約，個人不能申請。請向學校資訊單位或管理員詢問學校是否已簽 ChatGPT Edu 協議。",
+        "refs": [
+          {
+            "source": "openai-chatgpt-edu",
+            "locator": "說明頁 9377311"
+          }
+        ]
+      },
+      "policy_version": {
+        "promulgated_on": null,
+        "amended_on": null,
+        "effective_from": null,
+        "effective_to": null,
+        "note": "官方頁未載明版本日期",
+        "refs": []
+      },
+      "source_metadata": {
+        "source_id": "openai-chatgpt-edu",
+        "revision_id": "eb6babfce063e173166e3cb6eb2bfc580a0051e58358f4327991c47a38265dba",
+        "url": "https://help.openai.com/en/articles/9377311-chatgpt-edu-at-openai",
+        "observed_at": "2026-11-19T00:00:00Z",
+        "evidence_mode": "short_excerpt",
+        "context_sufficiency": "robots_or_access_restricted",
+        "extractor_version": "hand-authored-2026-11-19",
+        "adapter_used": "none_insufficient_context",
+        "prompt_version": null
+      },
+      "field_evidence": [],
+      "gaps_and_conflicts": {
+        "missing_fields": [],
+        "conflicts": [],
+        "open_questions": [
+          "本校是否已與 OpenAI 簽訂 ChatGPT Edu 協議，須向學校資訊單位確認。",
+          "本卡為手寫：openai.com 對自動抓取回 403，萃取流程抓不到；內容依 2026-11-19 以瀏覽器讀取官方頁整理。網站可抓取後應以萃取流程產出取代。"
+        ]
+      },
+      "evidence_status": "incomplete",
+      "verification": {
+        "status": "needs_context",
+        "verifier_version": "hand-authored-2026-11-19",
+        "checked_at": "2026-11-19T00:00:00Z",
+        "model_self_claim_ignored": true,
+        "checks": {
+          "schema_valid": true,
+          "evidence_supported": false,
+          "date_and_amount_units_valid": true,
+          "no_year_or_branch_mixing": true,
+          "negation_and_roles_valid": true,
+          "no_unresolved_conflicts": true,
+          "coverage_ok": false
+        },
+        "errors": [],
+        "warnings": [
+          "hand_authored_owner_exception_2026-11-19"
+        ],
+        "audit_findings": []
+      },
+      "review": {
+        "status": "pending",
+        "editor": "hand-authored-2026-11-19",
+        "independent_reviewer": null,
+        "reviewed_on": null,
+        "ledger_action": "unreviewed",
+        "promotion_ready": false
+      },
+      "field_applicability": {}
+    }
+  ]
 }
