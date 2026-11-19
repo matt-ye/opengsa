@@ -470,8 +470,20 @@ def evaluate_application_window(
         caps=[parse_iso_date(s.get("deadline",{}).get("value")) for s in student_steps]
         caps=[d for d in caps if d is not None]
         if not caps or now_d<=min(caps):
-            return {"state":"unknown","as_of":now_d.isoformat(),"reason_code":"purchase_relative_deadline_requires_context",
-                    "reason":"年度期限是最晚上限；購買／達成條件後的相對期限及經費餘額仍須確認，不推定目前受理。",
+            # 卡片本身有狀態資訊（機構申請、自己的申請開始日）就用卡片的；固定句只給什麼都沒寫的工具卡。
+            start_v=start_dl.get("value") if start_dl.get("kind") in ("date","datetime") else None
+            start_d=parse_iso_date(start_v[:10]) if start_v else None
+            note=f"（{start_dl['note']}）" if start_dl.get("note") else ""
+            if item.get("participants",{}).get("applicant") in ("unit","institution"):
+                code,reason="institution_plan_no_individual_window","此方案由學校或機構申請／簽約，個人沒有申請期間；請向學校窗口確認是否已提供。"
+            elif start_d and now_d<start_d:
+                code,reason="tool_start_date_not_reached",f"尚未開放：申請開始日為 {start_v}{note}。開放後的截止日與名額仍須確認。"
+            elif start_d and not caps:
+                code,reason="tool_opened_no_deadline",f"申請自 {start_v} 開放{note}；截止日未載明，不推定目前仍受理。"
+            else:
+                code,reason="purchase_relative_deadline_requires_context","年度期限是最晚上限；購買／達成條件後的相對期限及經費餘額仍須確認，不推定目前受理。"
+            return {"state":"unknown","as_of":now_d.isoformat(),"reason_code":code,
+                    "reason":reason,
                     "student_deadline":min(caps).isoformat() if caps else None,"application_start":start_dl.get("value"),
                     "upper_layer_deadlines":upper_layer_deadlines,"supplement_deadlines":supplement_steps,
                     "same_day_time_unconfirmed":bool(caps and now_d==min(caps)),"source_stale":source_stale,
