@@ -26,8 +26,12 @@ class TimePolicyTests(unittest.TestCase):
         for candidate in self.bundle['candidates']:
             policy = records[candidate['candidate_id']]['time_policy']
             policy_validator().validate(policy)
+            # 只有卡片宣告過的同方案公告可以佐證學生截止日（source_metadata.linked_revisions）。
+            linked = {r['revision_id'] for r in candidate['source_metadata'].get('linked_revisions', [])}
             for rule in policy['rules']:
-                self.assertTrue(all(r['revision_id'] == candidate['source_metadata']['revision_id'] for r in rule['source_refs']))
+                self.assertTrue(all(r['revision_id'] == candidate['source_metadata']['revision_id']
+                                    or (r['revision_id'] in linked and rule['actor'] == 'student' and rule['stage'] == 'submission')
+                                    for r in rule['source_refs']))
         self.assertEqual(self.bundle, before)
 
     def test_agency_and_supplement_evidence_never_become_student_deadline(self):
