@@ -8193,6 +8193,21 @@
       "resource_kind": "award",
       "scope": "ntu",
       "enabled": true
+    },
+    {
+      "id": "discovery-issue-3d1bdebab2ec",
+      "title": "115學年度臺大醫學院研究生優秀著作獎暨大學生學術研究獎勵即日起至115年11月26日(四)下午5時止受理申請",
+      "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/news_txt.asp?pno=7296",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "同一方案的公告：只用來佐證辦法卡的截止日，本身不成卡、不排程。",
+      "evidence_mode": "hash_only",
+      "category": "outcome_award",
+      "resource_kind": "award",
+      "scope": "ntu",
+      "enabled": false
     }
   ],
   "deferred_sources": [
