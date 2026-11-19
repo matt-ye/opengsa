@@ -112,8 +112,12 @@ def researcher_clause(blocks):
         if units[0].get('kind')=='heading' or PERK_AUDIENCE.search(clause):continue
         if RESEARCHER_AUDIENCE.search(clause) and RESEARCHER_RULE.search(clause):
             pi=re.search(r'principalinvestigator|\(PIs?\)|計畫主持人',clause,re.I)
-            return {'text':('計畫主持人（PI）或同等職位' if pi else '研究人員')+'；適用對象與驗證方式請看來源',
-                    'degrees':[],'units':units,'kind':'eligibility_clause'}
+            # 同一句寫到主持人再把研究團隊加進來時，一併說明團隊成員不是自己申請。
+            team='；研究團隊成員由主持人加入使用' if pi and re.search(r'team|團隊',clause,re.I) else ''
+            found={'text':('由計畫主持人（PI）或同等職位申請' if pi else '研究人員')+team+'；適用對象與驗證方式請看來源',
+                   'degrees':[],'units':units,'kind':'eligibility_clause'}
+            if pi:found['applicant']='principal_investigator'
+            return found
     return None
 
 

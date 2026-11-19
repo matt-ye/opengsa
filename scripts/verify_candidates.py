@@ -531,7 +531,7 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
             if d is None:
                 da_errors.append(f"invalid_step_date:{idx}:{val}")
             else:
-                if step.get("actor") in ("student", "student_or_representative"):
+                if step.get("actor") in ("student", "student_or_representative", "principal_investigator"):
                     student_dates.append(d)
                 elif step.get("actor") in ("department", "college", "unit", "university", "institution"):
                     upper_dates.append(d)
@@ -542,7 +542,7 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
             else:
                 if "T23:59" in val and ("僅公告日期" in dl.get("note", "") or "未載時間" in dl.get("note", "")):
                     da_errors.append(f"invented_midnight_deadline:{idx}:{val}")
-                if step.get("actor") in ("student", "student_or_representative"):
+                if step.get("actor") in ("student", "student_or_representative", "principal_investigator"):
                     student_dates.append(dt.date())
                 elif step.get("actor") in ("department", "college", "unit", "university", "institution"):
                     upper_dates.append(dt.date())
@@ -647,6 +647,9 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
     participants = cand.get("participants", {})
     if cand.get("program_key") == "nstc-assistant-rule" and elig.get("employment_status") != "unknown":
         nr_errors.append("multi_role_policy_cannot_have_global_employment_exclusion")
+    # 由計畫主持人申請的方案，申請步驟不能寫成學生自己申請。
+    if participants.get("applicant") == "principal_investigator" and any(s.get("actor") in ("student", "student_or_representative") for s in steps):
+        nr_errors.append("principal_investigator_program_has_student_step")
     if cand.get("resource_kind") == "employment_support" and participants.get("applicant") == "student":
         nr_errors.append("employment_support_applicant_cannot_be_student")
     if cand.get("program_key") in ("nstc-grad-conference-policy", "nstc-abroad", "faos-student-conference"):
