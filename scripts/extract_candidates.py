@@ -2252,6 +2252,34 @@ def _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode):
     _time_facts(cand,blocks,sid,revision_id,evidence_mode)
 
 
+TIME_LABEL = re.compile(r'申請期間|申請時程|申請時間|受理期間|收件期間|申請期限|申請截止|截止')
+# 「即日起至○年○月○日止受理申請／收件」。報名只有在同一子句沒有活動字樣時才算（說明會、研習營的報名不是方案的收件）；
+# 查詢、申覆、繳費不是申請。
+SINCE_TODAY = re.compile(r'即日起至(?P<date>.{4,40}?)止(?:受理|開放)?(?:線上)?(?P<verb>申請|收件|送件|報名)')
+EVENT_NOUN = re.compile(r'說明會|研習|營|講座|工作坊|典禮|回條|活動|座談|課程|比賽|競賽')
+
+
+def _since_today_window(text, student_document, step_note=None):
+    """每個子句分開判斷；同一段有兩個以上不同的申請截止日時不取（分不出是哪個方案的）。"""
+    found = []
+    for clause in re.split(r'[；;。]', text):
+        match = SINCE_TODAY.search(clause)
+        if not match or (match['verb'] == '報名' and EVENT_NOUN.search(clause)):
+            continue
+        kind, value = parse_roc_or_iso_date_from_text(match['date'])
+        if value:
+            found.append((clause, kind, value))
+    if len({value for _, _, value in found}) != 1:
+        return None
+    clause, kind, value = found[0]
+    actor = time_actor(clause)
+    if actor == 'unit' and student_document and not re.search(r'學校|學院|系所|彙送|推薦名單|備函', clause):
+        actor = 'student'
+    return {'actor': actor, 'action': '依來源明示期間辦理',
+            'deadline': {'kind': kind, 'value': value, 'timezone': 'Asia/Taipei',
+                         'note': step_note or '角色依本段辨識；未載學生期限時不以其他層級回填'}}
+
+
 def _time_facts(cand,blocks,sid,revision_id,evidence_mode,step_note=None):
     """來源明示的申請期間與截止日寫進 schedule；證據掛在 sid／revision_id 這份文件。"""
     def evidence(path,units):
@@ -2268,7 +2296,9 @@ def _time_facts(cand,blocks,sid,revision_id,evidence_mode,step_note=None):
             if label:continue
             rule=recurring_time(text)
             # 「即日起至115年11月26日(四)下午5時止受理申請」：公告常這樣寫收件期限，沒有「申請期間」標籤。
-            if (not rule and re.search(r'申請期間|申請時程|申請時間|受理期間|收件期間|申請期限|申請截止|截止|即日起至.{4,40}止(?:受理|收件|報名)',text)
+            if not rule and not TIME_LABEL.search(text) and '即日起至' in text:
+                rule=_since_today_window(text,student_document,step_note)
+            if (not rule and TIME_LABEL.search(text)
                     and not re.search(r'每年|修正|生效|購買|支出|出國期間|公布結果|出生|年齡',text)):
                 labelled=labelled_date_clause(text)
                 start,end=parse_date_range_from_text(labelled or '')

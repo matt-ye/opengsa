@@ -45,6 +45,21 @@ class DeadlineSentenceTests(unittest.TestCase):
             with self.subTest(text=text):
                 self.assertEqual(announced_deadlines(blocks("合成學院研究生論文獎" + text)), {value})
 
+    def test_event_registration_and_queries_are_not_application_windows(self):
+        # 審查找到的反例：說明會、研習營、典禮回條的報名與成績查詢都不是方案收件。
+        for text in ("說明會即日起至115年11月20日中午12時止受理報名", "研習營即日起至115年11月20日止受理報名",
+                     "頒獎典禮出席回條即日起至115年11月20日止受理報名", "成績查詢即日起至115年12月31日止受理查詢"):
+            with self.subTest(text=text):
+                self.assertEqual(announced_deadlines(blocks(text)), set())
+
+    def test_each_clause_is_judged_and_two_application_dates_cancel(self):
+        mixed = "合成研究生論文獎即日起至115年11月26日(四)下午5時止受理申請；說明會即日起至115年11月20日止受理報名"
+        self.assertEqual(announced_deadlines(blocks(mixed)), {"2026-11-26T17:00:00+08:00"})
+        two = "研究生論文獎即日起至115年11月26日止受理申請；大學生研究獎即日起至115年12月10日止受理申請"
+        self.assertEqual(announced_deadlines(blocks(two)), set())
+        cand = card([{**ANNOUNCEMENT, "blocks": blocks(two)}])
+        self.assertFalse(any(s["deadline"]["value"] for s in cand["schedule"]["steps"]))
+
     def test_since_today_alone_is_not_a_start_date(self):
         # 「即日起」沒有寫日期，不當成受理起日。
         cand = card([ANNOUNCEMENT])
@@ -63,6 +78,17 @@ class LinkedDeadlineTests(unittest.TestCase):
         self.assertEqual(cand["source_metadata"]["linked_revisions"][0]["relation"], "announcement")
         # 辦法本身的「待確認」那一步被取代，不留兩個學生步驟。
         self.assertEqual(len([s for s in cand["schedule"]["steps"] if s["actor"] == "student"]), 1)
+
+    def test_time_policy_projects_the_announcement_deadline(self):
+        # 網站的時程區塊讀 time_policy；公告的截止日也要投影出來，不能一邊顯示截止日、一邊說沒有時程。
+        from scripts.time_policy import project_time_policy
+        cand = card([ANNOUNCEMENT])
+        policy = project_time_policy(cand)
+        self.assertEqual(policy["submission_mode"], "deadline_only")
+        self.assertEqual(policy["rules"][0]["source_refs"][0]["source"], "SYNTH-call")
+        # 公告的證據若掛在其他欄位就不投影。
+        moved = {**cand, "field_evidence": [{**e, "field_path": "schedule.result_date"} if e["source"] == "SYNTH-call" else e for e in cand["field_evidence"]]}
+        self.assertEqual(project_time_policy(moved)["rules"], [])
 
     def test_two_different_deadlines_leave_the_card_unconfirmed(self):
         two = {**ANNOUNCEMENT, "blocks": blocks(CALL, "大學生研究獎勵即日起至115年12月10日(四)下午5時止受理申請。")}
@@ -121,6 +147,19 @@ class ProgrammeMatchTests(unittest.TestCase):
         self.assertTrue(announces(title, "合成大學醫學院研究生優秀論文獎勵辦法"))
         self.assertFalse(announces(title, "合成大學學術研究績效獎勵辦法"))
         self.assertFalse(announces(title, "合成大學獎勵辦法"))  # 去掉校名後太短，分不出是哪個方案
+        # 「大學生」的「大學」不是校名。
+        from scripts.expand_sources import programme_core
+        self.assertEqual(programme_core("合成大學醫學院大學生研究獎勵辦法"), "大學生研究")
+        self.assertTrue(announces(title, "合成大學醫學院大學生研究獎勵辦法"))
+
+    def test_download_endpoints_only(self):
+        from scripts.source_chains import document_url
+        self.assertTrue(document_url("https://example.test/file.asp?filename=rule.pdf"))
+        self.assertTrue(document_url("https://example.test/rule.pdf"))
+        for url in ("https://example.test/viewer.html?file=/a/b.pdf", "https://example.test/redirect?url=https://other.test/a.pdf",
+                    "https://example.test/file.asp?filename=https://other.test/a.pdf", "https://example.test/file.asp?q=a.pdf"):
+            with self.subTest(url=url):
+                self.assertFalse(document_url(url))
 
     def test_plain_text_url_with_legacy_entity(self):
         self.assertTrue(referenced("https://example.test/form.asp?pno=27&LTPno=52", "相關文件：https://example.test/form.asp?pno=27<Pno=52"))

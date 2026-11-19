@@ -212,7 +212,8 @@ PROGRAMME_SUFFIX=re.compile(r'(?:獎勵|設置|實施|申請|作業|甄選)?(?:�
 
 def programme_core(title):
     core=PROGRAMME_SUFFIX.sub('',re.sub(r'\s+','',title or ''))
-    return re.sub(r'^.*(?:大學|學院|學校)','',core)
+    # 「大學生」「大學部」的「大學」不是校名，不能從那裡切。
+    return re.sub(r'^.*(?:大學(?![生部])|學院|學校)','',core)
 
 def announces(announcement_title,title):
     core=programme_core(title)
