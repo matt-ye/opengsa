@@ -101,7 +101,26 @@ def audience_clause(blocks,category):
     return None
 
 
+# 給研究人員的 AI 方案（例如「Claude Team plan for scientists」）資格寫的是計畫主持人或研究機構人員，不是學生。
+# 頁面上的使用者見證常寫「PhD student」，不能當成申請資格；所以 ai 類別先找寫明研究人員資格的句子。
+RESEARCHER_AUDIENCE=re.compile(r'principalinvestigators?|\(PIs?\)|faculty|researchers?|scientists?|研究人員|研究者|計畫主持人',re.I)
+RESEARCHER_RULE=re.compile(r'eligib|qualif|申請資格|可申請|得申請',re.I)
+
+
+def researcher_clause(blocks):
+    for clause,units in safe_units(blocks):
+        if units[0].get('kind')=='heading' or PERK_AUDIENCE.search(clause):continue
+        if RESEARCHER_AUDIENCE.search(clause) and RESEARCHER_RULE.search(clause):
+            pi=re.search(r'principalinvestigator|\(PIs?\)|計畫主持人',clause,re.I)
+            return {'text':('計畫主持人（PI）或同等職位' if pi else '研究人員')+'；適用對象與驗證方式請看來源',
+                    'degrees':[],'units':units,'kind':'eligibility_clause'}
+    return None
+
+
 def discover_identity(blocks,category=None):
+    if category=='ai':
+        found=researcher_clause(blocks)
+        if found:return found
     options=[]
     for text,units in safe_units(blocks):
         if units[0].get('kind')=='heading':continue
