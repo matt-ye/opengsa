@@ -415,7 +415,8 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
                     # 公告連到的辦法或附件屬於同一方案。只共用方案代號，各文件的欄位不拼接。
                     if row.get('parent_program_key'):candidate['program_key']=row['parent_program_key']
                     state['candidates'][candidate['candidate_id']]=candidate;record['candidate_ids'].append(candidate['candidate_id'])
-                    if candidate['verification']['status'] in ('passed_automated_checks','passed_with_gaps'):
+                    # 截止日來自公告的卡不做時間紀錄：時間紀錄只讀得到辦法本身，會蓋掉卡片上公告的截止日（網站改顯示辦法裡的規則）。
+                    if candidate['verification']['status'] in ('passed_automated_checks','passed_with_gaps') and not candidate['source_metadata'].get('linked_revisions'):
                         try:
                             from scripts.temporal_reextract import same_round_record
                             state.setdefault('temporal',{})[candidate['candidate_id']]=same_round_record(candidate,prepared['blocks'],digest(response['body']),profile,record['observed_at'])

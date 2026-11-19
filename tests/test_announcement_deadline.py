@@ -166,6 +166,8 @@ class AnnouncementCrawlTests(unittest.TestCase):
         reasons = {r["url"]: r.get("not_card_reason") for r in state["records"].values()}
         self.assertEqual(reasons["https://example.test/file.asp?filename=letter.pdf"], "not_announced_programme")
         self.assertEqual(reasons["https://example.test/file.asp?filename=faculty.pdf"], "not_announced_programme")
+        # 時間紀錄只讀得到辦法，會蓋掉公告的截止日，所以這張卡不做。
+        self.assertNotIn(cards[0]["candidate_id"], state.get("temporal", {}))
         # 公告的 profile 停用、不排程。
         announcement_profile = state["profiles"][cards[0]["source_metadata"]["linked_revisions"][0]["source_id"]]
         self.assertFalse(announcement_profile["enabled"])
