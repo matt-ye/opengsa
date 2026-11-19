@@ -22,7 +22,7 @@ def compact(value):
 # 通過紀錄與帶標點的句子都不是名稱，只是剛好以「辦法」結尾。「本校○○要點」「115學年度○○須知」是名稱，不排除。
 TITLE_LINE=re.compile(r'^\S.*(?:辦法|要點|簡章|須知)$')
 NOT_TITLE_LINE=re.compile(r'^(?:第\s*[一二三四五六七八九十百\d]+\s*[條點項]|[一二三四五六七八九十]+[、.]|[（(]?\d+[.、)）]|'
-                          r'依|根據|為(?!期)|本(?:要點|辦法|簡章|須知|規定)|中華民國|民國|附件|【)|[，,。；;：:、]')
+                          r'依|根據|為(?!期)|本(?:要點|辦法|簡章|須知|規定)|(?:中華)?民國\s*[\d一二三四五六七八九十]|附件|【)|[，,。；;：:]')
 
 
 def title_line(text):
@@ -133,7 +133,9 @@ def researcher_clause(blocks):
     return None
 
 
-ALUMNI=re.compile(r'畢業(?:後|未滿)?[一二三四五六七八九十兩\d]+(?:個月|年)(?:內|以內)?')
+# 只認「在學或畢業三年內之學生」「在學學生或畢業未滿一年者」這種申請人身分的並列；
+# 「畢業後三年內需返院服務」「須於畢業一年內發表」是義務，「畢業三年內曾獲本獎者不得再申請」是排除，都不算。
+ALUMNI=re.compile(r'(?:在學|學生)(?:或|及|、)(?:已)?(畢業(?:未滿)?[一二三四五六七八九十兩\d]+(?:個月|年)(?:內|以內)?)(?:之|的)?(?:學生|研究生|者|校友)')
 
 
 def discover_identity(blocks,category=None):
@@ -156,8 +158,9 @@ def discover_identity(blocks,category=None):
         degrees=degree_terms('；'.join(positive))
         parts=[('碩、博士班學生' if len(degrees)==2 else '博士班學生' if degrees==['phd'] else '碩士班學生' if degrees==['master'] else '在學學生')]
         # 「限本院在學或畢業三年內之學生」：校友也能申請，只寫「在學學生」會把資格說窄。
-        alumni=ALUMNI.search('；'.join(positive))
-        if alumni:parts[0]=('在學或'+alumni.group(0)+'學生') if parts[0]=='在學學生' else parts[0]+'（含'+alumni.group(0)+'者）'
+        alumni=next((m for sentence in re.split(r'[。；;]',text) if not re.search(r'不得|不可|不適用',sentence)
+                     for m in [ALUMNI.search(sentence)] if m),None)
+        if alumni:parts[0]=('在學或'+alumni.group(1)+'學生') if parts[0]=='在學學生' else parts[0]+'（含'+alumni.group(1)+'者）'
         if '本院' in text:parts.append('本院所屬範圍')
         elif '本校' in text:parts.append('本校學籍範圍')
         elif re.search(r'國內.{0,12}大學',text):parts.append('國內大學學籍範圍')
