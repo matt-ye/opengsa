@@ -79,5 +79,32 @@ class AIToolCandidateTests(unittest.TestCase):
         self.assertIsNone(cand["schedule"]["steps"][0]["deadline"]["value"])
         self.assertIn("ai_tools:unambiguous_cycle_year",cand["gaps_and_conflicts"]["missing_fields"])
 
+    def test_tool_status_uses_card_info_before_fixed_sentence(self):
+        cand=self.candidate()
+        fixed="年度期限是最晚上限；購買／達成條件後的相對期限及經費餘額仍須確認，不推定目前受理。"
+        # 有年度上限且已開放：維持固定句（購買後相對期限的情境）。
+        self.assertEqual(evaluate_application_window(cand,"2027-10-30")["reason"],fixed)
+        # 卡片自己的開始日未到：顯示開始日。
+        early=evaluate_application_window(cand,"2027-03-01")
+        self.assertEqual((early["state"],early["reason_code"]),("unknown","tool_start_date_not_reached"))
+        self.assertIn("2027-04-02",early["reason"])
+        # 只有開始日、沒有截止日，且已開放：說明截止日未載明。
+        no_cap=deepcopy(cand)
+        for s in no_cap["schedule"]["steps"]:s["deadline"].update(kind="unknown",value=None)
+        opened=evaluate_application_window(no_cap,"2027-05-01")
+        self.assertEqual(opened["reason_code"],"tool_opened_no_deadline")
+        self.assertIn("截止日未載明",opened["reason"])
+        # 機構申請／簽約的方案：個人沒有申請期間。
+        inst=deepcopy(no_cap);inst["participants"]["applicant"]="institution"
+        self.assertEqual(evaluate_application_window(inst,"2027-05-01")["reason_code"],"institution_plan_no_individual_window")
+        # 什麼都沒寫：退回固定句。
+        bare=deepcopy(no_cap);bare["schedule"]["application_start"].update(kind="unknown",value=None)
+        self.assertEqual(evaluate_application_window(bare,"2027-05-01")["reason"],fixed)
+        # 計畫主持人申請：有未到的開始日仍顯示尚未開放，否則說明由 PI 申請。
+        pi=deepcopy(bare);pi["participants"]["applicant"]="principal_investigator"
+        self.assertEqual(evaluate_application_window(pi,"2027-05-01")["reason_code"],"pi_applies_team_members_added")
+        pi_dated=deepcopy(no_cap);pi_dated["participants"]["applicant"]="principal_investigator"
+        self.assertEqual(evaluate_application_window(pi_dated,"2027-03-01")["reason_code"],"tool_start_date_not_reached")
+
 
 if __name__=="__main__":unittest.main()

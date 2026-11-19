@@ -835,6 +835,8 @@ const rawById=new Map(pilot.opportunities.map(item=>[item.id,item]));
 const sourceById=new Map(pilot.sources.map(source=>[source.id,source]));
 const picked={demo:new Set(),draft:new Set()}, completed={demo:new Set(),draft:new Set()}, activeDetail={demo:null,draft:null};
 let sharedItems=[], personalRangeMode="recent", lastPersonalRange=null;
+// 延後繪製：看不到的區塊記成過期，等顯示時再畫。rendered 在第一次 render 之後才為真。
+let rendered=false, detailStale=true, planStale=true, tableStale=true, lastFound=[];
 let today=taipeiToday(), mode=reviewPreview||radarView?"draft":"demo", view="gantt", rangeMode="recent", offset=0, inspectedId=null, lastRange=null, centerPending=true, rightsView="overview", activePanelId="search", detailScope="shared", detailSearchQuery="", activeCompareId=null;
 const scrollPositions={search:0,detail:0,timeline:0,rights:0};
 const state={query:"",category:"all",source:"all",degree:"all",year:"all",compatibility:"all",hardship:"all",application:"all",includeUnknown:true};
@@ -909,6 +911,9 @@ function activatePanel(id, focus=false, updateUrl=true) {
  });
  document.querySelectorAll("main > .screen").forEach(panel=>{panel.hidden=panel.id!==id;});
  activePanelId=id;
+ // 第二、三頁只在切過去時才畫（見 renderWorkspace）；第一次 render 之前還沒有資料可畫。
+ if(rendered && id==="detail" && detailStale) drawDetail();
+ if(rendered && id==="timeline" && planStale) drawPlan();
  if(updateUrl) updateUrlState(true);
  window.scrollTo({top:scrollPositions[id]||0,behavior:"instant"});
  if(id==="search" && lastRange) requestAnimationFrame(()=>centerToday(lastRange));
@@ -1178,9 +1183,12 @@ function openSharedDetail(item) {
  trackDetail(item);
  activeDetail[mode]=item.id;renderWorkspace();activatePanel("detail");
 }
+// 卡片一次只畫一批：200 多張卡全畫會有上萬個元素，篩選和打字都會卡。按「顯示更多」再畫下一批。
+const CARD_BATCH=50;
+let cardLimit=CARD_BATCH, planLimit=CARD_BATCH;
 function drawCards(items,partition) {
  const list=byId("result-cards");list.replaceChildren();
- items.forEach(item=>{
+ items.slice(0,cardLimit).forEach(item=>{
   if(partition&&item.id===partition.matched[0]?.id)list.append(el("h3","result-group",partition.active?"符合已知篩選條件（非資格核定）":"來源摘要（非資格核定）"));
   if(partition&&item.id===partition.possible[0]?.id)list.append(el("h3","result-group","可能相關：部分篩選條件未確認"));
   const card=el("article","card");
@@ -1192,6 +1200,11 @@ function drawCards(items,partition) {
   const button=el("button","secondary",picked[mode].has(item.id)?"查看詳情":"勾選並看詳情");button.type="button";button.dataset.openDetail=item.id;button.addEventListener("click",()=>chooseAndOpen(item));actions.append(button);card.append(actions);
   list.append(card);
  });
+ if(items.length>cardLimit){
+  const more=el("button","secondary show-more","顯示更多（還有 "+(items.length-cardLimit)+" 筆）");more.type="button";
+  more.addEventListener("click",()=>{cardLimit+=CARD_BATCH;drawCards(items,partition);});
+  list.append(more);
+ }
 }
 function tickNode(text,percent,cls="tick") {
  const node=el("span",cls,text);node.style.left=percent+"%";return node;
@@ -1305,6 +1318,7 @@ function drawGantt(items,range,gridId="gantt-grid",onInspect=inspect) {
  });
 }
 function drawTable(items) {
+ tableStale=false;
  const body=byId("date-rows");body.replaceChildren();
  items.forEach(item=>{
   const startDisplay=startLabel(item)+(item.start.certainty==="inferred"?" (推定)":"")+(!item.start.value&&item.end.value&&!item.personal&&!isNA(item,"application_start")?" (標示截止前30天準備帶)":"");
@@ -1396,6 +1410,7 @@ function renderComparisonView(content, itemA, itemB) {
 }
 
 function drawDetail() {
+ detailStale=false;
  const select=byId("detail-option");
  if(!select) return;
  select.replaceChildren();
@@ -1507,6 +1522,7 @@ function drawDetail() {
  columns.append(left,right);content.append(columns);
 }
 function drawPlan() {
+ planStale=false;
  const range=domain(sharedItems,today,personalRangeMode);
  lastPersonalRange=range;
  byId("personal-today").textContent="今天 "+today.replaceAll("-","/");
@@ -1519,7 +1535,8 @@ function drawPlan() {
  }
 
  const cards=byId("plan-options");cards.replaceChildren();
- sharedItems.forEach(item=>{
+ // 沒勾選時第三頁用整個篩選結果，同樣分批畫，避免切過去時卡住。
+ sharedItems.slice(0,planLimit).forEach(item=>{
   const card=el("article","card"), button=el("button","plan-title",item.title);button.type="button";button.title="點擊查看《"+item.title+"》完整說明";button.addEventListener("click",()=>openSharedDetail(item));card.append(button);
   radarSummary(card,item);
   radarFact(card,"結果公告",resultText(item),item);
@@ -1539,6 +1556,11 @@ function drawPlan() {
   card.append(actions);
   cards.append(card);
  });
+ if(sharedItems.length>planLimit){
+  const more=el("button","secondary show-more","顯示更多（還有 "+(sharedItems.length-planLimit)+" 項）");more.type="button";
+  more.addEventListener("click",()=>{planLimit+=CARD_BATCH;drawPlan();});
+  cards.append(more);
+ }
 
  const planCount = byId("plan-count");
  if (planCount) {
@@ -1560,7 +1582,9 @@ function renderWorkspace() {
  document.querySelectorAll("[data-pick-id]").forEach(input=>{input.checked=selected.has(input.dataset.pickId);});
  document.querySelectorAll("[data-open-detail]").forEach(button=>{button.textContent=selected.has(button.dataset.openDetail)?"查看詳情":"勾選並看詳情";});
  for(const name of ["detail","timeline"]){byId(name+"-empty").hidden=!!sharedItems.length;byId(name+"-workspace").hidden=!sharedItems.length;}
- drawDetail();drawPlan();
+ // 看不到的分頁先記下要重畫，切過去時再畫（activatePanel）。
+ if(byId("detail").hidden) detailStale=true; else drawDetail();
+ if(byId("timeline").hidden) planStale=true; else drawPlan();
 updateUrlState(false);
 }
 function render() {
@@ -1587,14 +1611,22 @@ function render() {
  byId("dates-table").hidden=!found.length;
  selectedButtons("#mode-switch","mode",mode);selectedButtons("#view-switch","view",view);
  selectedButtons("#persona-bar","persona",activePersona(state));
- drawCards(found,partition);drawGantt(found,range);drawTable(found);
+ // 只畫目前的檢視；切換檢視會再呼叫 render。日期表收合時不畫，展開時才畫。
+ cardLimit=CARD_BATCH;planLimit=CARD_BATCH;lastFound=found;
+ if(view==="list") drawCards(found,partition); else drawGantt(found,range);
+ if(byId("dates-table").open) drawTable(found); else tableStale=true;
  renderWorkspace();
+ rendered=true;
  if(centerPending && view==="gantt" && found.length && !byId("search").hidden){const value=rangeMode==="fit"?timelineFocusValue(found):today;requestAnimationFrame(()=>centerToday(range,"gantt-grid",value));centerPending=false;}
  if(inspectedId){const inspected=found.find(x=>x.id===inspectedId);if(inspected) inspect(inspected);else{inspectedId=null;byId("schedule-inspect").hidden=true;}}
 }
+byId("dates-table").addEventListener("toggle",()=>{if(byId("dates-table").open && tableStale) drawTable(lastFound);});
 document.querySelectorAll("[data-filter]").forEach(input=>{
  const update=()=>{state[input.dataset.filter]=input.type==="checkbox"?input.checked:input.value;render();};
- input.addEventListener(input.type==="search"?"input":"change",update);
+ // 搜尋框停止輸入 200 毫秒後才重畫，打字過程不會每個字都卡一次。
+ let typing=null;
+ const typed=()=>{clearTimeout(typing);typing=setTimeout(update,200);};
+ input.addEventListener(input.type==="search"?"input":"change",input.type==="search"?typed:update);
  input.addEventListener("change",()=>track("filter_apply",{filter_key:input.dataset.filter}));
 });
 function resetFilters() {

@@ -15,7 +15,9 @@ if str(ROOT) not in sys.path:
 from scripts.verify_candidates import verify_candidate
 
 BASELINE = ROOT / "data/known-hand-authored-candidates.json"
-MAX_BASELINE = 1
+# 2026-11-19 由 1 升到 3：owner 決定 openai.com（擋自動抓取，403）的兩張卡手寫，見基準清單的 openai_exception_note。
+# 這是一次性例外；其餘情況上限只降不升。
+MAX_BASELINE = 3
 
 
 def problems(candidate):
