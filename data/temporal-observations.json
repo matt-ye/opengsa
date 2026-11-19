@@ -326,6 +326,14 @@
         "https://web-ch.scu.edu.tw/life/file/2450/2004"
       ],
       "observed_at": "2026-11-18T16:00:49+00:00"
+    },
+    {
+      "http_requests": 0,
+      "kind": "same_round",
+      "attempted_urls": [
+        "https://claude.com/programs/team-plan-for-scientists"
+      ],
+      "observed_at": "2026-11-19T04:35:18+00:00"
     }
   ],
   "records": {
@@ -49305,6 +49313,56 @@
         }
       ],
       "candidate_sha256": "1dc26339dd761dd443436834a6f09a5ee897ee86a0dec8280444a36f3928bd0a"
+    },
+    "cand-discovery-issue-87b38e387dec-e8a974dc": {
+      "url": "https://claude.com/programs/team-plan-for-scientists",
+      "status": "replayed",
+      "reason": null,
+      "observed_at": "2026-11-19T04:35:14+00:00",
+      "raw_sha256": "92f7af732c56a25f9933db91e722eae7ca25e76941f9f2cf8fe39a0aedcee7df",
+      "revision_id": "9d78a6ec19b7e23a2dd486f3405301adba99d6ffcc68f42bc83eda2c18e7f586",
+      "format": "html",
+      "parser_sha256": "b845a9669fb196d09c392d5d43b596988e3bbb02ed41d59cc70a2af8c7ac94e5",
+      "card_revision_id": "e8a974dc596732ef9829088150a04314bc90f31378510a37450bc8ecbb4a3c7a",
+      "policy": {
+        "version": "time-policy-1",
+        "submission_mode": "undetermined",
+        "review_mode": "not_stated",
+        "rules": [],
+        "gaps": [
+          "time_not_projected"
+        ]
+      },
+      "diagnostics": [
+        {
+          "locator": "main / text-block 131",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        },
+        {
+          "locator": "main / text-block 136",
+          "has_deadline": false,
+          "has_student": false,
+          "parsed_range": [
+            null,
+            null
+          ],
+          "parsed_date": [
+            "unknown",
+            null
+          ]
+        }
+      ],
+      "undetermined_subkind": "no_schedule_in_document",
+      "candidate_sha256": "856deaf773d9391b0f3f9ca2a881be4549c81f3493cc585d3d8b66eb61fce67e"
     }
   },
   "baseline": {

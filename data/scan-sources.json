@@ -19,6 +19,7 @@
     "azure.microsoft.com",
     "chemistry.org.tw",
     "cip.ntcu.edu.tw",
+    "claude.com",
     "concert.stpi.narl.org.tw",
     "coop.k12ea.gov.tw",
     "coph.ntu.edu.tw",
@@ -8130,6 +8131,21 @@
       "evidence_mode": "hash_only",
       "category": "living_tuition",
       "resource_kind": "scholarship",
+      "scope": "nationwide",
+      "enabled": true
+    },
+    {
+      "id": "discovery-issue-87b38e387dec",
+      "title": "Claude Team plan for scientists",
+      "url": "https://claude.com/programs/team-plan-for-scientists",
+      "body_selector": "body",
+      "required_markers": [],
+      "pdf_include": [],
+      "max_pdfs": 0,
+      "review_note": "自動發現候選；具名／角色／範圍尚待覆核，不因本站網址推定個人資格。",
+      "evidence_mode": "hash_only",
+      "category": "research_tools",
+      "resource_kind": "tool_subscription",
       "scope": "nationwide",
       "enabled": true
     }
