@@ -8132,6 +8132,36 @@
       "resource_kind": "scholarship",
       "scope": "nationwide",
       "enabled": true
+    },
+    {
+      "id": "openai-academic-researchers",
+      "title": "ChatGPT for Academic Researchers（OpenAI 說明頁）",
+      "url": "https://help.openai.com/en/articles/20001406-chatgpt-for-academic-researchers",
+      "body_selector": "body",
+      "required_markers": [
+        "ChatGPT for Academic Researchers"
+      ],
+      "pdf_include": [],
+      "evidence_mode": "short_excerpt",
+      "enabled": false,
+      "max_pdfs": 0,
+      "review_note": "openai.com／help.openai.com 對自動抓取回 403；2026-11-19 owner 決定改手寫卡，網域不加入 allowed_hosts，停用巡檢。",
+      "format": "html"
+    },
+    {
+      "id": "openai-chatgpt-edu",
+      "title": "ChatGPT Edu（OpenAI 說明頁）",
+      "url": "https://help.openai.com/en/articles/9377311-chatgpt-edu-at-openai",
+      "body_selector": "body",
+      "required_markers": [
+        "ChatGPT Edu"
+      ],
+      "pdf_include": [],
+      "evidence_mode": "short_excerpt",
+      "enabled": false,
+      "max_pdfs": 0,
+      "review_note": "openai.com／help.openai.com 對自動抓取回 403；2026-11-19 owner 決定改手寫卡，網域不加入 allowed_hosts，停用巡檢。",
+      "format": "html"
     }
   ],
   "deferred_sources": [

@@ -1,8 +1,11 @@
 {
   "description": "2026-11-07 查核確認為手寫、未經萃取的候選。只能減少；重新萃取後移除。見docs/audits/candidate-provenance-2026-11-07.md",
   "candidate_ids": [
-    "cand-ntu-med-oia-conference-40192a8b"
+    "cand-ntu-med-oia-conference-40192a8b",
+    "cand-openai-academic-researchers-hand",
+    "cand-openai-chatgpt-edu-hand"
   ],
   "pending_extractor_note": "2026-11-08 使用者決定：學生優惠卡先保留並標示「萃取方式待補」；萃取流程為獎學金設計，抽不出產品頁的優惠內容。",
-  "pending_extractor": []
+  "pending_extractor": [],
+  "openai_exception_note": "2026-11-19 owner 決定的例外：openai.com／help.openai.com 對自動抓取回 403，萃取流程產不出卡，cand-openai-academic-researchers-hand 與 cand-openai-chatgpt-edu-hand 兩張為手寫，內容依 owner 當天以瀏覽器讀取官方頁整理；revision_id 是該份讀取紀錄的 sha256，不是官方頁雜湊。網站可抓取後以萃取流程產出取代並移除。除此之外清單只減不增。"
 }

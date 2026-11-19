@@ -7,6 +7,7 @@
 ## 1. 資料不可編造
 
 - **卡片只能由萃取流程產生。** 不得手寫或用腳本寫定卡片內容、雜湊與 `field_evidence`。CI 用 `scripts/check_provenance.py` 把關，手寫卡基準清單只減不增。
+  - 例外（2026-11-19 owner 決定）：openai.com 對自動抓取回 403，流程產不出卡，ChatGPT 學術研究人員版與 ChatGPT Edu 兩張改手寫並列入基準清單；網站可抓取後改用流程產出取代。除此之外基準清單只減不增。
 - **不猜。** 來源、資格、金額、期限讀不到就標「未確認」或導向來源網站。不從往年資料、模型推論或其他卡片補值。
 - 撤卡用 `scripts/retire_candidates.py`，不要手動刪卡片檔。
 - 新卡與更新都經過提案（`propose_radar_update.py`）和資料 PR。不直接改 `data/candidates/`。
