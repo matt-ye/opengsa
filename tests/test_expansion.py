@@ -48,6 +48,14 @@ class ExpansionTests(unittest.TestCase):
         self.assertEqual(document_heading(B('本要點依合成部補助大專校院學生獎助學金辦法','二、申請資格'),'scholarship'),'')
         self.assertEqual(document_heading(B('合成大學醫學院研究生','傑出論文獎勵辦法','第一條 為獎勵研究生'),'award'),'合成大學醫學院研究生傑出論文獎勵辦法')
         self.assertEqual(document_heading(B('113.5.1 院務會議通過','傑出論文獎勵辦法'),'award'),'傑出論文獎勵辦法')
+        # 審查找到的反例：導覽字、處室名稱不接；前一行已經是名稱開頭時不重複。
+        self.assertEqual(document_heading(B('最新消息','研究生獎學金辦法'),'scholarship'),'研究生獎學金辦法')
+        self.assertEqual(document_heading(B('教務處','研究生獎學金申請須知'),'scholarship'),'研究生獎學金申請須知')
+        self.assertEqual(document_heading(B('研究生優秀著作獎','研究生優秀著作獎申請須知'),'award'),'研究生優秀著作獎申請須知')
+        # 「中華民國」開頭的團體名稱、帶頓號的名稱都是真名稱；「中華民國113年…」才是通過紀錄。
+        self.assertEqual(document_heading(B('中華民國牙醫師公會獎學金辦法'),'scholarship'),'中華民國牙醫師公會獎學金辦法')
+        self.assertEqual(document_heading(B('合成基金會國中小、高中獎學金申請辦法'),'scholarship'),'合成基金會國中小、高中獎學金申請辦法')
+        self.assertEqual(document_heading(B('中華民國113年5月1日通過獎學金辦法'),'scholarship'),'')
 
     def test_full_pipeline_resumes_without_network_and_keeps_pending(self):
         inv={'rows':[row()]};state=initial_state(inv);calls=[]

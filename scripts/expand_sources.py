@@ -47,6 +47,9 @@ INFORMATION=re.compile(r'說明會|發放訊息|發放通知|(?:查核|審查|�
 DEFAULT_OPTIONS={'follow_roles':('policy',),'max_children':8,'link_limit':8,'broad_links':False,'document_candidates':False,'group_documents':False}
 INTAKE_OPTIONS={'follow_roles':('policy','related_call'),'max_children':40,'link_limit':None,'broad_links':True,'document_candidates':True,'group_documents':True}
 INDEX_LINK_COUNT=3
+# 折行的前半段要像單位名稱（「○○大學醫學院研究生」「○○學系」）；「最新消息」「教務處」這種導覽或處室字不接。
+UNIT_PREFIX=re.compile(r'(?:大學|學院|學系|研究所|系|所|中心|基金會|學會|協會|公會|醫院|研究生|大學生)$')
+
 def document_heading(blocks,category=None):
     """辦法類附件的前幾行通常就是正式名稱（「○○獎勵辦法」），比連結文字（「附件1獎勵辦法」）準。
     名稱折成兩行（「○○大學醫學院研究生」「傑出論文獎勵辦法」）時接上前一行；前一行要是沒有數字與標點的短行。"""
@@ -54,7 +57,8 @@ def document_heading(blocks,category=None):
     for i,text in enumerate(texts):
         if not title_line(text):continue
         before=texts[i-1] if i else ''
-        if (before and len(before)<=30 and not re.search(r'[\d０-９【】（）()，,。；;：:、]|通過|發布|修正|修訂',before)
+        if (before and len(before)<=30 and UNIT_PREFIX.search(before) and not text.startswith(before)
+                and not re.search(r'[\d０-９【】（）()，,。；;：:、]|通過|發布|修正|修訂',before)
                 and not NOT_TITLE_LINE.search(before) and not TITLE_LINE.search(before)):
             text=before+text
         if resource_title(text,category):return text
