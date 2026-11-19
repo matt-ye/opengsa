@@ -1807,6 +1807,21 @@
               "format": "uri",
               "pattern": "^https://"
             },
+            "linked_revisions": {
+              "description": "同一方案的公告：只用來佐證學生截止日，證據指向公告本身的版本。",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["source_id", "revision_id", "url", "relation"],
+                "properties": {
+                  "source_id": {"type": "string", "minLength": 1},
+                  "revision_id": {"type": "string", "minLength": 1},
+                  "url": {"type": "string", "format": "uri", "pattern": "^https://"},
+                  "relation": {"enum": ["announcement"]}
+                }
+              }
+            },
             "source_id": {
               "type": "string",
               "minLength": 1

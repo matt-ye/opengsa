@@ -58,10 +58,12 @@ def merge_temporal(merged,good,temporal,observed):
         record=(temporal or {}).get(card['candidate_id'])
         if record and record.get('card_revision_id')==card['source_metadata']['revision_id']:
             records[card['candidate_id']]={**record,'candidate_sha256':candidate_fingerprint(card)}
-    if not records:return None,0
     base=read(ROOT/'data/temporal-observations.json');alive={c['candidate_id'] for c in merged['candidates']}
-    batch={'http_requests':0,'kind':'same_round','attempted_urls':sorted({r['url'] for r in records.values()}),'observed_at':observed}
-    result={**base,'batches':base['batches']+[batch],'records':{**{k:v for k,v in base['records'].items() if k in alive},**records}}
+    stale=[k for k in base['records'] if k not in alive]
+    # 被取代的卡這輪沒有新紀錄時（例如截止日來自公告的卡），舊紀錄也要移除，不能留下指向不存在的卡。
+    if not records and not stale:return None,0
+    batches=base['batches']+([{'http_requests':0,'kind':'same_round','attempted_urls':sorted({r['url'] for r in records.values()}),'observed_at':observed}] if records else [])
+    result={**base,'batches':batches,'records':{**{k:v for k,v in base['records'].items() if k in alive},**records}}
     errors=validate_temporal_snapshot(merged,result)
     if errors:raise ValueError('invalid_temporal_records: '+str(errors)[:300])
     return result,len(records)
@@ -133,12 +135,16 @@ def prepare(incoming,config,observations=None,replaced_urls=(),temporal=None):
     files.update(retired_files)
     oldconfig=read(ROOT/'data/scan-sources.json');profiles={p['id']:p for p in oldconfig['sources']}
     needed={c['source_metadata']['source_id'] for c in merged['candidates']}
+    # 只用來佐證截止日的公告也要登記成來源，但不排程：排程掃它只會產生沒有資格的公告卡。
+    announcements={r['source_id'] for c in merged['candidates'] for r in c['source_metadata'].get('linked_revisions',[])}-needed
+    needed|=announcements
     # 2026-11-08 使用者決定網站上的卡要持續巡檢：已核可網域上的新來源直接排入巡檢。
     # 新網域（例如民眾提交）維持停用，等維護者加進 allowed_hosts；同一網址已在巡檢就不重複。
     trusted=set(oldconfig['allowed_hosts']);active={p['url'] for p in oldconfig['sources'] if p.get('enabled',True)}
     for p in config['sources']:
         if p['id'] not in profiles and p['id'] in needed:
-            scan=urlsplit(p['url']).hostname in trusted and p['url'] not in active and p.get('automation')!='not_enabled'
+            scan=(urlsplit(p['url']).hostname in trusted and p['url'] not in active and p.get('automation')!='not_enabled'
+                  and p['id'] not in announcements)
             profiles[p['id']]={**p,'enabled':scan}
             if scan:active.add(p['url'])
     newconfig={**oldconfig,'sources':list(profiles.values()),'allowed_hosts':sorted(set(oldconfig['allowed_hosts'])|set(config['allowed_hosts']))}

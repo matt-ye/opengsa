@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import re
 import sys
-from urllib.parse import urljoin, urlsplit, unquote
+from urllib.parse import parse_qsl, urljoin, urlsplit, unquote
 
 from bs4 import BeautifulSoup
 
@@ -54,6 +54,22 @@ BROAD_LINK = re.compile(r'獎|助學金|補助|公告|簡章|招生|徵|scholars
 DOCUMENT_LINK = re.compile(r'\.(?:pdf|docx?|odt)$', re.I)
 
 
+DOWNLOAD_PARAM = re.compile(r'^(?:filename|file|fname)$', re.I)
+NOT_DOWNLOAD = re.compile(r'view|redirect|goto|jump|url', re.I)
+
+
+def document_url(url):
+    """附件網址：路徑是 .pdf，或同站下載程式把檔名放在查詢參數（file.asp?filename=….pdf）。
+    參數值要是單純檔名（沒有路徑、網址），檢視器（viewer.html?file=/a/b.pdf）與轉址（redirect?url=…）不算。"""
+    parts = urlsplit(url)
+    if DOCUMENT_LINK.search(parts.path):
+        return True
+    if NOT_DOWNLOAD.search(parts.path.rsplit('/', 1)[-1]):
+        return False
+    return any(DOWNLOAD_PARAM.match(k) and DOCUMENT_LINK.search(v) and not re.search(r'[/\\:]', v)
+               for k, v in parse_qsl(parts.query))
+
+
 def discover_links(raw, url, hosts, selector=None, limit=8, broad=False):
     """Parse literal public links, including window.open; never execute source JS."""
     soup = BeautifulSoup(raw, 'html.parser')
@@ -84,7 +100,7 @@ def discover_links(raw, url, hosts, selector=None, limit=8, broad=False):
                 continue
             if target == safe_url(url, hosts):
                 continue
-            if not matched and not DOCUMENT_LINK.search(urlsplit(target).path):
+            if not matched and not document_url(target):
                 continue
             role = 'policy' if re.search(r'辦法|要點', label) else 'related_call'
             found[target] = {'url': target, 'role': role, 'label': label[:100]}

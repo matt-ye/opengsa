@@ -42,14 +42,19 @@ def merge_decisions(ledger, decisions, bundle):
 
 def add_sources(dataset, candidates, config):
     profiles={s["id"]:s for s in config["sources"]}
-    for cand in candidates:
-        meta=cand["source_metadata"];sid=meta["source_id"]
-        if any(s["id"]==sid for s in dataset["sources"]):continue
-        observed=datetime.fromisoformat(meta["observed_at"]).astimezone(timezone(timedelta(hours=8))).date().isoformat()
-        dataset["sources"].append({"id":sid,"title":profiles[sid]["title"],"url":meta["url"],"authority":"official_page",
+    def add(sid,url,observed_at):
+        if any(s["id"]==sid for s in dataset["sources"]):return
+        observed=datetime.fromisoformat(observed_at).astimezone(timezone(timedelta(hours=8))).date().isoformat()
+        dataset["sources"].append({"id":sid,"title":profiles[sid]["title"],"url":url,"authority":"official_page",
             "access":"public","checked_on":observed,"locator":"候選來源觀察；未代表獨立人工核准","owner":None,
             "ownership_status":"unassigned","proposed_review_frequency":"依來源台帳與人工覆核","automation":"not_enabled",
             "crawl_permission":"not_reviewed","next_action":"完成獨立人工覆核","redistribution":"link_and_original_summary_only"})
+    for cand in candidates:
+        meta=cand["source_metadata"]
+        add(meta["source_id"],meta["url"],meta["observed_at"])
+        # 截止日證據指向同方案的公告時，公告也要列成來源，網站才連得到。
+        for linked in meta.get("linked_revisions",[]):
+            add(linked["source_id"],linked["url"],meta["observed_at"])
 
 
 def candidate_preview_data(bundle,pilot,config):

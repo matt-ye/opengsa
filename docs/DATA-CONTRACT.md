@@ -31,6 +31,7 @@ erDiagram
 | `schedule` | `application_start`、`steps`（區分 `student`、`principal_investigator`、`department`、`college`、`university`、`institution`、`supplement`）、`result_date`、`relative_rule` | 學生截止與學院／學校／機關期限分層，支援固定日期與事件相對規則 |
 | `policy_version` | `promulgated_on`、`amended_on`、`effective_from`、`effective_to`、`note`、`refs` | 公布日、修正日與生效日分開；修正日不得自動複製為生效日 |
 | `field_evidence` | `field_path`、`source`、`revision_id`、`locator`、`evidence_mode`、`excerpt`、`excerpt_sha256`、`source_block_sha256`、`extraction_method`、`rule_and_model_agreed` | 每個非 `unknown` 萃取欄位強制具備 `field_evidence`，可回查原文段落／PDF頁碼雜湊；`hash_only` 來源強制 `excerpt: null` |
+| `source_metadata.linked_revisions` | `source_id`、`revision_id`、`url`、`relation`（目前只有 `announcement`） | 辦法本身沒寫期限、同一方案的公告寫了收件截止日時，截止日的 `field_evidence` 可以指向公告（登記過的來源、公告自己的版本）；只限 `schedule.steps/N/deadline`，其他欄位一律來自卡片本身的文件。公告點名了這個方案（標題比對）且只寫一個學生截止日才帶，否則維持待確認 |
 | `gaps_and_conflicts` | `missing_fields`、`conflicts`、`open_questions` | 來源內部衝突或雙軌 `disagree` 自動攔截，不靜默擇一覆蓋 |
 | `verification` | `status`（含 `passed_with_gaps`）、`checks`（7項布林指標，含 `coverage_ok`）、`errors`、`warnings`、`audit_findings`、`model_self_claim_ignored` (`true`) | 七面向獨立檢核結果；忽略 Agent 自信宣告，缺關鍵附件或金額時標示 `passed_with_gaps` |
 | `review` | `status` (`pending` / `reviewed` / `rejected`)、`editor`、`independent_reviewer`、`promotion_ready` | 未經非原編輯者獨立覆核，強制維持 `pending` 且 `promotion_ready=false` |

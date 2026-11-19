@@ -110,6 +110,10 @@ def validate_candidate_snapshot(bundle, config):
         elif meta["url"]!=sources[sid]["url"]:
             if meta.get("parent_url")!=sources[sid]["url"] or meta["url"] not in sources[sid].get("known_attachment_urls",[]):
                 errors.append("candidate attachment is not bound to its registered parent/URL")
+        # 同一方案的公告要是登記過的來源，網址要對得上。
+        for linked in meta.get("linked_revisions",[]):
+            if linked["source_id"] not in sources or sources[linked["source_id"]]["url"]!=linked["url"]:
+                errors.append("candidate linked announcement is not a registered source")
         # A document may retain less than its source permits, never more.
         if sid in sources and meta["evidence_mode"]!=sources[sid]["evidence_mode"] and not (meta["evidence_mode"]=="hash_only" and sources[sid]["evidence_mode"]=="short_excerpt"):
             errors.append("candidate evidence policy differs from its source profile")
