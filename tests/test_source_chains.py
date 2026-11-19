@@ -46,6 +46,17 @@ class SourceChainTests(unittest.TestCase):
         self.assertEqual(links[0]['url'],'https://example.test/attachments/real?x=1&y=2')
         self.assertNotIn('https://example.test/unrelated',[link['url'] for link in links])
 
+    def test_query_parameter_that_looks_like_legacy_entity_is_kept(self):
+        # 合成樣本：&LTPno= 是查詢參數，不是 &LT;（<）。
+        raw='<main><a href="form0.asp?pno=27&LTPno=52&amp;ntPno=">申請表單</a></main>'.encode()
+        links=discover_links(raw,'https://example.test/news',['example.test'])
+        self.assertEqual(links[0]['url'],'https://example.test/form0.asp?pno=27&LTPno=52&ntPno=')
+
+    def test_links_found_after_empty_body_in_malformed_page(self):
+        raw='<html><body><body></body></html><html><div><a href="/rules.pdf">獎勵辦法</a></div></html>'.encode()
+        links=discover_links(raw,'https://example.test/news',['example.test'],selector='body')
+        self.assertEqual([l['url'] for l in links],['https://example.test/rules.pdf'])
+
     def test_metadata_only_profile_does_not_guess_date_actor(self):
         p = profile(); p['extract_dates'] = False
         blocks = [{'locator':'SYNTH-date','text':'申請日期：115年6月1日至7月31日中午12時'}]

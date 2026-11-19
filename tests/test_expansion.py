@@ -6,7 +6,7 @@ from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
 import zipfile
-from scripts.expand_sources import initial_state,run_batch,export_report,office_blocks,prepare_response,named_candidate,profile_for
+from scripts.expand_sources import initial_state,run_batch,export_report,office_blocks,prepare_response,named_candidate,profile_for,document_heading
 from scripts.scan_sources import ScanError
 
 def setUpModule():
@@ -34,6 +34,12 @@ class ExpansionTests(unittest.TestCase):
             if url.endswith('rule.pdf'):return {'status':200,'body':b'UNSUPPORTED SYNTH','headers':{'content-type':'text/plain'}}
             return {'status':200,'body':HTML,'headers':{'content-type':'text/html'}}
         return get
+
+    def test_attachment_title_comes_from_its_own_heading_line(self):
+        # 合成樣本：辦法 PDF 第二行才是正式名稱，修訂沿革與條文不能被當成標題。
+        blocks=[{'text':'【114.10.28發布】'},{'text':'合成大學醫學院研究生優秀著作獎獎勵辦法'},{'text':'第一條 為獎勵研究生從事學術研究，特設置本獎。'}]
+        self.assertEqual(document_heading(blocks,'award'),'合成大學醫學院研究生優秀著作獎獎勵辦法')
+        self.assertEqual(document_heading([{'text':'第一條 為獎勵研究生從事學術研究，依本辦法'}],'award'),'')
 
     def test_full_pipeline_resumes_without_network_and_keeps_pending(self):
         inv={'rows':[row()]};state=initial_state(inv);calls=[]

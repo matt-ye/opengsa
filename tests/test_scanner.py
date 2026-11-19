@@ -160,6 +160,25 @@ class ScannerTests(unittest.TestCase):
                 changed_nav, _ = html_document(fixture(source, outside='2029最新公告／visit 999'), source, source['url'], CONFIG['allowed_hosts'])
                 self.assertEqual(normal, changed_nav)
 
+    def test_malformed_page_with_empty_body_reads_whole_document(self):
+        # 合成樣本，結構仿照真實公告頁：正文落在 </html><html> 之後，body 選到的是空殼。
+        source = {'body_selector': 'body', 'required_markers': ['合成優秀著作獎'], 'pdf_include': [], 'max_pdfs': 0}
+        data = ('<html><head><title>合成網站標題</title></head><body>\n<body></body>\n</html><html>'
+                '<div><p>合成優秀著作獎：此為合成測試資料，不是真實方案。申請資格尚須人工查核，'
+                '截止日期以原公告為準，這段文字只供離線驗證使用。' * 2 + '</p></div></body></html>').encode()
+        blocks, _ = html_document(data, source, 'https://example.test/news', ['example.test'])
+        text = ' '.join(b['text'] for b in blocks)
+        self.assertIn('合成優秀著作獎', text)
+        self.assertNotIn('合成網站標題', text)
+
+    def test_too_short_text_is_reported_separately_from_missing_marker(self):
+        source = {'body_selector': 'body', 'required_markers': ['合成標記'], 'pdf_include': [], 'max_pdfs': 0}
+        with self.assertRaisesRegex(ScanError, 'selected_body_empty'):
+            html_document(b'<html><body><body></body></html>', source, 'https://example.test/', ['example.test'])
+        long = '<html><body><p>' + '此為合成測試資料，不含標記字。' * 10 + '</p></body></html>'
+        with self.assertRaisesRegex(ScanError, 'required_marker_missing'):
+            html_document(long.encode(), source, 'https://example.test/', ['example.test'])
+
     def test_nested_body_does_not_duplicate(self):
         source = deepcopy(CONFIG['sources'][2])
         data = fixture(source, '<div class="card-text-info"><p>唯一補助條款</p></div>')
