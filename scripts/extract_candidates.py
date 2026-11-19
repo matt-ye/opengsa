@@ -2258,6 +2258,7 @@ TIME_LABEL = re.compile(r'申請期間|申請時程|申請時間|受理期間|�
 # 「即日起至」和「止」之間只能是日期、星期與時刻；動詞要收在子句結尾（「申請表下載」「申請帳號註冊」不算）。
 SINCE_TODAY = re.compile(r'即日起至(?P<date>[\d０-９一二三四五六七八九十〇零年月日()（）星期週上下中早晚午時點分:：/.\-]{4,40})'
                          r'止(?:受理|開放)?(?:線上)?(?P<verb>申請|收件|送件|報名)(?=$|[（(]|逾期)')
+UNIT_ACTOR = re.compile(r'各系所|系所|各系|各學院|各單位|各所|請各|彙送|彙整|推薦|備函')
 EVENT_NOUN = re.compile(r'說明會|研習|營|講座|工作坊|典禮|回條|活動|座談|課程|比賽|競賽')
 
 
@@ -2274,10 +2275,15 @@ def _since_today_window(text, student_document, step_note=None):
     if len({value for _, _, value in found}) != 1:
         return None
     clause, kind, value = found[0]
-    # 角色看整段（跟泛用期間規則一樣）：方案名稱常寫在前一個子句。
-    actor = time_actor(text)
-    if actor == 'unit' and student_document and not re.search(r'學校|學院|系所|彙送|推薦名單|備函', text):
-        actor = 'student'
+    # 角色先看期限所在的子句：「請各系所即日起至…止送件」是系所的期限，不是學生的。
+    # 子句沒寫是誰時才看整段（方案名稱常在前一個子句），而且整段也不能提到系所彙送。
+    actor = time_actor(clause)
+    if UNIT_ACTOR.search(clause):
+        actor = 'unit' if actor == 'student' else actor
+    elif actor == 'unit' and not UNIT_ACTOR.search(text):
+        actor = time_actor(text)
+        if actor == 'unit' and student_document:
+            actor = 'student'
     return {'actor': actor, 'action': '依來源明示期間辦理',
             'deadline': {'kind': kind, 'value': value, 'timezone': 'Asia/Taipei',
                          'note': step_note or '角色依本段辨識；未載學生期限時不以其他層級回填'}}

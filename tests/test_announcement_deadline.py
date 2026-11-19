@@ -70,6 +70,14 @@ class DeadlineSentenceTests(unittest.TestCase):
         self.assertEqual(announced_deadlines(blocks("合成研究生論文獎即日起至115年11月26日(四)下午5時止受理申請(逾時不候)")),
                          {"2026-11-26T17:00:00+08:00"})
 
+    def test_department_deadline_is_not_the_students(self):
+        # 審查找到的反例：請各系所送件的期限是系所的，不能當學生截止日。
+        unit = "本院研究生優秀著作獎申請案，請各系所即日起至115年11月30日止送件"
+        self.assertEqual(announced_deadlines(blocks(unit)), set())
+        self.assertEqual(announced_deadlines(blocks(CALL)), {"2026-11-26T17:00:00+08:00"})
+        cand = card([{**ANNOUNCEMENT, "blocks": blocks(unit)}])
+        self.assertFalse(any(s["deadline"]["value"] for s in cand["schedule"]["steps"]))
+
     def test_since_today_alone_is_not_a_start_date(self):
         # 「即日起」沒有寫日期，不當成受理起日。
         cand = card([ANNOUNCEMENT])
