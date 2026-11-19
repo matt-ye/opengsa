@@ -211,13 +211,29 @@ class Fetcher:
         raise ScanError("unreachable")
 
 
+def content_roots(soup, selector):
+    """選擇器選到的最外層節點。
+
+    格式錯誤的頁面（例如 <body></body></html><html> 之後才是正文）會讓 body 只選到空殼，
+    這時改用整份文件；呼叫端要自己排除網頁標題等非正文。
+    """
+    nodes = soup.select(selector)
+    node_ids = {id(node) for node in nodes}
+    roots = [node for node in nodes if not any(id(parent) in node_ids for parent in node.parents)]
+    if roots and selector == "body" and not any(root.get_text(strip=True) for root in roots):
+        return [soup]
+    return roots
+
+
 def html_document(data, source, url, hosts):
     soup = BeautifulSoup(data, "html.parser")
-    nodes = soup.select(source["body_selector"])
-    node_ids={id(node) for node in nodes}
-    roots = [node for node in nodes if not any(id(parent) in node_ids for parent in node.parents)]
+    roots = content_roots(soup, source["body_selector"])
     if not roots:
         raise ScanError("body_selector_changed")
+    if roots[0] is soup:
+        # 不能整個拿掉 <head>：這類頁面的正文常被解析器塞進沒關閉的 <head> 裡。
+        for node in soup.select("title"):
+            node.decompose()
     attachments = {}
     attachment_roots = roots + (soup.select(source["attachment_selector"]) if source.get("attachment_selector") else [])
     for root in attachment_roots:
@@ -238,7 +254,7 @@ def html_document(data, source, url, hosts):
             node.decompose()
     lines = []
     structures = []
-    from bs4 import NavigableString, Comment
+    from bs4 import NavigableString, Comment, Declaration, Doctype, ProcessingInstruction
     # Join inline markup inside semantic blocks; inserting spaces between DOM text
     # nodes breaks Chinese amounts, negation and dates (e.g. 四<strong>萬</strong>元).
     block_tags={'address','article','aside','blockquote','dd','div','dl','dt','fieldset',
@@ -250,7 +266,7 @@ def html_document(data, source, url, hosts):
             text=normalized(''.join(buffer));buffer.clear()
             if text:runs.append((text,container))
         def visit(node,container):
-            if isinstance(node,Comment):return
+            if isinstance(node,(Comment,Declaration,Doctype,ProcessingInstruction)):return
             if isinstance(node,NavigableString):buffer.append(str(node));return
             if node.name=='br':flush(container);return
             boundary=node.name in block_tags
@@ -293,7 +309,10 @@ def html_document(data, source, url, hosts):
         structures = structures[start:]
     text = normalized(" ".join(lines))
     compact = re.sub(r"\s+", "", text)
-    if len(text) < source.get("min_text_chars", 80) or any(re.sub(r"\s+", "", term) not in compact for term in source["required_markers"]):
+    # 選到的正文太短跟「讀到正文但找不到標記字」是兩件事，分開回報才不會把讀不懂的頁面當成換了內容。
+    if len(text) < source.get("min_text_chars", 80):
+        raise ScanError("selected_body_empty")
+    if any(re.sub(r"\s+", "", term) not in compact for term in source["required_markers"]):
         raise ScanError("required_marker_missing")
     # 序號是此版萃取正文的定位，非原HTML原始碼行號。
     blocks = [{"locator": f"{source['body_selector']} / text-block {i}", "text": line, **meta}

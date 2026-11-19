@@ -58,7 +58,7 @@ def close(inventory,state,audit):
             result['automatic_followup_exhausted']=True
             if reason in ('format_parser_deferred','unsupported_archive','pdf_requires_manual_review'):
                 result.update(status='manual_format_conversion_required',next_action='必要時由官方提供可讀文字／HTML或人工核對；不將未解析附件當作已萃取。')
-            elif reason in ('public_shell_or_insufficient_text','required_marker_missing','body_selector_changed','login_form_not_processed','insufficient_document_text'):
+            elif reason in ('public_shell_or_insufficient_text','required_marker_missing','selected_body_empty','body_selector_changed','login_form_not_processed','insufficient_document_text'):
                 result.update(status='manual_rendered_or_access_review_required',next_action='匿名GET未取得足夠可辨識正文；需人工渲染檢視或公開官方資料入口，不繞過登入。')
             elif reason.startswith('http_') or reason in ('transport_error','redirect_limit','url_not_allowed'):
                 result.update(status='official_url_replacement_or_access_required',next_action='保留舊URL及實際錯誤／轉址證據；只採已確認的官方替代入口，不猜網址。')

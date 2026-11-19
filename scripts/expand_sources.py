@@ -18,7 +18,7 @@ ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from bs4 import BeautifulSoup
 from scripts.audit_sources import canonical_url
-from scripts.scan_sources import Fetcher,ScanError,node_get,digest,safe_url,html_document,pdf_document,SKIP
+from scripts.scan_sources import Fetcher,ScanError,node_get,digest,safe_url,html_document,content_roots,pdf_document,SKIP
 from scripts.source_chains import DOCUMENT_LINK,discover_links,publication
 from scripts.document_ir import prepare_document,document_manifest,VERSION as IR_VERSION
 from jsonschema import ValidationError
@@ -47,6 +47,12 @@ INFORMATION=re.compile(r'說明會|發放訊息|發放通知|(?:查核|審查|�
 DEFAULT_OPTIONS={'follow_roles':('policy',),'max_children':8,'link_limit':8,'broad_links':False,'document_candidates':False,'group_documents':False}
 INTAKE_OPTIONS={'follow_roles':('policy','related_call'),'max_children':40,'link_limit':None,'broad_links':True,'document_candidates':True,'group_documents':True}
 INDEX_LINK_COUNT=3
+DOCUMENT_HEADING=re.compile(r'^\S.*(?:辦法|要點|簡章|須知)$')
+
+def document_heading(blocks,category=None):
+    """辦法類附件的前幾行通常就是正式名稱（「○○獎勵辦法」），比連結文字（「附件1獎勵辦法」）準。"""
+    return next((b['text'] for b in blocks[:5] if len(b['text'])<=60 and DOCUMENT_HEADING.search(b['text'])
+                 and resource_title(b['text'],category)),'')
 # 「接受捐贈獎學金行政運作及管理作業要點」是學校怎麼收捐款的規定，不是給學生申請的方案。
 ADMIN=re.compile(r'教師(?:評審|評鑑|遴選)|院長選任|校長遴選|經費稽核委員會|預算分配委員會|電腦中心設置|接受捐[贈款].{0,20}(?:要點|作業|規定|辦法)')
 ACADEMIC_YEAR=re.compile(r'(?<!\d)(\d{3})(?:\s*學年度|-[12](?!\d))')
@@ -142,7 +148,7 @@ def prepare_response(response,profile,hosts,link_limit=8,broad_links=False,categ
         # 提交流程要看短頁：公告可能只有一句話加附件，字數少不代表沒有內容。
         if broad_links:source['min_text_chars']=1
         blocks,_=html_document(str(soup).encode(),source,url,hosts)
-        roots=soup.select(selector)
+        roots=content_roots(soup,selector)
         heading=next((r.select_one('h1') for r in roots if r.select_one('h1')),None)
         meta=soup.select_one('meta[property="og:title"]')
         # h1、og:title、<title> 依序看：先取看得出是方案的；都看不出就取第一個有字的（有些網站的 h1 是空的 logo）。
@@ -333,7 +339,7 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
                 # 附件沒有網頁標題：連結文字像方案名稱就用它，否則沿用連到它的公告標題。
                 # 連結文字常帶檔名副檔名或「點我下載」，都不是方案名稱的一部分。
                 label=re.sub(r'\s*(?:點我下載|\(PDF\)|\.(?:pdf|docx?|odt))\s*$','',row.get('title') or '',flags=re.I)
-                prepared['title']=label if resource_title(label,row.get('category')) else row.get('parent_title') or label
+                prepared['title']=document_heading(prepared['blocks'],row.get('category')) or (label if resource_title(label,row.get('category')) else row.get('parent_title') or label)
             ir=prepare_document(prepared['blocks']);revision=digest([url,digest(response['body']),fingerprint()])
             record.update(status='read',format=prepared['kind'],title=prepared['title'],final_url=response['url'],
                 raw_sha256=digest(response['body']),revision_id=revision,document_manifest=document_manifest(ir),links=prepared['links'])

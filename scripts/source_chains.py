@@ -1,6 +1,5 @@
 """Bounded source graph and evidence-backed timeline sidecar. Never approves candidates."""
 import argparse
-from html import unescape
 from copy import deepcopy
 from datetime import date, datetime, timezone, timedelta
 import json
@@ -14,7 +13,7 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
-from scripts.scan_sources import Fetcher, ScanError, digest, html_document, pdf_document, safe_url
+from scripts.scan_sources import Fetcher, ScanError, content_roots, digest, html_document, pdf_document, safe_url
 from scripts.document_ir import prepare_document, VERSION as IR_VERSION
 
 VERSION = 'source-chain-1'
@@ -58,7 +57,7 @@ DOCUMENT_LINK = re.compile(r'\.(?:pdf|docx?|odt)$', re.I)
 def discover_links(raw, url, hosts, selector=None, limit=8, broad=False):
     """Parse literal public links, including window.open; never execute source JS."""
     soup = BeautifulSoup(raw, 'html.parser')
-    roots = soup.select(selector) if selector else soup.select('article, main, .article-center') or [soup.body or soup]
+    roots = content_roots(soup, selector) if selector else soup.select('article, main, .article-center') or [soup.body or soup]
     found = {}
     for root in roots:
         for a in root.select('a'):
@@ -78,7 +77,9 @@ def discover_links(raw, url, hosts, selector=None, limit=8, broad=False):
             if not href or href.startswith(('javascript:', 'mailto:')):
                 continue
             try:
-                target = safe_url(urljoin(url, unescape(href)), hosts)
+                # 解析器已解過一次實體；有些網站把 & 重複編碼成 &amp;amp;，所以只再還原 &amp;。
+                # 不能整個再 unescape：查詢參數 &LTPno= 會被當成 &LT（<）而變成錯的網址。
+                target = safe_url(urljoin(url, href.replace('&amp;', '&')), hosts)
             except (ScanError, ValueError):
                 continue
             if target == safe_url(url, hosts):
