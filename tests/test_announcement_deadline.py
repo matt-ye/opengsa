@@ -88,6 +88,20 @@ class LinkedDeadlineTests(unittest.TestCase):
         self.assertTrue(any("not_grounded" in e or "sha256_mismatch" in e for e in result["verification"]["errors"]))
 
 
+    def test_site_preview_lists_the_announcement_as_a_source(self):
+        import json
+        from scripts.build_review_workspace import candidate_preview_data
+        root = Path(__file__).resolve().parents[1] / "data"
+        cand = card([ANNOUNCEMENT])
+        profile = {"title": "SYNTH", "body_selector": "body", "required_markers": [], "pdf_include": [], "max_pdfs": 0,
+                   "review_note": "合成", "evidence_mode": "hash_only", "enabled": False}
+        config = {"sources": [{**profile, "id": "SYNTH-rule", "url": "https://example.test/rule.pdf"},
+                              {**profile, "id": "SYNTH-call", "url": "https://example.test/call"}]}
+        bundle = {"as_of": "2026-11-19", "candidates": [cand]}
+        preview = candidate_preview_data(bundle, json.loads((root / "pilot.json").read_text(encoding="utf-8")), config)
+        self.assertIn("https://example.test/call", {s["url"] for s in preview["sources"]})
+
+
 class ProgrammeMatchTests(unittest.TestCase):
     def test_title_match(self):
         title = "115學年度合成學院研究生優秀論文獎暨大學生研究獎勵即日起至115年11月26日止受理申請"
