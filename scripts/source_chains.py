@@ -197,7 +197,9 @@ def candidate_documents(bundle):
     for cand in bundle['candidates']:
         m = cand['source_metadata']
         key = 'doc-' + digest(m['url'])[:24]
-        doc = docs.setdefault(key, {'id': key, 'url': m['url'], 'format': 'pdf' if urlsplit(m['url']).path.lower().endswith('.pdf') else 'html',
+        # 下載網址常是 file.asp?filename=…pdf，路徑看不出是 PDF；證據定位寫「PDF page」就是讀 PDF 讀出來的。
+        pdf = urlsplit(m['url']).path.lower().endswith('.pdf') or any(e['locator'].startswith('PDF ') for e in cand.get('field_evidence', []))
+        doc = docs.setdefault(key, {'id': key, 'url': m['url'], 'format': 'pdf' if pdf else 'html',
             'revision_id': m['revision_id'], 'observed_at': m['observed_at'], 'status': 'candidate_snapshot',
             'evidence_mode': m['evidence_mode'], 'candidate_ids': [], 'events': [], 'links': []})
         doc['candidate_ids'].append(cand['candidate_id'])

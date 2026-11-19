@@ -80,6 +80,49 @@ class WithheldGenericFieldsTests(unittest.TestCase):
 
 
 class SemanticFactsTests(unittest.TestCase):
+    def test_alumni_within_years_clause_is_kept(self):
+        # 合成樣本：「在學或畢業三年內」不能被說成只有在學學生；否定句裡的畢業年限不算。
+        found=discover_identity(blocks('一、限本院在學或畢業三年內之學生提出申請。'))
+        self.assertTrue(found['text'].startswith('在學或畢業三年內學生'))
+        found=discover_identity(blocks('申請資格：本院博士班在學學生或畢業未滿一年者。'))
+        self.assertIn('博士班學生（含畢業未滿一年者）',found['text'])
+        found=discover_identity(blocks('申請資格：本院在學學生，畢業二年內者不得申請。'))
+        self.assertTrue(found['text'].startswith('在學學生；'))
+        # 審查找到的反例：排除與義務裡的畢業年限都不是校友資格。
+        for line in ('申請資格：本院在學學生，畢業三年內曾獲本獎者，不得再申請。',
+                     '申請資格：本院博士班在學學生，獲獎者畢業後三年內需返院服務。',
+                     '申請資格：本院在學學生，須於畢業一年內完成論文發表。',
+                     '申請資格：本院在學學生或畢業三年內之學生，曾獲本獎者不得申請。'):
+            with self.subTest(line=line):
+                self.assertNotIn('畢業',discover_identity(blocks(line))['text'])
+
+    def test_policy_version_evidence_stays_on_the_first_regulation(self):
+        # 合成樣本：一份 PDF 裝兩份辦法，日期相同；證據要留在第一份（標題那份）的發布行，不能跑到第二份。
+        units=[{'locator':'PDF page 1','text':'【114.10.28發布】','page':1},
+               {'locator':'PDF page 1','text':'合成大學醫學院研究生優秀著作獎獎勵辦法','page':1},
+               {'locator':'PDF page 1','text':'114.10.28 合成委員會修正通過','page':1},
+               {'locator':'PDF page 1','text':'第二條 申請資格：本院博士班在學學生。','page':1},
+               {'locator':'PDF page 3','text':'【115.03.01 發布】','page':3},
+               {'locator':'PDF page 3','text':'合成大學醫學院大學生學術研究獎勵辦法','page':3},
+               {'locator':'PDF page 3','text':'115.03.01 合成委員會修正通過','page':3}]
+        _,cand=extract(units=units)
+        version=cand['policy_version']
+        self.assertEqual((version['promulgated_on'],version['amended_on']),('2025-10-28','2025-10-28'))
+        self.assertEqual({r['locator'] for r in version['refs']},{'PDF page 1'})
+        self.assertEqual({e['locator'] for e in cand['field_evidence'] if e['field_path']=='policy_version'},{'PDF page 1'})
+        self.assertEqual(len(version['refs']),1)
+
+    def test_policy_version_keeps_later_dates_of_the_same_regulation(self):
+        # 審查找到的反例：條文折行剩下的「學金設置辦法」、下一頁頁首的簡稱都不是第二份辦法，後面的修正日要照讀。
+        _,cand=extract(units=blocks('合成大學研究生獎學金設置辦法','112年5月1日院務會議通過','第二條 申請者須依本校獎助',
+                                    '學金設置辦法','114年3月1日院務會議修正通過'))
+        self.assertEqual(cand['policy_version']['amended_on'],'2025-03-01')
+        units=[{'locator':'PDF page 1','text':'合成大學研究生獎學金辦法','page':1},
+               {'locator':'PDF page 1','text':'112年5月1日院務會議通過','page':1},
+               {'locator':'PDF page 2','text':'研究生獎學金辦法','page':2},
+               {'locator':'PDF page 2','text':'114年3月1日院務會議修正通過','page':2}]
+        _,cand=extract(units=units)
+        self.assertEqual(cand['policy_version']['amended_on'],'2025-03-01')
     def test_time_backfill_runs_after_identity_is_already_known(self):
         source,cand=extract()
         self.assertNotEqual(cand['eligibility']['identity']['text'],'身分條件請至來源定位核對')

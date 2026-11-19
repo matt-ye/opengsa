@@ -32,7 +32,7 @@ from scripts.evaluate_deadlines import evaluate_application_window, parse_iso_da
 from scripts.scan_sources import CONTACT, SKIP, Fetcher, ScanError, digest, html_document, normalized, pdf_document, semantic_digest
 from scripts.verify_candidates import digest_text, evidence_digest, verify_candidate
 from scripts.application_process import infer_process
-from scripts.semantic_facts import INSTRUCTIONS, NON_ROC_ALLOWED, OTHER_LEVELS, PLACEHOLDER, award_clauses, discover_identity, discover_organizations, is_student_document, recurring_time, degree_terms, time_actor, labelled_date_clause
+from scripts.semantic_facts import compact as compact_text, title_line, INSTRUCTIONS, NON_ROC_ALLOWED, OTHER_LEVELS, PLACEHOLDER, award_clauses, discover_identity, discover_organizations, is_student_document, recurring_time, degree_terms, time_actor, labelled_date_clause
 from scripts.ai_tool_rules import benefit_tiers
 
 EXTRACTOR_VERSION = "extractor-1.12.1"
@@ -1455,11 +1455,27 @@ def _populate_common_extractions(cand, blocks, source_id, revision_id, evidence_
             break
 
     # 7. 法規版本與修正日擷取（修正日絕不自動複製為生效日 effective_from；支援歷次修正列表取最新修正日及行內標籤拆段）
-    last_policy_block = None
+    # 證據只跟著真的改變了值的那一段走；同值的重複行（下一頁的頁首、同一 PDF 裡另一份辦法的沿革）不換證據。
+    # 一份 PDF 裝了兩份辦法時，讀到第二份的正式名稱就停，日期只取第一份的。
+    # 第二份要從新的一頁開頭起算（該頁前三行內），而且不是第一份名稱的縮寫或頁首（互相包含），
+    # 條文折行剩下的「學金設置辦法」與頁首「研究生獎學金辦法」都不算。
+    policy_blocks = {}
+    first_title = None
+    page_of = lambda blk: (re.match(r"PDF page (\d+)", blk.get("locator") or "") or [None, None])[1]
+    page_row = {}
     for idx_b, b in enumerate(blocks):
         txt = normalized(b["text"])
+        page = page_of(b)
+        page_row[page] = page_row.get(page, -1) + 1
         if PROMPT_INJECTION_RE.search(txt):
             continue
+        if title_line(txt):
+            name = compact_text(txt)
+            if not first_title:
+                first_title, first_page = name, page
+            elif (policy_blocks and page and first_page and page != first_page and page_row[page] < 3 and len(name) >= 8
+                    and name not in first_title and first_title not in name):
+                break
         if any(k in txt for k in ("修正", "修訂", "通過", "發布")):
             kind, iso_val = parse_roc_or_iso_date_from_text(txt)
             if kind != "date" or not iso_val:
@@ -1469,19 +1485,23 @@ def _populate_common_extractions(cand, blocks, source_id, revision_id, evidence_
                     if not PROMPT_INJECTION_RE.search(joined_win):
                         kind, iso_val = parse_roc_or_iso_date_from_text(joined_win)
             if kind == "date" and iso_val:
-                ref = {"source": source_id, "locator": b["locator"]}
                 if ("通過" in txt or "發布" in txt) and "修正" not in txt and "修訂" not in txt:
-                    if not cand["policy_version"]["promulgated_on"]:
-                        cand["policy_version"]["promulgated_on"] = iso_val
+                    if cand["policy_version"]["promulgated_on"]:
+                        continue
+                    cand["policy_version"]["promulgated_on"] = iso_val
+                    policy_blocks["promulgated_on"] = b
                 else:
-                    if not cand["policy_version"]["amended_on"] or iso_val >= cand["policy_version"]["amended_on"]:
-                        cand["policy_version"]["amended_on"] = iso_val
+                    if cand["policy_version"]["amended_on"] and iso_val <= cand["policy_version"]["amended_on"]:
+                        continue
+                    cand["policy_version"]["amended_on"] = iso_val
+                    policy_blocks["amended_on"] = b
                 cand["policy_version"]["effective_from"] = None
                 cand["policy_version"]["note"] = f"已記錄修正／通過日期 {iso_val}；未明示同日生效前，不將修正日自動當作生效日。"
-                cand["policy_version"]["refs"] = [ref]
-                last_policy_block = b
-    if last_policy_block is not None:
-        field_ev.append(make_field_evidence("policy_version", source_id, revision_id, last_policy_block, evidence_mode))
+    kept = list({id(b): b for b in policy_blocks.values()}.values())
+    if kept:
+        cand["policy_version"]["refs"] = [{"source": source_id, "locator": loc} for loc in dict.fromkeys(b["locator"] for b in kept)]
+        for b in kept:
+            field_ev.append(make_field_evidence("policy_version", source_id, revision_id, b, evidence_mode))
 
 
 def _extract_doctoral_funding(source, blocks, revision_id, observed_at, url, as_of, evidence_mode):

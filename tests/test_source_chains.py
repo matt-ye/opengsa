@@ -5,7 +5,7 @@ from pathlib import Path
 import unittest
 
 from scripts.source_chains import dates, discover_links, extract_events, scan_chains, validate, baselines
-from scripts.source_chains import publication, timeline_metadata, candidate_bindings,publication_reference_events
+from scripts.source_chains import publication, timeline_metadata, candidate_bindings,publication_reference_events, candidate_documents
 from scripts.scan_sources import Fetcher, digest
 from bs4 import BeautifulSoup
 
@@ -56,6 +56,14 @@ class SourceChainTests(unittest.TestCase):
         raw='<html><body><body></body></html><html><div><a href="/rules.pdf">獎勵辦法</a></div></html>'.encode()
         links=discover_links(raw,'https://example.test/news',['example.test'],selector='body')
         self.assertEqual([l['url'] for l in links],['https://example.test/rules.pdf'])
+
+    def test_download_script_pdf_is_recorded_as_pdf(self):
+        # 合成樣本：file.asp?filename=…pdf 的路徑看不出是 PDF，證據定位寫「PDF page」就記成 PDF。
+        def card(cid,url,locator):
+            return {'candidate_id':cid,'field_evidence':[{'locator':locator}],'source_metadata':{'url':url,'revision_id':'r','observed_at':'2026-11-19T00:00:00+00:00','evidence_mode':'hash_only'}}
+        docs=candidate_documents({'candidates':[card('a','https://example.test/file.asp?filename=1.pdf','PDF page 1'),
+                                                card('b','https://example.test/news.asp?pno=1','body / text-block 3')]})
+        self.assertEqual(sorted(d['format'] for d in docs.values()),['html','pdf'])
 
     def test_metadata_only_profile_does_not_guess_date_actor(self):
         p = profile(); p['extract_dates'] = False
