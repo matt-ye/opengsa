@@ -123,9 +123,13 @@ def build(output):
         raise ValueError("Invalid radar source snapshot: " + str(errors))
     # Read-only discovery view. This does not confer human approval or modify
     # the complete-data pilot/ledger; unknown fields remain explicit in the UI.
+    homepage = candidate_preview_data(candidates, pilot, config)
+    # 首頁程式不讀每個欄位的出處紀錄（field_evidence，約 500 KB）；方案頁 p/ 由候選檔另外產生，不受影響。
+    for item in homepage["opportunities"]:
+        item.pop("field_evidence", None)
     export(
         output / "index.html",
-        pilot_data=candidate_preview_data(candidates, pilot, config),
+        pilot_data=homepage,
         radar_view=True,
         radar_data=radar_metadata(candidates, observations),
         chain_data=timeline_metadata(read("source-chains.json"), candidates),

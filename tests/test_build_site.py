@@ -109,6 +109,10 @@ console.log(items.length+' items: temporal labels, geometry, ambiguous years, in
         self.assertEqual({o['id'] for o in snapshot['opportunities']},{c['candidate_id'] for c in candidates})
         self.assertEqual(len(snapshot['opportunities']),len(candidates))
         self.assertTrue(all(o['review']['status']=='draft' for o in snapshot['opportunities']))
+        # 首頁程式不讀每欄出處（約 500 KB），不內嵌；方案頁照常列出官方來源（見下一個測試）。
+        self.assertFalse(any('field_evidence' in o for o in snapshot['opportunities']))
+        code = (ROOT / "docs/design/prototype.js").read_text(encoding="utf-8")
+        self.assertNotIn("field_evidence", code)
         self.assertIn('data-radar-view="true"',self.html)
         metadata=re.search(r'<script id="radar-data" type="application/json">(.*?)</script>',self.html,re.S)
         self.assertEqual(set(json.loads(metadata[1])['records']),{c['candidate_id'] for c in candidates})
