@@ -2,7 +2,7 @@
   "schema_version": "source-chain-index-1",
   "as_of": "2026-11-19",
   "candidate_file": "data/candidates/source-review.json",
-  "candidate_sha256": "c48307dc70e6eefa230c04c548c6886e55eaf6ba7e10b76ca478cdb01df1f09f",
+  "candidate_sha256": "a631c6adda8105d2245277e0ffdbf39b3af8e3bfb0d7eb09a9af95808e09b5d0",
   "bundles": [
     "data/source-chains.json",
     "data/source-chain-batches/batch-01.json",
@@ -3592,7 +3592,7 @@
       "key": "discovery-issue-890c93924c8d",
       "title": "國立臺灣大學醫學院研究生優秀著作獎獎勵辦法",
       "candidate_ids": [
-        "cand-discovery-issue-890c93924c8d-024cf471"
+        "cand-discovery-issue-890c93924c8d-16eeb18b"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],
@@ -3664,6 +3664,7 @@
     "第一批以13方案／19候選為基線；本次為64份候選文件／58組暫定方案，未完成跨URL語義別名整併。",
     "batch-01僅表示原第一批3方案的資訊鏈規則；全原始URL盤查見original-source-verification.json。",
     "全部規則與候選維持pending，不是人工發布核准。",
+    "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",
     "本提案僅產生待審雷達快照；新來源未啟用排程，人工核准仍為0。",

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0-candidate",
-  "generated_at": "2026-11-19T05:33:20+00:00",
+  "generated_at": "2026-11-19T06:32:50+00:00",
   "as_of": "2026-11-19",
   "timezone": "Asia/Taipei",
   "model_enabled": false,
@@ -74599,7 +74599,7 @@
       "field_applicability": {}
     },
     {
-      "candidate_id": "cand-discovery-issue-890c93924c8d-024cf471",
+      "candidate_id": "cand-discovery-issue-890c93924c8d-16eeb18b",
       "opportunity_id": "discovery-issue-890c93924c8d",
       "program_key": "discovery-issue-890c93924c8d",
       "title": "國立臺灣大學醫學院研究生優秀著作獎獎勵辦法",
@@ -74665,7 +74665,7 @@
         "prior_funding_rule": "unknown",
         "negated_conditions": [],
         "identity": {
-          "text": "在學學生；本院所屬範圍；其餘資格、排除與文件要求請核對來源",
+          "text": "在學或畢業三年內學生；本院所屬範圍；其餘資格、排除與文件要求請核對來源",
           "claim_kind": "eligibility_clause",
           "refs": [
             {
@@ -74756,15 +74756,19 @@
         "refs": [
           {
             "source": "discovery-issue-890c93924c8d",
-            "locator": "PDF page 3"
+            "locator": "PDF page 1"
+          },
+          {
+            "source": "discovery-issue-890c93924c8d",
+            "locator": "PDF page 1"
           }
         ]
       },
       "source_metadata": {
         "source_id": "discovery-issue-890c93924c8d",
-        "revision_id": "024cf4713bfaae3df25717404c8c136f4cc38e8a7c11616aaa4d38d1016b7557",
+        "revision_id": "16eeb18b8b52f3f1ecc59d9f1b2fb066ad997799e22cc7beb47dd6eae6df6427",
         "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/file.asp?filename=2026102895354.pdf",
-        "observed_at": "2026-11-19T05:33:15+00:00",
+        "observed_at": "2026-11-19T06:32:46+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
         "extractor_version": "extractor-1.12.1",
@@ -74777,18 +74781,29 @@
         {
           "field_path": "policy_version",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "024cf4713bfaae3df25717404c8c136f4cc38e8a7c11616aaa4d38d1016b7557",
-          "locator": "PDF page 3",
+          "revision_id": "16eeb18b8b52f3f1ecc59d9f1b2fb066ad997799e22cc7beb47dd6eae6df6427",
+          "locator": "PDF page 1",
           "evidence_mode": "hash_only",
           "excerpt": null,
-          "excerpt_sha256": "18b6109e24c2bc0a51591c8e57c42053377f61ec597a97ced72f497d752f9d8f",
-          "source_block_sha256": "18b6109e24c2bc0a51591c8e57c42053377f61ec597a97ced72f497d752f9d8f",
+          "excerpt_sha256": "ac303209644b38fa70bad8d92c58ad48bdb68db6a30aeb6b40b3abaac8e54523",
+          "source_block_sha256": "ac303209644b38fa70bad8d92c58ad48bdb68db6a30aeb6b40b3abaac8e54523",
+          "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "policy_version",
+          "source": "discovery-issue-890c93924c8d",
+          "revision_id": "16eeb18b8b52f3f1ecc59d9f1b2fb066ad997799e22cc7beb47dd6eae6df6427",
+          "locator": "PDF page 1",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "d43d8a64dea289fb74ad75dc2c0c44b3dcc589361748bf237e4cd9f36a558335",
+          "source_block_sha256": "d43d8a64dea289fb74ad75dc2c0c44b3dcc589361748bf237e4cd9f36a558335",
           "extraction_method": "deterministic_rule"
         },
         {
           "field_path": "eligibility.identity",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "024cf4713bfaae3df25717404c8c136f4cc38e8a7c11616aaa4d38d1016b7557",
+          "revision_id": "16eeb18b8b52f3f1ecc59d9f1b2fb066ad997799e22cc7beb47dd6eae6df6427",
           "locator": "PDF page 1",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74799,7 +74814,7 @@
         {
           "field_path": "eligibility.identity",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "024cf4713bfaae3df25717404c8c136f4cc38e8a7c11616aaa4d38d1016b7557",
+          "revision_id": "16eeb18b8b52f3f1ecc59d9f1b2fb066ad997799e22cc7beb47dd6eae6df6427",
           "locator": "PDF page 1",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74810,7 +74825,7 @@
         {
           "field_path": "organizations.funder",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "024cf4713bfaae3df25717404c8c136f4cc38e8a7c11616aaa4d38d1016b7557",
+          "revision_id": "16eeb18b8b52f3f1ecc59d9f1b2fb066ad997799e22cc7beb47dd6eae6df6427",
           "locator": "PDF page 2",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74836,7 +74851,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.4.0",
-        "checked_at": "2026-11-19T05:33:15+00:00",
+        "checked_at": "2026-11-19T06:32:46+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
