@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0-candidate",
-  "generated_at": "2026-11-19T06:32:50+00:00",
+  "generated_at": "2026-11-19T07:02:48+00:00",
   "as_of": "2026-11-19",
   "timezone": "Asia/Taipei",
   "model_enabled": false,
@@ -74599,7 +74599,7 @@
       "field_applicability": {}
     },
     {
-      "candidate_id": "cand-discovery-issue-890c93924c8d-16eeb18b",
+      "candidate_id": "cand-discovery-issue-890c93924c8d-cba4db9a",
       "opportunity_id": "discovery-issue-890c93924c8d",
       "program_key": "discovery-issue-890c93924c8d",
       "title": "國立臺灣大學醫學院研究生優秀著作獎獎勵辦法",
@@ -74757,18 +74757,14 @@
           {
             "source": "discovery-issue-890c93924c8d",
             "locator": "PDF page 1"
-          },
-          {
-            "source": "discovery-issue-890c93924c8d",
-            "locator": "PDF page 1"
           }
         ]
       },
       "source_metadata": {
         "source_id": "discovery-issue-890c93924c8d",
-        "revision_id": "16eeb18b8b52f3f1ecc59d9f1b2fb066ad997799e22cc7beb47dd6eae6df6427",
+        "revision_id": "cba4db9a9cb139d5b3c410c2d033c552bfa25e19d9121a39362252e332c04e39",
         "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/file.asp?filename=2026102895354.pdf",
-        "observed_at": "2026-11-19T06:32:46+00:00",
+        "observed_at": "2026-11-19T07:02:44+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
         "extractor_version": "extractor-1.12.1",
@@ -74781,7 +74777,7 @@
         {
           "field_path": "policy_version",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "16eeb18b8b52f3f1ecc59d9f1b2fb066ad997799e22cc7beb47dd6eae6df6427",
+          "revision_id": "cba4db9a9cb139d5b3c410c2d033c552bfa25e19d9121a39362252e332c04e39",
           "locator": "PDF page 1",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74792,7 +74788,7 @@
         {
           "field_path": "policy_version",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "16eeb18b8b52f3f1ecc59d9f1b2fb066ad997799e22cc7beb47dd6eae6df6427",
+          "revision_id": "cba4db9a9cb139d5b3c410c2d033c552bfa25e19d9121a39362252e332c04e39",
           "locator": "PDF page 1",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74803,7 +74799,7 @@
         {
           "field_path": "eligibility.identity",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "16eeb18b8b52f3f1ecc59d9f1b2fb066ad997799e22cc7beb47dd6eae6df6427",
+          "revision_id": "cba4db9a9cb139d5b3c410c2d033c552bfa25e19d9121a39362252e332c04e39",
           "locator": "PDF page 1",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74814,7 +74810,7 @@
         {
           "field_path": "eligibility.identity",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "16eeb18b8b52f3f1ecc59d9f1b2fb066ad997799e22cc7beb47dd6eae6df6427",
+          "revision_id": "cba4db9a9cb139d5b3c410c2d033c552bfa25e19d9121a39362252e332c04e39",
           "locator": "PDF page 1",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74825,7 +74821,7 @@
         {
           "field_path": "organizations.funder",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "16eeb18b8b52f3f1ecc59d9f1b2fb066ad997799e22cc7beb47dd6eae6df6427",
+          "revision_id": "cba4db9a9cb139d5b3c410c2d033c552bfa25e19d9121a39362252e332c04e39",
           "locator": "PDF page 2",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74851,7 +74847,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.4.0",
-        "checked_at": "2026-11-19T06:32:46+00:00",
+        "checked_at": "2026-11-19T07:02:44+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,

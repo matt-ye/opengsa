@@ -358,6 +358,14 @@
         "https://rd.mc.ntu.edu.tw/bomrd/ntu2/file.asp?filename=2026102895354.pdf"
       ],
       "observed_at": "2026-11-19T06:32:50+00:00"
+    },
+    {
+      "http_requests": 0,
+      "kind": "same_round",
+      "attempted_urls": [
+        "https://rd.mc.ntu.edu.tw/bomrd/ntu2/file.asp?filename=2026102895354.pdf"
+      ],
+      "observed_at": "2026-11-19T07:02:48+00:00"
     }
   ],
   "records": {
@@ -49388,16 +49396,16 @@
       "undetermined_subkind": "no_schedule_in_document",
       "candidate_sha256": "024233166eba03d10bd4346440230d588c5408c4a121b74e18b86dd4d80747e3"
     },
-    "cand-discovery-issue-890c93924c8d-16eeb18b": {
+    "cand-discovery-issue-890c93924c8d-cba4db9a": {
       "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/file.asp?filename=2026102895354.pdf",
       "status": "replayed",
       "reason": null,
-      "observed_at": "2026-11-19T06:32:46+00:00",
+      "observed_at": "2026-11-19T07:02:44+00:00",
       "raw_sha256": "43eb75f6c05e301f2277642b29a33f43fe25d2b598b5527ef097ecd1b39532fe",
-      "revision_id": "1e7f444b2fb81ab15f66e897c737e917040562839be924786cbbbac340b3db28",
+      "revision_id": "0d32f925f5a67c1135809e1a2f13a83dc4692cc1fb7c91753942ae65c093a9bb",
       "format": "html",
-      "parser_sha256": "6dd72711a0c09c3c16a2fa9a3f75aed2d0df4082318b3739179adb2fb9bee016",
-      "card_revision_id": "16eeb18b8b52f3f1ecc59d9f1b2fb066ad997799e22cc7beb47dd6eae6df6427",
+      "parser_sha256": "a12e41b49092996b0eefa1ce515b7c77b3dd1c8a4096abd2ac8d8866b97aad89",
+      "card_revision_id": "cba4db9a9cb139d5b3c410c2d033c552bfa25e19d9121a39362252e332c04e39",
       "policy": {
         "version": "time-policy-1",
         "submission_mode": "recurring",
@@ -49415,7 +49423,7 @@
             "source_refs": [
               {
                 "source": "discovery-issue-890c93924c8d",
-                "revision_id": "1e7f444b2fb81ab15f66e897c737e917040562839be924786cbbbac340b3db28",
+                "revision_id": "0d32f925f5a67c1135809e1a2f13a83dc4692cc1fb7c91753942ae65c093a9bb",
                 "locator": "PDF page 3 + PDF page 3",
                 "evidence_path": "temporal_replay/submission"
               }
@@ -49519,7 +49527,7 @@
           ]
         }
       ],
-      "candidate_sha256": "bf3c023919add44eec108ca443ae7b83d94c694569ac7acff3d6bdbfdf1a7f60"
+      "candidate_sha256": "834c065820fdc37be7e5af26c3b452f1c2c47f8b005f9e63f13f62a59f1cb206"
     }
   },
   "baseline": {
