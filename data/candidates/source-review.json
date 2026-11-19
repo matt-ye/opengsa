@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0-candidate",
-  "generated_at": "2026-11-19T07:02:48+00:00",
+  "generated_at": "2026-11-19T07:59:19+00:00",
   "as_of": "2026-11-19",
   "timezone": "Asia/Taipei",
   "model_enabled": false,
@@ -74599,7 +74599,7 @@
       "field_applicability": {}
     },
     {
-      "candidate_id": "cand-discovery-issue-890c93924c8d-cba4db9a",
+      "candidate_id": "cand-discovery-issue-890c93924c8d-beca84e3",
       "opportunity_id": "discovery-issue-890c93924c8d",
       "program_key": "discovery-issue-890c93924c8d",
       "title": "國立臺灣大學醫學院研究生優秀著作獎獎勵辦法",
@@ -74707,17 +74707,17 @@
         "steps": [
           {
             "actor": "student",
-            "action": "依公告規定申請",
+            "action": "依來源明示期間辦理",
             "deadline": {
-              "kind": "unknown",
-              "value": null,
+              "kind": "datetime",
+              "value": "2026-11-26T17:00:00+08:00",
               "timezone": "Asia/Taipei",
-              "note": "待確認"
+              "note": "截止日取自同一方案的公告頁；公告同時列出的其他方案不套用"
             },
             "refs": [
               {
-                "source": "discovery-issue-890c93924c8d",
-                "locator": "PDF page 1"
+                "source": "discovery-issue-3d1bdebab2ec",
+                "locator": "body / text-block 52"
               }
             ]
           }
@@ -74744,7 +74744,7 @@
       "application": {
         "state": "unknown",
         "as_of": "2026-11-19",
-        "reason": "尚無足以確認學生收件窗口的資料。",
+        "reason": "已知學生截止時間 2026-11-26T17:00:00+08:00，但缺少官方申請開始日，不臆測已開放。",
         "refs": []
       },
       "policy_version": {
@@ -74762,22 +74762,30 @@
       },
       "source_metadata": {
         "source_id": "discovery-issue-890c93924c8d",
-        "revision_id": "cba4db9a9cb139d5b3c410c2d033c552bfa25e19d9121a39362252e332c04e39",
+        "revision_id": "beca84e344f5cebff1032808723619cd14ac9f9518f0efc4765da64c540ea687",
         "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/file.asp?filename=2026102895354.pdf",
-        "observed_at": "2026-11-19T07:02:44+00:00",
+        "observed_at": "2026-11-19T07:58:56+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
         "extractor_version": "extractor-1.12.1",
         "adapter_used": "deterministic_rule",
         "prompt_version": null,
         "normalizer_version": "document-ir-2",
-        "prepared_document_sha256": "dd473d22d0e44735665f16248b91a22b2364da274308eadcdd9710940b50077a"
+        "prepared_document_sha256": "dd473d22d0e44735665f16248b91a22b2364da274308eadcdd9710940b50077a",
+        "linked_revisions": [
+          {
+            "source_id": "discovery-issue-3d1bdebab2ec",
+            "revision_id": "da3638b7958ff38e6c93a18929d40b1d45e26226c16c1bf22afb1e0d8620a3c8",
+            "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/news_txt.asp?pno=7296",
+            "relation": "announcement"
+          }
+        ]
       },
       "field_evidence": [
         {
           "field_path": "policy_version",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "cba4db9a9cb139d5b3c410c2d033c552bfa25e19d9121a39362252e332c04e39",
+          "revision_id": "beca84e344f5cebff1032808723619cd14ac9f9518f0efc4765da64c540ea687",
           "locator": "PDF page 1",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74788,7 +74796,7 @@
         {
           "field_path": "policy_version",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "cba4db9a9cb139d5b3c410c2d033c552bfa25e19d9121a39362252e332c04e39",
+          "revision_id": "beca84e344f5cebff1032808723619cd14ac9f9518f0efc4765da64c540ea687",
           "locator": "PDF page 1",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74799,7 +74807,7 @@
         {
           "field_path": "eligibility.identity",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "cba4db9a9cb139d5b3c410c2d033c552bfa25e19d9121a39362252e332c04e39",
+          "revision_id": "beca84e344f5cebff1032808723619cd14ac9f9518f0efc4765da64c540ea687",
           "locator": "PDF page 1",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74810,7 +74818,7 @@
         {
           "field_path": "eligibility.identity",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "cba4db9a9cb139d5b3c410c2d033c552bfa25e19d9121a39362252e332c04e39",
+          "revision_id": "beca84e344f5cebff1032808723619cd14ac9f9518f0efc4765da64c540ea687",
           "locator": "PDF page 1",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74821,19 +74829,29 @@
         {
           "field_path": "organizations.funder",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "cba4db9a9cb139d5b3c410c2d033c552bfa25e19d9121a39362252e332c04e39",
+          "revision_id": "beca84e344f5cebff1032808723619cd14ac9f9518f0efc4765da64c540ea687",
           "locator": "PDF page 2",
           "evidence_mode": "hash_only",
           "excerpt": null,
           "excerpt_sha256": "1f4c25bd1b9cbe430f29a35c8e4aac56977163dca9aee6105ca9392d19c407e2",
           "source_block_sha256": "1f4c25bd1b9cbe430f29a35c8e4aac56977163dca9aee6105ca9392d19c407e2",
           "extraction_method": "deterministic_rule"
+        },
+        {
+          "field_path": "schedule.steps/0/deadline",
+          "source": "discovery-issue-3d1bdebab2ec",
+          "revision_id": "da3638b7958ff38e6c93a18929d40b1d45e26226c16c1bf22afb1e0d8620a3c8",
+          "locator": "body / text-block 52",
+          "evidence_mode": "hash_only",
+          "excerpt": null,
+          "excerpt_sha256": "2d3b0354d72d39fb74075a4624a47c7320660b3e8f5c4f473745cc0f3b64a500",
+          "source_block_sha256": "2d3b0354d72d39fb74075a4624a47c7320660b3e8f5c4f473745cc0f3b64a500",
+          "extraction_method": "deterministic_rule"
         }
       ],
       "gaps_and_conflicts": {
         "missing_fields": [
           "unextracted:schedule.application_start",
-          "unextracted:schedule.student_deadline",
           "unextracted:benefit",
           "unextracted:compatibility",
           "unextracted:application_method"
@@ -74847,7 +74865,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.4.0",
-        "checked_at": "2026-11-19T07:02:44+00:00",
+        "checked_at": "2026-11-19T07:58:56+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
@@ -74862,7 +74880,6 @@
         "warnings": [
           "coverage_gap:missing_structured_benefit_items",
           "coverage_gap:unextracted:schedule.application_start",
-          "coverage_gap:unextracted:schedule.student_deadline",
           "coverage_gap:unextracted:benefit",
           "coverage_gap:unextracted:compatibility",
           "coverage_gap:unextracted:application_method"
