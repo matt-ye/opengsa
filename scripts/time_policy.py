@@ -107,12 +107,20 @@ def project_time_policy(candidate, unsafe=False):
     meta = candidate['source_metadata']
     schedule = candidate['schedule']
 
+    # 同一方案的公告（source_metadata.linked_revisions）只能佐證學生截止日，跟檢核器的規則相同。
+    linked = {(r['source_id'], r['revision_id']) for r in meta.get('linked_revisions', [])}
+
+    def own_or_linked(e):
+        if e['source'] == meta['source_id'] and e['revision_id'] == meta['revision_id']:
+            return True
+        return (e['source'], e['revision_id']) in linked and re.fullmatch(r'schedule\.steps/\d+/deadline', e['field_path'])
+
     def refs(path):
         return [{'source': e['source'], 'revision_id': e['revision_id'],
                  'locator': e['locator'], 'evidence_path': e['field_path']}
                 for e in candidate['field_evidence']
                 if (e['field_path'] == path or e['field_path'].startswith((path + '.', path + '/')))
-                and e['source'] == meta['source_id'] and e['revision_id'] == meta['revision_id'] and e.get('locator')]
+                and own_or_linked(e) and e.get('locator')]
 
     def add(path, actor, stage, deadline):
         evidence = refs(path)
