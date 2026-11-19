@@ -41,6 +41,14 @@ class ExpansionTests(unittest.TestCase):
         self.assertEqual(document_heading(blocks,'award'),'合成大學醫學院研究生優秀著作獎獎勵辦法')
         self.assertEqual(document_heading([{'text':'第一條 為獎勵研究生從事學術研究，依本辦法'}],'award'),'')
 
+    def test_attachment_title_skips_clauses_and_joins_a_split_name(self):
+        # 合成樣本：條文、引用句與通過紀錄剛好以「辦法」結尾，都不是名稱；名稱折成兩行時要接起來。
+        B=lambda *texts:[{'text':t} for t in texts]
+        self.assertEqual(document_heading(B('中華民國113年5月1日院務會議通過','第一條 依據合成大學獎助學金設置辦法'),'scholarship'),'')
+        self.assertEqual(document_heading(B('本要點依合成部補助大專校院學生獎助學金辦法','二、申請資格'),'scholarship'),'')
+        self.assertEqual(document_heading(B('合成大學醫學院研究生','傑出論文獎勵辦法','第一條 為獎勵研究生'),'award'),'合成大學醫學院研究生傑出論文獎勵辦法')
+        self.assertEqual(document_heading(B('113.5.1 院務會議通過','傑出論文獎勵辦法'),'award'),'傑出論文獎勵辦法')
+
     def test_full_pipeline_resumes_without_network_and_keeps_pending(self):
         inv={'rows':[row()]};state=initial_state(inv);calls=[]
         with TemporaryDirectory() as tmp,patch('scripts.scan_sources.time.sleep'):

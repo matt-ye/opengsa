@@ -23,7 +23,7 @@ from scripts.source_chains import DOCUMENT_LINK,discover_links,publication
 from scripts.document_ir import prepare_document,document_manifest,VERSION as IR_VERSION
 from jsonschema import ValidationError
 from scripts.extract_candidates import extract_from_in_memory_blocks,DisabledModelAdapter,EXTRACTOR_VERSION
-from scripts.semantic_facts import discover_identity
+from scripts.semantic_facts import discover_identity,title_line,NOT_TITLE_LINE,TITLE_LINE
 
 VERSION='expansion-1'
 DENIED=re.compile(r'robots_|http_403|http_429|service_retry_after')
@@ -47,12 +47,19 @@ INFORMATION=re.compile(r'說明會|發放訊息|發放通知|(?:查核|審查|�
 DEFAULT_OPTIONS={'follow_roles':('policy',),'max_children':8,'link_limit':8,'broad_links':False,'document_candidates':False,'group_documents':False}
 INTAKE_OPTIONS={'follow_roles':('policy','related_call'),'max_children':40,'link_limit':None,'broad_links':True,'document_candidates':True,'group_documents':True}
 INDEX_LINK_COUNT=3
-DOCUMENT_HEADING=re.compile(r'^\S.*(?:辦法|要點|簡章|須知)$')
-
 def document_heading(blocks,category=None):
-    """辦法類附件的前幾行通常就是正式名稱（「○○獎勵辦法」），比連結文字（「附件1獎勵辦法」）準。"""
-    return next((b['text'] for b in blocks[:5] if len(b['text'])<=60 and DOCUMENT_HEADING.search(b['text'])
-                 and resource_title(b['text'],category)),'')
+    """辦法類附件的前幾行通常就是正式名稱（「○○獎勵辦法」），比連結文字（「附件1獎勵辦法」）準。
+    名稱折成兩行（「○○大學醫學院研究生」「傑出論文獎勵辦法」）時接上前一行；前一行要是沒有數字與標點的短行。"""
+    texts=[b['text'].strip() for b in blocks[:5]]
+    for i,text in enumerate(texts):
+        if not title_line(text):continue
+        before=texts[i-1] if i else ''
+        if (before and len(before)<=30 and not re.search(r'[\d０-９【】（）()，,。；;：:、]|通過|發布|修正|修訂',before)
+                and not NOT_TITLE_LINE.search(before) and not TITLE_LINE.search(before)):
+            text=before+text
+        if resource_title(text,category):return text
+    return ''
+
 # 「接受捐贈獎學金行政運作及管理作業要點」是學校怎麼收捐款的規定，不是給學生申請的方案。
 ADMIN=re.compile(r'教師(?:評審|評鑑|遴選)|院長選任|校長遴選|經費稽核委員會|預算分配委員會|電腦中心設置|接受捐[贈款].{0,20}(?:要點|作業|規定|辦法)')
 ACADEMIC_YEAR=re.compile(r'(?<!\d)(\d{3})(?:\s*學年度|-[12](?!\d))')

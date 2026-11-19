@@ -44,7 +44,7 @@ def evaluate():
             row.update(status="parsed_pending_review",application_method=method,field_applicability=applicability)
         except Exception as error:
             # Only controlled status codes; never raw remote responses or connection details.
-            row["status"]=str(error) if str(error) in ("required_marker_missing","robots_denied","robots_not_plain_rules","run_budget_exhausted","transport_error") or str(error).startswith("http_") else type(error).__name__
+            row["status"]=str(error) if str(error) in ("required_marker_missing","selected_body_empty","robots_denied","robots_not_plain_rules","run_budget_exhausted","transport_error") or str(error).startswith("http_") else type(error).__name__
         rows.append(row)
     result={"observed_at":datetime.now(timezone.utc).isoformat(),"http_requests":fetcher.count,"model_calls":0,
             "official_data_modified":False,"raw_documents_stored":False,"human_approved":False,"rows":rows}

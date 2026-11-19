@@ -18,6 +18,18 @@ def compact(value):
     return re.sub(r'\s+','',value)
 
 
+# 文件開頭的正式名稱（「○○獎勵辦法」）。條文（「第一條 依據…辦法」）、引用句（「本要點依…辦法」）、
+# 通過紀錄與帶標點的句子都不是名稱，只是剛好以「辦法」結尾。「本校○○要點」「115學年度○○須知」是名稱，不排除。
+TITLE_LINE=re.compile(r'^\S.*(?:辦法|要點|簡章|須知)$')
+NOT_TITLE_LINE=re.compile(r'^(?:第\s*[一二三四五六七八九十百\d]+\s*[條點項]|[一二三四五六七八九十]+[、.]|[（(]?\d+[.、)）]|'
+                          r'依|根據|為(?!期)|本(?:要點|辦法|簡章|須知|規定)|中華民國|民國|附件|【)|[，,。；;：:、]')
+
+
+def title_line(text):
+    text=(text or '').strip()
+    return len(text)<=60 and bool(TITLE_LINE.search(text)) and not NOT_TITLE_LINE.search(text)
+
+
 def safe_units(blocks):
     # Short adjacent PDF lines can form a sentence, but never cross a page,
     # heading, section, table row or another numbered clause.
@@ -121,6 +133,9 @@ def researcher_clause(blocks):
     return None
 
 
+ALUMNI=re.compile(r'畢業(?:後|未滿)?[一二三四五六七八九十兩\d]+(?:個月|年)(?:內|以內)?')
+
+
 def discover_identity(blocks,category=None):
     if category=='ai':
         found=researcher_clause(blocks)
@@ -140,6 +155,9 @@ def discover_identity(blocks,category=None):
             if not re.search(r'不得|不含|不包括|排除|不適用',part)]
         degrees=degree_terms('；'.join(positive))
         parts=[('碩、博士班學生' if len(degrees)==2 else '博士班學生' if degrees==['phd'] else '碩士班學生' if degrees==['master'] else '在學學生')]
+        # 「限本院在學或畢業三年內之學生」：校友也能申請，只寫「在學學生」會把資格說窄。
+        alumni=ALUMNI.search('；'.join(positive))
+        if alumni:parts[0]=('在學或'+alumni.group(0)+'學生') if parts[0]=='在學學生' else parts[0]+'（含'+alumni.group(0)+'者）'
         if '本院' in text:parts.append('本院所屬範圍')
         elif '本校' in text:parts.append('本校學籍範圍')
         elif re.search(r'國內.{0,12}大學',text):parts.append('國內大學學籍範圍')
