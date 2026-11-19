@@ -1,6 +1,6 @@
 {
   "schema_version": "source-chain-1",
-  "generated_at": "2026-11-18T16:00:49+00:00",
+  "generated_at": "2026-11-19T05:01:21+00:00",
   "model_calls": 0,
   "official_data_modified": false,
   "documents": [
@@ -3516,6 +3516,20 @@
       "evidence_mode": "hash_only",
       "candidate_ids": [
         "cand-discovery-de48df978ed709330-1b772b21"
+      ],
+      "events": [],
+      "links": []
+    },
+    {
+      "id": "doc-87b38e387dec518c0fdd828f",
+      "url": "https://claude.com/programs/team-plan-for-scientists",
+      "format": "html",
+      "revision_id": "a288625a53c9c7ac93ddbc0104865ffbcac9db16bc781db7d143489a3e1dc734",
+      "observed_at": "2026-11-19T05:01:16+00:00",
+      "status": "candidate_snapshot",
+      "evidence_mode": "hash_only",
+      "candidate_ids": [
+        "cand-discovery-issue-87b38e387dec-a288625a"
       ],
       "events": [],
       "links": []

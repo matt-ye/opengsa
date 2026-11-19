@@ -2214,6 +2214,12 @@ def _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode):
             cand['eligibility']['identity']={'text':claim['text'],'claim_kind':claim['kind'],'refs':evidence('eligibility.identity',claim['units'])}
             cand['eligibility']['degrees']=claim['degrees']
             if claim['degrees']:evidence('eligibility.degrees',claim['units'])
+            # 資格句寫明由計畫主持人申請（研究人員 AI 方案）：申請人與預設的申請步驟改成主持人，不再寫成學生申請。
+            if claim.get('applicant')=='principal_investigator':
+                cand['participants']['applicant']='principal_investigator'
+                for step in cand['schedule']['steps']:
+                    if step['actor']=='student' and step['action']=='依公告規定申請':
+                        step.update(actor='principal_investigator',action='由計畫主持人（PI）申請',refs=cand['eligibility']['identity']['refs'])
     for role,claims in discover_organizations(blocks).items():
         if cand['organizations'][role]['text']!='待查':continue
         if len(claims)>4:

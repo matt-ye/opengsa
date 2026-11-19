@@ -5251,6 +5251,26 @@
       "text": "### 義守大學博愛急難慰問金實施要點\n\n原候選來源 · pdf · candidate_snapshot\n\n查核：2026-11-18\n\n[來源網站](https://sa1.isu.edu.tw/storage/files/boHjS4AlPGtg5irkM9QYhxVrn9SACZWnW0xvPPvz.pdf)\n\n`doc-1520701ad6cbbbe370bfa9a7`"
     },
     {
+      "id": "0677f1ae49b30bac",
+      "type": "text",
+      "x": 0,
+      "y": 97900,
+      "width": 350,
+      "height": 175,
+      "color": "5",
+      "text": "## Claude Team plan for scientists\n\n1筆候選｜baseline_pending\n\n沿用基線；待下一批查核"
+    },
+    {
+      "id": "6526f3e45de45dd1",
+      "type": "text",
+      "x": 430,
+      "y": 97900,
+      "width": 350,
+      "height": 260,
+      "color": "3",
+      "text": "### Claude Team plan for scientists\n\n原候選來源 · html · candidate_snapshot\n\n查核：2026-11-19\n\n[來源網站](https://claude.com/programs/team-plan-for-scientists)\n\n`doc-87b38e387dec518c0fdd828f`"
+    },
+    {
       "id": "f94a583d91ca7514",
       "type": "text",
       "x": 0,
@@ -8195,6 +8215,16 @@
       "id": "2b525180bb2bab2a",
       "fromNode": "9726272954fa104b",
       "toNode": "d8b8f63b0510ef79",
+      "fromSide": "right",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "color": "5",
+      "label": "方案引用"
+    },
+    {
+      "id": "09f59b53407727b7",
+      "fromNode": "0677f1ae49b30bac",
+      "toNode": "6526f3e45de45dd1",
       "fromSide": "right",
       "toSide": "left",
       "toEnd": "arrow",

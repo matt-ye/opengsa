@@ -416,6 +416,7 @@
         "actor": {
           "enum": [
             "student",
+            "principal_investigator",
             "student_or_representative",
             "department",
             "college",
@@ -1520,6 +1521,7 @@
             "applicant": {
               "enum": [
                 "student",
+                "principal_investigator",
                 "institution",
                 "unit",
                 "unknown"
