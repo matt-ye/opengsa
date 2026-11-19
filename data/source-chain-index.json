@@ -2,7 +2,7 @@
   "schema_version": "source-chain-index-1",
   "as_of": "2026-11-19",
   "candidate_file": "data/candidates/source-review.json",
-  "candidate_sha256": "406c6ff199473ece92c49078f05e85b1ce17d70b3ce7d688cb35b4daf329078e",
+  "candidate_sha256": "a82626613b266fb8d30f9e17e20535a741f4d8e55e99655f0bccabc7628a9f8e",
   "bundles": [
     "data/source-chains.json",
     "data/source-chain-batches/batch-01.json",
@@ -3592,7 +3592,7 @@
       "key": "discovery-issue-890c93924c8d",
       "title": "國立臺灣大學醫學院研究生優秀著作獎獎勵辦法",
       "candidate_ids": [
-        "cand-discovery-issue-890c93924c8d-beca84e3"
+        "cand-discovery-issue-890c93924c8d-4597ae81"
       ],
       "audit_status": "baseline_pending",
       "source_contexts": [],

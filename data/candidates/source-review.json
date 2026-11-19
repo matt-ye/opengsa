@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1.0-candidate",
-  "generated_at": "2026-11-19T07:59:19+00:00",
+  "generated_at": "2026-11-19T08:37:49+00:00",
   "as_of": "2026-11-19",
   "timezone": "Asia/Taipei",
   "model_enabled": false,
@@ -74599,7 +74599,7 @@
       "field_applicability": {}
     },
     {
-      "candidate_id": "cand-discovery-issue-890c93924c8d-beca84e3",
+      "candidate_id": "cand-discovery-issue-890c93924c8d-4597ae81",
       "opportunity_id": "discovery-issue-890c93924c8d",
       "program_key": "discovery-issue-890c93924c8d",
       "title": "國立臺灣大學醫學院研究生優秀著作獎獎勵辦法",
@@ -74762,9 +74762,9 @@
       },
       "source_metadata": {
         "source_id": "discovery-issue-890c93924c8d",
-        "revision_id": "beca84e344f5cebff1032808723619cd14ac9f9518f0efc4765da64c540ea687",
+        "revision_id": "4597ae81ada0d9f65dafa8f3156eeb5b2f82a4db81cad005e51abba45d8830c5",
         "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/file.asp?filename=2026102895354.pdf",
-        "observed_at": "2026-11-19T07:58:56+00:00",
+        "observed_at": "2026-11-19T08:37:26+00:00",
         "evidence_mode": "hash_only",
         "context_sufficiency": "in_memory_full_blocks",
         "extractor_version": "extractor-1.12.1",
@@ -74775,7 +74775,7 @@
         "linked_revisions": [
           {
             "source_id": "discovery-issue-3d1bdebab2ec",
-            "revision_id": "da3638b7958ff38e6c93a18929d40b1d45e26226c16c1bf22afb1e0d8620a3c8",
+            "revision_id": "4a8d1a240c19db57ed6a853e92f6298575790a2157603f36e6b428e374e14f88",
             "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/news_txt.asp?pno=7296",
             "relation": "announcement"
           }
@@ -74785,7 +74785,7 @@
         {
           "field_path": "policy_version",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "beca84e344f5cebff1032808723619cd14ac9f9518f0efc4765da64c540ea687",
+          "revision_id": "4597ae81ada0d9f65dafa8f3156eeb5b2f82a4db81cad005e51abba45d8830c5",
           "locator": "PDF page 1",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74796,7 +74796,7 @@
         {
           "field_path": "policy_version",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "beca84e344f5cebff1032808723619cd14ac9f9518f0efc4765da64c540ea687",
+          "revision_id": "4597ae81ada0d9f65dafa8f3156eeb5b2f82a4db81cad005e51abba45d8830c5",
           "locator": "PDF page 1",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74807,7 +74807,7 @@
         {
           "field_path": "eligibility.identity",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "beca84e344f5cebff1032808723619cd14ac9f9518f0efc4765da64c540ea687",
+          "revision_id": "4597ae81ada0d9f65dafa8f3156eeb5b2f82a4db81cad005e51abba45d8830c5",
           "locator": "PDF page 1",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74818,7 +74818,7 @@
         {
           "field_path": "eligibility.identity",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "beca84e344f5cebff1032808723619cd14ac9f9518f0efc4765da64c540ea687",
+          "revision_id": "4597ae81ada0d9f65dafa8f3156eeb5b2f82a4db81cad005e51abba45d8830c5",
           "locator": "PDF page 1",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74829,7 +74829,7 @@
         {
           "field_path": "organizations.funder",
           "source": "discovery-issue-890c93924c8d",
-          "revision_id": "beca84e344f5cebff1032808723619cd14ac9f9518f0efc4765da64c540ea687",
+          "revision_id": "4597ae81ada0d9f65dafa8f3156eeb5b2f82a4db81cad005e51abba45d8830c5",
           "locator": "PDF page 2",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74840,7 +74840,7 @@
         {
           "field_path": "schedule.steps/0/deadline",
           "source": "discovery-issue-3d1bdebab2ec",
-          "revision_id": "da3638b7958ff38e6c93a18929d40b1d45e26226c16c1bf22afb1e0d8620a3c8",
+          "revision_id": "4a8d1a240c19db57ed6a853e92f6298575790a2157603f36e6b428e374e14f88",
           "locator": "body / text-block 52",
           "evidence_mode": "hash_only",
           "excerpt": null,
@@ -74865,7 +74865,7 @@
       "verification": {
         "status": "passed_with_gaps",
         "verifier_version": "verifier-1.4.0",
-        "checked_at": "2026-11-19T07:58:56+00:00",
+        "checked_at": "2026-11-19T08:37:26+00:00",
         "model_self_claim_ignored": true,
         "checks": {
           "schema_valid": true,
