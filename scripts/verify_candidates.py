@@ -213,7 +213,7 @@ def strip_model_self_claims(candidate):
     return cleaned
 
 
-def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None, pilot_by_id=None):
+def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None, pilot_by_id=None, linked_blocks=None):
     """對單筆結構化候選執行七大獨立檢核，回傳更新 verification 與 review 狀態後的候選複本。"""
     cand = strip_model_self_claims(candidate)
     prior_regressions=[w for w in cand.get('verification',{}).get('warnings',[]) if w.startswith('coverage_regression:')]
@@ -267,9 +267,13 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
     is_stub = ctx_suff in ("hash_only_without_memory", "short_excerpt_only", "robots_or_access_restricted")
     field_ev = cand.get("field_evidence", [])
     ev_by_path = {}
+    # 同一方案的公告（source_metadata.linked_revisions）只能佐證學生截止日，證據要對到公告本身的版本。
+    linked = {(r.get("source_id"), r.get("revision_id")) for r in meta.get("linked_revisions", [])}
+    def linked_entry(entry):
+        return (entry.get("source"), entry.get("revision_id")) in linked and re.fullmatch(r"schedule\.steps/\d+/deadline", entry.get("field_path", ""))
     for entry in field_ev:
         ev_by_path.setdefault(entry.get("field_path", ""), []).append(entry)
-        if entry.get("source") != meta.get("source_id") or entry.get("revision_id") != meta.get("revision_id"):
+        if (entry.get("source") != meta.get("source_id") or entry.get("revision_id") != meta.get("revision_id")) and not linked_entry(entry):
             ev_errors.append(f"evidence_source_or_revision_mismatch:{entry.get('field_path')}")
         entry_mode = entry.get("evidence_mode")
         if entry_mode != ev_mode and not (ev_mode == "short_excerpt" and entry_mode == "hash_only"):
@@ -294,7 +298,18 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
             norm_t = normalized(b["text"])
             block_map[loc] = (block_map[loc] + " " + norm_t) if loc in block_map else norm_t
             block_hashes_by_loc.setdefault(loc, set()).add(evidence_digest(norm_t))
+        own_map, own_hashes = block_map, block_hashes_by_loc
         for entry in field_ev:
+            block_map, block_hashes_by_loc = own_map, own_hashes
+            if linked_entry(entry):
+                # 公告的區塊不在這份文件裡；有帶進記憶體就對公告的區塊核對，沒帶就只核對宣告（與不帶記憶體時相同）。
+                if entry.get("source") not in (linked_blocks or {}):
+                    continue
+                block_map, block_hashes_by_loc = {}, {}
+                for b in linked_blocks[entry["source"]]:
+                    norm_t = normalized(b["text"])
+                    block_map[b["locator"]] = (block_map[b["locator"]] + " " + norm_t) if b["locator"] in block_map else norm_t
+                    block_hashes_by_loc.setdefault(b["locator"], set()).add(evidence_digest(norm_t))
             loc = entry.get("locator")
             if loc not in block_map:
                 ev_errors.append(f"evidence_locator_not_in_source:{entry.get('field_path')}:{loc}")
@@ -317,6 +332,12 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
                     )
                     if not matched:
                         ev_errors.append(f"hash_only_sha256_not_grounded_in_block:{entry.get('field_path')}")
+        # 後面的日期與金額檢查依定位讀原文；公告的定位跟本文件撞名時不併入，那筆日期就會核對失敗（寧可擋下）。
+        block_map, block_hashes_by_loc = dict(own_map), own_hashes
+        for blocks_ in (linked_blocks or {}).values():
+            for b in blocks_:
+                if b["locator"] not in own_map:
+                    block_map[b["locator"]] = (block_map[b["locator"]] + " " + normalized(b["text"])) if b["locator"] in block_map else normalized(b["text"])
 
     # 檢查無記憶體上下文（僅有雜湊或殘句）時不得猜測具體欄位值
     elig = cand.get("eligibility", {})

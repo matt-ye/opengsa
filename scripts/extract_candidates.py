@@ -2249,6 +2249,15 @@ def _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode):
         cand['organizations'][role]={'text':'／'.join(c['value'] for c in claims),
             'refs':evidence('organizations.'+role,units)}
     # Timing is independent of whether identity was already recognized.
+    _time_facts(cand,blocks,sid,revision_id,evidence_mode)
+
+
+def _time_facts(cand,blocks,sid,revision_id,evidence_mode,step_note=None):
+    """來源明示的申請期間與截止日寫進 schedule；證據掛在 sid／revision_id 這份文件。"""
+    def evidence(path,units):
+        for block in units:
+            cand['field_evidence'].append(make_field_evidence(path,sid,revision_id,block,evidence_mode))
+        return [{'source':sid,'locator':b['locator']} for b in units]
     if blocks:
         seen=set();student_document=is_student_document(blocks);label=''
         for block in blocks:
@@ -2258,7 +2267,8 @@ def _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode):
             text,label=label+text,(text if TIME_LABEL_ONLY.fullmatch(text) else '')
             if label:continue
             rule=recurring_time(text)
-            if (not rule and re.search(r'申請期間|申請時程|申請時間|受理期間|收件期間|申請期限|申請截止|截止',text)
+            # 「即日起至115年11月26日(四)下午5時止受理申請」：公告常這樣寫收件期限，沒有「申請期間」標籤。
+            if (not rule and re.search(r'申請期間|申請時程|申請時間|受理期間|收件期間|申請期限|申請截止|截止|即日起至.{4,40}止(?:受理|收件|報名)',text)
                     and not re.search(r'每年|修正|生效|購買|支出|出國期間|公布結果|出生|年齡',text)):
                 labelled=labelled_date_clause(text)
                 start,end=parse_date_range_from_text(labelled or '')
@@ -2272,7 +2282,7 @@ def _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode):
                 if actor=='unit' and student_document and not re.search(r'學校|學院|系所|彙送|推薦名單|備函',text):actor='student'
                 if value:
                     rule={'actor':actor,'action':'依來源明示期間辦理'+('（'+start+'至'+end+'）' if start and end else ''),
-                        'deadline':{'kind':kind,'value':value,'timezone':'Asia/Taipei','note':'角色依本段辨識；未載學生期限時不以其他層級回填'}}
+                        'deadline':{'kind':kind,'value':value,'timezone':'Asia/Taipei','note':step_note or '角色依本段辨識；未載學生期限時不以其他層級回填'}}
                     if start and actor=='student' and not cand['schedule']['application_start'].get('value'):
                         cand['schedule']['application_start']={'kind':'date','value':start,'timezone':'Asia/Taipei','certainty':'confirmed','note':'學生受理期間明示起日'}
                         evidence('schedule.application_start',[block])
@@ -2905,8 +2915,10 @@ def extract_from_in_memory_blocks(
     as_of=None,
     model_adapter=None,
     extraction_strategy="rules_plus_llm",
+    linked_documents=None,
 ):
     """從記憶體中之完整區塊串列萃取一或多筆結構化候選，並執行獨立檢核與申請時間視窗計算。
+    linked_documents：同一方案的公告（[{source, revision_id, blocks}]），只用來補學生截止日，證據指向公告本身。
     extraction_strategy:
       - 'rules_plus_llm' (預設)：先跑確定性規則，若 model_adapter 啟用再執行 extract/audit/both
       - 'rules_only'：僅跑確定性規則
@@ -3024,6 +3036,8 @@ def extract_from_in_memory_blocks(
             _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode)
             if cand is generic:
                 withhold_unsure_generic_fields(cand,blocks,sid,revision_id,evidence_mode)
+            for linked in linked_documents or []:
+                link_announcement_deadline(cand,linked,evidence_mode)
         if extraction_strategy != "rules_only" and model_adapter.enabled:
             if (evidence_mode == "hash_only" or "aca.ntu.edu.tw" in url) and model_adapter.is_external:
                 cand["verification"]["warnings"].append("external_model_skipped_for_hash_only_source")
@@ -3053,11 +3067,13 @@ def extract_from_in_memory_blocks(
 
         # 計算申請時間視窗狀態
         window = evaluate_application_window(cand, as_of)
+        # 截止日來自同方案的公告時，受理狀態的依據是公告那一段，不是辦法第一行。
+        linked_refs = [r for s in cand["schedule"]["steps"] if s["deadline"].get("value") for r in s["refs"] if r["source"] != sid]
         cand["application"] = {
             "state": window["state"],
             "as_of": window["as_of"],
             "reason": window["reason"],
-            "refs": [{"source": sid, "locator": blocks[0]["locator"]}] if window["state"] != "unknown" else [],
+            "refs": (linked_refs[:1] or [{"source": sid, "locator": blocks[0]["locator"]}]) if window["state"] != "unknown" else [],
         }
         # 專用解析器有自己列的缺漏，這裡只補通用路徑。
         if generic and cand["candidate_id"] == generic["candidate_id"]:
@@ -3065,10 +3081,51 @@ def extract_from_in_memory_blocks(
 
         # 執行獨立檢核
         excerpt_remaining = limit_evidence_excerpts(cand, excerpt_remaining)
-        verified = verify_candidate(cand, in_memory_blocks=blocks, now_iso=observed_at)
+        verified = verify_candidate(cand, in_memory_blocks=blocks, now_iso=observed_at,
+                                    linked_blocks={d["source"]["id"]: d["blocks"] for d in linked_documents or []})
         results.append(verified)
 
     return results
+
+
+def link_announcement_deadline(cand, linked, evidence_mode):
+    """辦法本身沒寫期限時，用同方案公告寫的截止日；公告寫了兩個以上不同的學生截止日就不帶（分不出是哪個方案的）。
+    呼叫端要先確認公告點名了這張卡的方案。"""
+    steps = cand["schedule"]["steps"]
+    # 辦法自己寫了任何期限（不論是誰的）就以辦法為準，不再混入公告的日期。
+    if any(s["deadline"].get("value") for s in steps):
+        return
+    probe = _base_probe(cand)
+    sid, revision = linked["source"]["id"], linked["revision_id"]
+    _time_facts(probe, linked["blocks"], sid, revision, evidence_mode, step_note="截止日取自同一方案的公告頁；公告同時列出的其他方案不套用")
+    found = [(s, e) for s in probe["schedule"]["steps"] if s["actor"] == "student" and s["deadline"].get("value")
+             for e in probe["field_evidence"] if e["field_path"] == f"schedule.steps/{probe['schedule']['steps'].index(s)}/deadline"]
+    if len({s["deadline"]["value"] for s, _ in found}) != 1:
+        return
+    step, entry = found[0]
+    # 取代「依公告規定申請／待確認」那一步，沒有就接在後面。
+    index = next((i for i, s in enumerate(steps) if s["actor"] == "student" and s["deadline"]["kind"] == "unknown"), len(steps))
+    if index == len(steps):
+        steps.append(step)
+    else:
+        steps[index] = step
+    cand["field_evidence"].append({**entry, "field_path": f"schedule.steps/{index}/deadline"})
+    meta = cand["source_metadata"]
+    meta.setdefault("linked_revisions", []).append({"source_id": sid, "revision_id": revision, "url": linked["source"]["url"], "relation": "announcement"})
+    missing = cand["gaps_and_conflicts"]["missing_fields"]
+    missing[:] = [m for m in missing if m != "unextracted:schedule.student_deadline"]
+
+
+def announced_deadlines(blocks):
+    """公告寫的學生截止日（去重）。用來判斷這頁是不是「只有收件期限、資格在附件」的公告。"""
+    probe = _base_probe(None)
+    _time_facts(probe, blocks, "probe", "probe", "hash_only")
+    return {s["deadline"]["value"] for s in probe["schedule"]["steps"] if s["actor"] == "student" and s["deadline"].get("value")}
+
+
+def _base_probe(cand):
+    """只放時程的空殼，讓公告的時間規則不會碰到卡片的其他欄位。"""
+    return {"schedule": {"steps": [], "application_start": {"kind": "unknown", "value": None}}, "field_evidence": []}
 
 
 def extract_from_candidate_stub_without_memory(candidate_stub, source, as_of=None):

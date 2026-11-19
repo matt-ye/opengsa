@@ -19,10 +19,10 @@ if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from bs4 import BeautifulSoup
 from scripts.audit_sources import canonical_url
 from scripts.scan_sources import Fetcher,ScanError,node_get,digest,safe_url,html_document,content_roots,pdf_document,SKIP
-from scripts.source_chains import DOCUMENT_LINK,discover_links,publication
+from scripts.source_chains import document_url,discover_links,publication
 from scripts.document_ir import prepare_document,document_manifest,VERSION as IR_VERSION
 from jsonschema import ValidationError
-from scripts.extract_candidates import extract_from_in_memory_blocks,DisabledModelAdapter,EXTRACTOR_VERSION
+from scripts.extract_candidates import extract_from_in_memory_blocks,DisabledModelAdapter,EXTRACTOR_VERSION,announced_deadlines
 from scripts.semantic_facts import discover_identity,title_line,NOT_TITLE_LINE,TITLE_LINE
 
 VERSION='expansion-1'
@@ -45,7 +45,7 @@ LISTING_SUFFIX=re.compile(r'(?:最新消息|最新公告)$')
 INFORMATION=re.compile(r'說明會|發放訊息|發放通知|(?:查核|審查|審核)結果|(?:核定|錄取)名單|QA整理|影片.*簡報|(?:Q\s*&\s*A|FAQ)',re.I)
 # 全庫擴展的預設界限；提交流程要從入口頁往下走，放寬連結範圍，並把附件也當成可能的方案文件。
 DEFAULT_OPTIONS={'follow_roles':('policy',),'max_children':8,'link_limit':8,'broad_links':False,'document_candidates':False,'group_documents':False}
-INTAKE_OPTIONS={'follow_roles':('policy','related_call'),'max_children':40,'link_limit':None,'broad_links':True,'document_candidates':True,'group_documents':True}
+INTAKE_OPTIONS={'follow_roles':('policy','related_call'),'max_children':40,'link_limit':None,'broad_links':True,'document_candidates':True,'group_documents':True,'link_announcements':True}
 INDEX_LINK_COUNT=3
 # 折行的前半段要像單位名稱（「○○大學醫學院研究生」「○○學系」）；「最新消息」「教務處」這種導覽或處室字不接。
 UNIT_PREFIX=re.compile(r'(?:大學|學院|學系|研究所|系|所|中心|基金會|學會|協會|公會|醫院|研究生|大學生)$')
@@ -204,7 +204,23 @@ def prepare_response(response,profile,hosts,link_limit=8,broad_links=False,categ
 # 頁面讀到了卻不成卡的原因。記在每份文件上並在摘要統計，調規則時直接看卡在哪一關，不用逐頁除錯。
 NOT_CARD_REASONS={'index_page':'索引頁（列出多個方案）','category_not_carded':'這個類別不成卡','document_not_html':'不是 HTML 的附件',
     'site_root_page':'網站首頁','listing_title':'列表頁標題','admin_title':'行政公告標題','information_title':'說明會或資訊類標題','past_year_title':'過去學年度的公告',
-    'title_not_a_program':'標題看不出是方案','no_eligibility_sentence':'找不到申請資格或申請對象'}
+    'title_not_a_program':'標題看不出是方案','no_eligibility_sentence':'找不到申請資格或申請對象',
+    'not_announced_programme':'公告底下的文件，但不是公告點名的方案'}
+
+# 公告點名的方案：辦法名稱去掉「獎勵辦法／要點…」和前面的校院名稱，剩下的方案名稱要出現在公告標題裡。
+PROGRAMME_SUFFIX=re.compile(r'(?:獎勵|設置|實施|申請|作業|甄選)?(?:辦法|要點|簡章|須知)$')
+
+def programme_core(title):
+    core=PROGRAMME_SUFFIX.sub('',re.sub(r'\s+','',title or ''))
+    return re.sub(r'^.*(?:大學|學院|學校)','',core)
+
+def announces(announcement_title,title):
+    core=programme_core(title)
+    return len(core)>=4 and core in re.sub(r'\s+','',announcement_title or '')
+
+def referenced(url,text):
+    # 公告正文用純文字寫出的網址。解析器會把查詢參數裡的 &LT 當成舊式實體轉成「<」，兩種寫法都認。
+    return any(v in text for v in (url,url.replace('&LT','<'),url.replace('&lt','<')))
 
 def not_card_reason(row,prepared,known,documents=False):
     """回傳不成卡的原因代碼（見 NOT_CARD_REASONS）；會成卡回傳 None。"""
@@ -311,6 +327,8 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
     rows.sort(key=lambda r:(known_for(r) is None,r.get('kind')=='附件／表單',r['id']))
     rows.extend(deepcopy(r) for r in state['new_sources'].values() if r['batch']==batch)
     seen=set();fetcher=None;micro_documents=0
+    # 同一方案的公告：原文只放記憶體，不寫進 state（state 會存檔）。中斷續跑時讀不到就照一般流程，不帶截止日。
+    announcements={}
     def request(url,headers,limit):
         if state['http_requests']>=1200 or state['batch_requests'].get(batch,0)>=200:raise ScanError('expansion_budget_deferred')
         state['http_requests']+=1;state['batch_requests'][batch]=state['batch_requests'].get(batch,0)+1
@@ -346,11 +364,14 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
             response=fetcher.get(url,{},10*1024*1024)
             if response['status']!=200:raise ScanError('http_'+str(response['status']))
             prepared=prepare_response(response,p or {},hosts,link_limit=options['link_limit'],broad_links=options['broad_links'],category=row.get('category'))
+            own_title=bool(prepared['title'])
             if options['document_candidates'] and not prepared['title']:
                 # 附件沒有網頁標題：連結文字像方案名稱就用它，否則沿用連到它的公告標題。
                 # 連結文字常帶檔名副檔名或「點我下載」，都不是方案名稱的一部分。
                 label=re.sub(r'\s*(?:點我下載|\(PDF\)|\.(?:pdf|docx?|odt))\s*$','',row.get('title') or '',flags=re.I)
-                prepared['title']=document_heading(prepared['blocks'],row.get('category')) or (label if resource_title(label,row.get('category')) else row.get('parent_title') or label)
+                own=document_heading(prepared['blocks'],row.get('category')) or (label if resource_title(label,row.get('category')) else '')
+                own_title=bool(own)
+                prepared['title']=own or row.get('parent_title') or label
             ir=prepare_document(prepared['blocks']);revision=digest([url,digest(response['body']),fingerprint()])
             record.update(status='read',format=prepared['kind'],title=prepared['title'],final_url=response['url'],
                 raw_sha256=digest(response['body']),revision_id=revision,document_manifest=document_manifest(ir),links=prepared['links'])
@@ -364,6 +385,18 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
                 index_like=False
             record['links_found'],record['links_skipped']=len(prepared['links']),0
             reason='index_page' if index_like else not_card_reason(row,prepared,p,documents=options['document_candidates'])
+            announcement=announcements.get(row.get('announcement'))
+            # 公告底下的文件只有公告點名的方案才成卡；沿用公告標題的附件（例如「函」）不算，否則同一方案會多一張卡。
+            if announcement and not reason and not (own_title and announces(announcement['title'],prepared['title'])):
+                reason='not_announced_programme'
+            # 公告本身寫了收件期限、但沒寫資格（「即日起至…止受理申請」加附件）：記在記憶體，期限帶到它點名的方案。
+            if (options.get('link_announcements') and record['depth']==0 and reason=='no_eligibility_sentence' and prepared['kind']=='html'
+                    and announced_deadlines(prepared['blocks'])):
+                ann_profile=deepcopy(p) if p else {**profile_for(row,prepared,None),'enabled':False,
+                    'review_note':'同一方案的公告：只用來佐證辦法卡的截止日，本身不成卡、不排程。'}
+                announcements[url]={'title':prepared['title'],'profile':ann_profile,'revision_id':revision,'blocks':prepared['blocks'],
+                    'text':re.sub(r'\s+','',' '.join(b['text'] for b in prepared['blocks']))}
+                record['announcement']=True
             # 入口頁巡檢：入口頁本身只用來找連結，不成卡（它若是來源，每天的排程會掃；重抽只會換掉卡片代號）。
             if options.get('discovery_only_roots') and record['depth']==0:reason=reason or 'index_page'
             if reason:record['not_card_reason']=reason
@@ -371,10 +404,13 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
                 profile=profile_for(row,prepared,p)
                 # Strictest retention for expansion: even existing short_excerpt profiles use hash-only here.
                 profile['evidence_mode']='hash_only'
+                linked=[{'source':announcement['profile'],'revision_id':announcement['revision_id'],'blocks':announcement['blocks']}] if announcement else None
                 candidates=extract_from_in_memory_blocks(profile,prepared['blocks'],revision,record['observed_at'],url=url,
                     as_of=datetime.fromisoformat(record['observed_at']).astimezone(timezone(timedelta(hours=8))).date().isoformat(),
-                    model_adapter=DisabledModelAdapter(),extraction_strategy='rules_only')
+                    model_adapter=DisabledModelAdapter(),extraction_strategy='rules_only',linked_documents=linked)
                 state['profiles'][profile['id']]=profile
+                if announcement and any(c['source_metadata'].get('linked_revisions') for c in candidates):
+                    state['profiles'][announcement['profile']['id']]=announcement['profile']
                 for candidate in candidates:
                     # 公告連到的辦法或附件屬於同一方案。只共用方案代號，各文件的欄位不拼接。
                     if row.get('parent_program_key'):candidate['program_key']=row['parent_program_key']
@@ -390,6 +426,9 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
             # Child links get no inherited year, deadline, eligibility or approval.
             for link in prepared['links']:
                 child=canonical_url(link['url']);relation={'from_url':url,'to_url':child,'role':link['role'],'label':link['label'],'origin':'observed_link','revision_id':revision}
+                # 公告只往下走它自己的附件和正文寫出的網址，導覽列不算；公告底下的頁面只再走附件。
+                if url in announcements and not (document_url(child) or referenced(link['url'],announcements[url]['text'])):continue
+                if row.get('announcement') and not document_url(child):continue
                 if relation not in state['relations']:state['relations'].append(relation)
                 # 入口頁巡檢只找新方案：已經是來源的頁面每天的排程會掃，這裡不再跟。
                 if options.get('skip_known_children') and child in known:continue
@@ -399,10 +438,11 @@ def run_batch(inventory,state,batch,state_path,config,transport=node_get,progres
                         record['links_skipped']+=1
                         continue
                     # 連到別的網頁可能是別的方案，只有辦法和附件才算同一方案。
-                    same_program=options['group_documents'] and record['candidate_ids'] and (link['role']=='policy' or DOCUMENT_LINK.search(urlsplit(child).path))
+                    same_program=options['group_documents'] and record['candidate_ids'] and (link['role']=='policy' or document_url(child))
                     parent_program=state['candidates'][record['candidate_ids'][0]]['program_key'] if same_program else None
                     new={'id':'D'+digest(child)[:16],'url':child,'batch':batch,'category':row['category'],'title':link['label'],'parent_title':prepared['title'],'parent_program_key':parent_program,
-                         'root_url':row.get('root_url',url),'depth':record['depth']+1,'restrictions':[],'access_gate':'fresh_policy_and_profile_check_required'}
+                         'root_url':row.get('root_url',url),'depth':record['depth']+1,'restrictions':[],'access_gate':'fresh_policy_and_profile_check_required',
+                         'announcement':url if url in announcements else row.get('announcement')}
                     state['new_sources'][child]=new;rows.append(new)
         except (ScanError,ValueError,KeyError,zipfile.BadZipFile,ET.ParseError,TimeoutError,subprocess.TimeoutExpired) as error:
             reason=str(error) if isinstance(error,ScanError) else type(error).__name__
