@@ -24,11 +24,11 @@ erDiagram
 |---|---|---|
 | 根層 | `schema_version` (`1.1.0-candidate`)、`as_of`、`timezone` (`Asia/Taipei`)、`official_data_modified` (`false`) | 確保候選輸出絕不直接改寫正式網站資料 |
 | `cycle` | `kind`（含 `policy_snapshot`）、`label`、`year_system`、`year`、`term_or_round`、`branch` | 嚴格區分學年度／曆年、梯次、方案分支與法規條文快照 (`policy_snapshot`)，禁止將新舊年度或互斥分支混成一筆 |
-| `participants` | `applicant`、`beneficiary`、`awardee`、`payee` | 區分學生申請 (`student`) 與學校／單位申請 (`institution` / `unit`) |
+| `participants` | `applicant`、`beneficiary`、`awardee`、`payee` | 區分學生申請 (`student`)、學校／單位申請 (`institution` / `unit`) 與計畫主持人申請 (`principal_investigator`，例如給研究團隊的 AI 方案，學生只能由主持人加入) |
 | `eligibility` | `degrees`、`institution`（學校、學院、系所）、`year_limit`、`candidate`、`nationality`、`employment_status`、`negated_conditions`、`identity` | 明示否定條件（如排除在職生、不得重複請領），未知維持 `unknown`；`identity` 綁定含學制關鍵字區塊並附 `field_evidence` |
 | `benefit` | `summary`、`items`（`amount_min`、`amount_max`、`currency`、`unit`、`basis`、`duration_months_min/max`）、`refs` | 金額必須具備幣別與發放單位（`per_month`、`per_semester`、`lump_sum`、`total_range` 等），拒絕無單位裸數字；摘要依實際金額動態產生 |
 | `compatibility`／`hardship` | `mode`、`prohibited_schemes`、`overlap_period_rule`、`note`、`refs` | 未明示可兼領時一律保留 `unknown` 或 `conditional`，不得當作 `allowed` |
-| `schedule` | `application_start`、`steps`（區分 `student`、`department`、`college`、`university`、`institution`、`supplement`）、`result_date`、`relative_rule` | 學生截止與學院／學校／機關期限分層，支援固定日期與事件相對規則 |
+| `schedule` | `application_start`、`steps`（區分 `student`、`principal_investigator`、`department`、`college`、`university`、`institution`、`supplement`）、`result_date`、`relative_rule` | 學生截止與學院／學校／機關期限分層，支援固定日期與事件相對規則 |
 | `policy_version` | `promulgated_on`、`amended_on`、`effective_from`、`effective_to`、`note`、`refs` | 公布日、修正日與生效日分開；修正日不得自動複製為生效日 |
 | `field_evidence` | `field_path`、`source`、`revision_id`、`locator`、`evidence_mode`、`excerpt`、`excerpt_sha256`、`source_block_sha256`、`extraction_method`、`rule_and_model_agreed` | 每個非 `unknown` 萃取欄位強制具備 `field_evidence`，可回查原文段落／PDF頁碼雜湊；`hash_only` 來源強制 `excerpt: null` |
 | `gaps_and_conflicts` | `missing_fields`、`conflicts`、`open_questions` | 來源內部衝突或雙軌 `disagree` 自動攔截，不靜默擇一覆蓋 |

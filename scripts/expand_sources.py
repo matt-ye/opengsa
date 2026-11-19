@@ -31,8 +31,8 @@ RESOURCE=re.compile(r'獎學金|獎助學金|論文獎|著作獎|培育計畫|�
 # 急難救助、家庭補助與學生優惠的頁面不寫「獎學金」。只在這兩類來源放寬，獎學金來源維持原規則，排程掃描不多出雜卡。
 CATEGORY_RESOURCE={
     'living':re.compile(r'急難|慰助|濟助|慰問金|紓困|助學金|就學(?:金|補助)|學雜費減免|托教補助|扶助|生活津貼|培力計畫|助學計畫|幼兒園|托育|獎學|學金|補助'),
-    # 學生優惠來源是人工挑的產品頁，標題提到學生或教育就算。
-    'ai':re.compile(r'學生|教師|教育|students?|educat|academic|campus',re.I)}
+    # 學生優惠來源是人工挑的產品頁，標題提到學生、教育或研究人員就算（研究人員方案如「Claude Team plan for scientists」）。
+    'ai':re.compile(r'學生|教師|教育|研究人員|研究者|students?|educat|academic|campus|scientists?|researchers?',re.I)}
 
 def resource_title(title,category=None):
     pattern=CATEGORY_RESOURCE.get(category)
@@ -109,6 +109,20 @@ def labelled_name(soup,category=None):
                 return f'{value}（{site}）' if len(value)<=8 and site and site!=value else value
     return ''
 
+BODY_SELECTORS=('article','.article-center','main','[role=main]','#content','.content')
+
+def body_selector(soup):
+    """正文容器：依序取第一個找得到的。產品頁的「延伸閱讀」小卡片也是 <article>，
+    它整個包在後面的容器（例如 main）裡、字數不到那個容器的一成，就跳過它，不然只會讀到小卡片。"""
+    found=[s for s in BODY_SELECTORS if soup.select_one(s)]
+    size=lambda nodes:sum(len(n.get_text(' ',strip=True)) for n in nodes)
+    for i,s in enumerate(found):
+        nodes=soup.select(s)
+        teaser=any(all(outer in n.parents for n in nodes) and size(nodes)*10<size([outer])
+                   for o in found[i+1:] for outer in [soup.select_one(o)])
+        if not teaser:return s
+    return 'body'
+
 def prepare_response(response,profile,hosts,link_limit=8,broad_links=False,category=None):
     raw=response['body'];ctype=response['headers'].get('content-type','').lower();url=response['url']
     soup=None;links=[];published=None;title=None
@@ -123,7 +137,7 @@ def prepare_response(response,profile,hosts,link_limit=8,broad_links=False,categ
         kind='html';soup=BeautifulSoup(raw,'html.parser')
         if soup.select('input[type=password]'):raise ScanError('login_form_not_processed')
         for form in soup.select('form'):form.unwrap()
-        selector=profile.get('body_selector') or next((s for s in ('article','.article-center','main','[role=main]','#content','.content') if soup.select_one(s)),'body')
+        selector=profile.get('body_selector') or body_selector(soup)
         source={'body_selector':selector,'required_markers':profile.get('required_markers',[]),'pdf_include':[],'max_pdfs':0}
         # 提交流程要看短頁：公告可能只有一句話加附件，字數少不代表沒有內容。
         if broad_links:source['min_text_chars']=1
