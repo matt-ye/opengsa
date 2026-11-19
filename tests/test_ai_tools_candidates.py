@@ -100,6 +100,11 @@ class AIToolCandidateTests(unittest.TestCase):
         # 什麼都沒寫：退回固定句。
         bare=deepcopy(no_cap);bare["schedule"]["application_start"].update(kind="unknown",value=None)
         self.assertEqual(evaluate_application_window(bare,"2027-05-01")["reason"],fixed)
+        # 計畫主持人申請：有未到的開始日仍顯示尚未開放，否則說明由 PI 申請。
+        pi=deepcopy(bare);pi["participants"]["applicant"]="principal_investigator"
+        self.assertEqual(evaluate_application_window(pi,"2027-05-01")["reason_code"],"pi_applies_team_members_added")
+        pi_dated=deepcopy(no_cap);pi_dated["participants"]["applicant"]="principal_investigator"
+        self.assertEqual(evaluate_application_window(pi_dated,"2027-03-01")["reason_code"],"tool_start_date_not_reached")
 
 
 if __name__=="__main__":unittest.main()

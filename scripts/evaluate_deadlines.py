@@ -478,6 +478,8 @@ def evaluate_application_window(
                 code,reason="institution_plan_no_individual_window","此方案由學校或機構申請／簽約，個人沒有申請期間；請向學校窗口確認是否已提供。"
             elif start_d and now_d<start_d:
                 code,reason="tool_start_date_not_reached",f"尚未開放：申請開始日為 {start_v}{note}。開放後的截止日與名額仍須確認。"
+            elif item.get("participants",{}).get("applicant")=="principal_investigator":
+                code,reason="pi_applies_team_members_added","此方案由計畫主持人（PI）申請，研究團隊成員由主持人加入使用；開放時間與名額請看來源，不推定目前受理。"
             elif start_d and not caps:
                 code,reason="tool_opened_no_deadline",f"申請自 {start_v} 開放{note}；截止日未載明，不推定目前仍受理。"
             else:
