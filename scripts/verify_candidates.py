@@ -269,8 +269,11 @@ def verify_candidate(candidate, in_memory_blocks=None, now_iso=None, schema=None
     ev_by_path = {}
     # 同一方案的公告（source_metadata.linked_revisions）只能佐證學生截止日，證據要對到公告本身的版本。
     linked = {(r.get("source_id"), r.get("revision_id")) for r in meta.get("linked_revisions", [])}
+    steps_ = cand.get("schedule", {}).get("steps", [])
     def linked_entry(entry):
-        return (entry.get("source"), entry.get("revision_id")) in linked and re.fullmatch(r"schedule\.steps/\d+/deadline", entry.get("field_path", ""))
+        step = re.fullmatch(r"schedule\.steps/(\d+)/deadline", entry.get("field_path", ""))
+        return ((entry.get("source"), entry.get("revision_id")) in linked and bool(step) and int(step[1]) < len(steps_)
+                and steps_[int(step[1])].get("actor") == "student")
     for entry in field_ev:
         ev_by_path.setdefault(entry.get("field_path", ""), []).append(entry)
         if (entry.get("source") != meta.get("source_id") or entry.get("revision_id") != meta.get("revision_id")) and not linked_entry(entry):

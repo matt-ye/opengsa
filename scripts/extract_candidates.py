@@ -2255,14 +2255,16 @@ def _enrich_semantic_facts(cand,blocks,source,revision_id,evidence_mode):
 TIME_LABEL = re.compile(r'申請期間|申請時程|申請時間|受理期間|收件期間|申請期限|申請截止|截止')
 # 「即日起至○年○月○日止受理申請／收件」。報名只有在同一子句沒有活動字樣時才算（說明會、研習營的報名不是方案的收件）；
 # 查詢、申覆、繳費不是申請。
-SINCE_TODAY = re.compile(r'即日起至(?P<date>.{4,40}?)止(?:受理|開放)?(?:線上)?(?P<verb>申請|收件|送件|報名)')
+# 「即日起至」和「止」之間只能是日期、星期與時刻；動詞要收在子句結尾（「申請表下載」「申請帳號註冊」不算）。
+SINCE_TODAY = re.compile(r'即日起至(?P<date>[\d０-９一二三四五六七八九十〇零年月日()（）星期週上下中早晚午時點分:：/.\-]{4,40})'
+                         r'止(?:受理|開放)?(?:線上)?(?P<verb>申請|收件|送件|報名)(?=$|[（(]|逾期)')
 EVENT_NOUN = re.compile(r'說明會|研習|營|講座|工作坊|典禮|回條|活動|座談|課程|比賽|競賽')
 
 
 def _since_today_window(text, student_document, step_note=None):
     """每個子句分開判斷；同一段有兩個以上不同的申請截止日時不取（分不出是哪個方案的）。"""
     found = []
-    for clause in re.split(r'[；;。]', text):
+    for clause in re.split(r'[；;。，,]', text):
         match = SINCE_TODAY.search(clause)
         if not match or (match['verb'] == '報名' and EVENT_NOUN.search(clause)):
             continue
@@ -2272,8 +2274,9 @@ def _since_today_window(text, student_document, step_note=None):
     if len({value for _, _, value in found}) != 1:
         return None
     clause, kind, value = found[0]
-    actor = time_actor(clause)
-    if actor == 'unit' and student_document and not re.search(r'學校|學院|系所|彙送|推薦名單|備函', clause):
+    # 角色看整段（跟泛用期間規則一樣）：方案名稱常寫在前一個子句。
+    actor = time_actor(text)
+    if actor == 'unit' and student_document and not re.search(r'學校|學院|系所|彙送|推薦名單|備函', text):
         actor = 'student'
     return {'actor': actor, 'action': '依來源明示期間辦理',
             'deadline': {'kind': kind, 'value': value, 'timezone': 'Asia/Taipei',

@@ -60,6 +60,16 @@ class DeadlineSentenceTests(unittest.TestCase):
         cand = card([{**ANNOUNCEMENT, "blocks": blocks(two)}])
         self.assertFalse(any(s["deadline"]["value"] for s in cand["schedule"]["steps"]))
 
+    def test_date_span_stays_inside_its_clause_and_verb_ends_it(self):
+        # 審查找到的反例：表單下載的日期不能被併到後面的申請；「申請表下載」「申請帳號註冊」不是收件。
+        text = "申請表即日起至115年11月10日止開放下載，即日起至115年11月26日止受理申請"
+        self.assertEqual(announced_deadlines(blocks("合成研究生論文獎" + text)), {"2026-11-26"})
+        for text in ("合成研究生論文獎即日起至115年11月26日止受理申請表下載", "合成研究生論文獎即日起至115年11月26日止開放申請帳號註冊"):
+            with self.subTest(text=text):
+                self.assertEqual(announced_deadlines(blocks(text)), set())
+        self.assertEqual(announced_deadlines(blocks("合成研究生論文獎即日起至115年11月26日(四)下午5時止受理申請(逾時不候)")),
+                         {"2026-11-26T17:00:00+08:00"})
+
     def test_since_today_alone_is_not_a_start_date(self):
         # 「即日起」沒有寫日期，不當成受理起日。
         cand = card([ANNOUNCEMENT])
@@ -89,6 +99,11 @@ class LinkedDeadlineTests(unittest.TestCase):
         # 公告的證據若掛在其他欄位就不投影。
         moved = {**cand, "field_evidence": [{**e, "field_path": "schedule.result_date"} if e["source"] == "SYNTH-call" else e for e in cand["field_evidence"]]}
         self.assertEqual(project_time_policy(moved)["rules"], [])
+        # 公告的證據掛在非學生的步驟（例如單位彙送）也不投影，檢核器也擋。
+        unit = __import__("copy").deepcopy(cand)
+        unit["schedule"]["steps"][0]["actor"] = "unit"
+        self.assertEqual(project_time_policy(unit)["rules"], [])
+        self.assertTrue(any(e.startswith("evidence_source_or_revision_mismatch") for e in verify_candidate(unit)["verification"]["errors"]))
 
     def test_two_different_deadlines_leave_the_card_unconfirmed(self):
         two = {**ANNOUNCEMENT, "blocks": blocks(CALL, "大學生研究獎勵即日起至115年12月10日(四)下午5時止受理申請。")}
