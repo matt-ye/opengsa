@@ -1,6 +1,6 @@
 {
   "schema_version": "source-chain-1",
-  "generated_at": "2026-11-19T05:33:20+00:00",
+  "generated_at": "2026-11-19T07:02:48+00:00",
   "model_calls": 0,
   "official_data_modified": false,
   "documents": [
@@ -835,7 +835,7 @@
     {
       "id": "doc-5e071c47d65fc06b14fe5e11",
       "url": "https://osa.nqu.edu.tw/app/index.php?Action=downloadfile&file=WVhSMFlXTm9Memd5TDNCMFlWOHpOalEyT0Y4Mk5UTTNPVEV6WHpNME16RXdMbkJrWmc9PQ==&fname=WSGG01QKUSPO11HH50POSWXW143025RLRKFGDCICCCJDLK40KPROSTFGEC54OKGHSSCCGGMPA4NOLOYWMOMOQL00",
-      "format": "html",
+      "format": "pdf",
       "revision_id": "e470f9882694f9267e5c3a19ed2dfe80277b702b6a0b7656a356573c84872f9e",
       "observed_at": "2026-11-07T21:31:36+00:00",
       "status": "candidate_snapshot",
@@ -849,7 +849,7 @@
     {
       "id": "doc-68dbf24967e5108aeda4a271",
       "url": "https://osa.nqu.edu.tw/app/index.php?Action=downloadfile&file=WVhSMFlXTm9MelUxTDNCMFlWOHpNakExTjE4Mk5UQXdNRGs1WHpJd05UZzVMbkJrWmc9PQ==&fname=WSGG01QKUSPO11HH50POSWXW143025RLRKFGDCICTXZTCC40USNKOPUWEC54OKGHSSCCGGMPA4NOLOYWMOMOQL00",
-      "format": "html",
+      "format": "pdf",
       "revision_id": "66d496de374c6f9b4436fa76b149428b24b48db518986a9eb0bc899c5cb8d6c8",
       "observed_at": "2026-11-07T21:31:46+00:00",
       "status": "candidate_snapshot",
@@ -1031,7 +1031,7 @@
     {
       "id": "doc-c733b1fd06b60b8de36707f1",
       "url": "https://glrs.hl.gov.tw/glrsout/Download.ashx?FileID=2909&id=FL047417&type=LAW",
-      "format": "html",
+      "format": "pdf",
       "revision_id": "26049b44cf305aa2f5f261470ac879d6537698ecf25f20284cc9ec41da350423",
       "observed_at": "2026-11-07T21:41:27+00:00",
       "status": "candidate_snapshot",
@@ -1185,7 +1185,7 @@
     {
       "id": "doc-d7bfefdcdf675a661d3ef394",
       "url": "https://stuaffweb.ncue.edu.tw/app/index.php?Action=downloadfile&file=WVhSMFlXTm9Mekk1TDNCMFlWOHlNVEV6TlY4eE5UazVORGc0WHpreE1ETXlMbkJrWmc9PQ==&fname=WW54RPOKIC44VXMPGGVWFCMOSTNK35WSWSJCGCGCNP25WSB5A0JCA0B4LOLKA0OKPOCCEH00DG04EGHC34XSTSA1DG24QLMOLPJDOODCYSROPOFGECOKYWFCMK000015TSJCSW14XSHCDGICKL240020ZTGDIGB0LKUS30TWFGA4FCTWROXW21ZXEDB0JCJGFC30ZTRLOP2414WSZTA130B514YWJGA4DGDCWXUSWW40NPYXIGXSNKMOZS30A13520UWYSHC00RLWSB5SSQOLLUWB0OOJGUWPKPOCD3500ZSLKLO14NKICLK34ROWTICTXJDKOB014B0GHKLSSPOUWPKPKLKLL25VSJCA0SXTW30USYS14B024KKUT35A4A5YSDCSWSWDGTSCDQKVWPOUX0520B0MOJCOO30TS34KLMOXSKKQPUXPOB0NK2030OKWSDCVWA0YWWWCDLLHC10ROWWSTNKXWYSUSUW35MPA1UXPOVSA0B01145",
-      "format": "html",
+      "format": "pdf",
       "revision_id": "186a4596b87e7c242e39a094dbbeee9ce9fa7627dd21d2cd1778e7c797bb9387",
       "observed_at": "2026-11-07T21:47:53+00:00",
       "status": "candidate_snapshot",
@@ -1213,7 +1213,7 @@
     {
       "id": "doc-e3e9681cf72fa0516b4f964a",
       "url": "https://student.tnnua.edu.tw/app/index.php?Action=downloadfile&file=MUpvTmFnbnZnNERWSVlmejk1cVhmVVVQamVXenRTaW1GWTRIMWxYMWE4ZVhldmgxNk85UHNOV09JajFtektTRGhVTDdpdHNjcUw5MXlseTFlQ1pHM0RMcHdWVnQxbTNyamZBbkNUZHhsMVk9&fname=UCswNzF6VFpJRzFqTVlHS2pJRmk3OTNqQ1UzRGZIa2pGOGZkaE8wOEp4U2VuamhjZlYvQkEwSXRZVGJtTFUxamd2Y0IwWjFqcm1LU25YTmIrbGo4WHkyL3orV3pjQkVQOVJQSnZqV3o3OW1vUkE1ZGZYZ283WHMrcFdYT2lvaTNsdTFzR3loSjVqWUR2V1NUUFRnVHFwLzhXSUU1dStvay9GYlRmZzIzNVBXWE5Hb24wbmVKMWdzbGVXb0lDa2pQeXk3MWJJcjNtZ2xpckt2eFlJdms4MG5xTzgrVzBxMHlyVUZvRzNtdURZK2dhVitIajFLQUxBczVGYkZhT2dqMktWUWY0aE5oY0RwazhuRUFjZlZrR1E9PQ==",
-      "format": "html",
+      "format": "pdf",
       "revision_id": "12a295ab06938dacef8358ee27534a69cbb424eb906f00e5523c93c38c3c6150",
       "observed_at": "2026-11-07T21:50:00+00:00",
       "status": "candidate_snapshot",
@@ -1227,7 +1227,7 @@
     {
       "id": "doc-376138e497a55cd5a81568b9",
       "url": "https://student.tnnua.edu.tw/app/index.php?Action=downloadfile&file=Ums4ckNOcG91SHJod0x3dTRZQmQvWFpXYXMxejJmV2o1WmtvZzdkT3c2SE02d0dZNnFsQ0x6eXVNcThCZjdRZkk3Sms2R0dWb3JLMWpUSit0WVkwdENsVUgrSVRZWEE2WlBKeEFISDFaQms9&fname=RE5IZ01Ldkc4S1pUY1hTaVdVbFpWdE94aVRGZGR4M2RXT0lSdEhTWmVCekxMdlZzaXZlYUNXS3NxL0ZnaStUekZmamc1WllqRWZLcnp0WGZQcnVpTHFCcFg0ZVBVb0FzQ3prVnNWbzZDUFlwVkIvaUUyRndPbVR5Y1FCeDlXUVo=",
-      "format": "html",
+      "format": "pdf",
       "revision_id": "1d73398e57514fe220e06a06abffaaf0b032890adb46bcc6334e08b7eef2ed5c",
       "observed_at": "2026-11-07T21:50:06+00:00",
       "status": "candidate_snapshot",
@@ -1507,7 +1507,7 @@
     {
       "id": "doc-840444cb494b28566b4a5c75",
       "url": "https://osa.nqu.edu.tw/app/index.php?Action=downloadfile&file=WVhSMFlXTm9MekUyTDNCMFlWOHpORE13T0Y4Mk1qRTVNekUyWHpVeU1qUXpMbkJrWmc9PQ==&fname=1454DGB0LO4411ZXLOLKKPJGTW30WTGG2034MPNPQP35XW40YSYWEGB40054JGEGNO00VXHHA404A4XT1430TSWW34B0NOYSVXVXDCTS34B0FG01SSGCWXFCMKPOCDNLHCA041XWVWPKHCYS1434YWLKCC35UTVWSW3045KL00HGXWQKICCCQPZXED10DCWTQOJG50KKDGJCTWYS21XTB0A5UWB0LLB4WSDCPKROKK04POPO&cg=509",
-      "format": "html",
+      "format": "pdf",
       "revision_id": "e3c37511a95cde832ab1ded287a32db918fedce80c13ad9a794fd5501bdf0cac",
       "observed_at": "2026-11-07T22:21:36+00:00",
       "status": "candidate_snapshot",
@@ -1521,7 +1521,7 @@
     {
       "id": "doc-1d2fd8632d5bf7495261bbd8",
       "url": "https://osa.nqu.edu.tw/app/index.php?Action=downloadfile&file=WVhSMFlXTm9Mell4TDNCMFlWOHpNRFV6T0Y4eE5ERTRORFkyWHpZek1qZzJMbkJrWmc9PQ==&fname=WW54RPOKIC44A1MPLOLKTSXTZSB4WT24KLB0SSHCCCJDFG40ZWNKCDB4WS10ROEGSSWWWWXTA404ROJGKOSWTSLOSTICXSLK0035NOA0UWZWCDUWFH10YWFCRKPOSSYXHCA0EGXWVWHC40IC14B0YS10QP35PKA0ROECUSQOWSTSRKB0DGTSPLJHEDXWPK10",
-      "format": "html",
+      "format": "pdf",
       "revision_id": "fe58363ec1a60fd306421f97fd4bdc32c8a8ca22afcce51d043240e6cbca5a1d",
       "observed_at": "2026-11-07T22:27:00+00:00",
       "status": "candidate_snapshot",
@@ -1661,7 +1661,7 @@
     {
       "id": "doc-19ce2601983a8c9fdc8bf5bf",
       "url": "https://ptlaw.pthg.gov.tw/Download.ashx?FileID=11695&id=FL051936&type=LAW",
-      "format": "html",
+      "format": "pdf",
       "revision_id": "4cf0faea512e82e74c2360d695363a689b78cda36f06943bc79841c1334466ac",
       "observed_at": "2026-11-07T22:31:21+00:00",
       "status": "candidate_snapshot",
@@ -2291,7 +2291,7 @@
     {
       "id": "doc-7ea84090352011b30b6c107b",
       "url": "https://m.moa.gov.tw/api/DownloadFile/GetFile/2547773",
-      "format": "html",
+      "format": "pdf",
       "revision_id": "e14cb934ea7eafa84bacba7215807edea5bd8be52df1ab13fc9ad5036427d3f6",
       "observed_at": "2026-11-08T05:30:34+00:00",
       "status": "candidate_snapshot",
@@ -2333,7 +2333,7 @@
     {
       "id": "doc-c0df4a8da338a2c2153553eb",
       "url": "https://sa.site.nthu.edu.tw/app/index.php?Action=downloadfile&file=Mlg4SmhMYmhkTW1lK0FaSEczUi94amk0VStML2FHbU1KL01JdkZ6T0RETmRzT1NBWFhwc3VjcmFhclMyNlpFM1FiZjFQRFJHTXNPS3R1aFZ1R0huQi9Pekc2K3FSOCtGUzBhUXowdUIvUVE9&fname=TUtnWVdqNWVUb2h2dnpOcFR5VEtnS0JRTkJOVW5ON2dkSU9TRjFaTnJOYVgzZzI2dHQwZEJGSHl0V2w2T29WazErcEtkTXNnMkNyQ2dJc094L3pLRkpBaWpoVjRMd1lxa2FDNjdIUnN6eDNzNkFFVkh4ZVc3VWtFNzdnL2I1T3VLVlFmNGhOaGNEcGs4bkVBY2ZWa0dRPT0=&cg=15113",
-      "format": "html",
+      "format": "pdf",
       "revision_id": "acb9974af07801f7c350b7737802348753445d0d67bb1af7a47259a7bf592b05",
       "observed_at": "2026-11-08T05:38:02+00:00",
       "status": "candidate_snapshot",
@@ -2347,7 +2347,7 @@
     {
       "id": "doc-0742a240ba2d6459b7cc49a8",
       "url": "https://osa.nycu.edu.tw/osa/ch/app/artwebsite/doc?module=artwebsite&detailNo=1476394271421501440&type=s",
-      "format": "html",
+      "format": "pdf",
       "revision_id": "938a78b6189219ffac2cac2494f5d26fbb7b072aeb41034cb7e43aa7c60fa33c",
       "observed_at": "2026-11-08T05:39:36+00:00",
       "status": "candidate_snapshot",
@@ -2529,7 +2529,7 @@
     {
       "id": "doc-12c226584b8b78d046c1cbfc",
       "url": "https://life.dsa.fju.edu.tw/DownloadSubLabelFileServlet?menuID=4&labelID=36&subLabelID=1143&fileID=2",
-      "format": "html",
+      "format": "pdf",
       "revision_id": "5f07fdda57985a6990e8d14f98ee3be5d6afa1cafbc81204420f0cacc1d34e6f",
       "observed_at": "2026-11-08T07:24:35+00:00",
       "status": "candidate_snapshot",
@@ -2571,7 +2571,7 @@
     {
       "id": "doc-35a493edc43716decaa4681e",
       "url": "https://life.dsa.fju.edu.tw/DownloadNewsFileServlet?file=1151",
-      "format": "html",
+      "format": "pdf",
       "revision_id": "32459893b185ab37cd1e25ef3944264e2d1f9547a195c3d366fdef4db9a8d82d",
       "observed_at": "2026-11-08T07:25:08+00:00",
       "status": "candidate_snapshot",
@@ -2697,7 +2697,7 @@
     {
       "id": "doc-e2ae2c9d9c01d9f32e5da167",
       "url": "https://sa.site.nthu.edu.tw/app/index.php?Action=downloadfile&file=Mlg4SmhMYmhkTW1lK0FaSEczUi94aFNhcEMvZm9qdlZ5UGNpMnpWblRZRUtUeDU0TFlJQ2NtaC9OVDB3TmVkWUw2MS90R2lkZXNjZnNNMytMRkFacVBPekc2K3FSOCtGUzBhUXowdUIvUVE9&fname=eFpoVUlucDl6Q2tKOTE4OHBmUkVSanBUMFBiM2NNZTVESGR2QWpyeEdmV0krdy9ZbEFTLzUySUZ1dmZMR1c5cmlCcUtteUFScHQ5d3Qwd1Y2elUxRkRwVDBQYjNjTWU1REhkdkFqcnhHZlVxNU9zenYrK3U5VTlnV1VpMll3RGsrbS9VY3BWdU02b3hvQ1dzbURvQjdhci9sNzBxL25oTUg0VkUyZ3lIZ1pReTZjRlZiZFp0NjQzd0p3azNjWmRX&cg=15113",
-      "format": "html",
+      "format": "pdf",
       "revision_id": "f87057b6747d8bb9c7f08be674a79eb9e950965e0c23c18d3743884403570e2c",
       "observed_at": "2026-11-08T07:31:12+00:00",
       "status": "candidate_snapshot",
@@ -3369,7 +3369,7 @@
     {
       "id": "doc-cb99cc8ea465eae8b38500bf",
       "url": "https://wdsa.nttu.edu.tw/app/index.php?Action=downloadfile&file=WVhSMFlXTm9Mek14TDNCMFlWOHhPVFV5TkRKZk1UVTVOekV3TTE4MU1ESXpOQzV3WkdZPQ==&fname=0054RPA0RK4441YXHCLKOKMO1430WTRLDGJC40KKCCVX0040UWYWFCLLLO10NKOKSSWWIH35A4045430YWOKTS3434B0NOYSVXVXXWTS34MKB001USSSYWFCNPPOPPKKDGA050TXZSNKDCICDG34YSMPLP35QPSWUSECYSUW34OK01USYWDCTX054410IGYWQOB4542520ROSWWSML2504TS3430JCFGYSGGKLQK00WWPPKKWW04SXMOSTTWJG00OPB0OKGCVXZTDC4014B045SWOOKKTTGH44CCXT15FG04TXXTVWXSOKLKUSFGRLHG&cg=4643",
-      "format": "html",
+      "format": "pdf",
       "revision_id": "a1e9f422504146d7dec15236f69d235e2becba706ae7febc212c5d5106244c07",
       "observed_at": "2026-11-18T16:10:59+00:00",
       "status": "candidate_snapshot",
@@ -3383,7 +3383,7 @@
     {
       "id": "doc-e5f54b0fff73ca9dbe6b2f35",
       "url": "https://wdsa.nttu.edu.tw/app/index.php?Action=downloadfile&file=WVhSMFlXTm9MemN5TDNCMFlWOHhORGN3TkRsZk5qSTVPRGcxTmw4MU1qWXhOeTV3WkdZPQ==&fname=LOGGROOKWWCGA1YXEDLKSW24143025RLYSFG04XSVXGDFG40OKFC24POWWOOFGOKPOPOGG01A404ROJGKOSWTSLO34B0NOYSVXVXDCTSWSB0VSOKUSKKYWFCNO4051ZXDGA050TXZSNKDCICUSB004NPGGGDQP21POB445KL34OK01USA4XWZX054410NPGDXSOKSWLKWSROCGXSUTXT04B5DCMK30B4GGPOGHQKGC40LLMPEDLK3024FCMOXW25DGJCSS10GGGDXWA0A0MKPPDGOOKKYWGH44POHD15FG04TX14KOOKEGHCUSB0NKWSGGYT44FCWSTSVSVSLOOOUWOK44LKDDYXEDPOSX24MKKOUSWS50FGWSMKJDGDKOA5NKEC455400A4RKFCA4DCYTKK00POKP14IGJGLOWSB4JGA1A1&cg=4660",
-      "format": "html",
+      "format": "pdf",
       "revision_id": "70f6d3ee044df786e3922200f95182f349452b6dbf1e22b261413e7680eae8e5",
       "observed_at": "2026-11-18T16:11:07+00:00",
       "status": "candidate_snapshot",
@@ -3537,13 +3537,13 @@
     {
       "id": "doc-890c93924c8d0727db9df92d",
       "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/file.asp?filename=2026102895354.pdf",
-      "format": "html",
-      "revision_id": "024cf4713bfaae3df25717404c8c136f4cc38e8a7c11616aaa4d38d1016b7557",
-      "observed_at": "2026-11-19T05:33:15+00:00",
+      "format": "pdf",
+      "revision_id": "cba4db9a9cb139d5b3c410c2d033c552bfa25e19d9121a39362252e332c04e39",
+      "observed_at": "2026-11-19T07:02:44+00:00",
       "status": "candidate_snapshot",
       "evidence_mode": "hash_only",
       "candidate_ids": [
-        "cand-discovery-issue-890c93924c8d-024cf471"
+        "cand-discovery-issue-890c93924c8d-cba4db9a"
       ],
       "events": [],
       "links": []
