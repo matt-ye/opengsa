@@ -102,6 +102,19 @@ class LinkedDeadlineTests(unittest.TestCase):
         self.assertIn("https://example.test/call", {s["url"] for s in preview["sources"]})
 
 
+    def test_replaced_card_without_new_time_record_drops_the_old_one(self):
+        import json
+        from scripts.propose_radar_update import merge_temporal
+        root = Path(__file__).resolve().parents[1] / "data"
+        bundle = json.loads((root / "candidates/source-review.json").read_text(encoding="utf-8"))
+        records = json.loads((root / "temporal-observations.json").read_text(encoding="utf-8"))["records"]
+        gone = next(c["candidate_id"] for c in bundle["candidates"] if c["candidate_id"] in records)
+        merged = {**bundle, "candidates": [c for c in bundle["candidates"] if c["candidate_id"] != gone]}
+        result, count = merge_temporal(merged, [], {}, "2026-11-19T00:00:00+00:00")
+        self.assertEqual(count, 0)
+        self.assertNotIn(gone, result["records"])
+
+
 class ProgrammeMatchTests(unittest.TestCase):
     def test_title_match(self):
         title = "115學年度合成學院研究生優秀論文獎暨大學生研究獎勵即日起至115年11月26日止受理申請"

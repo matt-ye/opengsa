@@ -58,10 +58,12 @@ def merge_temporal(merged,good,temporal,observed):
         record=(temporal or {}).get(card['candidate_id'])
         if record and record.get('card_revision_id')==card['source_metadata']['revision_id']:
             records[card['candidate_id']]={**record,'candidate_sha256':candidate_fingerprint(card)}
-    if not records:return None,0
     base=read(ROOT/'data/temporal-observations.json');alive={c['candidate_id'] for c in merged['candidates']}
-    batch={'http_requests':0,'kind':'same_round','attempted_urls':sorted({r['url'] for r in records.values()}),'observed_at':observed}
-    result={**base,'batches':base['batches']+[batch],'records':{**{k:v for k,v in base['records'].items() if k in alive},**records}}
+    stale=[k for k in base['records'] if k not in alive]
+    # 被取代的卡這輪沒有新紀錄時（例如截止日來自公告的卡），舊紀錄也要移除，不能留下指向不存在的卡。
+    if not records and not stale:return None,0
+    batches=base['batches']+([{'http_requests':0,'kind':'same_round','attempted_urls':sorted({r['url'] for r in records.values()}),'observed_at':observed}] if records else [])
+    result={**base,'batches':batches,'records':{**{k:v for k,v in base['records'].items() if k in alive},**records}}
     errors=validate_temporal_snapshot(merged,result)
     if errors:raise ValueError('invalid_temporal_records: '+str(errors)[:300])
     return result,len(records)
