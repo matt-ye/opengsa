@@ -1,6 +1,6 @@
 {
   "schema_version": "source-chain-1",
-  "generated_at": "2026-11-19T13:43:40+00:00",
+  "generated_at": "2026-11-19T14:06:15+00:00",
   "model_calls": 0,
   "official_data_modified": false,
   "documents": [
@@ -3538,12 +3538,12 @@
       "id": "doc-890c93924c8d0727db9df92d",
       "url": "https://rd.mc.ntu.edu.tw/bomrd/ntu2/file.asp?filename=2026102895354.pdf",
       "format": "pdf",
-      "revision_id": "7b37950df326ec328aecfdb03e1ebb7775629d20b2cb6099b1d223fabab29c44",
-      "observed_at": "2026-11-19T13:43:17+00:00",
+      "revision_id": "2fe7b6322796f13ae0fa62ff7fef273ff093d981bc08ad50d90d21b52f9d939f",
+      "observed_at": "2026-11-19T14:05:52+00:00",
       "status": "candidate_snapshot",
       "evidence_mode": "hash_only",
       "candidate_ids": [
-        "cand-discovery-issue-890c93924c8d-7b37950d"
+        "cand-discovery-issue-890c93924c8d-2fe7b632"
       ],
       "events": [],
       "links": []
