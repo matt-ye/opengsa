@@ -1,5 +1,5 @@
 source_id,host,enabled,status,failures,pending,attachments,revision
-ntu-doctoral-funding,www.aca.ntu.edu.tw,true,ok,0,1,2,23eeaaf07a60
+ntu-doctoral-funding,www.aca.ntu.edu.tw,true,ok,0,1,2,9569c21ff688
 ntu-president-award,www.aca.ntu.edu.tw,true,ok,0,1,1,453ee92c5339
 ntu-yuanxue,ord.ntu.edu.tw,true,ok,0,1,1,aa91a4dd5dff
 nstc-ntu-conference,www.aca.ntu.edu.tw,true,ok,0,1,0,79053606a762
@@ -16,7 +16,7 @@ ntu-coe-scholarship,www.eng.ntu.edu.tw,false,disabled,0,0,0,
 taipei-ai-tools,youth.gov.taipei,true,ok,0,0,0,d2017bd801aa
 hsinchu-ai-tools,dgservice.hccg.gov.tw,true,not_checked,0,0,0,
 discovery-r317,www.aca.ntu.edu.tw,true,not_checked,0,0,0,
-discovery-r112,edu.law.moe.gov.tw,true,selected_body_empty,1,0,0,
+discovery-r112,edu.law.moe.gov.tw,true,selected_body_empty,2,0,0,
 discovery-r297,www.aca.ntu.edu.tw,true,not_checked,0,0,0,
 discovery-q001,www.foxconnfoundation.org,true,not_checked,0,0,0,
 discovery-q009,www.cm.nsysu.edu.tw,true,not_checked,0,0,0,
@@ -25,8 +25,8 @@ discovery-r301,www.aca.ntu.edu.tw,true,not_checked,0,0,0,
 discovery-r308,www.aca.ntu.edu.tw,true,not_checked,0,0,0,
 discovery-r043,aws.amazon.com,false,disabled,0,0,0,a2ec5ea007b7
 discovery-r044,aws.amazon.com,true,not_checked,0,0,0,
-discovery-r055,coph.ntu.edu.tw,true,unexpected_content_type,1,0,0,
-discovery-r057,coph.ntu.edu.tw,true,unexpected_content_type,2,0,0,
+discovery-r055,coph.ntu.edu.tw,true,unexpected_content_type,2,0,0,
+discovery-r057,coph.ntu.edu.tw,true,unexpected_content_type,3,0,0,
 discovery-r110,edu.google.com,true,ok,0,1,0,e8c9b663ed34
 discovery-r113,education.github.com,false,disabled,0,0,0,4da24fb32ee7
 discovery-r182,law.nstc.gov.tw,true,selected_body_empty,2,0,0,
@@ -453,12 +453,12 @@ discovery-issue-06c9affd82ef,student.fcu.edu.tw,true,not_checked,0,0,0,
 discovery-issue-8bc962a884ea,student.fcu.edu.tw,true,not_checked,0,0,0,
 discovery-d8088b3787face797,sa1.isu.edu.tw,true,unexpected_content_type,1,0,0,
 discovery-d1520701ad6cbbbe3,sa1.isu.edu.tw,true,unexpected_content_type,1,0,0,
-discovery-d68f245db5c9f2aa5,sa1.isu.edu.tw,true,not_checked,0,0,0,
+discovery-d68f245db5c9f2aa5,sa1.isu.edu.tw,true,unexpected_content_type,1,0,0,
 discovery-issue-bf1c6321c9d4,sa1.isu.edu.tw,true,not_checked,0,0,0,
 discovery-d05354e255f9e7eb3,student.ntust.edu.tw,false,disabled,0,0,0,
 discovery-dc185db0965d59959,student.ntust.edu.tw,true,not_checked,0,0,0,
 openai-academic-researchers,help.openai.com,false,disabled,0,0,0,
 openai-chatgpt-edu,help.openai.com,false,disabled,0,0,0,
 discovery-issue-87b38e387dec,claude.com,true,not_checked,0,0,0,
-discovery-issue-890c93924c8d,rd.mc.ntu.edu.tw,true,not_checked,0,0,0,
+discovery-issue-890c93924c8d,rd.mc.ntu.edu.tw,true,unexpected_content_type,1,0,0,
 discovery-issue-3d1bdebab2ec,rd.mc.ntu.edu.tw,false,disabled,0,0,0,
